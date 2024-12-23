@@ -261,7 +261,7 @@ public:
     int m_ui_option_cursor_depth{ 5 };
     int m_ui_option_look_sensitivity{ 5 };
     bool m_ui_option_apply_weapon_offset{ true };
-    float m_fov{ 90.f };
+    float m_fov{ 120.f };
     float m_ui_option_crosshair_cursor_scale{ 0.3f };
     float m_ui_option_cursor_brackets_scale{ 0.0f };
     float m_ui_option_player_height_modifier{ 0.0f };
@@ -1436,6 +1436,10 @@ public:
                 settings->SetFocusOnPuzzles(false);
                 settings->ApplyFocusOnPuzzles(false);
 
+                // Gameplay: Reload Can Use Batteries: OFF
+                settings->SetReloadCanUseBatteries(false);
+                settings->ApplyReloadCanUseBatteries(false);
+
                 // Display: Motion Blur: OFF
                 settings->SetEnableMotionBlur(false);
                 settings->ApplyEnableMotionBlur(false);
@@ -1445,10 +1449,10 @@ public:
                 settings->ApplyEnableVSync(false);
 
                 // Display: FOV (real/cyberspace)
-                //settings->SetFOV(m_fov, true);
-                //settings->ApplyFOV(m_fov, true);
-                //settings->SetFOV(m_fov, false);
-                //settings->ApplyFOV(m_fov, false);
+                settings->SetFOV(m_fov, true);
+                settings->ApplyFOV(m_fov, true);
+                settings->SetFOV(m_fov, false);
+                settings->ApplyFOV(m_fov, false);
 
                 API::get()->log_info("Applied VR specific game options");
             }
