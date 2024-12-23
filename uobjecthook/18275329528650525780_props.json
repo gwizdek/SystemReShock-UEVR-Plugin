@@ -1,0 +1,26 @@
+{
+    "hide": false,
+    "hide_legacy": false,
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "ArrowComponent AnimCameraPosition",
+        "Properties",
+        "RelativeLocation"
+    ],
+    "properties": [
+        {
+            "data": 3096723456,
+            "name": "Z"
+        },
+        {
+            "data": 907257664,
+            "name": "X"
+        },
+        {
+            "data": 956258509,
+            "name": "Y"
+        }
+    ],
+    "type": "properties"
+}

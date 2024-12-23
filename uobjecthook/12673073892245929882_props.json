@@ -1,0 +1,20 @@
+{
+    "hide": false,
+    "hide_legacy": false,
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "COMP_HackerInventory_C COMP_HackerInventory",
+        "Properties",
+        "CurrentEquippedWeapon",
+        "Properties",
+        "IdleSequence"
+    ],
+    "properties": [
+        {
+            "data": 0,
+            "name": "RateScale"
+        }
+    ],
+    "type": "properties"
+}

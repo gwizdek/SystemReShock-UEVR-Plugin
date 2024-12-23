@@ -1,0 +1,22 @@
+{
+    "hide": false,
+    "hide_legacy": false,
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "SceneComponent LeanOffset",
+        "Properties",
+        "RelativeLocation"
+    ],
+    "properties": [
+        {
+            "data": 0,
+            "name": "Y"
+        },
+        {
+            "data": 1116340224,
+            "name": "Z"
+        }
+    ],
+    "type": "properties"
+}

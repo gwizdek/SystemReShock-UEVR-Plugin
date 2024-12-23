@@ -1,0 +1,16 @@
+{
+    "hide": false,
+    "hide_legacy": false,
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "COMP_Scanner_C COMP_Scanner"
+    ],
+    "properties": [
+        {
+            "data": 1148846080,
+            "name": "CachedScanDistance"
+        }
+    ],
+    "type": "properties"
+}

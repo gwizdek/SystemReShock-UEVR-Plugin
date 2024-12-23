@@ -1,0 +1,22 @@
+{
+    "hide": false,
+    "hide_legacy": false,
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "SceneComponent LookPivot",
+        "Properties",
+        "RelativeLocation"
+    ],
+    "properties": [
+        {
+            "data": 0,
+            "name": "X"
+        },
+        {
+            "data": 0,
+            "name": "Y"
+        }
+    ],
+    "type": "properties"
+}
