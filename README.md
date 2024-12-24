@@ -89,6 +89,9 @@ Press `Apply` button after you make the changes.
 * no physical crouching
 * no physical melee
 
+## Compatibility
+Mods that modify crosshair, hotbar slots, inventory and mfd can have negative impact on the plugin.
+
 ## Troubleshooting
 ### General
 * Laser pointer on the MFD doesn't work - Check if the game window is in focus.
