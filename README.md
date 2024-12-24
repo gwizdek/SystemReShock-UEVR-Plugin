@@ -2,8 +2,10 @@
 
 Welcome back to Citadel Station hackers...
 
-This UEVR plugin is inspired by wonderful work of Ashok and the team (CJ117, TimBurton and Markmon) who created the original UEVR plugin ([**Link**](https://github.com/Ashok0/SystemShock-UEVR)) and it borrows some of the fixes and ideas, so many thanks to the guys.
+This UEVR plugin is inspired by wonderful work of Ashok and the team (CJ117, TimBurton and Markmon), who created the original UEVR plugin ([**Link**](https://github.com/Ashok0/SystemShock-UEVR)) and it borrows some of the fixes and ideas, so many thanks to the guys.
 Also, let's not forget, that it wouldn't be possible without Praydog, the author of UEVR!
+
+Author's note: This release is a little bit rushed for the Christmas, so you may see some bugs.
 
 ## Features
 * 6DOF
@@ -15,15 +17,15 @@ Also, let's not forget, that it wouldn't be possible without Praydog, the author
 * hacker hardware toggler
 * emulated MFD laser pointer 
 * plugin options accessible through overlay
-* controller mappings
+* refined controller mappings
 * two aiming modes for cyberspace
 
 ## Installation
 1) Install UEVR ver 1.05 from [**HERE**](https://github.com/praydog/UEVR/releases).
 2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
-3) Download the latest release of the SystemReShock UEVR plugin from [**HERE**](). Click "Import Config" in the UEVR UI and navigate to "SystemReShock-Win64-Shipping.zip" and click on it and accept the DLL warning.
+3) Download the latest release of the SystemReShock UEVR plugin from Releases page. Click "Import Config" in the UEVR UI and navigate to "SystemReShock-Win64-Shipping.zip" and click on it and accept the DLL warning.
 4) Launch System Shock and inject the game with UEVR
-5) Reset controller bindings in game options to defaults. Set game FOV to 90 on a 16:9 screen. For widescreen monitors, see 'Troubleshooting'
+5) Reset controller bindings in game options to defaults
 
 ## Controls
 ### General
@@ -92,7 +94,6 @@ Press `Apply` button after you make the changes.
 * Laser pointer on the MFD doesn't work - Check if the game window is in focus.
 
 ### Widescreen monitors
-* When pointing the crosshair on objects, the target brackets are to large - Try to increase FOV in game options
 * Misaligned cursor and laser pointer on MFD - Happens when resolution was changed, reinitialize runtime and reload a save game.
 * My MFD is to wide - You can try to change the game resolution to match 16:9 aspect ratio, set `Window Mode` in game options to `Windowed Fullscreen`, then press Alt+Enter so it no longer takes the whole screen. Lastly, reload a save game.
 
@@ -104,6 +105,4 @@ Press `Apply` button after you make the changes.
 
 
 ## Disclaimer
-This plugin was developed on HP Reverb G2 using OpenXR API. Some testing was performed by Ashok on Q2 / Q3 (Thank you!). This means, that you may stumble on bugs depending on your setup!
-
-
+This plugin was developed on HP Reverb G2 using OpenXR API. Some testing was performed me on G2 and by Ashok on Q2 / Q3 (Thank you!). It's a limited set of HMDs, so you may bump into bugs, depending on your setup!
