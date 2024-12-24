@@ -105,4 +105,4 @@ Press `Apply` button after you make the changes.
 
 
 ## Disclaimer
-This plugin was developed on HP Reverb G2 using OpenXR API. Some testing was performed me on G2 and by Ashok on Q2 / Q3 (Thank you!). It's a limited set of HMDs, so you may bump into bugs, depending on your setup!
+This plugin was developed on HP Reverb G2 using OpenXR API. Some testing was performed by me on G2 and by Ashok on Q2 / Q3 (Thank you!). It's a limited set of HMDs, so you may bump into bugs, depending on your setup!
