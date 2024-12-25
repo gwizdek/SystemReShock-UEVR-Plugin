@@ -80,6 +80,9 @@ Some players reported that they feel the floor is much to close. You can adjust 
 ### Force hide compass
 This setting forces the top compass band to hide. If you really like the compass, you can untick it and toggle navigation software off/on through MFD to show it again.
 
+### Toggle run with Left Grip
+Option to disable walk/run toggle binded to Left Grip. You can still run by pressing and holding **Left Stick Button**
+
 ### Crosshair Cursor Scale and Cursor Brackets Scale
 The original game crosshair is way to big for my liking. I made it a lot smaller by default, but you can make it big again or hide it completely.
 You can also make it bearly visible. You may need to adjust this setting depending on selected game video resolution. The brackets part of crosshair is hidden by default.  

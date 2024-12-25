@@ -182,11 +182,6 @@ const std::map<HackerWeapon, std::tuple<std::string, SDK::FVector>> weapons_map 
     { PROXIMITY_MINE_MANAGER,   { "ProximityMineManager",   { 0.0f, -6.0f, -7.0f }      } },    // ok
 };
 
-typedef enum HackerMontage
-{
-    MONTAGE_NONE,
-} HackerMontage;
-
 class SystemShockPlugin : public uevr::Plugin {
 public:
     SystemShockPlugin() = default;
@@ -229,7 +224,7 @@ public:
     // game state
     MemoProperty <SDK::UAnimMontage*> m_current_montage{ nullptr, nullptr };
     MemoProperty <MontageType> m_montage_type{ UNKNOWN, UNKNOWN };
-    SDK::FRotator m_montage_camera_rotation{ 0.f, 0.f, 0.f };
+    SDK::FRotator m_camera_rotation{ 0.f, 0.f, 0.f };
 
     SDK::UCharacterAction_C* m_current_action{ nullptr };
     MemoProperty<bool> m_mfd_visible{ false, false };
@@ -237,6 +232,7 @@ public:
     MemoProperty<bool> m_mfd_inventory_context_menu_visible{ false, false };
     MemoProperty<bool> m_player_alive{ true, true };
     MemoProperty<bool> m_player_interacting{ false, false };
+    MemoProperty<std::string> m_channeling_interactable_name{ "", "" };
     MemoProperty<bool> m_player_crouching{ false, false };
     MemoProperty<bool> m_is_booting_up{ false, false };
     MemoProperty<bool> m_is_crashing{ false, false };
@@ -266,6 +262,7 @@ public:
     float m_ui_option_cursor_brackets_scale{ 0.0f };
     float m_ui_option_player_height_modifier{ 0.0f };
     bool m_ui_option_force_hide_compass{ true };
+    bool m_ui_option_toggle_run_with_left_grip{ true };
 
     // debug
     int m_cb_calls_count{ 0 };
@@ -484,18 +481,22 @@ public:
             m_player_alive.set_value(static_cast<SDK::APAWN_SystemShockCharacter_C*>(m_sdk_pawn)->IsAlive);
             m_player_interacting.set_value(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ChannelingInteractable != nullptr);
 
+            // get channeling interactable name
+            if (m_player_interacting.value) {
+                m_channeling_interactable_name.set_value(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ChannelingInteractableName.ToString());
+            } else {
+                m_channeling_interactable_name.set_value("");
+            }
+
             // animations
             const auto action_manager = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->COMP_ActionManager;
             if (action_manager != nullptr) {
                 // we do this here instead of using set_value (store old montage in prev_value and pass value to method)
                 m_current_montage.consume();
                 action_manager->GetCurrentMontage(&m_current_montage.value);
-
-                if (m_current_montage.value) {
-                    m_montage_camera_rotation = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->K2_GetComponentRotation();
-                }
-
                 action_manager->GetCurrentAction(&m_current_action);
+
+                m_camera_rotation = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->K2_GetComponentRotation();
             }
         }
         else {
@@ -503,6 +504,7 @@ public:
             m_current_weapon = nullptr;
             m_player_alive.set_value(false);
             m_player_interacting.set_value(false);
+            m_channeling_interactable_name.set_value("");
         }
 
         // mfd
@@ -624,7 +626,8 @@ public:
                     m_player_sprinting = !m_player_sprinting;
                 }
 
-                if (m_player_sprinting) {
+                // sprint only when mod's toggle option is checked
+                if (m_player_sprinting && m_ui_option_toggle_run_with_left_grip) {
                     m_gamepad_left_thumb.force_state(state);
                 }
 
@@ -943,9 +946,10 @@ public:
                 // check the type of animation that had just ended
                 if (m_montage_type.prev_value == ENDING || m_montage_type.prev_value == SINGLE) {
                     // rotate pawn to match animation rotation
+                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
                     auto pawn_controller = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->GetController();
-                    pawn_controller->SetControlRotation(m_montage_camera_rotation);
-                    //API::get()->log_info("Montage End : Setting rotation (%f, %f, %f)", m_montage_camera_rotation.Pitch, m_montage_camera_rotation.Roll, m_montage_camera_rotation.Yaw);
+                    pawn_controller->SetControlRotation(m_camera_rotation);
+                    //API::get()->log_info("Montage End : Setting rotation (%f, %f, %f)", m_camera_rotation.Pitch, m_camera_rotation.Roll, m_camera_rotation.Yaw);
 
 
                     //API::get()->log_info("Montage Type: Ending / Single");
@@ -959,6 +963,7 @@ public:
 
                 // single animation or animation sequence is starting
                 if (m_montage_type.value == STARTING || m_montage_type.value == SINGLE) {
+                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = false;
                     //API::get()->log_info("Montage Type: Starting / Single");
                     m_sdk_hud->SetForceHideCrosshairs(true);
                     m_sdk_hud->ShowTargetBrackets(false);
@@ -1068,9 +1073,22 @@ public:
 
     void handle_arms_mesh_visibility() {
         if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
-            static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(
-                m_current_montage.value != nullptr || (m_current_weapon != nullptr && !m_player_interacting.value), true
-            );
+
+            if (
+                m_channeling_interactable_name.value.find("INTERACT_SalvageStation") != std::string::npos ||
+                m_channeling_interactable_name.value.find("INTERACT_TransdermalDispenser") != std::string::npos ||
+                m_channeling_interactable_name.value.find("INTERACT_Snacktron") != std::string::npos ||
+                m_channeling_interactable_name.value.find("INTERACT_Keypad") != std::string::npos ||
+                m_channeling_interactable_name.value.find("PUZZLE_") != std::string::npos
+                ) {
+                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
+            }
+            else if (m_current_weapon == nullptr && !m_player_interacting.value) {
+                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
+            }
+            else {
+                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(true, true);
+            }
         }
     }
 
@@ -1337,7 +1355,6 @@ public:
                     if (m_pawn != nullptr) {
                         m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
                         m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
-                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
                     }
                     apply_selected_cursor_size();
 
@@ -1358,7 +1375,6 @@ public:
                     if (m_pawn != nullptr) {
                         m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
                         m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
-                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
                     }
                     m_cyberspace_aim_method = 0;
                     vr->set_aim_method(0);
@@ -1509,6 +1525,7 @@ public:
             ImGui::SliderInt(LOOK_SENSITIVITY, &m_ui_option_look_sensitivity, 1, 10);
             ImGui::SliderFloat("Player height modifier", &m_ui_option_player_height_modifier, -15.f, 15.f);
             ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
+            ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
 
             ImGui::SeparatorText("Crosshair options");
             ImGui::SliderFloat("Crosshair Cursor Scale", &m_ui_option_crosshair_cursor_scale, 0.f, 1.f );
@@ -1533,6 +1550,7 @@ public:
                 
                 ImGui::InputText("Current Montage", (m_current_montage.value != nullptr) ? (char*)m_current_montage.value->GetName().c_str() : (char*)"NONE", 20);
                 ImGui::InputText("Current Action", (m_current_action != nullptr) ? (char*)m_current_action->GetName().c_str() : (char*)"NONE", 20);
+                ImGui::InputText("Current Interactable", !m_channeling_interactable_name.value.empty() ? (char*)m_channeling_interactable_name.value.c_str() : (char*)"NONE", 20);
 
                 ImGui::InputText(CURRENT_PAWN_STATE, (char*)PawnStateNames[m_pawn_state.value], 20);
                 if (m_vr_hud != nullptr) {
