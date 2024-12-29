@@ -882,6 +882,7 @@ public:
             else if (level_name.ends_with("Introduction.PersistentLevel")) {
                 // fix intro camera r.postprocessing.disablematerials 1
                 sdk->functions->execute_command(L"r.postprocessing.disablematerials 1");
+                API::UObjectHook::set_disabled(false);
             }
             else if (level_name.ends_with("CitadelStation.PersistentLevel")) {
                 sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
@@ -907,7 +908,11 @@ public:
                 m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
                 m_vr_hud->set_cursor_brackets_scale(&m_ui_option_cursor_brackets_scale);
 
+                vr->set_aim_method(2);
                 vr->set_snap_turn_enabled(true);
+                vr->set_decoupled_pitch_enabled(true);
+                vr->set_mod_value("VR_RoomscaleMovement", "true");
+                API::UObjectHook::set_disabled(false);
             }
 
             apply_vr_game_options();
@@ -1003,13 +1008,13 @@ public:
         if (in_montage == nullptr)
             return NONE;
 
-        //API::get()->log_warn("Montage: %s", in_montage->GetName().c_str());
+        API::get()->log_warn("Montage: %s", in_montage->GetName().c_str());
 
         for (MontageMeta montage : g_montages) {
             auto montage_name = in_montage->GetName();
             if (montage_name == std::get<0>(montage)) {
                 auto type = std::get<1>(montage);
-                //API::get()->log_warn("Montage Found, type: %d", type);
+                API::get()->log_warn("Montage Found, type: %d", type);
                 return type;
             }
         }
@@ -1021,7 +1026,7 @@ public:
         if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT })) {
             // start of bootup
             if (m_is_booting_up.has_changed() && m_is_booting_up.value) {
-                //API::get()->log_warn("Bootup Start");
+                API::get()->log_warn("Bootup Start");
                 vr->set_aim_method(0);
                 vr->recenter_view();
                 API::UObjectHook::set_disabled(true);
@@ -1029,7 +1034,7 @@ public:
 
             // start of crash
             if (m_is_crashing.has_changed() && m_is_crashing.value) {
-                //API::get()->log_warn("Crash Start");
+                API::get()->log_warn("Crash Start");
                 vr->set_aim_method(0);
                 vr->recenter_view();
                 API::UObjectHook::set_disabled(true);
@@ -1043,7 +1048,7 @@ public:
             }
 
             if (m_current_montage.has_changed()) {
-                //API::get()->log_warn("Montage Changed %s", m_current_montage.value ? "STARTED" : "ENDED");
+                API::get()->log_warn("Montage Changed %s", m_current_montage.value ? "STARTED" : "ENDED");
                 // get metadata about current montage from g_montages vector
                 m_montage_type.set_value(get_montage_type(m_current_montage.value));
 
@@ -1053,7 +1058,7 @@ public:
                     auto pawn_controller = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->GetController();
                     pawn_controller->SetControlRotation(m_camera_rotation);
                     //API::get()->log_info("Montage End : Setting rotation (%f, %f, %f)", m_camera_rotation.Pitch, m_camera_rotation.Roll, m_camera_rotation.Yaw);
-                    //API::get()->log_warn("Montage Type: Ending / Single");
+                    API::get()->log_warn("Montage Type: Ending / Single");
                     m_sdk_hud->SetForceHideCrosshairs(false);
                     m_sdk_hud->ShowTargetBrackets(true);
                     apply_selected_cursor_size();
@@ -1064,7 +1069,7 @@ public:
 
                 // single animation or animation sequence is starting
                 if (m_montage_type.value == STARTING || m_montage_type.value == SINGLE) {
-                    //API::get()->log_warn("Montage Type: Starting / Single | %s", m_current_montage.value->GetName().c_str());
+                    API::get()->log_warn("Montage Type: Starting / Single | %s", m_current_montage.value->GetName().c_str());
                     m_sdk_hud->SetForceHideCrosshairs(true);
                     m_sdk_hud->ShowTargetBrackets(false);
                     vr->set_aim_method(0);
