@@ -47,6 +47,7 @@
 #include "SDK/CharacterAction_classes.hpp"
 #include "SDK/COMP_ActionManager_classes.hpp"
 #include "SDK/WEAPON_GrenadeLauncher_classes.hpp"
+#include "SDK/INTERACT_Laptop_classes.hpp"
 
 #include "uevr/Plugin.hpp"
 #include "pch.h"
@@ -54,7 +55,6 @@
 #include "vr_plugin_shared.hpp"
 #include "vr_data_sampling.hpp"
 #include "SceneComponent.hpp"
-#include "INTERACT_Laptop_C.hpp"
 #include "MOVECONTROL_FocusableInteract_C.hpp"
 #include "VRHackerHUD.hpp"
 
@@ -75,7 +75,7 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 using namespace uevr;
 using namespace ImGuiLogs;
 
-const char* MOD_VERSION = "1.0.0";
+const char* MOD_VERSION = "1.0.1";
 const int CB_DURATION_SAMPLE_RATE = 100;
 bool RoomscaleMontageOverride = false;
 
@@ -146,12 +146,23 @@ const std::array<MontageMeta, 13> g_montages{ {
     { "CH_Hacker_SurgicalBed_Left_Enter_Montage",       STARTING,   },
     { "CH_Hacker_SurgicalBed_Left_Exit_Montage",        ENDING,     },
     { "CH_Hacker_death_p_Montage",                      SINGLE,     },
-    { "CH_Hacker_Terminal_Use_Montage",                 STARTING,   },
-    { "CH_Hacker_Terminal_Dismount_Montage",            ENDING,     },
+    { "CH_Hacker_Terminal_Use_Montage",                 SINGLE,     },
+    { "CH_Hacker_Terminal_Dismount_Montage",            SINGLE,     },
     { "CH_Hacker_Cryobed_Wake_Montage",                 SINGLE,     },
     { "CH_Hacker_use_radiation_treatment_Montage",      SINGLE,     },
     { "CH_Hacker_use_powerstation_Montage",             SINGLE,     },
     { "MONT_HackerRespawn",                             SINGLE,     },
+} };
+
+typedef std::tuple<std::string, bool> InteractableMeta;
+
+//  Interactable name                       Hide arms when interacting
+const std::vector<InteractableMeta> g_interactables{ {
+    { "INTERACT_SalvageStation",            true,   },
+    { "INTERACT_TransdermalDispenser",      true,   },
+    { "INTERACT_Snacktron",                 true,   },
+    { "INTERACT_Keypad",                    true,   },
+    { "PUZZLE_",                            true,   },
 } };
 
 //  HackerWeapon enum           Search string               Weapon offset
@@ -226,6 +237,7 @@ public:
     MemoProperty <MontageType> m_montage_type{ UNKNOWN, UNKNOWN };
     SDK::FRotator m_camera_rotation{ 0.f, 0.f, 0.f };
 
+    SDK::AINTERACT_Laptop_C* m_intro_laptop{ nullptr };
     SDK::UCharacterAction_C* m_current_action{ nullptr };
     MemoProperty<bool> m_mfd_visible{ false, false };
     MemoProperty<bool> m_main_menu_in_game_visible{ false, false };
@@ -236,12 +248,13 @@ public:
     MemoProperty<bool> m_player_crouching{ false, false };
     MemoProperty<bool> m_is_booting_up{ false, false };
     MemoProperty<bool> m_is_crashing{ false, false };
+    MemoProperty<bool> m_is_using_laptop{ false, false };
     MemoProperty<PawnState> m_pawn_state{ PAWN_UNKNOWN, PAWN_UNKNOWN };
     MemoProperty<HackerWeapon> m_weapon_state{ WEAPON_NONE, WEAPON_NONE };
     MemoProperty<SDK::ULevel*> m_level{ nullptr, nullptr };
     bool m_player_sprinting{ false };
+    bool m_player_jumping{ false };
     int m_cyberspace_aim_method{ 0 };
-
 
     // controller state
     MemoInput m_gamepad_right_shoulder{ XINPUT_GAMEPAD_RIGHT_SHOULDER, "RIGHT_SHOULDER" };
@@ -252,17 +265,24 @@ public:
     MemoDualInput m_gamepad_btn_b{ XINPUT_GAMEPAD_B, "BTN_B" };
     MemoInput m_gamepad_btn_x{ XINPUT_GAMEPAD_X, "BTN_X" };
     MemoDualInput m_gamepad_btn_y{ XINPUT_GAMEPAD_Y, "BTN_Y" };
+
+    // customizable actions
+    MemoInput m_hotbar_selector_button{ XINPUT_GAMEPAD_RIGHT_SHOULDER, "HOTBAR_SELECTOR_BUTTON" };
+    MemoInput m_hardware_selector_button{ XINPUT_GAMEPAD_RIGHT_THUMB, "HARDWARE_SELECTOR_BUTTON" };
     
     // mod options
-    int m_ui_option_cursor_depth{ 5 };
-    int m_ui_option_look_sensitivity{ 5 };
-    bool m_ui_option_apply_weapon_offset{ true };
     float m_fov{ 120.f };
     float m_ui_option_crosshair_cursor_scale{ 0.3f };
     float m_ui_option_cursor_brackets_scale{ 0.0f };
     float m_ui_option_player_height_modifier{ 0.0f };
+    int m_ui_option_cursor_depth{ 5 };
+    int m_ui_option_look_sensitivity{ 5 };
+    bool m_ui_option_apply_weapon_offset{ true };
     bool m_ui_option_force_hide_compass{ true };
     bool m_ui_option_toggle_run_with_left_grip{ true };
+    int m_ui_option_hotbar_selector_button{ 0 };
+    int m_ui_option_hardware_selector_button{ 1 };
+    int m_ui_option_walk_run_toggle_button{ 1 };
 
     // debug
     int m_cb_calls_count{ 0 };
@@ -304,7 +324,7 @@ public:
             return;
 
         if (!prepare_state(vr)) {
-            API::get()->log_info("State not prepared");
+            API::get()->log_warn("State not prepared");
             return;
         }
 
@@ -375,10 +395,10 @@ public:
             m_vr_hud->handle_mod_events(&m_mod_events);
 
             if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
-                if (!m_mfd_visible.value && m_gamepad_right_shoulder.is_held()) {
+                if (!m_mfd_visible.value && m_hotbar_selector_button.is_held()) {
                     m_vr_hud->update_primary_item_selector_location(delta);
                 }
-                if (!m_mfd_visible.value && m_gamepad_right_thumb.is_held()) {
+                if (!m_mfd_visible.value && m_hardware_selector_button.is_held()) {
                     m_vr_hud->update_secondary_item_selector_location(delta);
                 }
                 if (m_mfd_visible.value && !m_mod_events.contains(MOD_EVENT_SHOW_MFD)) {
@@ -387,13 +407,11 @@ public:
             }
         }
 
-        //handle_player_camera();
         handle_look_pivot();
-        handle_cyberspace_look_pivot(vr);
+        //handle_cyberspace_look_pivot(vr);
         handle_hud_depth(vr);
         handle_interactives_cursor_size();
         handle_animations(vr);
-        //handle_montage_camera_pitch();
         handle_intro_laptop(vr);
         //handle_player_death(vr);
         handle_weapon_changes();
@@ -419,14 +437,14 @@ public:
         // world
         m_sdk_world = SDK::UWorld::GetWorld();
         if (m_sdk_world == nullptr) {
-            API::get()->log_info("prepare_state::world = nullptr");
+            API::get()->log_warn("WARN: prepare_state::world = nullptr");
             return false;
         }
 
         // pawn
         m_sdk_pawn = SDK::UGameplayStatics::GetPlayerPawn(m_sdk_world, 0);
         if (m_sdk_pawn == nullptr) {
-            API::get()->log_info("prepare_state::world = nullptr");
+            API::get()->log_warn("WARN: prepare_state::m_sdk_pawn = nullptr");
             return false;
         }
 
@@ -451,7 +469,7 @@ public:
         if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
             static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->GetNeuralHUD(&m_sdk_hud);
             if (m_sdk_hud == nullptr) {
-                API::get()->log_info("prepare_state::hud = nullptr");
+                API::get()->log_warn("WARN: prepare_state::hud = nullptr");
                 return false;
             }
             m_mfd_inventory_context_menu_visible.set_value(m_sdk_hud->WIDGET_InventoryContextMenu->IsInventoryContextMenuEnabled);
@@ -505,6 +523,14 @@ public:
             m_player_alive.set_value(false);
             m_player_interacting.set_value(false);
             m_channeling_interactable_name.set_value("");
+            m_current_montage.set_value(nullptr);
+            m_current_action = nullptr;
+        }
+
+        // Introduction level laptop
+        set_intro_laptop_pointer();
+        if (m_intro_laptop != nullptr) {
+            m_is_using_laptop.set_value(m_intro_laptop->IsInteracting);
         }
 
         // mfd
@@ -517,6 +543,7 @@ public:
         // sets pointer to PAWN
         m_pawn = API::get()->get_local_pawn(0);
         if (m_pawn == nullptr) {
+            API::get()->log_warn("WARN: prepare_state::m_pawn = nullptr");
             return false;
         }
 
@@ -559,20 +586,46 @@ public:
         }
     }
 
+    void set_intro_laptop_pointer() {
+        if (m_pawn_state.value != PAWN_HACKERSIMPLE || m_intro_laptop != nullptr)
+            return;
+
+        API::UClass* laptop_c = API::get()->find_uobject<API::UClass>(L"BlueprintGeneratedClass /Game/Art/Props/Hacker_Apartment/Laptop/INTERACT_Laptop.INTERACT_Laptop_C");
+        if (laptop_c != nullptr) {
+            std::vector<SDK::AINTERACT_Laptop_C*> matching_objects = laptop_c->get_objects_matching<SDK::AINTERACT_Laptop_C>();
+            //API::get()->log_info("AINTERACT_Laptop_C object count: %d", matching_objects.size());
+
+            for (size_t i = 0; i < matching_objects.size(); i++) {
+                if (matching_objects[i]->GetFullName().find(".INTERACT_Laptop") != std::wstring::npos) {
+                    API::get()->log_warn("AINTERACT_Laptop_C found");
+                    m_intro_laptop = matching_objects[i];
+                }
+            }
+        }
+    }
+
     // -------------------------------------------------------------------------------------
     // handlers
     // -------------------------------------------------------------------------------------
 
     // handles controller state based on game context
     void handle_controller_input(XINPUT_STATE* state, const UEVR_VRData* vr) {
-        m_gamepad_btn_a.set(state);
-        m_gamepad_btn_x.set(state);
-        m_gamepad_btn_b.set(state);
-        m_gamepad_btn_y.set(state);
-        m_gamepad_right_shoulder.set(state);
-        m_gamepad_left_shoulder.set(state);
-        m_gamepad_right_thumb.set(state);
-        m_gamepad_left_thumb.set(state);
+        m_gamepad_btn_a.set_state(state);
+        m_gamepad_btn_x.set_state(state);
+        m_gamepad_btn_b.set_state(state);
+        m_gamepad_btn_y.set_state(state);
+        m_gamepad_right_shoulder.set_state(state);
+        m_gamepad_left_shoulder.set_state(state);
+        m_gamepad_right_thumb.set_state(state);
+        m_gamepad_left_thumb.set_state(state);
+
+        m_hotbar_selector_button.set_state(state);
+        m_hardware_selector_button.set_state(state);
+
+        // clear player_jumping flag
+        if (m_gamepad_btn_x.is_released()) {
+            m_player_jumping = false;
+        }
 
         // normal level
         if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
@@ -589,7 +642,7 @@ public:
                     state->Gamepad.sThumbLY = 0;
                 }
 
-                // don't remap other buttons in in game menu
+                // don't remap other buttons in in-game menu
                 return;
             }
             // interaction with with puzzles / vending machines / ladders
@@ -651,9 +704,15 @@ public:
                 // used 'held' so we can still hold A button to play picked up audio log files
                 m_gamepad_btn_a.when_held_send(state, XINPUT_GAMEPAD_X);
 
-                // used 'pressed' to prevent player jumping when using 'loot all'
-                // otherwise pressing X would 'loot all' and then auto exit mfd triggering a jump (mapped to X in normal mode)
-                m_gamepad_btn_x.when_pressed_send(state, XINPUT_GAMEPAD_A);
+                // we need to place additional condition btn X held state to prevent auto jump when using 'loot all'
+                // when_held_send is only used when X button was pressed in normal walking mode and not in MFD
+                if (m_gamepad_btn_x.is_pressed()) {
+                    m_player_jumping = true;
+                    m_player_sprinting = false;
+                }
+                if (m_player_jumping) {
+                    m_gamepad_btn_x.when_held_send(state, XINPUT_GAMEPAD_A);
+                }
 
                 handle_primary_item_selector(state, vr);
                 handle_secondary_item_selector(state, vr);
@@ -709,9 +768,9 @@ public:
 
     // primary item selector
     void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr) {
-        if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS && !m_gamepad_right_thumb.is_held()) {
+        if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS && !m_hardware_selector_button.is_held()) {
 
-            if (m_gamepad_right_shoulder.is_pressed()) {
+            if (m_hotbar_selector_button.is_pressed()) {
                 m_vr_hud->set_primary_item_selector_visibility(true);
                 // hide UEVR controlled HUD
                 vr->set_mod_value("UI_Size", "0.000000");
@@ -729,7 +788,7 @@ public:
                 m_vr_hud->unselect_all_hotbar_slots();
             }
 
-            if (m_gamepad_right_shoulder.is_released()) {
+            if (m_hotbar_selector_button.is_released()) {
                 m_vr_hud->change_quick_slot();
 
                 // restore collisions
@@ -744,22 +803,22 @@ public:
             }
 
             // state, when the item selector is shown
-            if (m_gamepad_right_shoulder.is_held()) {
+            if (m_hotbar_selector_button.is_held()) {
                 m_vr_hud->update_laser_pointer_length(35.f);
                 m_vr_hud->highlight_quick_slot();
 
                 state->Gamepad.sThumbRX = 0;
             }
 
-            m_gamepad_right_shoulder.mute_state(state);
+            m_hotbar_selector_button.mute_state(state);
         }
     }
 
     // secondary item selector
     void handle_secondary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr) {
-        if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS && !m_gamepad_right_shoulder.is_held()) {
+        if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS && !m_hotbar_selector_button.is_held()) {
 
-            if (m_gamepad_right_thumb.is_pressed()) {
+            if (m_hardware_selector_button.is_pressed()) {
                 // hide UEVR controlled HUD
                 vr->set_mod_value("UI_Size", "0.000000");
                 vr->set_mod_value("VR_RoomscaleMovement", "false");
@@ -777,7 +836,7 @@ public:
                 m_vr_hud->unselect_all_hacker_hardware();
             }
 
-            if (m_gamepad_right_thumb.is_released()) {
+            if (m_hardware_selector_button.is_released()) {
                 m_vr_hud->toggle_hardware();
                 m_vr_hud->unselect_all_hacker_hardware();
 
@@ -793,14 +852,14 @@ public:
             }
 
             // state, when the item selector is shown
-            if (m_gamepad_right_thumb.is_held()) {
+            if (m_hardware_selector_button.is_held()) {
                 m_vr_hud->update_laser_pointer_length(35.f);
                 m_vr_hud->highlight_hardware_item();
 
                 state->Gamepad.sThumbRX = 0;
             }
 
-            m_gamepad_right_thumb.mute_state(state);
+            m_hardware_selector_button.mute_state(state);
         }
     }
 
@@ -856,18 +915,12 @@ public:
         }
     }
 
-    // TODO not working correctly
     void handle_intro_laptop(const UEVR_VRData* vr) {
-        if (m_pawn_state.value == PAWN_HACKERSIMPLE) {
-            auto laptop = INTERACT_Laptop_C::get_instance();
-            if (laptop != nullptr && laptop->is_interacting()) {
-                //API::get()->log_info("Laptop interacting");
-                API::UObjectHook::set_disabled(true);
-                //vr->set_aim_method(0);
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
-                // object hook will be reenabled by pawn status change
-                reset_height(vr, 0.0f);
-            }
+        if (m_is_using_laptop.has_changed() && m_is_using_laptop.value) {
+            API::get()->log_warn("Started using intro laptop");
+            reset_height(vr, 0.0f);
+            API::UObjectHook::set_disabled(true);
+            vr->set_mod_value("VR_RoomscaleMovement", "false");
         }
     }
 
@@ -890,6 +943,9 @@ public:
 
     // it sets the offset each tick - maybe can be improved but there's not much overhead
     void handle_weapon_changes() {
+        if (m_pawn_state.value != PAWN_HACKERIMPLANT)
+            return;
+
         if (m_current_weapon != nullptr && m_ui_option_apply_weapon_offset) {
             if (m_player_interacting.value) {
                 return;
@@ -911,7 +967,7 @@ public:
             }
 
             // hide grenade launcher ammo
-            if (m_weapon_state.value == WEAPON_GRENADE_LAUNCHER && m_pawn_state.value == PAWN_HACKERIMPLANT) {
+            if (m_weapon_state.value == WEAPON_GRENADE_LAUNCHER) {
                 if (SDK::UKismetSystemLibrary::IsValid(m_current_weapon) && m_current_weapon->IsA(SDK::UWEAPON_GrenadeLauncher_C::StaticClass())) {
                     auto grenade = static_cast<SDK::UWEAPON_GrenadeLauncher_C*>(m_current_weapon)->GrenadeMeshComponent;
                     if (grenade != nullptr) {
@@ -922,15 +978,39 @@ public:
         }
     }
 
+    void handle_arms_mesh_visibility() {
+        if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
+            // always hide arms on predefined interactables
+            if (m_player_interacting.value) {
+                for (InteractableMeta interactable : g_interactables) {
+                    if (std::get<1>(interactable) && m_channeling_interactable_name.value.find(std::get<0>(interactable)) != std::string::npos) {
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
+                    }
+                }
+            }
+            // also hide when holstered weapon and not interacting nor playing montage
+            else if (m_current_weapon == nullptr && !m_player_interacting.value && m_current_montage.value == nullptr) {
+                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
+            }
+            // otherwise show arms
+            else {
+                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(true, true);
+            }
+        }
+    }
+
     MontageType get_montage_type(SDK::UAnimMontage* in_montage) {
         if (in_montage == nullptr)
             return NONE;
 
+        //API::get()->log_warn("Montage: %s", in_montage->GetName().c_str());
+
         for (MontageMeta montage : g_montages) {
             auto montage_name = in_montage->GetName();
             if (montage_name == std::get<0>(montage)) {
-                //API::get()->log_info("Montage Found length: %f, name: %s", in_montage->GetPlayLength(), in_montage->GetName().c_str());
-                return std::get<1>(montage);
+                auto type = std::get<1>(montage);
+                //API::get()->log_warn("Montage Found, type: %d", type);
+                return type;
             }
         }
 
@@ -938,21 +1018,42 @@ public:
     }
 
     void handle_animations(const UEVR_VRData* vr) {
-        if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
+        if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT })) {
+            // start of bootup
+            if (m_is_booting_up.has_changed() && m_is_booting_up.value) {
+                //API::get()->log_warn("Bootup Start");
+                vr->set_aim_method(0);
+                vr->recenter_view();
+                API::UObjectHook::set_disabled(true);
+            }
+
+            // start of crash
+            if (m_is_crashing.has_changed() && m_is_crashing.value) {
+                //API::get()->log_warn("Crash Start");
+                vr->set_aim_method(0);
+                vr->recenter_view();
+                API::UObjectHook::set_disabled(true);
+            }
+
+            if (m_is_booting_up.value || m_is_crashing.value) {
+                vr->set_aim_method(0);
+                vr->set_mod_value("VR_RoomscaleMovement", "false");
+                vr->set_decoupled_pitch_enabled(true);
+                API::UObjectHook::set_disabled(true);
+            }
+
             if (m_current_montage.has_changed()) {
+                //API::get()->log_warn("Montage Changed %s", m_current_montage.value ? "STARTED" : "ENDED");
                 // get metadata about current montage from g_montages vector
                 m_montage_type.set_value(get_montage_type(m_current_montage.value));
 
                 // check the type of animation that had just ended
                 if (m_montage_type.prev_value == ENDING || m_montage_type.prev_value == SINGLE) {
                     // rotate pawn to match animation rotation
-                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
                     auto pawn_controller = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->GetController();
                     pawn_controller->SetControlRotation(m_camera_rotation);
                     //API::get()->log_info("Montage End : Setting rotation (%f, %f, %f)", m_camera_rotation.Pitch, m_camera_rotation.Roll, m_camera_rotation.Yaw);
-
-
-                    //API::get()->log_info("Montage Type: Ending / Single");
+                    //API::get()->log_warn("Montage Type: Ending / Single");
                     m_sdk_hud->SetForceHideCrosshairs(false);
                     m_sdk_hud->ShowTargetBrackets(true);
                     apply_selected_cursor_size();
@@ -963,8 +1064,7 @@ public:
 
                 // single animation or animation sequence is starting
                 if (m_montage_type.value == STARTING || m_montage_type.value == SINGLE) {
-                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = false;
-                    //API::get()->log_info("Montage Type: Starting / Single");
+                    //API::get()->log_warn("Montage Type: Starting / Single | %s", m_current_montage.value->GetName().c_str());
                     m_sdk_hud->SetForceHideCrosshairs(true);
                     m_sdk_hud->ShowTargetBrackets(false);
                     vr->set_aim_method(0);
@@ -972,15 +1072,6 @@ public:
                     vr->set_decoupled_pitch_enabled(true);
                     API::UObjectHook::set_disabled(true);
                 }
-
-                //if (m_montage_type.value == UNKNOWN && !m_mfd_visible.value) {
-                //    m_sdk_hud->SetForceHideCrosshairs(false);
-                //    m_sdk_hud->ShowTargetBrackets(true);
-                //    //API::get()->log_info("Montage Type: Unknown");
-                //    vr->set_aim_method(2);
-                //    vr->set_mod_value("VR_RoomscaleMovement", "true");
-                //    API::UObjectHook::set_disabled(false);
-                //}
             }
         }
     }
@@ -1067,27 +1158,6 @@ public:
         if (m_ui_option_force_hide_compass) {
             if (m_pawn_state.value == PAWN_HACKERIMPLANT && m_sdk_hud != nullptr && m_sdk_hud->WIDGET_Compass != nullptr) {
                 m_sdk_hud->WIDGET_Compass->SetCompassVisibility(false);
-            }
-        }
-    }
-
-    void handle_arms_mesh_visibility() {
-        if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
-
-            if (
-                m_channeling_interactable_name.value.find("INTERACT_SalvageStation") != std::string::npos ||
-                m_channeling_interactable_name.value.find("INTERACT_TransdermalDispenser") != std::string::npos ||
-                m_channeling_interactable_name.value.find("INTERACT_Snacktron") != std::string::npos ||
-                m_channeling_interactable_name.value.find("INTERACT_Keypad") != std::string::npos ||
-                m_channeling_interactable_name.value.find("PUZZLE_") != std::string::npos
-                ) {
-                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
-            }
-            else if (m_current_weapon == nullptr && !m_player_interacting.value) {
-                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
-            }
-            else {
-                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(true, true);
             }
         }
     }
@@ -1265,7 +1335,7 @@ public:
             return;
         }
 
-        if (m_mfd_visible.value || m_main_menu_in_game_visible.value || m_gamepad_right_shoulder.value || m_gamepad_right_thumb.value) {
+        if (m_mfd_visible.value || m_main_menu_in_game_visible.value || m_hotbar_selector_button.value || m_hardware_selector_button.value) {
             return;
         }
 
@@ -1294,6 +1364,10 @@ public:
     void handle_smooth_turning(XINPUT_STATE* state, const UEVR_VRData* vr) {
         if (m_pawn_state.matches_none({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT, PAWN_AVATAR })) {
             return;
+        }
+
+        if (m_pawn_state.matches_any({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT })) {
+            static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = !m_player_interacting.value;
         }
 
         char snap_angle[16] = { 0 };
@@ -1328,6 +1402,7 @@ public:
             switch (m_pawn_state.value) {
                 // title screen or cutscene
                 case PAWN_PLAYERGHOST:
+                    API::get()->log_warn("Changed Pawn to: PAWN_PLAYERGHOST");
                     vr->set_aim_method(0);
                     vr->set_snap_turn_enabled(true);
                     vr->set_decoupled_pitch_enabled(true);
@@ -1341,6 +1416,7 @@ public:
 
                 // animation
                 case PAWN_HACKERSIMPLE:
+                    API::get()->log_warn("Changed Pawn to: PAWN_HACKERSIMPLE");
                     vr->set_aim_method(2);
                     vr->set_snap_turn_enabled(true);
                     vr->set_decoupled_pitch_enabled(true);
@@ -1352,6 +1428,7 @@ public:
 
                 // main game
                 case PAWN_HACKERIMPLANT:
+                    API::get()->log_warn("Changed Pawn to: PAWN_HACKERIMPLANT");
                     if (m_pawn != nullptr) {
                         m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
                         m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
@@ -1372,6 +1449,7 @@ public:
 
                 // cyberspace
                 case PAWN_AVATAR:
+                    API::get()->log_warn("Changed Pawn to: PAWN_AVATAR");
                     if (m_pawn != nullptr) {
                         m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
                         m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
@@ -1410,15 +1488,6 @@ public:
         origin.y = (hmd_pos.y) + offset_y;
 
         vr->set_standing_origin(&origin);
-    }
-
-    // not used
-    void handle_montage_camera_pitch() {
-        if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE }) && m_current_montage.value != nullptr) {
-            auto rotation = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->K2_GetComponentRotation();
-            rotation.Pitch = 0.f;
-            static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->K2_SetRelativeRotation(rotation, false, &m_hit_result, false);
-        }
     }
 
     void apply_vr_game_options() {
@@ -1488,6 +1557,41 @@ public:
         }
     }
 
+    // unused
+    void apply_button_mappings() {
+        switch (m_ui_option_hotbar_selector_button) {
+            case 0:
+                m_hotbar_selector_button.set_source(XINPUT_GAMEPAD_RIGHT_SHOULDER);
+                break;
+            case 1:
+                m_hotbar_selector_button.set_source(XINPUT_GAMEPAD_RIGHT_THUMB);
+                break;
+            case 2:
+                m_hotbar_selector_button.set_source(XINPUT_GAMEPAD_LEFT_SHOULDER);
+                break;
+            case 3:
+                m_hotbar_selector_button.set_source(XINPUT_GAMEPAD_LEFT_THUMB);
+                break;
+        }
+
+        switch (m_ui_option_hardware_selector_button) {
+            case 0:
+                m_hardware_selector_button.set_source(XINPUT_GAMEPAD_RIGHT_SHOULDER);
+                break;
+            case 1:
+                m_hardware_selector_button.set_source(XINPUT_GAMEPAD_RIGHT_THUMB);
+                break;
+            case 2:
+                m_hardware_selector_button.set_source(XINPUT_GAMEPAD_LEFT_SHOULDER);
+                break;
+            case 3:
+                m_hardware_selector_button.set_source(XINPUT_GAMEPAD_LEFT_THUMB);
+                break;
+        }
+    }
+
+
+
     // -------------------------------------------------------------------------------------
     // ImGui logging
     // -------------------------------------------------------------------------------------
@@ -1527,14 +1631,28 @@ public:
             ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
             ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
 
+            //ImGui::SeparatorText("Button mappings");
+            //ImGui::Combo("Hotbar selector button", &m_ui_option_hotbar_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
+            //ImGui::Combo("Hardware selector button", &m_ui_option_hardware_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
+
+            //if (m_ui_option_hotbar_selector_button == m_ui_option_hardware_selector_button) {
+            //    ImGui::BeginDisabled();
+            //}
+            //if (ImGui::Button("Apply Mappings")) {
+            //    apply_button_mappings();
+            //};
+            //if (m_ui_option_hotbar_selector_button == m_ui_option_hardware_selector_button) {
+            //    ImGui::EndDisabled();
+            //}
+
             ImGui::SeparatorText("Crosshair options");
             ImGui::SliderFloat("Crosshair Cursor Scale", &m_ui_option_crosshair_cursor_scale, 0.f, 1.f );
             ImGui::SliderFloat("Cursor Brackets Scale", &m_ui_option_cursor_brackets_scale, 0.f, 1.f);
-            if (ImGui::Button("Apply")) {
+            if (ImGui::Button("Apply Cursor")) {
                 apply_selected_cursor_size();
             };
             ImGui::PopItemWidth();
-            
+
             ImGui::SeparatorText("Debugging");
             // game state section
             ImGui::Checkbox(SHOW_DEBUG, &m_ui_option_show_debug_view);
@@ -1595,6 +1713,7 @@ public:
                 //}
 
                 ImGui::Checkbox("Player alive", &m_player_alive.value);
+                ImGui::Checkbox("Is using laptop", &m_is_using_laptop.value);
                 ImGui::Checkbox("MFD visible", &m_mfd_visible.value);
                 ImGui::Checkbox("Player crouching", &m_player_crouching.value);
                 ImGui::Checkbox("Player interacting", &m_player_interacting.value);

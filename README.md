@@ -39,7 +39,7 @@ Author's note: This release is a little bit rushed for the Christmas, so you may
 * **Left Trigger** - aim (useful for handling automatic weapons)
 * **Left Grip** - toggle run / walk
 * **Left Stick Button** - hold to run (possibly will be remapped to something more useful)
-* **MENU** - toggle MFD
+* **MENU** (hold 1s) - toggle MFD
 
 ### MFD
 * **A** - Select
@@ -108,7 +108,6 @@ Mods that modify crosshair, hotbar slots, inventory and mfd can have negative im
 * Wake up from cryosleep animation not aligned
 * Game button prompts are not correct
 * The crosshair is not pointing exactly where I think it should when close to walls / objects - it's a side effect of emulating the crosshair instead of actually computing its correct position.
-
 
 ## Disclaimer
 This plugin was developed on HP Reverb G2 using OpenXR API. Some testing was performed by me on G2 and by Ashok on Q2 / Q3 (Thank you!). It's a limited set of HMDs, so you may bump into bugs, depending on your setup!

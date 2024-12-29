@@ -165,7 +165,6 @@
     <ClInclude Include="SDK\WIDGET_MainMenu_InGame_classes.hpp" />
     <ClInclude Include="VRHackerHUD.hpp" />
     <ClInclude Include="Math.hpp" />
-    <ClInclude Include="INTERACT_Laptop_C.hpp" />
     <ClInclude Include="rendering\d3d11.hpp" />
     <ClInclude Include="rendering\d3d12.hpp" />
     <ClInclude Include="rendering\shared.hpp" />

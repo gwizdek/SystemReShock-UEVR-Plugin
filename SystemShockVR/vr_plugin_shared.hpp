@@ -81,7 +81,13 @@ struct MemoInput : public MemoProperty<bool>
         m_logging = enabled;
     }
 
-    void set(XINPUT_STATE* state) {
+    void set_source(WORD _wButton) {
+        wButton = _wButton;
+        value = false;
+        prev_value = false;
+    }
+
+    void set_state(XINPUT_STATE* state) {
         MemoProperty::set_value(state->Gamepad.wButtons & wButton);
     }
 
@@ -189,7 +195,7 @@ struct MemoDualInput : public MemoInput
     }
 
     void set(XINPUT_STATE* state) {
-        MemoInput::set(state);
+        MemoInput::set_state(state);
 
         // button pressed down so check if it's a long press
         if (MemoInput::is_held() && is_counting) {

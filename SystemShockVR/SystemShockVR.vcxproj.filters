@@ -27,9 +27,6 @@
     <ClInclude Include="MOVECONTROL_FocusableInteract_C.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="INTERACT_Laptop_C.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cxxtimer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
