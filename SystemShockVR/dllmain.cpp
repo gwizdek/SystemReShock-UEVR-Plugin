@@ -150,7 +150,6 @@ const std::array<MontageMeta, 13> g_montages{ {
     { "CH_Hacker_Terminal_Dismount_Montage",            SINGLE,     },
     { "CH_Hacker_Cryobed_Wake_Montage",                 SINGLE,     },
     { "CH_Hacker_use_radiation_treatment_Montage",      SINGLE,     },
-    { "CH_Hacker_use_powerstation_Montage",             SINGLE,     },
     { "MONT_HackerRespawn",                             SINGLE,     },
 } };
 
@@ -913,6 +912,8 @@ public:
                 vr->set_decoupled_pitch_enabled(true);
                 vr->set_mod_value("VR_RoomscaleMovement", "true");
                 API::UObjectHook::set_disabled(false);
+
+                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
             }
 
             apply_vr_game_options();
@@ -1055,6 +1056,7 @@ public:
                 // check the type of animation that had just ended
                 if (m_montage_type.prev_value == ENDING || m_montage_type.prev_value == SINGLE) {
                     // rotate pawn to match animation rotation
+                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
                     auto pawn_controller = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->GetController();
                     pawn_controller->SetControlRotation(m_camera_rotation);
                     //API::get()->log_info("Montage End : Setting rotation (%f, %f, %f)", m_camera_rotation.Pitch, m_camera_rotation.Roll, m_camera_rotation.Yaw);
@@ -1069,6 +1071,9 @@ public:
 
                 // single animation or animation sequence is starting
                 if (m_montage_type.value == STARTING || m_montage_type.value == SINGLE) {
+
+                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = false;                        
+
                     API::get()->log_warn("Montage Type: Starting / Single | %s", m_current_montage.value->GetName().c_str());
                     m_sdk_hud->SetForceHideCrosshairs(true);
                     m_sdk_hud->ShowTargetBrackets(false);
@@ -1371,10 +1376,6 @@ public:
             return;
         }
 
-        if (m_pawn_state.matches_any({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT })) {
-            static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = !m_player_interacting.value;
-        }
-
         char snap_angle[16] = { 0 };
         vr->get_mod_value("VR_SnapturnTurnAngle", snap_angle, sizeof(snap_angle));
         int snap_angle_int = atoi(snap_angle);
@@ -1429,6 +1430,7 @@ public:
                     
                     API::UObjectHook::set_disabled(false);
                     reset_height(vr);
+                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
                     break;
 
                 // main game
@@ -1450,6 +1452,7 @@ public:
 
                     API::UObjectHook::set_disabled(false);
                     reset_height(vr);
+                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
                     break;
 
                 // cyberspace
