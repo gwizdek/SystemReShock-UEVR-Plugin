@@ -658,7 +658,6 @@ public:
             return false;
         }
 
-        m_hud->WIDGET_VitalBars->RemoveFromViewport();
         m_vital_bars_widget_component->SetWidget(m_hud->WIDGET_VitalBars);
         m_vital_bars_widget_component->SetVisibility(true, true);
         m_vital_bars_widget_component->SetHiddenInGame(false, false);
@@ -672,6 +671,9 @@ public:
         m_vital_bars_widget_component->SetTintColorAndOpacity(color);
 
         m_right_hand_attachments_actor->FinishAddComponent(m_vital_bars_widget_component, false, vital_bars_transform);
+
+        // moved here to fix bars visual state not maching real energy/health state
+        m_hud->WIDGET_VitalBars->RemoveFromViewport();
 
         API::get()->log_info("VRHackerHUD :: Attach Vital Bars :: Successfully Attached");
         return true;
