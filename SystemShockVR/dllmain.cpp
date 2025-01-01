@@ -52,10 +52,10 @@
 #include "uevr/Plugin.hpp"
 #include "pch.h"
 
-#include "vr_plugin_shared.hpp"
 #include "SceneComponent.hpp"
 #include "MOVECONTROL_FocusableInteract_C.hpp"
-#include "VRHackerHUD.hpp"
+#include "vr_plugin_shared.hpp"
+#include "vr_hacker_hud.hpp"
 
 
 #define PLUGIN_LOG_ONCE(...) {\
