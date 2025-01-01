@@ -53,7 +53,6 @@
 #include "pch.h"
 
 #include "vr_plugin_shared.hpp"
-#include "vr_data_sampling.hpp"
 #include "SceneComponent.hpp"
 #include "MOVECONTROL_FocusableInteract_C.hpp"
 #include "VRHackerHUD.hpp"
@@ -73,7 +72,6 @@
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 using namespace uevr;
-using namespace ImGuiLogs;
 
 const char* MOD_VERSION = "1.0.1";
 const int CB_DURATION_SAMPLE_RATE = 100;
@@ -1357,7 +1355,7 @@ public:
             float distance = cursor_distance / (
                 (std::powf((1.0f / 10.0f), ((cursor_distance / 150.0f) - 1.3f)) * 0.7f) + 80.0f + (m_ui_option_cursor_depth * 3.0f)
             );
-            distance = (distance == 0) ? 10.0f : glm::max<float>(distance, 0.5f);
+            distance = (distance == 0) ? 10.0f : std::fmax(distance, 0.5f);
 
             char ui_distance[32];
             char ui_size[32];

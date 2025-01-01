@@ -170,7 +170,6 @@
     <ClInclude Include="rendering\shared.hpp" />
     <ClInclude Include="SceneComponent.hpp" />
     <ClInclude Include="UMGWidget.hpp" />
-    <ClInclude Include="vr_data_sampling.hpp" />
     <ClInclude Include="UMGUserWidget.hpp" />
     <ClInclude Include="vr_plugin_shared.hpp" />
     <ClInclude Include="framework.h" />
@@ -213,7 +212,6 @@
     <ClCompile Include="SDK\WIDGET_Minimap_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_PlayerHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
-    <ClCompile Include="vr_data_sampling.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
