@@ -160,34 +160,38 @@ const std::vector<InteractableMeta> g_interactables{ {
     { "INTERACT_Snacktron",                 true,   },
     { "INTERACT_Keypad",                    true,   },
     { "PUZZLE_",                            true,   },
+    { "INTERACT_Ladder",                    false,  },
+    { "INTERACT_SurgeryMachine",            false,  },
 } };
 
-//  HackerWeapon enum           Search string               Weapon offset
-const std::map<HackerWeapon, std::tuple<std::string, SDK::FVector>> weapons_map {
-    { WEAPON_NONE,              { "None",                   { 0.0f, 0.0f, 0.0f }        } },
-    { WEAPON_LEAD_PIPE,         { "LeadPipe",               { 0.0f, 4.0f, -8.0f }       } },    // ok
-    { WEAPON_WRENCH,            { "Wrench",                 { 0.0f, 4.0f, -8.0f }       } },    // ok
-    { WEAPON_SHOTGUN,           { "Shotgun",                { -2.6f, -2.0f, -1.1f }     } },    // ok
-    { WEAPON_SKORPION,          { "Skorpion",               { 0.0f, -5.0f, -0.5f }      } },    // ok
-    { WEAPON_MAGNUM,            { "Magnum",                 { -2.0f, -0.4f, -1.43f }    } },    // ok
-    { WEAPON_ION,               { "Ion",                    { 2.5f, -4.0f, -1.5f }      } },    // ok
-    { WEAPON_RAIL,              { "Rail",                   { 3.5f, -6.4f, -4.4f }      } },    // ok
-    { WEAPON_PLASMA_RIFLE,      { "PlasmaRifle",            { 10.0f, -2.3f, -7.6f }     } },    // ok
-    { WEAPON_MAG_PULSE,         { "MagPulse",               { -2.5f, -3.5f, -2.0f }     } },    // ok
-    { WEAPON_SPARQ_BEAM,        { "SparqBeam",              { 2.75f, -3.0f, -7.25f }    } },    // ok
-    { WEAPON_MINI_PISTOL,       { "MiniPistol",             { 0.0f, -0.8f, -0.5f }      } },    // ok
-    { WEAPON_GRENADE_LAUNCHER,  { "GrenadeLauncher",        { 6.0f, -6.0f, -1.15f }     } },    // ok
-    { WEAPON_ASSAULT_RIFLE,     { "AssaultRifle",           { 6.5f, -5.0f, -1.1f }      } },    // ok
-    { WEAPON_LASER_RAPIER,      { "LaserRapier",            { -2.0f, -15.0f, 0.0f }     } },    // ok
-    { GRENADE_MANAGER,          { "GrenadeManager",         { 0.0f, -3.5f, -2.0f }      } },    // ok
-    { MEDIPATCH_MANAGER,        { "MedipatchManager",       { 0.0f, -1.5f, -3.5f }      } },    // ok
-    { STAMINUP_MANAGER,         { "StaminupManager",        { 0.0f, -1.5f, -3.5f }      } },    // ok
-    { BERSERK_PATCH_MANAGER,    { "BerserkPatchManager",    { 0.0f, -1.5f, -3.5f }      } },    // ok
-    { VISION_PATCH_MANAGER,     { "VisionPatchManager",     { 0.0f, -1.5f, -3.5f }      } },    // ok
-    { DETOX_PATCH_MANAGER,      { "DetoxPatchManager",      { 0.0f, -1.5f, -3.5f }      } },    // ok
-    { FIRST_AID_KIT_MANAGER,    { "FirstAidKitManager",     { 4.0f, -18.0f, -8.0f }     } },    // ok
-    { BATTERY_PACK_MANAGER,     { "BatteryPackManager",     { 9.0f, -17.0f, -13.0f }    } },    // ok
-    { PROXIMITY_MINE_MANAGER,   { "ProximityMineManager",   { 0.0f, -6.0f, -7.0f }      } },    // ok
+typedef std::tuple<std::string, SDK::FVector, float> WeaponMeta;
+
+//  HackerWeapon enum           Search string               Weapon offset               Selector distance offset
+const std::map<HackerWeapon, WeaponMeta> weapons_map {
+    { WEAPON_NONE,              { "None",                   { 0.0f, 0.0f, 0.0f },       0.0f    } },
+    { WEAPON_LEAD_PIPE,         { "LeadPipe",               { 0.0f, 4.0f, -8.0f },      0.0f    } },    // ok
+    { WEAPON_WRENCH,            { "Wrench",                 { 0.0f, 4.0f, -8.0f },      0.0f    } },    // ok
+    { WEAPON_SHOTGUN,           { "Shotgun",                { -2.6f, -2.0f, -1.1f },    10.0f   } },    // ok
+    { WEAPON_SKORPION,          { "Skorpion",               { 0.0f, -5.0f, -0.5f },     10.0f   } },    // ok
+    { WEAPON_MAGNUM,            { "Magnum",                 { -2.0f, -0.4f, -1.43f },   0.0f    } },    // ok
+    { WEAPON_ION,               { "Ion",                    { 2.5f, -4.0f, -1.5f },     10.0f   } },    // ok
+    { WEAPON_RAIL,              { "Rail",                   { 3.5f, -6.4f, -4.4f },     10.0f   } },    // ok
+    { WEAPON_PLASMA_RIFLE,      { "PlasmaRifle",            { 10.0f, -2.3f, -7.6f },    10.0f   } },    // ok
+    { WEAPON_MAG_PULSE,         { "MagPulse",               { -2.5f, -3.5f, -2.0f },    0.0f    } },    // ok
+    { WEAPON_SPARQ_BEAM,        { "SparqBeam",              { 2.75f, -3.0f, -7.25f },   0.0f    } },    // ok
+    { WEAPON_MINI_PISTOL,       { "MiniPistol",             { 0.0f, -0.8f, -0.5f },     0.0f    } },    // ok
+    { WEAPON_GRENADE_LAUNCHER,  { "GrenadeLauncher",        { 6.0f, -6.0f, -1.15f },    10.0f   } },    // ok
+    { WEAPON_ASSAULT_RIFLE,     { "AssaultRifle",           { 6.5f, -5.0f, -1.1f },     10.0f   } },    // ok
+    { WEAPON_LASER_RAPIER,      { "LaserRapier",            { -2.0f, -15.0f, 0.0f },    0.0f    } },    // ok
+    { GRENADE_MANAGER,          { "GrenadeManager",         { 0.0f, -3.5f, -2.0f },     0.0f    } },    // ok
+    { MEDIPATCH_MANAGER,        { "MedipatchManager",       { 0.0f, -1.5f, -3.5f },     0.0f    } },    // ok
+    { STAMINUP_MANAGER,         { "StaminupManager",        { 0.0f, -1.5f, -3.5f },     0.0f    } },    // ok
+    { BERSERK_PATCH_MANAGER,    { "BerserkPatchManager",    { 0.0f, -1.5f, -3.5f },     0.0f    } },    // ok
+    { VISION_PATCH_MANAGER,     { "VisionPatchManager",     { 0.0f, -1.5f, -3.5f },     0.0f    } },    // ok
+    { DETOX_PATCH_MANAGER,      { "DetoxPatchManager",      { 0.0f, -1.5f, -3.5f },     0.0f    } },    // ok
+    { FIRST_AID_KIT_MANAGER,    { "FirstAidKitManager",     { 4.0f, -18.0f, -8.0f },    10.0f   } },    // ok
+    { BATTERY_PACK_MANAGER,     { "BatteryPackManager",     { 9.0f, -17.0f, -13.0f },   0.0f    } },    // ok
+    { PROXIMITY_MINE_MANAGER,   { "ProximityMineManager",   { 0.0f, -6.0f, -7.0f },     0.0f    } },    // ok
 };
 
 class SystemShockPlugin : public uevr::Plugin {
@@ -626,13 +630,15 @@ public:
 
         // normal level
         if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
-            // clear sprinting flag when using ladders (caused sporadic arms mesh misalignment)
+            // clear sprinting flag when using selected interactables (caused sporadic arms mesh misalignment)
             if (
                 m_player_interacting.has_changed() &&
-                m_player_interacting.value && 
-                m_channeling_interactable_name.value.starts_with("INTERACT_Ladder")
-                ) {
-                m_player_sprinting = false;
+                m_player_interacting.value) {
+                for (InteractableMeta interactable : g_interactables) {
+                    if (m_channeling_interactable_name.value.find(std::get<0>(interactable)) != std::string::npos) {
+                        m_player_sprinting = false;
+                    }
+                }
             }
 
             // MFD on
@@ -771,6 +777,20 @@ public:
         }
     }
 
+    float get_current_weapon_distance_offset() {
+        if (m_current_weapon != nullptr && m_weapon_state.value) {
+            try {
+                const WeaponMeta weapon_meta = weapons_map.at(m_weapon_state.value);
+                const float distance_offset = get<2>(weapon_meta);
+                return distance_offset;
+            }
+            catch(const std::out_of_range&) {
+                return 0.f;
+            }
+        }
+        return 0.f;
+    }
+
     // primary item selector
     void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr) {
         if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS && !m_hardware_selector_button.is_held()) {
@@ -783,7 +803,7 @@ public:
 
                 // show VR item selector
                 m_vr_hud->set_laser_pointer_visibility(true);
-                m_vr_hud->save_primary_item_selector_delta();
+                m_vr_hud->save_primary_item_selector_delta(get_current_weapon_distance_offset());
 
                 // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
                 // for the time the selector is active
@@ -831,7 +851,7 @@ public:
                 // show VR item selector
                 m_vr_hud->set_secondary_item_selector_visibility(true);
                 m_vr_hud->set_laser_pointer_visibility(true);
-                m_vr_hud->save_secondary_item_selector_delta();
+                m_vr_hud->save_secondary_item_selector_delta(get_current_weapon_distance_offset());
 
                 // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
                 // for the time the selector is active
@@ -966,7 +986,7 @@ public:
             auto weapon_offset = m_pawn->get_property_data<SDK::FVector>(L"CurrentWeaponOffset");
             if (weapon_offset != nullptr) {
                 try {
-                    const std::tuple<std::string, SDK::FVector> weapon_meta = weapons_map.at(m_weapon_state.value);
+                    const WeaponMeta weapon_meta = weapons_map.at(m_weapon_state.value);
                     SDK::FVector weapon_offset_meta = get<1>(weapon_meta);
 
                     weapon_offset->X = weapon_offset_meta.X;
