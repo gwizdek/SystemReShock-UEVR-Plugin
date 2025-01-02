@@ -737,7 +737,28 @@ public:
             if (m_gamepad_right_thumb.is_pressed()) {
                 m_cyberspace_aim_method = m_cyberspace_aim_method == 0 ? 2 : 0;
                 vr->set_aim_method(m_cyberspace_aim_method);
-                vr->set_decoupled_pitch_enabled(m_cyberspace_aim_method != 0);
+               
+
+                if (m_cyberspace_aim_method == 2)
+                {
+                    vr->set_decoupled_pitch_enabled(true);
+
+                    if (m_pawn != nullptr) {
+                        m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
+                        m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
+                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
+                    }
+                }
+                else
+                {
+                    vr->set_decoupled_pitch_enabled(false);
+
+                    if (m_pawn != nullptr) {
+                        m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
+                        m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
+                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
+                    }
+                }
             }
 
             m_gamepad_right_shoulder.when_held_send(state, XINPUT_GAMEPAD_A);
@@ -747,9 +768,11 @@ public:
 
             if (m_cyberspace_aim_method == 2) {
                 if (state->Gamepad.sThumbRY > INPUT_DEADZONE_MED) {
+                    state->Gamepad.sThumbRX = 0;
                     m_gamepad_btn_a.force_state(state);
                 }
                 else if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_MED) {
+                    state->Gamepad.sThumbRX = 0;
                     m_gamepad_btn_b.force_state(state);
                 }
             }
@@ -1418,7 +1441,7 @@ public:
             control_rotation.Yaw += (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
 
             if (m_pawn_state.value == PAWN_AVATAR && m_cyberspace_aim_method == 0) {
-                control_rotation.Pitch += (state->Gamepad.sThumbRY / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
+                
             }
             else {
                 state->Gamepad.sThumbRY = 0;
@@ -1484,14 +1507,17 @@ public:
                 // cyberspace
                 case PAWN_AVATAR:
                     API::get()->log_warn("Changed Pawn to: PAWN_AVATAR");
+
                     if (m_pawn != nullptr) {
                         m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
                         m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
+                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
                     }
-                    m_cyberspace_aim_method = 0;
-                    vr->set_aim_method(0);
-                    vr->set_snap_turn_enabled(true);
-                    vr->set_decoupled_pitch_enabled(false);
+                    
+                    m_cyberspace_aim_method = 2;
+                    vr->set_aim_method(2);
+                    vr->set_snap_turn_enabled(false);
+                    vr->set_decoupled_pitch_enabled(true);
                     vr->set_mod_value("VR_RoomscaleMovement", "false");
                     
                     API::UObjectHook::set_disabled(true);
