@@ -132,7 +132,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\_Dev\mods\SystemReShock-UEVR-Plugin\SystemShockVR\dependencies;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -145,7 +145,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="cxxtimer.hpp" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx11.h" />
     <ClInclude Include="imgui\imgui_impl_dx12.h" />
@@ -163,15 +162,11 @@
     <ClInclude Include="SDK\SystemReShock_classes.hpp" />
     <ClInclude Include="SDK\WIDGET_InventoryContextMenu_classes.hpp" />
     <ClInclude Include="SDK\WIDGET_MainMenu_InGame_classes.hpp" />
-    <ClInclude Include="VRHackerHUD.hpp" />
-    <ClInclude Include="Math.hpp" />
+    <ClInclude Include="vr_hacker_hud.hpp" />
     <ClInclude Include="rendering\d3d11.hpp" />
     <ClInclude Include="rendering\d3d12.hpp" />
     <ClInclude Include="rendering\shared.hpp" />
     <ClInclude Include="SceneComponent.hpp" />
-    <ClInclude Include="UMGWidget.hpp" />
-    <ClInclude Include="vr_data_sampling.hpp" />
-    <ClInclude Include="UMGUserWidget.hpp" />
     <ClInclude Include="vr_plugin_shared.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MOVECONTROL_FocusableInteract_C.hpp" />
@@ -213,7 +208,6 @@
     <ClCompile Include="SDK\WIDGET_Minimap_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_PlayerHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
-    <ClCompile Include="vr_data_sampling.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

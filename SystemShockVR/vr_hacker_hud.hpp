@@ -44,11 +44,11 @@ private:
     SDK::FHitResult m_reusable_result{};
 
     // options
-    float m_primary_item_selector_depth{ 60.f };
+    float m_primary_item_selector_distance{ 60.f };
     float m_primary_item_selector_spread{ 1.f };
     float m_primary_item_selector_scale{ 0.12f };
 
-    float m_secondary_item_selector_depth{ 60.f };
+    float m_secondary_item_selector_distance{ 60.f };
     float m_secondary_item_selector_spread{ 1.f };
     float m_secondary_item_selector_scale{ 0.12f };
 
@@ -658,7 +658,6 @@ public:
             return false;
         }
 
-        m_hud->WIDGET_VitalBars->RemoveFromViewport();
         m_vital_bars_widget_component->SetWidget(m_hud->WIDGET_VitalBars);
         m_vital_bars_widget_component->SetVisibility(true, true);
         m_vital_bars_widget_component->SetHiddenInGame(false, false);
@@ -672,6 +671,9 @@ public:
         m_vital_bars_widget_component->SetTintColorAndOpacity(color);
 
         m_right_hand_attachments_actor->FinishAddComponent(m_vital_bars_widget_component, false, vital_bars_transform);
+
+        // moved here to fix bars visual state not maching real energy/health state
+        m_hud->WIDGET_VitalBars->RemoveFromViewport();
 
         API::get()->log_info("VRHackerHUD :: Attach Vital Bars :: Successfully Attached");
         return true;
@@ -1039,14 +1041,14 @@ public:
     }
 
     // calculates and saves translation vector between pawn position and primary item selector position
-    void save_primary_item_selector_delta() {
+    void save_primary_item_selector_delta(float distance_offset = 0.0f) {
         if (m_pawn == nullptr || m_primary_item_selector_component == nullptr || m_rh_controller_component == nullptr)
             return;
 
         auto rh_rot = m_rh_controller_component->K2_GetComponentRotation();
         const auto fvec = SDK::UKismetMathLibrary::Multiply_VectorFloat(
             SDK::UKismetMathLibrary::GetForwardVector(rh_rot),
-            m_primary_item_selector_depth
+            m_primary_item_selector_distance + distance_offset
         );
 
         const auto item_selector_pos = m_rh_controller_component->K2_GetComponentLocation() + fvec;
@@ -1059,14 +1061,14 @@ public:
     }
 
     // calculates and saves translation vector between pawn position and secondary item selector position
-    void save_secondary_item_selector_delta() {
+    void save_secondary_item_selector_delta(float distance_offset = 0.0f) {
         if (m_pawn == nullptr || m_secondary_item_selector_component == nullptr || m_rh_controller_component == nullptr)
             return;
 
         auto rh_rot = m_rh_controller_component->K2_GetComponentRotation();
         const auto fvec = SDK::UKismetMathLibrary::Multiply_VectorFloat(
             SDK::UKismetMathLibrary::GetForwardVector(rh_rot),
-            m_secondary_item_selector_depth
+            m_secondary_item_selector_distance + distance_offset
         );
 
         const auto item_selector_pos = m_rh_controller_component->K2_GetComponentLocation() + fvec;
