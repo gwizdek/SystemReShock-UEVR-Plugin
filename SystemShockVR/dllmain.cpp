@@ -70,6 +70,9 @@
 #define INPUT_DEADZONE_MED ( 0.45f * FLOAT(0x7FFF) )  // Default to 45% of the +/- 32767 range.
 #define INPUT_DEADZONE_HI  ( 0.80f * FLOAT(0x7FFF) )  // Default to 80% of the +/- 32767 range.
 
+#define META_QUEST      0
+#define HP_REVERB_G2    1
+
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 using namespace uevr;
@@ -284,6 +287,7 @@ public:
     int m_ui_option_hotbar_selector_button{ 0 };
     int m_ui_option_hardware_selector_button{ 1 };
     int m_ui_option_walk_run_toggle_button{ 1 };
+    int m_ui_option_openxr_system_name{ META_QUEST };
 
     // debug
     int m_cb_calls_count{ 0 };
@@ -410,7 +414,7 @@ public:
         }
 
         handle_look_pivot();
-        //handle_cyberspace_look_pivot(vr);
+        handle_cyberspace_look_pivot(vr);
         handle_hud_depth(vr);
         handle_interactives_cursor_size();
         handle_animations(vr);
@@ -738,7 +742,7 @@ public:
             if (m_gamepad_right_thumb.is_pressed()) {
                 m_cyberspace_aim_method = m_cyberspace_aim_method == 0 ? 2 : 0;
                 vr->set_aim_method(m_cyberspace_aim_method);
-                vr->set_decoupled_pitch_enabled(m_cyberspace_aim_method != 0);
+                vr->set_decoupled_pitch_enabled(m_cyberspace_aim_method == 2);
             }
 
             m_gamepad_right_shoulder.when_held_send(state, XINPUT_GAMEPAD_A);
@@ -747,11 +751,31 @@ public:
             m_gamepad_left_shoulder.mute_state(state);
 
             if (m_cyberspace_aim_method == 2) {
+
+                m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
+                m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
+                m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
+
                 if (state->Gamepad.sThumbRY > INPUT_DEADZONE_MED) {
+                    if (m_ui_option_openxr_system_name == META_QUEST) state->Gamepad.sThumbRX = 0;
                     m_gamepad_btn_a.force_state(state);
                 }
                 else if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_MED) {
+                    if (m_ui_option_openxr_system_name == META_QUEST) state->Gamepad.sThumbRX = 0;
                     m_gamepad_btn_b.force_state(state);
+                }
+            }
+            else
+            {
+                if (m_ui_option_openxr_system_name == META_QUEST) {
+                    m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
+                    m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
+                    m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
+                }
+                else {
+                    m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
+                    m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
+                    m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
                 }
             }
         }
@@ -1338,7 +1362,6 @@ public:
         }
     }
 
-    // not used right now
     void handle_cyberspace_look_pivot(const UEVR_VRData* vr) {
         return;
 
@@ -1353,13 +1376,8 @@ public:
         	UEVR_Quaternionf rh_rot{};
         	vr->get_aim_pose(vr->get_right_controller_index(), (UEVR_Vector3f*)&right_hand_position, (UEVR_Quaternionf*)&rh_rot);
 
-            /*UEVR_Vector3f hmd_pos{};
-            UEVR_Quaternionf hmd_rot{};
-            vr->get_pose(vr->get_hmd_index(), &hmd_pos, &hmd_rot);*/
-
             SDK::FQuat quat{ rh_rot.x, rh_rot.y, rh_rot.z, rh_rot.w };
             auto vect = SDK::UKismetMathLibrary::Quat_Euler(quat);
-
             auto rot = SDK::UKismetMathLibrary::Quat_Rotator(quat);
 
             pawn_controller->SetControlRotation(SDK::FRotator(rot));
@@ -1418,11 +1436,8 @@ public:
             auto control_rotation = pawn_controller->GetControlRotation();
             control_rotation.Yaw += (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
 
-            if (m_pawn_state.value == PAWN_AVATAR && m_cyberspace_aim_method == 0) {
+            if (m_pawn_state.value == PAWN_AVATAR && m_cyberspace_aim_method == 0 && m_ui_option_openxr_system_name == HP_REVERB_G2) {
                 control_rotation.Pitch += (state->Gamepad.sThumbRY / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
-            }
-            else {
-                state->Gamepad.sThumbRY = 0;
             }
 
             pawn_controller->SetControlRotation(control_rotation);
@@ -1466,6 +1481,7 @@ public:
                     if (m_pawn != nullptr) {
                         m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
                         m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
+                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
                     }
                     apply_selected_cursor_size();
 
@@ -1485,14 +1501,17 @@ public:
                 // cyberspace
                 case PAWN_AVATAR:
                     API::get()->log_warn("Changed Pawn to: PAWN_AVATAR");
+
                     if (m_pawn != nullptr) {
                         m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
                         m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
+                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
                     }
-                    m_cyberspace_aim_method = 0;
-                    vr->set_aim_method(0);
-                    vr->set_snap_turn_enabled(true);
-                    vr->set_decoupled_pitch_enabled(false);
+                    
+                    m_cyberspace_aim_method = 2;
+                    vr->set_aim_method(2);
+                    vr->set_snap_turn_enabled(false);
+                    vr->set_decoupled_pitch_enabled(true);
                     vr->set_mod_value("VR_RoomscaleMovement", "false");
                     
                     API::UObjectHook::set_disabled(true);
@@ -1675,7 +1694,8 @@ public:
             ImGui::SliderFloat("Player height modifier", &m_ui_option_player_height_modifier, -15.f, 15.f);
             ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
             ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
-
+            ImGui::Combo("HMD Model", &m_ui_option_openxr_system_name, "Meta Quest\0HP Reverb G2\0");
+            
             //ImGui::SeparatorText("Button mappings");
             //ImGui::Combo("Hotbar selector button", &m_ui_option_hotbar_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
             //ImGui::Combo("Hardware selector button", &m_ui_option_hardware_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
