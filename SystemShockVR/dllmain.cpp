@@ -756,9 +756,11 @@ public:
                 m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
 
                 if (state->Gamepad.sThumbRY > INPUT_DEADZONE_MED) {
+                    if (m_ui_option_openxr_system_name == META_QUEST) state->Gamepad.sThumbRX = 0;
                     m_gamepad_btn_a.force_state(state);
                 }
                 else if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_MED) {
+                    if (m_ui_option_openxr_system_name == META_QUEST) state->Gamepad.sThumbRX = 0;
                     m_gamepad_btn_b.force_state(state);
                 }
             }
@@ -1435,9 +1437,6 @@ public:
 
             if (m_pawn_state.value == PAWN_AVATAR && m_cyberspace_aim_method == 0 && m_ui_option_openxr_system_name == HP_REVERB_G2) {
                 control_rotation.Pitch += (state->Gamepad.sThumbRY / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
-            }
-            else {
-                state->Gamepad.sThumbRY = 0;
             }
 
             pawn_controller->SetControlRotation(control_rotation);
