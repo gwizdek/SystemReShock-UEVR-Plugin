@@ -22,6 +22,9 @@
     <Filter Include="Rendering">
       <UniqueIdentifier>{6040334f-dc7e-4c4c-92f3-6820e775954d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mINI">
+      <UniqueIdentifier>{b496796b-60f5-40fa-8a27-9803a75c4f32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="rendering\shared.hpp">
       <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="mINI\ini.h">
+      <Filter>mINI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -49,6 +49,7 @@
 #include "SDK/WEAPON_GrenadeLauncher_classes.hpp"
 #include "SDK/INTERACT_Laptop_classes.hpp"
 
+#include "mINI/ini.h"
 #include "uevr/Plugin.hpp"
 #include "pch.h"
 
@@ -75,7 +76,6 @@ using namespace uevr;
 
 const char* MOD_VERSION = "1.0.1";
 const int CB_DURATION_SAMPLE_RATE = 100;
-bool RoomscaleMontageOverride = false;
 
 typedef struct _TIMER_STRUCT
 {
@@ -94,7 +94,6 @@ typedef enum PawnState
 } PawnState;
 
 const char* PawnStateNames[5] = { "PAWN_UNKNOWN", "PAWN_PLAYERGHOST", "PAWN_HACKERSIMPLE", "PAWN_HACKERIMPLANT", "PAWN_AVATAR" };
-const std::vector<std::wstring> interactabless{ {L"Keypad"}, {L"CIRCUITPUZZLE"}, {L"Snacktron"}, {L"INTERACT"} };
 
 typedef enum HackerWeapon
 {
@@ -274,13 +273,14 @@ public:
     // mod options
     float m_fov{ 120.f };
     float m_ui_option_crosshair_cursor_scale{ 0.3f };
-    float m_ui_option_cursor_brackets_scale{ 0.0f };
+    float m_ui_option_crosshair_brackets_scale{ 0.0f };
+    int m_ui_option_crosshair_depth{ 5 };
     float m_ui_option_player_height_modifier{ 0.0f };
-    int m_ui_option_cursor_depth{ 5 };
     int m_ui_option_look_sensitivity{ 5 };
-    bool m_ui_option_apply_weapon_offset{ true };
     bool m_ui_option_force_hide_compass{ true };
     bool m_ui_option_toggle_run_with_left_grip{ true };
+
+    // unused
     int m_ui_option_hotbar_selector_button{ 0 };
     int m_ui_option_hardware_selector_button{ 1 };
     int m_ui_option_walk_run_toggle_button{ 1 };
@@ -288,6 +288,7 @@ public:
     // debug
     int m_cb_calls_count{ 0 };
     bool m_ui_option_show_debug_view{ false };
+    bool m_ui_option_apply_weapon_offset{ true };
     int m_ui_xinput_duration{ 0 }; // [microseconds]
     int m_ui_pre_engine_tick_duration{ 0 }; // [microseconds]
 
@@ -296,9 +297,11 @@ public:
     void on_initialize() override {
         // Logs to the appdata UnrealVRMod log.txt file
         API::get()->log_info("UEVR Initializing...");
-        ImGui::CreateContext();
 
-        //m_gamepad_btn_b.set_logging(true);
+        // load stored configuration from config file
+        load_plugin_config();
+
+        ImGui::CreateContext();
 
         // remove stale VR HUD actors (when re-enabling the plugin)
         VRHackerHUD::cleanup();
@@ -310,7 +313,6 @@ public:
         MOVECONTROL_FocusableInteract_C::disable_character_focusable_interactions();
     }
 
-    
     void on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) {
         PLUGIN_LOG_ONCE("XInput Get State");
 
@@ -379,7 +381,6 @@ public:
             }
 
             handle_pawn_changes(vr);
-            
         }
         else {
             // reset for next cb iteration
@@ -931,7 +932,7 @@ public:
                 }
 
                 m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
-                m_vr_hud->set_cursor_brackets_scale(&m_ui_option_cursor_brackets_scale);
+                m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale);
 
                 vr->set_aim_method(2);
                 vr->set_snap_turn_enabled(true);
@@ -1381,7 +1382,7 @@ public:
             float cursor_distance = scanner->get_property<float>(L"LastCursorHitDistance");
             // just some exponential function I created to get better value for UEVR ui_distance property
             float distance = cursor_distance / (
-                (std::powf((1.0f / 10.0f), ((cursor_distance / 150.0f) - 1.3f)) * 0.7f) + 80.0f + (m_ui_option_cursor_depth * 3.0f)
+                (std::powf((1.0f / 10.0f), ((cursor_distance / 150.0f) - 1.3f)) * 0.7f) + 80.0f + (m_ui_option_crosshair_depth * 3.0f)
             );
             distance = (distance == 0) ? 10.0f : std::fmax(distance, 0.5f);
 
@@ -1587,7 +1588,7 @@ public:
     void apply_selected_cursor_size() {
         if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VRHackerHUDState::VR_HUD_SUCCESS) {
             m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
-            m_vr_hud->set_cursor_brackets_scale(&m_ui_option_cursor_brackets_scale);
+            m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale);
         }
     }
 
@@ -1636,7 +1637,6 @@ public:
 
         static const auto UEVR_NAME = std::format("SystemReShock UEVR mod [rev. {}]", MOD_VERSION);
         static const auto NO_PAWN = std::format("No Pawn detected! Is your HMD running?");
-        static const char* CURSOR_DEPTH = "Fine-tune Crosshairs Depth";
         static const char* LOOK_SENSITIVITY = "Look Sensitivity";
         static const char* SHOW_DEBUG = "Show Debug View";
         static const char* CURRENT_PAWN_STATE = "Current Pawn State";
@@ -1658,8 +1658,19 @@ public:
         ImGui::SetNextWindowSize(ImVec2(window_w, window_h), ImGuiCond_::ImGuiCond_Once);
         if (ImGui::Begin(UEVR_NAME.c_str())) {
             ImGui::PushItemWidth(200);
+            if (ImGui::Button("Save Configuration")) {
+                if (save_plugin_config()) {
+                    ImGui::OpenPopup("succesful_save_popup");
+                };
+            };
+
+            if (ImGui::BeginPopup("succesful_save_popup"))
+            {
+                ImGui::Text("Configuration Saved!");
+                ImGui::EndPopup();
+            }
+
             ImGui::SeparatorText("General options");
-            ImGui::SliderInt(CURSOR_DEPTH, &m_ui_option_cursor_depth, 0, 10);
             ImGui::SliderInt(LOOK_SENSITIVITY, &m_ui_option_look_sensitivity, 1, 10);
             ImGui::SliderFloat("Player height modifier", &m_ui_option_player_height_modifier, -15.f, 15.f);
             ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
@@ -1680,8 +1691,9 @@ public:
             //}
 
             ImGui::SeparatorText("Crosshair options");
+            ImGui::SliderInt("Crosshair Depth", &m_ui_option_crosshair_depth, 0, 10);
             ImGui::SliderFloat("Crosshair Cursor Scale", &m_ui_option_crosshair_cursor_scale, 0.f, 1.f );
-            ImGui::SliderFloat("Cursor Brackets Scale", &m_ui_option_cursor_brackets_scale, 0.f, 1.f);
+            ImGui::SliderFloat("Crosshair Brackets Scale", &m_ui_option_crosshair_brackets_scale, 0.f, 1.f);
             if (ImGui::Button("Apply Cursor")) {
                 apply_selected_cursor_size();
             };
@@ -1756,10 +1768,8 @@ public:
                 ImGui::Checkbox("Hacker crash", &m_is_crashing.value);
 
                 ImGui::PushItemWidth(100);
-                //ImGui::BeginDisabled();
                 ImGui::InputInt("XInput cb duration [microseconds]", &m_ui_xinput_duration);
                 ImGui::InputInt("Pre Engine Tick cb duration [microseconds]", &m_ui_pre_engine_tick_duration);
-                //ImGui::EndDisabled();
                 ImGui::PopItemWidth();
             }
             ImGui::EndDisabled();
@@ -1844,10 +1854,8 @@ public:
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
 
-        static const auto imgui_ini = API::get()->get_persistent_dir(L"system_shock_plugin.ini").string();
+        static const auto imgui_ini = API::get()->get_persistent_dir(L"system_reshock_vr_imgui.ini").string();
         ImGui::GetIO().IniFilename = imgui_ini.c_str();
-
-        ImGui::GetIO().IniFilename = "system_shock_vr_ui.ini";
         ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
 
         const auto renderer_data = API::get()->param()->renderer;
@@ -1960,6 +1968,138 @@ public:
         }
 
         SendInput(1, &input, sizeof(INPUT));
+    }
+
+    bool load_plugin_config() {
+        static const auto config_filename = API::get()->get_persistent_dir(L"system_reshock_vr_config.ini").string();
+        mINI::INIFile mod_config_file(config_filename);
+        mINI::INIStructure mod_config;
+
+        mod_config_file.read(mod_config);
+
+        // section validation
+        if (!mod_config.has("general") || !mod_config.has("crosshair")) {
+            API::get()->log_error("[Mod Config] Missing config section");
+            return false;
+        }
+
+        // look_sensitivity
+        if (mod_config["general"].has("look_sensitivity")) {
+            std::string& look_sensitivity = mod_config["general"]["look_sensitivity"];
+            try {
+                m_ui_option_look_sensitivity = std::stoi(look_sensitivity);
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid general > look_sensitivity value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing general > look_sensitivity value.");
+        }
+
+        // player_height_modifier
+        if (mod_config["general"].has("player_height_modifier")) {
+            std::string& player_height_modifier = mod_config["general"]["player_height_modifier"];
+            try {
+                m_ui_option_player_height_modifier = std::stof(player_height_modifier);
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid general > player_height_modifier value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing general > player_height_modifier value.");
+        }
+
+        // force_hide_compass
+        if (mod_config["general"].has("force_hide_compass")) {
+            std::string& force_hide_compass = mod_config["general"]["force_hide_compass"];
+            try {
+                m_ui_option_force_hide_compass = std::stoi(force_hide_compass) == 1;
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid general > force_hide_compass value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing general > force_hide_compass value.");
+        }
+
+        // toggle_run_with_left_grip
+        if (mod_config["general"].has("toggle_run_with_left_grip")) {
+            std::string& toggle_run_with_left_grip = mod_config["general"]["toggle_run_with_left_grip"];
+            try {
+                m_ui_option_toggle_run_with_left_grip = std::stoi(toggle_run_with_left_grip) == 1;
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid general > toggle_run_with_left_grip value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing general > toggle_run_with_left_grip value.");
+        }
+
+        // crosshair_depth
+        if (mod_config["crosshair"].has("depth")) {
+            std::string& crosshair_depth = mod_config["crosshair"]["depth"];
+            try {
+                m_ui_option_crosshair_depth = std::stoi(crosshair_depth);
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid crosshair > depth value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing crosshair > depth value.");
+        }
+
+        // crosshair_cursor_scale
+        if (mod_config["crosshair"].has("cursor_scale")) {
+            std::string& crosshair_cursor_scale = mod_config["crosshair"]["cursor_scale"];
+            try {
+                m_ui_option_crosshair_cursor_scale = std::stof(crosshair_cursor_scale);
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid crosshair > cursor_scale value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing crosshair > cursor_scale value.");
+        }
+
+        // crosshair_brackets_scale
+        if (mod_config["crosshair"].has("brackets_scale")) {
+            std::string& crosshair_brackets_scale = mod_config["crosshair"]["brackets_scale"];
+            try {
+                m_ui_option_crosshair_brackets_scale = std::stof(crosshair_brackets_scale);
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid crosshair > brackets_scale value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing crosshair > brackets_scale value.");
+        }
+
+        return true;
+    }
+
+    // saves config file (replaces the whole file with each save)
+    bool save_plugin_config() {
+        static const auto config_filename = API::get()->get_persistent_dir(L"system_reshock_vr_config.ini").string();
+        mINI::INIFile mod_config_file(config_filename);
+        mINI::INIStructure mod_config;
+
+        mod_config["general"]["look_sensitivity"] = std::to_string(m_ui_option_look_sensitivity).c_str();
+        mod_config["general"]["player_height_modifier"] = std::to_string(m_ui_option_player_height_modifier).c_str();
+        mod_config["general"]["force_hide_compass"] = std::to_string(m_ui_option_force_hide_compass).c_str();
+        mod_config["general"]["toggle_run_with_left_grip"] = std::to_string(m_ui_option_toggle_run_with_left_grip).c_str();
+
+        mod_config["crosshair"]["depth"] = std::to_string(m_ui_option_crosshair_depth).c_str();
+        mod_config["crosshair"]["cursor_scale"] = std::to_string(m_ui_option_crosshair_cursor_scale).c_str();
+        mod_config["crosshair"]["brackets_scale"] = std::to_string(m_ui_option_crosshair_brackets_scale).c_str();
+
+        return mod_config_file.generate(mod_config, true);
     }
 };
 
