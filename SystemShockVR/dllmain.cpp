@@ -71,13 +71,13 @@
 #define INPUT_DEADZONE_HI  ( 0.80f * FLOAT(0x7FFF) )  // Default to 80% of the +/- 32767 range.
 
 #define META_QUEST      0
-#define HP_REVERB_G2    1
+#define WMR             1
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 using namespace uevr;
 
-const char* MOD_VERSION = "1.0.1";
+const char* MOD_VERSION = "1.1.0";
 const int CB_DURATION_SAMPLE_RATE = 100;
 
 typedef struct _TIMER_STRUCT
@@ -282,12 +282,12 @@ public:
     int m_ui_option_look_sensitivity{ 5 };
     bool m_ui_option_force_hide_compass{ true };
     bool m_ui_option_toggle_run_with_left_grip{ true };
+    int m_ui_option_openxr_runtime{ META_QUEST };
 
     // unused
     int m_ui_option_hotbar_selector_button{ 0 };
     int m_ui_option_hardware_selector_button{ 1 };
     int m_ui_option_walk_run_toggle_button{ 1 };
-    int m_ui_option_openxr_system_name{ META_QUEST };
 
     // debug
     int m_cb_calls_count{ 0 };
@@ -635,6 +635,9 @@ public:
 
         // normal level
         if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
+            // mute right stick Y axis
+            state->Gamepad.sThumbRY = 0;
+
             // clear sprinting flag when using selected interactables (caused sporadic arms mesh misalignment)
             if (
                 m_player_interacting.has_changed() &&
@@ -757,17 +760,17 @@ public:
                 m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
 
                 if (state->Gamepad.sThumbRY > INPUT_DEADZONE_MED) {
-                    if (m_ui_option_openxr_system_name == META_QUEST) state->Gamepad.sThumbRX = 0;
+                    if (m_ui_option_openxr_runtime == META_QUEST) state->Gamepad.sThumbRX = 0;
                     m_gamepad_btn_a.force_state(state);
                 }
                 else if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_MED) {
-                    if (m_ui_option_openxr_system_name == META_QUEST) state->Gamepad.sThumbRX = 0;
+                    if (m_ui_option_openxr_runtime == META_QUEST) state->Gamepad.sThumbRX = 0;
                     m_gamepad_btn_b.force_state(state);
                 }
             }
             else
             {
-                if (m_ui_option_openxr_system_name == META_QUEST) {
+                if (m_ui_option_openxr_runtime == META_QUEST) {
                     m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
                     m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
                     m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
@@ -1436,7 +1439,7 @@ public:
             auto control_rotation = pawn_controller->GetControlRotation();
             control_rotation.Yaw += (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
 
-            if (m_pawn_state.value == PAWN_AVATAR && m_cyberspace_aim_method == 0 && m_ui_option_openxr_system_name == HP_REVERB_G2) {
+            if (m_pawn_state.value == PAWN_AVATAR && m_cyberspace_aim_method == 0 && m_ui_option_openxr_runtime == WMR) {
                 control_rotation.Pitch += (state->Gamepad.sThumbRY / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
             }
 
@@ -1694,7 +1697,7 @@ public:
             ImGui::SliderFloat("Player height modifier", &m_ui_option_player_height_modifier, -15.f, 15.f);
             ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
             ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
-            ImGui::Combo("HMD Model", &m_ui_option_openxr_system_name, "Meta Quest\0HP Reverb G2\0");
+            ImGui::Combo("HMD Model", &m_ui_option_openxr_runtime, "Meta Quest\0HP Reverb G2\0");
             
             //ImGui::SeparatorText("Button mappings");
             //ImGui::Combo("Hotbar selector button", &m_ui_option_hotbar_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
@@ -1995,7 +1998,11 @@ public:
         mINI::INIFile mod_config_file(config_filename);
         mINI::INIStructure mod_config;
 
-        mod_config_file.read(mod_config);
+        if (!mod_config_file.read(mod_config)) {
+            API::get()->log_error("[Mod Config] Missing config file. Creating config with default values");
+            save_plugin_config();
+            return false;
+        }
 
         // section validation
         if (!mod_config.has("general") || !mod_config.has("crosshair")) {
@@ -2059,6 +2066,27 @@ public:
             API::get()->log_error("[Mod Config] Missing general > toggle_run_with_left_grip value.");
         }
 
+        // openxr_runtime
+        if (mod_config["general"].has("openxr_runtime")) {
+            std::string& openxr_runtime = mod_config["general"]["openxr_runtime"];
+            try {
+                auto _openxr_runtime = std::stoi(openxr_runtime);
+                if (_openxr_runtime != 0 && _openxr_runtime != 1) {
+                    m_ui_option_openxr_runtime = META_QUEST;
+                    throw std::invalid_argument("received negative value");
+                }
+                else {
+                    m_ui_option_openxr_runtime = _openxr_runtime;
+                }
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid general > openxr_runtime value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing general > openxr_runtime value.");
+        }
+
         // crosshair_depth
         if (mod_config["crosshair"].has("depth")) {
             std::string& crosshair_depth = mod_config["crosshair"]["depth"];
@@ -2114,6 +2142,7 @@ public:
         mod_config["general"]["player_height_modifier"] = std::to_string(m_ui_option_player_height_modifier).c_str();
         mod_config["general"]["force_hide_compass"] = std::to_string(m_ui_option_force_hide_compass).c_str();
         mod_config["general"]["toggle_run_with_left_grip"] = std::to_string(m_ui_option_toggle_run_with_left_grip).c_str();
+        mod_config["general"]["openxr_runtime"] = std::to_string(m_ui_option_openxr_runtime).c_str();
 
         mod_config["crosshair"]["depth"] = std::to_string(m_ui_option_crosshair_depth).c_str();
         mod_config["crosshair"]["cursor_scale"] = std::to_string(m_ui_option_crosshair_cursor_scale).c_str();
