@@ -744,6 +744,11 @@ public:
             // change control scheme on RS
             if (m_gamepad_right_thumb.is_pressed()) {
                 m_cyberspace_aim_method = m_cyberspace_aim_method == 0 ? 2 : 0;
+
+                if (m_cyberspace_aim_method == 0) {
+                    vr->recenter_view();
+                }
+
                 vr->set_aim_method(m_cyberspace_aim_method);
                 vr->set_decoupled_pitch_enabled(m_cyberspace_aim_method == 2);
             }
