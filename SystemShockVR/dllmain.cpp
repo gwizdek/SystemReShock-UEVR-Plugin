@@ -1697,7 +1697,7 @@ public:
             ImGui::SliderFloat("Player height modifier", &m_ui_option_player_height_modifier, -15.f, 15.f);
             ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
             ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
-            ImGui::Combo("HMD Model", &m_ui_option_openxr_runtime, "Meta Quest\0HP Reverb G2\0");
+            ImGui::Combo("HMD", &m_ui_option_openxr_runtime, "Meta Quest\0HP Reverb G2\0");
             
             //ImGui::SeparatorText("Button mappings");
             //ImGui::Combo("Hotbar selector button", &m_ui_option_hotbar_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
@@ -2073,7 +2073,7 @@ public:
                 auto _openxr_runtime = std::stoi(openxr_runtime);
                 if (_openxr_runtime != 0 && _openxr_runtime != 1) {
                     m_ui_option_openxr_runtime = META_QUEST;
-                    throw std::invalid_argument("received negative value");
+                    throw std::invalid_argument("Wrong value");
                 }
                 else {
                     m_ui_option_openxr_runtime = _openxr_runtime;

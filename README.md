@@ -37,7 +37,7 @@ Author's note: This release is a little bit rushed for the Christmas, so you may
 * **Right Grip (hold / release)** - Select hotbar item
 * **Right Stick Button (hold / release)** - Toggle hacker hardware
 * **Left Trigger** - aim (useful for handling automatic weapons)
-* **Left Grip** - toggle run / walk
+* **Left Grip** - toggle run / walk *(configurable in plugin options)*
 * **Left Stick Button** - hold to run (possibly will be remapped to something more useful)
 * **MENU** (hold 1s) - toggle MFD
 
@@ -62,14 +62,16 @@ Author's note: This release is a little bit rushed for the Christmas, so you may
 * **Left Trigger** - I.C.E. Drill
 * **Right Stick Button** - Change aiming mode
 
+The Cyberspace part of System Shock is tricky to get right in VR, especially on different HMDs. The plugin currently supports two control implementations. The first one is suited for Meta Quest HMDs (tested by Ashok), the second one works on WMR headsets like my G2. We are limited in our testing to these HMDs and can't garantee compatibility with other headsets.  
+You can choose which implementation you want to use by accessing plugin options overlay and selecting `HMD`. Default value is `Meta Quest`. Both implementations support 2 aiming modes toggable via **Right Stick Button**.
+
+
 ## Plugin Options
-The plugin options are accessible through a separate overlay window displayed when UEVR's overlay is visible.
-It is preferred to use mouse to make the adjustments.
+Plugin options are accessible through a separate overlay window displayed when UEVR's overlay is visible.
+It is preferred to use mouse to make the adjustments.  
 
-Important notice! Right now the options you select can't be persisted on hard drive. You have to select them each time you inject the mod.
-
-### Fine-tune Crosshair Depth
-If you feel the crosshair is to close or to far, you can adjust it here. It's specially useful when you change the world scale from default value of 1.0
+Options are stored in your UEVR profile folder in `system_reshock_vr_config.ini` file. This file is created automatically first fime you inject the profile.  
+To save options press `Save Configuration` button.
 
 ### Look Sensitivity
 Your character rotation speed
@@ -82,6 +84,12 @@ This setting forces the top compass band to hide. If you really like the compass
 
 ### Toggle run with Left Grip
 Option to disable walk/run toggle binded to Left Grip. You can still run by pressing and holding **Left Stick Button**
+
+### HMD
+Select control implementation for Cyberspace
+
+### Crosshair Depth
+If you feel the crosshair is to close or to far, you can adjust it here. It's specially useful when you change the world scale from default value of 1.0
 
 ### Crosshair Cursor Scale and Cursor Brackets Scale
 The original game crosshair is way to big for my liking. I made it a lot smaller by default, but you can make it big again or hide it completely.
