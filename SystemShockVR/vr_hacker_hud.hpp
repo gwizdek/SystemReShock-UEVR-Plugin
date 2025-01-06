@@ -90,7 +90,7 @@ private:
     SDK::UWidgetComponent* m_minimap_widget_component{ nullptr };
     SDK::UWidgetComponent* m_vital_bars_widget_component{ nullptr };
     std::array<SDK::UWidgetComponent*, 10> m_hotbar_slot_widget_components{};
-    std::array<SDK::UWidgetComponent*, 4> m_hacker_hardware_widget_components{};
+    std::array<SDK::UWidgetComponent*, 5> m_hacker_hardware_widget_components{};
     SDK::UWidgetComponent* m_ui_mask_widget_component{ nullptr };
 
     // utils
@@ -98,7 +98,7 @@ private:
     std::array<SDK::FTransform, 10> m_hacker_hardware_transforms{};
 
     // widgets
-    std::array<SDK::UWIDGET_HardwareButton_C*, 4> m_hardware_widgets{};
+    std::array<SDK::UWIDGET_HardwareButton_C*, 5> m_hardware_widgets{};
 
 public:
     VRHackerHUD() {
@@ -120,14 +120,15 @@ public:
         m_hotbar_slot_transforms[0].Translation = { 0.0f, 24.f * m_primary_item_selector_spread, -12.f * m_primary_item_selector_spread };
 
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             m_hacker_hardware_transforms[i].Rotation = { 0.f, 0.f, 1.f, 0.f };
             m_hacker_hardware_transforms[i].Scale3D = { 1.f, m_secondary_item_selector_scale, m_secondary_item_selector_scale };
         }
-        m_hacker_hardware_transforms[0].Translation = { 0.0f, 0.f, 12.f * m_secondary_item_selector_spread };
-        m_hacker_hardware_transforms[1].Translation = { 0.0f, 12.f * m_secondary_item_selector_spread, 0.f };
-        m_hacker_hardware_transforms[2].Translation = { 0.0f, 0.f, -12.f * m_secondary_item_selector_spread };
-        m_hacker_hardware_transforms[3].Translation = { 0.0f, -12.f * m_secondary_item_selector_spread, 0.f };
+        m_hacker_hardware_transforms[0].Translation = { 0.0f, 0.f, 12.f * m_secondary_item_selector_spread }; // energy shield
+        m_hacker_hardware_transforms[1].Translation = { 0.0f, 12.f * m_secondary_item_selector_spread, 0.f }; // vision unit
+        m_hacker_hardware_transforms[2].Translation = { 0.0f, 0.f, 26.f * m_secondary_item_selector_spread }; // sense around (top)
+        m_hacker_hardware_transforms[3].Translation = { 0.0f, 0.f, -12.f * m_secondary_item_selector_spread }; // enviro pack
+        m_hacker_hardware_transforms[4].Translation = { 0.0f, -12.f * m_secondary_item_selector_spread, 0.f }; // turbo boots
     }
 
     virtual ~VRHackerHUD() {
@@ -779,11 +780,12 @@ public:
         m_hardware_widgets[1] = m_hud->WIDGET_HardwareButton_VisionUnit;
         m_hardware_widgets[2] = m_hud->WIDGET_HardwareButton_Sensaround;
         m_hardware_widgets[3] = m_hud->WIDGET_HardwareButton_EnviroPack;
+        m_hardware_widgets[4] = m_hud->WIDGET_HardwareButton_TurboBoots;
 
         // canvas panel slots
         std::array<SDK::UCanvasPanelSlot*, 4> canvas_panel_slots{};
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             if (m_hacker_hardware_widget_components[i] != nullptr) {
                 log_error("attach_secondary_item_selector :: Already attached");
                 return false;
@@ -835,7 +837,9 @@ public:
             m_secondary_item_selector_actor->FinishAddComponent(m_hacker_hardware_widget_components[i], false, m_hacker_hardware_transforms[i]);
 
             // recreate panel slot for widget and place it at original position on canvas panel
-            auto panel_slot = (SDK::UCanvasPanelSlot*)m_hud->PANEL_LeftHardware->AddChild(m_hardware_widgets[i]);
+            auto panel_slot = i < 4
+                ? (SDK::UCanvasPanelSlot*)m_hud->PANEL_LeftHardware->AddChild(m_hardware_widgets[i])
+                : (SDK::UCanvasPanelSlot*)m_hud->PANEL_RightHardware->AddChild(m_hardware_widgets[i]);
             panel_slot->SetAlignment({ 0.5f, 0.5f });
             panel_slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.5f}, {0.5f, 0.5f} });
             panel_slot->SetOffsets(canvas_panel_slots[i]->GetOffsets());
@@ -1115,7 +1119,7 @@ public:
     }
 
     void set_secondary_item_selector_visibility(bool visible) {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             if (m_hacker_hardware_widget_components[i] != nullptr) {
                 m_hacker_hardware_widget_components[i]->SetVisibility(visible, visible);
                 m_hacker_hardware_widget_components[i]->SetHiddenInGame(!visible, !visible);
@@ -1178,7 +1182,7 @@ public:
         if (m_hud == nullptr)
             return;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             m_hardware_widgets[i]->SetMouseOver(false, true);
         }
     }
