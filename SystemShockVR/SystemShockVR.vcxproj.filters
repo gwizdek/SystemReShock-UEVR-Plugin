@@ -108,6 +108,9 @@
     <ClInclude Include="mINI\ini.h">
       <Filter>mINI</Filter>
     </ClInclude>
+    <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -199,6 +202,12 @@
     </ClCompile>
     <ClCompile Include="rendering\d3d11.cpp">
       <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\WIDGET_SimpleHUD_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\WIDGET_CyberspaceHUD_functions.cpp">
+      <Filter>SDK Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

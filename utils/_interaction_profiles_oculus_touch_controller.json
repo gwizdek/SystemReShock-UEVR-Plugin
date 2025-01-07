@@ -1,0 +1,166 @@
+{
+    "bindings": [
+        {
+            "action": "grippose",
+            "path": "/user/hand/left/input/grip/pose"
+        },
+        {
+            "action": "bbuttonleft",
+            "path": "/user/hand/left/input/y/click"
+        },
+        {
+            "action": "pose",
+            "path": "/user/hand/left/input/aim/pose"
+        },
+        {
+            "action": "trigger",
+            "path": "/user/hand/left/input/trigger"
+        },
+        {
+            "action": "grip",
+            "path": "/user/hand/left/input/squeeze"
+        },
+        {
+            "action": "joystick",
+            "path": "/user/hand/left/input/thumbstick"
+        },
+        {
+            "action": "abuttonleft",
+            "path": "/user/hand/left/input/x/click"
+        },
+        {
+            "action": "joystickclick",
+            "path": "/user/hand/left/input/thumbstick/click"
+        },
+        {
+            "action": "abuttontouchleft",
+            "path": "/user/hand/left/input/x/touch"
+        },
+        {
+            "action": "bbuttontouchleft",
+            "path": "/user/hand/left/input/y/touch"
+        },
+        {
+            "action": "thumbresttouchleft",
+            "path": "/user/hand/left/input/thumbrest/touch"
+        },
+        {
+            "action": "systembutton",
+            "path": "/user/hand/left/input/menu/click"
+        },
+        {
+            "action": "haptic",
+            "path": "/user/hand/left/output/haptic"
+        },
+        {
+            "action": "grippose",
+            "path": "/user/hand/right/input/grip/pose"
+        },
+        {
+            "action": "pose",
+            "path": "/user/hand/right/input/aim/pose"
+        },
+        {
+            "action": "trigger",
+            "path": "/user/hand/right/input/trigger"
+        },
+        {
+            "action": "grip",
+            "path": "/user/hand/right/input/squeeze"
+        },
+        {
+            "action": "joystick",
+            "path": "/user/hand/right/input/thumbstick"
+        },
+        {
+            "action": "joystickclick",
+            "path": "/user/hand/right/input/thumbstick/click"
+        },
+        {
+            "action": "abuttontouchright",
+            "path": "/user/hand/right/input/a/touch"
+        },
+        {
+            "action": "bbuttontouchright",
+            "path": "/user/hand/right/input/b/touch"
+        },
+        {
+            "action": "thumbresttouchright",
+            "path": "/user/hand/right/input/thumbrest/touch"
+        },
+        {
+            "action": "systembutton",
+            "path": "/user/hand/right/input/system/click"
+        },
+        {
+            "action": "haptic",
+            "path": "/user/hand/right/output/haptic"
+        },
+        {
+            "action": "bbuttonright",
+            "path": "/user/hand/right/input/a/click"
+        },
+        {
+            "action": "abuttonright",
+            "path": "/user/hand/right/input/b/click"
+        }
+    ],
+    "vector2_associations": [
+        {
+            "activator": "touchpadclick",
+            "modifier": "touchpad",
+            "outputs": [
+                {
+                    "action": "abuttonleft",
+                    "value": {
+                        "x": 0.0,
+                        "y": -1.0
+                    }
+                },
+                {
+                    "action": "bbuttonleft",
+                    "value": {
+                        "x": 1.0,
+                        "y": 0.0
+                    }
+                },
+                {
+                    "action": "joystickclick",
+                    "value": {
+                        "x": 0.0,
+                        "y": 1.0
+                    }
+                }
+            ],
+            "path": "/user/hand/left"
+        },
+        {
+            "activator": "touchpadclick",
+            "modifier": "touchpad",
+            "outputs": [
+                {
+                    "action": "abuttonright",
+                    "value": {
+                        "x": 0.0,
+                        "y": -1.0
+                    }
+                },
+                {
+                    "action": "bbuttonright",
+                    "value": {
+                        "x": -1.0,
+                        "y": 0.0
+                    }
+                },
+                {
+                    "action": "joystickclick",
+                    "value": {
+                        "x": 0.0,
+                        "y": 1.0
+                    }
+                }
+            ],
+            "path": "/user/hand/right"
+        }
+    ]
+}

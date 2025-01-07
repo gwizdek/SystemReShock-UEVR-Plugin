@@ -24,12 +24,15 @@
 #include "SDK/Engine_classes.hpp"
 #include "SDK/HeadMountedDisplay_classes.hpp"
 #include "SDK/ITEM_WeaponBase_classes.hpp"
+#include "SDK/PAWN_Avatar_classes.hpp"
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
 #include "SDK/PAWN_Hacker_Simple_classes.hpp"
 #include "SDK/PAWN_Hacker_Implant_parameters.hpp"
 #include "SDK/COMP_HackerInventory_classes.hpp"
 #include "SDK/WIDGET_InventoryContextMenu_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
+#include "SDK/WIDGET_SimpleHUD_classes.hpp"
+#include "SDK/WIDGET_CyberspaceHUD_classes.hpp"
 #include "SDK/WIDGET_Minimap_classes.hpp"
 #include "SDK/WIDGET_HotbarSlot_classes.hpp"
 #include "SDK/WIDGET_Biometer_classes.hpp"
@@ -268,6 +271,8 @@ public:
     MemoDualInput m_gamepad_btn_b{ XINPUT_GAMEPAD_B, "BTN_B" };
     MemoInput m_gamepad_btn_x{ XINPUT_GAMEPAD_X, "BTN_X" };
     MemoDualInput m_gamepad_btn_y{ XINPUT_GAMEPAD_Y, "BTN_Y" };
+    MemoTriggerInput m_gamepad_trigger_right{ true, 200, 100 };
+    MemoTriggerInput m_gamepad_trigger_left{ false, 200, 100 };
 
     // customizable actions
     MemoInput m_hotbar_selector_button{ XINPUT_GAMEPAD_RIGHT_SHOULDER, "HOTBAR_SELECTOR_BUTTON" };
@@ -533,6 +538,28 @@ public:
             m_current_action = nullptr;
         }
 
+        // ingame menu
+        SDK::UWIDGET_MainMenu_InGame_C* main_menu{ nullptr };
+        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+            static_cast<SDK::UWIDGET_PlayerHUD_C*>(static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
+            m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
+        } 
+        else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
+            static_cast<SDK::UWIDGET_SimpleHUD_C*>(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
+            m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
+        }
+        else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
+            API::get()->log_warn("WARN: avatar");
+            static_cast<SDK::UWIDGET_CyberspaceHUD_C*>(static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->CyberspaceUI)->GetMainMenuWidget(&main_menu);
+            if (main_menu != nullptr) {
+                API::get()->log_warn("WARN: main_menu->IsMainMenuEnabled %d", main_menu->IsMainMenuEnabled);
+            }
+            m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
+        }
+        else {
+            m_main_menu_in_game_visible.set_value(false);
+        }
+
         // Introduction level laptop
         set_intro_laptop_pointer();
         if (m_intro_laptop != nullptr) {
@@ -541,9 +568,6 @@ public:
 
         // mfd
         m_mfd_visible.set_value(m_sdk_hud != nullptr && m_sdk_hud->bIsMFDVisible);
-
-        // ingame menu
-        m_main_menu_in_game_visible.set_value(m_sdk_hud != nullptr && m_sdk_hud->WIDGET_MainMenu_InGame->IsMainMenuEnabled);
 
         // -------------- old code ------------
         // sets pointer to PAWN
@@ -624,9 +648,24 @@ public:
         m_gamepad_left_shoulder.set_state(state);
         m_gamepad_right_thumb.set_state(state);
         m_gamepad_left_thumb.set_state(state);
+        m_gamepad_trigger_right.set_state(state);
+        m_gamepad_trigger_left.set_state(state);
 
         m_hotbar_selector_button.set_state(state);
         m_hardware_selector_button.set_state(state);
+
+        if (m_main_menu_in_game_visible.value) {
+            // increase stick deadzone for better navigation in the menu
+            if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
+                state->Gamepad.sThumbLX = 0;
+            }
+            if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
+                state->Gamepad.sThumbLY = 0;
+            }
+
+            // don't remap other buttons in in-game menu
+            return;
+        }
 
         // clear jumping flag
         if (m_gamepad_btn_x.is_released()) {
@@ -652,17 +691,6 @@ public:
             // MFD on
             if (m_mfd_visible.value) {
                 handle_mfd_interactions(state, vr);
-            } else if (m_main_menu_in_game_visible.value) {
-                // increase stick deadzone for better navigation in the menu
-                if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
-                    state->Gamepad.sThumbLX = 0;
-                }
-                if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
-                    state->Gamepad.sThumbLY = 0;
-                }
-
-                // don't remap other buttons in in-game menu
-                return;
             }
             // interaction with with puzzles / vending machines / ladders
             else if (m_player_interacting.value) {
@@ -694,8 +722,13 @@ public:
                 m_gamepad_right_shoulder.mute_state(state);
                 m_gamepad_left_shoulder.mute_state(state);
 
-                if (m_gamepad_left_shoulder.has_changed() && m_gamepad_left_shoulder.value) {
+                if (m_gamepad_left_shoulder.is_pressed()) {
                     m_player_sprinting = !m_player_sprinting;
+                }
+
+                // use target identifier
+                if (m_gamepad_trigger_left.is_pressed()) {
+                    m_gamepad_right_thumb.force_state(state);
                 }
 
                 // sprint only when mod's toggle option is checked
@@ -916,8 +949,6 @@ public:
 
                 state->Gamepad.sThumbRX = 0;
             }
-
-            m_hardware_selector_button.mute_state(state);
         }
     }
 
@@ -1209,14 +1240,20 @@ public:
 
         if (m_main_menu_in_game_visible.has_changed()) {
             if (m_main_menu_in_game_visible.value) {
+                vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
                 // first center view to HMD
                 vr->set_aim_method(1);
                 m_mod_events.insert(MOD_EVENT_SHOW_IN_GAME_MENU);
             }
             else {
-                if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
+                vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
                     vr->set_mod_value("VR_RoomscaleMovement", "true");
                     vr->set_aim_method(2);
+                }
+                else if (m_pawn_state.value == PAWN_AVATAR) {
+                    vr->set_mod_value("UI_Distance", "10.000000");
+                    vr->set_mod_value("UI_Size", "10.000000");
                 }
             }
         }
@@ -1465,6 +1502,7 @@ public:
                     vr->set_mod_value("VR_RoomscaleMovement", "false");
                     vr->set_mod_value("UI_Distance", "2.000000");
                     vr->set_mod_value("UI_Size", "2.000000");
+                    vr->recenter_view();
                     
                     API::UObjectHook::set_disabled(true);
                     reset_height(vr);
@@ -1477,6 +1515,8 @@ public:
                     vr->set_snap_turn_enabled(true);
                     vr->set_decoupled_pitch_enabled(true);
                     vr->set_mod_value("VR_RoomscaleMovement", "false");
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                    vr->recenter_view();
                     
                     API::UObjectHook::set_disabled(false);
                     reset_height(vr);
@@ -1497,7 +1537,9 @@ public:
                     vr->set_snap_turn_enabled(true);
                     vr->set_decoupled_pitch_enabled(true);
                     vr->set_mod_value("VR_RoomscaleMovement", "true");
-                    
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                    vr->recenter_view();
+
                     // remove dashboards (dashboards are reset after exiting cyberspace?)
                     m_mod_events.insert(MOD_EVENT_VR_HUD_HIDE_DASHBOARDS);
 
@@ -1521,6 +1563,8 @@ public:
                     vr->set_snap_turn_enabled(false);
                     vr->set_decoupled_pitch_enabled(true);
                     vr->set_mod_value("VR_RoomscaleMovement", "false");
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                    vr->recenter_view();
                     
                     API::UObjectHook::set_disabled(true);
                     reset_height(vr);
@@ -1794,6 +1838,8 @@ public:
                 ImGui::Checkbox("Player sprinting", &m_player_sprinting);
                 ImGui::Checkbox("Hacker bootup", &m_is_booting_up.value);
                 ImGui::Checkbox("Hacker crash", &m_is_crashing.value);
+                ImGui::Checkbox("Main Menu visible", &m_main_menu_in_game_visible.value);
+                
 
                 ImGui::PushItemWidth(100);
                 ImGui::InputInt("XInput cb duration [microseconds]", &m_ui_xinput_duration);

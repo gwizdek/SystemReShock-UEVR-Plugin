@@ -68,7 +68,7 @@ struct MemoInput : public MemoProperty<bool>
 {
     WORD wButton;
     bool m_logging{ false };
-    // button name for loggin purpose
+    // button name for logging purpose
     std::string m_btn_name{ "UNDEFINED BTN" };
 
     MemoInput(WORD _wButton, std::string btn_name)
@@ -265,5 +265,137 @@ struct MemoDualInput : public MemoInput
             return true;
         }
         return false;
+    }
+};
+
+struct MemoTriggerInput : public MemoProperty<bool>
+{
+    bool m_right_trigger;
+    BYTE m_raw_value{ 0 };
+    BYTE m_pressed_treshold;
+    BYTE m_released_treshold;
+    bool m_logging{ false };
+    // button name for logging purpose
+    std::string m_btn_name;
+
+    MemoTriggerInput(bool right_trigger, BYTE pressed_treshold, BYTE released_treshold)
+        : MemoProperty<bool>(false, false) {
+        m_right_trigger = right_trigger;
+        m_btn_name = m_right_trigger ? "RIGHT TRIGGER" : "LEFT TRIGGER";
+        if (m_pressed_treshold > m_released_treshold) {
+            m_pressed_treshold = pressed_treshold;
+            m_released_treshold = released_treshold;
+        }
+        // fallback
+        else {
+            m_pressed_treshold = 200;
+            m_released_treshold = 100;
+        }
+    }
+
+    void set_logging(bool enabled) {
+        m_logging = enabled;
+    }
+
+    void set_state(XINPUT_STATE* state) {
+        m_raw_value = m_right_trigger ? state->Gamepad.bRightTrigger : state->Gamepad.bLeftTrigger;
+
+        if (!value) {
+            MemoProperty::set_value(
+                m_right_trigger ? state->Gamepad.bRightTrigger > m_pressed_treshold : state->Gamepad.bLeftTrigger > m_pressed_treshold
+            );
+        }
+        else {
+            MemoProperty::set_value(
+                m_right_trigger ? state->Gamepad.bRightTrigger > m_released_treshold : state->Gamepad.bLeftTrigger > m_released_treshold
+            );
+        }
+    }
+
+    void set_and_mute_state(XINPUT_STATE* state) {
+        MemoTriggerInput::set_state(state);
+        mute_state(state);
+    }
+
+    BYTE raw_value() {
+        return m_raw_value;
+    }
+
+    bool is_held() {
+        if (!MemoProperty::has_changed() && MemoProperty::value) {
+            if (m_logging) {
+                //API::get()->log_info("### Trigger [%s] is held", m_btn_name);
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    bool is_pressed() {
+        if (MemoProperty::has_changed() && MemoProperty::value) {
+            if (m_logging) {
+                API::get()->log_info("### Trigger [%s] pressed", m_btn_name);
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    bool is_released() {
+        if (MemoProperty::has_changed() && !MemoProperty::value) {
+            if (m_logging) {
+                API::get()->log_info("### Trigger [%s] released", m_btn_name);
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    void mute_state(XINPUT_STATE* state) {
+        if (m_logging) {
+            API::get()->log_info("### Trigger [%s] state muted", m_btn_name);
+        }
+        if (m_right_trigger) {
+            state->Gamepad.bRightTrigger = 0;
+        }
+        else {
+            state->Gamepad.bLeftTrigger = 0;
+        }
+    }
+
+    void force_state(XINPUT_STATE* state) {
+        if (m_logging) {
+            API::get()->log_info("### Trigger [%s] state forced", m_btn_name);
+        }
+        if (m_right_trigger) {
+            state->Gamepad.bRightTrigger = 255;
+        }
+        else {
+            state->Gamepad.bLeftTrigger = 255;
+        }
+    }
+
+    void when_pressed_send(XINPUT_STATE* state, WORD _wButton) {
+        if (is_pressed()) {
+            if (m_logging) {
+                API::get()->log_info("### Trigger [%s] sending different state on pressed", m_btn_name);
+            }
+            state->Gamepad.wButtons |= _wButton;
+        }
+    }
+
+    void when_held_send(XINPUT_STATE* state, WORD _wButton) {
+        if (is_held()) {
+            if (m_logging) {
+                API::get()->log_info("### Trigger [%s] sending different state", m_btn_name);
+            }
+            state->Gamepad.wButtons |= _wButton;
+        }
     }
 };

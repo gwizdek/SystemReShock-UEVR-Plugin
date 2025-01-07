@@ -163,6 +163,7 @@
     <ClInclude Include="SDK\SystemReShock_classes.hpp" />
     <ClInclude Include="SDK\WIDGET_InventoryContextMenu_classes.hpp" />
     <ClInclude Include="SDK\WIDGET_MainMenu_InGame_classes.hpp" />
+    <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp" />
     <ClInclude Include="vr_hacker_hud.hpp" />
     <ClInclude Include="rendering\d3d11.hpp" />
     <ClInclude Include="rendering\d3d12.hpp" />
@@ -204,10 +205,12 @@
     <ClCompile Include="SDK\UMG_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Biometer_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Compass_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_CyberspaceHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_HardwareButton_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_HotbarSlot_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Minimap_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_PlayerHUD_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_SimpleHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
