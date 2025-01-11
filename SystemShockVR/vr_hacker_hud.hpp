@@ -759,6 +759,11 @@ public:
             canvas_panel_slots[i]->SetAlignment({ 0.5f, 1.f });
             canvas_panel_slots[i]->SetAnchors(SDK::FAnchors{ {0.5f, 1.f}, {0.5f, 1.f} });
 
+            // moves Hotbar panel 10% up (needed because MFD was moved up as well)
+            auto hotbar_slot = (SDK::UCanvasPanelSlot*)m_hud->PANEL_Hotbar->Slot;
+            hotbar_slot->SetAlignment({ 0.5f, 1.0f });
+            hotbar_slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.9f}, {0.5f, 0.9f} });
+
             m_hud->HotbarSlots[i]->UpdateHotbarSlot();
 
             set_mfd_hotbar_visibility(false);
@@ -1354,5 +1359,16 @@ public:
         if (m_hud != nullptr && m_hud->WIDGET_CrosshairCursor != nullptr) {
             m_hud->WIDGET_CrosshairCursor->MESH_CursorBrackets->SetRenderScale({ *scale, *scale });
         }
+    }
+
+    // moves MFD panel 10% up
+    void align_mfd_panel() {
+        if (!SDK::UKismetSystemLibrary::IsValid(m_hud->Panel_MultiFunctionDisplay)) {
+            log_error("VRHackerHUD :: Align MFD :: Can't access panel");
+            return;
+        }
+        auto slot = (SDK::UCanvasPanelSlot*)m_hud->Panel_MultiFunctionDisplay->Slot;
+        slot->SetAlignment({ 0.5f, 1.0f });
+        slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.9f}, {0.5f, 0.9f} });
     }
 };

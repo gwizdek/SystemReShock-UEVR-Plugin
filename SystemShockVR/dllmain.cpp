@@ -1331,6 +1331,9 @@ public:
             // set surrounding objects to ignore our trace channel
             //m_vr_hud->disable_conflicting_collisions();
 
+            // move MFD panel a little up
+            m_vr_hud->align_mfd_panel();
+
             // reset mask size in case the game resolution changed
             m_vr_hud->set_mfd_mask_size(m_viewport_size_x, m_viewport_size_y);
             m_vr_hud->set_mfd_mask_delta();
