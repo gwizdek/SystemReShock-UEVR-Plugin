@@ -209,6 +209,9 @@
     <ClCompile Include="SDK\WIDGET_CyberspaceHUD_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\SystemReShock_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

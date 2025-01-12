@@ -202,6 +202,7 @@
     <ClCompile Include="SDK\PAWN_Hacker_Implant_functions.cpp" />
     <ClCompile Include="SDK\PAWN_Hacker_Simple_functions.cpp" />
     <ClCompile Include="SDK\SAVE_Settings_functions.cpp" />
+    <ClCompile Include="SDK\SystemReShock_functions.cpp" />
     <ClCompile Include="SDK\UMG_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Biometer_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Compass_functions.cpp" />

@@ -255,6 +255,7 @@ public:
     MemoProperty<bool> m_is_booting_up{ false, false };
     MemoProperty<bool> m_is_crashing{ false, false };
     MemoProperty<bool> m_is_using_laptop{ false, false };
+    MemoProperty<bool> m_is_media_display_visible{ false, false };
     MemoProperty<PawnState> m_pawn_state{ PAWN_UNKNOWN, PAWN_UNKNOWN };
     MemoProperty<HackerWeapon> m_weapon_state{ WEAPON_NONE, WEAPON_NONE };
     MemoProperty<SDK::ULevel*> m_level{ nullptr, nullptr };
@@ -282,6 +283,7 @@ public:
     float m_fov{ 120.f };
     float m_ui_option_crosshair_cursor_scale{ 0.3f };
     float m_ui_option_crosshair_brackets_scale{ 0.0f };
+    float m_ui_option_crosshair_hit_scale{ 0.3f };
     int m_ui_option_crosshair_depth{ 5 };
     float m_ui_option_player_height_modifier{ 0.0f };
     int m_ui_option_look_sensitivity{ 5 };
@@ -427,6 +429,7 @@ public:
         //handle_player_death(vr);
         handle_weapon_changes();
         handle_arms_mesh_visibility();
+        handle_media_display();
         handle_player_height(vr);
         handle_in_game_menu(vr);
         handle_compass();
@@ -493,6 +496,13 @@ public:
                 m_sdk_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator3
             );
             m_vr_hud->set_pointers(m_sdk_world, static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn), m_sdk_hud);
+
+            m_is_media_display_visible.consume();
+            m_sdk_hud->IsMediaDisplayVisible(&m_is_media_display_visible.value);
+                
+
+
+
         }
         else {
             m_sdk_hud = nullptr;
@@ -727,7 +737,7 @@ public:
                 }
 
                 // use target identifier
-                if (m_gamepad_trigger_left.is_pressed()) {
+                if (m_gamepad_trigger_left.is_held()) {
                     m_gamepad_right_thumb.force_state(state);
                 }
 
@@ -1586,6 +1596,13 @@ public:
         }
     }
 
+    void handle_media_display() {
+        if (m_pawn_state.value == PAWN_HACKERIMPLANT && m_vr_hud != nullptr && m_is_media_display_visible.has_changed()) {
+            m_vr_hud->set_minimap_visibility(!m_is_media_display_visible.value);
+            m_vr_hud->set_media_display_visibility(m_is_media_display_visible.value);
+        }
+    }
+
     void reset_height(const UEVR_VRData* vr, float offset_y = 0.0f) {
         UEVR_Vector3f origin{};
         vr->get_standing_origin(&origin);
@@ -1663,6 +1680,7 @@ public:
         if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VRHackerHUDState::VR_HUD_SUCCESS) {
             m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
             m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale);
+            m_vr_hud->set_cursor_hit_scale(&m_ui_option_crosshair_hit_scale);
         }
     }
 
@@ -1698,8 +1716,6 @@ public:
                 break;
         }
     }
-
-
 
     // -------------------------------------------------------------------------------------
     // ImGui logging

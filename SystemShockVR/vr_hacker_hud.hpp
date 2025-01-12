@@ -11,6 +11,8 @@
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
 #include "SDK/WIDGET_Minimap_classes.hpp"
+#include "SDK/WIDGET_MediaDisplay_classes.hpp"
+#include "SDK/WIDGET_TargetID_Display_classes.hpp"
 #include "SDK/WIDGET_HotbarSlot_classes.hpp"
 #include "SDK/WIDGET_VitalBars_classes.hpp"
 #include "SDK/UMG_classes.hpp"
@@ -89,6 +91,8 @@ private:
     // widget components
     SDK::UWidgetComponent* m_minimap_widget_component{ nullptr };
     SDK::UWidgetComponent* m_vital_bars_widget_component{ nullptr };
+    SDK::UWidgetComponent* m_media_display_widget_component{ nullptr };
+    SDK::UWidgetComponent* m_target_id_display_widget_component{ nullptr };
     std::array<SDK::UWidgetComponent*, 10> m_hotbar_slot_widget_components{};
     std::array<SDK::UWidgetComponent*, 5> m_hacker_hardware_widget_components{};
     SDK::UWidgetComponent* m_ui_mask_widget_component{ nullptr };
@@ -99,6 +103,9 @@ private:
 
     // widgets
     std::array<SDK::UWIDGET_HardwareButton_C*, 5> m_hardware_widgets{};
+
+    // materials
+    SDK::UMaterialInstanceDynamic* m_media_display_material{ nullptr };
 
 public:
     VRHackerHUD() {
@@ -165,6 +172,18 @@ public:
         }
 
         if (!attach_player_vital_bars()) {
+            destroy_actors();
+            m_hud_state = VR_HUD_ERROR;
+            return;
+        }
+
+        if (!attach_media_display()) {
+            destroy_actors();
+            m_hud_state = VR_HUD_ERROR;
+            return;
+        }
+
+        if (!attach_target_id_display()) {
             destroy_actors();
             m_hud_state = VR_HUD_ERROR;
             return;
@@ -260,6 +279,8 @@ public:
         m_mfd_component = nullptr;
         m_minimap_widget_component = nullptr;
         m_vital_bars_widget_component = nullptr;
+        m_media_display_widget_component = nullptr;
+        m_target_id_display_widget_component = nullptr;
         m_hotbar_slot_widget_components = {};
         m_hacker_hardware_widget_components = {};
         m_laser_pointer_component = nullptr;
@@ -596,7 +617,7 @@ public:
 
         SDK::FTransform minimap_transform{};
         minimap_transform.Rotation = { 0.094f, 0.f, 1.f, 0.f };
-        minimap_transform.Translation = { 0.f, 20.f, -5.0f };
+        minimap_transform.Translation = { 0.5f, 15.f, 0.0f };
         minimap_transform.Scale3D = { 1.f, 0.04f, 0.04f };
 
         m_minimap_widget_component = static_cast<SDK::UWidgetComponent*>(
@@ -610,6 +631,7 @@ public:
         }
 
         m_hud->WIDGET_Minimap->RemoveFromViewport();
+        m_minimap_widget_component->SetDrawSize({ 250.0f, 250.0f });
         m_minimap_widget_component->SetWidget(m_hud->WIDGET_Minimap);
         m_minimap_widget_component->SetVisibility(true, true);
         m_minimap_widget_component->SetHiddenInGame(false, false);
@@ -625,6 +647,122 @@ public:
         m_right_hand_attachments_actor->FinishAddComponent(m_minimap_widget_component, false, minimap_transform);
 
         API::get()->log_info("VRHackerHUD :: Attached Minimap");
+        return true;
+    }
+
+    bool attach_media_display() {
+        if (m_right_hand_attachments_actor == nullptr || m_rh_controller_component == nullptr || m_hud == nullptr) {
+            log_error("media_display :: Pointers not valid");
+            return false;
+        }
+
+        if (m_media_display_widget_component != nullptr) {
+            log_error("media_display :: Media Display already attached");
+            return false;
+        }
+
+        if (!SDK::UKismetSystemLibrary::IsValid(m_hud->WIDGET_MediaDisplay)) {
+            log_error("media_display :: Can't access Media Display");
+            return false;
+        }
+
+        SDK::FTransform media_display_transform{};
+        media_display_transform.Rotation = { 0.094f, 0.f, 1.f, 0.f };
+        media_display_transform.Translation = { 0.562f, 15.09f, 0.381f };
+        media_display_transform.Scale3D = { 1.f, 0.046f, 0.046f };
+
+        m_media_display_widget_component = static_cast<SDK::UWidgetComponent*>(
+            m_right_hand_attachments_actor->AddComponentByClass(
+                SDK::UWidgetComponent::StaticClass(), false, media_display_transform, false
+            )
+            );
+        if (m_media_display_widget_component == nullptr) {
+            log_error("media_display :: Failed to attach Media Display component");
+            return false;
+        }
+
+        auto panel_slot = (SDK::UCanvasPanelSlot*)m_hud->WIDGET_MediaDisplay->Slot;
+        if (panel_slot != nullptr) {
+            panel_slot->SetAlignment({ 0.5f, 0.5f });
+            panel_slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.5f}, {0.5f, 0.5f} });
+        }
+
+        m_hud->WIDGET_MediaDisplay->RemoveFromViewport();
+        m_media_display_widget_component->SetDrawSize({ 200.0f, 200.0f });
+        m_media_display_widget_component->SetWidget(m_hud->WIDGET_MediaDisplay);
+        m_media_display_widget_component->SetCollisionEnabled(SDK::ECollisionEnabled::NoCollision);
+
+        SDK::UMaterialInstanceConstant* material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
+            L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Translucent.Widget3DPassThrough_Translucent"
+        );
+
+        SDK::FLinearColor color{ 1.f, 1.f, 1.f, 0.1f };
+        m_media_display_widget_component->SetMaterial(0, material);
+        m_media_display_widget_component->SetTintColorAndOpacity(color);
+        m_media_display_widget_component->BlendMode = SDK::EWidgetBlendMode::Opaque;
+
+        m_right_hand_attachments_actor->FinishAddComponent(m_media_display_widget_component, false, media_display_transform);
+        set_media_display_visibility(false);
+
+        API::get()->log_info("VRHackerHUD :: Attached Media Display");
+        return true;
+    }
+
+    bool attach_target_id_display() {
+        if (m_right_hand_attachments_actor == nullptr || m_rh_controller_component == nullptr || m_hud == nullptr) {
+            log_error("target_id_display :: Pointers not valid");
+            return false;
+        }
+
+        if (m_target_id_display_widget_component != nullptr) {
+            log_error("target_id_display :: TargetID Display already attached");
+            return false;
+        }
+
+        if (!SDK::UKismetSystemLibrary::IsValid(m_hud->WIDGET_TargetID_Display)) {
+            log_error("target_id_display :: Can't access TargetID Display");
+            return false;
+        }
+
+        SDK::FTransform target_id_display_transform{};
+        target_id_display_transform.Rotation = { 0.094f, 0.f, 1.f, 0.f };
+        target_id_display_transform.Translation = { 2.0f, 14.5f, 8.6f };
+        target_id_display_transform.Scale3D = { 1.f, 0.025f, 0.020f };
+
+        m_target_id_display_widget_component = static_cast<SDK::UWidgetComponent*>(
+            m_right_hand_attachments_actor->AddComponentByClass(
+                SDK::UWidgetComponent::StaticClass(), false, target_id_display_transform, false
+            )
+            );
+        if (m_target_id_display_widget_component == nullptr) {
+            log_error("target_id_display :: Failed to attach TargetID Display component");
+            return false;
+        }
+
+        auto panel_slot = (SDK::UCanvasPanelSlot*)m_hud->WIDGET_TargetID_Display->Slot;
+        if (panel_slot != nullptr) {
+            panel_slot->SetAlignment({ 0.5f, 0.5f });
+            panel_slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.5f}, {0.5f, 0.5f} });
+        }
+
+        m_hud->WIDGET_TargetID_Display->RemoveFromViewport();
+        m_target_id_display_widget_component->SetDrawSize({ 450.0f, 120.0f });
+        m_target_id_display_widget_component->SetWidget(m_hud->WIDGET_TargetID_Display);
+        m_target_id_display_widget_component->SetVisibility(true, true);
+        m_target_id_display_widget_component->SetHiddenInGame(false, false);
+        m_target_id_display_widget_component->SetCollisionEnabled(SDK::ECollisionEnabled::NoCollision);
+
+        SDK::UMaterialInstanceConstant* material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
+            //L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Opaque.Widget3DPassThrough_Opaque"
+            L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Translucent.Widget3DPassThrough_Translucent"
+        );
+        SDK::FLinearColor color{ 1.f, 1.f, 1.f, 0.25f };
+        m_target_id_display_widget_component->SetMaterial(0, material);
+        m_target_id_display_widget_component->SetTintColorAndOpacity(color);
+
+        m_right_hand_attachments_actor->FinishAddComponent(m_target_id_display_widget_component, false, target_id_display_transform);
+
+        API::get()->log_info("VRHackerHUD :: Attached TargetID Display");
         return true;
     }
 
@@ -1205,6 +1343,20 @@ public:
         m_laser_pointer_component->K2_SetRelativeLocation({ (hit_distance / 2) + 30.f, 0.f, 0.f }, false, &m_reusable_result, false);
     }
 
+    void set_minimap_visibility(bool visible) {
+        if (m_minimap_widget_component != nullptr) {
+            m_ui_mask_widget_component->SetVisibility(visible, visible);
+            m_minimap_widget_component->SetHiddenInGame(!visible, true);
+        }
+    }
+
+    void set_media_display_visibility(bool visible) {
+        if (m_media_display_widget_component != nullptr) {
+            m_media_display_widget_component->SetVisibility(visible, visible);
+            m_media_display_widget_component->SetHiddenInGame(!visible, true);
+        }
+    }
+
     // -------------------------------------------------------------------------------------
     // attachments cleanup
     // -------------------------------------------------------------------------------------
@@ -1361,6 +1513,12 @@ public:
         }
     }
 
+    void set_cursor_hit_scale(float* scale) {
+        if (m_hud != nullptr && m_hud->WIDGET_CrosshairCursor != nullptr) {
+            m_hud->WIDGET_CrosshairCursor->MESH_CursorHit->SetRenderScale({ *scale, *scale });
+        }
+    }
+
     // moves MFD panel 10% up
     void align_mfd_panel() {
         if (!SDK::UKismetSystemLibrary::IsValid(m_hud->Panel_MultiFunctionDisplay)) {
@@ -1370,5 +1528,38 @@ public:
         auto slot = (SDK::UCanvasPanelSlot*)m_hud->Panel_MultiFunctionDisplay->Slot;
         slot->SetAlignment({ 0.5f, 1.0f });
         slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.9f}, {0.5f, 0.9f} });
+    }
+
+    void set_widget_component_color(bool background, SDK::FLinearColor color) {
+        if (!background) {
+            m_media_display_widget_component->SetTintColorAndOpacity(color);
+        }
+        else {
+            m_media_display_widget_component->SetBackgroundColor(color);
+        }
+    }
+
+    void set_widget_component_material(int material) {
+        SDK::UMaterialInstanceConstant* _material{ nullptr };
+        switch (material) {
+        case 0:
+            _material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
+                L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Opaque.Widget3DPassThrough_Opaque"
+            );
+            m_media_display_widget_component->SetMaterial(0, _material);
+            break;
+        case 1:
+            _material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
+                L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Translucent.Widget3DPassThrough_Translucent"
+            );
+            m_media_display_widget_component->SetMaterial(0, _material);
+            break;
+        case 2:
+            _material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
+                L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Masked.Widget3DPassThrough_Masked"
+            );
+            m_media_display_widget_component->SetMaterial(0, _material);
+            break;
+        }
     }
 };
