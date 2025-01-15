@@ -13,6 +13,7 @@
 #include "SDK/WIDGET_Minimap_classes.hpp"
 #include "SDK/WIDGET_MediaDisplay_classes.hpp"
 #include "SDK/WIDGET_TargetID_Display_classes.hpp"
+#include "SDK/WIDGET_TargetID_TargetingReticle_classes.hpp"
 #include "SDK/WIDGET_HotbarSlot_classes.hpp"
 #include "SDK/WIDGET_VitalBars_classes.hpp"
 #include "SDK/UMG_classes.hpp"
@@ -286,7 +287,7 @@ public:
         m_laser_pointer_component = nullptr;
     }
 
-    void destroy_actors() {
+    void destroy_actors(bool _clear_pointers = true) {
         API::get()->log_info("VRHackerHUD :: Destroying actors");
 
         if (SDK::UKismetSystemLibrary::IsValid(m_right_hand_attachments_actor) && m_right_hand_attachments_actor->IsA(SDK::AActor::StaticClass())) {
@@ -319,8 +320,10 @@ public:
             API::get()->log_info("VRHackerHUD :: HMD Actor destroyed");
         }
 
-        clear_pointers();
-        m_hud_state = VR_HUD_PENDING_INIT;
+        if (_clear_pointers) {
+            clear_pointers();
+            m_hud_state = VR_HUD_PENDING_INIT;
+        }
     }
 
     SDK::AActor* spawn_actor(SDK::FTransform transform) {
@@ -726,8 +729,8 @@ public:
 
         SDK::FTransform target_id_display_transform{};
         target_id_display_transform.Rotation = { 0.094f, 0.f, 1.f, 0.f };
-        target_id_display_transform.Translation = { 2.0f, 14.5f, 8.6f };
-        target_id_display_transform.Scale3D = { 1.f, 0.025f, 0.020f };
+        target_id_display_transform.Translation = { 2.0f, 13.5f, 8.6f };
+        target_id_display_transform.Scale3D = { 1.f, 0.02f, 0.02f };
 
         m_target_id_display_widget_component = static_cast<SDK::UWidgetComponent*>(
             m_right_hand_attachments_actor->AddComponentByClass(
@@ -746,7 +749,7 @@ public:
         }
 
         m_hud->WIDGET_TargetID_Display->RemoveFromViewport();
-        m_target_id_display_widget_component->SetDrawSize({ 450.0f, 120.0f });
+        m_target_id_display_widget_component->SetDrawSize({ 700.0f, 120.0f });
         m_target_id_display_widget_component->SetWidget(m_hud->WIDGET_TargetID_Display);
         m_target_id_display_widget_component->SetVisibility(true, true);
         m_target_id_display_widget_component->SetHiddenInGame(false, false);
@@ -1513,9 +1516,13 @@ public:
         }
     }
 
-    void set_cursor_hit_scale(float* scale) {
-        if (m_hud != nullptr && m_hud->WIDGET_CrosshairCursor != nullptr) {
-            m_hud->WIDGET_CrosshairCursor->MESH_CursorHit->SetRenderScale({ *scale, *scale });
+    void set_target_id_reticle_scale(float* scale) {
+        if (
+            m_hud != nullptr &&
+            m_hud->WIDGET_TargetID_Display != nullptr &&
+            m_hud->WIDGET_TargetID_Display->WIDGET_TargetID_TargetingReticle != nullptr
+            ) {
+            m_hud->WIDGET_TargetID_Display->WIDGET_TargetID_TargetingReticle->SetRenderScale({ *scale, *scale });
         }
     }
 
@@ -1528,38 +1535,5 @@ public:
         auto slot = (SDK::UCanvasPanelSlot*)m_hud->Panel_MultiFunctionDisplay->Slot;
         slot->SetAlignment({ 0.5f, 1.0f });
         slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.9f}, {0.5f, 0.9f} });
-    }
-
-    void set_widget_component_color(bool background, SDK::FLinearColor color) {
-        if (!background) {
-            m_media_display_widget_component->SetTintColorAndOpacity(color);
-        }
-        else {
-            m_media_display_widget_component->SetBackgroundColor(color);
-        }
-    }
-
-    void set_widget_component_material(int material) {
-        SDK::UMaterialInstanceConstant* _material{ nullptr };
-        switch (material) {
-        case 0:
-            _material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
-                L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Opaque.Widget3DPassThrough_Opaque"
-            );
-            m_media_display_widget_component->SetMaterial(0, _material);
-            break;
-        case 1:
-            _material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
-                L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Translucent.Widget3DPassThrough_Translucent"
-            );
-            m_media_display_widget_component->SetMaterial(0, _material);
-            break;
-        case 2:
-            _material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
-                L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Masked.Widget3DPassThrough_Masked"
-            );
-            m_media_display_widget_component->SetMaterial(0, _material);
-            break;
-        }
     }
 };

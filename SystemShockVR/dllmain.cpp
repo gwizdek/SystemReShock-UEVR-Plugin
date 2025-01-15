@@ -219,7 +219,7 @@ public:
     bool m_was_rendering_desktop{ false };
     bool m_skip_hud_depth{ false };
     SDK::FHitResult m_hit_result{};
-    int m_viewport_size_x, m_viewport_size_y;
+    int m_viewport_size_x{ 1920 }, m_viewport_size_y{ 1080 };
 
     // this set keeps events to be handled
     // if an event is successfully handled, it's removed form this set
@@ -283,7 +283,7 @@ public:
     float m_fov{ 120.f };
     float m_ui_option_crosshair_cursor_scale{ 0.3f };
     float m_ui_option_crosshair_brackets_scale{ 0.0f };
-    float m_ui_option_crosshair_hit_scale{ 0.3f };
+    float m_ui_option_target_id_reticle_scale{ 0.3f };
     int m_ui_option_crosshair_depth{ 5 };
     float m_ui_option_player_height_modifier{ 0.0f };
     int m_ui_option_look_sensitivity{ 5 };
@@ -995,6 +995,7 @@ public:
                 if (m_sdk_hud) {
                     m_sdk_hud->WIDGET_Compass->SetCompassVisibility(false);
                     m_sdk_hud->WIDGET_Biometer->ShowBiometer(false);
+                    apply_selected_crosshair_options();
                 }
 
                 // schedule vr hud init as level change has destroyed our custom actors
@@ -1163,7 +1164,7 @@ public:
                     //API::get()->log_warn("Montage Type: Ending / Single");
                     m_sdk_hud->SetForceHideCrosshairs(false);
                     m_sdk_hud->ShowTargetBrackets(true);
-                    apply_selected_cursor_size();
+                    apply_selected_crosshair_options();
                     vr->set_aim_method(2);
                     vr->set_mod_value("VR_RoomscaleMovement", "true");
                     API::UObjectHook::set_disabled(false);
@@ -1544,7 +1545,7 @@ public:
                         m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
                         m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
                     }
-                    apply_selected_cursor_size();
+                    apply_selected_crosshair_options();
 
                     vr->set_aim_method(2);
                     vr->set_snap_turn_enabled(true);
@@ -1676,11 +1677,11 @@ public:
         }
     }
 
-    void apply_selected_cursor_size() {
+    void apply_selected_crosshair_options() {
         if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VRHackerHUDState::VR_HUD_SUCCESS) {
             m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
             m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale);
-            m_vr_hud->set_cursor_hit_scale(&m_ui_option_crosshair_hit_scale);
+            m_vr_hud->set_target_id_reticle_scale(&m_ui_option_target_id_reticle_scale);
         }
     }
 
@@ -1785,8 +1786,9 @@ public:
             ImGui::SliderInt("Crosshair Depth", &m_ui_option_crosshair_depth, 0, 10);
             ImGui::SliderFloat("Crosshair Cursor Scale", &m_ui_option_crosshair_cursor_scale, 0.f, 1.f );
             ImGui::SliderFloat("Crosshair Brackets Scale", &m_ui_option_crosshair_brackets_scale, 0.f, 1.f);
-            if (ImGui::Button("Apply Cursor")) {
-                apply_selected_cursor_size();
+            ImGui::SliderFloat("TargetID Reticle Scale", &m_ui_option_target_id_reticle_scale, 0.f, 1.f);
+            if (ImGui::Button("Apply Crosshair Options")) {
+                apply_selected_crosshair_options();
             };
             ImGui::PopItemWidth();
 
@@ -2199,6 +2201,20 @@ public:
             API::get()->log_error("[Mod Config] Missing crosshair > brackets_scale value.");
         }
 
+        // target_id_reticle_scale
+        if (mod_config["crosshair"].has("target_id_reticle_scale")) {
+            std::string& crosshair_target_id_reticle_scale = mod_config["crosshair"]["target_id_reticle_scale"];
+            try {
+                m_ui_option_target_id_reticle_scale = std::stof(crosshair_target_id_reticle_scale);
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid crosshair > target_id_reticle_scale value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing crosshair > target_id_reticle_scale value.");
+        }
+
         return true;
     }
 
@@ -2217,6 +2233,7 @@ public:
         mod_config["crosshair"]["depth"] = std::to_string(m_ui_option_crosshair_depth).c_str();
         mod_config["crosshair"]["cursor_scale"] = std::to_string(m_ui_option_crosshair_cursor_scale).c_str();
         mod_config["crosshair"]["brackets_scale"] = std::to_string(m_ui_option_crosshair_brackets_scale).c_str();
+        mod_config["crosshair"]["target_id_reticle_scale"] = std::to_string(m_ui_option_target_id_reticle_scale).c_str();
 
         return mod_config_file.generate(mod_config, true);
     }
