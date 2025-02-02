@@ -664,6 +664,11 @@ public:
         m_hotbar_selector_button.set_state(state);
         m_hardware_selector_button.set_state(state);
 
+        // lock camera offsets
+        vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+        vr->set_mod_value("VR_CameraRightOffset", "0.000000");
+        vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+
         if (m_main_menu_in_game_visible.value) {
             // increase stick deadzone for better navigation in the menu
             if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
@@ -723,6 +728,15 @@ public:
             }
             // normal gameplay
             else {
+
+                // disable pushback with left trigger
+                if (state->Gamepad.bLeftTrigger >= 200) {               
+                    vr->set_mod_value("VR_RoomscaleMovement", "false");
+                }
+                else {
+                    vr->set_mod_value("VR_RoomscaleMovement", "true");
+                }
+
                 // prevent triggering crouch when channeling interaction stops
                 if (m_gamepad_btn_b.is_held()) {
                     m_gamepad_btn_b.mute_state(state);
@@ -1246,6 +1260,7 @@ public:
             vr->set_mod_value("UI_Distance", "2.000000");
             vr->set_mod_value("UI_Size", "1.500000");
             vr->set_aim_method(0);
+            vr->set_snap_turn_enabled(false); // disable rotation when in menu
             m_mod_events.extract(MOD_EVENT_SHOW_IN_GAME_MENU);
         }
 
@@ -1261,6 +1276,14 @@ public:
                 if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
                     vr->set_mod_value("VR_RoomscaleMovement", "true");
                     vr->set_aim_method(2);
+
+                    char snap_angle[16] = { 0 };
+                    vr->get_mod_value("VR_SnapturnTurnAngle", snap_angle, sizeof(snap_angle));
+                    int snap_angle_int = atoi(snap_angle);
+
+                    if (snap_angle_int != 359) {
+                        vr->set_snap_turn_enabled(true); // reenable rotation when exiting menu
+                    }
                 }
                 else if (m_pawn_state.value == PAWN_AVATAR) {
                     vr->set_mod_value("UI_Distance", "10.000000");
@@ -1499,7 +1522,9 @@ public:
                 control_rotation.Pitch += (state->Gamepad.sThumbRY / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
             }
 
-            pawn_controller->SetControlRotation(control_rotation);
+            if (m_main_menu_in_game_visible.value == false) {
+                pawn_controller->SetControlRotation(control_rotation); // disable rotation when in menu
+            }
         }
     }
 
