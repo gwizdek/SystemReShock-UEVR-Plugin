@@ -372,9 +372,11 @@ public:
         // - Actor
         // - Motion Controller
         // - Widget Interaction Component
-        // - Laser Pointer for Item Selector and MFD
+        // - Laser Pointer for Item Selector and MFD (Capsule Component)
         // - Minimap
         // - Vital Bars
+        // - Media Display
+        // - TargetID
         // --------------------------------------------------------------------
 
         // actor
@@ -527,7 +529,7 @@ public:
             return false;
         }
 
-        // spawning primary item selector component
+        // spawning secondary item selector component
         m_secondary_item_selector_component = static_cast<SDK::USceneComponent*>(
             m_secondary_item_selector_actor->AddComponentByClass(SDK::USceneComponent::StaticClass(), false, transform, true)
             );
@@ -1142,7 +1144,7 @@ public:
         );
     }
 
-    // moves hotbar item selector to reflect pawn movements
+    // moves hardware item selector to reflect pawn movements
     void update_secondary_item_selector_location(float delta) {
         if (m_pawn == nullptr || m_secondary_item_selector_component == nullptr)
             return;
