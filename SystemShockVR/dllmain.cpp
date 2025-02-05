@@ -731,7 +731,8 @@ public:
                     if (m_gamepad_trigger_left.is_held()) {
                         vr->set_mod_value("VR_RoomscaleMovement", "false");
                     }
-                    else {
+
+                    if (m_gamepad_trigger_left.is_released()) {
                         vr->set_mod_value("VR_RoomscaleMovement", "true");
                     }
                 }
