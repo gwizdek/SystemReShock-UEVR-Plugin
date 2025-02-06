@@ -80,7 +80,7 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 
 using namespace uevr;
 
-const char* MOD_VERSION = "1.1.0";
+const char* MOD_VERSION = "1.3.0";
 const int CB_DURATION_SAMPLE_RATE = 100;
 
 typedef struct _TIMER_STRUCT
@@ -290,6 +290,7 @@ public:
     bool m_ui_option_force_hide_compass{ true };
     bool m_ui_option_toggle_run_with_left_grip{ true };
     int m_ui_option_openxr_runtime{ META_QUEST };
+    bool m_ui_option_disable_roomscale_when_aiming{ true };
 
     // unused
     int m_ui_option_hotbar_selector_button{ 0 };
@@ -421,6 +422,7 @@ public:
         }
 
         handle_look_pivot();
+        handle_camera_lock(vr);
         handle_cyberspace_look_pivot(vr);
         handle_hud_depth(vr);
         handle_interactives_cursor_size();
@@ -723,6 +725,18 @@ public:
             }
             // normal gameplay
             else {
+
+                // disable pushback with left trigger
+                if (m_ui_option_disable_roomscale_when_aiming) {
+                    if (m_gamepad_trigger_left.is_held()) {
+                        vr->set_mod_value("VR_RoomscaleMovement", "false");
+                    }
+
+                    if (m_gamepad_trigger_left.is_released()) {
+                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                    }
+                }
+
                 // prevent triggering crouch when channeling interaction stops
                 if (m_gamepad_btn_b.is_held()) {
                     m_gamepad_btn_b.mute_state(state);
@@ -851,6 +865,13 @@ public:
             m_gamepad_btn_a.when_held_send(state, XINPUT_GAMEPAD_X);
             m_gamepad_btn_x.when_pressed_send(state, XINPUT_GAMEPAD_A);
         }
+    }
+
+    // lock camera offsets
+    void handle_camera_lock(const UEVR_VRData* vr) {
+        vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+        vr->set_mod_value("VR_CameraRightOffset", "0.000000");
+        vr->set_mod_value("VR_CameraUpOffset", "0.000000");
     }
 
     float get_current_weapon_distance_offset() {
@@ -1246,6 +1267,7 @@ public:
             vr->set_mod_value("UI_Distance", "2.000000");
             vr->set_mod_value("UI_Size", "1.500000");
             vr->set_aim_method(0);
+            vr->set_snap_turn_enabled(false); // disable rotation when in menu
             m_mod_events.extract(MOD_EVENT_SHOW_IN_GAME_MENU);
         }
 
@@ -1261,6 +1283,14 @@ public:
                 if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
                     vr->set_mod_value("VR_RoomscaleMovement", "true");
                     vr->set_aim_method(2);
+
+                    char snap_angle[16] = { 0 };
+                    vr->get_mod_value("VR_SnapturnTurnAngle", snap_angle, sizeof(snap_angle));
+                    int snap_angle_int = atoi(snap_angle);
+
+                    if (snap_angle_int != 359) {
+                        vr->set_snap_turn_enabled(true); // reenable rotation when exiting menu
+                    }
                 }
                 else if (m_pawn_state.value == PAWN_AVATAR) {
                     vr->set_mod_value("UI_Distance", "10.000000");
@@ -1499,7 +1529,9 @@ public:
                 control_rotation.Pitch += (state->Gamepad.sThumbRY / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
             }
 
-            pawn_controller->SetControlRotation(control_rotation);
+            if (!m_main_menu_in_game_visible.value) {
+                pawn_controller->SetControlRotation(control_rotation); // disable rotation when in menu
+            }
         }
     }
 
@@ -1766,6 +1798,8 @@ public:
             ImGui::SliderFloat("Player height modifier", &m_ui_option_player_height_modifier, -15.f, 15.f);
             ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
             ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
+            ImGui::Checkbox("Disable roomscale when aiming", &m_ui_option_disable_roomscale_when_aiming);
+            
             ImGui::Combo("HMD", &m_ui_option_openxr_runtime, "Meta Quest\0HP Reverb G2\0");
             
             //ImGui::SeparatorText("Button mappings");
@@ -2138,6 +2172,21 @@ public:
             API::get()->log_error("[Mod Config] Missing general > toggle_run_with_left_grip value.");
         }
 
+
+        // toggle_run_with_left_grip
+        if (mod_config["general"].has("disable_roomscale_when_aiming")) {
+            std::string& disable_roomscale_when_aiming = mod_config["general"]["disable_roomscale_when_aiming"];
+            try {
+                m_ui_option_disable_roomscale_when_aiming = std::stoi(disable_roomscale_when_aiming) == 1;
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid general > disable_roomscale_when_aiming value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing general > disable_roomscale_when_aiming value.");
+        }
+
         // openxr_runtime
         if (mod_config["general"].has("openxr_runtime")) {
             std::string& openxr_runtime = mod_config["general"]["openxr_runtime"];
@@ -2228,6 +2277,7 @@ public:
         mod_config["general"]["player_height_modifier"] = std::to_string(m_ui_option_player_height_modifier).c_str();
         mod_config["general"]["force_hide_compass"] = std::to_string(m_ui_option_force_hide_compass).c_str();
         mod_config["general"]["toggle_run_with_left_grip"] = std::to_string(m_ui_option_toggle_run_with_left_grip).c_str();
+        mod_config["general"]["disable_roomscale_when_aiming"] = std::to_string(m_ui_option_disable_roomscale_when_aiming).c_str();
         mod_config["general"]["openxr_runtime"] = std::to_string(m_ui_option_openxr_runtime).c_str();
 
         mod_config["crosshair"]["depth"] = std::to_string(m_ui_option_crosshair_depth).c_str();
