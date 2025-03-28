@@ -1,6 +1,9 @@
 # SystemReShock UEVR Plugin
+  
+> [!NOTE]
+> The UEVR profile is now also available through Unreal Easy Injector https://uevrdeluxe.org
 
-**Update**: The UEVR profile is now also available through Unreal Easy Injector https://uevrdeluxe.org  
+  
 
 Welcome back to Citadel Station hackers...
 
