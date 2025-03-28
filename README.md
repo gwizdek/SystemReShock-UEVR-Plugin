@@ -118,6 +118,7 @@ Mods that modify crosshair, hotbar slots, inventory and mfd can have negative im
 ## Troubleshooting
 ### General
 * Laser pointer on the MFD doesn't work - Check if the game window is in focus.
+* Valve Index: [**this**](https://github.com/mark-mon/uevr-index-controls/releases) tool by markmon will allow use of Knuckles controllers  
 
 ### Widescreen monitors
 * Misaligned cursor and laser pointer on MFD - Happens when resolution was changed, reinitialize runtime and reload a save game.
