@@ -1,5 +1,7 @@
 # SystemReShock UEVR Plugin
 
+**Update**: The UEVR profile is now also available through Unreal Easy Injector https://uevrdeluxe.org  
+
 Welcome back to Citadel Station hackers...
 
 This UEVR plugin is inspired by wonderful work of Ashok and the team (CJ117, TimBurton and Markmon), who created the original UEVR plugin ([**Link**](https://github.com/Ashok0/SystemShock-UEVR)) and it borrows some of the fixes and ideas, so many thanks to the guys.  
