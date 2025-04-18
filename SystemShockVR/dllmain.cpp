@@ -27,6 +27,7 @@
 #include "SDK/PAWN_Avatar_classes.hpp"
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
 #include "SDK/PAWN_Hacker_Simple_classes.hpp"
+#include "SDK/PAWN_Hacker_Pseudospace_classes.hpp"
 #include "SDK/PAWN_Hacker_Implant_parameters.hpp"
 #include "SDK/COMP_HackerInventory_classes.hpp"
 #include "SDK/WIDGET_InventoryContextMenu_classes.hpp"
@@ -97,9 +98,10 @@ typedef enum PawnState
     PAWN_HACKERSIMPLE,
     PAWN_HACKERIMPLANT,
     PAWN_AVATAR,
+    PAWN_PSEUDOSPACE,
 } PawnState;
 
-const char* PawnStateNames[5] = { "PAWN_UNKNOWN", "PAWN_PLAYERGHOST", "PAWN_HACKERSIMPLE", "PAWN_HACKERIMPLANT", "PAWN_AVATAR" };
+const char* PawnStateNames[6] = { "PAWN_UNKNOWN", "PAWN_PLAYERGHOST", "PAWN_HACKERSIMPLE", "PAWN_HACKERIMPLANT", "PAWN_AVATAR", "PAWN_PSEUDOSPACE"};
 
 typedef enum HackerWeapon
 {
@@ -118,6 +120,10 @@ typedef enum HackerWeapon
     WEAPON_GRENADE_LAUNCHER,
     WEAPON_ASSAULT_RIFLE,
     WEAPON_LASER_RAPIER,
+    WEAPON_PSEUDOPULSER,
+    WEAPON_PSEUDODISCLAUNCHER,
+    WEAPON_PSEUDONOVA,
+    WEAPON_CYBERGUN,
     GRENADE_MANAGER,
     MEDIPATCH_MANAGER,
     STAMINUP_MANAGER,
@@ -178,7 +184,7 @@ const std::map<HackerWeapon, WeaponMeta> weapons_map {
     { WEAPON_WRENCH,            { "Wrench",                 { 0.0f, 4.0f, -8.0f },      0.0f    } },    // ok
     { WEAPON_SHOTGUN,           { "Shotgun",                { -2.6f, -2.0f, -1.1f },    10.0f   } },    // ok
     { WEAPON_SKORPION,          { "Skorpion",               { 0.0f, -5.0f, -0.5f },     10.0f   } },    // ok
-    { WEAPON_MAGNUM,            { "Magnum",                 { -2.0f, -0.4f, -1.43f },   0.0f    } },    // ok
+    { WEAPON_MAGNUM,            { "Magnum",                 { 0.0f, -0.4f, -1.43f },    0.0f    } },    // ok
     { WEAPON_ION,               { "Ion",                    { 2.5f, -4.0f, -1.5f },     10.0f   } },    // ok
     { WEAPON_RAIL,              { "Rail",                   { 3.5f, -6.4f, -4.4f },     10.0f   } },    // ok
     { WEAPON_PLASMA_RIFLE,      { "PlasmaRifle",            { 10.0f, -2.3f, -7.6f },    10.0f   } },    // ok
@@ -188,6 +194,10 @@ const std::map<HackerWeapon, WeaponMeta> weapons_map {
     { WEAPON_GRENADE_LAUNCHER,  { "GrenadeLauncher",        { 6.0f, -6.0f, -1.15f },    10.0f   } },    // ok
     { WEAPON_ASSAULT_RIFLE,     { "AssaultRifle",           { 6.5f, -5.0f, -1.1f },     10.0f   } },    // ok
     { WEAPON_LASER_RAPIER,      { "LaserRapier",            { -2.0f, -15.0f, 0.0f },    0.0f    } },    // ok
+    { WEAPON_PSEUDOPULSER,      { "PseudoPulser",           { 8.0f, -2.0f, -3.0f },     0.0f    } },    // ok
+    { WEAPON_PSEUDODISCLAUNCHER,{ "PseudoDiscLauncher",     { 8.0f, -2.0f, -3.0f },     0.0f    } },    // ok
+    { WEAPON_PSEUDONOVA,        { "PseudoNova",             { 8.0f, -2.0f, -3.0f },     0.0f    } },    // ok
+    { WEAPON_CYBERGUN,          { "Cybergun",               { 6.0f, -2.0f, -3.0f },     0.0f    } },    // ok
     { GRENADE_MANAGER,          { "GrenadeManager",         { 0.0f, -3.5f, -2.0f },     0.0f    } },    // ok
     { MEDIPATCH_MANAGER,        { "MedipatchManager",       { 0.0f, -1.5f, -3.5f },     0.0f    } },    // ok
     { STAMINUP_MANAGER,         { "StaminupManager",        { 0.0f, -1.5f, -3.5f },     0.0f    } },    // ok
@@ -256,6 +266,7 @@ public:
     MemoProperty<bool> m_is_crashing{ false, false };
     MemoProperty<bool> m_is_using_laptop{ false, false };
     MemoProperty<bool> m_is_media_display_visible{ false, false };
+    MemoProperty<bool> m_is_active_cinematic_action{ false, false };
     MemoProperty<PawnState> m_pawn_state{ PAWN_UNKNOWN, PAWN_UNKNOWN };
     MemoProperty<HackerWeapon> m_weapon_state{ WEAPON_NONE, WEAPON_NONE };
     MemoProperty<SDK::ULevel*> m_level{ nullptr, nullptr };
@@ -307,22 +318,27 @@ public:
     void on_dllmain() override {}
 
     void on_initialize() override {
-        // Logs to the appdata UnrealVRMod log.txt file
-        API::get()->log_info("UEVR Initializing...");
+        try {
+            // Logs to the appdata UnrealVRMod log.txt file
+            API::get()->log_info("UEVR Initializing...");
 
-        // load stored configuration from config file
-        load_plugin_config();
+            // load stored configuration from config file
+            load_plugin_config();
 
-        ImGui::CreateContext();
+            ImGui::CreateContext();
 
-        // remove stale VR HUD actors (when re-enabling the plugin)
-        VRHackerHUD::cleanup();
-        m_vr_hud = new VRHackerHUD();
+            // remove stale VR HUD actors (when re-enabling the plugin)
+            VRHackerHUD::cleanup();
+            m_vr_hud = new VRHackerHUD();
 
-        m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
+            m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
         
-        // disable player focus (camera pull) on interactable objects like vending machines
-        MOVECONTROL_FocusableInteract_C::disable_character_focusable_interactions();
+            // disable player focus (camera pull) on interactable objects like vending machines
+            MOVECONTROL_FocusableInteract_C::disable_character_focusable_interactions();
+        }
+        catch (...) {
+            API::get()->log_error("[main][on_initialize] Exception");
+        }
     }
 
     void on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) {
@@ -354,7 +370,7 @@ public:
 
         if (state != nullptr) {
             if (
-                m_pawn_state.matches_any({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT, PAWN_AVATAR }) &&
+                m_pawn_state.matches_any({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT, PAWN_AVATAR, PAWN_PSEUDOSPACE }) &&
                 !m_mfd_visible.value
             ) {
                 handle_smooth_turning(state, vr);
@@ -369,77 +385,93 @@ public:
     }
 
     void on_pre_engine_tick(API::UGameEngine * engine, float delta) override {
-        PLUGIN_LOG_ONCE("Pre Engine Tick: %f", delta);
+        try {
+            PLUGIN_LOG_ONCE("Pre Engine Tick: %f", delta);
 
-        m_cb_calls_count = m_cb_calls_count < CB_DURATION_SAMPLE_RATE ? ++m_cb_calls_count : 0;
-        // start cb timer
-        std::chrono::steady_clock::time_point begin_time;
-        if (m_ui_option_show_debug_view && m_cb_calls_count == 0) {
-            begin_time = std::chrono::steady_clock::now();
-        }
-
-        const UEVR_VRData* vr = API::get()->param()->vr;
-
-        // if the controllers are not active, the xinput cb is not triggered.
-        // normally we want the xinput cb to prepare vars as it's the first cb to be called
-        // but if it wasn't called, we prepare them here
-        if (!m_xinput_cb_processed) {
-            if (!vr->is_runtime_ready())
-                return;
-
-            if (!prepare_state(vr)) {
-                API::get()->log_info("State not prepared");
-                return;
+            m_cb_calls_count = m_cb_calls_count < CB_DURATION_SAMPLE_RATE ? ++m_cb_calls_count : 0;
+            // start cb timer
+            std::chrono::steady_clock::time_point begin_time;
+            if (m_ui_option_show_debug_view && m_cb_calls_count == 0) {
+                begin_time = std::chrono::steady_clock::now();
             }
 
-            handle_pawn_changes(vr);
-        }
-        else {
-            // reset for next cb iteration
-            m_xinput_cb_processed = false;
-        }
+            const UEVR_VRData* vr = API::get()->param()->vr;
 
-        // add delta time to dual buttons
-        //m_gamepad_btn_b.add_delta(delta);
-        m_gamepad_btn_y.add_delta(delta);
+            // if the controllers are not active, the xinput cb is not triggered.
+            // normally we want the xinput cb to prepare vars as it's the first cb to be called
+            // but if it wasn't called, we prepare them here
+            if (!m_xinput_cb_processed) {
+                if (!vr->is_runtime_ready())
+                    return;
+
+                if (!prepare_state(vr)) {
+                    API::get()->log_info("State not prepared");
+                    return;
+                }
+
+                handle_pawn_changes(vr);
+            }
+            else {
+                // reset for next cb iteration
+                m_xinput_cb_processed = false;
+            }
+
+            // add delta time to dual buttons
+            //m_gamepad_btn_b.add_delta(delta);
+            m_gamepad_btn_y.add_delta(delta);
         
-        handle_level_change(vr);
+            handle_level_change(vr);
 
-        if (m_vr_hud != nullptr) {
-            m_vr_hud->handle_mod_events(&m_mod_events);
+            try {
+                if (m_vr_hud != nullptr) {
+                    m_vr_hud->handle_mod_events(&m_mod_events);
 
-            if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
-                if (!m_mfd_visible.value && m_hotbar_selector_button.is_held()) {
-                    m_vr_hud->update_primary_item_selector_location(delta);
-                }
-                if (!m_mfd_visible.value && m_hardware_selector_button.is_held()) {
-                    m_vr_hud->update_secondary_item_selector_location(delta);
-                }
-                if (m_mfd_visible.value && !m_mod_events.contains(MOD_EVENT_SHOW_MFD)) {
-                    m_vr_hud->update_mfd_mask_location(delta);
+                    if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
+                        if (!m_mfd_visible.value && m_hotbar_selector_button.is_held()) {
+                            m_vr_hud->update_primary_item_selector_location(delta);
+                        }
+                        if (!m_mfd_visible.value && m_hardware_selector_button.is_held()) {
+                            m_vr_hud->update_secondary_item_selector_location(delta);
+                        }
+                        if (m_mfd_visible.value && !m_mod_events.contains(MOD_EVENT_SHOW_MFD)) {
+                            m_vr_hud->update_mfd_mask_location(delta);
+                        }
+                    }
                 }
             }
+            catch (...) {
+                API::get()->log_error("[main][on_pre_engine_tick][vr_hud] Exception");
+            }
+
+            try {
+                handle_look_pivot();
+                handle_camera_lock(vr);
+                handle_cyberspace_look_pivot(vr);
+                handle_hud_depth(vr);
+                handle_interactives_cursor_size();
+                handle_animations(vr);
+                handle_intro_laptop(vr);
+                //handle_player_death(vr);
+                handle_weapon_changes();
+                handle_arms_mesh_visibility();
+                handle_media_display();
+                handle_player_height(vr);
+                handle_in_game_menu(vr);
+                handle_compass();
+                handle_enegry_shield();
+            }
+            catch (...) {
+                API::get()->log_error("[main][on_pre_engine_tick][handlers] Exception");
+            }
+
+            // calculate cb duration
+            if (m_ui_option_show_debug_view && m_cb_calls_count == 0) {
+                std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
+                m_ui_pre_engine_tick_duration = static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count());
+            }
         }
-
-        handle_look_pivot();
-        handle_camera_lock(vr);
-        handle_cyberspace_look_pivot(vr);
-        handle_hud_depth(vr);
-        handle_interactives_cursor_size();
-        handle_animations(vr);
-        handle_intro_laptop(vr);
-        //handle_player_death(vr);
-        handle_weapon_changes();
-        handle_arms_mesh_visibility();
-        handle_media_display();
-        handle_player_height(vr);
-        handle_in_game_menu(vr);
-        handle_compass();
-
-        // calculate cb duration
-        if (m_ui_option_show_debug_view && m_cb_calls_count == 0) {
-            std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
-            m_ui_pre_engine_tick_duration = static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count());
+        catch (...) {
+            API::get()->log_error("[main][on_pre_engine_tick] Exception");
         }
     }
 
@@ -449,150 +481,161 @@ public:
 
     // sets all needed pointers and state vars, so we can use them later in handlers
     bool prepare_state(const UEVR_VRData* vr) {
-
-        // world
-        m_sdk_world = SDK::UWorld::GetWorld();
-        if (m_sdk_world == nullptr) {
-            API::get()->log_warn("WARN: prepare_state::world = nullptr");
-            return false;
-        }
-
-        // pawn
-        m_sdk_pawn = SDK::UGameplayStatics::GetPlayerPawn(m_sdk_world, 0);
-        if (m_sdk_pawn == nullptr) {
-            API::get()->log_warn("WARN: prepare_state::m_sdk_pawn = nullptr");
-            return false;
-        }
-
-        // pawn state (enums)
-        if (m_sdk_pawn->GetFullName().starts_with("PAWN_Avatar")) {
-            m_pawn_state.set_value(PAWN_AVATAR);
-        }
-        else if (m_sdk_pawn->GetFullName().starts_with("PAWN_PlayerGhost")) {
-            m_pawn_state.set_value(PAWN_PLAYERGHOST);
-        }
-        else if (m_sdk_pawn->GetFullName().starts_with("PAWN_Hacker_Simple")) {
-            m_pawn_state.set_value(PAWN_HACKERSIMPLE);
-        }
-        else if (m_sdk_pawn->GetFullName().starts_with("PAWN_Hacker_Implant")) {
-            m_pawn_state.set_value(PAWN_HACKERIMPLANT);
-        }
-
-        // level
-        m_level.set_value(m_sdk_world->PersistentLevel);
-        
-        // hud, vr hud, inventory context menu
-        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->GetNeuralHUD(&m_sdk_hud);
-            if (m_sdk_hud == nullptr) {
-                API::get()->log_warn("WARN: prepare_state::hud = nullptr");
+        try {
+            // world
+            m_sdk_world = SDK::UWorld::GetWorld();
+            if (m_sdk_world == nullptr) {
+                API::get()->log_warn("WARN: prepare_state::world = nullptr");
                 return false;
             }
-            m_mfd_inventory_context_menu_visible.set_value(m_sdk_hud->WIDGET_InventoryContextMenu->IsInventoryContextMenuEnabled);
-            m_is_booting_up.set_value(
-                m_sdk_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator7 &&
-                m_sdk_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator0
-            );
-            m_is_crashing.set_value(
-                m_sdk_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator2 &&
-                m_sdk_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator3
-            );
-            m_vr_hud->set_pointers(m_sdk_world, static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn), m_sdk_hud);
 
-            m_is_media_display_visible.consume();
-            m_sdk_hud->IsMediaDisplayVisible(&m_is_media_display_visible.value);
-                
+            // pawn
+            m_sdk_pawn = SDK::UGameplayStatics::GetPlayerPawn(m_sdk_world, 0);
+            if (m_sdk_pawn == nullptr) {
+                API::get()->log_warn("WARN: prepare_state::m_sdk_pawn = nullptr");
+                return false;
+            }
 
+            // pawn state (enums)
+            if (m_sdk_pawn->GetFullName().starts_with("PAWN_Avatar")) {
+                m_pawn_state.set_value(PAWN_AVATAR);
+            }
+            else if (m_sdk_pawn->GetFullName().starts_with("PAWN_PlayerGhost")) {
+                m_pawn_state.set_value(PAWN_PLAYERGHOST);
+            }
+            else if (m_sdk_pawn->GetFullName().starts_with("PAWN_Hacker_Simple")) {
+                m_pawn_state.set_value(PAWN_HACKERSIMPLE);
+            }
+            else if (m_sdk_pawn->GetFullName().starts_with("PAWN_Hacker_Implant")) {
+                m_pawn_state.set_value(PAWN_HACKERIMPLANT);
+            }
+            else if (m_sdk_pawn->GetFullName().starts_with("PAWN_Hacker_Pseudospace")) {
+                m_pawn_state.set_value(PAWN_PSEUDOSPACE);
+            }
 
+            // level
+            m_level.set_value(m_sdk_world->PersistentLevel);
+        
+            // hud, vr hud, inventory context menu
+            if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->GetNeuralHUD(&m_sdk_hud);
+                if (m_sdk_hud == nullptr) {
+                    API::get()->log_warn("WARN: prepare_state::hud = nullptr");
+                    return false;
+                }
+                m_mfd_inventory_context_menu_visible.set_value(m_sdk_hud->WIDGET_InventoryContextMenu->IsInventoryContextMenuEnabled);
+                m_is_booting_up.set_value(
+                    m_sdk_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator7 &&
+                    m_sdk_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator0
+                );
+                m_is_crashing.set_value(
+                    m_sdk_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator2 &&
+                    m_sdk_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator3
+                );
+                m_vr_hud->set_pointers(m_sdk_world, static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn), m_sdk_hud);
 
-        }
-        else {
-            m_sdk_hud = nullptr;
-            m_vr_hud->set_pointers(m_sdk_world, nullptr, nullptr);
-        }
+                m_is_media_display_visible.consume();
+                m_sdk_hud->IsMediaDisplayVisible(&m_is_media_display_visible.value);
+            }
+            else {
+                m_sdk_hud = nullptr;
+                m_vr_hud->set_pointers(m_sdk_world, nullptr, nullptr);
+            }
 
-        // inventory, current weapon, alive, interacting, animations
-        if (
-            m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass()) ||
-            m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())
-            ) {
-            m_inventory = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->COMP_HackerInventory;
+            // inventory, current weapon, alive, interacting, animations
+            if (
+                m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass()) ||
+                m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())
+                ) {
+
+                m_is_active_cinematic_action.consume();
+                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->HasQueuedOrActiveCinematicAction(&m_is_active_cinematic_action.value);
+
+                m_inventory = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->COMP_HackerInventory;
             
-            m_current_weapon = m_inventory->CurrentEquippedWeapon;
-            m_player_alive.set_value(static_cast<SDK::APAWN_SystemShockCharacter_C*>(m_sdk_pawn)->IsAlive);
-            m_player_interacting.set_value(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ChannelingInteractable != nullptr);
+                m_current_weapon = m_inventory->CurrentEquippedWeapon;
+                m_player_alive.set_value(static_cast<SDK::APAWN_SystemShockCharacter_C*>(m_sdk_pawn)->IsAlive);
+                m_player_interacting.set_value(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ChannelingInteractable != nullptr);
 
-            // get channeling interactable name
-            if (m_player_interacting.value) {
-                m_channeling_interactable_name.set_value(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ChannelingInteractableName.ToString());
-            } else {
+                // get channeling interactable name
+                if (m_player_interacting.value) {
+                    m_channeling_interactable_name.set_value(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ChannelingInteractableName.ToString());
+                } else {
+                    m_channeling_interactable_name.set_value("");
+                }
+
+                // animations
+                const auto action_manager = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->COMP_ActionManager;
+                if (action_manager != nullptr) {
+                    // we do this here instead of using set_value (store old montage in prev_value and pass value to method)
+                    m_current_montage.consume();
+                    action_manager->GetCurrentMontage(&m_current_montage.value);
+                    action_manager->GetCurrentAction(&m_current_action);
+
+                    m_camera_rotation = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->K2_GetComponentRotation();
+                }
+            }
+            else {
+                m_inventory = nullptr;
+                m_current_weapon = nullptr;
+                m_player_alive.set_value(false);
+                m_player_interacting.set_value(false);
                 m_channeling_interactable_name.set_value("");
+                m_current_montage.set_value(nullptr);
+                m_current_action = nullptr;
             }
 
-            // animations
-            const auto action_manager = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->COMP_ActionManager;
-            if (action_manager != nullptr) {
-                // we do this here instead of using set_value (store old montage in prev_value and pass value to method)
-                m_current_montage.consume();
-                action_manager->GetCurrentMontage(&m_current_montage.value);
-                action_manager->GetCurrentAction(&m_current_action);
+            // ingame menu
+            SDK::UWIDGET_MainMenu_InGame_C* main_menu{ nullptr };
 
-                m_camera_rotation = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->K2_GetComponentRotation();
+            // pseudospace class is not loaded untill last cyberspace level. When it's not loaded, calling pawn->IsA takes over 1ms so we're using pawn state
+            if (m_pawn_state.value == PAWN_PSEUDOSPACE) {
             }
-        }
-        else {
-            m_inventory = nullptr;
-            m_current_weapon = nullptr;
-            m_player_alive.set_value(false);
-            m_player_interacting.set_value(false);
-            m_channeling_interactable_name.set_value("");
-            m_current_montage.set_value(nullptr);
-            m_current_action = nullptr;
-        }
-
-        // ingame menu
-        SDK::UWIDGET_MainMenu_InGame_C* main_menu{ nullptr };
-        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-            static_cast<SDK::UWIDGET_PlayerHUD_C*>(static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
-            m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
-        } 
-        else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
-            static_cast<SDK::UWIDGET_SimpleHUD_C*>(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
-            m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
-        }
-        else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
-            API::get()->log_warn("WARN: avatar");
-            static_cast<SDK::UWIDGET_CyberspaceHUD_C*>(static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->CyberspaceUI)->GetMainMenuWidget(&main_menu);
-            if (main_menu != nullptr) {
-                API::get()->log_warn("WARN: main_menu->IsMainMenuEnabled %d", main_menu->IsMainMenuEnabled);
+            else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                static_cast<SDK::UWIDGET_PlayerHUD_C*>(static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
+                m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
+            } 
+            else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
+                static_cast<SDK::UWIDGET_SimpleHUD_C*>(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
+                m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
             }
-            m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
-        }
-        else {
-            m_main_menu_in_game_visible.set_value(false);
-        }
+            else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
+                API::get()->log_warn("WARN: avatar");
+                static_cast<SDK::UWIDGET_CyberspaceHUD_C*>(static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->CyberspaceUI)->GetMainMenuWidget(&main_menu);
+                if (main_menu != nullptr) {
+                    API::get()->log_warn("WARN: main_menu->IsMainMenuEnabled %d", main_menu->IsMainMenuEnabled);
+                }
+                m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
+            }
+            else {
+                m_main_menu_in_game_visible.set_value(false);
+            }
 
-        // Introduction level laptop
-        set_intro_laptop_pointer();
-        if (m_intro_laptop != nullptr) {
-            m_is_using_laptop.set_value(m_intro_laptop->IsInteracting);
+            // Introduction level laptop
+            set_intro_laptop_pointer();
+            if (m_intro_laptop != nullptr) {
+                m_is_using_laptop.set_value(m_intro_laptop->IsInteracting);
+            }
+
+            // mfd
+            m_mfd_visible.set_value(m_sdk_hud != nullptr && m_sdk_hud->bIsMFDVisible);
+
+            // -------------- old code ------------
+            // sets pointer to PAWN
+            m_pawn = API::get()->get_local_pawn(0);
+            if (m_pawn == nullptr) {
+                API::get()->log_warn("WARN: prepare_state::m_pawn = nullptr");
+                return false;
+            }
+            set_player_crouching_state();
+            set_weapon_state();
+
+            return true;
         }
-
-        // mfd
-        m_mfd_visible.set_value(m_sdk_hud != nullptr && m_sdk_hud->bIsMFDVisible);
-
-        // -------------- old code ------------
-        // sets pointer to PAWN
-        m_pawn = API::get()->get_local_pawn(0);
-        if (m_pawn == nullptr) {
-            API::get()->log_warn("WARN: prepare_state::m_pawn = nullptr");
+        catch (...) {
+            API::get()->log_error("[main][prepare_state] Exception");
             return false;
         }
-
-        set_player_crouching_state();
-        set_weapon_state();
-
-        return true;
     }
 
     void set_player_crouching_state() {
@@ -607,42 +650,52 @@ public:
     }
 
     void set_weapon_state() {
-        if (m_current_weapon != nullptr) {
-            if (m_player_interacting.value) {
-                m_weapon_state.set_value(WEAPON_NONE);
-                return;
-            }
-
-            std::string weapon_name = m_current_weapon->GetName();
-
-            for (auto const& [key, val] : weapons_map) {
-                if (weapon_name.find(get<0>(val)) != std::string::npos) {
-                    m_weapon_state.set_value(key);
+        try {
+            if (m_current_weapon != nullptr) {
+                if (m_player_interacting.value) {
+                    m_weapon_state.set_value(WEAPON_NONE);
                     return;
                 }
+
+                std::string weapon_name = m_current_weapon->GetName();
+
+                for (auto const& [key, val] : weapons_map) {
+                    if (weapon_name.find(get<0>(val)) != std::string::npos) {
+                        m_weapon_state.set_value(key);
+                        return;
+                    }
+                }
+                m_weapon_state.set_value(WEAPON_NONE);
             }
-            m_weapon_state.set_value(WEAPON_NONE);
+            else {
+                m_weapon_state.set_value(WEAPON_NONE);
+            }
         }
-        else {
-            m_weapon_state.set_value(WEAPON_NONE);
+        catch (...) {
+            API::get()->log_error("[main][set_weapon_state] Exception");
         }
     }
 
     void set_intro_laptop_pointer() {
-        if (m_pawn_state.value != PAWN_HACKERSIMPLE || m_intro_laptop != nullptr)
-            return;
+        try {
+            if (m_pawn_state.value != PAWN_HACKERSIMPLE || m_intro_laptop != nullptr)
+                return;
 
-        API::UClass* laptop_c = API::get()->find_uobject<API::UClass>(L"BlueprintGeneratedClass /Game/Art/Props/Hacker_Apartment/Laptop/INTERACT_Laptop.INTERACT_Laptop_C");
-        if (laptop_c != nullptr) {
-            std::vector<SDK::AINTERACT_Laptop_C*> matching_objects = laptop_c->get_objects_matching<SDK::AINTERACT_Laptop_C>();
-            //API::get()->log_info("AINTERACT_Laptop_C object count: %d", matching_objects.size());
+            API::UClass* laptop_c = API::get()->find_uobject<API::UClass>(L"BlueprintGeneratedClass /Game/Art/Props/Hacker_Apartment/Laptop/INTERACT_Laptop.INTERACT_Laptop_C");
+            if (laptop_c != nullptr) {
+                std::vector<SDK::AINTERACT_Laptop_C*> matching_objects = laptop_c->get_objects_matching<SDK::AINTERACT_Laptop_C>();
+                //API::get()->log_info("AINTERACT_Laptop_C object count: %d", matching_objects.size());
 
-            for (size_t i = 0; i < matching_objects.size(); i++) {
-                if (matching_objects[i]->GetFullName().find(".INTERACT_Laptop") != std::wstring::npos) {
-                    API::get()->log_warn("AINTERACT_Laptop_C found");
-                    m_intro_laptop = matching_objects[i];
+                for (size_t i = 0; i < matching_objects.size(); i++) {
+                    if (matching_objects[i]->GetFullName().find(".INTERACT_Laptop") != std::wstring::npos) {
+                        API::get()->log_warn("AINTERACT_Laptop_C found");
+                        m_intro_laptop = matching_objects[i];
+                    }
                 }
             }
+        }
+        catch (...) {
+            API::get()->log_error("[main][set_intro_laptop_pointer] Exception");
         }
     }
 
@@ -652,218 +705,223 @@ public:
 
     // handles controller state based on game context
     void handle_controller_input(XINPUT_STATE* state, const UEVR_VRData* vr) {
-        m_gamepad_btn_a.set_state(state);
-        m_gamepad_btn_x.set_state(state);
-        m_gamepad_btn_b.set_state(state);
-        m_gamepad_btn_y.set_state(state);
-        m_gamepad_right_shoulder.set_state(state);
-        m_gamepad_left_shoulder.set_state(state);
-        m_gamepad_right_thumb.set_state(state);
-        m_gamepad_left_thumb.set_state(state);
-        m_gamepad_trigger_right.set_state(state);
-        m_gamepad_trigger_left.set_state(state);
+        try {
+            m_gamepad_btn_a.set_state(state);
+            m_gamepad_btn_x.set_state(state);
+            m_gamepad_btn_b.set_state(state);
+            m_gamepad_btn_y.set_state(state);
+            m_gamepad_right_shoulder.set_state(state);
+            m_gamepad_left_shoulder.set_state(state);
+            m_gamepad_right_thumb.set_state(state);
+            m_gamepad_left_thumb.set_state(state);
+            m_gamepad_trigger_right.set_state(state);
+            m_gamepad_trigger_left.set_state(state);
 
-        m_hotbar_selector_button.set_state(state);
-        m_hardware_selector_button.set_state(state);
+            m_hotbar_selector_button.set_state(state);
+            m_hardware_selector_button.set_state(state);
 
-        if (m_main_menu_in_game_visible.value) {
-            // increase stick deadzone for better navigation in the menu
-            if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
-                state->Gamepad.sThumbLX = 0;
-            }
-            if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
-                state->Gamepad.sThumbLY = 0;
-            }
-
-            // don't remap other buttons in in-game menu
-            return;
-        }
-
-        // clear jumping flag
-        if (m_gamepad_btn_x.is_released()) {
-            m_player_jumping = false;
-        }
-
-        // normal level
-        if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
-            // mute right stick Y axis
-            state->Gamepad.sThumbRY = 0;
-
-            // clear sprinting flag when using selected interactables (caused sporadic arms mesh misalignment)
-            if (
-                m_player_interacting.has_changed() &&
-                m_player_interacting.value) {
-                for (InteractableMeta interactable : g_interactables) {
-                    if (m_channeling_interactable_name.value.find(std::get<0>(interactable)) != std::string::npos) {
-                        m_player_sprinting = false;
-                    }
+            if (m_main_menu_in_game_visible.value) {
+                // increase stick deadzone for better navigation in the menu
+                if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
+                    state->Gamepad.sThumbLX = 0;
                 }
-            }
-
-            // MFD on
-            if (m_mfd_visible.value) {
-                handle_mfd_interactions(state, vr);
-            }
-            // interaction with with puzzles / vending machines / ladders
-            else if (m_player_interacting.value) {
-                // - make B btn exit interaction
-                // - make A btn interact
-
-                m_gamepad_btn_a.when_pressed_send(state, XINPUT_GAMEPAD_X);
-                m_gamepad_btn_a.mute_state(state);
-
-                // TODO check if this doesn't deadlock movement
-                // programmatically stop interaction
-                if (m_gamepad_btn_b.is_pressed()) {
-                    bool result;
-                    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->TryStopChannelingInteraction(&result);
-                    if (result) {
-                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->TryStopFocusingOnInteract(&result);
-                    }
+                if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
+                    state->Gamepad.sThumbLY = 0;
                 }
-                m_gamepad_btn_b.mute_state(state);
+
+                // don't remap other buttons in in-game menu
+                return;
             }
-            // normal gameplay
-            else {
 
-                // disable pushback with left trigger
-                if (m_ui_option_disable_roomscale_when_aiming) {
-                    if (m_gamepad_trigger_left.is_held()) {
-                        vr->set_mod_value("VR_RoomscaleMovement", "false");
-                    }
+            // clear jumping flag
+            if (m_gamepad_btn_x.is_released()) {
+                m_player_jumping = false;
+            }
 
-                    if (m_gamepad_trigger_left.is_released()) {
-                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+            // normal level
+            if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
+                // mute right stick Y axis
+                state->Gamepad.sThumbRY = 0;
+
+                // clear sprinting flag when using selected interactables (caused sporadic arms mesh misalignment)
+                if (
+                    m_player_interacting.has_changed() &&
+                    m_player_interacting.value) {
+                    for (InteractableMeta interactable : g_interactables) {
+                        if (m_channeling_interactable_name.value.find(std::get<0>(interactable)) != std::string::npos) {
+                            m_player_sprinting = false;
+                        }
                     }
                 }
 
-                // prevent triggering crouch when channeling interaction stops
-                if (m_gamepad_btn_b.is_held()) {
+                // MFD on
+                if (m_mfd_visible.value) {
+                    handle_mfd_interactions(state, vr);
+                }
+                // interaction with with puzzles / vending machines / ladders
+                else if (m_player_interacting.value) {
+                    // - make B btn exit interaction
+                    // - make A btn interact
+
+                    m_gamepad_btn_a.when_pressed_send(state, XINPUT_GAMEPAD_X);
+                    m_gamepad_btn_a.mute_state(state);
+
+                    // TODO check if this doesn't deadlock movement
+                    // programmatically stop interaction
+                    if (m_gamepad_btn_b.is_pressed()) {
+                        bool result;
+                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->TryStopChannelingInteraction(&result);
+                        if (result) {
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->TryStopFocusingOnInteract(&result);
+                        }
+                    }
                     m_gamepad_btn_b.mute_state(state);
                 }
+                // normal gameplay
+                else {
 
-                // disable explosives / consumables auto use
+                    // disable pushback with left trigger
+                    if (m_ui_option_disable_roomscale_when_aiming) {
+                        if (m_gamepad_trigger_left.is_held()) {
+                            vr->set_mod_value("VR_RoomscaleMovement", "false");
+                        }
+
+                        if (m_gamepad_trigger_left.is_released()) {
+                            vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        }
+                    }
+
+                    // prevent triggering crouch when channeling interaction stops
+                    if (m_gamepad_btn_b.is_held()) {
+                        m_gamepad_btn_b.mute_state(state);
+                    }
+
+                    // disable explosives / consumables auto use
+                    m_gamepad_right_shoulder.mute_state(state);
+                    m_gamepad_left_shoulder.mute_state(state);
+
+                    if (m_gamepad_left_shoulder.is_pressed()) {
+                        m_player_sprinting = !m_player_sprinting;
+                    }
+
+                    // use target identifier
+                    if (m_gamepad_trigger_left.is_held()) {
+                        m_gamepad_right_thumb.force_state(state);
+                    }
+
+                    // sprint only when mod's toggle option is checked
+                    if (m_player_sprinting && m_ui_option_toggle_run_with_left_grip) {
+                        m_gamepad_left_thumb.force_state(state);
+                    }
+
+                    // change weapon mode in long Y btn press
+                    //if (m_gamepad_btn_y.is_long_pressed(0.5f)) {
+                    //    m_gamepad_btn_y.force_state(state);
+                    //}
+                    //// toggle crouch on short Y btn press
+                    //else if (m_gamepad_btn_y.is_short_pressed()) {
+                    //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->SetTryCrouch(true);
+                    //    m_gamepad_btn_y.mute_state(state);
+                    //}
+                    //else {
+                    //    m_gamepad_btn_y.mute_state(state);
+                    //}
+
+                    // swap action/jump
+                    m_gamepad_btn_a.mute_state(state);
+                    m_gamepad_btn_x.mute_state(state);
+
+                    // used 'held' so we can still hold A button to play picked up audio log files
+                    m_gamepad_btn_a.when_held_send(state, XINPUT_GAMEPAD_X);
+
+                    // we need to place additional condition btn X held state to prevent auto jump when using 'loot all'
+                    // when_held_send is only used when X button was pressed in normal walking mode and not in MFD
+                    if (m_gamepad_btn_x.is_pressed()) {
+                        m_player_jumping = true;
+                        m_player_sprinting = false;
+                    }
+                    if (m_player_jumping) {
+                        m_gamepad_btn_x.when_held_send(state, XINPUT_GAMEPAD_A);
+                    }
+
+                    handle_primary_item_selector(state, vr);
+                    handle_secondary_item_selector(state, vr);
+                }
+            }
+
+            // cyberspace
+            if (m_pawn_state.value == PAWN_AVATAR) {
+
+                // change control scheme on RS
+                if (m_gamepad_right_thumb.is_pressed()) {
+                    m_cyberspace_aim_method = m_cyberspace_aim_method == 0 ? 2 : 0;
+
+                    if (m_cyberspace_aim_method == 0) {
+                        vr->recenter_view();
+                    }
+
+                    vr->set_aim_method(m_cyberspace_aim_method);
+                    vr->set_decoupled_pitch_enabled(m_cyberspace_aim_method == 2);
+                }
+
+                m_gamepad_right_shoulder.when_held_send(state, XINPUT_GAMEPAD_A);
                 m_gamepad_right_shoulder.mute_state(state);
+                m_gamepad_left_shoulder.when_held_send(state, XINPUT_GAMEPAD_B);
                 m_gamepad_left_shoulder.mute_state(state);
 
-                if (m_gamepad_left_shoulder.is_pressed()) {
-                    m_player_sprinting = !m_player_sprinting;
+                if (m_cyberspace_aim_method == 2) {
+
+                    m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
+                    m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
+                    m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
+
+                    if (state->Gamepad.sThumbRY > INPUT_DEADZONE_MED) {
+                        if (m_ui_option_openxr_runtime == META_QUEST) state->Gamepad.sThumbRX = 0;
+                        m_gamepad_btn_a.force_state(state);
+                    }
+                    else if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_MED) {
+                        if (m_ui_option_openxr_runtime == META_QUEST) state->Gamepad.sThumbRX = 0;
+                        m_gamepad_btn_b.force_state(state);
+                    }
                 }
-
-                // use target identifier
-                if (m_gamepad_trigger_left.is_held()) {
-                    m_gamepad_right_thumb.force_state(state);
+                else
+                {
+                    if (m_ui_option_openxr_runtime == META_QUEST) {
+                        m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
+                        m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
+                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
+                    }
+                    else {
+                        m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
+                        m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
+                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
+                    }
                 }
+            }
 
-                // sprint only when mod's toggle option is checked
-                if (m_player_sprinting && m_ui_option_toggle_run_with_left_grip) {
-                    m_gamepad_left_thumb.force_state(state);
+            // main menu
+            if (m_pawn_state.value == PAWN_PLAYERGHOST) {
+                // increase stick deadzone for better navigation in the menu
+                if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
+                    state->Gamepad.sThumbLX = 0;
                 }
+                if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
+                    state->Gamepad.sThumbLY = 0;
+                }
+            }
 
-                // change weapon mode in long Y btn press
-                //if (m_gamepad_btn_y.is_long_pressed(0.5f)) {
-                //    m_gamepad_btn_y.force_state(state);
-                //}
-                //// toggle crouch on short Y btn press
-                //else if (m_gamepad_btn_y.is_short_pressed()) {
-                //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->SetTryCrouch(true);
-                //    m_gamepad_btn_y.mute_state(state);
-                //}
-                //else {
-                //    m_gamepad_btn_y.mute_state(state);
-                //}
-
+            // apartment intro
+            if (m_pawn_state.value == PAWN_HACKERSIMPLE) {
                 // swap action/jump
                 m_gamepad_btn_a.mute_state(state);
                 m_gamepad_btn_x.mute_state(state);
 
-                // used 'held' so we can still hold A button to play picked up audio log files
                 m_gamepad_btn_a.when_held_send(state, XINPUT_GAMEPAD_X);
-
-                // we need to place additional condition btn X held state to prevent auto jump when using 'loot all'
-                // when_held_send is only used when X button was pressed in normal walking mode and not in MFD
-                if (m_gamepad_btn_x.is_pressed()) {
-                    m_player_jumping = true;
-                    m_player_sprinting = false;
-                }
-                if (m_player_jumping) {
-                    m_gamepad_btn_x.when_held_send(state, XINPUT_GAMEPAD_A);
-                }
-
-                handle_primary_item_selector(state, vr);
-                handle_secondary_item_selector(state, vr);
+                m_gamepad_btn_x.when_pressed_send(state, XINPUT_GAMEPAD_A);
             }
         }
-
-        // cyberspace
-        if (m_pawn_state.value == PAWN_AVATAR) {
-
-            // change control scheme on RS
-            if (m_gamepad_right_thumb.is_pressed()) {
-                m_cyberspace_aim_method = m_cyberspace_aim_method == 0 ? 2 : 0;
-
-                if (m_cyberspace_aim_method == 0) {
-                    vr->recenter_view();
-                }
-
-                vr->set_aim_method(m_cyberspace_aim_method);
-                vr->set_decoupled_pitch_enabled(m_cyberspace_aim_method == 2);
-            }
-
-            m_gamepad_right_shoulder.when_held_send(state, XINPUT_GAMEPAD_A);
-            m_gamepad_right_shoulder.mute_state(state);
-            m_gamepad_left_shoulder.when_held_send(state, XINPUT_GAMEPAD_B);
-            m_gamepad_left_shoulder.mute_state(state);
-
-            if (m_cyberspace_aim_method == 2) {
-
-                m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
-                m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
-                m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
-
-                if (state->Gamepad.sThumbRY > INPUT_DEADZONE_MED) {
-                    if (m_ui_option_openxr_runtime == META_QUEST) state->Gamepad.sThumbRX = 0;
-                    m_gamepad_btn_a.force_state(state);
-                }
-                else if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_MED) {
-                    if (m_ui_option_openxr_runtime == META_QUEST) state->Gamepad.sThumbRX = 0;
-                    m_gamepad_btn_b.force_state(state);
-                }
-            }
-            else
-            {
-                if (m_ui_option_openxr_runtime == META_QUEST) {
-                    m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
-                    m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
-                    m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
-                }
-                else {
-                    m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
-                    m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
-                    m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
-                }
-            }
-        }
-
-        // main menu
-        if (m_pawn_state.value == PAWN_PLAYERGHOST) {
-            // increase stick deadzone for better navigation in the menu
-            if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
-                state->Gamepad.sThumbLX = 0;
-            }
-            if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
-                state->Gamepad.sThumbLY = 0;
-            }
-        }
-
-        // apartment intro
-        if (m_pawn_state.value == PAWN_HACKERSIMPLE) {
-            // swap action/jump
-            m_gamepad_btn_a.mute_state(state);
-            m_gamepad_btn_x.mute_state(state);
-
-            m_gamepad_btn_a.when_held_send(state, XINPUT_GAMEPAD_X);
-            m_gamepad_btn_x.when_pressed_send(state, XINPUT_GAMEPAD_A);
+        catch (...) {
+            API::get()->log_error("[main][handle_controller_input] Exception");
         }
     }
 
@@ -890,156 +948,178 @@ public:
 
     // primary item selector
     void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr) {
-        if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS && !m_hardware_selector_button.is_held()) {
+        try {
+            if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS && !m_hardware_selector_button.is_held()) {
 
-            if (m_hotbar_selector_button.is_pressed()) {
-                m_vr_hud->set_primary_item_selector_visibility(true);
-                // hide UEVR controlled HUD
-                vr->set_mod_value("UI_Size", "0.000000");
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
+                if (m_hotbar_selector_button.is_pressed()) {
+                    m_vr_hud->set_primary_item_selector_visibility(true);
+                    // hide UEVR controlled HUD
+                    vr->set_mod_value("UI_Size", "0.000000");
+                    vr->set_mod_value("VR_RoomscaleMovement", "false");
 
-                // show VR item selector
-                m_vr_hud->set_laser_pointer_visibility(true);
-                m_vr_hud->save_primary_item_selector_delta(get_current_weapon_distance_offset());
+                    // show VR item selector
+                    m_vr_hud->set_laser_pointer_visibility(true);
+                    m_vr_hud->save_primary_item_selector_delta(get_current_weapon_distance_offset());
 
-                // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
-                // for the time the selector is active
-                m_vr_hud->set_player_response_to_collision_channel(
-                    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore
-                );
-                m_vr_hud->unselect_all_hotbar_slots();
+                    // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
+                    // for the time the selector is active
+                    m_vr_hud->set_player_response_to_collision_channel(
+                        item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore
+                    );
+                    m_vr_hud->unselect_all_hotbar_slots();
+                }
+
+                if (m_hotbar_selector_button.is_released()) {
+                    m_vr_hud->change_quick_slot();
+
+                    // restore collisions
+                    m_vr_hud->set_player_response_to_collision_channel(
+                        item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
+                    );
+                    m_vr_hud->set_primary_item_selector_visibility(false);
+                    m_vr_hud->set_laser_pointer_visibility(false);
+                    m_skip_hud_depth = true;
+
+                    vr->set_mod_value("VR_RoomscaleMovement", "true");
+                }
+
+                // state, when the item selector is shown
+                if (m_hotbar_selector_button.is_held()) {
+                    m_vr_hud->update_laser_pointer_length(35.f);
+                    m_vr_hud->highlight_quick_slot();
+
+                    state->Gamepad.sThumbRX = 0;
+                }
+
+                m_hotbar_selector_button.mute_state(state);
             }
-
-            if (m_hotbar_selector_button.is_released()) {
-                m_vr_hud->change_quick_slot();
-
-                // restore collisions
-                m_vr_hud->set_player_response_to_collision_channel(
-                    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
-                );
-                m_vr_hud->set_primary_item_selector_visibility(false);
-                m_vr_hud->set_laser_pointer_visibility(false);
-                m_skip_hud_depth = true;
-
-                vr->set_mod_value("VR_RoomscaleMovement", "true");
-            }
-
-            // state, when the item selector is shown
-            if (m_hotbar_selector_button.is_held()) {
-                m_vr_hud->update_laser_pointer_length(35.f);
-                m_vr_hud->highlight_quick_slot();
-
-                state->Gamepad.sThumbRX = 0;
-            }
-
-            m_hotbar_selector_button.mute_state(state);
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_primary_item_selector] Exception");
         }
     }
 
     // secondary item selector
     void handle_secondary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr) {
-        if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS && !m_hotbar_selector_button.is_held()) {
+        try {
+            if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS && !m_hotbar_selector_button.is_held()) {
 
-            if (m_hardware_selector_button.is_pressed()) {
-                // hide UEVR controlled HUD
-                vr->set_mod_value("UI_Size", "0.000000");
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
+                if (m_hardware_selector_button.is_pressed()) {
+                    // hide UEVR controlled HUD
+                    vr->set_mod_value("UI_Size", "0.000000");
+                    vr->set_mod_value("VR_RoomscaleMovement", "false");
 
-                // show VR item selector
-                m_vr_hud->set_secondary_item_selector_visibility(true);
-                m_vr_hud->set_laser_pointer_visibility(true);
-                m_vr_hud->save_secondary_item_selector_delta(get_current_weapon_distance_offset());
+                    // show VR item selector
+                    m_vr_hud->set_secondary_item_selector_visibility(true);
+                    m_vr_hud->set_laser_pointer_visibility(true);
+                    m_vr_hud->save_secondary_item_selector_delta(get_current_weapon_distance_offset());
 
-                // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
-                // for the time the selector is active
-                m_vr_hud->set_player_response_to_collision_channel(
-                    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore
-                );
-                m_vr_hud->unselect_all_hacker_hardware();
+                    // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
+                    // for the time the selector is active
+                    m_vr_hud->set_player_response_to_collision_channel(
+                        item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore
+                    );
+                    m_vr_hud->unselect_all_hacker_hardware();
+                }
+
+                if (m_hardware_selector_button.is_released()) {
+                    m_vr_hud->toggle_hardware();
+                    m_vr_hud->unselect_all_hacker_hardware();
+
+                    // restore collisions
+                    m_vr_hud->set_player_response_to_collision_channel(
+                        item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
+                    );
+                    m_vr_hud->set_secondary_item_selector_visibility(false);
+                    m_vr_hud->set_laser_pointer_visibility(false);
+                    m_skip_hud_depth = true;
+
+                    vr->set_mod_value("VR_RoomscaleMovement", "true");
+                }
+
+                // state, when the item selector is shown
+                if (m_hardware_selector_button.is_held()) {
+                    m_vr_hud->update_laser_pointer_length(35.f);
+                    m_vr_hud->highlight_hardware_item();
+
+                    state->Gamepad.sThumbRX = 0;
+                }
             }
-
-            if (m_hardware_selector_button.is_released()) {
-                m_vr_hud->toggle_hardware();
-                m_vr_hud->unselect_all_hacker_hardware();
-
-                // restore collisions
-                m_vr_hud->set_player_response_to_collision_channel(
-                    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
-                );
-                m_vr_hud->set_secondary_item_selector_visibility(false);
-                m_vr_hud->set_laser_pointer_visibility(false);
-                m_skip_hud_depth = true;
-
-                vr->set_mod_value("VR_RoomscaleMovement", "true");
-            }
-
-            // state, when the item selector is shown
-            if (m_hardware_selector_button.is_held()) {
-                m_vr_hud->update_laser_pointer_length(35.f);
-                m_vr_hud->highlight_hardware_item();
-
-                state->Gamepad.sThumbRX = 0;
-            }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_secondary_item_selector] Exception");
         }
     }
 
     void handle_level_change(const UEVR_VRData* vr) {
-        if (m_level.has_changed()) {
-            if (m_level.value == nullptr) {
-                return;
-            }
-
-            const UEVR_SDKData* sdk = API::get()->sdk();
-            auto level_name = m_level.value->GetFullName();
-
-            API::get()->log_info("New Level: %s", m_level.value->GetFullName().c_str());
-
-            // check if it's the main menu
-            if (level_name.ends_with(".00_Menu.PersistentLevel")) {
-                sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
-                vr->set_snap_turn_enabled(false);
-            }
-            else if (level_name.ends_with("Introduction.PersistentLevel")) {
-                // fix intro camera r.postprocessing.disablematerials 1
-                sdk->functions->execute_command(L"r.postprocessing.disablematerials 1");
-                API::UObjectHook::set_disabled(false);
-            }
-            else if (level_name.ends_with("CitadelStation.PersistentLevel")) {
-                sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
-
-                // initialize hud
-                m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
-
-                // here it's to early to hide top/bottom dashboards, so we schedule it for VR HUD to handle
-                m_mod_events.insert(MOD_EVENT_VR_HUD_HIDE_DASHBOARDS);
-
-                if (m_sdk_hud) {
-                    m_sdk_hud->WIDGET_Compass->SetCompassVisibility(false);
-                    m_sdk_hud->WIDGET_Biometer->ShowBiometer(false);
-                    apply_selected_crosshair_options();
+        try {
+            if (m_level.has_changed()) {
+                if (m_level.value == nullptr) {
+                    return;
                 }
 
-                // schedule vr hud init as level change has destroyed our custom actors
-                // TODO rewrite to use mod events
-                if (m_vr_hud != nullptr) {
-                    m_vr_hud->set_hud_state(VR_HUD_PENDING_INIT);
-                    m_vr_hud->clear_pointers();
+                const UEVR_SDKData* sdk = API::get()->sdk();
+                auto level_name = m_level.value->GetFullName();
+
+                API::get()->log_info("New Level: %s", m_level.value->GetFullName().c_str());
+
+                // check if it's the main menu
+                if (level_name.ends_with(".00_Menu.PersistentLevel")) {
+                    sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
+                    vr->set_snap_turn_enabled(false);
+                }
+                else if (level_name.ends_with("Introduction.PersistentLevel")) {
+                    // fix intro camera r.postprocessing.disablematerials 1
+                    sdk->functions->execute_command(L"r.postprocessing.disablematerials 1");
+                    API::UObjectHook::set_disabled(false);
+                }
+                else if (
+                    level_name.ends_with("Outro_HackerApartment.PersistentLevel") ||
+                    level_name.ends_with("Outro_City.PersistentLevel")
+                    ) {
+                    sdk->functions->execute_command(L"r.postprocessing.disablematerials 1");
+                    API::UObjectHook::set_disabled(true);
+                }
+                else if (level_name.ends_with("CitadelStation.PersistentLevel")) {
+                    sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
+
+                    // initialize hud
+                    m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
+
+                    // here it's to early to hide top/bottom dashboards, so we schedule it for VR HUD to handle
+                    m_mod_events.insert(MOD_EVENT_VR_HUD_HIDE_DASHBOARDS);
+
+                    if (m_sdk_hud) {
+                        m_sdk_hud->WIDGET_Compass->SetCompassVisibility(false);
+                        m_sdk_hud->WIDGET_Biometer->ShowBiometer(false);
+                        apply_selected_crosshair_options();
+                    }
+
+                    // schedule vr hud init as level change has destroyed our custom actors
+                    // TODO rewrite to use mod events
+                    if (m_vr_hud != nullptr) {
+                        m_vr_hud->set_hud_state(VR_HUD_PENDING_INIT);
+                        m_vr_hud->clear_pointers();
+                    }
+
+                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
+                    m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale);
+
+                    vr->set_aim_method(2);
+                    vr->set_snap_turn_enabled(true);
+                    vr->set_decoupled_pitch_enabled(true);
+                    vr->set_mod_value("VR_RoomscaleMovement", "true");
+                    API::UObjectHook::set_disabled(false);
+
+                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
                 }
 
-                m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
-                m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale);
-
-                vr->set_aim_method(2);
-                vr->set_snap_turn_enabled(true);
-                vr->set_decoupled_pitch_enabled(true);
-                vr->set_mod_value("VR_RoomscaleMovement", "true");
-                API::UObjectHook::set_disabled(false);
-
-                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
+                apply_vr_game_options();
+                reset_height(vr);
             }
-
-            apply_vr_game_options();
-            reset_height(vr);
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_level_change] Exception");
         }
     }
 
@@ -1071,59 +1151,69 @@ public:
 
     // it sets the offset each tick - maybe can be improved but there's not much overhead
     void handle_weapon_changes() {
-        if (m_pawn_state.value != PAWN_HACKERIMPLANT)
-            return;
-
-        if (m_current_weapon != nullptr && m_ui_option_apply_weapon_offset) {
-            if (m_player_interacting.value) {
+        try {
+            if (m_pawn_state.value != PAWN_HACKERIMPLANT && m_pawn_state.value != PAWN_PSEUDOSPACE)
                 return;
-            }
 
-            auto weapon_offset = m_pawn->get_property_data<SDK::FVector>(L"CurrentWeaponOffset");
-            if (weapon_offset != nullptr) {
-                try {
-                    const WeaponMeta weapon_meta = weapons_map.at(m_weapon_state.value);
-                    SDK::FVector weapon_offset_meta = get<1>(weapon_meta);
-
-                    weapon_offset->X = weapon_offset_meta.X;
-                    weapon_offset->Y = weapon_offset_meta.Y;
-                    weapon_offset->Z = weapon_offset_meta.Z;
+            if (m_current_weapon != nullptr && m_ui_option_apply_weapon_offset) {
+                if (m_player_interacting.value) {
+                    return;
                 }
-                catch (const std::out_of_range&) {
-                    API::get()->log_info("Tried to use unknown weapon");
-                }
-            }
 
-            // hide grenade launcher ammo
-            if (m_weapon_state.value == WEAPON_GRENADE_LAUNCHER) {
-                if (SDK::UKismetSystemLibrary::IsValid(m_current_weapon) && m_current_weapon->IsA(SDK::UWEAPON_GrenadeLauncher_C::StaticClass())) {
-                    auto grenade = static_cast<SDK::UWEAPON_GrenadeLauncher_C*>(m_current_weapon)->GrenadeMeshComponent;
-                    if (grenade != nullptr) {
-                        grenade->SetVisibility(false, true);
+                auto weapon_offset = m_pawn->get_property_data<SDK::FVector>(L"CurrentWeaponOffset");
+                if (weapon_offset != nullptr) {
+                    try {
+                        const WeaponMeta weapon_meta = weapons_map.at(m_weapon_state.value);
+                        SDK::FVector weapon_offset_meta = get<1>(weapon_meta);
+
+                        weapon_offset->X = weapon_offset_meta.X;
+                        weapon_offset->Y = weapon_offset_meta.Y;
+                        weapon_offset->Z = weapon_offset_meta.Z;
+                    }
+                    catch (const std::out_of_range&) {
+                        API::get()->log_info("Tried to use unknown weapon");
+                    }
+                }
+
+                // hide grenade launcher ammo
+                if (m_weapon_state.value == WEAPON_GRENADE_LAUNCHER) {
+                    if (SDK::UKismetSystemLibrary::IsValid(m_current_weapon) && m_current_weapon->IsA(SDK::UWEAPON_GrenadeLauncher_C::StaticClass())) {
+                        auto grenade = static_cast<SDK::UWEAPON_GrenadeLauncher_C*>(m_current_weapon)->GrenadeMeshComponent;
+                        if (grenade != nullptr) {
+                            grenade->SetVisibility(false, true);
+                        }
                     }
                 }
             }
         }
+        catch (...) {
+            API::get()->log_error("[main][handle_weapon_changes] Exception");
+        }
     }
 
     void handle_arms_mesh_visibility() {
-        if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
-            // always hide arms on predefined interactables
-            if (m_player_interacting.value) {
-                for (InteractableMeta interactable : g_interactables) {
-                    if (std::get<1>(interactable) && m_channeling_interactable_name.value.find(std::get<0>(interactable)) != std::string::npos) {
-                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
+        try {
+            if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
+                // always hide arms on predefined interactables
+                if (m_player_interacting.value) {
+                    for (InteractableMeta interactable : g_interactables) {
+                        if (std::get<1>(interactable) && m_channeling_interactable_name.value.find(std::get<0>(interactable)) != std::string::npos) {
+                            static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
+                        }
                     }
                 }
+                // also hide when holstered weapon and not interacting nor playing montage
+                else if (m_current_weapon == nullptr && !m_player_interacting.value && m_current_montage.value == nullptr) {
+                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
+                }
+                // otherwise show arms
+                else {
+                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(true, true);
+                }
             }
-            // also hide when holstered weapon and not interacting nor playing montage
-            else if (m_current_weapon == nullptr && !m_player_interacting.value && m_current_montage.value == nullptr) {
-                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(false, true);
-            }
-            // otherwise show arms
-            else {
-                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ArmsMesh->SetVisibility(true, true);
-            }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_arms_mesh_visibility] Exception");
         }
     }
 
@@ -1146,103 +1236,113 @@ public:
     }
 
     void handle_animations(const UEVR_VRData* vr) {
-        if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT })) {
-            // start of bootup
-            if (m_is_booting_up.has_changed() && m_is_booting_up.value) {
-                //API::get()->log_warn("Bootup Start");
-                vr->set_aim_method(0);
-                vr->recenter_view();
-                API::UObjectHook::set_disabled(true);
-            }
-
-            // start of crash
-            if (m_is_crashing.has_changed() && m_is_crashing.value) {
-                //API::get()->log_warn("Crash Start");
-                vr->set_aim_method(0);
-                vr->recenter_view();
-                API::UObjectHook::set_disabled(true);
-            }
-
-            if (m_is_booting_up.value || m_is_crashing.value) {
-                vr->set_aim_method(0);
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
-                vr->set_decoupled_pitch_enabled(true);
-                API::UObjectHook::set_disabled(true);
-            }
-
-            if (m_current_montage.has_changed()) {
-                //API::get()->log_warn("Montage Changed %s", m_current_montage.value ? "STARTED" : "ENDED");
-                // get metadata about current montage from g_montages vector
-                m_montage_type.set_value(get_montage_type(m_current_montage.value));
-
-                // check the type of animation that had just ended
-                if (m_montage_type.prev_value == ENDING || m_montage_type.prev_value == SINGLE) {
-                    // rotate pawn to match animation rotation
-                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
-                    auto pawn_controller = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->GetController();
-                    pawn_controller->SetControlRotation(m_camera_rotation);
-                    //API::get()->log_info("Montage End : Setting rotation (%f, %f, %f)", m_camera_rotation.Pitch, m_camera_rotation.Roll, m_camera_rotation.Yaw);
-                    //API::get()->log_warn("Montage Type: Ending / Single");
-                    m_sdk_hud->SetForceHideCrosshairs(false);
-                    m_sdk_hud->ShowTargetBrackets(true);
-                    apply_selected_crosshair_options();
-                    vr->set_aim_method(2);
-                    vr->set_mod_value("VR_RoomscaleMovement", "true");
-                    API::UObjectHook::set_disabled(false);
+        try {
+            if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT })) {
+                // start of bootup
+                if (m_is_booting_up.has_changed() && m_is_booting_up.value) {
+                    //API::get()->log_warn("Bootup Start");
+                    vr->set_aim_method(0);
+                    vr->recenter_view();
+                    API::UObjectHook::set_disabled(true);
                 }
 
-                // single animation or animation sequence is starting
-                if (m_montage_type.value == STARTING || m_montage_type.value == SINGLE) {
+                // start of crash
+                if (m_is_crashing.has_changed() && m_is_crashing.value) {
+                    //API::get()->log_warn("Crash Start");
+                    vr->set_aim_method(0);
+                    vr->recenter_view();
+                    API::UObjectHook::set_disabled(true);
+                }
 
-                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = false;
-
-                    //API::get()->log_warn("Montage Type: Starting / Single | %s", m_current_montage.value->GetName().c_str());
-                    m_sdk_hud->SetForceHideCrosshairs(true);
-                    m_sdk_hud->ShowTargetBrackets(false);
+                if (m_is_booting_up.value || m_is_crashing.value) {
                     vr->set_aim_method(0);
                     vr->set_mod_value("VR_RoomscaleMovement", "false");
                     vr->set_decoupled_pitch_enabled(true);
                     API::UObjectHook::set_disabled(true);
                 }
+
+                if (m_current_montage.has_changed()) {
+                    //API::get()->log_warn("Montage Changed %s", m_current_montage.value ? "STARTED" : "ENDED");
+                    // get metadata about current montage from g_montages vector
+                    m_montage_type.set_value(get_montage_type(m_current_montage.value));
+
+                    // check the type of animation that had just ended
+                    if (m_montage_type.prev_value == ENDING || m_montage_type.prev_value == SINGLE) {
+                        // rotate pawn to match animation rotation
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
+                        auto pawn_controller = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->GetController();
+                        pawn_controller->SetControlRotation(m_camera_rotation);
+                        //API::get()->log_info("Montage End : Setting rotation (%f, %f, %f)", m_camera_rotation.Pitch, m_camera_rotation.Roll, m_camera_rotation.Yaw);
+                        //API::get()->log_warn("Montage Type: Ending / Single");
+                        m_sdk_hud->SetForceHideCrosshairs(false);
+                        m_sdk_hud->ShowTargetBrackets(true);
+                        apply_selected_crosshair_options();
+                        vr->set_aim_method(2);
+                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        API::UObjectHook::set_disabled(false);
+                    }
+
+                    // single animation or animation sequence is starting
+                    if (m_montage_type.value == STARTING || m_montage_type.value == SINGLE) {
+
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = false;
+
+                        //API::get()->log_warn("Montage Type: Starting / Single | %s", m_current_montage.value->GetName().c_str());
+                        m_sdk_hud->SetForceHideCrosshairs(true);
+                        m_sdk_hud->ShowTargetBrackets(false);
+                        vr->set_aim_method(0);
+                        vr->set_mod_value("VR_RoomscaleMovement", "false");
+                        vr->set_decoupled_pitch_enabled(true);
+                        API::UObjectHook::set_disabled(true);
+                    }
+                }
             }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_animations] Exception");
         }
     }
 
     void handle_player_height(const UEVR_VRData* vr) {
-        if (m_pawn_state.matches_none({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
-            return;
-        }
+        try {
+            if (m_pawn_state.matches_none({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE, PAWN_PSEUDOSPACE })) {
+                return;
+            }
 
-        // reset player height when standing up
-        if (m_player_crouching.has_changed() && !m_player_crouching.value) {
-            reset_height(vr);
-        }
+            // reset player height when standing up
+            if (m_player_crouching.has_changed() && !m_player_crouching.value) {
+                reset_height(vr);
+            }
 
-        auto arms_mesh_data = m_pawn->get_property_data<SceneComponent*>(L"ArmsMesh");
-        auto arms_mesh = arms_mesh_data != nullptr ? *arms_mesh_data : nullptr;
-        if (arms_mesh == nullptr) {
-            return;
-        }
-        auto state = API::UObjectHook::get_or_add_motion_controller_state(arms_mesh);
-        if (state == nullptr) {
-            return;
-        }
-        const auto move_control_manager_data = m_pawn->get_property_data<API::UObject*>(L"COMP_MoveControlManager");
-        const auto move_control_manager = move_control_manager_data != nullptr ? *move_control_manager_data : nullptr;
-        if (move_control_manager != nullptr) {
-            float* crouch_progres = move_control_manager->get_property_data<float>(L"CrouchProgress");
-            // offset weapon Z pos
-            UEVR_Vector3f offset{ 34.0f, (139.0f - ((66.5f + m_ui_option_player_height_modifier) * (*crouch_progres))) + m_ui_option_player_height_modifier, 7.35f };
-            state->set_location_offset(&offset);
+            auto arms_mesh_data = m_pawn->get_property_data<SceneComponent*>(L"ArmsMesh");
+            auto arms_mesh = arms_mesh_data != nullptr ? *arms_mesh_data : nullptr;
+            if (arms_mesh == nullptr) {
+                return;
+            }
+            auto state = API::UObjectHook::get_or_add_motion_controller_state(arms_mesh);
+            if (state == nullptr) {
+                return;
+            }
+            const auto move_control_manager_data = m_pawn->get_property_data<API::UObject*>(L"COMP_MoveControlManager");
+            const auto move_control_manager = move_control_manager_data != nullptr ? *move_control_manager_data : nullptr;
+            if (move_control_manager != nullptr) {
+                float* crouch_progres = move_control_manager->get_property_data<float>(L"CrouchProgress");
+                // offset weapon Z pos
+                UEVR_Vector3f offset{ 34.0f, (139.0f - ((66.5f + m_ui_option_player_height_modifier) * (*crouch_progres))) + m_ui_option_player_height_modifier, 7.35f };
+                state->set_location_offset(&offset);
 
-            // apply player height modifier (take into account crouch progress)
-            SDK::FVector look_pivot_offset{ 0.f, 0.f, m_ui_option_player_height_modifier * (1 - *crouch_progres) };
-            static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->LookPivot->K2_SetRelativeLocation(look_pivot_offset, false, &m_hit_result, false);
+                // apply player height modifier (take into account crouch progress)
+                SDK::FVector look_pivot_offset{ 0.f, 0.f, m_ui_option_player_height_modifier * (1 - *crouch_progres) };
+                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->LookPivot->K2_SetRelativeLocation(look_pivot_offset, false, &m_hit_result, false);
+            }
+            else {
+                // this is ArmsMesh component offset
+                UEVR_Vector3f offset{ 34.0f, 139.0f + m_ui_option_player_height_modifier, 7.35f };
+                state->set_location_offset(&offset);
+            }
         }
-        else {
-            // this is ArmsMesh component offset
-            UEVR_Vector3f offset{ 34.0f, 139.0f + m_ui_option_player_height_modifier, 7.35f };
-            state->set_location_offset(&offset);
+        catch (...) {
+            API::get()->log_error("[main][handle_player_height] Exception");
         }
     }
 
@@ -1261,51 +1361,61 @@ public:
     }
 
     void handle_in_game_menu(const UEVR_VRData* vr) {
-        if (m_mod_events.contains(MOD_EVENT_SHOW_IN_GAME_MENU)) {
-            // when HMD view is centered change to GAME input
-            vr->set_mod_value("VR_RoomscaleMovement", "false");
-            vr->set_mod_value("UI_Distance", "2.000000");
-            vr->set_mod_value("UI_Size", "1.500000");
-            vr->set_aim_method(0);
-            vr->set_snap_turn_enabled(false); // disable rotation when in menu
-            m_mod_events.extract(MOD_EVENT_SHOW_IN_GAME_MENU);
-        }
-
-        if (m_main_menu_in_game_visible.has_changed()) {
-            if (m_main_menu_in_game_visible.value) {
-                vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
-                // first center view to HMD
-                vr->set_aim_method(1);
-                m_mod_events.insert(MOD_EVENT_SHOW_IN_GAME_MENU);
+        try {
+            if (m_mod_events.contains(MOD_EVENT_SHOW_IN_GAME_MENU)) {
+                // when HMD view is centered change to GAME input
+                vr->set_mod_value("VR_RoomscaleMovement", "false");
+                vr->set_mod_value("UI_Distance", "2.000000");
+                vr->set_mod_value("UI_Size", "1.500000");
+                vr->set_aim_method(0);
+                vr->set_snap_turn_enabled(false); // disable rotation when in menu
+                m_mod_events.extract(MOD_EVENT_SHOW_IN_GAME_MENU);
             }
-            else {
-                vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
-                    vr->set_mod_value("VR_RoomscaleMovement", "true");
-                    vr->set_aim_method(2);
 
-                    char snap_angle[16] = { 0 };
-                    vr->get_mod_value("VR_SnapturnTurnAngle", snap_angle, sizeof(snap_angle));
-                    int snap_angle_int = atoi(snap_angle);
+            if (m_main_menu_in_game_visible.has_changed()) {
+                if (m_main_menu_in_game_visible.value) {
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
+                    // first center view to HMD
+                    vr->set_aim_method(1);
+                    m_mod_events.insert(MOD_EVENT_SHOW_IN_GAME_MENU);
+                }
+                else {
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                    if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
+                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        vr->set_aim_method(2);
 
-                    if (snap_angle_int != 359) {
-                        vr->set_snap_turn_enabled(true); // reenable rotation when exiting menu
+                        char snap_angle[16] = { 0 };
+                        vr->get_mod_value("VR_SnapturnTurnAngle", snap_angle, sizeof(snap_angle));
+                        int snap_angle_int = atoi(snap_angle);
+
+                        if (snap_angle_int != 359) {
+                            vr->set_snap_turn_enabled(true); // reenable rotation when exiting menu
+                        }
+                    }
+                    else if (m_pawn_state.value == PAWN_AVATAR) {
+                        vr->set_mod_value("UI_Distance", "10.000000");
+                        vr->set_mod_value("UI_Size", "10.000000");
                     }
                 }
-                else if (m_pawn_state.value == PAWN_AVATAR) {
-                    vr->set_mod_value("UI_Distance", "10.000000");
-                    vr->set_mod_value("UI_Size", "10.000000");
-                }
             }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_in_game_menu] Exception");
         }
     }
 
     // force hides compass when associated option is enabled
     void handle_compass() {
-        if (m_ui_option_force_hide_compass) {
-            if (m_pawn_state.value == PAWN_HACKERIMPLANT && m_sdk_hud != nullptr && m_sdk_hud->WIDGET_Compass != nullptr) {
-                m_sdk_hud->WIDGET_Compass->SetCompassVisibility(false);
+        try {
+            if (m_ui_option_force_hide_compass) {
+                if (m_pawn_state.value == PAWN_HACKERIMPLANT && m_sdk_hud != nullptr && m_sdk_hud->WIDGET_Compass != nullptr) {
+                    m_sdk_hud->WIDGET_Compass->SetCompassVisibility(false);
+                }
             }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_compass] Exception");
         }
     }
 
@@ -1313,327 +1423,406 @@ public:
     // MFD
     // -------------------------------------------------------------------------------------
     void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr) {
-        if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS) {
-            auto ctrl = (SDK::ACON_Hacker_C*)m_sdk_pawn->Controller;
-            ctrl->SetIsUsingGamepad(false);
+        try {
+            if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS) {
+                auto ctrl = (SDK::ACON_Hacker_C*)m_sdk_pawn->Controller;
+                ctrl->SetIsUsingGamepad(false);
 
-            // mute controller A, Y buttons, we'll use them for LMB, RMB
-            m_gamepad_btn_a.mute_state(state);
-            m_gamepad_btn_y.mute_state(state);
+                // mute controller A, Y buttons, we'll use them for LMB, RMB
+                m_gamepad_btn_a.mute_state(state);
+                m_gamepad_btn_y.mute_state(state);
 
-            // mute sticks that move cursor
-            state->Gamepad.sThumbRX = 0;
-            state->Gamepad.sThumbRY = 0;
+                // mute sticks that move cursor
+                state->Gamepad.sThumbRX = 0;
+                state->Gamepad.sThumbRY = 0;
 
-            if (m_gamepad_btn_a.has_changed()) {
-                send_mouse(VK_LBUTTON, !m_gamepad_btn_a.value);
+                if (m_gamepad_btn_a.has_changed()) {
+                    send_mouse(VK_LBUTTON, !m_gamepad_btn_a.value);
+                }
+
+                if (m_gamepad_btn_y.has_changed()) {
+                    send_mouse(VK_RBUTTON, !m_gamepad_btn_y.value);
+                }
+                ctrl->SetIsUsingGamepad(false);
+
+                auto pos = m_vr_hud->get_2D_hit_position();
+                if (pos.X != 0 && pos.Y != 0) {
+                    ctrl->SetMouseLocation(pos.X, pos.Y);
+                }
+
+                m_vr_hud->update_laser_pointer_length(100.f);
             }
-
-            if (m_gamepad_btn_y.has_changed()) {
-                send_mouse(VK_RBUTTON, !m_gamepad_btn_y.value);
-            }
-            ctrl->SetIsUsingGamepad(false);
-
-            auto pos = m_vr_hud->get_2D_hit_position();
-            if (pos.X != 0 && pos.Y != 0) {
-                ctrl->SetMouseLocation(pos.X, pos.Y);
-            }
-
-            m_vr_hud->update_laser_pointer_length(100.f);
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_mfd_interactions] Exception");
         }
     }
 
     void handle_mfd_changes(const UEVR_VRData* vr) {
-        if (m_mod_events.contains(MOD_EVENT_SHOW_MFD)) {
-
-            // prepare correct ui distance and size
-            SDK::APlayerController* ctrl = SDK::UGameplayStatics::GetPlayerController(m_sdk_world, 0);
-            ctrl->GetViewportSize(&m_viewport_size_x, &m_viewport_size_y);
-
-            // get uevr world scale
-            char world_scale_option[16] = { 1.0 };
-            vr->get_mod_value("VR_WorldScale", world_scale_option, sizeof(world_scale_option));
-            float world_scale{ 1.f };
-            try {
-                size_t read = 0;
-                world_scale = std::stof(world_scale_option, &read);
-            } catch (std::invalid_argument) {
-                API::get()->log_info("Handle MFD Changes :: Error converting UEVR world scale value to float");
-            }
-
-            char ui_distance[32];
-            char ui_size[32];
-            int ret_ui_distance = snprintf(ui_distance, sizeof ui_distance, "%f", (1.f / world_scale) * ((m_vr_hud->get_mfd_depth() / 100.f)) );
-            int ret_ui_size = snprintf(ui_size, sizeof ui_size, "%f", (float)( (1.f / world_scale) * (m_viewport_size_y / 1000.f) ) );
-            if (ret_ui_distance < 0 || ret_ui_size < 0) {
+        try {
+            if (m_pawn_state.value != PAWN_HACKERIMPLANT) {
                 return;
             }
 
-            // set surrounding objects to ignore our trace channel
-            //m_vr_hud->disable_conflicting_collisions();
+            if (m_mod_events.contains(MOD_EVENT_SHOW_MFD)) {
 
-            // move MFD panel a little up
-            m_vr_hud->align_mfd_panel();
+                // prepare correct ui distance and size
+                SDK::APlayerController* ctrl = SDK::UGameplayStatics::GetPlayerController(m_sdk_world, 0);
+                ctrl->GetViewportSize(&m_viewport_size_x, &m_viewport_size_y);
 
-            // reset mask size in case the game resolution changed
-            m_vr_hud->set_mfd_mask_size(m_viewport_size_x, m_viewport_size_y);
-            m_vr_hud->set_mfd_mask_delta();
-            m_vr_hud->set_laser_pointer_visibility(true);
-            m_vr_hud->set_mfd_mask_visibility(true);
-            m_vr_hud->set_mfd_hotbar_visibility(true);
-            m_vr_hud->set_player_response_to_collision_channel(
-                item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore
-            );
+                // get uevr world scale
+                char world_scale_option[16] = { 1.0 };
+                vr->get_mod_value("VR_WorldScale", world_scale_option, sizeof(world_scale_option));
+                float world_scale{ 1.f };
+                try {
+                    size_t read = 0;
+                    world_scale = std::stof(world_scale_option, &read);
+                } catch (std::invalid_argument) {
+                    API::get()->log_info("Handle MFD Changes :: Error converting UEVR world scale value to float");
+                }
 
-            vr->set_mod_value("VR_RoomscaleMovement", "false");
-            vr->set_mod_value("UI_Distance", ui_distance);
-            vr->set_mod_value("UI_Size", ui_size);
-            vr->set_aim_method(0);
-            m_mod_events.extract(MOD_EVENT_SHOW_MFD);
-        }
+                char ui_distance[32];
+                char ui_size[32];
+                int ret_ui_distance = snprintf(ui_distance, sizeof ui_distance, "%f", (1.f / world_scale) * ((m_vr_hud->get_mfd_depth() / 100.f)) );
+                int ret_ui_size = snprintf(ui_size, sizeof ui_size, "%f", (float)( (1.f / world_scale) * (m_viewport_size_y / 1000.f) ) );
+                if (ret_ui_distance < 0 || ret_ui_size < 0) {
+                    return;
+                }
 
-        if (m_mfd_visible.has_changed()) {
-            if (m_mfd_visible.value) {
-                // without reseting height, the cursor would not be aligned correctly
-                reset_height(vr);
-                // hide HUD and change aiming mode to head to get it in the right position
-                // next tick we'll show it again with along with mfd mask
-                vr->set_mod_value("UI_Size", "0.000000");
-                vr->set_mod_value("UI_Y_Offset", "0.000000");
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
-                vr->set_aim_method(1);
+                // set surrounding objects to ignore our trace channel
+                //m_vr_hud->disable_conflicting_collisions();
 
-                // need to set scale to 1, otherwise picked up objects will be to small
-                float scale{ 1.f };
-                m_vr_hud->set_crosshair_cursor_scale(&scale);
+                // move MFD panel a little up
+                m_vr_hud->align_mfd_panel();
 
-                m_mod_events.insert(MOD_EVENT_SHOW_MFD);
-            }
-            else {
-                vr->set_aim_method(2);
-                vr->set_mod_value("VR_RoomscaleMovement", "true");
-                vr->set_mod_value("UI_Y_Offset", "0.010000");
-                m_vr_hud->set_laser_pointer_visibility(false);
-                m_vr_hud->set_mfd_mask_visibility(false);
-                m_vr_hud->set_mfd_hotbar_visibility(false);
+                // reset mask size in case the game resolution changed
+                m_vr_hud->set_mfd_mask_size(m_viewport_size_x, m_viewport_size_y);
+                m_vr_hud->set_mfd_mask_delta();
+                m_vr_hud->set_laser_pointer_visibility(true);
+                m_vr_hud->set_mfd_mask_visibility(true);
+                m_vr_hud->set_mfd_hotbar_visibility(true);
                 m_vr_hud->set_player_response_to_collision_channel(
-                    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
+                    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore
                 );
-                m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
+
+                vr->set_mod_value("VR_RoomscaleMovement", "false");
+                vr->set_mod_value("UI_Distance", ui_distance);
+                vr->set_mod_value("UI_Size", ui_size);
+                vr->set_aim_method(0);
+                m_mod_events.extract(MOD_EVENT_SHOW_MFD);
             }
+
+            if (m_mfd_visible.has_changed()) {
+                if (m_mfd_visible.value) {
+                    // without reseting height, the cursor would not be aligned correctly
+                    reset_height(vr);
+                    // hide HUD and change aiming mode to head to get it in the right position
+                    // next tick we'll show it again with along with mfd mask
+                    vr->set_mod_value("UI_Size", "0.000000");
+                    vr->set_mod_value("UI_Y_Offset", "0.000000");
+                    vr->set_mod_value("VR_RoomscaleMovement", "false");
+                    vr->set_aim_method(1);
+
+                    // need to set scale to 1, otherwise picked up objects will be to small
+                    float scale{ 1.f };
+                    m_vr_hud->set_crosshair_cursor_scale(&scale);
+
+                    m_mod_events.insert(MOD_EVENT_SHOW_MFD);
+                }
+                else {
+                    vr->set_aim_method(2);
+                    vr->set_mod_value("VR_RoomscaleMovement", "true");
+                    vr->set_mod_value("UI_Y_Offset", "0.010000");
+                    m_vr_hud->set_laser_pointer_visibility(false);
+                    m_vr_hud->set_mfd_mask_visibility(false);
+                    m_vr_hud->set_mfd_hotbar_visibility(false);
+                    m_vr_hud->set_player_response_to_collision_channel(
+                        item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
+                    );
+                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
+                }
+            }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_mfd_changes] Exception");
         }
     }
 
     // matches LookPivot pitch with Controller's pitch, compensates by setting AnimCameraPosition rotation
     // (compensation is needed because we attached RController to ArmsMesh - was tricky to solve)
     void handle_look_pivot() {
-        if (m_pawn_state.matches_none({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT })) {
-            return;
-        }
-
-        auto pawn_controller = m_sdk_pawn->Controller;
-        if (pawn_controller != nullptr) {
-            auto look_pivot_ptr = m_pawn->get_property_data<SceneComponent*>(L"LookPivot");
-            auto look_pivot = look_pivot_ptr != nullptr ? *look_pivot_ptr : nullptr;
-
-            auto anim_camera_position_ptr = m_pawn->get_property_data<SceneComponent*>(L"AnimCameraPosition");
-            auto anim_camera_position = anim_camera_position_ptr != nullptr ? *anim_camera_position_ptr : nullptr;
-
-            if (look_pivot != nullptr && anim_camera_position != nullptr) {
-                SDK::FRotator controller_rotation = pawn_controller->GetControlRotation();
-
-                SDK::FRotator look_pivot_rot = { controller_rotation.Pitch, 0.0f, 0.0f };
-                SDK::FRotator anim_camera_position_rot = { -controller_rotation.Pitch, 94.700f, 0.0f };
-                    
-                look_pivot->K2_set_relative_rotation(look_pivot_rot);
-                anim_camera_position->K2_set_relative_rotation(anim_camera_position_rot);
+        try {
+            if (m_pawn_state.matches_none({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT, PAWN_PSEUDOSPACE })) {
+                return;
             }
+
+            auto pawn_controller = m_sdk_pawn->Controller;
+            if (pawn_controller != nullptr) {
+                auto look_pivot_ptr = m_pawn->get_property_data<SceneComponent*>(L"LookPivot");
+                auto look_pivot = look_pivot_ptr != nullptr ? *look_pivot_ptr : nullptr;
+
+                auto anim_camera_position_ptr = m_pawn->get_property_data<SceneComponent*>(L"AnimCameraPosition");
+                auto anim_camera_position = anim_camera_position_ptr != nullptr ? *anim_camera_position_ptr : nullptr;
+
+                if (look_pivot != nullptr && anim_camera_position != nullptr) {
+                    SDK::FRotator controller_rotation = pawn_controller->GetControlRotation();
+
+                    SDK::FRotator look_pivot_rot = { controller_rotation.Pitch, 0.0f, 0.0f };
+                    SDK::FRotator anim_camera_position_rot = { -controller_rotation.Pitch, 94.700f, 0.0f };
+                    
+                    look_pivot->K2_set_relative_rotation(look_pivot_rot);
+                    anim_camera_position->K2_set_relative_rotation(anim_camera_position_rot);
+                }
+            }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_look_pivot] Exception");
         }
     }
 
     void handle_cyberspace_look_pivot(const UEVR_VRData* vr) {
-        return;
-
-        if (m_pawn_state.matches_none({ PAWN_AVATAR })) {
+        try {
+            // disabled
             return;
+
+            if (m_pawn_state.matches_none({ PAWN_AVATAR })) {
+                return;
+            }
+
+            auto pawn_controller = m_sdk_pawn->Controller;
+            if (pawn_controller != nullptr) {
+
+        	    UEVR_Vector3f right_hand_position{};
+        	    UEVR_Quaternionf rh_rot{};
+        	    vr->get_aim_pose(vr->get_right_controller_index(), (UEVR_Vector3f*)&right_hand_position, (UEVR_Quaternionf*)&rh_rot);
+
+                SDK::FQuat quat{ rh_rot.x, rh_rot.y, rh_rot.z, rh_rot.w };
+                auto vect = SDK::UKismetMathLibrary::Quat_Euler(quat);
+                auto rot = SDK::UKismetMathLibrary::Quat_Rotator(quat);
+
+                pawn_controller->SetControlRotation(SDK::FRotator(rot));
+            }
         }
-
-        auto pawn_controller = m_sdk_pawn->Controller;
-        if (pawn_controller != nullptr) {
-
-        	UEVR_Vector3f right_hand_position{};
-        	UEVR_Quaternionf rh_rot{};
-        	vr->get_aim_pose(vr->get_right_controller_index(), (UEVR_Vector3f*)&right_hand_position, (UEVR_Quaternionf*)&rh_rot);
-
-            SDK::FQuat quat{ rh_rot.x, rh_rot.y, rh_rot.z, rh_rot.w };
-            auto vect = SDK::UKismetMathLibrary::Quat_Euler(quat);
-            auto rot = SDK::UKismetMathLibrary::Quat_Rotator(quat);
-
-            pawn_controller->SetControlRotation(SDK::FRotator(rot));
+        catch (...) {
+            API::get()->log_error("[main][handle_cyberspace_look_pivot] Exception");
         }
     }
 
     void handle_hud_depth(const UEVR_VRData* vr) {
-        if (m_skip_hud_depth) {
-            m_skip_hud_depth = false;
-            return;
-        }
-
-        if (m_mfd_visible.value || m_main_menu_in_game_visible.value || m_hotbar_selector_button.value || m_hardware_selector_button.value) {
-            return;
-        }
-
-        const auto scanner_ptr = m_pawn->get_property_data<API::UObject*>(L"COMP_Scanner");
-        const auto scanner = scanner_ptr != nullptr ? *scanner_ptr : nullptr;
-        if (scanner != nullptr) {
-            float cursor_distance = scanner->get_property<float>(L"LastCursorHitDistance");
-            // just some exponential function I created to get better value for UEVR ui_distance property
-            float distance = cursor_distance / (
-                (std::powf((1.0f / 10.0f), ((cursor_distance / 150.0f) - 1.3f)) * 0.7f) + 80.0f + (m_ui_option_crosshair_depth * 3.0f)
-            );
-            distance = (distance == 0) ? 10.0f : std::fmax(distance, 0.5f);
-
-            char ui_distance[32];
-            char ui_size[32];
-            int ret_ui_distance = snprintf(ui_distance, sizeof ui_distance, "%f", distance);
-            int ret_ui_size = snprintf(ui_size, sizeof ui_size, "%f", distance);
-            if (ret_ui_distance < 0 || ret_ui_size < 0) {
+        try {
+            if (m_skip_hud_depth) {
+                m_skip_hud_depth = false;
                 return;
             }
-            vr->set_mod_value("UI_Distance", ui_distance);
-            vr->set_mod_value("UI_Size", ui_size);
+
+            if (m_mfd_visible.value || m_main_menu_in_game_visible.value || m_hotbar_selector_button.value || m_hardware_selector_button.value) {
+                return;
+            }
+
+            const auto scanner_ptr = m_pawn->get_property_data<API::UObject*>(L"COMP_Scanner");
+            const auto scanner = scanner_ptr != nullptr ? *scanner_ptr : nullptr;
+            if (scanner != nullptr) {
+                float cursor_distance = scanner->get_property<float>(L"LastCursorHitDistance");
+                // just some exponential function I created to get better value for UEVR ui_distance property
+                float distance = cursor_distance / (
+                    (std::powf((1.0f / 10.0f), ((cursor_distance / 150.0f) - 1.3f)) * 0.7f) + 80.0f + (m_ui_option_crosshair_depth * 3.0f)
+                );
+                distance = (distance == 0) ? 10.0f : std::fmax(distance, 0.5f);
+
+                char ui_distance[32];
+                char ui_size[32];
+                int ret_ui_distance = snprintf(ui_distance, sizeof ui_distance, "%f", distance);
+                int ret_ui_size = snprintf(ui_size, sizeof ui_size, "%f", distance);
+                if (ret_ui_distance < 0 || ret_ui_size < 0) {
+                    return;
+                }
+                vr->set_mod_value("UI_Distance", ui_distance);
+                vr->set_mod_value("UI_Size", ui_size);
+            }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_hud_depth] Exception");
         }
     }
 
     void handle_smooth_turning(XINPUT_STATE* state, const UEVR_VRData* vr) {
-        if (m_pawn_state.matches_none({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT, PAWN_AVATAR })) {
-            return;
-        }
-
-        char snap_angle[16] = { 0 };
-        vr->get_mod_value("VR_SnapturnTurnAngle", snap_angle, sizeof(snap_angle));
-        int snap_angle_int = atoi(snap_angle);
-
-        // verify if smooth turning conditions have been met
-        if ( snap_angle_int == 359 ) {
-            vr->set_snap_turn_enabled(false);
-            auto pawn_controller = m_sdk_pawn->Controller;
-            if (pawn_controller == nullptr) {
+        try {
+            if (m_pawn_state.matches_none({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT, PAWN_AVATAR, PAWN_PSEUDOSPACE })) {
                 return;
             }
 
-            auto control_rotation = pawn_controller->GetControlRotation();
-            control_rotation.Yaw += (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
+            char snap_angle[16] = { 0 };
+            vr->get_mod_value("VR_SnapturnTurnAngle", snap_angle, sizeof(snap_angle));
+            int snap_angle_int = atoi(snap_angle);
 
-            if (m_pawn_state.value == PAWN_AVATAR && m_cyberspace_aim_method == 0 && m_ui_option_openxr_runtime == WMR) {
-                control_rotation.Pitch += (state->Gamepad.sThumbRY / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
-            }
+            // verify if smooth turning conditions have been met
+            if ( snap_angle_int == 359 ) {
+                vr->set_snap_turn_enabled(false);
+                auto pawn_controller = m_sdk_pawn->Controller;
+                if (pawn_controller == nullptr) {
+                    return;
+                }
 
-            if (!m_main_menu_in_game_visible.value) {
-                pawn_controller->SetControlRotation(control_rotation); // disable rotation when in menu
+                auto control_rotation = pawn_controller->GetControlRotation();
+                control_rotation.Yaw += (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
+
+                if (m_pawn_state.value == PAWN_AVATAR && m_cyberspace_aim_method == 0 && m_ui_option_openxr_runtime == WMR) {
+                    control_rotation.Pitch += (state->Gamepad.sThumbRY / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
+                }
+
+                if (!m_main_menu_in_game_visible.value) {
+                    pawn_controller->SetControlRotation(control_rotation); // disable rotation when in menu
+                }
             }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_smooth_turning] Exception");
         }
     }
 
     void handle_pawn_changes(const UEVR_VRData* vr) {
-        // handle Pawn state changes
-        if (m_pawn_state.has_changed()) {
-            switch (m_pawn_state.value) {
-                // title screen or cutscene
-                case PAWN_PLAYERGHOST:
-                    API::get()->log_warn("Changed Pawn to: PAWN_PLAYERGHOST");
-                    vr->set_aim_method(0);
-                    vr->set_snap_turn_enabled(true);
-                    vr->set_decoupled_pitch_enabled(true);
-                    vr->set_mod_value("VR_RoomscaleMovement", "false");
-                    vr->set_mod_value("UI_Distance", "2.000000");
-                    vr->set_mod_value("UI_Size", "2.000000");
-                    vr->recenter_view();
+        try {
+            // handle Pawn state changes
+            if (m_pawn_state.has_changed()) {
+                switch (m_pawn_state.value) {
+                    // title screen or cutscene
+                    case PAWN_PLAYERGHOST:
+                        API::get()->log_warn("Changed Pawn to: PAWN_PLAYERGHOST");
+                        vr->set_aim_method(0);
+                        vr->set_snap_turn_enabled(true);
+                        vr->set_decoupled_pitch_enabled(true);
+                        vr->set_mod_value("VR_RoomscaleMovement", "false");
+                        vr->set_mod_value("UI_Distance", "2.000000");
+                        vr->set_mod_value("UI_Size", "2.000000");
+                        vr->recenter_view();
                     
-                    API::UObjectHook::set_disabled(true);
-                    reset_height(vr);
-                    break;
+                        API::UObjectHook::set_disabled(true);
+                        reset_height(vr);
+                        break;
 
-                // animation
-                case PAWN_HACKERSIMPLE:
-                    API::get()->log_warn("Changed Pawn to: PAWN_HACKERSIMPLE");
-                    vr->set_aim_method(2);
-                    vr->set_snap_turn_enabled(true);
-                    vr->set_decoupled_pitch_enabled(true);
-                    vr->set_mod_value("VR_RoomscaleMovement", "false");
-                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                    vr->recenter_view();
+                    // animation
+                    case PAWN_HACKERSIMPLE:
+                        API::get()->log_warn("Changed Pawn to: PAWN_HACKERSIMPLE");
+                        vr->set_aim_method(2);
+                        vr->set_snap_turn_enabled(true);
+                        vr->set_decoupled_pitch_enabled(true);
+                        vr->set_mod_value("VR_RoomscaleMovement", "false");
+                        vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                        vr->recenter_view();
                     
-                    API::UObjectHook::set_disabled(false);
-                    reset_height(vr);
-                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
-                    break;
+                        API::UObjectHook::set_disabled(false);
+                        reset_height(vr);
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
+                        break;
 
-                // main game
-                case PAWN_HACKERIMPLANT:
-                    API::get()->log_warn("Changed Pawn to: PAWN_HACKERIMPLANT");
-                    if (m_pawn != nullptr) {
-                        m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
-                        m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
-                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
-                    }
-                    apply_selected_crosshair_options();
+                    // main game
+                    case PAWN_PSEUDOSPACE:
+                    case PAWN_HACKERIMPLANT:
+                        API::get()->log_warn("Changed Pawn to: PAWN_HACKERIMPLANT / PAWN_PSEUDOSPACE");
+                        if (m_pawn != nullptr) {
+                            m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
+                            m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
+                            m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
+                        }
+                        apply_selected_crosshair_options();
 
-                    vr->set_aim_method(2);
-                    vr->set_snap_turn_enabled(true);
-                    vr->set_decoupled_pitch_enabled(true);
-                    vr->set_mod_value("VR_RoomscaleMovement", "true");
-                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                    vr->recenter_view();
+                        vr->set_aim_method(2);
+                        vr->set_snap_turn_enabled(true);
+                        vr->set_decoupled_pitch_enabled(true);
+                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                        vr->recenter_view();
 
-                    // remove dashboards (dashboards are reset after exiting cyberspace?)
-                    m_mod_events.insert(MOD_EVENT_VR_HUD_HIDE_DASHBOARDS);
+                        // remove dashboards (dashboards are reset after exiting cyberspace?)
+                        m_mod_events.insert(MOD_EVENT_VR_HUD_HIDE_DASHBOARDS);
 
-                    API::UObjectHook::set_disabled(false);
-                    reset_height(vr);
-                    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
-                    break;
+                        API::UObjectHook::set_disabled(false);
+                        reset_height(vr);
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
+                        break;
 
-                // cyberspace
-                case PAWN_AVATAR:
-                    API::get()->log_warn("Changed Pawn to: PAWN_AVATAR");
+                    // cyberspace
+                    case PAWN_AVATAR:
+                        API::get()->log_warn("Changed Pawn to: PAWN_AVATAR");
 
-                    if (m_pawn != nullptr) {
-                        m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
-                        m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
-                        m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
-                    }
+                        if (m_pawn != nullptr) {
+                            m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
+                            m_pawn->set_bool_property(L"bUseControllerRotationRoll", true);
+                            m_pawn->set_bool_property(L"bUseControllerRotationYaw", true);
+                        }
                     
-                    m_cyberspace_aim_method = 2;
-                    vr->set_aim_method(2);
-                    vr->set_snap_turn_enabled(false);
-                    vr->set_decoupled_pitch_enabled(true);
-                    vr->set_mod_value("VR_RoomscaleMovement", "false");
-                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                    vr->recenter_view();
+                        m_cyberspace_aim_method = 2;
+                        vr->set_aim_method(2);
+                        vr->set_snap_turn_enabled(false);
+                        vr->set_decoupled_pitch_enabled(true);
+                        vr->set_mod_value("VR_RoomscaleMovement", "false");
+                        vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                        vr->recenter_view();
                     
-                    API::UObjectHook::set_disabled(true);
-                    reset_height(vr);
-                    break;
+                        API::UObjectHook::set_disabled(true);
+                        reset_height(vr);
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
             }
+        }
+        catch (...) {
+            API::get()->log_error("[main][handle_pawn_changes] Exception");
         }
     }
 
     void handle_lean() {
-        if (m_pawn_state.matches_any({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT })) {
+        if (m_pawn_state.matches_any({ PAWN_HACKERSIMPLE, PAWN_HACKERIMPLANT, PAWN_PSEUDOSPACE })) {
             // prevent player leaning
             m_pawn->set_bool_property(L"IsTryingToLean", false);
         }
     }
 
     void handle_media_display() {
-        if (m_pawn_state.value == PAWN_HACKERIMPLANT && m_vr_hud != nullptr && m_is_media_display_visible.has_changed()) {
-            m_vr_hud->set_minimap_visibility(!m_is_media_display_visible.value);
-            m_vr_hud->set_media_display_visibility(m_is_media_display_visible.value);
+        try {
+            if (m_pawn_state.value == PAWN_HACKERIMPLANT && m_vr_hud != nullptr && m_is_media_display_visible.has_changed()) {
+                m_vr_hud->set_minimap_visibility(!m_is_media_display_visible.value);
+                m_vr_hud->set_media_display_visibility(m_is_media_display_visible.value);
+
+            }
         }
+        catch (...) {
+            API::get()->log_error("[main][handle_media_display] Exception");
+        }
+    }
+
+
+    void handle_enegry_shield() {
+        if (SDK::UKismetSystemLibrary::IsValid(m_sdk_pawn) && m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+            if (static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP != nullptr) {
+                static SDK::FName vignette_opacity_sdk;
+                get_global_param_by_fname(L"VignetteOpacity", vignette_opacity_sdk);
+                static SDK::FName param_sdk;
+                get_global_param_by_fname(L"Param", param_sdk);
+                static SDK::FName intensity_sdk;
+                get_global_param_by_fname(L"Intensity", intensity_sdk);
+                static SDK::FName radius_sdk;
+                get_global_param_by_fname(L"Radius", radius_sdk);
+
+
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->SetScalarParameterValue(vignette_opacity_sdk, 10.0f);
+                //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->SetScalarParameterValue(param_sdk, 100.0f);
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->SetScalarParameterValue(intensity_sdk, 6.0f);
+
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.bOverride_BlendMode = true;
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.BlendMode = SDK::EBlendMode::BLEND_Opaque;
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.bOverride_TwoSided = true;
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.TwoSided = true;
+            }
+        }
+    }
+
+    void get_global_param_by_fname(std::wstring name, SDK::FName &param_sdk) {
+        static auto param_uevr = API::FName(name, API::FName::EFindName::Find);
+        param_sdk.ComparisonIndex = param_uevr.comparison_index;
+        param_sdk.Number = param_uevr.number;
     }
 
     void reset_height(const UEVR_VRData* vr, float offset_y = 0.0f) {
@@ -1754,157 +1943,162 @@ public:
     // ImGui logging
     // -------------------------------------------------------------------------------------
     void internal_frame() {
-        if (!API::get()->param()->functions->is_drawing_ui()) {
-            return;
-        }
+        try {
+            if (!API::get()->param()->functions->is_drawing_ui()) {
+                return;
+            }
 
-        static const auto UEVR_NAME = std::format("SystemReShock UEVR mod [rev. {}]", MOD_VERSION);
-        static const auto NO_PAWN = std::format("No Pawn detected! Is your HMD running?");
-        static const char* LOOK_SENSITIVITY = "Look Sensitivity";
-        static const char* SHOW_DEBUG = "Show Debug View";
-        static const char* CURRENT_PAWN_STATE = "Current Pawn State";
-        static const char* APPLY_WEAPON_OFFSET_WEAPON = "Apply Weapon Offset";
-        static const char* CURRENT_WEAPON = "Current Weapon";
+            static const auto UEVR_NAME = std::format("SystemReShock UEVR mod [rev. {}]", MOD_VERSION);
+            static const auto NO_PAWN = std::format("No Pawn detected! Is your HMD running?");
+            static const char* LOOK_SENSITIVITY = "Look Sensitivity";
+            static const char* SHOW_DEBUG = "Show Debug View";
+            static const char* CURRENT_PAWN_STATE = "Current Pawn State";
+            static const char* APPLY_WEAPON_OFFSET_WEAPON = "Apply Weapon Offset";
+            static const char* CURRENT_WEAPON = "Current Weapon";
 
-        constexpr auto window_w = 500.0f;
-        constexpr auto window_h = 500.0f;
+            constexpr auto window_w = 500.0f;
+            constexpr auto window_h = 500.0f;
 
-        if (m_pawn == nullptr) {
+            if (m_pawn == nullptr) {
+                ImGui::SetNextWindowSize(ImVec2(window_w, window_h), ImGuiCond_::ImGuiCond_Once);
+                if (ImGui::Begin(UEVR_NAME.c_str())) {
+                    ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), NO_PAWN.c_str());
+                }
+                ImGui::End();
+                return;
+            }
+
             ImGui::SetNextWindowSize(ImVec2(window_w, window_h), ImGuiCond_::ImGuiCond_Once);
             if (ImGui::Begin(UEVR_NAME.c_str())) {
-                ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), NO_PAWN.c_str());
-            }
-            ImGui::End();
-            return;
-        }
-
-        ImGui::SetNextWindowSize(ImVec2(window_w, window_h), ImGuiCond_::ImGuiCond_Once);
-        if (ImGui::Begin(UEVR_NAME.c_str())) {
-            ImGui::PushItemWidth(200);
-            if (ImGui::Button("Save Configuration")) {
-                if (save_plugin_config()) {
-                    ImGui::OpenPopup("succesful_save_popup");
+                ImGui::PushItemWidth(200);
+                if (ImGui::Button("Save Configuration")) {
+                    if (save_plugin_config()) {
+                        ImGui::OpenPopup("succesful_save_popup");
+                    };
                 };
-            };
 
-            if (ImGui::BeginPopup("succesful_save_popup"))
-            {
-                ImGui::Text("Configuration Saved!");
-                ImGui::EndPopup();
-            }
+                if (ImGui::BeginPopup("succesful_save_popup"))
+                {
+                    ImGui::Text("Configuration Saved!");
+                    ImGui::EndPopup();
+                }
 
-            ImGui::SeparatorText("General options");
-            ImGui::SliderInt(LOOK_SENSITIVITY, &m_ui_option_look_sensitivity, 1, 10);
-            ImGui::SliderFloat("Player height modifier", &m_ui_option_player_height_modifier, -15.f, 15.f);
-            ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
-            ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
-            ImGui::Checkbox("Disable roomscale when aiming", &m_ui_option_disable_roomscale_when_aiming);
+                ImGui::SeparatorText("General options");
+                ImGui::SliderInt(LOOK_SENSITIVITY, &m_ui_option_look_sensitivity, 1, 10);
+                ImGui::SliderFloat("Player height modifier", &m_ui_option_player_height_modifier, -15.f, 15.f);
+                ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
+                ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
+                ImGui::Checkbox("Disable roomscale when aiming", &m_ui_option_disable_roomscale_when_aiming);
             
-            ImGui::Combo("HMD", &m_ui_option_openxr_runtime, "Meta Quest\0HP Reverb G2\0");
+                ImGui::Combo("HMD", &m_ui_option_openxr_runtime, "Meta Quest\0HP Reverb G2\0");
             
-            //ImGui::SeparatorText("Button mappings");
-            //ImGui::Combo("Hotbar selector button", &m_ui_option_hotbar_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
-            //ImGui::Combo("Hardware selector button", &m_ui_option_hardware_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
+                //ImGui::SeparatorText("Button mappings");
+                //ImGui::Combo("Hotbar selector button", &m_ui_option_hotbar_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
+                //ImGui::Combo("Hardware selector button", &m_ui_option_hardware_selector_button, "RGrip\0RS\0LGrip\0LS\0\0");
 
-            //if (m_ui_option_hotbar_selector_button == m_ui_option_hardware_selector_button) {
-            //    ImGui::BeginDisabled();
-            //}
-            //if (ImGui::Button("Apply Mappings")) {
-            //    apply_button_mappings();
-            //};
-            //if (m_ui_option_hotbar_selector_button == m_ui_option_hardware_selector_button) {
-            //    ImGui::EndDisabled();
-            //}
-
-            ImGui::SeparatorText("Crosshair options");
-            ImGui::SliderInt("Crosshair Depth", &m_ui_option_crosshair_depth, 0, 10);
-            ImGui::SliderFloat("Crosshair Cursor Scale", &m_ui_option_crosshair_cursor_scale, 0.f, 1.f );
-            ImGui::SliderFloat("Crosshair Brackets Scale", &m_ui_option_crosshair_brackets_scale, 0.f, 1.f);
-            ImGui::SliderFloat("TargetID Reticle Scale", &m_ui_option_target_id_reticle_scale, 0.f, 1.f);
-            if (ImGui::Button("Apply Crosshair Options")) {
-                apply_selected_crosshair_options();
-            };
-            ImGui::PopItemWidth();
-
-            ImGui::SeparatorText("Debugging");
-            // game state section
-            ImGui::Checkbox(SHOW_DEBUG, &m_ui_option_show_debug_view);
-
-            ImGui::BeginGroup();
-            ImGui::BeginDisabled();
-            if (m_ui_option_show_debug_view) {
-                if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS) {
-                    auto pos = m_vr_hud->get_2D_hit_position();
-                    float poss[2] = { pos.X, pos.Y };
-                    ImGui::DragFloat2("POS", poss);
-                }
-                
-                ImGui::InputText("Current Montage", (m_current_montage.value != nullptr) ? (char*)m_current_montage.value->GetName().c_str() : (char*)"NONE", 20);
-                ImGui::InputText("Current Action", (m_current_action != nullptr) ? (char*)m_current_action->GetName().c_str() : (char*)"NONE", 20);
-                ImGui::InputText("Current Interactable", !m_channeling_interactable_name.value.empty() ? (char*)m_channeling_interactable_name.value.c_str() : (char*)"NONE", 20);
-
-                ImGui::InputText(CURRENT_PAWN_STATE, (char*)PawnStateNames[m_pawn_state.value], 20);
-                if (m_vr_hud != nullptr) {
-                    ImGui::InputText("VR HUD Status", (char*)VRHackerHUDStateNames[m_vr_hud->get_hud_state()], 20);
-                    ImGui::InputText("VR HUD Last Error", (char*)m_vr_hud->get_hud_error().c_str(), 20);
-                }
-                ImGui::EndDisabled();
-
-                ImGui::Checkbox(APPLY_WEAPON_OFFSET_WEAPON, &m_ui_option_apply_weapon_offset);
-
-                ImGui::BeginDisabled();
-                if (m_current_weapon != nullptr) {
-                    auto weapon_name = m_current_weapon->GetName();
-                    ImGui::InputText(CURRENT_WEAPON, (char*)weapon_name.c_str(), 20);
-                }
-                else {
-                    ImGui::InputText(CURRENT_WEAPON, (char*)"NONE", 20);
-                }
-
-                // show weapon offset
-                auto weapon_offset = m_pawn->get_property_data<SDK::FVector>(L"CurrentWeaponOffset");
-                if (weapon_offset != nullptr) {
-                    float vec_arr[3] = { weapon_offset->X, weapon_offset->Y, weapon_offset->Z };
-                    ImGui::DragFloat3("Weapon Offset", vec_arr);
-                }
-
-                //const UEVR_VRData* vr = API::get()->param()->vr;
-                //if (vr != nullptr) {
-                //    UEVR_Vector3f origin{};
-                //    vr->get_standing_origin(&origin);
-                //    float vec_arr[3] = { origin.x, origin.y, origin.z };
-                //    ImGui::DragFloat3("Standing Origin", vec_arr);
-
-                //    UEVR_Vector3f hmd_pos{};
-                //    UEVR_Quaternionf hmd_rot{};
-                //    vr->get_pose(vr->get_hmd_index(), &hmd_pos, &hmd_rot);
-
-                //    float hmd_pos_arr[3] = { hmd_pos.x, hmd_pos.y, hmd_pos.z };
-                //    ImGui::DragFloat3("HMD Position", hmd_pos_arr);
-                //    float quat_arr[4] = { hmd_rot.w, hmd_rot.x, hmd_rot.y, hmd_rot.z };
-                //    ImGui::DragFloat4("HMD Rotation", quat_arr);
+                //if (m_ui_option_hotbar_selector_button == m_ui_option_hardware_selector_button) {
+                //    ImGui::BeginDisabled();
+                //}
+                //if (ImGui::Button("Apply Mappings")) {
+                //    apply_button_mappings();
+                //};
+                //if (m_ui_option_hotbar_selector_button == m_ui_option_hardware_selector_button) {
+                //    ImGui::EndDisabled();
                 //}
 
-                ImGui::Checkbox("Player alive", &m_player_alive.value);
-                ImGui::Checkbox("Is using laptop", &m_is_using_laptop.value);
-                ImGui::Checkbox("MFD visible", &m_mfd_visible.value);
-                ImGui::Checkbox("Player crouching", &m_player_crouching.value);
-                ImGui::Checkbox("Player interacting", &m_player_interacting.value);
-                ImGui::Checkbox("Player sprinting", &m_player_sprinting);
-                ImGui::Checkbox("Hacker bootup", &m_is_booting_up.value);
-                ImGui::Checkbox("Hacker crash", &m_is_crashing.value);
-                ImGui::Checkbox("Main Menu visible", &m_main_menu_in_game_visible.value);
-                
-
-                ImGui::PushItemWidth(100);
-                ImGui::InputInt("XInput cb duration [microseconds]", &m_ui_xinput_duration);
-                ImGui::InputInt("Pre Engine Tick cb duration [microseconds]", &m_ui_pre_engine_tick_duration);
+                ImGui::SeparatorText("Crosshair options");
+                ImGui::SliderInt("Crosshair Depth", &m_ui_option_crosshair_depth, 0, 10);
+                ImGui::SliderFloat("Crosshair Cursor Scale", &m_ui_option_crosshair_cursor_scale, 0.f, 1.f );
+                ImGui::SliderFloat("Crosshair Brackets Scale", &m_ui_option_crosshair_brackets_scale, 0.f, 1.f);
+                ImGui::SliderFloat("TargetID Reticle Scale", &m_ui_option_target_id_reticle_scale, 0.f, 1.f);
+                if (ImGui::Button("Apply Crosshair Options")) {
+                    apply_selected_crosshair_options();
+                };
                 ImGui::PopItemWidth();
+
+                ImGui::SeparatorText("Debugging");
+                // game state section
+                ImGui::Checkbox(SHOW_DEBUG, &m_ui_option_show_debug_view);
+
+                ImGui::BeginGroup();
+                ImGui::BeginDisabled();
+                if (m_ui_option_show_debug_view) {
+                    if (m_vr_hud != nullptr && m_vr_hud->get_hud_state() == VR_HUD_SUCCESS) {
+                        auto pos = m_vr_hud->get_2D_hit_position();
+                        float poss[2] = { pos.X, pos.Y };
+                        ImGui::DragFloat2("POS", poss);
+                    }
+                
+                    ImGui::InputText("Current Montage", (m_current_montage.value != nullptr) ? (char*)m_current_montage.value->GetName().c_str() : (char*)"NONE", 20);
+                    ImGui::InputText("Current Action", (m_current_action != nullptr) ? (char*)m_current_action->GetName().c_str() : (char*)"NONE", 20);
+                    ImGui::InputText("Current Interactable", !m_channeling_interactable_name.value.empty() ? (char*)m_channeling_interactable_name.value.c_str() : (char*)"NONE", 20);
+
+                    ImGui::InputText(CURRENT_PAWN_STATE, (char*)PawnStateNames[m_pawn_state.value], 20);
+                    if (m_vr_hud != nullptr) {
+                        ImGui::InputText("VR HUD Status", (char*)VRHackerHUDStateNames[m_vr_hud->get_hud_state()], 20);
+                        ImGui::InputText("VR HUD Last Error", (char*)m_vr_hud->get_hud_error().c_str(), 20);
+                    }
+                    ImGui::EndDisabled();
+
+                    ImGui::Checkbox(APPLY_WEAPON_OFFSET_WEAPON, &m_ui_option_apply_weapon_offset);
+
+                    ImGui::BeginDisabled();
+                    if (m_current_weapon != nullptr) {
+                        auto weapon_name = m_current_weapon->GetName();
+                        ImGui::InputText(CURRENT_WEAPON, (char*)weapon_name.c_str(), 20);
+                    }
+                    else {
+                        ImGui::InputText(CURRENT_WEAPON, (char*)"NONE", 20);
+                    }
+
+                    // show weapon offset
+                    auto weapon_offset = m_pawn->get_property_data<SDK::FVector>(L"CurrentWeaponOffset");
+                    if (weapon_offset != nullptr) {
+                        float vec_arr[3] = { weapon_offset->X, weapon_offset->Y, weapon_offset->Z };
+                        ImGui::DragFloat3("Weapon Offset", vec_arr);
+                    }
+
+                    //const UEVR_VRData* vr = API::get()->param()->vr;
+                    //if (vr != nullptr) {
+                    //    UEVR_Vector3f origin{};
+                    //    vr->get_standing_origin(&origin);
+                    //    float vec_arr[3] = { origin.x, origin.y, origin.z };
+                    //    ImGui::DragFloat3("Standing Origin", vec_arr);
+
+                    //    UEVR_Vector3f hmd_pos{};
+                    //    UEVR_Quaternionf hmd_rot{};
+                    //    vr->get_pose(vr->get_hmd_index(), &hmd_pos, &hmd_rot);
+
+                    //    float hmd_pos_arr[3] = { hmd_pos.x, hmd_pos.y, hmd_pos.z };
+                    //    ImGui::DragFloat3("HMD Position", hmd_pos_arr);
+                    //    float quat_arr[4] = { hmd_rot.w, hmd_rot.x, hmd_rot.y, hmd_rot.z };
+                    //    ImGui::DragFloat4("HMD Rotation", quat_arr);
+                    //}
+
+                    ImGui::Checkbox("Player alive", &m_player_alive.value);
+                    ImGui::Checkbox("Is using laptop", &m_is_using_laptop.value);
+                    ImGui::Checkbox("MFD visible", &m_mfd_visible.value);
+                    ImGui::Checkbox("Player crouching", &m_player_crouching.value);
+                    ImGui::Checkbox("Player interacting", &m_player_interacting.value);
+                    ImGui::Checkbox("Player sprinting", &m_player_sprinting);
+                    ImGui::Checkbox("Hacker bootup", &m_is_booting_up.value);
+                    ImGui::Checkbox("Hacker crash", &m_is_crashing.value);
+                    ImGui::Checkbox("Main Menu visible", &m_main_menu_in_game_visible.value);
+                    ImGui::Checkbox("Active Cinematic Action", &m_is_active_cinematic_action.value);
+
+                    ImGui::PushItemWidth(100);
+                    ImGui::InputInt("XInput cb duration [microseconds]", &m_ui_xinput_duration);
+                    ImGui::InputInt("Pre Engine Tick cb duration [microseconds]", &m_ui_pre_engine_tick_duration);
+                    ImGui::PopItemWidth();
+                }
+                ImGui::EndDisabled();
+                ImGui::EndGroup();
             }
-            ImGui::EndDisabled();
-            ImGui::EndGroup();
+            ImGui::End();
         }
-        ImGui::End();
+        catch (...) {
+            API::get()->log_error("[main][ImGui internal_frame] Exception");
+        }
     }
 
     bool on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) override {
