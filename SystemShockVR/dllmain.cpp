@@ -269,7 +269,6 @@ public:
     MemoProperty<bool> m_is_crashing{ false, false };
     MemoProperty<bool> m_is_using_laptop{ false, false };
     MemoProperty<bool> m_is_media_display_visible{ false, false };
-    MemoProperty<bool> m_is_active_cinematic_action{ false, false };
     MemoProperty<PawnState> m_pawn_state{ PAWN_UNKNOWN, PAWN_UNKNOWN };
     MemoProperty<HackerWeapon> m_weapon_state{ WEAPON_NONE, WEAPON_NONE };
     MemoProperty<SDK::ULevel*> m_level{ nullptr, nullptr };
@@ -567,9 +566,6 @@ public:
                 m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass()) ||
                 m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())
                 ) {
-
-                m_is_active_cinematic_action.consume();
-                static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->HasQueuedOrActiveCinematicAction(&m_is_active_cinematic_action.value);
 
                 m_inventory = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->COMP_HackerInventory;
             
