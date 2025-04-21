@@ -52,6 +52,7 @@
 #include "SDK/COMP_ActionManager_classes.hpp"
 #include "SDK/WEAPON_GrenadeLauncher_classes.hpp"
 #include "SDK/INTERACT_Laptop_classes.hpp"
+#include "SDK/CinematicCamera_classes.hpp"
 
 #include "mINI/ini.h"
 #include "uevr/Plugin.hpp"
@@ -244,6 +245,7 @@ public:
     SDK::UWorld* m_sdk_world{ nullptr };
     SDK::APawn* m_sdk_pawn{ nullptr };
     SDK::UWIDGET_PlayerHUD_C* m_sdk_hud{ nullptr };
+    SDK::APlayerCameraManager* m_player_camera_manager{ nullptr };
 
     // VR HUD
     VRHackerHUD* m_vr_hud{ nullptr };
@@ -255,6 +257,7 @@ public:
 
     SDK::AINTERACT_Laptop_C* m_intro_laptop{ nullptr };
     SDK::UCharacterAction_C* m_current_action{ nullptr };
+    MemoProperty<bool> m_is_cine_camera_active{ false, false };
     MemoProperty<bool> m_mfd_visible{ false, false };
     MemoProperty<bool> m_main_menu_in_game_visible{ false, false };
     MemoProperty<bool> m_mfd_inventory_context_menu_visible{ false, false };
@@ -302,6 +305,7 @@ public:
     bool m_ui_option_toggle_run_with_left_grip{ true };
     int m_ui_option_openxr_runtime{ META_QUEST };
     bool m_ui_option_disable_roomscale_when_aiming{ true };
+    float m_ui_option_shield_vignette_opacity{ 15.0f };
 
     // unused
     int m_ui_option_hotbar_selector_button{ 0 };
@@ -444,6 +448,7 @@ public:
             }
 
             try {
+                handle_cine_camera_changes(vr);
                 handle_look_pivot();
                 handle_camera_lock(vr);
                 handle_cyberspace_look_pivot(vr);
@@ -458,7 +463,6 @@ public:
                 handle_player_height(vr);
                 handle_in_game_menu(vr);
                 handle_compass();
-                handle_enegry_shield();
             }
             catch (...) {
                 API::get()->log_error("[main][on_pre_engine_tick][handlers] Exception");
@@ -494,6 +498,22 @@ public:
             if (m_sdk_pawn == nullptr) {
                 API::get()->log_warn("WARN: prepare_state::m_sdk_pawn = nullptr");
                 return false;
+            }
+
+            m_player_camera_manager = SDK::UGameplayStatics::GetPlayerCameraManager(m_sdk_world, 0);
+            if (m_player_camera_manager != nullptr) {
+                if (
+                    SDK::UKismetSystemLibrary::IsValid(m_player_camera_manager->ViewTarget.Target) &&
+                    m_player_camera_manager->ViewTarget.Target->IsA(SDK::ACineCameraActor::StaticClass())
+                    ) {
+                    m_is_cine_camera_active.set_value(true);
+                }
+                else {
+                    m_is_cine_camera_active.set_value(false);
+                }
+            }
+            else {
+                m_is_cine_camera_active.set_value(false);
             }
 
             // pawn state (enums)
@@ -600,11 +620,7 @@ public:
                 m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
             }
             else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
-                API::get()->log_warn("WARN: avatar");
                 static_cast<SDK::UWIDGET_CyberspaceHUD_C*>(static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->CyberspaceUI)->GetMainMenuWidget(&main_menu);
-                if (main_menu != nullptr) {
-                    API::get()->log_warn("WARN: main_menu->IsMainMenuEnabled %d", main_menu->IsMainMenuEnabled);
-                }
                 m_main_menu_in_game_visible.set_value(main_menu != nullptr && main_menu->IsMainMenuEnabled);
             }
             else {
@@ -1105,6 +1121,8 @@ public:
                     m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
                     m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale);
 
+                    set_enegry_shield_overlay_params();
+
                     vr->set_aim_method(2);
                     vr->set_snap_turn_enabled(true);
                     vr->set_decoupled_pitch_enabled(true);
@@ -1381,7 +1399,7 @@ public:
                 }
                 else {
                     vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                    if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE })) {
+                    if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE, PAWN_PSEUDOSPACE })) {
                         vr->set_mod_value("VR_RoomscaleMovement", "true");
                         vr->set_aim_method(2);
 
@@ -1793,36 +1811,14 @@ public:
         }
     }
 
-
-    void handle_enegry_shield() {
-        if (SDK::UKismetSystemLibrary::IsValid(m_sdk_pawn) && m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-            if (static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP != nullptr) {
-                static SDK::FName vignette_opacity_sdk;
-                get_global_param_by_fname(L"VignetteOpacity", vignette_opacity_sdk);
-                static SDK::FName param_sdk;
-                get_global_param_by_fname(L"Param", param_sdk);
-                static SDK::FName intensity_sdk;
-                get_global_param_by_fname(L"Intensity", intensity_sdk);
-                static SDK::FName radius_sdk;
-                get_global_param_by_fname(L"Radius", radius_sdk);
-
-
-                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->SetScalarParameterValue(vignette_opacity_sdk, 10.0f);
-                //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->SetScalarParameterValue(param_sdk, 100.0f);
-                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->SetScalarParameterValue(intensity_sdk, 6.0f);
-
-                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.bOverride_BlendMode = true;
-                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.BlendMode = SDK::EBlendMode::BLEND_Opaque;
-                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.bOverride_TwoSided = true;
-                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.TwoSided = true;
-            }
+    void handle_cine_camera_changes(const UEVR_VRData* vr) {
+        if (m_is_cine_camera_active.value) {
+            vr->set_aim_method(0);
+            API::UObjectHook::set_disabled(true);
         }
-    }
-
-    void get_global_param_by_fname(std::wstring name, SDK::FName &param_sdk) {
-        static auto param_uevr = API::FName(name, API::FName::EFindName::Find);
-        param_sdk.ComparisonIndex = param_uevr.comparison_index;
-        param_sdk.Number = param_uevr.number;
+        if (m_is_cine_camera_active.has_changed() && m_is_cine_camera_active.value == false) {
+            API::UObjectHook::set_disabled(false);
+        }
     }
 
     void reset_height(const UEVR_VRData* vr, float offset_y = 0.0f) {
@@ -1836,6 +1832,27 @@ public:
         origin.y = (hmd_pos.y) + offset_y;
 
         vr->set_standing_origin(&origin);
+    }
+
+    void set_enegry_shield_overlay_params() {
+        if (SDK::UKismetSystemLibrary::IsValid(m_sdk_pawn) && m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+            if (static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP != nullptr) {
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->SetScalarParameterValue(
+                    SDK::UKismetStringLibrary::Conv_StringToName(L"VignetteOpacity"), m_ui_option_shield_vignette_opacity
+                );
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->SetScalarParameterValue(
+                    SDK::UKismetStringLibrary::Conv_StringToName(L"Intensity"), 10.0f
+                );
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->SetScalarParameterValue(
+                    SDK::UKismetStringLibrary::Conv_StringToName(L"Radius"), 30.0f
+                );
+
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.bOverride_BlendMode = true;
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.BlendMode = SDK::EBlendMode::BLEND_Opaque;
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.bOverride_TwoSided = true;
+                static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->MI_EnergyShield_PP->BasePropertyOverrides.TwoSided = true;
+            }
+        }
     }
 
     void apply_vr_game_options() {
@@ -1985,6 +2002,9 @@ public:
 
                 ImGui::SeparatorText("General options");
                 ImGui::SliderInt(LOOK_SENSITIVITY, &m_ui_option_look_sensitivity, 1, 10);
+                if (ImGui::SliderFloat("Shield vignette opacity", &m_ui_option_shield_vignette_opacity, 0.f, 40.f)) {
+                    set_enegry_shield_overlay_params();
+                }
                 ImGui::SliderFloat("Player height modifier", &m_ui_option_player_height_modifier, -15.f, 15.f);
                 ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
                 ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
@@ -2028,7 +2048,8 @@ public:
                         float poss[2] = { pos.X, pos.Y };
                         ImGui::DragFloat2("POS", poss);
                     }
-                
+
+                    ImGui::InputText("Level name", (m_level.value != nullptr) ? (char*)m_level.value->GetFullName().c_str() : (char*)"NONE", 40);
                     ImGui::InputText("Current Montage", (m_current_montage.value != nullptr) ? (char*)m_current_montage.value->GetName().c_str() : (char*)"NONE", 20);
                     ImGui::InputText("Current Action", (m_current_action != nullptr) ? (char*)m_current_action->GetName().c_str() : (char*)"NONE", 20);
                     ImGui::InputText("Current Interactable", !m_channeling_interactable_name.value.empty() ? (char*)m_channeling_interactable_name.value.c_str() : (char*)"NONE", 20);
@@ -2084,7 +2105,7 @@ public:
                     ImGui::Checkbox("Hacker bootup", &m_is_booting_up.value);
                     ImGui::Checkbox("Hacker crash", &m_is_crashing.value);
                     ImGui::Checkbox("Main Menu visible", &m_main_menu_in_game_visible.value);
-                    ImGui::Checkbox("Active Cinematic Action", &m_is_active_cinematic_action.value);
+                    ImGui::Checkbox("Active Cinematic Camera", &m_is_cine_camera_active.value);
 
                     ImGui::PushItemWidth(100);
                     ImGui::InputInt("XInput cb duration [microseconds]", &m_ui_xinput_duration);
@@ -2402,6 +2423,20 @@ public:
             API::get()->log_error("[Mod Config] Missing general > openxr_runtime value.");
         }
 
+        // shield_vignette_opacity
+        if (mod_config["general"].has("shield_vignette_opacity")) {
+            std::string& shield_vignette_opacity = mod_config["general"]["shield_vignette_opacity"];
+            try {
+                m_ui_option_shield_vignette_opacity = std::stof(shield_vignette_opacity);
+            }
+            catch (...) {
+                API::get()->log_error("[Mod Config] Invalid general > shield_vignette_opacity value.");
+            }
+        }
+        else {
+            API::get()->log_error("[Mod Config] Missing general > shield_vignette_opacity value.");
+        }
+
         // crosshair_depth
         if (mod_config["crosshair"].has("depth")) {
             std::string& crosshair_depth = mod_config["crosshair"]["depth"];
@@ -2473,6 +2508,7 @@ public:
         mod_config["general"]["toggle_run_with_left_grip"] = std::to_string(m_ui_option_toggle_run_with_left_grip).c_str();
         mod_config["general"]["disable_roomscale_when_aiming"] = std::to_string(m_ui_option_disable_roomscale_when_aiming).c_str();
         mod_config["general"]["openxr_runtime"] = std::to_string(m_ui_option_openxr_runtime).c_str();
+        mod_config["general"]["shield_vignette_opacity"] = std::to_string(m_ui_option_shield_vignette_opacity).c_str();
 
         mod_config["crosshair"]["depth"] = std::to_string(m_ui_option_crosshair_depth).c_str();
         mod_config["crosshair"]["cursor_scale"] = std::to_string(m_ui_option_crosshair_cursor_scale).c_str();
