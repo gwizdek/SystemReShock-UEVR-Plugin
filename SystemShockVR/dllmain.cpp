@@ -492,13 +492,6 @@ public:
                 return false;
             }
 
-            // pawn
-            m_sdk_pawn = SDK::UGameplayStatics::GetPlayerPawn(m_sdk_world, 0);
-            if (m_sdk_pawn == nullptr) {
-                API::get()->log_warn("WARN: prepare_state::m_sdk_pawn = nullptr");
-                return false;
-            }
-
             m_player_camera_manager = SDK::UGameplayStatics::GetPlayerCameraManager(m_sdk_world, 0);
             if (m_player_camera_manager != nullptr) {
                 if (
@@ -513,6 +506,13 @@ public:
             }
             else {
                 m_is_cine_camera_active.set_value(false);
+            }
+
+            // pawn
+            m_sdk_pawn = SDK::UGameplayStatics::GetPlayerPawn(m_sdk_world, 0);
+            if (m_sdk_pawn == nullptr) {
+                API::get()->log_warn("WARN: prepare_state::m_sdk_pawn = nullptr");
+                return false;
             }
 
             // pawn state (enums)
@@ -536,12 +536,13 @@ public:
             m_level.set_value(m_sdk_world->PersistentLevel);
         
             // hud, vr hud, inventory context menu
-            if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+            if (SDK::UKismetSystemLibrary::IsValid(m_sdk_pawn) && m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
                 static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->GetNeuralHUD(&m_sdk_hud);
                 if (m_sdk_hud == nullptr) {
                     API::get()->log_warn("WARN: prepare_state::hud = nullptr");
                     return false;
                 }
+
                 m_mfd_inventory_context_menu_visible.set_value(m_sdk_hud->WIDGET_InventoryContextMenu->IsInventoryContextMenuEnabled);
                 m_is_booting_up.set_value(
                     m_sdk_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator7 &&
@@ -1731,8 +1732,28 @@ public:
 
                     // main game
                     case PAWN_PSEUDOSPACE:
+                        API::get()->log_warn("Changed Pawn to: PAWN_PSEUDOSPACE");
+                        if (m_pawn != nullptr) {
+                            m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
+                            m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
+                            m_pawn->set_bool_property(L"bUseControllerRotationYaw", false);
+                        }
+                        apply_selected_crosshair_options();
+
+                        vr->set_aim_method(2);
+                        vr->set_snap_turn_enabled(true);
+                        vr->set_decoupled_pitch_enabled(true);
+                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                        vr->recenter_view();
+
+                        API::UObjectHook::set_disabled(false);
+                        reset_height(vr);
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->PlayerCamera->bUsePawnControlRotation = true;
+                        break;
+
                     case PAWN_HACKERIMPLANT:
-                        API::get()->log_warn("Changed Pawn to: PAWN_HACKERIMPLANT / PAWN_PSEUDOSPACE");
+                        API::get()->log_warn("Changed Pawn to: PAWN_HACKERIMPLANT");
                         if (m_pawn != nullptr) {
                             m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
                             m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
@@ -1808,12 +1829,19 @@ public:
     }
 
     void handle_cine_camera_changes(const UEVR_VRData* vr) {
-        if (m_is_cine_camera_active.value) {
-            vr->set_aim_method(0);
-            API::UObjectHook::set_disabled(true);
-        }
-        if (m_is_cine_camera_active.has_changed() && m_is_cine_camera_active.value == false) {
-            API::UObjectHook::set_disabled(false);
+        if (m_is_cine_camera_active.has_changed()) {
+            if (m_is_cine_camera_active.value == true) {
+                API::get()->log_warn("[main][handle_cine_camera_changes] Cinematic Camera Activated");
+                vr->set_aim_method(0);
+                vr->recenter_view();
+                API::UObjectHook::set_disabled(true);
+            }
+            else {
+                API::get()->log_warn("[main][handle_cine_camera_changes] Cinematic Camera Disabled");
+                vr->set_aim_method(2);
+                vr->recenter_view();
+                API::UObjectHook::set_disabled(false);
+            }
         }
     }
 
