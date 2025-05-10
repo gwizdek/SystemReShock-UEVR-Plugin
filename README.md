@@ -1,11 +1,13 @@
 # SystemReShock UEVR Plugin
   
 > [!NOTE]
-> The UEVR profile is now also available through Unreal Easy Injector https://uevrdeluxe.org
+> The profile is now also available through Unreal Easy Injector https://uevrdeluxe.org
 
+> [!WARNING]
+> The profile doesn't work with the Demo version of the game available on Steam
   
 
-Welcome back to Citadel Station hackers...
+### Welcome back to Citadel Station hackers...
 
 This UEVR plugin is inspired by wonderful work of Ashok and the team (CJ117, TimBurton and Markmon), who created the original UEVR plugin ([**Link**](https://github.com/Ashok0/SystemShock-UEVR)) and it borrows some of the fixes and ideas, so many thanks to the guys.  
 
@@ -25,7 +27,7 @@ Of course, let's not forget, that it wouldn't be possible without Praydog, the a
 * two aiming modes for cyberspace
 
 ## Installation
-1) Install UEVR ver 1.05 from [**HERE**](https://github.com/praydog/UEVR/releases).
+1) Install UEVR ver 1.05 from [**HERE**](https://github.com/praydog/UEVR/releases). (Works also with Nightly builds)
 2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
 3) Download the latest release of the SystemReShock UEVR plugin from Releases page. Click "Import Config" in the UEVR UI and navigate to "SystemReShock-Win64-Shipping.zip" and click on it and accept the DLL warning.
 4) Launch System Shock and inject the game with UEVR
@@ -43,7 +45,8 @@ Of course, let's not forget, that it wouldn't be possible without Praydog, the a
 * **Left Trigger** - Aim (useful for handling automatic weapons) / Use Target Identifier
 * **Left Grip** - Toggle run / walk *(configurable in plugin options)*
 * **Left Stick Button** - Hold to run (possibly will be remapped to something more useful)
-* **MENU** (hold 1s) - Toggle MFD
+* **MENU BUTTON** (hold 1s) - Toggle MFD  
+* **MENU BUTTON** (short press) - Open game menu  
 
 ### MFD
 * **A** - Select
@@ -117,8 +120,9 @@ Mods that modify crosshair, hotbar slots, inventory and mfd can have negative im
 
 ## Troubleshooting
 ### General
+* (Quest 2/3) My character changes weapons/items on it's own - Do you rest your thumb on the thumbrest area (dpad shifting button) of the controller? You can disable this feature in the UEVR overlay.
 * Laser pointer on the MFD doesn't work - Check if the game window is in focus.
-* Valve Index: [**this**](https://github.com/mark-mon/uevr-index-controls/releases) tool by markmon will allow use of Knuckles controllers  
+* (Valve Index): [**this**](https://github.com/mark-mon/uevr-index-controls/releases) tool by markmon will allow use of Knuckles controllers  
 
 ### Widescreen monitors
 * Misaligned cursor and laser pointer on MFD - Happens when resolution was changed, reinitialize runtime and reload a save game.
