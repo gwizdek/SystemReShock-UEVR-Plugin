@@ -78,6 +78,8 @@
 #define META_QUEST      0
 #define WMR             1
 
+#define MOUSE_WHEEL_DEBOUNCE_TIME 0.066f
+
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 using namespace uevr;
@@ -231,6 +233,7 @@ public:
     bool m_skip_hud_depth{ false };
     SDK::FHitResult m_hit_result{};
     int m_viewport_size_x{ 1920 }, m_viewport_size_y{ 1080 };
+    float m_mouse_wheel_debounce_timer{ 0.f };
 
     // this set keeps events to be handled
     // if an event is successfully handled, it's removed form this set
@@ -399,6 +402,8 @@ public:
             }
 
             const UEVR_VRData* vr = API::get()->param()->vr;
+
+            m_mouse_wheel_debounce_timer += delta;
 
             // if the controllers are not active, the xinput cb is not triggered.
             // normally we want the xinput cb to prepare vars as it's the first cb to be called
@@ -753,19 +758,6 @@ public:
 
             // normal level
             if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
-                // mute right stick Y axis
-                state->Gamepad.sThumbRY = 0;
-
-                // clear sprinting flag when using selected interactables (caused sporadic arms mesh misalignment)
-                if (
-                    m_player_interacting.has_changed() &&
-                    m_player_interacting.value) {
-                    for (InteractableMeta interactable : g_interactables) {
-                        if (m_channeling_interactable_name.value.find(std::get<0>(interactable)) != std::string::npos) {
-                            m_player_sprinting = false;
-                        }
-                    }
-                }
 
                 // MFD on
                 if (m_mfd_visible.value) {
@@ -792,6 +784,19 @@ public:
                 }
                 // normal gameplay
                 else {
+                    // mute right stick Y axis
+                    state->Gamepad.sThumbRY = 0;
+
+                    // clear sprinting flag when using selected interactables (caused sporadic arms mesh misalignment)
+                    if (
+                        m_player_interacting.has_changed() &&
+                        m_player_interacting.value) {
+                        for (InteractableMeta interactable : g_interactables) {
+                            if (m_channeling_interactable_name.value.find(std::get<0>(interactable)) != std::string::npos) {
+                                m_player_sprinting = false;
+                            }
+                        }
+                    }
 
                     // disable pushback with left trigger
                     if (m_ui_option_disable_roomscale_when_aiming) {
@@ -1447,6 +1452,16 @@ public:
                 m_gamepad_btn_a.mute_state(state);
                 m_gamepad_btn_y.mute_state(state);
 
+                // scroll up
+                if (state->Gamepad.sThumbRY > INPUT_DEADZONE_HI && m_mouse_wheel_debounce_timer > MOUSE_WHEEL_DEBOUNCE_TIME) {
+                    send_mouse(0x0A, false);
+                    m_mouse_wheel_debounce_timer = 0.f;
+                }
+                // scroll down
+                if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_HI && m_mouse_wheel_debounce_timer > MOUSE_WHEEL_DEBOUNCE_TIME) {
+                    send_mouse(0x0B, false);
+                    m_mouse_wheel_debounce_timer = 0.f;
+                }
                 // mute sticks that move cursor
                 state->Gamepad.sThumbRX = 0;
                 state->Gamepad.sThumbRY = 0;
