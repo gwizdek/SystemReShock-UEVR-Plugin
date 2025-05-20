@@ -34,8 +34,9 @@ Of course, let's not forget, that it wouldn't be possible without Praydog, the a
 1) Install UEVR ver 1.05 from [**HERE**](https://github.com/praydog/UEVR/releases). (Works also with Nightly builds)
 2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
 3) Download the latest release of the SystemReShock UEVR plugin from Releases page. Click "Import Config" in the UEVR UI and navigate to "SystemReShock-Win64-Shipping.zip" and click on it and accept the DLL warning.
-4) Launch System Shock and inject the game with UEVR
-5) Reset controller bindings in game options to defaults
+4) Add optional mod files (Index controllers support, Player Arms mod, Melee Gesture mod) - described below
+5) Launch System Shock and inject the game with UEVR
+6) Reset controller bindings in game options to defaults
 
 ## Controls
 ### General
