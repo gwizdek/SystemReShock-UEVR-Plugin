@@ -1,11 +1,15 @@
 # SystemReShock UEVR Plugin
-  
-> [!NOTE]
-> The profile is now also available through Unreal Easy Injector https://uevrdeluxe.org
 
 > [!WARNING]
 > The profile doesn't work with the Demo version of the game available on Steam
   
+> [!NOTE]
+> The profile is now also available through Unreal Easy Injector https://uevrdeluxe.org
+
+> [!NOTE]
+> Optional mod files available:
+> * Markmon's Index Knuckles support
+> * Ashok's character arms and physical melee gesture mods
 
 ### Welcome back to Citadel Station hackers...
 
@@ -110,16 +114,26 @@ When you upgrade your Target Identifier software, an additional reticle will be 
 
 Press `Apply Crosshair Options` button after you make the changes.
 
+## Optional Mods by Ashok
+There are two additional files prepared by Ashok (included in the v1.2.0 release). You can choose to add them if you want to further enhance your gameplay.   
+### Player character's arms mod
+This `pak` mod makes player arms disappear. To install it, download `SystemShock-VRFixes_p.pak` file and place it inside `\Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.  
+![hands_mod_resized](https://github.com/user-attachments/assets/d72b8c90-38f2-4f52-bfe1-e1139c68053f)  
+
+### Physical Melee mod
+This is a `lua` script that brings back physical melee (swing gesture) from the original Ashok's mod. To install it, download `SSR_PhysicalMelee.lua` file and place it into `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\scripts` folder.  
 
 ## Limitations
 * no physical crouching
-* no physical melee
 
 ## Compatibility
 Mods that modify crosshair, hotbar slots, inventory and mfd can have negative impact on the plugin.
 
 ## Troubleshooting
 ### General
+* I can't see the crosshair!  
+  The crosshair scaling may look different depending on your monitor resolution. This can lead to a crosshair being too big or too small/invisible.
+  To change the scale, use your normal mouse and monitor to access mod options menu, and change `Crosshair Cursor Scale` setting. Press `Apply Crosshair Options` button to see the changes and finally `Save Configuration` button to store them.
 * (Quest 2/3) My character changes weapons/items on it's own - Do you rest your thumb on the thumbrest area (dpad shifting button) of the controller? You can disable this feature in the UEVR overlay.
 * Laser pointer on the MFD doesn't work - Check if the game window is in focus.
 * (Valve Index): [**this**](https://github.com/mark-mon/uevr-index-controls/releases) tool by markmon will allow use of Knuckles controllers  
