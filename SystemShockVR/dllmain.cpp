@@ -1612,12 +1612,16 @@ public:
 
     void handle_cyberspace_look_pivot(const UEVR_VRData* vr) {
         try {
-            // disabled
-            return;
-
             if (m_pawn_state.matches_none({ PAWN_AVATAR })) {
                 return;
             }
+            // hide arrow component gizmo
+            if (SDK::UKismetSystemLibrary::IsValid(m_sdk_pawn) && m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
+                static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->Arrow1->SetVisibility(false, true);
+            }
+
+            // the rest is disabled
+            return;
 
             auto pawn_controller = m_sdk_pawn->Controller;
             if (pawn_controller != nullptr) {
