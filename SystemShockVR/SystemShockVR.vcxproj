@@ -157,6 +157,7 @@
     <ClInclude Include="SDK\COMP_HackerInventory_classes.hpp" />
     <ClInclude Include="SDK\CoreUObject_structs.hpp" />
     <ClInclude Include="SDK\Engine_classes.hpp" />
+    <ClInclude Include="SDK\HARDWARE_HeadLamp_classes.hpp" />
     <ClInclude Include="SDK\ITEM_WeaponBase_classes.hpp" />
     <ClInclude Include="SDK\PAWN_Hacker_Simple_classes.hpp" />
     <ClInclude Include="SDK\PAWN_SystemShockCharacter_classes.hpp" />
@@ -195,6 +196,7 @@
     <ClCompile Include="SDK\Basic.cpp" />
     <ClCompile Include="SDK\CH_Hacker_AnimBP_functions.cpp" />
     <ClCompile Include="SDK\COMP_ActionManager_functions.cpp" />
+    <ClCompile Include="SDK\COMP_Inventory_functions.cpp" />
     <ClCompile Include="SDK\CON_Hacker_functions.cpp" />
     <ClCompile Include="SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="SDK\Engine_functions.cpp" />

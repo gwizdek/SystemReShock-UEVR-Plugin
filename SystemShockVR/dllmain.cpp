@@ -53,6 +53,7 @@
 #include "SDK/WEAPON_GrenadeLauncher_classes.hpp"
 #include "SDK/INTERACT_Laptop_classes.hpp"
 #include "SDK/CinematicCamera_classes.hpp"
+#include "SDK/HARDWARE_HeadLamp_classes.hpp"
 
 #include "mINI/ini.h"
 #include "uevr/Plugin.hpp"
@@ -77,6 +78,17 @@
 
 #define META_QUEST      0
 #define WMR             1
+
+#define HEAD_LAMP_NARROW    0
+#define HEAD_LAMP_MEDIUM    1
+#define HEAD_LAMP_WIDE      2
+
+#define HEAD_LAMP_ATTACHMENT_HMD     0
+#define HEAD_LAMP_ATTACHMENT_RH      1
+
+#define HEAD_LAMP_ENERGY_NO_CHANGE     0
+#define HEAD_LAMP_ENERGY_REDUCED       1    // 1/10 of default consumption
+#define HEAD_LAMP_ENERGY_INFINITE      2
 
 #define MOUSE_WHEEL_DEBOUNCE_TIME 0.066f
 
@@ -244,11 +256,13 @@ public:
     API::UObject* m_pawn{ nullptr };
     SDK::UCOMP_HackerInventory_C* m_inventory{ nullptr };
     SDK::UITEM_WeaponBase_C* m_current_weapon{ nullptr };
+    SDK::UHARDWARE_HeadLamp_C* m_head_lamp{ nullptr };
 
     SDK::UWorld* m_sdk_world{ nullptr };
     SDK::APawn* m_sdk_pawn{ nullptr };
     SDK::UWIDGET_PlayerHUD_C* m_sdk_hud{ nullptr };
     SDK::APlayerCameraManager* m_player_camera_manager{ nullptr };
+    SDK::UITEM_Base_C* m_inventory_item{ nullptr };
 
     // VR HUD
     VRHackerHUD* m_vr_hud{ nullptr };
@@ -260,6 +274,7 @@ public:
 
     SDK::AINTERACT_Laptop_C* m_intro_laptop{ nullptr };
     SDK::UCharacterAction_C* m_current_action{ nullptr };
+    MemoProperty<bool> m_is_head_lamp_active{ false, false };
     MemoProperty<bool> m_is_cine_camera_active{ false, false };
     MemoProperty<bool> m_mfd_visible{ false, false };
     MemoProperty<bool> m_main_menu_in_game_visible{ false, false };
@@ -308,6 +323,9 @@ public:
     int m_ui_option_openxr_runtime{ META_QUEST };
     bool m_ui_option_disable_roomscale_when_aiming{ true };
     float m_ui_option_shield_vignette_opacity{ 15.0f };
+    int m_ui_option_head_lamp_mode{ HEAD_LAMP_NARROW };
+    int m_ui_option_head_lamp_attachment_point{ HEAD_LAMP_ATTACHMENT_RH };
+    int m_ui_option_head_lamp_energy_consumption{ HEAD_LAMP_ENERGY_INFINITE };
 
     // unused
     int m_ui_option_hotbar_selector_button{ 0 };
@@ -467,6 +485,7 @@ public:
                 handle_player_height(vr);
                 handle_in_game_menu(vr);
                 handle_compass();
+                handle_head_lamp();
             }
             catch (...) {
                 API::get()->log_error("[main][on_pre_engine_tick][handlers] Exception");
@@ -574,7 +593,18 @@ public:
                 ) {
 
                 m_inventory = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->COMP_HackerInventory;
-            
+
+                m_inventory->FindItem(SDK::UHARDWARE_HeadLamp_C::StaticClass(), false, false, &m_inventory_item);
+                if (SDK::UKismetSystemLibrary::IsValid(m_inventory_item) && m_inventory_item->IsA(SDK::UHARDWARE_HeadLamp_C::StaticClass())) {
+                    m_head_lamp = (SDK::UHARDWARE_HeadLamp_C*)m_inventory_item;
+                    m_is_head_lamp_active.set_value(m_head_lamp->IsActivated);
+                    //API::get()->log_warn("[prepare_state] Headlight found");
+                }
+                else {
+                    m_head_lamp = nullptr;
+                    m_is_head_lamp_active.set_value(false);
+                }
+
                 m_current_weapon = m_inventory->CurrentEquippedWeapon;
                 m_player_alive.set_value(static_cast<SDK::APAWN_SystemShockCharacter_C*>(m_sdk_pawn)->IsAlive);
                 m_player_interacting.set_value(static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->ChannelingInteractable != nullptr);
@@ -762,6 +792,7 @@ public:
                 // MFD on
                 if (m_mfd_visible.value) {
                     handle_mfd_interactions(state, vr);
+                    set_head_lamp_brightness(0.f);
                 }
                 // interaction with with puzzles / vending machines / ladders
                 else if (m_player_interacting.value) {
@@ -781,9 +812,16 @@ public:
                         }
                     }
                     m_gamepad_btn_b.mute_state(state);
+                    set_head_lamp_brightness(0.f);
                 }
                 // normal gameplay
                 else {
+                    if (m_hotbar_selector_button.is_held() || m_hardware_selector_button.is_held()) {
+                        set_head_lamp_brightness(0.f);
+                    }
+                    else {
+                        set_head_lamp_brightness(3000.f);
+                    }
                     // mute right stick Y axis
                     state->Gamepad.sThumbRY = 0;
 
@@ -1898,6 +1936,76 @@ public:
         }
     }
 
+    void handle_head_lamp() {
+        if (m_is_head_lamp_active.has_changed() && m_is_head_lamp_active.value) {
+            apply_head_lamp_settings();
+        }
+    }
+
+    void set_head_lamp_brightness(float value) {
+        if (SDK::UKismetSystemLibrary::IsValid(m_sdk_pawn) && m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+            SDK::USpotLightComponent* head_lamp_light = static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->HeadlampLight;
+            if (!SDK::UKismetSystemLibrary::IsValid(head_lamp_light)) {
+                API::get()->log_error("[main][set_head_lamp_intensity] Invalid Headlight object");
+                return;
+            }
+            head_lamp_light->SetAttenuationRadius(value);
+        }
+    }
+
+    void apply_head_lamp_settings() {
+        if (SDK::UKismetSystemLibrary::IsValid(m_sdk_pawn) && m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+            SDK::USpotLightComponent* head_lamp_light = static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->HeadlampLight;
+            if (!SDK::UKismetSystemLibrary::IsValid(head_lamp_light)) {
+                API::get()->log_error("[main][set_head_lamp_light_params] Invalid Headlight object");
+                return;
+            }
+
+            switch (m_ui_option_head_lamp_mode) {
+                case HEAD_LAMP_NARROW:
+                    head_lamp_light->SetInnerConeAngle(4.f);
+                    head_lamp_light->SetOuterConeAngle(15.f);
+                    break;
+                case HEAD_LAMP_MEDIUM:
+                    head_lamp_light->SetInnerConeAngle(6.f);
+                    head_lamp_light->SetOuterConeAngle(20.f);
+                    break;
+                case HEAD_LAMP_WIDE:
+                    head_lamp_light->SetInnerConeAngle(10.f);
+                    head_lamp_light->SetOuterConeAngle(30.f);
+                    break;
+            }
+
+            if (m_head_lamp != nullptr) {
+                switch (m_ui_option_head_lamp_energy_consumption) {
+                case HEAD_LAMP_ENERGY_NO_CHANGE:
+                    m_head_lamp->EnergyDrainModData.Value = 1.0f;
+                    break;
+                case HEAD_LAMP_ENERGY_REDUCED:
+                    m_head_lamp->EnergyDrainModData.Value = 0.1f;
+                    break;
+                case HEAD_LAMP_ENERGY_INFINITE:
+                    m_head_lamp->EnergyDrainModData.Value = 0.001f;
+                    break;
+                }
+            }
+
+            head_lamp_light->SetIntensity(50000.f);
+            head_lamp_light->SetAttenuationRadius(3000.f);
+            head_lamp_light->SetLightFunctionFadeDistance(10000.f);
+            head_lamp_light->SetCastShadows(true);
+
+            //auto state = API::UObjectHook::get_or_add_motion_controller_state((API::UObject*)headlight);
+            //if (state == nullptr) {
+            //    return;
+            //}
+            //state->set_hand(1);
+            // state->set_permanent(true);
+
+            API::get()->log_warn("[main][set_headlight_params] Applied Headlight parameters");
+        }
+    }
+
     void apply_vr_game_options() {
         auto class_ptr = API::get()->find_uobject<API::UClass>(L"BlueprintGeneratedClass /Game/Blueprints/UI/HUD/Widgets/Settings/SAVE_Settings.SAVE_Settings_C");
         if (class_ptr != nullptr) {
@@ -2077,6 +2185,15 @@ public:
                 if (ImGui::Button("Apply Crosshair Options")) {
                     apply_selected_crosshair_options();
                 };
+
+                ImGui::SeparatorText("Flashlight options");
+                if (ImGui::Combo("Mode", &m_ui_option_head_lamp_mode, "Narrow\0Medium\0Wide\0")) {
+                    apply_head_lamp_settings();
+                }
+                if (ImGui::Combo("Energy Consumption", &m_ui_option_head_lamp_energy_consumption, "Game Default\0Reduced (1/10)\0No consumption\0")) {
+                    apply_head_lamp_settings();
+                }
+
                 ImGui::PopItemWidth();
 
                 ImGui::SeparatorText("Debugging");
@@ -2149,6 +2266,7 @@ public:
                     ImGui::Checkbox("Hacker crash", &m_is_crashing.value);
                     ImGui::Checkbox("Main Menu visible", &m_main_menu_in_game_visible.value);
                     ImGui::Checkbox("Active Cinematic Camera", &m_is_cine_camera_active.value);
+                    ImGui::Checkbox("Active Head Lamp", &m_is_head_lamp_active.value);
 
                     ImGui::PushItemWidth(100);
                     ImGui::InputInt("XInput cb duration [microseconds]", &m_ui_xinput_duration);
@@ -2369,171 +2487,204 @@ public:
         }
 
         // section validation
-        if (!mod_config.has("general") || !mod_config.has("crosshair")) {
-            API::get()->log_error("[Mod Config] Missing config section");
-            return false;
-        }
+        if (mod_config.has("general")) {
 
-        // look_sensitivity
-        if (mod_config["general"].has("look_sensitivity")) {
-            std::string& look_sensitivity = mod_config["general"]["look_sensitivity"];
-            try {
-                m_ui_option_look_sensitivity = std::stoi(look_sensitivity);
-            }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid general > look_sensitivity value.");
-            }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing general > look_sensitivity value.");
-        }
-
-        // player_height_modifier
-        if (mod_config["general"].has("player_height_modifier")) {
-            std::string& player_height_modifier = mod_config["general"]["player_height_modifier"];
-            try {
-                m_ui_option_player_height_modifier = std::stof(player_height_modifier);
-            }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid general > player_height_modifier value.");
-            }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing general > player_height_modifier value.");
-        }
-
-        // force_hide_compass
-        if (mod_config["general"].has("force_hide_compass")) {
-            std::string& force_hide_compass = mod_config["general"]["force_hide_compass"];
-            try {
-                m_ui_option_force_hide_compass = std::stoi(force_hide_compass) == 1;
-            }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid general > force_hide_compass value.");
-            }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing general > force_hide_compass value.");
-        }
-
-        // toggle_run_with_left_grip
-        if (mod_config["general"].has("toggle_run_with_left_grip")) {
-            std::string& toggle_run_with_left_grip = mod_config["general"]["toggle_run_with_left_grip"];
-            try {
-                m_ui_option_toggle_run_with_left_grip = std::stoi(toggle_run_with_left_grip) == 1;
-            }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid general > toggle_run_with_left_grip value.");
-            }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing general > toggle_run_with_left_grip value.");
-        }
-
-
-        // toggle_run_with_left_grip
-        if (mod_config["general"].has("disable_roomscale_when_aiming")) {
-            std::string& disable_roomscale_when_aiming = mod_config["general"]["disable_roomscale_when_aiming"];
-            try {
-                m_ui_option_disable_roomscale_when_aiming = std::stoi(disable_roomscale_when_aiming) == 1;
-            }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid general > disable_roomscale_when_aiming value.");
-            }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing general > disable_roomscale_when_aiming value.");
-        }
-
-        // openxr_runtime
-        if (mod_config["general"].has("openxr_runtime")) {
-            std::string& openxr_runtime = mod_config["general"]["openxr_runtime"];
-            try {
-                auto _openxr_runtime = std::stoi(openxr_runtime);
-                if (_openxr_runtime != 0 && _openxr_runtime != 1) {
-                    m_ui_option_openxr_runtime = META_QUEST;
-                    throw std::invalid_argument("Wrong value");
+            // look_sensitivity
+            if (mod_config["general"].has("look_sensitivity")) {
+                std::string& look_sensitivity = mod_config["general"]["look_sensitivity"];
+                try {
+                    m_ui_option_look_sensitivity = std::stoi(look_sensitivity);
                 }
-                else {
-                    m_ui_option_openxr_runtime = _openxr_runtime;
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid general > look_sensitivity value.");
                 }
             }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid general > openxr_runtime value.");
+            else {
+                API::get()->log_error("[Mod Config] Missing general > look_sensitivity value.");
             }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing general > openxr_runtime value.");
+
+            // player_height_modifier
+            if (mod_config["general"].has("player_height_modifier")) {
+                std::string& player_height_modifier = mod_config["general"]["player_height_modifier"];
+                try {
+                    m_ui_option_player_height_modifier = std::stof(player_height_modifier);
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid general > player_height_modifier value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing general > player_height_modifier value.");
+            }
+
+            // force_hide_compass
+            if (mod_config["general"].has("force_hide_compass")) {
+                std::string& force_hide_compass = mod_config["general"]["force_hide_compass"];
+                try {
+                    m_ui_option_force_hide_compass = std::stoi(force_hide_compass) == 1;
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid general > force_hide_compass value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing general > force_hide_compass value.");
+            }
+
+            // toggle_run_with_left_grip
+            if (mod_config["general"].has("toggle_run_with_left_grip")) {
+                std::string& toggle_run_with_left_grip = mod_config["general"]["toggle_run_with_left_grip"];
+                try {
+                    m_ui_option_toggle_run_with_left_grip = std::stoi(toggle_run_with_left_grip) == 1;
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid general > toggle_run_with_left_grip value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing general > toggle_run_with_left_grip value.");
+            }
+
+
+            // toggle_run_with_left_grip
+            if (mod_config["general"].has("disable_roomscale_when_aiming")) {
+                std::string& disable_roomscale_when_aiming = mod_config["general"]["disable_roomscale_when_aiming"];
+                try {
+                    m_ui_option_disable_roomscale_when_aiming = std::stoi(disable_roomscale_when_aiming) == 1;
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid general > disable_roomscale_when_aiming value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing general > disable_roomscale_when_aiming value.");
+            }
+
+            // openxr_runtime
+            if (mod_config["general"].has("openxr_runtime")) {
+                std::string& openxr_runtime = mod_config["general"]["openxr_runtime"];
+                try {
+                    auto _openxr_runtime = std::stoi(openxr_runtime);
+                    if (_openxr_runtime != 0 && _openxr_runtime != 1) {
+                        m_ui_option_openxr_runtime = META_QUEST;
+                        throw std::invalid_argument("Wrong value");
+                    }
+                    else {
+                        m_ui_option_openxr_runtime = _openxr_runtime;
+                    }
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid general > openxr_runtime value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing general > openxr_runtime value.");
+            }
+
+            // shield_vignette_opacity
+            if (mod_config["general"].has("shield_vignette_opacity")) {
+                std::string& shield_vignette_opacity = mod_config["general"]["shield_vignette_opacity"];
+                try {
+                    m_ui_option_shield_vignette_opacity = std::stof(shield_vignette_opacity);
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid general > shield_vignette_opacity value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing general > shield_vignette_opacity value.");
+            }
         }
 
-        // shield_vignette_opacity
-        if (mod_config["general"].has("shield_vignette_opacity")) {
-            std::string& shield_vignette_opacity = mod_config["general"]["shield_vignette_opacity"];
-            try {
-                m_ui_option_shield_vignette_opacity = std::stof(shield_vignette_opacity);
+        // section validation
+        if (mod_config.has("crosshair")) {
+
+            // crosshair_depth
+            if (mod_config["crosshair"].has("depth")) {
+                std::string& crosshair_depth = mod_config["crosshair"]["depth"];
+                try {
+                    m_ui_option_crosshair_depth = std::stoi(crosshair_depth);
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid crosshair > depth value.");
+                }
             }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid general > shield_vignette_opacity value.");
+            else {
+                API::get()->log_error("[Mod Config] Missing crosshair > depth value.");
             }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing general > shield_vignette_opacity value.");
+
+            // crosshair_cursor_scale
+            if (mod_config["crosshair"].has("cursor_scale")) {
+                std::string& crosshair_cursor_scale = mod_config["crosshair"]["cursor_scale"];
+                try {
+                    m_ui_option_crosshair_cursor_scale = std::stof(crosshair_cursor_scale);
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid crosshair > cursor_scale value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing crosshair > cursor_scale value.");
+            }
+
+            // crosshair_brackets_scale
+            if (mod_config["crosshair"].has("brackets_scale")) {
+                std::string& crosshair_brackets_scale = mod_config["crosshair"]["brackets_scale"];
+                try {
+                    m_ui_option_crosshair_brackets_scale = std::stof(crosshair_brackets_scale);
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid crosshair > brackets_scale value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing crosshair > brackets_scale value.");
+            }
+
+            // target_id_reticle_scale
+            if (mod_config["crosshair"].has("target_id_reticle_scale")) {
+                std::string& crosshair_target_id_reticle_scale = mod_config["crosshair"]["target_id_reticle_scale"];
+                try {
+                    m_ui_option_target_id_reticle_scale = std::stof(crosshair_target_id_reticle_scale);
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid crosshair > target_id_reticle_scale value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing crosshair > target_id_reticle_scale value.");
+            }
         }
 
-        // crosshair_depth
-        if (mod_config["crosshair"].has("depth")) {
-            std::string& crosshair_depth = mod_config["crosshair"]["depth"];
-            try {
-                m_ui_option_crosshair_depth = std::stoi(crosshair_depth);
+        // section validation
+        if (mod_config.has("headlamp")) {
+            // headlamp mode
+            if (mod_config["headlamp"].has("mode")) {
+                std::string& head_lamp_mode = mod_config["headlamp"]["mode"];
+                try {
+                    m_ui_option_head_lamp_mode = std::stoi(head_lamp_mode);
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid headlamp > mode value.");
+                }
             }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid crosshair > depth value.");
+            else {
+                API::get()->log_error("[Mod Config] Missing headlamp > mode value.");
             }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing crosshair > depth value.");
-        }
 
-        // crosshair_cursor_scale
-        if (mod_config["crosshair"].has("cursor_scale")) {
-            std::string& crosshair_cursor_scale = mod_config["crosshair"]["cursor_scale"];
-            try {
-                m_ui_option_crosshair_cursor_scale = std::stof(crosshair_cursor_scale);
+            // headlamp energy consumption
+            if (mod_config["headlamp"].has("energy_consumption")) {
+                std::string& head_lamp_energy_consumption = mod_config["headlamp"]["energy_consumption"];
+                try {
+                    m_ui_option_head_lamp_energy_consumption = std::stoi(head_lamp_energy_consumption);
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid headlamp > energy_consumption value.");
+                }
             }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid crosshair > cursor_scale value.");
+            else {
+                API::get()->log_error("[Mod Config] Missing headlamp > energy_consumption value.");
             }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing crosshair > cursor_scale value.");
-        }
-
-        // crosshair_brackets_scale
-        if (mod_config["crosshair"].has("brackets_scale")) {
-            std::string& crosshair_brackets_scale = mod_config["crosshair"]["brackets_scale"];
-            try {
-                m_ui_option_crosshair_brackets_scale = std::stof(crosshair_brackets_scale);
-            }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid crosshair > brackets_scale value.");
-            }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing crosshair > brackets_scale value.");
-        }
-
-        // target_id_reticle_scale
-        if (mod_config["crosshair"].has("target_id_reticle_scale")) {
-            std::string& crosshair_target_id_reticle_scale = mod_config["crosshair"]["target_id_reticle_scale"];
-            try {
-                m_ui_option_target_id_reticle_scale = std::stof(crosshair_target_id_reticle_scale);
-            }
-            catch (...) {
-                API::get()->log_error("[Mod Config] Invalid crosshair > target_id_reticle_scale value.");
-            }
-        }
-        else {
-            API::get()->log_error("[Mod Config] Missing crosshair > target_id_reticle_scale value.");
         }
 
         return true;
@@ -2557,6 +2708,9 @@ public:
         mod_config["crosshair"]["cursor_scale"] = std::to_string(m_ui_option_crosshair_cursor_scale).c_str();
         mod_config["crosshair"]["brackets_scale"] = std::to_string(m_ui_option_crosshair_brackets_scale).c_str();
         mod_config["crosshair"]["target_id_reticle_scale"] = std::to_string(m_ui_option_target_id_reticle_scale).c_str();
+
+        mod_config["headlamp"]["mode"] = std::to_string(m_ui_option_head_lamp_mode).c_str();
+        mod_config["headlamp"]["energy_consumption"] = std::to_string(m_ui_option_head_lamp_energy_consumption).c_str();
 
         return mod_config_file.generate(mod_config, true);
     }

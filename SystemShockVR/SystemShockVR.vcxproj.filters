@@ -111,6 +111,9 @@
     <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SDK\HARDWARE_HeadLamp_classes.hpp">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -210,6 +213,9 @@
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\SystemReShock_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\COMP_Inventory_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
   </ItemGroup>
