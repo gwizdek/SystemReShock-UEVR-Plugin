@@ -80,7 +80,7 @@
 #define WMR             1
 
 #define HEAD_LAMP_NARROW    0
-#define HEAD_LAMP_MEDIUM    1
+#define HEAD_LAMP_NORMAL    1
 #define HEAD_LAMP_WIDE      2
 
 #define HEAD_LAMP_ATTACHMENT_HMD     0
@@ -323,7 +323,7 @@ public:
     int m_ui_option_openxr_runtime{ META_QUEST };
     bool m_ui_option_disable_roomscale_when_aiming{ true };
     float m_ui_option_shield_vignette_opacity{ 15.0f };
-    int m_ui_option_head_lamp_mode{ HEAD_LAMP_NARROW };
+    int m_ui_option_head_lamp_mode{ HEAD_LAMP_NORMAL };
     int m_ui_option_head_lamp_attachment_point{ HEAD_LAMP_ATTACHMENT_RH };
     int m_ui_option_head_lamp_energy_consumption{ HEAD_LAMP_ENERGY_INFINITE };
 
@@ -1966,7 +1966,7 @@ public:
                     head_lamp_light->SetInnerConeAngle(4.f);
                     head_lamp_light->SetOuterConeAngle(15.f);
                     break;
-                case HEAD_LAMP_MEDIUM:
+                case HEAD_LAMP_NORMAL:
                     head_lamp_light->SetInnerConeAngle(6.f);
                     head_lamp_light->SetOuterConeAngle(20.f);
                     break;
@@ -2187,7 +2187,7 @@ public:
                 };
 
                 ImGui::SeparatorText("Flashlight options");
-                if (ImGui::Combo("Mode", &m_ui_option_head_lamp_mode, "Narrow\0Medium\0Wide\0")) {
+                if (ImGui::Combo("Mode", &m_ui_option_head_lamp_mode, "Narrow\0Normal\0Wide\0")) {
                     apply_head_lamp_settings();
                 }
                 if (ImGui::Combo("Energy Consumption", &m_ui_option_head_lamp_energy_consumption, "Game Default\0Reduced (1/10)\0No consumption\0")) {
