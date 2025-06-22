@@ -31,7 +31,7 @@ Of course, let's not forget, that it wouldn't be possible without Praydog, the a
 * two aiming modes for cyberspace
 
 ## Installation
-1) Install UEVR ver 1.05 from [**HERE**](https://github.com/praydog/UEVR/releases). (Works also with Nightly builds)
+1) Install latest UEVR Nightly version from [**HERE**](https://github.com/praydog/UEVR-nightly/releases).
 2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
 3) Download the latest release of the SystemReShock UEVR plugin from Releases page. Click "Import Config" in the UEVR UI and navigate to "SystemReShock-Win64-Shipping.zip" and click on it and accept the DLL warning.
 4) Add optional mod files (Index controllers support, Player Arms mod, Melee Gesture mod) - described below
