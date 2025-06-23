@@ -60,6 +60,7 @@ Of course, let's not forget, that it wouldn't be possible without Praydog, the a
 * **Y** - Open MFD contex menu
 * **Right Trigger (hold 1s)** - Vaporize junk
 * **Left Trigger (hold)** - Show item description
+* **RS (up/down)** - Scroll up/down the log list and change the station's map zoom level
 
 ### Cyberspace
 * **A** - Ascend
