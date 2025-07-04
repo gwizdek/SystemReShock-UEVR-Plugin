@@ -1119,6 +1119,10 @@ public:
 
                 API::get()->log_info("New Level: %s", m_level.value->GetFullName().c_str());
 
+                // reset cinecamera state
+                m_is_cine_camera_active.prev_value = false;
+                m_is_cine_camera_active.value = false;
+
                 // check if it's the main menu
                 if (level_name.ends_with(".00_Menu.PersistentLevel")) {
                     sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
@@ -1886,6 +1890,10 @@ public:
     }
 
     void handle_cine_camera_changes(const UEVR_VRData* vr) {
+        if (m_pawn_state.value != PAWN_HACKERIMPLANT) {
+            return;
+        }
+
         if (m_is_cine_camera_active.has_changed()) {
             if (m_is_cine_camera_active.value == true) {
                 API::get()->log_warn("[main][handle_cine_camera_changes] Cinematic Camera Activated");
