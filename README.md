@@ -109,6 +109,24 @@ This `pak` mod makes player arms disappear. To install it, download `SystemShock
 ### Physical Melee mod
 This is a `lua` script that brings back physical melee (swing gesture) from the original Ashok's mod. To install it, download `SSR_PhysicalMelee.lua` file and place it into `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\scripts` folder.  
 
+## Visual Improvements
+Using Native Stereo Fix and High/Ultra graphics settings makes this game look top class. 
+
+This game works very well with DLSS4 Upscaler. For best visuals, I suggest to:
+- Swap DLSS Upscaler .dll to the new one that comes with DLSS4 (Transformer model)
+- Enable profile J (Profile Inspector)
+- Set DLSS to Performance mode in game options
+- Adjust VR resolution accordingly (go up but keep it smooth)
+
+#### New custom `user_script.txt` CVars:
+```
+r.AOGlobalDistanceFieldPartialUpdates 0  - this one is needed for the Native Stereo Fix
+r.StaticMeshLODDistanceScale 0.25 - prevents pop-in of floor/paneling geometry
+r.SceneColorFringe.Max 0
+r.MipMapLODBias -3 - makes the distant textures sharper
+```
+Note that `r.SSGI.Enable` CVar is disabled. Enabling it improves visuals even more but it's costly (FPS)
+
 ## Limitations
 * no physical crouching
 
