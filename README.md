@@ -4,8 +4,7 @@
 > The profile doesn't work with the Demo version of the game available on Steam
   
 > [!NOTE]
-> The 1.2.0 version is also available through Unreal Easy Injector https://uevrdeluxe.org and uevr-profiles.com  
-> The latest 1.3.0 version is currently only available here (github)
+> The 1.3.0 version is also available through Unreal Easy Injector https://uevrdeluxe.org and uevr-profiles.com  
 
 > [!NOTE]
 > Optional mod files available:
