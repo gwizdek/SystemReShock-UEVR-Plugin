@@ -54,6 +54,7 @@
 #include "SDK/INTERACT_Laptop_classes.hpp"
 #include "SDK/CinematicCamera_classes.hpp"
 #include "SDK/HARDWARE_HeadLamp_classes.hpp"
+#include "SDK/ModActor_classes.hpp"
 
 #include "mINI/ini.h"
 #include "uevr/Plugin.hpp"
@@ -63,6 +64,7 @@
 #include "MOVECONTROL_FocusableInteract_C.hpp"
 #include "vr_plugin_shared.hpp"
 #include "vr_hacker_hud.hpp"
+#include "plugin_utils.hpp"
 
 
 #define PLUGIN_LOG_ONCE(...) {\
@@ -246,6 +248,8 @@ public:
     SDK::FHitResult m_hit_result{};
     int m_viewport_size_x{ 1920 }, m_viewport_size_y{ 1080 };
     float m_mouse_wheel_debounce_timer{ 0.f };
+    SDK::UObject* m_loaded_asset{ nullptr };
+    SDK::AModActor_C m_mod_actor{ nullptr };
 
     // this set keeps events to be handled
     // if an event is successfully handled, it's removed form this set
@@ -1142,6 +1146,57 @@ public:
                 }
                 else if (level_name.ends_with("CitadelStation.PersistentLevel")) {
                     sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
+
+                    API::get()->log_warn("[main][handle_level_change] Initialize components");
+                    // reinitialize
+                    //PluginUtils::load_asset(
+                    //    L"Class /Script/Engine.ParticleSystem",
+                    //    L"/Game/Art/VFX/ParticleSystems/Weapons/Projectiles/Plasma/PS_Plasma_Ball.PS_Plasma_Ball"
+                    //);
+
+                    SDK::FAssetData asset_data{
+                        .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Art/VFX/ParticleSystems/Weapons/Projectiles/Plasma/PS_Plasma_Ball.PS_Plasma_Ball"),
+                        .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Art/VFX/ParticleSystems/Weapons/Projectiles/Plasma/PS_Plasma_Ball"),
+                        .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Art/VFX/ParticleSystems/Weapons/Projectiles/Plasma"),
+                        .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"PS_Plasma_Ball"),
+                        .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L"ParticleSystem"),
+                    };
+
+                    SDK::FAssetData ss_asset_data{
+                        .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/TesterMod/ModActor.ModActor_C"),
+                        .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/TesterMod/ModActor"),
+                        .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/TesterMod"),
+                        .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"ModActor"),
+                        .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L""),
+                    };
+
+                    API::get()->log_warn("[main][handle_level_change] Loading Asset");
+                    // keep the pointer until vr weapon init is done
+                    m_loaded_asset = PluginUtils::load_asset(ss_asset_data);
+                    if (m_loaded_asset != nullptr) {
+                        API::get()->log_warn("[main][handle_level_change] Loaded Asset");
+
+                        //SDK::FTransform zero_transform{
+                        //    .Rotation = { 0.f, 0.f, 0.f, 1.f },
+                        //    .Translation = { 0.f, 0.f, 0.f },
+                        //    .Scale3D = { 1.f, 1.f, 1.f }
+                        //};
+
+                        //SDK::AModActor_C* m_mod_actor = (SDK::AModActor_C*)SDK::UGameplayStatics::BeginDeferredActorSpawnFromClass(
+                        //    m_sdk_world, SDK::AModActor_C::StaticClass(), zero_transform, SDK::ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr
+                        //);
+                        //if (m_mod_actor == nullptr) {
+                        //    API::get()->log_error("[main][handle_level_change] Error spawning actor");
+                        //    return;
+                        //}
+
+                        //SDK::UGameplayStatics::FinishSpawningActor(m_mod_actor, zero_transform);
+                        //API::get()->log_warn("[main][handle_level_change] Finishied spawning actor");
+                        //m_mod_actor->PostBeginPlay();
+                    }
+                    else {
+                        API::get()->log_warn("[main][handle_level_change] Failed to Load Asset");
+                    }
 
                     // initialize hud
                     m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);

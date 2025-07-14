@@ -239,11 +239,13 @@ namespace UC
 		static constexpr uint64 ElementSize = sizeof(ArrayElementType);
 
 	protected:
+
+
+	public:
 		ArrayElementType* Data;
 		int32 NumElements;
 		int32 MaxElements;
 
-	public:
 		TArray()
 			: Data(nullptr), NumElements(0), MaxElements(0)
 		{

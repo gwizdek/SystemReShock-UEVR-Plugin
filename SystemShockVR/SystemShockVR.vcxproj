@@ -154,6 +154,7 @@
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="mINI\ini.h" />
+    <ClInclude Include="plugin_utils.hpp" />
     <ClInclude Include="SDK\COMP_HackerInventory_classes.hpp" />
     <ClInclude Include="SDK\CoreUObject_structs.hpp" />
     <ClInclude Include="SDK\Engine_classes.hpp" />
@@ -191,8 +192,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="plugin_utils.cpp" />
     <ClCompile Include="rendering\d3d11.cpp" />
     <ClCompile Include="rendering\d3d12.cpp" />
+    <ClCompile Include="SDK\AssetRegistry_functions.cpp" />
     <ClCompile Include="SDK\Basic.cpp" />
     <ClCompile Include="SDK\CH_Hacker_AnimBP_functions.cpp" />
     <ClCompile Include="SDK\COMP_ActionManager_functions.cpp" />
@@ -201,6 +204,7 @@
     <ClCompile Include="SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="SDK\Engine_functions.cpp" />
     <ClCompile Include="SDK\HeadMountedDisplay_functions.cpp" />
+    <ClCompile Include="SDK\ModActor_functions.cpp" />
     <ClCompile Include="SDK\PAWN_Hacker_Implant_functions.cpp" />
     <ClCompile Include="SDK\PAWN_Hacker_Simple_functions.cpp" />
     <ClCompile Include="SDK\SAVE_Settings_functions.cpp" />

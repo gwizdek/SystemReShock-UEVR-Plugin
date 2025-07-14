@@ -114,6 +114,9 @@
     <ClInclude Include="SDK\HARDWARE_HeadLamp_classes.hpp">
       <Filter>SDK Files</Filter>
     </ClInclude>
+    <ClInclude Include="plugin_utils.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -216,6 +219,15 @@
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\COMP_Inventory_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\AssetRegistry_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\ModActor_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
   </ItemGroup>
