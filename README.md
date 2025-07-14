@@ -39,41 +39,13 @@ Of course, let's not forget, that it wouldn't be possible without Praydog, the a
 6) Reset controller bindings in game options to defaults
 
 ## Controls
-### General
-* **A** - Interact / Reload
-* **B** - Jump
-* **X** - Crouch / Exit menus and interactions
-* **Y** - Switch weapon mode
-* **Right Trigger** - Fire weapon / Use item / Throw grenade
-* **Right Grip (hold / release)** - Select hotbar item
-* **Right Stick Button (hold / release)** - Toggle hacker hardware
-* **Left Trigger** - Aim (useful for handling automatic weapons) / Use Target Identifier
-* **Left Grip** - Toggle run / walk *(configurable in plugin options)*
-* **Left Stick Button** - Hold to run (possibly will be remapped to something more useful)
-* **MENU BUTTON** (hold 1s) - Toggle MFD  
-* **MENU BUTTON** (short press) - Open game menu  
 
-### MFD
-* **A** - Select
-* **B** - Take all loot / Sort inventory
-* **X** - Exit / Back
-* **Y** - Open MFD contex menu
-* **Right Trigger (hold 1s)** - Vaporize junk
-* **Left Trigger (hold)** - Show item description
-* **RS (up/down)** - Scroll up/down the log list and change the station's map zoom level
-
-### Cyberspace
-* **A** - Ascend
-* **X** - Descend
-* **Y** - Recall
-* **B** - Decoy
-* **Right Grip** - Ascend
-* **Left Grip** - Descend
-* **Right Stick Up** - Ascend
-* **Right Stick Down** - Descend
-* **Right Trigger** - Pulser
-* **Left Trigger** - I.C.E. Drill
-* **Right Stick Button** - Change aiming mode
+<img width="1140" height="390" alt="SSR (General Gameplay) - Controller Diagram" src="https://github.com/user-attachments/assets/23d1964c-e5a8-4307-a4d0-2dc2bf3bfff0" />  
+&nbsp;  
+<img width="1116" height="394" alt="SSR (MFD) - Controller Diagram" src="https://github.com/user-attachments/assets/cea7e709-de6f-4d96-9033-f7143d1cedcd" />  
+&nbsp;  
+<img width="1084" height="394" alt="SSR (Cyberspace) Oculus Controller Diagram" src="https://github.com/user-attachments/assets/ac38e948-7489-400c-8faa-04de8aba0556" />  
+  
 
 The Cyberspace part of System Shock is tricky to get right in VR, especially on different HMDs. The plugin currently supports two control implementations. The first one is suited for Meta Quest HMDs (tested by Ashok), the second one works on WMR headsets like my G2. We are limited in our testing to these HMDs and can't garantee compatibility with other headsets.  
 You can choose which implementation you want to use by accessing plugin options overlay and selecting `HMD`. Default value is `Meta Quest`. Both implementations support 2 aiming modes toggable via **Right Stick Button**.
