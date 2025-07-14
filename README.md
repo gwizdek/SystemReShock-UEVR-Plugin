@@ -57,10 +57,14 @@ It is preferred to use mouse to make the adjustments.
 Options are stored in your UEVR profile folder in `system_reshock_vr_config.ini` file. This file is created automatically first fime you inject the profile.  
 To save options press `Save Configuration` button.
 
-![mod_options](https://github.com/user-attachments/assets/72eda989-a461-42a8-acf2-2b152eb65606)  
+<img width="511" height="510" alt="ModOverlay" src="https://github.com/user-attachments/assets/1274683f-ab8f-4ddb-8632-e08db9d8fd7a" />  
+
 
 ### Look Sensitivity
 Your character rotation speed
+
+### Shiels vignette opacity
+Preferred Shield Screen Effect opacity (shield vignette opacity) - This screen effect helps being aware when the shield is turned on
 
 ### Player height modifier
 Some players reported that they feel the floor is much to close. You can adjust how tall you are here. You can also change UEVR world scale to something like 0.95 if you like.
@@ -70,6 +74,9 @@ This setting forces the top compass band to hide. If you really like the compass
 
 ### Toggle run with Left Grip
 Option to disable walk/run toggle binded to Left Grip. You can still run by pressing and holding **Left Stick Button**
+
+### Disable roomscale when aiming
+Allows to get closer to walls/corners and to shoot over railings (courtesy of Ashok)
 
 ### HMD
 Select control implementation for Cyberspace
@@ -85,8 +92,13 @@ You can also make it bearly visible. You may need to adjust this setting dependi
 When you upgrade your Target Identifier software, an additional reticle will be shown marking target's weak spot. You can control the size of this reticle using this option.  
 
 ![target_reticle](https://github.com/user-attachments/assets/d10ff372-dccb-4e78-86c2-3a64d86d1571)  
-
 Press `Apply Crosshair Options` button after you make the changes.
+
+### Flashlight Mode
+Select flashlight's brightness
+
+### Flashlight Energy Consumption
+Select flashlight energy consumption (game's default, 1/10 consumption or no consumption).
 
 ## Optional Mods by Ashok
 There are two additional files prepared by Ashok (included in the v1.2.0 release). You can choose to add them if you want to further enhance your gameplay.   
