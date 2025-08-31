@@ -117,11 +117,26 @@
     <ClInclude Include="plugin_utils.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="main.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_controllers.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="memo_structs.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_weapon.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_body.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -227,11 +242,38 @@
     <ClCompile Include="SDK\AssetRegistry_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\ModActor_functions.cpp">
+    <ClCompile Include="SDK\BP_SSRModActor_functions.cpp">
       <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\BP_VRBody_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\ITEM_ProjectileWeapon_Base_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_controllers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\Niagara_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_body.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+    <None Include="old_dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

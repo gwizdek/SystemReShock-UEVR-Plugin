@@ -153,7 +153,10 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
+    <ClInclude Include="main.hpp" />
+    <ClInclude Include="memo_structs.hpp" />
     <ClInclude Include="mINI\ini.h" />
+    <ClInclude Include="plugin.hpp" />
     <ClInclude Include="plugin_utils.hpp" />
     <ClInclude Include="SDK\COMP_HackerInventory_classes.hpp" />
     <ClInclude Include="SDK\CoreUObject_structs.hpp" />
@@ -166,6 +169,8 @@
     <ClInclude Include="SDK\WIDGET_InventoryContextMenu_classes.hpp" />
     <ClInclude Include="SDK\WIDGET_MainMenu_InGame_classes.hpp" />
     <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp" />
+    <ClInclude Include="vr_body.hpp" />
+    <ClInclude Include="vr_controllers.hpp" />
     <ClInclude Include="vr_hacker_hud.hpp" />
     <ClInclude Include="rendering\d3d11.hpp" />
     <ClInclude Include="rendering\d3d12.hpp" />
@@ -175,9 +180,9 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="MOVECONTROL_FocusableInteract_C.hpp" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="vr_weapon.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -186,17 +191,21 @@
     <ClCompile Include="imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="plugin.cpp" />
     <ClCompile Include="plugin_utils.cpp" />
     <ClCompile Include="rendering\d3d11.cpp" />
     <ClCompile Include="rendering\d3d12.cpp" />
     <ClCompile Include="SDK\AssetRegistry_functions.cpp" />
     <ClCompile Include="SDK\Basic.cpp" />
+    <ClCompile Include="SDK\BP_SSRModActor_functions.cpp" />
+    <ClCompile Include="SDK\BP_VRBody_functions.cpp" />
     <ClCompile Include="SDK\CH_Hacker_AnimBP_functions.cpp" />
     <ClCompile Include="SDK\COMP_ActionManager_functions.cpp" />
     <ClCompile Include="SDK\COMP_Inventory_functions.cpp" />
@@ -204,7 +213,8 @@
     <ClCompile Include="SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="SDK\Engine_functions.cpp" />
     <ClCompile Include="SDK\HeadMountedDisplay_functions.cpp" />
-    <ClCompile Include="SDK\ModActor_functions.cpp" />
+    <ClCompile Include="SDK\ITEM_ProjectileWeapon_Base_functions.cpp" />
+    <ClCompile Include="SDK\Niagara_functions.cpp" />
     <ClCompile Include="SDK\PAWN_Hacker_Implant_functions.cpp" />
     <ClCompile Include="SDK\PAWN_Hacker_Simple_functions.cpp" />
     <ClCompile Include="SDK\SAVE_Settings_functions.cpp" />
@@ -219,9 +229,13 @@
     <ClCompile Include="SDK\WIDGET_PlayerHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_SimpleHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
+    <ClCompile Include="vr_body.cpp" />
+    <ClCompile Include="vr_controllers.cpp" />
+    <ClCompile Include="vr_weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+    <None Include="old_dllmain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

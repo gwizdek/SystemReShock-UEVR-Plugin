@@ -2,7 +2,6 @@
 
 #include "plugin_utils.hpp"
 
-
 using namespace uevr;
 
 void PluginUtils::reset_height(float offset_y) {
@@ -56,7 +55,7 @@ SDK::AActor* PluginUtils::spawn_actor(SDK::UWorld* world, SDK::FTransform transf
 // this function tries to find and destroy actors we created for attachments, even when we no longer have pointers to them
 void PluginUtils::destroy_actors_by_tag(SDK::UWorld* world, std::wstring actor_tag) {
     try {
-        API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Cleaning up stale Actors");
+        API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Cleaning up stale %ls Actors", actor_tag.c_str());
 
         if (world == nullptr || !SDK::UKismetSystemLibrary::IsValid(world)) {
             API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Invalid World object");
@@ -101,4 +100,57 @@ SDK::UObject* PluginUtils::load_asset(SDK::FAssetData asset_data) {
         API::get()->log_error("[plugin_utils][load_asset] Exception");
         return nullptr;
     }
+}
+
+
+//Find vtable real function and hook it
+int32_t PluginUtils::hook_vtable_fn(std::wstring_view class_name, std::wstring_view fn_name, void* destination, void** original) {
+    //auto obj = (API::UClass*)API::get()->find_uobject(class_name);
+
+    //if (obj == nullptr) {
+    //    PLUGIN_LOG_ONCE_ERROR("Failed to find %ls", class_name.data());
+    //    return -1;
+    //}
+
+    //auto fn = obj->find_function(fn_name);
+
+    //if (fn == nullptr) {
+    //    PLUGIN_LOG_ONCE_ERROR("Failed to find %ls", fn_name.data());
+    //    return -1;
+    //}
+
+    //auto native = fn->get_native_function();
+
+    //if (native == nullptr) {
+    //    PLUGIN_LOG_ONCE_ERROR("Failed to get native function");
+    //    return -1;
+    //}
+
+    //PLUGIN_LOG_ONCE("%ls native: 0x%p", fn_name.data(), native);
+
+    //auto default_object = obj->get_class_default_object();
+
+    //if (default_object == nullptr) {
+    //    PLUGIN_LOG_ONCE_ERROR("Failed to get default object");
+    //    return -1;
+    //}
+
+    //auto insn = utility::scan_disasm((uintptr_t)native, 0x1000, "FF 90 ? ? ? ?");
+
+    //if (!insn) {
+    //    PLUGIN_LOG_ONCE_ERROR("Failed to find the instruction");
+    //    return -1;
+    //}
+
+    //auto offset = *(int32_t*)(*insn + 2);
+
+    //auto vtable = *(uintptr_t**)default_object;
+    //auto real_fn = vtable[offset / sizeof(void*)];
+
+    //PLUGIN_LOG_ONCE("Real %ls: 0x%p (index: %d, offset 0x%X)", fn_name.data(), real_fn, offset / sizeof(void*), offset);
+
+    //return API::get()->param()->functions->register_inline_hook((void*)real_fn, (void*)destination, original);
+    
+    // remove me
+    return 0;
 }
