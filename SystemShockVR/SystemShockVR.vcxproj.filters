@@ -218,6 +218,9 @@
     <ClCompile Include="SDK\COMP_Inventory_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\PAWN_Avatar_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

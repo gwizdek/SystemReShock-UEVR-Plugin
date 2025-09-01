@@ -298,7 +298,7 @@ public:
     MemoInput m_gamepad_right_shoulder{ XINPUT_GAMEPAD_RIGHT_SHOULDER, "RIGHT_SHOULDER" };
     MemoInput m_gamepad_left_shoulder{ XINPUT_GAMEPAD_LEFT_SHOULDER, "LEFT_SHOULDER" };
     MemoInput m_gamepad_right_thumb{ XINPUT_GAMEPAD_RIGHT_THUMB, "RIGHT_THUMB" };
-    MemoInput m_gamepad_left_thumb{ XINPUT_GAMEPAD_LEFT_THUMB, "LEFT_THUMB" };
+    MemoDualInput m_gamepad_left_thumb{ XINPUT_GAMEPAD_LEFT_THUMB, "LEFT_THUMB" };
     MemoInput m_gamepad_btn_a{ XINPUT_GAMEPAD_A, "BTN_A" };
     MemoDualInput m_gamepad_btn_b{ XINPUT_GAMEPAD_B, "BTN_B" };
     MemoInput m_gamepad_btn_x{ XINPUT_GAMEPAD_X, "BTN_X" };
@@ -356,6 +356,8 @@ public:
             m_vr_hud = new VRHackerHUD();
 
             m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
+
+            m_gamepad_left_thumb.set_logging(true);
         
             // disable player focus (camera pull) on interactable objects like vending machines
             MOVECONTROL_FocusableInteract_C::disable_character_focusable_interactions();
@@ -445,6 +447,7 @@ public:
             // add delta time to dual buttons
             //m_gamepad_btn_b.add_delta(delta);
             m_gamepad_btn_y.add_delta(delta);
+            m_gamepad_left_thumb.add_delta(delta);
         
             handle_level_change(vr);
 
@@ -761,12 +764,39 @@ public:
             m_gamepad_right_shoulder.set_state(state);
             m_gamepad_left_shoulder.set_state(state);
             m_gamepad_right_thumb.set_state(state);
-            m_gamepad_left_thumb.set_state(state);
+            m_gamepad_left_thumb.set_dual_state(state);
             m_gamepad_trigger_right.set_state(state);
             m_gamepad_trigger_left.set_state(state);
 
             m_hotbar_selector_button.set_state(state);
             m_hardware_selector_button.set_state(state);
+
+            if (
+                m_pawn_state.value == PAWN_HACKERIMPLANT ||
+                m_pawn_state.value == PAWN_HACKERSIMPLE ||
+                m_pawn_state.value == PAWN_AVATAR ||
+                m_pawn_state.value == PAWN_PSEUDOSPACE
+                ) {
+                if (m_gamepad_left_thumb.is_long_pressed(1000)) {
+                    API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb LONG pressed");
+                    SDK::FKey escape_key{
+                        .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Escape")
+                    };
+
+                    if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_77(escape_key);
+                    }
+                    else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_77(escape_key);
+                    }
+                    else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_53(escape_key);
+                    }
+                    else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Pseudospace_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_77(escape_key);
+                    }
+                }
+            }
 
             if (m_main_menu_in_game_visible.value) {
                 // increase stick deadzone for better navigation in the menu
@@ -791,6 +821,17 @@ public:
 
                 // MFD on
                 if (m_mfd_visible.value) {
+                    if (m_gamepad_left_thumb.is_short_pressed()) {
+                        API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb pressed");
+                        SDK::FKey tab_key{
+                            .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
+                        };
+                        
+                        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36(tab_key);
+                        }
+                    }
+
                     handle_mfd_interactions(state, vr);
                     set_head_lamp_brightness(0.f);
                 }
@@ -816,6 +857,17 @@ public:
                 }
                 // normal gameplay
                 else {
+                    if (m_gamepad_left_thumb.is_short_pressed()) {
+                        API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb pressed");
+                        SDK::FKey tab_key{
+                            .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
+                        };
+
+                        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36(tab_key);
+                        }
+                    }
+
                     if (m_hotbar_selector_button.is_held() || m_hardware_selector_button.is_held()) {
                         set_head_lamp_brightness(0.f);
                     }

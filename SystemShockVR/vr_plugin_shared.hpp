@@ -99,7 +99,7 @@ struct MemoInput : public MemoProperty<bool>
     bool is_held() {
         if (!MemoProperty::has_changed() && MemoProperty::value) {
             if (m_logging) {
-                API::get()->log_info("### Button [%s] is held", m_btn_name);
+                API::get()->log_info("[MemoInput] Button [%s] is held", m_btn_name);
             }
             return true;
         }
@@ -111,7 +111,7 @@ struct MemoInput : public MemoProperty<bool>
     bool is_pressed() {
         if (MemoProperty::has_changed() && MemoProperty::value) {
             if (m_logging) {
-                API::get()->log_info("### Button [%s] pressed", m_btn_name);
+                API::get()->log_info("[MemoInput] Button [%s] pressed", m_btn_name);
             }
             return true;
         }
@@ -123,7 +123,7 @@ struct MemoInput : public MemoProperty<bool>
     bool is_released() {
         if (MemoProperty::has_changed() && !MemoProperty::value) {
             if (m_logging) {
-                API::get()->log_info("### Button [%s] released", m_btn_name);
+                API::get()->log_info("[MemoInput] Button [%s] released", m_btn_name);
             }
             return true;
         }
@@ -134,14 +134,14 @@ struct MemoInput : public MemoProperty<bool>
 
     void mute_state(XINPUT_STATE* state) {
         if (m_logging) {
-            API::get()->log_info("### Button [%s] state muted", m_btn_name);
+            API::get()->log_info("[MemoInput] Button [%s] state muted", m_btn_name);
         }
         state->Gamepad.wButtons &= ~wButton;
     }
 
     void force_state(XINPUT_STATE* state) {
         if (m_logging) {
-            API::get()->log_info("### Button [%s] state forced", m_btn_name);
+            API::get()->log_info("[MemoInput] Button [%s] state forced", m_btn_name);
         }
         state->Gamepad.wButtons |= wButton;
     }
@@ -149,7 +149,7 @@ struct MemoInput : public MemoProperty<bool>
     void when_pressed_send(XINPUT_STATE* state, WORD _wButton) {
         if (is_pressed()) {
             if (m_logging) {
-                API::get()->log_info("### Button [%s] sending different state", m_btn_name);
+                API::get()->log_info("[MemoInput] Button [%s] sending different state", m_btn_name);
             }
             state->Gamepad.wButtons |= _wButton;
         }
@@ -158,7 +158,7 @@ struct MemoInput : public MemoProperty<bool>
     void when_held_send(XINPUT_STATE* state, WORD _wButton) {
         if (is_held()) {
             if (m_logging) {
-                API::get()->log_info("### Button [%s] sending different state", m_btn_name);
+                API::get()->log_info("[MemoInput] Button [%s] sending different state", m_btn_name);
             }
             state->Gamepad.wButtons |= _wButton;
         }
@@ -183,7 +183,7 @@ struct MemoDualInput : public MemoInput
     }
 
     void set_and_mute_state(XINPUT_STATE* state) {
-        MemoDualInput::set(state);
+        MemoDualInput::set_dual_state(state);
         MemoInput::mute_state(state);
     }
 
@@ -194,7 +194,7 @@ struct MemoDualInput : public MemoInput
         }
     }
 
-    void set(XINPUT_STATE* state) {
+    void set_dual_state(XINPUT_STATE* state) {
         MemoInput::set_state(state);
 
         // button pressed down so check if it's a long press
@@ -202,18 +202,23 @@ struct MemoDualInput : public MemoInput
             if (press_duration >= m_min_long_press_duration) {
                 short_pressed = false;
                 long_pressed = true;
-                return;
+                if (m_logging) {
+                    API::get()->log_info("[MemoDualInput] Dual Button [%s] long held %f [s]", m_btn_name, press_duration);
+                }
             }
             else {
+                short_pressed = false;
                 long_pressed = false;
+                if (m_logging) {
+                    API::get()->log_info("[MemoDualInput] Dual Button [%s] short held %f [s]", m_btn_name, press_duration);
+                }
             }
         }
-
-        if (MemoProperty::has_changed()) {
+        else if (MemoProperty::has_changed()) {
             // pressed
             if (MemoProperty::value) {
                 if (m_logging) {
-                    API::get()->log_info("### Dual Button [%s] pressed", m_btn_name);
+                    API::get()->log_info("[MemoDualInput] Dual Button [%s] pressed", m_btn_name);
                 }
                 // store press time
                 press_duration = 0.f;
@@ -226,7 +231,7 @@ struct MemoDualInput : public MemoInput
                 // button up, so check if it's a short press
                 if (press_duration < m_min_long_press_duration && is_counting) {
                     if (m_logging) {
-                        API::get()->log_info("### Dual Button [%s] released", m_btn_name);
+                        API::get()->log_info("[MemoDualInput] Dual Button [%s] released", m_btn_name);
                     }
                     // reset timer
                     press_duration = 0.f;
@@ -248,7 +253,7 @@ struct MemoDualInput : public MemoInput
     bool is_short_pressed() {
         if (short_pressed) {
             if (m_logging) {
-                API::get()->log_info("### Dual Button [%s] short pressed", m_btn_name);
+                API::get()->log_info("[MemoDualInput] Dual Button [%s] short pressed", m_btn_name);
             }
             reset();
             return true;
@@ -257,9 +262,9 @@ struct MemoDualInput : public MemoInput
     }
 
     bool is_long_pressed(float duration) {
-        if (long_pressed && press_duration >= duration) {
+        if (long_pressed) {
             if (m_logging) {
-                API::get()->log_info("### Dual Button [%s] long pressed", m_btn_name);
+                API::get()->log_info("[MemoDualInput] Dual Button [%s] long pressed", m_btn_name);
             }
             reset();
             return true;
