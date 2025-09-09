@@ -9,6 +9,7 @@
 #include "rendering/d3d12.hpp"
 
 #include "uevr/Plugin.hpp"
+#include "uevr/API.hpp"
 
 
 #define PLUGIN_LOG_ONCE(...) { \
@@ -24,6 +25,7 @@ class UEVRPlugin;
 extern std::unique_ptr<UEVRPlugin> g_plugin;
 
 class SystemShockMain;
+using namespace uevr;
 
 class UEVRPlugin : public uevr::Plugin {
 private:
@@ -58,4 +60,7 @@ public:
     bool m_imgui_initialized{ false };
     bool m_was_rendering_desktop{ false };
     bool m_ui_option_show_debug_view{ false };
+
+    bool hook_bp_fn(std::wstring_view class_name, std::wstring_view fn_name, UEVR_UFunction_NativePreFn pre, UEVR_UFunction_NativePostFn post, bool use_native);
+    static bool mod_onfire_pre(API::UFunction* fn, API::UObject* obj, void* locals, void* result);
 };

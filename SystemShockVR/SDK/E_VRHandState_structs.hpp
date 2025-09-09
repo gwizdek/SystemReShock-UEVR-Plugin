@@ -18,12 +18,12 @@ namespace SDK
 // NumValues: 0x0006
 enum class E_VRHandState : uint8
 {
-    Open                                    = 0,
-    CanGrab                                 = 1,
-    Grab                                    = 2,
-    Pointing                                = 3,
-    HoldItem                                = 4,
-    E_MAX                                   = 5,
+	NewEnumerator0                           = 0,
+	NewEnumerator1                           = 1,
+	NewEnumerator2                           = 2,
+	NewEnumerator3                           = 3,
+	NewEnumerator5                           = 4,
+	E_MAX                                    = 5,
 };
 
 }

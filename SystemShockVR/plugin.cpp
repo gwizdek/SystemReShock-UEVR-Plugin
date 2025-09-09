@@ -19,7 +19,73 @@ void UEVRPlugin::on_initialize() {
     SystemShockMain::cleanup_actors();
 
     m_main = new SystemShockMain();
+
+    hook_bp_fn(L"BlueprintGeneratedClass /Game/Blueprints/Inventory/Items/Weapons/ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C", L"FireProjectileInDirection", (UEVR_UFunction_NativePostFn)mod_onfire_pre, NULL, false);
 }
+
+bool UEVRPlugin::hook_bp_fn(std::wstring_view class_name, std::wstring_view fn_name, UEVR_UFunction_NativePreFn pre, UEVR_UFunction_NativePostFn post, bool use_native)
+{
+    API::get()->log_info("Entering hook_bp_fn");
+    auto obj = (API::UClass*)API::get()->find_uobject(class_name);
+
+    if (obj == nullptr) {
+        API::get()->log_info("Failed to find %ls", class_name.data());
+        return false;
+    }
+
+    auto fn = obj->find_function(fn_name);
+
+    if (fn == nullptr) {
+        API::get()->log_info("Failed to find %ls", fn_name.data());
+        return false;
+    }
+
+    API::get()->log_info("getting function flags");
+    uint32_t flags = fn->get_function_flags();
+
+    if (use_native)
+    {
+        flags = flags | 0x400;
+    }
+    else
+    {
+        flags = flags & ~0x400;
+    }
+
+    API::get()->log_info("Setting function flags to 0x%08x", flags);
+    fn->set_function_flags(flags);
+
+    API::get()->log_info("Calling hook_ptr for %ls", fn_name.data());
+    return API::get()->param()->sdk->ufunction->hook_ptr((UEVR_UFunctionHandle)fn, pre, post);
+}
+
+bool UEVRPlugin::mod_onfire_pre(API::UFunction* fn, API::UObject* obj, void* locals, void* result)
+{
+    API::get()->log_info("In mod_onfire_post");
+    //if (obj != nullptr)
+    //{
+    //    const auto objname = obj->get_full_name();
+    //    API::get()->log_info("mod_onfire_post - Current Weapon: %ls", objname.c_str());
+    //}
+
+    //if (locals != nullptr)
+    //{
+    //    makeFireRequest_params* params = (makeFireRequest_params*)locals;
+    //    API::get()->log_info("%s", "Params:");
+    //    params->AimPosition = new UEVR_Vector3d(0.0, 90.0, 180.0);
+    //    API::get()->log_info("%f", params->AimPosition.x);
+    //    API::get()->log_info("%f", params->AimPosition.y);
+    //    API::get()->log_info("%f", params->AimPosition.z);
+    //}
+    //else
+    //{
+    //    API::get()->log_info("mod_onfire_post - locals is null");
+    //}
+
+    API::get()->log_info("mod_onfire_post returning false");
+    return true;
+}
+
 
 void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) {
     PLUGIN_LOG_ONCE("XInput Get State");
@@ -93,12 +159,23 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
 
 void UEVRPlugin::on_pre_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int view_index, float world_to_meters,
     UEVR_Vector3f* position, UEVR_Rotatorf* rotation, bool is_double) {
+    if (m_main != nullptr && view_index == 1) {
+        m_main->set_last_pos(position);
+        m_main->set_last_rot(rotation);
+    }
 };
 
 
 
 void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int view_index, float world_to_meters,
     UEVR_Vector3f* position, UEVR_Rotatorf* rotation, bool is_double) {
+    if (view_index != 1) {
+        return;
+    }
+    
+    if (m_main != nullptr) {
+        m_main->apply_delta(position, rotation);
+    }
 };
 
 

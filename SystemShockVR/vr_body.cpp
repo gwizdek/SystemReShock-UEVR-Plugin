@@ -2,6 +2,7 @@
 #include "imgui/imgui.h"
 
 #include "SDK/ITEM_ProjectileWeapon_Base_classes.hpp"
+#include "SDK/PAWN_Hacker_Implant_classes.hpp"
 
 #include "vr_body.hpp"
 #include "plugin_utils.hpp"
@@ -100,6 +101,26 @@ void VRBody::initialize() {
                     SDK::EAttachLocation::SnapToTarget,
                     true
                 );
+
+                if (pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                    API::get()->log_warn("[vrbody][initialize] Attach MediaReader");
+                    static_cast<SDK::APAWN_Hacker_Implant_C*>(pawn)->MediaReaderMesh->K2_AttachToComponent(
+                        m_bp_actor->VRBodyMesh,
+                        SDK::UKismetStringLibrary::Conv_StringToName(L"LeftForeArmRoll1"),
+                        SDK::EAttachmentRule::SnapToTarget,
+                        SDK::EAttachmentRule::KeepRelative,
+                        SDK::EAttachmentRule::KeepRelative,
+                        true
+                    );
+
+                    SDK::FHitResult SweepHitResult{};
+
+                    static_cast<SDK::APAWN_Hacker_Implant_C*>(pawn)->MediaReaderMesh->K2_SetRelativeLocationAndRotation(
+                        { 7.f, 3.f, 0.5f }, { 0.f, 3.f, 77.f }, false, &SweepHitResult, false
+                    );
+                }
+
+
             }
             catch (...) {
                 API::get()->log_error("[vrbody][initialize] Error spawning ABP_SSRModActor_C");

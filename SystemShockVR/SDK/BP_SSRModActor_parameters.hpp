@@ -17,7 +17,7 @@ namespace SDK::Params
 {
 
 // Function BP_SSRModActor.BP_SSRModActor_C.ExecuteUbergraph_BP_SSRModActor
-// 0x0060 (0x0060 - 0x0000)
+// 0x0090 (0x0090 - 0x0000)
 struct BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor final
 {
 public:
@@ -25,19 +25,28 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        CallFunc_K2_GetRootComponent_ReturnValue;          // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_18[0x8];                                       // 0x0018(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CallFunc_K2_GetComponentToWorld_ReturnValue;       // 0x0020(0x0030)(IsPlainOldData, NoDestructor)
-	class AActor*                                 CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue; // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ABP_VRBody_C*                           CallFunc_FinishSpawningActor_ReturnValue;          // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class ASkeletalMeshActor*>             CallFunc_GetAllActorsOfClassWithTag_OutActors;     // 0x0018(0x0010)(ReferenceParm)
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_K2_GetComponentToWorld_ReturnValue;       // 0x0030(0x0030)(IsPlainOldData, NoDestructor)
+	class ASkeletalMeshActor*                     CallFunc_Array_Get_Item;                           // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue; // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ABP_VRBody_C*                           CallFunc_FinishSpawningActor_ReturnValue;          // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor) == 0x000010, "Wrong alignment on BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor");
-static_assert(sizeof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor) == 0x000060, "Wrong size on BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor");
+static_assert(sizeof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor) == 0x000090, "Wrong size on BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor");
 static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, EntryPoint) == 0x000000, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::EntryPoint' has a wrong offset!");
 static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_GetPlayerPawn_ReturnValue) == 0x000008, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
 static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_K2_GetRootComponent_ReturnValue) == 0x000010, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_K2_GetRootComponent_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_K2_GetComponentToWorld_ReturnValue) == 0x000020, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_K2_GetComponentToWorld_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue) == 0x000050, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_FinishSpawningActor_ReturnValue) == 0x000058, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_FinishSpawningActor_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_GetAllActorsOfClassWithTag_OutActors) == 0x000018, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_GetAllActorsOfClassWithTag_OutActors' has a wrong offset!");
+static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_K2_GetComponentToWorld_ReturnValue) == 0x000030, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_K2_GetComponentToWorld_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_Array_Get_Item) == 0x000060, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue) == 0x000068, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_Array_Length_ReturnValue) == 0x000070, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_FinishSpawningActor_ReturnValue) == 0x000078, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_FinishSpawningActor_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor, CallFunc_Greater_IntInt_ReturnValue) == 0x000080, "Member 'BP_SSRModActor_C_ExecuteUbergraph_BP_SSRModActor::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
 
 }
 

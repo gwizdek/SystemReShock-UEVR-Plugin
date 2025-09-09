@@ -17,41 +17,195 @@
 namespace SDK::Params
 {
 
-// Function BP_VRBody.BP_VRBody_C.ExecuteUbergraph_BP_VRBody
-// 0x0020 (0x0020 - 0x0000)
-struct BP_VRBody_C_ExecuteUbergraph_BP_VRBody final
+// Function BP_VRBody.BP_VRBody_C.UnequipWeapon
+// 0x0001 (0x0001 - 0x0000)
+struct BP_VRBody_C_UnequipWeapon final
 {
 public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UCH_Hacker_Rig_Skeleton_AnimBlueprint_C* K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint; // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody) == 0x000008, "Wrong alignment on BP_VRBody_C_ExecuteUbergraph_BP_VRBody");
-static_assert(sizeof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody) == 0x000020, "Wrong size on BP_VRBody_C_ExecuteUbergraph_BP_VRBody");
-static_assert(offsetof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody, EntryPoint) == 0x000000, "Member 'BP_VRBody_C_ExecuteUbergraph_BP_VRBody::EntryPoint' has a wrong offset!");
-static_assert(offsetof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody, CallFunc_GetAnimInstance_ReturnValue) == 0x000008, "Member 'BP_VRBody_C_ExecuteUbergraph_BP_VRBody::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody, K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint) == 0x000010, "Member 'BP_VRBody_C_ExecuteUbergraph_BP_VRBody::K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint' has a wrong offset!");
-static_assert(offsetof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'BP_VRBody_C_ExecuteUbergraph_BP_VRBody::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(alignof(BP_VRBody_C_UnequipWeapon) == 0x000001, "Wrong alignment on BP_VRBody_C_UnequipWeapon");
+static_assert(sizeof(BP_VRBody_C_UnequipWeapon) == 0x000001, "Wrong size on BP_VRBody_C_UnequipWeapon");
+static_assert(offsetof(BP_VRBody_C_UnequipWeapon, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'BP_VRBody_C_UnequipWeapon::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
-// Function BP_VRBody.BP_VRBody_C.SetHoldObjectType
-// 0x0020 (0x0020 - 0x0000)
-struct BP_VRBody_C_SetHoldObjectType final
+// Function BP_VRBody.BP_VRBody_C.IsCurrentWeaponName
+// 0x0030 (0x0030 - 0x0000)
+struct BP_VRBody_C_IsCurrentWeaponName final
 {
 public:
-	E_HoldObjectType                              InHoldObjectType;                                  // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UCH_Hacker_Rig_Skeleton_AnimBlueprint_C* K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint; // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class FString                                 WeaponName;                                        // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetPathName_ReturnValue;                  // 0x0018(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Contains_ReturnValue;                     // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(BP_VRBody_C_SetHoldObjectType) == 0x000008, "Wrong alignment on BP_VRBody_C_SetHoldObjectType");
-static_assert(sizeof(BP_VRBody_C_SetHoldObjectType) == 0x000020, "Wrong size on BP_VRBody_C_SetHoldObjectType");
-static_assert(offsetof(BP_VRBody_C_SetHoldObjectType, InHoldObjectType) == 0x000000, "Member 'BP_VRBody_C_SetHoldObjectType::InHoldObjectType' has a wrong offset!");
-static_assert(offsetof(BP_VRBody_C_SetHoldObjectType, CallFunc_GetAnimInstance_ReturnValue) == 0x000008, "Member 'BP_VRBody_C_SetHoldObjectType::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_VRBody_C_SetHoldObjectType, K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint) == 0x000010, "Member 'BP_VRBody_C_SetHoldObjectType::K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint' has a wrong offset!");
-static_assert(offsetof(BP_VRBody_C_SetHoldObjectType, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'BP_VRBody_C_SetHoldObjectType::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(alignof(BP_VRBody_C_IsCurrentWeaponName) == 0x000008, "Wrong alignment on BP_VRBody_C_IsCurrentWeaponName");
+static_assert(sizeof(BP_VRBody_C_IsCurrentWeaponName) == 0x000030, "Wrong size on BP_VRBody_C_IsCurrentWeaponName");
+static_assert(offsetof(BP_VRBody_C_IsCurrentWeaponName, WeaponName) == 0x000000, "Member 'BP_VRBody_C_IsCurrentWeaponName::WeaponName' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_IsCurrentWeaponName, ReturnValue) == 0x000010, "Member 'BP_VRBody_C_IsCurrentWeaponName::ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_IsCurrentWeaponName, CallFunc_GetPathName_ReturnValue) == 0x000018, "Member 'BP_VRBody_C_IsCurrentWeaponName::CallFunc_GetPathName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_IsCurrentWeaponName, CallFunc_IsValid_ReturnValue) == 0x000028, "Member 'BP_VRBody_C_IsCurrentWeaponName::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_IsCurrentWeaponName, CallFunc_Contains_ReturnValue) == 0x000029, "Member 'BP_VRBody_C_IsCurrentWeaponName::CallFunc_Contains_ReturnValue' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.SetupCurrentWeapon
+// 0x0003 (0x0003 - 0x0000)
+struct BP_VRBody_C_SetupCurrentWeapon final
+{
+public:
+	bool                                          CallFunc_IsCurrentWeaponName_ReturnValue;          // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsCurrentWeaponName_ReturnValue_1;        // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsCurrentWeaponName_ReturnValue_2;        // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_VRBody_C_SetupCurrentWeapon) == 0x000001, "Wrong alignment on BP_VRBody_C_SetupCurrentWeapon");
+static_assert(sizeof(BP_VRBody_C_SetupCurrentWeapon) == 0x000003, "Wrong size on BP_VRBody_C_SetupCurrentWeapon");
+static_assert(offsetof(BP_VRBody_C_SetupCurrentWeapon, CallFunc_IsCurrentWeaponName_ReturnValue) == 0x000000, "Member 'BP_VRBody_C_SetupCurrentWeapon::CallFunc_IsCurrentWeaponName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_SetupCurrentWeapon, CallFunc_IsCurrentWeaponName_ReturnValue_1) == 0x000001, "Member 'BP_VRBody_C_SetupCurrentWeapon::CallFunc_IsCurrentWeaponName_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_SetupCurrentWeapon, CallFunc_IsCurrentWeaponName_ReturnValue_2) == 0x000002, "Member 'BP_VRBody_C_SetupCurrentWeapon::CallFunc_IsCurrentWeaponName_ReturnValue_2' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.EquipAssaultRifle
+// 0x0002 (0x0002 - 0x0000)
+struct BP_VRBody_C_EquipAssaultRifle final
+{
+public:
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_VRBody_C_EquipAssaultRifle) == 0x000001, "Wrong alignment on BP_VRBody_C_EquipAssaultRifle");
+static_assert(sizeof(BP_VRBody_C_EquipAssaultRifle) == 0x000002, "Wrong size on BP_VRBody_C_EquipAssaultRifle");
+static_assert(offsetof(BP_VRBody_C_EquipAssaultRifle, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'BP_VRBody_C_EquipAssaultRifle::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_EquipAssaultRifle, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000001, "Member 'BP_VRBody_C_EquipAssaultRifle::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.EquipLaserRapier
+// 0x0002 (0x0002 - 0x0000)
+struct BP_VRBody_C_EquipLaserRapier final
+{
+public:
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_VRBody_C_EquipLaserRapier) == 0x000001, "Wrong alignment on BP_VRBody_C_EquipLaserRapier");
+static_assert(sizeof(BP_VRBody_C_EquipLaserRapier) == 0x000002, "Wrong size on BP_VRBody_C_EquipLaserRapier");
+static_assert(offsetof(BP_VRBody_C_EquipLaserRapier, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'BP_VRBody_C_EquipLaserRapier::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_EquipLaserRapier, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000001, "Member 'BP_VRBody_C_EquipLaserRapier::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.EquipMinipistol
+// 0x0002 (0x0002 - 0x0000)
+struct BP_VRBody_C_EquipMinipistol final
+{
+public:
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_VRBody_C_EquipMinipistol) == 0x000001, "Wrong alignment on BP_VRBody_C_EquipMinipistol");
+static_assert(sizeof(BP_VRBody_C_EquipMinipistol) == 0x000002, "Wrong size on BP_VRBody_C_EquipMinipistol");
+static_assert(offsetof(BP_VRBody_C_EquipMinipistol, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'BP_VRBody_C_EquipMinipistol::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_EquipMinipistol, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000001, "Member 'BP_VRBody_C_EquipMinipistol::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.PlayUnloadGunAnim
+// 0x0028 (0x0028 - 0x0000)
+struct BP_VRBody_C_PlayUnloadGunAnim final
+{
+public:
+	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IABPI_Guns_C>          K2Node_DynamicCast_AsABPI_Guns;                    // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_DoesImplementInterface_ReturnValue;       // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_VRBody_C_PlayUnloadGunAnim) == 0x000008, "Wrong alignment on BP_VRBody_C_PlayUnloadGunAnim");
+static_assert(sizeof(BP_VRBody_C_PlayUnloadGunAnim) == 0x000028, "Wrong size on BP_VRBody_C_PlayUnloadGunAnim");
+static_assert(offsetof(BP_VRBody_C_PlayUnloadGunAnim, CallFunc_GetAnimInstance_ReturnValue) == 0x000000, "Member 'BP_VRBody_C_PlayUnloadGunAnim::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_PlayUnloadGunAnim, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'BP_VRBody_C_PlayUnloadGunAnim::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_PlayUnloadGunAnim, K2Node_DynamicCast_AsABPI_Guns) == 0x000010, "Member 'BP_VRBody_C_PlayUnloadGunAnim::K2Node_DynamicCast_AsABPI_Guns' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_PlayUnloadGunAnim, K2Node_DynamicCast_bSuccess) == 0x000020, "Member 'BP_VRBody_C_PlayUnloadGunAnim::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_PlayUnloadGunAnim, CallFunc_DoesImplementInterface_ReturnValue) == 0x000021, "Member 'BP_VRBody_C_PlayUnloadGunAnim::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.PlayLoadGunAnim
+// 0x0028 (0x0028 - 0x0000)
+struct BP_VRBody_C_PlayLoadGunAnim final
+{
+public:
+	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IABPI_Guns_C>          K2Node_DynamicCast_AsABPI_Guns;                    // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_DoesImplementInterface_ReturnValue;       // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_VRBody_C_PlayLoadGunAnim) == 0x000008, "Wrong alignment on BP_VRBody_C_PlayLoadGunAnim");
+static_assert(sizeof(BP_VRBody_C_PlayLoadGunAnim) == 0x000028, "Wrong size on BP_VRBody_C_PlayLoadGunAnim");
+static_assert(offsetof(BP_VRBody_C_PlayLoadGunAnim, CallFunc_GetAnimInstance_ReturnValue) == 0x000000, "Member 'BP_VRBody_C_PlayLoadGunAnim::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_PlayLoadGunAnim, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'BP_VRBody_C_PlayLoadGunAnim::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_PlayLoadGunAnim, K2Node_DynamicCast_AsABPI_Guns) == 0x000010, "Member 'BP_VRBody_C_PlayLoadGunAnim::K2Node_DynamicCast_AsABPI_Guns' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_PlayLoadGunAnim, K2Node_DynamicCast_bSuccess) == 0x000020, "Member 'BP_VRBody_C_PlayLoadGunAnim::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_PlayLoadGunAnim, CallFunc_DoesImplementInterface_ReturnValue) == 0x000021, "Member 'BP_VRBody_C_PlayLoadGunAnim::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.SetWeaponAnimBP
+// 0x0010 (0x0010 - 0x0000)
+struct BP_VRBody_C_SetWeaponAnimBP final
+{
+public:
+	class USkeletalMeshComponent*                 Weapon;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 AnimBP;                                            // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(BP_VRBody_C_SetWeaponAnimBP) == 0x000008, "Wrong alignment on BP_VRBody_C_SetWeaponAnimBP");
+static_assert(sizeof(BP_VRBody_C_SetWeaponAnimBP) == 0x000010, "Wrong size on BP_VRBody_C_SetWeaponAnimBP");
+static_assert(offsetof(BP_VRBody_C_SetWeaponAnimBP, Weapon) == 0x000000, "Member 'BP_VRBody_C_SetWeaponAnimBP::Weapon' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_SetWeaponAnimBP, AnimBP) == 0x000008, "Member 'BP_VRBody_C_SetWeaponAnimBP::AnimBP' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.AttachWeapon
+// 0x0148 (0x0148 - 0x0000)
+struct BP_VRBody_C_AttachWeapon final
+{
+public:
+	class USkeletalMeshComponent*                 Weapon;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMap<class FString, class FString>            WeaponSocketNames;                                 // 0x0008(0x0050)(Edit, BlueprintVisible)
+	class FString                                 CallFunc_GetPathName_ReturnValue;                  // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_6C[0x4];                                       // 0x006C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0070(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_84[0x4];                                       // 0x0084(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FString, class FString>            K2Node_MakeVariable_MakeVariableOutput;            // 0x0088(0x0050)()
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x00D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_DC[0x4];                                       // 0x00DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FString>                         CallFunc_Map_Keys_Keys;                            // 0x00E0(0x0010)(ReferenceParm)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_F4[0x4];                                       // 0x00F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Array_Get_Item;                           // 0x00F8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_109[0x7];                                      // 0x0109(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_1;              // 0x0110(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Contains_ReturnValue;                     // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_121[0x7];                                      // 0x0121(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Map_Find_Value;                           // 0x0128(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_139[0x3];                                      // 0x0139(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_Conv_StringToName_ReturnValue;            // 0x013C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0144(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_VRBody_C_AttachWeapon) == 0x000008, "Wrong alignment on BP_VRBody_C_AttachWeapon");
+static_assert(sizeof(BP_VRBody_C_AttachWeapon) == 0x000148, "Wrong size on BP_VRBody_C_AttachWeapon");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, Weapon) == 0x000000, "Member 'BP_VRBody_C_AttachWeapon::Weapon' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, WeaponSocketNames) == 0x000008, "Member 'BP_VRBody_C_AttachWeapon::WeaponSocketNames' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_GetPathName_ReturnValue) == 0x000058, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_GetPathName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, Temp_int_Array_Index_Variable) == 0x000068, "Member 'BP_VRBody_C_AttachWeapon::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Concat_StrStr_ReturnValue) == 0x000070, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, Temp_int_Loop_Counter_Variable) == 0x000080, "Member 'BP_VRBody_C_AttachWeapon::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, K2Node_MakeVariable_MakeVariableOutput) == 0x000088, "Member 'BP_VRBody_C_AttachWeapon::K2Node_MakeVariable_MakeVariableOutput' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Add_IntInt_ReturnValue) == 0x0000D8, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Map_Keys_Keys) == 0x0000E0, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Map_Keys_Keys' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Array_Length_ReturnValue) == 0x0000F0, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Array_Get_Item) == 0x0000F8, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Less_IntInt_ReturnValue) == 0x000108, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Concat_StrStr_ReturnValue_1) == 0x000110, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Concat_StrStr_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Contains_ReturnValue) == 0x000120, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Contains_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Map_Find_Value) == 0x000128, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Map_Find_Value' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Map_Find_ReturnValue) == 0x000138, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Map_Find_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_Conv_StringToName_ReturnValue) == 0x00013C, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_Conv_StringToName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_AttachWeapon, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000144, "Member 'BP_VRBody_C_AttachWeapon::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
 
 // Function BP_VRBody.BP_VRBody_C.Set Hand Pose
 // 0x0020 (0x0020 - 0x0000)
@@ -72,6 +226,44 @@ static_assert(offsetof(BP_VRBody_C_Set_Hand_Pose, InRightHand) == 0x000001, "Mem
 static_assert(offsetof(BP_VRBody_C_Set_Hand_Pose, CallFunc_GetAnimInstance_ReturnValue) == 0x000008, "Member 'BP_VRBody_C_Set_Hand_Pose::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
 static_assert(offsetof(BP_VRBody_C_Set_Hand_Pose, K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint) == 0x000010, "Member 'BP_VRBody_C_Set_Hand_Pose::K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint' has a wrong offset!");
 static_assert(offsetof(BP_VRBody_C_Set_Hand_Pose, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'BP_VRBody_C_Set_Hand_Pose::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.SetHoldObjectType
+// 0x0020 (0x0020 - 0x0000)
+struct BP_VRBody_C_SetHoldObjectType final
+{
+public:
+	E_HoldObjectType                              InHoldObjectType;                                  // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          InRightHand;                                       // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UCH_Hacker_Rig_Skeleton_AnimBlueprint_C* K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint; // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_VRBody_C_SetHoldObjectType) == 0x000008, "Wrong alignment on BP_VRBody_C_SetHoldObjectType");
+static_assert(sizeof(BP_VRBody_C_SetHoldObjectType) == 0x000020, "Wrong size on BP_VRBody_C_SetHoldObjectType");
+static_assert(offsetof(BP_VRBody_C_SetHoldObjectType, InHoldObjectType) == 0x000000, "Member 'BP_VRBody_C_SetHoldObjectType::InHoldObjectType' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_SetHoldObjectType, InRightHand) == 0x000001, "Member 'BP_VRBody_C_SetHoldObjectType::InRightHand' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_SetHoldObjectType, CallFunc_GetAnimInstance_ReturnValue) == 0x000008, "Member 'BP_VRBody_C_SetHoldObjectType::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_SetHoldObjectType, K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint) == 0x000010, "Member 'BP_VRBody_C_SetHoldObjectType::K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_SetHoldObjectType, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'BP_VRBody_C_SetHoldObjectType::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
+// Function BP_VRBody.BP_VRBody_C.ExecuteUbergraph_BP_VRBody
+// 0x0020 (0x0020 - 0x0000)
+struct BP_VRBody_C_ExecuteUbergraph_BP_VRBody final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UCH_Hacker_Rig_Skeleton_AnimBlueprint_C* K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint; // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody) == 0x000008, "Wrong alignment on BP_VRBody_C_ExecuteUbergraph_BP_VRBody");
+static_assert(sizeof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody) == 0x000020, "Wrong size on BP_VRBody_C_ExecuteUbergraph_BP_VRBody");
+static_assert(offsetof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody, EntryPoint) == 0x000000, "Member 'BP_VRBody_C_ExecuteUbergraph_BP_VRBody::EntryPoint' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody, CallFunc_GetAnimInstance_ReturnValue) == 0x000008, "Member 'BP_VRBody_C_ExecuteUbergraph_BP_VRBody::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody, K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint) == 0x000010, "Member 'BP_VRBody_C_ExecuteUbergraph_BP_VRBody::K2Node_DynamicCast_AsCH_Hacker_Rig_Skeleton_Anim_Blueprint' has a wrong offset!");
+static_assert(offsetof(BP_VRBody_C_ExecuteUbergraph_BP_VRBody, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'BP_VRBody_C_ExecuteUbergraph_BP_VRBody::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 }
 

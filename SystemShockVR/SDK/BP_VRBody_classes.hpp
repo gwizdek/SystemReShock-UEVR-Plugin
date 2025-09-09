@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "E_HoldObjectType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "E_HoldObjectType_structs.hpp"
 #include "E_VRHandState_structs.hpp"
 
 
@@ -33,16 +33,23 @@ public:
 	class UMotionControllerComponent*             MotionControllerLeft;                              // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USkeletalMeshComponent*                 VRBodyMesh;                                        // 0x0258(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0260(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	E_HoldObjectType                              VRBody_HoldObjectType;                             // 0x0268(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	E_VRHandState                                 VRBody_HandPose_Right;                             // 0x0269(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	E_VRHandState                                 VRBody_HandPose_Left;                              // 0x026A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 CurrentWeapon;                                     // 0x0268(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ExecuteUbergraph_BP_VRBody(int32 EntryPoint);
-	void ReceiveBeginPlay();
-	void UserConstructionScript();
-	void SetHoldObjectType(E_HoldObjectType InHoldObjectType);
+	void UnequipWeapon();
+	bool IsCurrentWeaponName(const class FString& WeaponName);
+	void SetupCurrentWeapon();
+	void EquipAssaultRifle();
+	void EquipLaserRapier();
+	void EquipMinipistol();
+	void PlayUnloadGunAnim();
+	void PlayLoadGunAnim();
+	void SetWeaponAnimBP(class USkeletalMeshComponent* Weapon, class UClass* AnimBP);
+	void AttachWeapon(class USkeletalMeshComponent* Weapon);
 	void Set_Hand_Pose(E_VRHandState InHandPose, bool InRightHand);
+	void SetHoldObjectType(E_HoldObjectType InHoldObjectType, bool InRightHand);
+	void ReceiveBeginPlay();
+	void ExecuteUbergraph_BP_VRBody(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()
@@ -65,9 +72,7 @@ static_assert(offsetof(ABP_VRBody_C, MotionControllerRight) == 0x000248, "Member
 static_assert(offsetof(ABP_VRBody_C, MotionControllerLeft) == 0x000250, "Member 'ABP_VRBody_C::MotionControllerLeft' has a wrong offset!");
 static_assert(offsetof(ABP_VRBody_C, VRBodyMesh) == 0x000258, "Member 'ABP_VRBody_C::VRBodyMesh' has a wrong offset!");
 static_assert(offsetof(ABP_VRBody_C, DefaultSceneRoot) == 0x000260, "Member 'ABP_VRBody_C::DefaultSceneRoot' has a wrong offset!");
-static_assert(offsetof(ABP_VRBody_C, VRBody_HoldObjectType) == 0x000268, "Member 'ABP_VRBody_C::VRBody_HoldObjectType' has a wrong offset!");
-static_assert(offsetof(ABP_VRBody_C, VRBody_HandPose_Right) == 0x000269, "Member 'ABP_VRBody_C::VRBody_HandPose_Right' has a wrong offset!");
-static_assert(offsetof(ABP_VRBody_C, VRBody_HandPose_Left) == 0x00026A, "Member 'ABP_VRBody_C::VRBody_HandPose_Left' has a wrong offset!");
+static_assert(offsetof(ABP_VRBody_C, CurrentWeapon) == 0x000268, "Member 'ABP_VRBody_C::CurrentWeapon' has a wrong offset!");
 
 }
 

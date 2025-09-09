@@ -10,9 +10,11 @@
 
 #include "Basic.hpp"
 
+#include "E_HoldObjectType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "AnimGraphRuntime_structs.hpp"
+#include "E_VRHandState_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 
@@ -20,7 +22,7 @@ namespace SDK
 {
 
 // AnimBlueprintGeneratedClass CH_Hacker_Rig_Skeleton_AnimBlueprint.CH_Hacker_Rig_Skeleton_AnimBlueprint_C
-// 0x0600 (0x08C0 - 0x02C0)
+// 0x1A60 (0x1D20 - 0x02C0)
 class UCH_Hacker_Rig_Skeleton_AnimBlueprint_C final : public UAnimInstance
 {
 public:
@@ -32,15 +34,61 @@ public:
 	struct FAnimNode_Fabrik                       AnimGraphNode_Fabrik;                              // 0x0490(0x0190)()
 	struct FAnimNode_ModifyBone                   AnimGraphNode_ModifyBone_1;                        // 0x0620(0x0108)()
 	struct FAnimNode_ModifyBone                   AnimGraphNode_ModifyBone;                          // 0x0728(0x0108)()
-	struct FAnimNode_ConvertComponentToLocalSpace AnimGraphNode_ComponentToLocalSpace;               // 0x0830(0x0020)()
-	class UMotionControllerComponent*             LeftMotionController;                              // 0x0850(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMotionControllerComponent*             RightMotionController;                             // 0x0858(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             LeftHandTransform;                                 // 0x0860(0x0030)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor)
-	struct FTransform                             RightHandTransform;                                // 0x0890(0x0030)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor)
+	struct FAnimNode_RotationMultiplier           AnimGraphNode_RotationMultiplier_1;                // 0x0830(0x00F0)()
+	struct FAnimNode_ConvertComponentToLocalSpace AnimGraphNode_ComponentToLocalSpace;               // 0x0920(0x0020)()
+	struct FAnimNode_RotationMultiplier           AnimGraphNode_RotationMultiplier;                  // 0x0940(0x00F0)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_17;                   // 0x0A30(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_16;                   // 0x0AB0(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_15;                   // 0x0B30(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_14;                   // 0x0BB0(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_13;                   // 0x0C30(0x0080)()
+	struct FAnimNode_BlendListByInt               AnimGraphNode_BlendListByInt_3;                    // 0x0CB0(0x00A0)()
+	struct FAnimNode_ConvertLocalToComponentSpace AnimGraphNode_LocalToComponentSpace;               // 0x0D50(0x0020)()
+	struct FAnimNode_LayeredBoneBlend             AnimGraphNode_LayeredBoneBlend;                    // 0x0D70(0x00C0)()
+	struct FAnimNode_BlendListByInt               AnimGraphNode_BlendListByInt_2;                    // 0x0E30(0x00A0)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_12;                   // 0x0ED0(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_11;                   // 0x0F50(0x0080)()
+	struct FAnimNode_SaveCachedPose               AnimGraphNode_SaveCachedPose_3;                    // 0x0FD0(0x0158)()
+	struct FAnimNode_UseCachedPose                AnimGraphNode_UseCachedPose_3;                     // 0x1128(0x0028)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_10;                   // 0x1150(0x0080)()
+	struct FAnimNode_SaveCachedPose               AnimGraphNode_SaveCachedPose_2;                    // 0x11D0(0x0158)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_9;                    // 0x1328(0x0080)()
+	struct FAnimNode_SaveCachedPose               AnimGraphNode_SaveCachedPose_1;                    // 0x13A8(0x0158)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_8;                    // 0x1500(0x0080)()
+	struct FAnimNode_UseCachedPose                AnimGraphNode_UseCachedPose_2;                     // 0x1580(0x0028)()
+	struct FAnimNode_UseCachedPose                AnimGraphNode_UseCachedPose_1;                     // 0x15A8(0x0028)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_7;                    // 0x15D0(0x0080)()
+	struct FAnimNode_BlendListByInt               AnimGraphNode_BlendListByInt_1;                    // 0x1650(0x00A0)()
+	struct FAnimNode_SaveCachedPose               AnimGraphNode_SaveCachedPose;                      // 0x16F0(0x0158)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_6;                    // 0x1848(0x0080)()
+	struct FAnimNode_UseCachedPose                AnimGraphNode_UseCachedPose;                       // 0x18C8(0x0028)()
+	struct FAnimNode_BlendListByInt               AnimGraphNode_BlendListByInt;                      // 0x18F0(0x00A0)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_5;                    // 0x1990(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_4;                    // 0x1A10(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_3;                    // 0x1A90(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_2;                    // 0x1B10(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer_1;                    // 0x1B90(0x0080)()
+	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer;                      // 0x1C10(0x0080)()
+	class UMotionControllerComponent*             LeftMotionController;                              // 0x1C90(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMotionControllerComponent*             RightMotionController;                             // 0x1C98(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             LeftHandTransform;                                 // 0x1CA0(0x0030)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor)
+	struct FTransform                             RightHandTransform;                                // 0x1CD0(0x0030)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor)
+	E_VRHandState                                 RightHandPose;                                     // 0x1D00(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_HoldObjectType                              RightHandHoldObjectType;                           // 0x1D01(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1D02[0x6];                                     // 0x1D02(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class USceneComponent*                        RightWristOffsetComponent;                         // 0x1D08(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        LeftWristOffsetComponent;                          // 0x1D10(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_VRHandState                                 LeftHandPose;                                      // 0x1D18(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_HoldObjectType                              LeftHandHoldObjectType;                            // 0x1D19(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void AnimGraph(struct FPoseLink* AnimGraph_0);
+	void EvaluateGraphExposedInputs_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint_AnimGraphNode_BlendListByInt_5AA56D0948AEC0679FE3CA86A2D2D222();
+	void EvaluateGraphExposedInputs_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint_AnimGraphNode_BlendListByInt_FD1E0F944A66FF2BBEE122BB22F82498();
+	void EvaluateGraphExposedInputs_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint_AnimGraphNode_BlendListByInt_1BB7F06A4479DCC417DD0C85E09F183F();
+	void EvaluateGraphExposedInputs_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint_AnimGraphNode_BlendListByInt_D83EF0CB4C1B7A7E45CC07B83C15E761();
 	void BlueprintUpdateAnimation(float DeltaTimeX);
+	void BlueprintBeginPlay();
 	void ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint(int32 EntryPoint);
 
 public:
@@ -54,18 +102,58 @@ public:
 	}
 };
 static_assert(alignof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C) == 0x000010, "Wrong alignment on UCH_Hacker_Rig_Skeleton_AnimBlueprint_C");
-static_assert(sizeof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C) == 0x0008C0, "Wrong size on UCH_Hacker_Rig_Skeleton_AnimBlueprint_C");
+static_assert(sizeof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C) == 0x001D20, "Wrong size on UCH_Hacker_Rig_Skeleton_AnimBlueprint_C");
 static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, UberGraphFrame) == 0x0002C0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_Root) == 0x0002C8, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_Root' has a wrong offset!");
 static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_Fabrik_1) == 0x000300, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_Fabrik_1' has a wrong offset!");
 static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_Fabrik) == 0x000490, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_Fabrik' has a wrong offset!");
 static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_ModifyBone_1) == 0x000620, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_ModifyBone_1' has a wrong offset!");
 static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_ModifyBone) == 0x000728, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_ModifyBone' has a wrong offset!");
-static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_ComponentToLocalSpace) == 0x000830, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_ComponentToLocalSpace' has a wrong offset!");
-static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, LeftMotionController) == 0x000850, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::LeftMotionController' has a wrong offset!");
-static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, RightMotionController) == 0x000858, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::RightMotionController' has a wrong offset!");
-static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, LeftHandTransform) == 0x000860, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::LeftHandTransform' has a wrong offset!");
-static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, RightHandTransform) == 0x000890, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::RightHandTransform' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_RotationMultiplier_1) == 0x000830, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_RotationMultiplier_1' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_ComponentToLocalSpace) == 0x000920, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_ComponentToLocalSpace' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_RotationMultiplier) == 0x000940, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_RotationMultiplier' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_17) == 0x000A30, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_17' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_16) == 0x000AB0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_16' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_15) == 0x000B30, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_15' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_14) == 0x000BB0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_14' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_13) == 0x000C30, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_13' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_BlendListByInt_3) == 0x000CB0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_BlendListByInt_3' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_LocalToComponentSpace) == 0x000D50, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_LocalToComponentSpace' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_LayeredBoneBlend) == 0x000D70, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_LayeredBoneBlend' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_BlendListByInt_2) == 0x000E30, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_BlendListByInt_2' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_12) == 0x000ED0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_12' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_11) == 0x000F50, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_11' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SaveCachedPose_3) == 0x000FD0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SaveCachedPose_3' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_UseCachedPose_3) == 0x001128, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_UseCachedPose_3' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_10) == 0x001150, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_10' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SaveCachedPose_2) == 0x0011D0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SaveCachedPose_2' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_9) == 0x001328, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_9' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SaveCachedPose_1) == 0x0013A8, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SaveCachedPose_1' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_8) == 0x001500, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_8' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_UseCachedPose_2) == 0x001580, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_UseCachedPose_2' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_UseCachedPose_1) == 0x0015A8, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_UseCachedPose_1' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_7) == 0x0015D0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_7' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_BlendListByInt_1) == 0x001650, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_BlendListByInt_1' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SaveCachedPose) == 0x0016F0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SaveCachedPose' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_6) == 0x001848, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_6' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_UseCachedPose) == 0x0018C8, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_UseCachedPose' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_BlendListByInt) == 0x0018F0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_BlendListByInt' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_5) == 0x001990, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_5' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_4) == 0x001A10, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_4' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_3) == 0x001A90, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_3' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_2) == 0x001B10, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_2' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer_1) == 0x001B90, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer_1' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, AnimGraphNode_SequencePlayer) == 0x001C10, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::AnimGraphNode_SequencePlayer' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, LeftMotionController) == 0x001C90, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::LeftMotionController' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, RightMotionController) == 0x001C98, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::RightMotionController' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, LeftHandTransform) == 0x001CA0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::LeftHandTransform' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, RightHandTransform) == 0x001CD0, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::RightHandTransform' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, RightHandPose) == 0x001D00, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::RightHandPose' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, RightHandHoldObjectType) == 0x001D01, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::RightHandHoldObjectType' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, RightWristOffsetComponent) == 0x001D08, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::RightWristOffsetComponent' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, LeftWristOffsetComponent) == 0x001D10, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::LeftWristOffsetComponent' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, LeftHandPose) == 0x001D18, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::LeftHandPose' has a wrong offset!");
+static_assert(offsetof(UCH_Hacker_Rig_Skeleton_AnimBlueprint_C, LeftHandHoldObjectType) == 0x001D19, "Member 'UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::LeftHandHoldObjectType' has a wrong offset!");
 
 }
 

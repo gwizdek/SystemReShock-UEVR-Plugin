@@ -119,4 +119,7 @@ public:
     void set_weapon_state();
     void fire_weapon();
     void handle_weapon_change();
+
+    void empty_magazine();
+    void reload();
 };

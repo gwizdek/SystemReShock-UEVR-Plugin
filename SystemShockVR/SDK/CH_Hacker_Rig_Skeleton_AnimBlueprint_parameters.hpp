@@ -40,27 +40,34 @@ static_assert(sizeof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_BlueprintUpdateAnima
 static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_BlueprintUpdateAnimation, DeltaTimeX) == 0x000000, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_BlueprintUpdateAnimation::DeltaTimeX' has a wrong offset!");
 
 // Function CH_Hacker_Rig_Skeleton_AnimBlueprint.CH_Hacker_Rig_Skeleton_AnimBlueprint_C.ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint
-// 0x0080 (0x0080 - 0x0000)
+// 0x0090 (0x0090 - 0x0000)
 struct CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5[0xB];                                        // 0x0005(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CallFunc_K2_GetComponentToWorld_ReturnValue;       // 0x0010(0x0030)(IsPlainOldData, NoDestructor)
-	float                                         K2Node_Event_DeltaTimeX;                           // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0044(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_45[0xB];                                       // 0x0045(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue;               // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue_1;             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue_2;             // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_Event_DeltaTimeX;                           // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_16[0xA];                                       // 0x0016(0x000A)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_K2_GetComponentToWorld_ReturnValue;       // 0x0020(0x0030)(IsPlainOldData, NoDestructor)
 	struct FTransform                             CallFunc_K2_GetComponentToWorld_ReturnValue_1;     // 0x0050(0x0030)(IsPlainOldData, NoDestructor)
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue_3;             // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint) == 0x000010, "Wrong alignment on CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint");
-static_assert(sizeof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint) == 0x000080, "Wrong size on CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint");
+static_assert(sizeof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint) == 0x000090, "Wrong size on CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint");
 static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, EntryPoint) == 0x000000, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::EntryPoint' has a wrong offset!");
-static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_IsValid_ReturnValue) == 0x000004, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_K2_GetComponentToWorld_ReturnValue) == 0x000010, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_K2_GetComponentToWorld_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, K2Node_Event_DeltaTimeX) == 0x000040, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::K2Node_Event_DeltaTimeX' has a wrong offset!");
-static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_IsValid_ReturnValue_1) == 0x000044, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_Conv_ByteToInt_ReturnValue) == 0x000004, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_Conv_ByteToInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_Conv_ByteToInt_ReturnValue_1) == 0x000008, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_Conv_ByteToInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_Conv_ByteToInt_ReturnValue_2) == 0x00000C, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_Conv_ByteToInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, K2Node_Event_DeltaTimeX) == 0x000010, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::K2Node_Event_DeltaTimeX' has a wrong offset!");
+static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_IsValid_ReturnValue) == 0x000014, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_IsValid_ReturnValue_1) == 0x000015, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_K2_GetComponentToWorld_ReturnValue) == 0x000020, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_K2_GetComponentToWorld_ReturnValue' has a wrong offset!");
 static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_K2_GetComponentToWorld_ReturnValue_1) == 0x000050, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_K2_GetComponentToWorld_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint, CallFunc_Conv_ByteToInt_ReturnValue_3) == 0x000080, "Member 'CH_Hacker_Rig_Skeleton_AnimBlueprint_C_ExecuteUbergraph_CH_Hacker_Rig_Skeleton_AnimBlueprint::CallFunc_Conv_ByteToInt_ReturnValue_3' has a wrong offset!");
 
 }
 

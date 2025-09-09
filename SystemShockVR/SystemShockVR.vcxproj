@@ -202,6 +202,7 @@
     <ClCompile Include="plugin_utils.cpp" />
     <ClCompile Include="rendering\d3d11.cpp" />
     <ClCompile Include="rendering\d3d12.cpp" />
+    <ClCompile Include="SDK\ANIMBP_Magnum_functions.cpp" />
     <ClCompile Include="SDK\AssetRegistry_functions.cpp" />
     <ClCompile Include="SDK\Basic.cpp" />
     <ClCompile Include="SDK\BP_SSRModActor_functions.cpp" />

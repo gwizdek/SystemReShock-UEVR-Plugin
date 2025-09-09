@@ -36,7 +36,7 @@ SOFTWARE.
 #define UEVR_OUT
 
 #define UEVR_PLUGIN_VERSION_MAJOR 2
-#define UEVR_PLUGIN_VERSION_MINOR 29
+#define UEVR_PLUGIN_VERSION_MINOR 39
 #define UEVR_PLUGIN_VERSION_PATCH 0
 
 #define UEVR_RENDERER_D3D11 0
@@ -187,6 +187,10 @@ typedef bool (*UEVR_OnMessageFn)(UEVR_OnMessageCb);
 typedef bool (*UEVR_OnXInputGetStateFn)(UEVR_OnXInputGetStateCb);
 typedef bool (*UEVR_OnXInputSetStateFn)(UEVR_OnXInputSetStateCb);
 
+/* Lua */
+typedef void (*UEVR_OnCustomEventCb)(const char* evt, const char* evt_data);
+typedef bool (*UEVR_OnCustomEventFn)(UEVR_OnCustomEventCb);
+
 /* Engine */
 typedef bool (*UEVR_Engine_TickFn)(UEVR_Engine_TickCb);
 typedef bool (*UEVR_Slate_DrawWindow_RenderThreadFn)(UEVR_Slate_DrawWindow_RenderThreadCb);
@@ -206,6 +210,7 @@ typedef struct {
     UEVR_OnXInputSetStateFn on_xinput_set_state;
     UEVR_OnPostRenderVRFrameworkDX11Fn on_post_render_vr_framework_dx11;
     UEVR_OnPostRenderVRFrameworkDX12Fn on_post_render_vr_framework_dx12;
+    UEVR_OnCustomEventFn on_custom_event;
 } UEVR_PluginCallbacks;
 
 typedef struct {
@@ -217,6 +222,19 @@ typedef struct {
     unsigned int (*get_persistent_dir)(wchar_t* buffer, unsigned int buffer_size);
     int (*register_inline_hook)(void* target, void* dst, void** original);
     void (*unregister_inline_hook)(int hook_id);
+    void (*dispatch_lua_event)(const char* event_name, const char* event_data);
+
+    const char* (*get_commit_hash)();
+    const char* (*get_tag)();
+    const char* (*get_tag_long)();
+    const char* (*get_branch)();
+    const char* (*get_build_date)();
+    const char* (*get_build_time)();
+    unsigned int (*get_commits_past_tag)();
+    unsigned int (*get_total_commits)();
+
+    /* Intended for C plugins to listen to via on_custom_event */
+    void (*dispatch_custom_event)(const char* event_name, const char* event_data);
 } UEVR_PluginFunctions;
 
 typedef struct {
@@ -228,6 +246,8 @@ typedef struct {
     UEVR_Stereo_CalculateStereoViewOffsetFn on_post_calculate_stereo_view_offset;
     UEVR_ViewportClient_DrawFn on_pre_viewport_client_draw;
     UEVR_ViewportClient_DrawFn on_post_viewport_client_draw;
+
+    UEVR_Stereo_CalculateStereoViewOffsetFn on_early_calculate_stereo_view_offset;
 } UEVR_SDKCallbacks;
 
 typedef struct {
@@ -251,6 +271,8 @@ typedef struct {
     void (*execute_command_ex)(UEVR_UObjectHandle world, const wchar_t* command, void* output_device);
 
     UEVR_FConsoleManagerHandle (*get_console_manager)();
+
+    UEVR_UObjectHandle (*add_component_by_class)(UEVR_UObjectHandle actor, UEVR_UClassHandle klass, bool deferred);
 } UEVR_SDKFunctions;
 
 typedef struct {
@@ -323,6 +345,8 @@ typedef struct {
 typedef struct {
     void* (*get_native_function)(UEVR_UFunctionHandle function);
     bool (*hook_ptr)(UEVR_UFunctionHandle function, UEVR_UFunction_NativePreFn pre_hook, UEVR_UFunction_NativePostFn post_hook);
+    unsigned int (*get_function_flags)(UEVR_UFunctionHandle function);
+    void (*set_function_flags)(UEVR_UFunctionHandle function, unsigned int flags);
 } UEVR_UFunctionFunctions;
 
 typedef struct {
@@ -370,6 +394,9 @@ typedef struct {
 
     bool (*is_disabled)();
     void (*set_disabled)(bool disabled);
+
+    void (*remove_motion_controller_state)(UEVR_UObjectHandle object);
+    void (*remove_all_motion_controller_states)();
 } UEVR_UObjectHookFunctions;
 
 typedef struct {
@@ -437,6 +464,11 @@ typedef struct {
 } UEVR_FEnumPropertyFunctions;
 
 typedef struct {
+    void (*exec)(UEVR_UGameViewportClientHandle vp, const wchar_t* command);
+    void (*exec_ex)(UEVR_UGameViewportClientHandle vp, UEVR_UObjectHandle world, const wchar_t* command, void* output_device);
+} UEVR_UGameViewportClientFunctions;
+
+typedef struct {
     const UEVR_SDKFunctions* functions;
     const UEVR_SDKCallbacks* callbacks;
     const UEVR_UObjectFunctions* uobject;
@@ -460,6 +492,7 @@ typedef struct {
     const UEVR_FStructPropertyFunctions* fstructproperty;
     const UEVR_FEnumPropertyFunctions* fenumproperty;
     const UEVR_UFieldFunctions* ufield;
+    const UEVR_UGameViewportClientFunctions* game_viewport_client;
 } UEVR_SDKData;
 
 DECLARE_UEVR_HANDLE(UEVR_IVRSystem);
@@ -587,6 +620,13 @@ typedef struct {
     void (*reload_config)();
 } UEVR_VRData;
 
+struct lua_State;
+
+typedef struct {
+    lua_State* (*get_lua_state)();
+    void (*add_additional_bindings)(lua_State* L); /* for external Lua environments. adds json, fs, imgui, etc*/
+} UEVR_LuaData;
+
 typedef struct {
     void* uevr_module;
     const UEVR_PluginVersion* version;
@@ -600,6 +640,8 @@ typedef struct {
 
     /* Engine/Game specific functions and data */
     const UEVR_SDKData* sdk;
+
+    const UEVR_LuaData* lua;
 } UEVR_PluginInitializeParam;
 
 typedef bool (*UEVR_PluginInitializeFn)(const UEVR_PluginInitializeParam*);

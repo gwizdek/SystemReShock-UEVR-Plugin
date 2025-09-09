@@ -1375,7 +1375,7 @@ public:
     }
 
     // it sets the offset each tick - maybe can be improved but there's not much overhead
-    void handle_weapon_change() {
+    void handle_weapon_change2() {
         try {
             if (m_pawn_state.value != PAWN_HACKERIMPLANT && m_pawn_state.value != PAWN_PSEUDOSPACE)
                 return;

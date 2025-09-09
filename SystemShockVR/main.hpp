@@ -13,6 +13,7 @@
 #include "memo_structs.hpp"
 #include "vr_controllers.hpp"
 #include "SDK/BP_VRBody_classes.hpp"
+#include "SDK/WIDGET_PlayerHUD_classes.hpp"
 
 typedef enum HandPreference {
     RIGHT_HANDED,
@@ -72,12 +73,18 @@ private:
     SDK::UWorld* m_world{ nullptr };
     SDK::APawn* m_pawn{ nullptr };
     SDK::UCOMP_HackerInventory_C* m_inventory{ nullptr };
+    SDK::UWIDGET_PlayerHUD_C* m_sdk_hud{ nullptr };
 
     // utils
     std::unordered_set<ModEvent> m_mod_events{};
     int m_toggle_native_fix_counter{ -1 };
     SDK::FHitResult m_hit_result{};
     bool m_camera_initialized{ false };
+    SDK::FVector m_last_pos{ 0.f, 0.f, 0.f };
+    SDK::FRotator m_last_rot{ 0.f, 0.f, 0.f };
+    bool m_initialized{ false };
+    bool m_gui_visible{ true };
+    void toggle_gui();
 
     // watched state
     MemoProperty<GameState> m_game_state{ GAME_STATE_UNDEFINED, GAME_STATE_UNDEFINED };
@@ -128,8 +135,12 @@ public:
     SDK::APawn* get_pawn() { return m_pawn; };
     
     // setters
+    void set_last_pos(UEVR_Vector3f* position);
+    void set_last_rot(UEVR_Rotatorf* rotation);
     void set_ui_xinput_duration(int value) { m_ui_xinput_duration = value; };
     void set_ui_pre_engine_tick_duration(int value) { m_ui_pre_engine_tick_duration = value; };
+
+    void apply_delta(UEVR_Vector3f* position, UEVR_Rotatorf* rotation);
 
     // handlers
     void handle_controller_input(XINPUT_STATE* state);

@@ -17,69 +17,164 @@
 namespace SDK
 {
 
-// Function BP_VRBody.BP_VRBody_C.ExecuteUbergraph_BP_VRBody
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function BP_VRBody.BP_VRBody_C.UnequipWeapon
+// (Public, BlueprintCallable, BlueprintEvent)
 
-void ABP_VRBody_C::ExecuteUbergraph_BP_VRBody(int32 EntryPoint)
+void ABP_VRBody_C::UnequipWeapon()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_VRBody_C", "ExecuteUbergraph_BP_VRBody");
+		Func = Class->GetFunction("BP_VRBody_C", "UnequipWeapon");
 
-	Params::BP_VRBody_C_ExecuteUbergraph_BP_VRBody Parms{};
+	UObject::ProcessEvent(Func, nullptr);
+}
 
-	Parms.EntryPoint = EntryPoint;
+
+// Function BP_VRBody.BP_VRBody_C.IsCurrentWeaponName
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           WeaponName                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool ABP_VRBody_C::IsCurrentWeaponName(const class FString& WeaponName)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "IsCurrentWeaponName");
+
+	Params::BP_VRBody_C_IsCurrentWeaponName Parms{};
+
+	Parms.WeaponName = std::move(WeaponName);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.SetupCurrentWeapon
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_VRBody_C::SetupCurrentWeapon()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "SetupCurrentWeapon");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.EquipAssaultRifle
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_VRBody_C::EquipAssaultRifle()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "EquipAssaultRifle");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.EquipLaserRapier
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_VRBody_C::EquipLaserRapier()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "EquipLaserRapier");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.EquipMinipistol
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_VRBody_C::EquipMinipistol()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "EquipMinipistol");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.PlayUnloadGunAnim
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_VRBody_C::PlayUnloadGunAnim()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "PlayUnloadGunAnim");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.PlayLoadGunAnim
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_VRBody_C::PlayLoadGunAnim()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "PlayLoadGunAnim");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.SetWeaponAnimBP
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class USkeletalMeshComponent*           Weapon                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UClass*                           AnimBP                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_VRBody_C::SetWeaponAnimBP(class USkeletalMeshComponent* Weapon, class UClass* AnimBP)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "SetWeaponAnimBP");
+
+	Params::BP_VRBody_C_SetWeaponAnimBP Parms{};
+
+	Parms.Weapon = Weapon;
+	Parms.AnimBP = AnimBP;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function BP_VRBody.BP_VRBody_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ABP_VRBody_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_VRBody_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_VRBody.BP_VRBody_C.UserConstructionScript
-// (Event, Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_VRBody_C::UserConstructionScript()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_VRBody_C", "UserConstructionScript");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_VRBody.BP_VRBody_C.SetHoldObjectType
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function BP_VRBody.BP_VRBody_C.AttachWeapon
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// E_HoldObjectType                        InHoldObjectType                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class USkeletalMeshComponent*           Weapon                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_VRBody_C::SetHoldObjectType(E_HoldObjectType InHoldObjectType)
+void ABP_VRBody_C::AttachWeapon(class USkeletalMeshComponent* Weapon)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_VRBody_C", "SetHoldObjectType");
+		Func = Class->GetFunction("BP_VRBody_C", "AttachWeapon");
 
-	Params::BP_VRBody_C_SetHoldObjectType Parms{};
+	Params::BP_VRBody_C_AttachWeapon Parms{};
 
-	Parms.InHoldObjectType = InHoldObjectType;
+	Parms.Weapon = Weapon;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -102,6 +197,62 @@ void ABP_VRBody_C::Set_Hand_Pose(E_VRHandState InHandPose, bool InRightHand)
 
 	Parms.InHandPose = InHandPose;
 	Parms.InRightHand = InRightHand;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.SetHoldObjectType
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// E_HoldObjectType                        InHoldObjectType                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    InRightHand                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void ABP_VRBody_C::SetHoldObjectType(E_HoldObjectType InHoldObjectType, bool InRightHand)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "SetHoldObjectType");
+
+	Params::BP_VRBody_C_SetHoldObjectType Parms{};
+
+	Parms.InHoldObjectType = InHoldObjectType;
+	Parms.InRightHand = InRightHand;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void ABP_VRBody_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_VRBody.BP_VRBody_C.ExecuteUbergraph_BP_VRBody
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_VRBody_C::ExecuteUbergraph_BP_VRBody(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_VRBody_C", "ExecuteUbergraph_BP_VRBody");
+
+	Params::BP_VRBody_C_ExecuteUbergraph_BP_VRBody Parms{};
+
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
