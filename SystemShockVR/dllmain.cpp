@@ -96,7 +96,7 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 
 using namespace uevr;
 
-const char* MOD_VERSION = "1.3.0";
+const char* MOD_VERSION = "1.4.0-beta.1";
 const int CB_DURATION_SAMPLE_RATE = 100;
 
 typedef struct _TIMER_STRUCT
@@ -246,6 +246,7 @@ public:
     SDK::FHitResult m_hit_result{};
     int m_viewport_size_x{ 1920 }, m_viewport_size_y{ 1080 };
     float m_mouse_wheel_debounce_timer{ 0.f };
+    bool m_try_override_audio_listener{ true };
 
     // this set keeps events to be handled
     // if an event is successfully handled, it's removed form this set
@@ -326,6 +327,8 @@ public:
     int m_ui_option_head_lamp_mode{ HEAD_LAMP_NORMAL };
     int m_ui_option_head_lamp_attachment_point{ HEAD_LAMP_ATTACHMENT_RH };
     int m_ui_option_head_lamp_energy_consumption{ HEAD_LAMP_ENERGY_INFINITE };
+    bool m_ui_option_alternative_menu_btn_mapping{ false };
+    bool m_ui_option_auto_crosshair_scale{ true };
 
     // unused
     int m_ui_option_hotbar_selector_button{ 0 };
@@ -489,6 +492,7 @@ public:
                 handle_in_game_menu(vr);
                 handle_compass();
                 handle_head_lamp();
+                handle_audio_listener_override();
             }
             catch (...) {
                 API::get()->log_error("[main][on_pre_engine_tick][handlers] Exception");
@@ -772,10 +776,12 @@ public:
             m_hardware_selector_button.set_state(state);
 
             if (
-                m_pawn_state.value == PAWN_HACKERIMPLANT ||
-                m_pawn_state.value == PAWN_HACKERSIMPLE ||
-                m_pawn_state.value == PAWN_AVATAR ||
-                m_pawn_state.value == PAWN_PSEUDOSPACE
+                m_ui_option_alternative_menu_btn_mapping && (
+                    m_pawn_state.value == PAWN_HACKERIMPLANT ||
+                    m_pawn_state.value == PAWN_HACKERSIMPLE ||
+                    m_pawn_state.value == PAWN_AVATAR ||
+                    m_pawn_state.value == PAWN_PSEUDOSPACE
+                    )
                 ) {
                 if (m_gamepad_left_thumb.is_long_pressed(1000)) {
                     API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb LONG pressed");
@@ -821,12 +827,11 @@ public:
 
                 // MFD on
                 if (m_mfd_visible.value) {
-                    if (m_gamepad_left_thumb.is_short_pressed()) {
-                        API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb pressed");
+                    if (m_ui_option_alternative_menu_btn_mapping && m_gamepad_left_thumb.is_short_pressed()) {
                         SDK::FKey tab_key{
                             .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
                         };
-                        
+
                         if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
                             static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36(tab_key);
                         }
@@ -857,8 +862,7 @@ public:
                 }
                 // normal gameplay
                 else {
-                    if (m_gamepad_left_thumb.is_short_pressed()) {
-                        API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb pressed");
+                    if (m_ui_option_alternative_menu_btn_mapping && m_gamepad_left_thumb.is_short_pressed()) {
                         SDK::FKey tab_key{
                             .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
                         };
@@ -1159,12 +1163,33 @@ public:
         }
     }
 
+    void handle_audio_listener_override() {
+        if (m_try_override_audio_listener && m_vr_hud != nullptr && m_vr_hud->get_hmd_component() != nullptr) {
+            if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE, PAWN_PSEUDOSPACE })) {
+                API::get()->log_warn("[main][handle_audio_listener_override] Try Override Audio Listener #1");
+                SDK::APlayerController* controller = (SDK::APlayerController*)static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->GetController();
+                controller->SetAudioListenerOverride(m_vr_hud->get_hmd_component(), { 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f });
+                m_try_override_audio_listener = false;
+                API::get()->log_warn("[main][handle_audio_listener_override] Overrided Audio Listener");
+            }
+        }
+
+        if (m_try_override_audio_listener && m_pawn_state.matches_any({ PAWN_AVATAR })) {
+            API::get()->log_warn("[main][handle_audio_listener_override] Try Override Audio Listener #2");
+            SDK::APlayerController* controller = (SDK::APlayerController*)static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->GetController();
+            controller->ClearAudioListenerOverride();
+            m_try_override_audio_listener = false;
+            API::get()->log_warn("[main][handle_audio_listener_override] Overrided Audio Listener");
+        }
+    }
+
     void handle_level_change(const UEVR_VRData* vr) {
         try {
             if (m_level.has_changed()) {
                 if (m_level.value == nullptr) {
                     return;
                 }
+                m_try_override_audio_listener = true;
 
                 const UEVR_SDKData* sdk = API::get()->sdk();
                 auto level_name = m_level.value->GetFullName();
@@ -1214,8 +1239,8 @@ public:
                         m_vr_hud->clear_pointers();
                     }
 
-                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
-                    m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale);
+                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale, m_ui_option_auto_crosshair_scale);
+                    m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale, m_ui_option_auto_crosshair_scale);
 
                     set_enegry_shield_overlay_params();
 
@@ -1469,7 +1494,7 @@ public:
                 m_vr_hud->set_crosshair_cursor_scale(&scale);
             }
             else {
-                m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
+                m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale, m_ui_option_auto_crosshair_scale);
             }
         }
     }
@@ -1663,7 +1688,7 @@ public:
                     m_vr_hud->set_player_response_to_collision_channel(
                         item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
                     );
-                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
+                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale, m_ui_option_auto_crosshair_scale);
                 }
             }
         }
@@ -1867,6 +1892,8 @@ public:
 
                     case PAWN_HACKERIMPLANT:
                         API::get()->log_warn("Changed Pawn to: PAWN_HACKERIMPLANT");
+                        m_try_override_audio_listener = true;
+
                         if (m_pawn != nullptr) {
                             m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
                             m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
@@ -1892,6 +1919,7 @@ public:
                     // cyberspace
                     case PAWN_AVATAR:
                         API::get()->log_warn("Changed Pawn to: PAWN_AVATAR");
+                        m_try_override_audio_listener = true;
 
                         if (m_pawn != nullptr) {
                             m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
@@ -2220,7 +2248,8 @@ public:
                 ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
                 ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
                 ImGui::Checkbox("Disable roomscale when aiming", &m_ui_option_disable_roomscale_when_aiming);
-            
+                ImGui::Checkbox("Alternative Menu/MFD button mapping", &m_ui_option_alternative_menu_btn_mapping);
+
                 ImGui::Combo("HMD", &m_ui_option_openxr_runtime, "Meta Quest\0HP Reverb G2\0");
             
                 //ImGui::SeparatorText("Button mappings");
@@ -2238,6 +2267,10 @@ public:
                 //}
 
                 ImGui::SeparatorText("Crosshair options");
+                ImGui::Checkbox("Auto Crosshair Scale", &m_ui_option_auto_crosshair_scale);
+                if (m_ui_option_auto_crosshair_scale) {
+                    ImGui::BeginDisabled();
+                }
                 ImGui::SliderInt("Crosshair Depth", &m_ui_option_crosshair_depth, 0, 10);
                 ImGui::SliderFloat("Crosshair Cursor Scale", &m_ui_option_crosshair_cursor_scale, 0.f, 1.f );
                 ImGui::SliderFloat("Crosshair Brackets Scale", &m_ui_option_crosshair_brackets_scale, 0.f, 1.f);
@@ -2245,6 +2278,9 @@ public:
                 if (ImGui::Button("Apply Crosshair Options")) {
                     apply_selected_crosshair_options();
                 };
+                if (m_ui_option_auto_crosshair_scale) {
+                    ImGui::EndDisabled();
+                }
 
                 ImGui::SeparatorText("Flashlight options");
                 if (ImGui::Combo("Mode", &m_ui_option_head_lamp_mode, "Narrow\0Normal\0Wide\0")) {
@@ -2654,10 +2690,39 @@ public:
             else {
                 API::get()->log_error("[Mod Config] Missing general > shield_vignette_opacity value.");
             }
+
+            // alternative_menu_btn_mapping
+            if (mod_config["general"].has("alternative_menu_btn_mapping")) {
+                std::string& alternative_menu_btn_mapping = mod_config["general"]["alternative_menu_btn_mapping"];
+                try {
+                    m_ui_option_alternative_menu_btn_mapping = std::stoi(alternative_menu_btn_mapping) == 1;
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid general > alternative_menu_btn_mapping value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing general > alternative_menu_btn_mapping value.");
+            }
         }
 
         // section validation
         if (mod_config.has("crosshair")) {
+
+            // crosshair_depth
+            if (mod_config["crosshair"].has("auto")) {
+                std::string& crosshair_auto = mod_config["crosshair"]["auto"];
+                try {
+                    m_ui_option_auto_crosshair_scale = std::stoi(crosshair_auto) == 1;
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid crosshair > auto value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing crosshair > auto value.");
+            }
+
 
             // crosshair_depth
             if (mod_config["crosshair"].has("depth")) {
@@ -2763,7 +2828,9 @@ public:
         mod_config["general"]["disable_roomscale_when_aiming"] = std::to_string(m_ui_option_disable_roomscale_when_aiming).c_str();
         mod_config["general"]["openxr_runtime"] = std::to_string(m_ui_option_openxr_runtime).c_str();
         mod_config["general"]["shield_vignette_opacity"] = std::to_string(m_ui_option_shield_vignette_opacity).c_str();
+        mod_config["general"]["alternative_menu_btn_mapping"] = std::to_string(m_ui_option_alternative_menu_btn_mapping).c_str();
 
+        mod_config["crosshair"]["auto"] = std::to_string(m_ui_option_auto_crosshair_scale).c_str();
         mod_config["crosshair"]["depth"] = std::to_string(m_ui_option_crosshair_depth).c_str();
         mod_config["crosshair"]["cursor_scale"] = std::to_string(m_ui_option_crosshair_cursor_scale).c_str();
         mod_config["crosshair"]["brackets_scale"] = std::to_string(m_ui_option_crosshair_brackets_scale).c_str();

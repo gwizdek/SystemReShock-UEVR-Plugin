@@ -108,10 +108,10 @@
     <ClInclude Include="mINI\ini.h">
       <Filter>mINI</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SDK\HARDWARE_HeadLamp_classes.hpp">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp">
       <Filter>SDK Files</Filter>
     </ClInclude>
   </ItemGroup>
