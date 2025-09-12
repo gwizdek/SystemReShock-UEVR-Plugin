@@ -4,7 +4,7 @@
 > The profile doesn't work with the Demo version of the game available on Steam
   
 > [!NOTE]
-> The profile is now also available through Unreal Easy Injector https://uevrdeluxe.org
+> The 1.3.0 version is also available through Unreal Easy Injector https://uevrdeluxe.org and https://uevr-profiles.com  
 
 > [!NOTE]
 > Optional mod files available:
@@ -31,48 +31,21 @@ Of course, let's not forget, that it wouldn't be possible without Praydog, the a
 * two aiming modes for cyberspace
 
 ## Installation
-1) Install UEVR ver 1.05 from [**HERE**](https://github.com/praydog/UEVR/releases). (Works also with Nightly builds)
+1) Install latest UEVR Nightly version from [**HERE**](https://github.com/praydog/UEVR-nightly/releases).
 2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
 3) Download the latest release of the SystemReShock UEVR plugin from Releases page. Click "Import Config" in the UEVR UI and navigate to "SystemReShock-Win64-Shipping.zip" and click on it and accept the DLL warning.
 4) Add optional mod files (Index controllers support, Player Arms mod, Melee Gesture mod) - described below
-5) Launch System Shock and inject the game with UEVR
+5) Launch System Shock and inject UEVR at the main menu
 6) Reset controller bindings in game options to defaults
 
 ## Controls
-### General
-* **A** - Interact / Reload
-* **B** - Jump
-* **X** - Crouch / Exit menus and interactions
-* **Y** - Switch weapon mode
-* **Right Trigger** - Fire weapon / Use item / Throw grenade
-* **Right Grip (hold / release)** - Select hotbar item
-* **Right Stick Button (hold / release)** - Toggle hacker hardware
-* **Left Trigger** - Aim (useful for handling automatic weapons) / Use Target Identifier
-* **Left Grip** - Toggle run / walk *(configurable in plugin options)*
-* **Left Stick Button** - Hold to run (possibly will be remapped to something more useful)
-* **MENU BUTTON** (hold 1s) - Toggle MFD  
-* **MENU BUTTON** (short press) - Open game menu  
 
-### MFD
-* **A** - Select
-* **B** - Take all loot / Sort inventory
-* **X** - Exit / Back
-* **Y** - Open MFD contex menu
-* **Right Trigger (hold 1s)** - Vaporize junk
-* **Left Trigger (hold)** - Show item description
-
-### Cyberspace
-* **A** - Ascend
-* **X** - Descend
-* **Y** - Recall
-* **B** - Decoy
-* **Right Grip** - Ascend
-* **Left Grip** - Descend
-* **Right Stick Up** - Ascend
-* **Right Stick Down** - Descend
-* **Right Trigger** - Pulser
-* **Left Trigger** - I.C.E. Drill
-* **Right Stick Button** - Change aiming mode
+<img width="1140" height="390" alt="SSR (General Gameplay) - Controller Diagram" src="https://github.com/user-attachments/assets/23d1964c-e5a8-4307-a4d0-2dc2bf3bfff0" />  
+&nbsp;  
+<img width="1116" height="394" alt="SSR (MFD) - Controller Diagram" src="https://github.com/user-attachments/assets/cea7e709-de6f-4d96-9033-f7143d1cedcd" />  
+&nbsp;  
+<img width="1084" height="394" alt="SSR (Cyberspace) Oculus Controller Diagram" src="https://github.com/user-attachments/assets/ac38e948-7489-400c-8faa-04de8aba0556" />  
+  
 
 The Cyberspace part of System Shock is tricky to get right in VR, especially on different HMDs. The plugin currently supports two control implementations. The first one is suited for Meta Quest HMDs (tested by Ashok), the second one works on WMR headsets like my G2. We are limited in our testing to these HMDs and can't garantee compatibility with other headsets.  
 You can choose which implementation you want to use by accessing plugin options overlay and selecting `HMD`. Default value is `Meta Quest`. Both implementations support 2 aiming modes toggable via **Right Stick Button**.
@@ -84,10 +57,14 @@ It is preferred to use mouse to make the adjustments.
 Options are stored in your UEVR profile folder in `system_reshock_vr_config.ini` file. This file is created automatically first fime you inject the profile.  
 To save options press `Save Configuration` button.
 
-![mod_options](https://github.com/user-attachments/assets/72eda989-a461-42a8-acf2-2b152eb65606)  
+<img width="511" height="510" alt="ModOverlay" src="https://github.com/user-attachments/assets/1274683f-ab8f-4ddb-8632-e08db9d8fd7a" />  
+
 
 ### Look Sensitivity
 Your character rotation speed
+
+### Shiels vignette opacity
+Preferred Shield Screen Effect opacity (shield vignette opacity) - This screen effect helps being aware when the shield is turned on
 
 ### Player height modifier
 Some players reported that they feel the floor is much to close. You can adjust how tall you are here. You can also change UEVR world scale to something like 0.95 if you like.
@@ -97,6 +74,9 @@ This setting forces the top compass band to hide. If you really like the compass
 
 ### Toggle run with Left Grip
 Option to disable walk/run toggle binded to Left Grip. You can still run by pressing and holding **Left Stick Button**
+
+### Disable roomscale when aiming
+Allows to get closer to walls/corners and to shoot over railings (courtesy of Ashok)
 
 ### HMD
 Select control implementation for Cyberspace
@@ -112,8 +92,13 @@ You can also make it bearly visible. You may need to adjust this setting dependi
 When you upgrade your Target Identifier software, an additional reticle will be shown marking target's weak spot. You can control the size of this reticle using this option.  
 
 ![target_reticle](https://github.com/user-attachments/assets/d10ff372-dccb-4e78-86c2-3a64d86d1571)  
-
 Press `Apply Crosshair Options` button after you make the changes.
+
+### Flashlight Mode
+Select flashlight's brightness
+
+### Flashlight Energy Consumption
+Select flashlight energy consumption (game's default, 1/10 consumption or no consumption).
 
 ## Optional Mods by Ashok
 There are two additional files prepared by Ashok (included in the v1.2.0 release). You can choose to add them if you want to further enhance your gameplay.   
@@ -123,6 +108,24 @@ This `pak` mod makes player arms disappear. To install it, download `SystemShock
 
 ### Physical Melee mod
 This is a `lua` script that brings back physical melee (swing gesture) from the original Ashok's mod. To install it, download `SSR_PhysicalMelee.lua` file and place it into `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\scripts` folder.  
+
+## Visual Improvements
+Using Native Stereo Fix and High/Ultra graphics settings makes this game look top class. 
+
+This game works very well with DLSS4 Upscaler. For best visuals, I suggest to:
+- Swap DLSS Upscaler .dll to the new one that comes with DLSS4 (Transformer model)
+- Enable profile J (Profile Inspector)
+- Set DLSS to Performance mode in game options
+- Adjust VR resolution accordingly (go up but keep it smooth)
+
+#### New custom `user_script.txt` CVars:
+```
+r.AOGlobalDistanceFieldPartialUpdates 0  - this one is needed for the Native Stereo Fix
+r.StaticMeshLODDistanceScale 0.25 - prevents pop-in of floor/paneling geometry
+r.SceneColorFringe.Max 0
+r.MipMapLODBias -3 - makes the distant textures sharper
+```
+Note that `r.SSGI.Enable` CVar is disabled. Enabling it improves visuals even more but it's costly (FPS)
 
 ## Limitations
 * no physical crouching
