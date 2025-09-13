@@ -1,0 +1,23 @@
+{
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "SpotLightComponent HeadlampLight"
+    ],
+    "state": {
+        "hand": 1,
+        "location_offset": {
+            "x": 0.0,
+            "y": -10.0,
+            "z": 40.0
+        },
+        "permanent": true,
+        "rotation_offset": {
+            "w": 1.0,
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        }
+    },
+    "type": "motion_controller"
+}
