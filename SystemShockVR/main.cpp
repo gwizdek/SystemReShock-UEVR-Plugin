@@ -5,8 +5,11 @@
 #include "SDK/PAWN_Hacker_Simple_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
 
+#include "SDK/ANIMBP_MiniPistol_classes.hpp"
+#include "SDK/CH_Hacker_Rig_Skeleton_AnimBlueprint_classes.hpp"
+
 #include "main.hpp"
-#include "vr_weapon.hpp"
+
 #include "vr_body.hpp"
 //#include "hud.hpp"
 #include "plugin_utils.hpp"
@@ -16,10 +19,9 @@ using namespace uevr;
 SystemShockMain::SystemShockMain() {
     try {
         API::get()->log_warn("[main] Constructor");
-        m_vr_controllers = new VRControllers();
-        m_vr_weapon = new VRWeapon(this);
+        //m_vr_controllers = new VRControllers();
+        
         m_vr_body = new VRBody(this);
-        //m_vr_hud = new OuterWorldsHUD(this);
     }
     catch (...) {
         API::get()->log_error("[main][constructor] Exception");
@@ -44,11 +46,7 @@ void SystemShockMain::on_tick(float delta) {
         //handle_crouch();
         //handle_weapon();
 
-        if (m_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-            if (m_vr_weapon->is_valid()) {
-                m_vr_weapon->on_tick();
-            }
-        }
+        m_vr_body->on_tick();
 
         //AnimCameraPosition
 
@@ -113,15 +111,15 @@ void SystemShockMain::cleanup_pointers() {
     try {
         API::get()->log_warn("[main][cleanup] Starting Pointers Cleanup");
 
-        if (m_vr_weapon != nullptr) {
-            m_vr_weapon->cleanup_pointers();
-        }
+        //if (m_vr_weapon != nullptr) {
+        //    m_vr_weapon->cleanup_pointers();
+        //}
         //if (m_vr_hud != nullptr) {
         //    m_vr_hud->cleanup_pointers();
         //}
-        if (m_vr_controllers != nullptr) {
-            m_vr_controllers->cleanup_pointers();
-        }
+        //if (m_vr_controllers != nullptr) {
+        //    m_vr_controllers->cleanup_pointers();
+        //}
         if (m_vr_body != nullptr) {
             m_vr_body->cleanup_pointers();
         }
@@ -233,7 +231,7 @@ void SystemShockMain::handle_controller_input(XINPUT_STATE* state) {
         //m_gamepad_btn_y.set_state(state);
         //m_gamepad_right_shoulder.set_state(state);
         m_gamepad_left_shoulder.set_and_mute_state(state);
-        //m_gamepad_right_thumb.set_state(state);
+        m_gamepad_right_thumb.set_state(state);
         m_gamepad_left_thumb.set_state(state);
         m_gamepad_trigger_right.set_state(state);
         //m_gamepad_trigger_left.set_state(state);
@@ -249,11 +247,26 @@ void SystemShockMain::handle_controller_input(XINPUT_STATE* state) {
             m_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())
             ) {
             if (m_vr_body != nullptr) {
-                if (m_gamepad_left_shoulder.is_held()) {
+                if (m_gamepad_left_shoulder.is_pressed()) {
+                    //m_vr_body->get_bp_actor()->TryGrabItemLeft();
+                    SDK::UGrabComponent_C* nearest{ nullptr };
+                    m_vr_body->get_bp_actor()->GetGrabComponentNearMotionController(m_vr_body->get_bp_actor()->MotionControllerLeft, &nearest);
+
+                    m_vr_body->log_overlapping_objects();
+
+                    API::get()->log_warn("[main][handle_controller_input] TryGrabItemLeft");
+                    if (nearest != nullptr) {
+                        API::get()->log_warn("[main][handle_controller_input] FOUND");
+                    }
+                    else {
+                        API::get()->log_warn("[main][handle_controller_input] NOT FOUND");
+                    }
                     m_vr_body->get_bp_actor()->Set_Hand_Pose(SDK::E_VRHandState::NewEnumerator1, false);
                 }
                 if (m_gamepad_left_shoulder.is_released()) {
-                    m_vr_body->get_bp_actor()->Set_Hand_Pose(SDK::E_VRHandState::NewEnumerator0, false);
+                    m_vr_body->get_bp_actor()->TryReleaseItemLeft();
+                    API::get()->log_warn("[main][handle_controller_input] TryReleaseItemLeft");
+                    //m_vr_body->get_bp_actor()->Set_Hand_Pose(SDK::E_VRHandState::NewEnumerator0, false);
                 }
                 //if (m_gamepad_trigger_right.is_pressed()) {
                 //    m_gamepad_trigger_right.mute_state(state);
@@ -262,12 +275,12 @@ void SystemShockMain::handle_controller_input(XINPUT_STATE* state) {
                 //}
             }
 
-            if (m_gamepad_btn_a.is_pressed()) {
-                if (m_vr_body != nullptr && m_vr_weapon != nullptr) {
-                    m_vr_body->get_bp_actor()->PlayUnloadGunAnim();
-                    m_vr_weapon->empty_magazine();
-                }
-            }
+            //if (m_gamepad_btn_a.is_pressed()) {
+            //    if (m_vr_body != nullptr && m_vr_weapon != nullptr) {
+            //        m_vr_body->get_bp_actor()->PlayUnloadGunAnim();
+            //        m_vr_weapon->empty_magazine();
+            //    }
+            //}
 
             if (m_gamepad_left_thumb.is_pressed()) {
                 API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb pressed");
@@ -310,6 +323,9 @@ void SystemShockMain::handle_smooth_turning(XINPUT_STATE* state, const UEVR_VRDa
             control_rotation.Yaw += (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
             pawn_controller->SetControlRotation(control_rotation);
             //API::get()->log_warn("[main][handle_smooth_turning] Applied Rotation");
+            
+            state->Gamepad.sThumbRX = 0;
+            
         }
     }
     catch (...) {
@@ -317,24 +333,52 @@ void SystemShockMain::handle_smooth_turning(XINPUT_STATE* state, const UEVR_VRDa
     }
 }
 
-
-void SystemShockMain::set_component_loc_rot_to_rh_motion_controller(SDK::USceneComponent* scene_component) {
-    try {
-        scene_component->SetAbsolute(true, true, true);
-        SDK::FVector rhmc_location = get_vr_controllers()->get_rh_controller_component()->K2_GetComponentLocation();
-
-        //API::get()->log_warn("[main][set_component_loc_rot_to_rh_motion_controller] PosX: %f", rhmc_location.X);
-        //API::get()->log_warn("[main][set_component_loc_rot_to_rh_motion_controller] PosY: %f", rhmc_location.Y);
-        //API::get()->log_warn("[main][set_component_loc_rot_to_rh_motion_controller] PosZ: %f", rhmc_location.Z);
-
-        SDK::FRotator rhmc_rotation = get_vr_controllers()->get_rh_controller_component()->K2_GetComponentRotation();
-
-        scene_component->K2_SetWorldLocationAndRotation(rhmc_location, rhmc_rotation, false, &m_hit_result, false);
-    }
-    catch (...) {
-        API::get()->log_error("[set_component_loc_rot_to_rh_motion_controller] Exception");
+void SystemShockMain::test1()
+{
+    if (m_pawn != nullptr && m_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+        //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_pawn)->SetCharacterVisible(false);
+        m_vr_body->get_bp_actor()->EquipMinipistol();
     }
 }
+
+void SystemShockMain::test2()
+{
+    if (m_pawn != nullptr && m_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+        auto anim_inst = m_vr_body->get_bp_actor()->CurrentWeapon->GetAnimInstance();
+        if (anim_inst != nullptr && anim_inst->IsA(SDK::UANIMBP_MiniPistol_C::StaticClass())) {
+            API::get()->log_warn("[main][test2] Changing MiniPistol Anim params");
+            static_cast<SDK::UANIMBP_MiniPistol_C*>(anim_inst)->Source_Mesh_Component = static_cast<SDK::APAWN_Hacker_Implant_C*>(m_pawn)->Mesh;
+            static_cast<SDK::UANIMBP_MiniPistol_C*>(anim_inst)->UsePoseFromExternalMesh = true;
+        }
+
+        auto pawn_anim_inst = m_vr_body->get_bp_actor()->VRBodyMesh->GetAnimInstance();
+        if (pawn_anim_inst != nullptr && pawn_anim_inst->IsA(SDK::UCH_Hacker_Rig_Skeleton_AnimBlueprint_C::StaticClass())) {
+            static_cast<SDK::UCH_Hacker_Rig_Skeleton_AnimBlueprint_C*>(pawn_anim_inst)->SourceMeshComponent = static_cast<SDK::APAWN_Hacker_Implant_C*>(m_pawn)->Mesh;
+            static_cast<SDK::UCH_Hacker_Rig_Skeleton_AnimBlueprint_C*>(pawn_anim_inst)->UsePoseFromExternalMesh = true;
+        }
+
+        //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_pawn)->SetCharacterVisible(true);
+    }
+}
+
+
+//void SystemShockMain::set_component_loc_rot_to_rh_motion_controller(SDK::USceneComponent* scene_component) {
+//    try {
+//        scene_component->SetAbsolute(true, true, true);
+//        SDK::FVector rhmc_location = get_vr_controllers()->get_rh_controller_component()->K2_GetComponentLocation();
+//
+//        //API::get()->log_warn("[main][set_component_loc_rot_to_rh_motion_controller] PosX: %f", rhmc_location.X);
+//        //API::get()->log_warn("[main][set_component_loc_rot_to_rh_motion_controller] PosY: %f", rhmc_location.Y);
+//        //API::get()->log_warn("[main][set_component_loc_rot_to_rh_motion_controller] PosZ: %f", rhmc_location.Z);
+//
+//        SDK::FRotator rhmc_rotation = get_vr_controllers()->get_rh_controller_component()->K2_GetComponentRotation();
+//
+//        scene_component->K2_SetWorldLocationAndRotation(rhmc_location, rhmc_rotation, false, &m_hit_result, false);
+//    }
+//    catch (...) {
+//        API::get()->log_error("[set_component_loc_rot_to_rh_motion_controller] Exception");
+//    }
+//}
 
 // -------------------------------------------------------------------------------------
 // handlers
@@ -391,7 +435,7 @@ void SystemShockMain::handle_game_state() {
                 vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
                 PluginUtils::reset_height(0.f);
                 vr->recenter_view();
-                m_vr_weapon->set_laser_pointer_visibility(true);
+                //m_vr_weapon->set_laser_pointer_visibility(true);
                 break;
             }
         }
@@ -412,9 +456,7 @@ void SystemShockMain::handle_level_change() {
             if (m_game_state.value != GAME_STATE_MAIN_MENU) {
                 API::get()->log_warn("[main][handle_level_change] Initialize components");
 
-                m_vr_controllers->initialize();
                 m_vr_body->initialize();
-                m_vr_weapon->initialize(RIGHT_HANDED);
 
                 //load_mod_config();
             }
@@ -527,6 +569,13 @@ void SystemShockMain::on_draw_imgui() {
                 toggle_gui();
             }
 
+            if (ImGui::Button("Test BTN1")) {
+                test1();
+            }
+            if (ImGui::Button("Test BTN2")) {
+                test2();
+            }
+
             ImGui::PopItemWidth();
 
             //if (m_vr_hud != nullptr) {
@@ -544,9 +593,7 @@ void SystemShockMain::on_draw_imgui() {
                 ImGui::EndDisabled();
                 ImGui::EndGroup();
 
-                if (m_vr_weapon != nullptr) {
-                    m_vr_weapon->on_draw_imgui();
-                }
+
 
                 ImGui::SeparatorText("Timers [microseconds]");
                 ImGui::BeginGroup();

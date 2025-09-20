@@ -13,98 +13,65 @@
 
 using namespace uevr;
 
-VRWeapon::VRWeapon(SystemShockMain* main) {
-    m_main = main;
+VRWeapon::VRWeapon(VRBody* vr_body) {
+    m_vr_body = vr_body;
 }
 
 bool VRWeapon::is_valid() {
     if (
-        //m_equipped_weapon != nullptr &&
-        //m_laser_dot_component != nullptr &&
-        m_main != nullptr &&
-        m_laser_sight_component != nullptr &&
-        m_laser_pointer_offset_component != nullptr
+        m_vr_body != nullptr &&
+        m_laser_sight_component != nullptr
         ) {
         return true;
     }
     return false;
 }
 
-void VRWeapon::initialize(HandPreference hand_preference) {
+void VRWeapon::initialize() {
     try {
-        m_hand_preference = hand_preference;
-        if (m_main->get_vr_controllers() != nullptr && m_main->get_vr_controllers()->is_valid()) {
-            SDK::FTransform zero_transform{
-                .Rotation = { 0.f, 0.f, 0.f, 1.f },
-                .Translation = { 0.f, 0.f, 0.f },
-                .Scale3D = { 1.f, 1.f, 1.f }
-            };
-            // laser offset component
-            m_laser_pointer_offset_component = static_cast<SDK::USceneComponent*>(
-                m_main->get_vr_controllers()->get_right_hand_actor()->AddComponentByClass(SDK::USceneComponent::StaticClass(), false, zero_transform, true)
-                );
-            if (m_laser_pointer_offset_component == nullptr) {
-                API::get()->log_error("[weapon][initialize] Failed to add Laser Pointer Offset component");
-                return;
-            }
-            m_main->get_vr_controllers()->get_right_hand_actor()->FinishAddComponent(m_laser_pointer_offset_component, false, zero_transform);
-            API::get()->log_warn("[weapon][initialize] Added Laser Pointer Offset component");
-
-            if (!m_laser_pointer_offset_component->K2_AttachTo(
-                m_main->get_vr_controllers()->get_rh_controller_component(),
-                SDK::UKismetStringLibrary::Conv_StringToName(L"None"),
-                SDK::EAttachLocation::KeepRelativeOffset,
-                false
-            )) {
-                API::get()->log_error("[weapon][initialize] Failed to Attach Laser Pointer Offset Component");
-            }
-            API::get()->log_warn("[weapon][initialize] Attached Laser Pointer Offset component to RH controller");
-
-            spawn_laser_pointer();
-        }
+        spawn_laser_pointer();
     }
     catch (...) {
-        API::get()->log_error("[weapon][initialize] Exception");
+        API::get()->log_error("[vr_weapon][initialize] Exception");
     }
 }
 
-void VRWeapon::set_weapon_state() {
-    try {
-        if (!is_valid()) {
-            return;
-        }
-
-        if (m_equipped_weapon != nullptr) {
-            if (m_main->get_is_player_interacting()->value) {
-                m_weapon_state.set_value(WEAPON_NONE);
-                return;
-            }
-
-            std::string weapon_name = m_equipped_weapon->GetName();
-
-            for (auto const& [key, val] : weapons_map) {
-                if (weapon_name.find(get<0>(val)) != std::string::npos) {
-                    m_weapon_state.set_value(key);
-                    return;
-                }
-            }
-            m_weapon_state.set_value(WEAPON_NONE);
-        }
-        else {
-            m_weapon_state.set_value(WEAPON_NONE);
-        }
-    }
-    catch (...) {
-        API::get()->log_error("[main][set_weapon_state] Exception");
-    }
-}
+//void VRWeapon::set_weapon_state() {
+//    try {
+//        if (!is_valid()) {
+//            return;
+//        }
+//
+//        if (m_equipped_weapon != nullptr) {
+//            //if (m_main->get_is_player_interacting()->value) {
+//            //    m_weapon_state.set_value(WEAPON_NONE);
+//            //    return;
+//            //}
+//
+//            std::string weapon_name = m_equipped_weapon->GetName();
+//
+//            for (auto const& [key, val] : weapons_map) {
+//                if (weapon_name.find(get<0>(val)) != std::string::npos) {
+//                    m_weapon_state.set_value(key);
+//                    return;
+//                }
+//            }
+//            m_weapon_state.set_value(WEAPON_NONE);
+//        }
+//        else {
+//            m_weapon_state.set_value(WEAPON_NONE);
+//        }
+//    }
+//    catch (...) {
+//        API::get()->log_error("[main][set_weapon_state] Exception");
+//    }
+//}
 
 void VRWeapon::cleanup_pointers() {
-    API::get()->log_warn("[weapon][cleanup_pointers] Cleanup");
+    API::get()->log_warn("[vr_weapon][cleanup_pointers] Cleanup");
 
     m_laser_dot_component = nullptr;
     m_laser_sight_component = nullptr;
-    m_laser_pointer_offset_component = nullptr;
     m_equipped_weapon = nullptr;
     m_weapon_type = WEAPON_TYPE_UNKNOWN;
 }
@@ -114,155 +81,163 @@ void VRWeapon::on_tick() {
         if (!is_valid()) {
             return;
         }
-        handle_weapon_change();
-
-            // when loading a save uevr has problem rendering a frame and trigering these setters in set_equipped weapon
-            //if (m_weapon_type == WEAPON_TYPE_UNKNOWN) {
-            //    set_weapon_type();
-            //}
-
-        update_laser_pointer();
     }
     catch (...) {
-        API::get()->log_error("[weapon][tick] Exception");
+        API::get()->log_error("[vr_weapon][tick] Exception");
+    }
+}
+
+void VRWeapon::set_weapon(SDK::UITEM_WeaponBase_C* equipped_weapon) {
+    try {
+        if (m_equipped_weapon != equipped_weapon) {
+            if (equipped_weapon != nullptr) {
+                if (equipped_weapon->WeaponMeshComponent == nullptr) {
+                    m_weapon_state.set_value(WEAPON_NONE);
+                }
+
+                //if (m_player_interacting.value) {
+                //    m_weapon_state.set_value(WEAPON_NONE);
+                //    return;
+                //}
+
+                std::string weapon_name = equipped_weapon->GetName();
+
+                for (auto const& [key, val] : weapons_map) {
+                    if (weapon_name.find(get<0>(val)) != std::string::npos) {
+                        m_weapon_state.set_value(key);
+                        return;
+                    }
+                }
+                m_weapon_state.set_value(WEAPON_NONE);
+            }
+            else {
+                m_weapon_state.set_value(WEAPON_NONE);
+            }
+
+            m_equipped_weapon = equipped_weapon;
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[main][set_weapon_state] Exception");
+    }
+}
+
+void VRWeapon::attach_camera(SDK::UCameraComponent* camera) {
+    try {
+        if (camera == nullptr) {
+            API::get()->log_warn("[vr_weapon][attach_camera] PlayerCamera nullptr");
+            return;
+        }
+
+        camera->DetachFromParent(true, false);
+        camera->Deactivate();
+        API::get()->log_warn("[vr_weapon][attach_camera] PlayerCamera detached and deactivated");
+
+        camera->K2_AttachToComponent(
+            static_cast<SDK::UITEM_WeaponBase_C*>(m_equipped_weapon)->WeaponMeshComponent,
+            static_cast<SDK::UITEM_WeaponBase_C*>(m_equipped_weapon)->BarrelSocketName,
+            SDK::EAttachmentRule::SnapToTarget,
+            SDK::EAttachmentRule::KeepRelative,
+            SDK::EAttachmentRule::KeepRelative,
+            true
+        );
+        API::get()->log_warn("[vr_weapon][attach_camera] PlayerCamera attached to Weapon");
+    }
+    catch (...) {
+        API::get()->log_error("[vr_weapon][tick] Exception");
+    }
+}
+
+void VRWeapon::attach_laser() {
+    try {
+        API::get()->log_warn("[vr_weapon][attach_laser] Setting up Laser Sight");
+        if (m_laser_sight_component != nullptr) {
+            m_laser_sight_component->K2_AttachToComponent(
+                static_cast<SDK::UITEM_WeaponBase_C*>(m_equipped_weapon)->WeaponMeshComponent,
+                static_cast<SDK::UITEM_WeaponBase_C*>(m_equipped_weapon)->BarrelSocketName,
+                SDK::EAttachmentRule::SnapToTarget,
+                SDK::EAttachmentRule::KeepRelative,
+                SDK::EAttachmentRule::KeepRelative,
+                true
+            );
+            API::get()->log_warn("[vr_weapon][attach_laser] Laser Sight attached to Weapon");
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[vr_weapon][attach_laser] Exception");
     }
 }
 
 void VRWeapon::handle_weapon_change() {
-    try {
-        if (!is_valid()) {
-            return;
-        }
-        set_weapon_state();
+    //if (m_laser_sight_component != nullptr) {
+    //    API::get()->log_warn("[vr_weapon][handle_weapon_change] Setting up Laset Sight");
+    //    m_laser_sight_component->DetachFromParent(true, true);
+    //    m_laser_sight_component->K2_AttachToComponent(
+    //        static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh,
+    //        static_cast<SDK::UITEM_WeaponBase_C*>(m_equipped_weapon)->BarrelSocketName,
+    //        SDK::EAttachmentRule::SnapToTarget,
+    //        SDK::EAttachmentRule::KeepRelative,
+    //        SDK::EAttachmentRule::KeepRelative,
+    //        true
+    //    );
+    //    API::get()->log_warn("[vr_weapon][handle_weapon_change] Laset Sight attached to Weapon");
+    //}
 
-        auto inventory = m_main->get_inventory();
-        if (inventory != nullptr) {
-            if (m_equipped_weapon != inventory->CurrentEquippedWeapon) {
-                m_equipped_weapon = inventory->CurrentEquippedWeapon;
+    //API::get()->log_warn("[vr_weapon][handle_weapon_change] Try SetAnimClass nullptr");
+    //static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->SetAnimClass(nullptr);
+    //API::get()->log_warn("[vr_weapon][handle_weapon_change] Success SetAnimClass nullptr");
 
-                if (m_equipped_weapon == nullptr) {
-                    API::get()->log_warn("[weapon][handle_weapon_change] New Weapon: NONE");
-                    return;
-                }
+    //static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->K2_AttachToComponent(
+    //    vr_body->get_bp_actor()->VRBodyMesh,
+    //    SDK::UKismetStringLibrary::Conv_StringToName(L"RightHandGunSocket"),
+    //    SDK::EAttachmentRule::SnapToTarget,
+    //    SDK::EAttachmentRule::KeepRelative,
+    //    SDK::EAttachmentRule::KeepRelative,
+    //    false
+    //);
 
-                API::get()->log_warn("[weapon][handle_weapon_change] New Weapon: %s", m_equipped_weapon->GetFullName().c_str());
+    //if (m_weapon_state.value == WEAPON_MAGNUM) {
+    //if (m_equipped_weapon->IsA(SDK::UWEAPON_MagnumPistol_C::StaticClass())) {
+    //    API::get()->log_warn("[vr_weapon][handle_weapon_change] Changing ABP for Magnum 1");
+    //    //SDK::TWeakObjectPtr<SDK::USkeletalMeshComponent> mesh = static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh
 
-                auto vr_body = m_main->get_vr_body();
-                auto pawn = m_main->get_pawn();
-
-                if (
-                    vr_body != nullptr &&
-                    vr_body->is_valid()
-                    ) {
-
-                    vr_body->get_bp_actor()->CurrentWeapon = static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh;
-                    //vr_body->get_bp_actor()->SetupCurrentWeapon();
-                    vr_body->get_bp_actor()->EquipMinipistol();
-
-                    if (static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->PlayerCamera == nullptr) {
-                        API::get()->log_warn("[weapon][handle_weapon_change] PlayerCamera nullptr");
-                        return;
-                    }
-
-                    API::get()->log_warn("[weapon][spawn_laser_pointer] Setting up Laset Sight");
-                    if (m_laser_sight_component != nullptr) {
-                        m_laser_sight_component->K2_AttachToComponent(
-                            m_main->get_vr_body()->get_bp_actor()->CurrentWeapon,
-                            static_cast<SDK::UITEM_WeaponBase_C*>(m_equipped_weapon)->BarrelSocketName,
-                            SDK::EAttachmentRule::SnapToTarget,
-                            SDK::EAttachmentRule::KeepRelative,
-                            SDK::EAttachmentRule::KeepRelative,
-                            true
-                        );
-                        API::get()->log_warn("[weapon][spawn_laser_pointer] Laset Sight attached to Weapon");
-                    }
+    //    SDK::UAnimInstance* anim_inst = static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->AnimScriptInstance;
+    //    if (anim_inst->IsA(SDK::UANIMBP_Magnum_C::StaticClass())) {
+    //        API::get()->log_warn("[vr_weapon][handle_weapon_change] Changing ABP for Magnum 2");
+    //        static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->SetAnimClass(SDK::UANIMBP_Magnum_C::StaticClass());
+    //        //static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->SetAnimClass(SDK::UANIMBP_Sparqbeam_C::StaticClass());
 
 
-                    static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->PlayerCamera->DetachFromParent(true, false);
-                    static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->PlayerCamera->Deactivate();
-                    API::get()->log_warn("[weapon][handle_weapon_change] PlayerCamera detached and deactivated");
-
-                    static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->PlayerCamera->K2_AttachToComponent(
-                        static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh,
-                        static_cast<SDK::UITEM_WeaponBase_C*>(m_equipped_weapon)->BarrelSocketName,
-                        SDK::EAttachmentRule::SnapToTarget,
-                        SDK::EAttachmentRule::KeepRelative,
-                        SDK::EAttachmentRule::KeepRelative,
-                        true
-                    );
-                    API::get()->log_warn("[weapon][handle_weapon_change] PlayerCamera attached to Weapon");
-
-                    //if (m_laser_sight_component != nullptr) {
-                    //    API::get()->log_warn("[weapon][handle_weapon_change] Setting up Laset Sight");
-                    //    m_laser_sight_component->DetachFromParent(true, true);
-                    //    m_laser_sight_component->K2_AttachToComponent(
-                    //        static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh,
-                    //        static_cast<SDK::UITEM_WeaponBase_C*>(m_equipped_weapon)->BarrelSocketName,
-                    //        SDK::EAttachmentRule::SnapToTarget,
-                    //        SDK::EAttachmentRule::KeepRelative,
-                    //        SDK::EAttachmentRule::KeepRelative,
-                    //        true
-                    //    );
-                    //    API::get()->log_warn("[weapon][handle_weapon_change] Laset Sight attached to Weapon");
-                    //}
-
-                    //API::get()->log_warn("[weapon][handle_weapon_change] Try SetAnimClass nullptr");
-                    //static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->SetAnimClass(nullptr);
-                    //API::get()->log_warn("[weapon][handle_weapon_change] Success SetAnimClass nullptr");
-
-                    //static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->K2_AttachToComponent(
-                    //    vr_body->get_bp_actor()->VRBodyMesh,
-                    //    SDK::UKismetStringLibrary::Conv_StringToName(L"RightHandGunSocket"),
-                    //    SDK::EAttachmentRule::SnapToTarget,
-                    //    SDK::EAttachmentRule::KeepRelative,
-                    //    SDK::EAttachmentRule::KeepRelative,
-                    //    false
-                    //);
-
-                    //if (m_weapon_state.value == WEAPON_MAGNUM) {
-                    //if (m_equipped_weapon->IsA(SDK::UWEAPON_MagnumPistol_C::StaticClass())) {
-                    //    API::get()->log_warn("[weapon][handle_weapon_change] Changing ABP for Magnum 1");
-                    //    //SDK::TWeakObjectPtr<SDK::USkeletalMeshComponent> mesh = static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh
-
-                    //    SDK::UAnimInstance* anim_inst = static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->AnimScriptInstance;
-                    //    if (anim_inst->IsA(SDK::UANIMBP_Magnum_C::StaticClass())) {
-                    //        API::get()->log_warn("[weapon][handle_weapon_change] Changing ABP for Magnum 2");
-                    //        static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->SetAnimClass(SDK::UANIMBP_Magnum_C::StaticClass());
-                    //        //static_cast<SDK::APAWN_Hacker_Simple_C*>(pawn)->WeaponMesh->SetAnimClass(SDK::UANIMBP_Sparqbeam_C::StaticClass());
+    //        API::get()->log_warn("[vr_weapon][handle_weapon_change] Changing ABP for Magnum 3");
+    //        static_cast<SDK::UANIMBP_Magnum_C*>(anim_inst)->AnimGraphNode_CopyPoseFromMesh.bUseAttachedParent = 1;
+    //        static_cast<SDK::UANIMBP_Magnum_C*>(anim_inst)->AnimGraphNode_CopyPoseFromMesh.RootBoneToCopy = SDK::UKismetStringLibrary::Conv_StringToName(L"PropRoot");
+    //        //static_cast<SDK::UANIMBP_Magnum_C*>(anim_inst)->BlueprintInitializeAnimation();
+    //        //static_cast<SDK::UANIMBP_Magnum_C*>(anim_inst)->BlueprintBeginPlay();
+    //        API::get()->log_warn("[vr_weapon][handle_weapon_change] Changing ABP for Magnum End");
+    //    }
+    //}
 
 
-                    //        API::get()->log_warn("[weapon][handle_weapon_change] Changing ABP for Magnum 3");
-                    //        static_cast<SDK::UANIMBP_Magnum_C*>(anim_inst)->AnimGraphNode_CopyPoseFromMesh.bUseAttachedParent = 1;
-                    //        static_cast<SDK::UANIMBP_Magnum_C*>(anim_inst)->AnimGraphNode_CopyPoseFromMesh.RootBoneToCopy = SDK::UKismetStringLibrary::Conv_StringToName(L"PropRoot");
-                    //        //static_cast<SDK::UANIMBP_Magnum_C*>(anim_inst)->BlueprintInitializeAnimation();
-                    //        //static_cast<SDK::UANIMBP_Magnum_C*>(anim_inst)->BlueprintBeginPlay();
-                    //        API::get()->log_warn("[weapon][handle_weapon_change] Changing ABP for Magnum End");
-                    //    }
-                    //}
+    //API::get()->log_warn("[vr_weapon][handle_weapon_change] Weapon attached to VR Body");
+    //vr_body->get_bp_actor()->Set_Hand_Pose(SDK::E_VRHandState::HoldItem, true);
 
+    //m_main->get_vr_body()->get_bp_actor()->Set_Hand_Pose(SDK::E_VRHandState::HoldItem, true);
+    //if (m_main->get_pawn()->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+    //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_main->get_pawn())->WeaponMesh->DetachFromParent(true, true);
+    //}
+    //
+    //m_equipped_weapon->WeaponMeshComponent->DetachFromParent(true, true);
 
-                    //API::get()->log_warn("[weapon][handle_weapon_change] Weapon attached to VR Body");
-                    //vr_body->get_bp_actor()->Set_Hand_Pose(SDK::E_VRHandState::HoldItem, true);
-                }
-                //m_main->get_vr_body()->get_bp_actor()->Set_Hand_Pose(SDK::E_VRHandState::HoldItem, true);
-                //if (m_main->get_pawn()->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_main->get_pawn())->WeaponMesh->DetachFromParent(true, true);
-                //}
-                //
-                //m_equipped_weapon->WeaponMeshComponent->DetachFromParent(true, true);
-                
-            }
-        }
-    }
-    catch (...) {
-        API::get()->log_error("[weapon][tick] Exception");
-    }
 }
 
-void VRWeapon::set_equipped_weapon(SDK::UITEM_WeaponBase_C* weapon) {
-    if (m_equipped_weapon != weapon) {
-        m_equipped_weapon = weapon;
-        set_weapon_type();
+void VRWeapon::change_equipped_weapon(SDK::UITEM_WeaponBase_C* weapon) {
+    m_equipped_weapon = weapon;
+
+    if (weapon == nullptr) {
+        API::get()->log_warn("[vr_weapon][change_equipped_weapon] New Weapon: NONE");
+    }
+    else {
+        API::get()->log_warn("[vr_weapon][change_equipped_weapon] New Weapon: %s", weapon->GetFullName().c_str());
     }
 }
 
@@ -271,7 +246,7 @@ void VRWeapon::reload() {
         m_equipped_weapon != nullptr &&
         SDK::UKismetMathLibrary::ClassIsChildOf(m_equipped_weapon->Class, SDK::UITEM_ProjectileWeapon_Base_C::StaticClass())
         ) {
-        API::get()->log_warn("[weapon][reload] Reload");
+        API::get()->log_warn("[vr_weapon][reload] Reload");
         static_cast<SDK::UITEM_ProjectileWeapon_Base_C*>(m_equipped_weapon)->QueueReloading();
     }
 }
@@ -281,7 +256,7 @@ void VRWeapon::empty_magazine() {
         m_equipped_weapon != nullptr &&
         SDK::UKismetMathLibrary::ClassIsChildOf(m_equipped_weapon->Class, SDK::UITEM_ProjectileWeapon_Base_C::StaticClass())
         ) {
-        API::get()->log_warn("[weapon][reload] Reload");
+        API::get()->log_warn("[vr_weapon][reload] Reload");
         static_cast<SDK::UITEM_ProjectileWeapon_Base_C*>(m_equipped_weapon)->TryEmptyMagazine();
     }
 }
@@ -289,13 +264,13 @@ void VRWeapon::empty_magazine() {
 
 void VRWeapon::fire_weapon() {
     try {
-        API::get()->log_warn("[weapon][fire_weapon] Trying to Fire");
+        API::get()->log_warn("[vr_weapon][fire_weapon] Trying to Fire");
         if (
             m_equipped_weapon != nullptr &&
             SDK::UKismetMathLibrary::ClassIsChildOf(m_equipped_weapon->Class, SDK::UITEM_ProjectileWeapon_Base_C::StaticClass())
             //&& m_equipped_weapon->IsA(SDK::UITEM_ProjectileWeapon_Base_C::StaticClass())
             ) {
-            API::get()->log_warn("[weapon][fire_weapon] Fire");
+            API::get()->log_warn("[vr_weapon][fire_weapon] Fire");
             SDK::AActor* fired_projectile{ nullptr };
             SDK::FVector direction{};
             SDK::FVector projectile_direction{ };
@@ -324,50 +299,24 @@ void VRWeapon::fire_weapon() {
 
             //static_cast<SDK::UITEM_ProjectileWeapon_Base_C*>(m_current_weapon)->FireProjectile(&fired_projectile, &direction);
 
-            API::get()->log_warn("[weapon][fire_weapon] X: %f", direction.X);
-            API::get()->log_warn("[weapon][fire_weapon] Y: %f", direction.Y);
-            API::get()->log_warn("[weapon][fire_weapon] Z: %f", direction.Z);
+            API::get()->log_warn("[vr_weapon][fire_weapon] X: %f", direction.X);
+            API::get()->log_warn("[vr_weapon][fire_weapon] Y: %f", direction.Y);
+            API::get()->log_warn("[vr_weapon][fire_weapon] Z: %f", direction.Z);
         }
     }
     catch (...) {
-        API::get()->log_error("[weapon][fire_weapon] Exception");
+        API::get()->log_error("[vr_weapon][fire_weapon] Exception");
     }
 }
 
-void VRWeapon::set_weapon_type() {
-    try {
-        API::get()->log_warn("[weapon][set_weapon_type] Weapon Type: %s", VRWeaponTypeName[m_weapon_type]);
-    }
-    catch (...) {
-        API::get()->log_error("[weapon][set_weapon_type] Exception");
-    }
-}
-
-void VRWeapon::set_offset_component_relative_location() {
-    static SDK::FHitResult h_result{};
-    // offset FPVCamera to match weapon barrel
-    try {
-        if (m_equipped_weapon != nullptr && m_equipped_weapon->DisplayMesh.Get() != nullptr) {
-            //if (m_weapon_type == WEAPON_TYPE_RANGED) {
-            //    SDK::FVector aiming_direction = static_cast<SDK::URangedMode*>(m_equipped_weapon->GetCurrentMode())->GetMuzzleLocation();
-
-            //    m_laser_pointer_offset_component->K2_SetRelativeLocation(
-            //        static_cast<SDK::URangedMode*>(m_equipped_weapon->GetCurrentMode())->GetMuzzleLocation(), false, &h_result, false
-            //    );
-            //}
-
-            // get muzzle transform
-            auto offset_transform = m_equipped_weapon->DisplayMesh.Get()->FindSocket(
-                m_equipped_weapon->BarrelSocketName
-            )->RelativeLocation;
-            const UEVR_Vector3f offset{ 0.f, -offset_transform.Z, 0.f };
-            m_laser_pointer_offset_component->K2_SetRelativeLocation({ 0.f, 0.f, offset_transform.Z }, false, &h_result, false);
-        }
-    }
-    catch (...) {
-        API::get()->log_error("[weapon][set_offset_component] Exception");
-    }
-}
+//void VRWeapon::set_weapon_type() {
+//    try {
+//        API::get()->log_warn("[vr_weapon][set_weapon_type] Weapon Type: %s", VRWeaponTypeName[m_weapon_type]);
+//    }
+//    catch (...) {
+//        API::get()->log_error("[vr_weapon][set_weapon_type] Exception");
+//    }
+//}
 
 void VRWeapon::set_laser_pointer_visibility(bool visible) {
     try {
@@ -379,33 +328,17 @@ void VRWeapon::set_laser_pointer_visibility(bool visible) {
         }
     }
     catch (...) {
-        API::get()->log_error("[weapon][set_laser_pointer_visibility] Exception");
+        API::get()->log_error("[vr_weapon][set_laser_pointer_visibility] Exception");
     }
 }
-
-//
-//void set_scope_offset(SDK::FVector offset) {
-//    static SDK::FHitResult h_result{};
-//    if (m_scope_component != nullptr) {
-//        m_scope_component->K2_SetRelativeLocation(offset, false, &h_result, false);
-//    }
-//}
-//
-//void set_scope_visibility(bool visible) {
-//    if (m_scope_component != nullptr) {
-//        m_scope_component->SetVisibility(visible, true);
-//        m_scope_component->SetHiddenInGame(!visible, true);
-//    }
-//}
-
 
 void VRWeapon::spawn_laser_pointer() {
 
     try {
-        API::get()->log_warn("[weapon][spawn_laser_pointer] Spawning Particle Pointer - Begin");
+        API::get()->log_warn("[vr_weapon][spawn_laser_pointer] Spawning Particle Pointer - Begin");
 
         //if (!is_valid()) {
-        //    API::get()->log_error("[weapon][spawn_laser_pointer] VR Weapon not initialized");
+        //    API::get()->log_error("[vr_weapon][spawn_laser_pointer] VR Weapon not initialized");
         //    return;
         //}
 
@@ -428,13 +361,13 @@ void VRWeapon::spawn_laser_pointer() {
         SDK::UNiagaraSystem* simple_laser_ns = (SDK::UNiagaraSystem*)PluginUtils::load_asset(simple_laser_asset_data);
         SDK::UNiagaraSystem* laser_dot_ns = (SDK::UNiagaraSystem*)PluginUtils::load_asset(laser_dot_asset_data);
 
-        if (simple_laser_ns == nullptr || laser_dot_ns == nullptr || m_laser_pointer_offset_component == nullptr) {
-            API::get()->log_error("[weapon][spawn_simple_laser] SimpleLaser or LaserDot NiagaraSystem not found or RH controller not set up");
+        if (simple_laser_ns == nullptr || laser_dot_ns == nullptr) {
+            API::get()->log_error("[vr_weapon][spawn_simple_laser] SimpleLaser or LaserDot NiagaraSystem not found or RH controller not set up");
             return;
         }
 
-        if (m_main->get_vr_controllers() == nullptr || m_laser_sight_component != nullptr || m_laser_dot_component != nullptr) {
-            API::get()->log_error("[weapon][spawn_simple_laser] Laser Pointer Component already set up");
+        if (m_laser_sight_component != nullptr || m_laser_dot_component != nullptr) {
+            API::get()->log_error("[vr_weapon][spawn_simple_laser] Laser Pointer Component already set up");
             return;
         }
 
@@ -445,8 +378,7 @@ void VRWeapon::spawn_laser_pointer() {
         };
 
         m_laser_sight_component = static_cast<SDK::UNiagaraComponent*>(
-            m_main->get_vr_body()->get_bp_actor()->AddComponentByClass(
-            //m_main->get_vr_controllers()->get_right_hand_actor()->AddComponentByClass(
+            m_vr_body->get_bp_actor()->AddComponentByClass(
                 SDK::UNiagaraComponent::StaticClass(), false, laser_sight_zero_transform, false
             ));
         if (m_laser_sight_component == nullptr) {
@@ -454,53 +386,53 @@ void VRWeapon::spawn_laser_pointer() {
             return;
         }
 
-        m_main->get_vr_controllers()->get_right_hand_actor()->FinishAddComponent(m_laser_sight_component, false, laser_sight_zero_transform);
+        m_vr_body->get_bp_actor()->FinishAddComponent(m_laser_sight_component, false, laser_sight_zero_transform);
 
         m_laser_sight_component->SetAsset(simple_laser_ns, true);
         m_laser_sight_component->ReinitializeSystem();
         m_laser_sight_component->SetRenderInMainPass(true);
 
-        API::get()->log_warn("[weapon][spawn_laser_pointer] Setting up Laset Sight");
+        API::get()->log_warn("[vr_weapon][spawn_laser_pointer] Setting up Laset Sight");
         m_laser_sight_component->K2_AttachToComponent(
-            m_main->get_vr_body()->get_bp_actor()->MotionControllerRight,
+            m_vr_body->get_right_controller(),
             SDK::UKismetStringLibrary::Conv_StringToName(L"None"),
             SDK::EAttachmentRule::SnapToTarget,
             SDK::EAttachmentRule::KeepRelative,
             SDK::EAttachmentRule::KeepRelative,
             true
         );
-        API::get()->log_warn("[weapon][spawn_laser_pointer] Laset Sight attached to RH Controller");
+        API::get()->log_warn("[vr_weapon][spawn_laser_pointer] Laset Sight attached to RH Controller");
 
-        SDK::FTransform laser_dot_zero_transform{
-            .Rotation = { 0.f, 0.f, 0.f, 1.f },
-            .Translation = { 0.f, 0.f, 0.f },
-            .Scale3D = { 1.f, 1.f, 1.f }
-        };
+        //SDK::FTransform laser_dot_zero_transform{
+        //    .Rotation = { 0.f, 0.f, 0.f, 1.f },
+        //    .Translation = { 0.f, 0.f, 0.f },
+        //    .Scale3D = { 1.f, 1.f, 1.f }
+        //};
 
-        m_laser_dot_component = static_cast<SDK::UNiagaraComponent*>(
-            m_main->get_vr_controllers()->get_right_hand_actor()->AddComponentByClass(
-                SDK::UNiagaraComponent::StaticClass(), false, laser_dot_zero_transform, false
-            ));
-        if (m_laser_dot_component == nullptr) {
-            API::get()->log_error("Failed to add Laser Dot Component");
-            return;
-        }
+        //m_laser_dot_component = static_cast<SDK::UNiagaraComponent*>(
+        //    m_main->get_vr_controllers()->get_right_hand_actor()->AddComponentByClass(
+        //        SDK::UNiagaraComponent::StaticClass(), false, laser_dot_zero_transform, false
+        //    ));
+        //if (m_laser_dot_component == nullptr) {
+        //    API::get()->log_error("Failed to add Laser Dot Component");
+        //    return;
+        //}
 
-        m_main->get_vr_controllers()->get_right_hand_actor()->FinishAddComponent(m_laser_dot_component, false, laser_dot_zero_transform);
+        //m_main->get_vr_controllers()->get_right_hand_actor()->FinishAddComponent(m_laser_dot_component, false, laser_dot_zero_transform);
 
-        m_laser_dot_component->SetAsset(laser_dot_ns, true);
-        m_laser_dot_component->ReinitializeSystem();
-        m_laser_dot_component->SetRenderInMainPass(true);
-        m_laser_dot_component->SetAbsolute(true, true, true);
+        //m_laser_dot_component->SetAsset(laser_dot_ns, true);
+        //m_laser_dot_component->ReinitializeSystem();
+        //m_laser_dot_component->SetRenderInMainPass(true);
+        //m_laser_dot_component->SetAbsolute(true, true, true);
 
-        SDK::FHitResult h_result{};
-        m_laser_dot_component->K2_SetWorldLocation({ -150.0f, 2000.0f, 200.0f }, false, &h_result, false);
+        //SDK::FHitResult h_result{};
+        //m_laser_dot_component->K2_SetWorldLocation({ -150.0f, 2000.0f, 200.0f }, false, &h_result, false);
 
-        API::get()->log_warn("[weapon][spawn_laser_pointer] Spawning Laser Pointer - End");
+        API::get()->log_warn("[vr_weapon][spawn_laser_pointer] Spawning Laser Pointer - End");
         return;
     }
     catch (...) {
-        API::get()->log_error("[weapon][spawn_laser_pointer] Exception");
+        API::get()->log_error("[vr_weapon][spawn_laser_pointer] Exception");
         return;
     }
 }
@@ -583,7 +515,7 @@ void VRWeapon::update_laser_pointer() {
         //}
     }
     catch (...) {
-        API::get()->log_error("[weapon][update_laser_pointer] Exception");
+        API::get()->log_error("[vr_weapon][update_laser_pointer] Exception");
     }
 }
 
@@ -631,6 +563,6 @@ void VRWeapon::on_draw_imgui() {
         }
     }
     catch (...) {
-        API::get()->log_error("[weapon][on_draw_imgui] Exception");
+        API::get()->log_error("[vr_weapon][on_draw_imgui] Exception");
     }
 }

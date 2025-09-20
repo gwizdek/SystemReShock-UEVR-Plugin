@@ -1,5 +1,6 @@
 #include "plugin.hpp"
 #include "main.hpp"
+#include "plugin_utils.hpp"
 
 using namespace uevr;
 
@@ -9,18 +10,26 @@ UEVRPlugin::UEVRPlugin() {
 }
 
 UEVRPlugin::~UEVRPlugin() {
-    m_main->~SystemShockMain();
+    if (m_safe_mode)
+        return;
+
+    if (m_main != nullptr) {
+        m_main->~SystemShockMain();
+    }
 }
 
 void UEVRPlugin::on_initialize() {
     PLUGIN_LOG_ONCE("Plugin Initializing...");
 
-    // cleanup stale actors
-    SystemShockMain::cleanup_actors();
+    if (!m_safe_mode) {
+        // cleanup stale actors
+        SystemShockMain::cleanup_actors();
 
-    m_main = new SystemShockMain();
+        m_main = new SystemShockMain();
+    }
 
-    hook_bp_fn(L"BlueprintGeneratedClass /Game/Blueprints/Inventory/Items/Weapons/ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C", L"FireProjectileInDirection", (UEVR_UFunction_NativePostFn)mod_onfire_pre, NULL, false);
+
+    //hook_bp_fn(L"BlueprintGeneratedClass /Game/Blueprints/Inventory/Items/Weapons/ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C", L"FireProjectileInDirection", (UEVR_UFunction_NativePostFn)mod_onfire_pre, NULL, false);
 }
 
 bool UEVRPlugin::hook_bp_fn(std::wstring_view class_name, std::wstring_view fn_name, UEVR_UFunction_NativePreFn pre, UEVR_UFunction_NativePostFn post, bool use_native)
@@ -94,6 +103,9 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
     if (!vr->is_runtime_ready())
         return;
 
+    if (m_safe_mode)
+        return;
+
     if (m_main != nullptr) {
         // start cb timer
         std::chrono::steady_clock::time_point begin_time;
@@ -121,9 +133,18 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
 void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
     PLUGIN_LOG_ONCE("Pre Engine Tick: %f", delta);
 
+
     const UEVR_VRData* vr = API::get()->param()->vr;
     if (!vr->is_runtime_ready())
         return;
+
+    if (m_safe_mode) {
+        if (m_try_load_assets_for_dumping) {
+            load_assets_for_dumping();
+        }
+
+        return;
+    }
 
     if (m_main != nullptr) {
         m_cb_calls_count = m_cb_calls_count < CB_DURATION_SAMPLE_RATE ? ++m_cb_calls_count : 0;
@@ -157,8 +178,65 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
     }
 }
 
+void UEVRPlugin::load_assets_for_dumping()
+{
+    try {
+        m_try_load_assets_for_dumping = false;
+
+        //auto world = SDK::UWorld::GetWorld();
+        //SDK::APawn* pawn = world != nullptr ? SDK::UGameplayStatics::GetPlayerPawn(world, 0) : nullptr;
+        //if (pawn == nullptr) {
+        //    API::get()->log_error("[plugin][load_assets_for_dumping] Invalid Pawn");
+        //    return;
+        //}
+        API::get()->log_warn("[plugin][load_assets_for_dumping] Loading Assets");
+
+        //SDK::FAssetData vr_asset_data{
+        //    .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/VRBody.VRBody_C"),
+        //    .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/VRBody"),
+        //    .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody"),
+        //    .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"VRBody"),
+        //    .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L""),
+        //};
+
+        SDK::FAssetData vr_grab_component{
+            .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/VRTemplate/Blueprints/GrabComponent.GrabComponent_C"),
+            .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/VRTemplate/Blueprints/GrabComponent"),
+            .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/VRTemplate/GrabComponent"),
+            .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"GrabComponent"),
+            .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L""),
+        };
+        SDK::UObject* loaded_gc_asset = PluginUtils::load_asset(vr_grab_component);
+        if (loaded_gc_asset != nullptr) {
+            API::get()->log_warn("[plugin][load_assets_for_dumping] Loaded GrabComponent");
+        }
+
+        SDK::FAssetData vr_asset_data{
+            .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/BP_SSRModActor.BP_SSRModActor_C"),
+            .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/BP_SSRModActor"),
+            .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/BP_SSRModActor"),
+            .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"BP_SSRModActor"),
+            .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L""),
+        };
+
+        // keep the pointer until vr weapon init is done
+        SDK::UObject* loaded_asset = PluginUtils::load_asset(vr_asset_data);
+        if (loaded_asset != nullptr) {
+            API::get()->log_warn("[plugin][load_assets_for_dumping] Loaded VRBody");
+        }
+
+        API::get()->log_warn("[plugin][load_assets_for_dumping] Finished Loading Assets");
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][load_assets_for_dumping] Error spawning ABP_SSRModActor_C");
+    }
+}
+
 void UEVRPlugin::on_pre_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int view_index, float world_to_meters,
     UEVR_Vector3f* position, UEVR_Rotatorf* rotation, bool is_double) {
+    if (m_safe_mode)
+        return;
+
     if (m_main != nullptr && view_index == 1) {
         m_main->set_last_pos(position);
         m_main->set_last_rot(rotation);
@@ -169,6 +247,9 @@ void UEVRPlugin::on_pre_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceH
 
 void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int view_index, float world_to_meters,
     UEVR_Vector3f* position, UEVR_Rotatorf* rotation, bool is_double) {
+    if (m_safe_mode)
+        return;
+
     if (view_index != 1) {
         return;
     }
@@ -312,7 +393,11 @@ void UEVRPlugin::on_present() {
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
 
-        if (m_main != nullptr) {
+        if (m_safe_mode) {
+            ImGui::Text("Safe Mode !!!!");
+        }
+
+        if (m_main != nullptr && !m_safe_mode) {
             m_main->on_draw_imgui();
         }
 
@@ -332,7 +417,11 @@ void UEVRPlugin::on_present() {
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
 
-        if (m_main != nullptr) {
+        if (m_safe_mode) {
+            ImGui::Text("Safe Mode !!!!");
+        }
+
+        if (m_main != nullptr && !m_safe_mode) {
             m_main->on_draw_imgui();
         }
 

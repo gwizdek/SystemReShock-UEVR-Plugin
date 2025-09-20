@@ -32,6 +32,8 @@ private:
     const int CB_DURATION_SAMPLE_RATE = 100;
     int m_cb_calls_count{ 0 };
     bool m_xinput_cb_processed{ false };
+    bool m_safe_mode{ true }; // in safe mode, only main PAK Actor is loaded (for dumping)
+    bool m_try_load_assets_for_dumping{ true };
 
 public:
     UEVRPlugin();
@@ -52,6 +54,7 @@ public:
     void on_initialize() override;
     void on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) override;
     void on_pre_engine_tick(uevr::API::UGameEngine* engine, float delta) override;
+    void load_assets_for_dumping();
 
     SystemShockMain* m_main{ nullptr };
 

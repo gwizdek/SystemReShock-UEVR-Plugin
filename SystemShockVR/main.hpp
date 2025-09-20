@@ -60,8 +60,7 @@ class SystemShockMain
 private:
     const char* MOD_VERSION = "v2.0.0-alpha";
 
-    VRControllers* m_vr_controllers{ nullptr };
-    VRWeapon* m_vr_weapon{ nullptr };
+    //VRControllers* m_vr_controllers{ nullptr };
     //VRHUD* m_vr_hud{ nullptr };
     VRBody* m_vr_body{ nullptr };
 
@@ -84,7 +83,7 @@ private:
     SDK::FRotator m_last_rot{ 0.f, 0.f, 0.f };
     bool m_initialized{ false };
     bool m_gui_visible{ true };
-    void toggle_gui();
+    
 
     // watched state
     MemoProperty<GameState> m_game_state{ GAME_STATE_UNDEFINED, GAME_STATE_UNDEFINED };
@@ -124,11 +123,11 @@ public:
     bool prepare_pointers();
     void prepare_state();
     void prepare_game_state();
+    void toggle_gui();
     
     // getters
     bool get_ui_option_show_debug_view() { return m_ui_option_show_debug_view; };
-    VRControllers* get_vr_controllers() { return m_vr_controllers; };
-    VRWeapon* get_vr_weapon() { return m_vr_weapon; };
+    //VRControllers* get_vr_controllers() { return m_vr_controllers; };
     VRBody* get_vr_body() { return m_vr_body; };
     MemoProperty<bool>* get_is_player_interacting() { return &m_player_interacting; };
     SDK::UCOMP_HackerInventory_C* get_inventory() { return m_inventory; };
@@ -149,6 +148,9 @@ public:
     void handle_mod_events();
     void handle_crouch();
     void handle_weapon();
-    void set_component_loc_rot_to_rh_motion_controller(SDK::USceneComponent* scene_component);
+    //void set_component_loc_rot_to_rh_motion_controller(SDK::USceneComponent* scene_component);
     void handle_smooth_turning(XINPUT_STATE* state, const UEVR_VRData* vr);
+
+    void test1();
+    void test2();
 };

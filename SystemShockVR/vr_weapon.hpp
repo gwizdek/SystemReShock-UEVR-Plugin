@@ -86,37 +86,45 @@ static std::map<VRWeaponType, const char*> VRWeaponTypeName = {
 class VRWeapon
 {
 private:
-    SystemShockMain* m_main{ nullptr };
+    VRBody* m_vr_body{ nullptr };
     SDK::UITEM_WeaponBase_C* m_equipped_weapon{ nullptr };
+    SDK::USkeletalMeshComponent* m_equipped_weapon_mesh_component{ nullptr };
     MemoProperty<HackerWeapon> m_weapon_state{ WEAPON_NONE, WEAPON_NONE };
-    HandPreference m_hand_preference{ RIGHT_HANDED };
 
     // interaction components
     SDK::UNiagaraComponent* m_laser_dot_component{ nullptr };
     SDK::UNiagaraComponent* m_laser_sight_component{ nullptr };
-    SDK::USceneComponent* m_laser_pointer_offset_component{ nullptr };
     SDK::UStaticMeshComponent* m_scope_component{ nullptr };
 
     VRWeaponType m_weapon_type{ WEAPON_TYPE_UNKNOWN };
 
 public:
-    VRWeapon(SystemShockMain* main);
+    VRWeapon(VRBody* vr_body);
     virtual ~VRWeapon() {};
 
+    // getters
+    SDK::UITEM_WeaponBase_C* get_equipped_weapon() { return m_equipped_weapon; };
+    SDK::USkeletalMeshComponent* get_equipped_weapon_mesh_component() { return m_equipped_weapon_mesh_component; };
+
+
     // setters
-    void set_equipped_weapon(SDK::UITEM_WeaponBase_C* weapon);
-    void set_weapon_type();
-    void set_offset_component_relative_location();
+    void set_equipped_weapon_mesh_component(SDK::USkeletalMeshComponent* mesh) { m_equipped_weapon_mesh_component = mesh; };
+     
+    void set_weapon(SDK::UITEM_WeaponBase_C* weapon);
     void set_laser_pointer_visibility(bool visible);
 
-    void initialize(HandPreference hand_preference);
+    //void set_weapon_state(SDK::UITEM_WeaponBase_C* weapon);
+    void change_equipped_weapon(SDK::UITEM_WeaponBase_C* weapon);
+    void attach_camera(SDK::UCameraComponent* camera);
+    void attach_laser();
+    void initialize();
     void cleanup_pointers();
     bool is_valid();
     void on_tick();
     void on_draw_imgui();
     void spawn_laser_pointer();
     void update_laser_pointer();
-    void set_weapon_state();
+    //void set_weapon_state();
     void fire_weapon();
     void handle_weapon_change();
 
