@@ -12,13 +12,186 @@
 
 #include "Engine_structs.hpp"
 #include "AttributeSystem_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_ShodanPulseType_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "ENUM_ShodanTetherState_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function ShodanTether.ShodanTether_C.EVENT_OnDamagePulseTick
+// 0x003C (0x003C - 0x0000)
+struct ShodanTether_C_EVENT_OnDamagePulseTick final
+{
+public:
+	float                                         DesiredPulseAlpha;                                 // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         PulseProgress;                                     // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         ElapsedTime;                                       // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_MakePulsatingValue_ReturnValue;           // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FMin_ReturnValue;                         // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Abs_ReturnValue;                          // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue_1;    // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Lerp_ReturnValue;                         // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ShodanTether_C_EVENT_OnDamagePulseTick) == 0x000004, "Wrong alignment on ShodanTether_C_EVENT_OnDamagePulseTick");
+static_assert(sizeof(ShodanTether_C_EVENT_OnDamagePulseTick) == 0x00003C, "Wrong size on ShodanTether_C_EVENT_OnDamagePulseTick");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, DesiredPulseAlpha) == 0x000000, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::DesiredPulseAlpha' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, PulseProgress) == 0x000004, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::PulseProgress' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, ElapsedTime) == 0x000008, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::ElapsedTime' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_MakePulsatingValue_ReturnValue) == 0x00000C, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_MakePulsatingValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000010, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_FMin_ReturnValue) == 0x000014, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_FMin_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000018, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Abs_ReturnValue) == 0x00001C, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Abs_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Add_FloatFloat_ReturnValue) == 0x000020, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000024, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_GreaterEqual_FloatFloat_ReturnValue_1) == 0x000028, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_GreaterEqual_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x00002C, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000030, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000034, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Lerp_ReturnValue) == 0x000038, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Lerp_ReturnValue' has a wrong offset!");
+
+// Function ShodanTether.ShodanTether_C.EVENT_OnDamageReceived
+// 0x0078 (0x0078 - 0x0000)
+struct ShodanTether_C_EVENT_OnDamageReceived final
+{
+public:
+	class AActor*                                 OtherActor;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FAttribDamageInstance                  DamageInstance;                                    // 0x0008(0x0028)(BlueprintVisible, BlueprintReadOnly, Parm)
+	class UObject*                                UserParams;                                        // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_ShodanPulseType                          Temp_byte_Variable;                                // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsChargingAllConstraints_Result;          // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ShodanPulseType                          Temp_byte_Variable_1;                              // 0x003A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3B[0x1];                                       // 0x003B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ShodanPulseType                          K2Node_Select_Default;                             // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_43[0x1];                                       // 0x0043(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x004C(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0060(0x0008)(NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_K2_IsTimerActiveHandle_ReturnValue;       // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ShodanTether_C_EVENT_OnDamageReceived) == 0x000008, "Wrong alignment on ShodanTether_C_EVENT_OnDamageReceived");
+static_assert(sizeof(ShodanTether_C_EVENT_OnDamageReceived) == 0x000078, "Wrong size on ShodanTether_C_EVENT_OnDamageReceived");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, OtherActor) == 0x000000, "Member 'ShodanTether_C_EVENT_OnDamageReceived::OtherActor' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, DamageInstance) == 0x000008, "Member 'ShodanTether_C_EVENT_OnDamageReceived::DamageInstance' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, UserParams) == 0x000030, "Member 'ShodanTether_C_EVENT_OnDamageReceived::UserParams' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, Temp_byte_Variable) == 0x000038, "Member 'ShodanTether_C_EVENT_OnDamageReceived::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_IsChargingAllConstraints_Result) == 0x000039, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_IsChargingAllConstraints_Result' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, Temp_byte_Variable_1) == 0x00003A, "Member 'ShodanTether_C_EVENT_OnDamageReceived::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_GetAttribValue_ReturnValue) == 0x00003C, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, Temp_bool_Variable) == 0x000040, "Member 'ShodanTether_C_EVENT_OnDamageReceived::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x000041, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, K2Node_Select_Default) == 0x000042, "Member 'ShodanTether_C_EVENT_OnDamageReceived::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000044, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000048, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, K2Node_CreateDelegate_OutputDelegate) == 0x00004C, "Member 'ShodanTether_C_EVENT_OnDamageReceived::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000060, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_K2_IsTimerActiveHandle_ReturnValue) == 0x000068, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_K2_IsTimerActiveHandle_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x00006C, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_Not_PreBool_ReturnValue) == 0x000070, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+
+// Function ShodanTether.ShodanTether_C.EVENT_OnHealthValueChanged
+// 0x00E8 (0x00E8 - 0x0000)
+struct ShodanTether_C_EVENT_OnHealthValueChanged final
+{
+public:
+	float                                         CurrValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         LastValue;                                         // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAttribInstance*                        HealthAttribInstance;                              // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         HealthRatio;                                       // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_16[0x2];                                       // 0x0016(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x001C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Vector_Normal2D_ReturnValue;              // 0x002C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X;                            // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y;                            // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z;                            // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_DegAtan2_ReturnValue;                     // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Vector_Forward_ReturnValue;               // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue;          // 0x0054(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X_1;                          // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_1;                          // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_1;                          // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X_2;                          // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_2;                          // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_2;                          // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue_1;        // 0x0078(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_2;        // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_SignOfFloat_ReturnValue;                  // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x0090(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_DestroyAttributeInstance_ReturnValue;     // 0x009C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9D[0x3];                                       // 0x009D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x00A0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_AC[0x4];                                       // 0x00AC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAttributeDef*                          CallFunc_GetHealthAttrib_ReturnValue;              // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAttribInstance*                        CallFunc_GetAttribInstance_ReturnValue;            // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetDefaultAttribValue_ReturnValue;        // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x00C8(0x0010)(ZeroConstructor, NoDestructor)
+	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x00D8(0x0008)(NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ShodanTether_C_EVENT_OnHealthValueChanged) == 0x000008, "Wrong alignment on ShodanTether_C_EVENT_OnHealthValueChanged");
+static_assert(sizeof(ShodanTether_C_EVENT_OnHealthValueChanged) == 0x0000E8, "Wrong size on ShodanTether_C_EVENT_OnHealthValueChanged");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CurrValue) == 0x000000, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CurrValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, LastValue) == 0x000004, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::LastValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, HealthAttribInstance) == 0x000008, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::HealthAttribInstance' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, HealthRatio) == 0x000010, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::HealthRatio' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_IsValid_ReturnValue) == 0x000014, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Less_FloatFloat_ReturnValue) == 0x000015, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000018, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Subtract_VectorVector_ReturnValue) == 0x00001C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x000028, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Vector_Normal2D_ReturnValue) == 0x00002C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Vector_Normal2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_X) == 0x000038, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_X' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Y) == 0x00003C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Y' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Z) == 0x000040, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Z' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_DegAtan2_ReturnValue) == 0x000044, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_DegAtan2_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Vector_Forward_ReturnValue) == 0x000048, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Vector_Forward_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_K2_GetActorLocation_ReturnValue) == 0x000054, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_K2_GetActorLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_X_1) == 0x000060, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_X_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Y_1) == 0x000064, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Y_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Z_1) == 0x000068, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Z_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_X_2) == 0x00006C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_X_2' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Y_2) == 0x000070, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Y_2' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Z_2) == 0x000074, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Z_2' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_K2_GetActorLocation_ReturnValue_1) == 0x000078, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_K2_GetActorLocation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Subtract_FloatFloat_ReturnValue_2) == 0x000084, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Subtract_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_SignOfFloat_ReturnValue) == 0x000088, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_SignOfFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00008C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x000090, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_DestroyAttributeInstance_ReturnValue) == 0x00009C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_DestroyAttributeInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Add_VectorVector_ReturnValue) == 0x0000A0, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_GetHealthAttrib_ReturnValue) == 0x0000B0, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_GetHealthAttrib_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_GetAttribInstance_ReturnValue) == 0x0000B8, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_GetAttribInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_GetDefaultAttribValue_ReturnValue) == 0x0000C0, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_GetDefaultAttribValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Divide_FloatFloat_ReturnValue) == 0x0000C4, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, K2Node_CreateDelegate_OutputDelegate) == 0x0000C8, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x0000D8, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x0000E0, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
 
 // Function ShodanTether.ShodanTether_C.SetTetherVulnerable
 // 0x0020 (0x0020 - 0x0000)
@@ -736,179 +909,6 @@ static_assert(offsetof(ShodanTether_C_ExecuteUbergraph_ShodanTether, K2Node_Sele
 static_assert(offsetof(ShodanTether_C_ExecuteUbergraph_ShodanTether, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x00009C, "Member 'ShodanTether_C_ExecuteUbergraph_ShodanTether::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(ShodanTether_C_ExecuteUbergraph_ShodanTether, CallFunc_Add_VectorVector_ReturnValue) == 0x0000A0, "Member 'ShodanTether_C_ExecuteUbergraph_ShodanTether::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ShodanTether_C_ExecuteUbergraph_ShodanTether, K2Node_Select_Default_4) == 0x0000AC, "Member 'ShodanTether_C_ExecuteUbergraph_ShodanTether::K2Node_Select_Default_4' has a wrong offset!");
-
-// Function ShodanTether.ShodanTether_C.EVENT_OnHealthValueChanged
-// 0x00E8 (0x00E8 - 0x0000)
-struct ShodanTether_C_EVENT_OnHealthValueChanged final
-{
-public:
-	float                                         CurrValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         LastValue;                                         // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAttribInstance*                        HealthAttribInstance;                              // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         HealthRatio;                                       // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_16[0x2];                                       // 0x0016(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x001C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Vector_Normal2D_ReturnValue;              // 0x002C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_X;                            // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y;                            // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z;                            // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_DegAtan2_ReturnValue;                     // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Vector_Forward_ReturnValue;               // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue;          // 0x0054(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_X_1;                          // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y_1;                          // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z_1;                          // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_X_2;                          // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y_2;                          // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z_2;                          // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue_1;        // 0x0078(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_2;        // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_SignOfFloat_ReturnValue;                  // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x0090(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_DestroyAttributeInstance_ReturnValue;     // 0x009C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9D[0x3];                                       // 0x009D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x00A0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_AC[0x4];                                       // 0x00AC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAttributeDef*                          CallFunc_GetHealthAttrib_ReturnValue;              // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAttribInstance*                        CallFunc_GetAttribInstance_ReturnValue;            // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetDefaultAttribValue_ReturnValue;        // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x00C8(0x0010)(ZeroConstructor, NoDestructor)
-	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x00D8(0x0008)(NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ShodanTether_C_EVENT_OnHealthValueChanged) == 0x000008, "Wrong alignment on ShodanTether_C_EVENT_OnHealthValueChanged");
-static_assert(sizeof(ShodanTether_C_EVENT_OnHealthValueChanged) == 0x0000E8, "Wrong size on ShodanTether_C_EVENT_OnHealthValueChanged");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CurrValue) == 0x000000, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CurrValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, LastValue) == 0x000004, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::LastValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, HealthAttribInstance) == 0x000008, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::HealthAttribInstance' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, HealthRatio) == 0x000010, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::HealthRatio' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_IsValid_ReturnValue) == 0x000014, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Less_FloatFloat_ReturnValue) == 0x000015, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000018, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Subtract_VectorVector_ReturnValue) == 0x00001C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x000028, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Vector_Normal2D_ReturnValue) == 0x00002C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Vector_Normal2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_X) == 0x000038, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_X' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Y) == 0x00003C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Y' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Z) == 0x000040, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Z' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_DegAtan2_ReturnValue) == 0x000044, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_DegAtan2_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Vector_Forward_ReturnValue) == 0x000048, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Vector_Forward_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_K2_GetActorLocation_ReturnValue) == 0x000054, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_K2_GetActorLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_X_1) == 0x000060, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_X_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Y_1) == 0x000064, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Y_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Z_1) == 0x000068, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Z_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_X_2) == 0x00006C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_X_2' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Y_2) == 0x000070, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Y_2' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_BreakVector_Z_2) == 0x000074, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_BreakVector_Z_2' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_K2_GetActorLocation_ReturnValue_1) == 0x000078, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_K2_GetActorLocation_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Subtract_FloatFloat_ReturnValue_2) == 0x000084, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Subtract_FloatFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_SignOfFloat_ReturnValue) == 0x000088, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_SignOfFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00008C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x000090, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_DestroyAttributeInstance_ReturnValue) == 0x00009C, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_DestroyAttributeInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Add_VectorVector_ReturnValue) == 0x0000A0, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_GetHealthAttrib_ReturnValue) == 0x0000B0, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_GetHealthAttrib_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_GetAttribInstance_ReturnValue) == 0x0000B8, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_GetAttribInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_GetDefaultAttribValue_ReturnValue) == 0x0000C0, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_GetDefaultAttribValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_Divide_FloatFloat_ReturnValue) == 0x0000C4, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, K2Node_CreateDelegate_OutputDelegate) == 0x0000C8, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x0000D8, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnHealthValueChanged, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x0000E0, "Member 'ShodanTether_C_EVENT_OnHealthValueChanged::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
-
-// Function ShodanTether.ShodanTether_C.EVENT_OnDamageReceived
-// 0x0078 (0x0078 - 0x0000)
-struct ShodanTether_C_EVENT_OnDamageReceived final
-{
-public:
-	class AActor*                                 OtherActor;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FAttribDamageInstance                  DamageInstance;                                    // 0x0008(0x0028)(BlueprintVisible, BlueprintReadOnly, Parm)
-	class UObject*                                UserParams;                                        // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_ShodanPulseType                          Temp_byte_Variable;                                // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsChargingAllConstraints_Result;          // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_ShodanPulseType                          Temp_byte_Variable_1;                              // 0x003A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3B[0x1];                                       // 0x003B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_ShodanPulseType                          K2Node_Select_Default;                             // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_43[0x1];                                       // 0x0043(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x004C(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0060(0x0008)(NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_K2_IsTimerActiveHandle_ReturnValue;       // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ShodanTether_C_EVENT_OnDamageReceived) == 0x000008, "Wrong alignment on ShodanTether_C_EVENT_OnDamageReceived");
-static_assert(sizeof(ShodanTether_C_EVENT_OnDamageReceived) == 0x000078, "Wrong size on ShodanTether_C_EVENT_OnDamageReceived");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, OtherActor) == 0x000000, "Member 'ShodanTether_C_EVENT_OnDamageReceived::OtherActor' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, DamageInstance) == 0x000008, "Member 'ShodanTether_C_EVENT_OnDamageReceived::DamageInstance' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, UserParams) == 0x000030, "Member 'ShodanTether_C_EVENT_OnDamageReceived::UserParams' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, Temp_byte_Variable) == 0x000038, "Member 'ShodanTether_C_EVENT_OnDamageReceived::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_IsChargingAllConstraints_Result) == 0x000039, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_IsChargingAllConstraints_Result' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, Temp_byte_Variable_1) == 0x00003A, "Member 'ShodanTether_C_EVENT_OnDamageReceived::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_GetAttribValue_ReturnValue) == 0x00003C, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, Temp_bool_Variable) == 0x000040, "Member 'ShodanTether_C_EVENT_OnDamageReceived::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x000041, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, K2Node_Select_Default) == 0x000042, "Member 'ShodanTether_C_EVENT_OnDamageReceived::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000044, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000048, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, K2Node_CreateDelegate_OutputDelegate) == 0x00004C, "Member 'ShodanTether_C_EVENT_OnDamageReceived::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000060, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_K2_IsTimerActiveHandle_ReturnValue) == 0x000068, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_K2_IsTimerActiveHandle_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x00006C, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamageReceived, CallFunc_Not_PreBool_ReturnValue) == 0x000070, "Member 'ShodanTether_C_EVENT_OnDamageReceived::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-
-// Function ShodanTether.ShodanTether_C.EVENT_OnDamagePulseTick
-// 0x003C (0x003C - 0x0000)
-struct ShodanTether_C_EVENT_OnDamagePulseTick final
-{
-public:
-	float                                         DesiredPulseAlpha;                                 // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         PulseProgress;                                     // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         ElapsedTime;                                       // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_MakePulsatingValue_ReturnValue;           // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FMin_ReturnValue;                         // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Abs_ReturnValue;                          // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue_1;    // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Lerp_ReturnValue;                         // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ShodanTether_C_EVENT_OnDamagePulseTick) == 0x000004, "Wrong alignment on ShodanTether_C_EVENT_OnDamagePulseTick");
-static_assert(sizeof(ShodanTether_C_EVENT_OnDamagePulseTick) == 0x00003C, "Wrong size on ShodanTether_C_EVENT_OnDamagePulseTick");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, DesiredPulseAlpha) == 0x000000, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::DesiredPulseAlpha' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, PulseProgress) == 0x000004, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::PulseProgress' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, ElapsedTime) == 0x000008, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::ElapsedTime' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_MakePulsatingValue_ReturnValue) == 0x00000C, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_MakePulsatingValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000010, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_FMin_ReturnValue) == 0x000014, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_FMin_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000018, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Abs_ReturnValue) == 0x00001C, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Abs_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Add_FloatFloat_ReturnValue) == 0x000020, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000024, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_GreaterEqual_FloatFloat_ReturnValue_1) == 0x000028, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_GreaterEqual_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x00002C, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000030, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000034, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_EVENT_OnDamagePulseTick, CallFunc_Lerp_ReturnValue) == 0x000038, "Member 'ShodanTether_C_EVENT_OnDamagePulseTick::CallFunc_Lerp_ReturnValue' has a wrong offset!");
 
 }
 

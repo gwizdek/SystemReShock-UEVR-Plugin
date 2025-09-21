@@ -28,11 +28,11 @@ public:
 	class UTextMeshWidget*                        TEXT_ConnectionIntegrity;                          // 0x0270(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 
 public:
-	void ExecuteUbergraph_WIDGET_PseudoHealth(int32 EntryPoint);
-	void Construct();
-	void PreConstruct(bool IsDesignTime);
-	void EVENT_OnHealthChanged(float CurrValue, float LastValue, float MaxValue, EModApplyType ApplyType);
 	void InitializeHealth();
+	void EVENT_OnHealthChanged(float CurrValue, float LastValue, float MaxValue, EModApplyType ApplyType);
+	void PreConstruct(bool IsDesignTime);
+	void Construct();
+	void ExecuteUbergraph_WIDGET_PseudoHealth(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()

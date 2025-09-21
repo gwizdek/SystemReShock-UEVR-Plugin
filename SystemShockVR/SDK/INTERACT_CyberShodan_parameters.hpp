@@ -10,18 +10,233 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_PseudoShodanState_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_ShodanPulseType_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
 #include "ENUM_ShodanTetherState_structs.hpp"
-#include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
+#include "ENUM_PseudoShodanState_structs.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.RecievePain
+// 0x002C (0x002C - 0x0000)
+struct INTERACT_CyberShodan_C_RecievePain final
+{
+public:
+	bool                                          Major;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_RandomFloatInRange_ReturnValue;           // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_RandomFloatInRange_ReturnValue_1;         // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_SelectFloat_ReturnValue;                  // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue_1;            // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_SelectFloat_ReturnValue_1;                // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_CyberShodan_C_RecievePain) == 0x000004, "Wrong alignment on INTERACT_CyberShodan_C_RecievePain");
+static_assert(sizeof(INTERACT_CyberShodan_C_RecievePain) == 0x00002C, "Wrong size on INTERACT_CyberShodan_C_RecievePain");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, Major) == 0x000000, "Member 'INTERACT_CyberShodan_C_RecievePain::Major' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_RandomFloatInRange_ReturnValue) == 0x000004, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_RandomFloatInRange_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Less_FloatFloat_ReturnValue) == 0x000008, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_RandomFloatInRange_ReturnValue_1) == 0x00000C, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_RandomFloatInRange_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_SelectFloat_ReturnValue) == 0x000010, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_SelectFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Less_FloatFloat_ReturnValue_1) == 0x000014, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Less_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000018, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_SelectFloat_ReturnValue_1) == 0x00001C, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_SelectFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000020, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Add_FloatFloat_ReturnValue) == 0x000024, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000028, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
+
+// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.StartColorPulse
+// 0x0014 (0x0014 - 0x0000)
+struct INTERACT_CyberShodan_C_StartColorPulse final
+{
+public:
+	ENUM_ShodanPulseType                          Type;                                              // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue_1;       // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue_2;       // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_CyberShodan_C_StartColorPulse) == 0x000004, "Wrong alignment on INTERACT_CyberShodan_C_StartColorPulse");
+static_assert(sizeof(INTERACT_CyberShodan_C_StartColorPulse) == 0x000014, "Wrong size on INTERACT_CyberShodan_C_StartColorPulse");
+static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, Type) == 0x000000, "Member 'INTERACT_CyberShodan_C_StartColorPulse::Type' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000004, "Member 'INTERACT_CyberShodan_C_StartColorPulse::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, K2Node_SwitchEnum_CmpSuccess) == 0x000008, "Member 'INTERACT_CyberShodan_C_StartColorPulse::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, CallFunc_GetPlayTimeInSeconds_ReturnValue_1) == 0x00000C, "Member 'INTERACT_CyberShodan_C_StartColorPulse::CallFunc_GetPlayTimeInSeconds_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, CallFunc_GetPlayTimeInSeconds_ReturnValue_2) == 0x000010, "Member 'INTERACT_CyberShodan_C_StartColorPulse::CallFunc_GetPlayTimeInSeconds_ReturnValue_2' has a wrong offset!");
+
+// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.HasChargedAllConstraints
+// 0x0048 (0x0048 - 0x0000)
+struct INTERACT_CyberShodan_C_HasChargedAllConstraints final
+{
+public:
+	float                                         ElapsedTime;                                       // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Result;                                            // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AShodanTether_C*                        Tether;                                            // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Count;                                             // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Variable;                                 // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_MakeLiteralByte_ReturnValue;              // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0025(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ShodanTetherState                        CallFunc_GetTetherState_Result;                    // 0x0026(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_ByteByte_ReturnValue;             // 0x0027(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_GetElapsedTimeInState_Result;             // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ShodanTetherState                        CallFunc_GetTetherState_Result_1;                  // 0x002D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x002E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2F[0x1];                                       // 0x002F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	class AShodanTether_C*                        CallFunc_Array_Get_Item;                           // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_CyberShodan_C_HasChargedAllConstraints) == 0x000008, "Wrong alignment on INTERACT_CyberShodan_C_HasChargedAllConstraints");
+static_assert(sizeof(INTERACT_CyberShodan_C_HasChargedAllConstraints) == 0x000048, "Wrong size on INTERACT_CyberShodan_C_HasChargedAllConstraints");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, ElapsedTime) == 0x000000, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::ElapsedTime' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Result) == 0x000004, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Tether) == 0x000008, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Tether' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Count) == 0x000010, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Count' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Temp_int_Loop_Counter_Variable) == 0x000014, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Add_IntInt_ReturnValue) == 0x000018, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Temp_int_Array_Index_Variable) == 0x00001C, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Temp_int_Variable) == 0x000020, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Temp_int_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_MakeLiteralByte_ReturnValue) == 0x000024, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_MakeLiteralByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_IsValid_ReturnValue) == 0x000025, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_GetTetherState_Result) == 0x000026, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_GetTetherState_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Greater_ByteByte_ReturnValue) == 0x000027, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Greater_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_GetElapsedTimeInState_Result) == 0x000028, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_GetElapsedTimeInState_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x00002C, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_GetTetherState_Result_1) == 0x00002D, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_GetTetherState_Result_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x00002E, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Array_Get_Item) == 0x000030, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Array_Length_ReturnValue) == 0x000038, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Less_IntInt_ReturnValue) == 0x00003C, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Add_IntInt_ReturnValue_1) == 0x000040, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
+
+// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.IsChargingAllConstraints
+// 0x0040 (0x0040 - 0x0000)
+struct INTERACT_CyberShodan_C_IsChargingAllConstraints final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AShodanTether_C*                        Tether;                                            // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class AShodanTether_C*                        CallFunc_Array_Get_Item;                           // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAttributeDef*                          CallFunc_GetHealthAttrib_ReturnValue;              // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_CyberShodan_C_IsChargingAllConstraints) == 0x000008, "Wrong alignment on INTERACT_CyberShodan_C_IsChargingAllConstraints");
+static_assert(sizeof(INTERACT_CyberShodan_C_IsChargingAllConstraints) == 0x000040, "Wrong size on INTERACT_CyberShodan_C_IsChargingAllConstraints");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, Result) == 0x000000, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, Tether) == 0x000008, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::Tether' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, Temp_int_Loop_Counter_Variable) == 0x000010, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Add_IntInt_ReturnValue) == 0x000014, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, Temp_int_Array_Index_Variable) == 0x000018, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_IsValid_ReturnValue) == 0x00001C, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Array_Get_Item) == 0x000020, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_GetHealthAttrib_ReturnValue) == 0x000028, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_GetHealthAttrib_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_GetAttribValue_ReturnValue) == 0x000030, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Array_Length_ReturnValue) == 0x000034, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000038, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Less_IntInt_ReturnValue) == 0x000039, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.EVENT_OnTargetFadeTick
+// 0x002C (0x002C - 0x0000)
+struct INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick final
+{
+public:
+	float                                         TargetIntensity;                                   // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         ElapsedTimeSinceImpact;                            // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Ease_ReturnValue;                         // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FClamp_ReturnValue;                       // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FLinearColor                           K2Node_MakeStruct_LinearColor;                     // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetGameTimeInSeconds_ReturnValue;         // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick) == 0x000004, "Wrong alignment on INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick");
+static_assert(sizeof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick) == 0x00002C, "Wrong size on INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick");
+static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, TargetIntensity) == 0x000000, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::TargetIntensity' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, ElapsedTimeSinceImpact) == 0x000004, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::ElapsedTimeSinceImpact' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_Ease_ReturnValue) == 0x000008, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_Ease_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_FClamp_ReturnValue) == 0x00000C, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_FClamp_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, K2Node_MakeStruct_LinearColor) == 0x000010, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::K2Node_MakeStruct_LinearColor' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000020, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_GetGameTimeInSeconds_ReturnValue) == 0x000024, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_GetGameTimeInSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000028, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.RegisterActiveBlastRegion
+// 0x0020 (0x0020 - 0x0000)
+struct INTERACT_CyberShodan_C_RegisterActiveBlastRegion final
+{
+public:
+	class ACYBR_ShodanBlastRegion_C*              BlastRegion;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsActive;                                          // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TrySetState_Result;                       // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Set_Length_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TrySetState_Result_1;                     // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x0013(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	int32                                         CallFunc_Set_Length_ReturnValue_1;                 // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Set_Remove_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion) == 0x000008, "Wrong alignment on INTERACT_CyberShodan_C_RegisterActiveBlastRegion");
+static_assert(sizeof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion) == 0x000020, "Wrong size on INTERACT_CyberShodan_C_RegisterActiveBlastRegion");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, BlastRegion) == 0x000000, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::BlastRegion' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, IsActive) == 0x000008, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::IsActive' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_TrySetState_Result) == 0x000009, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_TrySetState_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_Set_Length_ReturnValue) == 0x00000C, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_Set_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000010, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000011, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_TrySetState_Result_1) == 0x000012, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_TrySetState_Result_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x000013, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_Set_Length_ReturnValue_1) == 0x000014, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_Set_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_Greater_IntInt_ReturnValue) == 0x000018, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_Set_Remove_ReturnValue) == 0x000019, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_Set_Remove_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.GetShodanMaterialInstance
+// 0x0018 (0x0018 - 0x0000)
+struct INTERACT_CyberShodan_C_GetShodanMaterialInstance final
+{
+public:
+	class UMaterialInstanceDynamic*               Result;                                            // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue; // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_CyberShodan_C_GetShodanMaterialInstance) == 0x000008, "Wrong alignment on INTERACT_CyberShodan_C_GetShodanMaterialInstance");
+static_assert(sizeof(INTERACT_CyberShodan_C_GetShodanMaterialInstance) == 0x000018, "Wrong size on INTERACT_CyberShodan_C_GetShodanMaterialInstance");
+static_assert(offsetof(INTERACT_CyberShodan_C_GetShodanMaterialInstance, Result) == 0x000000, "Member 'INTERACT_CyberShodan_C_GetShodanMaterialInstance::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_GetShodanMaterialInstance, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'INTERACT_CyberShodan_C_GetShodanMaterialInstance::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_CyberShodan_C_GetShodanMaterialInstance, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x000010, "Member 'INTERACT_CyberShodan_C_GetShodanMaterialInstance::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.SetShodanColorScale
 // 0x0070 (0x0070 - 0x0000)
@@ -1472,221 +1687,6 @@ static_assert(offsetof(INTERACT_CyberShodan_C_ExecuteUbergraph_INTERACT_CyberSho
 static_assert(offsetof(INTERACT_CyberShodan_C_ExecuteUbergraph_INTERACT_CyberShodan, CallFunc_K2_GetComponentLocation_ReturnValue_1) == 0x000074, "Member 'INTERACT_CyberShodan_C_ExecuteUbergraph_INTERACT_CyberShodan::CallFunc_K2_GetComponentLocation_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(INTERACT_CyberShodan_C_ExecuteUbergraph_INTERACT_CyberShodan, CallFunc_K2_GetComponentLocation_ReturnValue_2) == 0x000080, "Member 'INTERACT_CyberShodan_C_ExecuteUbergraph_INTERACT_CyberShodan::CallFunc_K2_GetComponentLocation_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(INTERACT_CyberShodan_C_ExecuteUbergraph_INTERACT_CyberShodan, CallFunc_TrySetState_Result) == 0x00008C, "Member 'INTERACT_CyberShodan_C_ExecuteUbergraph_INTERACT_CyberShodan::CallFunc_TrySetState_Result' has a wrong offset!");
-
-// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.GetShodanMaterialInstance
-// 0x0018 (0x0018 - 0x0000)
-struct INTERACT_CyberShodan_C_GetShodanMaterialInstance final
-{
-public:
-	class UMaterialInstanceDynamic*               Result;                                            // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue; // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_CyberShodan_C_GetShodanMaterialInstance) == 0x000008, "Wrong alignment on INTERACT_CyberShodan_C_GetShodanMaterialInstance");
-static_assert(sizeof(INTERACT_CyberShodan_C_GetShodanMaterialInstance) == 0x000018, "Wrong size on INTERACT_CyberShodan_C_GetShodanMaterialInstance");
-static_assert(offsetof(INTERACT_CyberShodan_C_GetShodanMaterialInstance, Result) == 0x000000, "Member 'INTERACT_CyberShodan_C_GetShodanMaterialInstance::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_GetShodanMaterialInstance, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'INTERACT_CyberShodan_C_GetShodanMaterialInstance::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_GetShodanMaterialInstance, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x000010, "Member 'INTERACT_CyberShodan_C_GetShodanMaterialInstance::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.RegisterActiveBlastRegion
-// 0x0020 (0x0020 - 0x0000)
-struct INTERACT_CyberShodan_C_RegisterActiveBlastRegion final
-{
-public:
-	class ACYBR_ShodanBlastRegion_C*              BlastRegion;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsActive;                                          // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TrySetState_Result;                       // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Set_Length_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TrySetState_Result_1;                     // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x0013(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	int32                                         CallFunc_Set_Length_ReturnValue_1;                 // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Set_Remove_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion) == 0x000008, "Wrong alignment on INTERACT_CyberShodan_C_RegisterActiveBlastRegion");
-static_assert(sizeof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion) == 0x000020, "Wrong size on INTERACT_CyberShodan_C_RegisterActiveBlastRegion");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, BlastRegion) == 0x000000, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::BlastRegion' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, IsActive) == 0x000008, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::IsActive' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_TrySetState_Result) == 0x000009, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_TrySetState_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_Set_Length_ReturnValue) == 0x00000C, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_Set_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000010, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000011, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_TrySetState_Result_1) == 0x000012, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_TrySetState_Result_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x000013, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_Set_Length_ReturnValue_1) == 0x000014, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_Set_Length_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_Greater_IntInt_ReturnValue) == 0x000018, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RegisterActiveBlastRegion, CallFunc_Set_Remove_ReturnValue) == 0x000019, "Member 'INTERACT_CyberShodan_C_RegisterActiveBlastRegion::CallFunc_Set_Remove_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.EVENT_OnTargetFadeTick
-// 0x002C (0x002C - 0x0000)
-struct INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick final
-{
-public:
-	float                                         TargetIntensity;                                   // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         ElapsedTimeSinceImpact;                            // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Ease_ReturnValue;                         // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FClamp_ReturnValue;                       // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FLinearColor                           K2Node_MakeStruct_LinearColor;                     // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetGameTimeInSeconds_ReturnValue;         // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick) == 0x000004, "Wrong alignment on INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick");
-static_assert(sizeof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick) == 0x00002C, "Wrong size on INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick");
-static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, TargetIntensity) == 0x000000, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::TargetIntensity' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, ElapsedTimeSinceImpact) == 0x000004, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::ElapsedTimeSinceImpact' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_Ease_ReturnValue) == 0x000008, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_Ease_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_FClamp_ReturnValue) == 0x00000C, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_FClamp_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, K2Node_MakeStruct_LinearColor) == 0x000010, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::K2Node_MakeStruct_LinearColor' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000020, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_GetGameTimeInSeconds_ReturnValue) == 0x000024, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_GetGameTimeInSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000028, "Member 'INTERACT_CyberShodan_C_EVENT_OnTargetFadeTick::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.IsChargingAllConstraints
-// 0x0040 (0x0040 - 0x0000)
-struct INTERACT_CyberShodan_C_IsChargingAllConstraints final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AShodanTether_C*                        Tether;                                            // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class AShodanTether_C*                        CallFunc_Array_Get_Item;                           // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAttributeDef*                          CallFunc_GetHealthAttrib_ReturnValue;              // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_CyberShodan_C_IsChargingAllConstraints) == 0x000008, "Wrong alignment on INTERACT_CyberShodan_C_IsChargingAllConstraints");
-static_assert(sizeof(INTERACT_CyberShodan_C_IsChargingAllConstraints) == 0x000040, "Wrong size on INTERACT_CyberShodan_C_IsChargingAllConstraints");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, Result) == 0x000000, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, Tether) == 0x000008, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::Tether' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, Temp_int_Loop_Counter_Variable) == 0x000010, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Add_IntInt_ReturnValue) == 0x000014, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, Temp_int_Array_Index_Variable) == 0x000018, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_IsValid_ReturnValue) == 0x00001C, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Array_Get_Item) == 0x000020, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_GetHealthAttrib_ReturnValue) == 0x000028, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_GetHealthAttrib_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_GetAttribValue_ReturnValue) == 0x000030, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Array_Length_ReturnValue) == 0x000034, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000038, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_IsChargingAllConstraints, CallFunc_Less_IntInt_ReturnValue) == 0x000039, "Member 'INTERACT_CyberShodan_C_IsChargingAllConstraints::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.HasChargedAllConstraints
-// 0x0048 (0x0048 - 0x0000)
-struct INTERACT_CyberShodan_C_HasChargedAllConstraints final
-{
-public:
-	float                                         ElapsedTime;                                       // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Result;                                            // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AShodanTether_C*                        Tether;                                            // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Count;                                             // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Variable;                                 // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         CallFunc_MakeLiteralByte_ReturnValue;              // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0025(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_ShodanTetherState                        CallFunc_GetTetherState_Result;                    // 0x0026(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_ByteByte_ReturnValue;             // 0x0027(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	float                                         CallFunc_GetElapsedTimeInState_Result;             // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_ShodanTetherState                        CallFunc_GetTetherState_Result_1;                  // 0x002D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x002E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2F[0x1];                                       // 0x002F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	class AShodanTether_C*                        CallFunc_Array_Get_Item;                           // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_CyberShodan_C_HasChargedAllConstraints) == 0x000008, "Wrong alignment on INTERACT_CyberShodan_C_HasChargedAllConstraints");
-static_assert(sizeof(INTERACT_CyberShodan_C_HasChargedAllConstraints) == 0x000048, "Wrong size on INTERACT_CyberShodan_C_HasChargedAllConstraints");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, ElapsedTime) == 0x000000, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::ElapsedTime' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Result) == 0x000004, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Tether) == 0x000008, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Tether' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Count) == 0x000010, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Count' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Temp_int_Loop_Counter_Variable) == 0x000014, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Add_IntInt_ReturnValue) == 0x000018, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Temp_int_Array_Index_Variable) == 0x00001C, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, Temp_int_Variable) == 0x000020, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::Temp_int_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_MakeLiteralByte_ReturnValue) == 0x000024, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_MakeLiteralByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_IsValid_ReturnValue) == 0x000025, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_GetTetherState_Result) == 0x000026, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_GetTetherState_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Greater_ByteByte_ReturnValue) == 0x000027, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Greater_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_GetElapsedTimeInState_Result) == 0x000028, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_GetElapsedTimeInState_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x00002C, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_GetTetherState_Result_1) == 0x00002D, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_GetTetherState_Result_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x00002E, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Array_Get_Item) == 0x000030, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Array_Length_ReturnValue) == 0x000038, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Less_IntInt_ReturnValue) == 0x00003C, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_HasChargedAllConstraints, CallFunc_Add_IntInt_ReturnValue_1) == 0x000040, "Member 'INTERACT_CyberShodan_C_HasChargedAllConstraints::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
-
-// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.StartColorPulse
-// 0x0014 (0x0014 - 0x0000)
-struct INTERACT_CyberShodan_C_StartColorPulse final
-{
-public:
-	ENUM_ShodanPulseType                          Type;                                              // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue_1;       // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue_2;       // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_CyberShodan_C_StartColorPulse) == 0x000004, "Wrong alignment on INTERACT_CyberShodan_C_StartColorPulse");
-static_assert(sizeof(INTERACT_CyberShodan_C_StartColorPulse) == 0x000014, "Wrong size on INTERACT_CyberShodan_C_StartColorPulse");
-static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, Type) == 0x000000, "Member 'INTERACT_CyberShodan_C_StartColorPulse::Type' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000004, "Member 'INTERACT_CyberShodan_C_StartColorPulse::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, K2Node_SwitchEnum_CmpSuccess) == 0x000008, "Member 'INTERACT_CyberShodan_C_StartColorPulse::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, CallFunc_GetPlayTimeInSeconds_ReturnValue_1) == 0x00000C, "Member 'INTERACT_CyberShodan_C_StartColorPulse::CallFunc_GetPlayTimeInSeconds_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_StartColorPulse, CallFunc_GetPlayTimeInSeconds_ReturnValue_2) == 0x000010, "Member 'INTERACT_CyberShodan_C_StartColorPulse::CallFunc_GetPlayTimeInSeconds_ReturnValue_2' has a wrong offset!");
-
-// Function INTERACT_CyberShodan.INTERACT_CyberShodan_C.RecievePain
-// 0x002C (0x002C - 0x0000)
-struct INTERACT_CyberShodan_C_RecievePain final
-{
-public:
-	bool                                          Major;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_RandomFloatInRange_ReturnValue;           // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_RandomFloatInRange_ReturnValue_1;         // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_SelectFloat_ReturnValue;                  // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue_1;            // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_SelectFloat_ReturnValue_1;                // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_CyberShodan_C_RecievePain) == 0x000004, "Wrong alignment on INTERACT_CyberShodan_C_RecievePain");
-static_assert(sizeof(INTERACT_CyberShodan_C_RecievePain) == 0x00002C, "Wrong size on INTERACT_CyberShodan_C_RecievePain");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, Major) == 0x000000, "Member 'INTERACT_CyberShodan_C_RecievePain::Major' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_RandomFloatInRange_ReturnValue) == 0x000004, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_RandomFloatInRange_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Less_FloatFloat_ReturnValue) == 0x000008, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_RandomFloatInRange_ReturnValue_1) == 0x00000C, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_RandomFloatInRange_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_SelectFloat_ReturnValue) == 0x000010, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_SelectFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Less_FloatFloat_ReturnValue_1) == 0x000014, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Less_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000018, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_SelectFloat_ReturnValue_1) == 0x00001C, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_SelectFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000020, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Add_FloatFloat_ReturnValue) == 0x000024, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_CyberShodan_C_RecievePain, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000028, "Member 'INTERACT_CyberShodan_C_RecievePain::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
 
 }
 

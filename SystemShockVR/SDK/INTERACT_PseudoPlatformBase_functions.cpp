@@ -17,61 +17,306 @@
 namespace SDK
 {
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ExecuteUbergraph_INTERACT_PseudoPlatformBase
-// (Final, UbergraphFunction, HasDefaults)
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TryInteract
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// ENUM_InteractionType                    InteractionType                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FSTRUCT_InteractResults          InteractResults                                        (Parm, OutParm, HasGetValueTypeHash)
 
-void AINTERACT_PseudoPlatformBase_C::ExecuteUbergraph_INTERACT_PseudoPlatformBase(int32 EntryPoint)
+void AINTERACT_PseudoPlatformBase_C::TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ExecuteUbergraph_INTERACT_PseudoPlatformBase");
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "TryInteract");
 
-	Params::INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase Parms{};
+	Params::INTERACT_PseudoPlatformBase_C_TryInteract Parms{};
 
-	Parms.EntryPoint = EntryPoint;
+	Parms.SourceActor = SourceActor;
+	Parms.CursorPrimitive = CursorPrimitive;
+	Parms.InteractionType = InteractionType;
 
 	UObject::ProcessEvent(Func, &Parms);
+
+	if (InteractResults != nullptr)
+		*InteractResults = std::move(Parms.InteractResults);
 }
 
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.IsAbleToIncreaseOverlapProgress
+// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void AINTERACT_PseudoPlatformBase_C::ReceiveBeginPlay()
+void AINTERACT_PseudoPlatformBase_C::IsAbleToIncreaseOverlapProgress(bool* Result)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ReceiveBeginPlay");
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "IsAbleToIncreaseOverlapProgress");
+
+	Params::INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.HasPlatformBeenEnabled
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_PseudoPlatformBase_C::HasPlatformBeenEnabled(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "HasPlatformBeenEnabled");
+
+	Params::INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TryExpireRideMoveControl
+// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_PseudoPlatformBase_C::TryExpireRideMoveControl(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "TryExpireRideMoveControl");
+
+	Params::INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EVENT_AfterCenterMoveDelayTimer
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void AINTERACT_PseudoPlatformBase_C::EVENT_AfterCenterMoveDelayTimer()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "EVENT_AfterCenterMoveDelayTimer");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature
-// (BlueprintEvent)
-// Parameters:
-// class UPrimitiveComponent*              OverlappedComponent                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class UPrimitiveComponent*              OtherComp                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// int32                                   OtherBodyIndex                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.AddRidePlatformMoveControl
+// (Public, BlueprintCallable, BlueprintEvent)
 
-void AINTERACT_PseudoPlatformBase_C::BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void AINTERACT_PseudoPlatformBase_C::AddRidePlatformMoveControl()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature");
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "AddRidePlatformMoveControl");
 
-	Params::INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature Parms{};
+	UObject::ProcessEvent(Func, nullptr);
+}
 
-	Parms.OverlappedComponent = OverlappedComponent;
-	Parms.OtherActor = OtherActor;
-	Parms.OtherComp = OtherComp;
-	Parms.OtherBodyIndex = OtherBodyIndex;
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EVENT_OnCenterMoveExpired
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UMOVECONTROL_Base_C*              MoveControl                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_PseudoPlatformBase_C::EVENT_OnCenterMoveExpired(class UMOVECONTROL_Base_C* MoveControl)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "EVENT_OnCenterMoveExpired");
+
+	Params::INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired Parms{};
+
+	Parms.MoveControl = MoveControl;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.AddCenterMoveControl
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void AINTERACT_PseudoPlatformBase_C::AddCenterMoveControl()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "AddCenterMoveControl");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ActivatePlatform
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void AINTERACT_PseudoPlatformBase_C::ActivatePlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ActivatePlatform");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EndOverlapping
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_Hacker_Simple_C*            Hacker                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_PseudoPlatformBase_C::EndOverlapping(class APAWN_Hacker_Simple_C* Hacker)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "EndOverlapping");
+
+	Params::INTERACT_PseudoPlatformBase_C_EndOverlapping Parms{};
+
+	Parms.Hacker = Hacker;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BeginOverlapping
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_Hacker_Simple_C*            Hacker                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_PseudoPlatformBase_C::BeginOverlapping(class APAWN_Hacker_Simple_C* Hacker)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "BeginOverlapping");
+
+	Params::INTERACT_PseudoPlatformBase_C_BeginOverlapping Parms{};
+
+	Parms.Hacker = Hacker;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.UpdateOverlapProgress
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_PseudoPlatformBase_C::UpdateOverlapProgress(float DeltaTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "UpdateOverlapProgress");
+
+	Params::INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress Parms{};
+
+	Parms.DeltaTime = DeltaTime;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.OnPlatformEnableStateChanged
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_PseudoPlatformBase_C::OnPlatformEnableStateChanged(bool State)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "OnPlatformEnableStateChanged");
+
+	Params::INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged Parms{};
+
+	Parms.State = State;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TrySetPlatformEnabled
+// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_PseudoPlatformBase_C::TrySetPlatformEnabled(bool State, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "TrySetPlatformEnabled");
+
+	Params::INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled Parms{};
+
+	Parms.State = State;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.InitializePlatform
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void AINTERACT_PseudoPlatformBase_C::InitializePlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "InitializePlatform");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ReceiveTick
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_PseudoPlatformBase_C::ReceiveTick(float DeltaSeconds)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ReceiveTick");
+
+	Params::INTERACT_PseudoPlatformBase_C_ReceiveTick Parms{};
+
+	Parms.DeltaSeconds = DeltaSeconds;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -107,308 +352,63 @@ void AINTERACT_PseudoPlatformBase_C::BndEvt__INTERACT_PseudoPlatformBase_PawnCol
 }
 
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ReceiveTick
-// (Event, Public, BlueprintEvent)
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature
+// (BlueprintEvent)
 // Parameters:
-// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              OverlappedComponent                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              OtherComp                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   OtherBodyIndex                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void AINTERACT_PseudoPlatformBase_C::ReceiveTick(float DeltaSeconds)
+void AINTERACT_PseudoPlatformBase_C::BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ReceiveTick");
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature");
 
-	Params::INTERACT_PseudoPlatformBase_C_ReceiveTick Parms{};
+	Params::INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature Parms{};
 
-	Parms.DeltaSeconds = DeltaSeconds;
+	Parms.OverlappedComponent = OverlappedComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.InitializePlatform
-// (Protected, BlueprintCallable, BlueprintEvent)
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
 
-void AINTERACT_PseudoPlatformBase_C::InitializePlatform()
+void AINTERACT_PseudoPlatformBase_C::ReceiveBeginPlay()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "InitializePlatform");
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ReceiveBeginPlay");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TrySetPlatformEnabled
-// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ExecuteUbergraph_INTERACT_PseudoPlatformBase
+// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
-// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void AINTERACT_PseudoPlatformBase_C::TrySetPlatformEnabled(bool State, bool* Result)
+void AINTERACT_PseudoPlatformBase_C::ExecuteUbergraph_INTERACT_PseudoPlatformBase(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "TrySetPlatformEnabled");
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ExecuteUbergraph_INTERACT_PseudoPlatformBase");
 
-	Params::INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled Parms{};
+	Params::INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase Parms{};
 
-	Parms.State = State;
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.OnPlatformEnableStateChanged
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_PseudoPlatformBase_C::OnPlatformEnableStateChanged(bool State)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "OnPlatformEnableStateChanged");
-
-	Params::INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged Parms{};
-
-	Parms.State = State;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.UpdateOverlapProgress
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// float                                   DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_PseudoPlatformBase_C::UpdateOverlapProgress(float DeltaTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "UpdateOverlapProgress");
-
-	Params::INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress Parms{};
-
-	Parms.DeltaTime = DeltaTime;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BeginOverlapping
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_Hacker_Simple_C*            Hacker                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_PseudoPlatformBase_C::BeginOverlapping(class APAWN_Hacker_Simple_C* Hacker)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "BeginOverlapping");
-
-	Params::INTERACT_PseudoPlatformBase_C_BeginOverlapping Parms{};
-
-	Parms.Hacker = Hacker;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EndOverlapping
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_Hacker_Simple_C*            Hacker                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_PseudoPlatformBase_C::EndOverlapping(class APAWN_Hacker_Simple_C* Hacker)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "EndOverlapping");
-
-	Params::INTERACT_PseudoPlatformBase_C_EndOverlapping Parms{};
-
-	Parms.Hacker = Hacker;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ActivatePlatform
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void AINTERACT_PseudoPlatformBase_C::ActivatePlatform()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ActivatePlatform");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.AddCenterMoveControl
-// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void AINTERACT_PseudoPlatformBase_C::AddCenterMoveControl()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "AddCenterMoveControl");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EVENT_OnCenterMoveExpired
-// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UMOVECONTROL_Base_C*              MoveControl                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_PseudoPlatformBase_C::EVENT_OnCenterMoveExpired(class UMOVECONTROL_Base_C* MoveControl)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "EVENT_OnCenterMoveExpired");
-
-	Params::INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired Parms{};
-
-	Parms.MoveControl = MoveControl;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.AddRidePlatformMoveControl
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void AINTERACT_PseudoPlatformBase_C::AddRidePlatformMoveControl()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "AddRidePlatformMoveControl");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EVENT_AfterCenterMoveDelayTimer
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void AINTERACT_PseudoPlatformBase_C::EVENT_AfterCenterMoveDelayTimer()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "EVENT_AfterCenterMoveDelayTimer");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TryExpireRideMoveControl
-// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_PseudoPlatformBase_C::TryExpireRideMoveControl(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "TryExpireRideMoveControl");
-
-	Params::INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.HasPlatformBeenEnabled
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_PseudoPlatformBase_C::HasPlatformBeenEnabled(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "HasPlatformBeenEnabled");
-
-	Params::INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.IsAbleToIncreaseOverlapProgress
-// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_PseudoPlatformBase_C::IsAbleToIncreaseOverlapProgress(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "IsAbleToIncreaseOverlapProgress");
-
-	Params::INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TryInteract
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// ENUM_InteractionType                    InteractionType                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FSTRUCT_InteractResults          InteractResults                                        (Parm, OutParm, HasGetValueTypeHash)
-
-void AINTERACT_PseudoPlatformBase_C::TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "TryInteract");
-
-	Params::INTERACT_PseudoPlatformBase_C_TryInteract Parms{};
-
-	Parms.SourceActor = SourceActor;
-	Parms.CursorPrimitive = CursorPrimitive;
-	Parms.InteractionType = InteractionType;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (InteractResults != nullptr)
-		*InteractResults = std::move(Parms.InteractResults);
 }
 
 }

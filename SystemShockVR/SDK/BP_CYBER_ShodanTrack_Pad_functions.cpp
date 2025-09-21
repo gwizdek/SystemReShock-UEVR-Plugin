@@ -17,6 +17,27 @@
 namespace SDK
 {
 
+// Function BP_CYBER_ShodanTrack_Pad.BP_CYBER_ShodanTrack_Pad_C.TryActivateTrack
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void ABP_CYBER_ShodanTrack_Pad_C::TryActivateTrack(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_CYBER_ShodanTrack_Pad_C", "TryActivateTrack");
+
+	Params::BP_CYBER_ShodanTrack_Pad_C_TryActivateTrack Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
 // Function BP_CYBER_ShodanTrack_Pad.BP_CYBER_ShodanTrack_Pad_C.EVENT_OnDistanceTick
 // (Private, BlueprintCallable, BlueprintEvent)
 
@@ -212,27 +233,6 @@ void ABP_CYBER_ShodanTrack_Pad_C::ExecuteUbergraph_BP_CYBER_ShodanTrack_Pad(int3
 	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_CYBER_ShodanTrack_Pad.BP_CYBER_ShodanTrack_Pad_C.TryActivateTrack
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void ABP_CYBER_ShodanTrack_Pad_C::TryActivateTrack(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_CYBER_ShodanTrack_Pad_C", "TryActivateTrack");
-
-	Params::BP_CYBER_ShodanTrack_Pad_C_TryActivateTrack Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
 }
 
 }

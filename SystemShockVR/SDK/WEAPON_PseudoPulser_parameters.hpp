@@ -13,8 +13,8 @@
 #include "CoreGame_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "AttributeSystem_structs.hpp"
-#include "STRUCT_WeaponMode_structs.hpp"
 #include "Engine_structs.hpp"
+#include "STRUCT_WeaponMode_structs.hpp"
 
 
 namespace SDK::Params

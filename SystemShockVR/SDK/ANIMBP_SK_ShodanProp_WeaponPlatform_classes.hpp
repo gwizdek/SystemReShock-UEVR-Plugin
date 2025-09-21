@@ -36,10 +36,10 @@ public:
 	float                                         JitterAmount;                                      // 0x0568(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform(int32 EntryPoint);
-	void BlueprintUpdateAnimation(float DeltaTimeX);
-	void SetOpenProgress(float Value);
 	void AnimGraph(struct FPoseLink* AnimGraph_0);
+	void SetOpenProgress(float Value);
+	void BlueprintUpdateAnimation(float DeltaTimeX);
+	void ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()

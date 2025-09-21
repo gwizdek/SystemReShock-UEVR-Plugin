@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_PseudoShodanState_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ENUM_PseudoShodanState_structs.hpp"
 
 
 namespace SDK::Params
@@ -45,6 +45,17 @@ static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteract
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteractable, CallFunc_TryInteract_InteractResults) == 0x000010, "Member 'INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteractable::CallFunc_TryInteract_InteractResults' has a wrong offset!");
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteractable, CallFunc_IsValid_ReturnValue) == 0x000030, "Member 'INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteractable::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.OnPlatformEnableStateChanged
+// 0x0001 (0x0001 - 0x0000)
+struct INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged final
+{
+public:
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged");
+static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged");
+static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged, State) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged::State' has a wrong offset!");
+
 // Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnStartedSurfing
 // 0x0038 (0x0038 - 0x0000)
 struct INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing final
@@ -69,44 +80,16 @@ static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing, CallFunc_CreateLevelSequencePlayer_ReturnValue) == 0x000028, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing::CallFunc_CreateLevelSequencePlayer_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing, CallFunc_IsValid_ReturnValue) == 0x000030, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.BeginOverlapping
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnCenterMoveExpired
 // 0x0008 (0x0008 - 0x0000)
-struct INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping final
+struct INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired final
 {
 public:
-	class APAWN_Hacker_Simple_C*                  Hacker;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMOVECONTROL_Base_C*                    MoveControl;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping) == 0x000008, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping");
-static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping) == 0x000008, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping");
-static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping, Hacker) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping::Hacker' has a wrong offset!");
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EndOverlapping
-// 0x0008 (0x0008 - 0x0000)
-struct INTERACT_PseudoSurfboardPlatform_C_EndOverlapping final
-{
-public:
-	class APAWN_Hacker_Simple_C*                  Hacker;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_EndOverlapping) == 0x000008, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_EndOverlapping");
-static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_EndOverlapping) == 0x000008, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_EndOverlapping");
-static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EndOverlapping, Hacker) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_EndOverlapping::Hacker' has a wrong offset!");
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_AfterCenterMoveDelayTimer
-// 0x0050 (0x0050 - 0x0000)
-struct INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer final
-{
-public:
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0000(0x0010)(ZeroConstructor, NoDestructor)
-	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0010(0x0030)(ConstParm, IsPlainOldData, NoDestructor)
-	class AActor*                                 CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue; // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APseudoSurfboard_C*                     CallFunc_FinishSpawningActor_ReturnValue;          // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer) == 0x000010, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer");
-static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer) == 0x000050, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer");
-static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer, K2Node_CreateDelegate_OutputDelegate) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer, CallFunc_GetTransform_ReturnValue) == 0x000010, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer::CallFunc_GetTransform_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer, CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue) == 0x000040, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer::CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer, CallFunc_FinishSpawningActor_ReturnValue) == 0x000048, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer::CallFunc_FinishSpawningActor_ReturnValue' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired) == 0x000008, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired");
+static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired) == 0x000008, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired");
+static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired, MoveControl) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired::MoveControl' has a wrong offset!");
 
 // Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.IsAbleToIncreaseOverlapProgress
 // 0x000B (0x000B - 0x0000)
@@ -139,27 +122,44 @@ static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_IsAbleToIncreaseOverla
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_BooleanAND_ReturnValue) == 0x000009, "Member 'INTERACT_PseudoSurfboardPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_BooleanAND_ReturnValue_1) == 0x00000A, "Member 'INTERACT_PseudoSurfboardPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
 
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnCenterMoveExpired
-// 0x0008 (0x0008 - 0x0000)
-struct INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired final
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_AfterCenterMoveDelayTimer
+// 0x0050 (0x0050 - 0x0000)
+struct INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer final
 {
 public:
-	class UMOVECONTROL_Base_C*                    MoveControl;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0000(0x0010)(ZeroConstructor, NoDestructor)
+	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0010(0x0030)(ConstParm, IsPlainOldData, NoDestructor)
+	class AActor*                                 CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue; // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APseudoSurfboard_C*                     CallFunc_FinishSpawningActor_ReturnValue;          // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired) == 0x000008, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired");
-static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired) == 0x000008, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired");
-static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired, MoveControl) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired::MoveControl' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer) == 0x000010, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer");
+static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer) == 0x000050, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer");
+static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer, K2Node_CreateDelegate_OutputDelegate) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer, CallFunc_GetTransform_ReturnValue) == 0x000010, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer::CallFunc_GetTransform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer, CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue) == 0x000040, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer::CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer, CallFunc_FinishSpawningActor_ReturnValue) == 0x000048, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_AfterCenterMoveDelayTimer::CallFunc_FinishSpawningActor_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.OnPlatformEnableStateChanged
-// 0x0001 (0x0001 - 0x0000)
-struct INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged final
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EndOverlapping
+// 0x0008 (0x0008 - 0x0000)
+struct INTERACT_PseudoSurfboardPlatform_C_EndOverlapping final
 {
 public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	class APAWN_Hacker_Simple_C*                  Hacker;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged");
-static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged");
-static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged, State) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged::State' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_EndOverlapping) == 0x000008, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_EndOverlapping");
+static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_EndOverlapping) == 0x000008, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_EndOverlapping");
+static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EndOverlapping, Hacker) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_EndOverlapping::Hacker' has a wrong offset!");
+
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.BeginOverlapping
+// 0x0008 (0x0008 - 0x0000)
+struct INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping final
+{
+public:
+	class APAWN_Hacker_Simple_C*                  Hacker;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping) == 0x000008, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping");
+static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping) == 0x000008, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping");
+static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping, Hacker) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping::Hacker' has a wrong offset!");
 
 }
 

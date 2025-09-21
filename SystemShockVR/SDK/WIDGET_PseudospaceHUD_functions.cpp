@@ -17,6 +17,54 @@
 namespace SDK
 {
 
+// Function WIDGET_PseudospaceHUD.WIDGET_PseudospaceHUD_C.InvokeSort
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    HoldingInput                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_PseudospaceHUD_C::InvokeSort(bool HoldingInput, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_PseudospaceHUD_C", "InvokeSort");
+
+	Params::WIDGET_PseudospaceHUD_C_InvokeSort Parms{};
+
+	Parms.HoldingInput = HoldingInput;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_PseudospaceHUD.WIDGET_PseudospaceHUD_C.InvokeVaporize
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    HoldingInput                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_PseudospaceHUD_C::InvokeVaporize(bool HoldingInput, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_PseudospaceHUD_C", "InvokeVaporize");
+
+	Params::WIDGET_PseudospaceHUD_C_InvokeVaporize Parms{};
+
+	Parms.HoldingInput = HoldingInput;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
 // Function WIDGET_PseudospaceHUD.WIDGET_PseudospaceHUD_C.SetHoldInteractionProgress
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:

@@ -17,21 +17,42 @@
 namespace SDK
 {
 
-// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform
-// (Final, UbergraphFunction)
+// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.AnimGraph
+// (HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FPoseLink                        AnimGraph_0                                            (Parm, OutParm, NoDestructor)
 
-void UANIMBP_SK_ShodanProp_WeaponPlatform_C::ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform(int32 EntryPoint)
+void UANIMBP_SK_ShodanProp_WeaponPlatform_C::AnimGraph(struct FPoseLink* AnimGraph_0)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ANIMBP_SK_ShodanProp_WeaponPlatform_C", "ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform");
+		Func = Class->GetFunction("ANIMBP_SK_ShodanProp_WeaponPlatform_C", "AnimGraph");
 
-	Params::ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform Parms{};
+	Params::ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph Parms{};
 
-	Parms.EntryPoint = EntryPoint;
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (AnimGraph_0 != nullptr)
+		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
+}
+
+
+// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.SetOpenProgress
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UANIMBP_SK_ShodanProp_WeaponPlatform_C::SetOpenProgress(float Value)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ANIMBP_SK_ShodanProp_WeaponPlatform_C", "SetOpenProgress");
+
+	Params::ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress Parms{};
+
+	Parms.Value = Value;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -57,44 +78,23 @@ void UANIMBP_SK_ShodanProp_WeaponPlatform_C::BlueprintUpdateAnimation(float Delt
 }
 
 
-// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.SetOpenProgress
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform
+// (Final, UbergraphFunction)
 // Parameters:
-// float                                   Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UANIMBP_SK_ShodanProp_WeaponPlatform_C::SetOpenProgress(float Value)
+void UANIMBP_SK_ShodanProp_WeaponPlatform_C::ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ANIMBP_SK_ShodanProp_WeaponPlatform_C", "SetOpenProgress");
+		Func = Class->GetFunction("ANIMBP_SK_ShodanProp_WeaponPlatform_C", "ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform");
 
-	Params::ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress Parms{};
+	Params::ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform Parms{};
 
-	Parms.Value = Value;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.AnimGraph
-// (HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// struct FPoseLink                        AnimGraph_0                                            (Parm, OutParm, NoDestructor)
-
-void UANIMBP_SK_ShodanProp_WeaponPlatform_C::AnimGraph(struct FPoseLink* AnimGraph_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ANIMBP_SK_ShodanProp_WeaponPlatform_C", "AnimGraph");
-
-	Params::ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph Parms{};
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
-
-	if (AnimGraph_0 != nullptr)
-		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
 }
 
 }

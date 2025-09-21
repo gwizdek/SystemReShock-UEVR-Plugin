@@ -19,6 +19,77 @@
 namespace SDK::Params
 {
 
+// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.IsAbleToIncreaseOverlapProgress
+// 0x0038 (0x0038 - 0x0000)
+struct INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACYBR_InteractBase_C*                   CallFunc_Array_Get_Item;                           // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ACYBR_Ambush_C*                         K2Node_DynamicCast_AsCYBR_Ambush;                  // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsAmbushCurrentlyActive_Result;           // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x002B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x002D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x002E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_2;                // 0x002F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_3;                // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress) == 0x000008, "Wrong alignment on INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress");
+static_assert(sizeof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress) == 0x000038, "Wrong size on INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, Result) == 0x000000, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, Temp_int_Array_Index_Variable) == 0x000004, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Add_IntInt_ReturnValue) == 0x00000C, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Array_Get_Item) == 0x000010, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Array_Length_ReturnValue) == 0x000018, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, K2Node_DynamicCast_AsCYBR_Ambush) == 0x000020, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::K2Node_DynamicCast_AsCYBR_Ambush' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Less_IntInt_ReturnValue) == 0x000029, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_IsAmbushCurrentlyActive_Result) == 0x00002A, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_IsAmbushCurrentlyActive_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Not_PreBool_ReturnValue) == 0x00002B, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_IsValid_ReturnValue) == 0x00002C, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Not_PreBool_ReturnValue_1) == 0x00002D, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_IsValid_ReturnValue_1) == 0x00002E, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Not_PreBool_ReturnValue_2) == 0x00002F, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Not_PreBool_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_IsValid_ReturnValue_2) == 0x000030, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Not_PreBool_ReturnValue_3) == 0x000031, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Not_PreBool_ReturnValue_3' has a wrong offset!");
+
+// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.ActivatePlatform
+// 0x0020 (0x0020 - 0x0000)
+struct INTERACT_PseudoTurretPlatform_C_ActivatePlatform final
+{
+public:
+	class UAttribMod*                             CallFunc_ApplyMod_ReturnValue;                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(ENUM_ShodanTetherState NewState)> K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          CallFunc_TryCreateAimMoveControl_NewParam;         // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform) == 0x000008, "Wrong alignment on INTERACT_PseudoTurretPlatform_C_ActivatePlatform");
+static_assert(sizeof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform) == 0x000020, "Wrong size on INTERACT_PseudoTurretPlatform_C_ActivatePlatform");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform, CallFunc_ApplyMod_ReturnValue) == 0x000000, "Member 'INTERACT_PseudoTurretPlatform_C_ActivatePlatform::CallFunc_ApplyMod_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform, K2Node_CreateDelegate_OutputDelegate) == 0x000008, "Member 'INTERACT_PseudoTurretPlatform_C_ActivatePlatform::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform, CallFunc_TryCreateAimMoveControl_NewParam) == 0x000018, "Member 'INTERACT_PseudoTurretPlatform_C_ActivatePlatform::CallFunc_TryCreateAimMoveControl_NewParam' has a wrong offset!");
+
+// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.OnPlatformEnableStateChanged
+// 0x0001 (0x0001 - 0x0000)
+struct INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged final
+{
+public:
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong alignment on INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged");
+static_assert(sizeof(INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong size on INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged");
+static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged, State) == 0x000000, "Member 'INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged::State' has a wrong offset!");
+
 // Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.RampDownCoils
 // 0x0038 (0x0038 - 0x0000)
 struct INTERACT_PseudoTurretPlatform_C_RampDownCoils final
@@ -330,77 +401,6 @@ static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ExecuteUbergraph_INTERACT
 static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ExecuteUbergraph_INTERACT_PseudoTurretPlatform, CallFunc_Array_Length_ReturnValue) == 0x000010, "Member 'INTERACT_PseudoTurretPlatform_C_ExecuteUbergraph_INTERACT_PseudoTurretPlatform::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ExecuteUbergraph_INTERACT_PseudoTurretPlatform, CallFunc_Array_Get_Item) == 0x000018, "Member 'INTERACT_PseudoTurretPlatform_C_ExecuteUbergraph_INTERACT_PseudoTurretPlatform::CallFunc_Array_Get_Item' has a wrong offset!");
 static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ExecuteUbergraph_INTERACT_PseudoTurretPlatform, CallFunc_Less_IntInt_ReturnValue) == 0x000020, "Member 'INTERACT_PseudoTurretPlatform_C_ExecuteUbergraph_INTERACT_PseudoTurretPlatform::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.ActivatePlatform
-// 0x0020 (0x0020 - 0x0000)
-struct INTERACT_PseudoTurretPlatform_C_ActivatePlatform final
-{
-public:
-	class UAttribMod*                             CallFunc_ApplyMod_ReturnValue;                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(ENUM_ShodanTetherState NewState)> K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
-	bool                                          CallFunc_TryCreateAimMoveControl_NewParam;         // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform) == 0x000008, "Wrong alignment on INTERACT_PseudoTurretPlatform_C_ActivatePlatform");
-static_assert(sizeof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform) == 0x000020, "Wrong size on INTERACT_PseudoTurretPlatform_C_ActivatePlatform");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform, CallFunc_ApplyMod_ReturnValue) == 0x000000, "Member 'INTERACT_PseudoTurretPlatform_C_ActivatePlatform::CallFunc_ApplyMod_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform, K2Node_CreateDelegate_OutputDelegate) == 0x000008, "Member 'INTERACT_PseudoTurretPlatform_C_ActivatePlatform::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_ActivatePlatform, CallFunc_TryCreateAimMoveControl_NewParam) == 0x000018, "Member 'INTERACT_PseudoTurretPlatform_C_ActivatePlatform::CallFunc_TryCreateAimMoveControl_NewParam' has a wrong offset!");
-
-// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.OnPlatformEnableStateChanged
-// 0x0001 (0x0001 - 0x0000)
-struct INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged final
-{
-public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong alignment on INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged");
-static_assert(sizeof(INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong size on INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged, State) == 0x000000, "Member 'INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged::State' has a wrong offset!");
-
-// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.IsAbleToIncreaseOverlapProgress
-// 0x0038 (0x0038 - 0x0000)
-struct INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACYBR_InteractBase_C*                   CallFunc_Array_Get_Item;                           // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class ACYBR_Ambush_C*                         K2Node_DynamicCast_AsCYBR_Ambush;                  // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsAmbushCurrentlyActive_Result;           // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x002B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x002D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x002E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_2;                // 0x002F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_3;                // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress) == 0x000008, "Wrong alignment on INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress");
-static_assert(sizeof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress) == 0x000038, "Wrong size on INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, Result) == 0x000000, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, Temp_int_Array_Index_Variable) == 0x000004, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Add_IntInt_ReturnValue) == 0x00000C, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Array_Get_Item) == 0x000010, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Array_Length_ReturnValue) == 0x000018, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, K2Node_DynamicCast_AsCYBR_Ambush) == 0x000020, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::K2Node_DynamicCast_AsCYBR_Ambush' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Less_IntInt_ReturnValue) == 0x000029, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_IsAmbushCurrentlyActive_Result) == 0x00002A, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_IsAmbushCurrentlyActive_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Not_PreBool_ReturnValue) == 0x00002B, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_IsValid_ReturnValue) == 0x00002C, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Not_PreBool_ReturnValue_1) == 0x00002D, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_IsValid_ReturnValue_1) == 0x00002E, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Not_PreBool_ReturnValue_2) == 0x00002F, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Not_PreBool_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_IsValid_ReturnValue_2) == 0x000030, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress, CallFunc_Not_PreBool_ReturnValue_3) == 0x000031, "Member 'INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress::CallFunc_Not_PreBool_ReturnValue_3' has a wrong offset!");
 
 }
 

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_InteractionType_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
@@ -19,220 +19,94 @@
 namespace SDK::Params
 {
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ExecuteUbergraph_INTERACT_PseudoPlatformBase
-// 0x00F0 (0x00F0 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase final
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TryInteract
+// 0x0080 (0x0080 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_TryInteract final
 {
 public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_Event_DeltaSeconds;                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent_1;  // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor_1;           // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp_1;            // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex_1;       // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_ComponentBoundEvent_bFromSweep;             // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             K2Node_ComponentBoundEvent_SweepResult;            // 0x0028(0x0088)(ConstParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent;    // 0x00C0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor;             // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp;              // 0x00D0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex;         // 0x00D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_DC[0x4];                                       // 0x00DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple_1;         // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InteractionType                          InteractionType;                                   // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                InteractResults;                                   // 0x0018(0x0020)(Parm, OutParm, HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults;          // 0x0038(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_1;        // 0x0058(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_TrySetPlatformEnabled_Result;             // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase) == 0x0000F0, "Wrong size on INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, EntryPoint) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::EntryPoint' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_Event_DeltaSeconds) == 0x000004, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_Event_DeltaSeconds' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OverlappedComponent_1) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OverlappedComponent_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherActor_1) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherActor_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherComp_1) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherComp_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherBodyIndex_1) == 0x000020, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherBodyIndex_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_bFromSweep) == 0x000024, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_bFromSweep' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_SweepResult) == 0x000028, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_SweepResult' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x0000B0, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_DynamicCast_bSuccess) == 0x0000B8, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OverlappedComponent) == 0x0000C0, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OverlappedComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherActor) == 0x0000C8, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherActor' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherComp) == 0x0000D0, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherComp' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherBodyIndex) == 0x0000D8, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherBodyIndex' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_DynamicCast_AsPAWN_Hacker_Simple_1) == 0x0000E0, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_DynamicCast_AsPAWN_Hacker_Simple_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_DynamicCast_bSuccess_1) == 0x0000E8, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_TryInteract) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_TryInteract");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_TryInteract) == 0x000080, "Wrong size on INTERACT_PseudoPlatformBase_C_TryInteract");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, SourceActor) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::SourceActor' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, CursorPrimitive) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::CursorPrimitive' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, InteractionType) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::InteractionType' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, InteractResults) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::InteractResults' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults) == 0x000038, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_1) == 0x000058, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, CallFunc_TrySetPlatformEnabled_Result) == 0x000078, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::CallFunc_TrySetPlatformEnabled_Result' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature
-// 0x0020 (0x0020 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature final
-{
-public:
-	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature) == 0x000020, "Wrong size on INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature, OverlappedComponent) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature::OverlappedComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature, OtherActor) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature::OtherActor' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature, OtherComp) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature::OtherComp' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature, OtherBodyIndex) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature::OtherBodyIndex' has a wrong offset!");
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature
-// 0x00A8 (0x00A8 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature final
-{
-public:
-	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          bFromSweep;                                        // 0x001C(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             SweepResult;                                       // 0x0020(0x0088)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
-};
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature) == 0x0000A8, "Wrong size on INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, OverlappedComponent) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::OverlappedComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, OtherActor) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::OtherActor' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, OtherComp) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::OtherComp' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, OtherBodyIndex) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::OtherBodyIndex' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, bFromSweep) == 0x00001C, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::bFromSweep' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, SweepResult) == 0x000020, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::SweepResult' has a wrong offset!");
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ReceiveTick
-// 0x0004 (0x0004 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_ReceiveTick final
-{
-public:
-	float                                         DeltaSeconds;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_ReceiveTick) == 0x000004, "Wrong alignment on INTERACT_PseudoPlatformBase_C_ReceiveTick");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_ReceiveTick) == 0x000004, "Wrong size on INTERACT_PseudoPlatformBase_C_ReceiveTick");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.InitializePlatform
-// 0x0038 (0x0038 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_InitializePlatform final
-{
-public:
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_TrySetPlatformEnabled_Result;             // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULevelStreaming*                        CallFunc_GetPrimaryStreamingLevel_Level;           // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ULevel*                                 CallFunc_GetLoadedLevel_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AINTERACT_CyberShodan_C*                CallFunc_GetActorOfClassInSubLevel_ReturnValue;    // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_InitializePlatform) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_InitializePlatform");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_InitializePlatform) == 0x000038, "Wrong size on INTERACT_PseudoPlatformBase_C_InitializePlatform");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_GetGameInstance_ReturnValue) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_TrySetPlatformEnabled_Result) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_TrySetPlatformEnabled_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, K2Node_DynamicCast_AsGI_Single_Player) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_GetPrimaryStreamingLevel_Level) == 0x000020, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_GetPrimaryStreamingLevel_Level' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_GetLoadedLevel_ReturnValue) == 0x000028, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_GetLoadedLevel_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_GetActorOfClassInSubLevel_ReturnValue) == 0x000030, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_GetActorOfClassInSubLevel_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TrySetPlatformEnabled
-// 0x0003 (0x0003 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled final
-{
-public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled) == 0x000003, "Wrong size on INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled, State) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled::State' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled, Result) == 0x000001, "Member 'INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000002, "Member 'INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.OnPlatformEnableStateChanged
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.IsAbleToIncreaseOverlapProgress
 // 0x0001 (0x0001 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged final
+struct INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress final
 {
 public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong size on INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged, State) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged::State' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress) == 0x000001, "Wrong size on INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress, Result) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress::Result' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.UpdateOverlapProgress
-// 0x0034 (0x0034 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress final
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.HasPlatformBeenEnabled
+// 0x0001 (0x0001 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled final
 {
 public:
-	float                                         DeltaTime;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsHackerValid;                                     // 0x0004(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Temp_float_Variable;                               // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x000D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsMovingOnGround_ReturnValue;             // 0x000E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_F[0x1];                                        // 0x000F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Temp_float_Variable_1;                             // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsAbleToIncreaseOverlapProgress_Result;   // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Temp_bool_Variable;                                // 0x0016(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_17[0x1];                                       // 0x0017(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         K2Node_Select_Default;                             // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FClamp_ReturnValue;                       // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress) == 0x000004, "Wrong alignment on INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress) == 0x000034, "Wrong size on INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, DeltaTime) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::DeltaTime' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, IsHackerValid) == 0x000004, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::IsHackerValid' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, Temp_float_Variable) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::Temp_float_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_Not_PreBool_ReturnValue) == 0x00000C, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_IsValid_ReturnValue) == 0x00000D, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_IsMovingOnGround_ReturnValue) == 0x00000E, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_IsMovingOnGround_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, Temp_float_Variable_1) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::Temp_float_Variable_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_IsAbleToIncreaseOverlapProgress_Result) == 0x000014, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_IsAbleToIncreaseOverlapProgress_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_BooleanAND_ReturnValue) == 0x000015, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, Temp_bool_Variable) == 0x000016, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, K2Node_Select_Default) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x00001C, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000020, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000024, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000028, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_Add_FloatFloat_ReturnValue) == 0x00002C, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_FClamp_ReturnValue) == 0x000030, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_FClamp_ReturnValue' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled) == 0x000001, "Wrong size on INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled, Result) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled::Result' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BeginOverlapping
-// 0x0008 (0x0008 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_BeginOverlapping final
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TryExpireRideMoveControl
+// 0x0003 (0x0003 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl final
 {
 public:
-	class APAWN_Hacker_Simple_C*                  Hacker;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ExpireMoveControl_Result;                 // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_BeginOverlapping) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_BeginOverlapping");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_BeginOverlapping) == 0x000008, "Wrong size on INTERACT_PseudoPlatformBase_C_BeginOverlapping");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BeginOverlapping, Hacker) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_BeginOverlapping::Hacker' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl) == 0x000003, "Wrong size on INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl, Result) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl, CallFunc_IsValid_ReturnValue) == 0x000001, "Member 'INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl, CallFunc_ExpireMoveControl_Result) == 0x000002, "Member 'INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl::CallFunc_ExpireMoveControl_Result' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EndOverlapping
-// 0x0008 (0x0008 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_EndOverlapping final
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.AddRidePlatformMoveControl
+// 0x0010 (0x0010 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl final
 {
 public:
-	class APAWN_Hacker_Simple_C*                  Hacker;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMOVECONTROL_RidePlatform_C*            CallFunc_SpawnObject_ReturnValue;                  // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_RegisterMoveControl_Result;               // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_EndOverlapping) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_EndOverlapping");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_EndOverlapping) == 0x000008, "Wrong size on INTERACT_PseudoPlatformBase_C_EndOverlapping");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_EndOverlapping, Hacker) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_EndOverlapping::Hacker' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl) == 0x000010, "Wrong size on INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl, CallFunc_SpawnObject_ReturnValue) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl::CallFunc_SpawnObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl, CallFunc_RegisterMoveControl_Result) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl::CallFunc_RegisterMoveControl_Result' has a wrong offset!");
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EVENT_OnCenterMoveExpired
+// 0x0020 (0x0020 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired final
+{
+public:
+	class UMOVECONTROL_Base_C*                    MoveControl;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
+	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0018(0x0008)(NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired) == 0x000020, "Wrong size on INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired, MoveControl) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired::MoveControl' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired, K2Node_CreateDelegate_OutputDelegate) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.AddCenterMoveControl
 // 0x0218 (0x0218 - 0x0000)
@@ -345,94 +219,220 @@ static_assert(offsetof(INTERACT_PseudoPlatformBase_C_AddCenterMoveControl, K2Nod
 static_assert(offsetof(INTERACT_PseudoPlatformBase_C_AddCenterMoveControl, CallFunc_RegisterMoveControl_Result) == 0x000208, "Member 'INTERACT_PseudoPlatformBase_C_AddCenterMoveControl::CallFunc_RegisterMoveControl_Result' has a wrong offset!");
 static_assert(offsetof(INTERACT_PseudoPlatformBase_C_AddCenterMoveControl, CallFunc_SpawnObject_ReturnValue) == 0x000210, "Member 'INTERACT_PseudoPlatformBase_C_AddCenterMoveControl::CallFunc_SpawnObject_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EVENT_OnCenterMoveExpired
-// 0x0020 (0x0020 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired final
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.EndOverlapping
+// 0x0008 (0x0008 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_EndOverlapping final
 {
 public:
-	class UMOVECONTROL_Base_C*                    MoveControl;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
-	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0018(0x0008)(NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Simple_C*                  Hacker;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired) == 0x000020, "Wrong size on INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired, MoveControl) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired::MoveControl' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired, K2Node_CreateDelegate_OutputDelegate) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_EVENT_OnCenterMoveExpired::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_EndOverlapping) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_EndOverlapping");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_EndOverlapping) == 0x000008, "Wrong size on INTERACT_PseudoPlatformBase_C_EndOverlapping");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_EndOverlapping, Hacker) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_EndOverlapping::Hacker' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.AddRidePlatformMoveControl
-// 0x0010 (0x0010 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl final
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BeginOverlapping
+// 0x0008 (0x0008 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_BeginOverlapping final
 {
 public:
-	class UMOVECONTROL_RidePlatform_C*            CallFunc_SpawnObject_ReturnValue;                  // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_RegisterMoveControl_Result;               // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class APAWN_Hacker_Simple_C*                  Hacker;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl) == 0x000010, "Wrong size on INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl, CallFunc_SpawnObject_ReturnValue) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl::CallFunc_SpawnObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl, CallFunc_RegisterMoveControl_Result) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_AddRidePlatformMoveControl::CallFunc_RegisterMoveControl_Result' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_BeginOverlapping) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_BeginOverlapping");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_BeginOverlapping) == 0x000008, "Wrong size on INTERACT_PseudoPlatformBase_C_BeginOverlapping");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BeginOverlapping, Hacker) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_BeginOverlapping::Hacker' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TryExpireRideMoveControl
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.UpdateOverlapProgress
+// 0x0034 (0x0034 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress final
+{
+public:
+	float                                         DeltaTime;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsHackerValid;                                     // 0x0004(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_float_Variable;                               // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x000D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsMovingOnGround_ReturnValue;             // 0x000E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_F[0x1];                                        // 0x000F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_float_Variable_1;                             // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsAbleToIncreaseOverlapProgress_Result;   // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x0016(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_17[0x1];                                       // 0x0017(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         K2Node_Select_Default;                             // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FClamp_ReturnValue;                       // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress) == 0x000004, "Wrong alignment on INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress) == 0x000034, "Wrong size on INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, DeltaTime) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::DeltaTime' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, IsHackerValid) == 0x000004, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::IsHackerValid' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, Temp_float_Variable) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::Temp_float_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_Not_PreBool_ReturnValue) == 0x00000C, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_IsValid_ReturnValue) == 0x00000D, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_IsMovingOnGround_ReturnValue) == 0x00000E, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_IsMovingOnGround_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, Temp_float_Variable_1) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::Temp_float_Variable_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_IsAbleToIncreaseOverlapProgress_Result) == 0x000014, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_IsAbleToIncreaseOverlapProgress_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_BooleanAND_ReturnValue) == 0x000015, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, Temp_bool_Variable) == 0x000016, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, K2Node_Select_Default) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x00001C, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000020, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000024, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000028, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_Add_FloatFloat_ReturnValue) == 0x00002C, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress, CallFunc_FClamp_ReturnValue) == 0x000030, "Member 'INTERACT_PseudoPlatformBase_C_UpdateOverlapProgress::CallFunc_FClamp_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.OnPlatformEnableStateChanged
+// 0x0001 (0x0001 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged final
+{
+public:
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong size on INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged, State) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_OnPlatformEnableStateChanged::State' has a wrong offset!");
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TrySetPlatformEnabled
 // 0x0003 (0x0003 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl final
+struct INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled final
 {
 public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ExpireMoveControl_Result;                 // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl) == 0x000003, "Wrong size on INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl, Result) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl, CallFunc_IsValid_ReturnValue) == 0x000001, "Member 'INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl, CallFunc_ExpireMoveControl_Result) == 0x000002, "Member 'INTERACT_PseudoPlatformBase_C_TryExpireRideMoveControl::CallFunc_ExpireMoveControl_Result' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled) == 0x000003, "Wrong size on INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled, State) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled::State' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled, Result) == 0x000001, "Member 'INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000002, "Member 'INTERACT_PseudoPlatformBase_C_TrySetPlatformEnabled::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.HasPlatformBeenEnabled
-// 0x0001 (0x0001 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled final
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.InitializePlatform
+// 0x0038 (0x0038 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_InitializePlatform final
 {
 public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_TrySetPlatformEnabled_Result;             // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULevelStreaming*                        CallFunc_GetPrimaryStreamingLevel_Level;           // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ULevel*                                 CallFunc_GetLoadedLevel_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AINTERACT_CyberShodan_C*                CallFunc_GetActorOfClassInSubLevel_ReturnValue;    // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled) == 0x000001, "Wrong size on INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled, Result) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_HasPlatformBeenEnabled::Result' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_InitializePlatform) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_InitializePlatform");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_InitializePlatform) == 0x000038, "Wrong size on INTERACT_PseudoPlatformBase_C_InitializePlatform");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_GetGameInstance_ReturnValue) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_TrySetPlatformEnabled_Result) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_TrySetPlatformEnabled_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, K2Node_DynamicCast_AsGI_Single_Player) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_GetPrimaryStreamingLevel_Level) == 0x000020, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_GetPrimaryStreamingLevel_Level' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_GetLoadedLevel_ReturnValue) == 0x000028, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_GetLoadedLevel_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_InitializePlatform, CallFunc_GetActorOfClassInSubLevel_ReturnValue) == 0x000030, "Member 'INTERACT_PseudoPlatformBase_C_InitializePlatform::CallFunc_GetActorOfClassInSubLevel_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.IsAbleToIncreaseOverlapProgress
-// 0x0001 (0x0001 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress final
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ReceiveTick
+// 0x0004 (0x0004 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_ReceiveTick final
 {
 public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         DeltaSeconds;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress) == 0x000001, "Wrong alignment on INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress) == 0x000001, "Wrong size on INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress, Result) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_IsAbleToIncreaseOverlapProgress::Result' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_ReceiveTick) == 0x000004, "Wrong alignment on INTERACT_PseudoPlatformBase_C_ReceiveTick");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_ReceiveTick) == 0x000004, "Wrong size on INTERACT_PseudoPlatformBase_C_ReceiveTick");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
 
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TryInteract
-// 0x0080 (0x0080 - 0x0000)
-struct INTERACT_PseudoPlatformBase_C_TryInteract final
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature
+// 0x00A8 (0x00A8 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature final
 {
 public:
-	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_InteractionType                          InteractionType;                                   // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                InteractResults;                                   // 0x0018(0x0020)(Parm, OutParm, HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults;          // 0x0038(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_1;        // 0x0058(0x0020)(HasGetValueTypeHash)
-	bool                                          CallFunc_TrySetPlatformEnabled_Result;             // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          bFromSweep;                                        // 0x001C(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             SweepResult;                                       // 0x0020(0x0088)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
 };
-static_assert(alignof(INTERACT_PseudoPlatformBase_C_TryInteract) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_TryInteract");
-static_assert(sizeof(INTERACT_PseudoPlatformBase_C_TryInteract) == 0x000080, "Wrong size on INTERACT_PseudoPlatformBase_C_TryInteract");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, SourceActor) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::SourceActor' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, CursorPrimitive) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::CursorPrimitive' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, InteractionType) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::InteractionType' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, InteractResults) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::InteractResults' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults) == 0x000038, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_1) == 0x000058, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_PseudoPlatformBase_C_TryInteract, CallFunc_TrySetPlatformEnabled_Result) == 0x000078, "Member 'INTERACT_PseudoPlatformBase_C_TryInteract::CallFunc_TrySetPlatformEnabled_Result' has a wrong offset!");
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature) == 0x0000A8, "Wrong size on INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, OverlappedComponent) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::OverlappedComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, OtherActor) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::OtherActor' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, OtherComp) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::OtherComp' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, OtherBodyIndex) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, bFromSweep) == 0x00001C, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::bFromSweep' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature, SweepResult) == 0x000020, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature::SweepResult' has a wrong offset!");
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature
+// 0x0020 (0x0020 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature final
+{
+public:
+	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature) == 0x000020, "Wrong size on INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature, OverlappedComponent) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature::OverlappedComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature, OtherActor) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature::OtherActor' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature, OtherComp) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature::OtherComp' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature, OtherBodyIndex) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature::OtherBodyIndex' has a wrong offset!");
+
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ExecuteUbergraph_INTERACT_PseudoPlatformBase
+// 0x00F0 (0x00F0 - 0x0000)
+struct INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_Event_DeltaSeconds;                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent_1;  // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor_1;           // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp_1;            // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex_1;       // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ComponentBoundEvent_bFromSweep;             // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             K2Node_ComponentBoundEvent_SweepResult;            // 0x0028(0x0088)(ConstParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent;    // 0x00C0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor;             // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp;              // 0x00D0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex;         // 0x00D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_DC[0x4];                                       // 0x00DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple_1;         // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase) == 0x000008, "Wrong alignment on INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase");
+static_assert(sizeof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase) == 0x0000F0, "Wrong size on INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, EntryPoint) == 0x000000, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::EntryPoint' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_Event_DeltaSeconds) == 0x000004, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_Event_DeltaSeconds' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OverlappedComponent_1) == 0x000008, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OverlappedComponent_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherActor_1) == 0x000010, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherActor_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherComp_1) == 0x000018, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherComp_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherBodyIndex_1) == 0x000020, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherBodyIndex_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_bFromSweep) == 0x000024, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_bFromSweep' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_SweepResult) == 0x000028, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_SweepResult' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x0000B0, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_DynamicCast_bSuccess) == 0x0000B8, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OverlappedComponent) == 0x0000C0, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OverlappedComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherActor) == 0x0000C8, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherActor' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherComp) == 0x0000D0, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherComp' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_ComponentBoundEvent_OtherBodyIndex) == 0x0000D8, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_ComponentBoundEvent_OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_DynamicCast_AsPAWN_Hacker_Simple_1) == 0x0000E0, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_DynamicCast_AsPAWN_Hacker_Simple_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase, K2Node_DynamicCast_bSuccess_1) == 0x0000E8, "Member 'INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
 
 }
 

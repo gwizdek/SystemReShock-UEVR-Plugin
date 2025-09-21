@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "INTERACT_PseudoPlatformBase_classes.hpp"
 #include "ENUM_PseudoShodanState_structs.hpp"
+#include "INTERACT_PseudoPlatformBase_classes.hpp"
 
 
 namespace SDK
@@ -40,15 +40,15 @@ public:
 public:
 	void GetLastSurfStartTimestamp(float* Result);
 	void OnToggleTargetInteractable();
+	void OnPlatformEnableStateChanged(bool State);
 	void EVENT_OnStartedSurfing();
+	void EVENT_OnCenterMoveExpired(class UMOVECONTROL_Base_C* MoveControl);
+	void IsAbleToIncreaseOverlapProgress(bool* Result);
+	void EVENT_AfterCenterMoveDelayTimer();
+	void EndOverlapping(class APAWN_Hacker_Simple_C* Hacker);
+	void ActivatePlatform();
 	void SetIgnoreNextHackerOverlap();
 	void BeginOverlapping(class APAWN_Hacker_Simple_C* Hacker);
-	void ActivatePlatform();
-	void EndOverlapping(class APAWN_Hacker_Simple_C* Hacker);
-	void EVENT_AfterCenterMoveDelayTimer();
-	void IsAbleToIncreaseOverlapProgress(bool* Result);
-	void EVENT_OnCenterMoveExpired(class UMOVECONTROL_Base_C* MoveControl);
-	void OnPlatformEnableStateChanged(bool State);
 
 public:
 	static class UClass* StaticClass()

@@ -17,57 +17,17 @@
 namespace SDK
 {
 
-// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.ExecuteUbergraph_WIDGET_PseudoHealth
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.InitializeHealth
+// (Public, BlueprintCallable, BlueprintEvent)
 
-void UWIDGET_PseudoHealth_C::ExecuteUbergraph_WIDGET_PseudoHealth(int32 EntryPoint)
+void UWIDGET_PseudoHealth_C::InitializeHealth()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "ExecuteUbergraph_WIDGET_PseudoHealth");
-
-	Params::WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.Construct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UWIDGET_PseudoHealth_C::Construct()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "Construct");
+		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "InitializeHealth");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.PreConstruct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-// Parameters:
-// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UWIDGET_PseudoHealth_C::PreConstruct(bool IsDesignTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "PreConstruct");
-
-	Params::WIDGET_PseudoHealth_C_PreConstruct Parms{};
-
-	Parms.IsDesignTime = IsDesignTime;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -97,17 +57,57 @@ void UWIDGET_PseudoHealth_C::EVENT_OnHealthChanged(float CurrValue, float LastVa
 }
 
 
-// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.InitializeHealth
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.PreConstruct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Parameters:
+// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void UWIDGET_PseudoHealth_C::InitializeHealth()
+void UWIDGET_PseudoHealth_C::PreConstruct(bool IsDesignTime)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "InitializeHealth");
+		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "PreConstruct");
+
+	Params::WIDGET_PseudoHealth_C_PreConstruct Parms{};
+
+	Parms.IsDesignTime = IsDesignTime;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void UWIDGET_PseudoHealth_C::Construct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "Construct");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.ExecuteUbergraph_WIDGET_PseudoHealth
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_PseudoHealth_C::ExecuteUbergraph_WIDGET_PseudoHealth(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "ExecuteUbergraph_WIDGET_PseudoHealth");
+
+	Params::WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

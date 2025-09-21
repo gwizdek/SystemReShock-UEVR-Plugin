@@ -96,7 +96,7 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 
 using namespace uevr;
 
-const char* MOD_VERSION = "1.4.0-beta.1";
+const char* MOD_VERSION = "1.4.0";
 const int CB_DURATION_SAMPLE_RATE = 100;
 
 typedef struct _TIMER_STRUCT
@@ -360,8 +360,6 @@ public:
 
             m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
 
-            m_gamepad_left_thumb.set_logging(true);
-        
             // disable player focus (camera pull) on interactable objects like vending machines
             MOVECONTROL_FocusableInteract_C::disable_character_focusable_interactions();
         }
@@ -785,21 +783,22 @@ public:
                 ) {
                 if (m_gamepad_left_thumb.is_long_pressed(1000)) {
                     API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb LONG pressed");
-                    SDK::FKey escape_key{
+                    SDK::FKey key_name{
                         .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Escape")
                     };
 
+
                     if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_77(escape_key);
+                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
                     }
                     else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_77(escape_key);
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
                     }
                     else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_53(escape_key);
+                        static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_53(key_name);
                     }
                     else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Pseudospace_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_77(escape_key);
+                        static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
                     }
                 }
             }
@@ -833,7 +832,7 @@ public:
                         };
 
                         if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36(tab_key);
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
                         }
                     }
 
@@ -868,7 +867,7 @@ public:
                         };
 
                         if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36(tab_key);
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
                         }
                     }
 

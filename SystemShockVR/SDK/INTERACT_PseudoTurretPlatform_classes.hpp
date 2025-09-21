@@ -43,6 +43,9 @@ public:
 	TSet<class ABP_ShodanTrack_EnergyCoil_C*>     ActiveCoils;                                       // 0x03F0(0x0050)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
 
 public:
+	void IsAbleToIncreaseOverlapProgress(bool* Result);
+	void ActivatePlatform();
+	void OnPlatformEnableStateChanged(bool State);
 	void RampDownCoils();
 	void RegisterActiveCoil(class ABP_ShodanTrack_EnergyCoil_C* Coil);
 	void RegisterFreeCoil(class ABP_ShodanTrack_EnergyCoil_C* Coil);
@@ -52,11 +55,8 @@ public:
 	void GetPseudoTurret(class APseudoTurret_C** Result);
 	void EVENT_OnTurretStateChanged(ENUM_PseudoTurretState NewState);
 	void EVENT_OnTetherStateChanged(ENUM_ShodanTetherState NewState);
-	void ExecuteUbergraph_INTERACT_PseudoTurretPlatform(int32 EntryPoint);
 	void ReceiveBeginPlay();
-	void ActivatePlatform();
-	void OnPlatformEnableStateChanged(bool State);
-	void IsAbleToIncreaseOverlapProgress(bool* Result);
+	void ExecuteUbergraph_INTERACT_PseudoTurretPlatform(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()
