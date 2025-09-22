@@ -1,6 +1,9 @@
 # SystemReShock UEVR Plugin
 
 > [!WARNING]
+> **2025-09-21 This mod is not working with version 1.3.0 of the game yet. I'm working on it. More info on Flat2VR Discord.**
+  
+> [!WARNING]
 > The profile doesn't work with the Demo version of the game available on Steam
   
 > [!NOTE]
