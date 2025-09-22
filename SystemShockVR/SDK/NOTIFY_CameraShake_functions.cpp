@@ -17,26 +17,6 @@
 namespace SDK
 {
 
-// Function NOTIFY_CameraShake.NOTIFY_CameraShake_C.GetNotifyName
-// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent, Const)
-// Parameters:
-// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash)
-
-class FString UNOTIFY_CameraShake_C::GetNotifyName() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("NOTIFY_CameraShake_C", "GetNotifyName");
-
-	Params::NOTIFY_CameraShake_C_GetNotifyName Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
 // Function NOTIFY_CameraShake.NOTIFY_CameraShake_C.Received_Notify
 // (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent, Const)
 // Parameters:
@@ -55,6 +35,26 @@ bool UNOTIFY_CameraShake_C::Received_Notify(class USkeletalMeshComponent* MeshCo
 
 	Parms.MeshComp = MeshComp;
 	Parms.Animation = Animation;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function NOTIFY_CameraShake.NOTIFY_CameraShake_C.GetNotifyName
+// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent, Const)
+// Parameters:
+// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash)
+
+class FString UNOTIFY_CameraShake_C::GetNotifyName() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("NOTIFY_CameraShake_C", "GetNotifyName");
+
+	Params::NOTIFY_CameraShake_C_GetNotifyName Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 

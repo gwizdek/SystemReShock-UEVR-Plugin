@@ -307,5 +307,53 @@ void IINTERF_HUD_C::SetHoldInteractionProgress(float Progress, bool* Result)
 		*Result = Parms.Result;
 }
 
+
+// Function INTERF_HUD.INTERF_HUD_C.InvokeVaporize
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    HoldingInput                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void IINTERF_HUD_C::InvokeVaporize(bool HoldingInput, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERF_HUD_C", "InvokeVaporize");
+
+	Params::INTERF_HUD_C_InvokeVaporize Parms{};
+
+	Parms.HoldingInput = HoldingInput;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERF_HUD.INTERF_HUD_C.InvokeSort
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    HoldingInput                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void IINTERF_HUD_C::InvokeSort(bool HoldingInput, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERF_HUD_C", "InvokeSort");
+
+	Params::INTERF_HUD_C_InvokeSort Parms{};
+
+	Parms.HoldingInput = HoldingInput;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
 }
 

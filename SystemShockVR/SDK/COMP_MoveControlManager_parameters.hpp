@@ -12,8 +12,8 @@
 
 #include "StreamingSaveGameSystem_structs.hpp"
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_PlayerMoveSpeed_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "STRUCT_EffectParams_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "ENUM_HackerGender_structs.hpp"

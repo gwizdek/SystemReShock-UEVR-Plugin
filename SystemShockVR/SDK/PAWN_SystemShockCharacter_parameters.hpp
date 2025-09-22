@@ -16,16 +16,16 @@
 #include "Engine_structs.hpp"
 #include "SystemReShock_structs.hpp"
 #include "STRUCT_EffectParams_structs.hpp"
-#include "STRUCT_FootstepAudioData_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "ENUM_HazardType_structs.hpp"
 #include "NamedInteger_structs.hpp"
-#include "STRUCT_SoftItemParams_structs.hpp"
 #include "ENUM_Foot_structs.hpp"
 #include "ENUM_LocomotionType_structs.hpp"
 #include "ENUM_AudioComponentLocation_structs.hpp"
 #include "STRUCT_CharacterLoadoutSettings_structs.hpp"
+#include "STRUCT_SoftItemParams_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
+#include "STRUCT_FootstepAudioData_structs.hpp"
 
 
 namespace SDK::Params

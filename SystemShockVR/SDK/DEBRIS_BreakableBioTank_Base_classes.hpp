@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "DEBRIS_Breakable_Base_classes.hpp"
 #include "Engine_structs.hpp"
+#include "DEBRIS_Breakable_Base_classes.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_BiohazardBarrelCondition_structs.hpp"
 

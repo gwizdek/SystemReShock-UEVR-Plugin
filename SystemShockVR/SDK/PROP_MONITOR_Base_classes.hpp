@@ -31,10 +31,10 @@ public:
 	class UMaterialInterface*                     FlipbookMaterial;                                  // 0x0248(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void SetParticleTexture();
-	void UserConstructionScript();
-	void ReceiveBeginPlay();
 	void ExecuteUbergraph_PROP_MONITOR_Base(int32 EntryPoint);
+	void ReceiveBeginPlay();
+	void UserConstructionScript();
+	void SetParticleTexture();
 
 public:
 	static class UClass* StaticClass()

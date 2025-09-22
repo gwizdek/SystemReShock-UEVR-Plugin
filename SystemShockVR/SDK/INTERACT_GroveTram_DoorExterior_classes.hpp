@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "INTERACT_ElevatorDoors_Base_classes.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
 
 
@@ -69,21 +69,21 @@ public:
 	class FText                                   QuestLockMessage;                                  // 0x0490(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance)
 
 public:
-	void SetElevatorDoorsDisabledByQuest();
-	void ExecuteUbergraph_INTERACT_GroveTram_DoorExterior(int32 EntryPoint);
+	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
+	void UpdateEmissiveStrength(float Scale, float* Result);
+	void GetInteractLocked(class AActor* SourceActor, bool* Result, class FText* LockMessage);
 	void SetInteractLocked(bool Locked, bool* Result);
 	void TryTargetWarningPublicAddressSystem();
 	void SetTileCollisionEnabled(bool Enable, bool* Result);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 	void EVENT_OnStoryQuestCompleted(class FName StoryQuestName, bool Value);
-	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
-	void UpdateEmissiveStrength(float Scale, float* Result);
-	void GetInteractLocked(class AActor* SourceActor, bool* Result, class FText* LockMessage);
+	void SetElevatorDoorsDisabledByQuest();
 	void SetElevatorDoorsVisible(bool VisibilityState);
 	void OnDoorsStartedOpening();
 	void InitializeDoorLockState();
 	void InitializeGroveTramExteriorDoors();
 	void ReceiveBeginPlay();
+	void ExecuteUbergraph_INTERACT_GroveTram_DoorExterior(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()

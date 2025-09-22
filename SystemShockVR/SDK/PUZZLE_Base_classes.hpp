@@ -12,12 +12,12 @@
 
 #include "ENUM_PuzzleSolveType_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_CardinalDirection_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
-#include "INTERACT_Focusable_Base_classes.hpp"
-#include "ENUM_InteractResultType_structs.hpp"
 #include "ENUM_DoorState_structs.hpp"
+#include "ENUM_CardinalDirection_structs.hpp"
+#include "INTERACT_Focusable_Base_classes.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
+#include "ENUM_InteractResultType_structs.hpp"
 
 
 namespace SDK

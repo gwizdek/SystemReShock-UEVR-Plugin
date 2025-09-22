@@ -183,12 +183,12 @@ void UEVRPlugin::load_assets_for_dumping()
     try {
         m_try_load_assets_for_dumping = false;
 
-        //auto world = SDK::UWorld::GetWorld();
-        //SDK::APawn* pawn = world != nullptr ? SDK::UGameplayStatics::GetPlayerPawn(world, 0) : nullptr;
-        //if (pawn == nullptr) {
-        //    API::get()->log_error("[plugin][load_assets_for_dumping] Invalid Pawn");
-        //    return;
-        //}
+        auto world = SDK::UWorld::GetWorld();
+        SDK::APawn* pawn = world != nullptr ? SDK::UGameplayStatics::GetPlayerPawn(world, 0) : nullptr;
+        if (pawn == nullptr) {
+            API::get()->log_error("[plugin][load_assets_for_dumping] Invalid Pawn");
+            return;
+        }
         API::get()->log_warn("[plugin][load_assets_for_dumping] Loading Assets");
 
         //SDK::FAssetData vr_asset_data{

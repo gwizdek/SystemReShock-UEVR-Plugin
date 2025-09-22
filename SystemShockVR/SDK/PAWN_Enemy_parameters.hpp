@@ -10,17 +10,18 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_LocalBehaviorAnimations_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
-#include "ENUM_LocalBehaviorType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
+#include "STRUCT_AnimatedLimb_structs.hpp"
+#include "STRUCT_EnemyStats_structs.hpp"
+#include "STRUCT_LocalBehaviorAnimations_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "STRUCT_HardItemParams_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
 #include "Engine_structs.hpp"
-#include "STRUCT_EnemyStats_structs.hpp"
-#include "STRUCT_HardItemParams_structs.hpp"
-#include "ENUM_EnemyType_structs.hpp"
+#include "ENUM_LocalBehaviorType_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "ENUM_EnemyType_structs.hpp"
 #include "STRUCT_EnemyTemplate_structs.hpp"
 #include "STRUCT_CombatDifficultySettings_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
@@ -28,7 +29,6 @@
 #include "ENUM_Emotions_structs.hpp"
 #include "STRUCT_DeathBlowData_structs.hpp"
 #include "STRUCT_InventoryBagParams_structs.hpp"
-#include "STRUCT_AnimatedLimb_structs.hpp"
 #include "STRUCT_LootBonusData_structs.hpp"
 #include "SystemReShock_structs.hpp"
 #include "ENUM_TargetAssignmentType_structs.hpp"
@@ -431,6 +431,19 @@ static_assert(offsetof(PAWN_Enemy_C_TrySetEnemyName, CallFunc_TextIsEmpty_Return
 static_assert(offsetof(PAWN_Enemy_C_TrySetEnemyName, CallFunc_GetDataTableRowFromName_OutRow) == 0x000008, "Member 'PAWN_Enemy_C_TrySetEnemyName::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
 static_assert(offsetof(PAWN_Enemy_C_TrySetEnemyName, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000050, "Member 'PAWN_Enemy_C_TrySetEnemyName::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
 
+// Function PAWN_Enemy.PAWN_Enemy_C.HasSetSpawnData
+// 0x0002 (0x0002 - 0x0000)
+struct PAWN_Enemy_C_HasSetSpawnData final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqualExactly_VectorVector_ReturnValue; // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(PAWN_Enemy_C_HasSetSpawnData) == 0x000001, "Wrong alignment on PAWN_Enemy_C_HasSetSpawnData");
+static_assert(sizeof(PAWN_Enemy_C_HasSetSpawnData) == 0x000002, "Wrong size on PAWN_Enemy_C_HasSetSpawnData");
+static_assert(offsetof(PAWN_Enemy_C_HasSetSpawnData, Result) == 0x000000, "Member 'PAWN_Enemy_C_HasSetSpawnData::Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_HasSetSpawnData, CallFunc_NotEqualExactly_VectorVector_ReturnValue) == 0x000001, "Member 'PAWN_Enemy_C_HasSetSpawnData::CallFunc_NotEqualExactly_VectorVector_ReturnValue' has a wrong offset!");
+
 // Function PAWN_Enemy.PAWN_Enemy_C.TrySetSpawnData
 // 0x0020 (0x0020 - 0x0000)
 struct PAWN_Enemy_C_TrySetSpawnData final
@@ -795,9 +808,10 @@ struct PAWN_Enemy_C_HasImportantBehavior final
 {
 public:
 	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsNearSpawnLocation_Result;               // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3[0x5];                                        // 0x0003(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_HasSetSpawnData_Result;                   // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsNearSpawnLocation_Result;               // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class ULocalBehaviorComponent_C*              CallFunc_GetLocalBehaviorComponent_LocalBehaviorComponent; // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -805,8 +819,9 @@ public:
 static_assert(alignof(PAWN_Enemy_C_HasImportantBehavior) == 0x000008, "Wrong alignment on PAWN_Enemy_C_HasImportantBehavior");
 static_assert(sizeof(PAWN_Enemy_C_HasImportantBehavior) == 0x000018, "Wrong size on PAWN_Enemy_C_HasImportantBehavior");
 static_assert(offsetof(PAWN_Enemy_C_HasImportantBehavior, Result) == 0x000000, "Member 'PAWN_Enemy_C_HasImportantBehavior::Result' has a wrong offset!");
-static_assert(offsetof(PAWN_Enemy_C_HasImportantBehavior, CallFunc_IsNearSpawnLocation_Result) == 0x000001, "Member 'PAWN_Enemy_C_HasImportantBehavior::CallFunc_IsNearSpawnLocation_Result' has a wrong offset!");
-static_assert(offsetof(PAWN_Enemy_C_HasImportantBehavior, CallFunc_Not_PreBool_ReturnValue) == 0x000002, "Member 'PAWN_Enemy_C_HasImportantBehavior::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_HasImportantBehavior, CallFunc_HasSetSpawnData_Result) == 0x000001, "Member 'PAWN_Enemy_C_HasImportantBehavior::CallFunc_HasSetSpawnData_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_HasImportantBehavior, CallFunc_IsNearSpawnLocation_Result) == 0x000002, "Member 'PAWN_Enemy_C_HasImportantBehavior::CallFunc_IsNearSpawnLocation_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_HasImportantBehavior, CallFunc_Not_PreBool_ReturnValue) == 0x000003, "Member 'PAWN_Enemy_C_HasImportantBehavior::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PAWN_Enemy_C_HasImportantBehavior, CallFunc_GetLocalBehaviorComponent_LocalBehaviorComponent) == 0x000008, "Member 'PAWN_Enemy_C_HasImportantBehavior::CallFunc_GetLocalBehaviorComponent_LocalBehaviorComponent' has a wrong offset!");
 static_assert(offsetof(PAWN_Enemy_C_HasImportantBehavior, CallFunc_IsValid_ReturnValue) == 0x000010, "Member 'PAWN_Enemy_C_HasImportantBehavior::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PAWN_Enemy_C_HasImportantBehavior, CallFunc_BooleanOR_ReturnValue) == 0x000011, "Member 'PAWN_Enemy_C_HasImportantBehavior::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");

@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_InteractionType_structs.hpp"
+#include "ENUM_Axis_structs.hpp"
+#include "ENUM_UpgradeResult_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_UpgradeResult_structs.hpp"
 #include "INTERACT_Base_classes.hpp"
-#include "ENUM_Axis_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
 
 
 namespace SDK

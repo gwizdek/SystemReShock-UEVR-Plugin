@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_Axis_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_Axis_structs.hpp"
 
 
 namespace SDK::Params

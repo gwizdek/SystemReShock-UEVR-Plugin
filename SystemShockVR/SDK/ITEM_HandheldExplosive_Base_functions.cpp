@@ -277,6 +277,30 @@ void UITEM_HandheldExplosive_Base_C::ThrowExplosive(float Speed)
 }
 
 
+// Function ITEM_HandheldExplosive_Base.ITEM_HandheldExplosive_Base_C.ReceiveAnimationMessage
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Message                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_HandheldExplosive_Base_C::ReceiveAnimationMessage(const class FString& Message, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldExplosive_Base_C", "ReceiveAnimationMessage");
+
+	Params::ITEM_HandheldExplosive_Base_C_ReceiveAnimationMessage Parms{};
+
+	Parms.Message = std::move(Message);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
 // Function ITEM_HandheldExplosive_Base.ITEM_HandheldExplosive_Base_C.EVENT_OnThrowFinished
 // (Private, BlueprintCallable, BlueprintEvent)
 
@@ -352,44 +376,6 @@ void UITEM_HandheldExplosive_Base_C::LaunchExplosiveFromCamera(class UCameraComp
 }
 
 
-// Function ITEM_HandheldExplosive_Base.ITEM_HandheldExplosive_Base_C.EVENT_OnFuseTimeExpired
-// (Private, BlueprintCallable, BlueprintEvent)
-
-void UITEM_HandheldExplosive_Base_C::EVENT_OnFuseTimeExpired()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldExplosive_Base_C", "EVENT_OnFuseTimeExpired");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function ITEM_HandheldExplosive_Base.ITEM_HandheldExplosive_Base_C.ReceiveAnimationMessage
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class FString                           Message                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_HandheldExplosive_Base_C::ReceiveAnimationMessage(const class FString& Message, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldExplosive_Base_C", "ReceiveAnimationMessage");
-
-	Params::ITEM_HandheldExplosive_Base_C_ReceiveAnimationMessage Parms{};
-
-	Parms.Message = std::move(Message);
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function ITEM_HandheldExplosive_Base.ITEM_HandheldExplosive_Base_C.TryBecomeActivatableImmediately
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -414,24 +400,17 @@ void UITEM_HandheldExplosive_Base_C::TryBecomeActivatableImmediately(bool ShowIm
 }
 
 
-// Function ITEM_HandheldExplosive_Base.ITEM_HandheldExplosive_Base_C.OnBecomeUnactivatable
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// Function ITEM_HandheldExplosive_Base.ITEM_HandheldExplosive_Base_C.EVENT_OnFuseTimeExpired
+// (Private, BlueprintCallable, BlueprintEvent)
 
-void UITEM_HandheldExplosive_Base_C::OnBecomeUnactivatable(bool* Result)
+void UITEM_HandheldExplosive_Base_C::EVENT_OnFuseTimeExpired()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldExplosive_Base_C", "OnBecomeUnactivatable");
+		Func = Class->GetFunction("ITEM_HandheldExplosive_Base_C", "EVENT_OnFuseTimeExpired");
 
-	Params::ITEM_HandheldExplosive_Base_C_OnBecomeUnactivatable Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -451,6 +430,27 @@ void UITEM_HandheldExplosive_Base_C::Activate(class APAWN_SystemShockCharacter_C
 	Params::ITEM_HandheldExplosive_Base_C_Activate Parms{};
 
 	Parms.Character = Character;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_HandheldExplosive_Base.ITEM_HandheldExplosive_Base_C.OnBecomeUnactivatable
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_HandheldExplosive_Base_C::OnBecomeUnactivatable(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldExplosive_Base_C", "OnBecomeUnactivatable");
+
+	Params::ITEM_HandheldExplosive_Base_C_OnBecomeUnactivatable Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 

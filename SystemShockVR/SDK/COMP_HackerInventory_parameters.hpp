@@ -12,8 +12,8 @@
 
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "AttributeSystem_structs.hpp"
 #include "STRUCT_WeaponRecoilTemplate_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 
 
 namespace SDK::Params
@@ -911,6 +911,19 @@ static_assert(offsetof(COMP_HackerInventory_C_CycleEquippedWeapon, CallFunc_GetE
 static_assert(offsetof(COMP_HackerInventory_C_CycleEquippedWeapon, CallFunc_GetEquippedWeaponHotbarSlot_HotbarSlotIndex) == 0x000028, "Member 'COMP_HackerInventory_C_CycleEquippedWeapon::CallFunc_GetEquippedWeaponHotbarSlot_HotbarSlotIndex' has a wrong offset!");
 static_assert(offsetof(COMP_HackerInventory_C_CycleEquippedWeapon, CallFunc_CycleEquippedWeaponFromHotbarSlot_Success) == 0x00002C, "Member 'COMP_HackerInventory_C_CycleEquippedWeapon::CallFunc_CycleEquippedWeaponFromHotbarSlot_Success' has a wrong offset!");
 
+// Function COMP_HackerInventory.COMP_HackerInventory_C.SetEquipmentDisabled
+// 0x0002 (0x0002 - 0x0000)
+struct COMP_HackerInventory_C_SetEquipmentDisabled final
+{
+public:
+	bool                                          Disable;                                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(COMP_HackerInventory_C_SetEquipmentDisabled) == 0x000001, "Wrong alignment on COMP_HackerInventory_C_SetEquipmentDisabled");
+static_assert(sizeof(COMP_HackerInventory_C_SetEquipmentDisabled) == 0x000002, "Wrong size on COMP_HackerInventory_C_SetEquipmentDisabled");
+static_assert(offsetof(COMP_HackerInventory_C_SetEquipmentDisabled, Disable) == 0x000000, "Member 'COMP_HackerInventory_C_SetEquipmentDisabled::Disable' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_SetEquipmentDisabled, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000001, "Member 'COMP_HackerInventory_C_SetEquipmentDisabled::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
+
 // Function COMP_HackerInventory.COMP_HackerInventory_C.IsEquipmentDisabled
 // 0x0001 (0x0001 - 0x0000)
 struct COMP_HackerInventory_C_IsEquipmentDisabled final
@@ -969,19 +982,6 @@ static_assert(offsetof(COMP_HackerInventory_C_UpdateItemActivationState, CallFun
 static_assert(offsetof(COMP_HackerInventory_C_UpdateItemActivationState, CallFunc_IsEquipmentDisabled_Result) == 0x000023, "Member 'COMP_HackerInventory_C_UpdateItemActivationState::CallFunc_IsEquipmentDisabled_Result' has a wrong offset!");
 static_assert(offsetof(COMP_HackerInventory_C_UpdateItemActivationState, CallFunc_Not_PreBool_ReturnValue_1) == 0x000024, "Member 'COMP_HackerInventory_C_UpdateItemActivationState::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(COMP_HackerInventory_C_UpdateItemActivationState, CallFunc_BooleanAND_ReturnValue_1) == 0x000025, "Member 'COMP_HackerInventory_C_UpdateItemActivationState::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
-
-// Function COMP_HackerInventory.COMP_HackerInventory_C.SetEquipmentDisabled
-// 0x0002 (0x0002 - 0x0000)
-struct COMP_HackerInventory_C_SetEquipmentDisabled final
-{
-public:
-	bool                                          Disable;                                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(COMP_HackerInventory_C_SetEquipmentDisabled) == 0x000001, "Wrong alignment on COMP_HackerInventory_C_SetEquipmentDisabled");
-static_assert(sizeof(COMP_HackerInventory_C_SetEquipmentDisabled) == 0x000002, "Wrong size on COMP_HackerInventory_C_SetEquipmentDisabled");
-static_assert(offsetof(COMP_HackerInventory_C_SetEquipmentDisabled, Disable) == 0x000000, "Member 'COMP_HackerInventory_C_SetEquipmentDisabled::Disable' has a wrong offset!");
-static_assert(offsetof(COMP_HackerInventory_C_SetEquipmentDisabled, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000001, "Member 'COMP_HackerInventory_C_SetEquipmentDisabled::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
 
 // Function COMP_HackerInventory.COMP_HackerInventory_C.UpdateEquippedWeaponState
 // 0x0001 (0x0001 - 0x0000)
@@ -1360,17 +1360,19 @@ public:
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x001D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_1E[0x2];                                       // 0x001E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NotEqual_ClassClass_ReturnValue;          // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_VaporizeJunkItem_Result;                  // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2A[0x6];                                       // 0x002A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UInventoryBag_C*                        CallFunc_GetBagByIndex_Bag;                        // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class UITEM_Base_C*>                   CallFunc_GetItemArray_Items;                       // 0x0038(0x0010)(ReferenceParm)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_ClassClass_ReturnValue;          // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_VaporizeJunkItem_Result;                  // 0x002B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UITEM_Base_C*>                   CallFunc_GetItemArray_Items;                       // 0x0030(0x0010)(ReferenceParm)
+	class UInventoryBag_C*                        CallFunc_GetBagByIndex_Bag;                        // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UITEM_Base_C*                           CallFunc_Array_Get_Item;                           // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UITEM_Junk_Base_C*                      K2Node_DynamicCast_AsITEM_Junk_Base;               // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UITEM_Junk_Base_C*                      K2Node_DynamicCast_AsITEM_Junk_Base;               // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(COMP_HackerInventory_C_VaporizeJunkItems) == 0x000008, "Wrong alignment on COMP_HackerInventory_C_VaporizeJunkItems");
 static_assert(sizeof(COMP_HackerInventory_C_VaporizeJunkItems) == 0x000068, "Wrong size on COMP_HackerInventory_C_VaporizeJunkItems");
@@ -1382,15 +1384,17 @@ static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, Temp_int_Array_
 static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_IsDestructible_Result) == 0x00001C, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_IsDestructible_Result' has a wrong offset!");
 static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_IsValid_ReturnValue) == 0x00001D, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_GetObjectClass_ReturnValue) == 0x000020, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_NotEqual_ClassClass_ReturnValue) == 0x000028, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_NotEqual_ClassClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_VaporizeJunkItem_Result) == 0x000029, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_VaporizeJunkItem_Result' has a wrong offset!");
-static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_GetBagByIndex_Bag) == 0x000030, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_GetBagByIndex_Bag' has a wrong offset!");
-static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_GetItemArray_Items) == 0x000038, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_GetItemArray_Items' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_ClassIsChildOf_ReturnValue) == 0x000028, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_NotEqual_ClassClass_ReturnValue) == 0x000029, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_NotEqual_ClassClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_Not_PreBool_ReturnValue) == 0x00002A, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_VaporizeJunkItem_Result) == 0x00002B, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_VaporizeJunkItem_Result' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_GetItemArray_Items) == 0x000030, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_GetItemArray_Items' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_GetBagByIndex_Bag) == 0x000040, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_GetBagByIndex_Bag' has a wrong offset!");
 static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_Array_Get_Item) == 0x000048, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_Array_Length_ReturnValue) == 0x000050, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, K2Node_DynamicCast_AsITEM_Junk_Base) == 0x000058, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::K2Node_DynamicCast_AsITEM_Junk_Base' has a wrong offset!");
-static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, K2Node_DynamicCast_bSuccess) == 0x000060, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_Less_IntInt_ReturnValue) == 0x000061, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, K2Node_DynamicCast_AsITEM_Junk_Base) == 0x000050, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::K2Node_DynamicCast_AsITEM_Junk_Base' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, K2Node_DynamicCast_bSuccess) == 0x000058, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_Array_Length_ReturnValue) == 0x00005C, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_HackerInventory_C_VaporizeJunkItems, CallFunc_Less_IntInt_ReturnValue) == 0x000060, "Member 'COMP_HackerInventory_C_VaporizeJunkItems::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 
 // Function COMP_HackerInventory.COMP_HackerInventory_C.SortMainInventory
 // 0x0020 (0x0020 - 0x0000)

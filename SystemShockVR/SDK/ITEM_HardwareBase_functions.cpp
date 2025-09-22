@@ -406,20 +406,6 @@ void UITEM_HardwareBase_C::GetDisplayProperties(class USkeletalMesh** SkeletalMe
 }
 
 
-// Function ITEM_HardwareBase.ITEM_HardwareBase_C.OnAddedToInventory
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UITEM_HardwareBase_C::OnAddedToInventory()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HardwareBase_C", "OnAddedToInventory");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function ITEM_HardwareBase.ITEM_HardwareBase_C.OnBeginPlay
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -429,6 +415,20 @@ void UITEM_HardwareBase_C::OnBeginPlay()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("ITEM_HardwareBase_C", "OnBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ITEM_HardwareBase.ITEM_HardwareBase_C.OnAddedToInventory
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UITEM_HardwareBase_C::OnAddedToInventory()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HardwareBase_C", "OnAddedToInventory");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

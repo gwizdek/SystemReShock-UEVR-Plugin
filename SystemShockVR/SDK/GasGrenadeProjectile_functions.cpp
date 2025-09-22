@@ -31,26 +31,6 @@ void AGasGrenadeProjectile_C::DetonateExplosive()
 }
 
 
-// Function GasGrenadeProjectile.GasGrenadeProjectile_C.SetHazardDamagePerSecond
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// int32                                   Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AGasGrenadeProjectile_C::SetHazardDamagePerSecond(int32 Value)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GasGrenadeProjectile_C", "SetHazardDamagePerSecond");
-
-	Params::GasGrenadeProjectile_C_SetHazardDamagePerSecond Parms{};
-
-	Parms.Value = Value;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function GasGrenadeProjectile.GasGrenadeProjectile_C.SpawnGasVolume
 // (Private, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -69,6 +49,26 @@ void AGasGrenadeProjectile_C::SpawnGasVolume(class ATRIGGER_GasVolume_C** GasVol
 
 	if (GasVolume != nullptr)
 		*GasVolume = Parms.GasVolume;
+}
+
+
+// Function GasGrenadeProjectile.GasGrenadeProjectile_C.SetHazardDamagePerSecond
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int32                                   Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AGasGrenadeProjectile_C::SetHazardDamagePerSecond(int32 Value)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GasGrenadeProjectile_C", "SetHazardDamagePerSecond");
+
+	Params::GasGrenadeProjectile_C_SetHazardDamagePerSecond Parms{};
+
+	Parms.Value = Value;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

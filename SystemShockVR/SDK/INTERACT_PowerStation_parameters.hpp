@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreGame_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_PowerStationRechargeState_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 
 
 namespace SDK::Params

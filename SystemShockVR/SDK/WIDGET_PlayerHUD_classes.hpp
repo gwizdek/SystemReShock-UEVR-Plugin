@@ -11,17 +11,17 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_InteractResultType_structs.hpp"
+#include "ENUM_MFDTabCategory_structs.hpp"
 #include "STRUCT_QueuedNotification_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_UpgradeResult_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
-#include "ENUM_MFDTabCategory_structs.hpp"
 #include "UMG_structs.hpp"
 #include "UMG_classes.hpp"
-#include "ENUM_CursorMode_structs.hpp"
+#include "ENUM_InteractResultType_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "ENUM_CardinalDirection_structs.hpp"
 #include "ENUM_HotbarStyle_structs.hpp"
+#include "ENUM_CursorMode_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 
 
@@ -234,8 +234,9 @@ public:
 	struct FTimerHandle                           CrashTimerHandle;                                  // 0x08E0(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 	struct FVector2D                              PreviousMousePosition;                             // 0x08E8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsTryingToVaporizeInventory;                       // 0x08F0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_8F1[0x3];                                      // 0x08F1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         VaporizeInventoryHeldTime;                         // 0x08F4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsTryingToSortInventory;                           // 0x08F1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_8F2[0x2];                                      // 0x08F2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         InventoryInputHeldTime;                            // 0x08F4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWIDGET_HotbarSlot_C*                   HotbarSlotUnderCursor;                             // 0x08F8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
@@ -316,6 +317,7 @@ public:
 	void UndoCursorItemMove(bool UpdateItemSelection, const struct FVector2D& MouseScreenPosition, bool* Result);
 	void HideContextMenu();
 	void HandleItemWorldInteraction(class UITEM_Base_C* Item, bool* Success);
+	void HandleSortInventoryInput(bool State);
 	void HandleVaporizeInventoryInput(bool State);
 	void DropAndPushItemFromCursorPosition(class UITEM_Base_C* ItemToDrop, const struct FVector2D& ScreenPosition, bool* Result);
 	void DropAndPushItemFromCameraRelativePosition(class UITEM_Base_C* ItemToDrop, const struct FVector2D& RelativePosition, bool* Result);
@@ -389,6 +391,8 @@ public:
 	void OnPersistentMapMove(bool* Result);
 	void OnFinishedLoadingGame(bool* Result);
 	void SetHoldInteractionProgress(float Progress, bool* Result);
+	void InvokeVaporize(bool HoldingInput, bool* Result);
+	void InvokeSort(bool HoldingInput, bool* Result);
 
 public:
 	static class UClass* StaticClass()
@@ -586,7 +590,8 @@ static_assert(offsetof(UWIDGET_PlayerHUD_C, IsSimplifiedHotbarModalVisible) == 0
 static_assert(offsetof(UWIDGET_PlayerHUD_C, CrashTimerHandle) == 0x0008E0, "Member 'UWIDGET_PlayerHUD_C::CrashTimerHandle' has a wrong offset!");
 static_assert(offsetof(UWIDGET_PlayerHUD_C, PreviousMousePosition) == 0x0008E8, "Member 'UWIDGET_PlayerHUD_C::PreviousMousePosition' has a wrong offset!");
 static_assert(offsetof(UWIDGET_PlayerHUD_C, IsTryingToVaporizeInventory) == 0x0008F0, "Member 'UWIDGET_PlayerHUD_C::IsTryingToVaporizeInventory' has a wrong offset!");
-static_assert(offsetof(UWIDGET_PlayerHUD_C, VaporizeInventoryHeldTime) == 0x0008F4, "Member 'UWIDGET_PlayerHUD_C::VaporizeInventoryHeldTime' has a wrong offset!");
+static_assert(offsetof(UWIDGET_PlayerHUD_C, IsTryingToSortInventory) == 0x0008F1, "Member 'UWIDGET_PlayerHUD_C::IsTryingToSortInventory' has a wrong offset!");
+static_assert(offsetof(UWIDGET_PlayerHUD_C, InventoryInputHeldTime) == 0x0008F4, "Member 'UWIDGET_PlayerHUD_C::InventoryInputHeldTime' has a wrong offset!");
 static_assert(offsetof(UWIDGET_PlayerHUD_C, HotbarSlotUnderCursor) == 0x0008F8, "Member 'UWIDGET_PlayerHUD_C::HotbarSlotUnderCursor' has a wrong offset!");
 
 }

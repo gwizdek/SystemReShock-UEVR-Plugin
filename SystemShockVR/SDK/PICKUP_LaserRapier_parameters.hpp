@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_LaserRapierColor_structs.hpp"
 #include "Engine_structs.hpp"
+#include "ENUM_LaserRapierColor_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
 
 

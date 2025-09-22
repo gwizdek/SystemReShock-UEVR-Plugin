@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_SoftItemParams_structs.hpp"
 #include "ITEM_Base_classes.hpp"
+#include "STRUCT_SoftItemParams_structs.hpp"
 
 
 namespace SDK

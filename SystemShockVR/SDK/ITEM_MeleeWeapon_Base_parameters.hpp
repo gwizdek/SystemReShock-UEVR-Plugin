@@ -10,16 +10,16 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_Melee_AttackState_structs.hpp"
 #include "CoreGame_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "STRUCT_WeaponMode_structs.hpp"
 #include "Engine_structs.hpp"
-#include "STRUCT_EffectParams_structs.hpp"
-#include "AttributeSystem_structs.hpp"
+#include "STRUCT_WeaponMode_structs.hpp"
 #include "ENUM_LeftRightCenter_structs.hpp"
-#include "NamedInteger_structs.hpp"
+#include "AttributeSystem_structs.hpp"
+#include "ENUM_Melee_AttackState_structs.hpp"
 #include "STRUCT_ImpactEffectResults_structs.hpp"
+#include "STRUCT_EffectParams_structs.hpp"
+#include "NamedInteger_structs.hpp"
 
 
 namespace SDK::Params
@@ -733,6 +733,22 @@ static_assert(offsetof(ITEM_MeleeWeapon_Base_C_DamageTraceWithOffsetFromCamera, 
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_DamageTraceWithOffsetFromCamera, CallFunc_GetDamageTraceWorldOffset_WorldOffset) == 0x00013C, "Member 'ITEM_MeleeWeapon_Base_C_DamageTraceWithOffsetFromCamera::CallFunc_GetDamageTraceWorldOffset_WorldOffset' has a wrong offset!");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_DamageTraceWithOffsetFromCamera, CallFunc_Add_VectorVector_ReturnValue_1) == 0x000148, "Member 'ITEM_MeleeWeapon_Base_C_DamageTraceWithOffsetFromCamera::CallFunc_Add_VectorVector_ReturnValue_1' has a wrong offset!");
 
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.EnableDamage
+// 0x0018 (0x0018 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_EnableDamage final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimMontage*                           CurrentActionMontage;                              // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EnableDamage_Result;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_EnableDamage) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_EnableDamage");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_EnableDamage) == 0x000018, "Wrong size on ITEM_MeleeWeapon_Base_C_EnableDamage");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_EnableDamage, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_EnableDamage::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_EnableDamage, CurrentActionMontage) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_EnableDamage::CurrentActionMontage' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_EnableDamage, CallFunc_EnableDamage_Result) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_EnableDamage::CallFunc_EnableDamage_Result' has a wrong offset!");
+
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.DamageTraceWithOffsetFromSocket
 // 0x01B0 (0x01B0 - 0x0000)
 struct ITEM_MeleeWeapon_Base_C_DamageTraceWithOffsetFromSocket final
@@ -1241,6 +1257,19 @@ static_assert(offsetof(ITEM_MeleeWeapon_Base_C_TryDealDamageFromHitResult, CallF
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_TryDealDamageFromHitResult, CallFunc_IsActive_Result) == 0x000A00, "Member 'ITEM_MeleeWeapon_Base_C_TryDealDamageFromHitResult::CallFunc_IsActive_Result' has a wrong offset!");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_TryDealDamageFromHitResult, CallFunc_BooleanAND_ReturnValue_1) == 0x000A01, "Member 'ITEM_MeleeWeapon_Base_C_TryDealDamageFromHitResult::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_TryDealDamageFromHitResult, CallFunc_IsValid_ReturnValue_9) == 0x000A02, "Member 'ITEM_MeleeWeapon_Base_C_TryDealDamageFromHitResult::CallFunc_IsValid_ReturnValue_9' has a wrong offset!");
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.DisableDamage
+// 0x0002 (0x0002 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_DisableDamage final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_DisableDamage_Result;                     // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_DisableDamage) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_DisableDamage");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_DisableDamage) == 0x000002, "Wrong size on ITEM_MeleeWeapon_Base_C_DisableDamage");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_DisableDamage, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_DisableDamage::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_DisableDamage, CallFunc_DisableDamage_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_DisableDamage::CallFunc_DisableDamage_Result' has a wrong offset!");
 
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.CreateMeleeImpactForceFeedback
 // 0x0160 (0x0160 - 0x0000)
@@ -1879,35 +1908,6 @@ static_assert(offsetof(ITEM_MeleeWeapon_Base_C_UpdateStaminaDrainMod, CallFunc_I
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_UpdateStaminaDrainMod, CallFunc_IsValid_ReturnValue_2) == 0x00017C, "Member 'ITEM_MeleeWeapon_Base_C_UpdateStaminaDrainMod::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_UpdateStaminaDrainMod, K2Node_SwitchEnum_CmpSuccess) == 0x00017D, "Member 'ITEM_MeleeWeapon_Base_C_UpdateStaminaDrainMod::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.EnableDamage
-// 0x0018 (0x0018 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_EnableDamage final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimMontage*                           CurrentActionMontage;                              // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EnableDamage_Result;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_EnableDamage) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_EnableDamage");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_EnableDamage) == 0x000018, "Wrong size on ITEM_MeleeWeapon_Base_C_EnableDamage");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_EnableDamage, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_EnableDamage::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_EnableDamage, CurrentActionMontage) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_EnableDamage::CurrentActionMontage' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_EnableDamage, CallFunc_EnableDamage_Result) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_EnableDamage::CallFunc_EnableDamage_Result' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.DisableDamage
-// 0x0002 (0x0002 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_DisableDamage final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_DisableDamage_Result;                     // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_DisableDamage) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_DisableDamage");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_DisableDamage) == 0x000002, "Wrong size on ITEM_MeleeWeapon_Base_C_DisableDamage");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_DisableDamage, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_DisableDamage::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_DisableDamage, CallFunc_DisableDamage_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_DisableDamage::CallFunc_DisableDamage_Result' has a wrong offset!");
-
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.CalcDamageAndArmorPenetration
 // 0x0240 (0x0240 - 0x0000)
 struct ITEM_MeleeWeapon_Base_C_CalcDamageAndArmorPenetration final
@@ -2142,6 +2142,131 @@ static_assert(offsetof(ITEM_MeleeWeapon_Base_C_HasBerserkAttribute, CallFunc_IsV
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_HasBerserkAttribute, CallFunc_GetOwnerCharacter_Character) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_HasBerserkAttribute::CallFunc_GetOwnerCharacter_Character' has a wrong offset!");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_HasBerserkAttribute, CallFunc_GetComponentByClass_ReturnValue) == 0x000020, "Member 'ITEM_MeleeWeapon_Base_C_HasBerserkAttribute::CallFunc_GetComponentByClass_ReturnValue' has a wrong offset!");
 
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.CanAimWithWeapon
+// 0x0001 (0x0001 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_CanAimWithWeapon final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_CanAimWithWeapon) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_CanAimWithWeapon");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_CanAimWithWeapon) == 0x000001, "Wrong size on ITEM_MeleeWeapon_Base_C_CanAimWithWeapon");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_CanAimWithWeapon, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_CanAimWithWeapon::Result' has a wrong offset!");
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetDrawMontage
+// 0x0020 (0x0020 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_GetDrawMontage final
+{
+public:
+	class UAnimMontage*                           Montage;                                           // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimMontage*                           CallFunc_GetDrawMontage_Montage;                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAnimMontage*                           K2Node_Select_Default;                             // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetDrawMontage) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetDrawMontage");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetDrawMontage) == 0x000020, "Wrong size on ITEM_MeleeWeapon_Base_C_GetDrawMontage");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, Montage) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::Montage' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, CallFunc_IsValid_ReturnValue) == 0x000009, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, CallFunc_BooleanAND_ReturnValue) == 0x00000A, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, CallFunc_GetDrawMontage_Montage) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::CallFunc_GetDrawMontage_Montage' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, K2Node_Select_Default) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::K2Node_Select_Default' has a wrong offset!");
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetHolsterMontage
+// 0x0028 (0x0028 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_GetHolsterMontage final
+{
+public:
+	class UAnimMontage*                           Montage;                                           // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimMontage*                           CallFunc_GetHolsterMontage_Montage;                // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimMontage*                           K2Node_Select_Default;                             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetHolsterMontage");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage) == 0x000028, "Wrong size on ITEM_MeleeWeapon_Base_C_GetHolsterMontage");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, Montage) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::Montage' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, CallFunc_IsValid_ReturnValue) == 0x000009, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, CallFunc_GetHolsterMontage_Montage) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::CallFunc_GetHolsterMontage_Montage' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, CallFunc_BooleanAND_ReturnValue) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, K2Node_Select_Default) == 0x000020, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::K2Node_Select_Default' has a wrong offset!");
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetIdleSequence
+// 0x0028 (0x0028 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_GetIdleSequence final
+{
+public:
+	class UAnimSequenceBase*                      Result;                                            // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimSequenceBase*                      CallFunc_GetIdleSequence_Result;                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimSequenceBase*                      K2Node_Select_Default;                             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetIdleSequence) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetIdleSequence");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetIdleSequence) == 0x000028, "Wrong size on ITEM_MeleeWeapon_Base_C_GetIdleSequence");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, CallFunc_GetIdleSequence_Result) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::CallFunc_GetIdleSequence_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, K2Node_Select_Default) == 0x000020, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::K2Node_Select_Default' has a wrong offset!");
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetWalkSequence
+// 0x0028 (0x0028 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_GetWalkSequence final
+{
+public:
+	class UAnimSequenceBase*                      Result;                                            // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimSequenceBase*                      CallFunc_GetWalkSequence_Result;                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimSequenceBase*                      K2Node_Select_Default;                             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetWalkSequence) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetWalkSequence");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetWalkSequence) == 0x000028, "Wrong size on ITEM_MeleeWeapon_Base_C_GetWalkSequence");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, CallFunc_GetWalkSequence_Result) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::CallFunc_GetWalkSequence_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, K2Node_Select_Default) == 0x000020, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::K2Node_Select_Default' has a wrong offset!");
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetSprintSequence
+// 0x0028 (0x0028 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_GetSprintSequence final
+{
+public:
+	class UAnimSequenceBase*                      Result;                                            // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimSequenceBase*                      CallFunc_GetSprintSequence_Result;                 // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimSequenceBase*                      K2Node_Select_Default;                             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetSprintSequence) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetSprintSequence");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetSprintSequence) == 0x000028, "Wrong size on ITEM_MeleeWeapon_Base_C_GetSprintSequence");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, CallFunc_GetSprintSequence_Result) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::CallFunc_GetSprintSequence_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, K2Node_Select_Default) == 0x000020, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::K2Node_Select_Default' has a wrong offset!");
+
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnKilledCharacter
 // 0x0030 (0x0030 - 0x0000)
 struct ITEM_MeleeWeapon_Base_C_OnKilledCharacter final
@@ -2309,159 +2434,6 @@ static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetTraceSocketName) == 0x000004, "
 static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetTraceSocketName) == 0x000008, "Wrong size on ITEM_MeleeWeapon_Base_C_GetTraceSocketName");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetTraceSocketName, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetTraceSocketName::Result' has a wrong offset!");
 
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.CanAimWithWeapon
-// 0x0001 (0x0001 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_CanAimWithWeapon final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_CanAimWithWeapon) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_CanAimWithWeapon");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_CanAimWithWeapon) == 0x000001, "Wrong size on ITEM_MeleeWeapon_Base_C_CanAimWithWeapon");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_CanAimWithWeapon, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_CanAimWithWeapon::Result' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetDrawMontage
-// 0x0020 (0x0020 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_GetDrawMontage final
-{
-public:
-	class UAnimMontage*                           Montage;                                           // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimMontage*                           CallFunc_GetDrawMontage_Montage;                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAnimMontage*                           K2Node_Select_Default;                             // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetDrawMontage) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetDrawMontage");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetDrawMontage) == 0x000020, "Wrong size on ITEM_MeleeWeapon_Base_C_GetDrawMontage");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, Montage) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::Montage' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, CallFunc_IsValid_ReturnValue) == 0x000009, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, CallFunc_BooleanAND_ReturnValue) == 0x00000A, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, CallFunc_GetDrawMontage_Montage) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::CallFunc_GetDrawMontage_Montage' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetDrawMontage, K2Node_Select_Default) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetDrawMontage::K2Node_Select_Default' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetHolsterMontage
-// 0x0028 (0x0028 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_GetHolsterMontage final
-{
-public:
-	class UAnimMontage*                           Montage;                                           // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimMontage*                           CallFunc_GetHolsterMontage_Montage;                // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimMontage*                           K2Node_Select_Default;                             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetHolsterMontage");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage) == 0x000028, "Wrong size on ITEM_MeleeWeapon_Base_C_GetHolsterMontage");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, Montage) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::Montage' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, CallFunc_IsValid_ReturnValue) == 0x000009, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, CallFunc_GetHolsterMontage_Montage) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::CallFunc_GetHolsterMontage_Montage' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, CallFunc_BooleanAND_ReturnValue) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetHolsterMontage, K2Node_Select_Default) == 0x000020, "Member 'ITEM_MeleeWeapon_Base_C_GetHolsterMontage::K2Node_Select_Default' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetIdleSequence
-// 0x0028 (0x0028 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_GetIdleSequence final
-{
-public:
-	class UAnimSequenceBase*                      Result;                                            // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimSequenceBase*                      CallFunc_GetIdleSequence_Result;                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimSequenceBase*                      K2Node_Select_Default;                             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetIdleSequence) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetIdleSequence");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetIdleSequence) == 0x000028, "Wrong size on ITEM_MeleeWeapon_Base_C_GetIdleSequence");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, CallFunc_GetIdleSequence_Result) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::CallFunc_GetIdleSequence_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetIdleSequence, K2Node_Select_Default) == 0x000020, "Member 'ITEM_MeleeWeapon_Base_C_GetIdleSequence::K2Node_Select_Default' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetWalkSequence
-// 0x0028 (0x0028 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_GetWalkSequence final
-{
-public:
-	class UAnimSequenceBase*                      Result;                                            // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimSequenceBase*                      CallFunc_GetWalkSequence_Result;                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimSequenceBase*                      K2Node_Select_Default;                             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetWalkSequence) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetWalkSequence");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetWalkSequence) == 0x000028, "Wrong size on ITEM_MeleeWeapon_Base_C_GetWalkSequence");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, CallFunc_GetWalkSequence_Result) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::CallFunc_GetWalkSequence_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetWalkSequence, K2Node_Select_Default) == 0x000020, "Member 'ITEM_MeleeWeapon_Base_C_GetWalkSequence::K2Node_Select_Default' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetSprintSequence
-// 0x0028 (0x0028 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_GetSprintSequence final
-{
-public:
-	class UAnimSequenceBase*                      Result;                                            // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimSequenceBase*                      CallFunc_GetSprintSequence_Result;                 // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimSequenceBase*                      K2Node_Select_Default;                             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetSprintSequence) == 0x000008, "Wrong alignment on ITEM_MeleeWeapon_Base_C_GetSprintSequence");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetSprintSequence) == 0x000028, "Wrong size on ITEM_MeleeWeapon_Base_C_GetSprintSequence");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, Temp_bool_Variable) == 0x000008, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, CallFunc_GetSprintSequence_Result) == 0x000010, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::CallFunc_GetSprintSequence_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetSprintSequence, K2Node_Select_Default) == 0x000020, "Member 'ITEM_MeleeWeapon_Base_C_GetSprintSequence::K2Node_Select_Default' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnBecomeActivatable
-// 0x0003 (0x0003 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_OnBecomeActivatable final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_HasBerserkAttribute_Result;               // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnBecomeActivatable_Result;               // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_OnBecomeActivatable");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable) == 0x000003, "Wrong size on ITEM_MeleeWeapon_Base_C_OnBecomeActivatable");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, CallFunc_HasBerserkAttribute_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::CallFunc_HasBerserkAttribute_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, CallFunc_OnBecomeActivatable_Result) == 0x000002, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::CallFunc_OnBecomeActivatable_Result' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnBecomeUnactivatable
-// 0x0002 (0x0002 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable) == 0x000002, "Wrong size on ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
-
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.Activate
 // 0x00A0 (0x00A0 - 0x0000)
 struct ITEM_MeleeWeapon_Base_C_Activate final
@@ -2512,6 +2484,34 @@ static_assert(offsetof(ITEM_MeleeWeapon_Base_C_Activate, CallFunc_GetIdleToReady
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_Activate, CallFunc_ForceBeginAction_Action) == 0x000088, "Member 'ITEM_MeleeWeapon_Base_C_Activate::CallFunc_ForceBeginAction_Action' has a wrong offset!");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_Activate, CallFunc_GetOwnerCharacter_Character) == 0x000090, "Member 'ITEM_MeleeWeapon_Base_C_Activate::CallFunc_GetOwnerCharacter_Character' has a wrong offset!");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_Activate, CallFunc_GetPowerSwingToReadyMontage_Montage) == 0x000098, "Member 'ITEM_MeleeWeapon_Base_C_Activate::CallFunc_GetPowerSwingToReadyMontage_Montage' has a wrong offset!");
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnBecomeActivatable
+// 0x0003 (0x0003 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_OnBecomeActivatable final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasBerserkAttribute_Result;               // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnBecomeActivatable_Result;               // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_OnBecomeActivatable");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable) == 0x000003, "Wrong size on ITEM_MeleeWeapon_Base_C_OnBecomeActivatable");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, CallFunc_HasBerserkAttribute_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::CallFunc_HasBerserkAttribute_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, CallFunc_OnBecomeActivatable_Result) == 0x000002, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::CallFunc_OnBecomeActivatable_Result' has a wrong offset!");
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnBecomeUnactivatable
+// 0x0002 (0x0002 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable) == 0x000002, "Wrong size on ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
 
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.Deactivate
 // 0x00B8 (0x00B8 - 0x0000)

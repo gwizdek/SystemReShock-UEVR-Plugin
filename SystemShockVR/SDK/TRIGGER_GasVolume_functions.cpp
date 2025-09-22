@@ -17,51 +17,57 @@
 namespace SDK
 {
 
-// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.UpdateGasAttribModOnCharacter
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.ExecuteUbergraph_TRIGGER_GasVolume
+// (Final, UbergraphFunction)
 // Parameters:
-// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// float                                   GasIntensity                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ATRIGGER_GasVolume_C::UpdateGasAttribModOnCharacter(class APAWN_SystemShockCharacter_C* Character, float GasIntensity)
+void ATRIGGER_GasVolume_C::ExecuteUbergraph_TRIGGER_GasVolume(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_GasVolume_C", "UpdateGasAttribModOnCharacter");
+		Func = Class->GetFunction("TRIGGER_GasVolume_C", "ExecuteUbergraph_TRIGGER_GasVolume");
 
-	Params::TRIGGER_GasVolume_C_UpdateGasAttribModOnCharacter Parms{};
+	Params::TRIGGER_GasVolume_C_ExecuteUbergraph_TRIGGER_GasVolume Parms{};
 
-	Parms.Character = Character;
-	Parms.GasIntensity = GasIntensity;
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.EVENT_BeginDissipatingGas
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature
+// (BlueprintEvent)
+// Parameters:
+// class UVoxelNavAgentComponent*          AgentComponent                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// uint8                                   MaxOverlapPropagationDensity                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ATRIGGER_GasVolume_C::EVENT_BeginDissipatingGas()
+void ATRIGGER_GasVolume_C::BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature(class UVoxelNavAgentComponent* AgentComponent, uint8 MaxOverlapPropagationDensity)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_GasVolume_C", "EVENT_BeginDissipatingGas");
+		Func = Class->GetFunction("TRIGGER_GasVolume_C", "BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::TRIGGER_GasVolume_C_BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature Parms{};
+
+	Parms.AgentComponent = AgentComponent;
+	Parms.MaxOverlapPropagationDensity = MaxOverlapPropagationDensity;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.TryBeginGasBehavior
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
 
-void ATRIGGER_GasVolume_C::TryBeginGasBehavior()
+void ATRIGGER_GasVolume_C::ReceiveBeginPlay()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_GasVolume_C", "TryBeginGasBehavior");
+		Func = Class->GetFunction("TRIGGER_GasVolume_C", "ReceiveBeginPlay");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -91,80 +97,89 @@ void ATRIGGER_GasVolume_C::InitializeGasVolume(class UAttribDamageType* InDamage
 }
 
 
-// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
+// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.TryBeginGasBehavior
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void ATRIGGER_GasVolume_C::ReceiveBeginPlay()
+void ATRIGGER_GasVolume_C::TryBeginGasBehavior()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_GasVolume_C", "ReceiveBeginPlay");
+		Func = Class->GetFunction("TRIGGER_GasVolume_C", "TryBeginGasBehavior");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature
-// (BlueprintEvent)
-// Parameters:
-// class UVoxelNavAgentComponent*          AgentComponent                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// uint8                                   MaxOverlapPropagationDensity                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.EVENT_BeginDissipatingGas
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void ATRIGGER_GasVolume_C::BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature(class UVoxelNavAgentComponent* AgentComponent, uint8 MaxOverlapPropagationDensity)
+void ATRIGGER_GasVolume_C::EVENT_BeginDissipatingGas()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_GasVolume_C", "BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature");
+		Func = Class->GetFunction("TRIGGER_GasVolume_C", "EVENT_BeginDissipatingGas");
 
-	Params::TRIGGER_GasVolume_C_BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature Parms{};
+	UObject::ProcessEvent(Func, nullptr);
+}
 
-	Parms.AgentComponent = AgentComponent;
-	Parms.MaxOverlapPropagationDensity = MaxOverlapPropagationDensity;
+
+// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.EVENT_DestroyGasVolume
+// (Private, BlueprintCallable, BlueprintEvent)
+
+void ATRIGGER_GasVolume_C::EVENT_DestroyGasVolume()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TRIGGER_GasVolume_C", "EVENT_DestroyGasVolume");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.UpdateGasAttribModOnCharacter
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   GasIntensity                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ATRIGGER_GasVolume_C::UpdateGasAttribModOnCharacter(class APAWN_SystemShockCharacter_C* Character, float GasIntensity)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TRIGGER_GasVolume_C", "UpdateGasAttribModOnCharacter");
+
+	Params::TRIGGER_GasVolume_C_UpdateGasAttribModOnCharacter Parms{};
+
+	Parms.Character = Character;
+	Parms.GasIntensity = GasIntensity;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.ExecuteUbergraph_TRIGGER_GasVolume
-// (Final, UbergraphFunction)
+// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.ShouldSaveActor
+// (Event, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ATRIGGER_GasVolume_C::ExecuteUbergraph_TRIGGER_GasVolume(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_GasVolume_C", "ExecuteUbergraph_TRIGGER_GasVolume");
-
-	Params::TRIGGER_GasVolume_C_ExecuteUbergraph_TRIGGER_GasVolume Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.ReceivePendingCharacterVelocity
-// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// struct FVector                          Velocity                                               (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FStreamingSaveGameActorParams    Params_0                                               (Parm, OutParm)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
 
-bool ATRIGGER_GasVolume_C::ReceivePendingCharacterVelocity(const struct FVector& Velocity)
+bool ATRIGGER_GasVolume_C::ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_GasVolume_C", "ReceivePendingCharacterVelocity");
+		Func = Class->GetFunction("TRIGGER_GasVolume_C", "ShouldSaveActor");
 
-	Params::TRIGGER_GasVolume_C_ReceivePendingCharacterVelocity Parms{};
-
-	Parms.Velocity = std::move(Velocity);
+	Params::TRIGGER_GasVolume_C_ShouldSaveActor Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
+
+	if (Params_0 != nullptr)
+		*Params_0 = std::move(Parms.Params_0);
 
 	return Parms.ReturnValue;
 }
@@ -195,41 +210,26 @@ bool ATRIGGER_GasVolume_C::ReceivePendingBodyTransforms(class USkeletalMeshCompo
 }
 
 
-// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.ShouldSaveActor
-// (Event, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.ReceivePendingCharacterVelocity
+// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// struct FStreamingSaveGameActorParams    Params_0                                               (Parm, OutParm)
+// struct FVector                          Velocity                                               (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
 
-bool ATRIGGER_GasVolume_C::ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0)
+bool ATRIGGER_GasVolume_C::ReceivePendingCharacterVelocity(const struct FVector& Velocity)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_GasVolume_C", "ShouldSaveActor");
+		Func = Class->GetFunction("TRIGGER_GasVolume_C", "ReceivePendingCharacterVelocity");
 
-	Params::TRIGGER_GasVolume_C_ShouldSaveActor Parms{};
+	Params::TRIGGER_GasVolume_C_ReceivePendingCharacterVelocity Parms{};
+
+	Parms.Velocity = std::move(Velocity);
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (Params_0 != nullptr)
-		*Params_0 = std::move(Parms.Params_0);
-
 	return Parms.ReturnValue;
-}
-
-
-// Function TRIGGER_GasVolume.TRIGGER_GasVolume_C.EVENT_DestroyGasVolume
-// (Private, BlueprintCallable, BlueprintEvent)
-
-void ATRIGGER_GasVolume_C::EVENT_DestroyGasVolume()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_GasVolume_C", "EVENT_DestroyGasVolume");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

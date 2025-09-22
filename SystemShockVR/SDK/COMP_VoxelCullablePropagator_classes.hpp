@@ -21,10 +21,10 @@ namespace SDK
 class UCOMP_VoxelCullablePropagator_C final : public UVoxelPropagatorComponent
 {
 public:
-	float GetElapsedPlayTime();
-	bool ShouldSaveComponent(struct FStreamingSaveGameComponentParams* Params_0);
-	struct FVector GetRelativePropagationOriginOffset();
 	class UVoxelLevelManager* GetVoxelLevelManager();
+	float GetElapsedPlayTime();
+	struct FVector GetRelativePropagationOriginOffset();
+	bool ShouldSaveComponent(struct FStreamingSaveGameComponentParams* Params_0);
 
 public:
 	static class UClass* StaticClass()

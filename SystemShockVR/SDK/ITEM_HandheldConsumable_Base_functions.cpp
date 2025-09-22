@@ -17,6 +17,90 @@
 namespace SDK
 {
 
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarIcon
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UTexture*                         ResultIcon                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UITEM_HandheldConsumable_Base_C::GetHotbarIcon(class UTexture** ResultIcon)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "GetHotbarIcon");
+
+	Params::ITEM_HandheldConsumable_Base_C_GetHotbarIcon Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (ResultIcon != nullptr)
+		*ResultIcon = Parms.ResultIcon;
+}
+
+
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarDisplayName
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FText                             Result                                                 (Parm, OutParm)
+
+void UITEM_HandheldConsumable_Base_C::GetHotbarDisplayName(class FText* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "GetHotbarDisplayName");
+
+	Params::ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = std::move(Parms.Result);
+}
+
+
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarCount
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int32                                   ResultCount                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UITEM_HandheldConsumable_Base_C::GetHotbarCount(int32* ResultCount)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "GetHotbarCount");
+
+	Params::ITEM_HandheldConsumable_Base_C_GetHotbarCount Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (ResultCount != nullptr)
+		*ResultCount = Parms.ResultCount;
+}
+
+
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetEquipState
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_HandheldConsumable_Base_C::GetEquipState(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "GetEquipState");
+
+	Params::ITEM_HandheldConsumable_Base_C_GetEquipState Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
 // Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.EVENT_OnConsumableBagChanged
 // (Private, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -171,90 +255,6 @@ void UITEM_HandheldConsumable_Base_C::GetTotalConsumableItemCount(int32* Result)
 }
 
 
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarIcon
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UTexture*                         ResultIcon                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UITEM_HandheldConsumable_Base_C::GetHotbarIcon(class UTexture** ResultIcon)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "GetHotbarIcon");
-
-	Params::ITEM_HandheldConsumable_Base_C_GetHotbarIcon Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (ResultIcon != nullptr)
-		*ResultIcon = Parms.ResultIcon;
-}
-
-
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarDisplayName
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class FText                             Result                                                 (Parm, OutParm)
-
-void UITEM_HandheldConsumable_Base_C::GetHotbarDisplayName(class FText* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "GetHotbarDisplayName");
-
-	Params::ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = std::move(Parms.Result);
-}
-
-
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarCount
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// int32                                   ResultCount                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UITEM_HandheldConsumable_Base_C::GetHotbarCount(int32* ResultCount)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "GetHotbarCount");
-
-	Params::ITEM_HandheldConsumable_Base_C_GetHotbarCount Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (ResultCount != nullptr)
-		*ResultCount = Parms.ResultCount;
-}
-
-
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetEquipState
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_HandheldConsumable_Base_C::GetEquipState(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "GetEquipState");
-
-	Params::ITEM_HandheldConsumable_Base_C_GetEquipState Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.TryUseConsumable
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -268,6 +268,44 @@ void UITEM_HandheldConsumable_Base_C::TryUseConsumable(bool* Result)
 		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "TryUseConsumable");
 
 	Params::ITEM_HandheldConsumable_Base_C_TryUseConsumable Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.OnBeginPlay
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UITEM_HandheldConsumable_Base_C::OnBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "OnBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.OnInventoryChanged
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UCOMP_Inventory_C*                PrevInventory                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_HandheldConsumable_Base_C::OnInventoryChanged(class UCOMP_Inventory_C* PrevInventory, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "OnInventoryChanged");
+
+	Params::ITEM_HandheldConsumable_Base_C_OnInventoryChanged Parms{};
+
+	Parms.PrevInventory = PrevInventory;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -315,44 +353,6 @@ void UITEM_HandheldConsumable_Base_C::ShouldForceEquip(bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
-}
-
-
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.OnInventoryChanged
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UCOMP_Inventory_C*                PrevInventory                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_HandheldConsumable_Base_C::OnInventoryChanged(class UCOMP_Inventory_C* PrevInventory, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "OnInventoryChanged");
-
-	Params::ITEM_HandheldConsumable_Base_C_OnInventoryChanged Parms{};
-
-	Parms.PrevInventory = PrevInventory;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.OnBeginPlay
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UITEM_HandheldConsumable_Base_C::OnBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldConsumable_Base_C", "OnBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

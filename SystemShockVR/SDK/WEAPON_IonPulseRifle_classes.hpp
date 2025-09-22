@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "ITEM_EnergyWeapon_Base_classes.hpp"
-#include "PhysicsCore_structs.hpp"
 #include "ENUM_IonChargedBeamType_structs.hpp"
+#include "PhysicsCore_structs.hpp"
 
 
 namespace SDK

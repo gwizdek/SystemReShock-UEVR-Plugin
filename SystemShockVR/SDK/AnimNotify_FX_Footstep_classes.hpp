@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_Foot_structs.hpp"
 #include "AnimNotify_FX_Base_classes.hpp"
+#include "ENUM_Foot_structs.hpp"
 #include "ENUM_LocomotionType_structs.hpp"
 
 

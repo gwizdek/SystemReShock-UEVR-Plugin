@@ -66,10 +66,10 @@ public:
 	void UpdateTerminalEmissiveStrength(float Scale);
 	void IsTerminalFunctional(bool* Result);
 	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
+	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
 	void CanModifyInteractPower(bool* Result);
 	void SetInteractPowered(bool State, bool* Result);
-	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 
 public:
 	static class UClass* StaticClass()

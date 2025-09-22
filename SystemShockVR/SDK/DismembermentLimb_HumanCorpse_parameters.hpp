@@ -10,85 +10,32 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "Enum_CorpseOutfits_structs.hpp"
 #include "BodyType_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
 
 
 namespace SDK::Params
 {
 
-// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.ForceUpdateHumanCorpseLimb
-// 0x0010 (0x0010 - 0x0000)
-struct DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb final
-{
-public:
-	class UMaterialInstanceDynamic*               SkinMaterial;                                      // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               CallFunc_UpdateHumanCorpseSkinMaterial_ResultMaterial; // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb) == 0x000008, "Wrong alignment on DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb");
-static_assert(sizeof(DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb) == 0x000010, "Wrong size on DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb, SkinMaterial) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb::SkinMaterial' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb, CallFunc_UpdateHumanCorpseSkinMaterial_ResultMaterial) == 0x000008, "Member 'DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb::CallFunc_UpdateHumanCorpseSkinMaterial_ResultMaterial' has a wrong offset!");
-
-// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.TryRandomizeOutfit
-// 0x0002 (0x0002 - 0x0000)
-struct DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit final
-{
-public:
-	Enum_CorpseOutfits                            CallFunc_GetRandomHumanCorpseOutfit_Result;        // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit) == 0x000001, "Wrong alignment on DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit");
-static_assert(sizeof(DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit) == 0x000002, "Wrong size on DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit, CallFunc_GetRandomHumanCorpseOutfit_Result) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit::CallFunc_GetRandomHumanCorpseOutfit_Result' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000001, "Member 'DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-
-// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.TryRandomizeBodyType
-// 0x0002 (0x0002 - 0x0000)
-struct DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType final
-{
-public:
-	EBodyType                                     CallFunc_GetRandomHumanCorpseBodyType_Result;      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType) == 0x000001, "Wrong alignment on DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType");
-static_assert(sizeof(DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType) == 0x000002, "Wrong size on DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType, CallFunc_GetRandomHumanCorpseBodyType_Result) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType::CallFunc_GetRandomHumanCorpseBodyType_Result' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000001, "Member 'DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-
-// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.UpdateSettingsFromCorpseActor
+// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.ExecuteUbergraph_DismembermentLimb_HumanCorpse
 // 0x0020 (0x0020 - 0x0000)
-struct DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor final
+struct DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse final
 {
 public:
-	class ACORPSE_Human_C*                        CorpseActor;                                       // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class ACORPSE_Human_C*                        K2Node_DynamicCast_AsCORPSE_Human;                 // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor) == 0x000008, "Wrong alignment on DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor");
-static_assert(sizeof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor) == 0x000020, "Wrong size on DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor, CorpseActor) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor::CorpseActor' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor, CallFunc_GetOwner_ReturnValue) == 0x000008, "Member 'DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor, K2Node_DynamicCast_AsCORPSE_Human) == 0x000010, "Member 'DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor::K2Node_DynamicCast_AsCORPSE_Human' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-
-// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.InitializeLimbActor
-// 0x0018 (0x0018 - 0x0000)
-struct DismembermentLimb_HumanCorpse_C_InitializeLimbActor final
-{
-public:
-	class USkeletalMesh*                          DisplayMesh;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class USkeletalMeshComponent*                 SourcePoseMesh;                                    // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UOBJ_ImpactData_C*                      ImpactData;                                        // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor) == 0x000008, "Wrong alignment on DismembermentLimb_HumanCorpse_C_InitializeLimbActor");
-static_assert(sizeof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor) == 0x000018, "Wrong size on DismembermentLimb_HumanCorpse_C_InitializeLimbActor");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor, DisplayMesh) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_InitializeLimbActor::DisplayMesh' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor, SourcePoseMesh) == 0x000008, "Member 'DismembermentLimb_HumanCorpse_C_InitializeLimbActor::SourcePoseMesh' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor, ImpactData) == 0x000010, "Member 'DismembermentLimb_HumanCorpse_C_InitializeLimbActor::ImpactData' has a wrong offset!");
+static_assert(alignof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse) == 0x000008, "Wrong alignment on DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse");
+static_assert(sizeof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse) == 0x000020, "Wrong size on DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse, EntryPoint) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse::EntryPoint' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse, CallFunc_GetOwner_ReturnValue) == 0x000008, "Member 'DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse, K2Node_DynamicCast_AsCORPSE_Human) == 0x000010, "Member 'DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse::K2Node_DynamicCast_AsCORPSE_Human' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 // Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.UserConstructionScript
 // 0x00C0 (0x00C0 - 0x0000)
@@ -118,23 +65,76 @@ static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UserConstructionScript, C
 static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UserConstructionScript, CallFunc_Not_PreBool_ReturnValue) == 0x0000B4, "Member 'DismembermentLimb_HumanCorpse_C_UserConstructionScript::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UserConstructionScript, CallFunc_GetHumanCorpseLimbMesh_Mesh) == 0x0000B8, "Member 'DismembermentLimb_HumanCorpse_C_UserConstructionScript::CallFunc_GetHumanCorpseLimbMesh_Mesh' has a wrong offset!");
 
-// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.ExecuteUbergraph_DismembermentLimb_HumanCorpse
-// 0x0020 (0x0020 - 0x0000)
-struct DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse final
+// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.InitializeLimbActor
+// 0x0018 (0x0018 - 0x0000)
+struct DismembermentLimb_HumanCorpse_C_InitializeLimbActor final
 {
 public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class USkeletalMesh*                          DisplayMesh;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 SourcePoseMesh;                                    // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UOBJ_ImpactData_C*                      ImpactData;                                        // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor) == 0x000008, "Wrong alignment on DismembermentLimb_HumanCorpse_C_InitializeLimbActor");
+static_assert(sizeof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor) == 0x000018, "Wrong size on DismembermentLimb_HumanCorpse_C_InitializeLimbActor");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor, DisplayMesh) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_InitializeLimbActor::DisplayMesh' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor, SourcePoseMesh) == 0x000008, "Member 'DismembermentLimb_HumanCorpse_C_InitializeLimbActor::SourcePoseMesh' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_InitializeLimbActor, ImpactData) == 0x000010, "Member 'DismembermentLimb_HumanCorpse_C_InitializeLimbActor::ImpactData' has a wrong offset!");
+
+// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.UpdateSettingsFromCorpseActor
+// 0x0020 (0x0020 - 0x0000)
+struct DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor final
+{
+public:
+	class ACORPSE_Human_C*                        CorpseActor;                                       // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class ACORPSE_Human_C*                        K2Node_DynamicCast_AsCORPSE_Human;                 // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse) == 0x000008, "Wrong alignment on DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse");
-static_assert(sizeof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse) == 0x000020, "Wrong size on DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse, EntryPoint) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse::EntryPoint' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse, CallFunc_GetOwner_ReturnValue) == 0x000008, "Member 'DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse, K2Node_DynamicCast_AsCORPSE_Human) == 0x000010, "Member 'DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse::K2Node_DynamicCast_AsCORPSE_Human' has a wrong offset!");
-static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'DismembermentLimb_HumanCorpse_C_ExecuteUbergraph_DismembermentLimb_HumanCorpse::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(alignof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor) == 0x000008, "Wrong alignment on DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor");
+static_assert(sizeof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor) == 0x000020, "Wrong size on DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor, CorpseActor) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor::CorpseActor' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor, CallFunc_GetOwner_ReturnValue) == 0x000008, "Member 'DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor, K2Node_DynamicCast_AsCORPSE_Human) == 0x000010, "Member 'DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor::K2Node_DynamicCast_AsCORPSE_Human' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'DismembermentLimb_HumanCorpse_C_UpdateSettingsFromCorpseActor::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
+// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.TryRandomizeBodyType
+// 0x0002 (0x0002 - 0x0000)
+struct DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType final
+{
+public:
+	EBodyType                                     CallFunc_GetRandomHumanCorpseBodyType_Result;      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType) == 0x000001, "Wrong alignment on DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType");
+static_assert(sizeof(DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType) == 0x000002, "Wrong size on DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType, CallFunc_GetRandomHumanCorpseBodyType_Result) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType::CallFunc_GetRandomHumanCorpseBodyType_Result' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000001, "Member 'DismembermentLimb_HumanCorpse_C_TryRandomizeBodyType::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+
+// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.TryRandomizeOutfit
+// 0x0002 (0x0002 - 0x0000)
+struct DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit final
+{
+public:
+	Enum_CorpseOutfits                            CallFunc_GetRandomHumanCorpseOutfit_Result;        // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit) == 0x000001, "Wrong alignment on DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit");
+static_assert(sizeof(DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit) == 0x000002, "Wrong size on DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit, CallFunc_GetRandomHumanCorpseOutfit_Result) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit::CallFunc_GetRandomHumanCorpseOutfit_Result' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000001, "Member 'DismembermentLimb_HumanCorpse_C_TryRandomizeOutfit::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+
+// Function DismembermentLimb_HumanCorpse.DismembermentLimb_HumanCorpse_C.ForceUpdateHumanCorpseLimb
+// 0x0010 (0x0010 - 0x0000)
+struct DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb final
+{
+public:
+	class UMaterialInstanceDynamic*               SkinMaterial;                                      // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               CallFunc_UpdateHumanCorpseSkinMaterial_ResultMaterial; // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb) == 0x000008, "Wrong alignment on DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb");
+static_assert(sizeof(DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb) == 0x000010, "Wrong size on DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb, SkinMaterial) == 0x000000, "Member 'DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb::SkinMaterial' has a wrong offset!");
+static_assert(offsetof(DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb, CallFunc_UpdateHumanCorpseSkinMaterial_ResultMaterial) == 0x000008, "Member 'DismembermentLimb_HumanCorpse_C_ForceUpdateHumanCorpseLimb::CallFunc_UpdateHumanCorpseSkinMaterial_ResultMaterial' has a wrong offset!");
 
 }
 

@@ -75,20 +75,6 @@ void UHARDWARE_SystemAnalyzer_C::ListenForQuestNotifications()
 }
 
 
-// Function HARDWARE_SystemAnalyzer.HARDWARE_SystemAnalyzer_C.OnAddedToInventory
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UHARDWARE_SystemAnalyzer_C::OnAddedToInventory()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HARDWARE_SystemAnalyzer_C", "OnAddedToInventory");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function HARDWARE_SystemAnalyzer.HARDWARE_SystemAnalyzer_C.OnBeginPlay
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -98,6 +84,20 @@ void UHARDWARE_SystemAnalyzer_C::OnBeginPlay()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("HARDWARE_SystemAnalyzer_C", "OnBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function HARDWARE_SystemAnalyzer.HARDWARE_SystemAnalyzer_C.OnAddedToInventory
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UHARDWARE_SystemAnalyzer_C::OnAddedToInventory()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HARDWARE_SystemAnalyzer_C", "OnAddedToInventory");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

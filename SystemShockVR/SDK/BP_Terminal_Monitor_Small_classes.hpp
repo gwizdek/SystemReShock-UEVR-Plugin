@@ -21,7 +21,7 @@ namespace SDK
 class ABP_Terminal_Monitor_Small_C final : public AStaticMeshActor
 {
 public:
-	class UCOMP_VoxelAudio_C*                     COMP_VoxelAudio_loop;                              // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UCOMP_VoxelAudio_C*                     COMP_VoxelAudio_Loop;                              // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 
 public:
 	static class UClass* StaticClass()
@@ -35,7 +35,7 @@ public:
 };
 static_assert(alignof(ABP_Terminal_Monitor_Small_C) == 0x000008, "Wrong alignment on ABP_Terminal_Monitor_Small_C");
 static_assert(sizeof(ABP_Terminal_Monitor_Small_C) == 0x000238, "Wrong size on ABP_Terminal_Monitor_Small_C");
-static_assert(offsetof(ABP_Terminal_Monitor_Small_C, COMP_VoxelAudio_loop) == 0x000230, "Member 'ABP_Terminal_Monitor_Small_C::COMP_VoxelAudio_loop' has a wrong offset!");
+static_assert(offsetof(ABP_Terminal_Monitor_Small_C, COMP_VoxelAudio_Loop) == 0x000230, "Member 'ABP_Terminal_Monitor_Small_C::COMP_VoxelAudio_Loop' has a wrong offset!");
 
 }
 

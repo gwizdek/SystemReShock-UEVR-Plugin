@@ -33,13 +33,13 @@ public:
 	bool                                          IsOpen;                                            // 0x04E0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
-	void UnlockDoor(bool* Result);
 	void OpenDoor(bool* Result);
 	void CloseDoor(bool* Result);
 	void IsLocked(bool* Result);
 	void SetLocked(bool LockedState, bool* Result);
 	void HideFrontButton(bool HideState, bool* Result);
 	void HideBackButton(bool HideState, bool* Result);
+	void UnlockDoor(bool* Result);
 	void AnimGraph(struct FPoseLink* AnimGraph_0);
 	void ExecuteUbergraph_AnimBP_GroveTram_Door(int32 EntryPoint);
 

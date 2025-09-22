@@ -4606,7 +4606,7 @@ void UGI_SinglePlayer_C::GetCurrentExploreIntensity(float* Intensity)
 
 
 // Function GI_SinglePlayer.GI_SinglePlayer_C.HasCompletedAchievement
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
 // class FName                             AchievementName                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)

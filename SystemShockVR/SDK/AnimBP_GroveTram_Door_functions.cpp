@@ -17,27 +17,6 @@
 namespace SDK
 {
 
-// Function AnimBP_GroveTram_Door.AnimBP_GroveTram_Door_C.UnlockDoor
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UAnimBP_GroveTram_Door_C::UnlockDoor(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("AnimBP_GroveTram_Door_C", "UnlockDoor");
-
-	Params::AnimBP_GroveTram_Door_C_UnlockDoor Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function AnimBP_GroveTram_Door.AnimBP_GroveTram_Door_C.OpenDoor
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -165,6 +144,27 @@ void UAnimBP_GroveTram_Door_C::HideBackButton(bool HideState, bool* Result)
 	Params::AnimBP_GroveTram_Door_C_HideBackButton Parms{};
 
 	Parms.HideState = HideState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function AnimBP_GroveTram_Door.AnimBP_GroveTram_Door_C.UnlockDoor
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UAnimBP_GroveTram_Door_C::UnlockDoor(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("AnimBP_GroveTram_Door_C", "UnlockDoor");
+
+	Params::AnimBP_GroveTram_Door_C_UnlockDoor Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 

@@ -73,23 +73,23 @@ public:
 	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Add_IntInt_ReturnValue_2;                 // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Array_Index_Variable;                     // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   K2Node_CustomEvent_WrittenAchievementName_1;       // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_CustomEvent_WrittenProgress_1;              // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         K2Node_CustomEvent_WrittenUserTag_1;               // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable_1;                   // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      K2Node_CustomEvent_PlayerController;               // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FDataTableRowHandle                    K2Node_CustomEvent_AchievementHandle;              // 0x0050(0x0010)(NoDestructor)
-	int32                                         K2Node_CustomEvent_UserTag;                        // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable_1;                   // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_34[0x4];                                       // 0x0034(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      K2Node_CustomEvent_PlayerController;               // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FDataTableRowHandle                    K2Node_CustomEvent_AchievementHandle;              // 0x0040(0x0010)(NoDestructor)
+	int32                                         K2Node_CustomEvent_UserTag;                        // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   K2Node_CustomEvent_WrittenAchievementName_1;       // 0x0054(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_CustomEvent_WrittenProgress_1;              // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         K2Node_CustomEvent_WrittenUserTag_1;               // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Array_Index_Variable_2;                   // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UAchievementWriteCallbackProxy*         CallFunc_WriteAchievementProgress_ReturnValue;     // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GetCachedAchievementProgress_bFoundID;    // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_71[0x3];                                       // 0x0071(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCachedAchievementProgress_bFoundID;    // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_72[0x2];                                       // 0x0072(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         CallFunc_GetCachedAchievementProgress_Progress;    // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0079(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryCompleteBinaryAchievement_Result;      // 0x007A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_7B[0x5];                                       // 0x007B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_TryCompleteBinaryAchievement_Result;      // 0x0079(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_7A[0x6];                                       // 0x007A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_7;                     // 0x0080(0x0028)(HasGetValueTypeHash)
 	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_6;                     // 0x00A8(0x0028)(HasGetValueTypeHash)
 	struct FVector                                K2Node_CustomEvent_Location;                       // 0x00D0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -430,20 +430,20 @@ static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_1) == 0x000024, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_2) == 0x000028, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable) == 0x00002C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenAchievementName_1) == 0x000030, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenAchievementName_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenProgress_1) == 0x000038, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenProgress_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenUserTag_1) == 0x00003C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenUserTag_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_1) == 0x000040, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_PlayerController) == 0x000048, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_PlayerController' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AchievementHandle) == 0x000050, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AchievementHandle' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_UserTag) == 0x000060, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_UserTag' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_1) == 0x000030, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_PlayerController) == 0x000038, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_PlayerController' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AchievementHandle) == 0x000040, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AchievementHandle' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_UserTag) == 0x000050, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_UserTag' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenAchievementName_1) == 0x000054, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenAchievementName_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenProgress_1) == 0x00005C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenProgress_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenUserTag_1) == 0x000060, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenUserTag_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_2) == 0x000064, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_2' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_WriteAchievementProgress_ReturnValue) == 0x000068, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_WriteAchievementProgress_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetCachedAchievementProgress_bFoundID) == 0x000070, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetCachedAchievementProgress_bFoundID' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue) == 0x000070, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetCachedAchievementProgress_bFoundID) == 0x000071, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetCachedAchievementProgress_bFoundID' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetCachedAchievementProgress_Progress) == 0x000074, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetCachedAchievementProgress_Progress' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_FloatFloat_ReturnValue) == 0x000078, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue) == 0x000079, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryCompleteBinaryAchievement_Result) == 0x00007A, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryCompleteBinaryAchievement_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryCompleteBinaryAchievement_Result) == 0x000079, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryCompleteBinaryAchievement_Result' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_7) == 0x000080, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_7' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_6) == 0x0000A8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_6' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Location) == 0x0000D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Location' has a wrong offset!");
@@ -6301,30 +6301,51 @@ static_assert(sizeof(GI_SinglePlayer_C_GetCurrentExploreIntensity) == 0x000004, 
 static_assert(offsetof(GI_SinglePlayer_C_GetCurrentExploreIntensity, Intensity) == 0x000000, "Member 'GI_SinglePlayer_C_GetCurrentExploreIntensity::Intensity' has a wrong offset!");
 
 // Function GI_SinglePlayer.GI_SinglePlayer_C.HasCompletedAchievement
-// 0x0028 (0x0028 - 0x0000)
+// 0x0050 (0x0050 - 0x0000)
 struct GI_SinglePlayer_C_HasCompletedAchievement final
 {
 public:
 	class FName                                   AchievementName;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GetCachedAchievementProgress_bFoundID;    // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetCachedAchievementProgress_Progress;    // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_AchievementData                CallFunc_GetDataTableRowFromName_OutRow;           // 0x000C(0x0004)(IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_AchievementClassData           CallFunc_Map_Find_Value;                           // 0x0018(0x0010)(HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Map_Find_Value_1;                         // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_ReturnValue_1;                   // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0035(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue_1;        // 0x0036(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_37[0x1];                                       // 0x0037(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GetCachedAchievementProgress_bFoundID;    // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetCachedAchievementProgress_Progress;    // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(GI_SinglePlayer_C_HasCompletedAchievement) == 0x000008, "Wrong alignment on GI_SinglePlayer_C_HasCompletedAchievement");
-static_assert(sizeof(GI_SinglePlayer_C_HasCompletedAchievement) == 0x000028, "Wrong size on GI_SinglePlayer_C_HasCompletedAchievement");
+static_assert(sizeof(GI_SinglePlayer_C_HasCompletedAchievement) == 0x000050, "Wrong size on GI_SinglePlayer_C_HasCompletedAchievement");
 static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, AchievementName) == 0x000000, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::AchievementName' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, Result) == 0x000008, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GetPlayerController_ReturnValue) == 0x000010, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GetCachedAchievementProgress_bFoundID) == 0x000018, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GetCachedAchievementProgress_bFoundID' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GetCachedAchievementProgress_Progress) == 0x00001C, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GetCachedAchievementProgress_Progress' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000020, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GetDataTableRowFromName_OutRow) == 0x00000C, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000010, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_Map_Find_Value) == 0x000018, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_Map_Find_Value' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_Map_Find_ReturnValue) == 0x000028, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_Map_Find_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_Array_Length_ReturnValue) == 0x00002C, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_Map_Find_Value_1) == 0x000030, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_Map_Find_Value_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_Map_Find_ReturnValue_1) == 0x000034, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_Map_Find_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000035, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GreaterEqual_IntInt_ReturnValue_1) == 0x000036, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GreaterEqual_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GetPlayerController_ReturnValue) == 0x000038, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GetCachedAchievementProgress_bFoundID) == 0x000040, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GetCachedAchievementProgress_bFoundID' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GetCachedAchievementProgress_Progress) == 0x000044, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GetCachedAchievementProgress_Progress' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAchievement, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000048, "Member 'GI_SinglePlayer_C_HasCompletedAchievement::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
 
 // Function GI_SinglePlayer.GI_SinglePlayer_C.HasCompletedAllAchievements
-// 0x0070 (0x0070 - 0x0000)
+// 0x0068 (0x0068 - 0x0000)
 struct GI_SinglePlayer_C_HasCompletedAllAchievements final
 {
 public:
@@ -6339,22 +6360,19 @@ public:
 	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GetCachedAchievementProgress_bFoundID;    // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_39[0x3];                                       // 0x0039(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetCachedAchievementProgress_Progress;    // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_NameName_ReturnValue;            // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_NameName_ReturnValue_1;          // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_43[0x5];                                       // 0x0043(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FName>                           CallFunc_GetDataTableRowNames_OutRowNames;         // 0x0048(0x0010)(ReferenceParm)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_Array_Get_Item;                           // 0x005C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasCompletedAchievement_Result;           // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_NameName_ReturnValue;            // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_NameName_ReturnValue_1;          // 0x003A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3B[0x5];                                       // 0x003B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FName>                           CallFunc_GetDataTableRowNames_OutRowNames;         // 0x0040(0x0010)(ReferenceParm)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_Array_Get_Item;                           // 0x0054(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(GI_SinglePlayer_C_HasCompletedAllAchievements) == 0x000008, "Wrong alignment on GI_SinglePlayer_C_HasCompletedAllAchievements");
-static_assert(sizeof(GI_SinglePlayer_C_HasCompletedAllAchievements) == 0x000070, "Wrong size on GI_SinglePlayer_C_HasCompletedAllAchievements");
+static_assert(sizeof(GI_SinglePlayer_C_HasCompletedAllAchievements) == 0x000068, "Wrong size on GI_SinglePlayer_C_HasCompletedAllAchievements");
 static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, IgnoreAchievementName) == 0x000000, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::IgnoreAchievementName' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, Result) == 0x000008, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::Result' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CurrentAchievementName) == 0x00000C, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CurrentAchievementName' has a wrong offset!");
@@ -6363,16 +6381,14 @@ static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, Temp_int_A
 static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, Temp_int_Loop_Counter_Variable) == 0x000024, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::Temp_int_Loop_Counter_Variable' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_Add_IntInt_ReturnValue) == 0x000028, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_GetPlayerController_ReturnValue) == 0x000030, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_GetCachedAchievementProgress_bFoundID) == 0x000038, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_GetCachedAchievementProgress_bFoundID' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_GetCachedAchievementProgress_Progress) == 0x00003C, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_GetCachedAchievementProgress_Progress' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_Less_FloatFloat_ReturnValue) == 0x000040, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_NotEqual_NameName_ReturnValue) == 0x000041, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_NotEqual_NameName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_NotEqual_NameName_ReturnValue_1) == 0x000042, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_NotEqual_NameName_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_GetDataTableRowNames_OutRowNames) == 0x000048, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_GetDataTableRowNames_OutRowNames' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_BooleanAND_ReturnValue) == 0x000058, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_Array_Get_Item) == 0x00005C, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_Array_Length_ReturnValue) == 0x000064, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_Less_IntInt_ReturnValue) == 0x000068, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_HasCompletedAchievement_Result) == 0x000038, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_HasCompletedAchievement_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_NotEqual_NameName_ReturnValue) == 0x000039, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_NotEqual_NameName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_NotEqual_NameName_ReturnValue_1) == 0x00003A, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_NotEqual_NameName_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_GetDataTableRowNames_OutRowNames) == 0x000040, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_GetDataTableRowNames_OutRowNames' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_BooleanAND_ReturnValue) == 0x000050, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_Array_Get_Item) == 0x000054, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_Array_Length_ReturnValue) == 0x00005C, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_HasCompletedAllAchievements, CallFunc_Less_IntInt_ReturnValue) == 0x000060, "Member 'GI_SinglePlayer_C_HasCompletedAllAchievements::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 
 // Function GI_SinglePlayer.GI_SinglePlayer_C.GetMaxCountForAchievement
 // 0x0020 (0x0020 - 0x0000)

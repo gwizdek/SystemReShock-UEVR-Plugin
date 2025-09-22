@@ -16,6 +16,39 @@
 namespace SDK::Params
 {
 
+// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.AnimGraph
+// 0x0010 (0x0010 - 0x0000)
+struct ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph final
+{
+public:
+	struct FPoseLink                              AnimGraph_0;                                       // 0x0000(0x0010)(Parm, OutParm, NoDestructor)
+};
+static_assert(alignof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph) == 0x000008, "Wrong alignment on ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph");
+static_assert(sizeof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph) == 0x000010, "Wrong size on ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph");
+static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph, AnimGraph_0) == 0x000000, "Member 'ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph::AnimGraph_0' has a wrong offset!");
+
+// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.SetOpenProgress
+// 0x0004 (0x0004 - 0x0000)
+struct ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress final
+{
+public:
+	float                                         Value;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress) == 0x000004, "Wrong alignment on ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress");
+static_assert(sizeof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress) == 0x000004, "Wrong size on ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress");
+static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress, Value) == 0x000000, "Member 'ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress::Value' has a wrong offset!");
+
+// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.BlueprintUpdateAnimation
+// 0x0004 (0x0004 - 0x0000)
+struct ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation final
+{
+public:
+	float                                         DeltaTimeX;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation) == 0x000004, "Wrong alignment on ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation");
+static_assert(sizeof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation) == 0x000004, "Wrong size on ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation");
+static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation, DeltaTimeX) == 0x000000, "Member 'ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation::DeltaTimeX' has a wrong offset!");
+
 // Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform
 // 0x0024 (0x0024 - 0x0000)
 struct ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform final
@@ -42,39 +75,6 @@ static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_AN
 static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform, CallFunc_Ease_ReturnValue) == 0x000018, "Member 'ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform::CallFunc_Ease_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x00001C, "Member 'ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000020, "Member 'ANIMBP_SK_ShodanProp_WeaponPlatform_C_ExecuteUbergraph_ANIMBP_SK_ShodanProp_WeaponPlatform::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-
-// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.BlueprintUpdateAnimation
-// 0x0004 (0x0004 - 0x0000)
-struct ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation final
-{
-public:
-	float                                         DeltaTimeX;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation) == 0x000004, "Wrong alignment on ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation");
-static_assert(sizeof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation) == 0x000004, "Wrong size on ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation");
-static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation, DeltaTimeX) == 0x000000, "Member 'ANIMBP_SK_ShodanProp_WeaponPlatform_C_BlueprintUpdateAnimation::DeltaTimeX' has a wrong offset!");
-
-// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.SetOpenProgress
-// 0x0004 (0x0004 - 0x0000)
-struct ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress final
-{
-public:
-	float                                         Value;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress) == 0x000004, "Wrong alignment on ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress");
-static_assert(sizeof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress) == 0x000004, "Wrong size on ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress");
-static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress, Value) == 0x000000, "Member 'ANIMBP_SK_ShodanProp_WeaponPlatform_C_SetOpenProgress::Value' has a wrong offset!");
-
-// Function ANIMBP_SK_ShodanProp_WeaponPlatform.ANIMBP_SK_ShodanProp_WeaponPlatform_C.AnimGraph
-// 0x0010 (0x0010 - 0x0000)
-struct ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph final
-{
-public:
-	struct FPoseLink                              AnimGraph_0;                                       // 0x0000(0x0010)(Parm, OutParm, NoDestructor)
-};
-static_assert(alignof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph) == 0x000008, "Wrong alignment on ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph");
-static_assert(sizeof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph) == 0x000010, "Wrong size on ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph");
-static_assert(offsetof(ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph, AnimGraph_0) == 0x000000, "Member 'ANIMBP_SK_ShodanProp_WeaponPlatform_C_AnimGraph::AnimGraph_0' has a wrong offset!");
 
 }
 

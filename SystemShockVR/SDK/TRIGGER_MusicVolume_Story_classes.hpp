@@ -29,8 +29,8 @@ public:
 	struct FTimerHandle                           PlayTimer;                                         // 0x0278(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void EVENT_OnPlayTimerEnded();
 	void OnEnterVolume(class UGI_SinglePlayer_C* GameInstance, class UGI_SinglePlayer_C** OutGameInstance);
+	void EVENT_OnPlayTimerEnded();
 
 public:
 	static class UClass* StaticClass()

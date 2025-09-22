@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "STRUCT_WeaponMode_structs.hpp"
-#include "STRUCT_HardItemParams_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "STRUCT_HardItemParams_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 
 

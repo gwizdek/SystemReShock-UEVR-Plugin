@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
 #include "ENUM_SurgeryMachineState_structs.hpp"
-#include "INTERACT_Channeling_Base_classes.hpp"
 #include "ENUM_LeftRight_structs.hpp"
+#include "INTERACT_Channeling_Base_classes.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 
 
 namespace SDK

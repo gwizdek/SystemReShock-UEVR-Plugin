@@ -36,12 +36,12 @@ public:
 	float                                         LightIntensity;                                    // 0x025C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void UserConstructionScript();
-	void LightFlicker__FinishedFunc();
-	void LightFlicker__UpdateFunc();
-	void LightFlicker__Click__EventFunc();
-	void ReceiveBeginPlay();
 	void ExecuteUbergraph_Medical_Shelves_Lit(int32 EntryPoint);
+	void ReceiveBeginPlay();
+	void LightFlicker__Click__EventFunc();
+	void LightFlicker__UpdateFunc();
+	void LightFlicker__FinishedFunc();
+	void UserConstructionScript();
 
 public:
 	static class UClass* StaticClass()

@@ -122,8 +122,10 @@ public:
 	void GetDeflectionMontage(ENUM_LeftRightCenter Side, class UAnimMontage** DeflectionMontage);
 	void PerformSpiralDamageTrace();
 	void DamageTraceWithOffsetFromCamera(const struct FIntPoint& Offset, bool* Result);
+	void EnableDamage(bool* Result);
 	void DamageTraceWithOffsetFromSocket(const struct FIntPoint& Offset, bool* Result);
 	void TryDealDamageFromHitResult(const struct FHitResult& HitResult, bool* Hit);
+	void DisableDamage(bool* Result);
 	void CreateMeleeImpactForceFeedback(const struct FHitResult& Hit, bool IsStrongSwing);
 	void SetIdleSequence(ENUM_LeftRightCenter Side);
 	void GetPowerSwingToReadyMontage(ENUM_LeftRightCenter Side, class UAnimMontage** Montage);
@@ -141,8 +143,6 @@ public:
 	void GetSwingActionStartSide(ENUM_LeftRightCenter* Side);
 	void ResetMeleeWeaponState();
 	void UpdateStaminaDrainMod();
-	void EnableDamage(bool* Result);
-	void DisableDamage(bool* Result);
 	void CalcDamageAndArmorPenetration(float DamageScale, bool IsStrongSwing, class UAttribDamageType** DamageType, float* Damage, float* ArmorPenetration);
 	void ChangeMeleeEventBindings(bool Enable);
 	void EVENT_OnStaminaDepleted();
@@ -151,6 +151,12 @@ public:
 	void OnStartedMeleeAttack(bool IsPowerSwing);
 	void OnWeaponBecameActivatable(class APAWN_SystemShockCharacter_C* Character, bool ShowImmediately);
 	void HasBerserkAttribute(bool* Result);
+	void CanAimWithWeapon(bool* Result);
+	void GetDrawMontage(class UAnimMontage** Montage);
+	void GetHolsterMontage(class UAnimMontage** Montage);
+	void GetIdleSequence(class UAnimSequenceBase** Result);
+	void GetWalkSequence(class UAnimSequenceBase** Result);
+	void GetSprintSequence(class UAnimSequenceBase** Result);
 	void OnKilledCharacter(class APAWN_SystemShockCharacter_C* KilledCharacter);
 	void TryEndBerserk(bool* Result);
 	void GetWeaponMode(int32 Index_0, struct FSTRUCT_WeaponMode* Mode);
@@ -159,15 +165,9 @@ public:
 	void GetOwnerHeadTransform(struct FTransform* Result);
 	void EVENT_OnImpactEffectsSpawned(class UObject* Object);
 	void GetTraceSocketName(class FName* Result);
-	void CanAimWithWeapon(bool* Result);
-	void GetDrawMontage(class UAnimMontage** Montage);
-	void GetHolsterMontage(class UAnimMontage** Montage);
-	void GetIdleSequence(class UAnimSequenceBase** Result);
-	void GetWalkSequence(class UAnimSequenceBase** Result);
-	void GetSprintSequence(class UAnimSequenceBase** Result);
+	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void OnBecomeActivatable(bool* Result);
 	void OnBecomeUnactivatable(bool* Result);
-	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void Deactivate(bool* Result);
 	void CanActivate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 

@@ -12,10 +12,10 @@
 
 #include "STRUCT_EffectParams_structs.hpp"
 #include "AttributeSystem_structs.hpp"
-#include "NamedInteger_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreGame_structs.hpp"
+#include "NamedInteger_structs.hpp"
 
 
 namespace SDK::Params

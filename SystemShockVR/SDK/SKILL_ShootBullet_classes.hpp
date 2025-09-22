@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "SKILL_Projectile_Base_classes.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "SKILL_Projectile_Base_classes.hpp"
 
 
 namespace SDK

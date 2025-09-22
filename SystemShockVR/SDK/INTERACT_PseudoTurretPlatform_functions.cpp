@@ -17,6 +17,61 @@
 namespace SDK
 {
 
+// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.IsAbleToIncreaseOverlapProgress
+// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_PseudoTurretPlatform_C::IsAbleToIncreaseOverlapProgress(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoTurretPlatform_C", "IsAbleToIncreaseOverlapProgress");
+
+	Params::INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.ActivatePlatform
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void AINTERACT_PseudoTurretPlatform_C::ActivatePlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoTurretPlatform_C", "ActivatePlatform");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.OnPlatformEnableStateChanged
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_PseudoTurretPlatform_C::OnPlatformEnableStateChanged(bool State)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoTurretPlatform_C", "OnPlatformEnableStateChanged");
+
+	Params::INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged Parms{};
+
+	Parms.State = State;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.RampDownCoils
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -194,6 +249,20 @@ void AINTERACT_PseudoTurretPlatform_C::EVENT_OnTetherStateChanged(ENUM_ShodanTet
 }
 
 
+// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void AINTERACT_PseudoTurretPlatform_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoTurretPlatform_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.ExecuteUbergraph_INTERACT_PseudoTurretPlatform
 // (Final, UbergraphFunction)
 // Parameters:
@@ -211,75 +280,6 @@ void AINTERACT_PseudoTurretPlatform_C::ExecuteUbergraph_INTERACT_PseudoTurretPla
 	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void AINTERACT_PseudoTurretPlatform_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoTurretPlatform_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.ActivatePlatform
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void AINTERACT_PseudoTurretPlatform_C::ActivatePlatform()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoTurretPlatform_C", "ActivatePlatform");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.OnPlatformEnableStateChanged
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_PseudoTurretPlatform_C::OnPlatformEnableStateChanged(bool State)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoTurretPlatform_C", "OnPlatformEnableStateChanged");
-
-	Params::INTERACT_PseudoTurretPlatform_C_OnPlatformEnableStateChanged Parms{};
-
-	Parms.State = State;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoTurretPlatform.INTERACT_PseudoTurretPlatform_C.IsAbleToIncreaseOverlapProgress
-// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_PseudoTurretPlatform_C::IsAbleToIncreaseOverlapProgress(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoTurretPlatform_C", "IsAbleToIncreaseOverlapProgress");
-
-	Params::INTERACT_PseudoTurretPlatform_C_IsAbleToIncreaseOverlapProgress Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
 }
 
 }

@@ -17,47 +17,6 @@
 namespace SDK
 {
 
-// Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.AnimGraph
-// (HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// struct FPoseLink                        AnimGraph_0                                            (Parm, OutParm, NoDestructor)
-
-void UAnimBP_GroveTram_ExteriorDoor_C::AnimGraph(struct FPoseLink* AnimGraph_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("AnimBP_GroveTram_ExteriorDoor_C", "AnimGraph");
-
-	Params::AnimBP_GroveTram_ExteriorDoor_C_AnimGraph Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (AnimGraph_0 != nullptr)
-		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
-}
-
-
-// Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UAnimBP_GroveTram_ExteriorDoor_C::ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("AnimBP_GroveTram_ExteriorDoor_C", "ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor");
-
-	Params::AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.OpenDoor
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -211,6 +170,47 @@ void UAnimBP_GroveTram_ExteriorDoor_C::UnlockDoor(bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
+}
+
+
+// Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.AnimGraph
+// (HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FPoseLink                        AnimGraph_0                                            (Parm, OutParm, NoDestructor)
+
+void UAnimBP_GroveTram_ExteriorDoor_C::AnimGraph(struct FPoseLink* AnimGraph_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("AnimBP_GroveTram_ExteriorDoor_C", "AnimGraph");
+
+	Params::AnimBP_GroveTram_ExteriorDoor_C_AnimGraph Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (AnimGraph_0 != nullptr)
+		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
+}
+
+
+// Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UAnimBP_GroveTram_ExteriorDoor_C::ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("AnimBP_GroveTram_ExteriorDoor_C", "ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor");
+
+	Params::AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

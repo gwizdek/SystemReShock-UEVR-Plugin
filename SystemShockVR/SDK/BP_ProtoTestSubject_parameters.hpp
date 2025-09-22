@@ -14,28 +14,6 @@
 namespace SDK::Params
 {
 
-// Function BP_ProtoTestSubject.BP_ProtoTestSubject_C.UpdateVisibility
-// 0x0001 (0x0001 - 0x0000)
-struct BP_ProtoTestSubject_C_UpdateVisibility final
-{
-public:
-	bool                                          VisibilityState;                                   // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(BP_ProtoTestSubject_C_UpdateVisibility) == 0x000001, "Wrong alignment on BP_ProtoTestSubject_C_UpdateVisibility");
-static_assert(sizeof(BP_ProtoTestSubject_C_UpdateVisibility) == 0x000001, "Wrong size on BP_ProtoTestSubject_C_UpdateVisibility");
-static_assert(offsetof(BP_ProtoTestSubject_C_UpdateVisibility, VisibilityState) == 0x000000, "Member 'BP_ProtoTestSubject_C_UpdateVisibility::VisibilityState' has a wrong offset!");
-
-// Function BP_ProtoTestSubject.BP_ProtoTestSubject_C.BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature
-// 0x0001 (0x0001 - 0x0000)
-struct BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature final
-{
-public:
-	bool                                          bVisibleState;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature) == 0x000001, "Wrong alignment on BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature");
-static_assert(sizeof(BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature) == 0x000001, "Wrong size on BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature");
-static_assert(offsetof(BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature, bVisibleState) == 0x000000, "Member 'BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature::bVisibleState' has a wrong offset!");
-
 // Function BP_ProtoTestSubject.BP_ProtoTestSubject_C.ExecuteUbergraph_BP_ProtoTestSubject
 // 0x0008 (0x0008 - 0x0000)
 struct BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject final
@@ -48,6 +26,28 @@ static_assert(alignof(BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject
 static_assert(sizeof(BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject) == 0x000008, "Wrong size on BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject");
 static_assert(offsetof(BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject, EntryPoint) == 0x000000, "Member 'BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject::EntryPoint' has a wrong offset!");
 static_assert(offsetof(BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject, K2Node_ComponentBoundEvent_bVisibleState) == 0x000004, "Member 'BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject::K2Node_ComponentBoundEvent_bVisibleState' has a wrong offset!");
+
+// Function BP_ProtoTestSubject.BP_ProtoTestSubject_C.BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature
+// 0x0001 (0x0001 - 0x0000)
+struct BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature final
+{
+public:
+	bool                                          bVisibleState;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature) == 0x000001, "Wrong alignment on BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature");
+static_assert(sizeof(BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature) == 0x000001, "Wrong size on BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature");
+static_assert(offsetof(BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature, bVisibleState) == 0x000000, "Member 'BP_ProtoTestSubject_C_BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature::bVisibleState' has a wrong offset!");
+
+// Function BP_ProtoTestSubject.BP_ProtoTestSubject_C.UpdateVisibility
+// 0x0001 (0x0001 - 0x0000)
+struct BP_ProtoTestSubject_C_UpdateVisibility final
+{
+public:
+	bool                                          VisibilityState;                                   // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_ProtoTestSubject_C_UpdateVisibility) == 0x000001, "Wrong alignment on BP_ProtoTestSubject_C_UpdateVisibility");
+static_assert(sizeof(BP_ProtoTestSubject_C_UpdateVisibility) == 0x000001, "Wrong size on BP_ProtoTestSubject_C_UpdateVisibility");
+static_assert(offsetof(BP_ProtoTestSubject_C_UpdateVisibility, VisibilityState) == 0x000000, "Member 'BP_ProtoTestSubject_C_UpdateVisibility::VisibilityState' has a wrong offset!");
 
 }
 

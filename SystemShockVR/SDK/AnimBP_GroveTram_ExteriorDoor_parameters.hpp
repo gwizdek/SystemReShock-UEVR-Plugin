@@ -16,28 +16,6 @@
 namespace SDK::Params
 {
 
-// Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.AnimGraph
-// 0x0010 (0x0010 - 0x0000)
-struct AnimBP_GroveTram_ExteriorDoor_C_AnimGraph final
-{
-public:
-	struct FPoseLink                              AnimGraph_0;                                       // 0x0000(0x0010)(Parm, OutParm, NoDestructor)
-};
-static_assert(alignof(AnimBP_GroveTram_ExteriorDoor_C_AnimGraph) == 0x000008, "Wrong alignment on AnimBP_GroveTram_ExteriorDoor_C_AnimGraph");
-static_assert(sizeof(AnimBP_GroveTram_ExteriorDoor_C_AnimGraph) == 0x000010, "Wrong size on AnimBP_GroveTram_ExteriorDoor_C_AnimGraph");
-static_assert(offsetof(AnimBP_GroveTram_ExteriorDoor_C_AnimGraph, AnimGraph_0) == 0x000000, "Member 'AnimBP_GroveTram_ExteriorDoor_C_AnimGraph::AnimGraph_0' has a wrong offset!");
-
-// Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor
-// 0x0004 (0x0004 - 0x0000)
-struct AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor) == 0x000004, "Wrong alignment on AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor");
-static_assert(sizeof(AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor) == 0x000004, "Wrong size on AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor");
-static_assert(offsetof(AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor, EntryPoint) == 0x000000, "Member 'AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor::EntryPoint' has a wrong offset!");
-
 // Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.OpenDoor
 // 0x0001 (0x0001 - 0x0000)
 struct AnimBP_GroveTram_ExteriorDoor_C_OpenDoor final
@@ -120,6 +98,28 @@ public:
 static_assert(alignof(AnimBP_GroveTram_ExteriorDoor_C_UnlockDoor) == 0x000001, "Wrong alignment on AnimBP_GroveTram_ExteriorDoor_C_UnlockDoor");
 static_assert(sizeof(AnimBP_GroveTram_ExteriorDoor_C_UnlockDoor) == 0x000001, "Wrong size on AnimBP_GroveTram_ExteriorDoor_C_UnlockDoor");
 static_assert(offsetof(AnimBP_GroveTram_ExteriorDoor_C_UnlockDoor, Result) == 0x000000, "Member 'AnimBP_GroveTram_ExteriorDoor_C_UnlockDoor::Result' has a wrong offset!");
+
+// Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.AnimGraph
+// 0x0010 (0x0010 - 0x0000)
+struct AnimBP_GroveTram_ExteriorDoor_C_AnimGraph final
+{
+public:
+	struct FPoseLink                              AnimGraph_0;                                       // 0x0000(0x0010)(Parm, OutParm, NoDestructor)
+};
+static_assert(alignof(AnimBP_GroveTram_ExteriorDoor_C_AnimGraph) == 0x000008, "Wrong alignment on AnimBP_GroveTram_ExteriorDoor_C_AnimGraph");
+static_assert(sizeof(AnimBP_GroveTram_ExteriorDoor_C_AnimGraph) == 0x000010, "Wrong size on AnimBP_GroveTram_ExteriorDoor_C_AnimGraph");
+static_assert(offsetof(AnimBP_GroveTram_ExteriorDoor_C_AnimGraph, AnimGraph_0) == 0x000000, "Member 'AnimBP_GroveTram_ExteriorDoor_C_AnimGraph::AnimGraph_0' has a wrong offset!");
+
+// Function AnimBP_GroveTram_ExteriorDoor.AnimBP_GroveTram_ExteriorDoor_C.ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor
+// 0x0004 (0x0004 - 0x0000)
+struct AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor) == 0x000004, "Wrong alignment on AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor");
+static_assert(sizeof(AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor) == 0x000004, "Wrong size on AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor");
+static_assert(offsetof(AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor, EntryPoint) == 0x000000, "Member 'AnimBP_GroveTram_ExteriorDoor_C_ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor::EntryPoint' has a wrong offset!");
 
 }
 

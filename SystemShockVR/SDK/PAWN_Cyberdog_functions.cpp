@@ -17,94 +17,6 @@
 namespace SDK
 {
 
-// Function PAWN_Cyberdog.PAWN_Cyberdog_C.SetAngerMaterial
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// float                                   Anger                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void APAWN_Cyberdog_C::SetAngerMaterial(float Anger)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_Cyberdog_C", "SetAngerMaterial");
-
-	Params::PAWN_Cyberdog_C_SetAngerMaterial Parms{};
-
-	Parms.Anger = Anger;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function PAWN_Cyberdog.PAWN_Cyberdog_C.UpdateEmotionMaterial
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void APAWN_Cyberdog_C::UpdateEmotionMaterial()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_Cyberdog_C", "UpdateEmotionMaterial");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ReceiveTick
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void APAWN_Cyberdog_C::ReceiveTick(float DeltaSeconds)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_Cyberdog_C", "ReceiveTick");
-
-	Params::PAWN_Cyberdog_C_ReceiveTick Parms{};
-
-	Parms.DeltaSeconds = DeltaSeconds;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void APAWN_Cyberdog_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_Cyberdog_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ExecuteUbergraph_PAWN_Cyberdog
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void APAWN_Cyberdog_C::ExecuteUbergraph_PAWN_Cyberdog(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_Cyberdog_C", "ExecuteUbergraph_PAWN_Cyberdog");
-
-	Params::PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function PAWN_Cyberdog.PAWN_Cyberdog_C.InitializeCharacter
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -217,6 +129,94 @@ void APAWN_Cyberdog_C::SetDamageMaterial(float Damage)
 	Params::PAWN_Cyberdog_C_SetDamageMaterial Parms{};
 
 	Parms.Damage = Damage;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_Cyberdog.PAWN_Cyberdog_C.SetAngerMaterial
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   Anger                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void APAWN_Cyberdog_C::SetAngerMaterial(float Anger)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_Cyberdog_C", "SetAngerMaterial");
+
+	Params::PAWN_Cyberdog_C_SetAngerMaterial Parms{};
+
+	Parms.Anger = Anger;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_Cyberdog.PAWN_Cyberdog_C.UpdateEmotionMaterial
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void APAWN_Cyberdog_C::UpdateEmotionMaterial()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_Cyberdog_C", "UpdateEmotionMaterial");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ReceiveTick
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void APAWN_Cyberdog_C::ReceiveTick(float DeltaSeconds)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_Cyberdog_C", "ReceiveTick");
+
+	Params::PAWN_Cyberdog_C_ReceiveTick Parms{};
+
+	Parms.DeltaSeconds = DeltaSeconds;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void APAWN_Cyberdog_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_Cyberdog_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ExecuteUbergraph_PAWN_Cyberdog
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void APAWN_Cyberdog_C::ExecuteUbergraph_PAWN_Cyberdog(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_Cyberdog_C", "ExecuteUbergraph_PAWN_Cyberdog");
+
+	Params::PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog Parms{};
+
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

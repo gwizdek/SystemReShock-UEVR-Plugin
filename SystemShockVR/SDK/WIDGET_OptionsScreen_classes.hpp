@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "WIDGET_MenuBase_classes.hpp"
-#include "ENUM_OptionCategories_structs.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
+#include "ENUM_OptionCategories_structs.hpp"
 
 
 namespace SDK

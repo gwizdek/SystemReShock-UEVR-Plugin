@@ -95,6 +95,23 @@ static_assert(alignof(ITEM_HandheldDevice_Base_C_EVENT_OnStartedUsingDevice) == 
 static_assert(sizeof(ITEM_HandheldDevice_Base_C_EVENT_OnStartedUsingDevice) == 0x000008, "Wrong size on ITEM_HandheldDevice_Base_C_EVENT_OnStartedUsingDevice");
 static_assert(offsetof(ITEM_HandheldDevice_Base_C_EVENT_OnStartedUsingDevice, CallFunc_GetBestSlottedItemToConsume_ConsumableItem) == 0x000000, "Member 'ITEM_HandheldDevice_Base_C_EVENT_OnStartedUsingDevice::CallFunc_GetBestSlottedItemToConsume_ConsumableItem' has a wrong offset!");
 
+// Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.ReceiveAnimationMessage
+// 0x0018 (0x0018 - 0x0000)
+struct ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage final
+{
+public:
+	class FString                                 Message;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveAnimationMessage_Result;           // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue;            // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage) == 0x000008, "Wrong alignment on ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage");
+static_assert(sizeof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage) == 0x000018, "Wrong size on ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage");
+static_assert(offsetof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage, Message) == 0x000000, "Member 'ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage::Message' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage, Result) == 0x000010, "Member 'ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage, CallFunc_ReceiveAnimationMessage_Result) == 0x000011, "Member 'ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage::CallFunc_ReceiveAnimationMessage_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue) == 0x000012, "Member 'ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue' has a wrong offset!");
+
 // Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.TryResumeHandheldDeviceAction
 // 0x0078 (0x0078 - 0x0000)
 struct ITEM_HandheldDevice_Base_C_TryResumeHandheldDeviceAction final
@@ -212,23 +229,6 @@ static_assert(offsetof(ITEM_HandheldDevice_Base_C_EVENT_OnFinishingUsingDevice, 
 static_assert(offsetof(ITEM_HandheldDevice_Base_C_EVENT_OnFinishingUsingDevice, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000050, "Member 'ITEM_HandheldDevice_Base_C_EVENT_OnFinishingUsingDevice::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
 static_assert(offsetof(ITEM_HandheldDevice_Base_C_EVENT_OnFinishingUsingDevice, K2Node_DynamicCast_bSuccess) == 0x000058, "Member 'ITEM_HandheldDevice_Base_C_EVENT_OnFinishingUsingDevice::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
-// Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.ReceiveAnimationMessage
-// 0x0018 (0x0018 - 0x0000)
-struct ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage final
-{
-public:
-	class FString                                 Message;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveAnimationMessage_Result;           // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue;            // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage) == 0x000008, "Wrong alignment on ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage");
-static_assert(sizeof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage) == 0x000018, "Wrong size on ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage");
-static_assert(offsetof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage, Message) == 0x000000, "Member 'ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage::Message' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage, Result) == 0x000010, "Member 'ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage, CallFunc_ReceiveAnimationMessage_Result) == 0x000011, "Member 'ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage::CallFunc_ReceiveAnimationMessage_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue) == 0x000012, "Member 'ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue' has a wrong offset!");
-
 // Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.SetupMaterial
 // 0x0018 (0x0018 - 0x0000)
 struct ITEM_HandheldDevice_Base_C_SetupMaterial final
@@ -275,19 +275,6 @@ static_assert(alignof(ITEM_HandheldDevice_Base_C_ResumeWaitingToHolster) == 0x00
 static_assert(sizeof(ITEM_HandheldDevice_Base_C_ResumeWaitingToHolster) == 0x000008, "Wrong size on ITEM_HandheldDevice_Base_C_ResumeWaitingToHolster");
 static_assert(offsetof(ITEM_HandheldDevice_Base_C_ResumeWaitingToHolster, FromInventory) == 0x000000, "Member 'ITEM_HandheldDevice_Base_C_ResumeWaitingToHolster::FromInventory' has a wrong offset!");
 
-// Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.OnBecomeUnactivatable
-// 0x0002 (0x0002 - 0x0000)
-struct ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable");
-static_assert(sizeof(ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable) == 0x000002, "Wrong size on ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable");
-static_assert(offsetof(ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000001, "Member 'ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
-
 // Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.Activate
 // 0x0070 (0x0070 - 0x0000)
 struct ITEM_HandheldDevice_Base_C_Activate final
@@ -330,6 +317,19 @@ static_assert(offsetof(ITEM_HandheldDevice_Base_C_Activate, CallFunc_IsUsingDevi
 static_assert(offsetof(ITEM_HandheldDevice_Base_C_Activate, CallFunc_Not_PreBool_ReturnValue) == 0x000061, "Member 'ITEM_HandheldDevice_Base_C_Activate::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ITEM_HandheldDevice_Base_C_Activate, CallFunc_GetTotalConsumableItemCount_Result) == 0x000064, "Member 'ITEM_HandheldDevice_Base_C_Activate::CallFunc_GetTotalConsumableItemCount_Result' has a wrong offset!");
 static_assert(offsetof(ITEM_HandheldDevice_Base_C_Activate, CallFunc_Greater_IntInt_ReturnValue) == 0x000068, "Member 'ITEM_HandheldDevice_Base_C_Activate::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+
+// Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.OnBecomeUnactivatable
+// 0x0002 (0x0002 - 0x0000)
+struct ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable");
+static_assert(sizeof(ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable) == 0x000002, "Wrong size on ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable");
+static_assert(offsetof(ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000001, "Member 'ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
 
 // Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.Deactivate
 // 0x0028 (0x0028 - 0x0000)

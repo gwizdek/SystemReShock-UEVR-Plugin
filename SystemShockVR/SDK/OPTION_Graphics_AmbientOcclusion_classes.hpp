@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_OffLowMediumHigh_structs.hpp"
 #include "WIDGET_Settings_MultiSelector_classes.hpp"
+#include "ENUM_OffLowMediumHigh_structs.hpp"
 
 
 namespace SDK

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "AttributeSystem_structs.hpp"
 #include "ITEM_DermalPatch_Base_classes.hpp"
+#include "AttributeSystem_structs.hpp"
 
 
 namespace SDK

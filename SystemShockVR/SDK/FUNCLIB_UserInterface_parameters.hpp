@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_HackerGender_structs.hpp"
 #include "InputCore_structs.hpp"
 #include "STRUCT_MediaObject_structs.hpp"
-#include "ENUM_HackerGender_structs.hpp"
 
 
 namespace SDK::Params

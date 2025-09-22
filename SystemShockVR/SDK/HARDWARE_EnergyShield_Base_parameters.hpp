@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "STRUCT_HardwareFeature_structs.hpp"
+#include "Engine_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 
 

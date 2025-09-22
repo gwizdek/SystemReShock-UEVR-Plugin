@@ -18,6 +18,53 @@
 namespace SDK::Params
 {
 
+// Function HARDWARE_HeadLamp.HARDWARE_HeadLamp_C.OnVisionUnitActivated
+// 0x0048 (0x0048 - 0x0000)
+struct HARDWARE_HeadLamp_C_OnVisionUnitActivated final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_GameDifficulty                           CallFunc_GetDifficultyByType_Difficulty;           // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2A[0x2];                                       // 0x002A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x002C(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0040(0x0008)(NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(HARDWARE_HeadLamp_C_OnVisionUnitActivated) == 0x000008, "Wrong alignment on HARDWARE_HeadLamp_C_OnVisionUnitActivated");
+static_assert(sizeof(HARDWARE_HeadLamp_C_OnVisionUnitActivated) == 0x000048, "Wrong size on HARDWARE_HeadLamp_C_OnVisionUnitActivated");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, Character) == 0x000000, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::Character' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000008, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, CallFunc_GetGameInstance_ReturnValue) == 0x000018, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_DynamicCast_AsGI_Single_Player) == 0x000020, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_DynamicCast_bSuccess_1) == 0x000028, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, CallFunc_GetDifficultyByType_Difficulty) == 0x000029, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::CallFunc_GetDifficultyByType_Difficulty' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_CreateDelegate_OutputDelegate) == 0x00002C, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x00003C, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000040, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
+
+// Function HARDWARE_HeadLamp.HARDWARE_HeadLamp_C.OnVisionUnitDeactivated
+// 0x0018 (0x0018 - 0x0000)
+struct HARDWARE_HeadLamp_C_OnVisionUnitDeactivated final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated) == 0x000008, "Wrong alignment on HARDWARE_HeadLamp_C_OnVisionUnitDeactivated");
+static_assert(sizeof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated) == 0x000018, "Wrong size on HARDWARE_HeadLamp_C_OnVisionUnitDeactivated");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated, Character) == 0x000000, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitDeactivated::Character' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000008, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitDeactivated::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
+static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitDeactivated::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
 // Function HARDWARE_HeadLamp.HARDWARE_HeadLamp_C.EVENT_OnHeadLampVisualDetectionTick
 // 0x00B8 (0x00B8 - 0x0000)
 struct HARDWARE_HeadLamp_C_EVENT_OnHeadLampVisualDetectionTick final
@@ -78,53 +125,6 @@ static_assert(offsetof(HARDWARE_HeadLamp_C_EVENT_OnHeadLampVisualDetectionTick, 
 static_assert(offsetof(HARDWARE_HeadLamp_C_EVENT_OnHeadLampVisualDetectionTick, CallFunc_BooleanAND_ReturnValue) == 0x0000A0, "Member 'HARDWARE_HeadLamp_C_EVENT_OnHeadLampVisualDetectionTick::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 static_assert(offsetof(HARDWARE_HeadLamp_C_EVENT_OnHeadLampVisualDetectionTick, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x0000A8, "Member 'HARDWARE_HeadLamp_C_EVENT_OnHeadLampVisualDetectionTick::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
 static_assert(offsetof(HARDWARE_HeadLamp_C_EVENT_OnHeadLampVisualDetectionTick, K2Node_DynamicCast_bSuccess_1) == 0x0000B0, "Member 'HARDWARE_HeadLamp_C_EVENT_OnHeadLampVisualDetectionTick::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-
-// Function HARDWARE_HeadLamp.HARDWARE_HeadLamp_C.OnVisionUnitDeactivated
-// 0x0018 (0x0018 - 0x0000)
-struct HARDWARE_HeadLamp_C_OnVisionUnitDeactivated final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated) == 0x000008, "Wrong alignment on HARDWARE_HeadLamp_C_OnVisionUnitDeactivated");
-static_assert(sizeof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated) == 0x000018, "Wrong size on HARDWARE_HeadLamp_C_OnVisionUnitDeactivated");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated, Character) == 0x000000, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitDeactivated::Character' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000008, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitDeactivated::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitDeactivated, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitDeactivated::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-
-// Function HARDWARE_HeadLamp.HARDWARE_HeadLamp_C.OnVisionUnitActivated
-// 0x0048 (0x0048 - 0x0000)
-struct HARDWARE_HeadLamp_C_OnVisionUnitActivated final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_GameDifficulty                           CallFunc_GetDifficultyByType_Difficulty;           // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2A[0x2];                                       // 0x002A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x002C(0x0010)(ZeroConstructor, NoDestructor)
-	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0040(0x0008)(NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(HARDWARE_HeadLamp_C_OnVisionUnitActivated) == 0x000008, "Wrong alignment on HARDWARE_HeadLamp_C_OnVisionUnitActivated");
-static_assert(sizeof(HARDWARE_HeadLamp_C_OnVisionUnitActivated) == 0x000048, "Wrong size on HARDWARE_HeadLamp_C_OnVisionUnitActivated");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, Character) == 0x000000, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::Character' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000008, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, CallFunc_GetGameInstance_ReturnValue) == 0x000018, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_DynamicCast_AsGI_Single_Player) == 0x000020, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_DynamicCast_bSuccess_1) == 0x000028, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, CallFunc_GetDifficultyByType_Difficulty) == 0x000029, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::CallFunc_GetDifficultyByType_Difficulty' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, K2Node_CreateDelegate_OutputDelegate) == 0x00002C, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x00003C, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(HARDWARE_HeadLamp_C_OnVisionUnitActivated, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000040, "Member 'HARDWARE_HeadLamp_C_OnVisionUnitActivated::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
 
 }
 

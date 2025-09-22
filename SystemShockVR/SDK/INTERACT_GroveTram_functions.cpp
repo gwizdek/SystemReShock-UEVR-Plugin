@@ -17,49 +17,6 @@
 namespace SDK
 {
 
-// Function INTERACT_GroveTram.INTERACT_GroveTram_C.SetDoorState
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// ENUM_InnerOuter                         Target                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// ENUM_DoorState                          NewState                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_GroveTram_C::SetDoorState(ENUM_InnerOuter Target, ENUM_DoorState NewState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_GroveTram_C", "SetDoorState");
-
-	Params::INTERACT_GroveTram_C_SetDoorState Parms{};
-
-	Parms.Target = Target;
-	Parms.NewState = NewState;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_GroveTram.INTERACT_GroveTram_C.GetControlsMeshComponent
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UStaticMeshComponent*             MeshComponent                                          (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_GroveTram_C::GetControlsMeshComponent(class UStaticMeshComponent** MeshComponent)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_GroveTram_C", "GetControlsMeshComponent");
-
-	Params::INTERACT_GroveTram_C_GetControlsMeshComponent Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (MeshComponent != nullptr)
-		*MeshComponent = Parms.MeshComponent;
-}
-
-
 // Function INTERACT_GroveTram.INTERACT_GroveTram_C.UpdateEmissiveStrength
 // (Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -125,6 +82,49 @@ void AINTERACT_GroveTram_C::TryOpenElevatorDoors(bool Force, bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_GroveTram.INTERACT_GroveTram_C.SetDoorState
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// ENUM_InnerOuter                         Target                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// ENUM_DoorState                          NewState                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_GroveTram_C::SetDoorState(ENUM_InnerOuter Target, ENUM_DoorState NewState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_GroveTram_C", "SetDoorState");
+
+	Params::INTERACT_GroveTram_C_SetDoorState Parms{};
+
+	Parms.Target = Target;
+	Parms.NewState = NewState;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function INTERACT_GroveTram.INTERACT_GroveTram_C.GetControlsMeshComponent
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UStaticMeshComponent*             MeshComponent                                          (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_GroveTram_C::GetControlsMeshComponent(class UStaticMeshComponent** MeshComponent)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_GroveTram_C", "GetControlsMeshComponent");
+
+	Params::INTERACT_GroveTram_C_GetControlsMeshComponent Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (MeshComponent != nullptr)
+		*MeshComponent = Parms.MeshComponent;
 }
 
 

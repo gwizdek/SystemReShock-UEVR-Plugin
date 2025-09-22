@@ -12,10 +12,10 @@
 
 #include "UMG_structs.hpp"
 #include "STRUCT_ItemDetailsIconParams_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "ENUM_DoorState_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "SlateCore_structs.hpp"
 
 
 namespace SDK::Params
@@ -262,13 +262,13 @@ public:
 	class UUMGSequencePlayer*                     CallFunc_PlayAnimationForward_ReturnValue;         // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	ENUM_DoorState                                Temp_byte_Variable_1;                              // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_ShouldItemShowExtendedDescription_Result; // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0023(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Temp_bool_Variable;                                // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0025(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0026(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_DoorState                                K2Node_Select_Default;                             // 0x0027(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable_1;                              // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_DoorState                                K2Node_Select_Default;                             // 0x0023(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ShouldItemShowExtendedDescription_Result; // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0025(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable_1;                              // 0x0026(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0027(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UWidgetAnimation*                       K2Node_Select_Default_1;                           // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UUMGSequencePlayer*                     CallFunc_PlayAnimationForward_ReturnValue_1;       // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -321,13 +321,13 @@ static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_No
 static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_PlayAnimationForward_ReturnValue) == 0x000018, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_PlayAnimationForward_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_BooleanOR_ReturnValue) == 0x000020, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, Temp_byte_Variable_1) == 0x000021, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_ShouldItemShowExtendedDescription_Result) == 0x000022, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_ShouldItemShowExtendedDescription_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_BooleanAND_ReturnValue) == 0x000023, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, Temp_bool_Variable) == 0x000024, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000025, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_BooleanAND_ReturnValue_1) == 0x000026, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, K2Node_Select_Default) == 0x000027, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, Temp_bool_Variable_1) == 0x000028, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, Temp_bool_Variable) == 0x000022, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, K2Node_Select_Default) == 0x000023, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_ShouldItemShowExtendedDescription_Result) == 0x000024, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_ShouldItemShowExtendedDescription_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_BooleanAND_ReturnValue) == 0x000025, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, Temp_bool_Variable_1) == 0x000026, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000027, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_BooleanAND_ReturnValue_1) == 0x000028, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, K2Node_Select_Default_1) == 0x000030, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::K2Node_Select_Default_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_PlayAnimationForward_ReturnValue_1) == 0x000038, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_PlayAnimationForward_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_SetShowMoreDetails, CallFunc_GetGameTimeInSeconds_ReturnValue) == 0x000040, "Member 'WIDGET_InventoryDetails_C_SetShowMoreDetails::CallFunc_GetGameTimeInSeconds_ReturnValue' has a wrong offset!");
@@ -509,7 +509,7 @@ public:
 	class UClass*                                 Class_0;                                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWidget*                                Widget;                                            // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWidget*                                CurrentSubDetailsWidget;                           // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class UWidget*>                        ChildWIdgets;                                      // 0x0018(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
+	TArray<class UWidget*>                        ChildWidgets;                                      // 0x0018(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
 	int32                                         Temp_int_Array_Index_Variable;                     // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -527,7 +527,7 @@ static_assert(sizeof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass) == 0x
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, Class_0) == 0x000000, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::Class_0' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, Widget) == 0x000008, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::Widget' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, CurrentSubDetailsWidget) == 0x000010, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::CurrentSubDetailsWidget' has a wrong offset!");
-static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, ChildWIdgets) == 0x000018, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::ChildWIdgets' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, ChildWidgets) == 0x000018, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::ChildWidgets' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, Temp_int_Array_Index_Variable) == 0x000028, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::Temp_int_Array_Index_Variable' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, Temp_int_Loop_Counter_Variable) == 0x00002C, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::Temp_int_Loop_Counter_Variable' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, CallFunc_Add_IntInt_ReturnValue) == 0x000030, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");

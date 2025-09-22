@@ -23,7 +23,7 @@ class ABP_CYBR_ShodanTile_JumpPlatform_C final : public AActor
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0220(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UAudioComponent*                        Audio_Loop;                                        // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        Audio_loop;                                        // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UBoxComponent*                          JumpPlatformOverlap;                               // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UNiagaraComponent*                      NS_CYBER_JumpPlatform;                             // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   CYBR_ShodanTile_TeleporterPlatformFX;              // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
@@ -55,7 +55,7 @@ public:
 static_assert(alignof(ABP_CYBR_ShodanTile_JumpPlatform_C) == 0x000008, "Wrong alignment on ABP_CYBR_ShodanTile_JumpPlatform_C");
 static_assert(sizeof(ABP_CYBR_ShodanTile_JumpPlatform_C) == 0x000268, "Wrong size on ABP_CYBR_ShodanTile_JumpPlatform_C");
 static_assert(offsetof(ABP_CYBR_ShodanTile_JumpPlatform_C, UberGraphFrame) == 0x000220, "Member 'ABP_CYBR_ShodanTile_JumpPlatform_C::UberGraphFrame' has a wrong offset!");
-static_assert(offsetof(ABP_CYBR_ShodanTile_JumpPlatform_C, Audio_Loop) == 0x000228, "Member 'ABP_CYBR_ShodanTile_JumpPlatform_C::Audio_Loop' has a wrong offset!");
+static_assert(offsetof(ABP_CYBR_ShodanTile_JumpPlatform_C, Audio_loop) == 0x000228, "Member 'ABP_CYBR_ShodanTile_JumpPlatform_C::Audio_loop' has a wrong offset!");
 static_assert(offsetof(ABP_CYBR_ShodanTile_JumpPlatform_C, JumpPlatformOverlap) == 0x000230, "Member 'ABP_CYBR_ShodanTile_JumpPlatform_C::JumpPlatformOverlap' has a wrong offset!");
 static_assert(offsetof(ABP_CYBR_ShodanTile_JumpPlatform_C, NS_CYBER_JumpPlatform) == 0x000238, "Member 'ABP_CYBR_ShodanTile_JumpPlatform_C::NS_CYBER_JumpPlatform' has a wrong offset!");
 static_assert(offsetof(ABP_CYBR_ShodanTile_JumpPlatform_C, CYBR_ShodanTile_TeleporterPlatformFX) == 0x000240, "Member 'ABP_CYBR_ShodanTile_JumpPlatform_C::CYBR_ShodanTile_TeleporterPlatformFX' has a wrong offset!");

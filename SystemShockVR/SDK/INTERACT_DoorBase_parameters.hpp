@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
+#include "ENUM_ButtonColorType_structs.hpp"
 #include "NamedInteger_structs.hpp"
 #include "STRUCT_EffectParams_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
+#include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_DoorIcons_structs.hpp"
-#include "ENUM_ButtonColorType_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "ENUM_DoorState_structs.hpp"
 
 
@@ -917,21 +917,6 @@ static_assert(offsetof(INTERACT_DoorBase_C_LockDoor, CloseDoor) == 0x000000, "Me
 static_assert(offsetof(INTERACT_DoorBase_C_LockDoor, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000001, "Member 'INTERACT_DoorBase_C_LockDoor::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_LockDoor, CallFunc_BooleanAND_ReturnValue) == 0x000002, "Member 'INTERACT_DoorBase_C_LockDoor::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetTargetShape
-// 0x0018 (0x0018 - 0x0000)
-struct INTERACT_DoorBase_C_GetTargetShape final
-{
-public:
-	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UShapeComponent*                        ShapeComponent;                                    // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UObject*                                NewLocalVar_0;                                     // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_DoorBase_C_GetTargetShape) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_GetTargetShape");
-static_assert(sizeof(INTERACT_DoorBase_C_GetTargetShape) == 0x000018, "Wrong size on INTERACT_DoorBase_C_GetTargetShape");
-static_assert(offsetof(INTERACT_DoorBase_C_GetTargetShape, CursorPrimitive) == 0x000000, "Member 'INTERACT_DoorBase_C_GetTargetShape::CursorPrimitive' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetTargetShape, ShapeComponent) == 0x000008, "Member 'INTERACT_DoorBase_C_GetTargetShape::ShapeComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetTargetShape, NewLocalVar_0) == 0x000010, "Member 'INTERACT_DoorBase_C_GetTargetShape::NewLocalVar_0' has a wrong offset!");
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.TryQueueDoorToggle
 // 0x0028 (0x0028 - 0x0000)
 struct INTERACT_DoorBase_C_TryQueueDoorToggle final
@@ -1102,21 +1087,6 @@ static_assert(offsetof(INTERACT_DoorBase_C_InteractOnClosing, CallFunc_Array_Get
 static_assert(offsetof(INTERACT_DoorBase_C_InteractOnClosing, CallFunc_Less_IntInt_ReturnValue) == 0x000018, "Member 'INTERACT_DoorBase_C_InteractOnClosing::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_InteractOnClosing, CallFunc_TryInteract_self_CastInput) == 0x000020, "Member 'INTERACT_DoorBase_C_InteractOnClosing::CallFunc_TryInteract_self_CastInput' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_InteractOnClosing, CallFunc_TryInteract_InteractResults) == 0x000030, "Member 'INTERACT_DoorBase_C_InteractOnClosing::CallFunc_TryInteract_InteractResults' has a wrong offset!");
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetInteractLocked
-// 0x0003 (0x0003 - 0x0000)
-struct INTERACT_DoorBase_C_SetInteractLocked final
-{
-public:
-	bool                                          Locked;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_DoorBase_C_SetInteractLocked) == 0x000001, "Wrong alignment on INTERACT_DoorBase_C_SetInteractLocked");
-static_assert(sizeof(INTERACT_DoorBase_C_SetInteractLocked) == 0x000003, "Wrong size on INTERACT_DoorBase_C_SetInteractLocked");
-static_assert(offsetof(INTERACT_DoorBase_C_SetInteractLocked, Locked) == 0x000000, "Member 'INTERACT_DoorBase_C_SetInteractLocked::Locked' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_SetInteractLocked, Result) == 0x000001, "Member 'INTERACT_DoorBase_C_SetInteractLocked::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_SetInteractLocked, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000002, "Member 'INTERACT_DoorBase_C_SetInteractLocked::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetStopMeshTicksTimer
 // 0x0018 (0x0018 - 0x0000)
@@ -1584,38 +1554,6 @@ static_assert(offsetof(INTERACT_DoorBase_C_OnDoorwayUnblocked, UnblockingActor) 
 static_assert(offsetof(INTERACT_DoorBase_C_OnDoorwayUnblocked, Result) == 0x000008, "Member 'INTERACT_DoorBase_C_OnDoorwayUnblocked::Result' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_OnDoorwayUnblocked, CallFunc_K2_IsTimerPausedHandle_ReturnValue) == 0x000009, "Member 'INTERACT_DoorBase_C_OnDoorwayUnblocked::CallFunc_K2_IsTimerPausedHandle_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsHiddenInteractablePrimitive
-// 0x0028 (0x0028 - 0x0000)
-struct INTERACT_DoorBase_C_IsHiddenInteractablePrimitive final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsDoorCollisionPrimitive_Result;          // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Temp_bool_Variable;                                // 0x0013(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_16[0x2];                                       // 0x0016(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue;          // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsLocationInFrontOfDoor_Result;           // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_Select_Default;                             // 0x0025(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_IsHiddenInteractablePrimitive");
-static_assert(sizeof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive) == 0x000028, "Wrong size on INTERACT_DoorBase_C_IsHiddenInteractablePrimitive");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, Character) == 0x000000, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::Character' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CursorPrimitive) == 0x000008, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CursorPrimitive' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, Result) == 0x000010, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_IsValid_ReturnValue) == 0x000011, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_IsDoorCollisionPrimitive_Result) == 0x000012, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_IsDoorCollisionPrimitive_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, Temp_bool_Variable) == 0x000013, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_BooleanAND_ReturnValue) == 0x000014, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_BooleanOR_ReturnValue) == 0x000015, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_K2_GetActorLocation_ReturnValue) == 0x000018, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_K2_GetActorLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_IsLocationInFrontOfDoor_Result) == 0x000024, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_IsLocationInFrontOfDoor_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, K2Node_Select_Default) == 0x000025, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::K2Node_Select_Default' has a wrong offset!");
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsDoorCollisionPrimitive
 // 0x0010 (0x0010 - 0x0000)
 struct INTERACT_DoorBase_C_IsDoorCollisionPrimitive final
@@ -1630,96 +1568,6 @@ static_assert(sizeof(INTERACT_DoorBase_C_IsDoorCollisionPrimitive) == 0x000010, 
 static_assert(offsetof(INTERACT_DoorBase_C_IsDoorCollisionPrimitive, PrimitiveComponent) == 0x000000, "Member 'INTERACT_DoorBase_C_IsDoorCollisionPrimitive::PrimitiveComponent' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_IsDoorCollisionPrimitive, Result) == 0x000008, "Member 'INTERACT_DoorBase_C_IsDoorCollisionPrimitive::Result' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_IsDoorCollisionPrimitive, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x000009, "Member 'INTERACT_DoorBase_C_IsDoorCollisionPrimitive::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsInteractActivated
-// 0x0002 (0x0002 - 0x0000)
-struct INTERACT_DoorBase_C_IsInteractActivated final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_DoorBase_C_IsInteractActivated) == 0x000001, "Wrong alignment on INTERACT_DoorBase_C_IsInteractActivated");
-static_assert(sizeof(INTERACT_DoorBase_C_IsInteractActivated) == 0x000002, "Wrong size on INTERACT_DoorBase_C_IsInteractActivated");
-static_assert(offsetof(INTERACT_DoorBase_C_IsInteractActivated, Result) == 0x000000, "Member 'INTERACT_DoorBase_C_IsInteractActivated::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_IsInteractActivated, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000001, "Member 'INTERACT_DoorBase_C_IsInteractActivated::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractLocked
-// 0x00D8 (0x00D8 - 0x0000)
-struct INTERACT_DoorBase_C_GetInteractLocked final
-{
-public:
-	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   LockMessage;                                       // 0x0010(0x0018)(Parm, OutParm)
-	class APAWN_SystemShockCharacter_C*           K2Node_DynamicCast_AsPAWN_System_Shock_Character;  // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   CallFunc_GetSecurityLockText_Result;               // 0x0038(0x0018)()
-	class UCOMP_Inventory_C*                      CallFunc_GetInventoryComponent_Inventory;          // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0058(0x0040)(HasGetValueTypeHash)
-	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x0098(0x0010)(ReferenceParm)
-	int32                                         CallFunc_GetItemCount_Result;                      // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_AC[0x4];                                       // 0x00AC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   CallFunc_Format_ReturnValue;                       // 0x00B0(0x0018)()
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValidClass_ReturnValue;                 // 0x00C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_CA[0x2];                                       // 0x00CA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x00CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_DoorBase_C_GetInteractLocked) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_GetInteractLocked");
-static_assert(sizeof(INTERACT_DoorBase_C_GetInteractLocked) == 0x0000D8, "Wrong size on INTERACT_DoorBase_C_GetInteractLocked");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, SourceActor) == 0x000000, "Member 'INTERACT_DoorBase_C_GetInteractLocked::SourceActor' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, Result) == 0x000008, "Member 'INTERACT_DoorBase_C_GetInteractLocked::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, LockMessage) == 0x000010, "Member 'INTERACT_DoorBase_C_GetInteractLocked::LockMessage' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, K2Node_DynamicCast_AsPAWN_System_Shock_Character) == 0x000028, "Member 'INTERACT_DoorBase_C_GetInteractLocked::K2Node_DynamicCast_AsPAWN_System_Shock_Character' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'INTERACT_DoorBase_C_GetInteractLocked::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_GetSecurityLockText_Result) == 0x000038, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_GetSecurityLockText_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_GetInventoryComponent_Inventory) == 0x000050, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_GetInventoryComponent_Inventory' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, K2Node_MakeStruct_FormatArgumentData) == 0x000058, "Member 'INTERACT_DoorBase_C_GetInteractLocked::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, K2Node_MakeArray_Array) == 0x000098, "Member 'INTERACT_DoorBase_C_GetInteractLocked::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_GetItemCount_Result) == 0x0000A8, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_GetItemCount_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_Format_ReturnValue) == 0x0000B0, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_Format_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x0000C8, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_IsValidClass_ReturnValue) == 0x0000C9, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_IsValidClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_Array_Length_ReturnValue) == 0x0000CC, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_Greater_IntInt_ReturnValue) == 0x0000D0, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractBroken
-// 0x0020 (0x0020 - 0x0000)
-struct INTERACT_DoorBase_C_GetInteractBroken final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   BrokenMessage_0;                                   // 0x0008(0x0018)(Parm, OutParm)
-};
-static_assert(alignof(INTERACT_DoorBase_C_GetInteractBroken) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_GetInteractBroken");
-static_assert(sizeof(INTERACT_DoorBase_C_GetInteractBroken) == 0x000020, "Wrong size on INTERACT_DoorBase_C_GetInteractBroken");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBroken, Result) == 0x000000, "Member 'INTERACT_DoorBase_C_GetInteractBroken::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBroken, BrokenMessage_0) == 0x000008, "Member 'INTERACT_DoorBase_C_GetInteractBroken::BrokenMessage_0' has a wrong offset!");
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractBusy
-// 0x0028 (0x0028 - 0x0000)
-struct INTERACT_DoorBase_C_GetInteractBusy final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   BusyMessage_0;                                     // 0x0008(0x0018)(Parm, OutParm)
-	bool                                          CallFunc_IsSafeToClose_Result;                     // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_DoorBase_C_GetInteractBusy) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_GetInteractBusy");
-static_assert(sizeof(INTERACT_DoorBase_C_GetInteractBusy) == 0x000028, "Wrong size on INTERACT_DoorBase_C_GetInteractBusy");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, Result) == 0x000000, "Member 'INTERACT_DoorBase_C_GetInteractBusy::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, BusyMessage_0) == 0x000008, "Member 'INTERACT_DoorBase_C_GetInteractBusy::BusyMessage_0' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, CallFunc_IsSafeToClose_Result) == 0x000020, "Member 'INTERACT_DoorBase_C_GetInteractBusy::CallFunc_IsSafeToClose_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, CallFunc_Not_PreBool_ReturnValue) == 0x000021, "Member 'INTERACT_DoorBase_C_GetInteractBusy::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, K2Node_SwitchEnum_CmpSuccess) == 0x000022, "Member 'INTERACT_DoorBase_C_GetInteractBusy::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.UpdateCanNavAgentsUnblock
 // 0x0005 (0x0005 - 0x0000)
@@ -2035,41 +1883,6 @@ static_assert(alignof(INTERACT_DoorBase_C_OnChannelingMontageStarted) == 0x00000
 static_assert(sizeof(INTERACT_DoorBase_C_OnChannelingMontageStarted) == 0x000008, "Wrong size on INTERACT_DoorBase_C_OnChannelingMontageStarted");
 static_assert(offsetof(INTERACT_DoorBase_C_OnChannelingMontageStarted, HackerPawn) == 0x000000, "Member 'INTERACT_DoorBase_C_OnChannelingMontageStarted::HackerPawn' has a wrong offset!");
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.OnRestoreInventoryAfterSequence
-// 0x0010 (0x0010 - 0x0000)
-struct INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence final
-{
-public:
-	class APAWN_Hacker_Simple_C*                  HackerPawn;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetDisplayMesh_Result;                    // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence");
-static_assert(sizeof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence) == 0x000010, "Wrong size on INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence");
-static_assert(offsetof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence, HackerPawn) == 0x000000, "Member 'INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence::HackerPawn' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence, CallFunc_SetDisplayMesh_Result) == 0x000008, "Member 'INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence::CallFunc_SetDisplayMesh_Result' has a wrong offset!");
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetInteractPowered
-// 0x0014 (0x0014 - 0x0000)
-struct INTERACT_DoorBase_C_SetInteractPowered final
-{
-public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_UpdateDoorEmissiveStrength_Strength;      // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_DoorBase_C_SetInteractPowered) == 0x000004, "Wrong alignment on INTERACT_DoorBase_C_SetInteractPowered");
-static_assert(sizeof(INTERACT_DoorBase_C_SetInteractPowered) == 0x000014, "Wrong size on INTERACT_DoorBase_C_SetInteractPowered");
-static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, State) == 0x000000, "Member 'INTERACT_DoorBase_C_SetInteractPowered::State' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, Result) == 0x000001, "Member 'INTERACT_DoorBase_C_SetInteractPowered::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, CallFunc_GetAttribValue_ReturnValue) == 0x000004, "Member 'INTERACT_DoorBase_C_SetInteractPowered::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000008, "Member 'INTERACT_DoorBase_C_SetInteractPowered::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, CallFunc_UpdateDoorEmissiveStrength_Strength) == 0x00000C, "Member 'INTERACT_DoorBase_C_SetInteractPowered::CallFunc_UpdateDoorEmissiveStrength_Strength' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000010, "Member 'INTERACT_DoorBase_C_SetInteractPowered::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.UpdateDoorEmissiveStrength
 // 0x0050 (0x0050 - 0x0000)
 struct INTERACT_DoorBase_C_UpdateDoorEmissiveStrength final
@@ -2150,17 +1963,6 @@ static_assert(offsetof(INTERACT_DoorBase_C_EVENT_OnDisableAttribChanged, CallFun
 static_assert(offsetof(INTERACT_DoorBase_C_EVENT_OnDisableAttribChanged, CallFunc_UpdateDoorEmissiveStrength_Strength) == 0x000010, "Member 'INTERACT_DoorBase_C_EVENT_OnDisableAttribChanged::CallFunc_UpdateDoorEmissiveStrength_Strength' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_EVENT_OnDisableAttribChanged, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x000014, "Member 'INTERACT_DoorBase_C_EVENT_OnDisableAttribChanged::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.CanModifyInteractPower
-// 0x0001 (0x0001 - 0x0000)
-struct INTERACT_DoorBase_C_CanModifyInteractPower final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_DoorBase_C_CanModifyInteractPower) == 0x000001, "Wrong alignment on INTERACT_DoorBase_C_CanModifyInteractPower");
-static_assert(sizeof(INTERACT_DoorBase_C_CanModifyInteractPower) == 0x000001, "Wrong size on INTERACT_DoorBase_C_CanModifyInteractPower");
-static_assert(offsetof(INTERACT_DoorBase_C_CanModifyInteractPower, Result) == 0x000000, "Member 'INTERACT_DoorBase_C_CanModifyInteractPower::Result' has a wrong offset!");
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.TryFixOverlappingActorPhysics
 // 0x0068 (0x0068 - 0x0000)
 struct INTERACT_DoorBase_C_TryFixOverlappingActorPhysics final
@@ -2203,6 +2005,204 @@ static_assert(offsetof(INTERACT_DoorBase_C_TryFixOverlappingActorPhysics, K2Node
 static_assert(offsetof(INTERACT_DoorBase_C_TryFixOverlappingActorPhysics, K2Node_DynamicCast_AsPICKUP_Base) == 0x000048, "Member 'INTERACT_DoorBase_C_TryFixOverlappingActorPhysics::K2Node_DynamicCast_AsPICKUP_Base' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_TryFixOverlappingActorPhysics, K2Node_DynamicCast_bSuccess_1) == 0x000050, "Member 'INTERACT_DoorBase_C_TryFixOverlappingActorPhysics::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_TryFixOverlappingActorPhysics, CallFunc_GetOverlappingActors_OverlappingActors) == 0x000058, "Member 'INTERACT_DoorBase_C_TryFixOverlappingActorPhysics::CallFunc_GetOverlappingActors_OverlappingActors' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.OnRestoreInventoryAfterSequence
+// 0x0010 (0x0010 - 0x0000)
+struct INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence final
+{
+public:
+	class APAWN_Hacker_Simple_C*                  HackerPawn;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetDisplayMesh_Result;                    // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence");
+static_assert(sizeof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence) == 0x000010, "Wrong size on INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence");
+static_assert(offsetof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence, HackerPawn) == 0x000000, "Member 'INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence::HackerPawn' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence, CallFunc_SetDisplayMesh_Result) == 0x000008, "Member 'INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence::CallFunc_SetDisplayMesh_Result' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetTargetShape
+// 0x0018 (0x0018 - 0x0000)
+struct INTERACT_DoorBase_C_GetTargetShape final
+{
+public:
+	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UShapeComponent*                        ShapeComponent;                                    // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UObject*                                NewLocalVar_0;                                     // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_DoorBase_C_GetTargetShape) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_GetTargetShape");
+static_assert(sizeof(INTERACT_DoorBase_C_GetTargetShape) == 0x000018, "Wrong size on INTERACT_DoorBase_C_GetTargetShape");
+static_assert(offsetof(INTERACT_DoorBase_C_GetTargetShape, CursorPrimitive) == 0x000000, "Member 'INTERACT_DoorBase_C_GetTargetShape::CursorPrimitive' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetTargetShape, ShapeComponent) == 0x000008, "Member 'INTERACT_DoorBase_C_GetTargetShape::ShapeComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetTargetShape, NewLocalVar_0) == 0x000010, "Member 'INTERACT_DoorBase_C_GetTargetShape::NewLocalVar_0' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetInteractLocked
+// 0x0003 (0x0003 - 0x0000)
+struct INTERACT_DoorBase_C_SetInteractLocked final
+{
+public:
+	bool                                          Locked;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_DoorBase_C_SetInteractLocked) == 0x000001, "Wrong alignment on INTERACT_DoorBase_C_SetInteractLocked");
+static_assert(sizeof(INTERACT_DoorBase_C_SetInteractLocked) == 0x000003, "Wrong size on INTERACT_DoorBase_C_SetInteractLocked");
+static_assert(offsetof(INTERACT_DoorBase_C_SetInteractLocked, Locked) == 0x000000, "Member 'INTERACT_DoorBase_C_SetInteractLocked::Locked' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_SetInteractLocked, Result) == 0x000001, "Member 'INTERACT_DoorBase_C_SetInteractLocked::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_SetInteractLocked, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000002, "Member 'INTERACT_DoorBase_C_SetInteractLocked::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsHiddenInteractablePrimitive
+// 0x0028 (0x0028 - 0x0000)
+struct INTERACT_DoorBase_C_IsHiddenInteractablePrimitive final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsDoorCollisionPrimitive_Result;          // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x0013(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_16[0x2];                                       // 0x0016(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue;          // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsLocationInFrontOfDoor_Result;           // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_Select_Default;                             // 0x0025(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_IsHiddenInteractablePrimitive");
+static_assert(sizeof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive) == 0x000028, "Wrong size on INTERACT_DoorBase_C_IsHiddenInteractablePrimitive");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, Character) == 0x000000, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::Character' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CursorPrimitive) == 0x000008, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CursorPrimitive' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, Result) == 0x000010, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_IsValid_ReturnValue) == 0x000011, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_IsDoorCollisionPrimitive_Result) == 0x000012, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_IsDoorCollisionPrimitive_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, Temp_bool_Variable) == 0x000013, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_BooleanAND_ReturnValue) == 0x000014, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_BooleanOR_ReturnValue) == 0x000015, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_K2_GetActorLocation_ReturnValue) == 0x000018, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_K2_GetActorLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, CallFunc_IsLocationInFrontOfDoor_Result) == 0x000024, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::CallFunc_IsLocationInFrontOfDoor_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsHiddenInteractablePrimitive, K2Node_Select_Default) == 0x000025, "Member 'INTERACT_DoorBase_C_IsHiddenInteractablePrimitive::K2Node_Select_Default' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsInteractActivated
+// 0x0002 (0x0002 - 0x0000)
+struct INTERACT_DoorBase_C_IsInteractActivated final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_DoorBase_C_IsInteractActivated) == 0x000001, "Wrong alignment on INTERACT_DoorBase_C_IsInteractActivated");
+static_assert(sizeof(INTERACT_DoorBase_C_IsInteractActivated) == 0x000002, "Wrong size on INTERACT_DoorBase_C_IsInteractActivated");
+static_assert(offsetof(INTERACT_DoorBase_C_IsInteractActivated, Result) == 0x000000, "Member 'INTERACT_DoorBase_C_IsInteractActivated::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_IsInteractActivated, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000001, "Member 'INTERACT_DoorBase_C_IsInteractActivated::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractLocked
+// 0x00D8 (0x00D8 - 0x0000)
+struct INTERACT_DoorBase_C_GetInteractLocked final
+{
+public:
+	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   LockMessage;                                       // 0x0010(0x0018)(Parm, OutParm)
+	class APAWN_SystemShockCharacter_C*           K2Node_DynamicCast_AsPAWN_System_Shock_Character;  // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   CallFunc_GetSecurityLockText_Result;               // 0x0038(0x0018)()
+	class UCOMP_Inventory_C*                      CallFunc_GetInventoryComponent_Inventory;          // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0058(0x0040)(HasGetValueTypeHash)
+	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x0098(0x0010)(ReferenceParm)
+	int32                                         CallFunc_GetItemCount_Result;                      // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_AC[0x4];                                       // 0x00AC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   CallFunc_Format_ReturnValue;                       // 0x00B0(0x0018)()
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValidClass_ReturnValue;                 // 0x00C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_CA[0x2];                                       // 0x00CA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x00CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_DoorBase_C_GetInteractLocked) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_GetInteractLocked");
+static_assert(sizeof(INTERACT_DoorBase_C_GetInteractLocked) == 0x0000D8, "Wrong size on INTERACT_DoorBase_C_GetInteractLocked");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, SourceActor) == 0x000000, "Member 'INTERACT_DoorBase_C_GetInteractLocked::SourceActor' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, Result) == 0x000008, "Member 'INTERACT_DoorBase_C_GetInteractLocked::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, LockMessage) == 0x000010, "Member 'INTERACT_DoorBase_C_GetInteractLocked::LockMessage' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, K2Node_DynamicCast_AsPAWN_System_Shock_Character) == 0x000028, "Member 'INTERACT_DoorBase_C_GetInteractLocked::K2Node_DynamicCast_AsPAWN_System_Shock_Character' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'INTERACT_DoorBase_C_GetInteractLocked::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_GetSecurityLockText_Result) == 0x000038, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_GetSecurityLockText_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_GetInventoryComponent_Inventory) == 0x000050, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_GetInventoryComponent_Inventory' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, K2Node_MakeStruct_FormatArgumentData) == 0x000058, "Member 'INTERACT_DoorBase_C_GetInteractLocked::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, K2Node_MakeArray_Array) == 0x000098, "Member 'INTERACT_DoorBase_C_GetInteractLocked::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_GetItemCount_Result) == 0x0000A8, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_GetItemCount_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_Format_ReturnValue) == 0x0000B0, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_Format_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x0000C8, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_IsValidClass_ReturnValue) == 0x0000C9, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_IsValidClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_Array_Length_ReturnValue) == 0x0000CC, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractLocked, CallFunc_Greater_IntInt_ReturnValue) == 0x0000D0, "Member 'INTERACT_DoorBase_C_GetInteractLocked::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractBroken
+// 0x0020 (0x0020 - 0x0000)
+struct INTERACT_DoorBase_C_GetInteractBroken final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   BrokenMessage_0;                                   // 0x0008(0x0018)(Parm, OutParm)
+};
+static_assert(alignof(INTERACT_DoorBase_C_GetInteractBroken) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_GetInteractBroken");
+static_assert(sizeof(INTERACT_DoorBase_C_GetInteractBroken) == 0x000020, "Wrong size on INTERACT_DoorBase_C_GetInteractBroken");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBroken, Result) == 0x000000, "Member 'INTERACT_DoorBase_C_GetInteractBroken::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBroken, BrokenMessage_0) == 0x000008, "Member 'INTERACT_DoorBase_C_GetInteractBroken::BrokenMessage_0' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractBusy
+// 0x0028 (0x0028 - 0x0000)
+struct INTERACT_DoorBase_C_GetInteractBusy final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   BusyMessage_0;                                     // 0x0008(0x0018)(Parm, OutParm)
+	bool                                          CallFunc_IsSafeToClose_Result;                     // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_DoorBase_C_GetInteractBusy) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_GetInteractBusy");
+static_assert(sizeof(INTERACT_DoorBase_C_GetInteractBusy) == 0x000028, "Wrong size on INTERACT_DoorBase_C_GetInteractBusy");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, Result) == 0x000000, "Member 'INTERACT_DoorBase_C_GetInteractBusy::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, BusyMessage_0) == 0x000008, "Member 'INTERACT_DoorBase_C_GetInteractBusy::BusyMessage_0' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, CallFunc_IsSafeToClose_Result) == 0x000020, "Member 'INTERACT_DoorBase_C_GetInteractBusy::CallFunc_IsSafeToClose_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, CallFunc_Not_PreBool_ReturnValue) == 0x000021, "Member 'INTERACT_DoorBase_C_GetInteractBusy::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, K2Node_SwitchEnum_CmpSuccess) == 0x000022, "Member 'INTERACT_DoorBase_C_GetInteractBusy::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetInteractPowered
+// 0x0014 (0x0014 - 0x0000)
+struct INTERACT_DoorBase_C_SetInteractPowered final
+{
+public:
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_UpdateDoorEmissiveStrength_Strength;      // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_DoorBase_C_SetInteractPowered) == 0x000004, "Wrong alignment on INTERACT_DoorBase_C_SetInteractPowered");
+static_assert(sizeof(INTERACT_DoorBase_C_SetInteractPowered) == 0x000014, "Wrong size on INTERACT_DoorBase_C_SetInteractPowered");
+static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, State) == 0x000000, "Member 'INTERACT_DoorBase_C_SetInteractPowered::State' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, Result) == 0x000001, "Member 'INTERACT_DoorBase_C_SetInteractPowered::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, CallFunc_GetAttribValue_ReturnValue) == 0x000004, "Member 'INTERACT_DoorBase_C_SetInteractPowered::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000008, "Member 'INTERACT_DoorBase_C_SetInteractPowered::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, CallFunc_UpdateDoorEmissiveStrength_Strength) == 0x00000C, "Member 'INTERACT_DoorBase_C_SetInteractPowered::CallFunc_UpdateDoorEmissiveStrength_Strength' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_SetInteractPowered, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000010, "Member 'INTERACT_DoorBase_C_SetInteractPowered::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.CanModifyInteractPower
+// 0x0001 (0x0001 - 0x0000)
+struct INTERACT_DoorBase_C_CanModifyInteractPower final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_DoorBase_C_CanModifyInteractPower) == 0x000001, "Wrong alignment on INTERACT_DoorBase_C_CanModifyInteractPower");
+static_assert(sizeof(INTERACT_DoorBase_C_CanModifyInteractPower) == 0x000001, "Wrong size on INTERACT_DoorBase_C_CanModifyInteractPower");
+static_assert(offsetof(INTERACT_DoorBase_C_CanModifyInteractPower, Result) == 0x000000, "Member 'INTERACT_DoorBase_C_CanModifyInteractPower::Result' has a wrong offset!");
 
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.TryInteract
 // 0x0218 (0x0218 - 0x0000)

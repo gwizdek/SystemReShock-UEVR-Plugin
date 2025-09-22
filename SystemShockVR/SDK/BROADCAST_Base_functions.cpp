@@ -17,26 +17,6 @@
 namespace SDK
 {
 
-// Function BROADCAST_Base.BROADCAST_Base_C.SetState
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UBROADCAST_Base_C::SetState(bool State)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BROADCAST_Base_C", "SetState");
-
-	Params::BROADCAST_Base_C_SetState Parms{};
-
-	Parms.State = State;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function BROADCAST_Base.BROADCAST_Base_C.IsLoopingContent
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
@@ -55,6 +35,26 @@ void UBROADCAST_Base_C::IsLoopingContent(bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
+}
+
+
+// Function BROADCAST_Base.BROADCAST_Base_C.SetState
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UBROADCAST_Base_C::SetState(bool State)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BROADCAST_Base_C", "SetState");
+
+	Params::BROADCAST_Base_C_SetState Parms{};
+
+	Parms.State = State;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 

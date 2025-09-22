@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_PreferredCombatStyle_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "LevelVoxelization_structs.hpp"
+#include "ENUM_PreferredCombatStyle_structs.hpp"
 
 
 namespace SDK::Params

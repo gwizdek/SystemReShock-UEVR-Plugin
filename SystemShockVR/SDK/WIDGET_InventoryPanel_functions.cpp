@@ -17,6 +17,70 @@
 namespace SDK
 {
 
+// Function WIDGET_InventoryPanel.WIDGET_InventoryPanel_C.ExecuteUbergraph_WIDGET_InventoryPanel
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_InventoryPanel_C::ExecuteUbergraph_WIDGET_InventoryPanel(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_InventoryPanel_C", "ExecuteUbergraph_WIDGET_InventoryPanel");
+
+	Params::WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_InventoryPanel.WIDGET_InventoryPanel_C.BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature
+// (BlueprintEvent)
+// Parameters:
+// struct FGeometry                        Geometry                                               (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+// struct FPointerEvent                    InputEvent                                             (BlueprintVisible, BlueprintReadOnly, Parm)
+
+void UWIDGET_InventoryPanel_C::BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature(const struct FGeometry& Geometry, const struct FPointerEvent& InputEvent)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_InventoryPanel_C", "BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature");
+
+	Params::WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature Parms{};
+
+	Parms.Geometry = std::move(Geometry);
+	Parms.InputEvent = std::move(InputEvent);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_InventoryPanel.WIDGET_InventoryPanel_C.BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature
+// (BlueprintEvent)
+// Parameters:
+// struct FGeometry                        Geometry                                               (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+// struct FPointerEvent                    InputEvent                                             (BlueprintVisible, BlueprintReadOnly, Parm)
+
+void UWIDGET_InventoryPanel_C::BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature(const struct FGeometry& Geometry, const struct FPointerEvent& InputEvent)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_InventoryPanel_C", "BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature");
+
+	Params::WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature Parms{};
+
+	Parms.Geometry = std::move(Geometry);
+	Parms.InputEvent = std::move(InputEvent);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function WIDGET_InventoryPanel.WIDGET_InventoryPanel_C.InitializeInventoryPanel
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:

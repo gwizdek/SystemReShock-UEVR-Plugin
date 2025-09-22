@@ -12,9 +12,9 @@
 
 #include "Slate_structs.hpp"
 #include "SlateCore_structs.hpp"
+#include "ENUM_CursorMode_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "AttributeSystem_structs.hpp"
-#include "ENUM_CursorMode_structs.hpp"
 
 
 namespace SDK::Params

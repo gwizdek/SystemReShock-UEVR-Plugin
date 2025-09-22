@@ -48,22 +48,22 @@ public:
 	class UBROADCAST_Base_C*                      CurrentBroadcastContent;                           // 0x0750(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void InitializeElevatorControls();
-	void UserConstructionScript();
-	void StreamInCinematicLevel();
-	void StreamOutCinematicLevel();
+	void UpdateControlLockState(bool IsLocked);
+	void UpdateEmissiveStrength(float Scale);
+	void OnCinematicLevelLoaded();
 	void CreateCinematicMoveControl();
 	void UpdateCinematicBroadcast(float DeltaTime);
 	void PlayCinematicBroadcast();
 	void SetElevatorTargetLevel(class UPrimitiveComponent* CursorPrimitive, class FName NewTargetLevel);
 	void GetControlsMeshComponent(class UStaticMeshComponent** MeshComponent);
-	void UpdateControlLockState(bool IsLocked);
-	void UpdateEmissiveStrength(float Scale);
-	void OnCinematicLevelLoaded();
 	void SetElevatorEnabled(bool Enabled);
 	void SetElevatorVisibility(bool VisibilityState);
 	void UpdateCurrentScreenFloorPosition();
 	void SetScreenFloorPosition(int32 DeckNumber);
+	void InitializeElevatorControls();
+	void UserConstructionScript();
+	void StreamInCinematicLevel();
+	void StreamOutCinematicLevel();
 	void UpdateBroadcastRenderTarget();
 	void ReceiveTick(float DeltaSeconds);
 	void ExecuteUbergraph_ELEVATOR_Normal(int32 EntryPoint);

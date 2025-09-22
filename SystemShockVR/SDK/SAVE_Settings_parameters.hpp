@@ -10,15 +10,15 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_InputCategory_structs.hpp"
-#include "ENUM_OffLowMediumHigh_structs.hpp"
 #include "ENUM_SmallMediumLarge_structs.hpp"
-#include "Engine_structs.hpp"
-#include "DLSSBlueprint_structs.hpp"
 #include "ENUM_HotbarStyle_structs.hpp"
 #include "ENUM_OffReducedNormal_structs.hpp"
 #include "ENUM_QualitySetting_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_OffLowMediumHigh_structs.hpp"
+#include "Engine_structs.hpp"
+#include "DLSSBlueprint_structs.hpp"
+#include "ENUM_InputCategory_structs.hpp"
 #include "STRUCT_BoundInputActionPair_structs.hpp"
 
 
@@ -3612,6 +3612,58 @@ static_assert(offsetof(SAVE_Settings_C_GetControllerVibrationProfleValue, Cultur
 static_assert(offsetof(SAVE_Settings_C_GetControllerVibrationProfleValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetControllerVibrationProfleValue::Platform' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetControllerVibrationProfleValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetControllerVibrationProfleValue::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetControllerVibrationProfleValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetControllerVibrationProfleValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetSprintToggle
+// 0x0002 (0x0002 - 0x0000)
+struct SAVE_Settings_C_SetSprintToggle final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetSprintToggle) == 0x000001, "Wrong alignment on SAVE_Settings_C_SetSprintToggle");
+static_assert(sizeof(SAVE_Settings_C_SetSprintToggle) == 0x000002, "Wrong size on SAVE_Settings_C_SetSprintToggle");
+static_assert(offsetof(SAVE_Settings_C_SetSprintToggle, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetSprintToggle::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetSprintToggle, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000001, "Member 'SAVE_Settings_C_SetSprintToggle::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplySprintToggle
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_ApplySprintToggle final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_ApplySprintToggle) == 0x000001, "Wrong alignment on SAVE_Settings_C_ApplySprintToggle");
+static_assert(sizeof(SAVE_Settings_C_ApplySprintToggle) == 0x000001, "Wrong size on SAVE_Settings_C_ApplySprintToggle");
+static_assert(offsetof(SAVE_Settings_C_ApplySprintToggle, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplySprintToggle::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetSprintToggle
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_GetSprintToggle final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_GetSprintToggle) == 0x000001, "Wrong alignment on SAVE_Settings_C_GetSprintToggle");
+static_assert(sizeof(SAVE_Settings_C_GetSprintToggle) == 0x000001, "Wrong size on SAVE_Settings_C_GetSprintToggle");
+static_assert(offsetof(SAVE_Settings_C_GetSprintToggle, Result) == 0x000000, "Member 'SAVE_Settings_C_GetSprintToggle::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetSprintToggleProfileValue
+// 0x0028 (0x0028 - 0x0000)
+struct SAVE_Settings_C_GetSprintToggleProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetPlatformType_IsConsole;                // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_GetSprintToggleProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetSprintToggleProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetSprintToggleProfileValue) == 0x000028, "Wrong size on SAVE_Settings_C_GetSprintToggleProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetSprintToggleProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetSprintToggleProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetSprintToggleProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetSprintToggleProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetSprintToggleProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetSprintToggleProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetSprintToggleProfileValue, CallFunc_GetPlatformType_IsConsole) == 0x000021, "Member 'SAVE_Settings_C_GetSprintToggleProfileValue::CallFunc_GetPlatformType_IsConsole' has a wrong offset!");
 
 }
 

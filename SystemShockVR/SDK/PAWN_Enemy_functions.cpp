@@ -433,6 +433,27 @@ void APAWN_Enemy_C::TrySetEnemyName(bool* Result)
 }
 
 
+// Function PAWN_Enemy.PAWN_Enemy_C.HasSetSpawnData
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void APAWN_Enemy_C::HasSetSpawnData(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_Enemy_C", "HasSetSpawnData");
+
+	Params::PAWN_Enemy_C_HasSetSpawnData Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
 // Function PAWN_Enemy.PAWN_Enemy_C.TrySetSpawnData
 // (Protected, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:

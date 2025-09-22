@@ -14,31 +14,6 @@
 namespace SDK::Params
 {
 
-// Function BP_Medical_Floor_LightsFlickering.BP_Medical_Floor_LightsFlickering_C.UserConstructionScript
-// 0x0010 (0x0010 - 0x0000)
-struct BP_Medical_Floor_LightsFlickering_C_UserConstructionScript final
-{
-public:
-	float                                         CallFunc_K2_GetScalarParameterValue_ReturnValue;   // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue; // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(BP_Medical_Floor_LightsFlickering_C_UserConstructionScript) == 0x000008, "Wrong alignment on BP_Medical_Floor_LightsFlickering_C_UserConstructionScript");
-static_assert(sizeof(BP_Medical_Floor_LightsFlickering_C_UserConstructionScript) == 0x000010, "Wrong size on BP_Medical_Floor_LightsFlickering_C_UserConstructionScript");
-static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_UserConstructionScript, CallFunc_K2_GetScalarParameterValue_ReturnValue) == 0x000000, "Member 'BP_Medical_Floor_LightsFlickering_C_UserConstructionScript::CallFunc_K2_GetScalarParameterValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_UserConstructionScript, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x000008, "Member 'BP_Medical_Floor_LightsFlickering_C_UserConstructionScript::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
-
-// Function BP_Medical_Floor_LightsFlickering.BP_Medical_Floor_LightsFlickering_C.BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature
-// 0x0001 (0x0001 - 0x0000)
-struct BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature final
-{
-public:
-	bool                                          bVisibleState;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature) == 0x000001, "Wrong alignment on BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature");
-static_assert(sizeof(BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature) == 0x000001, "Wrong size on BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature");
-static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature, bVisibleState) == 0x000000, "Member 'BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature::bVisibleState' has a wrong offset!");
-
 // Function BP_Medical_Floor_LightsFlickering.BP_Medical_Floor_LightsFlickering_C.ExecuteUbergraph_BP_Medical_Floor_LightsFlickering
 // 0x0018 (0x0018 - 0x0000)
 struct BP_Medical_Floor_LightsFlickering_C_ExecuteUbergraph_BP_Medical_Floor_LightsFlickering final
@@ -59,6 +34,31 @@ static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_ExecuteUbergraph_BP_M
 static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_ExecuteUbergraph_BP_Medical_Floor_LightsFlickering, CallFunc_RandomFloat_ReturnValue) == 0x00000C, "Member 'BP_Medical_Floor_LightsFlickering_C_ExecuteUbergraph_BP_Medical_Floor_LightsFlickering::CallFunc_RandomFloat_ReturnValue' has a wrong offset!");
 static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_ExecuteUbergraph_BP_Medical_Floor_LightsFlickering, CallFunc_Multiply_FloatFloat_ReturnValue_2) == 0x000010, "Member 'BP_Medical_Floor_LightsFlickering_C_ExecuteUbergraph_BP_Medical_Floor_LightsFlickering::CallFunc_Multiply_FloatFloat_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_ExecuteUbergraph_BP_Medical_Floor_LightsFlickering, K2Node_ComponentBoundEvent_bVisibleState) == 0x000014, "Member 'BP_Medical_Floor_LightsFlickering_C_ExecuteUbergraph_BP_Medical_Floor_LightsFlickering::K2Node_ComponentBoundEvent_bVisibleState' has a wrong offset!");
+
+// Function BP_Medical_Floor_LightsFlickering.BP_Medical_Floor_LightsFlickering_C.BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature
+// 0x0001 (0x0001 - 0x0000)
+struct BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature final
+{
+public:
+	bool                                          bVisibleState;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature) == 0x000001, "Wrong alignment on BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature");
+static_assert(sizeof(BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature) == 0x000001, "Wrong size on BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature");
+static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature, bVisibleState) == 0x000000, "Member 'BP_Medical_Floor_LightsFlickering_C_BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature::bVisibleState' has a wrong offset!");
+
+// Function BP_Medical_Floor_LightsFlickering.BP_Medical_Floor_LightsFlickering_C.UserConstructionScript
+// 0x0010 (0x0010 - 0x0000)
+struct BP_Medical_Floor_LightsFlickering_C_UserConstructionScript final
+{
+public:
+	float                                         CallFunc_K2_GetScalarParameterValue_ReturnValue;   // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue; // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(BP_Medical_Floor_LightsFlickering_C_UserConstructionScript) == 0x000008, "Wrong alignment on BP_Medical_Floor_LightsFlickering_C_UserConstructionScript");
+static_assert(sizeof(BP_Medical_Floor_LightsFlickering_C_UserConstructionScript) == 0x000010, "Wrong size on BP_Medical_Floor_LightsFlickering_C_UserConstructionScript");
+static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_UserConstructionScript, CallFunc_K2_GetScalarParameterValue_ReturnValue) == 0x000000, "Member 'BP_Medical_Floor_LightsFlickering_C_UserConstructionScript::CallFunc_K2_GetScalarParameterValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_Medical_Floor_LightsFlickering_C_UserConstructionScript, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x000008, "Member 'BP_Medical_Floor_LightsFlickering_C_UserConstructionScript::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
 
 }
 

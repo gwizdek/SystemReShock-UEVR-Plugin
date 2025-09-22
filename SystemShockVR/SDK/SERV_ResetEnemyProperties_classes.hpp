@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "AIModule_classes.hpp"
 #include "ENUM_ActivationDeactivation_structs.hpp"
+#include "AIModule_classes.hpp"
 
 
 namespace SDK

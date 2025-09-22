@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
 #include "CYBR_InteractBase_classes.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 
 
 namespace SDK
@@ -34,7 +34,7 @@ public:
 	class UStaticMeshComponent*                   IceShield_MediumChunk2;                            // 0x0270(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        IceShieldNode;                                     // 0x0278(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UCOMP_AttribManager_C*                  COMP_AttribManager;                                // 0x0280(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UAudioComponent*                        Audio_Loop;                                        // 0x0288(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        Audio_loop;                                        // 0x0288(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UPointLightComponent*                   PointLight;                                        // 0x0290(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UBoxComponent*                          CollisionSwitch;                                   // 0x0298(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UBoxComponent*                          CollisionBackplate;                                // 0x02A0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
@@ -60,11 +60,9 @@ public:
 public:
 	void ExecuteUbergraph_CYBR_Switch(int32 EntryPoint);
 	void BndEvt__CYBR_Switch_COMP_AttribManager_K2Node_ComponentBoundEvent_0_OnDamageSignature__DelegateSignature(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams);
-	void ReceiveBeginPlay();
 	void ActivateTimeline__UpdateFunc();
 	void ActivateTimeline__FinishedFunc();
 	void UserConstructionScript();
-	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 	void TryInteractWithTarget(class APAWN_SystemShockCharacter_C* Character);
 	void TryCompleteStoryQuest();
 	void UpdateMaterialParameters(const struct FLinearColor& Color);
@@ -72,6 +70,8 @@ public:
 	void TryCreateAbsorbEffects(class UAttribDamageType* DamageType, class UOBJ_ImpactData_C* ImpactData);
 	void ApplyIceShields();
 	void EVENT_OnShieldValueChanged(float CurrValue, float LastValue);
+	void ReceiveBeginPlay();
+	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 
 public:
 	static class UClass* StaticClass()
@@ -95,7 +95,7 @@ static_assert(offsetof(ACYBR_Switch_C, IceShield_SmallChunk) == 0x000268, "Membe
 static_assert(offsetof(ACYBR_Switch_C, IceShield_MediumChunk2) == 0x000270, "Member 'ACYBR_Switch_C::IceShield_MediumChunk2' has a wrong offset!");
 static_assert(offsetof(ACYBR_Switch_C, IceShieldNode) == 0x000278, "Member 'ACYBR_Switch_C::IceShieldNode' has a wrong offset!");
 static_assert(offsetof(ACYBR_Switch_C, COMP_AttribManager) == 0x000280, "Member 'ACYBR_Switch_C::COMP_AttribManager' has a wrong offset!");
-static_assert(offsetof(ACYBR_Switch_C, Audio_Loop) == 0x000288, "Member 'ACYBR_Switch_C::Audio_Loop' has a wrong offset!");
+static_assert(offsetof(ACYBR_Switch_C, Audio_loop) == 0x000288, "Member 'ACYBR_Switch_C::Audio_loop' has a wrong offset!");
 static_assert(offsetof(ACYBR_Switch_C, PointLight) == 0x000290, "Member 'ACYBR_Switch_C::PointLight' has a wrong offset!");
 static_assert(offsetof(ACYBR_Switch_C, CollisionSwitch) == 0x000298, "Member 'ACYBR_Switch_C::CollisionSwitch' has a wrong offset!");
 static_assert(offsetof(ACYBR_Switch_C, CollisionBackplate) == 0x0002A0, "Member 'ACYBR_Switch_C::CollisionBackplate' has a wrong offset!");

@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "STRUCT_HardItemParams_structs.hpp"
-#include "STRUCT_UserTintOption_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
-#include "STRUCT_CharacterLoadoutSettings_structs.hpp"
+#include "STRUCT_UserTintOption_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "STRUCT_CharacterLoadoutSettings_structs.hpp"
+#include "STRUCT_HardItemParams_structs.hpp"
 #include "InputCore_structs.hpp"
 
 

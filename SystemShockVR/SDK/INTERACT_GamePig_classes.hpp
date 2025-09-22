@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "INTERACT_Channeling_Base_classes.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "INTERACT_Channeling_Base_classes.hpp"
 #include "ENUM_InteractionType_structs.hpp"
 
 
@@ -69,8 +69,8 @@ public:
 	void GetHolsteredTransform(struct FTransform* Transform);
 	void CanResumeChannelingInteraction(bool* Result);
 	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
-	void StopChanneling(class AActor* NewChannelingInteract, bool* Result);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
+	void StopChanneling(class AActor* NewChannelingInteract, bool* Result);
 
 public:
 	static class UClass* StaticClass()

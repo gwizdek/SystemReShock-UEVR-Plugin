@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "STRUCT_MeleeHitboxOverlapData_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "STRUCT_MeleeHitboxOverlapData_structs.hpp"
 
 
 namespace SDK::Params

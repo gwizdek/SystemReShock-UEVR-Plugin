@@ -346,21 +346,6 @@ static_assert(offsetof(WIDGET_Settings_MultiSelector_C_SetOptionEnabled, Temp_by
 static_assert(offsetof(WIDGET_Settings_MultiSelector_C_SetOptionEnabled, Temp_byte_Variable_1) == 0x000005, "Member 'WIDGET_Settings_MultiSelector_C_SetOptionEnabled::Temp_byte_Variable_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_Settings_MultiSelector_C_SetOptionEnabled, K2Node_Select_Default) == 0x000006, "Member 'WIDGET_Settings_MultiSelector_C_SetOptionEnabled::K2Node_Select_Default' has a wrong offset!");
 
-// Function WIDGET_Settings_MultiSelector.WIDGET_Settings_MultiSelector_C.ReceiveNavLeft
-// 0x0003 (0x0003 - 0x0000)
-struct WIDGET_Settings_MultiSelector_C_ReceiveNavLeft final
-{
-public:
-	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft) == 0x000001, "Wrong alignment on WIDGET_Settings_MultiSelector_C_ReceiveNavLeft");
-static_assert(sizeof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft) == 0x000003, "Wrong size on WIDGET_Settings_MultiSelector_C_ReceiveNavLeft");
-static_assert(offsetof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft, InputState) == 0x000000, "Member 'WIDGET_Settings_MultiSelector_C_ReceiveNavLeft::InputState' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft, Result) == 0x000001, "Member 'WIDGET_Settings_MultiSelector_C_ReceiveNavLeft::Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft, CallFunc_BooleanAND_ReturnValue) == 0x000002, "Member 'WIDGET_Settings_MultiSelector_C_ReceiveNavLeft::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-
 // Function WIDGET_Settings_MultiSelector.WIDGET_Settings_MultiSelector_C.ReceiveNavRight
 // 0x0003 (0x0003 - 0x0000)
 struct WIDGET_Settings_MultiSelector_C_ReceiveNavRight final
@@ -375,6 +360,21 @@ static_assert(sizeof(WIDGET_Settings_MultiSelector_C_ReceiveNavRight) == 0x00000
 static_assert(offsetof(WIDGET_Settings_MultiSelector_C_ReceiveNavRight, InputState) == 0x000000, "Member 'WIDGET_Settings_MultiSelector_C_ReceiveNavRight::InputState' has a wrong offset!");
 static_assert(offsetof(WIDGET_Settings_MultiSelector_C_ReceiveNavRight, Result) == 0x000001, "Member 'WIDGET_Settings_MultiSelector_C_ReceiveNavRight::Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_Settings_MultiSelector_C_ReceiveNavRight, CallFunc_BooleanAND_ReturnValue) == 0x000002, "Member 'WIDGET_Settings_MultiSelector_C_ReceiveNavRight::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_Settings_MultiSelector.WIDGET_Settings_MultiSelector_C.ReceiveNavLeft
+// 0x0003 (0x0003 - 0x0000)
+struct WIDGET_Settings_MultiSelector_C_ReceiveNavLeft final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft) == 0x000001, "Wrong alignment on WIDGET_Settings_MultiSelector_C_ReceiveNavLeft");
+static_assert(sizeof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft) == 0x000003, "Wrong size on WIDGET_Settings_MultiSelector_C_ReceiveNavLeft");
+static_assert(offsetof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft, InputState) == 0x000000, "Member 'WIDGET_Settings_MultiSelector_C_ReceiveNavLeft::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft, Result) == 0x000001, "Member 'WIDGET_Settings_MultiSelector_C_ReceiveNavLeft::Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_MultiSelector_C_ReceiveNavLeft, CallFunc_BooleanAND_ReturnValue) == 0x000002, "Member 'WIDGET_Settings_MultiSelector_C_ReceiveNavLeft::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
 }
 

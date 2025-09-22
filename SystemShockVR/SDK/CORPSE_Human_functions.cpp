@@ -17,91 +17,15 @@
 namespace SDK
 {
 
-// Function CORPSE_Human.CORPSE_Human_C.ForceUpdate
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function CORPSE_Human.CORPSE_Human_C.UserConstructionScript
+// (Event, Public, BlueprintCallable, BlueprintEvent)
 
-void ACORPSE_Human_C::ForceUpdate()
+void ACORPSE_Human_C::UserConstructionScript()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("CORPSE_Human_C", "ForceUpdate");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function CORPSE_Human.CORPSE_Human_C.InitializeDismemberedLimbs
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void ACORPSE_Human_C::InitializeDismemberedLimbs()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CORPSE_Human_C", "InitializeDismemberedLimbs");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function CORPSE_Human.CORPSE_Human_C.DefineStartPose
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UAnimSequence*                    AnimSequence                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ACORPSE_Human_C::DefineStartPose(class UAnimSequence* AnimSequence)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CORPSE_Human_C", "DefineStartPose");
-
-	Params::CORPSE_Human_C_DefineStartPose Parms{};
-
-	Parms.AnimSequence = AnimSequence;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function CORPSE_Human.CORPSE_Human_C.RandomizeTextureDetails
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void ACORPSE_Human_C::RandomizeTextureDetails()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CORPSE_Human_C", "RandomizeTextureDetails");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function CORPSE_Human.CORPSE_Human_C.TryRandomizeOutfit
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void ACORPSE_Human_C::TryRandomizeOutfit()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CORPSE_Human_C", "TryRandomizeOutfit");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function CORPSE_Human.CORPSE_Human_C.TryRandomizeBodyType
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void ACORPSE_Human_C::TryRandomizeBodyType()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CORPSE_Human_C", "TryRandomizeBodyType");
+		Func = Class->GetFunction("CORPSE_Human_C", "UserConstructionScript");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -131,15 +55,91 @@ void ACORPSE_Human_C::GetTargetShape(class UPrimitiveComponent* CursorPrimitive,
 }
 
 
-// Function CORPSE_Human.CORPSE_Human_C.UserConstructionScript
-// (Event, Public, BlueprintCallable, BlueprintEvent)
+// Function CORPSE_Human.CORPSE_Human_C.TryRandomizeBodyType
+// (Protected, BlueprintCallable, BlueprintEvent)
 
-void ACORPSE_Human_C::UserConstructionScript()
+void ACORPSE_Human_C::TryRandomizeBodyType()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("CORPSE_Human_C", "UserConstructionScript");
+		Func = Class->GetFunction("CORPSE_Human_C", "TryRandomizeBodyType");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function CORPSE_Human.CORPSE_Human_C.TryRandomizeOutfit
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void ACORPSE_Human_C::TryRandomizeOutfit()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CORPSE_Human_C", "TryRandomizeOutfit");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function CORPSE_Human.CORPSE_Human_C.RandomizeTextureDetails
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void ACORPSE_Human_C::RandomizeTextureDetails()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CORPSE_Human_C", "RandomizeTextureDetails");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function CORPSE_Human.CORPSE_Human_C.DefineStartPose
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UAnimSequence*                    AnimSequence                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ACORPSE_Human_C::DefineStartPose(class UAnimSequence* AnimSequence)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CORPSE_Human_C", "DefineStartPose");
+
+	Params::CORPSE_Human_C_DefineStartPose Parms{};
+
+	Parms.AnimSequence = AnimSequence;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function CORPSE_Human.CORPSE_Human_C.InitializeDismemberedLimbs
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ACORPSE_Human_C::InitializeDismemberedLimbs()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CORPSE_Human_C", "InitializeDismemberedLimbs");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function CORPSE_Human.CORPSE_Human_C.ForceUpdate
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void ACORPSE_Human_C::ForceUpdate()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CORPSE_Human_C", "ForceUpdate");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

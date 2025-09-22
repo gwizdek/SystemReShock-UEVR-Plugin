@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_CharacterActionParams_structs.hpp"
-#include "ENUM_ActionPriority_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "STRUCT_CharacterActionParams_structs.hpp"
+#include "ENUM_ActionPriority_structs.hpp"
 
 
 namespace SDK

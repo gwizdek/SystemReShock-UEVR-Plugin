@@ -46,9 +46,9 @@ public:
 	void SetIsHighlighted(bool NewHighlightedState, bool ForceInstant);
 	void GetSlider(class UWIDGET_Slider_C** Result);
 	void ReceiveNavLeft(bool InputState, bool* Result);
+	void ReceiveNavRight(bool InputState, bool* Result);
 	void InitializeMenuListItem(class UWIDGET_MenuListBase_C* ParentList, int32 Index_0);
 	void GetScaledCurrentSliderValue(float* Result);
-	void ReceiveNavRight(bool InputState, bool* Result);
 
 public:
 	static class UClass* StaticClass()

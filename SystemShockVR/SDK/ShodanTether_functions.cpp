@@ -17,6 +17,80 @@
 namespace SDK
 {
 
+// Function ShodanTether.ShodanTether_C.EVENT_OnDamagePulseTick
+// (Private, BlueprintCallable, BlueprintEvent)
+
+void AShodanTether_C::EVENT_OnDamagePulseTick()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShodanTether_C", "EVENT_OnDamagePulseTick");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ShodanTether.ShodanTether_C.EVENT_OnDamageReceived
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FAttribDamageInstance            DamageInstance                                         (BlueprintVisible, BlueprintReadOnly, Parm)
+// class UObject*                          UserParams                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AShodanTether_C::EVENT_OnDamageReceived(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShodanTether_C", "EVENT_OnDamageReceived");
+
+	Params::ShodanTether_C_EVENT_OnDamageReceived Parms{};
+
+	Parms.OtherActor = OtherActor;
+	Parms.DamageInstance = std::move(DamageInstance);
+	Parms.UserParams = UserParams;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function ShodanTether.ShodanTether_C.EVENT_OnHealthValueChanged
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   CurrValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   LastValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AShodanTether_C::EVENT_OnHealthValueChanged(float CurrValue, float LastValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShodanTether_C", "EVENT_OnHealthValueChanged");
+
+	Params::ShodanTether_C_EVENT_OnHealthValueChanged Parms{};
+
+	Parms.CurrValue = CurrValue;
+	Parms.LastValue = LastValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function ShodanTether.ShodanTether_C.EVENT_OnUnpopTether
+// (Private, BlueprintCallable, BlueprintEvent)
+
+void AShodanTether_C::EVENT_OnUnpopTether()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShodanTether_C", "EVENT_OnUnpopTether");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function ShodanTether.ShodanTether_C.SetTetherVulnerable
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -362,80 +436,6 @@ void AShodanTether_C::ExecuteUbergraph_ShodanTether(int32 EntryPoint)
 	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ShodanTether.ShodanTether_C.EVENT_OnUnpopTether
-// (Private, BlueprintCallable, BlueprintEvent)
-
-void AShodanTether_C::EVENT_OnUnpopTether()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShodanTether_C", "EVENT_OnUnpopTether");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function ShodanTether.ShodanTether_C.EVENT_OnHealthValueChanged
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// float                                   CurrValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// float                                   LastValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AShodanTether_C::EVENT_OnHealthValueChanged(float CurrValue, float LastValue)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShodanTether_C", "EVENT_OnHealthValueChanged");
-
-	Params::ShodanTether_C_EVENT_OnHealthValueChanged Parms{};
-
-	Parms.CurrValue = CurrValue;
-	Parms.LastValue = LastValue;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ShodanTether.ShodanTether_C.EVENT_OnDamageReceived
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FAttribDamageInstance            DamageInstance                                         (BlueprintVisible, BlueprintReadOnly, Parm)
-// class UObject*                          UserParams                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AShodanTether_C::EVENT_OnDamageReceived(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShodanTether_C", "EVENT_OnDamageReceived");
-
-	Params::ShodanTether_C_EVENT_OnDamageReceived Parms{};
-
-	Parms.OtherActor = OtherActor;
-	Parms.DamageInstance = std::move(DamageInstance);
-	Parms.UserParams = UserParams;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ShodanTether.ShodanTether_C.EVENT_OnDamagePulseTick
-// (Private, BlueprintCallable, BlueprintEvent)
-
-void AShodanTether_C::EVENT_OnDamagePulseTick()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShodanTether_C", "EVENT_OnDamagePulseTick");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

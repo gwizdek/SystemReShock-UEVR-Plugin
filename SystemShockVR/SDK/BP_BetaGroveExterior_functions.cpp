@@ -17,45 +17,93 @@
 namespace SDK
 {
 
-// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.EVENT_OnJettisonGrove
+// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.ExecuteUbergraph_BP_BetaGroveExterior
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_BetaGroveExterior_C::ExecuteUbergraph_BP_BetaGroveExterior(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_BetaGroveExterior_C", "ExecuteUbergraph_BP_BetaGroveExterior");
+
+	Params::BP_BetaGroveExterior_C_ExecuteUbergraph_BP_BetaGroveExterior Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void ABP_BetaGroveExterior_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_BetaGroveExterior_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.InitializeBetaGroveExterior
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void ABP_BetaGroveExterior_C::InitializeBetaGroveExterior()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_BetaGroveExterior_C", "InitializeBetaGroveExterior");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.EVENT_OnStoryQuestChanged
 // (Private, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FName                             StoryQuestName                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void ABP_BetaGroveExterior_C::EVENT_OnJettisonGrove()
+void ABP_BetaGroveExterior_C::EVENT_OnStoryQuestChanged(class FName StoryQuestName, bool Value)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BetaGroveExterior_C", "EVENT_OnJettisonGrove");
+		Func = Class->GetFunction("BP_BetaGroveExterior_C", "EVENT_OnStoryQuestChanged");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::BP_BetaGroveExterior_C_EVENT_OnStoryQuestChanged Parms{};
+
+	Parms.StoryQuestName = StoryQuestName;
+	Parms.Value = Value;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.UpdateAnimInstanceState
+// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.TryResumeJettisonMontage
 // (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   StartTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_BetaGroveExterior_C::UpdateAnimInstanceState()
+void ABP_BetaGroveExterior_C::TryResumeJettisonMontage(float StartTime)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BetaGroveExterior_C", "UpdateAnimInstanceState");
+		Func = Class->GetFunction("BP_BetaGroveExterior_C", "TryResumeJettisonMontage");
 
-	UObject::ProcessEvent(Func, nullptr);
-}
+	Params::BP_BetaGroveExterior_C_TryResumeJettisonMontage Parms{};
 
+	Parms.StartTime = StartTime;
 
-// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.OnGroveJettisonDelayStarted
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void ABP_BetaGroveExterior_C::OnGroveJettisonDelayStarted()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BetaGroveExterior_C", "OnGroveJettisonDelayStarted");
-
-	UObject::ProcessEvent(Func, nullptr);
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -83,93 +131,45 @@ void ABP_BetaGroveExterior_C::TryStartGroveJettisonTimer(float Delay, bool* Resu
 }
 
 
-// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.TryResumeJettisonMontage
+// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.OnGroveJettisonDelayStarted
 // (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// float                                   StartTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_BetaGroveExterior_C::TryResumeJettisonMontage(float StartTime)
+void ABP_BetaGroveExterior_C::OnGroveJettisonDelayStarted()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BetaGroveExterior_C", "TryResumeJettisonMontage");
+		Func = Class->GetFunction("BP_BetaGroveExterior_C", "OnGroveJettisonDelayStarted");
 
-	Params::BP_BetaGroveExterior_C_TryResumeJettisonMontage Parms{};
-
-	Parms.StartTime = StartTime;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.EVENT_OnStoryQuestChanged
+// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.UpdateAnimInstanceState
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void ABP_BetaGroveExterior_C::UpdateAnimInstanceState()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_BetaGroveExterior_C", "UpdateAnimInstanceState");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.EVENT_OnJettisonGrove
 // (Private, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class FName                             StoryQuestName                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void ABP_BetaGroveExterior_C::EVENT_OnStoryQuestChanged(class FName StoryQuestName, bool Value)
+void ABP_BetaGroveExterior_C::EVENT_OnJettisonGrove()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BetaGroveExterior_C", "EVENT_OnStoryQuestChanged");
-
-	Params::BP_BetaGroveExterior_C_EVENT_OnStoryQuestChanged Parms{};
-
-	Parms.StoryQuestName = StoryQuestName;
-	Parms.Value = Value;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.InitializeBetaGroveExterior
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void ABP_BetaGroveExterior_C::InitializeBetaGroveExterior()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BetaGroveExterior_C", "InitializeBetaGroveExterior");
+		Func = Class->GetFunction("BP_BetaGroveExterior_C", "EVENT_OnJettisonGrove");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ABP_BetaGroveExterior_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BetaGroveExterior_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_BetaGroveExterior.BP_BetaGroveExterior_C.ExecuteUbergraph_BP_BetaGroveExterior
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_BetaGroveExterior_C::ExecuteUbergraph_BP_BetaGroveExterior(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BetaGroveExterior_C", "ExecuteUbergraph_BP_BetaGroveExterior");
-
-	Params::BP_BetaGroveExterior_C_ExecuteUbergraph_BP_BetaGroveExterior Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

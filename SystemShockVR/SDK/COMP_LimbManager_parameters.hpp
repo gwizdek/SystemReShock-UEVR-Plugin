@@ -13,10 +13,10 @@
 #include "Engine_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "AttributeSystem_structs.hpp"
 #include "STRUCT_AnimatedLimb_structs.hpp"
-#include "STRUCT_DeathBlowData_structs.hpp"
 #include "ENUM_Axis_structs.hpp"
+#include "STRUCT_DeathBlowData_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 
 
 namespace SDK::Params

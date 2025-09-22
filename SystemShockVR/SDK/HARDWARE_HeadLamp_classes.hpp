@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "HARDWARE_VisionUnit_Base_classes.hpp"
 #include "Engine_structs.hpp"
+#include "HARDWARE_VisionUnit_Base_classes.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 
 
@@ -27,9 +27,9 @@ public:
 	float                                         HeadlampDetectionRange;                            // 0x0330(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void EVENT_OnHeadLampVisualDetectionTick();
-	void OnVisionUnitDeactivated(class APAWN_SystemShockCharacter_C* Character);
 	void OnVisionUnitActivated(class APAWN_SystemShockCharacter_C* Character);
+	void OnVisionUnitDeactivated(class APAWN_SystemShockCharacter_C* Character);
+	void EVENT_OnHeadLampVisualDetectionTick();
 
 public:
 	static class UClass* StaticClass()

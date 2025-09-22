@@ -17,37 +17,23 @@
 namespace SDK
 {
 
-// Function BP_OxygenScrubber_Tubes.BP_OxygenScrubber_Tubes_C.UpdateVisibility
-// (Protected, BlueprintCallable, BlueprintEvent)
+// Function BP_OxygenScrubber_Tubes.BP_OxygenScrubber_Tubes_C.ExecuteUbergraph_BP_OxygenScrubber_Tubes
+// (Final, UbergraphFunction)
 // Parameters:
-// bool                                    VisibilityState                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_OxygenScrubber_Tubes_C::UpdateVisibility(bool VisibilityState)
+void ABP_OxygenScrubber_Tubes_C::ExecuteUbergraph_BP_OxygenScrubber_Tubes(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_OxygenScrubber_Tubes_C", "UpdateVisibility");
+		Func = Class->GetFunction("BP_OxygenScrubber_Tubes_C", "ExecuteUbergraph_BP_OxygenScrubber_Tubes");
 
-	Params::BP_OxygenScrubber_Tubes_C_UpdateVisibility Parms{};
+	Params::BP_OxygenScrubber_Tubes_C_ExecuteUbergraph_BP_OxygenScrubber_Tubes Parms{};
 
-	Parms.VisibilityState = VisibilityState;
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_OxygenScrubber_Tubes.BP_OxygenScrubber_Tubes_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ABP_OxygenScrubber_Tubes_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_OxygenScrubber_Tubes_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -71,21 +57,35 @@ void ABP_OxygenScrubber_Tubes_C::BndEvt__COMP_VoxelCullable_K2Node_ComponentBoun
 }
 
 
-// Function BP_OxygenScrubber_Tubes.BP_OxygenScrubber_Tubes_C.ExecuteUbergraph_BP_OxygenScrubber_Tubes
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function BP_OxygenScrubber_Tubes.BP_OxygenScrubber_Tubes_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
 
-void ABP_OxygenScrubber_Tubes_C::ExecuteUbergraph_BP_OxygenScrubber_Tubes(int32 EntryPoint)
+void ABP_OxygenScrubber_Tubes_C::ReceiveBeginPlay()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_OxygenScrubber_Tubes_C", "ExecuteUbergraph_BP_OxygenScrubber_Tubes");
+		Func = Class->GetFunction("BP_OxygenScrubber_Tubes_C", "ReceiveBeginPlay");
 
-	Params::BP_OxygenScrubber_Tubes_C_ExecuteUbergraph_BP_OxygenScrubber_Tubes Parms{};
+	UObject::ProcessEvent(Func, nullptr);
+}
 
-	Parms.EntryPoint = EntryPoint;
+
+// Function BP_OxygenScrubber_Tubes.BP_OxygenScrubber_Tubes_C.UpdateVisibility
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    VisibilityState                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void ABP_OxygenScrubber_Tubes_C::UpdateVisibility(bool VisibilityState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_OxygenScrubber_Tubes_C", "UpdateVisibility");
+
+	Params::BP_OxygenScrubber_Tubes_C_UpdateVisibility Parms{};
+
+	Parms.VisibilityState = VisibilityState;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "ITEM_MeleeWeapon_Base_classes.hpp"
-#include "Engine_structs.hpp"
 #include "ENUM_LaserRapierColor_structs.hpp"
+#include "Engine_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "ITEM_MeleeWeapon_Base_classes.hpp"
 
 
 namespace SDK

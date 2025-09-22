@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreGame_structs.hpp"
+#include "ENUM_UpgradeResult_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_UpgradeResult_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
 
 

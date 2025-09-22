@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "ENUM_TriggerCondition_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 
 
 namespace SDK::Params

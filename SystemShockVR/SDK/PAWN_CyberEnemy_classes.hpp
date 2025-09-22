@@ -55,11 +55,11 @@ public:
 	void EVENT_SetRandomRotation();
 	void SeekNewSpawnLocation();
 	void EVENT_FoundNewSpawnLocation(bool bResult, TArray<struct FVector4>& WeightedWorldLocations);
+	void GetShieldAttachComponent(class USceneComponent** Component);
 	void ApplyIceShields();
+	void EVENT_OnShieldValueChanged(float CurrValue, float LastValue);
 	void UpdateIceShieldMeshes(bool State);
 	void GetIceShieldSize(float* Result);
-	void GetShieldAttachComponent(class USceneComponent** Component);
-	void EVENT_OnShieldValueChanged(float CurrValue, float LastValue);
 	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void OnCharacterDied(class UOBJ_ImpactData_C* ImpactData, const struct FAttribDamageInstance& DamageInstance, class AActor* OtherActor, bool* Result);
 	void InitializeCharacter(bool* Result);

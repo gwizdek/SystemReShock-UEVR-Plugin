@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "STRUCT_InteractResults_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "SlateCore_structs.hpp"
 
 

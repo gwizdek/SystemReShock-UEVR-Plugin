@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_WirePlugState_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_WirePlugState_structs.hpp"
 #include "INTERACT_Base_classes.hpp"
 #include "ENUM_InteractResultType_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"

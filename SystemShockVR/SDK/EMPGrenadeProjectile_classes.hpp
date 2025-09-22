@@ -24,8 +24,8 @@ public:
 	float                                         DisableDuration;                                   // 0x03D8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void GetDisableDurationScale(class APAWN_SystemShockCharacter_C* Character, float* Result);
 	void OnDamageAppliedToActors(const TMap<class UAttribMod*, struct FAttribDamageInstance>& DamageInstances);
+	void GetDisableDurationScale(class APAWN_SystemShockCharacter_C* Character, float* Result);
 
 public:
 	static class UClass* StaticClass()

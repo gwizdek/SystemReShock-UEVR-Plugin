@@ -30,6 +30,10 @@ public:
 	TMulticastInlineDelegate<void(class UITEM_Base_C* HandheldItem, int32 Count)> ConsumableCountChanged;                            // 0x03C0(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 
 public:
+	void GetHotbarIcon(class UTexture** ResultIcon);
+	void GetHotbarDisplayName(class FText* Result);
+	void GetHotbarCount(int32* ResultCount);
+	void GetEquipState(bool* Result);
 	void EVENT_OnConsumableBagChanged(class UInventoryBag_C* Bag_0, int32 SlotIndex_0);
 	void InitializeHandheldConsumableData();
 	void CleanupHandheldConsumableData();
@@ -38,15 +42,11 @@ public:
 	void GetActiveConsumableItem(class UITEM_ConsumableBase_C** Result);
 	void SetActiveConsumableItem(class UITEM_ConsumableBase_C* ConsumableItem);
 	void GetTotalConsumableItemCount(int32* Result);
-	void GetHotbarIcon(class UTexture** ResultIcon);
-	void GetHotbarDisplayName(class FText* Result);
-	void GetHotbarCount(int32* ResultCount);
-	void GetEquipState(bool* Result);
 	void TryUseConsumable(bool* Result);
+	void OnBeginPlay();
+	void OnInventoryChanged(class UCOMP_Inventory_C* PrevInventory, bool* Result);
 	void ShouldAutoEquip(bool* Result);
 	void ShouldForceEquip(bool* Result);
-	void OnInventoryChanged(class UCOMP_Inventory_C* PrevInventory, bool* Result);
-	void OnBeginPlay();
 
 public:
 	static class UClass* StaticClass()

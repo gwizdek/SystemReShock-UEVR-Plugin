@@ -32,9 +32,9 @@ public:
 	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0258(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ReceiveBeginPlay();
-	void BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature(bool bVisibleState);
 	void ExecuteUbergraph_BP_OxygenScrubber_Bags(int32 EntryPoint);
+	void BndEvt__COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature(bool bVisibleState);
+	void ReceiveBeginPlay();
 
 public:
 	static class UClass* StaticClass()

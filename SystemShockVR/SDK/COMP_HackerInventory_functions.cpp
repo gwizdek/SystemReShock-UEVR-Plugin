@@ -560,6 +560,26 @@ void UCOMP_HackerInventory_C::CycleEquippedWeapon(bool Previous, class UClass* I
 }
 
 
+// Function COMP_HackerInventory.COMP_HackerInventory_C.SetEquipmentDisabled
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Disable                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UCOMP_HackerInventory_C::SetEquipmentDisabled(bool Disable)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("COMP_HackerInventory_C", "SetEquipmentDisabled");
+
+	Params::COMP_HackerInventory_C_SetEquipmentDisabled Parms{};
+
+	Parms.Disable = Disable;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function COMP_HackerInventory.COMP_HackerInventory_C.IsEquipmentDisabled
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
@@ -596,26 +616,6 @@ void UCOMP_HackerInventory_C::UpdateItemActivationState(class UITEM_Base_C* Item
 	Params::COMP_HackerInventory_C_UpdateItemActivationState Parms{};
 
 	Parms.Item = Item;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function COMP_HackerInventory.COMP_HackerInventory_C.SetEquipmentDisabled
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Disable                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UCOMP_HackerInventory_C::SetEquipmentDisabled(bool Disable)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("COMP_HackerInventory_C", "SetEquipmentDisabled");
-
-	Params::COMP_HackerInventory_C_SetEquipmentDisabled Parms{};
-
-	Parms.Disable = Disable;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

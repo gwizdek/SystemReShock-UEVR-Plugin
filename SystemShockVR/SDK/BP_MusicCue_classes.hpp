@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "ENUM_BeatType_structs.hpp"
+#include "ENUM_MusicPlayState_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreGame_classes.hpp"
-#include "ENUM_MusicPlayState_structs.hpp"
 #include "ENUM_IntensityThresholds_structs.hpp"
 
 

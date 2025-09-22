@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "CoreGame_classes.hpp"
 #include "ENUM_ActionPriority_structs.hpp"
 #include "ENUM_EnemyAttackType_structs.hpp"
-#include "CoreGame_classes.hpp"
 
 
 namespace SDK

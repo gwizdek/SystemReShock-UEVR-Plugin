@@ -14,17 +14,6 @@
 namespace SDK::Params
 {
 
-// Function BROADCAST_Base.BROADCAST_Base_C.SetState
-// 0x0001 (0x0001 - 0x0000)
-struct BROADCAST_Base_C_SetState final
-{
-public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(BROADCAST_Base_C_SetState) == 0x000001, "Wrong alignment on BROADCAST_Base_C_SetState");
-static_assert(sizeof(BROADCAST_Base_C_SetState) == 0x000001, "Wrong size on BROADCAST_Base_C_SetState");
-static_assert(offsetof(BROADCAST_Base_C_SetState, State) == 0x000000, "Member 'BROADCAST_Base_C_SetState::State' has a wrong offset!");
-
 // Function BROADCAST_Base.BROADCAST_Base_C.IsLoopingContent
 // 0x0001 (0x0001 - 0x0000)
 struct BROADCAST_Base_C_IsLoopingContent final
@@ -35,6 +24,17 @@ public:
 static_assert(alignof(BROADCAST_Base_C_IsLoopingContent) == 0x000001, "Wrong alignment on BROADCAST_Base_C_IsLoopingContent");
 static_assert(sizeof(BROADCAST_Base_C_IsLoopingContent) == 0x000001, "Wrong size on BROADCAST_Base_C_IsLoopingContent");
 static_assert(offsetof(BROADCAST_Base_C_IsLoopingContent, Result) == 0x000000, "Member 'BROADCAST_Base_C_IsLoopingContent::Result' has a wrong offset!");
+
+// Function BROADCAST_Base.BROADCAST_Base_C.SetState
+// 0x0001 (0x0001 - 0x0000)
+struct BROADCAST_Base_C_SetState final
+{
+public:
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BROADCAST_Base_C_SetState) == 0x000001, "Wrong alignment on BROADCAST_Base_C_SetState");
+static_assert(sizeof(BROADCAST_Base_C_SetState) == 0x000001, "Wrong size on BROADCAST_Base_C_SetState");
+static_assert(offsetof(BROADCAST_Base_C_SetState, State) == 0x000000, "Member 'BROADCAST_Base_C_SetState::State' has a wrong offset!");
 
 // Function BROADCAST_Base.BROADCAST_Base_C.UpdateContent
 // 0x000C (0x000C - 0x0000)

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "BP_CYBER_ShodanTrack_classes.hpp"
 #include "Engine_structs.hpp"
+#include "BP_CYBER_ShodanTrack_classes.hpp"
 
 
 namespace SDK
@@ -38,6 +38,7 @@ public:
 	struct FTimerHandle                           DistanceTimerHandle;                               // 0x02C8(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
+	void TryActivateTrack(bool* Result);
 	void EVENT_OnDistanceTick();
 	void EVENT_OnTrackIceShieldDestroyed();
 	void TryActivateTrackPad(bool* Result);
@@ -49,7 +50,6 @@ public:
 	void ReceiveBeginPlay();
 	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void ExecuteUbergraph_BP_CYBER_ShodanTrack_Pad(int32 EntryPoint);
-	void TryActivateTrack(bool* Result);
 
 public:
 	static class UClass* StaticClass()

@@ -17,15 +17,56 @@
 namespace SDK
 {
 
-// Function WEAPON_GrenadeManager.WEAPON_GrenadeManager_C.EVENT_OnFuseBeepTick
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function WEAPON_GrenadeManager.WEAPON_GrenadeManager_C.ThrowExplosive
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   Speed                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWEAPON_GrenadeManager_C::EVENT_OnFuseBeepTick()
+void UWEAPON_GrenadeManager_C::ThrowExplosive(float Speed)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WEAPON_GrenadeManager_C", "EVENT_OnFuseBeepTick");
+		Func = Class->GetFunction("WEAPON_GrenadeManager_C", "ThrowExplosive");
+
+	Params::WEAPON_GrenadeManager_C_ThrowExplosive Parms{};
+
+	Parms.Speed = Speed;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WEAPON_GrenadeManager.WEAPON_GrenadeManager_C.TryDisarmExplosive
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Success                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWEAPON_GrenadeManager_C::TryDisarmExplosive(bool* Success)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WEAPON_GrenadeManager_C", "TryDisarmExplosive");
+
+	Params::WEAPON_GrenadeManager_C_TryDisarmExplosive Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Success != nullptr)
+		*Success = Parms.Success;
+}
+
+
+// Function WEAPON_GrenadeManager.WEAPON_GrenadeManager_C.TryStartFuseTimer
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UWEAPON_GrenadeManager_C::TryStartFuseTimer()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WEAPON_GrenadeManager_C", "TryStartFuseTimer");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -57,58 +98,17 @@ void UWEAPON_GrenadeManager_C::LaunchExplosiveFromCamera(class UCameraComponent*
 }
 
 
-// Function WEAPON_GrenadeManager.WEAPON_GrenadeManager_C.TryStartFuseTimer
-// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function WEAPON_GrenadeManager.WEAPON_GrenadeManager_C.EVENT_OnFuseBeepTick
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void UWEAPON_GrenadeManager_C::TryStartFuseTimer()
+void UWEAPON_GrenadeManager_C::EVENT_OnFuseBeepTick()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WEAPON_GrenadeManager_C", "TryStartFuseTimer");
+		Func = Class->GetFunction("WEAPON_GrenadeManager_C", "EVENT_OnFuseBeepTick");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WEAPON_GrenadeManager.WEAPON_GrenadeManager_C.TryDisarmExplosive
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Success                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UWEAPON_GrenadeManager_C::TryDisarmExplosive(bool* Success)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WEAPON_GrenadeManager_C", "TryDisarmExplosive");
-
-	Params::WEAPON_GrenadeManager_C_TryDisarmExplosive Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Success != nullptr)
-		*Success = Parms.Success;
-}
-
-
-// Function WEAPON_GrenadeManager.WEAPON_GrenadeManager_C.ThrowExplosive
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// float                                   Speed                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWEAPON_GrenadeManager_C::ThrowExplosive(float Speed)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WEAPON_GrenadeManager_C", "ThrowExplosive");
-
-	Params::WEAPON_GrenadeManager_C_ThrowExplosive Parms{};
-
-	Parms.Speed = Speed;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

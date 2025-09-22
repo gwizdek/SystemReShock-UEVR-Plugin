@@ -30,8 +30,8 @@ public:
 	TMulticastInlineDelegate<void(float TargetValue, bool Instant)> ModifyScreenStatic;                                // 0x0288(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 
 public:
-	void SetState(bool State);
 	void IsLoopingContent(bool* Result);
+	void SetState(bool State);
 	void UpdateContent(float DeltaTime, bool* IsFinished);
 	void PlayContent(class UVoxelAudioComponent* AudioComponent);
 

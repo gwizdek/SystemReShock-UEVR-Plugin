@@ -12,12 +12,12 @@
 
 #include "CoreGame_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "STRUCT_EffectParams_structs.hpp"
-#include "AttributeSystem_structs.hpp"
+#include "Engine_structs.hpp"
 #include "STRUCT_DebrisFragmentData_structs.hpp"
 #include "STRUCT_ImpactParams_structs.hpp"
-#include "Engine_structs.hpp"
 #include "PhysicsCore_structs.hpp"
+#include "STRUCT_EffectParams_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 #include "STRUCT_ImpactEffectResults_structs.hpp"
 #include "STRUCT_AsyncParticleParams_structs.hpp"
 

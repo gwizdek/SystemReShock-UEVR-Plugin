@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ITEM_ConsumableBase_classes.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ITEM_ConsumableBase_classes.hpp"
 
 
 namespace SDK
@@ -44,8 +44,8 @@ public:
 	void UseConsumable(class APAWN_SystemShockCharacter_C* Character, class UITEM_ConsumableBase_C** ConsumedItem);
 	void GetContactDamageFromSpeed(float Speed, int32* ContactDamage);
 	void GetActivateMontage(class UAnimMontage** Montage);
-	void CanActivate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
+	void CanActivate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void GetInventoryItemDetailsClass(class UClass** InventoryItemDetailsWidget);
 	void HasWorldInteraction(bool* Result);
 

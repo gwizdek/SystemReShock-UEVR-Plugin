@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "Engine_structs.hpp"
 #include "UMG_classes.hpp"
 
 
@@ -17,17 +18,24 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_InventoryPanel.WIDGET_InventoryPanel_C
-// 0x0028 (0x0288 - 0x0260)
+// 0x0048 (0x02A8 - 0x0260)
 class UWIDGET_InventoryPanel_C final : public UUserWidget
 {
 public:
-	class UGridMeshWidget*                        MESH_Inventory;                                    // 0x0260(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UCOMP_Inventory_C*                      LootInventory;                                     // 0x0268(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    PlayerHUD;                                         // 0x0270(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UInventoryBagUI_C*                      BagUI;                                             // 0x0278(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UInventoryBag_C*                        InventoryBag;                                      // 0x0280(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0260(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class UGridMeshWidget*                        MESH_Inventory;                                    // 0x0268(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UVerticalBox*                           PANEL_InventoryActions;                            // 0x0270(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_ButtonLegend_Button_C*          WIDGET_ButtonLegend_Sort;                          // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_ButtonLegend_Button_C*          WIDGET_ButtonLegend_Vaporize;                      // 0x0280(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UCOMP_Inventory_C*                      LootInventory;                                     // 0x0288(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    PlayerHUD;                                         // 0x0290(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UInventoryBagUI_C*                      BagUI;                                             // 0x0298(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UInventoryBag_C*                        InventoryBag;                                      // 0x02A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
+	void ExecuteUbergraph_WIDGET_InventoryPanel(int32 EntryPoint);
+	void BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature(const struct FGeometry& Geometry, const struct FPointerEvent& InputEvent);
+	void BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature(const struct FGeometry& Geometry, const struct FPointerEvent& InputEvent);
 	void InitializeInventoryPanel(class UWIDGET_PlayerHUD_C* HUD, class UInventoryBag_C* Bag);
 	struct FEventReply EVENT_OnInventoryMouseMove(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
 	struct FEventReply EVENT_OnInventoryMouseDoubleClick(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
@@ -54,12 +62,16 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_InventoryPanel_C) == 0x000008, "Wrong alignment on UWIDGET_InventoryPanel_C");
-static_assert(sizeof(UWIDGET_InventoryPanel_C) == 0x000288, "Wrong size on UWIDGET_InventoryPanel_C");
-static_assert(offsetof(UWIDGET_InventoryPanel_C, MESH_Inventory) == 0x000260, "Member 'UWIDGET_InventoryPanel_C::MESH_Inventory' has a wrong offset!");
-static_assert(offsetof(UWIDGET_InventoryPanel_C, LootInventory) == 0x000268, "Member 'UWIDGET_InventoryPanel_C::LootInventory' has a wrong offset!");
-static_assert(offsetof(UWIDGET_InventoryPanel_C, PlayerHUD) == 0x000270, "Member 'UWIDGET_InventoryPanel_C::PlayerHUD' has a wrong offset!");
-static_assert(offsetof(UWIDGET_InventoryPanel_C, BagUI) == 0x000278, "Member 'UWIDGET_InventoryPanel_C::BagUI' has a wrong offset!");
-static_assert(offsetof(UWIDGET_InventoryPanel_C, InventoryBag) == 0x000280, "Member 'UWIDGET_InventoryPanel_C::InventoryBag' has a wrong offset!");
+static_assert(sizeof(UWIDGET_InventoryPanel_C) == 0x0002A8, "Wrong size on UWIDGET_InventoryPanel_C");
+static_assert(offsetof(UWIDGET_InventoryPanel_C, UberGraphFrame) == 0x000260, "Member 'UWIDGET_InventoryPanel_C::UberGraphFrame' has a wrong offset!");
+static_assert(offsetof(UWIDGET_InventoryPanel_C, MESH_Inventory) == 0x000268, "Member 'UWIDGET_InventoryPanel_C::MESH_Inventory' has a wrong offset!");
+static_assert(offsetof(UWIDGET_InventoryPanel_C, PANEL_InventoryActions) == 0x000270, "Member 'UWIDGET_InventoryPanel_C::PANEL_InventoryActions' has a wrong offset!");
+static_assert(offsetof(UWIDGET_InventoryPanel_C, WIDGET_ButtonLegend_Sort) == 0x000278, "Member 'UWIDGET_InventoryPanel_C::WIDGET_ButtonLegend_Sort' has a wrong offset!");
+static_assert(offsetof(UWIDGET_InventoryPanel_C, WIDGET_ButtonLegend_Vaporize) == 0x000280, "Member 'UWIDGET_InventoryPanel_C::WIDGET_ButtonLegend_Vaporize' has a wrong offset!");
+static_assert(offsetof(UWIDGET_InventoryPanel_C, LootInventory) == 0x000288, "Member 'UWIDGET_InventoryPanel_C::LootInventory' has a wrong offset!");
+static_assert(offsetof(UWIDGET_InventoryPanel_C, PlayerHUD) == 0x000290, "Member 'UWIDGET_InventoryPanel_C::PlayerHUD' has a wrong offset!");
+static_assert(offsetof(UWIDGET_InventoryPanel_C, BagUI) == 0x000298, "Member 'UWIDGET_InventoryPanel_C::BagUI' has a wrong offset!");
+static_assert(offsetof(UWIDGET_InventoryPanel_C, InventoryBag) == 0x0002A0, "Member 'UWIDGET_InventoryPanel_C::InventoryBag' has a wrong offset!");
 
 }
 

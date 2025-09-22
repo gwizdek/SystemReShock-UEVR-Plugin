@@ -37,20 +37,6 @@ void ACYBR_DomainLink_C::ExecuteUbergraph_CYBR_DomainLink(int32 EntryPoint)
 }
 
 
-// Function CYBR_DomainLink.CYBR_DomainLink_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ACYBR_DomainLink_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CYBR_DomainLink_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function CYBR_DomainLink.CYBR_DomainLink_C.BndEvt__OverlapBox_Entrance_Outer_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
@@ -398,6 +384,20 @@ void ACYBR_DomainLink_C::GetLinkDistanceClosestToWorldLocation(const struct FVec
 
 	if (Distance != nullptr)
 		*Distance = Parms.Distance;
+}
+
+
+// Function CYBR_DomainLink.CYBR_DomainLink_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void ACYBR_DomainLink_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CYBR_DomainLink_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 

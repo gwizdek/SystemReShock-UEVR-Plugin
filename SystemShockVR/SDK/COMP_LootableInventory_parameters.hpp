@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
+#include "CoreUObject_structs.hpp"
 #include "STRUCT_InventoryBagParams_structs.hpp"
-#include "STRUCT_HardItemParams_structs.hpp"
 #include "Engine_structs.hpp"
 #include "STRUCT_LootTableEntry_structs.hpp"
-#include "CoreUObject_structs.hpp"
+#include "STRUCT_HardItemParams_structs.hpp"
 #include "STRUCT_ReferencedLootTable_structs.hpp"
 
 

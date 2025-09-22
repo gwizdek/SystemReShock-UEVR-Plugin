@@ -33,17 +33,17 @@ public:
 	TSoftObjectPtr<class UFXSystemAsset>          GasSystem;                                         // 0x0270(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
 
 public:
-	void UpdateGasAttribModOnCharacter(class APAWN_SystemShockCharacter_C* Character, float GasIntensity);
-	void EVENT_BeginDissipatingGas();
-	void TryBeginGasBehavior();
-	void InitializeGasVolume(class UAttribDamageType* InDamageType, int32 InDamageValue, float InGasDuration);
-	void ReceiveBeginPlay();
-	void BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature(class UVoxelNavAgentComponent* AgentComponent, uint8 MaxOverlapPropagationDensity);
 	void ExecuteUbergraph_TRIGGER_GasVolume(int32 EntryPoint);
-	bool ReceivePendingCharacterVelocity(const struct FVector& Velocity);
-	bool ReceivePendingBodyTransforms(class USkeletalMeshComponent* SkeletalMeshComponent, const TArray<struct FTransform>& BodyTransforms);
-	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
+	void BndEvt__TRIGGER_GasVolume_COMP_VoxelCullablePropagator_K2Node_ComponentBoundEvent_0_PropagationDensityChangedSignature__DelegateSignature(class UVoxelNavAgentComponent* AgentComponent, uint8 MaxOverlapPropagationDensity);
+	void ReceiveBeginPlay();
+	void InitializeGasVolume(class UAttribDamageType* InDamageType, int32 InDamageValue, float InGasDuration);
+	void TryBeginGasBehavior();
+	void EVENT_BeginDissipatingGas();
 	void EVENT_DestroyGasVolume();
+	void UpdateGasAttribModOnCharacter(class APAWN_SystemShockCharacter_C* Character, float GasIntensity);
+	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
+	bool ReceivePendingBodyTransforms(class USkeletalMeshComponent* SkeletalMeshComponent, const TArray<struct FTransform>& BodyTransforms);
+	bool ReceivePendingCharacterVelocity(const struct FVector& Velocity);
 
 public:
 	static class UClass* StaticClass()

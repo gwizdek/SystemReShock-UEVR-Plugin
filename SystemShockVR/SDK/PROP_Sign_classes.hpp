@@ -38,13 +38,13 @@ public:
 	bool                                          IsPowered;                                         // 0x0288(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
-	void TryCleanupSign();
-	void UpdateSign();
-	void InitializeSign();
-	void UserConstructionScript();
-	void ReceiveBeginPlay();
-	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void ExecuteUbergraph_PROP_Sign(int32 EntryPoint);
+	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
+	void ReceiveBeginPlay();
+	void UserConstructionScript();
+	void InitializeSign();
+	void UpdateSign();
+	void TryCleanupSign();
 
 public:
 	static class UClass* StaticClass()

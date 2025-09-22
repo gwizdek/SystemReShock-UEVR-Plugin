@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "ENUM_LimbStrength_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "STRUCT_LimbSpawnEffect_structs.hpp"
 
 

@@ -17,20 +17,6 @@
 namespace SDK
 {
 
-// Function TRIGGER_MusicVolume_Story.TRIGGER_MusicVolume_Story_C.EVENT_OnPlayTimerEnded
-// (Private, BlueprintCallable, BlueprintEvent)
-
-void ATRIGGER_MusicVolume_Story_C::EVENT_OnPlayTimerEnded()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TRIGGER_MusicVolume_Story_C", "EVENT_OnPlayTimerEnded");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function TRIGGER_MusicVolume_Story.TRIGGER_MusicVolume_Story_C.OnEnterVolume
 // (Protected, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -52,6 +38,20 @@ void ATRIGGER_MusicVolume_Story_C::OnEnterVolume(class UGI_SinglePlayer_C* GameI
 
 	if (OutGameInstance != nullptr)
 		*OutGameInstance = Parms.OutGameInstance;
+}
+
+
+// Function TRIGGER_MusicVolume_Story.TRIGGER_MusicVolume_Story_C.EVENT_OnPlayTimerEnded
+// (Private, BlueprintCallable, BlueprintEvent)
+
+void ATRIGGER_MusicVolume_Story_C::EVENT_OnPlayTimerEnded()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TRIGGER_MusicVolume_Story_C", "EVENT_OnPlayTimerEnded");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

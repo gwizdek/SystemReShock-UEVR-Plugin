@@ -17,57 +17,55 @@
 namespace SDK
 {
 
-// Function ELEVATOR_Normal.ELEVATOR_Normal_C.InitializeElevatorControls
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function ELEVATOR_Normal.ELEVATOR_Normal_C.UpdateControlLockState
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    IsLocked                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void AELEVATOR_Normal_C::InitializeElevatorControls()
+void AELEVATOR_Normal_C::UpdateControlLockState(bool IsLocked)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Normal_C", "InitializeElevatorControls");
+		Func = Class->GetFunction("ELEVATOR_Normal_C", "UpdateControlLockState");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::ELEVATOR_Normal_C_UpdateControlLockState Parms{};
+
+	Parms.IsLocked = IsLocked;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function ELEVATOR_Normal.ELEVATOR_Normal_C.UserConstructionScript
-// (Event, Public, BlueprintCallable, BlueprintEvent)
+// Function ELEVATOR_Normal.ELEVATOR_Normal_C.UpdateEmissiveStrength
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   Scale                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void AELEVATOR_Normal_C::UserConstructionScript()
+void AELEVATOR_Normal_C::UpdateEmissiveStrength(float Scale)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Normal_C", "UserConstructionScript");
+		Func = Class->GetFunction("ELEVATOR_Normal_C", "UpdateEmissiveStrength");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::ELEVATOR_Normal_C_UpdateEmissiveStrength Parms{};
+
+	Parms.Scale = Scale;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function ELEVATOR_Normal.ELEVATOR_Normal_C.StreamInCinematicLevel
-// (BlueprintCallable, BlueprintEvent)
+// Function ELEVATOR_Normal.ELEVATOR_Normal_C.OnCinematicLevelLoaded
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void AELEVATOR_Normal_C::StreamInCinematicLevel()
+void AELEVATOR_Normal_C::OnCinematicLevelLoaded()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Normal_C", "StreamInCinematicLevel");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function ELEVATOR_Normal.ELEVATOR_Normal_C.StreamOutCinematicLevel
-// (BlueprintCallable, BlueprintEvent)
-
-void AELEVATOR_Normal_C::StreamOutCinematicLevel()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Normal_C", "StreamOutCinematicLevel");
+		Func = Class->GetFunction("ELEVATOR_Normal_C", "OnCinematicLevelLoaded");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -164,60 +162,6 @@ void AELEVATOR_Normal_C::GetControlsMeshComponent(class UStaticMeshComponent** M
 }
 
 
-// Function ELEVATOR_Normal.ELEVATOR_Normal_C.UpdateControlLockState
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsLocked                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AELEVATOR_Normal_C::UpdateControlLockState(bool IsLocked)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Normal_C", "UpdateControlLockState");
-
-	Params::ELEVATOR_Normal_C_UpdateControlLockState Parms{};
-
-	Parms.IsLocked = IsLocked;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ELEVATOR_Normal.ELEVATOR_Normal_C.UpdateEmissiveStrength
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// float                                   Scale                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AELEVATOR_Normal_C::UpdateEmissiveStrength(float Scale)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Normal_C", "UpdateEmissiveStrength");
-
-	Params::ELEVATOR_Normal_C_UpdateEmissiveStrength Parms{};
-
-	Parms.Scale = Scale;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ELEVATOR_Normal.ELEVATOR_Normal_C.OnCinematicLevelLoaded
-// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void AELEVATOR_Normal_C::OnCinematicLevelLoaded()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Normal_C", "OnCinematicLevelLoaded");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function ELEVATOR_Normal.ELEVATOR_Normal_C.SetElevatorEnabled
 // (Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -289,6 +233,62 @@ void AELEVATOR_Normal_C::SetScreenFloorPosition(int32 DeckNumber)
 	Parms.DeckNumber = DeckNumber;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function ELEVATOR_Normal.ELEVATOR_Normal_C.InitializeElevatorControls
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void AELEVATOR_Normal_C::InitializeElevatorControls()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Normal_C", "InitializeElevatorControls");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ELEVATOR_Normal.ELEVATOR_Normal_C.UserConstructionScript
+// (Event, Public, BlueprintCallable, BlueprintEvent)
+
+void AELEVATOR_Normal_C::UserConstructionScript()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Normal_C", "UserConstructionScript");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ELEVATOR_Normal.ELEVATOR_Normal_C.StreamInCinematicLevel
+// (BlueprintCallable, BlueprintEvent)
+
+void AELEVATOR_Normal_C::StreamInCinematicLevel()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Normal_C", "StreamInCinematicLevel");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ELEVATOR_Normal.ELEVATOR_Normal_C.StreamOutCinematicLevel
+// (BlueprintCallable, BlueprintEvent)
+
+void AELEVATOR_Normal_C::StreamOutCinematicLevel()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Normal_C", "StreamOutCinematicLevel");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 

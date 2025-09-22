@@ -17,6 +17,26 @@
 namespace SDK
 {
 
+// Function COMP_VoxelCullablePropagator.COMP_VoxelCullablePropagator_C.GetVoxelLevelManager
+// (Event, Protected, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UVoxelLevelManager*               ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+class UVoxelLevelManager* UCOMP_VoxelCullablePropagator_C::GetVoxelLevelManager()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("COMP_VoxelCullablePropagator_C", "GetVoxelLevelManager");
+
+	Params::COMP_VoxelCullablePropagator_C_GetVoxelLevelManager Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
 // Function COMP_VoxelCullablePropagator.COMP_VoxelCullablePropagator_C.GetElapsedPlayTime
 // (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -30,6 +50,26 @@ float UCOMP_VoxelCullablePropagator_C::GetElapsedPlayTime()
 		Func = Class->GetFunction("COMP_VoxelCullablePropagator_C", "GetElapsedPlayTime");
 
 	Params::COMP_VoxelCullablePropagator_C_GetElapsedPlayTime Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function COMP_VoxelCullablePropagator.COMP_VoxelCullablePropagator_C.GetRelativePropagationOriginOffset
+// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+struct FVector UCOMP_VoxelCullablePropagator_C::GetRelativePropagationOriginOffset()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("COMP_VoxelCullablePropagator_C", "GetRelativePropagationOriginOffset");
+
+	Params::COMP_VoxelCullablePropagator_C_GetRelativePropagationOriginOffset Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -56,46 +96,6 @@ bool UCOMP_VoxelCullablePropagator_C::ShouldSaveComponent(struct FStreamingSaveG
 
 	if (Params_0 != nullptr)
 		*Params_0 = std::move(Parms.Params_0);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function COMP_VoxelCullablePropagator.COMP_VoxelCullablePropagator_C.GetRelativePropagationOriginOffset
-// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-struct FVector UCOMP_VoxelCullablePropagator_C::GetRelativePropagationOriginOffset()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("COMP_VoxelCullablePropagator_C", "GetRelativePropagationOriginOffset");
-
-	Params::COMP_VoxelCullablePropagator_C_GetRelativePropagationOriginOffset Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function COMP_VoxelCullablePropagator.COMP_VoxelCullablePropagator_C.GetVoxelLevelManager
-// (Event, Protected, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UVoxelLevelManager*               ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-class UVoxelLevelManager* UCOMP_VoxelCullablePropagator_C::GetVoxelLevelManager()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("COMP_VoxelCullablePropagator_C", "GetVoxelLevelManager");
-
-	Params::COMP_VoxelCullablePropagator_C_GetVoxelLevelManager Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
 
 	return Parms.ReturnValue;
 }

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "INTERACT_SentryTurret_Base_classes.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_DoorState_structs.hpp"
 
 
@@ -40,28 +40,28 @@ public:
 	struct FTimerHandle                           DeployTimerHandle;                                 // 0x0560(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void OnTickStateChanged(bool State);
-	void OnMagneticDisableStateChanged(bool DisableState);
-	void OnSentryTurretFinishedDeploying();
-	void EVENT_OnTryDeployScreenCamera();
-	void TryStartDeployTimer();
-	void TryStopCaptureTimer();
-	void TryStartCaptureTimer();
-	void OnSentryTurretFinishedConcealing();
-	void OnSentryTurretStartedConcealing();
-	void TickSentryTurret(float DeltaSeconds);
-	void OnTakeDamage(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams, bool* Result);
-	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
-	void HasTickBehaviorWhilePerceptible(bool* Result);
-	void UpdateSwivelYaw(bool PlaySounds);
-	void TryDestroyRenderTarget();
-	void GetOrCreateRenderTarget(class UTextureRenderTarget2D** RenderTarget_0);
-	void RegisterDisplayScreen(class AINTERACT_Base_C* ScreenActor, bool State);
-	void InitializeScreenCamera();
-	void UserConstructionScript();
-	void ReceiveBeginPlay();
-	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void ExecuteUbergraph_INTERACT_ScreenCamera(int32 EntryPoint);
+	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
+	void ReceiveBeginPlay();
+	void UserConstructionScript();
+	void InitializeScreenCamera();
+	void RegisterDisplayScreen(class AINTERACT_Base_C* ScreenActor, bool State);
+	void GetOrCreateRenderTarget(class UTextureRenderTarget2D** RenderTarget_0);
+	void TryDestroyRenderTarget();
+	void UpdateSwivelYaw(bool PlaySounds);
+	void HasTickBehaviorWhilePerceptible(bool* Result);
+	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
+	void OnTakeDamage(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams, bool* Result);
+	void TickSentryTurret(float DeltaSeconds);
+	void OnSentryTurretStartedConcealing();
+	void OnSentryTurretFinishedConcealing();
+	void TryStartCaptureTimer();
+	void TryStopCaptureTimer();
+	void TryStartDeployTimer();
+	void EVENT_OnTryDeployScreenCamera();
+	void OnSentryTurretFinishedDeploying();
+	void OnMagneticDisableStateChanged(bool DisableState);
+	void OnTickStateChanged(bool State);
 
 public:
 	static class UClass* StaticClass()

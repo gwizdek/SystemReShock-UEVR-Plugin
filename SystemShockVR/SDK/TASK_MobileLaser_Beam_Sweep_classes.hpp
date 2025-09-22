@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_MobileLaser_BeamState_structs.hpp"
+#include "TASK_Beam_Base_classes.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_MobileLaser_BeamSweepType_structs.hpp"
-#include "TASK_Beam_Base_classes.hpp"
+#include "ENUM_MobileLaser_BeamState_structs.hpp"
 
 
 namespace SDK

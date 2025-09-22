@@ -26,8 +26,8 @@ public:
 
 public:
 	void DetonateExplosive();
-	void SetHazardDamagePerSecond(int32 Value);
 	void SpawnGasVolume(class ATRIGGER_GasVolume_C** GasVolume);
+	void SetHazardDamagePerSecond(int32 Value);
 
 public:
 	static class UClass* StaticClass()

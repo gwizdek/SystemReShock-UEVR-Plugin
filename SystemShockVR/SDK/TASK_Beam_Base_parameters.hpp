@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "ENUM_TargetType_structs.hpp"
-#include "ENUM_MobileLaser_BeamState_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "STRUCT_EnemyStats_structs.hpp"
+#include "ENUM_MobileLaser_BeamState_structs.hpp"
 #include "Engine_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "STRUCT_EnemyStats_structs.hpp"
 
 
 namespace SDK::Params

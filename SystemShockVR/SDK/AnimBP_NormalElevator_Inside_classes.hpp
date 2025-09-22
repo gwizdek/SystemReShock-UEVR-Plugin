@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "AnimGraphRuntime_structs.hpp"
 #include "ENUM_DoorState_structs.hpp"
+#include "AnimGraphRuntime_structs.hpp"
 
 
 namespace SDK
@@ -35,15 +35,15 @@ public:
 	ENUM_DoorState                                State;                                             // 0x04E1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void SetLocked(bool LockedState, bool* Result);
-	void ExecuteUbergraph_AnimBP_NormalElevator_Inside(int32 EntryPoint);
 	void OpenDoor(bool* Result);
 	void CloseDoor(bool* Result);
 	void IsLocked(bool* Result);
+	void SetLocked(bool LockedState, bool* Result);
 	void HideFrontButton(bool HideState, bool* Result);
 	void HideBackButton(bool HideState, bool* Result);
 	void UnlockDoor(bool* Result);
 	void AnimGraph(struct FPoseLink* AnimGraph_0);
+	void ExecuteUbergraph_AnimBP_NormalElevator_Inside(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()

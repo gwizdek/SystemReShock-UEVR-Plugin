@@ -11,12 +11,12 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "STRUCT_SubtitleToDisplay_structs.hpp"
 #include "STRUCT_DialogueCaptionObject_structs.hpp"
-#include "ENUM_SubtitleParseMode_structs.hpp"
 #include "STRUCT_MediaObject_structs.hpp"
+#include "STRUCT_SubtitleToDisplay_structs.hpp"
 #include "ENUM_HackerGender_structs.hpp"
 #include "STRUCT_NarrativeSpeakers_structs.hpp"
+#include "ENUM_SubtitleParseMode_structs.hpp"
 #include "UMG_structs.hpp"
 #include "SlateCore_structs.hpp"
 

@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_PrimarySecondary_structs.hpp"
+#include "STRUCT_ScannableRegionData_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "STRUCT_CameraEffectInstance_structs.hpp"
-#include "STRUCT_ScannableRegionData_structs.hpp"
 #include "UMG_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
-#include "ENUM_PrimarySecondary_structs.hpp"
 #include "Engine_structs.hpp"
 #include "InputCore_structs.hpp"
 
@@ -1841,33 +1841,6 @@ static_assert(offsetof(PAWN_Avatar_C_UpdateCameraPOV, CallFunc_GetGameTimeSinceC
 static_assert(offsetof(PAWN_Avatar_C_UpdateCameraPOV, CallFunc_FClamp_ReturnValue) == 0x00006C, "Member 'PAWN_Avatar_C_UpdateCameraPOV::CallFunc_FClamp_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PAWN_Avatar_C_UpdateCameraPOV, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x000070, "Member 'PAWN_Avatar_C_UpdateCameraPOV::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
 
-// Function PAWN_Avatar.PAWN_Avatar_C.OnCharacterHurt
-// 0x0060 (0x0060 - 0x0000)
-struct PAWN_Avatar_C_OnCharacterHurt final
-{
-public:
-	class AActor*                                 OtherActor;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FAttribDamageInstance                  DamageInstance;                                    // 0x0008(0x0028)(BlueprintVisible, BlueprintReadOnly, Parm)
-	class UOBJ_ImpactData_C*                      ImpactData;                                        // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0038(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerCameraManager*                   CallFunc_GetPlayerCameraManager_ReturnValue;       // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_OnCharacterHurt_Result;                   // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCameraShakeBase*                       CallFunc_StartCameraShake_ReturnValue;             // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_Avatar_C_OnCharacterHurt) == 0x000008, "Wrong alignment on PAWN_Avatar_C_OnCharacterHurt");
-static_assert(sizeof(PAWN_Avatar_C_OnCharacterHurt) == 0x000060, "Wrong size on PAWN_Avatar_C_OnCharacterHurt");
-static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, OtherActor) == 0x000000, "Member 'PAWN_Avatar_C_OnCharacterHurt::OtherActor' has a wrong offset!");
-static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, DamageInstance) == 0x000008, "Member 'PAWN_Avatar_C_OnCharacterHurt::DamageInstance' has a wrong offset!");
-static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, ImpactData) == 0x000030, "Member 'PAWN_Avatar_C_OnCharacterHurt::ImpactData' has a wrong offset!");
-static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, Result) == 0x000038, "Member 'PAWN_Avatar_C_OnCharacterHurt::Result' has a wrong offset!");
-static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, CallFunc_GetPlayerCameraManager_ReturnValue) == 0x000040, "Member 'PAWN_Avatar_C_OnCharacterHurt::CallFunc_GetPlayerCameraManager_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, CallFunc_OnCharacterHurt_Result) == 0x000048, "Member 'PAWN_Avatar_C_OnCharacterHurt::CallFunc_OnCharacterHurt_Result' has a wrong offset!");
-static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, CallFunc_StartCameraShake_ReturnValue) == 0x000050, "Member 'PAWN_Avatar_C_OnCharacterHurt::CallFunc_StartCameraShake_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, CallFunc_Add_FloatFloat_ReturnValue) == 0x000058, "Member 'PAWN_Avatar_C_OnCharacterHurt::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-
 // Function PAWN_Avatar.PAWN_Avatar_C.UpdateRotation
 // 0x0318 (0x0318 - 0x0000)
 struct PAWN_Avatar_C_UpdateRotation final
@@ -2456,17 +2429,6 @@ static_assert(offsetof(PAWN_Avatar_C_GetDashItem, CallFunc_FindItem_FoundItem) =
 static_assert(offsetof(PAWN_Avatar_C_GetDashItem, K2Node_DynamicCast_AsITEM_Cyber_Dash) == 0x000020, "Member 'PAWN_Avatar_C_GetDashItem::K2Node_DynamicCast_AsITEM_Cyber_Dash' has a wrong offset!");
 static_assert(offsetof(PAWN_Avatar_C_GetDashItem, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'PAWN_Avatar_C_GetDashItem::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 static_assert(offsetof(PAWN_Avatar_C_GetDashItem, CallFunc_IsValid_ReturnValue) == 0x000029, "Member 'PAWN_Avatar_C_GetDashItem::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-
-// Function PAWN_Avatar.PAWN_Avatar_C.GetInventoryComponent
-// 0x0008 (0x0008 - 0x0000)
-struct PAWN_Avatar_C_GetInventoryComponent final
-{
-public:
-	class UCOMP_Inventory_C*                      Inventory;                                         // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_Avatar_C_GetInventoryComponent) == 0x000008, "Wrong alignment on PAWN_Avatar_C_GetInventoryComponent");
-static_assert(sizeof(PAWN_Avatar_C_GetInventoryComponent) == 0x000008, "Wrong size on PAWN_Avatar_C_GetInventoryComponent");
-static_assert(offsetof(PAWN_Avatar_C_GetInventoryComponent, Inventory) == 0x000000, "Member 'PAWN_Avatar_C_GetInventoryComponent::Inventory' has a wrong offset!");
 
 // Function PAWN_Avatar.PAWN_Avatar_C.OnCharacterDied
 // 0x0058 (0x0058 - 0x0000)
@@ -3193,6 +3155,44 @@ static_assert(alignof(PAWN_Avatar_C_HandleMenuNavBack) == 0x000001, "Wrong align
 static_assert(sizeof(PAWN_Avatar_C_HandleMenuNavBack) == 0x000002, "Wrong size on PAWN_Avatar_C_HandleMenuNavBack");
 static_assert(offsetof(PAWN_Avatar_C_HandleMenuNavBack, ButtonDown) == 0x000000, "Member 'PAWN_Avatar_C_HandleMenuNavBack::ButtonDown' has a wrong offset!");
 static_assert(offsetof(PAWN_Avatar_C_HandleMenuNavBack, K2Node_SwitchEnum_CmpSuccess) == 0x000001, "Member 'PAWN_Avatar_C_HandleMenuNavBack::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+
+// Function PAWN_Avatar.PAWN_Avatar_C.OnCharacterHurt
+// 0x0060 (0x0060 - 0x0000)
+struct PAWN_Avatar_C_OnCharacterHurt final
+{
+public:
+	class AActor*                                 OtherActor;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FAttribDamageInstance                  DamageInstance;                                    // 0x0008(0x0028)(BlueprintVisible, BlueprintReadOnly, Parm)
+	class UOBJ_ImpactData_C*                      ImpactData;                                        // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0038(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerCameraManager*                   CallFunc_GetPlayerCameraManager_ReturnValue;       // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_OnCharacterHurt_Result;                   // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCameraShakeBase*                       CallFunc_StartCameraShake_ReturnValue;             // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_Avatar_C_OnCharacterHurt) == 0x000008, "Wrong alignment on PAWN_Avatar_C_OnCharacterHurt");
+static_assert(sizeof(PAWN_Avatar_C_OnCharacterHurt) == 0x000060, "Wrong size on PAWN_Avatar_C_OnCharacterHurt");
+static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, OtherActor) == 0x000000, "Member 'PAWN_Avatar_C_OnCharacterHurt::OtherActor' has a wrong offset!");
+static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, DamageInstance) == 0x000008, "Member 'PAWN_Avatar_C_OnCharacterHurt::DamageInstance' has a wrong offset!");
+static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, ImpactData) == 0x000030, "Member 'PAWN_Avatar_C_OnCharacterHurt::ImpactData' has a wrong offset!");
+static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, Result) == 0x000038, "Member 'PAWN_Avatar_C_OnCharacterHurt::Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, CallFunc_GetPlayerCameraManager_ReturnValue) == 0x000040, "Member 'PAWN_Avatar_C_OnCharacterHurt::CallFunc_GetPlayerCameraManager_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, CallFunc_OnCharacterHurt_Result) == 0x000048, "Member 'PAWN_Avatar_C_OnCharacterHurt::CallFunc_OnCharacterHurt_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, CallFunc_StartCameraShake_ReturnValue) == 0x000050, "Member 'PAWN_Avatar_C_OnCharacterHurt::CallFunc_StartCameraShake_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Avatar_C_OnCharacterHurt, CallFunc_Add_FloatFloat_ReturnValue) == 0x000058, "Member 'PAWN_Avatar_C_OnCharacterHurt::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function PAWN_Avatar.PAWN_Avatar_C.GetInventoryComponent
+// 0x0008 (0x0008 - 0x0000)
+struct PAWN_Avatar_C_GetInventoryComponent final
+{
+public:
+	class UCOMP_Inventory_C*                      Inventory;                                         // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_Avatar_C_GetInventoryComponent) == 0x000008, "Wrong alignment on PAWN_Avatar_C_GetInventoryComponent");
+static_assert(sizeof(PAWN_Avatar_C_GetInventoryComponent) == 0x000008, "Wrong size on PAWN_Avatar_C_GetInventoryComponent");
+static_assert(offsetof(PAWN_Avatar_C_GetInventoryComponent, Inventory) == 0x000000, "Member 'PAWN_Avatar_C_GetInventoryComponent::Inventory' has a wrong offset!");
 
 // Function PAWN_Avatar.PAWN_Avatar_C.InitializeCharacter
 // 0x0030 (0x0030 - 0x0000)

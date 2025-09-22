@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_CrashState_structs.hpp"
 #include "Engine_structs.hpp"
+#include "ENUM_CrashState_structs.hpp"
 #include "SlateCore_structs.hpp"
 
 

@@ -85,27 +85,6 @@ void UITEM_CyberDash_C::GetCurrentDashPowerRatio(float* Result)
 }
 
 
-// Function ITEM_CyberDash.ITEM_CyberDash_C.GetIsActivated
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_CyberDash_C::GetIsActivated(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_CyberDash_C", "GetIsActivated");
-
-	Params::ITEM_CyberDash_C_GetIsActivated Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function ITEM_CyberDash.ITEM_CyberDash_C.Activate
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -122,6 +101,27 @@ void UITEM_CyberDash_C::Activate(class APAWN_SystemShockCharacter_C* Character, 
 	Params::ITEM_CyberDash_C_Activate Parms{};
 
 	Parms.Character = Character;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_CyberDash.ITEM_CyberDash_C.GetIsActivated
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_CyberDash_C::GetIsActivated(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_CyberDash_C", "GetIsActivated");
+
+	Params::ITEM_CyberDash_C_GetIsActivated Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 

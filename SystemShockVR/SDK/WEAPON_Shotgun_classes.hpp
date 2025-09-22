@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ActionPriority_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ITEM_ProjectileWeapon_Base_classes.hpp"
+#include "ENUM_ActionPriority_structs.hpp"
 
 
 namespace SDK

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_OptionCategories_structs.hpp"
 #include "Engine_structs.hpp"
+#include "ENUM_OptionCategories_structs.hpp"
 #include "WIDGET_MenuListItemBase_classes.hpp"
 #include "UMG_structs.hpp"
 

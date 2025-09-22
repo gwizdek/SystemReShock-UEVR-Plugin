@@ -14,8 +14,8 @@
 #include "CoreUObject_structs.hpp"
 #include "SlateCore_structs.hpp"
 #include "UMG_structs.hpp"
-#include "Engine_structs.hpp"
 #include "STRUCT_NarrativeSpeakers_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK::Params

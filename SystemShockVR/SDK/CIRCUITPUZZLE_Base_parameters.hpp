@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_InteractResultType_structs.hpp"
+#include "STRUCT_CircuitPuzzle_PuzzleData_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "ENUM_GeneratedCircuitType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_PowerState_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "STRUCT_CircuitPuzzle_PuzzleData_structs.hpp"
 #include "STRUCT_MeshTransform_structs.hpp"
-#include "ENUM_InteractResultType_structs.hpp"
 
 
 namespace SDK::Params

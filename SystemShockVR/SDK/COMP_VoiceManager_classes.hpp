@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ActionPriority_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "ENUM_EnemyChant_structs.hpp"
-#include "ENUM_DetectionState_structs.hpp"
+#include "ENUM_ActionPriority_structs.hpp"
 #include "ENUM_EnemyBark_structs.hpp"
+#include "ENUM_DetectionState_structs.hpp"
 
 
 namespace SDK

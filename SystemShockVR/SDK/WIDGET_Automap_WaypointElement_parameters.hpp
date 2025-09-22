@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "SlateCore_structs.hpp"
 #include "ENUM_Automap_WaypointInteraction_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "UMG_structs.hpp"
 
 
@@ -260,57 +260,46 @@ static_assert(offsetof(WIDGET_Automap_WaypointElement_C_SetElementActive, IsActi
 static_assert(offsetof(WIDGET_Automap_WaypointElement_C_SetElementActive, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000001, "Member 'WIDGET_Automap_WaypointElement_C_SetElementActive::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_Automap_WaypointElement.WIDGET_Automap_WaypointElement_C.ReceiveWaypointInput
-// 0x0070 (0x0070 - 0x0000)
+// 0x0058 (0x0058 - 0x0000)
 struct WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput final
 {
 public:
 	struct FVector                                WorldLocation;                                     // 0x0000(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         WaypointIndex;                                     // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UCOMP_VoxelScanner_C*                   ScannerComponent;                                  // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0032(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_33[0x1];                                       // 0x0033(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetWaypointIndexAtLocation_ReturnValue;   // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_RemoveWaypointByIndex_ReturnValue;        // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_39[0x3];                                       // 0x0039(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetWaypointIndexAtLocation_ReturnValue_1; // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue_1;        // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue_2;        // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_61[0x3];                                       // 0x0061(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_AddWaypointAtLocation_ReturnValue;        // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetWaypointIndexAtLocation_ReturnValue;   // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_RemoveWaypointByIndex_ReturnValue;        // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetWaypointIndexAtLocation_ReturnValue_1; // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue_1;        // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue_2;        // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_AddWaypointAtLocation_ReturnValue;        // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput) == 0x000008, "Wrong alignment on WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput");
-static_assert(sizeof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput) == 0x000070, "Wrong size on WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput");
+static_assert(sizeof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput) == 0x000058, "Wrong size on WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput");
 static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, WorldLocation) == 0x000000, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::WorldLocation' has a wrong offset!");
 static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, WaypointIndex) == 0x00000C, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::WaypointIndex' has a wrong offset!");
 static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, ScannerComponent) == 0x000010, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::ScannerComponent' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GetPlayerController_ReturnValue) == 0x000018, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000020, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, K2Node_DynamicCast_AsCON_Hacker) == 0x000028, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_IsUsingGamepad_Result) == 0x000031, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_Not_PreBool_ReturnValue) == 0x000032, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GetWaypointIndexAtLocation_ReturnValue) == 0x000034, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GetWaypointIndexAtLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_RemoveWaypointByIndex_ReturnValue) == 0x000038, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_RemoveWaypointByIndex_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GetWaypointIndexAtLocation_ReturnValue_1) == 0x00003C, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GetWaypointIndexAtLocation_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GreaterEqual_IntInt_ReturnValue_1) == 0x000040, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GreaterEqual_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GetPlayerPawn_ReturnValue) == 0x000048, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GreaterEqual_IntInt_ReturnValue_2) == 0x000050, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GreaterEqual_IntInt_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000058, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, K2Node_DynamicCast_bSuccess_1) == 0x000060, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_AddWaypointAtLocation_ReturnValue) == 0x000064, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_AddWaypointAtLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, K2Node_SwitchEnum_CmpSuccess) == 0x000068, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000018, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GetWaypointIndexAtLocation_ReturnValue) == 0x00001C, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GetWaypointIndexAtLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_RemoveWaypointByIndex_ReturnValue) == 0x000020, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_RemoveWaypointByIndex_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GetWaypointIndexAtLocation_ReturnValue_1) == 0x000024, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GetWaypointIndexAtLocation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GreaterEqual_IntInt_ReturnValue_1) == 0x000028, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GreaterEqual_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GetPlayerPawn_ReturnValue) == 0x000030, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_GreaterEqual_IntInt_ReturnValue_2) == 0x000038, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_GreaterEqual_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000040, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, K2Node_DynamicCast_bSuccess) == 0x000048, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, CallFunc_AddWaypointAtLocation_ReturnValue) == 0x00004C, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::CallFunc_AddWaypointAtLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput, K2Node_SwitchEnum_CmpSuccess) == 0x000050, "Member 'WIDGET_Automap_WaypointElement_C_ReceiveWaypointInput::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 
 }
 

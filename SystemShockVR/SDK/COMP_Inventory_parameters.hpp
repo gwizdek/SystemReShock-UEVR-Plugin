@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ItemType_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
+#include "ENUM_ItemType_structs.hpp"
 #include "STRUCT_SoftItemParams_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
 #include "STRUCT_InventoryBagParams_structs.hpp"

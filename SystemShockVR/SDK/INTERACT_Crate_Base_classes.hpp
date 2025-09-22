@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "INTERACT_LootableBase_classes.hpp"
 #include "Engine_structs.hpp"
+#include "INTERACT_LootableBase_classes.hpp"
 #include "ENUM_InteractionType_structs.hpp"
 
 

@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_InteractFlavorText_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "STRUCT_MeshDescriptor_structs.hpp"
 #include "ENUM_InteractResultType_structs.hpp"
+#include "STRUCT_InteractFlavorText_structs.hpp"
 
 
 namespace SDK::Params

@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "ENUM_WeaponOperation_structs.hpp"
 #include "ENUM_WeaponDetailsType_structs.hpp"
 #include "UMG_structs.hpp"
 #include "UMG_classes.hpp"
-#include "ENUM_WeaponOperation_structs.hpp"
 
 
 namespace SDK

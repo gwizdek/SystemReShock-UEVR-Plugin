@@ -14,9 +14,9 @@
 #include "STRUCT_ReferencedLootTable_structs.hpp"
 #include "STRUCT_DeathBlowData_structs.hpp"
 #include "ENUM_LocalBehaviorType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_PreferredCombatStyle_structs.hpp"
 #include "STRUCT_LocalBehaviorAnimations_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "ENUM_Emotions_structs.hpp"
 #include "ENUM_StayNearSkillTargetState_structs.hpp"
 #include "PAWN_SystemShockCharacter_classes.hpp"
@@ -155,6 +155,7 @@ public:
 	void TryAssignInitialBehavior();
 	void TryRestoreLocalBehavior();
 	void TrySetEnemyName(bool* Result);
+	void HasSetSpawnData(bool* Result);
 	void TrySetSpawnData(bool* Result);
 	void TryGenerateLoot(bool* Result);
 	void ShouldCloseLootWindow(class AActor* NewChannelingInteract, bool* Result);

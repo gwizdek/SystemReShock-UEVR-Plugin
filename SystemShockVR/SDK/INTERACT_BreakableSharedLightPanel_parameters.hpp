@@ -20,139 +20,425 @@
 namespace SDK::Params
 {
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.HasBrokenAllLights
-// 0x0030 (0x0030 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.ExecuteUbergraph_INTERACT_BreakableSharedLightPanel
+// 0x0004 (0x0004 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel final
 {
 public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0008(0x0010)(ReferenceParm, ContainsInstancedReference)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BitShiftLeft_ReturnValue;                 // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights) == 0x000030, "Wrong size on INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, Result) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_Greater_IntInt_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_Array_Length_ReturnValue) == 0x00001C, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_BitShiftLeft_ReturnValue) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_BitShiftLeft_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_Subtract_IntInt_ReturnValue) == 0x000024, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel) == 0x000004, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel) == 0x000004, "Wrong size on INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel, EntryPoint) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel::EntryPoint' has a wrong offset!");
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.GetInteractDestroyed
-// 0x0002 (0x0002 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_HasBrokenAllLights_Result;                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed) == 0x000001, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed) == 0x000002, "Wrong size on INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed, Result) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed, CallFunc_HasBrokenAllLights_Result) == 0x000001, "Member 'INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed::CallFunc_HasBrokenAllLights_Result' has a wrong offset!");
-
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.OnUpdateLightColor
-// 0x0028 (0x0028 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.UserConstructionScript
+// 0x0060 (0x0060 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_UserConstructionScript final
 {
 public:
 	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FLinearColor                           CallFunc_GetNormalizedLightColor_Result;           // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Temp_float_Variable;                               // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_float_Variable_1;                             // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_LightPanelState                          Temp_byte_Variable;                                // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0028(0x0010)(ReferenceParm, ContainsInstancedReference)
+	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0038(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_Select_Default;                             // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor) == 0x000028, "Wrong size on INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor::LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor, CallFunc_GetNormalizedLightColor_Result) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor::CallFunc_GetNormalizedLightColor_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor, CallFunc_GetLightComponent_LightComponent) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_UserConstructionScript");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript) == 0x000060, "Wrong size on INTERACT_BreakableSharedLightPanel_C_UserConstructionScript");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_float_Variable) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_float_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_int_Array_Index_Variable) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_IsValid_ReturnValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_float_Variable_1) == 0x000014, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_float_Variable_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_int_Loop_Counter_Variable) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_Add_IntInt_ReturnValue) == 0x00001C, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_byte_Variable) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_Array_Get_Item) == 0x000038, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, K2Node_SwitchEnum_CmpSuccess) == 0x000040, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_Array_Length_ReturnValue) == 0x000044, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_Less_IntInt_ReturnValue) == 0x000048, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_GetLightComponent_LightComponent) == 0x000050, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, K2Node_Select_Default) == 0x000058, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::K2Node_Select_Default' has a wrong offset!");
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.SetShouldBeVisible
-// 0x0004 (0x0004 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.CanTakeDamage
+// 0x0018 (0x0018 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_CanTakeDamage final
 {
 public:
-	bool                                          VisibleState;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsActivatedAndPowered_Result;             // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_SetShouldBeVisible_Result;                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UAttribDamageType*                      DamageType;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UOBJ_ImpactData_C*                      ImpactData;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible) == 0x000001, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible) == 0x000004, "Wrong size on INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible, VisibleState) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible::VisibleState' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible, Result) == 0x000001, "Member 'INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible, CallFunc_IsActivatedAndPowered_Result) == 0x000002, "Member 'INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible::CallFunc_IsActivatedAndPowered_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible, CallFunc_SetShouldBeVisible_Result) == 0x000003, "Member 'INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible::CallFunc_SetShouldBeVisible_Result' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_CanTakeDamage");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage) == 0x000018, "Wrong size on INTERACT_BreakableSharedLightPanel_C_CanTakeDamage");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage, DamageType) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_CanTakeDamage::DamageType' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage, ImpactData) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_CanTakeDamage::ImpactData' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage, Result) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_CanTakeDamage::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage, CallFunc_IsValid_ReturnValue) == 0x000011, "Member 'INTERACT_BreakableSharedLightPanel_C_CanTakeDamage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.OnActivationStateChanged
-// 0x0040 (0x0040 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.OnDamageReceived
+// 0x0180 (0x0180 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_OnDamageReceived final
 {
 public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          OnBeginPlay;                                       // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULightComponent*                        LightComponent;                                    // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasBrokenAllLights_Result;                // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_13[0x1];                                       // 0x0013(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_RandomFloatInRange_ReturnValue;           // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_TrySetLightState_Result;                  // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1B[0x5];                                       // 0x001B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_TrySetLightState_Result_1;                // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULightTransitionManager_C*              CallFunc_SpawnObject_ReturnValue;                  // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAttribDamageType*                      DamageType;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         DamageValue;                                       // 0x0010(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPrimitiveComponent*                    HitComponent;                                      // 0x0018(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         HitFaceIndex;                                      // 0x0020(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                HitLocation;                                       // 0x0024(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                HitNormal;                                         // 0x0030(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         ImpactRadius;                                      // 0x003C(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0040(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         LightBit;                                          // 0x0044(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         LightIndex;                                        // 0x0048(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                ActualHitNormal;                                   // 0x004C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UStaticMeshComponent*                   HitStaticMeshComponent;                            // 0x0058(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UStaticMeshComponent*                   K2Node_DynamicCast_AsStatic_Mesh_Component;        // 0x0068(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_71[0x3];                                       // 0x0071(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0080(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BitShiftLeft_ReturnValue;                 // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_8C[0x4];                                       // 0x008C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetObjectName_ReturnValue;                // 0x0090(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_SphereOverlapComponent_HitLocation;    // 0x00A0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_SphereOverlapComponent_HitNormal;      // 0x00AC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_K2_SphereOverlapComponent_BoneName;       // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_K2_SphereOverlapComponent_OutHit;         // 0x00C0(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_K2_SphereOverlapComponent_ReturnValue;    // 0x0148(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_149[0x7];                                      // 0x0149(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0150(0x0010)(ReferenceParm, ContainsInstancedReference)
+	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0160(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0168(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x016C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasBrokenAllLights_Result;                // 0x016D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnLightPanelGlassBroken_Result;           // 0x016E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_16F[0x1];                                      // 0x016F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetLightIndexFromComponent_LightIndex;    // 0x0170(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x0174(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_175[0x3];                                      // 0x0175(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Or_IntInt_ReturnValue;                    // 0x0178(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged) == 0x000040, "Wrong size on INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, State) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::State' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, OnBeginPlay) == 0x000001, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::OnBeginPlay' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, LightComponent) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_HasBrokenAllLights_Result) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_HasBrokenAllLights_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_Not_PreBool_ReturnValue) == 0x000011, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000012, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_RandomFloatInRange_ReturnValue) == 0x000014, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_RandomFloatInRange_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_TrySetLightState_Result) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_TrySetLightState_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_IsValid_ReturnValue) == 0x000019, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_Not_PreBool_ReturnValue_1) == 0x00001A, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_GetLightComponent_LightComponent) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_TrySetLightState_Result_1) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_TrySetLightState_Result_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_SpawnObject_ReturnValue) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_SpawnObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_IsValid_ReturnValue_1) == 0x000038, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_OnDamageReceived");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived) == 0x000180, "Wrong size on INTERACT_BreakableSharedLightPanel_C_OnDamageReceived");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, SourceActor) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::SourceActor' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, DamageType) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::DamageType' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, DamageValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::DamageValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitComponent) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitFaceIndex) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitFaceIndex' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitLocation) == 0x000024, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitLocation' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitNormal) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitNormal' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, ImpactRadius) == 0x00003C, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::ImpactRadius' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, Result) == 0x000040, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, LightBit) == 0x000044, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::LightBit' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, LightIndex) == 0x000048, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::LightIndex' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, ActualHitNormal) == 0x00004C, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::ActualHitNormal' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitStaticMeshComponent) == 0x000058, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitStaticMeshComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000060, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, K2Node_DynamicCast_AsStatic_Mesh_Component) == 0x000068, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::K2Node_DynamicCast_AsStatic_Mesh_Component' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, K2Node_DynamicCast_bSuccess) == 0x000070, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, Temp_int_Array_Index_Variable) == 0x000074, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, Temp_int_Loop_Counter_Variable) == 0x000078, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Add_IntInt_ReturnValue) == 0x00007C, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_GetLightComponent_LightComponent) == 0x000080, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_BitShiftLeft_ReturnValue) == 0x000088, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_BitShiftLeft_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_GetObjectName_ReturnValue) == 0x000090, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_GetObjectName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_HitLocation) == 0x0000A0, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_HitLocation' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_HitNormal) == 0x0000AC, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_HitNormal' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_BoneName) == 0x0000B8, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_BoneName' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_OutHit) == 0x0000C0, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_OutHit' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_ReturnValue) == 0x000148, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000150, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Array_Get_Item) == 0x000160, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Array_Length_ReturnValue) == 0x000168, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Less_IntInt_ReturnValue) == 0x00016C, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_HasBrokenAllLights_Result) == 0x00016D, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_HasBrokenAllLights_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_OnLightPanelGlassBroken_Result) == 0x00016E, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_OnLightPanelGlassBroken_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_GetLightIndexFromComponent_LightIndex) == 0x000170, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_GetLightIndexFromComponent_LightIndex' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_StartsWith_ReturnValue) == 0x000174, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Or_IntInt_ReturnValue) == 0x000178, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Or_IntInt_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.OnUpdateLightVisibility
-// 0x0020 (0x0020 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.GetLightComponent
+// 0x0030 (0x0030 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_GetLightComponent final
+{
+public:
+	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class ULightComponent*>                CallFunc_GetChildComponentsByClass_ReturnValue;    // 0x0008(0x0010)(ReferenceParm, ContainsInstancedReference)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULightComponent*                        CallFunc_Array_Get_Item;                           // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_GetLightComponent");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent) == 0x000030, "Wrong size on INTERACT_BreakableSharedLightPanel_C_GetLightComponent");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, CallFunc_GetChildComponentsByClass_ReturnValue) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::CallFunc_GetChildComponentsByClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, CallFunc_Array_Length_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, CallFunc_Array_Get_Item) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, CallFunc_Greater_IntInt_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.GetLightIndexFromComponent
+// 0x0070 (0x0070 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent final
+{
+public:
+	class USceneComponent*                        Component;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         LightIndex;                                        // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FString>                         CharacterArray;                                    // 0x0010(0x0010)(Edit, BlueprintVisible)
+	class FString                                 ComponentName;                                     // 0x0020(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_GetObjectName_ReturnValue;                // 0x0030(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_LastIndex_ReturnValue;              // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Array_Get_Item;                           // 0x0048(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	TArray<class FString>                         CallFunc_GetCharacterArrayFromString_ReturnValue;  // 0x0058(0x0010)(ReferenceParm)
+	int32                                         CallFunc_Conv_StringToInt_ReturnValue;             // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent) == 0x000070, "Wrong size on INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, Component) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::Component' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, LightIndex) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::LightIndex' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CharacterArray) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CharacterArray' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, ComponentName) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::ComponentName' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_GetObjectName_ReturnValue) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_GetObjectName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_Array_LastIndex_ReturnValue) == 0x000040, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_Array_LastIndex_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_Array_Get_Item) == 0x000048, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_GetCharacterArrayFromString_ReturnValue) == 0x000058, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_GetCharacterArrayFromString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_Conv_StringToInt_ReturnValue) == 0x000068, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_Conv_StringToInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_Subtract_IntInt_ReturnValue) == 0x00006C, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.InitializeBreakableLightPanel
+// 0x0080 (0x0080 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel final
+{
+public:
+	int32                                         LightIndex;                                        // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UStaticMeshComponent*                   LightPanelGlassComponent;                          // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class UStaticMeshComponent*>           LightPanelGlassComponents;                         // 0x0010(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
+	class ULightComponent*                        LightComponent;                                    // 0x0020(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsActivatedAndPowered_Result;             // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2D[0x3];                                       // 0x002D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_35[0x3];                                       // 0x0035(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0040(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x004C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x004D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_4E[0x2];                                       // 0x004E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BitShiftLeft_ReturnValue;                 // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_OnLightPanelGlassBroken_Result;           // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_And_IntInt_ReturnValue;                   // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_IntInt_ReturnValue;              // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0068(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0070(0x0010)(ReferenceParm, ContainsInstancedReference)
+};
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel) == 0x000080, "Wrong size on INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, LightIndex) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::LightIndex' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, LightPanelGlassComponent) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::LightPanelGlassComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, LightPanelGlassComponents) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::LightPanelGlassComponents' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, LightComponent) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, Temp_int_Array_Index_Variable) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_IsActivatedAndPowered_Result) == 0x00002C, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_IsActivatedAndPowered_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, Temp_int_Loop_Counter_Variable) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000034, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Add_IntInt_ReturnValue) == 0x000038, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x00003C, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Array_Get_Item) == 0x000040, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Array_Length_ReturnValue) == 0x000048, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Less_IntInt_ReturnValue) == 0x00004C, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_IsValid_ReturnValue) == 0x00004D, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Array_Length_ReturnValue_1) == 0x000050, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_BitShiftLeft_ReturnValue) == 0x000054, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_BitShiftLeft_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_OnLightPanelGlassBroken_Result) == 0x000058, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_OnLightPanelGlassBroken_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_And_IntInt_ReturnValue) == 0x00005C, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_And_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_NotEqual_IntInt_ReturnValue) == 0x000060, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_NotEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_GetLightComponent_LightComponent) == 0x000068, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000070, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.ForceUpdateLightParameters
+// 0x0038 (0x0038 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters final
 {
 public:
 	bool                                          ActivationState;                                   // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULightComponent*                        SharedLightComponent;                              // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0010(0x0010)(ReferenceParm, ContainsInstancedReference)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility) == 0x000020, "Wrong size on INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, ActivationState) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::ActivationState' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, SharedLightComponent) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::SharedLightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, CallFunc_GetLightComponent_LightComponent) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters) == 0x000038, "Wrong size on INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, ActivationState) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::ActivationState' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, Temp_int_Array_Index_Variable) == 0x000004, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_Add_IntInt_ReturnValue) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_Array_Length_ReturnValue) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_Array_Get_Item) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_Less_IntInt_ReturnValue) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.TryDestroyLightComponent
+// 0x0018 (0x0018 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent final
+{
+public:
+	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent) == 0x000018, "Wrong size on INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent::LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent, CallFunc_GetLightComponent_LightComponent) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
+
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.UpdateLightIntensity
+// 0x0030 (0x0030 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity final
+{
+public:
+	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         ActiveLightCount;                                  // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         BrokenLightCount;                                  // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Conv_IntToFloat_ReturnValue;              // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Conv_IntToFloat_ReturnValue_1;            // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_CountBits_ReturnValue;                    // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity) == 0x000030, "Wrong size on INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, ActiveLightCount) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::ActiveLightCount' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, BrokenLightCount) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::BrokenLightCount' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_IsValid_ReturnValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Conv_IntToFloat_ReturnValue) == 0x000014, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Conv_IntToFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Conv_IntToFloat_ReturnValue_1) == 0x00001C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Conv_IntToFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000024, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Subtract_IntInt_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_CountBits_ReturnValue) == 0x00002C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_CountBits_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.SetLightIntensity
+// 0x0018 (0x0018 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_SetLightIntensity final
+{
+public:
+	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         LightIntensity;                                    // 0x0008(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         ActiveLightCount;                                  // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         BrokenLightCount;                                  // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_SetLightIntensity");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity) == 0x000018, "Wrong size on INTERACT_BreakableSharedLightPanel_C_SetLightIntensity");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, LightIntensity) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::LightIntensity' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, ActiveLightCount) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::ActiveLightCount' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, BrokenLightCount) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::BrokenLightCount' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, CallFunc_IsValid_ReturnValue) == 0x000014, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.SetFlickeringMeshParameter
+// 0x0040 (0x0040 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter final
+{
+public:
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Conv_BoolToFloat_ReturnValue;             // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0018(0x0010)(ReferenceParm, ContainsInstancedReference)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0030(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter) == 0x000040, "Wrong size on INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, State) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::State' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, Temp_int_Array_Index_Variable) == 0x000004, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Add_IntInt_ReturnValue) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Conv_BoolToFloat_ReturnValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Conv_BoolToFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Array_Length_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Array_Get_Item) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Less_IntInt_ReturnValue) == 0x000038, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.UpdateMaterialLightIntensity
+// 0x0048 (0x0048 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity final
+{
+public:
+	class UStaticMeshComponent*                   LightPanelGlassComponent;                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          ActivationState;                                   // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLinearColor                           Temp_struct_Variable;                              // 0x000C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Conv_BoolToFloat_ReturnValue;             // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Conv_FloatToVector_ReturnValue;           // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FLinearColor                           K2Node_Select_Default;                             // 0x002C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Conv_LinearColorToVector_ReturnValue;     // 0x003C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity) == 0x000048, "Wrong size on INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, LightPanelGlassComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::LightPanelGlassComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, ActivationState) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::ActivationState' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, Temp_bool_Variable) == 0x000009, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, Temp_struct_Variable) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::Temp_struct_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, CallFunc_Conv_BoolToFloat_ReturnValue) == 0x00001C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::CallFunc_Conv_BoolToFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, CallFunc_Conv_FloatToVector_ReturnValue) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::CallFunc_Conv_FloatToVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, K2Node_Select_Default) == 0x00002C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, CallFunc_Conv_LinearColorToVector_ReturnValue) == 0x00003C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::CallFunc_Conv_LinearColorToVector_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.OnLightPanelGlassBroken
 // 0x0210 (0x0210 - 0x0000)
@@ -248,425 +534,139 @@ static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnLightPanelGlassBro
 static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnLightPanelGlassBroken, CallFunc_GetLocalBounds_Max) == 0x0001F4, "Member 'INTERACT_BreakableSharedLightPanel_C_OnLightPanelGlassBroken::CallFunc_GetLocalBounds_Max' has a wrong offset!");
 static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnLightPanelGlassBroken, CallFunc_Subtract_VectorVector_ReturnValue) == 0x000200, "Member 'INTERACT_BreakableSharedLightPanel_C_OnLightPanelGlassBroken::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.UpdateMaterialLightIntensity
-// 0x0048 (0x0048 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity final
-{
-public:
-	class UStaticMeshComponent*                   LightPanelGlassComponent;                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          ActivationState;                                   // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Temp_bool_Variable;                                // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLinearColor                           Temp_struct_Variable;                              // 0x000C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Conv_BoolToFloat_ReturnValue;             // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Conv_FloatToVector_ReturnValue;           // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FLinearColor                           K2Node_Select_Default;                             // 0x002C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Conv_LinearColorToVector_ReturnValue;     // 0x003C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity) == 0x000048, "Wrong size on INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, LightPanelGlassComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::LightPanelGlassComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, ActivationState) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::ActivationState' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, Temp_bool_Variable) == 0x000009, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, Temp_struct_Variable) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::Temp_struct_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, CallFunc_Conv_BoolToFloat_ReturnValue) == 0x00001C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::CallFunc_Conv_BoolToFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, CallFunc_Conv_FloatToVector_ReturnValue) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::CallFunc_Conv_FloatToVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, K2Node_Select_Default) == 0x00002C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity, CallFunc_Conv_LinearColorToVector_ReturnValue) == 0x00003C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateMaterialLightIntensity::CallFunc_Conv_LinearColorToVector_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.SetFlickeringMeshParameter
-// 0x0040 (0x0040 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter final
-{
-public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Conv_BoolToFloat_ReturnValue;             // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0018(0x0010)(ReferenceParm, ContainsInstancedReference)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0030(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter) == 0x000040, "Wrong size on INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, State) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::State' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, Temp_int_Array_Index_Variable) == 0x000004, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Add_IntInt_ReturnValue) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Conv_BoolToFloat_ReturnValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Conv_BoolToFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Array_Length_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Array_Get_Item) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter, CallFunc_Less_IntInt_ReturnValue) == 0x000038, "Member 'INTERACT_BreakableSharedLightPanel_C_SetFlickeringMeshParameter::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.SetLightIntensity
-// 0x0018 (0x0018 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_SetLightIntensity final
-{
-public:
-	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         LightIntensity;                                    // 0x0008(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         ActiveLightCount;                                  // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         BrokenLightCount;                                  // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_SetLightIntensity");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity) == 0x000018, "Wrong size on INTERACT_BreakableSharedLightPanel_C_SetLightIntensity");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, LightIntensity) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::LightIntensity' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, ActiveLightCount) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::ActiveLightCount' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, BrokenLightCount) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::BrokenLightCount' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetLightIntensity, CallFunc_IsValid_ReturnValue) == 0x000014, "Member 'INTERACT_BreakableSharedLightPanel_C_SetLightIntensity::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.UpdateLightIntensity
-// 0x0030 (0x0030 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity final
-{
-public:
-	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         ActiveLightCount;                                  // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         BrokenLightCount;                                  // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Conv_IntToFloat_ReturnValue;              // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Conv_IntToFloat_ReturnValue_1;            // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_CountBits_ReturnValue;                    // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity) == 0x000030, "Wrong size on INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, ActiveLightCount) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::ActiveLightCount' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, BrokenLightCount) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::BrokenLightCount' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_IsValid_ReturnValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Conv_IntToFloat_ReturnValue) == 0x000014, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Conv_IntToFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Conv_IntToFloat_ReturnValue_1) == 0x00001C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Conv_IntToFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000024, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_Subtract_IntInt_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity, CallFunc_CountBits_ReturnValue) == 0x00002C, "Member 'INTERACT_BreakableSharedLightPanel_C_UpdateLightIntensity::CallFunc_CountBits_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.TryDestroyLightComponent
-// 0x0018 (0x0018 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent final
-{
-public:
-	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent) == 0x000018, "Wrong size on INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent::LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent, CallFunc_GetLightComponent_LightComponent) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_TryDestroyLightComponent::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
-
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.ForceUpdateLightParameters
-// 0x0038 (0x0038 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.OnUpdateLightVisibility
+// 0x0020 (0x0020 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility final
 {
 public:
 	bool                                          ActivationState;                                   // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0010(0x0010)(ReferenceParm, ContainsInstancedReference)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULightComponent*                        SharedLightComponent;                              // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters) == 0x000038, "Wrong size on INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, ActivationState) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::ActivationState' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, Temp_int_Array_Index_Variable) == 0x000004, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_Add_IntInt_ReturnValue) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_Array_Length_ReturnValue) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_Array_Get_Item) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters, CallFunc_Less_IntInt_ReturnValue) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_ForceUpdateLightParameters::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility) == 0x000020, "Wrong size on INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, ActivationState) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::ActivationState' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, SharedLightComponent) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::SharedLightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, CallFunc_GetLightComponent_LightComponent) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightVisibility::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.InitializeBreakableLightPanel
-// 0x0080 (0x0080 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.OnActivationStateChanged
+// 0x0040 (0x0040 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged final
 {
 public:
-	int32                                         LightIndex;                                        // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UStaticMeshComponent*                   LightPanelGlassComponent;                          // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class UStaticMeshComponent*>           LightPanelGlassComponents;                         // 0x0010(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
-	class ULightComponent*                        LightComponent;                                    // 0x0020(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsActivatedAndPowered_Result;             // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2D[0x3];                                       // 0x002D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_35[0x3];                                       // 0x0035(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0040(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x004C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x004D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4E[0x2];                                       // 0x004E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BitShiftLeft_ReturnValue;                 // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_OnLightPanelGlassBroken_Result;           // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_And_IntInt_ReturnValue;                   // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NotEqual_IntInt_ReturnValue;              // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0068(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0070(0x0010)(ReferenceParm, ContainsInstancedReference)
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          OnBeginPlay;                                       // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULightComponent*                        LightComponent;                                    // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasBrokenAllLights_Result;                // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_13[0x1];                                       // 0x0013(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_RandomFloatInRange_ReturnValue;           // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_TrySetLightState_Result;                  // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1B[0x5];                                       // 0x001B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_TrySetLightState_Result_1;                // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULightTransitionManager_C*              CallFunc_SpawnObject_ReturnValue;                  // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel) == 0x000080, "Wrong size on INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, LightIndex) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::LightIndex' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, LightPanelGlassComponent) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::LightPanelGlassComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, LightPanelGlassComponents) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::LightPanelGlassComponents' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, LightComponent) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, Temp_int_Array_Index_Variable) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_IsActivatedAndPowered_Result) == 0x00002C, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_IsActivatedAndPowered_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, Temp_int_Loop_Counter_Variable) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000034, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Add_IntInt_ReturnValue) == 0x000038, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x00003C, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Array_Get_Item) == 0x000040, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Array_Length_ReturnValue) == 0x000048, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Less_IntInt_ReturnValue) == 0x00004C, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_IsValid_ReturnValue) == 0x00004D, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_Array_Length_ReturnValue_1) == 0x000050, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_BitShiftLeft_ReturnValue) == 0x000054, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_BitShiftLeft_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_OnLightPanelGlassBroken_Result) == 0x000058, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_OnLightPanelGlassBroken_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_And_IntInt_ReturnValue) == 0x00005C, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_And_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_NotEqual_IntInt_ReturnValue) == 0x000060, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_NotEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_GetLightComponent_LightComponent) == 0x000068, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000070, "Member 'INTERACT_BreakableSharedLightPanel_C_InitializeBreakableLightPanel::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged) == 0x000040, "Wrong size on INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, State) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::State' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, OnBeginPlay) == 0x000001, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::OnBeginPlay' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, LightComponent) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_HasBrokenAllLights_Result) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_HasBrokenAllLights_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_Not_PreBool_ReturnValue) == 0x000011, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000012, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_RandomFloatInRange_ReturnValue) == 0x000014, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_RandomFloatInRange_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_TrySetLightState_Result) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_TrySetLightState_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_IsValid_ReturnValue) == 0x000019, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_Not_PreBool_ReturnValue_1) == 0x00001A, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_GetLightComponent_LightComponent) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_TrySetLightState_Result_1) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_TrySetLightState_Result_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_SpawnObject_ReturnValue) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_SpawnObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged, CallFunc_IsValid_ReturnValue_1) == 0x000038, "Member 'INTERACT_BreakableSharedLightPanel_C_OnActivationStateChanged::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.GetLightIndexFromComponent
-// 0x0070 (0x0070 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.SetShouldBeVisible
+// 0x0004 (0x0004 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible final
 {
 public:
-	class USceneComponent*                        Component;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         LightIndex;                                        // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FString>                         CharacterArray;                                    // 0x0010(0x0010)(Edit, BlueprintVisible)
-	class FString                                 ComponentName;                                     // 0x0020(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetObjectName_ReturnValue;                // 0x0030(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_LastIndex_ReturnValue;              // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Array_Get_Item;                           // 0x0048(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	TArray<class FString>                         CallFunc_GetCharacterArrayFromString_ReturnValue;  // 0x0058(0x0010)(ReferenceParm)
-	int32                                         CallFunc_Conv_StringToInt_ReturnValue;             // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          VisibleState;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsActivatedAndPowered_Result;             // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_SetShouldBeVisible_Result;                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent) == 0x000070, "Wrong size on INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, Component) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::Component' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, LightIndex) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::LightIndex' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CharacterArray) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CharacterArray' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, ComponentName) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::ComponentName' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_GetObjectName_ReturnValue) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_GetObjectName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_Array_LastIndex_ReturnValue) == 0x000040, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_Array_LastIndex_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_Array_Get_Item) == 0x000048, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_GetCharacterArrayFromString_ReturnValue) == 0x000058, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_GetCharacterArrayFromString_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_Conv_StringToInt_ReturnValue) == 0x000068, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_Conv_StringToInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent, CallFunc_Subtract_IntInt_ReturnValue) == 0x00006C, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightIndexFromComponent::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible) == 0x000001, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible) == 0x000004, "Wrong size on INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible, VisibleState) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible::VisibleState' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible, Result) == 0x000001, "Member 'INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible, CallFunc_IsActivatedAndPowered_Result) == 0x000002, "Member 'INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible::CallFunc_IsActivatedAndPowered_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible, CallFunc_SetShouldBeVisible_Result) == 0x000003, "Member 'INTERACT_BreakableSharedLightPanel_C_SetShouldBeVisible::CallFunc_SetShouldBeVisible_Result' has a wrong offset!");
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.GetLightComponent
-// 0x0030 (0x0030 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_GetLightComponent final
-{
-public:
-	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class ULightComponent*>                CallFunc_GetChildComponentsByClass_ReturnValue;    // 0x0008(0x0010)(ReferenceParm, ContainsInstancedReference)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULightComponent*                        CallFunc_Array_Get_Item;                           // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_GetLightComponent");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent) == 0x000030, "Wrong size on INTERACT_BreakableSharedLightPanel_C_GetLightComponent");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, CallFunc_GetChildComponentsByClass_ReturnValue) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::CallFunc_GetChildComponentsByClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, CallFunc_Array_Length_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, CallFunc_Array_Get_Item) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetLightComponent, CallFunc_Greater_IntInt_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_GetLightComponent::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.OnDamageReceived
-// 0x0180 (0x0180 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_OnDamageReceived final
-{
-public:
-	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAttribDamageType*                      DamageType;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         DamageValue;                                       // 0x0010(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPrimitiveComponent*                    HitComponent;                                      // 0x0018(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         HitFaceIndex;                                      // 0x0020(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                HitLocation;                                       // 0x0024(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                HitNormal;                                         // 0x0030(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         ImpactRadius;                                      // 0x003C(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0040(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         LightBit;                                          // 0x0044(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         LightIndex;                                        // 0x0048(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                ActualHitNormal;                                   // 0x004C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UStaticMeshComponent*                   HitStaticMeshComponent;                            // 0x0058(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UStaticMeshComponent*                   K2Node_DynamicCast_AsStatic_Mesh_Component;        // 0x0068(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_71[0x3];                                       // 0x0071(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0080(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BitShiftLeft_ReturnValue;                 // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_8C[0x4];                                       // 0x008C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetObjectName_ReturnValue;                // 0x0090(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_SphereOverlapComponent_HitLocation;    // 0x00A0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_SphereOverlapComponent_HitNormal;      // 0x00AC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_K2_SphereOverlapComponent_BoneName;       // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_K2_SphereOverlapComponent_OutHit;         // 0x00C0(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	bool                                          CallFunc_K2_SphereOverlapComponent_ReturnValue;    // 0x0148(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_149[0x7];                                      // 0x0149(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0150(0x0010)(ReferenceParm, ContainsInstancedReference)
-	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0160(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0168(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x016C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_HasBrokenAllLights_Result;                // 0x016D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnLightPanelGlassBroken_Result;           // 0x016E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_16F[0x1];                                      // 0x016F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetLightIndexFromComponent_LightIndex;    // 0x0170(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x0174(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_175[0x3];                                      // 0x0175(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Or_IntInt_ReturnValue;                    // 0x0178(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_OnDamageReceived");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived) == 0x000180, "Wrong size on INTERACT_BreakableSharedLightPanel_C_OnDamageReceived");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, SourceActor) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::SourceActor' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, DamageType) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::DamageType' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, DamageValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::DamageValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitComponent) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitFaceIndex) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitFaceIndex' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitLocation) == 0x000024, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitLocation' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitNormal) == 0x000030, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitNormal' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, ImpactRadius) == 0x00003C, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::ImpactRadius' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, Result) == 0x000040, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, LightBit) == 0x000044, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::LightBit' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, LightIndex) == 0x000048, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::LightIndex' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, ActualHitNormal) == 0x00004C, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::ActualHitNormal' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, HitStaticMeshComponent) == 0x000058, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::HitStaticMeshComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000060, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, K2Node_DynamicCast_AsStatic_Mesh_Component) == 0x000068, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::K2Node_DynamicCast_AsStatic_Mesh_Component' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, K2Node_DynamicCast_bSuccess) == 0x000070, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, Temp_int_Array_Index_Variable) == 0x000074, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, Temp_int_Loop_Counter_Variable) == 0x000078, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Add_IntInt_ReturnValue) == 0x00007C, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_GetLightComponent_LightComponent) == 0x000080, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_BitShiftLeft_ReturnValue) == 0x000088, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_BitShiftLeft_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_GetObjectName_ReturnValue) == 0x000090, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_GetObjectName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_HitLocation) == 0x0000A0, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_HitLocation' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_HitNormal) == 0x0000AC, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_HitNormal' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_BoneName) == 0x0000B8, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_BoneName' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_OutHit) == 0x0000C0, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_OutHit' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_K2_SphereOverlapComponent_ReturnValue) == 0x000148, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_K2_SphereOverlapComponent_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000150, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Array_Get_Item) == 0x000160, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Array_Length_ReturnValue) == 0x000168, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Less_IntInt_ReturnValue) == 0x00016C, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_HasBrokenAllLights_Result) == 0x00016D, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_HasBrokenAllLights_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_OnLightPanelGlassBroken_Result) == 0x00016E, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_OnLightPanelGlassBroken_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_GetLightIndexFromComponent_LightIndex) == 0x000170, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_GetLightIndexFromComponent_LightIndex' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_StartsWith_ReturnValue) == 0x000174, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnDamageReceived, CallFunc_Or_IntInt_ReturnValue) == 0x000178, "Member 'INTERACT_BreakableSharedLightPanel_C_OnDamageReceived::CallFunc_Or_IntInt_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.CanTakeDamage
-// 0x0018 (0x0018 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_CanTakeDamage final
-{
-public:
-	class UAttribDamageType*                      DamageType;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UOBJ_ImpactData_C*                      ImpactData;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_CanTakeDamage");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage) == 0x000018, "Wrong size on INTERACT_BreakableSharedLightPanel_C_CanTakeDamage");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage, DamageType) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_CanTakeDamage::DamageType' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage, ImpactData) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_CanTakeDamage::ImpactData' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage, Result) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_CanTakeDamage::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_CanTakeDamage, CallFunc_IsValid_ReturnValue) == 0x000011, "Member 'INTERACT_BreakableSharedLightPanel_C_CanTakeDamage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.UserConstructionScript
-// 0x0060 (0x0060 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_UserConstructionScript final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.OnUpdateLightColor
+// 0x0028 (0x0028 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor final
 {
 public:
 	class ULightComponent*                        LightComponent;                                    // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         Temp_float_Variable;                               // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Temp_float_Variable_1;                             // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_LightPanelState                          Temp_byte_Variable;                                // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0028(0x0010)(ReferenceParm, ContainsInstancedReference)
-	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0038(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_Select_Default;                             // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FLinearColor                           CallFunc_GetNormalizedLightColor_Result;           // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULightComponent*                        CallFunc_GetLightComponent_LightComponent;         // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_UserConstructionScript");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript) == 0x000060, "Wrong size on INTERACT_BreakableSharedLightPanel_C_UserConstructionScript");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_float_Variable) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_float_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_int_Array_Index_Variable) == 0x00000C, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_IsValid_ReturnValue) == 0x000010, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_float_Variable_1) == 0x000014, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_float_Variable_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_int_Loop_Counter_Variable) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_Add_IntInt_ReturnValue) == 0x00001C, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, Temp_byte_Variable) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_Array_Get_Item) == 0x000038, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, K2Node_SwitchEnum_CmpSuccess) == 0x000040, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_Array_Length_ReturnValue) == 0x000044, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_Less_IntInt_ReturnValue) == 0x000048, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, CallFunc_GetLightComponent_LightComponent) == 0x000050, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_UserConstructionScript, K2Node_Select_Default) == 0x000058, "Member 'INTERACT_BreakableSharedLightPanel_C_UserConstructionScript::K2Node_Select_Default' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor) == 0x000028, "Wrong size on INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor, LightComponent) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor::LightComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor, CallFunc_GetNormalizedLightColor_Result) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor::CallFunc_GetNormalizedLightColor_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor, CallFunc_GetLightComponent_LightComponent) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_OnUpdateLightColor::CallFunc_GetLightComponent_LightComponent' has a wrong offset!");
 
-// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.ExecuteUbergraph_INTERACT_BreakableSharedLightPanel
-// 0x0004 (0x0004 - 0x0000)
-struct INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel final
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.GetInteractDestroyed
+// 0x0002 (0x0002 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed final
 {
 public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasBrokenAllLights_Result;                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel) == 0x000004, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel");
-static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel) == 0x000004, "Wrong size on INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel");
-static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel, EntryPoint) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_ExecuteUbergraph_INTERACT_BreakableSharedLightPanel::EntryPoint' has a wrong offset!");
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed) == 0x000001, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed) == 0x000002, "Wrong size on INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed, Result) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed, CallFunc_HasBrokenAllLights_Result) == 0x000001, "Member 'INTERACT_BreakableSharedLightPanel_C_GetInteractDestroyed::CallFunc_HasBrokenAllLights_Result' has a wrong offset!");
+
+// Function INTERACT_BreakableSharedLightPanel.INTERACT_BreakableSharedLightPanel_C.HasBrokenAllLights
+// 0x0030 (0x0030 - 0x0000)
+struct INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UStaticMeshComponent*>           CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue; // 0x0008(0x0010)(ReferenceParm, ContainsInstancedReference)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BitShiftLeft_ReturnValue;                 // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights) == 0x000008, "Wrong alignment on INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights");
+static_assert(sizeof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights) == 0x000030, "Wrong size on INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, Result) == 0x000000, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue) == 0x000008, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_GetSortedChildComponentsByClassAndPrefix_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_Greater_IntInt_ReturnValue) == 0x000018, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_Array_Length_ReturnValue) == 0x00001C, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_BitShiftLeft_ReturnValue) == 0x000020, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_BitShiftLeft_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_Subtract_IntInt_ReturnValue) == 0x000024, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000028, "Member 'INTERACT_BreakableSharedLightPanel_C_HasBrokenAllLights::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
 
 }
 

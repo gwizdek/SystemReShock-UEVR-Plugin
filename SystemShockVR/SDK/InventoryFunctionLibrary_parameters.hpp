@@ -12,16 +12,16 @@
 
 #include "ENUM_WeaponProperty_structs.hpp"
 #include "CoreGame_structs.hpp"
+#include "ENUM_UpgradeResult_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
-#include "Engine_structs.hpp"
-#include "ENUM_Axis_structs.hpp"
-#include "STRUCT_ItemDetailsIconParams_structs.hpp"
 #include "STRUCT_WeaponMode_structs.hpp"
-#include "STRUCT_WeaponPropertyValue_structs.hpp"
-#include "ENUM_UpgradeResult_structs.hpp"
-#include "ENUM_ItemType_structs.hpp"
+#include "Engine_structs.hpp"
 #include "STRUCT_SoftItemParams_structs.hpp"
+#include "STRUCT_ItemDetailsIconParams_structs.hpp"
+#include "ENUM_Axis_structs.hpp"
+#include "STRUCT_WeaponPropertyValue_structs.hpp"
+#include "ENUM_ItemType_structs.hpp"
 
 
 namespace SDK::Params

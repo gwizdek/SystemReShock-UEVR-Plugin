@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_MFDTabCategory_structs.hpp"
 #include "UMG_structs.hpp"
 #include "UMG_classes.hpp"
+#include "ENUM_MFDTabCategory_structs.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
 
 
@@ -35,6 +35,8 @@ public:
 	class UWIDGET_TutorialMessage_C*              WIDGET_TutorialMessage;                            // 0x0298(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 
 public:
+	void InvokeSort(bool HoldingInput, bool* Result);
+	void InvokeVaporize(bool HoldingInput, bool* Result);
 	void SetHoldInteractionProgress(float Progress, bool* Result);
 	void OnPersistentMapMove(bool* Result);
 	void OnFinishedLoadingGame(bool* Result);

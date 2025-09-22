@@ -1620,8 +1620,28 @@ void UWIDGET_PlayerHUD_C::HandleItemWorldInteraction(class UITEM_Base_C* Item, b
 }
 
 
+// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.HandleSortInventoryInput
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_PlayerHUD_C::HandleSortInventoryInput(bool State)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_PlayerHUD_C", "HandleSortInventoryInput");
+
+	Params::WIDGET_PlayerHUD_C_HandleSortInventoryInput Parms{};
+
+	Parms.State = State;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.HandleVaporizeInventoryInput
-// (Protected, BlueprintCallable, BlueprintEvent)
+// (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
@@ -3023,6 +3043,54 @@ void UWIDGET_PlayerHUD_C::SetHoldInteractionProgress(float Progress, bool* Resul
 	Params::WIDGET_PlayerHUD_C_SetHoldInteractionProgress Parms{};
 
 	Parms.Progress = Progress;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.InvokeVaporize
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    HoldingInput                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_PlayerHUD_C::InvokeVaporize(bool HoldingInput, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_PlayerHUD_C", "InvokeVaporize");
+
+	Params::WIDGET_PlayerHUD_C_InvokeVaporize Parms{};
+
+	Parms.HoldingInput = HoldingInput;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.InvokeSort
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    HoldingInput                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_PlayerHUD_C::InvokeSort(bool HoldingInput, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_PlayerHUD_C", "InvokeSort");
+
+	Params::WIDGET_PlayerHUD_C_InvokeSort Parms{};
+
+	Parms.HoldingInput = HoldingInput;
 
 	UObject::ProcessEvent(Func, &Parms);
 

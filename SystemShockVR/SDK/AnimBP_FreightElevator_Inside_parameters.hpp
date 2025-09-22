@@ -16,17 +16,6 @@
 namespace SDK::Params
 {
 
-// Function AnimBP_FreightElevator_Inside.AnimBP_FreightElevator_Inside_C.ExecuteUbergraph_AnimBP_FreightElevator_Inside
-// 0x0004 (0x0004 - 0x0000)
-struct AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside) == 0x000004, "Wrong alignment on AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside");
-static_assert(sizeof(AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside) == 0x000004, "Wrong size on AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside");
-static_assert(offsetof(AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside, EntryPoint) == 0x000000, "Member 'AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside::EntryPoint' has a wrong offset!");
-
 // Function AnimBP_FreightElevator_Inside.AnimBP_FreightElevator_Inside_C.OpenDoor
 // 0x0001 (0x0001 - 0x0000)
 struct AnimBP_FreightElevator_Inside_C_OpenDoor final
@@ -120,6 +109,17 @@ public:
 static_assert(alignof(AnimBP_FreightElevator_Inside_C_AnimGraph) == 0x000008, "Wrong alignment on AnimBP_FreightElevator_Inside_C_AnimGraph");
 static_assert(sizeof(AnimBP_FreightElevator_Inside_C_AnimGraph) == 0x000010, "Wrong size on AnimBP_FreightElevator_Inside_C_AnimGraph");
 static_assert(offsetof(AnimBP_FreightElevator_Inside_C_AnimGraph, AnimGraph_0) == 0x000000, "Member 'AnimBP_FreightElevator_Inside_C_AnimGraph::AnimGraph_0' has a wrong offset!");
+
+// Function AnimBP_FreightElevator_Inside.AnimBP_FreightElevator_Inside_C.ExecuteUbergraph_AnimBP_FreightElevator_Inside
+// 0x0004 (0x0004 - 0x0000)
+struct AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside) == 0x000004, "Wrong alignment on AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside");
+static_assert(sizeof(AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside) == 0x000004, "Wrong size on AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside");
+static_assert(offsetof(AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside, EntryPoint) == 0x000000, "Member 'AnimBP_FreightElevator_Inside_C_ExecuteUbergraph_AnimBP_FreightElevator_Inside::EntryPoint' has a wrong offset!");
 
 }
 

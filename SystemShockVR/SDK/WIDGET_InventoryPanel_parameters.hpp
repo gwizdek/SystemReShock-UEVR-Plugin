@@ -12,12 +12,58 @@
 
 #include "SlateCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "STRUCT_ItemUI_structs.hpp"
 #include "UMG_structs.hpp"
+#include "STRUCT_ItemUI_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function WIDGET_InventoryPanel.WIDGET_InventoryPanel_C.ExecuteUbergraph_WIDGET_InventoryPanel
+// 0x0158 (0x0158 - 0x0000)
+struct WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FGeometry                              K2Node_ComponentBoundEvent_Geometry_1;             // 0x0004(0x0038)(IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPointerEvent                          K2Node_ComponentBoundEvent_InputEvent_1;           // 0x0040(0x0070)()
+	struct FGeometry                              K2Node_ComponentBoundEvent_Geometry;               // 0x00B0(0x0038)(IsPlainOldData, NoDestructor)
+	struct FPointerEvent                          K2Node_ComponentBoundEvent_InputEvent;             // 0x00E8(0x0070)()
+};
+static_assert(alignof(WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel) == 0x000008, "Wrong alignment on WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel");
+static_assert(sizeof(WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel) == 0x000158, "Wrong size on WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel");
+static_assert(offsetof(WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel, EntryPoint) == 0x000000, "Member 'WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel::EntryPoint' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel, K2Node_ComponentBoundEvent_Geometry_1) == 0x000004, "Member 'WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel::K2Node_ComponentBoundEvent_Geometry_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel, K2Node_ComponentBoundEvent_InputEvent_1) == 0x000040, "Member 'WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel::K2Node_ComponentBoundEvent_InputEvent_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel, K2Node_ComponentBoundEvent_Geometry) == 0x0000B0, "Member 'WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel::K2Node_ComponentBoundEvent_Geometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel, K2Node_ComponentBoundEvent_InputEvent) == 0x0000E8, "Member 'WIDGET_InventoryPanel_C_ExecuteUbergraph_WIDGET_InventoryPanel::K2Node_ComponentBoundEvent_InputEvent' has a wrong offset!");
+
+// Function WIDGET_InventoryPanel.WIDGET_InventoryPanel_C.BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature
+// 0x00A8 (0x00A8 - 0x0000)
+struct WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature final
+{
+public:
+	struct FGeometry                              Geometry;                                          // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	struct FPointerEvent                          InputEvent;                                        // 0x0038(0x0070)(BlueprintVisible, BlueprintReadOnly, Parm)
+};
+static_assert(alignof(WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature) == 0x000008, "Wrong alignment on WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature");
+static_assert(sizeof(WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature) == 0x0000A8, "Wrong size on WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature");
+static_assert(offsetof(WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature, Geometry) == 0x000000, "Member 'WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature::Geometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature, InputEvent) == 0x000038, "Member 'WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Vaporize_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature::InputEvent' has a wrong offset!");
+
+// Function WIDGET_InventoryPanel.WIDGET_InventoryPanel_C.BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature
+// 0x00A8 (0x00A8 - 0x0000)
+struct WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature final
+{
+public:
+	struct FGeometry                              Geometry;                                          // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	struct FPointerEvent                          InputEvent;                                        // 0x0038(0x0070)(BlueprintVisible, BlueprintReadOnly, Parm)
+};
+static_assert(alignof(WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature) == 0x000008, "Wrong alignment on WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature");
+static_assert(sizeof(WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature) == 0x0000A8, "Wrong size on WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature");
+static_assert(offsetof(WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature, Geometry) == 0x000000, "Member 'WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature::Geometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature, InputEvent) == 0x000038, "Member 'WIDGET_InventoryPanel_C_BndEvt__WIDGET_InventoryPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature::InputEvent' has a wrong offset!");
 
 // Function WIDGET_InventoryPanel.WIDGET_InventoryPanel_C.InitializeInventoryPanel
 // 0x0100 (0x0100 - 0x0000)

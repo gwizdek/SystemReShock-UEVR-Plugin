@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ENUM_KeypadState_structs.hpp"
+#include "Engine_structs.hpp"
 #include "INTERACT_Focusable_Base_classes.hpp"
 #include "ENUM_InteractionType_structs.hpp"
 
@@ -127,9 +127,9 @@ public:
 	void ShouldFocusOnInteract(class AController* Controller, bool* Result);
 	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
 	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
+	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
 	void CanModifyInteractPower(bool* Result);
 	void SetInteractPowered(bool State, bool* Result);
-	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 
 public:

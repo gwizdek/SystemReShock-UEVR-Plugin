@@ -17,6 +17,27 @@
 namespace SDK
 {
 
+// Function ITEM_ICadBattery.ITEM_ICadBattery_C.GetEffects
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class FText                             EffectsText                                            (Parm, OutParm)
+
+void UITEM_ICadBattery_C::GetEffects(class FText* EffectsText)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_ICadBattery_C", "GetEffects");
+
+	Params::ITEM_ICadBattery_C_GetEffects Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (EffectsText != nullptr)
+		*EffectsText = std::move(Parms.EffectsText);
+}
+
+
 // Function ITEM_ICadBattery.ITEM_ICadBattery_C.UseConsumable
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -38,27 +59,6 @@ void UITEM_ICadBattery_C::UseConsumable(class APAWN_SystemShockCharacter_C* Char
 
 	if (ConsumedItem != nullptr)
 		*ConsumedItem = Parms.ConsumedItem;
-}
-
-
-// Function ITEM_ICadBattery.ITEM_ICadBattery_C.GetEffects
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class FText                             EffectsText                                            (Parm, OutParm)
-
-void UITEM_ICadBattery_C::GetEffects(class FText* EffectsText)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_ICadBattery_C", "GetEffects");
-
-	Params::ITEM_ICadBattery_C_GetEffects Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (EffectsText != nullptr)
-		*EffectsText = std::move(Parms.EffectsText);
 }
 
 }

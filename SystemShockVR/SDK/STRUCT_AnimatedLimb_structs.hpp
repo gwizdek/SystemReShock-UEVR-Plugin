@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "ENUM_LimbType_structs.hpp"
-#include "ENUM_Axis_structs.hpp"
 #include "ENUM_LeftRightCenter_structs.hpp"
+#include "ENUM_Axis_structs.hpp"
 
 
 namespace SDK

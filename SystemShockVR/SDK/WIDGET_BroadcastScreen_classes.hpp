@@ -29,10 +29,10 @@ public:
 	class UVoxelAudioComponent*                   AudioComponent;                                    // 0x0280(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void CreateBroadcast(class UVoxelAudioComponent* AudioComponent_0, TSoftClassPtr<class UClass> Content, const struct FVector2D& DrawSize, class UBROADCAST_Base_C** Result);
 	void ClearBroadcast();
 	void UpdateContent(float DeltaTime, bool* IsFinished);
 	void PlayBroadcast(class UVoxelAudioComponent* AudioComponent_0, TSoftClassPtr<class UClass> Content, const struct FVector2D& DrawSize, class UBROADCAST_Base_C** Result);
+	void CreateBroadcast(class UVoxelAudioComponent* AudioComponent_0, TSoftClassPtr<class UClass> Content, const struct FVector2D& DrawSize, class UBROADCAST_Base_C** Result);
 	void Construct();
 	void ExecuteUbergraph_WIDGET_BroadcastScreen(int32 EntryPoint);
 

@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "STRUCT_BoundInputActionPair_structs.hpp"
+#include "ENUM_InputCategory_structs.hpp"
 #include "ENUM_PrimarySecondary_structs.hpp"
 #include "InputCore_structs.hpp"
-#include "ENUM_InputCategory_structs.hpp"
 
 
 namespace SDK::Params

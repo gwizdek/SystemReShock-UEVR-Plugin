@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_GameDifficulty_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_GameDifficulty_structs.hpp"
 #include "ENUM_EnemyType_structs.hpp"
 
 

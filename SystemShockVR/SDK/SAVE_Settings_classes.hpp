@@ -10,17 +10,17 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_InputCategory_structs.hpp"
 #include "ENUM_OffLowMediumHigh_structs.hpp"
-#include "ENUM_SmallMediumLarge_structs.hpp"
 #include "DLSSBlueprint_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "ENUM_HotbarStyle_structs.hpp"
-#include "STRUCT_BoundInputActionPair_structs.hpp"
+#include "ENUM_SmallMediumLarge_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_QualitySetting_structs.hpp"
+#include "ENUM_HotbarStyle_structs.hpp"
+#include "STRUCT_BoundInputActionPair_structs.hpp"
 #include "ENUM_OffReducedNormal_structs.hpp"
+#include "ENUM_InputCategory_structs.hpp"
 
 
 namespace SDK
@@ -85,7 +85,8 @@ public:
 	bool                                          EnableVSync;                                       // 0x00DA(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
 	bool                                          AimAssist;                                         // 0x00DB(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
 	bool                                          FocusAimToggle;                                    // 0x00DC(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_DD[0x3];                                       // 0x00DD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          SprintToggle;                                      // 0x00DD(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_DE[0x2];                                       // 0x00DE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> RealspaceKeyActionMap;                             // 0x00E0(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CyberspaceKeyActionMap;                            // 0x0130(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> MinigameKeyActionMap;                              // 0x0180(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
@@ -332,6 +333,10 @@ public:
 	void GetControllerVibrationEnabled(bool* Result);
 	void ApplyControllerVibrationSetting(bool NewValue);
 	void GetControllerVibrationProfleValue(const class FString& Culture, const class FString& Platform, bool* Result);
+	void SetSprintToggle(bool NewValue);
+	void ApplySprintToggle(bool NewValue);
+	void GetSprintToggle(bool* Result);
+	void GetSprintToggleProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
 
 public:
 	static class UClass* StaticClass()
@@ -394,6 +399,7 @@ static_assert(offsetof(USAVE_Settings_C, MotionBlur) == 0x0000D9, "Member 'USAVE
 static_assert(offsetof(USAVE_Settings_C, EnableVSync) == 0x0000DA, "Member 'USAVE_Settings_C::EnableVSync' has a wrong offset!");
 static_assert(offsetof(USAVE_Settings_C, AimAssist) == 0x0000DB, "Member 'USAVE_Settings_C::AimAssist' has a wrong offset!");
 static_assert(offsetof(USAVE_Settings_C, FocusAimToggle) == 0x0000DC, "Member 'USAVE_Settings_C::FocusAimToggle' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, SprintToggle) == 0x0000DD, "Member 'USAVE_Settings_C::SprintToggle' has a wrong offset!");
 static_assert(offsetof(USAVE_Settings_C, RealspaceKeyActionMap) == 0x0000E0, "Member 'USAVE_Settings_C::RealspaceKeyActionMap' has a wrong offset!");
 static_assert(offsetof(USAVE_Settings_C, CyberspaceKeyActionMap) == 0x000130, "Member 'USAVE_Settings_C::CyberspaceKeyActionMap' has a wrong offset!");
 static_assert(offsetof(USAVE_Settings_C, MinigameKeyActionMap) == 0x000180, "Member 'USAVE_Settings_C::MinigameKeyActionMap' has a wrong offset!");

@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "TASK_Maneuver_Base_classes.hpp"
-#include "ENUM_PreferredCombatStyle_structs.hpp"
 #include "LevelVoxelization_structs.hpp"
+#include "ENUM_PreferredCombatStyle_structs.hpp"
 
 
 namespace SDK

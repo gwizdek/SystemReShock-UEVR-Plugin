@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "STRUCT_MeleeHitboxOverlapData_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "STRUCT_MeleeHitboxOverlapData_structs.hpp"
 
 
 namespace SDK

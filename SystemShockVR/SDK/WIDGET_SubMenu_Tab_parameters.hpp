@@ -115,43 +115,41 @@ static_assert(sizeof(WIDGET_SubMenu_Tab_C_EVENT_OnMouseExit) == 0x000070, "Wrong
 static_assert(offsetof(WIDGET_SubMenu_Tab_C_EVENT_OnMouseExit, MouseEvent) == 0x000000, "Member 'WIDGET_SubMenu_Tab_C_EVENT_OnMouseExit::MouseEvent' has a wrong offset!");
 
 // Function WIDGET_SubMenu_Tab.WIDGET_SubMenu_Tab_C.SetPlatformIcon
-// 0x0050 (0x0050 - 0x0000)
+// 0x0048 (0x0048 - 0x0000)
 struct WIDGET_SubMenu_Tab_C_SetPlatformIcon final
 {
 public:
 	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstance*                      CallFunc_Array_Get_Item;                           // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0010(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstance*                      CallFunc_Array_Get_Item;                           // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UMaterialInstance*                      CallFunc_Array_Get_Item_1;                         // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UMaterialInstance*                      CallFunc_Array_Get_Item_2;                         // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UMaterialInstance*                      CallFunc_Array_Get_Item_3;                         // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstance*                      CallFunc_Array_Get_Item_4;                         // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GetCurrentPlatform_PC;                    // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetCurrentPlatform_Xbox;                  // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetCurrentPlatform_Playstation;           // 0x004A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetCurrentPlatform_Switch;                // 0x004B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetCurrentPlatform_Console;               // 0x004C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x004D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_PC;                    // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_Xbox;                  // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_Playstation;           // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_Switch;                // 0x0043(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_Console;               // 0x0044(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0045(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_SubMenu_Tab_C_SetPlatformIcon) == 0x000008, "Wrong alignment on WIDGET_SubMenu_Tab_C_SetPlatformIcon");
-static_assert(sizeof(WIDGET_SubMenu_Tab_C_SetPlatformIcon) == 0x000050, "Wrong size on WIDGET_SubMenu_Tab_C_SetPlatformIcon");
+static_assert(sizeof(WIDGET_SubMenu_Tab_C_SetPlatformIcon) == 0x000048, "Wrong size on WIDGET_SubMenu_Tab_C_SetPlatformIcon");
 static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000000, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_Array_Get_Item) == 0x000008, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetPlatformName_ReturnValue) == 0x000010, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, K2Node_SwitchString_CmpSuccess) == 0x000020, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetPlatformName_ReturnValue) == 0x000008, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, K2Node_SwitchString_CmpSuccess) == 0x000018, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_Array_Get_Item) == 0x000020, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_Array_Get_Item' has a wrong offset!");
 static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_Array_Get_Item_1) == 0x000028, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_Array_Get_Item_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_Array_Get_Item_2) == 0x000030, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_Array_Get_Item_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_Array_Get_Item_3) == 0x000038, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_Array_Get_Item_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_Array_Get_Item_4) == 0x000040, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_Array_Get_Item_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_PC) == 0x000048, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_PC' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_Xbox) == 0x000049, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_Xbox' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_Playstation) == 0x00004A, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_Playstation' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_Switch) == 0x00004B, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_Switch' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_Console) == 0x00004C, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_Console' has a wrong offset!");
-static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, K2Node_SwitchEnum_CmpSuccess) == 0x00004D, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_PC) == 0x000040, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_PC' has a wrong offset!");
+static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_Xbox) == 0x000041, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_Xbox' has a wrong offset!");
+static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_Playstation) == 0x000042, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_Playstation' has a wrong offset!");
+static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_Switch) == 0x000043, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_Switch' has a wrong offset!");
+static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, CallFunc_GetCurrentPlatform_Console) == 0x000044, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::CallFunc_GetCurrentPlatform_Console' has a wrong offset!");
+static_assert(offsetof(WIDGET_SubMenu_Tab_C_SetPlatformIcon, K2Node_SwitchEnum_CmpSuccess) == 0x000045, "Member 'WIDGET_SubMenu_Tab_C_SetPlatformIcon::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 
 }
 

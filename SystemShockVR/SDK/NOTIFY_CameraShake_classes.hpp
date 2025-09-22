@@ -25,8 +25,8 @@ public:
 	float                                         ShakeScale;                                        // 0x0040(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	class FString GetNotifyName() const;
 	bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation) const;
+	class FString GetNotifyName() const;
 
 public:
 	static class UClass* StaticClass()

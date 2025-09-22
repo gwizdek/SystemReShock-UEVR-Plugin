@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "INTERACT_DestructibleBase_classes.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "INTERACT_DestructibleBase_classes.hpp"
 
 
 namespace SDK

@@ -17,6 +17,26 @@
 namespace SDK
 {
 
+// Function EMPGrenadeProjectile.EMPGrenadeProjectile_C.OnDamageAppliedToActors
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// TMap<class UAttribMod*, struct FAttribDamageInstance>DamageInstances                                        (BlueprintVisible, BlueprintReadOnly, Parm)
+
+void AEMPGrenadeProjectile_C::OnDamageAppliedToActors(const TMap<class UAttribMod*, struct FAttribDamageInstance>& DamageInstances)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("EMPGrenadeProjectile_C", "OnDamageAppliedToActors");
+
+	Params::EMPGrenadeProjectile_C_OnDamageAppliedToActors Parms{};
+
+	Parms.DamageInstances = std::move(DamageInstances);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function EMPGrenadeProjectile.EMPGrenadeProjectile_C.GetDisableDurationScale
 // (Private, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
@@ -38,26 +58,6 @@ void AEMPGrenadeProjectile_C::GetDisableDurationScale(class APAWN_SystemShockCha
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
-}
-
-
-// Function EMPGrenadeProjectile.EMPGrenadeProjectile_C.OnDamageAppliedToActors
-// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// TMap<class UAttribMod*, struct FAttribDamageInstance>DamageInstances                                        (BlueprintVisible, BlueprintReadOnly, Parm)
-
-void AEMPGrenadeProjectile_C::OnDamageAppliedToActors(const TMap<class UAttribMod*, struct FAttribDamageInstance>& DamageInstances)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("EMPGrenadeProjectile_C", "OnDamageAppliedToActors");
-
-	Params::EMPGrenadeProjectile_C_OnDamageAppliedToActors Parms{};
-
-	Parms.DamageInstances = std::move(DamageInstances);
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

@@ -17,6 +17,26 @@
 namespace SDK
 {
 
+// Function ANIMBP_Grove_Armature.ANIMBP_Grove_Armature_C.ExecuteUbergraph_ANIMBP_Grove_Armature
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UANIMBP_Grove_Armature_C::ExecuteUbergraph_ANIMBP_Grove_Armature(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ANIMBP_Grove_Armature_C", "ExecuteUbergraph_ANIMBP_Grove_Armature");
+
+	Params::ANIMBP_Grove_Armature_C_ExecuteUbergraph_ANIMBP_Grove_Armature Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function ANIMBP_Grove_Armature.ANIMBP_Grove_Armature_C.AnimGraph
 // (HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -35,26 +55,6 @@ void UANIMBP_Grove_Armature_C::AnimGraph(struct FPoseLink* AnimGraph_0)
 
 	if (AnimGraph_0 != nullptr)
 		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
-}
-
-
-// Function ANIMBP_Grove_Armature.ANIMBP_Grove_Armature_C.ExecuteUbergraph_ANIMBP_Grove_Armature
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UANIMBP_Grove_Armature_C::ExecuteUbergraph_ANIMBP_Grove_Armature(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ANIMBP_Grove_Armature_C", "ExecuteUbergraph_ANIMBP_Grove_Armature");
-
-	Params::ANIMBP_Grove_Armature_C_ExecuteUbergraph_ANIMBP_Grove_Armature Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

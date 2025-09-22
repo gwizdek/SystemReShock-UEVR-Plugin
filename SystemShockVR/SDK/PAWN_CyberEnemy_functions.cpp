@@ -173,6 +173,27 @@ void APAWN_CyberEnemy_C::EVENT_FoundNewSpawnLocation(bool bResult, TArray<struct
 }
 
 
+// Function PAWN_CyberEnemy.PAWN_CyberEnemy_C.GetShieldAttachComponent
+// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class USceneComponent*                  Component                                              (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void APAWN_CyberEnemy_C::GetShieldAttachComponent(class USceneComponent** Component)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_CyberEnemy_C", "GetShieldAttachComponent");
+
+	Params::PAWN_CyberEnemy_C_GetShieldAttachComponent Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Component != nullptr)
+		*Component = Parms.Component;
+}
+
+
 // Function PAWN_CyberEnemy.PAWN_CyberEnemy_C.ApplyIceShields
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -184,6 +205,28 @@ void APAWN_CyberEnemy_C::ApplyIceShields()
 		Func = Class->GetFunction("PAWN_CyberEnemy_C", "ApplyIceShields");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_CyberEnemy.PAWN_CyberEnemy_C.EVENT_OnShieldValueChanged
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   CurrValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   LastValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void APAWN_CyberEnemy_C::EVENT_OnShieldValueChanged(float CurrValue, float LastValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_CyberEnemy_C", "EVENT_OnShieldValueChanged");
+
+	Params::PAWN_CyberEnemy_C_EVENT_OnShieldValueChanged Parms{};
+
+	Parms.CurrValue = CurrValue;
+	Parms.LastValue = LastValue;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -225,49 +268,6 @@ void APAWN_CyberEnemy_C::GetIceShieldSize(float* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
-}
-
-
-// Function PAWN_CyberEnemy.PAWN_CyberEnemy_C.GetShieldAttachComponent
-// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class USceneComponent*                  Component                                              (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void APAWN_CyberEnemy_C::GetShieldAttachComponent(class USceneComponent** Component)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_CyberEnemy_C", "GetShieldAttachComponent");
-
-	Params::PAWN_CyberEnemy_C_GetShieldAttachComponent Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Component != nullptr)
-		*Component = Parms.Component;
-}
-
-
-// Function PAWN_CyberEnemy.PAWN_CyberEnemy_C.EVENT_OnShieldValueChanged
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// float                                   CurrValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// float                                   LastValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void APAWN_CyberEnemy_C::EVENT_OnShieldValueChanged(float CurrValue, float LastValue)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_CyberEnemy_C", "EVENT_OnShieldValueChanged");
-
-	Params::PAWN_CyberEnemy_C_EVENT_OnShieldValueChanged Parms{};
-
-	Parms.CurrValue = CurrValue;
-	Parms.LastValue = LastValue;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 

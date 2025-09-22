@@ -17,34 +17,6 @@
 namespace SDK
 {
 
-// Function WIDGET_BroadcastScreen.WIDGET_BroadcastScreen_C.CreateBroadcast
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UVoxelAudioComponent*             AudioComponent_0                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// TSoftClassPtr<class UClass>             Content                                                (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
-// struct FVector2D                        DrawSize                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class UBROADCAST_Base_C*                Result                                                 (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWIDGET_BroadcastScreen_C::CreateBroadcast(class UVoxelAudioComponent* AudioComponent_0, TSoftClassPtr<class UClass> Content, const struct FVector2D& DrawSize, class UBROADCAST_Base_C** Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_BroadcastScreen_C", "CreateBroadcast");
-
-	Params::WIDGET_BroadcastScreen_C_CreateBroadcast Parms{};
-
-	Parms.AudioComponent_0 = AudioComponent_0;
-	Parms.Content = Content;
-	Parms.DrawSize = std::move(DrawSize);
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function WIDGET_BroadcastScreen.WIDGET_BroadcastScreen_C.ClearBroadcast
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -99,6 +71,34 @@ void UWIDGET_BroadcastScreen_C::PlayBroadcast(class UVoxelAudioComponent* AudioC
 		Func = Class->GetFunction("WIDGET_BroadcastScreen_C", "PlayBroadcast");
 
 	Params::WIDGET_BroadcastScreen_C_PlayBroadcast Parms{};
+
+	Parms.AudioComponent_0 = AudioComponent_0;
+	Parms.Content = Content;
+	Parms.DrawSize = std::move(DrawSize);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_BroadcastScreen.WIDGET_BroadcastScreen_C.CreateBroadcast
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UVoxelAudioComponent*             AudioComponent_0                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// TSoftClassPtr<class UClass>             Content                                                (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+// struct FVector2D                        DrawSize                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UBROADCAST_Base_C*                Result                                                 (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_BroadcastScreen_C::CreateBroadcast(class UVoxelAudioComponent* AudioComponent_0, TSoftClassPtr<class UClass> Content, const struct FVector2D& DrawSize, class UBROADCAST_Base_C** Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_BroadcastScreen_C", "CreateBroadcast");
+
+	Params::WIDGET_BroadcastScreen_C_CreateBroadcast Parms{};
 
 	Parms.AudioComponent_0 = AudioComponent_0;
 	Parms.Content = Content;

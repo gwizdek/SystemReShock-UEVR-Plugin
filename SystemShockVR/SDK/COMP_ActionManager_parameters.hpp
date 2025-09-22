@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ActionPriority_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
+#include "ENUM_ActionPriority_structs.hpp"
 #include "CoreGame_structs.hpp"
 #include "STRUCT_CharacterActionParams_structs.hpp"
 

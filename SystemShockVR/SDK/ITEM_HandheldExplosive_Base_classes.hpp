@@ -54,15 +54,15 @@ public:
 	void IsArmingOrThrowingExplosive(bool* Result);
 	void TryArmExplosive(bool* Result);
 	void ThrowExplosive(float Speed);
+	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
 	void EVENT_OnThrowFinished();
 	void TryDisarmExplosive(bool* Success);
 	void TryStartFuseTimer();
 	void LaunchExplosiveFromCamera(class UCameraComponent* CameraComponent, class AExplosiveProjectile_Base_C* ExplosiveProjectile, class UITEM_ExplosiveBase_C* RemovedExplosiveItem, float Speed);
-	void EVENT_OnFuseTimeExpired();
-	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
 	void TryBecomeActivatableImmediately(bool ShowImmediately, bool* Result);
-	void OnBecomeUnactivatable(bool* Result);
+	void EVENT_OnFuseTimeExpired();
 	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
+	void OnBecomeUnactivatable(bool* Result);
 	void Deactivate(bool* Result);
 
 public:

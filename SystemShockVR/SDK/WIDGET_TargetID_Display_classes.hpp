@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_TargetID_TargetStatus_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_EnemyType_structs.hpp"
-#include "ENUM_DetectionState_structs.hpp"
 #include "UMG_classes.hpp"
+#include "ENUM_TargetID_TargetStatus_structs.hpp"
+#include "ENUM_DetectionState_structs.hpp"
+#include "ENUM_EnemyType_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 
 

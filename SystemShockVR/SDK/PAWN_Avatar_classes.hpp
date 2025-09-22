@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_PrimarySecondary_structs.hpp"
 #include "Engine_structs.hpp"
+#include "ENUM_PrimarySecondary_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "PAWN_SystemShockCharacter_classes.hpp"
@@ -228,7 +228,6 @@ public:
 	void UpdateCameraShake();
 	void DeactivateWeapon(ENUM_PrimarySecondary WeaponType);
 	void UpdateCameraPOV();
-	void OnCharacterHurt(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UOBJ_ImpactData_C* ImpactData, bool* Result);
 	void UpdateRotation(float DeltaTime);
 	void HasCurrentDomainLink(bool* Result);
 	void IsCurrentDomainLink(class ACYBR_DomainLink_C* DomainLink, bool* Result);
@@ -240,7 +239,6 @@ public:
 	void ShouldBounce(class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, bool* Result);
 	void UpdateDashPower(float DeltaTime);
 	void GetDashItem(class UITEM_CyberDash_C** DashItem);
-	void GetInventoryComponent(class UCOMP_Inventory_C** Inventory);
 	void OnCharacterDied(class UOBJ_ImpactData_C* ImpactData, const struct FAttribDamageInstance& DamageInstance, class AActor* OtherActor, bool* Result);
 	void UpdateDamageEffects(float DeltaTime);
 	void Add_Damage_Effects(float Damage, class UOBJ_ImpactData_C* ImpactData, class AActor* SourceActor);
@@ -271,6 +269,8 @@ public:
 	void HandleMenuNavAccept(bool ButtonDown);
 	void HandleMenuNavBack(bool ButtonDown);
 	void HandleEscape();
+	void OnCharacterHurt(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UOBJ_ImpactData_C* ImpactData, bool* Result);
+	void GetInventoryComponent(class UCOMP_Inventory_C** Inventory);
 	void InitializeCharacter(bool* Result);
 
 public:

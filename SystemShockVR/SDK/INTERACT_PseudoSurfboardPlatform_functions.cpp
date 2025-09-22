@@ -52,6 +52,26 @@ void AINTERACT_PseudoSurfboardPlatform_C::OnToggleTargetInteractable()
 }
 
 
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.OnPlatformEnableStateChanged
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_PseudoSurfboardPlatform_C::OnPlatformEnableStateChanged(bool State)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "OnPlatformEnableStateChanged");
+
+	Params::INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged Parms{};
+
+	Parms.State = State;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnStartedSurfing
 // (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -61,6 +81,95 @@ void AINTERACT_PseudoSurfboardPlatform_C::EVENT_OnStartedSurfing()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "EVENT_OnStartedSurfing");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnCenterMoveExpired
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UMOVECONTROL_Base_C*              MoveControl                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_PseudoSurfboardPlatform_C::EVENT_OnCenterMoveExpired(class UMOVECONTROL_Base_C* MoveControl)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "EVENT_OnCenterMoveExpired");
+
+	Params::INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired Parms{};
+
+	Parms.MoveControl = MoveControl;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.IsAbleToIncreaseOverlapProgress
+// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_PseudoSurfboardPlatform_C::IsAbleToIncreaseOverlapProgress(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "IsAbleToIncreaseOverlapProgress");
+
+	Params::INTERACT_PseudoSurfboardPlatform_C_IsAbleToIncreaseOverlapProgress Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_AfterCenterMoveDelayTimer
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void AINTERACT_PseudoSurfboardPlatform_C::EVENT_AfterCenterMoveDelayTimer()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "EVENT_AfterCenterMoveDelayTimer");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EndOverlapping
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_Hacker_Simple_C*            Hacker                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_PseudoSurfboardPlatform_C::EndOverlapping(class APAWN_Hacker_Simple_C* Hacker)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "EndOverlapping");
+
+	Params::INTERACT_PseudoSurfboardPlatform_C_EndOverlapping Parms{};
+
+	Parms.Hacker = Hacker;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.ActivatePlatform
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void AINTERACT_PseudoSurfboardPlatform_C::ActivatePlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "ActivatePlatform");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -95,115 +204,6 @@ void AINTERACT_PseudoSurfboardPlatform_C::BeginOverlapping(class APAWN_Hacker_Si
 	Params::INTERACT_PseudoSurfboardPlatform_C_BeginOverlapping Parms{};
 
 	Parms.Hacker = Hacker;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.ActivatePlatform
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void AINTERACT_PseudoSurfboardPlatform_C::ActivatePlatform()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "ActivatePlatform");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EndOverlapping
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_Hacker_Simple_C*            Hacker                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_PseudoSurfboardPlatform_C::EndOverlapping(class APAWN_Hacker_Simple_C* Hacker)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "EndOverlapping");
-
-	Params::INTERACT_PseudoSurfboardPlatform_C_EndOverlapping Parms{};
-
-	Parms.Hacker = Hacker;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_AfterCenterMoveDelayTimer
-// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void AINTERACT_PseudoSurfboardPlatform_C::EVENT_AfterCenterMoveDelayTimer()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "EVENT_AfterCenterMoveDelayTimer");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.IsAbleToIncreaseOverlapProgress
-// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_PseudoSurfboardPlatform_C::IsAbleToIncreaseOverlapProgress(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "IsAbleToIncreaseOverlapProgress");
-
-	Params::INTERACT_PseudoSurfboardPlatform_C_IsAbleToIncreaseOverlapProgress Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnCenterMoveExpired
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UMOVECONTROL_Base_C*              MoveControl                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_PseudoSurfboardPlatform_C::EVENT_OnCenterMoveExpired(class UMOVECONTROL_Base_C* MoveControl)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "EVENT_OnCenterMoveExpired");
-
-	Params::INTERACT_PseudoSurfboardPlatform_C_EVENT_OnCenterMoveExpired Parms{};
-
-	Parms.MoveControl = MoveControl;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.OnPlatformEnableStateChanged
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_PseudoSurfboardPlatform_C::OnPlatformEnableStateChanged(bool State)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "OnPlatformEnableStateChanged");
-
-	Params::INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged Parms{};
-
-	Parms.State = State;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_TargetType_structs.hpp"
 #include "ENUM_MobileLaser_BeamState_structs.hpp"
 #include "AIModule_classes.hpp"
+#include "ENUM_TargetType_structs.hpp"
 
 
 namespace SDK

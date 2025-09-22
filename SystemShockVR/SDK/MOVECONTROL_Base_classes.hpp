@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreGame_classes.hpp"
 #include "STRUCT_MoveControlParams_structs.hpp"
+#include "CoreGame_classes.hpp"
 
 
 namespace SDK

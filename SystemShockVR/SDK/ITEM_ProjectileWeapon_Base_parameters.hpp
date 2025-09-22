@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "CoreGame_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "STRUCT_WeaponMode_structs.hpp"
-#include "Engine_structs.hpp"
 #include "ENUM_ActionPriority_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "Engine_structs.hpp"
+#include "STRUCT_WeaponMode_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
 
@@ -678,31 +678,6 @@ static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryEmptyMagazine, CallFunc_I
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryEmptyMagazine, CallFunc_Not_PreBool_ReturnValue) == 0x000003, "Member 'ITEM_ProjectileWeapon_Base_C_TryEmptyMagazine::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryEmptyMagazine, CallFunc_IsEquipped_Result) == 0x000004, "Member 'ITEM_ProjectileWeapon_Base_C_TryEmptyMagazine::CallFunc_IsEquipped_Result' has a wrong offset!");
 
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.ReceiveAnimationMessage
-// 0x0018 (0x0018 - 0x0000)
-struct ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage final
-{
-public:
-	class FString                                 Message;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveAnimationMessage_Result;           // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TrySwitchToDesiredModeImmediately_Result; // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue;            // 0x0013(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue_1;          // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue_2;          // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue_3;          // 0x0016(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage");
-static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage) == 0x000018, "Wrong size on ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, Message) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::Message' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, Result) == 0x000010, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_ReceiveAnimationMessage_Result) == 0x000011, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_ReceiveAnimationMessage_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_TrySwitchToDesiredModeImmediately_Result) == 0x000012, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_TrySwitchToDesiredModeImmediately_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue) == 0x000013, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue_1) == 0x000014, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue_2) == 0x000015, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue_3) == 0x000016, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue_3' has a wrong offset!");
-
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnAutoReloadStateChanged
 // 0x0001 (0x0001 - 0x0000)
 struct ITEM_ProjectileWeapon_Base_C_OnAutoReloadStateChanged final
@@ -885,85 +860,86 @@ static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EjectShell, CallFunc_Normal_
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EjectShell, CallFunc_TransformDirection_ReturnValue) == 0x0000F8, "Member 'ITEM_ProjectileWeapon_Base_C_EjectShell::CallFunc_TransformDirection_ReturnValue' has a wrong offset!");
 
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.MoveAmmoToInventory
-// 0x01B0 (0x01B0 - 0x0000)
+// 0x01F0 (0x01F0 - 0x0000)
 struct ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory final
 {
 public:
-	int32                                         AmmoToMove;                                        // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 AmmoClass;                                         // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          GrantItemSuccess;                                  // 0x0010(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_12[0x6];                                       // 0x0012(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCOMP_Inventory_C*                      CallFunc_GetInventory_Inventory;                   // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetAmmoInMagazine_Ammo;                   // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetActorForwardVector_ReturnValue;        // 0x002C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x0038(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue;          // 0x0044(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x0050(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class APICKUP_Base_C*                         CallFunc_SpawnPickupActorWithItemCount_Result;     // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_SetCurrentMode_Result;                    // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x006A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_6B[0x5];                                       // 0x006B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_HardItemParams                 K2Node_MakeStruct_STRUCT_HardItemParams;           // 0x0070(0x0010)(IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCOMP_Inventory_C*                      CallFunc_GetInventory_Inventory_1;                 // 0x0088(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GrantItem_Result;                         // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0091(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_92[0x6];                                       // 0x0092(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_WeaponMode                     CallFunc_GetCurrentMode_Mode;                      // 0x0098(0x0100)(HasGetValueTypeHash)
-	class UClass*                                 CallFunc_LoadClassAsset_Blocking_ReturnValue;      // 0x0198(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 K2Node_ClassDynamicCast_AsITEM_Base;               // 0x01A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_ClassDynamicCast_bSuccess;                  // 0x01A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class APAWN_Hacker_Simple_C*                  HackerPawn;                                        // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 InventoryOwner;                                    // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         AmmoToMove;                                        // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 AmmoClass;                                         // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          GrantItemSuccess;                                  // 0x0020(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCOMP_Inventory_C*                      CallFunc_GetInventoryComponent_Inventory;          // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FSTRUCT_HardItemParams                 K2Node_MakeStruct_STRUCT_HardItemParams;           // 0x0038(0x0010)(IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GrantItem_Result;                         // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0052(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0053(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCOMP_Inventory_C*                      CallFunc_GetInventory_Inventory;                   // 0x0058(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetAmmoInMagazine_Ammo;                   // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetActorForwardVector_ReturnValue;        // 0x006C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue;          // 0x0078(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x0084(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x0090(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_9C[0x4];                                       // 0x009C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APICKUP_Base_C*                         CallFunc_SpawnPickupActorWithItemCount_Result;     // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_SetCurrentMode_Result;                    // 0x00A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x00AA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_AB[0x5];                                       // 0x00AB(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_HardItemParams                 K2Node_MakeStruct_STRUCT_HardItemParams_1;         // 0x00B0(0x0010)(IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C1[0x7];                                       // 0x00C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCOMP_Inventory_C*                      CallFunc_GetInventory_Inventory_1;                 // 0x00C8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GrantItem_Result_1;                       // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x00D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_D2[0x6];                                       // 0x00D2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_WeaponMode                     CallFunc_GetCurrentMode_Mode;                      // 0x00D8(0x0100)(HasGetValueTypeHash)
+	class UClass*                                 CallFunc_LoadClassAsset_Blocking_ReturnValue;      // 0x01D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 K2Node_ClassDynamicCast_AsITEM_Base;               // 0x01E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ClassDynamicCast_bSuccess;                  // 0x01E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory");
-static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory) == 0x0001B0, "Wrong size on ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, AmmoToMove) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::AmmoToMove' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, AmmoClass) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::AmmoClass' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, GrantItemSuccess) == 0x000010, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::GrantItemSuccess' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Not_PreBool_ReturnValue) == 0x000011, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetInventory_Inventory) == 0x000018, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetInventory_Inventory' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetOwner_ReturnValue) == 0x000020, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetAmmoInMagazine_Ammo) == 0x000028, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetAmmoInMagazine_Ammo' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetActorForwardVector_ReturnValue) == 0x00002C, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetActorForwardVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x000038, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_K2_GetActorLocation_ReturnValue) == 0x000044, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_K2_GetActorLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Add_VectorVector_ReturnValue) == 0x000050, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_SpawnPickupActorWithItemCount_Result) == 0x000060, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_SpawnPickupActorWithItemCount_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000068, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_SetCurrentMode_Result) == 0x000069, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_SetCurrentMode_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_BooleanAND_ReturnValue) == 0x00006A, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, K2Node_MakeStruct_STRUCT_HardItemParams) == 0x000070, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::K2Node_MakeStruct_STRUCT_HardItemParams' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Greater_IntInt_ReturnValue) == 0x000080, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetInventory_Inventory_1) == 0x000088, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetInventory_Inventory_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GrantItem_Result) == 0x000090, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GrantItem_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Not_PreBool_ReturnValue_1) == 0x000091, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetCurrentMode_Mode) == 0x000098, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetCurrentMode_Mode' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_LoadClassAsset_Blocking_ReturnValue) == 0x000198, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_LoadClassAsset_Blocking_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, K2Node_ClassDynamicCast_AsITEM_Base) == 0x0001A0, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::K2Node_ClassDynamicCast_AsITEM_Base' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, K2Node_ClassDynamicCast_bSuccess) == 0x0001A8, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::K2Node_ClassDynamicCast_bSuccess' has a wrong offset!");
-
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.EnableDamage
-// 0x0020 (0x0020 - 0x0000)
-struct ITEM_ProjectileWeapon_Base_C_EnableDamage final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EnableDamage_Result;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 CallFunc_FireProjectile_FiredProjectile;           // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_FireProjectile_Direction;                 // 0x0010(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ITEM_ProjectileWeapon_Base_C_EnableDamage) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_EnableDamage");
-static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_EnableDamage) == 0x000020, "Wrong size on ITEM_ProjectileWeapon_Base_C_EnableDamage");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EnableDamage, Result) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_EnableDamage::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EnableDamage, CallFunc_EnableDamage_Result) == 0x000001, "Member 'ITEM_ProjectileWeapon_Base_C_EnableDamage::CallFunc_EnableDamage_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EnableDamage, CallFunc_FireProjectile_FiredProjectile) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_EnableDamage::CallFunc_FireProjectile_FiredProjectile' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EnableDamage, CallFunc_FireProjectile_Direction) == 0x000010, "Member 'ITEM_ProjectileWeapon_Base_C_EnableDamage::CallFunc_FireProjectile_Direction' has a wrong offset!");
+static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory) == 0x0001F0, "Wrong size on ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, HackerPawn) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::HackerPawn' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, InventoryOwner) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::InventoryOwner' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, AmmoToMove) == 0x000010, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::AmmoToMove' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, AmmoClass) == 0x000018, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::AmmoClass' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, GrantItemSuccess) == 0x000020, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::GrantItemSuccess' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetInventoryComponent_Inventory) == 0x000028, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetInventoryComponent_Inventory' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetPlayerPawn_ReturnValue) == 0x000030, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, K2Node_MakeStruct_STRUCT_HardItemParams) == 0x000038, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::K2Node_MakeStruct_STRUCT_HardItemParams' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000048, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, K2Node_DynamicCast_bSuccess) == 0x000050, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GrantItem_Result) == 0x000051, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GrantItem_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Not_PreBool_ReturnValue) == 0x000052, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000053, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetInventory_Inventory) == 0x000058, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetInventory_Inventory' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetOwner_ReturnValue) == 0x000060, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetAmmoInMagazine_Ammo) == 0x000068, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetAmmoInMagazine_Ammo' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetActorForwardVector_ReturnValue) == 0x00006C, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetActorForwardVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_K2_GetActorLocation_ReturnValue) == 0x000078, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_K2_GetActorLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x000084, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Add_VectorVector_ReturnValue) == 0x000090, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_SpawnPickupActorWithItemCount_Result) == 0x0000A0, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_SpawnPickupActorWithItemCount_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x0000A8, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_SetCurrentMode_Result) == 0x0000A9, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_SetCurrentMode_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_BooleanAND_ReturnValue) == 0x0000AA, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, K2Node_MakeStruct_STRUCT_HardItemParams_1) == 0x0000B0, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::K2Node_MakeStruct_STRUCT_HardItemParams_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Greater_IntInt_ReturnValue) == 0x0000C0, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetInventory_Inventory_1) == 0x0000C8, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetInventory_Inventory_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GrantItem_Result_1) == 0x0000D0, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GrantItem_Result_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_Not_PreBool_ReturnValue_1) == 0x0000D1, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_GetCurrentMode_Mode) == 0x0000D8, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_GetCurrentMode_Mode' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, CallFunc_LoadClassAsset_Blocking_ReturnValue) == 0x0001D8, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::CallFunc_LoadClassAsset_Blocking_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, K2Node_ClassDynamicCast_AsITEM_Base) == 0x0001E0, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::K2Node_ClassDynamicCast_AsITEM_Base' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory, K2Node_ClassDynamicCast_bSuccess) == 0x0001E8, "Member 'ITEM_ProjectileWeapon_Base_C_MoveAmmoToInventory::K2Node_ClassDynamicCast_bSuccess' has a wrong offset!");
 
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.FireProjectile
 // 0x0110 (0x0110 - 0x0000)
@@ -1017,40 +993,6 @@ static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_FireProjectile, CallFunc_Bre
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_FireProjectile, CallFunc_BreakTransform_Rotation) == 0x0000EC, "Member 'ITEM_ProjectileWeapon_Base_C_FireProjectile::CallFunc_BreakTransform_Rotation' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_FireProjectile, CallFunc_BreakTransform_Scale) == 0x0000F8, "Member 'ITEM_ProjectileWeapon_Base_C_FireProjectile::CallFunc_BreakTransform_Scale' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_FireProjectile, CallFunc_GetForwardVector_ReturnValue) == 0x000104, "Member 'ITEM_ProjectileWeapon_Base_C_FireProjectile::CallFunc_GetForwardVector_ReturnValue' has a wrong offset!");
-
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.SetCurrentMode
-// 0x0218 (0x0218 - 0x0000)
-struct ITEM_ProjectileWeapon_Base_C_SetCurrentMode final
-{
-public:
-	int32                                         Mode;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsActivatable_Result;                     // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsActivatable_Result_1;                   // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_IntInt_ReturnValue;              // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_WeaponMode                     CallFunc_GetWeaponMode_Mode;                       // 0x0010(0x0100)(HasGetValueTypeHash)
-	struct FSTRUCT_WeaponMode                     CallFunc_GetWeaponMode_Mode_1;                     // 0x0110(0x0100)(HasGetValueTypeHash)
-	bool                                          CallFunc_NotEqual_SoftClassReference_ReturnValue;  // 0x0210(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_SetCurrentMode_Result;                    // 0x0211(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_SetCurrentMode_Result_1;                  // 0x0212(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsEquipped_Result;                        // 0x0213(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_SetCurrentMode");
-static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode) == 0x000218, "Wrong size on ITEM_ProjectileWeapon_Base_C_SetCurrentMode");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, Mode) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::Mode' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, Result) == 0x000004, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_IsActivatable_Result) == 0x000005, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_IsActivatable_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_IsActivatable_Result_1) == 0x000006, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_IsActivatable_Result_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_NotEqual_IntInt_ReturnValue) == 0x000007, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_NotEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_GetWeaponMode_Mode) == 0x000010, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_GetWeaponMode_Mode' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_GetWeaponMode_Mode_1) == 0x000110, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_GetWeaponMode_Mode_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_NotEqual_SoftClassReference_ReturnValue) == 0x000210, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_NotEqual_SoftClassReference_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_SetCurrentMode_Result) == 0x000211, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_SetCurrentMode_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_SetCurrentMode_Result_1) == 0x000212, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_SetCurrentMode_Result_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_IsEquipped_Result) == 0x000213, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_IsEquipped_Result' has a wrong offset!");
 
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.EVENT_OnTryAutomaticRefire
 // 0x0018 (0x0018 - 0x0000)
@@ -1272,36 +1214,6 @@ static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_QueueModeSwitchWithDuration) =
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_QueueModeSwitchWithDuration, Duration) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_QueueModeSwitchWithDuration::Duration' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_QueueModeSwitchWithDuration, CallFunc_GetOwnerCharacter_Character) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_QueueModeSwitchWithDuration::CallFunc_GetOwnerCharacter_Character' has a wrong offset!");
 
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.GetWeaponModeDisplayName
-// 0x0158 (0x0158 - 0x0000)
-struct ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName final
-{
-public:
-	int32                                         ModeIndex;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          ShortName;                                         // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   Result;                                            // 0x0008(0x0018)(Parm, OutParm)
-	bool                                          Temp_bool_Variable;                                // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_WeaponMode                     CallFunc_GetWeaponMode_Mode;                       // 0x0028(0x0100)(HasGetValueTypeHash)
-	class UClass*                                 CallFunc_LoadClassAsset_Blocking_ReturnValue;      // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 K2Node_ClassDynamicCast_AsITEM_Base;               // 0x0130(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_ClassDynamicCast_bSuccess;                  // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_139[0x7];                                      // 0x0139(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   K2Node_Select_Default;                             // 0x0140(0x0018)()
-};
-static_assert(alignof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName");
-static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName) == 0x000158, "Wrong size on ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, ModeIndex) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::ModeIndex' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, ShortName) == 0x000004, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::ShortName' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, Result) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, Temp_bool_Variable) == 0x000020, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, CallFunc_GetWeaponMode_Mode) == 0x000028, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::CallFunc_GetWeaponMode_Mode' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, CallFunc_LoadClassAsset_Blocking_ReturnValue) == 0x000128, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::CallFunc_LoadClassAsset_Blocking_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, K2Node_ClassDynamicCast_AsITEM_Base) == 0x000130, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::K2Node_ClassDynamicCast_AsITEM_Base' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, K2Node_ClassDynamicCast_bSuccess) == 0x000138, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::K2Node_ClassDynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, K2Node_Select_Default) == 0x000140, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::K2Node_Select_Default' has a wrong offset!");
-
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.EVENT_OnTryReloadWhenActionFinished
 // 0x0048 (0x0048 - 0x0000)
 struct ITEM_ProjectileWeapon_Base_C_EVENT_OnTryReloadWhenActionFinished final
@@ -1387,21 +1299,6 @@ static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EVENT_OnTryReloadWhenAmmoBag
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EVENT_OnTryReloadWhenAmmoBagChanged, CallFunc_GetInventoryComponent_Inventory) == 0x000170, "Member 'ITEM_ProjectileWeapon_Base_C_EVENT_OnTryReloadWhenAmmoBagChanged::CallFunc_GetInventoryComponent_Inventory' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EVENT_OnTryReloadWhenAmmoBagChanged, CallFunc_GetBagByType_Bag) == 0x000178, "Member 'ITEM_ProjectileWeapon_Base_C_EVENT_OnTryReloadWhenAmmoBagChanged::CallFunc_GetBagByType_Bag' has a wrong offset!");
 
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnWeaponBecameActivatable
-// 0x0010 (0x0010 - 0x0000)
-struct ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          ShowImmediately;                                   // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ShouldAutoReload_Result;                  // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable");
-static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable) == 0x000010, "Wrong size on ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable, Character) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable::Character' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable, ShowImmediately) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable::ShowImmediately' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable, CallFunc_ShouldAutoReload_Result) == 0x000009, "Member 'ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable::CallFunc_ShouldAutoReload_Result' has a wrong offset!");
-
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.GetDesiredModeSwitchIndex
 // 0x0004 (0x0004 - 0x0000)
 struct ITEM_ProjectileWeapon_Base_C_GetDesiredModeSwitchIndex final
@@ -1461,6 +1358,128 @@ static_assert(alignof(ITEM_ProjectileWeapon_Base_C_TryDestroyShellCasingComponen
 static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_TryDestroyShellCasingComponent) == 0x000001, "Wrong size on ITEM_ProjectileWeapon_Base_C_TryDestroyShellCasingComponent");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryDestroyShellCasingComponent, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_TryDestroyShellCasingComponent::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.ReceiveAnimationMessage
+// 0x0018 (0x0018 - 0x0000)
+struct ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage final
+{
+public:
+	class FString                                 Message;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveAnimationMessage_Result;           // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TrySwitchToDesiredModeImmediately_Result; // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue;            // 0x0013(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue_1;          // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue_2;          // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue_3;          // 0x0016(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage");
+static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage) == 0x000018, "Wrong size on ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, Message) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::Message' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, Result) == 0x000010, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_ReceiveAnimationMessage_Result) == 0x000011, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_ReceiveAnimationMessage_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_TrySwitchToDesiredModeImmediately_Result) == 0x000012, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_TrySwitchToDesiredModeImmediately_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue) == 0x000013, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue_1) == 0x000014, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue_2) == 0x000015, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue_3) == 0x000016, "Member 'ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue_3' has a wrong offset!");
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.EnableDamage
+// 0x0020 (0x0020 - 0x0000)
+struct ITEM_ProjectileWeapon_Base_C_EnableDamage final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EnableDamage_Result;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class AActor*                                 CallFunc_FireProjectile_FiredProjectile;           // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_FireProjectile_Direction;                 // 0x0010(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ITEM_ProjectileWeapon_Base_C_EnableDamage) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_EnableDamage");
+static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_EnableDamage) == 0x000020, "Wrong size on ITEM_ProjectileWeapon_Base_C_EnableDamage");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EnableDamage, Result) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_EnableDamage::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EnableDamage, CallFunc_EnableDamage_Result) == 0x000001, "Member 'ITEM_ProjectileWeapon_Base_C_EnableDamage::CallFunc_EnableDamage_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EnableDamage, CallFunc_FireProjectile_FiredProjectile) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_EnableDamage::CallFunc_FireProjectile_FiredProjectile' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_EnableDamage, CallFunc_FireProjectile_Direction) == 0x000010, "Member 'ITEM_ProjectileWeapon_Base_C_EnableDamage::CallFunc_FireProjectile_Direction' has a wrong offset!");
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.SetCurrentMode
+// 0x0218 (0x0218 - 0x0000)
+struct ITEM_ProjectileWeapon_Base_C_SetCurrentMode final
+{
+public:
+	int32                                         Mode;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsActivatable_Result;                     // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsActivatable_Result_1;                   // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_IntInt_ReturnValue;              // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_WeaponMode                     CallFunc_GetWeaponMode_Mode;                       // 0x0010(0x0100)(HasGetValueTypeHash)
+	struct FSTRUCT_WeaponMode                     CallFunc_GetWeaponMode_Mode_1;                     // 0x0110(0x0100)(HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_SoftClassReference_ReturnValue;  // 0x0210(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_SetCurrentMode_Result;                    // 0x0211(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_SetCurrentMode_Result_1;                  // 0x0212(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsEquipped_Result;                        // 0x0213(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_SetCurrentMode");
+static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode) == 0x000218, "Wrong size on ITEM_ProjectileWeapon_Base_C_SetCurrentMode");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, Mode) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::Mode' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, Result) == 0x000004, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_IsActivatable_Result) == 0x000005, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_IsActivatable_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_IsActivatable_Result_1) == 0x000006, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_IsActivatable_Result_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_NotEqual_IntInt_ReturnValue) == 0x000007, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_NotEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_GetWeaponMode_Mode) == 0x000010, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_GetWeaponMode_Mode' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_GetWeaponMode_Mode_1) == 0x000110, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_GetWeaponMode_Mode_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_NotEqual_SoftClassReference_ReturnValue) == 0x000210, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_NotEqual_SoftClassReference_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_SetCurrentMode_Result) == 0x000211, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_SetCurrentMode_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_SetCurrentMode_Result_1) == 0x000212, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_SetCurrentMode_Result_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_SetCurrentMode, CallFunc_IsEquipped_Result) == 0x000213, "Member 'ITEM_ProjectileWeapon_Base_C_SetCurrentMode::CallFunc_IsEquipped_Result' has a wrong offset!");
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.GetWeaponModeDisplayName
+// 0x0158 (0x0158 - 0x0000)
+struct ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName final
+{
+public:
+	int32                                         ModeIndex;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          ShortName;                                         // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   Result;                                            // 0x0008(0x0018)(Parm, OutParm)
+	bool                                          Temp_bool_Variable;                                // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_WeaponMode                     CallFunc_GetWeaponMode_Mode;                       // 0x0028(0x0100)(HasGetValueTypeHash)
+	class UClass*                                 CallFunc_LoadClassAsset_Blocking_ReturnValue;      // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 K2Node_ClassDynamicCast_AsITEM_Base;               // 0x0130(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ClassDynamicCast_bSuccess;                  // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_139[0x7];                                      // 0x0139(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   K2Node_Select_Default;                             // 0x0140(0x0018)()
+};
+static_assert(alignof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName");
+static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName) == 0x000158, "Wrong size on ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, ModeIndex) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::ModeIndex' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, ShortName) == 0x000004, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::ShortName' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, Result) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, Temp_bool_Variable) == 0x000020, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, CallFunc_GetWeaponMode_Mode) == 0x000028, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::CallFunc_GetWeaponMode_Mode' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, CallFunc_LoadClassAsset_Blocking_ReturnValue) == 0x000128, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::CallFunc_LoadClassAsset_Blocking_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, K2Node_ClassDynamicCast_AsITEM_Base) == 0x000130, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::K2Node_ClassDynamicCast_AsITEM_Base' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, K2Node_ClassDynamicCast_bSuccess) == 0x000138, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::K2Node_ClassDynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName, K2Node_Select_Default) == 0x000140, "Member 'ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName::K2Node_Select_Default' has a wrong offset!");
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnWeaponBecameActivatable
+// 0x0010 (0x0010 - 0x0000)
+struct ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          ShowImmediately;                                   // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ShouldAutoReload_Result;                  // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable");
+static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable) == 0x000010, "Wrong size on ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable, Character) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable::Character' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable, ShowImmediately) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable::ShowImmediately' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable, CallFunc_ShouldAutoReload_Result) == 0x000009, "Member 'ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable::CallFunc_ShouldAutoReload_Result' has a wrong offset!");
+
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.TryBeginReloading
 // 0x0008 (0x0008 - 0x0000)
 struct ITEM_ProjectileWeapon_Base_C_TryBeginReloading final
@@ -1486,21 +1505,6 @@ static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryBeginReloading, CallFunc_
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryBeginReloading, CallFunc_IsEquipped_Result) == 0x000006, "Member 'ITEM_ProjectileWeapon_Base_C_TryBeginReloading::CallFunc_IsEquipped_Result' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryBeginReloading, CallFunc_CanRefillMagazine_Result) == 0x000007, "Member 'ITEM_ProjectileWeapon_Base_C_TryBeginReloading::CallFunc_CanRefillMagazine_Result' has a wrong offset!");
 
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnBecomeUnactivatable
-// 0x0003 (0x0003 - 0x0000)
-struct ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ShouldAutoReload_Result;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable");
-static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable) == 0x000003, "Wrong size on ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable, CallFunc_ShouldAutoReload_Result) == 0x000001, "Member 'ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable::CallFunc_ShouldAutoReload_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000002, "Member 'ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
-
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.Activate
 // 0x0010 (0x0010 - 0x0000)
 struct ITEM_ProjectileWeapon_Base_C_Activate final
@@ -1515,6 +1519,21 @@ static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_Activate) == 0x000010, "Wrong 
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_Activate, Character) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_Activate::Character' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_Activate, Result) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_Activate::Result' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_Activate, CallFunc_Activate_Result) == 0x000009, "Member 'ITEM_ProjectileWeapon_Base_C_Activate::CallFunc_Activate_Result' has a wrong offset!");
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnBecomeUnactivatable
+// 0x0003 (0x0003 - 0x0000)
+struct ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ShouldAutoReload_Result;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable");
+static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable) == 0x000003, "Wrong size on ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable, CallFunc_ShouldAutoReload_Result) == 0x000001, "Member 'ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable::CallFunc_ShouldAutoReload_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000002, "Member 'ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
 
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.Deactivate
 // 0x0003 (0x0003 - 0x0000)

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "ENUM_ActionPriority_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ITEM_WeaponBase_classes.hpp"
 
@@ -94,8 +94,6 @@ public:
 	void TryEmptyMagazine();
 	void OnMagazineEmptied();
 	void OnMagazineRefilled();
-	void SetupMaterial();
-	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
 	void OnAutoReloadStateChanged(bool State);
 	void MarkShouldRefillMagazine(bool State);
 	void ForceAddAmmoToMagazine(int32 Ammo);
@@ -105,9 +103,7 @@ public:
 	void EjectShell();
 	void MoveAmmoToInventory();
 	void MoveAmmoFromChamberToMagazine();
-	void EnableDamage(bool* Result);
 	void FireProjectile(class AActor** FiredProjectile, struct FVector* Direction);
-	void SetCurrentMode(int32 Mode, bool* Result);
 	void EVENT_OnTryAutomaticRefire();
 	void FireProjectileInDirection(const struct FVector& BarrelLocation, const struct FVector& ProjectileDirection, class AActor** FiredProjectile, struct FVector* Direction);
 	void InitializeProjectileDamageSettings(class ABulletProjectile_Base_C* BulletProjectileActor);
@@ -117,18 +113,22 @@ public:
 	void EVENT_OnAllowRefire();
 	void QueueModeSwitchWithDuration(float Duration);
 	void QueueModeSwitch();
-	void GetWeaponModeDisplayName(int32 ModeIndex, bool ShortName, class FText* Result);
 	void EVENT_OnDischargeStarted();
 	void EVENT_OnTryReloadWhenActionFinished(class UCharacterAction_C* Action);
 	void EVENT_OnTryReloadWhenAmmoBagChanged(int32 SlotIndex_0);
-	void OnWeaponBecameActivatable(class APAWN_SystemShockCharacter_C* Character, bool ShowImmediately);
 	void GetDesiredModeSwitchIndex(int32* Result);
 	void TrySwitchToDesiredModeImmediately(bool* Result);
 	void TryCreateShellCasingComponent();
 	void TryDestroyShellCasingComponent();
+	void SetupMaterial();
+	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
+	void EnableDamage(bool* Result);
+	void SetCurrentMode(int32 Mode, bool* Result);
+	void GetWeaponModeDisplayName(int32 ModeIndex, bool ShortName, class FText* Result);
+	void OnWeaponBecameActivatable(class APAWN_SystemShockCharacter_C* Character, bool ShowImmediately);
 	void TryBeginReloading(bool* Result);
-	void OnBecomeUnactivatable(bool* Result);
 	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
+	void OnBecomeUnactivatable(bool* Result);
 	void Deactivate(bool* Result);
 
 public:

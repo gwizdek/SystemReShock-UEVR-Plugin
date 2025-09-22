@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "ENUM_TargetAssignmentType_structs.hpp"
-#include "ENUM_DetectionState_structs.hpp"
 #include "AIModule_classes.hpp"
+#include "ENUM_DetectionState_structs.hpp"
 
 
 namespace SDK

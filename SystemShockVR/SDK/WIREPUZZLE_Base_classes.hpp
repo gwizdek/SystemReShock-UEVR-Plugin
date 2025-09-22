@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "ENUM_PuzzleSolveType_structs.hpp"
+#include "PUZZLE_Base_classes.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "PUZZLE_Base_classes.hpp"
 #include "ENUM_InteractResultType_structs.hpp"
 
 

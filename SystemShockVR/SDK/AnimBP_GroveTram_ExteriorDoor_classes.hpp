@@ -33,8 +33,6 @@ public:
 	bool                                          IsOpen;                                            // 0x04E0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
-	void AnimGraph(struct FPoseLink* AnimGraph_0);
-	void ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor(int32 EntryPoint);
 	void OpenDoor(bool* Result);
 	void CloseDoor(bool* Result);
 	void IsLocked(bool* Result);
@@ -42,6 +40,8 @@ public:
 	void HideFrontButton(bool HideState, bool* Result);
 	void HideBackButton(bool HideState, bool* Result);
 	void UnlockDoor(bool* Result);
+	void AnimGraph(struct FPoseLink* AnimGraph_0);
+	void ExecuteUbergraph_AnimBP_GroveTram_ExteriorDoor(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()

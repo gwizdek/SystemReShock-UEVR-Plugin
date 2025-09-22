@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_HotbarStyle_structs.hpp"
-#include "Engine_classes.hpp"
-#include "ENUM_TargetID_TargetStatus_structs.hpp"
 #include "ENUM_LaserRapierColor_structs.hpp"
+#include "Engine_classes.hpp"
+#include "ENUM_HotbarStyle_structs.hpp"
+#include "ENUM_TargetID_TargetStatus_structs.hpp"
+#include "ENUM_OffLowMediumHigh_structs.hpp"
 #include "ENUM_SaveLoad_structs.hpp"
 #include "ENUM_OffReducedNormal_structs.hpp"
-#include "ENUM_OffLowMediumHigh_structs.hpp"
 #include "ENUM_MediaTabFilterType_structs.hpp"
 #include "ENUM_GameDifficultyConfigCategory_structs.hpp"
 #include "ENUM_Axis_structs.hpp"

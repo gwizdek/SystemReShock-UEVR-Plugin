@@ -76,9 +76,9 @@ public:
 	void GetEquippedWeaponHotbarSlot(class UCOMP_Hotbar_C** HotbarComponent, int32* HotbarSlotIndex);
 	void CycleEquippedWeaponFromHotbarSlot(class UCOMP_Hotbar_C* HotbarComponent, int32 HotbarSlotIndex, bool Previous, class UClass* IgnoreClass, bool* Success);
 	void CycleEquippedWeapon(bool Previous, class UClass* IgnoreClass, bool* Success);
+	void SetEquipmentDisabled(bool Disable);
 	void IsEquipmentDisabled(bool* Result);
 	void UpdateItemActivationState(class UITEM_Base_C* Item);
-	void SetEquipmentDisabled(bool Disable);
 	void UpdateEquippedWeaponState();
 	void IsOverrideHandheldBeingUsed(class UITEM_Base_C* Item, bool* Result);
 	void DeactivateCurrentItem();

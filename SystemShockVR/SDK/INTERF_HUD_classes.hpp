@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_classes.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "ENUM_MFDTabCategory_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 
 
 namespace SDK
@@ -36,6 +36,8 @@ public:
 	void GetSubtitleWidget(class UWIDGET_Subtitles_C** Result);
 	void GetMFDState(bool* IsMFDOpen, ENUM_MFDTabCategory* CurrentMFDTab);
 	void SetHoldInteractionProgress(float Progress, bool* Result);
+	void InvokeVaporize(bool HoldingInput, bool* Result);
+	void InvokeSort(bool HoldingInput, bool* Result);
 
 public:
 	static class UClass* StaticClass()

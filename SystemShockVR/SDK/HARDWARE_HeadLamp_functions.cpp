@@ -17,17 +17,23 @@
 namespace SDK
 {
 
-// Function HARDWARE_HeadLamp.HARDWARE_HeadLamp_C.EVENT_OnHeadLampVisualDetectionTick
-// (Private, BlueprintCallable, BlueprintEvent)
+// Function HARDWARE_HeadLamp.HARDWARE_HeadLamp_C.OnVisionUnitActivated
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UHARDWARE_HeadLamp_C::EVENT_OnHeadLampVisualDetectionTick()
+void UHARDWARE_HeadLamp_C::OnVisionUnitActivated(class APAWN_SystemShockCharacter_C* Character)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HARDWARE_HeadLamp_C", "EVENT_OnHeadLampVisualDetectionTick");
+		Func = Class->GetFunction("HARDWARE_HeadLamp_C", "OnVisionUnitActivated");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::HARDWARE_HeadLamp_C_OnVisionUnitActivated Parms{};
+
+	Parms.Character = Character;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -51,23 +57,17 @@ void UHARDWARE_HeadLamp_C::OnVisionUnitDeactivated(class APAWN_SystemShockCharac
 }
 
 
-// Function HARDWARE_HeadLamp.HARDWARE_HeadLamp_C.OnVisionUnitActivated
-// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function HARDWARE_HeadLamp.HARDWARE_HeadLamp_C.EVENT_OnHeadLampVisualDetectionTick
+// (Private, BlueprintCallable, BlueprintEvent)
 
-void UHARDWARE_HeadLamp_C::OnVisionUnitActivated(class APAWN_SystemShockCharacter_C* Character)
+void UHARDWARE_HeadLamp_C::EVENT_OnHeadLampVisualDetectionTick()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HARDWARE_HeadLamp_C", "OnVisionUnitActivated");
+		Func = Class->GetFunction("HARDWARE_HeadLamp_C", "EVENT_OnHeadLampVisualDetectionTick");
 
-	Params::HARDWARE_HeadLamp_C_OnVisionUnitActivated Parms{};
-
-	Parms.Character = Character;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

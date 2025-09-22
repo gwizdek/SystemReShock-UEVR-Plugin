@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_HotbarStyle_structs.hpp"
 #include "PAWN_Hacker_Simple_classes.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_MFDTabCategory_structs.hpp"
+#include "ENUM_HotbarStyle_structs.hpp"
 
 
 namespace SDK
@@ -67,26 +67,26 @@ public:
 	void InpActEvt_Locked_SimplifiedHotbar1_K2Node_InputActionEvent_24(const struct FKey& Key);
 	void InpActEvt_Locked_SimplifiedHotbar2_K2Node_InputActionEvent_25(const struct FKey& Key);
 	void InpActEvt_Locked_SimplifiedHotbar3_K2Node_InputActionEvent_26(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_27(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_28(const struct FKey& Key);
-	void InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_29(const struct FKey& Key);
+	void InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29(const struct FKey& Key);
 	void InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_30(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_31(const struct FKey& Key);
+	void InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31(const struct FKey& Key);
 	void InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_32(const struct FKey& Key);
-	void InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_33(const struct FKey& Key);
-	void InpActEvt_Real_Accept_K2Node_InputActionEvent_34(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33(const struct FKey& Key);
+	void InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34(const struct FKey& Key);
 	void InpActEvt_Real_Accept_K2Node_InputActionEvent_35(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36(const struct FKey& Key);
-	void InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_37(const struct FKey& Key);
-	void InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_38(const struct FKey& Key);
-	void InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_39(const struct FKey& Key);
-	void InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_40(const struct FKey& Key);
-	void InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_41(const struct FKey& Key);
-	void InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_42(const struct FKey& Key);
-	void InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_43(const struct FKey& Key);
-	void InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_44(const struct FKey& Key);
-	void InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_45(const struct FKey& Key);
-	void InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_46(const struct FKey& Key);
+	void InpActEvt_Real_Accept_K2Node_InputActionEvent_36(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(const struct FKey& Key);
+	void InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38(const struct FKey& Key);
+	void InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39(const struct FKey& Key);
+	void InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40(const struct FKey& Key);
+	void InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41(const struct FKey& Key);
+	void InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42(const struct FKey& Key);
+	void InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43(const struct FKey& Key);
+	void InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44(const struct FKey& Key);
+	void InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45(const struct FKey& Key);
+	void InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46(const struct FKey& Key);
 	void IsMultiFunctionDisplayVisible(bool* Result);
 	void GetNeuralHUD(class UWIDGET_PlayerHUD_C** Result);
 	void ReceiveInputForHotbarSlotByIndex(int32 SlotNumber, bool Activate);
@@ -97,18 +97,20 @@ public:
 	void OnDeathSequenceFinished();
 	void SetCanHackerRespawn(bool CanRespawn);
 	void SetCanSaveGames(bool Enable);
+	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
 	void OnDisorientationChanged(float DisorientationAmount);
 	void EVENT_OnDrunkAttribChanged(float CurrValue, float LastValue);
 	void ReceiveUnpossessed(class AController* OldController);
 	void OnInteractionFailed(const class FText& FailedText);
-	void InitializeAttributes();
 	void GamepadInteract(bool IsDown);
+	void InitializeAttributes();
+	void InitializeCharacter(bool* Result);
 	void OnBioPoisoningChanged(class UAttribMod* HazardMod, float CurrValue, float LastValue);
 	void CanSaveGames(bool* Result);
+	void HandleMenuNavTabLeft(bool ButtonDown, bool* Handled);
+	void HandleMenuNavTabRight(bool ButtonDown, bool* Handled);
 	void SetEmissiveStrength(float Strength);
 	void InitializeEmissiveStrength(bool BeginPlay);
-	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
-	void InitializeCharacter(bool* Result);
 
 public:
 	static class UClass* StaticClass()

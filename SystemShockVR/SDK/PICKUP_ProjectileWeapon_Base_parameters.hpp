@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "STRUCT_WeaponMode_structs.hpp"
+#include "Engine_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
 
 

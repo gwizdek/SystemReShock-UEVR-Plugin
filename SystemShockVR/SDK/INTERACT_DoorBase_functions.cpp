@@ -550,30 +550,6 @@ void AINTERACT_DoorBase_C::LockDoor(bool CloseDoor)
 }
 
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetTargetShape
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class UShapeComponent*                  ShapeComponent                                         (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_DoorBase_C::GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "GetTargetShape");
-
-	Params::INTERACT_DoorBase_C_GetTargetShape Parms{};
-
-	Parms.CursorPrimitive = CursorPrimitive;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (ShapeComponent != nullptr)
-		*ShapeComponent = Parms.ShapeComponent;
-}
-
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.TryQueueDoorToggle
 // (Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -681,30 +657,6 @@ void AINTERACT_DoorBase_C::InteractOnClosing()
 		Func = Class->GetFunction("INTERACT_DoorBase_C", "InteractOnClosing");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetInteractLocked
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Locked                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_DoorBase_C::SetInteractLocked(bool Locked, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "SetInteractLocked");
-
-	Params::INTERACT_DoorBase_C_SetInteractLocked Parms{};
-
-	Parms.Locked = Locked;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
 }
 
 
@@ -1087,32 +1039,6 @@ void AINTERACT_DoorBase_C::OnDoorwayUnblocked(class AActor* UnblockingActor, boo
 }
 
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsHiddenInteractablePrimitive
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_DoorBase_C::IsHiddenInteractablePrimitive(class APAWN_SystemShockCharacter_C* Character, class UPrimitiveComponent* CursorPrimitive, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "IsHiddenInteractablePrimitive");
-
-	Params::INTERACT_DoorBase_C_IsHiddenInteractablePrimitive Parms{};
-
-	Parms.Character = Character;
-	Parms.CursorPrimitive = CursorPrimitive;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsDoorCollisionPrimitive
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
@@ -1134,105 +1060,6 @@ void AINTERACT_DoorBase_C::IsDoorCollisionPrimitive(class UPrimitiveComponent* P
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
-}
-
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsInteractActivated
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_DoorBase_C::IsInteractActivated(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "IsInteractActivated");
-
-	Params::INTERACT_DoorBase_C_IsInteractActivated Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractLocked
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// class FText                             LockMessage                                            (Parm, OutParm)
-
-void AINTERACT_DoorBase_C::GetInteractLocked(class AActor* SourceActor, bool* Result, class FText* LockMessage)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "GetInteractLocked");
-
-	Params::INTERACT_DoorBase_C_GetInteractLocked Parms{};
-
-	Parms.SourceActor = SourceActor;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-
-	if (LockMessage != nullptr)
-		*LockMessage = std::move(Parms.LockMessage);
-}
-
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractBroken
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// class FText                             BrokenMessage_0                                        (Parm, OutParm)
-
-void AINTERACT_DoorBase_C::GetInteractBroken(bool* Result, class FText* BrokenMessage_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "GetInteractBroken");
-
-	Params::INTERACT_DoorBase_C_GetInteractBroken Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-
-	if (BrokenMessage_0 != nullptr)
-		*BrokenMessage_0 = std::move(Parms.BrokenMessage_0);
-}
-
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractBusy
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// class FText                             BusyMessage_0                                          (Parm, OutParm)
-
-void AINTERACT_DoorBase_C::GetInteractBusy(bool* Result, class FText* BusyMessage_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "GetInteractBusy");
-
-	Params::INTERACT_DoorBase_C_GetInteractBusy Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-
-	if (BusyMessage_0 != nullptr)
-		*BusyMessage_0 = std::move(Parms.BusyMessage_0);
 }
 
 
@@ -1366,50 +1193,6 @@ void AINTERACT_DoorBase_C::OnChannelingMontageStarted(class APAWN_Hacker_Simple_
 }
 
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.OnRestoreInventoryAfterSequence
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_Hacker_Simple_C*            HackerPawn                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_DoorBase_C::OnRestoreInventoryAfterSequence(class APAWN_Hacker_Simple_C* HackerPawn)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "OnRestoreInventoryAfterSequence");
-
-	Params::INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence Parms{};
-
-	Parms.HackerPawn = HackerPawn;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetInteractPowered
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_DoorBase_C::SetInteractPowered(bool State, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "SetInteractPowered");
-
-	Params::INTERACT_DoorBase_C_SetInteractPowered Parms{};
-
-	Parms.State = State;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.UpdateDoorEmissiveStrength
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -1476,27 +1259,6 @@ void AINTERACT_DoorBase_C::EVENT_OnDisableAttribChanged(float CurrValue, float L
 }
 
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.CanModifyInteractPower
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_DoorBase_C::CanModifyInteractPower(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "CanModifyInteractPower");
-
-	Params::INTERACT_DoorBase_C_CanModifyInteractPower Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.TryFixOverlappingActorPhysics
 // (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -1536,6 +1298,244 @@ void AINTERACT_DoorBase_C::RestoreSafetySensorOverlaps()
 		Func = Class->GetFunction("INTERACT_DoorBase_C", "RestoreSafetySensorOverlaps");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.OnRestoreInventoryAfterSequence
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_Hacker_Simple_C*            HackerPawn                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_DoorBase_C::OnRestoreInventoryAfterSequence(class APAWN_Hacker_Simple_C* HackerPawn)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "OnRestoreInventoryAfterSequence");
+
+	Params::INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence Parms{};
+
+	Parms.HackerPawn = HackerPawn;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetTargetShape
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UShapeComponent*                  ShapeComponent                                         (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_DoorBase_C::GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "GetTargetShape");
+
+	Params::INTERACT_DoorBase_C_GetTargetShape Parms{};
+
+	Parms.CursorPrimitive = CursorPrimitive;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (ShapeComponent != nullptr)
+		*ShapeComponent = Parms.ShapeComponent;
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetInteractLocked
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Locked                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_DoorBase_C::SetInteractLocked(bool Locked, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "SetInteractLocked");
+
+	Params::INTERACT_DoorBase_C_SetInteractLocked Parms{};
+
+	Parms.Locked = Locked;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsHiddenInteractablePrimitive
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_DoorBase_C::IsHiddenInteractablePrimitive(class APAWN_SystemShockCharacter_C* Character, class UPrimitiveComponent* CursorPrimitive, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "IsHiddenInteractablePrimitive");
+
+	Params::INTERACT_DoorBase_C_IsHiddenInteractablePrimitive Parms{};
+
+	Parms.Character = Character;
+	Parms.CursorPrimitive = CursorPrimitive;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.IsInteractActivated
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_DoorBase_C::IsInteractActivated(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "IsInteractActivated");
+
+	Params::INTERACT_DoorBase_C_IsInteractActivated Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractLocked
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// class FText                             LockMessage                                            (Parm, OutParm)
+
+void AINTERACT_DoorBase_C::GetInteractLocked(class AActor* SourceActor, bool* Result, class FText* LockMessage)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "GetInteractLocked");
+
+	Params::INTERACT_DoorBase_C_GetInteractLocked Parms{};
+
+	Parms.SourceActor = SourceActor;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+
+	if (LockMessage != nullptr)
+		*LockMessage = std::move(Parms.LockMessage);
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractBroken
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// class FText                             BrokenMessage_0                                        (Parm, OutParm)
+
+void AINTERACT_DoorBase_C::GetInteractBroken(bool* Result, class FText* BrokenMessage_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "GetInteractBroken");
+
+	Params::INTERACT_DoorBase_C_GetInteractBroken Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+
+	if (BrokenMessage_0 != nullptr)
+		*BrokenMessage_0 = std::move(Parms.BrokenMessage_0);
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetInteractBusy
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// class FText                             BusyMessage_0                                          (Parm, OutParm)
+
+void AINTERACT_DoorBase_C::GetInteractBusy(bool* Result, class FText* BusyMessage_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "GetInteractBusy");
+
+	Params::INTERACT_DoorBase_C_GetInteractBusy Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+
+	if (BusyMessage_0 != nullptr)
+		*BusyMessage_0 = std::move(Parms.BusyMessage_0);
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetInteractPowered
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_DoorBase_C::SetInteractPowered(bool State, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "SetInteractPowered");
+
+	Params::INTERACT_DoorBase_C_SetInteractPowered Parms{};
+
+	Parms.State = State;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.CanModifyInteractPower
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_DoorBase_C::CanModifyInteractPower(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "CanModifyInteractPower");
+
+	Params::INTERACT_DoorBase_C_CanModifyInteractPower Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
 }
 
 

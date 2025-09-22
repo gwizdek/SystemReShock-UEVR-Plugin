@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "OPTION_Base_classes.hpp"
 #include "UMG_structs.hpp"
+#include "OPTION_Base_classes.hpp"
 
 
 namespace SDK
@@ -59,8 +59,8 @@ public:
 	void SetIsHighlighted(bool NewHighlightedState, bool ForceInstant);
 	void SetOptionEnabled(bool IsOptionEnabled, bool* Result);
 	void OnMultiSelectorValueModifiedByUser();
-	void ReceiveNavLeft(bool InputState, bool* Result);
 	void ReceiveNavRight(bool InputState, bool* Result);
+	void ReceiveNavLeft(bool InputState, bool* Result);
 
 public:
 	static class UClass* StaticClass()

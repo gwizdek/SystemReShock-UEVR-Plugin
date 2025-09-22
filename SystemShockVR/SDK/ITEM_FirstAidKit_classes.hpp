@@ -25,17 +25,17 @@ public:
 	struct FAttribModApplyData                    FirstAidApplyData;                                 // 0x01E0(0x00A0)(Edit, BlueprintVisible, DisableEditOnInstance)
 
 public:
-	void GetOwner(class AActor** Owner);
-	void GetDuration(class FText* DurationText);
-	void GetEffects(class FText* EffectsText);
 	void UseConsumable(class APAWN_SystemShockCharacter_C* Character, class UITEM_ConsumableBase_C** ConsumedItem);
-	void TryUseConsumable(bool* Result);
-	void ActivateHotbarSlot(bool* Result);
-	void DeactivateHotbarSlot(bool* Result);
-	void GetHotbarIcon(class UTexture** ResultIcon);
-	void GetHotbarCount(int32* ResultCount);
-	void GetHotbarDisplayName(class FText* Result);
+	void GetEffects(class FText* EffectsText);
+	void GetDuration(class FText* DurationText);
+	void GetOwner(class AActor** Owner);
 	void GetEquipState(bool* Result);
+	void GetHotbarDisplayName(class FText* Result);
+	void GetHotbarCount(int32* ResultCount);
+	void GetHotbarIcon(class UTexture** ResultIcon);
+	void DeactivateHotbarSlot(bool* Result);
+	void ActivateHotbarSlot(bool* Result);
+	void TryUseConsumable(bool* Result);
 
 public:
 	static class UClass* StaticClass()

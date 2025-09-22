@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_MeshColor_structs.hpp"
 #include "ENUM_ButtonColorType_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ENUM_MeshColor_structs.hpp"
 
 
 namespace SDK::Params

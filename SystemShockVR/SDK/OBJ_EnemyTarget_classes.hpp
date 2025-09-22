@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_TargetType_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
-#include "ENUM_TargetType_structs.hpp"
 
 
 namespace SDK

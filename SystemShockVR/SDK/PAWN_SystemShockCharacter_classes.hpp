@@ -10,15 +10,15 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_LocomotionType_structs.hpp"
+#include "STRUCT_CharacterAudioParams_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "SystemReShock_structs.hpp"
-#include "STRUCT_CharacterAudioParams_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "ENUM_Foot_structs.hpp"
-#include "ENUM_HazardType_structs.hpp"
 #include "ENUM_AudioComponentLocation_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "ENUM_LocomotionType_structs.hpp"
+#include "ENUM_HazardType_structs.hpp"
+#include "ENUM_Foot_structs.hpp"
 
 
 namespace SDK

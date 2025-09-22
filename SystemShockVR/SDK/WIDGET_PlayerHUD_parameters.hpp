@@ -10,19 +10,19 @@
 
 #include "Basic.hpp"
 
-#include "Slate_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "ENUM_MFDTabCategory_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
+#include "ENUM_UpgradeResult_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ENUM_CursorMode_structs.hpp"
+#include "Slate_structs.hpp"
 #include "ENUM_CardinalDirection_structs.hpp"
-#include "ENUM_HotbarStyle_structs.hpp"
 #include "Engine_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "UMG_structs.hpp"
+#include "ENUM_HotbarStyle_structs.hpp"
 #include "SlateCore_structs.hpp"
+#include "ENUM_CursorMode_structs.hpp"
 #include "STRUCT_QueuedNotification_structs.hpp"
-#include "ENUM_UpgradeResult_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
 #include "ENUM_InteractResultType_structs.hpp"
 
@@ -1428,27 +1428,30 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHardwareIcons, CallFunc_Add_Floa
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHardwareIcons, CallFunc_FClamp_ReturnValue) == 0x00006C, "Member 'WIDGET_PlayerHUD_C_UpdateHardwareIcons::CallFunc_FClamp_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.UpdateHUD
-// 0x005C (0x005C - 0x0000)
+// 0x0060 (0x0060 - 0x0000)
 struct WIDGET_PlayerHUD_C_UpdateHUD final
 {
 public:
 	float                                         DeltaTime;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FGeometry                              CallFunc_GetViewportWidgetGeometry_ReturnValue;    // 0x0008(0x0038)(IsPlainOldData, NoDestructor)
-	struct FVector2D                              CallFunc_GetLocalSize_ReturnValue;                 // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_Divide_Vector2DFloat_ReturnValue;         // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_LocalToAbsolute_ReturnValue;              // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGeometry                              CallFunc_GetViewportWidgetGeometry_ReturnValue;    // 0x000C(0x0038)(IsPlainOldData, NoDestructor)
+	struct FVector2D                              CallFunc_GetLocalSize_ReturnValue;                 // 0x0044(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Divide_Vector2DFloat_ReturnValue;         // 0x004C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_LocalToAbsolute_ReturnValue;              // 0x0054(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_PlayerHUD_C_UpdateHUD) == 0x000004, "Wrong alignment on WIDGET_PlayerHUD_C_UpdateHUD");
-static_assert(sizeof(WIDGET_PlayerHUD_C_UpdateHUD) == 0x00005C, "Wrong size on WIDGET_PlayerHUD_C_UpdateHUD");
+static_assert(sizeof(WIDGET_PlayerHUD_C_UpdateHUD) == 0x000060, "Wrong size on WIDGET_PlayerHUD_C_UpdateHUD");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, DeltaTime) == 0x000000, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::DeltaTime' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_Add_FloatFloat_ReturnValue) == 0x000004, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_GetViewportWidgetGeometry_ReturnValue) == 0x000008, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_GetViewportWidgetGeometry_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_GetLocalSize_ReturnValue) == 0x000040, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_GetLocalSize_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_Divide_Vector2DFloat_ReturnValue) == 0x000048, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_Divide_Vector2DFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_LocalToAbsolute_ReturnValue) == 0x000050, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_LocalToAbsolute_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000058, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_BooleanOR_ReturnValue) == 0x000008, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_GetViewportWidgetGeometry_ReturnValue) == 0x00000C, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_GetViewportWidgetGeometry_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_GetLocalSize_ReturnValue) == 0x000044, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_GetLocalSize_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_Divide_Vector2DFloat_ReturnValue) == 0x00004C, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_Divide_Vector2DFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_LocalToAbsolute_ReturnValue) == 0x000054, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_LocalToAbsolute_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateHUD, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x00005C, "Member 'WIDGET_PlayerHUD_C_UpdateHUD::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.UpdateNotification
 // 0x0050 (0x0050 - 0x0000)
@@ -2678,6 +2681,19 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_HandleItemWorldInteraction, CurrentCur
 static_assert(offsetof(WIDGET_PlayerHUD_C_HandleItemWorldInteraction, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'WIDGET_PlayerHUD_C_HandleItemWorldInteraction::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_HandleItemWorldInteraction, CallFunc_HasWorldInteraction_Result) == 0x000019, "Member 'WIDGET_PlayerHUD_C_HandleItemWorldInteraction::CallFunc_HasWorldInteraction_Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_HandleItemWorldInteraction, CallFunc_Activate_Result) == 0x00001A, "Member 'WIDGET_PlayerHUD_C_HandleItemWorldInteraction::CallFunc_Activate_Result' has a wrong offset!");
+
+// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.HandleSortInventoryInput
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_PlayerHUD_C_HandleSortInventoryInput final
+{
+public:
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_PlayerHUD_C_HandleSortInventoryInput) == 0x000001, "Wrong alignment on WIDGET_PlayerHUD_C_HandleSortInventoryInput");
+static_assert(sizeof(WIDGET_PlayerHUD_C_HandleSortInventoryInput) == 0x000002, "Wrong size on WIDGET_PlayerHUD_C_HandleSortInventoryInput");
+static_assert(offsetof(WIDGET_PlayerHUD_C_HandleSortInventoryInput, State) == 0x000000, "Member 'WIDGET_PlayerHUD_C_HandleSortInventoryInput::State' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_HandleSortInventoryInput, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member 'WIDGET_PlayerHUD_C_HandleSortInventoryInput::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.HandleVaporizeInventoryInput
 // 0x0002 (0x0002 - 0x0000)
@@ -4405,7 +4421,7 @@ static_assert(sizeof(WIDGET_PlayerHUD_C_GetCameraPanelWidget) == 0x000008, "Wron
 static_assert(offsetof(WIDGET_PlayerHUD_C_GetCameraPanelWidget, Result) == 0x000000, "Member 'WIDGET_PlayerHUD_C_GetCameraPanelWidget::Result' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.InvokeNavManager
-// 0x01E0 (0x01E0 - 0x0000)
+// 0x01C8 (0x01C8 - 0x0000)
 struct WIDGET_PlayerHUD_C_InvokeNavManager final
 {
 public:
@@ -4425,114 +4441,108 @@ public:
 	class UITEM_Base_C*                           CursorItem;                                        // 0x0038(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWIDGET_InventoryPanel_C*               InventoryPanel;                                    // 0x0040(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FIntPoint                              CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords; // 0x004C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue_1;          // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue_1;          // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FIntPoint                              CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords; // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         CallFunc_Conv_IntToFloat_ReturnValue;              // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_61[0x3];                                       // 0x0061(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5D[0x3];                                       // 0x005D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Round_ReturnValue;                        // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_WrapIntUpperbound_ReturnValue;            // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_WrapIntUpperbound_ReturnValue;            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_WrapIntLowerbound_ReturnValue;            // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_WrapIntUpperbound_ReturnValue_1;          // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Find_ReturnValue;                   // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Subtract_IntInt_ReturnValue_1;            // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Conv_IntToFloat_ReturnValue_1;            // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue_1;            // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Round_ReturnValue_1;                      // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_WrapIntLowerbound_ReturnValue_1;          // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Conv_IntToFloat_ReturnValue_1;            // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_95[0x3];                                       // 0x0095(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Round_ReturnValue_1;                      // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetGridHeightAtHorizontalSlotIndex_Result; // 0x009C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_A1[0x3];                                       // 0x00A1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Subtract_IntInt_ReturnValue_2;            // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FIntPoint                              K2Node_MakeStruct_IntPoint;                        // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsVisible_ReturnValue;                    // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x00B1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B2[0x2];                                       // 0x00B2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex; // 0x00B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_WrapIntUpperbound_ReturnValue_1;          // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Find_ReturnValue;                   // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetGridHeightAtHorizontalSlotIndex_Result; // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x009C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9D[0x3];                                       // 0x009D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue_2;            // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FIntPoint                              K2Node_MakeStruct_IntPoint;                        // 0x00A4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x00AC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_AD[0x3];                                       // 0x00AD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex; // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B5[0x3];                                       // 0x00B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class UITEM_Base_C*                           CallFunc_GetSlotItem_Item;                         // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_2;                    // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_IsValidSlotIndex_Result;                  // 0x00C1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x00C2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_SwitchEnum_CmpSuccess_2;                    // 0x00C3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C4[0x4];                                       // 0x00C4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UITEM_Base_C*                           CallFunc_GetCursorItem_Result;                     // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FIntPoint                              K2Node_MakeStruct_IntPoint_1;                      // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x00D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsInventoryContextEnabled_Result;         // 0x00DA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_DB[0x1];                                       // 0x00DB(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FIntPoint                              CallFunc_GetRotatedGridSize_Result;                // 0x00DC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_Conv_IntPointToVector2D_ReturnValue;      // 0x00E4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Multiply_IntInt_ReturnValue;              // 0x00EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetGridHeight_Result;                     // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_Conv_IntPointToVector2D_ReturnValue_1;    // 0x00F4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetGridWidth_Result;                      // 0x00FC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FIntPoint                              K2Node_MakeStruct_IntPoint_2;                      // 0x0100(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_Conv_IntPointToVector2D_ReturnValue_2;    // 0x0108(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_Divide_Vector2DFloat_ReturnValue;         // 0x0110(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_Subtract_Vector2DVector2D_ReturnValue;    // 0x0118(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_DotProduct2D_ReturnValue;                 // 0x0120(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0124(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_125[0x3];                                      // 0x0125(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FIntPoint                              CallFunc_Add_IntPointIntPoint_ReturnValue;         // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_1; // 0x0130(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_134[0x4];                                      // 0x0134(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<int32>                                 CallFunc_GetSlotIndicesForItemWithSize_SlotIndices; // 0x0138(0x0010)(ReferenceParm)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0148(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x014C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x014D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_14E[0x2];                                      // 0x014E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetSlotIndex_Result;                      // 0x0150(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_154[0x4];                                      // 0x0154(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UITEM_Base_C*                           CallFunc_GetSlotItem_Item_1;                       // 0x0158(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetBestSlotInCardinalDirection_Result;    // 0x0160(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_4;                    // 0x0164(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValidSlotIndex_Result_1;                // 0x0165(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_166[0x2];                                      // 0x0166(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_2; // 0x0168(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FIntPoint                              CallFunc_GetIntPointFromCardinalDirection_Point;   // 0x016C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FIntPoint                              CallFunc_Multiply_IntPointIntPoint_ReturnValue;    // 0x0174(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FIntPoint                              CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_1; // 0x017C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FIntPoint                              CallFunc_Add_IntPointIntPoint_ReturnValue_1;       // 0x0184(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_18C[0x4];                                      // 0x018C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UITEM_Base_C*                           CallFunc_GetCursorItem_Result_1;                   // 0x0190(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetGridHeight_Result_1;                   // 0x0198(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetGridWidth_Result_1;                    // 0x019C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Subtract_IntInt_ReturnValue_3;            // 0x01A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Subtract_IntInt_ReturnValue_4;            // 0x01A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsVisible_ReturnValue_1;                  // 0x01A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1A9[0x3];                                      // 0x01A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FIntPoint                              CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_2; // 0x01AC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetSlotIndex_Result_1;                    // 0x01B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Min_ReturnValue;                          // 0x01B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FIntPoint                              K2Node_MakeStruct_IntPoint_3;                      // 0x01BC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x01C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1C5[0x3];                                      // 0x01C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_3; // 0x01C8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_2;        // 0x01CC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x01CD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_1;    // 0x01CE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_2;    // 0x01CF(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_3;    // 0x01D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_5;                    // 0x01D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_SwitchEnum_CmpSuccess_3;                    // 0x01D2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_3;        // 0x01D3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible; // 0x01D4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_6;                    // 0x01D5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_4;        // 0x01D6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsVisible_ReturnValue_2;                  // 0x01D7(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsVisible_ReturnValue_3;                  // 0x01D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanNOR_ReturnValue;                   // 0x01D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible_1; // 0x01DA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_3;                    // 0x00C2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x00C3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FIntPoint                              K2Node_MakeStruct_IntPoint_1;                      // 0x00C4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsInventoryContextEnabled_Result;         // 0x00CC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x00CD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_CE[0x2];                                       // 0x00CE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FIntPoint                              CallFunc_GetRotatedGridSize_Result;                // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Conv_IntPointToVector2D_ReturnValue;      // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Multiply_IntInt_ReturnValue;              // 0x00E0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetGridHeight_Result;                     // 0x00E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Conv_IntPointToVector2D_ReturnValue_1;    // 0x00E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetGridWidth_Result;                      // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FIntPoint                              K2Node_MakeStruct_IntPoint_2;                      // 0x00F4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Conv_IntPointToVector2D_ReturnValue_2;    // 0x00FC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Divide_Vector2DFloat_ReturnValue;         // 0x0104(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Subtract_Vector2DVector2D_ReturnValue;    // 0x010C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_DotProduct2D_ReturnValue;                 // 0x0114(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FIntPoint                              CallFunc_Add_IntPointIntPoint_ReturnValue;         // 0x0118(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_121[0x3];                                      // 0x0121(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_1; // 0x0124(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<int32>                                 CallFunc_GetSlotIndicesForItemWithSize_SlotIndices; // 0x0128(0x0010)(ReferenceParm)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0138(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x013C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x013D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_13E[0x2];                                      // 0x013E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class UITEM_Base_C*                           CallFunc_GetSlotItem_Item_1;                       // 0x0140(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetSlotIndex_Result;                      // 0x0148(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetBestSlotInCardinalDirection_Result;    // 0x014C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0150(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValidSlotIndex_Result_1;                // 0x0151(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_152[0x2];                                      // 0x0152(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_2; // 0x0154(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FIntPoint                              CallFunc_GetIntPointFromCardinalDirection_Point;   // 0x0158(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FIntPoint                              CallFunc_Multiply_IntPointIntPoint_ReturnValue;    // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FIntPoint                              CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_1; // 0x0168(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FIntPoint                              CallFunc_Add_IntPointIntPoint_ReturnValue_1;       // 0x0170(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UITEM_Base_C*                           CallFunc_GetCursorItem_Result;                     // 0x0178(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetGridHeight_Result_1;                   // 0x0180(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue_3;            // 0x0184(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsVisible_ReturnValue;                    // 0x0188(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_189[0x3];                                      // 0x0189(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FIntPoint                              CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_2; // 0x018C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetSlotIndex_Result_1;                    // 0x0194(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Min_ReturnValue;                          // 0x0198(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FIntPoint                              K2Node_MakeStruct_IntPoint_3;                      // 0x019C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x01A4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1A5[0x3];                                      // 0x01A5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_3; // 0x01A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_2;        // 0x01AC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x01AD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_1;    // 0x01AE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_2;    // 0x01AF(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_3;    // 0x01B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_4;                    // 0x01B1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_5;                    // 0x01B2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_4;                    // 0x01B3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_3;        // 0x01B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible; // 0x01B5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1B6[0x2];                                      // 0x01B6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetGridWidth_Result_1;                    // 0x01B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue_4;            // 0x01BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_4;        // 0x01C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsVisible_ReturnValue_1;                  // 0x01C1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsVisible_ReturnValue_2;                  // 0x01C2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanNOR_ReturnValue;                   // 0x01C3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible_1; // 0x01C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_PlayerHUD_C_InvokeNavManager) == 0x000008, "Wrong alignment on WIDGET_PlayerHUD_C_InvokeNavManager");
-static_assert(sizeof(WIDGET_PlayerHUD_C_InvokeNavManager) == 0x0001E0, "Wrong size on WIDGET_PlayerHUD_C_InvokeNavManager");
+static_assert(sizeof(WIDGET_PlayerHUD_C_InvokeNavManager) == 0x0001C8, "Wrong size on WIDGET_PlayerHUD_C_InvokeNavManager");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, InputState) == 0x000000, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::InputState' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, InputType) == 0x000001, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::InputType' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, Result) == 0x000002, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::Result' has a wrong offset!");
@@ -4546,97 +4556,94 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, NewItem) == 0x000030
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CursorItem) == 0x000038, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CursorItem' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, InventoryPanel) == 0x000040, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::InventoryPanel' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000048, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords) == 0x00004C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Divide_FloatFloat_ReturnValue_1) == 0x000054, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Divide_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Divide_FloatFloat_ReturnValue_1) == 0x00004C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Divide_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords) == 0x000050, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Conv_IntToFloat_ReturnValue) == 0x000058, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Conv_IntToFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00005C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000060, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x00005C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000060, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Round_ReturnValue) == 0x000064, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Round_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Add_IntInt_ReturnValue) == 0x000068, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_WrapIntUpperbound_ReturnValue) == 0x00006C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_WrapIntUpperbound_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue) == 0x000070, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue) == 0x00006C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_WrapIntUpperbound_ReturnValue) == 0x000070, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_WrapIntUpperbound_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_WrapIntLowerbound_ReturnValue) == 0x000074, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_WrapIntLowerbound_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Add_IntInt_ReturnValue_1) == 0x000078, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_WrapIntUpperbound_ReturnValue_1) == 0x00007C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_WrapIntUpperbound_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Array_Find_ReturnValue) == 0x000080, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Array_Find_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue_1) == 0x000084, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Conv_IntToFloat_ReturnValue_1) == 0x000078, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Conv_IntToFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x00007C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue_1) == 0x000080, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Round_ReturnValue_1) == 0x000084, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Round_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_WrapIntLowerbound_ReturnValue_1) == 0x000088, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_WrapIntLowerbound_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Conv_IntToFloat_ReturnValue_1) == 0x00008C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Conv_IntToFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000090, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess) == 0x000094, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Round_ReturnValue_1) == 0x000098, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Round_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridHeightAtHorizontalSlotIndex_Result) == 0x00009C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridHeightAtHorizontalSlotIndex_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue) == 0x0000A0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue_2) == 0x0000A4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_MakeStruct_IntPoint) == 0x0000A8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_MakeStruct_IntPoint' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsVisible_ReturnValue) == 0x0000B0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsVisible_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Not_PreBool_ReturnValue) == 0x0000B1, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex) == 0x0000B4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Add_IntInt_ReturnValue_1) == 0x00008C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_WrapIntUpperbound_ReturnValue_1) == 0x000090, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_WrapIntUpperbound_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Array_Find_ReturnValue) == 0x000094, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Array_Find_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridHeightAtHorizontalSlotIndex_Result) == 0x000098, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridHeightAtHorizontalSlotIndex_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess) == 0x00009C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue_2) == 0x0000A0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_MakeStruct_IntPoint) == 0x0000A4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_MakeStruct_IntPoint' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue) == 0x0000AC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex) == 0x0000B0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess_1) == 0x0000B4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotItem_Item) == 0x0000B8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotItem_Item' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess_1) == 0x0000C0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess_2) == 0x0000C0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValidSlotIndex_Result) == 0x0000C1, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValidSlotIndex_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Not_PreBool_ReturnValue_1) == 0x0000C2, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess_2) == 0x0000C3, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetCursorItem_Result) == 0x0000C8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetCursorItem_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_MakeStruct_IntPoint_1) == 0x0000D0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_MakeStruct_IntPoint_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_1) == 0x0000D8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_2) == 0x0000D9, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsInventoryContextEnabled_Result) == 0x0000DA, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsInventoryContextEnabled_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetRotatedGridSize_Result) == 0x0000DC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetRotatedGridSize_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Conv_IntPointToVector2D_ReturnValue) == 0x0000E4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Conv_IntPointToVector2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Multiply_IntInt_ReturnValue) == 0x0000EC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Multiply_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridHeight_Result) == 0x0000F0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridHeight_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Conv_IntPointToVector2D_ReturnValue_1) == 0x0000F4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Conv_IntPointToVector2D_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridWidth_Result) == 0x0000FC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridWidth_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_MakeStruct_IntPoint_2) == 0x000100, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_MakeStruct_IntPoint_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Conv_IntPointToVector2D_ReturnValue_2) == 0x000108, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Conv_IntPointToVector2D_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Divide_Vector2DFloat_ReturnValue) == 0x000110, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Divide_Vector2DFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_Vector2DVector2D_ReturnValue) == 0x000118, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_Vector2DVector2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_DotProduct2D_ReturnValue) == 0x000120, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_DotProduct2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000124, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Add_IntPointIntPoint_ReturnValue) == 0x000128, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Add_IntPointIntPoint_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_1) == 0x000130, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndicesForItemWithSize_SlotIndices) == 0x000138, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndicesForItemWithSize_SlotIndices' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Array_Length_ReturnValue) == 0x000148, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x00014C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_3) == 0x00014D, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndex_Result) == 0x000150, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndex_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotItem_Item_1) == 0x000158, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotItem_Item_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetBestSlotInCardinalDirection_Result) == 0x000160, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetBestSlotInCardinalDirection_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_4) == 0x000164, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValidSlotIndex_Result_1) == 0x000165, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValidSlotIndex_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_2) == 0x000168, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetIntPointFromCardinalDirection_Point) == 0x00016C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetIntPointFromCardinalDirection_Point' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Multiply_IntPointIntPoint_ReturnValue) == 0x000174, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Multiply_IntPointIntPoint_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_1) == 0x00017C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Add_IntPointIntPoint_ReturnValue_1) == 0x000184, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Add_IntPointIntPoint_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetCursorItem_Result_1) == 0x000190, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetCursorItem_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridHeight_Result_1) == 0x000198, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridHeight_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridWidth_Result_1) == 0x00019C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridWidth_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue_3) == 0x0001A0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue_4) == 0x0001A4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsVisible_ReturnValue_1) == 0x0001A8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsVisible_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_2) == 0x0001AC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndex_Result_1) == 0x0001B4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndex_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Min_ReturnValue) == 0x0001B8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Min_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_MakeStruct_IntPoint_3) == 0x0001BC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_MakeStruct_IntPoint_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x0001C4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_3) == 0x0001C8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue_2) == 0x0001CC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x0001CD, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue_1) == 0x0001CE, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue_2) == 0x0001CF, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue_3) == 0x0001D0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_5) == 0x0001D1, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess_3) == 0x0001D2, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue_3) == 0x0001D3, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible) == 0x0001D4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_6) == 0x0001D5, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_6' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue_4) == 0x0001D6, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsVisible_ReturnValue_2) == 0x0001D7, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsVisible_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsVisible_ReturnValue_3) == 0x0001D8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsVisible_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_BooleanNOR_ReturnValue) == 0x0001D9, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_BooleanNOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible_1) == 0x0001DA, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess_3) == 0x0000C2, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Not_PreBool_ReturnValue) == 0x0000C3, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_MakeStruct_IntPoint_1) == 0x0000C4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_MakeStruct_IntPoint_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsInventoryContextEnabled_Result) == 0x0000CC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsInventoryContextEnabled_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_1) == 0x0000CD, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetRotatedGridSize_Result) == 0x0000D0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetRotatedGridSize_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Conv_IntPointToVector2D_ReturnValue) == 0x0000D8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Conv_IntPointToVector2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Multiply_IntInt_ReturnValue) == 0x0000E0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Multiply_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridHeight_Result) == 0x0000E4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridHeight_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Conv_IntPointToVector2D_ReturnValue_1) == 0x0000E8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Conv_IntPointToVector2D_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridWidth_Result) == 0x0000F0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridWidth_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_MakeStruct_IntPoint_2) == 0x0000F4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_MakeStruct_IntPoint_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Conv_IntPointToVector2D_ReturnValue_2) == 0x0000FC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Conv_IntPointToVector2D_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Divide_Vector2DFloat_ReturnValue) == 0x000104, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Divide_Vector2DFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_Vector2DVector2D_ReturnValue) == 0x00010C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_Vector2DVector2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_DotProduct2D_ReturnValue) == 0x000114, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_DotProduct2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Add_IntPointIntPoint_ReturnValue) == 0x000118, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Add_IntPointIntPoint_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000120, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_1) == 0x000124, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndicesForItemWithSize_SlotIndices) == 0x000128, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndicesForItemWithSize_SlotIndices' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Array_Length_ReturnValue) == 0x000138, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x00013C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_2) == 0x00013D, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotItem_Item_1) == 0x000140, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotItem_Item_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndex_Result) == 0x000148, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndex_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetBestSlotInCardinalDirection_Result) == 0x00014C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetBestSlotInCardinalDirection_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_3) == 0x000150, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValidSlotIndex_Result_1) == 0x000151, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValidSlotIndex_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_2) == 0x000154, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetIntPointFromCardinalDirection_Point) == 0x000158, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetIntPointFromCardinalDirection_Point' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Multiply_IntPointIntPoint_ReturnValue) == 0x000160, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Multiply_IntPointIntPoint_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_1) == 0x000168, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Add_IntPointIntPoint_ReturnValue_1) == 0x000170, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Add_IntPointIntPoint_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetCursorItem_Result) == 0x000178, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetCursorItem_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridHeight_Result_1) == 0x000180, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridHeight_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue_3) == 0x000184, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsVisible_ReturnValue) == 0x000188, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsVisible_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_2) == 0x00018C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridCoordinatesFromSlotIndex_GridCoords_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndex_Result_1) == 0x000194, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndex_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Min_ReturnValue) == 0x000198, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Min_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_MakeStruct_IntPoint_3) == 0x00019C, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_MakeStruct_IntPoint_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x0001A4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_3) == 0x0001A8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetSlotIndexFromGridCoordinates_SlotIndex_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue_2) == 0x0001AC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x0001AD, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue_1) == 0x0001AE, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue_2) == 0x0001AF, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue_3) == 0x0001B0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_4) == 0x0001B1, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_5) == 0x0001B2, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess_4) == 0x0001B3, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue_3) == 0x0001B4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible) == 0x0001B5, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_GetGridWidth_Result_1) == 0x0001B8, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_GetGridWidth_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_Subtract_IntInt_ReturnValue_4) == 0x0001BC, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_Subtract_IntInt_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_EqualEqual_ByteByte_ReturnValue_4) == 0x0001C0, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_EqualEqual_ByteByte_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsVisible_ReturnValue_1) == 0x0001C1, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsVisible_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_IsVisible_ReturnValue_2) == 0x0001C2, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_IsVisible_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_BooleanNOR_ReturnValue) == 0x0001C3, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_BooleanNOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeNavManager, CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible_1) == 0x0001C4, "Member 'WIDGET_PlayerHUD_C_InvokeNavManager::CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible_1' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.GetSubtitleWidget
 // 0x0008 (0x0008 - 0x0000)
@@ -4712,6 +4719,53 @@ static_assert(sizeof(WIDGET_PlayerHUD_C_SetHoldInteractionProgress) == 0x00000C,
 static_assert(offsetof(WIDGET_PlayerHUD_C_SetHoldInteractionProgress, Progress) == 0x000000, "Member 'WIDGET_PlayerHUD_C_SetHoldInteractionProgress::Progress' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_SetHoldInteractionProgress, Result) == 0x000004, "Member 'WIDGET_PlayerHUD_C_SetHoldInteractionProgress::Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_SetHoldInteractionProgress, CallFunc_FClamp_ReturnValue) == 0x000008, "Member 'WIDGET_PlayerHUD_C_SetHoldInteractionProgress::CallFunc_FClamp_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.InvokeVaporize
+// 0x0006 (0x0006 - 0x0000)
+struct WIDGET_PlayerHUD_C_InvokeVaporize final
+{
+public:
+	bool                                          HoldingInput;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetMFDState_IsMFDOpen;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_MFDTabCategory                           CallFunc_GetMFDState_CurrentMFDTab;                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_PlayerHUD_C_InvokeVaporize) == 0x000001, "Wrong alignment on WIDGET_PlayerHUD_C_InvokeVaporize");
+static_assert(sizeof(WIDGET_PlayerHUD_C_InvokeVaporize) == 0x000006, "Wrong size on WIDGET_PlayerHUD_C_InvokeVaporize");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeVaporize, HoldingInput) == 0x000000, "Member 'WIDGET_PlayerHUD_C_InvokeVaporize::HoldingInput' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeVaporize, Result) == 0x000001, "Member 'WIDGET_PlayerHUD_C_InvokeVaporize::Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeVaporize, CallFunc_GetMFDState_IsMFDOpen) == 0x000002, "Member 'WIDGET_PlayerHUD_C_InvokeVaporize::CallFunc_GetMFDState_IsMFDOpen' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeVaporize, CallFunc_GetMFDState_CurrentMFDTab) == 0x000003, "Member 'WIDGET_PlayerHUD_C_InvokeVaporize::CallFunc_GetMFDState_CurrentMFDTab' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeVaporize, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000004, "Member 'WIDGET_PlayerHUD_C_InvokeVaporize::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeVaporize, CallFunc_BooleanAND_ReturnValue) == 0x000005, "Member 'WIDGET_PlayerHUD_C_InvokeVaporize::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.InvokeSort
+// 0x0018 (0x0018 - 0x0000)
+struct WIDGET_PlayerHUD_C_InvokeSort final
+{
+public:
+	bool                                          HoldingInput;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetMFDState_IsMFDOpen;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_MFDTabCategory                           CallFunc_GetMFDState_CurrentMFDTab;                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class UITEM_Base_C*                           CallFunc_GetCursorItem_Result;                     // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_PlayerHUD_C_InvokeSort) == 0x000008, "Wrong alignment on WIDGET_PlayerHUD_C_InvokeSort");
+static_assert(sizeof(WIDGET_PlayerHUD_C_InvokeSort) == 0x000018, "Wrong size on WIDGET_PlayerHUD_C_InvokeSort");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeSort, HoldingInput) == 0x000000, "Member 'WIDGET_PlayerHUD_C_InvokeSort::HoldingInput' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeSort, Result) == 0x000001, "Member 'WIDGET_PlayerHUD_C_InvokeSort::Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeSort, CallFunc_GetMFDState_IsMFDOpen) == 0x000002, "Member 'WIDGET_PlayerHUD_C_InvokeSort::CallFunc_GetMFDState_IsMFDOpen' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeSort, CallFunc_GetMFDState_CurrentMFDTab) == 0x000003, "Member 'WIDGET_PlayerHUD_C_InvokeSort::CallFunc_GetMFDState_CurrentMFDTab' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeSort, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000004, "Member 'WIDGET_PlayerHUD_C_InvokeSort::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeSort, CallFunc_GetCursorItem_Result) == 0x000008, "Member 'WIDGET_PlayerHUD_C_InvokeSort::CallFunc_GetCursorItem_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeSort, CallFunc_BooleanAND_ReturnValue) == 0x000010, "Member 'WIDGET_PlayerHUD_C_InvokeSort::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_InvokeSort, CallFunc_IsValid_ReturnValue) == 0x000011, "Member 'WIDGET_PlayerHUD_C_InvokeSort::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 }
 

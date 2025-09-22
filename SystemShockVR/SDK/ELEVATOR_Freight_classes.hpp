@@ -95,19 +95,19 @@ public:
 	struct FDataTableRowHandle                    DoorGlassDebrisTemplate;                           // 0x0910(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor)
 
 public:
-	void UpdateRectLightIntensity();
-	void BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams);
-	void InitializeElevatorControls();
-	void UserConstructionScript();
-	void OnLoaded_0646D1694E49FA402640A8938BC55B31(class UObject* Loaded);
-	void AsyncPlayGlassBreakParticleEffects(const struct FVector& Location, const struct FRotator& Rotation, bool IsDoorGlass);
 	void UpdateEmissiveStrength(float Scale);
 	void SetElevatorVisibility(bool VisibilityState);
 	void UpdateDoorLightVisibility();
+	void UpdateRectLightIntensity();
 	void PlayGlassBreakEffects(class UStaticMeshComponent* BrokenGlassComponent);
 	void InitializeElevator();
 	void TryDamageGlass(const struct FAttribDamageInstance& DamageInstance, class UOBJ_ImpactData_C* ImpactData);
 	void GetControlsMeshComponent(class UStaticMeshComponent** MeshComponent);
+	void InitializeElevatorControls();
+	void UserConstructionScript();
+	void OnLoaded_0646D1694E49FA402640A8938BC55B31(class UObject* Loaded);
+	void AsyncPlayGlassBreakParticleEffects(const struct FVector& Location, const struct FRotator& Rotation, bool IsDoorGlass);
+	void BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams);
 	void ExecuteUbergraph_ELEVATOR_Freight(int32 EntryPoint);
 
 public:

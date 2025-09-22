@@ -17,50 +17,6 @@
 namespace SDK
 {
 
-// Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.SetLocked
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    LockedState                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UAnimBP_NormalElevator_Inside_C::SetLocked(bool LockedState, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("AnimBP_NormalElevator_Inside_C", "SetLocked");
-
-	Params::AnimBP_NormalElevator_Inside_C_SetLocked Parms{};
-
-	Parms.LockedState = LockedState;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.ExecuteUbergraph_AnimBP_NormalElevator_Inside
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UAnimBP_NormalElevator_Inside_C::ExecuteUbergraph_AnimBP_NormalElevator_Inside(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("AnimBP_NormalElevator_Inside_C", "ExecuteUbergraph_AnimBP_NormalElevator_Inside");
-
-	Params::AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.OpenDoor
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -116,6 +72,30 @@ void UAnimBP_NormalElevator_Inside_C::IsLocked(bool* Result)
 		Func = Class->GetFunction("AnimBP_NormalElevator_Inside_C", "IsLocked");
 
 	Params::AnimBP_NormalElevator_Inside_C_IsLocked Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.SetLocked
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    LockedState                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UAnimBP_NormalElevator_Inside_C::SetLocked(bool LockedState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("AnimBP_NormalElevator_Inside_C", "SetLocked");
+
+	Params::AnimBP_NormalElevator_Inside_C_SetLocked Parms{};
+
+	Parms.LockedState = LockedState;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -211,6 +191,26 @@ void UAnimBP_NormalElevator_Inside_C::AnimGraph(struct FPoseLink* AnimGraph_0)
 
 	if (AnimGraph_0 != nullptr)
 		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
+}
+
+
+// Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.ExecuteUbergraph_AnimBP_NormalElevator_Inside
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UAnimBP_NormalElevator_Inside_C::ExecuteUbergraph_AnimBP_NormalElevator_Inside(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("AnimBP_NormalElevator_Inside_C", "ExecuteUbergraph_AnimBP_NormalElevator_Inside");
+
+	Params::AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

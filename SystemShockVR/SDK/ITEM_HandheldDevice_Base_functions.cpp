@@ -106,6 +106,30 @@ void UITEM_HandheldDevice_Base_C::EVENT_OnStartedUsingDevice()
 }
 
 
+// Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.ReceiveAnimationMessage
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Message                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_HandheldDevice_Base_C::ReceiveAnimationMessage(const class FString& Message, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldDevice_Base_C", "ReceiveAnimationMessage");
+
+	Params::ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage Parms{};
+
+	Parms.Message = std::move(Message);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
 // Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.TryResumeHandheldDeviceAction
 // (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -145,30 +169,6 @@ void UITEM_HandheldDevice_Base_C::EVENT_OnFinishingUsingDevice()
 		Func = Class->GetFunction("ITEM_HandheldDevice_Base_C", "EVENT_OnFinishingUsingDevice");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.ReceiveAnimationMessage
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class FString                           Message                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_HandheldDevice_Base_C::ReceiveAnimationMessage(const class FString& Message, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldDevice_Base_C", "ReceiveAnimationMessage");
-
-	Params::ITEM_HandheldDevice_Base_C_ReceiveAnimationMessage Parms{};
-
-	Parms.Message = std::move(Message);
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
 }
 
 
@@ -230,27 +230,6 @@ void UITEM_HandheldDevice_Base_C::ResumeWaitingToHolster(class UCOMP_Inventory_C
 }
 
 
-// Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.OnBecomeUnactivatable
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_HandheldDevice_Base_C::OnBecomeUnactivatable(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_HandheldDevice_Base_C", "OnBecomeUnactivatable");
-
-	Params::ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.Activate
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -267,6 +246,27 @@ void UITEM_HandheldDevice_Base_C::Activate(class APAWN_SystemShockCharacter_C* C
 	Params::ITEM_HandheldDevice_Base_C_Activate Parms{};
 
 	Parms.Character = Character;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_HandheldDevice_Base.ITEM_HandheldDevice_Base_C.OnBecomeUnactivatable
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_HandheldDevice_Base_C::OnBecomeUnactivatable(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_HandheldDevice_Base_C", "OnBecomeUnactivatable");
+
+	Params::ITEM_HandheldDevice_Base_C_OnBecomeUnactivatable Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 

@@ -272,30 +272,6 @@ void AINTERACT_GamePig_C::GetTargetShape(class UPrimitiveComponent* CursorPrimit
 }
 
 
-// Function INTERACT_GamePig.INTERACT_GamePig_C.StopChanneling
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class AActor*                           NewChannelingInteract                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AINTERACT_GamePig_C::StopChanneling(class AActor* NewChannelingInteract, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_GamePig_C", "StopChanneling");
-
-	Params::INTERACT_GamePig_C_StopChanneling Parms{};
-
-	Parms.NewChannelingInteract = NewChannelingInteract;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function INTERACT_GamePig.INTERACT_GamePig_C.TryInteract
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -321,6 +297,30 @@ void AINTERACT_GamePig_C::TryInteract(class AActor* SourceActor, class UPrimitiv
 
 	if (InteractResults != nullptr)
 		*InteractResults = std::move(Parms.InteractResults);
+}
+
+
+// Function INTERACT_GamePig.INTERACT_GamePig_C.StopChanneling
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           NewChannelingInteract                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AINTERACT_GamePig_C::StopChanneling(class AActor* NewChannelingInteract, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_GamePig_C", "StopChanneling");
+
+	Params::INTERACT_GamePig_C_StopChanneling Parms{};
+
+	Parms.NewChannelingInteract = NewChannelingInteract;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
 }
 
 }

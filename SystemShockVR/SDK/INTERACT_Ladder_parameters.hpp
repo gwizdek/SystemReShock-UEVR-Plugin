@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 
 
 namespace SDK::Params
@@ -878,46 +878,6 @@ static_assert(alignof(INTERACT_Ladder_C_GetJumpDismountSpeed) == 0x000004, "Wron
 static_assert(sizeof(INTERACT_Ladder_C_GetJumpDismountSpeed) == 0x000004, "Wrong size on INTERACT_Ladder_C_GetJumpDismountSpeed");
 static_assert(offsetof(INTERACT_Ladder_C_GetJumpDismountSpeed, Result) == 0x000000, "Member 'INTERACT_Ladder_C_GetJumpDismountSpeed::Result' has a wrong offset!");
 
-// Function INTERACT_Ladder.INTERACT_Ladder_C.GetTargetShape
-// 0x0010 (0x0010 - 0x0000)
-struct INTERACT_Ladder_C_GetTargetShape final
-{
-public:
-	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UShapeComponent*                        ShapeComponent;                                    // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_Ladder_C_GetTargetShape) == 0x000008, "Wrong alignment on INTERACT_Ladder_C_GetTargetShape");
-static_assert(sizeof(INTERACT_Ladder_C_GetTargetShape) == 0x000010, "Wrong size on INTERACT_Ladder_C_GetTargetShape");
-static_assert(offsetof(INTERACT_Ladder_C_GetTargetShape, CursorPrimitive) == 0x000000, "Member 'INTERACT_Ladder_C_GetTargetShape::CursorPrimitive' has a wrong offset!");
-static_assert(offsetof(INTERACT_Ladder_C_GetTargetShape, ShapeComponent) == 0x000008, "Member 'INTERACT_Ladder_C_GetTargetShape::ShapeComponent' has a wrong offset!");
-
-// Function INTERACT_Ladder.INTERACT_Ladder_C.StopChanneling
-// 0x0040 (0x0040 - 0x0000)
-struct INTERACT_Ladder_C_StopChanneling final
-{
-public:
-	class AActor*                                 NewChannelingInteract;                             // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMOVECONTROL_Base_C*                    CallFunc_GetActiveMoveControl_ActiveMoveControl;   // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMOVECONTROL_LadderMove_C*              K2Node_DynamicCast_AsMOVECONTROL_Ladder_Move;      // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_Ladder_C_StopChanneling) == 0x000008, "Wrong alignment on INTERACT_Ladder_C_StopChanneling");
-static_assert(sizeof(INTERACT_Ladder_C_StopChanneling) == 0x000040, "Wrong size on INTERACT_Ladder_C_StopChanneling");
-static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, NewChannelingInteract) == 0x000000, "Member 'INTERACT_Ladder_C_StopChanneling::NewChannelingInteract' has a wrong offset!");
-static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, Result) == 0x000008, "Member 'INTERACT_Ladder_C_StopChanneling::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, CallFunc_GetPlayerPawn_ReturnValue) == 0x000010, "Member 'INTERACT_Ladder_C_StopChanneling::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000018, "Member 'INTERACT_Ladder_C_StopChanneling::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
-static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, K2Node_DynamicCast_bSuccess) == 0x000020, "Member 'INTERACT_Ladder_C_StopChanneling::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, CallFunc_GetActiveMoveControl_ActiveMoveControl) == 0x000028, "Member 'INTERACT_Ladder_C_StopChanneling::CallFunc_GetActiveMoveControl_ActiveMoveControl' has a wrong offset!");
-static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, K2Node_DynamicCast_AsMOVECONTROL_Ladder_Move) == 0x000030, "Member 'INTERACT_Ladder_C_StopChanneling::K2Node_DynamicCast_AsMOVECONTROL_Ladder_Move' has a wrong offset!");
-static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, K2Node_DynamicCast_bSuccess_1) == 0x000038, "Member 'INTERACT_Ladder_C_StopChanneling::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-
 // Function INTERACT_Ladder.INTERACT_Ladder_C.TryInteract
 // 0x0180 (0x0180 - 0x0000)
 struct INTERACT_Ladder_C_TryInteract final
@@ -992,6 +952,46 @@ static_assert(offsetof(INTERACT_Ladder_C_TryInteract, CallFunc_BreakVector_Z_1) 
 static_assert(offsetof(INTERACT_Ladder_C_TryInteract, CallFunc_IsValid_ReturnValue_1) == 0x00017C, "Member 'INTERACT_Ladder_C_TryInteract::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(INTERACT_Ladder_C_TryInteract, CallFunc_Greater_FloatFloat_ReturnValue) == 0x00017D, "Member 'INTERACT_Ladder_C_TryInteract::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_Ladder_C_TryInteract, CallFunc_BooleanAND_ReturnValue) == 0x00017E, "Member 'INTERACT_Ladder_C_TryInteract::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_Ladder.INTERACT_Ladder_C.GetTargetShape
+// 0x0010 (0x0010 - 0x0000)
+struct INTERACT_Ladder_C_GetTargetShape final
+{
+public:
+	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UShapeComponent*                        ShapeComponent;                                    // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_Ladder_C_GetTargetShape) == 0x000008, "Wrong alignment on INTERACT_Ladder_C_GetTargetShape");
+static_assert(sizeof(INTERACT_Ladder_C_GetTargetShape) == 0x000010, "Wrong size on INTERACT_Ladder_C_GetTargetShape");
+static_assert(offsetof(INTERACT_Ladder_C_GetTargetShape, CursorPrimitive) == 0x000000, "Member 'INTERACT_Ladder_C_GetTargetShape::CursorPrimitive' has a wrong offset!");
+static_assert(offsetof(INTERACT_Ladder_C_GetTargetShape, ShapeComponent) == 0x000008, "Member 'INTERACT_Ladder_C_GetTargetShape::ShapeComponent' has a wrong offset!");
+
+// Function INTERACT_Ladder.INTERACT_Ladder_C.StopChanneling
+// 0x0040 (0x0040 - 0x0000)
+struct INTERACT_Ladder_C_StopChanneling final
+{
+public:
+	class AActor*                                 NewChannelingInteract;                             // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMOVECONTROL_Base_C*                    CallFunc_GetActiveMoveControl_ActiveMoveControl;   // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMOVECONTROL_LadderMove_C*              K2Node_DynamicCast_AsMOVECONTROL_Ladder_Move;      // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_Ladder_C_StopChanneling) == 0x000008, "Wrong alignment on INTERACT_Ladder_C_StopChanneling");
+static_assert(sizeof(INTERACT_Ladder_C_StopChanneling) == 0x000040, "Wrong size on INTERACT_Ladder_C_StopChanneling");
+static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, NewChannelingInteract) == 0x000000, "Member 'INTERACT_Ladder_C_StopChanneling::NewChannelingInteract' has a wrong offset!");
+static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, Result) == 0x000008, "Member 'INTERACT_Ladder_C_StopChanneling::Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, CallFunc_GetPlayerPawn_ReturnValue) == 0x000010, "Member 'INTERACT_Ladder_C_StopChanneling::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000018, "Member 'INTERACT_Ladder_C_StopChanneling::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, K2Node_DynamicCast_bSuccess) == 0x000020, "Member 'INTERACT_Ladder_C_StopChanneling::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, CallFunc_GetActiveMoveControl_ActiveMoveControl) == 0x000028, "Member 'INTERACT_Ladder_C_StopChanneling::CallFunc_GetActiveMoveControl_ActiveMoveControl' has a wrong offset!");
+static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, K2Node_DynamicCast_AsMOVECONTROL_Ladder_Move) == 0x000030, "Member 'INTERACT_Ladder_C_StopChanneling::K2Node_DynamicCast_AsMOVECONTROL_Ladder_Move' has a wrong offset!");
+static_assert(offsetof(INTERACT_Ladder_C_StopChanneling, K2Node_DynamicCast_bSuccess_1) == 0x000038, "Member 'INTERACT_Ladder_C_StopChanneling::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
 
 }
 

@@ -634,44 +634,6 @@ void UITEM_ProjectileWeapon_Base_C::OnMagazineRefilled()
 }
 
 
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.SetupMaterial
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UITEM_ProjectileWeapon_Base_C::SetupMaterial()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "SetupMaterial");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.ReceiveAnimationMessage
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class FString                           Message                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_ProjectileWeapon_Base_C::ReceiveAnimationMessage(const class FString& Message, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "ReceiveAnimationMessage");
-
-	Params::ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage Parms{};
-
-	Parms.Message = std::move(Message);
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnAutoReloadStateChanged
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -828,27 +790,6 @@ void UITEM_ProjectileWeapon_Base_C::MoveAmmoFromChamberToMagazine()
 }
 
 
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.EnableDamage
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_ProjectileWeapon_Base_C::EnableDamage(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "EnableDamage");
-
-	Params::ITEM_ProjectileWeapon_Base_C_EnableDamage Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.FireProjectile
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -871,30 +812,6 @@ void UITEM_ProjectileWeapon_Base_C::FireProjectile(class AActor** FiredProjectil
 
 	if (Direction != nullptr)
 		*Direction = std::move(Parms.Direction);
-}
-
-
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.SetCurrentMode
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// int32                                   Mode                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_ProjectileWeapon_Base_C::SetCurrentMode(int32 Mode, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "SetCurrentMode");
-
-	Params::ITEM_ProjectileWeapon_Base_C_SetCurrentMode Parms{};
-
-	Parms.Mode = Mode;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
 }
 
 
@@ -1066,32 +983,6 @@ void UITEM_ProjectileWeapon_Base_C::QueueModeSwitch()
 }
 
 
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.GetWeaponModeDisplayName
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// int32                                   ModeIndex                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    ShortName                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// class FText                             Result                                                 (Parm, OutParm)
-
-void UITEM_ProjectileWeapon_Base_C::GetWeaponModeDisplayName(int32 ModeIndex, bool ShortName, class FText* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "GetWeaponModeDisplayName");
-
-	Params::ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName Parms{};
-
-	Parms.ModeIndex = ModeIndex;
-	Parms.ShortName = ShortName;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = std::move(Parms.Result);
-}
-
-
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.EVENT_OnDischargeStarted
 // (Protected, BlueprintCallable, BlueprintEvent)
 
@@ -1141,28 +1032,6 @@ void UITEM_ProjectileWeapon_Base_C::EVENT_OnTryReloadWhenAmmoBagChanged(int32 Sl
 	Params::ITEM_ProjectileWeapon_Base_C_EVENT_OnTryReloadWhenAmmoBagChanged Parms{};
 
 	Parms.SlotIndex_0 = SlotIndex_0;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnWeaponBecameActivatable
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    ShowImmediately                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_ProjectileWeapon_Base_C::OnWeaponBecameActivatable(class APAWN_SystemShockCharacter_C* Character, bool ShowImmediately)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "OnWeaponBecameActivatable");
-
-	Params::ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable Parms{};
-
-	Parms.Character = Character;
-	Parms.ShowImmediately = ShowImmediately;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -1238,6 +1107,137 @@ void UITEM_ProjectileWeapon_Base_C::TryDestroyShellCasingComponent()
 }
 
 
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.SetupMaterial
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UITEM_ProjectileWeapon_Base_C::SetupMaterial()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "SetupMaterial");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.ReceiveAnimationMessage
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Message                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_ProjectileWeapon_Base_C::ReceiveAnimationMessage(const class FString& Message, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "ReceiveAnimationMessage");
+
+	Params::ITEM_ProjectileWeapon_Base_C_ReceiveAnimationMessage Parms{};
+
+	Parms.Message = std::move(Message);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.EnableDamage
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_ProjectileWeapon_Base_C::EnableDamage(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "EnableDamage");
+
+	Params::ITEM_ProjectileWeapon_Base_C_EnableDamage Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.SetCurrentMode
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int32                                   Mode                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_ProjectileWeapon_Base_C::SetCurrentMode(int32 Mode, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "SetCurrentMode");
+
+	Params::ITEM_ProjectileWeapon_Base_C_SetCurrentMode Parms{};
+
+	Parms.Mode = Mode;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.GetWeaponModeDisplayName
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// int32                                   ModeIndex                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    ShortName                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// class FText                             Result                                                 (Parm, OutParm)
+
+void UITEM_ProjectileWeapon_Base_C::GetWeaponModeDisplayName(int32 ModeIndex, bool ShortName, class FText* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "GetWeaponModeDisplayName");
+
+	Params::ITEM_ProjectileWeapon_Base_C_GetWeaponModeDisplayName Parms{};
+
+	Parms.ModeIndex = ModeIndex;
+	Parms.ShortName = ShortName;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = std::move(Parms.Result);
+}
+
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnWeaponBecameActivatable
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    ShowImmediately                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_ProjectileWeapon_Base_C::OnWeaponBecameActivatable(class APAWN_SystemShockCharacter_C* Character, bool ShowImmediately)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "OnWeaponBecameActivatable");
+
+	Params::ITEM_ProjectileWeapon_Base_C_OnWeaponBecameActivatable Parms{};
+
+	Parms.Character = Character;
+	Parms.ShowImmediately = ShowImmediately;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.TryBeginReloading
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -1251,27 +1251,6 @@ void UITEM_ProjectileWeapon_Base_C::TryBeginReloading(bool* Result)
 		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "TryBeginReloading");
 
 	Params::ITEM_ProjectileWeapon_Base_C_TryBeginReloading Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnBecomeUnactivatable
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_ProjectileWeapon_Base_C::OnBecomeUnactivatable(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "OnBecomeUnactivatable");
-
-	Params::ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -1296,6 +1275,27 @@ void UITEM_ProjectileWeapon_Base_C::Activate(class APAWN_SystemShockCharacter_C*
 	Params::ITEM_ProjectileWeapon_Base_C_Activate Parms{};
 
 	Parms.Character = Character;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnBecomeUnactivatable
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_ProjectileWeapon_Base_C::OnBecomeUnactivatable(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_ProjectileWeapon_Base_C", "OnBecomeUnactivatable");
+
+	Params::ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 

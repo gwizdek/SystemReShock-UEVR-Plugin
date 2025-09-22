@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "SlateCore_structs.hpp"
-#include "ENUM_MeshColor_structs.hpp"
 #include "Engine_structs.hpp"
 #include "WIDGET_MenuListItemBase_classes.hpp"
+#include "ENUM_MeshColor_structs.hpp"
 
 
 namespace SDK

@@ -626,6 +626,27 @@ void UITEM_MeleeWeapon_Base_C::DamageTraceWithOffsetFromCamera(const struct FInt
 }
 
 
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.EnableDamage
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_MeleeWeapon_Base_C::EnableDamage(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "EnableDamage");
+
+	Params::ITEM_MeleeWeapon_Base_C_EnableDamage Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.DamageTraceWithOffsetFromSocket
 // (Private, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -671,6 +692,27 @@ void UITEM_MeleeWeapon_Base_C::TryDealDamageFromHitResult(const struct FHitResul
 
 	if (Hit != nullptr)
 		*Hit = Parms.Hit;
+}
+
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.DisableDamage
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_MeleeWeapon_Base_C::DisableDamage(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "DisableDamage");
+
+	Params::ITEM_MeleeWeapon_Base_C_DisableDamage Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
 }
 
 
@@ -1012,48 +1054,6 @@ void UITEM_MeleeWeapon_Base_C::UpdateStaminaDrainMod()
 }
 
 
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.EnableDamage
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_MeleeWeapon_Base_C::EnableDamage(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "EnableDamage");
-
-	Params::ITEM_MeleeWeapon_Base_C_EnableDamage Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.DisableDamage
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_MeleeWeapon_Base_C::DisableDamage(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "DisableDamage");
-
-	Params::ITEM_MeleeWeapon_Base_C_DisableDamage Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.CalcDamageAndArmorPenetration
 // (Protected, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -1219,6 +1219,132 @@ void UITEM_MeleeWeapon_Base_C::HasBerserkAttribute(bool* Result)
 		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "HasBerserkAttribute");
 
 	Params::ITEM_MeleeWeapon_Base_C_HasBerserkAttribute Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.CanAimWithWeapon
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_MeleeWeapon_Base_C::CanAimWithWeapon(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "CanAimWithWeapon");
+
+	Params::ITEM_MeleeWeapon_Base_C_CanAimWithWeapon Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetDrawMontage
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UAnimMontage*                     Montage                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UITEM_MeleeWeapon_Base_C::GetDrawMontage(class UAnimMontage** Montage)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetDrawMontage");
+
+	Params::ITEM_MeleeWeapon_Base_C_GetDrawMontage Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Montage != nullptr)
+		*Montage = Parms.Montage;
+}
+
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetHolsterMontage
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UAnimMontage*                     Montage                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UITEM_MeleeWeapon_Base_C::GetHolsterMontage(class UAnimMontage** Montage)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetHolsterMontage");
+
+	Params::ITEM_MeleeWeapon_Base_C_GetHolsterMontage Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Montage != nullptr)
+		*Montage = Parms.Montage;
+}
+
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetIdleSequence
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UAnimSequenceBase*                Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UITEM_MeleeWeapon_Base_C::GetIdleSequence(class UAnimSequenceBase** Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetIdleSequence");
+
+	Params::ITEM_MeleeWeapon_Base_C_GetIdleSequence Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetWalkSequence
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UAnimSequenceBase*                Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UITEM_MeleeWeapon_Base_C::GetWalkSequence(class UAnimSequenceBase** Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetWalkSequence");
+
+	Params::ITEM_MeleeWeapon_Base_C_GetWalkSequence Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetSprintSequence
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UAnimSequenceBase*                Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UITEM_MeleeWeapon_Base_C::GetSprintSequence(class UAnimSequenceBase** Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetSprintSequence");
+
+	Params::ITEM_MeleeWeapon_Base_C_GetSprintSequence Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -1395,124 +1521,22 @@ void UITEM_MeleeWeapon_Base_C::GetTraceSocketName(class FName* Result)
 }
 
 
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.CanAimWithWeapon
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.Activate
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
+// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void UITEM_MeleeWeapon_Base_C::CanAimWithWeapon(bool* Result)
+void UITEM_MeleeWeapon_Base_C::Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "CanAimWithWeapon");
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "Activate");
 
-	Params::ITEM_MeleeWeapon_Base_C_CanAimWithWeapon Parms{};
+	Params::ITEM_MeleeWeapon_Base_C_Activate Parms{};
 
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetDrawMontage
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UAnimMontage*                     Montage                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UITEM_MeleeWeapon_Base_C::GetDrawMontage(class UAnimMontage** Montage)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetDrawMontage");
-
-	Params::ITEM_MeleeWeapon_Base_C_GetDrawMontage Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Montage != nullptr)
-		*Montage = Parms.Montage;
-}
-
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetHolsterMontage
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UAnimMontage*                     Montage                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UITEM_MeleeWeapon_Base_C::GetHolsterMontage(class UAnimMontage** Montage)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetHolsterMontage");
-
-	Params::ITEM_MeleeWeapon_Base_C_GetHolsterMontage Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Montage != nullptr)
-		*Montage = Parms.Montage;
-}
-
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetIdleSequence
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UAnimSequenceBase*                Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UITEM_MeleeWeapon_Base_C::GetIdleSequence(class UAnimSequenceBase** Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetIdleSequence");
-
-	Params::ITEM_MeleeWeapon_Base_C_GetIdleSequence Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetWalkSequence
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UAnimSequenceBase*                Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UITEM_MeleeWeapon_Base_C::GetWalkSequence(class UAnimSequenceBase** Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetWalkSequence");
-
-	Params::ITEM_MeleeWeapon_Base_C_GetWalkSequence Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.GetSprintSequence
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UAnimSequenceBase*                Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UITEM_MeleeWeapon_Base_C::GetSprintSequence(class UAnimSequenceBase** Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "GetSprintSequence");
-
-	Params::ITEM_MeleeWeapon_Base_C_GetSprintSequence Parms{};
+	Parms.Character = Character;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -1555,30 +1579,6 @@ void UITEM_MeleeWeapon_Base_C::OnBecomeUnactivatable(bool* Result)
 		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "OnBecomeUnactivatable");
 
 	Params::ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.Activate
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_MeleeWeapon_Base_C::Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "Activate");
-
-	Params::ITEM_MeleeWeapon_Base_C_Activate Parms{};
-
-	Parms.Character = Character;
 
 	UObject::ProcessEvent(Func, &Parms);
 

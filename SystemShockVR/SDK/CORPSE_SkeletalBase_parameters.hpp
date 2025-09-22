@@ -12,8 +12,8 @@
 
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "AttributeSystem_structs.hpp"
 #include "STRUCT_DismemberableLimb_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 
 
 namespace SDK::Params

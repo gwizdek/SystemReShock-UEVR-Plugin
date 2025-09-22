@@ -10,18 +10,18 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "ENUM_FailSucceedIgnore_structs.hpp"
+#include "STRUC_ElevatorInfo_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "STRUCT_MusicParams_structs.hpp"
 #include "Engine_structs.hpp"
-#include "STRUC_ElevatorInfo_structs.hpp"
 #include "STRUCT_LevelAtmosphereSettings_structs.hpp"
-#include "ENUM_DoorState_structs.hpp"
 #include "ENUM_UpDown_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
 #include "STRUCT_LevelInfo_structs.hpp"
 #include "LevelVoxelization_structs.hpp"
 #include "ENUM_InnerOuter_structs.hpp"
+#include "ENUM_DoorState_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
 
 
@@ -933,111 +933,6 @@ static_assert(offsetof(ELEVATOR_Base_C_CanOpenDoors, CallFunc_BooleanOR_ReturnVa
 static_assert(offsetof(ELEVATOR_Base_C_CanOpenDoors, CallFunc_EqualEqual_ByteByte_ReturnValue_7) == 0x00000E, "Member 'ELEVATOR_Base_C_CanOpenDoors::CallFunc_EqualEqual_ByteByte_ReturnValue_7' has a wrong offset!");
 static_assert(offsetof(ELEVATOR_Base_C_CanOpenDoors, CallFunc_BooleanOR_ReturnValue_4) == 0x00000F, "Member 'ELEVATOR_Base_C_CanOpenDoors::CallFunc_BooleanOR_ReturnValue_4' has a wrong offset!");
 static_assert(offsetof(ELEVATOR_Base_C_CanOpenDoors, CallFunc_BooleanAND_ReturnValue) == 0x000010, "Member 'ELEVATOR_Base_C_CanOpenDoors::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-
-// Function ELEVATOR_Base.ELEVATOR_Base_C.TryInteract
-// 0x02E0 (0x02E0 - 0x0000)
-struct ELEVATOR_Base_C_TryInteract final
-{
-public:
-	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_InteractionType                          InteractionType;                                   // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                InteractResults;                                   // 0x0018(0x0020)(Parm, OutParm, HasGetValueTypeHash)
-	class FName                                   DesiredTargetLevel;                                // 0x0038(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_DoorState                                InnerDoorState;                                    // 0x0040(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          TriedMovingToCurrentLevel;                         // 0x0041(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_42[0x6];                                       // 0x0042(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TSet<class FName>                             LevelNames;                                        // 0x0048(0x0050)(Edit, BlueprintVisible)
-	float                                         ElevatorCloseDuration;                             // 0x0098(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9C[0x4];                                       // 0x009C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults;          // 0x00A0(0x0020)(HasGetValueTypeHash)
-	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_1;        // 0x00D0(0x0020)(HasGetValueTypeHash)
-	TSet<class FName>                             K2Node_MakeVariable_MakeVariableOutput;            // 0x00F0(0x0050)()
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_2;        // 0x0140(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_3;        // 0x0160(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_4;        // 0x0180(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_5;        // 0x01A0(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_6;        // 0x01C0(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_7;        // 0x01E0(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_8;        // 0x0200(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_9;        // 0x0220(0x0020)(HasGetValueTypeHash)
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0240(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_CanUseElevator_Success;                   // 0x0248(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_249[0x7];                                      // 0x0249(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   CallFunc_CanUseElevator_FailMessage;               // 0x0250(0x0018)()
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0268(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0270(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_271[0x7];                                      // 0x0271(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_10;       // 0x0278(0x0020)(HasGetValueTypeHash)
-	class FName                                   CallFunc_GetCurrentLevelName_Result;               // 0x0298(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsAnyDoorClosing_Result;                  // 0x02A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsEveryDoorClosed_Result;                 // 0x02A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryOpenElevatorDoors_Result;              // 0x02A2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x02A3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsEveryDoorClosed_Result_1;               // 0x02A4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsAnyDoorOpening_Result;                  // 0x02A5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsAnyDoorClosing_Result_1;                // 0x02A6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryCloseElevatorDoors_Result;             // 0x02A7(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsEveryDoorClosed_Result_2;               // 0x02A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsAnyDoorOpening_Result_1;                // 0x02A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsAnyDoorClosing_Result_2;                // 0x02AA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2AB[0x5];                                      // 0x02AB(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_11;       // 0x02B0(0x0020)(HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_NameName_ReturnValue;          // 0x02D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryOpenElevatorDoors_Result_1;            // 0x02D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2D2[0x2];                                      // 0x02D2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_GetTargetLevelName_TargetLevel;           // 0x02D4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ELEVATOR_Base_C_TryInteract) == 0x000008, "Wrong alignment on ELEVATOR_Base_C_TryInteract");
-static_assert(sizeof(ELEVATOR_Base_C_TryInteract) == 0x0002E0, "Wrong size on ELEVATOR_Base_C_TryInteract");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, SourceActor) == 0x000000, "Member 'ELEVATOR_Base_C_TryInteract::SourceActor' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CursorPrimitive) == 0x000008, "Member 'ELEVATOR_Base_C_TryInteract::CursorPrimitive' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, InteractionType) == 0x000010, "Member 'ELEVATOR_Base_C_TryInteract::InteractionType' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, InteractResults) == 0x000018, "Member 'ELEVATOR_Base_C_TryInteract::InteractResults' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, DesiredTargetLevel) == 0x000038, "Member 'ELEVATOR_Base_C_TryInteract::DesiredTargetLevel' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, InnerDoorState) == 0x000040, "Member 'ELEVATOR_Base_C_TryInteract::InnerDoorState' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, TriedMovingToCurrentLevel) == 0x000041, "Member 'ELEVATOR_Base_C_TryInteract::TriedMovingToCurrentLevel' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, LevelNames) == 0x000048, "Member 'ELEVATOR_Base_C_TryInteract::LevelNames' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, ElevatorCloseDuration) == 0x000098, "Member 'ELEVATOR_Base_C_TryInteract::ElevatorCloseDuration' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults) == 0x0000A0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x0000C0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_DynamicCast_bSuccess) == 0x0000C8, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_1) == 0x0000D0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeVariable_MakeVariableOutput) == 0x0000F0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeVariable_MakeVariableOutput' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_2) == 0x000140, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_2' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_3) == 0x000160, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_3' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_4) == 0x000180, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_4' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_5) == 0x0001A0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_5' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_6) == 0x0001C0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_6' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_7) == 0x0001E0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_7' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_8) == 0x000200, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_8' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_9) == 0x000220, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_9' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_GetGameInstance_ReturnValue) == 0x000240, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_CanUseElevator_Success) == 0x000248, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_CanUseElevator_Success' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_CanUseElevator_FailMessage) == 0x000250, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_CanUseElevator_FailMessage' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_DynamicCast_AsGI_Single_Player) == 0x000268, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_DynamicCast_bSuccess_1) == 0x000270, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_10) == 0x000278, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_10' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_GetCurrentLevelName_Result) == 0x000298, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_GetCurrentLevelName_Result' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorClosing_Result) == 0x0002A0, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorClosing_Result' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsEveryDoorClosed_Result) == 0x0002A1, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsEveryDoorClosed_Result' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_TryOpenElevatorDoors_Result) == 0x0002A2, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_TryOpenElevatorDoors_Result' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_BooleanOR_ReturnValue) == 0x0002A3, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsEveryDoorClosed_Result_1) == 0x0002A4, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsEveryDoorClosed_Result_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorOpening_Result) == 0x0002A5, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorOpening_Result' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorClosing_Result_1) == 0x0002A6, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorClosing_Result_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_TryCloseElevatorDoors_Result) == 0x0002A7, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_TryCloseElevatorDoors_Result' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsEveryDoorClosed_Result_2) == 0x0002A8, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsEveryDoorClosed_Result_2' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorOpening_Result_1) == 0x0002A9, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorOpening_Result_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorClosing_Result_2) == 0x0002AA, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorClosing_Result_2' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_11) == 0x0002B0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_11' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_EqualEqual_NameName_ReturnValue) == 0x0002D0, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_EqualEqual_NameName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_TryOpenElevatorDoors_Result_1) == 0x0002D1, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_TryOpenElevatorDoors_Result_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_GetTargetLevelName_TargetLevel) == 0x0002D4, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_GetTargetLevelName_TargetLevel' has a wrong offset!");
 
 // Function ELEVATOR_Base.ELEVATOR_Base_C.CanCloseDoors
 // 0x0008 (0x0008 - 0x0000)
@@ -2480,33 +2375,6 @@ static_assert(offsetof(ELEVATOR_Base_C_GetOccupantPrimitiveComponent, CallFunc_G
 static_assert(offsetof(ELEVATOR_Base_C_GetOccupantPrimitiveComponent, K2Node_DynamicCast_AsPAWN_System_Shock_Character) == 0x000060, "Member 'ELEVATOR_Base_C_GetOccupantPrimitiveComponent::K2Node_DynamicCast_AsPAWN_System_Shock_Character' has a wrong offset!");
 static_assert(offsetof(ELEVATOR_Base_C_GetOccupantPrimitiveComponent, K2Node_DynamicCast_bSuccess_4) == 0x000068, "Member 'ELEVATOR_Base_C_GetOccupantPrimitiveComponent::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
 
-// Function ELEVATOR_Base.ELEVATOR_Base_C.GetTargetShape
-// 0x0030 (0x0030 - 0x0000)
-struct ELEVATOR_Base_C_GetTargetShape final
-{
-public:
-	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UShapeComponent*                        ShapeComponent;                                    // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         ButtonIndex;                                       // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UBoxComponent*                          CallFunc_Array_Get_Item;                           // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UBoxComponent*                          K2Node_DynamicCast_AsBox_Collision;                // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Find_ReturnValue;                   // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ELEVATOR_Base_C_GetTargetShape) == 0x000008, "Wrong alignment on ELEVATOR_Base_C_GetTargetShape");
-static_assert(sizeof(ELEVATOR_Base_C_GetTargetShape) == 0x000030, "Wrong size on ELEVATOR_Base_C_GetTargetShape");
-static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, CursorPrimitive) == 0x000000, "Member 'ELEVATOR_Base_C_GetTargetShape::CursorPrimitive' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, ShapeComponent) == 0x000008, "Member 'ELEVATOR_Base_C_GetTargetShape::ShapeComponent' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, ButtonIndex) == 0x000010, "Member 'ELEVATOR_Base_C_GetTargetShape::ButtonIndex' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000014, "Member 'ELEVATOR_Base_C_GetTargetShape::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, CallFunc_Array_Get_Item) == 0x000018, "Member 'ELEVATOR_Base_C_GetTargetShape::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, K2Node_DynamicCast_AsBox_Collision) == 0x000020, "Member 'ELEVATOR_Base_C_GetTargetShape::K2Node_DynamicCast_AsBox_Collision' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'ELEVATOR_Base_C_GetTargetShape::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, CallFunc_Array_Find_ReturnValue) == 0x00002C, "Member 'ELEVATOR_Base_C_GetTargetShape::CallFunc_Array_Find_ReturnValue' has a wrong offset!");
-
 // Function ELEVATOR_Base.ELEVATOR_Base_C.GetControlsMeshComponent
 // 0x0008 (0x0008 - 0x0000)
 struct ELEVATOR_Base_C_GetControlsMeshComponent final
@@ -2973,6 +2841,138 @@ static_assert(offsetof(ELEVATOR_Base_C_EVENT_OnStoryQuestChanged, Value) == 0x00
 static_assert(offsetof(ELEVATOR_Base_C_EVENT_OnStoryQuestChanged, DesiredLockState) == 0x000009, "Member 'ELEVATOR_Base_C_EVENT_OnStoryQuestChanged::DesiredLockState' has a wrong offset!");
 static_assert(offsetof(ELEVATOR_Base_C_EVENT_OnStoryQuestChanged, CallFunc_EqualEqual_BoolBool_ReturnValue) == 0x00000A, "Member 'ELEVATOR_Base_C_EVENT_OnStoryQuestChanged::CallFunc_EqualEqual_BoolBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ELEVATOR_Base_C_EVENT_OnStoryQuestChanged, CallFunc_EqualEqual_NameName_ReturnValue) == 0x00000B, "Member 'ELEVATOR_Base_C_EVENT_OnStoryQuestChanged::CallFunc_EqualEqual_NameName_ReturnValue' has a wrong offset!");
+
+// Function ELEVATOR_Base.ELEVATOR_Base_C.TryInteract
+// 0x02E0 (0x02E0 - 0x0000)
+struct ELEVATOR_Base_C_TryInteract final
+{
+public:
+	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InteractionType                          InteractionType;                                   // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                InteractResults;                                   // 0x0018(0x0020)(Parm, OutParm, HasGetValueTypeHash)
+	class FName                                   DesiredTargetLevel;                                // 0x0038(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_DoorState                                InnerDoorState;                                    // 0x0040(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          TriedMovingToCurrentLevel;                         // 0x0041(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_42[0x6];                                       // 0x0042(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TSet<class FName>                             LevelNames;                                        // 0x0048(0x0050)(Edit, BlueprintVisible)
+	float                                         ElevatorCloseDuration;                             // 0x0098(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_9C[0x4];                                       // 0x009C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults;          // 0x00A0(0x0020)(HasGetValueTypeHash)
+	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_1;        // 0x00D0(0x0020)(HasGetValueTypeHash)
+	TSet<class FName>                             K2Node_MakeVariable_MakeVariableOutput;            // 0x00F0(0x0050)()
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_2;        // 0x0140(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_3;        // 0x0160(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_4;        // 0x0180(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_5;        // 0x01A0(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_6;        // 0x01C0(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_7;        // 0x01E0(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_8;        // 0x0200(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_9;        // 0x0220(0x0020)(HasGetValueTypeHash)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0240(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_CanUseElevator_Success;                   // 0x0248(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_249[0x7];                                      // 0x0249(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   CallFunc_CanUseElevator_FailMessage;               // 0x0250(0x0018)()
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0268(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0270(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_271[0x7];                                      // 0x0271(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_10;       // 0x0278(0x0020)(HasGetValueTypeHash)
+	class FName                                   CallFunc_GetCurrentLevelName_Result;               // 0x0298(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsAnyDoorClosing_Result;                  // 0x02A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsEveryDoorClosed_Result;                 // 0x02A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryOpenElevatorDoors_Result;              // 0x02A2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x02A3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsEveryDoorClosed_Result_1;               // 0x02A4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsAnyDoorOpening_Result;                  // 0x02A5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsAnyDoorClosing_Result_1;                // 0x02A6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryCloseElevatorDoors_Result;             // 0x02A7(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsEveryDoorClosed_Result_2;               // 0x02A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsAnyDoorOpening_Result_1;                // 0x02A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsAnyDoorClosing_Result_2;                // 0x02AA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2AB[0x5];                                      // 0x02AB(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_11;       // 0x02B0(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_NameName_ReturnValue;          // 0x02D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryOpenElevatorDoors_Result_1;            // 0x02D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2D2[0x2];                                      // 0x02D2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_GetTargetLevelName_TargetLevel;           // 0x02D4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ELEVATOR_Base_C_TryInteract) == 0x000008, "Wrong alignment on ELEVATOR_Base_C_TryInteract");
+static_assert(sizeof(ELEVATOR_Base_C_TryInteract) == 0x0002E0, "Wrong size on ELEVATOR_Base_C_TryInteract");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, SourceActor) == 0x000000, "Member 'ELEVATOR_Base_C_TryInteract::SourceActor' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CursorPrimitive) == 0x000008, "Member 'ELEVATOR_Base_C_TryInteract::CursorPrimitive' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, InteractionType) == 0x000010, "Member 'ELEVATOR_Base_C_TryInteract::InteractionType' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, InteractResults) == 0x000018, "Member 'ELEVATOR_Base_C_TryInteract::InteractResults' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, DesiredTargetLevel) == 0x000038, "Member 'ELEVATOR_Base_C_TryInteract::DesiredTargetLevel' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, InnerDoorState) == 0x000040, "Member 'ELEVATOR_Base_C_TryInteract::InnerDoorState' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, TriedMovingToCurrentLevel) == 0x000041, "Member 'ELEVATOR_Base_C_TryInteract::TriedMovingToCurrentLevel' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, LevelNames) == 0x000048, "Member 'ELEVATOR_Base_C_TryInteract::LevelNames' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, ElevatorCloseDuration) == 0x000098, "Member 'ELEVATOR_Base_C_TryInteract::ElevatorCloseDuration' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults) == 0x0000A0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x0000C0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_DynamicCast_bSuccess) == 0x0000C8, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_1) == 0x0000D0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeVariable_MakeVariableOutput) == 0x0000F0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeVariable_MakeVariableOutput' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_2) == 0x000140, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_2' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_3) == 0x000160, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_3' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_4) == 0x000180, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_4' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_5) == 0x0001A0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_5' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_6) == 0x0001C0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_6' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_7) == 0x0001E0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_7' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_8) == 0x000200, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_8' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_9) == 0x000220, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_9' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_GetGameInstance_ReturnValue) == 0x000240, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_CanUseElevator_Success) == 0x000248, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_CanUseElevator_Success' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_CanUseElevator_FailMessage) == 0x000250, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_CanUseElevator_FailMessage' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_DynamicCast_AsGI_Single_Player) == 0x000268, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_DynamicCast_bSuccess_1) == 0x000270, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_10) == 0x000278, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_10' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_GetCurrentLevelName_Result) == 0x000298, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_GetCurrentLevelName_Result' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorClosing_Result) == 0x0002A0, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorClosing_Result' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsEveryDoorClosed_Result) == 0x0002A1, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsEveryDoorClosed_Result' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_TryOpenElevatorDoors_Result) == 0x0002A2, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_TryOpenElevatorDoors_Result' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_BooleanOR_ReturnValue) == 0x0002A3, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsEveryDoorClosed_Result_1) == 0x0002A4, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsEveryDoorClosed_Result_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorOpening_Result) == 0x0002A5, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorOpening_Result' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorClosing_Result_1) == 0x0002A6, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorClosing_Result_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_TryCloseElevatorDoors_Result) == 0x0002A7, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_TryCloseElevatorDoors_Result' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsEveryDoorClosed_Result_2) == 0x0002A8, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsEveryDoorClosed_Result_2' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorOpening_Result_1) == 0x0002A9, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorOpening_Result_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_IsAnyDoorClosing_Result_2) == 0x0002AA, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_IsAnyDoorClosing_Result_2' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_11) == 0x0002B0, "Member 'ELEVATOR_Base_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_11' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_EqualEqual_NameName_ReturnValue) == 0x0002D0, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_EqualEqual_NameName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_TryOpenElevatorDoors_Result_1) == 0x0002D1, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_TryOpenElevatorDoors_Result_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_TryInteract, CallFunc_GetTargetLevelName_TargetLevel) == 0x0002D4, "Member 'ELEVATOR_Base_C_TryInteract::CallFunc_GetTargetLevelName_TargetLevel' has a wrong offset!");
+
+// Function ELEVATOR_Base.ELEVATOR_Base_C.GetTargetShape
+// 0x0030 (0x0030 - 0x0000)
+struct ELEVATOR_Base_C_GetTargetShape final
+{
+public:
+	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UShapeComponent*                        ShapeComponent;                                    // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         ButtonIndex;                                       // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class UBoxComponent*                          CallFunc_Array_Get_Item;                           // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UBoxComponent*                          K2Node_DynamicCast_AsBox_Collision;                // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Find_ReturnValue;                   // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ELEVATOR_Base_C_GetTargetShape) == 0x000008, "Wrong alignment on ELEVATOR_Base_C_GetTargetShape");
+static_assert(sizeof(ELEVATOR_Base_C_GetTargetShape) == 0x000030, "Wrong size on ELEVATOR_Base_C_GetTargetShape");
+static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, CursorPrimitive) == 0x000000, "Member 'ELEVATOR_Base_C_GetTargetShape::CursorPrimitive' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, ShapeComponent) == 0x000008, "Member 'ELEVATOR_Base_C_GetTargetShape::ShapeComponent' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, ButtonIndex) == 0x000010, "Member 'ELEVATOR_Base_C_GetTargetShape::ButtonIndex' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000014, "Member 'ELEVATOR_Base_C_GetTargetShape::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, CallFunc_Array_Get_Item) == 0x000018, "Member 'ELEVATOR_Base_C_GetTargetShape::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, K2Node_DynamicCast_AsBox_Collision) == 0x000020, "Member 'ELEVATOR_Base_C_GetTargetShape::K2Node_DynamicCast_AsBox_Collision' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'ELEVATOR_Base_C_GetTargetShape::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Base_C_GetTargetShape, CallFunc_Array_Find_ReturnValue) == 0x00002C, "Member 'ELEVATOR_Base_C_GetTargetShape::CallFunc_Array_Find_ReturnValue' has a wrong offset!");
 
 }
 

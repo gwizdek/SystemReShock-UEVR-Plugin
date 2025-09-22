@@ -21,8 +21,8 @@ namespace SDK
 class UITEM_ICadBattery_C final : public UITEM_BatteryPack_C
 {
 public:
-	void UseConsumable(class APAWN_SystemShockCharacter_C* Character, class UITEM_ConsumableBase_C** ConsumedItem);
 	void GetEffects(class FText* EffectsText);
+	void UseConsumable(class APAWN_SystemShockCharacter_C* Character, class UITEM_ConsumableBase_C** ConsumedItem);
 
 public:
 	static class UClass* StaticClass()

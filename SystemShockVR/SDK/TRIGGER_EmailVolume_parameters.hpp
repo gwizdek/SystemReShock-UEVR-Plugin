@@ -13,8 +13,8 @@
 #include "Engine_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
 #include "ENUM_TriggerCondition_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
 
 

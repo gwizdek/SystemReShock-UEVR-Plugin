@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "STRUCT_WeaponMode_structs.hpp"
 #include "Engine_structs.hpp"
+#include "STRUCT_WeaponMode_structs.hpp"
 
 
 namespace SDK::Params
@@ -413,6 +413,154 @@ static_assert(offsetof(ITEM_ExplosiveBase_C_GetActivateMontage, CallFunc_IsValid
 static_assert(offsetof(ITEM_ExplosiveBase_C_GetActivateMontage, CallFunc_GetActivateMontage_Montage) == 0x000028, "Member 'ITEM_ExplosiveBase_C_GetActivateMontage::CallFunc_GetActivateMontage_Montage' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_GetActivateMontage, CallFunc_BooleanAND_ReturnValue) == 0x000030, "Member 'ITEM_ExplosiveBase_C_GetActivateMontage::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
+// Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.Activate
+// 0x0230 (0x0230 - 0x0000)
+struct ITEM_ExplosiveBase_C_Activate final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCameraComponent*                       CameraComponent;                                   // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         DistanceToTarget;                                  // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                TargetLocation;                                    // 0x001C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RayDirection;                                      // 0x0028(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RayOrigin;                                         // 0x0034(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_CanActivate_Result;                       // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_GetForwardVector_ReturnValue;             // 0x0044(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0054(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UCameraComponent*                       CallFunc_GetComponentByClass_ReturnValue;          // 0x0060(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class AActor*>                         K2Node_MakeArray_Array;                            // 0x0068(0x0010)(ConstParm, ReferenceParm)
+	float                                         Temp_float_Variable;                               // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X;                            // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y;                            // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z;                            // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X_1;                          // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_1;                          // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_1;                          // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0095(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0096(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_97[0x1];                                       // 0x0097(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_float_Variable_1;                             // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x009C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_CanPlayActivateMontage_Result;            // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Activate_Result;                          // 0x00A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A2[0x6];                                       // 0x00A2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class AController*                            CallFunc_GetController_ReturnValue;                // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APlayerController*                      K2Node_DynamicCast_AsPlayer_Controller;            // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x00B9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_BA[0x2];                                       // 0x00BA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         K2Node_Select_Default;                             // 0x00BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetMousePosition_LocationX;               // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetMousePosition_LocationY;               // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GetMousePosition_ReturnValue;             // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C9[0x3];                                       // 0x00C9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_SuggestProjectileVelocity_CustomArc_OutLaunchVelocity; // 0x00CC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SuggestProjectileVelocity_CustomArc_ReturnValue; // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_D9[0x3];                                       // 0x00D9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue;                 // 0x00DC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_DeprojectScreenToWorld_WorldPosition;     // 0x00E4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_DeprojectScreenToWorld_WorldDirection;    // 0x00F0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_DeprojectScreenToWorld_ReturnValue;       // 0x00FC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_FD[0x3];                                       // 0x00FD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_VSize_ReturnValue;                        // 0x0100(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FClamp_ReturnValue;                       // 0x0104(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x0108(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_LineTraceSingle_OutHit;                   // 0x0114(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_LineTraceSingle_ReturnValue;              // 0x019C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19D[0x3];                                      // 0x019D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x01A0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BreakHitResult_bBlockingHit;              // 0x01AC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bInitialOverlap;           // 0x01AD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1AE[0x2];                                      // 0x01AE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_BreakHitResult_Time;                      // 0x01B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakHitResult_Distance;                  // 0x01B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Location;                  // 0x01B8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactPoint;               // 0x01C4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Normal;                    // 0x01D0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactNormal;              // 0x01DC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPhysicalMaterial*                      CallFunc_BreakHitResult_PhysMat;                   // 0x01E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 CallFunc_BreakHitResult_HitActor;                  // 0x01F0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    CallFunc_BreakHitResult_HitComponent;              // 0x01F8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_BreakHitResult_HitBoneName;               // 0x0200(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_HitItem;                   // 0x0208(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_ElementIndex;              // 0x020C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_FaceIndex;                 // 0x0210(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceStart;                // 0x0214(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceEnd;                  // 0x0220(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ITEM_ExplosiveBase_C_Activate) == 0x000008, "Wrong alignment on ITEM_ExplosiveBase_C_Activate");
+static_assert(sizeof(ITEM_ExplosiveBase_C_Activate) == 0x000230, "Wrong size on ITEM_ExplosiveBase_C_Activate");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Character) == 0x000000, "Member 'ITEM_ExplosiveBase_C_Activate::Character' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Result) == 0x000008, "Member 'ITEM_ExplosiveBase_C_Activate::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CameraComponent) == 0x000010, "Member 'ITEM_ExplosiveBase_C_Activate::CameraComponent' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, DistanceToTarget) == 0x000018, "Member 'ITEM_ExplosiveBase_C_Activate::DistanceToTarget' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, TargetLocation) == 0x00001C, "Member 'ITEM_ExplosiveBase_C_Activate::TargetLocation' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, RayDirection) == 0x000028, "Member 'ITEM_ExplosiveBase_C_Activate::RayDirection' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, RayOrigin) == 0x000034, "Member 'ITEM_ExplosiveBase_C_Activate::RayOrigin' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_CanActivate_Result) == 0x000040, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_CanActivate_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetForwardVector_ReturnValue) == 0x000044, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetForwardVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_IsValid_ReturnValue) == 0x000050, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000054, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetComponentByClass_ReturnValue) == 0x000060, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetComponentByClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, K2Node_MakeArray_Array) == 0x000068, "Member 'ITEM_ExplosiveBase_C_Activate::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Temp_float_Variable) == 0x000078, "Member 'ITEM_ExplosiveBase_C_Activate::Temp_float_Variable' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_X) == 0x00007C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_X' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_Y) == 0x000080, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_Y' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_Z) == 0x000084, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_Z' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_X_1) == 0x000088, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_X_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_Y_1) == 0x00008C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_Y_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_Z_1) == 0x000090, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_Z_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000094, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Less_FloatFloat_ReturnValue) == 0x000095, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BooleanAND_ReturnValue) == 0x000096, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Temp_float_Variable_1) == 0x000098, "Member 'ITEM_ExplosiveBase_C_Activate::Temp_float_Variable_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00009C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_CanPlayActivateMontage_Result) == 0x0000A0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_CanPlayActivateMontage_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Activate_Result) == 0x0000A1, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Activate_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetController_ReturnValue) == 0x0000A8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, K2Node_DynamicCast_AsPlayer_Controller) == 0x0000B0, "Member 'ITEM_ExplosiveBase_C_Activate::K2Node_DynamicCast_AsPlayer_Controller' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, K2Node_DynamicCast_bSuccess) == 0x0000B8, "Member 'ITEM_ExplosiveBase_C_Activate::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Temp_bool_Variable) == 0x0000B9, "Member 'ITEM_ExplosiveBase_C_Activate::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, K2Node_Select_Default) == 0x0000BC, "Member 'ITEM_ExplosiveBase_C_Activate::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetMousePosition_LocationX) == 0x0000C0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetMousePosition_LocationX' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetMousePosition_LocationY) == 0x0000C4, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetMousePosition_LocationY' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetMousePosition_ReturnValue) == 0x0000C8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetMousePosition_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_SuggestProjectileVelocity_CustomArc_OutLaunchVelocity) == 0x0000CC, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_SuggestProjectileVelocity_CustomArc_OutLaunchVelocity' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_SuggestProjectileVelocity_CustomArc_ReturnValue) == 0x0000D8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_SuggestProjectileVelocity_CustomArc_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_MakeVector2D_ReturnValue) == 0x0000DC, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_MakeVector2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_DeprojectScreenToWorld_WorldPosition) == 0x0000E4, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_DeprojectScreenToWorld_WorldPosition' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_DeprojectScreenToWorld_WorldDirection) == 0x0000F0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_DeprojectScreenToWorld_WorldDirection' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_DeprojectScreenToWorld_ReturnValue) == 0x0000FC, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_DeprojectScreenToWorld_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_VSize_ReturnValue) == 0x000100, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_VSize_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_FClamp_ReturnValue) == 0x000104, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_FClamp_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x000108, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_LineTraceSingle_OutHit) == 0x000114, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_LineTraceSingle_OutHit' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_LineTraceSingle_ReturnValue) == 0x00019C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_LineTraceSingle_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Add_VectorVector_ReturnValue) == 0x0001A0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_bBlockingHit) == 0x0001AC, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_bBlockingHit' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_bInitialOverlap) == 0x0001AD, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_bInitialOverlap' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_Time) == 0x0001B0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_Time' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_Distance) == 0x0001B4, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_Distance' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_Location) == 0x0001B8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_Location' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_ImpactPoint) == 0x0001C4, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_ImpactPoint' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_Normal) == 0x0001D0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_Normal' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_ImpactNormal) == 0x0001DC, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_ImpactNormal' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_PhysMat) == 0x0001E8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_PhysMat' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_HitActor) == 0x0001F0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_HitActor' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_HitComponent) == 0x0001F8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_HitComponent' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_HitBoneName) == 0x000200, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_HitBoneName' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_HitItem) == 0x000208, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_HitItem' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_ElementIndex) == 0x00020C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_ElementIndex' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_FaceIndex) == 0x000210, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_FaceIndex' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_TraceStart) == 0x000214, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_TraceStart' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_TraceEnd) == 0x000220, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_TraceEnd' has a wrong offset!");
+
 // Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.CanActivate
 // 0x0030 (0x0030 - 0x0000)
 struct ITEM_ExplosiveBase_C_CanActivate final
@@ -444,143 +592,6 @@ static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, K2Node_DynamicCast_AsIT
 static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'ITEM_ExplosiveBase_C_CanActivate::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_IsEquipped_Result) == 0x000029, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_IsEquipped_Result' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_Not_PreBool_ReturnValue_1) == 0x00002A, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-
-// Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.Activate
-// 0x0200 (0x0200 - 0x0000)
-struct ITEM_ExplosiveBase_C_Activate final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         DistanceToTarget;                                  // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                TargetLocation;                                    // 0x0010(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RayDirection;                                      // 0x001C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RayOrigin;                                         // 0x0028(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_CanActivate_Result;                       // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_35[0x3];                                       // 0x0035(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class AActor*>                         K2Node_MakeArray_Array;                            // 0x0038(0x0010)(ConstParm, ReferenceParm)
-	float                                         Temp_float_Variable;                               // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_X;                            // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y;                            // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z;                            // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_X_1;                          // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y_1;                          // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z_1;                          // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0064(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0065(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0066(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_67[0x1];                                       // 0x0067(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Temp_float_Variable_1;                             // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_CanPlayActivateMontage_Result;            // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Activate_Result;                          // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_72[0x6];                                       // 0x0072(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class AController*                            CallFunc_GetController_ReturnValue;                // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      K2Node_DynamicCast_AsPlayer_Controller;            // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0088(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Temp_bool_Variable;                                // 0x0089(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_8A[0x2];                                       // 0x008A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetMousePosition_LocationX;               // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetMousePosition_LocationY;               // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GetMousePosition_ReturnValue;             // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_95[0x3];                                       // 0x0095(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue;                 // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_Select_Default;                             // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_DeprojectScreenToWorld_WorldPosition;     // 0x00A4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_DeprojectScreenToWorld_WorldDirection;    // 0x00B0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_DeprojectScreenToWorld_ReturnValue;       // 0x00BC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_BD[0x3];                                       // 0x00BD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_SuggestProjectileVelocity_CustomArc_OutLaunchVelocity; // 0x00C0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SuggestProjectileVelocity_CustomArc_ReturnValue; // 0x00CC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_CD[0x3];                                       // 0x00CD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_VSize_ReturnValue;                        // 0x00D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FClamp_ReturnValue;                       // 0x00D4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x00D8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_LineTraceSingle_OutHit;                   // 0x00E4(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	bool                                          CallFunc_LineTraceSingle_ReturnValue;              // 0x016C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_16D[0x3];                                      // 0x016D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x0170(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BreakHitResult_bBlockingHit;              // 0x017C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BreakHitResult_bInitialOverlap;           // 0x017D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_17E[0x2];                                      // 0x017E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_BreakHitResult_Time;                      // 0x0180(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakHitResult_Distance;                  // 0x0184(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_Location;                  // 0x0188(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_ImpactPoint;               // 0x0194(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_Normal;                    // 0x01A0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_ImpactNormal;              // 0x01AC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPhysicalMaterial*                      CallFunc_BreakHitResult_PhysMat;                   // 0x01B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 CallFunc_BreakHitResult_HitActor;                  // 0x01C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    CallFunc_BreakHitResult_HitComponent;              // 0x01C8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_BreakHitResult_HitBoneName;               // 0x01D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BreakHitResult_HitItem;                   // 0x01D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BreakHitResult_ElementIndex;              // 0x01DC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BreakHitResult_FaceIndex;                 // 0x01E0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_TraceStart;                // 0x01E4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_TraceEnd;                  // 0x01F0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ITEM_ExplosiveBase_C_Activate) == 0x000008, "Wrong alignment on ITEM_ExplosiveBase_C_Activate");
-static_assert(sizeof(ITEM_ExplosiveBase_C_Activate) == 0x000200, "Wrong size on ITEM_ExplosiveBase_C_Activate");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Character) == 0x000000, "Member 'ITEM_ExplosiveBase_C_Activate::Character' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Result) == 0x000008, "Member 'ITEM_ExplosiveBase_C_Activate::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, DistanceToTarget) == 0x00000C, "Member 'ITEM_ExplosiveBase_C_Activate::DistanceToTarget' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, TargetLocation) == 0x000010, "Member 'ITEM_ExplosiveBase_C_Activate::TargetLocation' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, RayDirection) == 0x00001C, "Member 'ITEM_ExplosiveBase_C_Activate::RayDirection' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, RayOrigin) == 0x000028, "Member 'ITEM_ExplosiveBase_C_Activate::RayOrigin' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_CanActivate_Result) == 0x000034, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_CanActivate_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, K2Node_MakeArray_Array) == 0x000038, "Member 'ITEM_ExplosiveBase_C_Activate::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Temp_float_Variable) == 0x000048, "Member 'ITEM_ExplosiveBase_C_Activate::Temp_float_Variable' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_X) == 0x00004C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_X' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_Y) == 0x000050, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_Y' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_Z) == 0x000054, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_Z' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_X_1) == 0x000058, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_X_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_Y_1) == 0x00005C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_Y_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakVector_Z_1) == 0x000060, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakVector_Z_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Less_FloatFloat_ReturnValue) == 0x000064, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000065, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BooleanAND_ReturnValue) == 0x000066, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Temp_float_Variable_1) == 0x000068, "Member 'ITEM_ExplosiveBase_C_Activate::Temp_float_Variable_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00006C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_CanPlayActivateMontage_Result) == 0x000070, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_CanPlayActivateMontage_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Activate_Result) == 0x000071, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Activate_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetController_ReturnValue) == 0x000078, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, K2Node_DynamicCast_AsPlayer_Controller) == 0x000080, "Member 'ITEM_ExplosiveBase_C_Activate::K2Node_DynamicCast_AsPlayer_Controller' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, K2Node_DynamicCast_bSuccess) == 0x000088, "Member 'ITEM_ExplosiveBase_C_Activate::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, Temp_bool_Variable) == 0x000089, "Member 'ITEM_ExplosiveBase_C_Activate::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetMousePosition_LocationX) == 0x00008C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetMousePosition_LocationX' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetMousePosition_LocationY) == 0x000090, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetMousePosition_LocationY' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_GetMousePosition_ReturnValue) == 0x000094, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_GetMousePosition_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_MakeVector2D_ReturnValue) == 0x000098, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_MakeVector2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, K2Node_Select_Default) == 0x0000A0, "Member 'ITEM_ExplosiveBase_C_Activate::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_DeprojectScreenToWorld_WorldPosition) == 0x0000A4, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_DeprojectScreenToWorld_WorldPosition' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_DeprojectScreenToWorld_WorldDirection) == 0x0000B0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_DeprojectScreenToWorld_WorldDirection' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_DeprojectScreenToWorld_ReturnValue) == 0x0000BC, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_DeprojectScreenToWorld_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_SuggestProjectileVelocity_CustomArc_OutLaunchVelocity) == 0x0000C0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_SuggestProjectileVelocity_CustomArc_OutLaunchVelocity' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_SuggestProjectileVelocity_CustomArc_ReturnValue) == 0x0000CC, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_SuggestProjectileVelocity_CustomArc_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_VSize_ReturnValue) == 0x0000D0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_VSize_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_FClamp_ReturnValue) == 0x0000D4, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_FClamp_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x0000D8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_LineTraceSingle_OutHit) == 0x0000E4, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_LineTraceSingle_OutHit' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_LineTraceSingle_ReturnValue) == 0x00016C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_LineTraceSingle_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_Add_VectorVector_ReturnValue) == 0x000170, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_bBlockingHit) == 0x00017C, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_bBlockingHit' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_bInitialOverlap) == 0x00017D, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_bInitialOverlap' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_Time) == 0x000180, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_Time' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_Distance) == 0x000184, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_Distance' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_Location) == 0x000188, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_Location' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_ImpactPoint) == 0x000194, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_ImpactPoint' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_Normal) == 0x0001A0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_Normal' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_ImpactNormal) == 0x0001AC, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_ImpactNormal' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_PhysMat) == 0x0001B8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_PhysMat' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_HitActor) == 0x0001C0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_HitActor' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_HitComponent) == 0x0001C8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_HitComponent' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_HitBoneName) == 0x0001D0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_HitBoneName' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_HitItem) == 0x0001D8, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_HitItem' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_ElementIndex) == 0x0001DC, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_ElementIndex' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_FaceIndex) == 0x0001E0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_FaceIndex' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_TraceStart) == 0x0001E4, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_TraceStart' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_TraceEnd) == 0x0001F0, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_TraceEnd' has a wrong offset!");
 
 // Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.GetInventoryItemDetailsClass
 // 0x0008 (0x0008 - 0x0000)

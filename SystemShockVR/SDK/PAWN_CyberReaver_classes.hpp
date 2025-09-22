@@ -41,7 +41,7 @@ public:
 	class UStaticMeshComponent*                   IceShield_LargeChunk2;                             // 0x0B70(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   IceShield_LargeChunk1;                             // 0x0B78(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UNiagaraComponent*                      ChargeUp;                                          // 0x0B80(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UAudioComponent*                        Audio_Loop;                                        // 0x0B88(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        Audio_loop;                                        // 0x0B88(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UArrowComponent*                        Arrow1;                                            // 0x0B90(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UNiagaraComponent*                      Niagara;                                           // 0x0B98(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        ProjectileNode;                                    // 0x0BA0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
@@ -85,7 +85,7 @@ static_assert(offsetof(APAWN_CyberReaver_C, IceShield_MediumChunk2) == 0x000B68,
 static_assert(offsetof(APAWN_CyberReaver_C, IceShield_LargeChunk2) == 0x000B70, "Member 'APAWN_CyberReaver_C::IceShield_LargeChunk2' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberReaver_C, IceShield_LargeChunk1) == 0x000B78, "Member 'APAWN_CyberReaver_C::IceShield_LargeChunk1' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberReaver_C, ChargeUp) == 0x000B80, "Member 'APAWN_CyberReaver_C::ChargeUp' has a wrong offset!");
-static_assert(offsetof(APAWN_CyberReaver_C, Audio_Loop) == 0x000B88, "Member 'APAWN_CyberReaver_C::Audio_Loop' has a wrong offset!");
+static_assert(offsetof(APAWN_CyberReaver_C, Audio_loop) == 0x000B88, "Member 'APAWN_CyberReaver_C::Audio_loop' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberReaver_C, Arrow1) == 0x000B90, "Member 'APAWN_CyberReaver_C::Arrow1' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberReaver_C, Niagara) == 0x000B98, "Member 'APAWN_CyberReaver_C::Niagara' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberReaver_C, ProjectileNode) == 0x000BA0, "Member 'APAWN_CyberReaver_C::ProjectileNode' has a wrong offset!");

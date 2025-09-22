@@ -46,9 +46,9 @@ public:
 	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
 	void UpdateEmissiveStrength(float Scale, float* Result);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
-	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
 	void SetInteractPowered(bool State, bool* Result);
 	void CanModifyInteractPower(bool* Result);
+	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
 
 public:
 	static class UClass* StaticClass()

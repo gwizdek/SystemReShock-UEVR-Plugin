@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_LimbStrength_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "STRUCT_DismemberableLimb_structs.hpp"
 #include "PhysicsCore_structs.hpp"
+#include "ENUM_LimbStrength_structs.hpp"
 
 
 namespace SDK

@@ -50,7 +50,7 @@ public:
 	struct FVector2D                              LastDropRelativeOffset;                            // 0x0278(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FTimerHandle                           ShowDisplayMeshTimerHandle;                        // 0x0280(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 	class UMeshComponent*                         WeaponMeshComponent;                               // 0x0288(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   DeathBlowFXParamName;                              // 0x0290(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   DeathblowFXParamName;                              // 0x0290(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FName                                   BarrelSocketName;                                  // 0x0298(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UAnimMontage*                           CachedDrawMontage;                                 // 0x02A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UAnimMontage*                           CachedObstructedDrawMontage;                       // 0x02A8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -198,7 +198,7 @@ static_assert(offsetof(UITEM_WeaponBase_C, InstallModAchievementHandle) == 0x000
 static_assert(offsetof(UITEM_WeaponBase_C, LastDropRelativeOffset) == 0x000278, "Member 'UITEM_WeaponBase_C::LastDropRelativeOffset' has a wrong offset!");
 static_assert(offsetof(UITEM_WeaponBase_C, ShowDisplayMeshTimerHandle) == 0x000280, "Member 'UITEM_WeaponBase_C::ShowDisplayMeshTimerHandle' has a wrong offset!");
 static_assert(offsetof(UITEM_WeaponBase_C, WeaponMeshComponent) == 0x000288, "Member 'UITEM_WeaponBase_C::WeaponMeshComponent' has a wrong offset!");
-static_assert(offsetof(UITEM_WeaponBase_C, DeathBlowFXParamName) == 0x000290, "Member 'UITEM_WeaponBase_C::DeathBlowFXParamName' has a wrong offset!");
+static_assert(offsetof(UITEM_WeaponBase_C, DeathblowFXParamName) == 0x000290, "Member 'UITEM_WeaponBase_C::DeathblowFXParamName' has a wrong offset!");
 static_assert(offsetof(UITEM_WeaponBase_C, BarrelSocketName) == 0x000298, "Member 'UITEM_WeaponBase_C::BarrelSocketName' has a wrong offset!");
 static_assert(offsetof(UITEM_WeaponBase_C, CachedDrawMontage) == 0x0002A0, "Member 'UITEM_WeaponBase_C::CachedDrawMontage' has a wrong offset!");
 static_assert(offsetof(UITEM_WeaponBase_C, CachedObstructedDrawMontage) == 0x0002A8, "Member 'UITEM_WeaponBase_C::CachedObstructedDrawMontage' has a wrong offset!");

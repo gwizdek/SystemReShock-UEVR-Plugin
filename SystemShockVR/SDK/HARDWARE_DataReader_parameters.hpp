@@ -87,6 +87,23 @@ static_assert(alignof(HARDWARE_DataReader_C_OnLoaded_65EE3A914F0C398482905DB02E5
 static_assert(sizeof(HARDWARE_DataReader_C_OnLoaded_65EE3A914F0C398482905DB02E5CDD54) == 0x000008, "Wrong size on HARDWARE_DataReader_C_OnLoaded_65EE3A914F0C398482905DB02E5CDD54");
 static_assert(offsetof(HARDWARE_DataReader_C_OnLoaded_65EE3A914F0C398482905DB02E5CDD54, Loaded) == 0x000000, "Member 'HARDWARE_DataReader_C_OnLoaded_65EE3A914F0C398482905DB02E5CDD54::Loaded' has a wrong offset!");
 
+// Function HARDWARE_DataReader.HARDWARE_DataReader_C.ReceiveAnimationMessage
+// 0x0018 (0x0018 - 0x0000)
+struct HARDWARE_DataReader_C_ReceiveAnimationMessage final
+{
+public:
+	class FString                                 Message;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveAnimationMessage_Result;           // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue;            // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(HARDWARE_DataReader_C_ReceiveAnimationMessage) == 0x000008, "Wrong alignment on HARDWARE_DataReader_C_ReceiveAnimationMessage");
+static_assert(sizeof(HARDWARE_DataReader_C_ReceiveAnimationMessage) == 0x000018, "Wrong size on HARDWARE_DataReader_C_ReceiveAnimationMessage");
+static_assert(offsetof(HARDWARE_DataReader_C_ReceiveAnimationMessage, Message) == 0x000000, "Member 'HARDWARE_DataReader_C_ReceiveAnimationMessage::Message' has a wrong offset!");
+static_assert(offsetof(HARDWARE_DataReader_C_ReceiveAnimationMessage, Result) == 0x000010, "Member 'HARDWARE_DataReader_C_ReceiveAnimationMessage::Result' has a wrong offset!");
+static_assert(offsetof(HARDWARE_DataReader_C_ReceiveAnimationMessage, CallFunc_ReceiveAnimationMessage_Result) == 0x000011, "Member 'HARDWARE_DataReader_C_ReceiveAnimationMessage::CallFunc_ReceiveAnimationMessage_Result' has a wrong offset!");
+static_assert(offsetof(HARDWARE_DataReader_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue) == 0x000012, "Member 'HARDWARE_DataReader_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue' has a wrong offset!");
+
 // Function HARDWARE_DataReader.HARDWARE_DataReader_C.OnIncomingTransmission
 // 0x0040 (0x0040 - 0x0000)
 struct HARDWARE_DataReader_C_OnIncomingTransmission final
@@ -114,23 +131,6 @@ static_assert(offsetof(HARDWARE_DataReader_C_OnIncomingTransmission, CallFunc_Ge
 static_assert(offsetof(HARDWARE_DataReader_C_OnIncomingTransmission, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000028, "Member 'HARDWARE_DataReader_C_OnIncomingTransmission::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
 static_assert(offsetof(HARDWARE_DataReader_C_OnIncomingTransmission, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'HARDWARE_DataReader_C_OnIncomingTransmission::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 static_assert(offsetof(HARDWARE_DataReader_C_OnIncomingTransmission, CallFunc_GetDisplayMeshComponent_MeshComponent) == 0x000038, "Member 'HARDWARE_DataReader_C_OnIncomingTransmission::CallFunc_GetDisplayMeshComponent_MeshComponent' has a wrong offset!");
-
-// Function HARDWARE_DataReader.HARDWARE_DataReader_C.ReceiveAnimationMessage
-// 0x0018 (0x0018 - 0x0000)
-struct HARDWARE_DataReader_C_ReceiveAnimationMessage final
-{
-public:
-	class FString                                 Message;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveAnimationMessage_Result;           // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue;            // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(HARDWARE_DataReader_C_ReceiveAnimationMessage) == 0x000008, "Wrong alignment on HARDWARE_DataReader_C_ReceiveAnimationMessage");
-static_assert(sizeof(HARDWARE_DataReader_C_ReceiveAnimationMessage) == 0x000018, "Wrong size on HARDWARE_DataReader_C_ReceiveAnimationMessage");
-static_assert(offsetof(HARDWARE_DataReader_C_ReceiveAnimationMessage, Message) == 0x000000, "Member 'HARDWARE_DataReader_C_ReceiveAnimationMessage::Message' has a wrong offset!");
-static_assert(offsetof(HARDWARE_DataReader_C_ReceiveAnimationMessage, Result) == 0x000010, "Member 'HARDWARE_DataReader_C_ReceiveAnimationMessage::Result' has a wrong offset!");
-static_assert(offsetof(HARDWARE_DataReader_C_ReceiveAnimationMessage, CallFunc_ReceiveAnimationMessage_Result) == 0x000011, "Member 'HARDWARE_DataReader_C_ReceiveAnimationMessage::CallFunc_ReceiveAnimationMessage_Result' has a wrong offset!");
-static_assert(offsetof(HARDWARE_DataReader_C_ReceiveAnimationMessage, CallFunc_EqualEqual_StrStr_ReturnValue) == 0x000012, "Member 'HARDWARE_DataReader_C_ReceiveAnimationMessage::CallFunc_EqualEqual_StrStr_ReturnValue' has a wrong offset!");
 
 }
 

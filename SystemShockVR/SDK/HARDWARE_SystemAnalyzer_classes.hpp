@@ -28,8 +28,8 @@ public:
 	void ExecuteUbergraph_HARDWARE_SystemAnalyzer(int32 EntryPoint);
 	void OnQuestNotification(class FName QuestName, const class FText& NotificationText, float NotificationDelay);
 	void ListenForQuestNotifications();
-	void OnAddedToInventory();
 	void OnBeginPlay();
+	void OnAddedToInventory();
 
 public:
 	static class UClass* StaticClass()

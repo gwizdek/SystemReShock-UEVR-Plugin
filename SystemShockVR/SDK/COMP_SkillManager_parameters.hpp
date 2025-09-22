@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_SkillType_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
-#include "ENUM_PreferredCombatStyle_structs.hpp"
 #include "STRUCT_DefaultSkillComboParams_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_SkillType_structs.hpp"
+#include "ENUM_PreferredCombatStyle_structs.hpp"
 
 
 namespace SDK::Params

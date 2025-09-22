@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "BodyType_structs.hpp"
-#include "CORPSE_SkeletalBase_classes.hpp"
-#include "CoreUObject_structs.hpp"
 #include "Enum_CorpseOutfits_structs.hpp"
 #include "Enum_CauseOfDeath_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "CORPSE_SkeletalBase_classes.hpp"
 #include "ENUM_HumanCorpseLimbType_structs.hpp"
 
 
@@ -40,14 +40,14 @@ public:
 	struct FVector                                OutfitDetaill_B_Position_Offset;                   // 0x0434(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
 
 public:
-	void ForceUpdate();
-	void InitializeDismemberedLimbs();
-	void DefineStartPose(class UAnimSequence* AnimSequence);
-	void RandomizeTextureDetails();
-	void TryRandomizeOutfit();
-	void TryRandomizeBodyType();
-	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
 	void UserConstructionScript();
+	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
+	void TryRandomizeBodyType();
+	void TryRandomizeOutfit();
+	void RandomizeTextureDetails();
+	void DefineStartPose(class UAnimSequence* AnimSequence);
+	void InitializeDismemberedLimbs();
+	void ForceUpdate();
 
 public:
 	static class UClass* StaticClass()

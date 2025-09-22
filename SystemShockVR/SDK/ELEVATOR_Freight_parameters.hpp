@@ -11,158 +11,14 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "STRUC_ElevatorInfo_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "AttributeSystem_structs.hpp"
-#include "STRUC_ElevatorInfo_structs.hpp"
 #include "STRUCT_LevelInfo_structs.hpp"
 
 
 namespace SDK::Params
 {
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.UpdateRectLightIntensity
-// 0x0034 (0x0034 - 0x0000)
-struct ELEVATOR_Freight_C_UpdateRectLightIntensity final
-{
-public:
-	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BitShiftLeft_ReturnValue;                 // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Conv_IntToFloat_ReturnValue;              // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Conv_ByteToInt_ReturnValue;               // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_And_IntInt_ReturnValue;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_CountBits_ReturnValue;                    // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Conv_IntToFloat_ReturnValue_1;            // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ELEVATOR_Freight_C_UpdateRectLightIntensity) == 0x000004, "Wrong alignment on ELEVATOR_Freight_C_UpdateRectLightIntensity");
-static_assert(sizeof(ELEVATOR_Freight_C_UpdateRectLightIntensity) == 0x000034, "Wrong size on ELEVATOR_Freight_C_UpdateRectLightIntensity");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_GetAttribValue_ReturnValue) == 0x000000, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_BitShiftLeft_ReturnValue) == 0x000004, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_BitShiftLeft_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000008, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Subtract_IntInt_ReturnValue) == 0x00000C, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Conv_IntToFloat_ReturnValue) == 0x000010, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Conv_IntToFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Conv_ByteToInt_ReturnValue) == 0x000014, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Conv_ByteToInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_And_IntInt_ReturnValue) == 0x000018, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_And_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_CountBits_ReturnValue) == 0x00001C, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_CountBits_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Conv_IntToFloat_ReturnValue_1) == 0x000020, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Conv_IntToFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000024, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x000028, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00002C, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000030, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature
-// 0x0038 (0x0038 - 0x0000)
-struct ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature final
-{
-public:
-	class AActor*                                 OtherActor;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FAttribDamageInstance                  DamageInstance;                                    // 0x0008(0x0028)(BlueprintVisible, BlueprintReadOnly, Parm)
-	class UObject*                                UserParams;                                        // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature) == 0x000008, "Wrong alignment on ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature");
-static_assert(sizeof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature) == 0x000038, "Wrong size on ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature");
-static_assert(offsetof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature, OtherActor) == 0x000000, "Member 'ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature::OtherActor' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature, DamageInstance) == 0x000008, "Member 'ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature::DamageInstance' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature, UserParams) == 0x000030, "Member 'ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature::UserParams' has a wrong offset!");
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.InitializeElevatorControls
-// 0x0260 (0x0260 - 0x0000)
-struct ELEVATOR_Freight_C_InitializeElevatorControls final
-{
-public:
-	class FString                                 DeckSymbol;                                        // 0x0000(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
-	int32                                         ButtonIndex;                                       // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUC_ElevatorInfo                    ElevatorInfo;                                      // 0x0018(0x0038)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Variable;                                 // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Variable_1;                               // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_LessEqual_IntInt_ReturnValue;             // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FText                                   CallFunc_Conv_StringToText_ReturnValue;            // 0x0060(0x0018)()
-	class FName                                   CallFunc_GetLevelNameByDeckSymbol_LevelName;       // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0080(0x0040)(HasGetValueTypeHash)
-	struct FSTRUCT_LevelInfo                      CallFunc_GetDataTableRowFromName_OutRow;           // 0x00C0(0x00C8)(HasGetValueTypeHash)
-	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x0188(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_189[0x3];                                      // 0x0189(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x018C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData_1;            // 0x0190(0x0040)(HasGetValueTypeHash)
-	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x01D0(0x0010)(ReferenceParm)
-	class FText                                   CallFunc_Format_ReturnValue;                       // 0x01E0(0x0018)()
-	float                                         CallFunc_Conv_StringToFloat_ReturnValue;           // 0x01F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1FC[0x4];                                      // 0x01FC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 K2Node_Select_Default;                             // 0x0200(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	TArray<class UBoxComponent*>                  K2Node_MakeArray_Array_1;                          // 0x0210(0x0010)(ReferenceParm, ContainsInstancedReference)
-	struct FSTRUC_ElevatorInfo                    CallFunc_GetDataTableRowFromName_OutRow_1;         // 0x0220(0x0038)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue_1;    // 0x0258(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ELEVATOR_Freight_C_InitializeElevatorControls) == 0x000008, "Wrong alignment on ELEVATOR_Freight_C_InitializeElevatorControls");
-static_assert(sizeof(ELEVATOR_Freight_C_InitializeElevatorControls) == 0x000260, "Wrong size on ELEVATOR_Freight_C_InitializeElevatorControls");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, DeckSymbol) == 0x000000, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::DeckSymbol' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, ButtonIndex) == 0x000010, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::ButtonIndex' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, ElevatorInfo) == 0x000018, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::ElevatorInfo' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, Temp_int_Variable) == 0x000050, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::Temp_int_Variable' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, Temp_int_Variable_1) == 0x000054, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::Temp_int_Variable_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_LessEqual_IntInt_ReturnValue) == 0x000058, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_LessEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Add_IntInt_ReturnValue) == 0x00005C, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Conv_StringToText_ReturnValue) == 0x000060, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Conv_StringToText_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetLevelNameByDeckSymbol_LevelName) == 0x000078, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetLevelNameByDeckSymbol_LevelName' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_MakeStruct_FormatArgumentData) == 0x000080, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetDataTableRowFromName_OutRow) == 0x0000C0, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000188, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Add_IntInt_ReturnValue_1) == 0x00018C, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_MakeStruct_FormatArgumentData_1) == 0x000190, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_MakeStruct_FormatArgumentData_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_MakeArray_Array) == 0x0001D0, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Format_ReturnValue) == 0x0001E0, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Format_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Conv_StringToFloat_ReturnValue) == 0x0001F8, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Conv_StringToFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_Select_Default) == 0x000200, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_MakeArray_Array_1) == 0x000210, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_MakeArray_Array_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetDataTableRowFromName_OutRow_1) == 0x000220, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetDataTableRowFromName_OutRow_1' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetDataTableRowFromName_ReturnValue_1) == 0x000258, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetDataTableRowFromName_ReturnValue_1' has a wrong offset!");
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.UserConstructionScript
-// 0x0020 (0x0020 - 0x0000)
-struct ELEVATOR_Freight_C_UserConstructionScript final
-{
-public:
-	TArray<class USpotLightComponent*>            K2Node_MakeArray_Array;                            // 0x0000(0x0010)(ReferenceParm, ContainsInstancedReference)
-	TArray<class UStaticMeshComponent*>           K2Node_MakeArray_Array_1;                          // 0x0010(0x0010)(ReferenceParm, ContainsInstancedReference)
-};
-static_assert(alignof(ELEVATOR_Freight_C_UserConstructionScript) == 0x000008, "Wrong alignment on ELEVATOR_Freight_C_UserConstructionScript");
-static_assert(sizeof(ELEVATOR_Freight_C_UserConstructionScript) == 0x000020, "Wrong size on ELEVATOR_Freight_C_UserConstructionScript");
-static_assert(offsetof(ELEVATOR_Freight_C_UserConstructionScript, K2Node_MakeArray_Array) == 0x000000, "Member 'ELEVATOR_Freight_C_UserConstructionScript::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_UserConstructionScript, K2Node_MakeArray_Array_1) == 0x000010, "Member 'ELEVATOR_Freight_C_UserConstructionScript::K2Node_MakeArray_Array_1' has a wrong offset!");
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.OnLoaded_0646D1694E49FA402640A8938BC55B31
-// 0x0008 (0x0008 - 0x0000)
-struct ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31 final
-{
-public:
-	class UObject*                                Loaded;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31) == 0x000008, "Wrong alignment on ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31");
-static_assert(sizeof(ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31) == 0x000008, "Wrong size on ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31");
-static_assert(offsetof(ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31, Loaded) == 0x000000, "Member 'ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31::Loaded' has a wrong offset!");
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.AsyncPlayGlassBreakParticleEffects
-// 0x001C (0x001C - 0x0000)
-struct ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects final
-{
-public:
-	struct FVector                                Location;                                          // 0x0000(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               Rotation;                                          // 0x000C(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          IsDoorGlass;                                       // 0x0018(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects) == 0x000004, "Wrong alignment on ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects");
-static_assert(sizeof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects) == 0x00001C, "Wrong size on ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects");
-static_assert(offsetof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects, Location) == 0x000000, "Member 'ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects::Location' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects, Rotation) == 0x00000C, "Member 'ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects::Rotation' has a wrong offset!");
-static_assert(offsetof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects, IsDoorGlass) == 0x000018, "Member 'ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects::IsDoorGlass' has a wrong offset!");
 
 // Function ELEVATOR_Freight.ELEVATOR_Freight_C.UpdateEmissiveStrength
 // 0x0008 (0x0008 - 0x0000)
@@ -224,6 +80,41 @@ static_assert(offsetof(ELEVATOR_Freight_C_UpdateDoorLightVisibility, CallFunc_An
 static_assert(offsetof(ELEVATOR_Freight_C_UpdateDoorLightVisibility, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000030, "Member 'ELEVATOR_Freight_C_UpdateDoorLightVisibility::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ELEVATOR_Freight_C_UpdateDoorLightVisibility, CallFunc_Conv_ByteToInt_ReturnValue) == 0x000034, "Member 'ELEVATOR_Freight_C_UpdateDoorLightVisibility::CallFunc_Conv_ByteToInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ELEVATOR_Freight_C_UpdateDoorLightVisibility, CallFunc_BitShiftRight_ReturnValue) == 0x000038, "Member 'ELEVATOR_Freight_C_UpdateDoorLightVisibility::CallFunc_BitShiftRight_ReturnValue' has a wrong offset!");
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.UpdateRectLightIntensity
+// 0x0034 (0x0034 - 0x0000)
+struct ELEVATOR_Freight_C_UpdateRectLightIntensity final
+{
+public:
+	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BitShiftLeft_ReturnValue;                 // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Conv_IntToFloat_ReturnValue;              // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue;               // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_And_IntInt_ReturnValue;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_CountBits_ReturnValue;                    // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Conv_IntToFloat_ReturnValue_1;            // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ELEVATOR_Freight_C_UpdateRectLightIntensity) == 0x000004, "Wrong alignment on ELEVATOR_Freight_C_UpdateRectLightIntensity");
+static_assert(sizeof(ELEVATOR_Freight_C_UpdateRectLightIntensity) == 0x000034, "Wrong size on ELEVATOR_Freight_C_UpdateRectLightIntensity");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_GetAttribValue_ReturnValue) == 0x000000, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_BitShiftLeft_ReturnValue) == 0x000004, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_BitShiftLeft_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000008, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Subtract_IntInt_ReturnValue) == 0x00000C, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Conv_IntToFloat_ReturnValue) == 0x000010, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Conv_IntToFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Conv_ByteToInt_ReturnValue) == 0x000014, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Conv_ByteToInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_And_IntInt_ReturnValue) == 0x000018, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_And_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_CountBits_ReturnValue) == 0x00001C, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_CountBits_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Conv_IntToFloat_ReturnValue_1) == 0x000020, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Conv_IntToFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000024, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x000028, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00002C, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UpdateRectLightIntensity, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000030, "Member 'ELEVATOR_Freight_C_UpdateRectLightIntensity::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
 
 // Function ELEVATOR_Freight.ELEVATOR_Freight_C.PlayGlassBreakEffects
 // 0x0098 (0x0098 - 0x0000)
@@ -394,6 +285,115 @@ public:
 static_assert(alignof(ELEVATOR_Freight_C_GetControlsMeshComponent) == 0x000008, "Wrong alignment on ELEVATOR_Freight_C_GetControlsMeshComponent");
 static_assert(sizeof(ELEVATOR_Freight_C_GetControlsMeshComponent) == 0x000008, "Wrong size on ELEVATOR_Freight_C_GetControlsMeshComponent");
 static_assert(offsetof(ELEVATOR_Freight_C_GetControlsMeshComponent, MeshComponent) == 0x000000, "Member 'ELEVATOR_Freight_C_GetControlsMeshComponent::MeshComponent' has a wrong offset!");
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.InitializeElevatorControls
+// 0x0260 (0x0260 - 0x0000)
+struct ELEVATOR_Freight_C_InitializeElevatorControls final
+{
+public:
+	class FString                                 DeckSymbol;                                        // 0x0000(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
+	int32                                         ButtonIndex;                                       // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUC_ElevatorInfo                    ElevatorInfo;                                      // 0x0018(0x0038)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Variable;                                 // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Variable_1;                               // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_LessEqual_IntInt_ReturnValue;             // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FText                                   CallFunc_Conv_StringToText_ReturnValue;            // 0x0060(0x0018)()
+	class FName                                   CallFunc_GetLevelNameByDeckSymbol_LevelName;       // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0080(0x0040)(HasGetValueTypeHash)
+	struct FSTRUCT_LevelInfo                      CallFunc_GetDataTableRowFromName_OutRow;           // 0x00C0(0x00C8)(HasGetValueTypeHash)
+	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x0188(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_189[0x3];                                      // 0x0189(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x018C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData_1;            // 0x0190(0x0040)(HasGetValueTypeHash)
+	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x01D0(0x0010)(ReferenceParm)
+	class FText                                   CallFunc_Format_ReturnValue;                       // 0x01E0(0x0018)()
+	float                                         CallFunc_Conv_StringToFloat_ReturnValue;           // 0x01F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1FC[0x4];                                      // 0x01FC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 K2Node_Select_Default;                             // 0x0200(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	TArray<class UBoxComponent*>                  K2Node_MakeArray_Array_1;                          // 0x0210(0x0010)(ReferenceParm, ContainsInstancedReference)
+	struct FSTRUC_ElevatorInfo                    CallFunc_GetDataTableRowFromName_OutRow_1;         // 0x0220(0x0038)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue_1;    // 0x0258(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ELEVATOR_Freight_C_InitializeElevatorControls) == 0x000008, "Wrong alignment on ELEVATOR_Freight_C_InitializeElevatorControls");
+static_assert(sizeof(ELEVATOR_Freight_C_InitializeElevatorControls) == 0x000260, "Wrong size on ELEVATOR_Freight_C_InitializeElevatorControls");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, DeckSymbol) == 0x000000, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::DeckSymbol' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, ButtonIndex) == 0x000010, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::ButtonIndex' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, ElevatorInfo) == 0x000018, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::ElevatorInfo' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, Temp_int_Variable) == 0x000050, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::Temp_int_Variable' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, Temp_int_Variable_1) == 0x000054, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::Temp_int_Variable_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_LessEqual_IntInt_ReturnValue) == 0x000058, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_LessEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Add_IntInt_ReturnValue) == 0x00005C, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Conv_StringToText_ReturnValue) == 0x000060, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Conv_StringToText_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetLevelNameByDeckSymbol_LevelName) == 0x000078, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetLevelNameByDeckSymbol_LevelName' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_MakeStruct_FormatArgumentData) == 0x000080, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetDataTableRowFromName_OutRow) == 0x0000C0, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000188, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Add_IntInt_ReturnValue_1) == 0x00018C, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_MakeStruct_FormatArgumentData_1) == 0x000190, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_MakeStruct_FormatArgumentData_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_MakeArray_Array) == 0x0001D0, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Format_ReturnValue) == 0x0001E0, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Format_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_Conv_StringToFloat_ReturnValue) == 0x0001F8, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_Conv_StringToFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_Select_Default) == 0x000200, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, K2Node_MakeArray_Array_1) == 0x000210, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::K2Node_MakeArray_Array_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetDataTableRowFromName_OutRow_1) == 0x000220, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetDataTableRowFromName_OutRow_1' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_InitializeElevatorControls, CallFunc_GetDataTableRowFromName_ReturnValue_1) == 0x000258, "Member 'ELEVATOR_Freight_C_InitializeElevatorControls::CallFunc_GetDataTableRowFromName_ReturnValue_1' has a wrong offset!");
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.UserConstructionScript
+// 0x0020 (0x0020 - 0x0000)
+struct ELEVATOR_Freight_C_UserConstructionScript final
+{
+public:
+	TArray<class USpotLightComponent*>            K2Node_MakeArray_Array;                            // 0x0000(0x0010)(ReferenceParm, ContainsInstancedReference)
+	TArray<class UStaticMeshComponent*>           K2Node_MakeArray_Array_1;                          // 0x0010(0x0010)(ReferenceParm, ContainsInstancedReference)
+};
+static_assert(alignof(ELEVATOR_Freight_C_UserConstructionScript) == 0x000008, "Wrong alignment on ELEVATOR_Freight_C_UserConstructionScript");
+static_assert(sizeof(ELEVATOR_Freight_C_UserConstructionScript) == 0x000020, "Wrong size on ELEVATOR_Freight_C_UserConstructionScript");
+static_assert(offsetof(ELEVATOR_Freight_C_UserConstructionScript, K2Node_MakeArray_Array) == 0x000000, "Member 'ELEVATOR_Freight_C_UserConstructionScript::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_UserConstructionScript, K2Node_MakeArray_Array_1) == 0x000010, "Member 'ELEVATOR_Freight_C_UserConstructionScript::K2Node_MakeArray_Array_1' has a wrong offset!");
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.OnLoaded_0646D1694E49FA402640A8938BC55B31
+// 0x0008 (0x0008 - 0x0000)
+struct ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31 final
+{
+public:
+	class UObject*                                Loaded;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31) == 0x000008, "Wrong alignment on ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31");
+static_assert(sizeof(ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31) == 0x000008, "Wrong size on ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31");
+static_assert(offsetof(ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31, Loaded) == 0x000000, "Member 'ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31::Loaded' has a wrong offset!");
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.AsyncPlayGlassBreakParticleEffects
+// 0x001C (0x001C - 0x0000)
+struct ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects final
+{
+public:
+	struct FVector                                Location;                                          // 0x0000(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               Rotation;                                          // 0x000C(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          IsDoorGlass;                                       // 0x0018(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects) == 0x000004, "Wrong alignment on ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects");
+static_assert(sizeof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects) == 0x00001C, "Wrong size on ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects");
+static_assert(offsetof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects, Location) == 0x000000, "Member 'ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects::Location' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects, Rotation) == 0x00000C, "Member 'ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects::Rotation' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects, IsDoorGlass) == 0x000018, "Member 'ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects::IsDoorGlass' has a wrong offset!");
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature
+// 0x0038 (0x0038 - 0x0000)
+struct ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature final
+{
+public:
+	class AActor*                                 OtherActor;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FAttribDamageInstance                  DamageInstance;                                    // 0x0008(0x0028)(BlueprintVisible, BlueprintReadOnly, Parm)
+	class UObject*                                UserParams;                                        // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature) == 0x000008, "Wrong alignment on ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature");
+static_assert(sizeof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature) == 0x000038, "Wrong size on ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature");
+static_assert(offsetof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature, OtherActor) == 0x000000, "Member 'ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature::OtherActor' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature, DamageInstance) == 0x000008, "Member 'ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature::DamageInstance' has a wrong offset!");
+static_assert(offsetof(ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature, UserParams) == 0x000030, "Member 'ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature::UserParams' has a wrong offset!");
 
 // Function ELEVATOR_Freight.ELEVATOR_Freight_C.ExecuteUbergraph_ELEVATOR_Freight
 // 0x00C8 (0x00C8 - 0x0000)

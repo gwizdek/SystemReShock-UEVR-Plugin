@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "DismembermentLimb_Base_classes.hpp"
 #include "ENUM_HumanCorpseLimbType_structs.hpp"
 #include "Engine_structs.hpp"
+#include "DismembermentLimb_Base_classes.hpp"
 #include "BodyType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "Enum_CorpseOutfits_structs.hpp"
 #include "Enum_CauseOfDeath_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK
@@ -40,14 +40,14 @@ public:
 	struct FVector                                OutfitDetaill_B_Position_Offset;                   // 0x02C0(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
 
 public:
-	void ForceUpdateHumanCorpseLimb();
-	void TryRandomizeOutfit();
-	void TryRandomizeBodyType();
-	void UpdateSettingsFromCorpseActor();
-	void InitializeLimbActor(class USkeletalMesh* DisplayMesh, class USkeletalMeshComponent* SourcePoseMesh, class UOBJ_ImpactData_C* ImpactData);
-	void UserConstructionScript();
-	void ReceiveBeginPlay();
 	void ExecuteUbergraph_DismembermentLimb_HumanCorpse(int32 EntryPoint);
+	void ReceiveBeginPlay();
+	void UserConstructionScript();
+	void InitializeLimbActor(class USkeletalMesh* DisplayMesh, class USkeletalMeshComponent* SourcePoseMesh, class UOBJ_ImpactData_C* ImpactData);
+	void UpdateSettingsFromCorpseActor();
+	void TryRandomizeBodyType();
+	void TryRandomizeOutfit();
+	void ForceUpdateHumanCorpseLimb();
 
 public:
 	static class UClass* StaticClass()

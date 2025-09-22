@@ -16,30 +16,6 @@
 namespace SDK::Params
 {
 
-// Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.SetLocked
-// 0x0002 (0x0002 - 0x0000)
-struct AnimBP_NormalElevator_Inside_C_SetLocked final
-{
-public:
-	bool                                          LockedState;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(AnimBP_NormalElevator_Inside_C_SetLocked) == 0x000001, "Wrong alignment on AnimBP_NormalElevator_Inside_C_SetLocked");
-static_assert(sizeof(AnimBP_NormalElevator_Inside_C_SetLocked) == 0x000002, "Wrong size on AnimBP_NormalElevator_Inside_C_SetLocked");
-static_assert(offsetof(AnimBP_NormalElevator_Inside_C_SetLocked, LockedState) == 0x000000, "Member 'AnimBP_NormalElevator_Inside_C_SetLocked::LockedState' has a wrong offset!");
-static_assert(offsetof(AnimBP_NormalElevator_Inside_C_SetLocked, Result) == 0x000001, "Member 'AnimBP_NormalElevator_Inside_C_SetLocked::Result' has a wrong offset!");
-
-// Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.ExecuteUbergraph_AnimBP_NormalElevator_Inside
-// 0x0004 (0x0004 - 0x0000)
-struct AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside) == 0x000004, "Wrong alignment on AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside");
-static_assert(sizeof(AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside) == 0x000004, "Wrong size on AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside");
-static_assert(offsetof(AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside, EntryPoint) == 0x000000, "Member 'AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside::EntryPoint' has a wrong offset!");
-
 // Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.OpenDoor
 // 0x0008 (0x0008 - 0x0000)
 struct AnimBP_NormalElevator_Inside_C_OpenDoor final
@@ -78,6 +54,19 @@ public:
 static_assert(alignof(AnimBP_NormalElevator_Inside_C_IsLocked) == 0x000001, "Wrong alignment on AnimBP_NormalElevator_Inside_C_IsLocked");
 static_assert(sizeof(AnimBP_NormalElevator_Inside_C_IsLocked) == 0x000001, "Wrong size on AnimBP_NormalElevator_Inside_C_IsLocked");
 static_assert(offsetof(AnimBP_NormalElevator_Inside_C_IsLocked, Result) == 0x000000, "Member 'AnimBP_NormalElevator_Inside_C_IsLocked::Result' has a wrong offset!");
+
+// Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.SetLocked
+// 0x0002 (0x0002 - 0x0000)
+struct AnimBP_NormalElevator_Inside_C_SetLocked final
+{
+public:
+	bool                                          LockedState;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(AnimBP_NormalElevator_Inside_C_SetLocked) == 0x000001, "Wrong alignment on AnimBP_NormalElevator_Inside_C_SetLocked");
+static_assert(sizeof(AnimBP_NormalElevator_Inside_C_SetLocked) == 0x000002, "Wrong size on AnimBP_NormalElevator_Inside_C_SetLocked");
+static_assert(offsetof(AnimBP_NormalElevator_Inside_C_SetLocked, LockedState) == 0x000000, "Member 'AnimBP_NormalElevator_Inside_C_SetLocked::LockedState' has a wrong offset!");
+static_assert(offsetof(AnimBP_NormalElevator_Inside_C_SetLocked, Result) == 0x000001, "Member 'AnimBP_NormalElevator_Inside_C_SetLocked::Result' has a wrong offset!");
 
 // Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.HideFrontButton
 // 0x0002 (0x0002 - 0x0000)
@@ -126,6 +115,17 @@ public:
 static_assert(alignof(AnimBP_NormalElevator_Inside_C_AnimGraph) == 0x000008, "Wrong alignment on AnimBP_NormalElevator_Inside_C_AnimGraph");
 static_assert(sizeof(AnimBP_NormalElevator_Inside_C_AnimGraph) == 0x000010, "Wrong size on AnimBP_NormalElevator_Inside_C_AnimGraph");
 static_assert(offsetof(AnimBP_NormalElevator_Inside_C_AnimGraph, AnimGraph_0) == 0x000000, "Member 'AnimBP_NormalElevator_Inside_C_AnimGraph::AnimGraph_0' has a wrong offset!");
+
+// Function AnimBP_NormalElevator_Inside.AnimBP_NormalElevator_Inside_C.ExecuteUbergraph_AnimBP_NormalElevator_Inside
+// 0x0004 (0x0004 - 0x0000)
+struct AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside) == 0x000004, "Wrong alignment on AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside");
+static_assert(sizeof(AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside) == 0x000004, "Wrong size on AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside");
+static_assert(offsetof(AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside, EntryPoint) == 0x000000, "Member 'AnimBP_NormalElevator_Inside_C_ExecuteUbergraph_AnimBP_NormalElevator_Inside::EntryPoint' has a wrong offset!");
 
 }
 

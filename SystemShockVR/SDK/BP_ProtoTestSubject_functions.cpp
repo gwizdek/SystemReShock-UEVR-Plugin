@@ -17,21 +17,21 @@
 namespace SDK
 {
 
-// Function BP_ProtoTestSubject.BP_ProtoTestSubject_C.UpdateVisibility
-// (Protected, BlueprintCallable, BlueprintEvent)
+// Function BP_ProtoTestSubject.BP_ProtoTestSubject_C.ExecuteUbergraph_BP_ProtoTestSubject
+// (Final, UbergraphFunction)
 // Parameters:
-// bool                                    VisibilityState                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_ProtoTestSubject_C::UpdateVisibility(bool VisibilityState)
+void ABP_ProtoTestSubject_C::ExecuteUbergraph_BP_ProtoTestSubject(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_ProtoTestSubject_C", "UpdateVisibility");
+		Func = Class->GetFunction("BP_ProtoTestSubject_C", "ExecuteUbergraph_BP_ProtoTestSubject");
 
-	Params::BP_ProtoTestSubject_C_UpdateVisibility Parms{};
+	Params::BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject Parms{};
 
-	Parms.VisibilityState = VisibilityState;
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -57,21 +57,21 @@ void ABP_ProtoTestSubject_C::BndEvt__BP_ProtoTestSubject_COMP_VoxelCullable_K2No
 }
 
 
-// Function BP_ProtoTestSubject.BP_ProtoTestSubject_C.ExecuteUbergraph_BP_ProtoTestSubject
-// (Final, UbergraphFunction)
+// Function BP_ProtoTestSubject.BP_ProtoTestSubject_C.UpdateVisibility
+// (Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    VisibilityState                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void ABP_ProtoTestSubject_C::ExecuteUbergraph_BP_ProtoTestSubject(int32 EntryPoint)
+void ABP_ProtoTestSubject_C::UpdateVisibility(bool VisibilityState)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_ProtoTestSubject_C", "ExecuteUbergraph_BP_ProtoTestSubject");
+		Func = Class->GetFunction("BP_ProtoTestSubject_C", "UpdateVisibility");
 
-	Params::BP_ProtoTestSubject_C_ExecuteUbergraph_BP_ProtoTestSubject Parms{};
+	Params::BP_ProtoTestSubject_C_UpdateVisibility Parms{};
 
-	Parms.EntryPoint = EntryPoint;
+	Parms.VisibilityState = VisibilityState;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

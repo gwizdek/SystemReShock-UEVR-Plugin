@@ -13,9 +13,9 @@
 #include "CoreUObject_structs.hpp"
 #include "STRUCT_EffectParams_structs.hpp"
 #include "AttributeSystem_structs.hpp"
-#include "STRUCT_ImpactEffectResults_structs.hpp"
 #include "NamedInteger_structs.hpp"
 #include "Engine_structs.hpp"
+#include "STRUCT_ImpactEffectResults_structs.hpp"
 
 
 namespace SDK::Params

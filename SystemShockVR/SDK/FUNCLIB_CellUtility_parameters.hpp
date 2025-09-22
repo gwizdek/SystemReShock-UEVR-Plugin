@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_CellCostNode_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "STRUCT_CellLocationData_structs.hpp"
 #include "ENUM_CardinalDirection_structs.hpp"
+#include "STRUCT_CellLocationData_structs.hpp"
+#include "STRUCT_CellCostNode_structs.hpp"
 
 
 namespace SDK::Params

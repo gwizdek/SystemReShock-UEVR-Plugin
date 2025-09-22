@@ -631,6 +631,34 @@ void AINTERACT_Button_Base_C::EVENT_OnDisableAttribChanged(float CurrValue, floa
 }
 
 
+// Function INTERACT_Button_Base.INTERACT_Button_Base_C.TryInteract
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// ENUM_InteractionType                    InteractionType                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FSTRUCT_InteractResults          InteractResults                                        (Parm, OutParm, HasGetValueTypeHash)
+
+void AINTERACT_Button_Base_C::TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_Button_Base_C", "TryInteract");
+
+	Params::INTERACT_Button_Base_C_TryInteract Parms{};
+
+	Parms.SourceActor = SourceActor;
+	Parms.CursorPrimitive = CursorPrimitive;
+	Parms.InteractionType = InteractionType;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (InteractResults != nullptr)
+		*InteractResults = std::move(Parms.InteractResults);
+}
+
+
 // Function INTERACT_Button_Base.INTERACT_Button_Base_C.GetTargetShape
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -721,34 +749,6 @@ void AINTERACT_Button_Base_C::CanModifyInteractPower(bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
-}
-
-
-// Function INTERACT_Button_Base.INTERACT_Button_Base_C.TryInteract
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// ENUM_InteractionType                    InteractionType                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FSTRUCT_InteractResults          InteractResults                                        (Parm, OutParm, HasGetValueTypeHash)
-
-void AINTERACT_Button_Base_C::TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_Button_Base_C", "TryInteract");
-
-	Params::INTERACT_Button_Base_C_TryInteract Parms{};
-
-	Parms.SourceActor = SourceActor;
-	Parms.CursorPrimitive = CursorPrimitive;
-	Parms.InteractionType = InteractionType;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (InteractResults != nullptr)
-		*InteractResults = std::move(Parms.InteractResults);
 }
 
 }

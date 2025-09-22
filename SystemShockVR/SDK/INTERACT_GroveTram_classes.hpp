@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_DoorState_structs.hpp"
 #include "ELEVATOR_Base_classes.hpp"
 #include "ENUM_InnerOuter_structs.hpp"
-#include "ENUM_DoorState_structs.hpp"
 
 
 namespace SDK
@@ -45,11 +45,11 @@ public:
 	class UBoxComponent*                          ControlButton1_TargetBox;                          // 0x0738(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void SetDoorState(ENUM_InnerOuter Target, ENUM_DoorState NewState);
-	void GetControlsMeshComponent(class UStaticMeshComponent** MeshComponent);
 	void UpdateEmissiveStrength(float Scale);
 	void GetMoveDirectionVector(class FName TargetLevel_0, struct FVector* Direction);
 	void TryOpenElevatorDoors(bool Force, bool* Result);
+	void SetDoorState(ENUM_InnerOuter Target, ENUM_DoorState NewState);
+	void GetControlsMeshComponent(class UStaticMeshComponent** MeshComponent);
 	void GetGroveLevelIndexByDeckSymbol(const class FString& DeckSymbol, int32* Result);
 	void InitializeElevatorControls();
 	void UserConstructionScript();

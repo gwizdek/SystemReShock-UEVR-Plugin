@@ -17,20 +17,6 @@
 namespace SDK
 {
 
-// Function BP_Medical_Floor_Lights.BP_Medical_Floor_Lights_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ABP_Medical_Floor_Lights_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Medical_Floor_Lights_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function BP_Medical_Floor_Lights.BP_Medical_Floor_Lights_C.ExecuteUbergraph_BP_Medical_Floor_Lights
 // (Final, UbergraphFunction)
 // Parameters:
@@ -48,6 +34,20 @@ void ABP_Medical_Floor_Lights_C::ExecuteUbergraph_BP_Medical_Floor_Lights(int32 
 	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_Medical_Floor_Lights.BP_Medical_Floor_Lights_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void ABP_Medical_Floor_Lights_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Medical_Floor_Lights_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

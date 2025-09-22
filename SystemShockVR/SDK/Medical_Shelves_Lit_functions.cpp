@@ -17,43 +17,35 @@
 namespace SDK
 {
 
-// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.UserConstructionScript
-// (Event, Public, BlueprintCallable, BlueprintEvent)
+// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.ExecuteUbergraph_Medical_Shelves_Lit
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void AMedical_Shelves_Lit_C::UserConstructionScript()
+void AMedical_Shelves_Lit_C::ExecuteUbergraph_Medical_Shelves_Lit(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Medical_Shelves_Lit_C", "UserConstructionScript");
+		Func = Class->GetFunction("Medical_Shelves_Lit_C", "ExecuteUbergraph_Medical_Shelves_Lit");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::Medical_Shelves_Lit_C_ExecuteUbergraph_Medical_Shelves_Lit Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.LightFlicker__FinishedFunc
-// (BlueprintEvent)
+// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
 
-void AMedical_Shelves_Lit_C::LightFlicker__FinishedFunc()
+void AMedical_Shelves_Lit_C::ReceiveBeginPlay()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Medical_Shelves_Lit_C", "LightFlicker__FinishedFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.LightFlicker__UpdateFunc
-// (BlueprintEvent)
-
-void AMedical_Shelves_Lit_C::LightFlicker__UpdateFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Medical_Shelves_Lit_C", "LightFlicker__UpdateFunc");
+		Func = Class->GetFunction("Medical_Shelves_Lit_C", "ReceiveBeginPlay");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -73,37 +65,45 @@ void AMedical_Shelves_Lit_C::LightFlicker__Click__EventFunc()
 }
 
 
-// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
+// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.LightFlicker__UpdateFunc
+// (BlueprintEvent)
 
-void AMedical_Shelves_Lit_C::ReceiveBeginPlay()
+void AMedical_Shelves_Lit_C::LightFlicker__UpdateFunc()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Medical_Shelves_Lit_C", "ReceiveBeginPlay");
+		Func = Class->GetFunction("Medical_Shelves_Lit_C", "LightFlicker__UpdateFunc");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.ExecuteUbergraph_Medical_Shelves_Lit
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.LightFlicker__FinishedFunc
+// (BlueprintEvent)
 
-void AMedical_Shelves_Lit_C::ExecuteUbergraph_Medical_Shelves_Lit(int32 EntryPoint)
+void AMedical_Shelves_Lit_C::LightFlicker__FinishedFunc()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Medical_Shelves_Lit_C", "ExecuteUbergraph_Medical_Shelves_Lit");
+		Func = Class->GetFunction("Medical_Shelves_Lit_C", "LightFlicker__FinishedFunc");
 
-	Params::Medical_Shelves_Lit_C_ExecuteUbergraph_Medical_Shelves_Lit Parms{};
+	UObject::ProcessEvent(Func, nullptr);
+}
 
-	Parms.EntryPoint = EntryPoint;
 
-	UObject::ProcessEvent(Func, &Parms);
+// Function Medical_Shelves_Lit.Medical_Shelves_Lit_C.UserConstructionScript
+// (Event, Public, BlueprintCallable, BlueprintEvent)
+
+void AMedical_Shelves_Lit_C::UserConstructionScript()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Medical_Shelves_Lit_C", "UserConstructionScript");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

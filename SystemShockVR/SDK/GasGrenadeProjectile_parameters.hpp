@@ -32,17 +32,6 @@ static_assert(offsetof(GasGrenadeProjectile_C_DetonateExplosive, CallFunc_MarkHa
 static_assert(offsetof(GasGrenadeProjectile_C_DetonateExplosive, CallFunc_PlayExplosionEffects_SpawnedFX) == 0x000008, "Member 'GasGrenadeProjectile_C_DetonateExplosive::CallFunc_PlayExplosionEffects_SpawnedFX' has a wrong offset!");
 static_assert(offsetof(GasGrenadeProjectile_C_DetonateExplosive, CallFunc_SpawnGasVolume_GasVolume) == 0x000010, "Member 'GasGrenadeProjectile_C_DetonateExplosive::CallFunc_SpawnGasVolume_GasVolume' has a wrong offset!");
 
-// Function GasGrenadeProjectile.GasGrenadeProjectile_C.SetHazardDamagePerSecond
-// 0x0004 (0x0004 - 0x0000)
-struct GasGrenadeProjectile_C_SetHazardDamagePerSecond final
-{
-public:
-	int32                                         Value;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(GasGrenadeProjectile_C_SetHazardDamagePerSecond) == 0x000004, "Wrong alignment on GasGrenadeProjectile_C_SetHazardDamagePerSecond");
-static_assert(sizeof(GasGrenadeProjectile_C_SetHazardDamagePerSecond) == 0x000004, "Wrong size on GasGrenadeProjectile_C_SetHazardDamagePerSecond");
-static_assert(offsetof(GasGrenadeProjectile_C_SetHazardDamagePerSecond, Value) == 0x000000, "Member 'GasGrenadeProjectile_C_SetHazardDamagePerSecond::Value' has a wrong offset!");
-
 // Function GasGrenadeProjectile.GasGrenadeProjectile_C.SpawnGasVolume
 // 0x00F0 (0x00F0 - 0x0000)
 struct GasGrenadeProjectile_C_SpawnGasVolume final
@@ -92,6 +81,17 @@ static_assert(offsetof(GasGrenadeProjectile_C_SpawnGasVolume, CallFunc_GetGameIn
 static_assert(offsetof(GasGrenadeProjectile_C_SpawnGasVolume, K2Node_DynamicCast_AsGI_Single_Player) == 0x0000D0, "Member 'GasGrenadeProjectile_C_SpawnGasVolume::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
 static_assert(offsetof(GasGrenadeProjectile_C_SpawnGasVolume, K2Node_DynamicCast_bSuccess) == 0x0000D8, "Member 'GasGrenadeProjectile_C_SpawnGasVolume::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 static_assert(offsetof(GasGrenadeProjectile_C_SpawnGasVolume, CallFunc_GetPrimaryStreamingLevel_Level) == 0x0000E0, "Member 'GasGrenadeProjectile_C_SpawnGasVolume::CallFunc_GetPrimaryStreamingLevel_Level' has a wrong offset!");
+
+// Function GasGrenadeProjectile.GasGrenadeProjectile_C.SetHazardDamagePerSecond
+// 0x0004 (0x0004 - 0x0000)
+struct GasGrenadeProjectile_C_SetHazardDamagePerSecond final
+{
+public:
+	int32                                         Value;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(GasGrenadeProjectile_C_SetHazardDamagePerSecond) == 0x000004, "Wrong alignment on GasGrenadeProjectile_C_SetHazardDamagePerSecond");
+static_assert(sizeof(GasGrenadeProjectile_C_SetHazardDamagePerSecond) == 0x000004, "Wrong size on GasGrenadeProjectile_C_SetHazardDamagePerSecond");
+static_assert(offsetof(GasGrenadeProjectile_C_SetHazardDamagePerSecond, Value) == 0x000000, "Member 'GasGrenadeProjectile_C_SetHazardDamagePerSecond::Value' has a wrong offset!");
 
 }
 

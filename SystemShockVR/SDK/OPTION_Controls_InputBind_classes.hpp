@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_PrimarySecondary_structs.hpp"
 #include "Engine_structs.hpp"
+#include "ENUM_PrimarySecondary_structs.hpp"
 #include "ENUM_InputCategory_structs.hpp"
-#include "OPTION_Base_classes.hpp"
 #include "UMG_structs.hpp"
+#include "OPTION_Base_classes.hpp"
 
 
 namespace SDK
@@ -72,6 +72,7 @@ public:
 	void UpdateVisuals();
 	void SelectDefaultValue();
 	void ReceiveNavLeft(bool InputState, bool* Result);
+	void ReceiveNavRight(bool InputState, bool* Result);
 	void ApplyCleanValue();
 	void UpdateCurrentVisuals();
 	void TryUnhighlightOption();
@@ -81,7 +82,6 @@ public:
 	void StashInputBind(const struct FKey& Key);
 	void GetMouseButtonFromPointerEvent(const struct FPointerEvent& PointerEvent, struct FKey* Result);
 	void IsAnythingHovered(bool* Result);
-	void ReceiveNavRight(bool InputState, bool* Result);
 	void ReceiveNavAccept(bool InputState, bool* Result);
 
 public:

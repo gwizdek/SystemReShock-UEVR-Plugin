@@ -57,20 +57,6 @@ void ACYBR_Barrier_C::ReceiveTick(float DeltaSeconds)
 }
 
 
-// Function CYBR_Barrier.CYBR_Barrier_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ACYBR_Barrier_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CYBR_Barrier_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function CYBR_Barrier.CYBR_Barrier_C.UserConstructionScript
 // (Event, Public, BlueprintCallable, BlueprintEvent)
 
@@ -102,34 +88,6 @@ void ACYBR_Barrier_C::EVENT_OnEnemyDied(class APAWN_SystemShockCharacter_C* Char
 	Parms.Character = Character;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function CYBR_Barrier.CYBR_Barrier_C.TryInteract
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// ENUM_InteractionType                    InteractionType                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FSTRUCT_InteractResults          InteractResults                                        (Parm, OutParm, HasGetValueTypeHash)
-
-void ACYBR_Barrier_C::TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CYBR_Barrier_C", "TryInteract");
-
-	Params::CYBR_Barrier_C_TryInteract Parms{};
-
-	Parms.SourceActor = SourceActor;
-	Parms.CursorPrimitive = CursorPrimitive;
-	Parms.InteractionType = InteractionType;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (InteractResults != nullptr)
-		*InteractResults = std::move(Parms.InteractResults);
 }
 
 
@@ -242,6 +200,48 @@ void ACYBR_Barrier_C::EVENT_OnQuestStateChanged(class FName StoryQuestName, bool
 	Parms.Value = Value;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function CYBR_Barrier.CYBR_Barrier_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void ACYBR_Barrier_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CYBR_Barrier_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function CYBR_Barrier.CYBR_Barrier_C.TryInteract
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// ENUM_InteractionType                    InteractionType                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FSTRUCT_InteractResults          InteractResults                                        (Parm, OutParm, HasGetValueTypeHash)
+
+void ACYBR_Barrier_C::TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CYBR_Barrier_C", "TryInteract");
+
+	Params::CYBR_Barrier_C_TryInteract Parms{};
+
+	Parms.SourceActor = SourceActor;
+	Parms.CursorPrimitive = CursorPrimitive;
+	Parms.InteractionType = InteractionType;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (InteractResults != nullptr)
+		*InteractResults = std::move(Parms.InteractResults);
 }
 
 }

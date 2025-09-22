@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "SlateCore_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
-#include "Slate_structs.hpp"
 #include "ENUM_MFDTabCategory_structs.hpp"
+#include "SlateCore_structs.hpp"
+#include "Slate_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "UMG_structs.hpp"
 
@@ -386,6 +386,32 @@ static_assert(alignof(WIDGET_SimpleHUD_C_SetHoldInteractionProgress) == 0x000004
 static_assert(sizeof(WIDGET_SimpleHUD_C_SetHoldInteractionProgress) == 0x000008, "Wrong size on WIDGET_SimpleHUD_C_SetHoldInteractionProgress");
 static_assert(offsetof(WIDGET_SimpleHUD_C_SetHoldInteractionProgress, Progress) == 0x000000, "Member 'WIDGET_SimpleHUD_C_SetHoldInteractionProgress::Progress' has a wrong offset!");
 static_assert(offsetof(WIDGET_SimpleHUD_C_SetHoldInteractionProgress, Result) == 0x000004, "Member 'WIDGET_SimpleHUD_C_SetHoldInteractionProgress::Result' has a wrong offset!");
+
+// Function WIDGET_SimpleHUD.WIDGET_SimpleHUD_C.InvokeVaporize
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_SimpleHUD_C_InvokeVaporize final
+{
+public:
+	bool                                          HoldingInput;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_SimpleHUD_C_InvokeVaporize) == 0x000001, "Wrong alignment on WIDGET_SimpleHUD_C_InvokeVaporize");
+static_assert(sizeof(WIDGET_SimpleHUD_C_InvokeVaporize) == 0x000002, "Wrong size on WIDGET_SimpleHUD_C_InvokeVaporize");
+static_assert(offsetof(WIDGET_SimpleHUD_C_InvokeVaporize, HoldingInput) == 0x000000, "Member 'WIDGET_SimpleHUD_C_InvokeVaporize::HoldingInput' has a wrong offset!");
+static_assert(offsetof(WIDGET_SimpleHUD_C_InvokeVaporize, Result) == 0x000001, "Member 'WIDGET_SimpleHUD_C_InvokeVaporize::Result' has a wrong offset!");
+
+// Function WIDGET_SimpleHUD.WIDGET_SimpleHUD_C.InvokeSort
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_SimpleHUD_C_InvokeSort final
+{
+public:
+	bool                                          HoldingInput;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_SimpleHUD_C_InvokeSort) == 0x000001, "Wrong alignment on WIDGET_SimpleHUD_C_InvokeSort");
+static_assert(sizeof(WIDGET_SimpleHUD_C_InvokeSort) == 0x000002, "Wrong size on WIDGET_SimpleHUD_C_InvokeSort");
+static_assert(offsetof(WIDGET_SimpleHUD_C_InvokeSort, HoldingInput) == 0x000000, "Member 'WIDGET_SimpleHUD_C_InvokeSort::HoldingInput' has a wrong offset!");
+static_assert(offsetof(WIDGET_SimpleHUD_C_InvokeSort, Result) == 0x000001, "Member 'WIDGET_SimpleHUD_C_InvokeSort::Result' has a wrong offset!");
 
 }
 

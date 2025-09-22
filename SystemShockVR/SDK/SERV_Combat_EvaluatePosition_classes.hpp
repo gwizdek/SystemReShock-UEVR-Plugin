@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "AIModule_classes.hpp"
 #include "ENUM_SpeedType_structs.hpp"
 #include "ENUM_PreferredCombatStyle_structs.hpp"
+#include "AIModule_classes.hpp"
 #include "ENUM_MoveSpeed_structs.hpp"
 
 

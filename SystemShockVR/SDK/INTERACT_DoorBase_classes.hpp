@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "INTERACT_Channeling_Base_classes.hpp"
-#include "ENUM_DoorIcons_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_DoorState_structs.hpp"
 #include "ENUM_ButtonColorType_structs.hpp"
+#include "ENUM_DoorIcons_structs.hpp"
+#include "ENUM_DoorState_structs.hpp"
+#include "INTERACT_Channeling_Base_classes.hpp"
 #include "ENUM_InteractionType_structs.hpp"
 
 
@@ -121,14 +121,12 @@ public:
 	void EVENT_OnStoryQuestChanged(class FName StoryQuestName, bool Value);
 	void FinishLocking();
 	void LockDoor(bool CloseDoor);
-	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
 	void TryQueueDoorToggle(class AActor* SourceActor, ENUM_InteractionType InteractionType);
 	void TryHandleQueuedToggle();
 	void FailedAction_Broken(class UPrimitiveComponent* CursorPrimitive);
 	void FailedAction_Locked(class UPrimitiveComponent* CursorPrimitive);
 	void InteractOnOpening(class AActor* SourceActor);
 	void InteractOnClosing();
-	void SetInteractLocked(bool Locked, bool* Result);
 	void SetStopMeshTicksTimer();
 	void StartMeshComponentTicks();
 	void TryStopMeshComponentTicks();
@@ -149,27 +147,29 @@ public:
 	void GetButtonMesh(class UMeshComponent** Mesh);
 	void OnDoorwayBlocked(class AActor* BlockingActor, bool* Result);
 	void OnDoorwayUnblocked(class AActor* UnblockingActor, bool* Result);
-	void IsHiddenInteractablePrimitive(class APAWN_SystemShockCharacter_C* Character, class UPrimitiveComponent* CursorPrimitive, bool* Result);
 	void IsDoorCollisionPrimitive(class UPrimitiveComponent* PrimitiveComponent, bool* Result);
-	void IsInteractActivated(bool* Result);
-	void GetInteractLocked(class AActor* SourceActor, bool* Result, class FText* LockMessage);
-	void GetInteractBroken(bool* Result, class FText* BrokenMessage_0);
-	void GetInteractBusy(bool* Result, class FText* BusyMessage_0);
 	void UpdateCanNavAgentsUnblock();
 	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
 	void GetClosestTargetShape(class APAWN_SystemShockCharacter_C* Character, class UShapeComponent** Result);
 	void ResumeChannelingSequence(class APAWN_Hacker_Simple_C* HackerPawn, bool* IsWaitingToHolster);
 	void CreateChannelingMoveControl(class APAWN_Hacker_Simple_C* HackerPawn, class UMOVECONTROL_Base_C** Result);
 	void OnChannelingMontageStarted(class APAWN_Hacker_Simple_C* HackerPawn);
-	void OnRestoreInventoryAfterSequence(class APAWN_Hacker_Simple_C* HackerPawn);
-	void SetInteractPowered(bool State, bool* Result);
 	void UpdateDoorEmissiveStrength(float Scale, float* Strength);
 	void FailedAction_NotFunctional(class UPrimitiveComponent* CursorPrimitive);
 	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
-	void CanModifyInteractPower(bool* Result);
 	void TryFixOverlappingActorPhysics();
 	void DisableSafetySensorTemporarily();
 	void RestoreSafetySensorOverlaps();
+	void OnRestoreInventoryAfterSequence(class APAWN_Hacker_Simple_C* HackerPawn);
+	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
+	void SetInteractLocked(bool Locked, bool* Result);
+	void IsHiddenInteractablePrimitive(class APAWN_SystemShockCharacter_C* Character, class UPrimitiveComponent* CursorPrimitive, bool* Result);
+	void IsInteractActivated(bool* Result);
+	void GetInteractLocked(class AActor* SourceActor, bool* Result, class FText* LockMessage);
+	void GetInteractBroken(bool* Result, class FText* BrokenMessage_0);
+	void GetInteractBusy(bool* Result, class FText* BusyMessage_0);
+	void SetInteractPowered(bool State, bool* Result);
+	void CanModifyInteractPower(bool* Result);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 
 public:

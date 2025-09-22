@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ITEM_HandheldExplosive_Base_classes.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK
@@ -27,11 +27,11 @@ public:
 	struct FTimerHandle                           FuseBeepTimerHandle;                               // 0x04F0(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void EVENT_OnFuseBeepTick();
-	void LaunchExplosiveFromCamera(class UCameraComponent* CameraComponent, class AExplosiveProjectile_Base_C* ExplosiveProjectile, class UITEM_ExplosiveBase_C* RemovedExplosiveItem, float Speed);
-	void TryStartFuseTimer();
-	void TryDisarmExplosive(bool* Success);
 	void ThrowExplosive(float Speed);
+	void TryDisarmExplosive(bool* Success);
+	void TryStartFuseTimer();
+	void LaunchExplosiveFromCamera(class UCameraComponent* CameraComponent, class AExplosiveProjectile_Base_C* ExplosiveProjectile, class UITEM_ExplosiveBase_C* RemovedExplosiveItem, float Speed);
+	void EVENT_OnFuseBeepTick();
 
 public:
 	static class UClass* StaticClass()

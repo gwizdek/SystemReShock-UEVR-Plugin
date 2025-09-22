@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_GeneratedCircuitType_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_PowerState_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_GeneratedCircuitType_structs.hpp"
 #include "COMP_PuzzleCell_Base_classes.hpp"
 
 

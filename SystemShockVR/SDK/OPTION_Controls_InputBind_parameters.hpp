@@ -358,6 +358,25 @@ static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavLeft, CallFunc_Not_
 static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavLeft, CallFunc_Not_PreBool_ReturnValue_1) == 0x000003, "Member 'OPTION_Controls_InputBind_C_ReceiveNavLeft::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavLeft, CallFunc_BooleanOR_ReturnValue) == 0x000004, "Member 'OPTION_Controls_InputBind_C_ReceiveNavLeft::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 
+// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavRight
+// 0x0005 (0x0005 - 0x0000)
+struct OPTION_Controls_InputBind_C_ReceiveNavRight final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(OPTION_Controls_InputBind_C_ReceiveNavRight) == 0x000001, "Wrong alignment on OPTION_Controls_InputBind_C_ReceiveNavRight");
+static_assert(sizeof(OPTION_Controls_InputBind_C_ReceiveNavRight) == 0x000005, "Wrong size on OPTION_Controls_InputBind_C_ReceiveNavRight");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, InputState) == 0x000000, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::InputState' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, Result) == 0x000001, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::Result' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, CallFunc_Not_PreBool_ReturnValue) == 0x000002, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, CallFunc_Not_PreBool_ReturnValue_1) == 0x000003, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, CallFunc_BooleanOR_ReturnValue) == 0x000004, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.UpdateCurrentVisuals
 // 0x00F8 (0x00F8 - 0x0000)
 struct OPTION_Controls_InputBind_C_UpdateCurrentVisuals final
@@ -628,25 +647,6 @@ static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHovered, CallFunc_I
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHovered, CallFunc_IsHovered_ReturnValue_2) == 0x000003, "Member 'OPTION_Controls_InputBind_C_IsAnythingHovered::CallFunc_IsHovered_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHovered, CallFunc_BooleanOR_ReturnValue) == 0x000004, "Member 'OPTION_Controls_InputBind_C_IsAnythingHovered::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHovered, CallFunc_BooleanOR_ReturnValue_1) == 0x000005, "Member 'OPTION_Controls_InputBind_C_IsAnythingHovered::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
-
-// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavRight
-// 0x0005 (0x0005 - 0x0000)
-struct OPTION_Controls_InputBind_C_ReceiveNavRight final
-{
-public:
-	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(OPTION_Controls_InputBind_C_ReceiveNavRight) == 0x000001, "Wrong alignment on OPTION_Controls_InputBind_C_ReceiveNavRight");
-static_assert(sizeof(OPTION_Controls_InputBind_C_ReceiveNavRight) == 0x000005, "Wrong size on OPTION_Controls_InputBind_C_ReceiveNavRight");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, InputState) == 0x000000, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::InputState' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, Result) == 0x000001, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, CallFunc_Not_PreBool_ReturnValue) == 0x000002, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, CallFunc_Not_PreBool_ReturnValue_1) == 0x000003, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, CallFunc_BooleanOR_ReturnValue) == 0x000004, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavAccept
 // 0x0002 (0x0002 - 0x0000)

@@ -24,7 +24,7 @@ class AINTERACT_PseudoPlatformBase_C : public ACYBR_InteractBase_C
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame_INTERACT_PseudoPlatformBase_C;      // 0x0238(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UAudioComponent*                        Audio_Loop;                                        // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        Audio_loop;                                        // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   StaticMesh;                                        // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UBoxComponent*                          PawnCollision;                                     // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	float                                         OverlapProgress;                                   // 0x0258(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -39,26 +39,26 @@ public:
 	class UMOVECONTROL_Base_C*                    CenterMoveControl;                                 // 0x0280(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ExecuteUbergraph_INTERACT_PseudoPlatformBase(int32 EntryPoint);
-	void ReceiveBeginPlay();
-	void BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-	void BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
-	void ReceiveTick(float DeltaSeconds);
-	void InitializePlatform();
-	void TrySetPlatformEnabled(bool State, bool* Result);
-	void OnPlatformEnableStateChanged(bool State);
-	void UpdateOverlapProgress(float DeltaTime);
-	void BeginOverlapping(class APAWN_Hacker_Simple_C* Hacker);
-	void EndOverlapping(class APAWN_Hacker_Simple_C* Hacker);
-	void ActivatePlatform();
-	void AddCenterMoveControl();
-	void EVENT_OnCenterMoveExpired(class UMOVECONTROL_Base_C* MoveControl);
-	void AddRidePlatformMoveControl();
-	void EVENT_AfterCenterMoveDelayTimer();
-	void TryExpireRideMoveControl(bool* Result);
-	void HasPlatformBeenEnabled(bool* Result);
-	void IsAbleToIncreaseOverlapProgress(bool* Result);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
+	void IsAbleToIncreaseOverlapProgress(bool* Result);
+	void HasPlatformBeenEnabled(bool* Result);
+	void TryExpireRideMoveControl(bool* Result);
+	void EVENT_AfterCenterMoveDelayTimer();
+	void AddRidePlatformMoveControl();
+	void EVENT_OnCenterMoveExpired(class UMOVECONTROL_Base_C* MoveControl);
+	void AddCenterMoveControl();
+	void ActivatePlatform();
+	void EndOverlapping(class APAWN_Hacker_Simple_C* Hacker);
+	void BeginOverlapping(class APAWN_Hacker_Simple_C* Hacker);
+	void UpdateOverlapProgress(float DeltaTime);
+	void OnPlatformEnableStateChanged(bool State);
+	void TrySetPlatformEnabled(bool State, bool* Result);
+	void InitializePlatform();
+	void ReceiveTick(float DeltaSeconds);
+	void BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
+	void BndEvt__INTERACT_PseudoPlatformBase_PawnCollision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+	void ReceiveBeginPlay();
+	void ExecuteUbergraph_INTERACT_PseudoPlatformBase(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()
@@ -73,7 +73,7 @@ public:
 static_assert(alignof(AINTERACT_PseudoPlatformBase_C) == 0x000008, "Wrong alignment on AINTERACT_PseudoPlatformBase_C");
 static_assert(sizeof(AINTERACT_PseudoPlatformBase_C) == 0x000288, "Wrong size on AINTERACT_PseudoPlatformBase_C");
 static_assert(offsetof(AINTERACT_PseudoPlatformBase_C, UberGraphFrame_INTERACT_PseudoPlatformBase_C) == 0x000238, "Member 'AINTERACT_PseudoPlatformBase_C::UberGraphFrame_INTERACT_PseudoPlatformBase_C' has a wrong offset!");
-static_assert(offsetof(AINTERACT_PseudoPlatformBase_C, Audio_Loop) == 0x000240, "Member 'AINTERACT_PseudoPlatformBase_C::Audio_Loop' has a wrong offset!");
+static_assert(offsetof(AINTERACT_PseudoPlatformBase_C, Audio_loop) == 0x000240, "Member 'AINTERACT_PseudoPlatformBase_C::Audio_loop' has a wrong offset!");
 static_assert(offsetof(AINTERACT_PseudoPlatformBase_C, StaticMesh) == 0x000248, "Member 'AINTERACT_PseudoPlatformBase_C::StaticMesh' has a wrong offset!");
 static_assert(offsetof(AINTERACT_PseudoPlatformBase_C, PawnCollision) == 0x000250, "Member 'AINTERACT_PseudoPlatformBase_C::PawnCollision' has a wrong offset!");
 static_assert(offsetof(AINTERACT_PseudoPlatformBase_C, OverlapProgress) == 0x000258, "Member 'AINTERACT_PseudoPlatformBase_C::OverlapProgress' has a wrong offset!");

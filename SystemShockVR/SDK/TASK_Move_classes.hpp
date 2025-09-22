@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_FailSucceedIgnore_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_MoveSpeed_structs.hpp"
-#include "ENUM_SpeedType_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "AIModule_classes.hpp"
+#include "ENUM_SpeedType_structs.hpp"
+#include "ENUM_FailSucceedIgnore_structs.hpp"
 
 
 namespace SDK

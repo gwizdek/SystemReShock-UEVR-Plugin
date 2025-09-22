@@ -20,7 +20,7 @@ namespace SDK::Params
 {
 
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.ExecuteUbergraph_PAWN_Hacker_Implant
-// 0x06B0 (0x06B0 - 0x0000)
+// 0x0698 (0x0698 - 0x0000)
 struct PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant final
 {
 public:
@@ -62,33 +62,33 @@ public:
 	struct FKey                                   K2Node_InputActionEvent_Key_25;                    // 0x0320(0x0018)(HasGetValueTypeHash)
 	struct FKey                                   K2Node_InputActionEvent_Key_26;                    // 0x0338(0x0018)(HasGetValueTypeHash)
 	struct FKey                                   K2Node_InputActionEvent_Key_27;                    // 0x0350(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_28;                    // 0x0368(0x0018)(HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result;                      // 0x0380(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_1;                    // 0x0388(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_2;                    // 0x0390(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_3;                    // 0x0398(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_4;                    // 0x03A0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_5;                    // 0x03A8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_6;                    // 0x03B0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_7;                    // 0x03B8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_10;                           // 0x03C0(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_29;                    // 0x03D8(0x0018)(HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result;                      // 0x0368(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_1;                    // 0x0370(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_2;                    // 0x0378(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_3;                    // 0x0380(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_4;                    // 0x0388(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_5;                    // 0x0390(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_6;                    // 0x0398(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_7;                    // 0x03A0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_28;                    // 0x03A8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_29;                    // 0x03C0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_10;                           // 0x03D8(0x0018)(HasGetValueTypeHash)
 	struct FKey                                   K2Node_InputActionEvent_Key_30;                    // 0x03F0(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_11;                           // 0x0408(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_31;                    // 0x0408(0x0018)(HasGetValueTypeHash)
 	class AController*                            CallFunc_GetController_ReturnValue;                // 0x0420(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AController*                            CallFunc_GetController_ReturnValue_1;              // 0x0428(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      K2Node_DynamicCast_AsPlayer_Controller;            // 0x0430(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0438(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_439[0x7];                                      // 0x0439(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      K2Node_DynamicCast_AsPlayer_Controller;            // 0x0428(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0430(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_431[0x7];                                      // 0x0431(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AController*                            CallFunc_GetController_ReturnValue_1;              // 0x0438(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APlayerController*                      K2Node_DynamicCast_AsPlayer_Controller_1;          // 0x0440(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0448(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_449[0x7];                                      // 0x0449(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FKey                                   K2Node_InputActionEvent_Key_19;                    // 0x0450(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_31;                    // 0x0468(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_11;                           // 0x0468(0x0018)(HasGetValueTypeHash)
 	struct FKey                                   K2Node_InputActionEvent_Key_32;                    // 0x0480(0x0018)(HasGetValueTypeHash)
 	struct FKey                                   K2Node_InputActionEvent_Key_33;                    // 0x0498(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_12;                           // 0x04B0(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_34;                    // 0x04C8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_34;                    // 0x04B0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_12;                           // 0x04C8(0x0018)(HasGetValueTypeHash)
 	struct FKey                                   K2Node_InputActionEvent_Key_35;                    // 0x04E0(0x0018)(HasGetValueTypeHash)
 	struct FKey                                   K2Node_InputActionEvent_Key_36;                    // 0x04F8(0x0018)(HasGetValueTypeHash)
 	struct FKey                                   K2Node_InputActionEvent_Key_37;                    // 0x0510(0x0018)(HasGetValueTypeHash)
@@ -116,17 +116,16 @@ public:
 	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_18;                   // 0x0658(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_19;                   // 0x0660(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_20;                   // 0x0668(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_21;                   // 0x0670(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result_22;                   // 0x0678(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_TryUseConsumableAtSlot_Result;            // 0x0680(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_681[0x7];                                      // 0x0681(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AController*                            K2Node_Event_OldController;                        // 0x0688(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_TryUseConsumableAtSlot_Result_1;          // 0x0690(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_691[0x7];                                      // 0x0691(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   K2Node_InputActionEvent_Key_20;                    // 0x0698(0x0018)(HasGetValueTypeHash)
+	bool                                          CallFunc_TryUseConsumableAtSlot_Result;            // 0x0670(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsTryingToLean_IsTryingToLean;         // 0x0671(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryUseConsumableAtSlot_Result_1;          // 0x0672(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0673(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_674[0x4];                                      // 0x0674(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class AController*                            K2Node_Event_OldController;                        // 0x0678(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_20;                    // 0x0680(0x0018)(HasGetValueTypeHash)
 };
 static_assert(alignof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant");
-static_assert(sizeof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant) == 0x0006B0, "Wrong size on PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant");
+static_assert(sizeof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant) == 0x000698, "Wrong size on PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, EntryPoint) == 0x000000, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::EntryPoint' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_21) == 0x000008, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_21' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_18) == 0x000020, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_18' has a wrong offset!");
@@ -164,31 +163,31 @@ static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implan
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_25) == 0x000320, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_25' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_26) == 0x000338, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_26' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_27) == 0x000350, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_27' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_28) == 0x000368, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_28' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result) == 0x000380, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_1) == 0x000388, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_1' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_2) == 0x000390, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_2' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_3) == 0x000398, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_3' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_4) == 0x0003A0, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_4' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_5) == 0x0003A8, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_5' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_6) == 0x0003B0, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_6' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_7) == 0x0003B8, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_7' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, Temp_struct_Variable_10) == 0x0003C0, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::Temp_struct_Variable_10' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_29) == 0x0003D8, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_29' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result) == 0x000368, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_1) == 0x000370, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_1' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_2) == 0x000378, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_2' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_3) == 0x000380, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_3' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_4) == 0x000388, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_4' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_5) == 0x000390, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_5' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_6) == 0x000398, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_6' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_7) == 0x0003A0, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_7' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_28) == 0x0003A8, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_28' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_29) == 0x0003C0, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_29' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, Temp_struct_Variable_10) == 0x0003D8, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::Temp_struct_Variable_10' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_30) == 0x0003F0, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_30' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, Temp_struct_Variable_11) == 0x000408, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::Temp_struct_Variable_11' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_31) == 0x000408, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_31' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetController_ReturnValue) == 0x000420, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetController_ReturnValue_1) == 0x000428, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetController_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_DynamicCast_AsPlayer_Controller) == 0x000430, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_DynamicCast_AsPlayer_Controller' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_DynamicCast_bSuccess) == 0x000438, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_DynamicCast_AsPlayer_Controller) == 0x000428, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_DynamicCast_AsPlayer_Controller' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_DynamicCast_bSuccess) == 0x000430, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetController_ReturnValue_1) == 0x000438, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetController_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_DynamicCast_AsPlayer_Controller_1) == 0x000440, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_DynamicCast_AsPlayer_Controller_1' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_DynamicCast_bSuccess_1) == 0x000448, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_19) == 0x000450, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_19' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_31) == 0x000468, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_31' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, Temp_struct_Variable_11) == 0x000468, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::Temp_struct_Variable_11' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_32) == 0x000480, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_32' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_33) == 0x000498, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_33' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, Temp_struct_Variable_12) == 0x0004B0, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::Temp_struct_Variable_12' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_34) == 0x0004C8, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_34' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_34) == 0x0004B0, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_34' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, Temp_struct_Variable_12) == 0x0004C8, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::Temp_struct_Variable_12' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_35) == 0x0004E0, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_35' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_36) == 0x0004F8, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_36' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_37) == 0x000510, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_37' has a wrong offset!");
@@ -215,12 +214,12 @@ static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implan
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_18) == 0x000658, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_18' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_19) == 0x000660, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_19' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_20) == 0x000668, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_20' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_21) == 0x000670, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_21' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetNeuralHUD_Result_22) == 0x000678, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetNeuralHUD_Result_22' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_TryUseConsumableAtSlot_Result) == 0x000680, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_TryUseConsumableAtSlot_Result' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_Event_OldController) == 0x000688, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_Event_OldController' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_TryUseConsumableAtSlot_Result_1) == 0x000690, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_TryUseConsumableAtSlot_Result_1' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_20) == 0x000698, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_20' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_TryUseConsumableAtSlot_Result) == 0x000670, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_TryUseConsumableAtSlot_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_GetIsTryingToLean_IsTryingToLean) == 0x000671, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_GetIsTryingToLean_IsTryingToLean' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_TryUseConsumableAtSlot_Result_1) == 0x000672, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_TryUseConsumableAtSlot_Result_1' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, CallFunc_BooleanAND_ReturnValue) == 0x000673, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_Event_OldController) == 0x000678, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_Event_OldController' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant, K2Node_InputActionEvent_Key_20) == 0x000680, "Member 'PAWN_Hacker_Implant_C_ExecuteUbergraph_PAWN_Hacker_Implant::K2Node_InputActionEvent_Key_20' has a wrong offset!");
 
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Locked_Hotbar9_K2Node_InputActionEvent_0
 // 0x0018 (0x0018 - 0x0000)
@@ -519,38 +518,38 @@ static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Locked_SimplifiedHotbar3_K
 static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Locked_SimplifiedHotbar3_K2Node_InputActionEvent_26) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Locked_SimplifiedHotbar3_K2Node_InputActionEvent_26");
 static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Locked_SimplifiedHotbar3_K2Node_InputActionEvent_26, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Locked_SimplifiedHotbar3_K2Node_InputActionEvent_26::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_27
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_27 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_27) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_27");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_27) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_27");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_27, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_27::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_28
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_28 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_28) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_28");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_28) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_28");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_28, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_28::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_29
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_29 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_29) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_29");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_29) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_29");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_29, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_29::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29::Key' has a wrong offset!");
 
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_30
 // 0x0018 (0x0018 - 0x0000)
@@ -563,16 +562,16 @@ static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_
 static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_30) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_30");
 static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_30, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_30::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_31
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_31 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_31) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_31");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_31) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_31");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_31, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_31::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31::Key' has a wrong offset!");
 
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_32
 // 0x0018 (0x0018 - 0x0000)
@@ -585,27 +584,27 @@ static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget
 static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_32) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_32");
 static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_32, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_32::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_33
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_33 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_33) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_33");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_33) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_33");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_33, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_33::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_Accept_K2Node_InputActionEvent_34
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_34 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_34) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_34");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_34) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_34");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_34, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_34::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34::Key' has a wrong offset!");
 
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_Accept_K2Node_InputActionEvent_35
 // 0x0018 (0x0018 - 0x0000)
@@ -618,126 +617,126 @@ static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputAc
 static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_35) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_35");
 static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_35, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_35::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_Accept_K2Node_InputActionEvent_36
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_36 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_36) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_36");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_36) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_36");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_36, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_Accept_K2Node_InputActionEvent_36::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_37
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_37 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_37) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_37");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_37) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_37");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_37, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_37::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_38
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_38 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_38) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_38");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_38) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_38");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_38, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_38::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_39
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_39 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_39) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_39");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_39) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_39");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_39, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_39::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_40
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_40 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_40) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_40");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_40) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_40");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_40, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_40::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_41
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_41 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_41) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_41");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_41) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_41");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_41, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_41::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_42
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_42 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_42) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_42");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_42) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_42");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_42, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_42::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_43
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_43 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_43) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_43");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_43) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_43");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_43, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_43::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_44
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_44 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_44) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_44");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_44) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_44");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_44, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_44::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_45
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_45 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_45) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_45");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_45) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_45");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_45, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_45::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45::Key' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_46
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_46 final
+struct PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_46) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_46");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_46) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_46");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_46, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_46::Key' has a wrong offset!");
+static_assert(alignof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46, Key) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46::Key' has a wrong offset!");
 
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.IsMultiFunctionDisplayVisible
 // 0x0010 (0x0010 - 0x0000)
@@ -1056,6 +1055,25 @@ static_assert(alignof(PAWN_Hacker_Implant_C_SetCanSaveGames) == 0x000001, "Wrong
 static_assert(sizeof(PAWN_Hacker_Implant_C_SetCanSaveGames) == 0x000001, "Wrong size on PAWN_Hacker_Implant_C_SetCanSaveGames");
 static_assert(offsetof(PAWN_Hacker_Implant_C_SetCanSaveGames, Enable) == 0x000000, "Member 'PAWN_Hacker_Implant_C_SetCanSaveGames::Enable' has a wrong offset!");
 
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.EVENT_OnDisableAttribChanged
+// 0x0014 (0x0014 - 0x0000)
+struct PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged final
+{
+public:
+	float                                         CurrValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         LastValue;                                         // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FMax_ReturnValue;                         // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged) == 0x000004, "Wrong alignment on PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged");
+static_assert(sizeof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged) == 0x000014, "Wrong size on PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged");
+static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, CurrValue) == 0x000000, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::CurrValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, LastValue) == 0x000004, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::LastValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000008, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, CallFunc_GetAttribValue_ReturnValue) == 0x00000C, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, CallFunc_FMax_ReturnValue) == 0x000010, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::CallFunc_FMax_ReturnValue' has a wrong offset!");
+
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.OnDisorientationChanged
 // 0x0020 (0x0020 - 0x0000)
 struct PAWN_Hacker_Implant_C_OnDisorientationChanged final
@@ -1124,23 +1142,6 @@ static_assert(sizeof(PAWN_Hacker_Implant_C_OnInteractionFailed) == 0x000020, "Wr
 static_assert(offsetof(PAWN_Hacker_Implant_C_OnInteractionFailed, FailedText) == 0x000000, "Member 'PAWN_Hacker_Implant_C_OnInteractionFailed::FailedText' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_OnInteractionFailed, CallFunc_GetNeuralHUD_Result) == 0x000018, "Member 'PAWN_Hacker_Implant_C_OnInteractionFailed::CallFunc_GetNeuralHUD_Result' has a wrong offset!");
 
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InitializeAttributes
-// 0x0028 (0x0028 - 0x0000)
-struct PAWN_Hacker_Implant_C_InitializeAttributes final
-{
-public:
-	TDelegate<void(float CurrValue, float LastValue)> K2Node_CreateDelegate_OutputDelegate;              // 0x0000(0x0010)(ZeroConstructor, NoDestructor)
-	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(float CurrValue, float LastValue)> K2Node_CreateDelegate_OutputDelegate_1;            // 0x0014(0x0010)(ZeroConstructor, NoDestructor)
-	float                                         CallFunc_GetAttribValue_ReturnValue_1;             // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_Hacker_Implant_C_InitializeAttributes) == 0x000004, "Wrong alignment on PAWN_Hacker_Implant_C_InitializeAttributes");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InitializeAttributes) == 0x000028, "Wrong size on PAWN_Hacker_Implant_C_InitializeAttributes");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeAttributes, K2Node_CreateDelegate_OutputDelegate) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InitializeAttributes::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeAttributes, CallFunc_GetAttribValue_ReturnValue) == 0x000010, "Member 'PAWN_Hacker_Implant_C_InitializeAttributes::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeAttributes, K2Node_CreateDelegate_OutputDelegate_1) == 0x000014, "Member 'PAWN_Hacker_Implant_C_InitializeAttributes::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeAttributes, CallFunc_GetAttribValue_ReturnValue_1) == 0x000024, "Member 'PAWN_Hacker_Implant_C_InitializeAttributes::CallFunc_GetAttribValue_ReturnValue_1' has a wrong offset!");
-
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.GamepadInteract
 // 0x0048 (0x0048 - 0x0000)
 struct PAWN_Hacker_Implant_C_GamepadInteract final
@@ -1171,6 +1172,36 @@ static_assert(offsetof(PAWN_Hacker_Implant_C_GamepadInteract, CallFunc_GetNeural
 static_assert(offsetof(PAWN_Hacker_Implant_C_GamepadInteract, CallFunc_GetNeuralHUD_Result_4) == 0x000038, "Member 'PAWN_Hacker_Implant_C_GamepadInteract::CallFunc_GetNeuralHUD_Result_4' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_GamepadInteract, CallFunc_IsVisible_ReturnValue) == 0x000040, "Member 'PAWN_Hacker_Implant_C_GamepadInteract::CallFunc_IsVisible_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_GamepadInteract, CallFunc_Not_PreBool_ReturnValue) == 0x000041, "Member 'PAWN_Hacker_Implant_C_GamepadInteract::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InitializeAttributes
+// 0x0028 (0x0028 - 0x0000)
+struct PAWN_Hacker_Implant_C_InitializeAttributes final
+{
+public:
+	TDelegate<void(float CurrValue, float LastValue)> K2Node_CreateDelegate_OutputDelegate;              // 0x0000(0x0010)(ZeroConstructor, NoDestructor)
+	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(float CurrValue, float LastValue)> K2Node_CreateDelegate_OutputDelegate_1;            // 0x0014(0x0010)(ZeroConstructor, NoDestructor)
+	float                                         CallFunc_GetAttribValue_ReturnValue_1;             // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_Hacker_Implant_C_InitializeAttributes) == 0x000004, "Wrong alignment on PAWN_Hacker_Implant_C_InitializeAttributes");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InitializeAttributes) == 0x000028, "Wrong size on PAWN_Hacker_Implant_C_InitializeAttributes");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeAttributes, K2Node_CreateDelegate_OutputDelegate) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InitializeAttributes::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeAttributes, CallFunc_GetAttribValue_ReturnValue) == 0x000010, "Member 'PAWN_Hacker_Implant_C_InitializeAttributes::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeAttributes, K2Node_CreateDelegate_OutputDelegate_1) == 0x000014, "Member 'PAWN_Hacker_Implant_C_InitializeAttributes::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeAttributes, CallFunc_GetAttribValue_ReturnValue_1) == 0x000024, "Member 'PAWN_Hacker_Implant_C_InitializeAttributes::CallFunc_GetAttribValue_ReturnValue_1' has a wrong offset!");
+
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InitializeCharacter
+// 0x0002 (0x0002 - 0x0000)
+struct PAWN_Hacker_Implant_C_InitializeCharacter final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_InitializeCharacter_Result;               // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(PAWN_Hacker_Implant_C_InitializeCharacter) == 0x000001, "Wrong alignment on PAWN_Hacker_Implant_C_InitializeCharacter");
+static_assert(sizeof(PAWN_Hacker_Implant_C_InitializeCharacter) == 0x000002, "Wrong size on PAWN_Hacker_Implant_C_InitializeCharacter");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeCharacter, Result) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InitializeCharacter::Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeCharacter, CallFunc_InitializeCharacter_Result) == 0x000001, "Member 'PAWN_Hacker_Implant_C_InitializeCharacter::CallFunc_InitializeCharacter_Result' has a wrong offset!");
 
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.OnBioPoisoningChanged
 // 0x0020 (0x0020 - 0x0000)
@@ -1208,6 +1239,46 @@ static_assert(offsetof(PAWN_Hacker_Implant_C_CanSaveGames, CallFunc_IsDirectlyTh
 static_assert(offsetof(PAWN_Hacker_Implant_C_CanSaveGames, CallFunc_Not_PreBool_ReturnValue) == 0x000002, "Member 'PAWN_Hacker_Implant_C_CanSaveGames::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_CanSaveGames, CallFunc_BooleanAND_ReturnValue) == 0x000003, "Member 'PAWN_Hacker_Implant_C_CanSaveGames::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.HandleMenuNavTabLeft
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_Hacker_Implant_C_HandleMenuNavTabLeft final
+{
+public:
+	bool                                          ButtonDown;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Handled;                                           // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HandleMenuNavTabLeft_Handled;             // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3[0x5];                                        // 0x0003(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result;                      // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(PAWN_Hacker_Implant_C_HandleMenuNavTabLeft) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_HandleMenuNavTabLeft");
+static_assert(sizeof(PAWN_Hacker_Implant_C_HandleMenuNavTabLeft) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_HandleMenuNavTabLeft");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabLeft, ButtonDown) == 0x000000, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabLeft::ButtonDown' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabLeft, Handled) == 0x000001, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabLeft::Handled' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabLeft, CallFunc_HandleMenuNavTabLeft_Handled) == 0x000002, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabLeft::CallFunc_HandleMenuNavTabLeft_Handled' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabLeft, CallFunc_GetNeuralHUD_Result) == 0x000008, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabLeft::CallFunc_GetNeuralHUD_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabLeft, CallFunc_BooleanAND_ReturnValue) == 0x000010, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabLeft::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
+// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.HandleMenuNavTabRight
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_Hacker_Implant_C_HandleMenuNavTabRight final
+{
+public:
+	bool                                          ButtonDown;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Handled;                                           // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HandleMenuNavTabRight_Handled;            // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3[0x5];                                        // 0x0003(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result;                      // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(PAWN_Hacker_Implant_C_HandleMenuNavTabRight) == 0x000008, "Wrong alignment on PAWN_Hacker_Implant_C_HandleMenuNavTabRight");
+static_assert(sizeof(PAWN_Hacker_Implant_C_HandleMenuNavTabRight) == 0x000018, "Wrong size on PAWN_Hacker_Implant_C_HandleMenuNavTabRight");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabRight, ButtonDown) == 0x000000, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabRight::ButtonDown' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabRight, Handled) == 0x000001, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabRight::Handled' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabRight, CallFunc_HandleMenuNavTabRight_Handled) == 0x000002, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabRight::CallFunc_HandleMenuNavTabRight_Handled' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabRight, CallFunc_GetNeuralHUD_Result) == 0x000008, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabRight::CallFunc_GetNeuralHUD_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Hacker_Implant_C_HandleMenuNavTabRight, CallFunc_BooleanAND_ReturnValue) == 0x000010, "Member 'PAWN_Hacker_Implant_C_HandleMenuNavTabRight::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
 // Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.SetEmissiveStrength
 // 0x0004 (0x0004 - 0x0000)
 struct PAWN_Hacker_Implant_C_SetEmissiveStrength final
@@ -1234,38 +1305,6 @@ static_assert(sizeof(PAWN_Hacker_Implant_C_InitializeEmissiveStrength) == 0x0000
 static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeEmissiveStrength, BeginPlay) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InitializeEmissiveStrength::BeginPlay' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeEmissiveStrength, CallFunc_GetAttribValue_ReturnValue) == 0x000004, "Member 'PAWN_Hacker_Implant_C_InitializeEmissiveStrength::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeEmissiveStrength, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000008, "Member 'PAWN_Hacker_Implant_C_InitializeEmissiveStrength::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.EVENT_OnDisableAttribChanged
-// 0x0014 (0x0014 - 0x0000)
-struct PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged final
-{
-public:
-	float                                         CurrValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         LastValue;                                         // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FMax_ReturnValue;                         // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged) == 0x000004, "Wrong alignment on PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged");
-static_assert(sizeof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged) == 0x000014, "Wrong size on PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged");
-static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, CurrValue) == 0x000000, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::CurrValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, LastValue) == 0x000004, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::LastValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000008, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, CallFunc_GetAttribValue_ReturnValue) == 0x00000C, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged, CallFunc_FMax_ReturnValue) == 0x000010, "Member 'PAWN_Hacker_Implant_C_EVENT_OnDisableAttribChanged::CallFunc_FMax_ReturnValue' has a wrong offset!");
-
-// Function PAWN_Hacker_Implant.PAWN_Hacker_Implant_C.InitializeCharacter
-// 0x0002 (0x0002 - 0x0000)
-struct PAWN_Hacker_Implant_C_InitializeCharacter final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_InitializeCharacter_Result;               // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(PAWN_Hacker_Implant_C_InitializeCharacter) == 0x000001, "Wrong alignment on PAWN_Hacker_Implant_C_InitializeCharacter");
-static_assert(sizeof(PAWN_Hacker_Implant_C_InitializeCharacter) == 0x000002, "Wrong size on PAWN_Hacker_Implant_C_InitializeCharacter");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeCharacter, Result) == 0x000000, "Member 'PAWN_Hacker_Implant_C_InitializeCharacter::Result' has a wrong offset!");
-static_assert(offsetof(PAWN_Hacker_Implant_C_InitializeCharacter, CallFunc_InitializeCharacter_Result) == 0x000001, "Member 'PAWN_Hacker_Implant_C_InitializeCharacter::CallFunc_InitializeCharacter_Result' has a wrong offset!");
 
 }
 

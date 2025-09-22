@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ActionPriority_structs.hpp"
 #include "CoreUObject_classes.hpp"
+#include "ENUM_ActionPriority_structs.hpp"
 
 
 namespace SDK

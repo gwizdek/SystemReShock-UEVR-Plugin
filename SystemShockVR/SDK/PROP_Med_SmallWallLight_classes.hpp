@@ -36,20 +36,20 @@ public:
 	struct FTimerHandle                           BlinkTimerHandle;                                  // 0x0260(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void IsWallLightFunctional(bool* Result);
-	void TryStartBlinkTimer(bool FromVisStateChange);
-	void UpdateEmissiveStrength(float Scale, bool IsFunctional);
-	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
-	void UpdateWallLightVisibility(bool VisibilityState);
-	void InitializeWallLight();
-	void UserConstructionScript();
-	void LightFlash__FinishedFunc();
-	void LightFlash__UpdateFunc();
-	void ReceiveBeginPlay();
-	void StartFlashing();
-	void BndEvt__PROP_Med_SmallWallLight_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature(bool bVisibleState);
-	void StopFlashing();
 	void ExecuteUbergraph_PROP_Med_SmallWallLight(int32 EntryPoint);
+	void StopFlashing();
+	void BndEvt__PROP_Med_SmallWallLight_COMP_VoxelCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature(bool bVisibleState);
+	void StartFlashing();
+	void ReceiveBeginPlay();
+	void LightFlash__UpdateFunc();
+	void LightFlash__FinishedFunc();
+	void UserConstructionScript();
+	void InitializeWallLight();
+	void UpdateWallLightVisibility(bool VisibilityState);
+	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
+	void UpdateEmissiveStrength(float Scale, bool IsFunctional);
+	void TryStartBlinkTimer(bool FromVisStateChange);
+	void IsWallLightFunctional(bool* Result);
 
 public:
 	static class UClass* StaticClass()

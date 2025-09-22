@@ -14,6 +14,17 @@
 namespace SDK::Params
 {
 
+// Function PROP_MONITOR_Base.PROP_MONITOR_Base_C.ExecuteUbergraph_PROP_MONITOR_Base
+// 0x0004 (0x0004 - 0x0000)
+struct PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base) == 0x000004, "Wrong alignment on PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base");
+static_assert(sizeof(PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base) == 0x000004, "Wrong size on PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base");
+static_assert(offsetof(PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base, EntryPoint) == 0x000000, "Member 'PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base::EntryPoint' has a wrong offset!");
+
 // Function PROP_MONITOR_Base.PROP_MONITOR_Base_C.SetParticleTexture
 // 0x0028 (0x0028 - 0x0000)
 struct PROP_MONITOR_Base_C_SetParticleTexture final
@@ -35,17 +46,6 @@ static_assert(offsetof(PROP_MONITOR_Base_C_SetParticleTexture, CallFunc_K2_GetSc
 static_assert(offsetof(PROP_MONITOR_Base_C_SetParticleTexture, CallFunc_K2_GetScalarParameterValue_ReturnValue_1) == 0x000014, "Member 'PROP_MONITOR_Base_C_SetParticleTexture::CallFunc_K2_GetScalarParameterValue_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(PROP_MONITOR_Base_C_SetParticleTexture, CallFunc_K2_GetScalarParameterValue_ReturnValue_2) == 0x000018, "Member 'PROP_MONITOR_Base_C_SetParticleTexture::CallFunc_K2_GetScalarParameterValue_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(PROP_MONITOR_Base_C_SetParticleTexture, CallFunc_K2_GetTextureParameterValue_ReturnValue) == 0x000020, "Member 'PROP_MONITOR_Base_C_SetParticleTexture::CallFunc_K2_GetTextureParameterValue_ReturnValue' has a wrong offset!");
-
-// Function PROP_MONITOR_Base.PROP_MONITOR_Base_C.ExecuteUbergraph_PROP_MONITOR_Base
-// 0x0004 (0x0004 - 0x0000)
-struct PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base) == 0x000004, "Wrong alignment on PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base");
-static_assert(sizeof(PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base) == 0x000004, "Wrong size on PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base");
-static_assert(offsetof(PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base, EntryPoint) == 0x000000, "Member 'PROP_MONITOR_Base_C_ExecuteUbergraph_PROP_MONITOR_Base::EntryPoint' has a wrong offset!");
 
 }
 

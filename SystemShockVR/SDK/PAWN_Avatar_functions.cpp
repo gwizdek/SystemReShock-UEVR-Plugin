@@ -2173,34 +2173,6 @@ void APAWN_Avatar_C::UpdateCameraPOV()
 }
 
 
-// Function PAWN_Avatar.PAWN_Avatar_C.OnCharacterHurt
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FAttribDamageInstance            DamageInstance                                         (BlueprintVisible, BlueprintReadOnly, Parm)
-// class UOBJ_ImpactData_C*                ImpactData                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void APAWN_Avatar_C::OnCharacterHurt(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UOBJ_ImpactData_C* ImpactData, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_Avatar_C", "OnCharacterHurt");
-
-	Params::PAWN_Avatar_C_OnCharacterHurt Parms{};
-
-	Parms.OtherActor = OtherActor;
-	Parms.DamageInstance = std::move(DamageInstance);
-	Parms.ImpactData = ImpactData;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function PAWN_Avatar.PAWN_Avatar_C.UpdateRotation
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -2436,27 +2408,6 @@ void APAWN_Avatar_C::GetDashItem(class UITEM_CyberDash_C** DashItem)
 
 	if (DashItem != nullptr)
 		*DashItem = Parms.DashItem;
-}
-
-
-// Function PAWN_Avatar.PAWN_Avatar_C.GetInventoryComponent
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UCOMP_Inventory_C*                Inventory                                              (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void APAWN_Avatar_C::GetInventoryComponent(class UCOMP_Inventory_C** Inventory)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_Avatar_C", "GetInventoryComponent");
-
-	Params::PAWN_Avatar_C_GetInventoryComponent Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Inventory != nullptr)
-		*Inventory = Parms.Inventory;
 }
 
 
@@ -3069,6 +3020,55 @@ void APAWN_Avatar_C::HandleEscape()
 		Func = Class->GetFunction("PAWN_Avatar_C", "HandleEscape");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_Avatar.PAWN_Avatar_C.OnCharacterHurt
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FAttribDamageInstance            DamageInstance                                         (BlueprintVisible, BlueprintReadOnly, Parm)
+// class UOBJ_ImpactData_C*                ImpactData                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void APAWN_Avatar_C::OnCharacterHurt(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UOBJ_ImpactData_C* ImpactData, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_Avatar_C", "OnCharacterHurt");
+
+	Params::PAWN_Avatar_C_OnCharacterHurt Parms{};
+
+	Parms.OtherActor = OtherActor;
+	Parms.DamageInstance = std::move(DamageInstance);
+	Parms.ImpactData = ImpactData;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function PAWN_Avatar.PAWN_Avatar_C.GetInventoryComponent
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UCOMP_Inventory_C*                Inventory                                              (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void APAWN_Avatar_C::GetInventoryComponent(class UCOMP_Inventory_C** Inventory)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_Avatar_C", "GetInventoryComponent");
+
+	Params::PAWN_Avatar_C_GetInventoryComponent Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Inventory != nullptr)
+		*Inventory = Parms.Inventory;
 }
 
 

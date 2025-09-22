@@ -17,116 +17,6 @@
 namespace SDK
 {
 
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.UpdateRectLightIntensity
-// (Protected, BlueprintCallable, BlueprintEvent)
-
-void AELEVATOR_Freight_C::UpdateRectLightIntensity()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Freight_C", "UpdateRectLightIntensity");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature
-// (BlueprintEvent)
-// Parameters:
-// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FAttribDamageInstance            DamageInstance                                         (BlueprintVisible, BlueprintReadOnly, Parm)
-// class UObject*                          UserParams                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AELEVATOR_Freight_C::BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Freight_C", "BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature");
-
-	Params::ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature Parms{};
-
-	Parms.OtherActor = OtherActor;
-	Parms.DamageInstance = std::move(DamageInstance);
-	Parms.UserParams = UserParams;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.InitializeElevatorControls
-// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void AELEVATOR_Freight_C::InitializeElevatorControls()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Freight_C", "InitializeElevatorControls");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.UserConstructionScript
-// (Event, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void AELEVATOR_Freight_C::UserConstructionScript()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Freight_C", "UserConstructionScript");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.OnLoaded_0646D1694E49FA402640A8938BC55B31
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UObject*                          Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AELEVATOR_Freight_C::OnLoaded_0646D1694E49FA402640A8938BC55B31(class UObject* Loaded)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Freight_C", "OnLoaded_0646D1694E49FA402640A8938BC55B31");
-
-	Params::ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31 Parms{};
-
-	Parms.Loaded = Loaded;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ELEVATOR_Freight.ELEVATOR_Freight_C.AsyncPlayGlassBreakParticleEffects
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// struct FVector                          Location                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FRotator                         Rotation                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    IsDoorGlass                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void AELEVATOR_Freight_C::AsyncPlayGlassBreakParticleEffects(const struct FVector& Location, const struct FRotator& Rotation, bool IsDoorGlass)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ELEVATOR_Freight_C", "AsyncPlayGlassBreakParticleEffects");
-
-	Params::ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects Parms{};
-
-	Parms.Location = std::move(Location);
-	Parms.Rotation = std::move(Rotation);
-	Parms.IsDoorGlass = IsDoorGlass;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function ELEVATOR_Freight.ELEVATOR_Freight_C.UpdateEmissiveStrength
 // (Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -176,6 +66,20 @@ void AELEVATOR_Freight_C::UpdateDoorLightVisibility()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("ELEVATOR_Freight_C", "UpdateDoorLightVisibility");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.UpdateRectLightIntensity
+// (Protected, BlueprintCallable, BlueprintEvent)
+
+void AELEVATOR_Freight_C::UpdateRectLightIntensity()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Freight_C", "UpdateRectLightIntensity");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -255,6 +159,102 @@ void AELEVATOR_Freight_C::GetControlsMeshComponent(class UStaticMeshComponent** 
 
 	if (MeshComponent != nullptr)
 		*MeshComponent = Parms.MeshComponent;
+}
+
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.InitializeElevatorControls
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void AELEVATOR_Freight_C::InitializeElevatorControls()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Freight_C", "InitializeElevatorControls");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.UserConstructionScript
+// (Event, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void AELEVATOR_Freight_C::UserConstructionScript()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Freight_C", "UserConstructionScript");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.OnLoaded_0646D1694E49FA402640A8938BC55B31
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UObject*                          Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AELEVATOR_Freight_C::OnLoaded_0646D1694E49FA402640A8938BC55B31(class UObject* Loaded)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Freight_C", "OnLoaded_0646D1694E49FA402640A8938BC55B31");
+
+	Params::ELEVATOR_Freight_C_OnLoaded_0646D1694E49FA402640A8938BC55B31 Parms{};
+
+	Parms.Loaded = Loaded;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.AsyncPlayGlassBreakParticleEffects
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FVector                          Location                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FRotator                         Rotation                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    IsDoorGlass                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void AELEVATOR_Freight_C::AsyncPlayGlassBreakParticleEffects(const struct FVector& Location, const struct FRotator& Rotation, bool IsDoorGlass)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Freight_C", "AsyncPlayGlassBreakParticleEffects");
+
+	Params::ELEVATOR_Freight_C_AsyncPlayGlassBreakParticleEffects Parms{};
+
+	Parms.Location = std::move(Location);
+	Parms.Rotation = std::move(Rotation);
+	Parms.IsDoorGlass = IsDoorGlass;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function ELEVATOR_Freight.ELEVATOR_Freight_C.BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature
+// (BlueprintEvent)
+// Parameters:
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FAttribDamageInstance            DamageInstance                                         (BlueprintVisible, BlueprintReadOnly, Parm)
+// class UObject*                          UserParams                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AELEVATOR_Freight_C::BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ELEVATOR_Freight_C", "BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature");
+
+	Params::ELEVATOR_Freight_C_BndEvt__ELEVATOR_Freight_COMP_AttribManager_K2Node_ComponentBoundEvent_1_OnDamageSignature__DelegateSignature Parms{};
+
+	Parms.OtherActor = OtherActor;
+	Parms.DamageInstance = std::move(DamageInstance);
+	Parms.UserParams = UserParams;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 

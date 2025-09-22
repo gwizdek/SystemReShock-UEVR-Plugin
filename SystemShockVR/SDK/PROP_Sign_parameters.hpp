@@ -17,16 +17,42 @@
 namespace SDK::Params
 {
 
-// Function PROP_Sign.PROP_Sign_C.TryCleanupSign
-// 0x0001 (0x0001 - 0x0000)
-struct PROP_Sign_C_TryCleanupSign final
+// Function PROP_Sign.PROP_Sign_C.ExecuteUbergraph_PROP_Sign
+// 0x0008 (0x0008 - 0x0000)
+struct PROP_Sign_C_ExecuteUbergraph_PROP_Sign final
 {
 public:
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EEndPlayReason                                K2Node_Event_EndPlayReason;                        // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(PROP_Sign_C_TryCleanupSign) == 0x000001, "Wrong alignment on PROP_Sign_C_TryCleanupSign");
-static_assert(sizeof(PROP_Sign_C_TryCleanupSign) == 0x000001, "Wrong size on PROP_Sign_C_TryCleanupSign");
-static_assert(offsetof(PROP_Sign_C_TryCleanupSign, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'PROP_Sign_C_TryCleanupSign::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(alignof(PROP_Sign_C_ExecuteUbergraph_PROP_Sign) == 0x000004, "Wrong alignment on PROP_Sign_C_ExecuteUbergraph_PROP_Sign");
+static_assert(sizeof(PROP_Sign_C_ExecuteUbergraph_PROP_Sign) == 0x000008, "Wrong size on PROP_Sign_C_ExecuteUbergraph_PROP_Sign");
+static_assert(offsetof(PROP_Sign_C_ExecuteUbergraph_PROP_Sign, EntryPoint) == 0x000000, "Member 'PROP_Sign_C_ExecuteUbergraph_PROP_Sign::EntryPoint' has a wrong offset!");
+static_assert(offsetof(PROP_Sign_C_ExecuteUbergraph_PROP_Sign, K2Node_Event_EndPlayReason) == 0x000004, "Member 'PROP_Sign_C_ExecuteUbergraph_PROP_Sign::K2Node_Event_EndPlayReason' has a wrong offset!");
+
+// Function PROP_Sign.PROP_Sign_C.ReceiveEndPlay
+// 0x0001 (0x0001 - 0x0000)
+struct PROP_Sign_C_ReceiveEndPlay final
+{
+public:
+	EEndPlayReason                                EndPlayReason;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PROP_Sign_C_ReceiveEndPlay) == 0x000001, "Wrong alignment on PROP_Sign_C_ReceiveEndPlay");
+static_assert(sizeof(PROP_Sign_C_ReceiveEndPlay) == 0x000001, "Wrong size on PROP_Sign_C_ReceiveEndPlay");
+static_assert(offsetof(PROP_Sign_C_ReceiveEndPlay, EndPlayReason) == 0x000000, "Member 'PROP_Sign_C_ReceiveEndPlay::EndPlayReason' has a wrong offset!");
+
+// Function PROP_Sign.PROP_Sign_C.UserConstructionScript
+// 0x0002 (0x0002 - 0x0000)
+struct PROP_Sign_C_UserConstructionScript final
+{
+public:
+	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(PROP_Sign_C_UserConstructionScript) == 0x000001, "Wrong alignment on PROP_Sign_C_UserConstructionScript");
+static_assert(sizeof(PROP_Sign_C_UserConstructionScript) == 0x000002, "Wrong size on PROP_Sign_C_UserConstructionScript");
+static_assert(offsetof(PROP_Sign_C_UserConstructionScript, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x000000, "Member 'PROP_Sign_C_UserConstructionScript::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PROP_Sign_C_UserConstructionScript, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member 'PROP_Sign_C_UserConstructionScript::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 
 // Function PROP_Sign.PROP_Sign_C.UpdateSign
 // 0x0078 (0x0078 - 0x0000)
@@ -80,42 +106,16 @@ static_assert(offsetof(PROP_Sign_C_UpdateSign, CallFunc_Multiply_IntFloat_Return
 static_assert(offsetof(PROP_Sign_C_UpdateSign, CallFunc_FTrunc_ReturnValue_1) == 0x00006C, "Member 'PROP_Sign_C_UpdateSign::CallFunc_FTrunc_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(PROP_Sign_C_UpdateSign, CallFunc_CreateCanvasRenderTarget2D_ReturnValue) == 0x000070, "Member 'PROP_Sign_C_UpdateSign::CallFunc_CreateCanvasRenderTarget2D_ReturnValue' has a wrong offset!");
 
-// Function PROP_Sign.PROP_Sign_C.UserConstructionScript
-// 0x0002 (0x0002 - 0x0000)
-struct PROP_Sign_C_UserConstructionScript final
-{
-public:
-	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(PROP_Sign_C_UserConstructionScript) == 0x000001, "Wrong alignment on PROP_Sign_C_UserConstructionScript");
-static_assert(sizeof(PROP_Sign_C_UserConstructionScript) == 0x000002, "Wrong size on PROP_Sign_C_UserConstructionScript");
-static_assert(offsetof(PROP_Sign_C_UserConstructionScript, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x000000, "Member 'PROP_Sign_C_UserConstructionScript::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PROP_Sign_C_UserConstructionScript, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member 'PROP_Sign_C_UserConstructionScript::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-
-// Function PROP_Sign.PROP_Sign_C.ReceiveEndPlay
+// Function PROP_Sign.PROP_Sign_C.TryCleanupSign
 // 0x0001 (0x0001 - 0x0000)
-struct PROP_Sign_C_ReceiveEndPlay final
+struct PROP_Sign_C_TryCleanupSign final
 {
 public:
-	EEndPlayReason                                EndPlayReason;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(PROP_Sign_C_ReceiveEndPlay) == 0x000001, "Wrong alignment on PROP_Sign_C_ReceiveEndPlay");
-static_assert(sizeof(PROP_Sign_C_ReceiveEndPlay) == 0x000001, "Wrong size on PROP_Sign_C_ReceiveEndPlay");
-static_assert(offsetof(PROP_Sign_C_ReceiveEndPlay, EndPlayReason) == 0x000000, "Member 'PROP_Sign_C_ReceiveEndPlay::EndPlayReason' has a wrong offset!");
-
-// Function PROP_Sign.PROP_Sign_C.ExecuteUbergraph_PROP_Sign
-// 0x0008 (0x0008 - 0x0000)
-struct PROP_Sign_C_ExecuteUbergraph_PROP_Sign final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	EEndPlayReason                                K2Node_Event_EndPlayReason;                        // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PROP_Sign_C_ExecuteUbergraph_PROP_Sign) == 0x000004, "Wrong alignment on PROP_Sign_C_ExecuteUbergraph_PROP_Sign");
-static_assert(sizeof(PROP_Sign_C_ExecuteUbergraph_PROP_Sign) == 0x000008, "Wrong size on PROP_Sign_C_ExecuteUbergraph_PROP_Sign");
-static_assert(offsetof(PROP_Sign_C_ExecuteUbergraph_PROP_Sign, EntryPoint) == 0x000000, "Member 'PROP_Sign_C_ExecuteUbergraph_PROP_Sign::EntryPoint' has a wrong offset!");
-static_assert(offsetof(PROP_Sign_C_ExecuteUbergraph_PROP_Sign, K2Node_Event_EndPlayReason) == 0x000004, "Member 'PROP_Sign_C_ExecuteUbergraph_PROP_Sign::K2Node_Event_EndPlayReason' has a wrong offset!");
+static_assert(alignof(PROP_Sign_C_TryCleanupSign) == 0x000001, "Wrong alignment on PROP_Sign_C_TryCleanupSign");
+static_assert(sizeof(PROP_Sign_C_TryCleanupSign) == 0x000001, "Wrong size on PROP_Sign_C_TryCleanupSign");
+static_assert(offsetof(PROP_Sign_C_TryCleanupSign, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'PROP_Sign_C_TryCleanupSign::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 }
 

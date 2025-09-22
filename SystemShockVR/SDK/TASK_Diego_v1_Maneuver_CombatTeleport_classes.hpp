@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "TASK_Maneuver_Base_classes.hpp"
 #include "CoreUObject_structs.hpp"
+#include "TASK_Maneuver_Base_classes.hpp"
 #include "LevelVoxelization_structs.hpp"
 
 

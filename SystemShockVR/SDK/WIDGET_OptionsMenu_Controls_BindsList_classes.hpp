@@ -12,8 +12,8 @@
 
 #include "STRUCT_BoundInputActionPair_structs.hpp"
 #include "WIDGET_MenuListBase_classes.hpp"
-#include "ENUM_PrimarySecondary_structs.hpp"
 #include "ENUM_InputCategory_structs.hpp"
+#include "ENUM_PrimarySecondary_structs.hpp"
 
 
 namespace SDK
