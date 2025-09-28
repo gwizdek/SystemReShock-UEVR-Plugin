@@ -112,7 +112,7 @@ void VRBody::on_tick() {
                 m_vr_weapon->attach_camera(hacker_implant_pawn->PlayerCamera);
                 m_vr_weapon->attach_laser();
 
-                API::get()->log_warn("[vr_body][on_tick] New Weapon Mesh: %s", hacker_implant_pawn->WeaponMesh->SkeletalMesh->GetFullName().c_str());
+                API::get()->log_warn("[vr_body][on_tick] New Weapon Mesh: %s", hacker_implant_pawn->WeaponMesh->SkeletalMesh != nullptr ? hacker_implant_pawn->WeaponMesh->SkeletalMesh->GetFullName().c_str() : "NONE");
             }
             else {
                 // nothing in hand
