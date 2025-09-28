@@ -132,49 +132,52 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
 
 void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
     PLUGIN_LOG_ONCE("Pre Engine Tick: %f", delta);
+    try {
+        const UEVR_VRData* vr = API::get()->param()->vr;
+        if (!vr->is_runtime_ready())
+            return;
 
+        if (m_safe_mode) {
+            if (m_try_load_assets_for_dumping) {
+                load_assets_for_dumping();
+            }
 
-    const UEVR_VRData* vr = API::get()->param()->vr;
-    if (!vr->is_runtime_ready())
-        return;
-
-    if (m_safe_mode) {
-        if (m_try_load_assets_for_dumping) {
-            load_assets_for_dumping();
+            return;
         }
 
-        return;
+        if (m_main != nullptr) {
+            m_cb_calls_count = m_cb_calls_count < CB_DURATION_SAMPLE_RATE ? ++m_cb_calls_count : 0;
+            // start cb timer
+            std::chrono::steady_clock::time_point begin_time;
+            if (m_main->get_ui_option_show_debug_view() && m_cb_calls_count == 0) {
+                begin_time = std::chrono::steady_clock::now();
+            }
+
+            // if the controllers are not active, the xinput cb is not triggered.
+            // normally we want the xinput cb to prepare vars as it's the first cb to be called
+            // but if it wasn't called, we prepare them here
+            if (!m_xinput_cb_processed) {
+                if (!m_main->prepare_pointers())
+                    return;
+                m_main->prepare_state();
+                m_main->prepare_game_state();
+            }
+            else {
+                // reset for next cb iteration
+                m_xinput_cb_processed = false;
+            }
+
+            m_main->on_tick(delta);
+
+            // calculate cb duration
+            if (m_main->get_ui_option_show_debug_view() && m_cb_calls_count == 0) {
+                std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
+                m_main->set_ui_pre_engine_tick_duration(static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count()));
+            }
+        }
     }
-
-    if (m_main != nullptr) {
-        m_cb_calls_count = m_cb_calls_count < CB_DURATION_SAMPLE_RATE ? ++m_cb_calls_count : 0;
-        // start cb timer
-        std::chrono::steady_clock::time_point begin_time;
-        if (m_main->get_ui_option_show_debug_view() && m_cb_calls_count == 0) {
-            begin_time = std::chrono::steady_clock::now();
-        }
-
-        // if the controllers are not active, the xinput cb is not triggered.
-        // normally we want the xinput cb to prepare vars as it's the first cb to be called
-        // but if it wasn't called, we prepare them here
-        if (!m_xinput_cb_processed) {
-            if (!m_main->prepare_pointers())
-                return;
-            m_main->prepare_state();
-            m_main->prepare_game_state();
-        }
-        else {
-            // reset for next cb iteration
-            m_xinput_cb_processed = false;
-        }
-
-        m_main->on_tick(delta);
-
-        // calculate cb duration
-        if (m_main->get_ui_option_show_debug_view() && m_cb_calls_count == 0) {
-            std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
-            m_main->set_ui_pre_engine_tick_duration(static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count()));
-        }
+    catch (...) {
+        API::get()->log_error("[plugin][on_pre_engine_tick] Exception");
     }
 }
 

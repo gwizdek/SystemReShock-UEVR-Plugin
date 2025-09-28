@@ -53,9 +53,9 @@ SDK::AActor* PluginUtils::spawn_actor(SDK::UWorld* world, SDK::FTransform transf
 }
 
 // this function tries to find and destroy actors we created for attachments, even when we no longer have pointers to them
-void PluginUtils::destroy_actors_by_tag(SDK::UWorld* world, std::wstring actor_tag) {
+void PluginUtils::destroy_actors_by_tag(SDK::UWorld* world, SDK::FName actor_tag) {
     try {
-        API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Cleaning up stale %ls Actors", actor_tag.c_str());
+        API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Cleaning up stale %s Actors", actor_tag.GetRawString().c_str());
 
         if (world == nullptr || !SDK::UKismetSystemLibrary::IsValid(world)) {
             API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Invalid World object");
@@ -67,7 +67,7 @@ void PluginUtils::destroy_actors_by_tag(SDK::UWorld* world, std::wstring actor_t
         actors_to_destroy.NumElements = 0;
         actors_to_destroy.MaxElements = 16;
 
-        SDK::UGameplayStatics::GetAllActorsOfClassWithTag(world, SDK::AActor::StaticClass(), SDK::UKismetStringLibrary::Conv_StringToName(actor_tag.c_str()), &actors_to_destroy);
+        SDK::UGameplayStatics::GetAllActorsOfClassWithTag(world, SDK::AActor::StaticClass(), actor_tag, &actors_to_destroy);
 
         API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Found %d Actors to Destroy", actors_to_destroy.Num());
 
@@ -75,7 +75,7 @@ void PluginUtils::destroy_actors_by_tag(SDK::UWorld* world, std::wstring actor_t
         for (size_t i = 0; i < actors_to_destroy.Num(); i++) {
             if (actors_to_destroy[i] != nullptr && SDK::UKismetSystemLibrary::IsValid(actors_to_destroy[i]) && actors_to_destroy[i]->IsA(SDK::AActor::StaticClass())) {
                 static_cast<SDK::AActor*>(actors_to_destroy[i])->K2_DestroyActor();
-                API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Destroyed Actor %ls", actor_tag.c_str());
+                API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Destroyed Actor %s", actor_tag.GetRawString().c_str());
             }
         }
 

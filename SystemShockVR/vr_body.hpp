@@ -1,13 +1,14 @@
 #pragma once
 #include "main.hpp"
 #include "SDK/Niagara_classes.hpp"
+#include "SDK/_BP_VRBody_classes.hpp"
 
 
 class VRBody
 {
 private:
     SystemShockMain* m_main{ nullptr };
-    SDK::ABP_VRBody_C* m_bp_actor{ nullptr };
+    SDK::A_BP_VRBody_C* m_bp_actor{ nullptr };
     VRWeapon* m_vr_weapon{ nullptr };
     SDK::FHitResult m_hit_result{};
 
@@ -15,7 +16,7 @@ public:
     VRBody(SystemShockMain* main);
     virtual ~VRBody() {};
 
-    SDK::ABP_VRBody_C* get_bp_actor() { return m_bp_actor; };
+    SDK::A_BP_VRBody_C* get_bp_actor() { return m_bp_actor; };
 
     // getters
     SDK::UMotionControllerComponent* get_right_controller();

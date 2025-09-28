@@ -16,6 +16,10 @@ struct MemoProperty
         prev_value = _prev_value;
     }
 
+    T get() {
+        return value;
+    }
+
     bool has_changed() {
         return value != prev_value;
     }

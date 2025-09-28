@@ -32,8 +32,8 @@ private:
     const int CB_DURATION_SAMPLE_RATE = 100;
     int m_cb_calls_count{ 0 };
     bool m_xinput_cb_processed{ false };
-    bool m_safe_mode{ true }; // in safe mode, only main PAK Actor is loaded (for dumping)
-    bool m_try_load_assets_for_dumping{ true };
+    bool m_safe_mode{ false }; // in safe mode, only main PAK Actor is loaded (for dumping)
+    bool m_try_load_assets_for_dumping{ false };
 
 public:
     UEVRPlugin();

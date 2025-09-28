@@ -240,9 +240,6 @@ namespace UC
 		static constexpr uint64 ElementSize = sizeof(ArrayElementType);
 
 	protected:
-		ArrayElementType* Data;
-		int32 NumElements;
-		int32 MaxElements;
 
 	public:
 		TArray()
@@ -255,6 +252,9 @@ namespace UC
 		TArray(TArray&&) = default;
 
 	public:
+		ArrayElementType* Data;
+		int32 NumElements;
+		int32 MaxElements;
 		TArray& operator=(TArray&&) = default;
 		TArray& operator=(const TArray&) = default;
 

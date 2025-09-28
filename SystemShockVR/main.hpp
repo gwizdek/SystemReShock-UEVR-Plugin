@@ -12,7 +12,7 @@
 
 #include "memo_structs.hpp"
 #include "vr_controllers.hpp"
-#include "SDK/BP_VRBody_classes.hpp"
+#include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
 
 typedef enum HandPreference {
@@ -25,28 +25,30 @@ typedef enum ModEvent {
     MOD_EVENT_ENABLE_WORLD_RENDERING
 } ModEvent;
 
-typedef enum GameState {
-    GAME_STATE_PLAYING,
-    GAME_STATE_MAIN_MENU,
-    GAME_STATE_PAUSE_MENU,
-    GAME_STATE_LEDGER,
-    GAME_STATE_WORKBENCH,
-    GAME_STATE_CONVERSATION,
-    GAME_STATE_CINEMATIC,
-    GAME_STATE_COMPUTER_TERMINAL,
-    GAME_STATE_UNDEFINED
-} GameState;
+typedef enum EGameState : uint8_t {
+    GAME_STATE_UNDEFINED = 0,
+    GAME_STATE_MAIN_MENU = 1,
+    GAME_STATE_PAUSE_MENU = 2,
+    GAME_STATE_CINEMATIC = 3,
+    GAME_STATE_APPARTMENT = 4,
+    GAME_STATE_CITADEL_STATION = 5,
+    GAME_STATE_CYBERSPACE = 6,
+    GAME_STATE_PSEUDOSPACE = 7,
+    GAME_STATE_MFD = 8,
+    GAME_STATE_INTERACTABLE = 9
+};
 
-static std::map<GameState, const char*> GameStateName = {
-    { GAME_STATE_PLAYING, "Playing" },
+static std::map<EGameState, const char*> GameStateName = {
+    { GAME_STATE_UNDEFINED, "Undefined" },
     { GAME_STATE_MAIN_MENU, "Main Menu" },
     { GAME_STATE_PAUSE_MENU, "Pause Menu" },
-    { GAME_STATE_LEDGER, "Ledger" },
-    { GAME_STATE_WORKBENCH, "Workbench" },
-    { GAME_STATE_CONVERSATION, "Conversation" },
     { GAME_STATE_CINEMATIC, "Cinematic" },
-    { GAME_STATE_COMPUTER_TERMINAL, "Computer Terminal" },
-    { GAME_STATE_UNDEFINED, "Undefined" }
+    { GAME_STATE_APPARTMENT, "Appartment" },
+    { GAME_STATE_CITADEL_STATION, "Citadel Station" },
+    { GAME_STATE_CYBERSPACE, "Cyberspace" },
+    { GAME_STATE_PSEUDOSPACE, "Pseudeospace" },
+    { GAME_STATE_MFD, "MFD" },
+    { GAME_STATE_INTERACTABLE, "Interactable" }
 };
 
 using namespace uevr;
@@ -64,15 +66,15 @@ private:
     //VRHUD* m_vr_hud{ nullptr };
     VRBody* m_vr_body{ nullptr };
 
-    bool m_ui_option_show_debug_view{ false };
+    bool m_ui_option_show_debug_view{ true };
     int m_ui_xinput_duration{ 0 };              // [microseconds]
     int m_ui_pre_engine_tick_duration{ 0 };     // [microseconds]
 
     // convenience pointers
     SDK::UWorld* m_world{ nullptr };
-    SDK::APawn* m_pawn{ nullptr };
+    //SDK::APawn* m_pawn{ nullptr };
     SDK::UCOMP_HackerInventory_C* m_inventory{ nullptr };
-    SDK::UWIDGET_PlayerHUD_C* m_sdk_hud{ nullptr };
+    SDK::UWIDGET_PlayerHUD_C* m_neural_hud{ nullptr };
 
     // utils
     std::unordered_set<ModEvent> m_mod_events{};
@@ -86,7 +88,8 @@ private:
     
 
     // watched state
-    MemoProperty<GameState> m_game_state{ GAME_STATE_UNDEFINED, GAME_STATE_UNDEFINED };
+    MemoProperty<SDK::APawn*> m_pawn{ nullptr, nullptr };
+    MemoProperty<EGameState> m_game_state{ GAME_STATE_UNDEFINED, GAME_STATE_UNDEFINED };
     MemoProperty<SDK::ULevel*> m_level{ nullptr, nullptr };
     MemoBoolean m_is_game_paused{ false };
     MemoBoolean m_is_interactable_in_range{ false };
@@ -131,7 +134,7 @@ public:
     VRBody* get_vr_body() { return m_vr_body; };
     MemoProperty<bool>* get_is_player_interacting() { return &m_player_interacting; };
     SDK::UCOMP_HackerInventory_C* get_inventory() { return m_inventory; };
-    SDK::APawn* get_pawn() { return m_pawn; };
+    SDK::APawn* get_pawn() { return m_pawn.get(); };
     
     // setters
     void set_last_pos(UEVR_Vector3f* position);
@@ -143,8 +146,8 @@ public:
 
     // handlers
     void handle_controller_input(XINPUT_STATE* state);
-    void handle_level_change();
-    void handle_game_state();
+    void handle_level_changes();
+    void handle_game_state_changes();
     void handle_mod_events();
     void handle_crouch();
     void handle_weapon();

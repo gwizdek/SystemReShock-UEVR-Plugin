@@ -88,7 +88,7 @@ class VRWeapon
 private:
     VRBody* m_vr_body{ nullptr };
     SDK::UITEM_WeaponBase_C* m_equipped_weapon{ nullptr };
-    SDK::USkeletalMeshComponent* m_equipped_weapon_mesh_component{ nullptr };
+    //SDK::USkeletalMesh* m_equipped_weapon_mesh{ nullptr };
     MemoProperty<HackerWeapon> m_weapon_state{ WEAPON_NONE, WEAPON_NONE };
 
     // interaction components
@@ -102,13 +102,14 @@ public:
     VRWeapon(VRBody* vr_body);
     virtual ~VRWeapon() {};
 
+    MemoProperty<std::string> m_equipped_weapon_mesh_name{ "", "" };
     // getters
     SDK::UITEM_WeaponBase_C* get_equipped_weapon() { return m_equipped_weapon; };
-    SDK::USkeletalMeshComponent* get_equipped_weapon_mesh_component() { return m_equipped_weapon_mesh_component; };
+    //SDK::USkeletalMeshComponent* get_equipped_weapon_mesh_component() { return m_equipped_weapon_mesh_component; };
 
 
     // setters
-    void set_equipped_weapon_mesh_component(SDK::USkeletalMeshComponent* mesh) { m_equipped_weapon_mesh_component = mesh; };
+    //void set_equipped_weapon_mesh_component(SDK::USkeletalMeshComponent* mesh) { m_equipped_weapon_mesh_component = mesh; };
      
     void set_weapon(SDK::UITEM_WeaponBase_C* weapon);
     void set_laser_pointer_visibility(bool visible);

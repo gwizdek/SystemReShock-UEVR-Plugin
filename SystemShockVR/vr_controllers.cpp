@@ -193,7 +193,7 @@ void VRControllers::cleanup_actors() {
             return;
         }
 
-        PluginUtils::destroy_actors_by_tag(world, L"VRControllerActor");
+        //PluginUtils::destroy_actors_by_tag(world, L"VRControllerActor");
     }
     catch (...) {
         API::get()->log_error("[vr_controllers][cleanup_actors] Exception");

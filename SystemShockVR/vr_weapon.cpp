@@ -4,7 +4,7 @@
 #include "SDK/ITEM_ProjectileWeapon_Base_classes.hpp"
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
 #include "SDK/ANIMBP_Magnum_classes.hpp"
-#include "SDK/ANIMBP_Sparqbeam_classes.hpp"
+//#include "SDK/ANIMBP_Sparqbeam_classes.hpp"
 #include "SDK/WEAPON_MagnumPistol_classes.hpp"
 
 #include "vr_weapon.hpp"
