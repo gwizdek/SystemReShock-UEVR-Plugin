@@ -18,76 +18,6 @@
 namespace SDK::Params
 {
 
-// Function PAWN_Cyberdog.PAWN_Cyberdog_C.SetAngerMaterial
-// 0x0004 (0x0004 - 0x0000)
-struct PAWN_Cyberdog_C_SetAngerMaterial final
-{
-public:
-	float                                         Anger;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_Cyberdog_C_SetAngerMaterial) == 0x000004, "Wrong alignment on PAWN_Cyberdog_C_SetAngerMaterial");
-static_assert(sizeof(PAWN_Cyberdog_C_SetAngerMaterial) == 0x000004, "Wrong size on PAWN_Cyberdog_C_SetAngerMaterial");
-static_assert(offsetof(PAWN_Cyberdog_C_SetAngerMaterial, Anger) == 0x000000, "Member 'PAWN_Cyberdog_C_SetAngerMaterial::Anger' has a wrong offset!");
-
-// Function PAWN_Cyberdog.PAWN_Cyberdog_C.UpdateEmotionMaterial
-// 0x0024 (0x0024 - 0x0000)
-struct PAWN_Cyberdog_C_UpdateEmotionMaterial final
-{
-public:
-	float                                         TargetAngerValue;                                  // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetWorldDeltaSeconds_ReturnValue;         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_Emotions                                 CallFunc_GetPawnEmotion_Emotion;                   // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_FloatFloat_ReturnValue;        // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B[0x1];                                        // 0x000B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NearlyEqual_FloatFloat_ReturnValue;       // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_12[0x2];                                       // 0x0012(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_FInterpTo_Constant_ReturnValue;           // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_MakePulsatingValue_ReturnValue;           // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Lerp_ReturnValue;                         // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_Cyberdog_C_UpdateEmotionMaterial) == 0x000004, "Wrong alignment on PAWN_Cyberdog_C_UpdateEmotionMaterial");
-static_assert(sizeof(PAWN_Cyberdog_C_UpdateEmotionMaterial) == 0x000024, "Wrong size on PAWN_Cyberdog_C_UpdateEmotionMaterial");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, TargetAngerValue) == 0x000000, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::TargetAngerValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_GetWorldDeltaSeconds_ReturnValue) == 0x000004, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_GetWorldDeltaSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, K2Node_SwitchEnum_CmpSuccess) == 0x000008, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_GetPawnEmotion_Emotion) == 0x000009, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_GetPawnEmotion_Emotion' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_EqualEqual_FloatFloat_ReturnValue) == 0x00000A, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_EqualEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_GetAttribValue_ReturnValue) == 0x00000C, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000010, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_NearlyEqual_FloatFloat_ReturnValue) == 0x000011, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_NearlyEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_FInterpTo_Constant_ReturnValue) == 0x000014, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_FInterpTo_Constant_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000018, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_MakePulsatingValue_ReturnValue) == 0x00001C, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_MakePulsatingValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_Lerp_ReturnValue) == 0x000020, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_Lerp_ReturnValue' has a wrong offset!");
-
-// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ReceiveTick
-// 0x0004 (0x0004 - 0x0000)
-struct PAWN_Cyberdog_C_ReceiveTick final
-{
-public:
-	float                                         DeltaSeconds;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_Cyberdog_C_ReceiveTick) == 0x000004, "Wrong alignment on PAWN_Cyberdog_C_ReceiveTick");
-static_assert(sizeof(PAWN_Cyberdog_C_ReceiveTick) == 0x000004, "Wrong size on PAWN_Cyberdog_C_ReceiveTick");
-static_assert(offsetof(PAWN_Cyberdog_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member 'PAWN_Cyberdog_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
-
-// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ExecuteUbergraph_PAWN_Cyberdog
-// 0x0008 (0x0008 - 0x0000)
-struct PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_Event_DeltaSeconds;                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog) == 0x000004, "Wrong alignment on PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog");
-static_assert(sizeof(PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog) == 0x000008, "Wrong size on PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog");
-static_assert(offsetof(PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog, EntryPoint) == 0x000000, "Member 'PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog::EntryPoint' has a wrong offset!");
-static_assert(offsetof(PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog, K2Node_Event_DeltaSeconds) == 0x000004, "Member 'PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog::K2Node_Event_DeltaSeconds' has a wrong offset!");
-
 // Function PAWN_Cyberdog.PAWN_Cyberdog_C.InitializeCharacter
 // 0x0018 (0x0018 - 0x0000)
 struct PAWN_Cyberdog_C_InitializeCharacter final
@@ -205,6 +135,76 @@ public:
 static_assert(alignof(PAWN_Cyberdog_C_SetDamageMaterial) == 0x000004, "Wrong alignment on PAWN_Cyberdog_C_SetDamageMaterial");
 static_assert(sizeof(PAWN_Cyberdog_C_SetDamageMaterial) == 0x000004, "Wrong size on PAWN_Cyberdog_C_SetDamageMaterial");
 static_assert(offsetof(PAWN_Cyberdog_C_SetDamageMaterial, Damage) == 0x000000, "Member 'PAWN_Cyberdog_C_SetDamageMaterial::Damage' has a wrong offset!");
+
+// Function PAWN_Cyberdog.PAWN_Cyberdog_C.SetAngerMaterial
+// 0x0004 (0x0004 - 0x0000)
+struct PAWN_Cyberdog_C_SetAngerMaterial final
+{
+public:
+	float                                         Anger;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_Cyberdog_C_SetAngerMaterial) == 0x000004, "Wrong alignment on PAWN_Cyberdog_C_SetAngerMaterial");
+static_assert(sizeof(PAWN_Cyberdog_C_SetAngerMaterial) == 0x000004, "Wrong size on PAWN_Cyberdog_C_SetAngerMaterial");
+static_assert(offsetof(PAWN_Cyberdog_C_SetAngerMaterial, Anger) == 0x000000, "Member 'PAWN_Cyberdog_C_SetAngerMaterial::Anger' has a wrong offset!");
+
+// Function PAWN_Cyberdog.PAWN_Cyberdog_C.UpdateEmotionMaterial
+// 0x0024 (0x0024 - 0x0000)
+struct PAWN_Cyberdog_C_UpdateEmotionMaterial final
+{
+public:
+	float                                         TargetAngerValue;                                  // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetWorldDeltaSeconds_ReturnValue;         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_Emotions                                 CallFunc_GetPawnEmotion_Emotion;                   // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_FloatFloat_ReturnValue;        // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B[0x1];                                        // 0x000B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetAttribValue_ReturnValue;               // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NearlyEqual_FloatFloat_ReturnValue;       // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_12[0x2];                                       // 0x0012(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_FInterpTo_Constant_ReturnValue;           // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_MakePulsatingValue_ReturnValue;           // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Lerp_ReturnValue;                         // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_Cyberdog_C_UpdateEmotionMaterial) == 0x000004, "Wrong alignment on PAWN_Cyberdog_C_UpdateEmotionMaterial");
+static_assert(sizeof(PAWN_Cyberdog_C_UpdateEmotionMaterial) == 0x000024, "Wrong size on PAWN_Cyberdog_C_UpdateEmotionMaterial");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, TargetAngerValue) == 0x000000, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::TargetAngerValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_GetWorldDeltaSeconds_ReturnValue) == 0x000004, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_GetWorldDeltaSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, K2Node_SwitchEnum_CmpSuccess) == 0x000008, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_GetPawnEmotion_Emotion) == 0x000009, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_GetPawnEmotion_Emotion' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_EqualEqual_FloatFloat_ReturnValue) == 0x00000A, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_EqualEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_GetAttribValue_ReturnValue) == 0x00000C, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_GetAttribValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000010, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_NearlyEqual_FloatFloat_ReturnValue) == 0x000011, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_NearlyEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_FInterpTo_Constant_ReturnValue) == 0x000014, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_FInterpTo_Constant_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000018, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_MakePulsatingValue_ReturnValue) == 0x00001C, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_MakePulsatingValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_UpdateEmotionMaterial, CallFunc_Lerp_ReturnValue) == 0x000020, "Member 'PAWN_Cyberdog_C_UpdateEmotionMaterial::CallFunc_Lerp_ReturnValue' has a wrong offset!");
+
+// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ReceiveTick
+// 0x0004 (0x0004 - 0x0000)
+struct PAWN_Cyberdog_C_ReceiveTick final
+{
+public:
+	float                                         DeltaSeconds;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_Cyberdog_C_ReceiveTick) == 0x000004, "Wrong alignment on PAWN_Cyberdog_C_ReceiveTick");
+static_assert(sizeof(PAWN_Cyberdog_C_ReceiveTick) == 0x000004, "Wrong size on PAWN_Cyberdog_C_ReceiveTick");
+static_assert(offsetof(PAWN_Cyberdog_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member 'PAWN_Cyberdog_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
+
+// Function PAWN_Cyberdog.PAWN_Cyberdog_C.ExecuteUbergraph_PAWN_Cyberdog
+// 0x0008 (0x0008 - 0x0000)
+struct PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_Event_DeltaSeconds;                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog) == 0x000004, "Wrong alignment on PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog");
+static_assert(sizeof(PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog) == 0x000008, "Wrong size on PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog");
+static_assert(offsetof(PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog, EntryPoint) == 0x000000, "Member 'PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog::EntryPoint' has a wrong offset!");
+static_assert(offsetof(PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog, K2Node_Event_DeltaSeconds) == 0x000004, "Member 'PAWN_Cyberdog_C_ExecuteUbergraph_PAWN_Cyberdog::K2Node_Event_DeltaSeconds' has a wrong offset!");
 
 }
 

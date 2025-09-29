@@ -915,6 +915,7 @@ public:
 
             set_mfd_hotbar_visibility(false);
             set_primary_item_selector_visibility(false);
+            set_secondary_item_selector_visibility(false);
         }
         API::get()->log_info("VRHackerHUD :: Attached Primary Item selector");
 

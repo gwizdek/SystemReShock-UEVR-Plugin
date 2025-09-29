@@ -54,6 +54,7 @@
 #include "SDK/INTERACT_Laptop_classes.hpp"
 #include "SDK/CinematicCamera_classes.hpp"
 #include "SDK/HARDWARE_HeadLamp_classes.hpp"
+#include "SDK/AssetRegistry_classes.hpp"
 
 #include "mINI/ini.h"
 #include "uevr/Plugin.hpp"
@@ -96,7 +97,7 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 
 using namespace uevr;
 
-const char* MOD_VERSION = "1.4.0-beta.1";
+const char* MOD_VERSION = "1.4.0";
 const int CB_DURATION_SAMPLE_RATE = 100;
 
 typedef struct _TIMER_STRUCT
@@ -360,8 +361,6 @@ public:
 
             m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
 
-            m_gamepad_left_thumb.set_logging(true);
-        
             // disable player focus (camera pull) on interactable objects like vending machines
             MOVECONTROL_FocusableInteract_C::disable_character_focusable_interactions();
         }
@@ -601,16 +600,6 @@ public:
 
                 m_inventory = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->COMP_HackerInventory;
 
-                m_inventory->FindItem(SDK::UHARDWARE_HeadLamp_C::StaticClass(), false, false, &m_inventory_item);
-                if (SDK::UKismetSystemLibrary::IsValid(m_inventory_item) && m_inventory_item->IsA(SDK::UHARDWARE_HeadLamp_C::StaticClass())) {
-                    m_head_lamp = (SDK::UHARDWARE_HeadLamp_C*)m_inventory_item;
-                    m_is_head_lamp_active.set_value(m_head_lamp->IsActivated);
-                    //API::get()->log_warn("[prepare_state] Headlight found");
-                }
-                else {
-                    m_head_lamp = nullptr;
-                    m_is_head_lamp_active.set_value(false);
-                }
 
                 m_current_weapon = m_inventory->CurrentEquippedWeapon;
                 m_player_alive.set_value(static_cast<SDK::APAWN_SystemShockCharacter_C*>(m_sdk_pawn)->IsAlive);
@@ -642,6 +631,11 @@ public:
                 m_channeling_interactable_name.set_value("");
                 m_current_montage.set_value(nullptr);
                 m_current_action = nullptr;
+            }
+
+            // headlamp
+            if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass()) && m_inventory != nullptr) {
+                m_is_head_lamp_active.set_value(static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->HeadlampLight->Intensity != 0.0f);
             }
 
             // ingame menu
@@ -785,21 +779,22 @@ public:
                 ) {
                 if (m_gamepad_left_thumb.is_long_pressed(1000)) {
                     API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb LONG pressed");
-                    SDK::FKey escape_key{
+                    SDK::FKey key_name{
                         .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Escape")
                     };
 
+
                     if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_77(escape_key);
+                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
                     }
                     else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_77(escape_key);
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
                     }
                     else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_53(escape_key);
+                        static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_53(key_name);
                     }
                     else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Pseudospace_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_77(escape_key);
+                        static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
                     }
                 }
             }
@@ -833,7 +828,7 @@ public:
                         };
 
                         if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36(tab_key);
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
                         }
                     }
 
@@ -868,7 +863,7 @@ public:
                         };
 
                         if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_36(tab_key);
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
                         }
                     }
 
@@ -876,7 +871,9 @@ public:
                         set_head_lamp_brightness(0.f);
                     }
                     else {
-                        set_head_lamp_brightness(3000.f);
+                        if (m_is_head_lamp_active.value) {
+                            set_head_lamp_brightness(3000.f);
+                        }
                     }
                     // mute right stick Y axis
                     state->Gamepad.sThumbRY = 0;
@@ -2043,6 +2040,16 @@ public:
 
     void apply_head_lamp_settings() {
         if (SDK::UKismetSystemLibrary::IsValid(m_sdk_pawn) && m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+
+            m_inventory->FindItem(SDK::UHARDWARE_HeadLamp_C::StaticClass(), false, false, &m_inventory_item);
+            if (SDK::UKismetSystemLibrary::IsValid(m_inventory_item) && m_inventory_item->IsA(SDK::UHARDWARE_HeadLamp_C::StaticClass())) {
+                m_head_lamp = (SDK::UHARDWARE_HeadLamp_C*)m_inventory_item;
+                API::get()->log_warn("[prepare_state] Headlight found");
+            }
+            else {
+                m_head_lamp = nullptr;
+            }
+
             SDK::USpotLightComponent* head_lamp_light = static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->HeadlampLight;
             if (!SDK::UKismetSystemLibrary::IsValid(head_lamp_light)) {
                 API::get()->log_error("[main][set_head_lamp_light_params] Invalid Headlight object");
@@ -2840,6 +2847,21 @@ public:
         mod_config["headlamp"]["energy_consumption"] = std::to_string(m_ui_option_head_lamp_energy_consumption).c_str();
 
         return mod_config_file.generate(mod_config, true);
+    }
+
+    SDK::UObject* load_asset(SDK::FAssetData asset_data) {
+        try {
+            API::get()->log_warn("[plugin_utils][load_asset] Loading Asset %s", asset_data.ObjectPath.GetRawString().c_str());
+            SDK::FSoftObjectPath path = SDK::UAssetRegistryHelpers::ToSoftObjectPath(asset_data);
+            auto obj_ref = SDK::UKismetSystemLibrary::Conv_SoftObjPathToSoftObjRef(path);
+            SDK::UObject* asset = SDK::UKismetSystemLibrary::LoadAsset_Blocking(obj_ref);
+            API::get()->log_warn("[plugin_utils][load_asset] Successfully Loaded Asset");
+            return asset;
+        }
+        catch (...) {
+            API::get()->log_error("[plugin_utils][load_asset] Exception");
+            return nullptr;
+        }
     }
 };
 

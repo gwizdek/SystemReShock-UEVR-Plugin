@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_InteractionType_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 

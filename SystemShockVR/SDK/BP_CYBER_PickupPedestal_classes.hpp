@@ -23,7 +23,7 @@ class ABP_CYBER_PickupPedestal_C final : public AActor
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0220(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UAudioComponent*                        Audio_Loop;                                        // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        Audio_loop;                                        // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   WeaponPickupMesh;                                  // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        WeaponPivotNode;                                   // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UBoxComponent*                          OverlapVolume;                                     // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
@@ -64,7 +64,7 @@ public:
 static_assert(alignof(ABP_CYBER_PickupPedestal_C) == 0x000008, "Wrong alignment on ABP_CYBER_PickupPedestal_C");
 static_assert(sizeof(ABP_CYBER_PickupPedestal_C) == 0x000280, "Wrong size on ABP_CYBER_PickupPedestal_C");
 static_assert(offsetof(ABP_CYBER_PickupPedestal_C, UberGraphFrame) == 0x000220, "Member 'ABP_CYBER_PickupPedestal_C::UberGraphFrame' has a wrong offset!");
-static_assert(offsetof(ABP_CYBER_PickupPedestal_C, Audio_Loop) == 0x000228, "Member 'ABP_CYBER_PickupPedestal_C::Audio_Loop' has a wrong offset!");
+static_assert(offsetof(ABP_CYBER_PickupPedestal_C, Audio_loop) == 0x000228, "Member 'ABP_CYBER_PickupPedestal_C::Audio_loop' has a wrong offset!");
 static_assert(offsetof(ABP_CYBER_PickupPedestal_C, WeaponPickupMesh) == 0x000230, "Member 'ABP_CYBER_PickupPedestal_C::WeaponPickupMesh' has a wrong offset!");
 static_assert(offsetof(ABP_CYBER_PickupPedestal_C, WeaponPivotNode) == 0x000238, "Member 'ABP_CYBER_PickupPedestal_C::WeaponPivotNode' has a wrong offset!");
 static_assert(offsetof(ABP_CYBER_PickupPedestal_C, OverlapVolume) == 0x000240, "Member 'ABP_CYBER_PickupPedestal_C::OverlapVolume' has a wrong offset!");

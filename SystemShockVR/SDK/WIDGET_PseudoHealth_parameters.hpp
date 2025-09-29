@@ -16,53 +16,6 @@
 namespace SDK::Params
 {
 
-// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.ExecuteUbergraph_WIDGET_PseudoHealth
-// 0x0008 (0x0008 - 0x0000)
-struct WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth) == 0x000004, "Wrong alignment on WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth");
-static_assert(sizeof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth) == 0x000008, "Wrong size on WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth");
-static_assert(offsetof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth, EntryPoint) == 0x000000, "Member 'WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth::EntryPoint' has a wrong offset!");
-static_assert(offsetof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth, K2Node_Event_IsDesignTime) == 0x000004, "Member 'WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth::K2Node_Event_IsDesignTime' has a wrong offset!");
-
-// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.PreConstruct
-// 0x0001 (0x0001 - 0x0000)
-struct WIDGET_PseudoHealth_C_PreConstruct final
-{
-public:
-	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_PseudoHealth_C_PreConstruct) == 0x000001, "Wrong alignment on WIDGET_PseudoHealth_C_PreConstruct");
-static_assert(sizeof(WIDGET_PseudoHealth_C_PreConstruct) == 0x000001, "Wrong size on WIDGET_PseudoHealth_C_PreConstruct");
-static_assert(offsetof(WIDGET_PseudoHealth_C_PreConstruct, IsDesignTime) == 0x000000, "Member 'WIDGET_PseudoHealth_C_PreConstruct::IsDesignTime' has a wrong offset!");
-
-// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.EVENT_OnHealthChanged
-// 0x0020 (0x0020 - 0x0000)
-struct WIDGET_PseudoHealth_C_EVENT_OnHealthChanged final
-{
-public:
-	float                                         CurrValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         LastValue;                                         // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         MaxValue;                                          // 0x0008(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	EModApplyType                                 ApplyType;                                         // 0x000C(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               CallFunc_ConvertToDynamicMaterialInstance_ReturnValue; // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged) == 0x000008, "Wrong alignment on WIDGET_PseudoHealth_C_EVENT_OnHealthChanged");
-static_assert(sizeof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged) == 0x000020, "Wrong size on WIDGET_PseudoHealth_C_EVENT_OnHealthChanged");
-static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, CurrValue) == 0x000000, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::CurrValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, LastValue) == 0x000004, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::LastValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, MaxValue) == 0x000008, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::MaxValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, ApplyType) == 0x00000C, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::ApplyType' has a wrong offset!");
-static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000010, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, CallFunc_ConvertToDynamicMaterialInstance_ReturnValue) == 0x000018, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::CallFunc_ConvertToDynamicMaterialInstance_ReturnValue' has a wrong offset!");
-
 // Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.InitializeHealth
 // 0x0048 (0x0048 - 0x0000)
 struct WIDGET_PseudoHealth_C_InitializeHealth final
@@ -90,6 +43,53 @@ static_assert(offsetof(WIDGET_PseudoHealth_C_InitializeHealth, K2Node_DynamicCas
 static_assert(offsetof(WIDGET_PseudoHealth_C_InitializeHealth, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'WIDGET_PseudoHealth_C_InitializeHealth::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 static_assert(offsetof(WIDGET_PseudoHealth_C_InitializeHealth, CallFunc_GetHealthAttrib_ReturnValue) == 0x000038, "Member 'WIDGET_PseudoHealth_C_InitializeHealth::CallFunc_GetHealthAttrib_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PseudoHealth_C_InitializeHealth, CallFunc_GetAttribInstance_ReturnValue) == 0x000040, "Member 'WIDGET_PseudoHealth_C_InitializeHealth::CallFunc_GetAttribInstance_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.EVENT_OnHealthChanged
+// 0x0020 (0x0020 - 0x0000)
+struct WIDGET_PseudoHealth_C_EVENT_OnHealthChanged final
+{
+public:
+	float                                         CurrValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         LastValue;                                         // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MaxValue;                                          // 0x0008(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EModApplyType                                 ApplyType;                                         // 0x000C(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstanceDynamic*               CallFunc_ConvertToDynamicMaterialInstance_ReturnValue; // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged) == 0x000008, "Wrong alignment on WIDGET_PseudoHealth_C_EVENT_OnHealthChanged");
+static_assert(sizeof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged) == 0x000020, "Wrong size on WIDGET_PseudoHealth_C_EVENT_OnHealthChanged");
+static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, CurrValue) == 0x000000, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::CurrValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, LastValue) == 0x000004, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::LastValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, MaxValue) == 0x000008, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::MaxValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, ApplyType) == 0x00000C, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::ApplyType' has a wrong offset!");
+static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000010, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PseudoHealth_C_EVENT_OnHealthChanged, CallFunc_ConvertToDynamicMaterialInstance_ReturnValue) == 0x000018, "Member 'WIDGET_PseudoHealth_C_EVENT_OnHealthChanged::CallFunc_ConvertToDynamicMaterialInstance_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.PreConstruct
+// 0x0001 (0x0001 - 0x0000)
+struct WIDGET_PseudoHealth_C_PreConstruct final
+{
+public:
+	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_PseudoHealth_C_PreConstruct) == 0x000001, "Wrong alignment on WIDGET_PseudoHealth_C_PreConstruct");
+static_assert(sizeof(WIDGET_PseudoHealth_C_PreConstruct) == 0x000001, "Wrong size on WIDGET_PseudoHealth_C_PreConstruct");
+static_assert(offsetof(WIDGET_PseudoHealth_C_PreConstruct, IsDesignTime) == 0x000000, "Member 'WIDGET_PseudoHealth_C_PreConstruct::IsDesignTime' has a wrong offset!");
+
+// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.ExecuteUbergraph_WIDGET_PseudoHealth
+// 0x0008 (0x0008 - 0x0000)
+struct WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth) == 0x000004, "Wrong alignment on WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth");
+static_assert(sizeof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth) == 0x000008, "Wrong size on WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth");
+static_assert(offsetof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth, EntryPoint) == 0x000000, "Member 'WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth::EntryPoint' has a wrong offset!");
+static_assert(offsetof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth, K2Node_Event_IsDesignTime) == 0x000004, "Member 'WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth::K2Node_Event_IsDesignTime' has a wrong offset!");
 
 }
 

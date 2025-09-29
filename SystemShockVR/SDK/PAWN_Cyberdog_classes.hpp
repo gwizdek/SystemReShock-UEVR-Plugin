@@ -49,16 +49,16 @@ public:
 	float                                         CurrentAngerValue;                                 // 0x0BA4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void SetAngerMaterial(float Anger);
-	void UpdateEmotionMaterial();
-	void ReceiveTick(float DeltaSeconds);
-	void ReceiveBeginPlay();
-	void ExecuteUbergraph_PAWN_Cyberdog(int32 EntryPoint);
 	void InitializeCharacter(bool* Result);
 	void OnCharacterDied(class UOBJ_ImpactData_C* ImpactData, const struct FAttribDamageInstance& DamageInstance, class AActor* OtherActor, bool* Result);
 	void SetAngerColorMaterial(const struct FLinearColor& Color);
 	void OnCharacterHurt(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UOBJ_ImpactData_C* ImpactData, bool* Result);
 	void SetDamageMaterial(float Damage);
+	void SetAngerMaterial(float Anger);
+	void UpdateEmotionMaterial();
+	void ReceiveTick(float DeltaSeconds);
+	void ReceiveBeginPlay();
+	void ExecuteUbergraph_PAWN_Cyberdog(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()

@@ -12,9 +12,9 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "ENUM_ShodanPulseType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_ShodanTetherState_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ENUM_ShodanPulseType_structs.hpp"
 
 
 namespace SDK
@@ -60,6 +60,10 @@ public:
 	struct FTimerHandle                           DamagePulseTimerHandle;                            // 0x02F8(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
+	void EVENT_OnDamagePulseTick();
+	void EVENT_OnDamageReceived(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams);
+	void EVENT_OnHealthValueChanged(float CurrValue, float LastValue);
+	void EVENT_OnUnpopTether();
 	void SetTetherVulnerable();
 	void GetOrbitLocationAtTime(float ElapsedTime, struct FVector* Result);
 	void GetElapsedTimeInState(float* Result);
@@ -81,10 +85,6 @@ public:
 	void ReceiveTick(float DeltaSeconds);
 	void ReceiveBeginPlay();
 	void ExecuteUbergraph_ShodanTether(int32 EntryPoint);
-	void EVENT_OnUnpopTether();
-	void EVENT_OnHealthValueChanged(float CurrValue, float LastValue);
-	void EVENT_OnDamageReceived(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams);
-	void EVENT_OnDamagePulseTick();
 
 public:
 	static class UClass* StaticClass()

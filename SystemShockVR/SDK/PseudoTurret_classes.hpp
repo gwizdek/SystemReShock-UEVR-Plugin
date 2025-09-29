@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_PseudoTurretState_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "ENUM_PseudoTurretState_structs.hpp"
 #include "ENUM_PseudoShodanState_structs.hpp"
 
 

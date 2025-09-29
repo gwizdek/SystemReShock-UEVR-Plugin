@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ShodanPulseType_structs.hpp"
-#include "ENUM_PseudoShodanState_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "INTERACT_Base_classes.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "ENUM_PseudoShodanState_structs.hpp"
 #include "ENUM_ShodanTetherState_structs.hpp"
+#include "INTERACT_Base_classes.hpp"
+#include "ENUM_ShodanPulseType_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 
 
@@ -99,6 +99,13 @@ public:
 	float                                         PreviousArmsOpen;                                  // 0x0568(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
+	void RecievePain(bool Major);
+	void StartColorPulse(ENUM_ShodanPulseType Type);
+	void HasChargedAllConstraints(float ElapsedTime, int32* Result);
+	void IsChargingAllConstraints(bool* Result);
+	void EVENT_OnTargetFadeTick();
+	void RegisterActiveBlastRegion(class ACYBR_ShodanBlastRegion_C* BlastRegion, bool IsActive);
+	void GetShodanMaterialInstance(class UMaterialInstanceDynamic** Result);
 	void SetShodanColorScale(float Value);
 	void IsAttackInProgress(bool* Result);
 	void GetCurrentConstraintCount(int32* Result);
@@ -140,13 +147,6 @@ public:
 	void TryCreateIcePrisonEffect(float StormDelay);
 	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void ExecuteUbergraph_INTERACT_CyberShodan(int32 EntryPoint);
-	void GetShodanMaterialInstance(class UMaterialInstanceDynamic** Result);
-	void RegisterActiveBlastRegion(class ACYBR_ShodanBlastRegion_C* BlastRegion, bool IsActive);
-	void EVENT_OnTargetFadeTick();
-	void IsChargingAllConstraints(bool* Result);
-	void HasChargedAllConstraints(float ElapsedTime, int32* Result);
-	void StartColorPulse(ENUM_ShodanPulseType Type);
-	void RecievePain(bool Major);
 
 public:
 	static class UClass* StaticClass()
