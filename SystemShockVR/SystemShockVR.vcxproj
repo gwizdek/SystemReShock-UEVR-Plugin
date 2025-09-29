@@ -193,11 +193,14 @@
     </ClCompile>
     <ClCompile Include="rendering\d3d11.cpp" />
     <ClCompile Include="rendering\d3d12.cpp" />
+    <ClCompile Include="SDK\AssetRegistry_functions.cpp" />
     <ClCompile Include="SDK\Basic.cpp" />
     <ClCompile Include="SDK\CH_Hacker_AnimBP_functions.cpp" />
     <ClCompile Include="SDK\COMP_ActionManager_functions.cpp" />
+    <ClCompile Include="SDK\COMP_HackerInventory_functions.cpp" />
     <ClCompile Include="SDK\COMP_Inventory_functions.cpp" />
     <ClCompile Include="SDK\CON_Hacker_functions.cpp" />
+    <ClCompile Include="SDK\CoreGame_functions.cpp" />
     <ClCompile Include="SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="SDK\Engine_functions.cpp" />
     <ClCompile Include="SDK\HeadMountedDisplay_functions.cpp" />
