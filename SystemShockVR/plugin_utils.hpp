@@ -21,4 +21,7 @@ public:
 
     // this is the new way that uses AssetRegistry and UKismetSystemLibrary
     static SDK::UObject* load_asset(SDK::FAssetData asset_data);
+    static float bytes_to_float(std::string name, uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3);
+    static void print_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data);
+    static float get_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data);
 };

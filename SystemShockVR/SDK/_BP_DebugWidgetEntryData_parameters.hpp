@@ -10,34 +10,40 @@
 
 #include "Basic.hpp"
 
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
+
 
 namespace SDK::Params
 {
 
 // Function _BP_DebugWidgetEntryData._BP_DebugWidgetEntryData_C.ExecuteUbergraph__BP_DebugWidgetEntryData
-// 0x0018 (0x0018 - 0x0000)
+// 0x0020 (0x0020 - 0x0000)
 struct _BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 K2Node_CustomEvent_DataEntry;                      // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 K2Node_CustomEvent_InDataEntry;                    // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	E_ENUM_DebugWidgetEntryType                   K2Node_CustomEvent_InType;                         // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData) == 0x000008, "Wrong alignment on _BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData");
-static_assert(sizeof(_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData) == 0x000018, "Wrong size on _BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData");
+static_assert(sizeof(_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData) == 0x000020, "Wrong size on _BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData");
 static_assert(offsetof(_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData, EntryPoint) == 0x000000, "Member '_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData::EntryPoint' has a wrong offset!");
-static_assert(offsetof(_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData, K2Node_CustomEvent_DataEntry) == 0x000008, "Member '_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData::K2Node_CustomEvent_DataEntry' has a wrong offset!");
+static_assert(offsetof(_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData, K2Node_CustomEvent_InDataEntry) == 0x000008, "Member '_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData::K2Node_CustomEvent_InDataEntry' has a wrong offset!");
+static_assert(offsetof(_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData, K2Node_CustomEvent_InType) == 0x000018, "Member '_BP_DebugWidgetEntryData_C_ExecuteUbergraph__BP_DebugWidgetEntryData::K2Node_CustomEvent_InType' has a wrong offset!");
 
 // Function _BP_DebugWidgetEntryData._BP_DebugWidgetEntryData_C.Init
-// 0x0010 (0x0010 - 0x0000)
+// 0x0018 (0x0018 - 0x0000)
 struct _BP_DebugWidgetEntryData_C_Init final
 {
 public:
-	class FString                                 DataEntry_0;                                       // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 InDataEntry;                                       // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	E_ENUM_DebugWidgetEntryType                   InType;                                            // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BP_DebugWidgetEntryData_C_Init) == 0x000008, "Wrong alignment on _BP_DebugWidgetEntryData_C_Init");
-static_assert(sizeof(_BP_DebugWidgetEntryData_C_Init) == 0x000010, "Wrong size on _BP_DebugWidgetEntryData_C_Init");
-static_assert(offsetof(_BP_DebugWidgetEntryData_C_Init, DataEntry_0) == 0x000000, "Member '_BP_DebugWidgetEntryData_C_Init::DataEntry_0' has a wrong offset!");
+static_assert(sizeof(_BP_DebugWidgetEntryData_C_Init) == 0x000018, "Wrong size on _BP_DebugWidgetEntryData_C_Init");
+static_assert(offsetof(_BP_DebugWidgetEntryData_C_Init, InDataEntry) == 0x000000, "Member '_BP_DebugWidgetEntryData_C_Init::InDataEntry' has a wrong offset!");
+static_assert(offsetof(_BP_DebugWidgetEntryData_C_Init, InType) == 0x000010, "Member '_BP_DebugWidgetEntryData_C_Init::InType' has a wrong offset!");
 
 }
 

@@ -20,6 +20,11 @@ struct MemoProperty
         return value;
     }
 
+    void reset(T new_value) {
+        prev_value = new_value;
+        value = new_value;
+    }
+
     bool has_changed() {
         return value != prev_value;
     }

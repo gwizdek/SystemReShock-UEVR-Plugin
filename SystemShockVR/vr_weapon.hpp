@@ -124,6 +124,7 @@ public:
     void on_tick();
     void on_draw_imgui();
     void spawn_laser_pointer();
+    void attach_laser_pointer();
     void update_laser_pointer();
     //void set_weapon_state();
     void fire_weapon();

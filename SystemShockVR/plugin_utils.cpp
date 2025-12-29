@@ -154,3 +154,21 @@ int32_t PluginUtils::hook_vtable_fn(std::wstring_view class_name, std::wstring_v
     // remove me
     return 0;
 }
+
+float PluginUtils::bytes_to_float(std::string name, uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3)
+{
+    uint8_t bytes[4] = { b0, b1, b2, b3 };
+    static_assert(sizeof(float) == 4, "float size is expected to be 4 bytes");
+    float f;
+    memcpy(&f, bytes, 4);
+    return f;
+}
+
+void PluginUtils::print_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data) {
+    float value = bytes_to_float(name, data[offset], data[offset + 1], data[offset + 2], data[offset + 3]);
+    API::get()->log_warn("[plugin_utils][bytes_to_float] Name: %s | Value %f", name.c_str(), value);
+}
+
+float PluginUtils::get_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data) {
+    return bytes_to_float(name, data[offset], data[offset + 1], data[offset + 2], data[offset + 3]);
+}

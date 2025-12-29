@@ -18,104 +18,35 @@
 namespace SDK::Params
 {
 
-// Function GrabComponent.GrabComponent_C.SetPrimitiveCompPhysics
+// Function GrabComponent.GrabComponent_C.ExecuteUbergraph_GrabComponent
 // 0x0020 (0x0020 - 0x0000)
-struct GrabComponent_C_SetPrimitiveCompPhysics final
+struct GrabComponent_C_ExecuteUbergraph_GrabComponent final
 {
 public:
-	bool                                          bSimulate;                                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_Event_DeltaSeconds;                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        CallFunc_GetAttachParent_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UPrimitiveComponent*                    K2Node_DynamicCast_AsPrimitive_Component;          // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(GrabComponent_C_SetPrimitiveCompPhysics) == 0x000008, "Wrong alignment on GrabComponent_C_SetPrimitiveCompPhysics");
-static_assert(sizeof(GrabComponent_C_SetPrimitiveCompPhysics) == 0x000020, "Wrong size on GrabComponent_C_SetPrimitiveCompPhysics");
-static_assert(offsetof(GrabComponent_C_SetPrimitiveCompPhysics, bSimulate) == 0x000000, "Member 'GrabComponent_C_SetPrimitiveCompPhysics::bSimulate' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_SetPrimitiveCompPhysics, CallFunc_GetAttachParent_ReturnValue) == 0x000008, "Member 'GrabComponent_C_SetPrimitiveCompPhysics::CallFunc_GetAttachParent_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_SetPrimitiveCompPhysics, K2Node_DynamicCast_AsPrimitive_Component) == 0x000010, "Member 'GrabComponent_C_SetPrimitiveCompPhysics::K2Node_DynamicCast_AsPrimitive_Component' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_SetPrimitiveCompPhysics, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'GrabComponent_C_SetPrimitiveCompPhysics::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(alignof(GrabComponent_C_ExecuteUbergraph_GrabComponent) == 0x000008, "Wrong alignment on GrabComponent_C_ExecuteUbergraph_GrabComponent");
+static_assert(sizeof(GrabComponent_C_ExecuteUbergraph_GrabComponent) == 0x000020, "Wrong size on GrabComponent_C_ExecuteUbergraph_GrabComponent");
+static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, EntryPoint) == 0x000000, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::EntryPoint' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, K2Node_Event_DeltaSeconds) == 0x000004, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::K2Node_Event_DeltaSeconds' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, CallFunc_GetAttachParent_ReturnValue) == 0x000008, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::CallFunc_GetAttachParent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, K2Node_DynamicCast_AsPrimitive_Component) == 0x000010, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::K2Node_DynamicCast_AsPrimitive_Component' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
-// Function GrabComponent.GrabComponent_C.SetShouldSimulateOnDrop
-// 0x0018 (0x0018 - 0x0000)
-struct GrabComponent_C_SetShouldSimulateOnDrop final
+// Function GrabComponent.GrabComponent_C.ReceiveTick
+// 0x0004 (0x0004 - 0x0000)
+struct GrabComponent_C_ReceiveTick final
 {
 public:
-	class USceneComponent*                        CallFunc_GetAttachParent_ReturnValue;              // 0x0000(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    K2Node_DynamicCast_AsPrimitive_Component;          // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsAnySimulatingPhysics_ReturnValue;       // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         DeltaSeconds;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(GrabComponent_C_SetShouldSimulateOnDrop) == 0x000008, "Wrong alignment on GrabComponent_C_SetShouldSimulateOnDrop");
-static_assert(sizeof(GrabComponent_C_SetShouldSimulateOnDrop) == 0x000018, "Wrong size on GrabComponent_C_SetShouldSimulateOnDrop");
-static_assert(offsetof(GrabComponent_C_SetShouldSimulateOnDrop, CallFunc_GetAttachParent_ReturnValue) == 0x000000, "Member 'GrabComponent_C_SetShouldSimulateOnDrop::CallFunc_GetAttachParent_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_SetShouldSimulateOnDrop, K2Node_DynamicCast_AsPrimitive_Component) == 0x000008, "Member 'GrabComponent_C_SetShouldSimulateOnDrop::K2Node_DynamicCast_AsPrimitive_Component' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_SetShouldSimulateOnDrop, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'GrabComponent_C_SetShouldSimulateOnDrop::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_SetShouldSimulateOnDrop, CallFunc_IsAnySimulatingPhysics_ReturnValue) == 0x000011, "Member 'GrabComponent_C_SetShouldSimulateOnDrop::CallFunc_IsAnySimulatingPhysics_ReturnValue' has a wrong offset!");
-
-// Function GrabComponent.GrabComponent_C.TriggerAxis
-// 0x0028 (0x0028 - 0x0000)
-struct GrabComponent_C_TriggerAxis final
-{
-public:
-	float                                         AxisValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TScriptInterface<class IInterface>            K2Node_DynamicCast_AsVRInteraction_BPI;            // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(GrabComponent_C_TriggerAxis) == 0x000008, "Wrong alignment on GrabComponent_C_TriggerAxis");
-static_assert(sizeof(GrabComponent_C_TriggerAxis) == 0x000028, "Wrong size on GrabComponent_C_TriggerAxis");
-static_assert(offsetof(GrabComponent_C_TriggerAxis, AxisValue) == 0x000000, "Member 'GrabComponent_C_TriggerAxis::AxisValue' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_TriggerAxis, CallFunc_GetOwner_ReturnValue) == 0x000008, "Member 'GrabComponent_C_TriggerAxis::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_TriggerAxis, K2Node_DynamicCast_AsVRInteraction_BPI) == 0x000010, "Member 'GrabComponent_C_TriggerAxis::K2Node_DynamicCast_AsVRInteraction_BPI' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_TriggerAxis, K2Node_DynamicCast_bSuccess) == 0x000020, "Member 'GrabComponent_C_TriggerAxis::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-
-// Function GrabComponent.GrabComponent_C.TriggerReleased
-// 0x0020 (0x0020 - 0x0000)
-struct GrabComponent_C_TriggerReleased final
-{
-public:
-	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TScriptInterface<class IInterface>            K2Node_DynamicCast_AsVRInteraction_BPI;            // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(GrabComponent_C_TriggerReleased) == 0x000008, "Wrong alignment on GrabComponent_C_TriggerReleased");
-static_assert(sizeof(GrabComponent_C_TriggerReleased) == 0x000020, "Wrong size on GrabComponent_C_TriggerReleased");
-static_assert(offsetof(GrabComponent_C_TriggerReleased, CallFunc_GetOwner_ReturnValue) == 0x000000, "Member 'GrabComponent_C_TriggerReleased::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_TriggerReleased, K2Node_DynamicCast_AsVRInteraction_BPI) == 0x000008, "Member 'GrabComponent_C_TriggerReleased::K2Node_DynamicCast_AsVRInteraction_BPI' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_TriggerReleased, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'GrabComponent_C_TriggerReleased::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-
-// Function GrabComponent.GrabComponent_C.TriggerPressed
-// 0x0020 (0x0020 - 0x0000)
-struct GrabComponent_C_TriggerPressed final
-{
-public:
-	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TScriptInterface<class IInterface>            K2Node_DynamicCast_AsVRInteraction_BPI;            // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(GrabComponent_C_TriggerPressed) == 0x000008, "Wrong alignment on GrabComponent_C_TriggerPressed");
-static_assert(sizeof(GrabComponent_C_TriggerPressed) == 0x000020, "Wrong size on GrabComponent_C_TriggerPressed");
-static_assert(offsetof(GrabComponent_C_TriggerPressed, CallFunc_GetOwner_ReturnValue) == 0x000000, "Member 'GrabComponent_C_TriggerPressed::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_TriggerPressed, K2Node_DynamicCast_AsVRInteraction_BPI) == 0x000008, "Member 'GrabComponent_C_TriggerPressed::K2Node_DynamicCast_AsVRInteraction_BPI' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_TriggerPressed, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'GrabComponent_C_TriggerPressed::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-
-// Function GrabComponent.GrabComponent_C.TryRelease
-// 0x0010 (0x0010 - 0x0000)
-struct GrabComponent_C_TryRelease final
-{
-public:
-	bool                                          bReleased;                                         // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(GrabComponent_C_TryRelease) == 0x000008, "Wrong alignment on GrabComponent_C_TryRelease");
-static_assert(sizeof(GrabComponent_C_TryRelease) == 0x000010, "Wrong size on GrabComponent_C_TryRelease");
-static_assert(offsetof(GrabComponent_C_TryRelease, bReleased) == 0x000000, "Member 'GrabComponent_C_TryRelease::bReleased' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_TryRelease, K2Node_SwitchEnum_CmpSuccess) == 0x000001, "Member 'GrabComponent_C_TryRelease::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_TryRelease, CallFunc_GetOwner_ReturnValue) == 0x000008, "Member 'GrabComponent_C_TryRelease::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
+static_assert(alignof(GrabComponent_C_ReceiveTick) == 0x000004, "Wrong alignment on GrabComponent_C_ReceiveTick");
+static_assert(sizeof(GrabComponent_C_ReceiveTick) == 0x000004, "Wrong size on GrabComponent_C_ReceiveTick");
+static_assert(offsetof(GrabComponent_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member 'GrabComponent_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
 
 // Function GrabComponent.GrabComponent_C.TryGrab
 // 0x02A8 (0x02A8 - 0x0000)
@@ -212,35 +143,104 @@ static_assert(offsetof(GrabComponent_C_TryGrab, CallFunc_Add_VectorVector_Return
 static_assert(offsetof(GrabComponent_C_TryGrab, CallFunc_K2_SetRelativeRotation_SweepHitResult) == 0x000198, "Member 'GrabComponent_C_TryGrab::CallFunc_K2_SetRelativeRotation_SweepHitResult' has a wrong offset!");
 static_assert(offsetof(GrabComponent_C_TryGrab, CallFunc_K2_SetWorldLocation_SweepHitResult) == 0x000220, "Member 'GrabComponent_C_TryGrab::CallFunc_K2_SetWorldLocation_SweepHitResult' has a wrong offset!");
 
-// Function GrabComponent.GrabComponent_C.ReceiveTick
-// 0x0004 (0x0004 - 0x0000)
-struct GrabComponent_C_ReceiveTick final
+// Function GrabComponent.GrabComponent_C.TryRelease
+// 0x0010 (0x0010 - 0x0000)
+struct GrabComponent_C_TryRelease final
 {
 public:
-	float                                         DeltaSeconds;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          bReleased;                                         // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(GrabComponent_C_ReceiveTick) == 0x000004, "Wrong alignment on GrabComponent_C_ReceiveTick");
-static_assert(sizeof(GrabComponent_C_ReceiveTick) == 0x000004, "Wrong size on GrabComponent_C_ReceiveTick");
-static_assert(offsetof(GrabComponent_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member 'GrabComponent_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
+static_assert(alignof(GrabComponent_C_TryRelease) == 0x000008, "Wrong alignment on GrabComponent_C_TryRelease");
+static_assert(sizeof(GrabComponent_C_TryRelease) == 0x000010, "Wrong size on GrabComponent_C_TryRelease");
+static_assert(offsetof(GrabComponent_C_TryRelease, bReleased) == 0x000000, "Member 'GrabComponent_C_TryRelease::bReleased' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_TryRelease, K2Node_SwitchEnum_CmpSuccess) == 0x000001, "Member 'GrabComponent_C_TryRelease::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_TryRelease, CallFunc_GetOwner_ReturnValue) == 0x000008, "Member 'GrabComponent_C_TryRelease::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
 
-// Function GrabComponent.GrabComponent_C.ExecuteUbergraph_GrabComponent
+// Function GrabComponent.GrabComponent_C.TriggerPressed
 // 0x0020 (0x0020 - 0x0000)
-struct GrabComponent_C_ExecuteUbergraph_GrabComponent final
+struct GrabComponent_C_TriggerPressed final
 {
 public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_Event_DeltaSeconds;                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TScriptInterface<class IVRInteractionBPI_C>   K2Node_DynamicCast_AsVRInteraction_BPI;            // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(GrabComponent_C_TriggerPressed) == 0x000008, "Wrong alignment on GrabComponent_C_TriggerPressed");
+static_assert(sizeof(GrabComponent_C_TriggerPressed) == 0x000020, "Wrong size on GrabComponent_C_TriggerPressed");
+static_assert(offsetof(GrabComponent_C_TriggerPressed, CallFunc_GetOwner_ReturnValue) == 0x000000, "Member 'GrabComponent_C_TriggerPressed::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_TriggerPressed, K2Node_DynamicCast_AsVRInteraction_BPI) == 0x000008, "Member 'GrabComponent_C_TriggerPressed::K2Node_DynamicCast_AsVRInteraction_BPI' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_TriggerPressed, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'GrabComponent_C_TriggerPressed::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
+// Function GrabComponent.GrabComponent_C.TriggerReleased
+// 0x0020 (0x0020 - 0x0000)
+struct GrabComponent_C_TriggerReleased final
+{
+public:
+	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TScriptInterface<class IVRInteractionBPI_C>   K2Node_DynamicCast_AsVRInteraction_BPI;            // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(GrabComponent_C_TriggerReleased) == 0x000008, "Wrong alignment on GrabComponent_C_TriggerReleased");
+static_assert(sizeof(GrabComponent_C_TriggerReleased) == 0x000020, "Wrong size on GrabComponent_C_TriggerReleased");
+static_assert(offsetof(GrabComponent_C_TriggerReleased, CallFunc_GetOwner_ReturnValue) == 0x000000, "Member 'GrabComponent_C_TriggerReleased::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_TriggerReleased, K2Node_DynamicCast_AsVRInteraction_BPI) == 0x000008, "Member 'GrabComponent_C_TriggerReleased::K2Node_DynamicCast_AsVRInteraction_BPI' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_TriggerReleased, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'GrabComponent_C_TriggerReleased::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
+// Function GrabComponent.GrabComponent_C.TriggerAxis
+// 0x0028 (0x0028 - 0x0000)
+struct GrabComponent_C_TriggerAxis final
+{
+public:
+	float                                         AxisValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TScriptInterface<class IVRInteractionBPI_C>   K2Node_DynamicCast_AsVRInteraction_BPI;            // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(GrabComponent_C_TriggerAxis) == 0x000008, "Wrong alignment on GrabComponent_C_TriggerAxis");
+static_assert(sizeof(GrabComponent_C_TriggerAxis) == 0x000028, "Wrong size on GrabComponent_C_TriggerAxis");
+static_assert(offsetof(GrabComponent_C_TriggerAxis, AxisValue) == 0x000000, "Member 'GrabComponent_C_TriggerAxis::AxisValue' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_TriggerAxis, CallFunc_GetOwner_ReturnValue) == 0x000008, "Member 'GrabComponent_C_TriggerAxis::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_TriggerAxis, K2Node_DynamicCast_AsVRInteraction_BPI) == 0x000010, "Member 'GrabComponent_C_TriggerAxis::K2Node_DynamicCast_AsVRInteraction_BPI' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_TriggerAxis, K2Node_DynamicCast_bSuccess) == 0x000020, "Member 'GrabComponent_C_TriggerAxis::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
+// Function GrabComponent.GrabComponent_C.SetShouldSimulateOnDrop
+// 0x0018 (0x0018 - 0x0000)
+struct GrabComponent_C_SetShouldSimulateOnDrop final
+{
+public:
+	class USceneComponent*                        CallFunc_GetAttachParent_ReturnValue;              // 0x0000(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_DynamicCast_AsPrimitive_Component;          // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsAnySimulatingPhysics_ReturnValue;       // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(GrabComponent_C_SetShouldSimulateOnDrop) == 0x000008, "Wrong alignment on GrabComponent_C_SetShouldSimulateOnDrop");
+static_assert(sizeof(GrabComponent_C_SetShouldSimulateOnDrop) == 0x000018, "Wrong size on GrabComponent_C_SetShouldSimulateOnDrop");
+static_assert(offsetof(GrabComponent_C_SetShouldSimulateOnDrop, CallFunc_GetAttachParent_ReturnValue) == 0x000000, "Member 'GrabComponent_C_SetShouldSimulateOnDrop::CallFunc_GetAttachParent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_SetShouldSimulateOnDrop, K2Node_DynamicCast_AsPrimitive_Component) == 0x000008, "Member 'GrabComponent_C_SetShouldSimulateOnDrop::K2Node_DynamicCast_AsPrimitive_Component' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_SetShouldSimulateOnDrop, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'GrabComponent_C_SetShouldSimulateOnDrop::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_SetShouldSimulateOnDrop, CallFunc_IsAnySimulatingPhysics_ReturnValue) == 0x000011, "Member 'GrabComponent_C_SetShouldSimulateOnDrop::CallFunc_IsAnySimulatingPhysics_ReturnValue' has a wrong offset!");
+
+// Function GrabComponent.GrabComponent_C.SetPrimitiveCompPhysics
+// 0x0020 (0x0020 - 0x0000)
+struct GrabComponent_C_SetPrimitiveCompPhysics final
+{
+public:
+	bool                                          bSimulate;                                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class USceneComponent*                        CallFunc_GetAttachParent_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UPrimitiveComponent*                    K2Node_DynamicCast_AsPrimitive_Component;          // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(GrabComponent_C_ExecuteUbergraph_GrabComponent) == 0x000008, "Wrong alignment on GrabComponent_C_ExecuteUbergraph_GrabComponent");
-static_assert(sizeof(GrabComponent_C_ExecuteUbergraph_GrabComponent) == 0x000020, "Wrong size on GrabComponent_C_ExecuteUbergraph_GrabComponent");
-static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, EntryPoint) == 0x000000, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::EntryPoint' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, K2Node_Event_DeltaSeconds) == 0x000004, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::K2Node_Event_DeltaSeconds' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, CallFunc_GetAttachParent_ReturnValue) == 0x000008, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::CallFunc_GetAttachParent_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, K2Node_DynamicCast_AsPrimitive_Component) == 0x000010, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::K2Node_DynamicCast_AsPrimitive_Component' has a wrong offset!");
-static_assert(offsetof(GrabComponent_C_ExecuteUbergraph_GrabComponent, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'GrabComponent_C_ExecuteUbergraph_GrabComponent::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(alignof(GrabComponent_C_SetPrimitiveCompPhysics) == 0x000008, "Wrong alignment on GrabComponent_C_SetPrimitiveCompPhysics");
+static_assert(sizeof(GrabComponent_C_SetPrimitiveCompPhysics) == 0x000020, "Wrong size on GrabComponent_C_SetPrimitiveCompPhysics");
+static_assert(offsetof(GrabComponent_C_SetPrimitiveCompPhysics, bSimulate) == 0x000000, "Member 'GrabComponent_C_SetPrimitiveCompPhysics::bSimulate' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_SetPrimitiveCompPhysics, CallFunc_GetAttachParent_ReturnValue) == 0x000008, "Member 'GrabComponent_C_SetPrimitiveCompPhysics::CallFunc_GetAttachParent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_SetPrimitiveCompPhysics, K2Node_DynamicCast_AsPrimitive_Component) == 0x000010, "Member 'GrabComponent_C_SetPrimitiveCompPhysics::K2Node_DynamicCast_AsPrimitive_Component' has a wrong offset!");
+static_assert(offsetof(GrabComponent_C_SetPrimitiveCompPhysics, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'GrabComponent_C_SetPrimitiveCompPhysics::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 }
 

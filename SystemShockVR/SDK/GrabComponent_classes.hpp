@@ -14,6 +14,7 @@
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "GrabType_structs.hpp"
 
 
 namespace SDK
@@ -32,23 +33,23 @@ public:
 	class UGrabComponent_C*                       PrimaryGrabComponent;                              // 0x0218(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
 	struct FRotator                               PrimaryGrabRelativeRotation;                       // 0x0220(0x000C)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay)
 	bool                                          bSimulateOnDrop;                                   // 0x022C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay)
-	uint8                                         GrabType;                                          // 0x022D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EGrabType                                     GrabType;                                          // 0x022D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_22E[0x2];                                      // 0x022E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	TMulticastInlineDelegate<void()>              OnGrabbed;                                         // 0x0230(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, AdvancedDisplay, BlueprintCallable)
 	TMulticastInlineDelegate<void()>              OnDropped;                                         // 0x0240(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, AdvancedDisplay, BlueprintCallable)
 	class UHapticFeedbackEffect_Base*             OnGrabHapticEffect;                                // 0x0250(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void SetPrimitiveCompPhysics(bool bSimulate);
-	void SetShouldSimulateOnDrop();
-	void TriggerAxis(float AxisValue);
-	void TriggerReleased();
-	void TriggerPressed();
-	void TryRelease(bool* bReleased);
-	void TryGrab(class UMotionControllerComponent* MotionController, bool* IsHeld);
-	void ReceiveTick(float DeltaSeconds);
-	void ReceiveBeginPlay();
 	void ExecuteUbergraph_GrabComponent(int32 EntryPoint);
+	void ReceiveBeginPlay();
+	void ReceiveTick(float DeltaSeconds);
+	void TryGrab(class UMotionControllerComponent* MotionController, bool* IsHeld);
+	void TryRelease(bool* bReleased);
+	void TriggerPressed();
+	void TriggerReleased();
+	void TriggerAxis(float AxisValue);
+	void SetShouldSimulateOnDrop();
+	void SetPrimitiveCompPhysics(bool bSimulate);
 
 public:
 	static class UClass* StaticClass()

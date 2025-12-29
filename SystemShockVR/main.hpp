@@ -11,7 +11,6 @@
 #include "SDK/COMP_HackerInventory_classes.hpp"
 
 #include "memo_structs.hpp"
-#include "vr_controllers.hpp"
 #include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
 
@@ -53,8 +52,7 @@ static std::map<EGameState, const char*> GameStateName = {
 
 using namespace uevr;
 
-class VRHUD;
-class VRWeapon;
+//class VRHUD;
 class VRBody;
 
 class SystemShockMain
@@ -62,7 +60,6 @@ class SystemShockMain
 private:
     const char* MOD_VERSION = "v2.0.0-alpha";
 
-    //VRControllers* m_vr_controllers{ nullptr };
     //VRHUD* m_vr_hud{ nullptr };
     VRBody* m_vr_body{ nullptr };
 
@@ -72,7 +69,6 @@ private:
 
     // convenience pointers
     SDK::UWorld* m_world{ nullptr };
-    //SDK::APawn* m_pawn{ nullptr };
     SDK::UCOMP_HackerInventory_C* m_inventory{ nullptr };
     SDK::UWIDGET_PlayerHUD_C* m_neural_hud{ nullptr };
 
@@ -83,8 +79,10 @@ private:
     bool m_camera_initialized{ false };
     SDK::FVector m_last_pos{ 0.f, 0.f, 0.f };
     SDK::FRotator m_last_rot{ 0.f, 0.f, 0.f };
-    bool m_initialized{ false };
+    bool m_initialized{ true };
     bool m_gui_visible{ true };
+    bool m_trigger_test_1{ false };
+    bool m_trigger_test_2{ false };
     
 
     // watched state
@@ -92,7 +90,6 @@ private:
     MemoProperty<EGameState> m_game_state{ GAME_STATE_UNDEFINED, GAME_STATE_UNDEFINED };
     MemoProperty<SDK::ULevel*> m_level{ nullptr, nullptr };
     MemoBoolean m_is_game_paused{ false };
-    MemoBoolean m_is_interactable_in_range{ false };
     MemoBoolean m_is_crouched{ false };
     MemoProperty<bool> m_player_interacting{ false, false };
 
@@ -107,6 +104,11 @@ private:
     MemoDualInput m_gamepad_btn_b{ XINPUT_GAMEPAD_B, "BTN_B" };
     MemoInput m_gamepad_btn_x{ XINPUT_GAMEPAD_X, "BTN_X" };
     MemoDualInput m_gamepad_btn_y{ XINPUT_GAMEPAD_Y, "BTN_Y" };
+
+    // customizable actions
+    MemoInput m_hotbar_selector_button{ XINPUT_GAMEPAD_RIGHT_THUMB, "HOTBAR_SELECTOR_BUTTON" };
+    MemoInput m_hardware_selector_button{ XINPUT_GAMEPAD_LEFT_THUMB, "HARDWARE_SELECTOR_BUTTON" };
+
 
     // mod options
     int m_ui_option_look_sensitivity{ 5 };
@@ -124,36 +126,31 @@ public:
     static void cleanup_actors();
 
     bool prepare_pointers();
-    void prepare_state();
     void prepare_game_state();
     void toggle_gui();
     
     // getters
     bool get_ui_option_show_debug_view() { return m_ui_option_show_debug_view; };
-    //VRControllers* get_vr_controllers() { return m_vr_controllers; };
     VRBody* get_vr_body() { return m_vr_body; };
     MemoProperty<bool>* get_is_player_interacting() { return &m_player_interacting; };
     SDK::UCOMP_HackerInventory_C* get_inventory() { return m_inventory; };
     SDK::APawn* get_pawn() { return m_pawn.get(); };
+    SDK::UWIDGET_PlayerHUD_C* get_neural_hud() { return m_neural_hud; };
     
     // setters
-    void set_last_pos(UEVR_Vector3f* position);
-    void set_last_rot(UEVR_Rotatorf* rotation);
     void set_ui_xinput_duration(int value) { m_ui_xinput_duration = value; };
     void set_ui_pre_engine_tick_duration(int value) { m_ui_pre_engine_tick_duration = value; };
 
-    void apply_delta(UEVR_Vector3f* position, UEVR_Rotatorf* rotation);
-
     // handlers
-    void handle_controller_input(XINPUT_STATE* state);
     void handle_level_changes();
     void handle_game_state_changes();
     void handle_mod_events();
     void handle_crouch();
-    void handle_weapon();
-    //void set_component_loc_rot_to_rh_motion_controller(SDK::USceneComponent* scene_component);
+    void handle_controller_input(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_smooth_turning(XINPUT_STATE* state, const UEVR_VRData* vr);
+    void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr);
 
-    void test1();
-    void test2();
+    // tests executed in game thread
+    void try_running_test_1();
+    void try_running_test_2();
 };

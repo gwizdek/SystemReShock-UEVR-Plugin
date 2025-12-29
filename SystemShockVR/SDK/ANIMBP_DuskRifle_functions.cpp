@@ -38,6 +38,66 @@ void UANIMBP_DuskRifle_C::AnimGraph(struct FPoseLink* AnimGraph_0)
 }
 
 
+// Function ANIMBP_DuskRifle.ANIMBP_DuskRifle_C.BlueprintUpdateAnimation
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   DeltaTimeX                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UANIMBP_DuskRifle_C::BlueprintUpdateAnimation(float DeltaTimeX)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ANIMBP_DuskRifle_C", "BlueprintUpdateAnimation");
+
+	Params::ANIMBP_DuskRifle_C_BlueprintUpdateAnimation Parms{};
+
+	Parms.DeltaTimeX = DeltaTimeX;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function ANIMBP_DuskRifle.ANIMBP_DuskRifle_C.UseSourceMesh
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UANIMBP_DuskRifle_C::UseSourceMesh(bool Value)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ANIMBP_DuskRifle_C", "UseSourceMesh");
+
+	Params::ANIMBP_DuskRifle_C_UseSourceMesh Parms{};
+
+	Parms.Value = Value;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function ANIMBP_DuskRifle.ANIMBP_DuskRifle_C.SetSourceMesh
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class USkeletalMeshComponent*           SourceMesh                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UANIMBP_DuskRifle_C::SetSourceMesh(class USkeletalMeshComponent* SourceMesh)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ANIMBP_DuskRifle_C", "SetSourceMesh");
+
+	Params::ANIMBP_DuskRifle_C_SetSourceMesh Parms{};
+
+	Parms.SourceMesh = SourceMesh;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function ANIMBP_DuskRifle.ANIMBP_DuskRifle_C.ExecuteUbergraph_ANIMBP_DuskRifle
 // (Final, UbergraphFunction)
 // Parameters:

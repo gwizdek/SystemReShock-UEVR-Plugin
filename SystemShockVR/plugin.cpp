@@ -2,7 +2,11 @@
 #include "main.hpp"
 #include "plugin_utils.hpp"
 
+#include "SDK/PAWN_Hacker_Implant_classes.hpp"
+#include "SDK/MOVECONTROL_FocusableInteract_classes.hpp"
+
 using namespace uevr;
+using namespace SDK;
 
 std::unique_ptr<UEVRPlugin> g_plugin = std::make_unique<UEVRPlugin>();
 
@@ -10,9 +14,6 @@ UEVRPlugin::UEVRPlugin() {
 }
 
 UEVRPlugin::~UEVRPlugin() {
-    if (m_safe_mode)
-        return;
-
     if (m_main != nullptr) {
         m_main->~SystemShockMain();
     }
@@ -21,80 +22,16 @@ UEVRPlugin::~UEVRPlugin() {
 void UEVRPlugin::on_initialize() {
     PLUGIN_LOG_ONCE("Plugin Initializing...");
 
-    if (!m_safe_mode) {
-        // cleanup stale actors
-        SystemShockMain::cleanup_actors();
+    // cleanup stale actors
+    SystemShockMain::cleanup_actors();
 
-        m_main = new SystemShockMain();
-    }
+    m_main = new SystemShockMain();
 
-
-    //hook_bp_fn(L"BlueprintGeneratedClass /Game/Blueprints/Inventory/Items/Weapons/ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C", L"FireProjectileInDirection", (UEVR_UFunction_NativePostFn)mod_onfire_pre, NULL, false);
+    // disable player focus (camera pull) on interactable objects like vending machines
+    auto move_control = SDK::UMOVECONTROL_FocusableInteract_C::GetDefaultObj();
+    move_control->ShouldUseCharacterMovement = true;
+    move_control->IsFinishedTransitioning = true;
 }
-
-bool UEVRPlugin::hook_bp_fn(std::wstring_view class_name, std::wstring_view fn_name, UEVR_UFunction_NativePreFn pre, UEVR_UFunction_NativePostFn post, bool use_native)
-{
-    API::get()->log_info("Entering hook_bp_fn");
-    auto obj = (API::UClass*)API::get()->find_uobject(class_name);
-
-    if (obj == nullptr) {
-        API::get()->log_info("Failed to find %ls", class_name.data());
-        return false;
-    }
-
-    auto fn = obj->find_function(fn_name);
-
-    if (fn == nullptr) {
-        API::get()->log_info("Failed to find %ls", fn_name.data());
-        return false;
-    }
-
-    API::get()->log_info("getting function flags");
-    uint32_t flags = fn->get_function_flags();
-
-    if (use_native)
-    {
-        flags = flags | 0x400;
-    }
-    else
-    {
-        flags = flags & ~0x400;
-    }
-
-    API::get()->log_info("Setting function flags to 0x%08x", flags);
-    fn->set_function_flags(flags);
-
-    API::get()->log_info("Calling hook_ptr for %ls", fn_name.data());
-    return API::get()->param()->sdk->ufunction->hook_ptr((UEVR_UFunctionHandle)fn, pre, post);
-}
-
-bool UEVRPlugin::mod_onfire_pre(API::UFunction* fn, API::UObject* obj, void* locals, void* result)
-{
-    API::get()->log_info("In mod_onfire_post");
-    //if (obj != nullptr)
-    //{
-    //    const auto objname = obj->get_full_name();
-    //    API::get()->log_info("mod_onfire_post - Current Weapon: %ls", objname.c_str());
-    //}
-
-    //if (locals != nullptr)
-    //{
-    //    makeFireRequest_params* params = (makeFireRequest_params*)locals;
-    //    API::get()->log_info("%s", "Params:");
-    //    params->AimPosition = new UEVR_Vector3d(0.0, 90.0, 180.0);
-    //    API::get()->log_info("%f", params->AimPosition.x);
-    //    API::get()->log_info("%f", params->AimPosition.y);
-    //    API::get()->log_info("%f", params->AimPosition.z);
-    //}
-    //else
-    //{
-    //    API::get()->log_info("mod_onfire_post - locals is null");
-    //}
-
-    API::get()->log_info("mod_onfire_post returning false");
-    return true;
-}
-
 
 void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) {
     PLUGIN_LOG_ONCE("XInput Get State");
@@ -103,30 +40,32 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
     if (!vr->is_runtime_ready())
         return;
 
-    if (m_safe_mode)
-        return;
+    try {
+        if (m_main != nullptr) {
+            // start cb timer
+            std::chrono::steady_clock::time_point begin_time;
+            if (m_main->get_ui_option_show_debug_view() && m_cb_calls_count == 0) {
+                begin_time = std::chrono::steady_clock::now();
+            }
 
-    if (m_main != nullptr) {
-        // start cb timer
-        std::chrono::steady_clock::time_point begin_time;
-        if (m_main->get_ui_option_show_debug_view() && m_cb_calls_count == 0) {
-            begin_time = std::chrono::steady_clock::now();
+            if (!m_main->prepare_pointers()) {
+                return;
+            }
+            m_main->prepare_game_state();
+            m_main->on_xinput(state, vr);
+
+            // set it to true, so we won't process pawn again in pre_engine_tick cb
+            m_xinput_cb_processed = true;
+
+            // calculate cb duration
+            if (m_main->get_ui_option_show_debug_view() && m_cb_calls_count == 0) {
+                std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
+                m_main->set_ui_xinput_duration(static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count()));
+            }
         }
-
-        if (!m_main->prepare_pointers())
-            return;
-        m_main->prepare_state();
-        m_main->prepare_game_state();
-        m_main->on_xinput(state, vr);
-
-        // set it to true, so we won't process pawn again in pre_engine_tick cb
-        m_xinput_cb_processed = true;
-
-        // calculate cb duration
-        if (m_main->get_ui_option_show_debug_view() && m_cb_calls_count == 0) {
-            std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
-            m_main->set_ui_xinput_duration(static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count()));
-        }
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][on_xinput_get_state] Exception");
     }
 }
 
@@ -136,14 +75,6 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         const UEVR_VRData* vr = API::get()->param()->vr;
         if (!vr->is_runtime_ready())
             return;
-
-        if (m_safe_mode) {
-            if (m_try_load_assets_for_dumping) {
-                load_assets_for_dumping();
-            }
-
-            return;
-        }
 
         if (m_main != nullptr) {
             m_cb_calls_count = m_cb_calls_count < CB_DURATION_SAMPLE_RATE ? ++m_cb_calls_count : 0;
@@ -159,7 +90,6 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
             if (!m_xinput_cb_processed) {
                 if (!m_main->prepare_pointers())
                     return;
-                m_main->prepare_state();
                 m_main->prepare_game_state();
             }
             else {
@@ -180,90 +110,6 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         API::get()->log_error("[plugin][on_pre_engine_tick] Exception");
     }
 }
-
-void UEVRPlugin::load_assets_for_dumping()
-{
-    try {
-        m_try_load_assets_for_dumping = false;
-
-        auto world = SDK::UWorld::GetWorld();
-        SDK::APawn* pawn = world != nullptr ? SDK::UGameplayStatics::GetPlayerPawn(world, 0) : nullptr;
-        if (pawn == nullptr) {
-            API::get()->log_error("[plugin][load_assets_for_dumping] Invalid Pawn");
-            return;
-        }
-        API::get()->log_warn("[plugin][load_assets_for_dumping] Loading Assets");
-
-        //SDK::FAssetData vr_asset_data{
-        //    .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/VRBody.VRBody_C"),
-        //    .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/VRBody"),
-        //    .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody"),
-        //    .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"VRBody"),
-        //    .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L""),
-        //};
-
-        SDK::FAssetData vr_grab_component{
-            .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/VRTemplate/Blueprints/GrabComponent.GrabComponent_C"),
-            .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/VRTemplate/Blueprints/GrabComponent"),
-            .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/VRTemplate/GrabComponent"),
-            .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"GrabComponent"),
-            .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L""),
-        };
-        SDK::UObject* loaded_gc_asset = PluginUtils::load_asset(vr_grab_component);
-        if (loaded_gc_asset != nullptr) {
-            API::get()->log_warn("[plugin][load_assets_for_dumping] Loaded GrabComponent");
-        }
-
-        SDK::FAssetData vr_asset_data{
-            .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/BP_SSRModActor.BP_SSRModActor_C"),
-            .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/BP_SSRModActor"),
-            .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/BP_SSRModActor"),
-            .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"BP_SSRModActor"),
-            .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L""),
-        };
-
-        // keep the pointer until vr weapon init is done
-        SDK::UObject* loaded_asset = PluginUtils::load_asset(vr_asset_data);
-        if (loaded_asset != nullptr) {
-            API::get()->log_warn("[plugin][load_assets_for_dumping] Loaded VRBody");
-        }
-
-        API::get()->log_warn("[plugin][load_assets_for_dumping] Finished Loading Assets");
-    }
-    catch (...) {
-        API::get()->log_error("[plugin][load_assets_for_dumping] Error spawning ABP_SSRModActor_C");
-    }
-}
-
-void UEVRPlugin::on_pre_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int view_index, float world_to_meters,
-    UEVR_Vector3f* position, UEVR_Rotatorf* rotation, bool is_double) {
-    if (m_safe_mode)
-        return;
-
-    if (m_main != nullptr && view_index == 1) {
-        m_main->set_last_pos(position);
-        m_main->set_last_rot(rotation);
-    }
-};
-
-
-
-void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int view_index, float world_to_meters,
-    UEVR_Vector3f* position, UEVR_Rotatorf* rotation, bool is_double) {
-    if (m_safe_mode)
-        return;
-
-    if (view_index != 1) {
-        return;
-    }
-    
-    if (m_main != nullptr) {
-        m_main->apply_delta(position, rotation);
-    }
-};
-
-
-
 
 // -------------------------------------------------------------------------------------
 // ImGui
@@ -396,11 +242,7 @@ void UEVRPlugin::on_present() {
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
 
-        if (m_safe_mode) {
-            ImGui::Text("Safe Mode !!!!");
-        }
-
-        if (m_main != nullptr && !m_safe_mode) {
+        if (m_main != nullptr) {
             m_main->on_draw_imgui();
         }
 
@@ -420,11 +262,7 @@ void UEVRPlugin::on_present() {
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
 
-        if (m_safe_mode) {
-            ImGui::Text("Safe Mode !!!!");
-        }
-
-        if (m_main != nullptr && !m_safe_mode) {
+        if (m_main != nullptr) {
             m_main->on_draw_imgui();
         }
 

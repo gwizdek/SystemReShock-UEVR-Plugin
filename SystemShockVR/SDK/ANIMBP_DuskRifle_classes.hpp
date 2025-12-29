@@ -19,7 +19,7 @@ namespace SDK
 {
 
 // AnimBlueprintGeneratedClass ANIMBP_DuskRifle.ANIMBP_DuskRifle_C
-// 0x0210 (0x04D0 - 0x02C0)
+// 0x03A0 (0x0660 - 0x02C0)
 class UANIMBP_DuskRifle_C final : public UAnimInstance
 {
 public:
@@ -27,9 +27,18 @@ public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x02C0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	struct FAnimNode_Root                         AnimGraphNode_Root;                                // 0x02C8(0x0030)()
 	struct FAnimNode_CopyPoseFromMesh             AnimGraphNode_CopyPoseFromMesh;                    // 0x02F8(0x01D8)(ContainsInstancedReference)
+	struct FAnimNode_BlendListByBool              AnimGraphNode_BlendListByBool;                     // 0x04D0(0x00A0)()
+	struct FAnimNode_LayeredBoneBlend             AnimGraphNode_LayeredBoneBlend;                    // 0x0570(0x00C0)()
+	struct FAnimNode_RefPose                      AnimGraphNode_LocalRefPose;                        // 0x0630(0x0018)()
+	class USkeletalMeshComponent*                 SourceMeshComponent;                               // 0x0648(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          bUseSourceMesh;                                    // 0x0650(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          bCanUseSourceMesh;                                 // 0x0651(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
 	void AnimGraph(struct FPoseLink* AnimGraph_0);
+	void BlueprintUpdateAnimation(float DeltaTimeX);
+	void UseSourceMesh(bool Value);
+	void SetSourceMesh(class USkeletalMeshComponent* SourceMesh);
 	void ExecuteUbergraph_ANIMBP_DuskRifle(int32 EntryPoint);
 
 public:
@@ -43,10 +52,16 @@ public:
 	}
 };
 static_assert(alignof(UANIMBP_DuskRifle_C) == 0x000010, "Wrong alignment on UANIMBP_DuskRifle_C");
-static_assert(sizeof(UANIMBP_DuskRifle_C) == 0x0004D0, "Wrong size on UANIMBP_DuskRifle_C");
+static_assert(sizeof(UANIMBP_DuskRifle_C) == 0x000660, "Wrong size on UANIMBP_DuskRifle_C");
 static_assert(offsetof(UANIMBP_DuskRifle_C, UberGraphFrame) == 0x0002C0, "Member 'UANIMBP_DuskRifle_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UANIMBP_DuskRifle_C, AnimGraphNode_Root) == 0x0002C8, "Member 'UANIMBP_DuskRifle_C::AnimGraphNode_Root' has a wrong offset!");
 static_assert(offsetof(UANIMBP_DuskRifle_C, AnimGraphNode_CopyPoseFromMesh) == 0x0002F8, "Member 'UANIMBP_DuskRifle_C::AnimGraphNode_CopyPoseFromMesh' has a wrong offset!");
+static_assert(offsetof(UANIMBP_DuskRifle_C, AnimGraphNode_BlendListByBool) == 0x0004D0, "Member 'UANIMBP_DuskRifle_C::AnimGraphNode_BlendListByBool' has a wrong offset!");
+static_assert(offsetof(UANIMBP_DuskRifle_C, AnimGraphNode_LayeredBoneBlend) == 0x000570, "Member 'UANIMBP_DuskRifle_C::AnimGraphNode_LayeredBoneBlend' has a wrong offset!");
+static_assert(offsetof(UANIMBP_DuskRifle_C, AnimGraphNode_LocalRefPose) == 0x000630, "Member 'UANIMBP_DuskRifle_C::AnimGraphNode_LocalRefPose' has a wrong offset!");
+static_assert(offsetof(UANIMBP_DuskRifle_C, SourceMeshComponent) == 0x000648, "Member 'UANIMBP_DuskRifle_C::SourceMeshComponent' has a wrong offset!");
+static_assert(offsetof(UANIMBP_DuskRifle_C, bUseSourceMesh) == 0x000650, "Member 'UANIMBP_DuskRifle_C::bUseSourceMesh' has a wrong offset!");
+static_assert(offsetof(UANIMBP_DuskRifle_C, bCanUseSourceMesh) == 0x000651, "Member 'UANIMBP_DuskRifle_C::bCanUseSourceMesh' has a wrong offset!");
 
 }
 

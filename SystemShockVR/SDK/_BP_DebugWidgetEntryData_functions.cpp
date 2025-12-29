@@ -40,9 +40,10 @@ void U_BP_DebugWidgetEntryData_C::ExecuteUbergraph__BP_DebugWidgetEntryData(int3
 // Function _BP_DebugWidgetEntryData._BP_DebugWidgetEntryData_C.Init
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class FString                           DataEntry_0                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           InDataEntry                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// E_ENUM_DebugWidgetEntryType             InType                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void U_BP_DebugWidgetEntryData_C::Init(const class FString& DataEntry_0)
+void U_BP_DebugWidgetEntryData_C::Init(const class FString& InDataEntry, E_ENUM_DebugWidgetEntryType InType)
 {
 	static class UFunction* Func = nullptr;
 
@@ -51,7 +52,8 @@ void U_BP_DebugWidgetEntryData_C::Init(const class FString& DataEntry_0)
 
 	Params::_BP_DebugWidgetEntryData_C_Init Parms{};
 
-	Parms.DataEntry_0 = std::move(DataEntry_0);
+	Parms.InDataEntry = std::move(InDataEntry);
+	Parms.InType = InType;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

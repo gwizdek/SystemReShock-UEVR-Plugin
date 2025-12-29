@@ -10,34 +10,48 @@
 
 #include "Basic.hpp"
 
+#include "SlateCore_structs.hpp"
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
+
 
 namespace SDK::Params
 {
 
 // Function _WIDGET_DebugWidgetEntry._WIDGET_DebugWidgetEntry_C.ExecuteUbergraph__WIDGET_DebugWidgetEntry
-// 0x0038 (0x0038 - 0x0000)
+// 0x00E0 (0x00E0 - 0x0000)
 struct _WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_Event_bIsExpanded;                          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_Event_bIsSelected;                          // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                K2Node_Event_ListItemObject;                       // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class U_BP_DebugWidgetEntryData_C*            K2Node_DynamicCast_As_BP_Debug_Widget_Entry_Data;  // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   CallFunc_Conv_StringToText_ReturnValue;            // 0x0020(0x0018)()
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSlateColor                            K2Node_MakeStruct_SlateColor;                      // 0x0008(0x0028)()
+	E_ENUM_DebugWidgetEntryType                   Temp_byte_Variable;                                // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_Event_bIsExpanded;                          // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_Event_bIsSelected;                          // 0x0032(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_33[0x5];                                       // 0x0033(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                K2Node_Event_ListItemObject;                       // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class U_BP_DebugWidgetEntryData_C*            K2Node_DynamicCast_As_BP_Debug_Widget_Entry_Data;  // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSlateColor                            K2Node_MakeStruct_SlateColor_1;                    // 0x0050(0x0028)()
+	class FText                                   CallFunc_Conv_StringToText_ReturnValue;            // 0x0078(0x0018)()
+	struct FSlateColor                            K2Node_MakeStruct_SlateColor_2;                    // 0x0090(0x0028)()
+	struct FSlateColor                            K2Node_Select_Default;                             // 0x00B8(0x0028)()
 };
 static_assert(alignof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry) == 0x000008, "Wrong alignment on _WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry");
-static_assert(sizeof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry) == 0x000038, "Wrong size on _WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry");
+static_assert(sizeof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry) == 0x0000E0, "Wrong size on _WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry");
 static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, EntryPoint) == 0x000000, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::EntryPoint' has a wrong offset!");
-static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_Event_bIsExpanded) == 0x000004, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_Event_bIsExpanded' has a wrong offset!");
-static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_Event_bIsSelected) == 0x000005, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_Event_bIsSelected' has a wrong offset!");
-static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_Event_ListItemObject) == 0x000008, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_Event_ListItemObject' has a wrong offset!");
-static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_DynamicCast_As_BP_Debug_Widget_Entry_Data) == 0x000010, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_DynamicCast_As_BP_Debug_Widget_Entry_Data' has a wrong offset!");
-static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_DynamicCast_bSuccess) == 0x000018, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, CallFunc_Conv_StringToText_ReturnValue) == 0x000020, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::CallFunc_Conv_StringToText_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_MakeStruct_SlateColor) == 0x000008, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_MakeStruct_SlateColor' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, Temp_byte_Variable) == 0x000030, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_Event_bIsExpanded) == 0x000031, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_Event_bIsExpanded' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_Event_bIsSelected) == 0x000032, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_Event_bIsSelected' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_Event_ListItemObject) == 0x000038, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_Event_ListItemObject' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_DynamicCast_As_BP_Debug_Widget_Entry_Data) == 0x000040, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_DynamicCast_As_BP_Debug_Widget_Entry_Data' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_DynamicCast_bSuccess) == 0x000048, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_MakeStruct_SlateColor_1) == 0x000050, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_MakeStruct_SlateColor_1' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, CallFunc_Conv_StringToText_ReturnValue) == 0x000078, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::CallFunc_Conv_StringToText_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_MakeStruct_SlateColor_2) == 0x000090, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_MakeStruct_SlateColor_2' has a wrong offset!");
+static_assert(offsetof(_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry, K2Node_Select_Default) == 0x0000B8, "Member '_WIDGET_DebugWidgetEntry_C_ExecuteUbergraph__WIDGET_DebugWidgetEntry::K2Node_Select_Default' has a wrong offset!");
 
 // Function _WIDGET_DebugWidgetEntry._WIDGET_DebugWidgetEntry_C.OnListItemObjectSet
 // 0x0008 (0x0008 - 0x0000)

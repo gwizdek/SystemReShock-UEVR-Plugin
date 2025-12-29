@@ -33,15 +33,6 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MOVECONTROL_FocusableInteract_C.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneComponent.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vr_hacker_hud.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SDK\SystemReShock_classes.hpp">
       <Filter>SDK Files</Filter>
     </ClInclude>
@@ -65,9 +56,6 @@
     </ClInclude>
     <ClInclude Include="SDK\CoreUObject_structs.hpp">
       <Filter>SDK Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vr_plugin_shared.hpp">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SDK\WIDGET_MainMenu_InGame_classes.hpp">
       <Filter>SDK Files</Filter>
@@ -108,9 +96,6 @@
     <ClInclude Include="mINI\ini.h">
       <Filter>mINI</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SDK\HARDWARE_HeadLamp_classes.hpp">
       <Filter>SDK Files</Filter>
     </ClInclude>
@@ -133,6 +118,18 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="vr_body.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneComponent.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_hacker_hud.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_plugin_shared.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -162,9 +159,6 @@
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\WIDGET_HotbarSlot_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\CH_Hacker_AnimBP_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\SAVE_Settings_functions.cpp">
@@ -242,12 +236,6 @@
     <ClCompile Include="SDK\AssetRegistry_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\BP_SSRModActor_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\BP_VRBody_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
     <ClCompile Include="SDK\ITEM_ProjectileWeapon_Base_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
@@ -270,6 +258,42 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\ANIMBP_Magnum_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\ITEM_WeaponBase_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\_BP_LaserDot_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\_BP_ItemSelector_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\_BP_VRBody_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\_CH_Hacker_Rig_Skeleton_AnimBlueprint_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\PAWN_SystemShockCharacter_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\INTERACT_Button_Base_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\INTERACT_Base_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\INTERACT_Keypad_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\INTERACT_Focusable_Base_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\INTERACT_Channeling_Base_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\_BP_DebugWidgetComponent_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
   </ItemGroup>

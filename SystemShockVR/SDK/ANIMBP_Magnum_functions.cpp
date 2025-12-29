@@ -17,26 +17,6 @@
 namespace SDK
 {
 
-// Function ANIMBP_Magnum.ANIMBP_Magnum_C.ExecuteUbergraph_ANIMBP_Magnum
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UANIMBP_Magnum_C::ExecuteUbergraph_ANIMBP_Magnum(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ANIMBP_Magnum_C", "ExecuteUbergraph_ANIMBP_Magnum");
-
-	Params::ANIMBP_Magnum_C_ExecuteUbergraph_ANIMBP_Magnum Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function ANIMBP_Magnum.ANIMBP_Magnum_C.AnimGraph
 // (HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -55,6 +35,26 @@ void UANIMBP_Magnum_C::AnimGraph(struct FPoseLink* AnimGraph_0)
 
 	if (AnimGraph_0 != nullptr)
 		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
+}
+
+
+// Function ANIMBP_Magnum.ANIMBP_Magnum_C.ExecuteUbergraph_ANIMBP_Magnum
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UANIMBP_Magnum_C::ExecuteUbergraph_ANIMBP_Magnum(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ANIMBP_Magnum_C", "ExecuteUbergraph_ANIMBP_Magnum");
+
+	Params::ANIMBP_Magnum_C_ExecuteUbergraph_ANIMBP_Magnum Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

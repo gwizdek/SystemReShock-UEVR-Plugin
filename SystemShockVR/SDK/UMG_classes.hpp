@@ -3948,7 +3948,7 @@ static_assert(sizeof(UWidgetBlueprintLibrary) == 0x000028, "Wrong size on UWidge
 
 // Class UMG.WidgetComponent
 // 0x0120 (0x05A0 - 0x0480)
-class UWidgetComponent final : public UMeshComponent
+class UWidgetComponent : public UMeshComponent
 {
 public:
 	EWidgetSpace                                  Space;                                             // 0x0478(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)

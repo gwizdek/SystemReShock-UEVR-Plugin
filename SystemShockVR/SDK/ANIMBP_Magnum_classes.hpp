@@ -29,8 +29,8 @@ public:
 	struct FAnimNode_CopyPoseFromMesh             AnimGraphNode_CopyPoseFromMesh;                    // 0x02F8(0x01D8)(ContainsInstancedReference)
 
 public:
-	void ExecuteUbergraph_ANIMBP_Magnum(int32 EntryPoint);
 	void AnimGraph(struct FPoseLink* AnimGraph_0);
+	void ExecuteUbergraph_ANIMBP_Magnum(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()

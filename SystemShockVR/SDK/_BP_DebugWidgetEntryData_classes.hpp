@@ -11,6 +11,7 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 #include "CoreUObject_classes.hpp"
 
 
@@ -18,16 +19,17 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_DebugWidgetEntryData._BP_DebugWidgetEntryData_C
-// 0x0018 (0x0040 - 0x0028)
+// 0x0020 (0x0048 - 0x0028)
 class U_BP_DebugWidgetEntryData_C final : public UObject
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0028(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	class FString                                 DataEntry;                                         // 0x0030(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, HasGetValueTypeHash)
+	E_ENUM_DebugWidgetEntryType                   Type;                                              // 0x0040(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_DebugWidgetEntryData(int32 EntryPoint);
-	void Init(const class FString& DataEntry_0);
+	void Init(const class FString& InDataEntry, E_ENUM_DebugWidgetEntryType InType);
 
 public:
 	static class UClass* StaticClass()
@@ -40,9 +42,10 @@ public:
 	}
 };
 static_assert(alignof(U_BP_DebugWidgetEntryData_C) == 0x000008, "Wrong alignment on U_BP_DebugWidgetEntryData_C");
-static_assert(sizeof(U_BP_DebugWidgetEntryData_C) == 0x000040, "Wrong size on U_BP_DebugWidgetEntryData_C");
+static_assert(sizeof(U_BP_DebugWidgetEntryData_C) == 0x000048, "Wrong size on U_BP_DebugWidgetEntryData_C");
 static_assert(offsetof(U_BP_DebugWidgetEntryData_C, UberGraphFrame) == 0x000028, "Member 'U_BP_DebugWidgetEntryData_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(U_BP_DebugWidgetEntryData_C, DataEntry) == 0x000030, "Member 'U_BP_DebugWidgetEntryData_C::DataEntry' has a wrong offset!");
+static_assert(offsetof(U_BP_DebugWidgetEntryData_C, Type) == 0x000040, "Member 'U_BP_DebugWidgetEntryData_C::Type' has a wrong offset!");
 
 }
 

@@ -332,6 +332,39 @@ void VRWeapon::set_laser_pointer_visibility(bool visible) {
     }
 }
 
+void VRWeapon::attach_laser_pointer() {
+    try {
+        API::get()->log_warn("[vr_weapon][attach_laser_pointer] Attaching Laser Sight");
+        if (m_laser_sight_component != nullptr && m_vr_body != nullptr && m_equipped_weapon != nullptr) {
+
+            SDK::UMeshComponent* weapon_mesh{ nullptr };
+            m_equipped_weapon->GetWeaponMeshComponent(&weapon_mesh);
+
+            if (weapon_mesh != nullptr) {
+                m_laser_sight_component->K2_AttachToComponent(
+                    weapon_mesh,
+                    m_equipped_weapon->BarrelSocketName,
+                    SDK::EAttachmentRule::SnapToTarget,
+                    SDK::EAttachmentRule::KeepRelative,
+                    SDK::EAttachmentRule::KeepRelative,
+                    true
+                );
+            }
+            else {
+                API::get()->log_error("[vr_weapon][attach_laser_pointer] Invalid Weapon Mesh");
+            }
+            API::get()->log_warn("[vr_weapon][attach_laser_pointer] Laset Sight attached to Weapon");
+        }
+        else {
+            API::get()->log_error("[vr_weapon][attach_laser_pointer] Invalid Pointers");
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[vr_weapon][attach_laser_pointer] Exception");
+    }
+}
+
+
 void VRWeapon::spawn_laser_pointer() {
 
     try {
@@ -387,21 +420,17 @@ void VRWeapon::spawn_laser_pointer() {
         }
 
         m_vr_body->get_bp_actor()->FinishAddComponent(m_laser_sight_component, false, laser_sight_zero_transform);
-
-        m_laser_sight_component->SetAsset(simple_laser_ns, true);
+        
+        m_laser_sight_component->SetAsset(simple_laser_ns, false);
         m_laser_sight_component->ReinitializeSystem();
         m_laser_sight_component->SetRenderInMainPass(true);
 
-        API::get()->log_warn("[vr_weapon][spawn_laser_pointer] Setting up Laset Sight");
-        m_laser_sight_component->K2_AttachToComponent(
-            m_vr_body->get_right_controller(),
-            SDK::UKismetStringLibrary::Conv_StringToName(L"None"),
-            SDK::EAttachmentRule::SnapToTarget,
-            SDK::EAttachmentRule::KeepRelative,
-            SDK::EAttachmentRule::KeepRelative,
-            true
-        );
-        API::get()->log_warn("[vr_weapon][spawn_laser_pointer] Laset Sight attached to RH Controller");
+        //m_laser_sight_component->SetNiagaraVariableInt(L"User.LaserTarget", 56);
+        //m_laser_sight_component->SetNiagaraVariableInt(L"User.TraceStartOffset", 100);
+        //m_laser_sight_component->SetNiagaraVariableInt(L"User.LaserPower", 100);
+        //m_laser_sight_component->SetNiagaraVariableInt(L"User.LaserColor", 50);
+
+
 
         //SDK::FTransform laser_dot_zero_transform{
         //    .Rotation = { 0.f, 0.f, 0.f, 1.f },
@@ -528,8 +557,8 @@ void VRWeapon::on_draw_imgui() {
             ImGui::BeginGroup();
             ImGui::BeginDisabled();
 
-            ImGui::InputText("Name", (m_equipped_weapon != nullptr) ? (char*)m_equipped_weapon->GetName().c_str() : (char*)"Unknown", 20);
-            ImGui::InputText("Type", (char*)VRWeaponTypeName[m_weapon_type], 20);
+            //ImGui::InputText("Name", (m_equipped_weapon != nullptr) ? (char*)m_equipped_weapon->GetName().c_str() : (char*)"Unknown", 20);
+            //ImGui::InputText("Type", (char*)VRWeaponTypeName[m_weapon_type], 20);
 
             //if (m_weapon_type == WEAPON_TYPE_RANGED) {
             //    SDK::FVector aiming_direction = static_cast<SDK::URangedMode*>(m_equipped_weapon->GetCurrentMode())->GetAimingDirection();
