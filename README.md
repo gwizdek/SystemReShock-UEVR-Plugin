@@ -1,7 +1,7 @@
 # SystemReShock UEVR Plugin
   
 > [!WARNING]
-> The profile doesn't work with the Demo version of the game available on Steam
+> The profile doesn't work with the GOG version and the Demo version of the game
 
 > [!WARNING]
 > Windows Defender doesn't like the `SystemReShockVR.dll` file included inside the profile v1.4.0.
