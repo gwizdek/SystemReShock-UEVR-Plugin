@@ -10,48 +10,55 @@
 
 #include "Basic.hpp"
 
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
-#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_VRBody._BP_VRBody_C
-// 0x00D0 (0x02F0 - 0x0220)
+// 0x0100 (0x0320 - 0x0220)
 class A_BP_VRBody_C final : public AActor
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0220(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class USphereComponent*                       MCDebugSphereLeft;                                 // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USphereComponent*                       WristDebugSphereRight;                             // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USphereComponent*                       WristDebugSphereLeft;                              // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class U_BP_GrabEnablingComponent_C*           GrabEnablingComponentRight;                        // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class U_BP_GrabEnablingComponent_C*           GrabEnablingComponentLeft;                         // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UMotionControllerComponent*             MotionControllerLeft;                              // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UMotionControllerComponent*             MotionControllerRight;                             // 0x0258(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class U_BP_HandInteractionComponent_C*        HandInteractionLeft;                               // 0x0260(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class U_BP_DebugWidgetComponent_C*            DebugWidgetComponent;                              // 0x0268(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class U_BP_HandInteractionComponent_C*        HandInteractionRight;                              // 0x0270(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UWidgetComponent*                       MinimapWidgetComponent;                            // 0x0278(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USceneComponent*                        WristOffsetRight;                                  // 0x0280(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USceneComponent*                        WristOffsetLeft;                                   // 0x0288(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UWidgetInteractionComponent*            WidgetInteractionRight;                            // 0x0290(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USkeletalMeshComponent*                 VRBodyMesh;                                        // 0x0298(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USceneComponent*                        DefaultSceneRoot;                                  // 0x02A0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Implant_C*                 HackerPawn;                                        // 0x02A8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class A_BP_LaserDot_C*                        LaserDot;                                          // 0x02B0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class A_BP_ItemSelector_C*                    ItemSelectorRight;                                 // 0x02B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class A_BP_ItemSelector_C*                    ItemSelectorLeft;                                  // 0x02C0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMulticastInlineDelegate<void()>              VRBodyInitialized;                                 // 0x02C8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
-	class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C* AnimBP;                                            // 0x02D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class U_BP_InteractionSourceComponent_C*> WeaponInteractionSources;                          // 0x02E0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
+	class USceneComponent*                        UEVRCameraAttachComponent;                         // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class U_BP_VRMovementComponent_C*             VRMovementComponent;                               // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        HMDComponent;                                      // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USphereComponent*                       MCDebugSphereLeft;                                 // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USphereComponent*                       WristDebugSphereRight;                             // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USphereComponent*                       WristDebugSphereLeft;                              // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class U_BP_GrabEnablingComponent_C*           GrabEnablingComponentRight;                        // 0x0258(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class U_BP_GrabEnablingComponent_C*           GrabEnablingComponentLeft;                         // 0x0260(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UMotionControllerComponent*             MotionControllerLeft;                              // 0x0268(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UMotionControllerComponent*             MotionControllerRight;                             // 0x0270(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class U_BP_HandInteractionComponent_C*        HandInteractionLeft;                               // 0x0278(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class U_BP_DebugWidgetComponent_C*            DebugWidgetComponent;                              // 0x0280(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class U_BP_HandInteractionComponent_C*        HandInteractionRight;                              // 0x0288(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       MinimapWidgetComponent;                            // 0x0290(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        WristOffsetRight;                                  // 0x0298(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        WristOffsetLeft;                                   // 0x02A0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetInteractionComponent*            WidgetInteractionRight;                            // 0x02A8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 VRBodyMesh;                                        // 0x02B0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        DefaultSceneRoot;                                  // 0x02B8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Implant_C*                 HackerPawn;                                        // 0x02C0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class A_BP_LaserDot_C*                        LaserDot;                                          // 0x02C8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class A_BP_ItemSelector_C*                    ItemSelectorRight;                                 // 0x02D0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class A_BP_ItemSelector_C*                    ItemSelectorLeft;                                  // 0x02D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMulticastInlineDelegate<void()>              VRBodyInitialized;                                 // 0x02E0(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C* AnimBP;                                            // 0x02F0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class U_BP_InteractionSourceComponent_C*> WeaponInteractionSources;                          // 0x02F8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
+	bool                                          ShowTick;                                          // 0x0308(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_309[0x7];                                      // 0x0309(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class AActor*>                         IgnoredActors;                                     // 0x0310(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
 
 public:
 	void ExecuteUbergraph__BP_VRBody(int32 EntryPoint);
+	void ReceiveTick(float DeltaSeconds);
 	void CustomEvent_WeaponHolstered(class UITEM_WeaponBase_C* Weapon);
 	void CustomEvent_WeaponDrawn(class UITEM_WeaponBase_C* Weapon);
 	void CustomEvent_WeaponChanged(class UITEM_WeaponBase_C* EquippedWeapon);
@@ -70,6 +77,9 @@ public:
 	void GetWeaponAnimInstance(class UITEM_WeaponBase_C* InWeapon, class UAnimInstance** OutAnimInstance);
 	void GetNearestWeaponInteractionSource(class UMotionControllerComponent* MotionController, class U_BP_InteractionSourceComponent_C** OutInteractionSource, float* Distance);
 	void DestroyAllWeaponInteractionSources();
+	class UCOMP_HackerInventory_C* GetHackerInventory();
+	void GetHackerMoveControlManager(class UCOMP_MoveControlManager_C** COMP_MoveControlManager);
+	void AttachLaserPointer(E_ENUM_VRHand InHand, bool InAttachToCurrentWeapon);
 
 public:
 	static class UClass* StaticClass()
@@ -82,31 +92,36 @@ public:
 	}
 };
 static_assert(alignof(A_BP_VRBody_C) == 0x000008, "Wrong alignment on A_BP_VRBody_C");
-static_assert(sizeof(A_BP_VRBody_C) == 0x0002F0, "Wrong size on A_BP_VRBody_C");
+static_assert(sizeof(A_BP_VRBody_C) == 0x000320, "Wrong size on A_BP_VRBody_C");
 static_assert(offsetof(A_BP_VRBody_C, UberGraphFrame) == 0x000220, "Member 'A_BP_VRBody_C::UberGraphFrame' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, MCDebugSphereLeft) == 0x000228, "Member 'A_BP_VRBody_C::MCDebugSphereLeft' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, WristDebugSphereRight) == 0x000230, "Member 'A_BP_VRBody_C::WristDebugSphereRight' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, WristDebugSphereLeft) == 0x000238, "Member 'A_BP_VRBody_C::WristDebugSphereLeft' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, GrabEnablingComponentRight) == 0x000240, "Member 'A_BP_VRBody_C::GrabEnablingComponentRight' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, GrabEnablingComponentLeft) == 0x000248, "Member 'A_BP_VRBody_C::GrabEnablingComponentLeft' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, MotionControllerLeft) == 0x000250, "Member 'A_BP_VRBody_C::MotionControllerLeft' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, MotionControllerRight) == 0x000258, "Member 'A_BP_VRBody_C::MotionControllerRight' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, HandInteractionLeft) == 0x000260, "Member 'A_BP_VRBody_C::HandInteractionLeft' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, DebugWidgetComponent) == 0x000268, "Member 'A_BP_VRBody_C::DebugWidgetComponent' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, HandInteractionRight) == 0x000270, "Member 'A_BP_VRBody_C::HandInteractionRight' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, MinimapWidgetComponent) == 0x000278, "Member 'A_BP_VRBody_C::MinimapWidgetComponent' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, WristOffsetRight) == 0x000280, "Member 'A_BP_VRBody_C::WristOffsetRight' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, WristOffsetLeft) == 0x000288, "Member 'A_BP_VRBody_C::WristOffsetLeft' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, WidgetInteractionRight) == 0x000290, "Member 'A_BP_VRBody_C::WidgetInteractionRight' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, VRBodyMesh) == 0x000298, "Member 'A_BP_VRBody_C::VRBodyMesh' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, DefaultSceneRoot) == 0x0002A0, "Member 'A_BP_VRBody_C::DefaultSceneRoot' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, HackerPawn) == 0x0002A8, "Member 'A_BP_VRBody_C::HackerPawn' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, LaserDot) == 0x0002B0, "Member 'A_BP_VRBody_C::LaserDot' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, ItemSelectorRight) == 0x0002B8, "Member 'A_BP_VRBody_C::ItemSelectorRight' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, ItemSelectorLeft) == 0x0002C0, "Member 'A_BP_VRBody_C::ItemSelectorLeft' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, VRBodyInitialized) == 0x0002C8, "Member 'A_BP_VRBody_C::VRBodyInitialized' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, AnimBP) == 0x0002D8, "Member 'A_BP_VRBody_C::AnimBP' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, WeaponInteractionSources) == 0x0002E0, "Member 'A_BP_VRBody_C::WeaponInteractionSources' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, UEVRCameraAttachComponent) == 0x000228, "Member 'A_BP_VRBody_C::UEVRCameraAttachComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, VRMovementComponent) == 0x000230, "Member 'A_BP_VRBody_C::VRMovementComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, HMDComponent) == 0x000238, "Member 'A_BP_VRBody_C::HMDComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, MCDebugSphereLeft) == 0x000240, "Member 'A_BP_VRBody_C::MCDebugSphereLeft' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, WristDebugSphereRight) == 0x000248, "Member 'A_BP_VRBody_C::WristDebugSphereRight' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, WristDebugSphereLeft) == 0x000250, "Member 'A_BP_VRBody_C::WristDebugSphereLeft' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, GrabEnablingComponentRight) == 0x000258, "Member 'A_BP_VRBody_C::GrabEnablingComponentRight' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, GrabEnablingComponentLeft) == 0x000260, "Member 'A_BP_VRBody_C::GrabEnablingComponentLeft' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, MotionControllerLeft) == 0x000268, "Member 'A_BP_VRBody_C::MotionControllerLeft' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, MotionControllerRight) == 0x000270, "Member 'A_BP_VRBody_C::MotionControllerRight' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, HandInteractionLeft) == 0x000278, "Member 'A_BP_VRBody_C::HandInteractionLeft' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, DebugWidgetComponent) == 0x000280, "Member 'A_BP_VRBody_C::DebugWidgetComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, HandInteractionRight) == 0x000288, "Member 'A_BP_VRBody_C::HandInteractionRight' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, MinimapWidgetComponent) == 0x000290, "Member 'A_BP_VRBody_C::MinimapWidgetComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, WristOffsetRight) == 0x000298, "Member 'A_BP_VRBody_C::WristOffsetRight' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, WristOffsetLeft) == 0x0002A0, "Member 'A_BP_VRBody_C::WristOffsetLeft' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, WidgetInteractionRight) == 0x0002A8, "Member 'A_BP_VRBody_C::WidgetInteractionRight' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, VRBodyMesh) == 0x0002B0, "Member 'A_BP_VRBody_C::VRBodyMesh' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, DefaultSceneRoot) == 0x0002B8, "Member 'A_BP_VRBody_C::DefaultSceneRoot' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, HackerPawn) == 0x0002C0, "Member 'A_BP_VRBody_C::HackerPawn' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, LaserDot) == 0x0002C8, "Member 'A_BP_VRBody_C::LaserDot' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, ItemSelectorRight) == 0x0002D0, "Member 'A_BP_VRBody_C::ItemSelectorRight' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, ItemSelectorLeft) == 0x0002D8, "Member 'A_BP_VRBody_C::ItemSelectorLeft' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, VRBodyInitialized) == 0x0002E0, "Member 'A_BP_VRBody_C::VRBodyInitialized' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, AnimBP) == 0x0002F0, "Member 'A_BP_VRBody_C::AnimBP' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, WeaponInteractionSources) == 0x0002F8, "Member 'A_BP_VRBody_C::WeaponInteractionSources' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, ShowTick) == 0x000308, "Member 'A_BP_VRBody_C::ShowTick' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, IgnoredActors) == 0x000310, "Member 'A_BP_VRBody_C::IgnoredActors' has a wrong offset!");
 
 }
 

@@ -18,21 +18,27 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_ItemSelector._BP_ItemSelector_C
-// 0x0060 (0x0280 - 0x0220)
+// 0x0090 (0x02B0 - 0x0220)
 class A_BP_ItemSelector_C final : public AActor
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0220(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UWidgetComponent*                       HotbarSlot1;                                       // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UWidgetComponent*                       HotbarSlot0;                                       // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UWidgetComponent*                       HotbarSlot3;                                       // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UWidgetComponent*                       HotbarSlot2;                                       // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USceneComponent*                        HotbarContainer;                                   // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	TArray<class UWidgetComponent*>               HotbarSlots;                                       // 0x0258(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
-	class UMotionControllerComponent*             MotionController;                                  // 0x0268(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class U_BP_HandInteractionComponent_C*        InteractionComponent;                              // 0x0270(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWidgetComponent*                       SelectedHotbarSlot;                                // 0x0278(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot9;                                       // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot8;                                       // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot7;                                       // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot6;                                       // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot5;                                       // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot4;                                       // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot3;                                       // 0x0258(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot2;                                       // 0x0260(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot1;                                       // 0x0268(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       HotbarSlot0;                                       // 0x0270(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        HotbarContainer;                                   // 0x0278(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0280(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	TArray<class UWidgetComponent*>               HotbarSlots;                                       // 0x0288(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
+	class UMotionControllerComponent*             MotionController;                                  // 0x0298(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class U_BP_HandInteractionComponent_C*        InteractionComponent;                              // 0x02A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWidgetComponent*                       SelectedHotbarSlot;                                // 0x02A8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_ItemSelector(int32 EntryPoint);
@@ -52,18 +58,24 @@ public:
 	}
 };
 static_assert(alignof(A_BP_ItemSelector_C) == 0x000008, "Wrong alignment on A_BP_ItemSelector_C");
-static_assert(sizeof(A_BP_ItemSelector_C) == 0x000280, "Wrong size on A_BP_ItemSelector_C");
+static_assert(sizeof(A_BP_ItemSelector_C) == 0x0002B0, "Wrong size on A_BP_ItemSelector_C");
 static_assert(offsetof(A_BP_ItemSelector_C, UberGraphFrame) == 0x000220, "Member 'A_BP_ItemSelector_C::UberGraphFrame' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot1) == 0x000228, "Member 'A_BP_ItemSelector_C::HotbarSlot1' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot0) == 0x000230, "Member 'A_BP_ItemSelector_C::HotbarSlot0' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot3) == 0x000238, "Member 'A_BP_ItemSelector_C::HotbarSlot3' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot2) == 0x000240, "Member 'A_BP_ItemSelector_C::HotbarSlot2' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, HotbarContainer) == 0x000248, "Member 'A_BP_ItemSelector_C::HotbarContainer' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, DefaultSceneRoot) == 0x000250, "Member 'A_BP_ItemSelector_C::DefaultSceneRoot' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlots) == 0x000258, "Member 'A_BP_ItemSelector_C::HotbarSlots' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, MotionController) == 0x000268, "Member 'A_BP_ItemSelector_C::MotionController' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, InteractionComponent) == 0x000270, "Member 'A_BP_ItemSelector_C::InteractionComponent' has a wrong offset!");
-static_assert(offsetof(A_BP_ItemSelector_C, SelectedHotbarSlot) == 0x000278, "Member 'A_BP_ItemSelector_C::SelectedHotbarSlot' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot9) == 0x000228, "Member 'A_BP_ItemSelector_C::HotbarSlot9' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot8) == 0x000230, "Member 'A_BP_ItemSelector_C::HotbarSlot8' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot7) == 0x000238, "Member 'A_BP_ItemSelector_C::HotbarSlot7' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot6) == 0x000240, "Member 'A_BP_ItemSelector_C::HotbarSlot6' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot5) == 0x000248, "Member 'A_BP_ItemSelector_C::HotbarSlot5' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot4) == 0x000250, "Member 'A_BP_ItemSelector_C::HotbarSlot4' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot3) == 0x000258, "Member 'A_BP_ItemSelector_C::HotbarSlot3' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot2) == 0x000260, "Member 'A_BP_ItemSelector_C::HotbarSlot2' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot1) == 0x000268, "Member 'A_BP_ItemSelector_C::HotbarSlot1' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot0) == 0x000270, "Member 'A_BP_ItemSelector_C::HotbarSlot0' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarContainer) == 0x000278, "Member 'A_BP_ItemSelector_C::HotbarContainer' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, DefaultSceneRoot) == 0x000280, "Member 'A_BP_ItemSelector_C::DefaultSceneRoot' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlots) == 0x000288, "Member 'A_BP_ItemSelector_C::HotbarSlots' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, MotionController) == 0x000298, "Member 'A_BP_ItemSelector_C::MotionController' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, InteractionComponent) == 0x0002A0, "Member 'A_BP_ItemSelector_C::InteractionComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, SelectedHotbarSlot) == 0x0002A8, "Member 'A_BP_ItemSelector_C::SelectedHotbarSlot' has a wrong offset!");
 
 }
 

@@ -37,6 +37,20 @@ void A_BP_LaserDot_C::ExecuteUbergraph__BP_LaserDot(int32 EntryPoint)
 }
 
 
+// Function _BP_LaserDot._BP_LaserDot_C.EventDisableLaserDot
+// (BlueprintCallable, BlueprintEvent)
+
+void A_BP_LaserDot_C::EventDisableLaserDot()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_LaserDot_C", "EventDisableLaserDot");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function _BP_LaserDot._BP_LaserDot_C.ReceiveTick
 // (Event, Public, BlueprintEvent)
 // Parameters:
@@ -182,6 +196,30 @@ void A_BP_LaserDot_C::AttachTo(class USceneComponent* InParent, class FName InSo
 
 	Parms.InParent = InParent;
 	Parms.InSocketName = InSocketName;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_LaserDot._BP_LaserDot_C.SetVisibility
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Dot                                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    beam                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// float                                   DisableAfter                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_LaserDot_C::SetVisibility(bool Dot, bool beam, float DisableAfter)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_LaserDot_C", "SetVisibility");
+
+	Params::_BP_LaserDot_C_SetVisibility Parms{};
+
+	Parms.Dot = Dot;
+	Parms.beam = beam;
+	Parms.DisableAfter = DisableAfter;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

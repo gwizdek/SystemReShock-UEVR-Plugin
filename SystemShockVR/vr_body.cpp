@@ -5,6 +5,8 @@
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
 #include "SDK/WIDGET_HotbarSlot_classes.hpp"
+#include "SDK/COMP_MoveControlManager_classes.hpp"
+#include "SDK/CH_Hacker_AnimBP_classes.hpp"
 
 #include "SDK/_BI_VRWeapon_classes.hpp"
 #include "SDK/_CH_Hacker_Rig_Skeleton_AnimBlueprint_classes.hpp"
@@ -149,9 +151,21 @@ void VRBody::initialize() {
         FHitResult SweepHitResult{};
         // move vr actor down to the bottom of the collision capsule
         m_bp_actor->K2_GetRootComponent()->K2_SetRelativeLocation({ 0.0f, 0.0f, -80.0f }, false, &SweepHitResult, false);
-
         API::get()->log_warn("[vrbody][initialize] Attached to Hacker's root component");
 
+
+        // HMDComponent tracks UEVR Camera offset to RootComponent (our VROrigin)
+        auto hmd_state = API::UObjectHook::get_or_add_motion_controller_state((API::UObject*)m_bp_actor->HMDComponent);
+        if (hmd_state == nullptr) {
+            API::get()->log_error("[vrbody][initialize] Failed to hook HMD motion controller component");
+            return;
+        }
+        hmd_state->set_hand(2);
+        hmd_state->set_permanent(true);
+        API::get()->log_warn("[vrbody][initialize] Hooked HMD motion controller component");
+
+
+        // Re-Attach Hacker Hardware
         static_cast<APAWN_Hacker_Implant_C*>(pawn)->MediaReaderMesh->K2_AttachToComponent(
             m_bp_actor->VRBodyMesh,
             UKismetStringLibrary::Conv_StringToName(L"LeftForeArmRoll1"),
@@ -160,41 +174,14 @@ void VRBody::initialize() {
             EAttachmentRule::KeepWorld,
             true
         );
-
-
         static_cast<APAWN_Hacker_Implant_C*>(pawn)->MediaReaderMesh->K2_SetRelativeLocationAndRotation(
             { 7.f, 3.f, 0.5f }, { 0.f, 3.f, 77.f }, false, &SweepHitResult, false
         );
         API::get()->log_warn("[vrbody][initialize] Attached Media Reader");
 
-        
-        //m_bp_actor->VRBodyMesh->SetCollisionEnabled(SDK::ECollisionEnabled::QueryOnly);
-        //m_bp_actor->VRBodyMesh->SetCollisionObjectType(SDK::ECollisionChannel::ECC_Pawn);
-        /*pawn->ArmsMesh->SetCollisionEnabled(SDK::ECollisionEnabled::NoCollision);
-        pawn->WeaponMesh->SetCollisionEnabled(SDK::ECollisionEnabled::NoCollision);*/
-
         initialize_main_item_selector();
         initialize_laser_dot();
-        //API::get()->log_warn("[vrbody][initialize] Set GrabObjectTypes");
-        //TArray<EObjectTypeQuery> grab_object_types{};
-
-        //grab_object_types.Data = (EObjectTypeQuery*)API::FMalloc::get()->malloc(1 * sizeof(EObjectTypeQuery));
-        //grab_object_types.NumElements = 1;
-        //grab_object_types.MaxElements = 1;
-        //grab_object_types[0] = EObjectTypeQuery::ObjectTypeQuery17;
-
-
-        //m_bp_actor->GrabObjectTypes = grab_object_types;
-
-        //set_player_response_to_collision_channel(
-        //    ECollisionChannel::ECC_GameTraceChannel3,
-        //    ECollisionResponse::ECR_Ignore
-        //);
-
-
-        //attach_grab_components();
-        //m_vr_weapon->initialize();
-
+        overwrite_hacker_crouch_animations();
     }
     catch (...) {
         API::get()->log_error("[vrbody][initialize] Exception");
@@ -235,12 +222,6 @@ void VRBody::initialize_main_item_selector() {
         API::get()->log_warn("[vrbody][initialize_main_item_selector] Initialize HotbarSlots");
         auto neural_hud = m_main->get_neural_hud();
 
-        auto PANEL_HotbarSlots = neural_hud->HotbarSlots[1]->Slot->Parent;
-        if (PANEL_HotbarSlots == nullptr) {
-            API::get()->log_error("[vrbody][initialize_main_item_selector] Can't store PANEL_HotbarSlots");
-            return;
-        }
-
         // get prepared in UE Editor hotbar slot array 
         auto hotbar_slots = m_bp_actor->ItemSelectorRight->HotbarSlots;
 
@@ -248,7 +229,7 @@ void VRBody::initialize_main_item_selector() {
         std::array<SDK::UCanvasPanelSlot*, 4> canvas_panel_slots{};
 
         API::get()->log_warn("[vrbody][initialize_main_item_selector] #0");
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             canvas_panel_slots[i] = (SDK::UCanvasPanelSlot*)neural_hud->HotbarSlots[i]->Slot;
             canvas_panel_slots[i]->SetAlignment({ 0.5f, 0.5f });
             canvas_panel_slots[i]->SetAnchors(SDK::FAnchors{ {0.5f, 0.5f}, {0.5f, 0.5f} });
@@ -258,7 +239,7 @@ void VRBody::initialize_main_item_selector() {
     
             API::get()->log_warn("[vrbody][initialize_main_item_selector] #2");
             // 150.f seems to be the correct size
-            hotbar_slots[i]->SetDrawSize({ 120.0f, 120.0f });
+            hotbar_slots[i]->SetDrawSize({ 100.0f, 104.0f });
             hotbar_slots[i]->SetVisibility(false, false);
             hotbar_slots[i]->SetHiddenInGame(true, true);
 
@@ -268,22 +249,24 @@ void VRBody::initialize_main_item_selector() {
             hotbar_slots[i]->SetCollisionEnabled(SDK::ECollisionEnabled::QueryOnly);
             hotbar_slots[i]->SetCollisionObjectType(item_selector_collision_channel);
             hotbar_slots[i]->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
-            hotbar_slots[i]->SetCollisionResponseToChannel(
-                item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
-            );
+            //hotbar_slots[i]->SetCollisionResponseToChannel(
+            //    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
+            //);
             API::get()->log_warn("[vrbody][initialize_main_item_selector] #4");
             canvas_panel_slots[i]->SetAlignment({ 0.5f, 1.f });
             canvas_panel_slots[i]->SetAnchors(SDK::FAnchors{ {0.5f, 1.f}, {0.5f, 1.f} });
 
             auto material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
-                //L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Translucent.Widget3DPassThrough_Translucent"
-                L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Opaque.Widget3DPassThrough_Opaque"
+                L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Translucent.Widget3DPassThrough_Translucent"
+                //L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Opaque.Widget3DPassThrough_Opaque"
             );
-            SDK::FLinearColor color{ 0.2f, 0.2f, 0.2f, 0.2f };
+            SDK::FLinearColor color{ 0.1f, 0.1f, 0.1f, 1.0f };
             hotbar_slots[i]->SetMaterial(0, material);
             hotbar_slots[i]->SetTintColorAndOpacity(color);
 
             neural_hud->HotbarSlots[i]->UpdateHotbarSlot();
+
+            set_primary_item_selector_visibility(false);
             API::get()->log_warn("[vrbody][initialize_main_item_selector] #5");
         }
 
@@ -370,11 +353,10 @@ void VRBody::set_primary_item_selector_visibility(bool visible) {
 
     hacker_implant_pawn->WeaponMesh->SetVisibility(!visible, true);
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 10; i++) {
         if (m_bp_actor->ItemSelectorRight->HotbarSlots[i] != nullptr) {
-            m_bp_actor->ItemSelectorRight->HotbarSlots[i]->SetVisibility(visible, visible);
-            m_bp_actor->ItemSelectorRight->HotbarSlots[i]->SetHiddenInGame(!visible, !visible);
-            set_hotbar_slot_visibility(i, visible);
+            m_bp_actor->ItemSelectorRight->HotbarSlots[i]->SetVisibility(visible, true);
+            m_bp_actor->ItemSelectorRight->HotbarSlots[i]->SetHiddenInGame(!visible, true);
 
             m_bp_actor->ItemSelectorRight->HotbarSlots[i]->SetCollisionResponseToChannel(
                 item_selector_collision_channel, visible ? SDK::ECollisionResponse::ECR_Block : SDK::ECollisionResponse::ECR_Ignore
@@ -393,7 +375,7 @@ void VRBody::unselect_all_hotbar_slots() {
         if (m_main == nullptr || m_main->get_neural_hud() == nullptr)
             return;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             m_main->get_neural_hud()->HotbarSlots[i]->SetIsCurrentQuickSlot(false);
         }
         //API::get()->log_warn("[vrbody][unselect_all_hotbar_slots] End");
@@ -403,232 +385,24 @@ void VRBody::unselect_all_hotbar_slots() {
     }
 }
 
-void VRBody::attach_grab_components() {
-    //try {
-    //    API::get()->log_warn("[vrbody][attach_grab_components] Searching for pickups");
-    //    // Set what actors to seek out from it's collision channel
-    //    TArray<EObjectTypeQuery> traceObjectTypes;
-    //    TArray<EObjectTypeQuery> object_types{};
-    //    API::get()->log_info("VRHackerHUD :: Adding type");
-    //    object_types.Add(EObjectTypeQuery::ObjectTypeQuery32);
-    //    API::get()->log_info("VRHackerHUD :: Added type");
-    //    //object_types.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_GameTraceChannel18));
+void VRBody::overwrite_hacker_crouch_animations() {
+    API::get()->log_warn("[vrbody][override_hacker_walk_animations] Start");
 
-    //    //UClass* component_class_filter{ APICKUP_Base_C::StaticClass() };
-    //    UClass* component_class_filter{ UStaticMeshComponent::StaticClass() };
-    //    const TArray<AActor*>& actors_to_ignore{};
-    //    TArray<UPrimitiveComponent*> out_components{};
-    //    auto world = UWorld::GetWorld();
-    //    // get overlapping components
-    //    const bool result = UKismetSystemLibrary::SphereOverlapComponents(
-    //        world,
-    //        m_bp_actor->VRBodyMesh->K2_GetComponentLocation(),
-    //        500.f,
-    //        object_types,
-    //        component_class_filter,
-    //        actors_to_ignore,
-    //        &out_components
-    //    );
-
-    //    API::get()->log_warn("[vrbody][attach_grab_components] Overlapped obj no: %d", out_components.Num());
-
-    //    if (result) {
-    //        for (size_t i = 0; i < out_components.Num(); i++) {
-    //            API::get()->log_warn("[vrbody][attach_grab_components] Overlapped obj: %s", out_components[i]->GetFullName().c_str());
-    //            std::string obj_name = out_components[i]->GetFullName();
-    //            if (obj_name.find(".PICKUP_") != std::wstring::npos) {
-    //                API::get()->log_warn("[vrbody][attach_grab_components] Pickup Found !!");
-    //                FTransform zero_transform{};
-    //                zero_transform.Rotation = { 0.f, 0.f, 0.f, 1.f };
-    //                zero_transform.Translation = { 0.f, 0.f, 0.f };
-    //                zero_transform.Scale3D = { 1.f, 1.f, 1.f };
-    //                AActor* pickup_actor = (AActor*)out_components[i]->Outer;
-    //                if (pickup_actor != nullptr && UKismetSystemLibrary::IsValid(pickup_actor)) {
-    //                    // check if it already has a grab component
-    //                    auto old_grab_component = pickup_actor->GetComponentByClass(UGrabComponent_C::StaticClass());
-    //                    if (old_grab_component == nullptr) {
-    //                        out_components[i]->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-    //                        out_components[i]->SetCollisionResponseToChannel(
-    //                            ECollisionChannel::ECC_GameTraceChannel3,
-    //                            ECollisionResponse::ECR_Block
-    //                        );
-    //                        auto component = static_cast<UGrabComponent_C*>(
-    //                            pickup_actor->AddComponentByClass(
-    //                                UGrabComponent_C::StaticClass(), false, zero_transform, false
-    //                            )
-    //                            );
-    //                        component->K2_AttachToComponent(
-    //                            out_components[i],
-    //                            UKismetStringLibrary::Conv_StringToName(L"None"),
-    //                            EAttachmentRule::SnapToTarget,
-    //                            EAttachmentRule::KeepRelative,
-    //                            EAttachmentRule::KeepRelative,
-    //                            true
-    //                        );
-    //                        component->SetRelativeScale3D({ 4.f, 4.f, 4.f });
-    //                        component->GrabType = 1;
-    //                        API::get()->log_warn("[vrbody][attach_grab_components] GrabComponent attached !!");
-    //                    }
-    //                    else {
-    //                        API::get()->log_warn("[vrbody][attach_grab_components] Already has a GrabComponent");
-    //                    }
-
-    //                }
-    //            }
-
-    //            //if (UKismetMathLibrary::ClassIsChildOf(out_components[i]->clasClass, APICKUP_Base_C::StaticClass())) {
-    //            //}
-    //        }
-    //    }
-    //    else {
-    //        API::get()->log_warn("VRHackerHUD :: Wrong overlap result");
-    //    }
-    //}
-    //catch (...) {
-    //    API::get()->log_error("[vrbody][attach_grab_components] Exception");
-    //}
-}
-
-void VRBody::log_overlapping_objects()
-{
-    //try {
-    //    API::get()->log_warn("[vrbody][log_overlapping_objects] Searching GrabComponents");
-    //    TArray<EObjectTypeQuery> object_types{};
-    //    object_types.Data = (EObjectTypeQuery*)API::FMalloc::get()->malloc(1 * sizeof(EObjectTypeQuery));
-    //    object_types.NumElements = 1;
-    //    object_types.MaxElements = 1;
-    //    object_types[0] = EObjectTypeQuery::ObjectTypeQuery17;
-
-    //    /*object_types.Data[0] = UKismetStringLibrary::Conv_StringToName(actor_tag.c_str());*/
-
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery1);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery2);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery3);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery4);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery5);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery6);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery7);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery8);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery9);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery10);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery11);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery12);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery13);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery14);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery15);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery16);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery17);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery18);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery19);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery20);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery21);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery22);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery23);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery24);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery25);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery26);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery27);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery28);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery29);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery30);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery31);
-    //    //object_types.Add(EObjectTypeQuery::ObjectTypeQuery32);
-    //    //object_types.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_GameTraceChannel18));
-
-    //    //UClass* component_class_filter{ APICKUP_Base_C::StaticClass() };
-    //    //UClass* component_class_filter{ UGrabComponent_C::StaticClass() };
-    //    UClass* component_class_filter{ UStaticMeshComponent::StaticClass() };
-    //    const TArray<AActor*>& actors_to_ignore{};
-
-    //    TArray<UPrimitiveComponent*> out_components{};
-    //    auto world = UWorld::GetWorld();
-    //    // get overlapping components
-    //    auto locat = m_bp_actor->MotionControllerLeft->K2_GetComponentLocation();
-    //    auto locat_start = UKismetMathLibrary::Add_VectorVector(locat, FVector{ 0.f, 0.f, 0.f });
-    //    auto locat_end = UKismetMathLibrary::Add_VectorVector(locat_start, FVector{ 0.f, 0.f, 0.1f });
-    //    API::get()->log_warn("[vrbody][log_overlapping_objects] From: X: %f, Y: %f, Z: %f", locat_start.X, locat_start.Y, locat_start.Z);
-    //    API::get()->log_warn("[vrbody][log_overlapping_objects] To: X: %f, Y: %f, Z: %f", locat_end.X, locat_end.Y, locat_end.Z);
-
-    //    //const bool result = UKismetSystemLibrary::SphereOverlapComponents(
-    //    //    world,
-    //    //    locat_start,
-    //    //    100.f,
-    //    //    object_types,
-    //    //    component_class_filter,
-    //    //    actors_to_ignore,
-    //    //    &out_components
-    //    //);
-
-    //    //if (out_components.Num() > 0) {
-    //    //    for (size_t i = 0; i < out_components.Num(); i++) {
-    //    //        out_components[i]->r
-    //    //    }
-    //    //        API::get()->log_warn("[vrbody][attach_grab_components] Overlapped obj: %s", out_components[i]->GetFullName().c_str());
-    //    //        std::string obj_name = out_components[i]->GetFullName();
-    //    //    API::get()->log_warn("[vrbody][log_overlapping_objects] HIT GrabComponent");
-    //    //}
-
-    //    bool hit = UKismetSystemLibrary::SphereTraceSingleForObjects(
-    //        world,
-    //        locat_start,
-    //        locat_end,
-    //        40.f,
-    //        object_types,
-    //        false,
-    //        actors_to_ignore,
-    //        EDrawDebugTrace::None,
-    //        &m_hit_result,
-    //        true,
-    //        { 255.f, 0.f, 0.f, 1.0f },
-    //        { 255.f, 0.f, 0.f, 1.0f },
-    //        10.0f
-    //    );
-
-    //    if (hit) {
-    //        API::get()->log_warn("[vrbody][log_overlapping_objects] HIT %s", m_hit_result.Actor->GetFullName().c_str());
-    //    }
-
-
-    //    //for (uint8 i = 0; i < 32; i++) {
-    //    //    API::get()->log_warn("[vrbody][log_overlapping_objects] TRY TYPE: %d", i);
-    //    //    TArray<EObjectTypeQuery> object_types{};
-    //    //    object_types.Add((EObjectTypeQuery)i);
-
-    //    //    bool hit = UKismetSystemLibrary::SphereTraceSingleForObjects(
-    //    //        world,
-    //    //        locat_start,
-    //    //        locat_end,
-    //    //        500.f,
-    //    //        object_types,
-    //    //        false,
-    //    //        actors_to_ignore,
-    //    //        EDrawDebugTrace::None,
-    //    //        &m_hit_result,
-    //    //        true,
-    //    //        { 255.f, 0.f, 0.f, 1.0f },
-    //    //        { 255.f, 0.f, 0.f, 1.0f },
-    //    //        10.0f
-    //    //    );
-
-    //    //    if (hit) {
-    //    //        API::get()->log_warn("[vrbody][log_overlapping_objects] HIT TYPE: %d", i);
-    //    //    }
-    //    //}
-    //    //if (m_hit_result.Actor != nullptr) {
-    //    //    auto grab_component = m_hit_result.Actor->GetComponentByClass(UGrabComponent_C::StaticClass());
-    //    //    if (grab_component != nullptr) {
-    //    //        API::get()->log_warn("[vrbody][log_overlapping_objects] HIT GrabComponent");
-    //    //    }
-    //    //}
-
-
-    //    //TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypesArray;
-    //    //ObjectTypesArray.Reserve(1);
-    //    //ObjectTypesArray.Emplace(ECollisionChannel::ECC_GameTraceChannel1);
-    //}
-    //catch (...) {
-    //    API::get()->log_error("[vrbody][log_overlapping_objects] Exception");
-    //}
+    if (!SDK::UKismetSystemLibrary::IsValid(m_main->get_pawn()) || !m_main->get_pawn()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+        API::get()->log_error("[vrbody][overwrite_hacker_crouch_animations] Invalid Pawn");
+        return;
+    }
+    APAWN_Hacker_Implant_C* hacker_implant_pawn = static_cast<APAWN_Hacker_Implant_C*>(m_main->get_pawn());
+ 
+    SDK::UCH_Hacker_AnimBP_C* hacker_anim = (SDK::UCH_Hacker_AnimBP_C*) hacker_implant_pawn->Mesh->AnimScriptInstance;
+    if (hacker_anim != nullptr) {
+        // make crouch animations use walk animations
+        hacker_anim->AnimGraphNode_SequencePlayer_8.Sequence = hacker_anim->AnimGraphNode_SequencePlayer_7.Sequence;
+        hacker_anim->AnimGraphNode_SequenceEvaluator_5.Sequence = hacker_anim->AnimGraphNode_SequenceEvaluator_2.Sequence;
+        hacker_anim->AnimGraphNode_SequenceEvaluator_6.Sequence = hacker_anim->AnimGraphNode_SequenceEvaluator_1.Sequence;
+        hacker_anim->AnimGraphNode_SequenceEvaluator_11.Sequence = hacker_anim->AnimGraphNode_SequenceEvaluator_8.Sequence;
+        hacker_anim->AnimGraphNode_SequenceEvaluator_12.Sequence = hacker_anim->AnimGraphNode_SequenceEvaluator_7.Sequence;
+    }
 }
 
 void VRBody::cleanup_pointers() {

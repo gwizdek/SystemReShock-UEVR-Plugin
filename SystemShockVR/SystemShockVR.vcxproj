@@ -170,7 +170,6 @@
     <ClInclude Include="SDK\WIDGET_MainMenu_InGame_classes.hpp" />
     <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp" />
     <ClInclude Include="vr_body.hpp" />
-    <ClInclude Include="vr_controllers.hpp" />
     <ClInclude Include="vr_hacker_hud.hpp" />
     <ClInclude Include="rendering\d3d11.hpp" />
     <ClInclude Include="rendering\d3d12.hpp" />
@@ -179,7 +178,6 @@
     <ClInclude Include="vr_plugin_shared.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="vr_weapon.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp" />
@@ -237,10 +235,9 @@
     <ClCompile Include="SDK\_BP_ItemSelector_functions.cpp" />
     <ClCompile Include="SDK\_BP_LaserDot_functions.cpp" />
     <ClCompile Include="SDK\_BP_VRBody_functions.cpp" />
+    <ClCompile Include="SDK\_BP_VRMovementComponent_functions.cpp" />
     <ClCompile Include="SDK\_CH_Hacker_Rig_Skeleton_AnimBlueprint_functions.cpp" />
     <ClCompile Include="vr_body.cpp" />
-    <ClCompile Include="vr_controllers.cpp" />
-    <ClCompile Include="vr_weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

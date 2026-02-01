@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params
@@ -204,6 +204,31 @@ static_assert(sizeof(_BP_LaserDot_C_AttachTo) == 0x000018, "Wrong size on _BP_La
 static_assert(offsetof(_BP_LaserDot_C_AttachTo, InParent) == 0x000000, "Member '_BP_LaserDot_C_AttachTo::InParent' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_AttachTo, InSocketName) == 0x000008, "Member '_BP_LaserDot_C_AttachTo::InSocketName' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_AttachTo, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000010, "Member '_BP_LaserDot_C_AttachTo::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+
+// Function _BP_LaserDot._BP_LaserDot_C.SetVisibility
+// 0x0020 (0x0020 - 0x0000)
+struct _BP_LaserDot_C_SetVisibility final
+{
+public:
+	bool                                          Dot;                                               // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          beam;                                              // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         DisableAfter;                                      // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTimerHandle                           CallFunc_K2_SetTimer_ReturnValue;                  // 0x0010(0x0008)(NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_K2_TimerExistsHandle_ReturnValue;         // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_LaserDot_C_SetVisibility) == 0x000008, "Wrong alignment on _BP_LaserDot_C_SetVisibility");
+static_assert(sizeof(_BP_LaserDot_C_SetVisibility) == 0x000020, "Wrong size on _BP_LaserDot_C_SetVisibility");
+static_assert(offsetof(_BP_LaserDot_C_SetVisibility, Dot) == 0x000000, "Member '_BP_LaserDot_C_SetVisibility::Dot' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_SetVisibility, beam) == 0x000001, "Member '_BP_LaserDot_C_SetVisibility::beam' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_SetVisibility, DisableAfter) == 0x000004, "Member '_BP_LaserDot_C_SetVisibility::DisableAfter' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000008, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_BooleanOR_ReturnValue) == 0x000009, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_K2_SetTimer_ReturnValue) == 0x000010, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_K2_SetTimer_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_K2_TimerExistsHandle_ReturnValue) == 0x000018, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_K2_TimerExistsHandle_ReturnValue' has a wrong offset!");
 
 }
 

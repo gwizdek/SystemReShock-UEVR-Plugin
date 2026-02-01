@@ -37,6 +37,26 @@ void A_BP_VRBody_C::ExecuteUbergraph__BP_VRBody(int32 EntryPoint)
 }
 
 
+// Function _BP_VRBody._BP_VRBody_C.ReceiveTick
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_VRBody_C::ReceiveTick(float DeltaSeconds)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "ReceiveTick");
+
+	Params::_BP_VRBody_C_ReceiveTick Parms{};
+
+	Parms.DeltaSeconds = DeltaSeconds;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function _BP_VRBody._BP_VRBody_C.CustomEvent_WeaponHolstered
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -356,6 +376,69 @@ void A_BP_VRBody_C::DestroyAllWeaponInteractionSources()
 		Func = Class->GetFunction("_BP_VRBody_C", "DestroyAllWeaponInteractionSources");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.GetHackerInventory
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UCOMP_HackerInventory_C*          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+class UCOMP_HackerInventory_C* A_BP_VRBody_C::GetHackerInventory()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "GetHackerInventory");
+
+	Params::_BP_VRBody_C_GetHackerInventory Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.GetHackerMoveControlManager
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UCOMP_MoveControlManager_C*       COMP_MoveControlManager                                (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_VRBody_C::GetHackerMoveControlManager(class UCOMP_MoveControlManager_C** COMP_MoveControlManager)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "GetHackerMoveControlManager");
+
+	Params::_BP_VRBody_C_GetHackerMoveControlManager Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (COMP_MoveControlManager != nullptr)
+		*COMP_MoveControlManager = Parms.COMP_MoveControlManager;
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.AttachLaserPointer
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    InAttachToCurrentWeapon                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void A_BP_VRBody_C::AttachLaserPointer(E_ENUM_VRHand InHand, bool InAttachToCurrentWeapon)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "AttachLaserPointer");
+
+	Params::_BP_VRBody_C_AttachLaserPointer Parms{};
+
+	Parms.InHand = InHand;
+	Parms.InAttachToCurrentWeapon = InAttachToCurrentWeapon;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

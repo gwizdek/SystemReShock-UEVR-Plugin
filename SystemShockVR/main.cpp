@@ -17,6 +17,7 @@
 #include "SDK/_CH_Hacker_Rig_Skeleton_AnimBlueprint_classes.hpp"
 #include "SDK/_BP_ItemSelector_classes.hpp"
 #include "SDK/_BP_DebugWidgetComponent_classes.hpp"
+#include "SDK/_BP_VRMovementComponent_classes.hpp"
 
 #include "main.hpp"
 #include "vr_body.hpp"
@@ -62,11 +63,25 @@ void SystemShockMain::on_tick(float delta) {
         handle_game_state_changes();
         handle_level_changes();
         //handle_mod_events();
-        //handle_crouch();
+        handle_crouch();
 
         if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
             try_running_test_1();
             try_running_test_2();
+            if (m_vr_body != nullptr) {
+                //float offset{ 0.f };
+                //m_vr_body->get_bp_actor()->GetHipsOffset(&offset);
+                //if (offset >= 70.f) {
+                //    offset = 70.f;
+                //}
+                //float alpha = 1.0f - ((70.f - offset) / 70.0f);
+                //if (alpha < 0.f) {
+                //    alpha = 0.f;
+                //}
+                ////m_vr_body->get_bp_actor()->CalibratedEyeHeight = 150.5f;
+                //m_vr_body->get_bp_actor()->FinalHipsOffset = { 0.f, offset, 0.f };
+
+            }
 
             //if (m_vr_body != nullptr && m_vr_body->is_valid()) {
             //    m_vr_body->on_tick();
@@ -138,6 +153,16 @@ bool SystemShockMain::prepare_pointers() {
         // level
         m_level.set_value(m_world != nullptr ? m_world->PersistentLevel : nullptr);
         //API::get()->log_error("[main][prepare_pointers] End");
+
+        auto uevr_pawn = API::get()->get_local_pawn(0);
+        const auto move_control_manager_data = uevr_pawn->get_property_data<API::UObject*>(L"COMP_MoveControlManager");
+        const auto move_control_manager = move_control_manager_data != nullptr ? *move_control_manager_data : nullptr;
+        if (move_control_manager != nullptr) {
+            m_is_crouching.set_value(move_control_manager->get_bool_property(L"IsTryingToCrouch"));
+        }
+        else {
+            m_is_crouching.set_value(false);
+        }
     }
     catch (...) {
         API::get()->log_error("[main][prepare_pointers] Exception");
@@ -387,6 +412,7 @@ void SystemShockMain::handle_primary_item_selector(XINPUT_STATE* state, const UE
                 // hide UEVR controlled HUD
                 vr->set_mod_value("UI_Size", "0.000000");
                 vr->set_mod_value("VR_RoomscaleMovement", "false");
+                vr->set_aim_method(0);
 
                 // show VR item selector
                 //m_vr_body->set_laser_pointer_visibility(true);
@@ -406,14 +432,15 @@ void SystemShockMain::handle_primary_item_selector(XINPUT_STATE* state, const UE
                 m_vr_body->change_quick_slot();
 
                 // restore collisions
-                m_vr_body->set_player_response_to_collision_channel(
-                    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
-                );
+                //m_vr_body->set_player_response_to_collision_channel(
+                //    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
+                //);
                 m_vr_body->set_primary_item_selector_visibility(false);
                 ////m_vr_body->set_laser_pointer_visibility(false);
                 m_vr_body->get_bp_actor()->ItemSelectorRight->Hide();
 
                 vr->set_mod_value("VR_RoomscaleMovement", "true");
+                vr->set_aim_method(m_default_aim_method);
                 //API::get()->log_warn("[main][handle_primary_item_selector] Grip Released");
             }
 
@@ -472,13 +499,13 @@ void SystemShockMain::handle_game_state_changes() {
                 vr->set_mod_value("UI_Y_Offset", "-0.30000");
                 vr->set_mod_value("VR_RoomscaleMovement", "false");
                 vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
-                PluginUtils::reset_height(0.f);
+                //PluginUtils::reset_height(0.f);
                 vr->recenter_view();
                 break;
 
             case GAME_STATE_CITADEL_STATION:
                 API::UObjectHook::set_disabled(false);
-                vr->set_aim_method(1);
+                vr->set_aim_method(m_default_aim_method);
                 vr->set_decoupled_pitch_enabled(true);
                 vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
                 vr->set_mod_value("VR_CameraUpOffset", "0.000000");
@@ -487,7 +514,7 @@ void SystemShockMain::handle_game_state_changes() {
                 vr->set_mod_value("UI_Y_Offset", "0.00000");
                 vr->set_mod_value("VR_RoomscaleMovement", "true");
                 vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                PluginUtils::reset_height(0.f);
+                //PluginUtils::reset_height(0.f);
                 vr->recenter_view();
                 break;
 
@@ -502,7 +529,7 @@ void SystemShockMain::handle_game_state_changes() {
                 vr->set_mod_value("UI_Y_Offset", "0.00000");
                 vr->set_mod_value("VR_RoomscaleMovement", "true");
                 vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                PluginUtils::reset_height(0.f);
+                //PluginUtils::reset_height(0.f);
                 vr->recenter_view();
                 break;
             }
@@ -526,6 +553,7 @@ void SystemShockMain::handle_level_changes() {
             if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
                 if (m_vr_body != nullptr) {
                     m_vr_body->initialize();
+                    PluginUtils::reset_height(0.f);
                 }
                 else {
                     API::get()->log_error("[main][handle_level_change] Expected valid m_vr_body");
@@ -560,7 +588,7 @@ void SystemShockMain::handle_mod_events() {
 }
 
 void SystemShockMain::handle_crouch() {
-    if (m_is_crouched.has_changed()) {
+    if (m_is_crouching.disabled()) {
         PluginUtils::reset_height(0.f);
     }
 }
@@ -585,7 +613,7 @@ void SystemShockMain::on_draw_imgui() {
 
         static const auto UEVR_NAME = std::format("System Shock UEVR plugin [rev. {}]", MOD_VERSION);
         static const auto NO_CHARACTER = std::format("No Player Character detected! Is it Main Menu?");
-        static const auto NO_PAWN = std::format("No Pawn detected!");
+        //static const auto NO_PAWN = std::format("No Pawn detected!");
 
         static constexpr auto window_w = 500.0f;
         static constexpr auto window_h = 500.0f;
@@ -610,18 +638,23 @@ void SystemShockMain::on_draw_imgui() {
             }
 
             //if (ImGui::Button("Test BTN1")) {
-            if (ImGui::Button("Toggle Left MC Debug Sphere")) {
+            if (ImGui::Button("Modify Movement")) {
                 m_trigger_test_1 = true;
             }
-            if (ImGui::Button("Toggle Debug Widget")) {
+            if (ImGui::Button("Set Camera Height")) {
                 m_trigger_test_2 = true;
             }
 
             ImGui::PopItemWidth();
 
-            if (m_vr_body != nullptr) {
+            if (m_vr_body != nullptr && m_vr_body->get_bp_actor() != nullptr) {
                 m_vr_body->on_draw_imgui();
+                if (ImGui::SliderFloat("Player Height", &m_vr_body->get_bp_actor()->VRMovementComponent->PlayerHeight, 170.f, 183.f, "%1.0f")) {
+                    m_vr_body->get_bp_actor()->VRMovementComponent->AdjustComponentsToPlayerHeight(m_vr_body->get_bp_actor()->VRMovementComponent->PlayerHeight);
+                    PluginUtils::reset_height(0.f);
+                }
             }
+
 
             ImGui::SeparatorText("Debugging");
             // game state section
@@ -630,6 +663,27 @@ void SystemShockMain::on_draw_imgui() {
                 ImGui::BeginGroup();
                 ImGui::BeginDisabled();
                 ImGui::InputText("Game State", (char*)GameStateName[m_game_state.get()], 20);
+
+                if (m_vr_body != nullptr && m_vr_body->get_bp_actor() != nullptr) {
+                    float half_size = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->CapsuleComponent->CapsuleHalfHeight;
+                    float vr_origin_rel_loc_z = m_vr_body->get_bp_actor()->RootComponent->RelativeLocation.Z;
+                    float base_eye_height = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->BaseEyeHeight;
+                    float hmd_component_rel_loc_z = m_vr_body->get_bp_actor()->HMDComponent->RelativeLocation.Z;
+                    float final_hips_offset_y = m_vr_body->get_bp_actor()->VRMovementComponent->FinalHipsOffset.Y;
+                    float final_hips_offset_z = m_vr_body->get_bp_actor()->VRMovementComponent->FinalHipsOffset.Z;
+
+                    //m_vr_body->get_bp_actor()->Calibrate();
+                    ImGui::PushItemWidth(100);
+                    
+                    ImGui::InputFloat("Pawn Collision Half-Size", &half_size);
+                    ImGui::InputFloat("VRBody RootComponent RelLoc-Z", &vr_origin_rel_loc_z);
+                    ImGui::InputFloat("Pawn BaseEyeHeight", &base_eye_height);
+                    ImGui::InputFloat("HMDComponent RelLoc-Z", &hmd_component_rel_loc_z);
+                    ImGui::InputFloat("Final Hips Offset-Y", &final_hips_offset_y);
+                    ImGui::InputFloat("Final Hips Offset-Z", &final_hips_offset_z);
+                    ImGui::PopItemWidth();
+                }
+
                 ImGui::EndDisabled();
                 ImGui::EndGroup();
 
@@ -692,17 +746,33 @@ bool SystemShockMain::save_mod_config() {
     }
 }
 
+
+
+
 void SystemShockMain::try_running_test_1()
 {
     if (m_trigger_test_1) {
         m_trigger_test_1 = false;
         API::get()->log_warn("[main][test1] Start");
-        if (m_pawn.get() != nullptr && m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
-            if (m_vr_body != nullptr && SDK::UKismetSystemLibrary::IsValid(m_vr_body->get_bp_actor())) {
-                auto vr_body_actor = m_vr_body->get_bp_actor();
-                vr_body_actor->DebugWidgetComponent->AddDebugMessage(L"test", SDK::E_ENUM_DebugWidgetEntryType::NewEnumerator0);
+
+        API::UClass* class_ptr = API::get()->find_uobject<API::UClass>(L"Class /Script/Engine.ShapeComponent");
+        if (class_ptr != nullptr) {
+            std::vector<API::UObject*> matching_objects = class_ptr->get_objects_matching<API::UObject>();
+
+            for (size_t i = 0; i < matching_objects.size(); i++) {
+                auto obj = (SDK::UObject*)matching_objects[i];
+
+                if (obj->IsA(SDK::UShapeComponent::StaticClass())) {
+                    //API::get()->log_info("VRHackerHUD :: Found Lift: %s", obj->GetFullName().c_str());
+                    static_cast<SDK::UShapeComponent*>(obj)->SetHiddenInGame(false, false);
+                }
+                //if (obj->IsA(SDK::UArrowComponent::StaticClass())) {
+                //    //API::get()->log_info("VRHackerHUD :: Found Lift: %s", obj->GetFullName().c_str());
+                //    static_cast<SDK::UArrowComponent*>(obj)->SetHiddenInGame(true, true);
+                //}
             }
         }
+
         API::get()->log_warn("[main][test1] End");
     }
 }
@@ -712,13 +782,18 @@ void SystemShockMain::try_running_test_2()
     if (m_trigger_test_2) {
         API::get()->log_warn("[main][test2] Start");
         m_trigger_test_2 = false;
-        if (m_pawn.get() != nullptr && m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
-            if (m_vr_body != nullptr && SDK::UKismetSystemLibrary::IsValid(m_vr_body->get_bp_actor())) {
-                auto vr_body_actor = m_vr_body->get_bp_actor();
-                auto is_visible = vr_body_actor->MCDebugSphereLeft->IsVisible();
-                vr_body_actor->MCDebugSphereLeft->SetVisibility(!is_visible, true);
-            }
+        PluginUtils::reset_height(0.f);
+        if (m_vr_body != nullptr) {
+            m_vr_body->get_bp_actor()->UEVRCameraAttachComponent->RelativeLocation.Z = 140.0f;
         }
+
+        //if (m_pawn.get() != nullptr && m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+        //    if (m_vr_body != nullptr && SDK::UKismetSystemLibrary::IsValid(m_vr_body->get_bp_actor())) {
+        //        auto vr_body_actor = m_vr_body->get_bp_actor();
+        //        auto is_visible = vr_body_actor->MCDebugSphereLeft->IsVisible();
+        //        vr_body_actor->MCDebugSphereLeft->SetVisibility(!is_visible, true);
+        //    }
+        //}
         API::get()->log_warn("[main][test2] End");
     }
 }

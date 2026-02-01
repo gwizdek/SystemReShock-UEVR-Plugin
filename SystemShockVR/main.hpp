@@ -58,7 +58,7 @@ class VRBody;
 class SystemShockMain
 {
 private:
-    const char* MOD_VERSION = "v2.0.0-alpha";
+    const char* MOD_VERSION = "v2.0.0-alpha.0";
 
     //VRHUD* m_vr_hud{ nullptr };
     VRBody* m_vr_body{ nullptr };
@@ -66,6 +66,7 @@ private:
     bool m_ui_option_show_debug_view{ true };
     int m_ui_xinput_duration{ 0 };              // [microseconds]
     int m_ui_pre_engine_tick_duration{ 0 };     // [microseconds]
+    unsigned int m_default_aim_method{ 0 };
 
     // convenience pointers
     SDK::UWorld* m_world{ nullptr };
@@ -90,7 +91,7 @@ private:
     MemoProperty<EGameState> m_game_state{ GAME_STATE_UNDEFINED, GAME_STATE_UNDEFINED };
     MemoProperty<SDK::ULevel*> m_level{ nullptr, nullptr };
     MemoBoolean m_is_game_paused{ false };
-    MemoBoolean m_is_crouched{ false };
+    MemoBoolean m_is_crouching{ false };
     MemoProperty<bool> m_player_interacting{ false, false };
 
     // controls

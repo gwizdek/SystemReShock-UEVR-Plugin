@@ -54,11 +54,12 @@ public:
 	float                                         DotSizeFactor;                                     // 0x02B4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UPrimitiveComponent*                    LastLaserTargetComponent;                          // 0x02B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FName                                   LastLaserTargetBoneName;                           // 0x02C0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UITEM_WeaponBase_C*                     Equipped_Weapon;                                   // 0x02C8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class AActor*>                         IgnoredActors;                                     // 0x02D0(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
+	TArray<class AActor*>                         IgnoredActors;                                     // 0x02C8(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
+	struct FTimerHandle                           LaserDotTimer;                                     // 0x02D8(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_LaserDot(int32 EntryPoint);
+	void EventDisableLaserDot();
 	void ReceiveTick(float DeltaSeconds);
 	void ReceiveBeginPlay();
 	void SetPowerAndSize(float InPower, float InSize);
@@ -67,6 +68,7 @@ public:
 	void SetColor(struct FLinearColor& InColor);
 	void SetSizeByDistance(float& InDistance);
 	void AttachTo(class USceneComponent* InParent, class FName InSocketName);
+	void SetVisibility(bool Dot, bool beam, float DisableAfter);
 
 public:
 	static class UClass* StaticClass()
@@ -107,8 +109,8 @@ static_assert(offsetof(A_BP_LaserDot_C, MinDotSize) == 0x0002B0, "Member 'A_BP_L
 static_assert(offsetof(A_BP_LaserDot_C, DotSizeFactor) == 0x0002B4, "Member 'A_BP_LaserDot_C::DotSizeFactor' has a wrong offset!");
 static_assert(offsetof(A_BP_LaserDot_C, LastLaserTargetComponent) == 0x0002B8, "Member 'A_BP_LaserDot_C::LastLaserTargetComponent' has a wrong offset!");
 static_assert(offsetof(A_BP_LaserDot_C, LastLaserTargetBoneName) == 0x0002C0, "Member 'A_BP_LaserDot_C::LastLaserTargetBoneName' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, Equipped_Weapon) == 0x0002C8, "Member 'A_BP_LaserDot_C::Equipped_Weapon' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, IgnoredActors) == 0x0002D0, "Member 'A_BP_LaserDot_C::IgnoredActors' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, IgnoredActors) == 0x0002C8, "Member 'A_BP_LaserDot_C::IgnoredActors' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, LaserDotTimer) == 0x0002D8, "Member 'A_BP_LaserDot_C::LaserDotTimer' has a wrong offset!");
 
 }
 

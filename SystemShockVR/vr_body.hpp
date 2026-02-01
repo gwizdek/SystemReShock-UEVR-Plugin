@@ -38,11 +38,9 @@ public:
     void on_draw_imgui();
     void cleanup_pointers();
     static void cleanup_actors();
-    void attach_grab_components();
-    void log_overlapping_objects();
+    void overwrite_hacker_crouch_animations();
     void set_player_response_to_collision_channel(SDK::ECollisionChannel channel, SDK::ECollisionResponse response);
     void set_player_response_to_all_collision_channels(SDK::ECollisionResponse response);
-    void attach_camera(SDK::UCameraComponent* camera);
     void set_hotbar_slot_visibility(int slot, bool visible);
     void highlight_quick_slot();
     void change_quick_slot();
