@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK::Params
@@ -229,6 +229,21 @@ static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_NotEqual_FloatFloa
 static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_BooleanOR_ReturnValue) == 0x000009, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_K2_SetTimer_ReturnValue) == 0x000010, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_K2_SetTimer_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_K2_TimerExistsHandle_ReturnValue) == 0x000018, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_K2_TimerExistsHandle_ReturnValue' has a wrong offset!");
+
+// Function _BP_LaserDot._BP_LaserDot_C.Set Laser Beam Params
+// 0x0018 (0x0018 - 0x0000)
+struct _BP_LaserDot_C_Set_Laser_Beam_Params final
+{
+public:
+	float                                         InAlpha;                                           // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FLinearColor                           InLaserColour;                                     // 0x0004(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         InLaserPower;                                      // 0x0014(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(_BP_LaserDot_C_Set_Laser_Beam_Params) == 0x000004, "Wrong alignment on _BP_LaserDot_C_Set_Laser_Beam_Params");
+static_assert(sizeof(_BP_LaserDot_C_Set_Laser_Beam_Params) == 0x000018, "Wrong size on _BP_LaserDot_C_Set_Laser_Beam_Params");
+static_assert(offsetof(_BP_LaserDot_C_Set_Laser_Beam_Params, InAlpha) == 0x000000, "Member '_BP_LaserDot_C_Set_Laser_Beam_Params::InAlpha' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_Set_Laser_Beam_Params, InLaserColour) == 0x000004, "Member '_BP_LaserDot_C_Set_Laser_Beam_Params::InLaserColour' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_Set_Laser_Beam_Params, InLaserPower) == 0x000014, "Member '_BP_LaserDot_C_Set_Laser_Beam_Params::InLaserPower' has a wrong offset!");
 
 }
 

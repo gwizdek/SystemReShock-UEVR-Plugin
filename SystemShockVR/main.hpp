@@ -10,50 +10,22 @@
 #include "SDK/UMG_classes.hpp"
 #include "SDK/COMP_HackerInventory_classes.hpp"
 
-#include "memo_structs.hpp"
 #include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
+
+#include "memo_structs.hpp"
+#include "vr_plugin_shared.hpp"
 
 typedef enum HandPreference {
     RIGHT_HANDED,
     LEFT_HANDED
 } HandPreference;
 
-typedef enum ModEvent {
-    MOD_EVENT_VR_HUD_INITIALIZE,
-    MOD_EVENT_ENABLE_WORLD_RENDERING
-} ModEvent;
-
-typedef enum EGameState : uint8_t {
-    GAME_STATE_UNDEFINED = 0,
-    GAME_STATE_MAIN_MENU = 1,
-    GAME_STATE_PAUSE_MENU = 2,
-    GAME_STATE_CINEMATIC = 3,
-    GAME_STATE_APPARTMENT = 4,
-    GAME_STATE_CITADEL_STATION = 5,
-    GAME_STATE_CYBERSPACE = 6,
-    GAME_STATE_PSEUDOSPACE = 7,
-    GAME_STATE_MFD = 8,
-    GAME_STATE_INTERACTABLE = 9
-};
-
-static std::map<EGameState, const char*> GameStateName = {
-    { GAME_STATE_UNDEFINED, "Undefined" },
-    { GAME_STATE_MAIN_MENU, "Main Menu" },
-    { GAME_STATE_PAUSE_MENU, "Pause Menu" },
-    { GAME_STATE_CINEMATIC, "Cinematic" },
-    { GAME_STATE_APPARTMENT, "Appartment" },
-    { GAME_STATE_CITADEL_STATION, "Citadel Station" },
-    { GAME_STATE_CYBERSPACE, "Cyberspace" },
-    { GAME_STATE_PSEUDOSPACE, "Pseudeospace" },
-    { GAME_STATE_MFD, "MFD" },
-    { GAME_STATE_INTERACTABLE, "Interactable" }
-};
-
 using namespace uevr;
 
 //class VRHUD;
 class VRBody;
+typedef enum EGameState : uint8_t;
 
 class SystemShockMain
 {
@@ -75,12 +47,7 @@ private:
 
     // utils
     std::unordered_set<ModEvent> m_mod_events{};
-    int m_toggle_native_fix_counter{ -1 };
     SDK::FHitResult m_hit_result{};
-    bool m_camera_initialized{ false };
-    SDK::FVector m_last_pos{ 0.f, 0.f, 0.f };
-    SDK::FRotator m_last_rot{ 0.f, 0.f, 0.f };
-    bool m_initialized{ true };
     bool m_gui_visible{ true };
     bool m_trigger_test_1{ false };
     bool m_trigger_test_2{ false };

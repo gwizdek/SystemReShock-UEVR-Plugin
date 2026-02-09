@@ -441,5 +441,25 @@ void A_BP_VRBody_C::AttachLaserPointer(E_ENUM_VRHand InHand, bool InAttachToCurr
 	UObject::ProcessEvent(Func, &Parms);
 }
 
+
+// Function _BP_VRBody._BP_VRBody_C.IsWeaponHolstered
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool A_BP_VRBody_C::IsWeaponHolstered()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "IsWeaponHolstered");
+
+	Params::_BP_VRBody_C_IsWeaponHolstered Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
 }
 

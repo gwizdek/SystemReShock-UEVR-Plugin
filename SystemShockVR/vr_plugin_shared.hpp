@@ -1,4 +1,14 @@
 #pragma once
+#include <map>
+
+#define INPUT_DEADZONE_LO  ( 0.01f * FLOAT(0x7FFF) )  // Default to 01% of the +/- 32767 range.
+#define INPUT_DEADZONE_MED ( 0.45f * FLOAT(0x7FFF) )  // Default to 45% of the +/- 32767 range.
+#define INPUT_DEADZONE_HI  ( 0.80f * FLOAT(0x7FFF) )  // Default to 80% of the +/- 32767 range.
+#define MOUSE_WHEEL_DEBOUNCE_TIME 0.066f
+
+using namespace SDK;
+
+const ECollisionChannel item_selector_collision_channel{ ECollisionChannel::ECC_EngineTraceChannel1 };
 
 typedef enum ModEvent {
     MOD_EVENT_VR_HUD_HIDE_DASHBOARDS,
@@ -6,4 +16,33 @@ typedef enum ModEvent {
     MOD_EVENT_SHOW_MFD,
     MOD_EVENT_SHOW_IN_GAME_MENU,
     MOD_EVENT_MOUSE_ACTIVE,
+    MOD_EVENT_ENABLE_WORLD_RENDERING
 } ModEvent;
+
+typedef enum EGameState : uint8_t {
+    GAME_STATE_UNDEFINED = 0,
+    GAME_STATE_MAIN_MENU = 1,
+    GAME_STATE_PAUSE_MENU = 2,
+    GAME_STATE_CINEMATIC = 3,
+    GAME_STATE_APPARTMENT = 4,
+    GAME_STATE_CITADEL_STATION = 5,
+    GAME_STATE_CYBERSPACE = 6,
+    GAME_STATE_PSEUDOSPACE = 7,
+    GAME_STATE_MFD_PRE = 8, // one tick state when MFD is drawn based on HMD rotation
+    GAME_STATE_MFD = 9,
+    GAME_STATE_INTERACTABLE = 10
+};
+
+static std::map<EGameState, const char*> GameStateName = {
+    { GAME_STATE_UNDEFINED, "Undefined" },
+    { GAME_STATE_MAIN_MENU, "Main Menu" },
+    { GAME_STATE_PAUSE_MENU, "Pause Menu" },
+    { GAME_STATE_CINEMATIC, "Cinematic" },
+    { GAME_STATE_APPARTMENT, "Appartment" },
+    { GAME_STATE_CITADEL_STATION, "Citadel Station" },
+    { GAME_STATE_CYBERSPACE, "Cyberspace" },
+    { GAME_STATE_PSEUDOSPACE, "Pseudeospace" },
+    { GAME_STATE_MFD_PRE, "MFD Pre" },
+    { GAME_STATE_MFD, "MFD" },
+    { GAME_STATE_INTERACTABLE, "Interactable" }
+};

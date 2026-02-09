@@ -69,6 +69,7 @@ public:
 	void SetSizeByDistance(float& InDistance);
 	void AttachTo(class USceneComponent* InParent, class FName InSocketName);
 	void SetVisibility(bool Dot, bool beam, float DisableAfter);
+	void Set_Laser_Beam_Params(float InAlpha, const struct FLinearColor& InLaserColour, float InLaserPower);
 
 public:
 	static class UClass* StaticClass()

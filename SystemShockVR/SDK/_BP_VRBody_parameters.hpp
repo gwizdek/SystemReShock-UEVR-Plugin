@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 #include "Engine_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 
 
 namespace SDK::Params
@@ -484,6 +484,28 @@ static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_IsValid_ReturnV
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, K2Node_Select_Default) == 0x000028, "Member '_BP_VRBody_C_AttachLaserPointer::K2Node_Select_Default' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000030, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue_1) == 0x000031, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue_1' has a wrong offset!");
+
+// Function _BP_VRBody._BP_VRBody_C.IsWeaponHolstered
+// 0x0018 (0x0018 - 0x0000)
+struct _BP_VRBody_C_IsWeaponHolstered final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue;        // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_VRBody_C_IsWeaponHolstered) == 0x000008, "Wrong alignment on _BP_VRBody_C_IsWeaponHolstered");
+static_assert(sizeof(_BP_VRBody_C_IsWeaponHolstered) == 0x000018, "Wrong size on _BP_VRBody_C_IsWeaponHolstered");
+static_assert(offsetof(_BP_VRBody_C_IsWeaponHolstered, ReturnValue) == 0x000000, "Member '_BP_VRBody_C_IsWeaponHolstered::ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_IsWeaponHolstered, CallFunc_IsValid_ReturnValue) == 0x000001, "Member '_BP_VRBody_C_IsWeaponHolstered::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_IsWeaponHolstered, CallFunc_IsValid_ReturnValue_1) == 0x000002, "Member '_BP_VRBody_C_IsWeaponHolstered::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_IsWeaponHolstered, CallFunc_IsValid_ReturnValue_2) == 0x000003, "Member '_BP_VRBody_C_IsWeaponHolstered::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_IsWeaponHolstered, CallFunc_GetObjectClass_ReturnValue) == 0x000008, "Member '_BP_VRBody_C_IsWeaponHolstered::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_IsWeaponHolstered, CallFunc_EqualEqual_ClassClass_ReturnValue) == 0x000010, "Member '_BP_VRBody_C_IsWeaponHolstered::CallFunc_EqualEqual_ClassClass_ReturnValue' has a wrong offset!");
 
 }
 

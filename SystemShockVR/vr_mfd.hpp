@@ -1,46 +1,34 @@
 #pragma once
-#include <windows.h>
-#include <Xinput.h>
-#include <unordered_set>
-#include <map>
-
-#include "mINI/ini.h"
-
 #include "SDK/Engine_classes.hpp"
 #include "SDK/UMG_classes.hpp"
 #include "SDK/COMP_HackerInventory_classes.hpp"
-
-#include "memo_structs.hpp"
-#include "vr_controllers.hpp"
-#include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
 
-using namespace uevr;
+#include "SDK/_BP_VRBody_classes.hpp"
 
-class VRBody;
+#include "memo_structs.hpp"
+
+using namespace uevr;
+using namespace SDK;
 
 class VRMFD
 {
 private:
-    const char* MOD_VERSION = "v2.0.0-alpha";
-
-    VRBody* m_vr_body{ nullptr };
-
-    // convenience pointers
-    SDK::UWorld* m_world{ nullptr };
-    SDK::UWIDGET_PlayerHUD_C* m_neural_hud{ nullptr };
-
-    // utils
-    std::unordered_set<ModEvent> m_mod_events{};
-    SDK::FHitResult m_hit_result{};
 
 public:
-    VRMFD();
-    virtual ~VRMFD();
+    VRMFD() = default;
+    virtual ~VRMFD() {};
 
-    void on_tick(float delta);
-    void send_mouse(WORD key, bool key_up);
-    void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);
-    void handle_mfd_changes(const UEVR_VRData* vr);
+    static inline float m_mfd_depth{ 150.f };
 
+    static void initialize(A_BP_VRBody_C* vr_body);
+
+    static void align_mfd_panel(UWIDGET_PlayerHUD_C* neural_hud);
+
+    //static void send_mouse(WORD key, bool key_up);
+    static void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);
+    static void handle_mfd_changes(const UEVR_VRData* vr);
+    static void show(A_BP_VRBody_C* vr_body);
+    static void hide(A_BP_VRBody_C* vr_body);
+    static void set_crosshair_cursor_scale(UWIDGET_PlayerHUD_C* neural_hud, float* scale);
 };

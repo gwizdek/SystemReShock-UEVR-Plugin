@@ -224,5 +224,29 @@ void A_BP_LaserDot_C::SetVisibility(bool Dot, bool beam, float DisableAfter)
 	UObject::ProcessEvent(Func, &Parms);
 }
 
+
+// Function _BP_LaserDot._BP_LaserDot_C.Set Laser Beam Params
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   InAlpha                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FLinearColor                     InLaserColour                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   InLaserPower                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_LaserDot_C::Set_Laser_Beam_Params(float InAlpha, const struct FLinearColor& InLaserColour, float InLaserPower)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_LaserDot_C", "Set Laser Beam Params");
+
+	Params::_BP_LaserDot_C_Set_Laser_Beam_Params Parms{};
+
+	Parms.InAlpha = InAlpha;
+	Parms.InLaserColour = std::move(InLaserColour);
+	Parms.InLaserPower = InLaserPower;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
 }
 

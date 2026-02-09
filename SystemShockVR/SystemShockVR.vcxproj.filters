@@ -102,28 +102,25 @@
     <ClInclude Include="plugin_utils.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="main.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="plugin.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="vr_body.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp">
       <Filter>SDK Files</Filter>
     </ClInclude>
-    <ClInclude Include="SceneComponent.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vr_hacker_hud.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="vr_plugin_shared.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_body.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_item_selector.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_mfd.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -230,20 +227,11 @@
     <ClCompile Include="SDK\AssetRegistry_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\ITEM_ProjectileWeapon_Base_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="plugin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\Niagara_functions.cpp">
       <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vr_body.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\ANIMBP_Magnum_functions.cpp">
       <Filter>SDK Files</Filter>
@@ -285,6 +273,18 @@
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\_BP_VRMovementComponent_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_body.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_item_selector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_mfd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\_BP_MFDMaskComponent_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
   </ItemGroup>

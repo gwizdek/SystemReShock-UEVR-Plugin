@@ -54,17 +54,13 @@
 #include "SDK/INTERACT_Laptop_classes.hpp"
 #include "SDK/CinematicCamera_classes.hpp"
 #include "SDK/HARDWARE_HeadLamp_classes.hpp"
-#include "SDK/BP_SSRModActor_classes.hpp"
-#include "SDK/BP_VRBody_classes.hpp"
-#include "SDK/E_HandPoseState_structs.hpp"
-#include "SDK/ITEM_ProjectileWeapon_Base_classes.hpp"
+#include "SDK/MOVECONTROL_FocusableInteract_classes.hpp"
 
 #include "mINI/ini.h"
 #include "uevr/Plugin.hpp"
 #include "pch.h"
 
 #include "SceneComponent.hpp"
-#include "MOVECONTROL_FocusableInteract_C.hpp"
 #include "vr_plugin_shared.hpp"
 #include "vr_hacker_hud.hpp"
 #include "plugin_utils.hpp"
@@ -1334,43 +1330,6 @@ public:
                 API::UObjectHook::set_disabled(false);
                 vr->set_mod_value("VR_RoomscaleMovement", "true");
             }
-        }
-    }
-
-    void fire_minipistol() {
-        if (m_weapon_state.value == WEAPON_MINI_PISTOL) {
-            API::get()->log_info("[main][fire_minipistol]");
-            SDK::AActor* fired_projectile{ nullptr };
-            SDK::FVector direction{};
-            SDK::FVector projectile_direction{ };
-
-            SDK::FVector barrel_location = static_cast<SDK::UITEM_ProjectileWeapon_Base_C*>(m_current_weapon)->WeaponMeshComponent->GetSocketLocation(
-                SDK::UKismetStringLibrary::Conv_StringToName(L"barrelExtended")
-            );
-
-            SDK::FVector barrel_location_end = barrel_location;
-            barrel_location_end.Y += 100.0f;
-
-            //auto start = static_cast<SDK::UITEM_ProjectileWeapon_Base_C*>(m_current_weapon)->WeaponMeshComponent->K2_GetComponentLocation();
-            //auto rot = static_cast<SDK::UITEM_ProjectileWeapon_Base_C*>(m_current_weapon)->WeaponMeshComponent->K2_GetComponentRotation();
-            //auto barrel_location_end = barrel_location + (SDK::UKismetMathLibrary::Conv_RotatorToVector(rot) * 100.f);
-            auto forward_vector = static_cast<SDK::UITEM_ProjectileWeapon_Base_C*>(m_current_weapon)->WeaponMeshComponent->GetRightVector();
-            forward_vector.X = -forward_vector.X;
-            forward_vector.Y = -forward_vector.Y;
-            forward_vector.Z = -forward_vector.Z;
-
-            //static_cast<SDK::UITEM_ProjectileWeapon_Base_C*>(m_current_weapon)->FireProjectileInDirection(
-            //    barrel_location,
-            //    forward_vector,
-            //    fired_projectile,
-            //    &direction
-            //);
-
-            static_cast<SDK::UITEM_ProjectileWeapon_Base_C*>(m_current_weapon)->FireProjectile(&fired_projectile, &direction);
-
-            API::get()->log_warn("[main][fire_minipistol] X: %f", direction.X);
-            API::get()->log_warn("[main][fire_minipistol] Y: %f", direction.Y);
-            API::get()->log_warn("[main][fire_minipistol] Z: %f", direction.Z);
         }
     }
 

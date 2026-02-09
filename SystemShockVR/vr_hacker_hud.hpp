@@ -1350,6 +1350,7 @@ public:
 
     void set_minimap_visibility(bool visible) {
         if (m_minimap_widget_component != nullptr) {
+            // bug?
             m_ui_mask_widget_component->SetVisibility(visible, visible);
             m_minimap_widget_component->SetHiddenInGame(!visible, true);
         }
