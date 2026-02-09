@@ -1,12 +1,12 @@
 #pragma once
 
-#include "imgui/imgui.h"
-#include "imgui/imgui_impl_dx11.h"
-#include "imgui/imgui_impl_dx12.h"
-#include "imgui/imgui_impl_win32.h"
-
-#include "rendering/d3d11.hpp"
-#include "rendering/d3d12.hpp"
+//#include "imgui/imgui.h"
+//#include "imgui/imgui_impl_dx11.h"
+//#include "imgui/imgui_impl_dx12.h"
+//#include "imgui/imgui_impl_win32.h"
+//
+//#include "rendering/d3d11.hpp"
+//#include "rendering/d3d12.hpp"
 
 #include "uevr/Plugin.hpp"
 #include "uevr/API.hpp"
@@ -28,7 +28,7 @@
         API::get()->log_info(__VA_ARGS__); \
     } }
 
-extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+//extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 using namespace uevr;
 using namespace SDK;
@@ -56,18 +56,18 @@ private:
 // -----------------------------------------------------------------------------
 // ImGui
 // -----------------------------------------------------------------------------
-private:
-    HWND m_wnd{};
-    bool m_imgui_initialized{ false };
-    bool m_was_rendering_desktop{ false };
-
-public:
-    void on_present() override;
-    void on_device_reset() override;
-    bool on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) override;
-    bool initialize_imgui();
-    void on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) override;
-    void on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) override;
+//private:
+//    HWND m_wnd{};
+//    bool m_imgui_initialized{ false };
+//    bool m_was_rendering_desktop{ false };
+//
+//public:
+//    void on_present() override;
+//    void on_device_reset() override;
+//    bool on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) override;
+//    bool initialize_imgui();
+//    void on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) override;
+//    void on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) override;
 
 // -----------------------------------------------------------------------------
 // UEVR overrides

@@ -134,7 +134,6 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
 // -------------------------------------------------------------------------------------
 bool UEVRPlugin::prepare_pointers() {
     try {
-        //API::get()->log_error("[plugin][prepare_pointers] Start");
         // world
         m_world = UWorld::GetWorld();
         if (m_world == nullptr) {
@@ -468,7 +467,6 @@ void UEVRPlugin::handle_game_state_change() {
                 //PluginUtils::reset_height(0.f);
                 vr->recenter_view();
                 hide_mfd();
-
                 break;
 
             case GAME_STATE_MFD_PRE:
@@ -479,27 +477,11 @@ void UEVRPlugin::handle_game_state_change() {
                 vr->set_mod_value("VR_RoomscaleMovement", "false");
                 vr->set_aim_method(1);
                 API::get()->log_warn("[handle_game_state] GAME_STATE_MFD_PRE Done");
-                // need to set scale to 1, otherwise picked up objects will be to small
-                //float scale{ 1.f };
-                //VRMFD::set_crosshair_cursor_scale(m_neural_hud, &scale);
-                //m_try_show_mfd = true;
                 break;
 
             case GAME_STATE_MFD:
                 API::get()->log_warn("[handle_game_state] GAME_STATE_MFD");
                 show_mfd(vr);
-                //API::UObjectHook::set_disabled(false);
-                //vr->set_aim_method(0);
-                //vr->set_decoupled_pitch_enabled(true);
-                //vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
-                //vr->set_mod_value("VR_CameraUpOffset", "0.000000");
-                //vr->set_mod_value("UI_Distance", "2.000000");
-                //vr->set_mod_value("UI_Size", "1.400000");
-                //vr->set_mod_value("UI_Y_Offset", "0.00000");
-                //vr->set_mod_value("VR_RoomscaleMovement", "true");
-                //vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                ////PluginUtils::reset_height(0.f);
-                //vr->recenter_view();
                 break;
             }
         }
@@ -582,7 +564,6 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
                 //    SDK::ECollisionResponse::ECR_Ignore
                 //);
                 VRItemSelector::unselect_all_hotbar_slots(m_neural_hud);
-                //API::get()->log_warn("[plugin][handle_primary_item_selector] Grip Pressed");
             }
 
             if (m_hotbar_selector_button.is_released()) {
@@ -599,7 +580,6 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
 
                 vr->set_mod_value("VR_RoomscaleMovement", "true");
                 vr->set_aim_method(m_default_aim_method);
-                //API::get()->log_warn("[plugin][handle_primary_item_selector] Grip Released");
             }
 
             // state, when the item selector is shown
@@ -609,7 +589,6 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
                 VRItemSelector::set_current_quick_slot(m_vr_body);
 
                 state->Gamepad.sThumbRX = 0;
-                //API::get()->log_warn("[plugin][handle_primary_item_selector] Grip Held End");
             }
 
             m_hotbar_selector_button.mute_state(state);
@@ -728,10 +707,7 @@ void UEVRPlugin::show_mfd(const UEVR_VRData* vr) {
         }
 
         // reset mask size in case the game resolution changed
-        //m_vr_hud->set_mfd_mask_size(m_viewport_size_x, m_viewport_size_y);
-        //m_vr_hud->set_mfd_mask_delta();
         //m_vr_hud->set_laser_pointer_visibility(true);
-        //m_vr_hud->set_mfd_mask_visibility(true);
         //m_vr_hud->set_mfd_hotbar_visibility(true);
         //m_vr_hud->set_player_response_to_collision_channel(
         //    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore
@@ -742,38 +718,6 @@ void UEVRPlugin::show_mfd(const UEVR_VRData* vr) {
         vr->set_mod_value("UI_Size", ui_size);
         vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
         vr->set_aim_method(0);
-
-        //if (m_mfd_visible.has_changed()) {
-        //    if (m_mfd_visible.value) {
-        //        // without reseting height, the cursor would not be aligned correctly
-        //        //reset_height(vr);
-        //        // hide HUD and change aiming mode to head to get it in the right position
-        //        // next tick we'll show it again with along with mfd mask
-        //        vr->set_mod_value("UI_Size", "0.000000");
-        //        vr->set_mod_value("UI_Y_Offset", "0.000000");
-        //        vr->set_mod_value("VR_RoomscaleMovement", "false");
-        //        vr->set_aim_method(1);
-
-        //        // need to set scale to 1, otherwise picked up objects will be to small
-        //        float scale{ 1.f };
-        //        VRMFD::set_crosshair_cursor_scale(m_neural_hud, &scale);
-
-        //        m_try_show_mfd = true;
-        //    }
-        //    else {
-        //        vr->set_aim_method(2);
-        //        vr->set_mod_value("VR_RoomscaleMovement", "true");
-        //        //vr->set_mod_value("UI_Y_Offset", "0.010000");
-        //        //m_vr_hud->set_laser_pointer_visibility(false);
-        //        //m_vr_hud->set_mfd_mask_visibility(false);
-        //        //m_vr_hud->set_mfd_hotbar_visibility(false);
-        //        //m_vr_hud->set_player_response_to_collision_channel(
-        //        //    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
-        //        //);
-        //        //m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
-        //        m_vr_body->MFDMaskComponent->Hide();
-        //    }
-        //}
     }
     catch (...) {
         API::get()->log_error("[plugin][show_mfd] Exception");
@@ -816,167 +760,168 @@ void UEVRPlugin::cleanup_actors() {
 }
 
 
-// -------------------------------------------------------------------------------------
-// ImGui
-// -------------------------------------------------------------------------------------
-bool UEVRPlugin::on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
-    ImGui_ImplWin32_WndProcHandler(hwnd, msg, wparam, lparam);
-
-    return !ImGui::GetIO().WantCaptureMouse && !ImGui::GetIO().WantCaptureKeyboard;
-}
-
-void UEVRPlugin::on_device_reset() {
-    PLUGIN_LOG_ONCE("Device Reset");
-
-    //std::scoped_lock _{ m_imgui_mutex };
-
-    const auto renderer_data = API::get()->param()->renderer;
-
-    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
-        ImGui_ImplDX11_Shutdown();
-        g_d3d11 = {};
-    }
-
-    if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
-        ImGui_ImplDX12_Shutdown();
-        g_d3d12 = {};
-    }
-
-    m_imgui_initialized = false;
-}
-
-void UEVRPlugin::on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) {
-    PLUGIN_LOG_ONCE("Post Render VR Framework DX11");
-
-    const auto vr_active = API::get()->param()->vr->is_hmd_active();
-
-    if (!m_imgui_initialized || !vr_active) {
-        return;
-    }
-
-    if (m_was_rendering_desktop) {
-        m_was_rendering_desktop = false;
-        on_device_reset();
-        return;
-    }
-
-    //std::scoped_lock _{ m_imgui_mutex };
-
-    ImGui_ImplDX11_NewFrame();
-    g_d3d11.render_imgui_vr(context, rtv);
-}
-
-void UEVRPlugin::on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) {
-    PLUGIN_LOG_ONCE("Post Render VR Framework DX12");
-
-    const auto vr_active = API::get()->param()->vr->is_hmd_active();
-
-    if (!m_imgui_initialized || !vr_active) {
-        return;
-    }
-
-    if (m_was_rendering_desktop) {
-        m_was_rendering_desktop = false;
-        on_device_reset();
-        return;
-    }
-
-    //std::scoped_lock _{ m_imgui_mutex };
-
-    ImGui_ImplDX12_NewFrame();
-    g_d3d12.render_imgui_vr(command_list, rtv);
-}
-
-bool UEVRPlugin::initialize_imgui() {
-    if (m_imgui_initialized) {
-        return true;
-    }
-
-    IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
-
-    static const auto imgui_ini = API::get()->get_persistent_dir(L"outer_worlds_vr_imgui.ini").string();
-    ImGui::GetIO().IniFilename = imgui_ini.c_str();
-    ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
-
-    const auto renderer_data = API::get()->param()->renderer;
-
-    DXGI_SWAP_CHAIN_DESC swap_desc{};
-    auto swapchain = (IDXGISwapChain*)renderer_data->swapchain;
-    swapchain->GetDesc(&swap_desc);
-
-    m_wnd = swap_desc.OutputWindow;
-
-    if (!ImGui_ImplWin32_Init(m_wnd)) {
-        return false;
-    }
-
-    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
-        if (!g_d3d11.initialize()) {
-            return false;
-        }
-    }
-    else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
-        if (!g_d3d12.initialize()) {
-            return false;
-        }
-    }
-
-    m_imgui_initialized = true;
-    return true;
-}
-
-void UEVRPlugin::on_present() {
-    //std::scoped_lock _{ m_imgui_mutex };
-
-    if (!m_imgui_initialized) {
-        API::get()->log_warn("ImGui not initialized");
-        if (!initialize_imgui()) {
-            API::get()->log_error("Failed to initialize ImGui");
-            return;
-        }
-        else {
-            API::get()->log_warn("Initialized ImGui");
-        }
-    }
-
-    const auto renderer_data = API::get()->param()->renderer;
-
-    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
-        ImGui_ImplDX11_NewFrame();
-        ImGui_ImplWin32_NewFrame();
-        ImGui::NewFrame();
-
-        //if (m_main != nullptr) {
-        //    m_main->on_draw_imgui();
-        //}
-
-        ImGui::EndFrame();
-        ImGui::Render();
-
-        g_d3d11.render_imgui();
-    }
-    else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
-        auto command_queue = (ID3D12CommandQueue*)renderer_data->command_queue;
-
-        if (command_queue == nullptr) {
-            return;
-        }
-
-        ImGui_ImplDX12_NewFrame();
-        ImGui_ImplWin32_NewFrame();
-        ImGui::NewFrame();
-
-        //if (m_main != nullptr) {
-        //    m_main->on_draw_imgui();
-        //}
-
-        ImGui::EndFrame();
-        ImGui::Render();
-
-        g_d3d12.render_imgui();
-    }
-}
+//// -------------------------------------------------------------------------------------
+//// ImGui
+//// -------------------------------------------------------------------------------------
+//bool UEVRPlugin::on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+//    ImGui_ImplWin32_WndProcHandler(hwnd, msg, wparam, lparam);
+//
+//    return !ImGui::GetIO().WantCaptureMouse && !ImGui::GetIO().WantCaptureKeyboard;
+//}
+//
+//void UEVRPlugin::on_device_reset() {
+//    PLUGIN_LOG_ONCE("Device Reset");
+//
+//    //std::scoped_lock _{ m_imgui_mutex };
+//
+//    const auto renderer_data = API::get()->param()->renderer;
+//
+//    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
+//        ImGui_ImplDX11_Shutdown();
+//        g_d3d11 = {};
+//    }
+//
+//    if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
+//        ImGui_ImplDX12_Shutdown();
+//        g_d3d12 = {};
+//    }
+//
+//    m_imgui_initialized = false;
+//}
+//
+//void UEVRPlugin::on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) {
+//    PLUGIN_LOG_ONCE("Post Render VR Framework DX11");
+//
+//    const auto vr_active = API::get()->param()->vr->is_hmd_active();
+//
+//    if (!m_imgui_initialized || !vr_active) {
+//        return;
+//    }
+//
+//    if (m_was_rendering_desktop) {
+//        m_was_rendering_desktop = false;
+//        on_device_reset();
+//        return;
+//    }
+//
+//    //std::scoped_lock _{ m_imgui_mutex };
+//
+//    ImGui_ImplDX11_NewFrame();
+//    g_d3d11.render_imgui_vr(context, rtv);
+//}
+//
+//void UEVRPlugin::on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) {
+//    PLUGIN_LOG_ONCE("Post Render VR Framework DX12");
+//
+//    const auto vr_active = API::get()->param()->vr->is_hmd_active();
+//
+//    if (!m_imgui_initialized || !vr_active) {
+//        return;
+//    }
+//
+//    if (m_was_rendering_desktop) {
+//        m_was_rendering_desktop = false;
+//        on_device_reset();
+//        return;
+//    }
+//
+//    //std::scoped_lock _{ m_imgui_mutex };
+//
+//    ImGui_ImplDX12_NewFrame();
+//    g_d3d12.render_imgui_vr(command_list, rtv);
+//}
+//
+//bool UEVRPlugin::initialize_imgui() {
+//    if (m_imgui_initialized) {
+//        return true;
+//    }
+//
+//    IMGUI_CHECKVERSION();
+//    ImGui::CreateContext();
+//
+//    static const auto imgui_ini = API::get()->get_persistent_dir(L"outer_worlds_vr_imgui.ini").string();
+//    ImGui::GetIO().IniFilename = imgui_ini.c_str();
+//    ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
+//
+//    const auto renderer_data = API::get()->param()->renderer;
+//
+//    DXGI_SWAP_CHAIN_DESC swap_desc{};
+//    auto swapchain = (IDXGISwapChain*)renderer_data->swapchain;
+//    swapchain->GetDesc(&swap_desc);
+//
+//    m_wnd = swap_desc.OutputWindow;
+//
+//    if (!ImGui_ImplWin32_Init(m_wnd)) {
+//        return false;
+//    }
+//
+//    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
+//        if (!g_d3d11.initialize()) {
+//            return false;
+//        }
+//    }
+//    else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
+//        if (!g_d3d12.initialize()) {
+//            return false;
+//        }
+//    }
+//
+//    m_imgui_initialized = true;
+//    return true;
+//}
+//
+//void UEVRPlugin::on_present() {
+//    return;
+//    //std::scoped_lock _{ m_imgui_mutex };
+//
+//    if (!m_imgui_initialized) {
+//        API::get()->log_warn("ImGui not initialized");
+//        if (!initialize_imgui()) {
+//            API::get()->log_error("Failed to initialize ImGui");
+//            return;
+//        }
+//        else {
+//            API::get()->log_warn("Initialized ImGui");
+//        }
+//    }
+//
+//    const auto renderer_data = API::get()->param()->renderer;
+//
+//    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
+//        ImGui_ImplDX11_NewFrame();
+//        ImGui_ImplWin32_NewFrame();
+//        ImGui::NewFrame();
+//
+//        //if (m_main != nullptr) {
+//        //    m_main->on_draw_imgui();
+//        //}
+//
+//        ImGui::EndFrame();
+//        ImGui::Render();
+//
+//        g_d3d11.render_imgui();
+//    }
+//    else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
+//        auto command_queue = (ID3D12CommandQueue*)renderer_data->command_queue;
+//
+//        if (command_queue == nullptr) {
+//            return;
+//        }
+//
+//        ImGui_ImplDX12_NewFrame();
+//        ImGui_ImplWin32_NewFrame();
+//        ImGui::NewFrame();
+//
+//        //if (m_main != nullptr) {
+//        //    m_main->on_draw_imgui();
+//        //}
+//
+//        ImGui::EndFrame();
+//        ImGui::Render();
+//
+//        g_d3d12.render_imgui();
+//    }
+//}
 
 // sends mouse inputs to OS (thanks markmon)
 void UEVRPlugin::send_mouse(WORD key, bool key_up) {
