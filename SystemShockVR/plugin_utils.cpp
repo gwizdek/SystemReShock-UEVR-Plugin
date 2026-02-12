@@ -72,7 +72,7 @@ void PluginUtils::destroy_actors_by_tag(SDK::UWorld* world, SDK::FName actor_tag
         API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Found %d Actors to Destroy", actors_to_destroy.Num());
 
         // destroying actors
-        for (size_t i = 0; i < actors_to_destroy.Num(); i++) {
+        for (UC::int32 i = 0; i < actors_to_destroy.Num(); i++) {
             if (actors_to_destroy[i] != nullptr && SDK::UKismetSystemLibrary::IsValid(actors_to_destroy[i]) && actors_to_destroy[i]->IsA(SDK::AActor::StaticClass())) {
                 static_cast<SDK::AActor*>(actors_to_destroy[i])->K2_DestroyActor();
                 API::get()->log_warn("[plugin_utils][destroy_actors_by_tag] Destroyed Actor %s", actor_tag.GetRawString().c_str());

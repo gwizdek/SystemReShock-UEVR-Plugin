@@ -149,7 +149,8 @@ public:
     void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_game_state_change();
     void handle_level_change();
-    void show_mfd(const UEVR_VRData* vr);
+    bool calculate_corrected_ui_distance_size(const UEVR_VRData* vr, char* ui_distance, char* ui_size);
+    void show_mfd();
     void hide_mfd();
     void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);
     void cleanup_pointers();

@@ -1,48 +1,18 @@
 #include "uevr/API.hpp"
 
 #include "SDK/Niagara_classes.hpp"
+#include "SDK/UMG_classes.hpp"
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
-//#include "SDK/WIDGET_PlayerHUD_classes.hpp"
-//#include "SDK/WIDGET_HotbarSlot_classes.hpp"
-//#include "SDK/COMP_MoveControlManager_classes.hpp"
 #include "SDK/CH_Hacker_AnimBP_classes.hpp"
 
-//#include "SDK/_BI_VRWeapon_classes.hpp"
-//#include "SDK/_CH_Hacker_Rig_Skeleton_AnimBlueprint_classes.hpp"
 #include "SDK/_BP_LaserDot_classes.hpp"
-//#include "SDK/_BP_ItemSelector_classes.hpp"
 
 #include "vr_body.hpp"
-//#include "plugin_utils.hpp"
+#include "vr_plugin_shared.hpp"
 
 using namespace uevr;
 using namespace SDK;
 
-//VRBody::VRBody(SystemShockMain* main) {
-//    m_main = main;
-//}
-//
-//bool VRBody::is_valid() {
-//    return m_main != nullptr && UKismetSystemLibrary::IsValid(m_bp_actor);
-//}
-//
-//void VRBody::on_tick() {
-//    try {
-//        if (!is_valid()) {
-//            API::get()->log_warn("[vr_body][on_tick] Invalid VRBody");
-//            return;
-//        }
-//
-//        if (m_main->get_pawn() == nullptr || !m_main->get_pawn()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
-//            API::get()->log_warn("[vr_body][on_tick] Invalid Pawn");
-//            return;
-//        }
-//    }
-//    catch (...) {
-//        API::get()->log_error("[vrbody][on_tick] Exception");
-//    }
-//}
-//
 // disables / enables collisions on close to body meshes to prevent unwanted collisions with the widget interation component trace
 void VRBody::set_player_response_to_collision_channel(APAWN_Hacker_Implant_C* pawn, A_BP_VRBody_C* vr_body, ECollisionChannel channel, ECollisionResponse response) {
     try {
@@ -50,8 +20,6 @@ void VRBody::set_player_response_to_collision_channel(APAWN_Hacker_Implant_C* pa
         pawn->Mesh->SetCollisionResponseToChannel(channel, response);
         pawn->ArmsMesh->SetCollisionResponseToChannel(channel, response);
         pawn->WeaponMesh->SetCollisionResponseToChannel(channel, response);
-        //API::get()->log_warn("[vrbody][set_player_response_to_collision_channel] Hacker collision changed");
-        //API::get()->log_warn("[vrbody][set_player_response_to_collision_channel] VRBody collision changed");
         vr_body->VRBodyMesh->SetCollisionResponseToChannel(channel, response);
     }
     catch (...) {
@@ -154,13 +122,15 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         );
         API::get()->log_warn("[vr_body][initialize_vr_body] Attached Media Reader");
 
-        //initialize_main_item_selector();
-        //overwrite_hacker_crouch_animations();
+        // set WidgetInteractionComponent trace channel
+        vr_body->WidgetInteractionRight->TraceChannel = WIDGET_INTERACTION_TRACE_CHANNEL;
+
         return vr_body;
     }
     catch (...) {
         API::get()->log_error("[vr_body][initialize_vr_body] Exception");
     }
+    return nullptr;
 }
 
 void VRBody::initialize_laser_dot(A_BP_VRBody_C* vr_body) {
@@ -174,10 +144,6 @@ void VRBody::initialize_laser_dot(A_BP_VRBody_C* vr_body) {
     vr_body->LaserDot->DrawDebugSphere = false;
     vr_body->LaserDot->TraceChannel = ETraceTypeQuery::TraceTypeQuery3;
     vr_body->LaserDot->RootComponent->K2_SetRelativeLocationAndRotation({ 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f }, false, &hit_result, false);
-
-
-    //vr_body->LaserDotComponent->K2_SetWorldLocation({ -63.f, 1850.f, 300.f }, false, &hit_result, false);
-    ////vr_body->LaserDotComponent->SetNiagaraVariableFloat(L"Power", 0.2f);
 
     //vr_body->LaserDot->LaserDotComponent->Activate(true);
     vr_body->LaserDot->LaserDotComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.5f);
@@ -208,4 +174,18 @@ void VRBody::overwrite_hacker_crouch_animations(APAWN_Hacker_Implant_C* pawn) {
 
 void VRBody::set_weapon_mesh_visibility(APAWN_Hacker_Implant_C* pawn, bool visible) {
     pawn->WeaponMesh->SetVisibility(visible, true);
+}
+
+void VRBody::reset_player_camera(APAWN_Hacker_Implant_C* pawn) {
+    // Re-Attach Hacker Camera
+    static_cast<APAWN_Hacker_Implant_C*>(pawn)->PlayerCamera->K2_AttachToComponent(
+        pawn->LookPivot,
+        UKismetStringLibrary::Conv_StringToName(L"None"),
+        EAttachmentRule::SnapToTarget,
+        EAttachmentRule::KeepRelative,
+        EAttachmentRule::KeepWorld,
+        true
+    );
+
+    static_cast<APAWN_Hacker_Implant_C*>(pawn)->PlayerCamera->Activate(false);
 }

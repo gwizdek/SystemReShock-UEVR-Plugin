@@ -374,7 +374,6 @@ enum class ENDISkeletalMesh_SkinningMode : uint8
 	None                                     = 0,
 	SkinOnTheFly                             = 1,
 	PreSkin                                  = 2,
-	ENDISkeletalMesh_MAX                     = 256,
 };
 
 // Enum Niagara.ENDISkeletalMesh_SourceMode

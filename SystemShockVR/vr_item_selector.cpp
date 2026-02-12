@@ -11,7 +11,11 @@ using namespace SDK;
 void VRItemSelector::initialize(APAWN_Hacker_Implant_C* pawn, A_BP_VRBody_C* vr_body, UWIDGET_PlayerHUD_C* neural_hud) {
     try {
         API::get()->log_warn("[item_selector][initialize] Initialize HotbarSlots");
-
+        if (vr_body == nullptr) {
+            API::get()->log_error("[item_selector][initialize] vr_body nullptr");
+            return;
+        }
+        
         // get prepared in UE Editor hotbar slot array 
         auto hotbar_slots = vr_body->ItemSelectorRight->HotbarSlots;
 
@@ -24,20 +28,15 @@ void VRItemSelector::initialize(APAWN_Hacker_Implant_C* pawn, A_BP_VRBody_C* vr_
             canvas_panel_slots[i]->SetAnchors(SDK::FAnchors{ {0.5f, 0.5f}, {0.5f, 0.5f} });
 
             hotbar_slots[i]->SetWidget(neural_hud->HotbarSlots[i]);
-    
-            // 150.f seems to be the correct size
             hotbar_slots[i]->SetDrawSize({ 100.0f, 104.0f });
-            hotbar_slots[i]->SetVisibility(false, false);
-            hotbar_slots[i]->SetHiddenInGame(true, true);
-
-            // set properties for collision detection
-            hotbar_slots[i]->SetWidgetSpace(SDK::EWidgetSpace::World);
-            hotbar_slots[i]->SetCollisionEnabled(SDK::ECollisionEnabled::QueryOnly);
-            hotbar_slots[i]->SetCollisionObjectType(item_selector_collision_channel);
+    
+            // setup selector's collision channels
             hotbar_slots[i]->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
-            //hotbar_slots[i]->SetCollisionResponseToChannel(
-            //    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
-            //);
+            hotbar_slots[i]->SetCollisionResponseToChannel(
+                WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Block
+            );
+
+            // ?
             canvas_panel_slots[i]->SetAlignment({ 0.5f, 1.f });
             canvas_panel_slots[i]->SetAnchors(SDK::FAnchors{ {0.5f, 1.f}, {0.5f, 1.f} });
 
@@ -57,16 +56,6 @@ void VRItemSelector::initialize(APAWN_Hacker_Implant_C* pawn, A_BP_VRBody_C* vr_
         }
 
         API::get()->log_warn("[item_selector][initialize] Initialized HotbarSlots");
-
-
-        vr_body->WidgetInteractionRight->VirtualUserIndex = 99;
-        vr_body->WidgetInteractionRight->PointerIndex = 99;
-        vr_body->WidgetInteractionRight->TraceChannel = item_selector_collision_channel;
-        vr_body->WidgetInteractionRight->InteractionDistance = 300.0f;
-        vr_body->WidgetInteractionRight->InteractionSource = SDK::EWidgetInteractionSource::World;
-        vr_body->WidgetInteractionRight->bEnableHitTesting = true;
-        //vr_body->WidgetInteractionRight->SetVisibility(false, false);
-        //vr_body->WidgetInteractionRight->SetHiddenInGame(true, true);
     }
     catch (...) {
         API::get()->log_error("[vrbody][initialize] Exception");
@@ -74,7 +63,6 @@ void VRItemSelector::initialize(APAWN_Hacker_Implant_C* pawn, A_BP_VRBody_C* vr_
 }
 
 void VRItemSelector::set_hotbar_slot_visibility(int slot, bool visible) {
-    //m_hotbar_slots[slot]->SetVisibility(visible ? SDK::ESlateVisibility::Visible : SDK::ESlateVisibility::Hidden);
     m_item_selector->HotbarSlots[slot]->SetVisibility(visible, true);
     m_item_selector->HotbarSlots[slot]->SetHiddenInGame(!visible, true);
 }
@@ -132,14 +120,6 @@ void VRItemSelector::set_visibility(A_BP_VRBody_C* vr_body, bool visible) {
         if (vr_body->ItemSelectorRight->HotbarSlots[i] != nullptr) {
             vr_body->ItemSelectorRight->HotbarSlots[i]->SetVisibility(visible, true);
             vr_body->ItemSelectorRight->HotbarSlots[i]->SetHiddenInGame(!visible, true);
-
-            vr_body->ItemSelectorRight->HotbarSlots[i]->SetCollisionResponseToChannel(
-                item_selector_collision_channel, visible ? SDK::ECollisionResponse::ECR_Block : SDK::ECollisionResponse::ECR_Ignore
-            );
-
-            //m_bp_actor->ItemSelectorRight->HotbarSlots[i]->SetCollisionResponseToAllChannels(
-            //    visible ? SDK::ECollisionResponse::ECR_Block : SDK::ECollisionResponse::ECR_Ignore
-            //);
         }
     }
 }

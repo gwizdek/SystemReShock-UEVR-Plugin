@@ -33,31 +33,10 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\SystemReShock_classes.hpp">
-      <Filter>SDK Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\COMP_HackerInventory_classes.hpp">
-      <Filter>SDK Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\ITEM_WeaponBase_classes.hpp">
-      <Filter>SDK Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\PAWN_Hacker_Simple_classes.hpp">
-      <Filter>SDK Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\PAWN_SystemShockCharacter_classes.hpp">
-      <Filter>SDK Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\WIDGET_InventoryContextMenu_classes.hpp">
-      <Filter>SDK Files</Filter>
-    </ClInclude>
     <ClInclude Include="SDK\Engine_classes.hpp">
       <Filter>SDK Files</Filter>
     </ClInclude>
     <ClInclude Include="SDK\CoreUObject_structs.hpp">
-      <Filter>SDK Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\WIDGET_MainMenu_InGame_classes.hpp">
       <Filter>SDK Files</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imgui.h">
@@ -96,9 +75,6 @@
     <ClInclude Include="mINI\ini.h">
       <Filter>mINI</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\HARDWARE_HeadLamp_classes.hpp">
-      <Filter>SDK Files</Filter>
-    </ClInclude>
     <ClInclude Include="plugin_utils.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -107,9 +83,6 @@
     </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp">
-      <Filter>SDK Files</Filter>
     </ClInclude>
     <ClInclude Include="vr_plugin_shared.hpp">
       <Filter>Source Files</Filter>

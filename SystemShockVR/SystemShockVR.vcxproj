@@ -158,17 +158,8 @@
     <ClInclude Include="mINI\ini.h" />
     <ClInclude Include="plugin.hpp" />
     <ClInclude Include="plugin_utils.hpp" />
-    <ClInclude Include="SDK\COMP_HackerInventory_classes.hpp" />
     <ClInclude Include="SDK\CoreUObject_structs.hpp" />
     <ClInclude Include="SDK\Engine_classes.hpp" />
-    <ClInclude Include="SDK\HARDWARE_HeadLamp_classes.hpp" />
-    <ClInclude Include="SDK\ITEM_WeaponBase_classes.hpp" />
-    <ClInclude Include="SDK\PAWN_Hacker_Simple_classes.hpp" />
-    <ClInclude Include="SDK\PAWN_SystemShockCharacter_classes.hpp" />
-    <ClInclude Include="SDK\SystemReShock_classes.hpp" />
-    <ClInclude Include="SDK\WIDGET_InventoryContextMenu_classes.hpp" />
-    <ClInclude Include="SDK\WIDGET_MainMenu_InGame_classes.hpp" />
-    <ClInclude Include="SDK\WIDGET_SimpleHUD_classes.hpp" />
     <ClInclude Include="vr_body.hpp" />
     <ClInclude Include="rendering\d3d11.hpp" />
     <ClInclude Include="rendering\d3d12.hpp" />

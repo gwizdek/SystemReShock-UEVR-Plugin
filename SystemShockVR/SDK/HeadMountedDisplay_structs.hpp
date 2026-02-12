@@ -69,7 +69,6 @@ enum class EXRTrackedDeviceType : uint8
 	Other                                    = 3,
 	Invalid                                  = 254,
 	Any                                      = 255,
-	EXRTrackedDeviceType_MAX                 = 256,
 };
 
 // Enum HeadMountedDisplay.ESpectatorScreenMode

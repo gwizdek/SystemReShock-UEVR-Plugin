@@ -11,9 +11,8 @@
 #include "SDK/WIDGET_CrosshairCursor_classes.hpp"
 #include "SDK/_BP_MFDMaskComponent_classes.hpp"
 
-#include "main.hpp"
-
 #include "vr_mfd.hpp"
+#include "vr_plugin_shared.hpp"
 
 using namespace uevr;
 using namespace SDK;
@@ -31,6 +30,9 @@ void VRMFD::initialize(A_BP_VRBody_C* vr_body) {
 
     //SDK::FLinearColor color{ 0.4f, 0.4f, 0.4f, 0.2f };
     //vr_body->MFDMaskComponent->SetTintColorAndOpacity(color);
+    vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
+        WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Ignore
+    );
 }
 
 
@@ -47,18 +49,10 @@ void VRMFD::align_mfd_panel(UWIDGET_PlayerHUD_C* neural_hud) {
 
 void VRMFD::show(A_BP_VRBody_C* vr_body) {
     vr_body->MFDMaskComponent->Show(1.0f, VRMFD::m_mfd_depth);
-
-    vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
-        item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
-    );
 }
 
 void VRMFD::hide(A_BP_VRBody_C* vr_body) {
     vr_body->MFDMaskComponent->Hide();
-
-    vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
-        item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore
-    );
 }
 
 void VRMFD::set_crosshair_cursor_scale(UWIDGET_PlayerHUD_C* neural_hud, float* scale) {

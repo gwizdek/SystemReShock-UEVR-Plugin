@@ -8,7 +8,9 @@
 
 using namespace SDK;
 
-const ECollisionChannel item_selector_collision_channel{ ECollisionChannel::ECC_EngineTraceChannel1 };
+// this engine channel shouldn't be used, but would need to change all defined collision profiles to ignore my own dedicated game channel
+// anyway, this one works
+const ECollisionChannel WIDGET_INTERACTION_TRACE_CHANNEL{ ECollisionChannel::ECC_EngineTraceChannel1 };
 
 typedef enum ModEvent {
     MOD_EVENT_VR_HUD_HIDE_DASHBOARDS,
@@ -19,7 +21,7 @@ typedef enum ModEvent {
     MOD_EVENT_ENABLE_WORLD_RENDERING
 } ModEvent;
 
-typedef enum EGameState : uint8_t {
+enum EGameState : uint8_t {
     GAME_STATE_UNDEFINED = 0,
     GAME_STATE_MAIN_MENU = 1,
     GAME_STATE_PAUSE_MENU = 2,
