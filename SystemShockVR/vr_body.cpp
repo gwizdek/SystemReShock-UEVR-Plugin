@@ -1,26 +1,37 @@
 #include "uevr/API.hpp"
 
-#include "SDK/Niagara_classes.hpp"
+#include "SDK/Engine_classes.hpp"
 #include "SDK/UMG_classes.hpp"
+#include "SDK/Niagara_classes.hpp"
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
+#include "SDK/COMP_HackerInventory_classes.hpp"
 #include "SDK/CH_Hacker_AnimBP_classes.hpp"
 
+#include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/_BP_LaserDot_classes.hpp"
+#include "SDK/_BP_MFDMaskComponent_classes.hpp"
 
 #include "vr_body.hpp"
 #include "vr_plugin_shared.hpp"
+
+extern SDK::A_BP_VRBody_C* g_vr_body;
 
 using namespace uevr;
 using namespace SDK;
 
 // disables / enables collisions on close to body meshes to prevent unwanted collisions with the widget interation component trace
-void VRBody::set_player_response_to_collision_channel(APAWN_Hacker_Implant_C* pawn, A_BP_VRBody_C* vr_body, ECollisionChannel channel, ECollisionResponse response) {
+void VRBody::set_player_response_to_collision_channel(ECollisionChannel channel, ECollisionResponse response) {
+    if (!UKismetSystemLibrary::IsValid(g_vr_body)) {
+        API::get()->log_error("[vrbody][set_player_response_to_collision_channel] Invalid vr_body");
+        return;
+    }
+
     try {
-        pawn->CapsuleComponent->SetCollisionResponseToChannel(channel, response);
-        pawn->Mesh->SetCollisionResponseToChannel(channel, response);
-        pawn->ArmsMesh->SetCollisionResponseToChannel(channel, response);
-        pawn->WeaponMesh->SetCollisionResponseToChannel(channel, response);
-        vr_body->VRBodyMesh->SetCollisionResponseToChannel(channel, response);
+        g_vr_body->HackerPawn->CapsuleComponent->SetCollisionResponseToChannel(channel, response);
+        g_vr_body->HackerPawn->Mesh->SetCollisionResponseToChannel(channel, response);
+        g_vr_body->HackerPawn->ArmsMesh->SetCollisionResponseToChannel(channel, response);
+        g_vr_body->HackerPawn->WeaponMesh->SetCollisionResponseToChannel(channel, response);
+        g_vr_body->VRBodyMesh->SetCollisionResponseToChannel(channel, response);
     }
     catch (...) {
         API::get()->log_error("[vrbody][set_player_response_to_collision_channel] Exception");
@@ -125,6 +136,10 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         // set WidgetInteractionComponent trace channel
         vr_body->WidgetInteractionRight->TraceChannel = WIDGET_INTERACTION_TRACE_CHANNEL;
 
+        vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
+            WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Ignore
+        );
+
         return vr_body;
     }
     catch (...) {
@@ -133,35 +148,36 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
     return nullptr;
 }
 
-void VRBody::initialize_laser_dot(A_BP_VRBody_C* vr_body) {
+//void VRBody::initialize_laser_dot(A_BP_VRBody_C* vr_body) {
+void VRBody::initialize_laser_dot() {
     API::get()->log_warn("[vrbody][initialize_laser_dot] Begin");
-    if (vr_body == nullptr) {
-        API::get()->log_error("[vrbody][initialize_laser_dot] Invalid BP Actor");
+    if (!UKismetSystemLibrary::IsValid(g_vr_body)) {
+        API::get()->log_error("[vrbody][initialize_laser_dot] Invalid vr_body");
         return;
     }
 
     FHitResult hit_result{};
-    vr_body->LaserDot->DrawDebugSphere = false;
-    vr_body->LaserDot->TraceChannel = ETraceTypeQuery::TraceTypeQuery3;
-    vr_body->LaserDot->RootComponent->K2_SetRelativeLocationAndRotation({ 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f }, false, &hit_result, false);
+    g_vr_body->LaserDot->DrawDebugSphere = false;
+    g_vr_body->LaserDot->TraceChannel = ETraceTypeQuery::TraceTypeQuery3;
+    g_vr_body->LaserDot->RootComponent->K2_SetRelativeLocationAndRotation({ 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f }, false, &hit_result, false);
 
     //vr_body->LaserDot->LaserDotComponent->Activate(true);
-    vr_body->LaserDot->LaserDotComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.5f);
-    vr_body->LaserDot->LaserDotComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Size"), 3.f);
-    vr_body->LaserDot->EnableTrace();
+    g_vr_body->LaserDot->LaserDotComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.5f);
+    g_vr_body->LaserDot->LaserDotComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Size"), 3.f);
+    g_vr_body->LaserDot->EnableTrace();
 
-    vr_body->LaserDot->LaserPointerComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.1f);
-    vr_body->LaserDot->LaserPointerComponent->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"LaserColour"), { 0.2f, 0.f, 0.f, 0.5f });
-    vr_body->LaserDot->LaserPointerComponent->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"PrimaryColor"), { 0.2f, 0.f, 0.f, 0.5f });
+    g_vr_body->LaserDot->LaserPointerComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.1f);
+    g_vr_body->LaserDot->LaserPointerComponent->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"LaserColour"), { 0.2f, 0.f, 0.f, 0.5f });
+    g_vr_body->LaserDot->LaserPointerComponent->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"PrimaryColor"), { 0.2f, 0.f, 0.f, 0.5f });
 
     //PluginUtils::bytes_to_float("Power", 0, 0, 128, 63);
     //PluginUtils::bytes_to_float("Size", 0, 0, 192, 64);
 }
 
-void VRBody::overwrite_hacker_crouch_animations(APAWN_Hacker_Implant_C* pawn) {
+void VRBody::overwrite_hacker_crouch_animations() {
     API::get()->log_warn("[vrbody][override_hacker_walk_animations] Start");
 
-    SDK::UCH_Hacker_AnimBP_C* hacker_anim = (SDK::UCH_Hacker_AnimBP_C*)pawn->Mesh->AnimScriptInstance;
+    SDK::UCH_Hacker_AnimBP_C* hacker_anim = (SDK::UCH_Hacker_AnimBP_C*)g_vr_body->HackerPawn->Mesh->AnimScriptInstance;
     if (hacker_anim != nullptr) {
         // make crouch animations use walk animations
         hacker_anim->AnimGraphNode_SequencePlayer_8.Sequence = hacker_anim->AnimGraphNode_SequencePlayer_7.Sequence;
@@ -172,14 +188,14 @@ void VRBody::overwrite_hacker_crouch_animations(APAWN_Hacker_Implant_C* pawn) {
     }
 }
 
-void VRBody::set_weapon_mesh_visibility(APAWN_Hacker_Implant_C* pawn, bool visible) {
-    pawn->WeaponMesh->SetVisibility(visible, true);
+void VRBody::set_weapon_mesh_visibility(bool visible) {
+    g_vr_body->HackerPawn->WeaponMesh->SetVisibility(visible, true);
 }
 
-void VRBody::reset_player_camera(APAWN_Hacker_Implant_C* pawn) {
-    // Re-Attach Hacker Camera
-    static_cast<APAWN_Hacker_Implant_C*>(pawn)->PlayerCamera->K2_AttachToComponent(
-        pawn->LookPivot,
+void VRBody::reset_player_camera() {
+    // Re-Attach Hacker Camera to original location
+    g_vr_body->HackerPawn->PlayerCamera->K2_AttachToComponent(
+        g_vr_body->HackerPawn->LookPivot,
         UKismetStringLibrary::Conv_StringToName(L"None"),
         EAttachmentRule::SnapToTarget,
         EAttachmentRule::KeepRelative,
@@ -187,5 +203,28 @@ void VRBody::reset_player_camera(APAWN_Hacker_Implant_C* pawn) {
         true
     );
 
-    static_cast<APAWN_Hacker_Implant_C*>(pawn)->PlayerCamera->Activate(false);
+    g_vr_body->HackerPawn->PlayerCamera->Activate(false);
+}
+
+void VRBody::show_vr_body() {
+
+}
+
+
+void VRBody::hide_vr_body() {
+
+}
+
+
+void VRBody::initialize_minimap(UWIDGET_PlayerHUD_C* neural_hud) {
+    // Setting WidgetComponent like this causes masive UObject creation when looking at the Minimap
+    //g_vr_body->MinimapWidgetComponent->SetWidget(neural_hud->WIDGET_Minimap);
+
+    //auto minimap = static_cast<UWIDGET_Minimap_C*>(g_vr_body->MinimapWidgetComponent->GetWidget());
+    //if (minimap != nullptr) {
+    //    minimap->PlayerHUD = neural_hud;
+    //    minimap->EVENT_OnLevelChanged();
+    //    minimap->EVENT_OnLevelRegionChanged();
+    //    minimap->UpdateMinimap();
+    //}
 }

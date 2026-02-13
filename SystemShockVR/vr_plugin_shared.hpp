@@ -6,11 +6,9 @@
 #define INPUT_DEADZONE_HI  ( 0.80f * FLOAT(0x7FFF) )  // Default to 80% of the +/- 32767 range.
 #define MOUSE_WHEEL_DEBOUNCE_TIME 0.066f
 
-using namespace SDK;
-
 // this engine channel shouldn't be used, but would need to change all defined collision profiles to ignore my own dedicated game channel
 // anyway, this one works
-const ECollisionChannel WIDGET_INTERACTION_TRACE_CHANNEL{ ECollisionChannel::ECC_EngineTraceChannel1 };
+const SDK::ECollisionChannel WIDGET_INTERACTION_TRACE_CHANNEL{ SDK::ECollisionChannel::ECC_EngineTraceChannel1 };
 
 typedef enum ModEvent {
     MOD_EVENT_VR_HUD_HIDE_DASHBOARDS,

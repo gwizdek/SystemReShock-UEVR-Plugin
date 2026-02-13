@@ -8,12 +8,7 @@ typedef SDK::UObject* (*StaticLoadObject_t)(uevr::API::UClass* ObjectClass, uevr
 
 class PluginUtils
 {
-private:
-
 public:
-    PluginUtils() = default;
-    virtual ~PluginUtils() {};
-
     static void reset_height(float offset_y);
     static SDK::AActor* spawn_actor(SDK::UWorld* world, SDK::FTransform transform, std::wstring actor_tag);
     static void destroy_actors_by_tag(SDK::UWorld* world, SDK::FName actor_tag);
@@ -24,4 +19,7 @@ public:
     static float bytes_to_float(std::string name, uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3);
     static void print_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data);
     static float get_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data);
+    static float uevr_param_to_float(const UEVR_VRData* vr, const char* key);
+
+    PluginUtils() = delete;
 };

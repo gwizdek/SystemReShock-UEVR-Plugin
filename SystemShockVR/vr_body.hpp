@@ -1,22 +1,28 @@
 #pragma once
 
+#include "SDK/Engine_structs.hpp"
+#include "SDK/COMP_HackerInventory_classes.hpp"
+#include "SDK/WIDGET_PlayerHUD_classes.hpp"
+
 #include "SDK/_BP_VRBody_classes.hpp"
 
-using namespace SDK;
-
-class VRBody
+class VRBody final
 {
 private:
+    static inline float m_mfd_depth{ 150.f };
 
 public:
-    VRBody() = default;
-    virtual ~VRBody() {};
+    static SDK::A_BP_VRBody_C* initialize_vr_body(SDK::APAWN_Hacker_Implant_C* pawn);
+    static void initialize_laser_dot();
+    static void overwrite_hacker_crouch_animations();
+    static void set_weapon_mesh_visibility(bool visible);
+    static void set_player_response_to_collision_channel(SDK::ECollisionChannel channel, SDK::ECollisionResponse response);
+    static void reset_player_camera();
+    static void show_vr_body();
+    static void hide_vr_body();
 
-    static A_BP_VRBody_C* initialize_vr_body(APAWN_Hacker_Implant_C* pawn);
-    static void initialize_laser_dot(A_BP_VRBody_C* vr_body);
-    static void overwrite_hacker_crouch_animations(APAWN_Hacker_Implant_C* pawn);
-    static void set_weapon_mesh_visibility(APAWN_Hacker_Implant_C* pawn, bool visible);
-    static void set_player_response_to_collision_channel(APAWN_Hacker_Implant_C* pawn, A_BP_VRBody_C* vr_body, SDK::ECollisionChannel channel, SDK::ECollisionResponse response);
-    static void reset_player_camera(APAWN_Hacker_Implant_C* pawn);
+    // Minimap
+    static void initialize_minimap(SDK::UWIDGET_PlayerHUD_C* neural_hud);
+
     //void set_player_response_to_all_collision_channels(SDK::ECollisionResponse response);
 };

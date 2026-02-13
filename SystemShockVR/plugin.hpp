@@ -33,6 +33,8 @@
 using namespace uevr;
 using namespace SDK;
 
+SDK::A_BP_VRBody_C* g_vr_body{};
+
 class UEVRPlugin;
 extern std::unique_ptr<UEVRPlugin> g_plugin;
 
@@ -97,7 +99,7 @@ private:
     UWorld* m_world{ nullptr };
     UCOMP_HackerInventory_C* m_inventory{ nullptr };
     UWIDGET_PlayerHUD_C* m_neural_hud{ nullptr };
-    A_BP_VRBody_C* m_vr_body{ nullptr };
+    //A_BP_VRBody_C* m_vr_body{ nullptr };
 
 // -----------------------------------------------------------------------------
 // Watched props
@@ -150,12 +152,9 @@ public:
     void handle_game_state_change();
     void handle_level_change();
     bool calculate_corrected_ui_distance_size(const UEVR_VRData* vr, char* ui_distance, char* ui_size);
-    void show_mfd();
-    void hide_mfd();
     void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);
     void cleanup_pointers();
-    static void cleanup_actors();
     void send_mouse(WORD key, bool key_up);
-
-
+    bool is_valid_vr_body_hacker_implant_pawn();
+    static void cleanup_actors();
 };

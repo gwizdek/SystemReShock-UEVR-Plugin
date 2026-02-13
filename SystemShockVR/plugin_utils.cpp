@@ -172,3 +172,19 @@ void PluginUtils::print_niagara_parameter_float(std::string name, uint8_t offset
 float PluginUtils::get_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data) {
     return bytes_to_float(name, data[offset], data[offset + 1], data[offset + 2], data[offset + 3]);
 }
+
+float PluginUtils::uevr_param_to_float(const UEVR_VRData* vr, const char* key) {
+    try {
+        // get uevr param
+        char uevr_param[16] = {};
+        vr->get_mod_value(key, uevr_param, sizeof(uevr_param));
+        float value{ 1.f };
+        size_t read = 0;
+        value = std::stof(uevr_param, &read);
+        return value;
+    }
+    catch (std::invalid_argument) {
+        API::get()->log_error("[plugin_utils][uevr_param_to_float] Error converting UEVR param value to float");
+    }
+    return 0;
+}

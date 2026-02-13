@@ -68,7 +68,6 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
         }
         prepare_game_state();
         handle_xinput(state, vr);
-        
 
         // set it to true, so we won't process pawn again in pre_engine_tick cb
         m_xinput_cb_processed = true;
@@ -170,7 +169,7 @@ bool UEVRPlugin::prepare_pointers() {
         // level
         m_level.set_value(m_world != nullptr ? m_world->PersistentLevel : nullptr);
 
-        //if (!SDK::UKismetSystemLibrary::IsValid(m_vr_body)) {
+        //if (!SDK::UKismetSystemLibrary::IsValid(g_vr_body)) {
         //    API::get()->log_error("[plugin][prepare_pointers] VR_Body pointer error");
         //    return false;
         //}
@@ -333,7 +332,7 @@ void UEVRPlugin::handle_game_state_controller_input(XINPUT_STATE* state, const U
         }
 
         if (m_game_state.get() == GAME_STATE_CITADEL_STATION) {
-            if (m_vr_body == nullptr) {
+            if (g_vr_body == nullptr) {
                 return;
             }
 
@@ -343,20 +342,20 @@ void UEVRPlugin::handle_game_state_controller_input(XINPUT_STATE* state, const U
             }
 
             if (m_gamepad_btn_x.is_pressed()) {
-                API::get()->log_warn("[plugin][handle_controller_input] X-button");
+                //API::get()->log_warn("[plugin][handle_controller_input] X-button");
             }
 
             if (m_gamepad_right_shoulder.is_pressed()) {
-                m_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator2);
+                g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator2);
             }
             if (m_gamepad_right_shoulder.is_released()) {
-                m_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator0);
+                g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator0);
             }
             if (m_gamepad_left_shoulder.is_pressed()) {
-                m_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator2);
+                g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator2);
             }
             if (m_gamepad_left_shoulder.is_released()) {
-                m_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator0);
+                g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator0);
             }
 
             handle_primary_item_selector(state, vr);
@@ -364,7 +363,7 @@ void UEVRPlugin::handle_game_state_controller_input(XINPUT_STATE* state, const U
         }
 
         if (m_game_state.get() == GAME_STATE_MFD) {
-            if (m_vr_body == nullptr) {
+            if (g_vr_body == nullptr) {
                 return;
             }
             handle_mfd_interactions(state, vr);
@@ -445,7 +444,7 @@ void UEVRPlugin::handle_game_state_change() {
                 break;
 
             case GAME_STATE_CITADEL_STATION:
-                m_vr_body->VRBodyMesh->SetVisibility(true, false);
+                g_vr_body->VRBodyMesh->SetVisibility(true, false);
 
                 API::UObjectHook::set_disabled(false);
                 vr->set_aim_method(m_default_aim_method);
@@ -459,30 +458,35 @@ void UEVRPlugin::handle_game_state_change() {
                 vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
                 //PluginUtils::reset_height(0.f);
                 vr->recenter_view();
-                hide_mfd();
+
+                if (is_valid_vr_body_hacker_implant_pawn()) {
+                    VRMFD::hide_mfd();
+                }
                 break;
 
             case GAME_STATE_MFD_PRE:
-                vr->set_mod_value("UI_Size", "0.000000");
-                vr->set_mod_value("UI_Y_Offset", "0.000000");
+                vr->set_aim_method(1);
+                // Setting VR_DecoupledPitchUIAdjust causes error if AimMethod 1 wasn't previously used for a couple of ticks
+                // using set_aim_method(1) just before this line is not enough to mitigate this problem.
                 vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
                 vr->set_mod_value("VR_RoomscaleMovement", "false");
-                vr->set_aim_method(1);
                 break;
 
             case GAME_STATE_MFD:
-                char ui_distance[32];
-                char ui_size[32];
-
-                calculate_corrected_ui_distance_size(vr, ui_distance, ui_size);
+                char ui_distance[32], ui_size[32];
+                VRMFD::calculate_uevr_ui_params(vr, m_world, ui_distance, ui_size);
 
                 vr->set_mod_value("VR_RoomscaleMovement", "false");
                 vr->set_mod_value("UI_Distance", ui_distance);
                 vr->set_mod_value("UI_Size", ui_size);
+                vr->set_mod_value("UI_Y_Offset", "0.000000");
                 vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
                 vr->set_aim_method(0);
 
-                show_mfd();
+                if (is_valid_vr_body_hacker_implant_pawn()) {
+                    VRMFD::show_mfd();
+                }
+
                 break;
 
             case GAME_STATE_INTERACTABLE:
@@ -491,12 +495,12 @@ void UEVRPlugin::handle_game_state_change() {
                     if (pawn->ChannelingInteractableName == UKismetStringLibrary::Conv_StringToName(L"INTERACT_SurgeryMachine")) {
                         API::get()->log_warn("[plugin][handle_game_state_change] Surgery Machine");
 
-                        VRBody::reset_player_camera(static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get()));
-                        VRBody::set_weapon_mesh_visibility(static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get()), false);
+                        VRBody::reset_player_camera();
+                        VRBody::set_weapon_mesh_visibility(false);
 
                         // TODO - not working?
                         static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->ArmsMesh->SetVisibility(false, false);
-                        m_vr_body->VRBodyMesh->SetVisibility(false, false);
+                        g_vr_body->VRBodyMesh->SetVisibility(false, false);
 
                         API::UObjectHook::set_disabled(true);
                     }
@@ -525,17 +529,17 @@ void UEVRPlugin::handle_level_change() {
                 m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())
             ) {
                 APAWN_Hacker_Implant_C* pawn = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get());
-                m_vr_body = VRBody::initialize_vr_body(pawn);
+                g_vr_body = VRBody::initialize_vr_body(pawn);
 
-                if (m_vr_body != nullptr) {
-                    VRBody::initialize_laser_dot(m_vr_body);
-                    VRBody::overwrite_hacker_crouch_animations(pawn);
-                    VRItemSelector::initialize(pawn, m_vr_body, m_neural_hud);
-                    VRMFD::initialize(m_vr_body);
+                if (g_vr_body != nullptr) {
+                    VRBody::initialize_laser_dot();
+                    VRBody::overwrite_hacker_crouch_animations();
+                    VRBody::initialize_minimap(m_neural_hud);
+                    VRItemSelector::initialize(m_neural_hud);
                     PluginUtils::reset_height(0.f);
                 }
                 else {
-                    API::get()->log_error("[plugin][handle_level_change] Expected valid m_vr_body");
+                    API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
                 }
                 //load_mod_config();
             }
@@ -554,7 +558,7 @@ void UEVRPlugin::handle_level_change() {
 // primary item selector
 void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr) {
     try {
-        if (m_vr_body == nullptr) {
+        if (g_vr_body == nullptr) {
             API::get()->log_error("[plugin][handle_primary_item_selector] vr_body nullptr");
             return;
         }
@@ -562,23 +566,23 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
         if (!m_hardware_selector_button.is_held()) {
 
             if (m_hotbar_selector_button.is_pressed()) {
-                VRItemSelector::set_visibility(m_vr_body, true);
-                VRBody::set_weapon_mesh_visibility(static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get()), false);
+                VRItemSelector::set_visibility(true);
+                VRBody::set_weapon_mesh_visibility(false);
                 // hide UEVR controlled HUD
                 vr->set_mod_value("UI_Size", "0.000000");
                 vr->set_mod_value("VR_RoomscaleMovement", "false");
                 vr->set_aim_method(0);
 
                 // show VR item selector
-                //m_vr_body->set_laser_pointer_visibility(true);
-                m_vr_body->ItemSelectorRight->Show(20.f);
-                m_vr_body->ItemSelectorLeft->Hide();
+                //g_vr_body->set_laser_pointer_visibility(true);
+                g_vr_body->ItemSelectorRight->Show(20.f);
+                g_vr_body->ItemSelectorLeft->Hide();
 
                 // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
                 // for the time the selector is active
                 //VRBody::set_player_response_to_collision_channel(
                 //    static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get()),
-                //    m_vr_body,
+                //    g_vr_body,
                 //    item_selector_collision_channel,
                 //    SDK::ECollisionResponse::ECR_Ignore
                 //);
@@ -586,16 +590,16 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
             }
 
             if (m_hotbar_selector_button.is_released()) {
-                VRItemSelector::activate_current_quick_slot(static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get()));
+                VRItemSelector::activate_current_quick_slot();
 
                 // restore collisions
-                //m_vr_body->set_player_response_to_collision_channel(
+                //g_vr_body->set_player_response_to_collision_channel(
                 //    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
                 //);
-                VRItemSelector::set_visibility(m_vr_body, false);
-                VRBody::set_weapon_mesh_visibility(static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get()), true);
-                ////m_vr_body->set_laser_pointer_visibility(false);
-                m_vr_body->ItemSelectorRight->Hide();
+                VRItemSelector::set_visibility(false);
+                VRBody::set_weapon_mesh_visibility(true);
+                ////g_vr_body->set_laser_pointer_visibility(false);
+                g_vr_body->ItemSelectorRight->Hide();
 
                 vr->set_mod_value("VR_RoomscaleMovement", "true");
                 vr->set_aim_method(m_default_aim_method);
@@ -604,8 +608,8 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
             // state, when the item selector is shown
             if (m_hotbar_selector_button.is_held()) {
                 //API::get()->log_warn("[plugin][handle_primary_item_selector] Grip Held Begin");
-                //m_vr_body->update_laser_pointer_length(35.f);
-                VRItemSelector::set_current_quick_slot(m_vr_body);
+                //g_vr_body->update_laser_pointer_length(35.f);
+                VRItemSelector::set_current_quick_slot();
 
                 state->Gamepad.sThumbRX = 0;
             }
@@ -621,7 +625,7 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
 void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr) {
     static FVector2D cursor_pos{ 0.f, 0.f };
     try {
-        if (m_vr_body == nullptr) {
+        if (g_vr_body == nullptr) {
             API::get()->log_error("[plugin][handle_mfd_interactions] vr_body nullptr");
             return;
         }
@@ -647,6 +651,22 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         state->Gamepad.sThumbRX = 0;
         state->Gamepad.sThumbRY = 0;
 
+        if (m_gamepad_btn_a.is_pressed()) {
+            API::get()->log_error("[plugin][handle_mfd_interactions] m_gamepad_btn_a pressed");
+            SDK::FKey lmb{
+                .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"LeftMouseButton")
+            };
+            static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_54(lmb);
+            //g_vr_body->WidgetInteractionRight->PressPointerKey(lmb);
+        }
+
+        if (m_gamepad_btn_a.is_released()) {
+            SDK::FKey lmb{
+                .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"LeftMouseButton")
+            };
+            static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_54(lmb);
+            //g_vr_body->WidgetInteractionRight->ReleasePointerKey(lmb);
+        }
         if (m_gamepad_btn_a.has_changed()) {
             send_mouse(VK_LBUTTON, !m_gamepad_btn_a.value);
         }
@@ -656,8 +676,8 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         }
         ctrl->SetIsUsingGamepad(false);
 
-        if (m_vr_body->WidgetInteractionRight->HoveredWidgetComponent != nullptr) {
-            cursor_pos = m_vr_body->WidgetInteractionRight->Get2DHitLocation();
+        if (g_vr_body->WidgetInteractionRight->HoveredWidgetComponent != nullptr) {
+            cursor_pos = g_vr_body->WidgetInteractionRight->Get2DHitLocation();
         }
         else {
             cursor_pos = { 0.f, 0.f };
@@ -673,102 +693,11 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
     }
 }
 
-
-bool UEVRPlugin::calculate_corrected_ui_distance_size(const UEVR_VRData* vr, char* ui_distance, char* ui_size) {
-    try {
-        // prepare correct ui distance and size
-        SDK::APlayerController* ctrl = SDK::UGameplayStatics::GetPlayerController(m_world, 0);
-        ctrl->GetViewportSize(&m_viewport_size_x, &m_viewport_size_y);
-
-        // get uevr world scale
-        char world_scale_option[16] = {};
-        vr->get_mod_value("VR_WorldScale", world_scale_option, sizeof(world_scale_option));
-        float world_scale{ 1.f };
-        try {
-            size_t read = 0;
-            world_scale = std::stof(world_scale_option, &read);
-        }
-        catch (std::invalid_argument) {
-            API::get()->log_error("[plugin][calculate_corrected_ui_distance_size] Error converting UEVR world scale value to float");
-        }
-
-
-        int ret_ui_distance = snprintf(ui_distance, sizeof ui_distance, "%f", (1.f / world_scale) * ((VRMFD::m_mfd_depth / 100.f)));
-        int ret_ui_size = snprintf(ui_size, sizeof ui_size, "%f", (float)((1.f / world_scale) * (m_viewport_size_y / 1000.f)));
-        if (ret_ui_distance < 0 || ret_ui_size < 0) {
-            API::get()->log_error("[plugin][calculate_corrected_ui_distance_size] Error calculating distance / size");
-            return false;
-        }
-        return true;
-    }
-    catch (...) {
-        API::get()->log_error("[plugin][show_mfd] Exception");
-    }
-    return false;
-}
-
-
-void UEVRPlugin::show_mfd() {
-    try {
-        if (m_vr_body == nullptr) {
-            API::get()->log_error("[plugin][show_mfd] Invalid vr_body");
-            return;
-        }
-
-        if (!m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
-            API::get()->log_error("[plugin][show_mfd] Invalid pawn");
-            return;
-        }
-
-        // move MFD panel a little up
-        //VRMFD::align_mfd_panel(m_neural_hud);
-
-        //API::get()->log_warn("[plugin][show_mfd] MFD Mask Show");
-        m_vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
-            WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Block
-        );
-        m_vr_body->MFDMaskComponent->Show(1.0f, VRMFD::m_mfd_depth);
-
-        if (!m_vr_body->IsWeaponHolstered()) {
-            // use holster weapon button: holster weapon
-            SDK::FKey h_key_name{
-                .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
-            };
-            static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_24(h_key_name);
-        }
-    }
-    catch (...) {
-        API::get()->log_error("[plugin][show_mfd] Exception");
-    }
-}
-
-
-void UEVRPlugin::hide_mfd() {
-    if (m_vr_body == nullptr) {
-        API::get()->log_error("[plugin][hide_mfd] Invalid vr_body");
-        return;
-    }
-
-    m_vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
-        WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Ignore
-    );
-    m_vr_body->MFDMaskComponent->Hide();
-
-    if (m_vr_body->IsWeaponHolstered()) {
-        // use holster weapon button: show weapon
-        SDK::FKey h_key_name{
-            .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
-        };
-        static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_24(h_key_name);
-    }
-}
-
-
 void UEVRPlugin::cleanup_pointers() {
     try {
         API::get()->log_warn("[plugin][cleanup] Starting Pointers Cleanup");
-        if (m_vr_body != nullptr) {
-            m_vr_body = nullptr;
+        if (g_vr_body != nullptr) {
+            g_vr_body = nullptr;
         }
     }
     catch (...) {
@@ -980,4 +909,24 @@ void UEVRPlugin::send_mouse(WORD key, bool key_up) {
     }
 
     SendInput(1, &input, sizeof(INPUT));
+}
+
+
+bool UEVRPlugin::is_valid_vr_body_hacker_implant_pawn() {
+    if (g_vr_body == nullptr) {
+        API::get()->log_error("[plugin][is_valid_hacker_pawn] Invalid g_vr_body");
+        return false;
+    }
+
+    if (g_vr_body == nullptr) {
+        API::get()->log_error("[plugin][is_valid_hacker_pawn] Invalid g_vr_body");
+        return false;
+    }
+
+    if (m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+        API::get()->log_error("[plugin][is_valid_hacker_pawn] Invalid pawn");
+        return false;
+    }
+
+    return true;
 }
