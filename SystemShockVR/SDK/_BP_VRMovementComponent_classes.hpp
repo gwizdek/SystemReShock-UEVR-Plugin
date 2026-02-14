@@ -21,7 +21,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_VRMovementComponent._BP_VRMovementComponent_C
-// 0x0070 (0x0120 - 0x00B0)
+// 0x0078 (0x0128 - 0x00B0)
 class U_BP_VRMovementComponent_C final : public UActorComponent
 {
 public:
@@ -52,6 +52,9 @@ public:
 	float                                         IKLeftFootTraceOffset;                             // 0x0114(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         LookDownMeshZOffsetMult;                           // 0x0118(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         LookDownMeshYOffsetMult;                           // 0x011C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          AdaptiveRotation;                                  // 0x0120(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_121[0x3];                                      // 0x0121(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         AdaptiveRotationAngle;                             // 0x0124(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_VRMovementComponent(int32 EntryPoint);
@@ -65,6 +68,7 @@ public:
 	void GetLookdownOffset(float* OutLookdownYOffset, float* OutLookdownZOffset);
 	void ScaleCapsuleToHMD();
 	void PrintDebugInfo(bool HMDYOffset);
+	void HandleAdaptiveRotation();
 
 public:
 	static class UClass* StaticClass()
@@ -77,7 +81,7 @@ public:
 	}
 };
 static_assert(alignof(U_BP_VRMovementComponent_C) == 0x000008, "Wrong alignment on U_BP_VRMovementComponent_C");
-static_assert(sizeof(U_BP_VRMovementComponent_C) == 0x000120, "Wrong size on U_BP_VRMovementComponent_C");
+static_assert(sizeof(U_BP_VRMovementComponent_C) == 0x000128, "Wrong size on U_BP_VRMovementComponent_C");
 static_assert(offsetof(U_BP_VRMovementComponent_C, UberGraphFrame) == 0x0000B0, "Member 'U_BP_VRMovementComponent_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, VRBodyRef) == 0x0000B8, "Member 'U_BP_VRMovementComponent_C::VRBodyRef' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, ShowLowerBody) == 0x0000C0, "Member 'U_BP_VRMovementComponent_C::ShowLowerBody' has a wrong offset!");
@@ -101,6 +105,8 @@ static_assert(offsetof(U_BP_VRMovementComponent_C, IKRightFootTraceOffset) == 0x
 static_assert(offsetof(U_BP_VRMovementComponent_C, IKLeftFootTraceOffset) == 0x000114, "Member 'U_BP_VRMovementComponent_C::IKLeftFootTraceOffset' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, LookDownMeshZOffsetMult) == 0x000118, "Member 'U_BP_VRMovementComponent_C::LookDownMeshZOffsetMult' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, LookDownMeshYOffsetMult) == 0x00011C, "Member 'U_BP_VRMovementComponent_C::LookDownMeshYOffsetMult' has a wrong offset!");
+static_assert(offsetof(U_BP_VRMovementComponent_C, AdaptiveRotation) == 0x000120, "Member 'U_BP_VRMovementComponent_C::AdaptiveRotation' has a wrong offset!");
+static_assert(offsetof(U_BP_VRMovementComponent_C, AdaptiveRotationAngle) == 0x000124, "Member 'U_BP_VRMovementComponent_C::AdaptiveRotationAngle' has a wrong offset!");
 
 }
 

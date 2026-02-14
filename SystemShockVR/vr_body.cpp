@@ -6,6 +6,9 @@
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
 #include "SDK/COMP_HackerInventory_classes.hpp"
 #include "SDK/CH_Hacker_AnimBP_classes.hpp"
+#include "SDK/WIDGET_VitalBars_classes.hpp"
+#include "SDK/WIDGET_MediaDisplay_classes.hpp"
+#include "SDK/WIDGET_Minimap_classes.hpp"
 
 #include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/_BP_LaserDot_classes.hpp"
@@ -133,12 +136,42 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         );
         API::get()->log_warn("[vr_body][initialize_vr_body] Attached Media Reader");
 
+        static_cast<APAWN_Hacker_Implant_C*>(pawn)->BioScannerMesh->K2_AttachToComponent(
+            vr_body->VRBodyMesh,
+            UKismetStringLibrary::Conv_StringToName(L"LeftForeArmRoll1"),
+            EAttachmentRule::SnapToTarget,
+            EAttachmentRule::KeepRelative,
+            EAttachmentRule::KeepWorld,
+            true
+        );
+        static_cast<APAWN_Hacker_Implant_C*>(pawn)->BioScannerMesh->K2_SetRelativeLocationAndRotation(
+            { 7.982f, -2.402f, -0.348f }, { 78.560f, -94.624f, 175.497f }, false, &SweepHitResult, false
+        );
+        API::get()->log_warn("[vr_body][initialize_vr_body] Attached Bio Scanner");
+
         // set WidgetInteractionComponent trace channel
         vr_body->WidgetInteractionRight->TraceChannel = WIDGET_INTERACTION_TRACE_CHANNEL;
 
         vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
             WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Ignore
         );
+
+        UWIDGET_PlayerHUD_C* neural_hud{ nullptr };
+        pawn->GetNeuralHUD(&neural_hud);
+        if (neural_hud != nullptr) {
+            vr_body->MinimapWidgetComponent->SetWidget(neural_hud->WIDGET_Minimap);
+            neural_hud->WIDGET_Minimap->RemoveFromViewport();
+
+            vr_body->VitalBarsWidgetComponent->SetWidget(neural_hud->WIDGET_VitalBars);
+            neural_hud->WIDGET_VitalBars->RemoveFromViewport();
+
+            vr_body->MediaDisplayWidgetComponent->SetWidget(neural_hud->WIDGET_MediaDisplay);
+            neural_hud->WIDGET_MediaDisplay->RemoveFromViewport();
+        }
+        else {
+            API::get()->log_error("[vr_body][initialize_vr_body] Neural HUD pointer error");
+        }
+
 
         return vr_body;
     }
@@ -227,4 +260,33 @@ void VRBody::initialize_minimap(UWIDGET_PlayerHUD_C* neural_hud) {
     //    minimap->EVENT_OnLevelRegionChanged();
     //    minimap->UpdateMinimap();
     //}
+}
+
+bool VRBody::is_valid_hacker_implant() {
+    if (!UKismetSystemLibrary::IsValid(g_vr_body)) {
+        API::get()->log_error("[vrbody][is_valid_hacker_implant] Invalid vr_body");
+        return false;
+    }
+
+    if (!UKismetSystemLibrary::IsValid(g_vr_body->HackerPawn)) {
+        API::get()->log_error("[vrbody][is_valid_hacker_implant] Invalid hacker pawn");
+        return false;
+    }
+
+    if (!g_vr_body->HackerPawn->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+        API::get()->log_error("[vrbody][is_valid_hacker_implant] Not a hacker implant pawn");
+        return false;
+    }
+
+    return true;
+}
+
+void VRBody::set_media_display_visibility(bool visible) {
+    if (is_valid_hacker_implant()) {
+        g_vr_body->MediaDisplayWidgetComponent->SetVisibility(visible, true);
+        g_vr_body->MediaDisplayWidgetComponent->SetHiddenInGame(!visible, true);
+
+        g_vr_body->MinimapWidgetComponent->SetVisibility(!visible, true);
+        g_vr_body->MinimapWidgetComponent->SetHiddenInGame(visible, true);
+    }
 }

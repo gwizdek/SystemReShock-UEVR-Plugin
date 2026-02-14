@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_VRHandPose_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 
@@ -55,16 +55,20 @@ public:
 	class UITEM_WeaponBase_C*                     WeaponRef;                                         // 0x02E8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class U_BP_HandInteractionComponent_C*        OtherHandInteractable;                             // 0x02F0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UGrabComponent_C*                       HeldGrabComponent;                                 // 0x02F8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         GrabRadiusFromGripPosition;                        // 0x0300(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsIndexFingerActive;                               // 0x0304(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsReachingBackpack;                                // 0x0305(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsHoldingWeapon;                                   // 0x0306(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsUsingItemSelector;                               // 0x0307(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsMainHand;                                        // 0x0308(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          IsSnappedToWeaponSource;                           // 0x0309(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_30A[0x6];                                      // 0x030A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         WristTogglersReachDistance;                        // 0x0300(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GrabRadiusFromGripPosition;                        // 0x0304(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsIndexFingerActive;                               // 0x0308(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsReachingBackpack;                                // 0x0309(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsHoldingWeapon;                                   // 0x030A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsUsingItemSelector;                               // 0x030B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsMainHand;                                        // 0x030C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          IsGrabbingItem;                                    // 0x030D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsSnappedToWeaponSource;                           // 0x030E(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_30F[0x1];                                      // 0x030F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
 	class U_BP_InteractionSourceComponent_C*      ActiveWeaponInteractionSource;                     // 0x0310(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsChannelingWeaponSource;                          // 0x0318(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsReachingLeftShieldToggler;                       // 0x0319(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsReachingSensaroundToggler;                       // 0x031A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
 	void ExecuteUbergraph__BP_HandInteractionComponent(int32 EntryPoint);
@@ -87,6 +91,8 @@ public:
 	void GetGrabComponentNearMotionController(class UGrabComponent_C** NearestComponent);
 	bool ComputeIsHoldingWeapon();
 	void HandleWeaponInteractionSources();
+	void ComputeIsReachingShieldToggler();
+	void ComputeIsReachingSensaroundToggler();
 
 public:
 	static class UClass* StaticClass()
@@ -125,15 +131,19 @@ static_assert(offsetof(U_BP_HandInteractionComponent_C, UsePawnHandAnim) == 0x00
 static_assert(offsetof(U_BP_HandInteractionComponent_C, WeaponRef) == 0x0002E8, "Member 'U_BP_HandInteractionComponent_C::WeaponRef' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, OtherHandInteractable) == 0x0002F0, "Member 'U_BP_HandInteractionComponent_C::OtherHandInteractable' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, HeldGrabComponent) == 0x0002F8, "Member 'U_BP_HandInteractionComponent_C::HeldGrabComponent' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, GrabRadiusFromGripPosition) == 0x000300, "Member 'U_BP_HandInteractionComponent_C::GrabRadiusFromGripPosition' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsIndexFingerActive) == 0x000304, "Member 'U_BP_HandInteractionComponent_C::IsIndexFingerActive' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsReachingBackpack) == 0x000305, "Member 'U_BP_HandInteractionComponent_C::IsReachingBackpack' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsHoldingWeapon) == 0x000306, "Member 'U_BP_HandInteractionComponent_C::IsHoldingWeapon' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsUsingItemSelector) == 0x000307, "Member 'U_BP_HandInteractionComponent_C::IsUsingItemSelector' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsMainHand) == 0x000308, "Member 'U_BP_HandInteractionComponent_C::IsMainHand' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToWeaponSource) == 0x000309, "Member 'U_BP_HandInteractionComponent_C::IsSnappedToWeaponSource' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, WristTogglersReachDistance) == 0x000300, "Member 'U_BP_HandInteractionComponent_C::WristTogglersReachDistance' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, GrabRadiusFromGripPosition) == 0x000304, "Member 'U_BP_HandInteractionComponent_C::GrabRadiusFromGripPosition' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsIndexFingerActive) == 0x000308, "Member 'U_BP_HandInteractionComponent_C::IsIndexFingerActive' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsReachingBackpack) == 0x000309, "Member 'U_BP_HandInteractionComponent_C::IsReachingBackpack' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsHoldingWeapon) == 0x00030A, "Member 'U_BP_HandInteractionComponent_C::IsHoldingWeapon' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsUsingItemSelector) == 0x00030B, "Member 'U_BP_HandInteractionComponent_C::IsUsingItemSelector' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsMainHand) == 0x00030C, "Member 'U_BP_HandInteractionComponent_C::IsMainHand' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsGrabbingItem) == 0x00030D, "Member 'U_BP_HandInteractionComponent_C::IsGrabbingItem' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToWeaponSource) == 0x00030E, "Member 'U_BP_HandInteractionComponent_C::IsSnappedToWeaponSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, ActiveWeaponInteractionSource) == 0x000310, "Member 'U_BP_HandInteractionComponent_C::ActiveWeaponInteractionSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsChannelingWeaponSource) == 0x000318, "Member 'U_BP_HandInteractionComponent_C::IsChannelingWeaponSource' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsReachingLeftShieldToggler) == 0x000319, "Member 'U_BP_HandInteractionComponent_C::IsReachingLeftShieldToggler' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsReachingSensaroundToggler) == 0x00031A, "Member 'U_BP_HandInteractionComponent_C::IsReachingSensaroundToggler' has a wrong offset!");
 
 }
 

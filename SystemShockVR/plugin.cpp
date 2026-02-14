@@ -5,6 +5,7 @@
 #include "SDK/WIDGET_SimpleHUD_classes.hpp"
 #include "SDK/WIDGET_CyberspaceHUD_classes.hpp"
 #include "SDK/WIDGET_MainMenu_InGame_classes.hpp"
+#include "SDK/WIDGET_HardwareButton_classes.hpp"
 #include "SDK/CinematicCamera_classes.hpp"
 #include "SDK/CON_Hacker_classes.hpp"
 #include "SDK/MOVECONTROL_FocusableInteract_classes.hpp"
@@ -14,6 +15,7 @@
 #include "SDK/_BP_LaserDot_classes.hpp"
 #include "SDK/_BP_ItemSelector_classes.hpp"
 #include "SDK/_BP_MFDMaskComponent_classes.hpp"
+#include "SDK/_BP_HandInteractionComponent_classes.hpp"
 
 #include "plugin.hpp"
 #include "plugin_utils.hpp"
@@ -112,6 +114,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
 
         handle_level_change();
         handle_game_state_change();
+        handle_media_display();
         
         //if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
         //    try_running_test_1();
@@ -164,6 +167,9 @@ bool UEVRPlugin::prepare_pointers() {
                 API::get()->log_error("[plugin][prepare_pointers] Neural HUD pointer error");
                 return false;
             }
+
+            m_is_media_display_visible.consume();
+            m_neural_hud->IsMediaDisplayVisible(&m_is_media_display_visible.value);
         }
 
         // level
@@ -347,6 +353,14 @@ void UEVRPlugin::handle_game_state_controller_input(XINPUT_STATE* state, const U
 
             if (m_gamepad_right_shoulder.is_pressed()) {
                 g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator2);
+
+                if (g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr && g_vr_body->HandInteractionRight->IsReachingLeftShieldToggler) {
+                    m_neural_hud->WIDGET_HardwareButton_EnergyShield->ToggleHardware();
+                }
+
+                if (g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr && g_vr_body->HandInteractionRight->IsReachingSensaroundToggler) {
+                    m_neural_hud->WIDGET_HardwareButton_Sensaround->ToggleHardware();
+                }
             }
             if (m_gamepad_right_shoulder.is_released()) {
                 g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator0);
@@ -552,6 +566,12 @@ void UEVRPlugin::handle_level_change() {
     }
     catch (...) {
         API::get()->log_error("[plugin][handle_level_change] Exception");
+    }
+}
+
+void UEVRPlugin::handle_media_display() {
+    if (m_game_state.get() == GAME_STATE_CITADEL_STATION && m_is_media_display_visible.has_changed()) {
+        VRBody::set_media_display_visibility(m_is_media_display_visible.get());
     }
 }
 

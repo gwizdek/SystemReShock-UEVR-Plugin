@@ -20,9 +20,11 @@ public:
     static void reset_player_camera();
     static void show_vr_body();
     static void hide_vr_body();
+    static bool is_valid_hacker_implant();
 
-    // Minimap
+    // Minimap / Media Display
     static void initialize_minimap(SDK::UWIDGET_PlayerHUD_C* neural_hud);
+    static void set_media_display_visibility(bool visible);
 
     //void set_player_response_to_all_collision_channels(SDK::ECollisionResponse response);
 };

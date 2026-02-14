@@ -240,5 +240,19 @@ void U_BP_VRMovementComponent_C::PrintDebugInfo(bool HMDYOffset)
 	UObject::ProcessEvent(Func, &Parms);
 }
 
+
+// Function _BP_VRMovementComponent._BP_VRMovementComponent_C.HandleAdaptiveRotation
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void U_BP_VRMovementComponent_C::HandleAdaptiveRotation()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRMovementComponent_C", "HandleAdaptiveRotation");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
 }
 

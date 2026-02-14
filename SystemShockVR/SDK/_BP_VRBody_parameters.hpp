@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_DebugWidgetEntryType_structs.hpp"
 
 
@@ -163,7 +163,7 @@ static_assert(offsetof(_BP_VRBody_C_PlayUnloadWeaponAnim, CallFunc_DoesImplement
 struct _BP_VRBody_C_TryGrabAction final
 {
 public:
-	E_ENUM_VRHand                                 InHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 inHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_VRHandPose                             InPose;                                            // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          TryGrabSuccess;                                    // 0x0002(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -171,7 +171,7 @@ public:
 };
 static_assert(alignof(_BP_VRBody_C_TryGrabAction) == 0x000001, "Wrong alignment on _BP_VRBody_C_TryGrabAction");
 static_assert(sizeof(_BP_VRBody_C_TryGrabAction) == 0x000005, "Wrong size on _BP_VRBody_C_TryGrabAction");
-static_assert(offsetof(_BP_VRBody_C_TryGrabAction, InHand) == 0x000000, "Member '_BP_VRBody_C_TryGrabAction::InHand' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_TryGrabAction, inHand) == 0x000000, "Member '_BP_VRBody_C_TryGrabAction::inHand' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_TryGrabAction, InPose) == 0x000001, "Member '_BP_VRBody_C_TryGrabAction::InPose' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_TryGrabAction, TryGrabSuccess) == 0x000002, "Member '_BP_VRBody_C_TryGrabAction::TryGrabSuccess' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_TryGrabAction, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000003, "Member '_BP_VRBody_C_TryGrabAction::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
@@ -259,11 +259,11 @@ static_assert(offsetof(_BP_VRBody_C_InitializeAnimations, K2Node_DynamicCast_bSu
 struct _BP_VRBody_C_ShowItemSelector final
 {
 public:
-	E_ENUM_VRHand                                 InHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 inHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BP_VRBody_C_ShowItemSelector) == 0x000001, "Wrong alignment on _BP_VRBody_C_ShowItemSelector");
 static_assert(sizeof(_BP_VRBody_C_ShowItemSelector) == 0x000001, "Wrong size on _BP_VRBody_C_ShowItemSelector");
-static_assert(offsetof(_BP_VRBody_C_ShowItemSelector, InHand) == 0x000000, "Member '_BP_VRBody_C_ShowItemSelector::InHand' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ShowItemSelector, inHand) == 0x000000, "Member '_BP_VRBody_C_ShowItemSelector::inHand' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.ChangeEquippedWeapon
 // 0x0190 (0x0190 - 0x0000)
@@ -457,7 +457,7 @@ static_assert(offsetof(_BP_VRBody_C_GetHackerMoveControlManager, CallFunc_IsVali
 struct _BP_VRBody_C_AttachLaserPointer final
 {
 public:
-	E_ENUM_VRHand                                 InHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 inHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          InAttachToCurrentWeapon;                           // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	class UMotionControllerComponent*             LocalSelectedMC;                                   // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -473,7 +473,7 @@ public:
 };
 static_assert(alignof(_BP_VRBody_C_AttachLaserPointer) == 0x000008, "Wrong alignment on _BP_VRBody_C_AttachLaserPointer");
 static_assert(sizeof(_BP_VRBody_C_AttachLaserPointer) == 0x000038, "Wrong size on _BP_VRBody_C_AttachLaserPointer");
-static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, InHand) == 0x000000, "Member '_BP_VRBody_C_AttachLaserPointer::InHand' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, inHand) == 0x000000, "Member '_BP_VRBody_C_AttachLaserPointer::inHand' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, InAttachToCurrentWeapon) == 0x000001, "Member '_BP_VRBody_C_AttachLaserPointer::InAttachToCurrentWeapon' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, LocalSelectedMC) == 0x000008, "Member '_BP_VRBody_C_AttachLaserPointer::LocalSelectedMC' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, LocalPlayerCamera) == 0x000010, "Member '_BP_VRBody_C_AttachLaserPointer::LocalPlayerCamera' has a wrong offset!");

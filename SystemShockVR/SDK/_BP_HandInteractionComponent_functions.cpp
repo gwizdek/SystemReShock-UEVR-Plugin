@@ -347,5 +347,33 @@ void U_BP_HandInteractionComponent_C::HandleWeaponInteractionSources()
 	UObject::ProcessEvent(Func, nullptr);
 }
 
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ComputeIsReachingShieldToggler
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void U_BP_HandInteractionComponent_C::ComputeIsReachingShieldToggler()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ComputeIsReachingShieldToggler");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ComputeIsReachingSensaroundToggler
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void U_BP_HandInteractionComponent_C::ComputeIsReachingSensaroundToggler()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ComputeIsReachingSensaroundToggler");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
 }
 

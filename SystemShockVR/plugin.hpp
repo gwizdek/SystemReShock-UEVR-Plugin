@@ -112,6 +112,7 @@ private:
     MemoBoolean m_is_crouching{ false };
     MemoProperty<bool> m_player_interacting{ false, false };
     MemoProperty<bool> m_mfd_visible{ false, false };
+    MemoProperty<bool> m_is_media_display_visible{ false, false };
 
 // -----------------------------------------------------------------------------
 // Controller State
@@ -151,7 +152,7 @@ public:
     void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_game_state_change();
     void handle_level_change();
-    bool calculate_corrected_ui_distance_size(const UEVR_VRData* vr, char* ui_distance, char* ui_size);
+    void handle_media_display();
     void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);
     void cleanup_pointers();
     void send_mouse(WORD key, bool key_up);
