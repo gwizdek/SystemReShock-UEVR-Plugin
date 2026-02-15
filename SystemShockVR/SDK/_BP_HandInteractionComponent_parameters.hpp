@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
 #include "Engine_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
 
 
 namespace SDK::Params
@@ -754,6 +754,32 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_ComputeIsReachingSensaroun
 static_assert(offsetof(_BP_HandInteractionComponent_C_ComputeIsReachingSensaroundToggler, CallFunc_Subtract_VectorVector_ReturnValue) == 0x000018, "Member '_BP_HandInteractionComponent_C_ComputeIsReachingSensaroundToggler::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_ComputeIsReachingSensaroundToggler, CallFunc_VSize_ReturnValue) == 0x000024, "Member '_BP_HandInteractionComponent_C_ComputeIsReachingSensaroundToggler::CallFunc_VSize_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_ComputeIsReachingSensaroundToggler, CallFunc_Less_FloatFloat_ReturnValue) == 0x000028, "Member '_BP_HandInteractionComponent_C_ComputeIsReachingSensaroundToggler::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.IsReachingSocket
+// 0x003C (0x003C - 0x0000)
+struct _BP_HandInteractionComponent_C_IsReachingSocket final
+{
+public:
+	class FName                                   InTogglerName;                                     // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         InRange;                                           // 0x0008(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          ReturnValue;                                       // 0x000C(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0010(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetSocketLocation_ReturnValue;            // 0x001C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0028(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_VSize_ReturnValue;                        // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_HandInteractionComponent_C_IsReachingSocket) == 0x000004, "Wrong alignment on _BP_HandInteractionComponent_C_IsReachingSocket");
+static_assert(sizeof(_BP_HandInteractionComponent_C_IsReachingSocket) == 0x00003C, "Wrong size on _BP_HandInteractionComponent_C_IsReachingSocket");
+static_assert(offsetof(_BP_HandInteractionComponent_C_IsReachingSocket, InTogglerName) == 0x000000, "Member '_BP_HandInteractionComponent_C_IsReachingSocket::InTogglerName' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_IsReachingSocket, InRange) == 0x000008, "Member '_BP_HandInteractionComponent_C_IsReachingSocket::InRange' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_IsReachingSocket, ReturnValue) == 0x00000C, "Member '_BP_HandInteractionComponent_C_IsReachingSocket::ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_IsReachingSocket, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000010, "Member '_BP_HandInteractionComponent_C_IsReachingSocket::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_IsReachingSocket, CallFunc_GetSocketLocation_ReturnValue) == 0x00001C, "Member '_BP_HandInteractionComponent_C_IsReachingSocket::CallFunc_GetSocketLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_IsReachingSocket, CallFunc_Subtract_VectorVector_ReturnValue) == 0x000028, "Member '_BP_HandInteractionComponent_C_IsReachingSocket::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_IsReachingSocket, CallFunc_VSize_ReturnValue) == 0x000034, "Member '_BP_HandInteractionComponent_C_IsReachingSocket::CallFunc_VSize_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_IsReachingSocket, CallFunc_Less_FloatFloat_ReturnValue) == 0x000038, "Member '_BP_HandInteractionComponent_C_IsReachingSocket::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
 
 }
 

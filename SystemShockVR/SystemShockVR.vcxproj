@@ -221,6 +221,7 @@
     <ClCompile Include="SDK\WIDGET_SimpleHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
     <ClCompile Include="SDK\_BP_DebugWidgetComponent_functions.cpp" />
+    <ClCompile Include="SDK\_BP_HandInteractionComponent_functions.cpp" />
     <ClCompile Include="SDK\_BP_ItemSelector_functions.cpp" />
     <ClCompile Include="SDK\_BP_LaserDot_functions.cpp" />
     <ClCompile Include="SDK\_BP_MFDMaskComponent_functions.cpp" />

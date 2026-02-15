@@ -310,7 +310,7 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
     m_gamepad_btn_x.set_state(state);
     m_gamepad_btn_b.set_state(state);
     m_gamepad_btn_y.set_state(state);
-    m_gamepad_right_shoulder.set_state(state);
+    m_gamepad_right_shoulder.set_and_mute_state(state);
     m_gamepad_left_shoulder.set_and_mute_state(state);
     m_gamepad_right_thumb.set_state(state);
     m_gamepad_left_thumb.set_state(state);
@@ -352,29 +352,36 @@ void UEVRPlugin::handle_game_state_controller_input(XINPUT_STATE* state, const U
                 //API::get()->log_warn("[plugin][handle_controller_input] X-button");
             }
 
+            // Right Shoulder
             if (m_gamepad_right_shoulder.is_pressed()) {
                 g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator2);
 
-                if (g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr && g_vr_body->HandInteractionRight->IsReachingLeftShieldToggler) {
-                    m_neural_hud->WIDGET_HardwareButton_EnergyShield->ToggleHardware();
-                }
-
-                if (g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr && g_vr_body->HandInteractionRight->IsReachingSensaroundToggler) {
+                if (
+                    g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr &&
+                    g_vr_body->HandInteractionRight->IsReachingSocket(UKismetStringLibrary::Conv_StringToName(L"MinimapSocket"), 5.0f)
+                    ) {
                     m_neural_hud->WIDGET_HardwareButton_Sensaround->ToggleHardware();
                 }
             }
             if (m_gamepad_right_shoulder.is_released()) {
                 g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator0);
             }
+
+            // Left Shoulder
             if (m_gamepad_left_shoulder.is_pressed()) {
                 g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator2);
+                if (
+                    g_vr_body->HandInteractionLeft->HeldGrabComponent == nullptr &&
+                    g_vr_body->HandInteractionLeft->IsReachingSocket(UKismetStringLibrary::Conv_StringToName(L"RightInnerWristSocket"), 5.0f)
+                    ) {
+                    m_neural_hud->WIDGET_HardwareButton_EnergyShield->ToggleHardware();
+                }
             }
             if (m_gamepad_left_shoulder.is_released()) {
                 g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator0);
             }
 
             handle_primary_item_selector(state, vr);
-            
         }
 
         if (m_game_state.get() == GAME_STATE_MFD) {
@@ -673,7 +680,6 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         state->Gamepad.sThumbRY = 0;
 
         if (m_gamepad_btn_a.is_pressed()) {
-            API::get()->log_error("[plugin][handle_mfd_interactions] m_gamepad_btn_a pressed");
             SDK::FKey lmb{
                 .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"LeftMouseButton")
             };

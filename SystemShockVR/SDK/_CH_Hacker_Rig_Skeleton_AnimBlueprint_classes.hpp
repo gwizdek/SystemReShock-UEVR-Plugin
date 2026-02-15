@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
+#include "_ENUM_VRHandPose_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "AnimGraphRuntime_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
 
 
 namespace SDK

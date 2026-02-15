@@ -375,5 +375,30 @@ void U_BP_HandInteractionComponent_C::ComputeIsReachingSensaroundToggler()
 	UObject::ProcessEvent(Func, nullptr);
 }
 
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.IsReachingSocket
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FName                             InTogglerName                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   InRange                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool U_BP_HandInteractionComponent_C::IsReachingSocket(class FName InTogglerName, float InRange)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "IsReachingSocket");
+
+	Params::_BP_HandInteractionComponent_C_IsReachingSocket Parms{};
+
+	Parms.InTogglerName = InTogglerName;
+	Parms.InRange = InRange;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
 }
 

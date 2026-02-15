@@ -67,7 +67,7 @@ public:
 	uint8                                         Pad_30F[0x1];                                      // 0x030F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
 	class U_BP_InteractionSourceComponent_C*      ActiveWeaponInteractionSource;                     // 0x0310(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsChannelingWeaponSource;                          // 0x0318(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsReachingLeftShieldToggler;                       // 0x0319(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsReachingShieldToggler;                           // 0x0319(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          IsReachingSensaroundToggler;                       // 0x031A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
@@ -93,6 +93,7 @@ public:
 	void HandleWeaponInteractionSources();
 	void ComputeIsReachingShieldToggler();
 	void ComputeIsReachingSensaroundToggler();
+	bool IsReachingSocket(class FName InTogglerName, float InRange);
 
 public:
 	static class UClass* StaticClass()
@@ -142,7 +143,7 @@ static_assert(offsetof(U_BP_HandInteractionComponent_C, IsGrabbingItem) == 0x000
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToWeaponSource) == 0x00030E, "Member 'U_BP_HandInteractionComponent_C::IsSnappedToWeaponSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, ActiveWeaponInteractionSource) == 0x000310, "Member 'U_BP_HandInteractionComponent_C::ActiveWeaponInteractionSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsChannelingWeaponSource) == 0x000318, "Member 'U_BP_HandInteractionComponent_C::IsChannelingWeaponSource' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsReachingLeftShieldToggler) == 0x000319, "Member 'U_BP_HandInteractionComponent_C::IsReachingLeftShieldToggler' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsReachingShieldToggler) == 0x000319, "Member 'U_BP_HandInteractionComponent_C::IsReachingShieldToggler' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsReachingSensaroundToggler) == 0x00031A, "Member 'U_BP_HandInteractionComponent_C::IsReachingSensaroundToggler' has a wrong offset!");
 
 }
