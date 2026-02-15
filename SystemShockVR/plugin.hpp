@@ -39,7 +39,7 @@ class UEVRPlugin;
 extern std::unique_ptr<UEVRPlugin> g_plugin;
 
 class UEVRPlugin : public uevr::Plugin {
-    const char* MOD_VERSION = "v2.0.0-alpha.0";
+    const char* MOD_VERSION = "System Shock UEVR plugin [v2.0.0-alpha.0]";
 
 public:
     UEVRPlugin() = default;
@@ -70,6 +70,7 @@ private:
 //    bool initialize_imgui();
 //    void on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) override;
 //    void on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) override;
+//    void internal_frame();
 
 // -----------------------------------------------------------------------------
 // UEVR overrides

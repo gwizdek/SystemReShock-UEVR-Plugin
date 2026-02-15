@@ -16,6 +16,7 @@
 #include "SDK/_BP_ItemSelector_classes.hpp"
 #include "SDK/_BP_MFDMaskComponent_classes.hpp"
 #include "SDK/_BP_HandInteractionComponent_classes.hpp"
+#include "SDK/_BP_VRMovementComponent_classes.hpp"
 
 #include "plugin.hpp"
 #include "plugin_utils.hpp"
@@ -734,6 +735,74 @@ void UEVRPlugin::cleanup_actors() {
 //// -------------------------------------------------------------------------------------
 //// ImGui
 //// -------------------------------------------------------------------------------------
+//void UEVRPlugin::internal_frame() {
+//    try {
+//        if (!API::get()->param()->functions->is_drawing_ui()) {
+//            return;
+//        }
+//        static const char* MOD_NAME = "System Shock UEVR plugin [v2.0.0-alpha.0]";
+//        static const auto NO_PAWN = std::format("Invalid Pawn");
+//        static const char* LOOK_SENSITIVITY = "Look Sensitivity";
+//        static const char* SHOW_DEBUG = "Show Debug View";
+//        static const char* CURRENT_PAWN_STATE = "Current Pawn State";
+//        static const char* APPLY_WEAPON_OFFSET_WEAPON = "Apply Weapon Offset";
+//        static const char* CURRENT_WEAPON = "Current Weapon";
+//
+//        constexpr auto window_w = 500.0f;
+//        constexpr auto window_h = 500.0f;
+//
+//        if (m_pawn.get() == nullptr) {
+//            ImGui::SetNextWindowSize(ImVec2(window_w, window_h), ImGuiCond_::ImGuiCond_Once);
+//            if (ImGui::Begin(MOD_NAME)) {
+//                ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), NO_PAWN.c_str());
+//            }
+//            ImGui::End();
+//            return;
+//        }
+//
+//        ImGui::SetNextWindowSize(ImVec2(window_w, window_h), ImGuiCond_::ImGuiCond_Once);
+//        if (ImGui::Begin(MOD_VERSION)) {
+//
+//            ImGui::SeparatorText("General options");
+//            if (g_vr_body != nullptr) {
+//                if (ImGui::SliderFloat("Player Height", &g_vr_body->VRMovementComponent->PlayerHeight, 170.f, 183.f, "%1.0f")) {
+//                    g_vr_body->VRMovementComponent->AdjustComponentsToPlayerHeight(g_vr_body->VRMovementComponent->PlayerHeight);
+//                    PluginUtils::reset_height(0.f);
+//                }
+//            }
+//
+//            ImGui::SeparatorText("Debugging");
+//            ImGui::Checkbox("Show debug", &m_ui_option_show_debug_view);
+//            if (m_ui_option_show_debug_view) {
+//                ImGui::BeginGroup();
+//                ImGui::BeginDisabled();
+//                
+//                ImGui::InputText("Game State", (char*)GameStateName[m_game_state.get()], 20);
+//                
+//                ImGui::EndDisabled();
+//                ImGui::EndGroup();
+//
+//                // timers
+//                ImGui::SeparatorText("Timers [microseconds]");
+//                ImGui::BeginGroup();
+//                ImGui::BeginDisabled();
+//                ImGui::PushItemWidth(50);
+//                ImGui::InputInt("XInput duration", &m_ui_xinput_duration, 0, 0);
+//                ImGui::InputInt("PreEngineTick duration", &m_ui_pre_engine_tick_duration, 0, 0);
+//                ImGui::PopItemWidth();
+//                ImGui::EndDisabled();
+//                ImGui::EndGroup();
+//            }
+//        }
+//        ImGui::End();
+//    }
+//    catch (...) {
+//        API::get()->log_error("[plugin][internal_frame] Exception");
+//    }
+//}
+//
+//
+//
 //bool UEVRPlugin::on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
 //    ImGui_ImplWin32_WndProcHandler(hwnd, msg, wparam, lparam);
 //
@@ -863,9 +932,7 @@ void UEVRPlugin::cleanup_actors() {
 //        ImGui_ImplWin32_NewFrame();
 //        ImGui::NewFrame();
 //
-//        //if (m_main != nullptr) {
-//        //    m_main->on_draw_imgui();
-//        //}
+//        internal_frame();
 //
 //        ImGui::EndFrame();
 //        ImGui::Render();
@@ -883,9 +950,7 @@ void UEVRPlugin::cleanup_actors() {
 //        ImGui_ImplWin32_NewFrame();
 //        ImGui::NewFrame();
 //
-//        //if (m_main != nullptr) {
-//        //    m_main->on_draw_imgui();
-//        //}
+//        internal_frame();
 //
 //        ImGui::EndFrame();
 //        ImGui::Render();
