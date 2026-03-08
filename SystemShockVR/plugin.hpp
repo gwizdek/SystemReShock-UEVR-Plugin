@@ -84,7 +84,7 @@ public:
 // UEVR props
 // -----------------------------------------------------------------------------
 private:
-    unsigned int m_default_aim_method{ 0 };
+    unsigned int m_default_aim_method{ 1 };
 
 // -----------------------------------------------------------------------------
 // Mod ImGui accessible props
@@ -102,6 +102,15 @@ private:
     UWIDGET_PlayerHUD_C* m_neural_hud{ nullptr };
     //A_BP_VRBody_C* m_vr_body{ nullptr };
 
+
+    // motion controllers
+    SDK::AActor* m_right_hand_actor{ nullptr };
+    SDK::AActor* m_left_hand_actor{ nullptr };
+    SDK::UMotionControllerComponent* m_rh_controller_component{ nullptr };
+    SDK::UMotionControllerComponent* m_lh_controller_component{ nullptr };
+
+
+
 // -----------------------------------------------------------------------------
 // Watched props
 // -----------------------------------------------------------------------------
@@ -114,6 +123,7 @@ private:
     MemoProperty<bool> m_player_interacting{ false, false };
     MemoProperty<bool> m_mfd_visible{ false, false };
     MemoProperty<bool> m_is_media_display_visible{ false, false };
+    MemoBoolean m_is_ads_active{ false };
 
 // -----------------------------------------------------------------------------
 // Controller State
@@ -149,14 +159,21 @@ public:
     void prepare_game_state();
     void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_game_state_controller_input(XINPUT_STATE* state, const UEVR_VRData* vr);
-    void handle_smooth_turning(XINPUT_STATE* state, const UEVR_VRData* vr);
+    void handle_smooth_turning(XINPUT_STATE* state);
     void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_game_state_change();
     void handle_level_change();
     void handle_media_display();
     void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);
+    void handle_ads();
     void cleanup_pointers();
     void send_mouse(WORD key, bool key_up);
     bool is_valid_vr_body_hacker_implant_pawn();
+    void update_trailing_rotation(float delta);
+    // Motion Controllers
+    void initialize_mcs(SDK::APAWN_Hacker_Implant_C* pawn);
     static void cleanup_actors();
+    void SpawnCustom2DScreen();
+
+    SDK::AActor* Custom2DScreen{ nullptr };
 };

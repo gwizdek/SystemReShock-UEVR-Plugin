@@ -241,15 +241,29 @@ void U_BP_VRMovementComponent_C::PrintDebugInfo(bool HMDYOffset)
 }
 
 
-// Function _BP_VRMovementComponent._BP_VRMovementComponent_C.HandleAdaptiveRotation
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function _BP_VRMovementComponent._BP_VRMovementComponent_C.GetTrailingRotationAngle
+// (Public, BlueprintCallable, BlueprintEvent)
 
-void U_BP_VRMovementComponent_C::HandleAdaptiveRotation()
+void U_BP_VRMovementComponent_C::GetTrailingRotationAngle()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRMovementComponent_C", "HandleAdaptiveRotation");
+		Func = Class->GetFunction("_BP_VRMovementComponent_C", "GetTrailingRotationAngle");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_VRMovementComponent._BP_VRMovementComponent_C.CopyHMDRotation
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void U_BP_VRMovementComponent_C::CopyHMDRotation()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRMovementComponent_C", "CopyHMDRotation");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

@@ -21,10 +21,16 @@ public:
     static void show_vr_body();
     static void hide_vr_body();
     static bool is_valid_hacker_implant();
+    static void initialize_ads();
 
     // Minimap / Media Display
     static void initialize_minimap(SDK::UWIDGET_PlayerHUD_C* neural_hud);
     static void set_media_display_visibility(bool visible);
+
+    // Hacker Hardware
+    static void initialize_hacker_hardware(SDK::UWIDGET_PlayerHUD_C* neural_hud);
+
+
 
     //void set_player_response_to_all_collision_channels(SDK::ECollisionResponse response);
 };

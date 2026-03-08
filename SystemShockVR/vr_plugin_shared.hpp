@@ -10,6 +10,8 @@
 // anyway, this one works
 const SDK::ECollisionChannel WIDGET_INTERACTION_TRACE_CHANNEL{ SDK::ECollisionChannel::ECC_EngineTraceChannel1 };
 
+const SDK::ECollisionChannel ADS_TRACE_CHANNEL{ SDK::ECollisionChannel::ECC_EngineTraceChannel2 };
+
 typedef enum ModEvent {
     MOD_EVENT_VR_HUD_HIDE_DASHBOARDS,
     MOD_EVENT_VR_HUD_INITIALIZE,

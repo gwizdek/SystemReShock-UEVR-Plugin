@@ -9,10 +9,12 @@
 #include "SDK/WIDGET_VitalBars_classes.hpp"
 #include "SDK/WIDGET_MediaDisplay_classes.hpp"
 #include "SDK/WIDGET_Minimap_classes.hpp"
+#include "SDK/WIDGET_HardwareButton_classes.hpp"
 
 #include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/_BP_LaserDot_classes.hpp"
 #include "SDK/_BP_MFDMaskComponent_classes.hpp"
+#include "SDK/_BP_HackerHardware_classes.hpp"
 
 #include "vr_body.hpp"
 #include "vr_plugin_shared.hpp"
@@ -93,7 +95,7 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         actor_tags.Data = (FName*)API::FMalloc::get()->malloc(1 * sizeof(FName));
         actor_tags.NumElements = 1;
         actor_tags.MaxElements = 1;
-        actor_tags.Data[0] = UKismetStringLibrary::Conv_StringToName(L"VRBodyActor");
+        actor_tags.Data[0] = UKismetStringLibrary::Conv_StringToName(L"VRModActor");
 
         vr_body->Tags = actor_tags;
         API::get()->log_warn("[vr_body][initialize_vr_body] Added 'VRBodyActor' Tag");
@@ -110,6 +112,7 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         vr_body->K2_GetRootComponent()->K2_SetRelativeLocation({ 0.0f, 0.0f, -80.0f }, false, &SweepHitResult, false);
         API::get()->log_warn("[vr_body][initialize_vr_body] Attached to Hacker's root component");
 
+        vr_body->TrailingRotationComponent->K2_SetWorldRotation(vr_body->DefaultSceneRoot->K2_GetComponentRotation(), false, &SweepHitResult, false);
 
         // HMDComponent tracks UEVR Camera offset to RootComponent (our VROrigin)
         auto hmd_state = API::UObjectHook::get_or_add_motion_controller_state((API::UObject*)vr_body->HMDComponent);
@@ -171,7 +174,6 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         else {
             API::get()->log_error("[vr_body][initialize_vr_body] Neural HUD pointer error");
         }
-
 
         return vr_body;
     }
@@ -290,3 +292,120 @@ void VRBody::set_media_display_visibility(bool visible) {
         g_vr_body->MinimapWidgetComponent->SetHiddenInGame(visible, true);
     }
 }
+
+
+void VRBody::initialize_ads() {
+    try {
+        g_vr_body->ADSTrigger->SetCollisionObjectType(ADS_TRACE_CHANNEL);
+        g_vr_body->ADSTrigger->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+        g_vr_body->ADSTrigger->SetCollisionResponseToChannel(
+            ADS_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
+        );
+
+        g_vr_body->ADSZone->SetCollisionObjectType(ADS_TRACE_CHANNEL);
+        g_vr_body->ADSZone->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+        g_vr_body->ADSZone->SetCollisionResponseToChannel(
+            ADS_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
+        );
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][initialize_ads] Exception");
+    }
+}
+
+
+void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
+    try {
+        std::array<SDK::UWIDGET_HardwareButton_C*, 4> hardware_widgets{};
+        std::array<SDK::UWidgetComponent*, 4> hardware_widget_components{};
+        // canvas panel slots
+        std::array<SDK::UCanvasPanelSlot*, 4> canvas_panel_slots{};
+
+        // store pointers to hardware items in an array
+        API::get()->log_warn("[vr_body][initialize_hacker_hardware] set hardware widgets");
+        hardware_widgets[0] = neural_hud->WIDGET_HardwareButton_EnergyShield;
+        hardware_widgets[1] = neural_hud->WIDGET_HardwareButton_Sensaround;
+        hardware_widgets[2] = neural_hud->WIDGET_HardwareButton_EnviroPack;
+        hardware_widgets[3] = neural_hud->WIDGET_HardwareButton_TurboBoots;
+
+        API::get()->log_warn("[vr_body][initialize_hacker_hardware] set hardware widget components");
+        hardware_widget_components[0] = g_vr_body->HackerHardware->EnergyShieldWidgetComponent;
+        hardware_widget_components[1] = g_vr_body->HackerHardware->SensaroundWidgetComponent;
+        hardware_widget_components[2] = g_vr_body->HackerHardware->EnviroPakWidgetComponent;
+        hardware_widget_components[3] = g_vr_body->HackerHardware->TurboBootsWidgetComponent;
+
+        g_vr_body->LeftIndexFingerCollision->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
+        g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+        g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToChannel(
+            WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
+        );
+
+        for (int i = 0; i < 4; i++) {
+            //if (m_hacker_hardware_widget_components[i] != nullptr) {
+            //    log_error("attach_secondary_item_selector :: Already attached");
+            //    return false;
+            //}
+
+            //m_hacker_hardware_widget_components[i] = static_cast<SDK::UWidgetComponent*>(
+            //    m_secondary_item_selector_actor->AddComponentByClass(
+            //        SDK::UWidgetComponent::StaticClass(), false, m_hacker_hardware_transforms[i], false
+            //    ));
+            //if (m_hacker_hardware_widget_components[i] == nullptr) {
+            //    log_error("attach_secondary_item_selector :: Failed to attach hardware widget component");
+            //    return false;
+            //}
+
+            // there's some going back and forth here as we want two things:
+            // - a properly sized and aligned widget component for the collisions to work correctly
+            // - a working hardware slot on the MFD
+            // actually the same widget instance is used in two places: MFD / VR item selector,
+            // save original panel slot for widget so we can later reuse it's attributes
+            canvas_panel_slots[i] = (SDK::UCanvasPanelSlot*)hardware_widgets[i]->Slot;
+
+            // we're going to remove hotbar slot form parent because widget's layout would be messed up after
+            // binding it with widget component if we didn't
+            //m_hardware_widgets[i]->RemoveFromViewport();
+            API::get()->log_warn("[vr_body][initialize_hacker_hardware] exec SetWidget");
+            hardware_widget_components[i]->SetWidget(hardware_widgets[i]);
+
+            // 150.f seems to be the correct size
+            //m_hacker_hardware_widget_components[i]->SetDrawSize({ 100.0f, 100.0f });
+            //m_hacker_hardware_widget_components[i]->SetVisibility(true, true);
+            //m_hacker_hardware_widget_components[i]->SetHiddenInGame(false, false);
+
+            // set properties for collision detection
+            hardware_widget_components[i]->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
+            hardware_widget_components[i]->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+            hardware_widget_components[i]->SetCollisionResponseToChannel(
+                WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
+            );
+
+            auto material = API::get()->find_uobject<SDK::UMaterialInstanceConstant>(
+                L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Translucent.Widget3DPassThrough_Translucent"
+                //L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Opaque.Widget3DPassThrough_Opaque"
+            );
+            SDK::FLinearColor color{ 0.4f, 0.4f, 0.4f, 0.2f };
+            hardware_widget_components[i]->SetMaterial(0, material);
+            hardware_widget_components[i]->SetTintColorAndOpacity(color);
+
+            //m_secondary_item_selector_actor->FinishAddComponent(m_hacker_hardware_widget_components[i], false, m_hacker_hardware_transforms[i]);
+
+            API::get()->log_warn("[vr_body][initialize_hacker_hardware] reseting PANELs");
+            // recreate panel slot for widget and place it at original position on canvas panel
+            auto panel_slot = i < 3
+                ? (SDK::UCanvasPanelSlot*)neural_hud->PANEL_LeftHardware->AddChild(hardware_widgets[i])
+                : (SDK::UCanvasPanelSlot*)neural_hud->PANEL_RightHardware->AddChild(hardware_widgets[i]);
+            panel_slot->SetAlignment({ 0.5f, 0.5f });
+            panel_slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.5f}, {0.5f, 0.5f} });
+            panel_slot->SetOffsets(canvas_panel_slots[i]->GetOffsets());
+
+        }
+        API::get()->log_warn("[vr_body][initialize_hacker_hardware] Initialized");
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][initialize_hacker_hardware] Exception");
+    }
+}
+
+
+

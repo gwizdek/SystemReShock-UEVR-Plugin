@@ -37,6 +37,76 @@ void A_BP_VRBody_C::ExecuteUbergraph__BP_VRBody(int32 EntryPoint)
 }
 
 
+// Function _BP_VRBody._BP_VRBody_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void A_BP_VRBody_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature
+// (BlueprintEvent)
+// Parameters:
+// class UPrimitiveComponent*              OverlappedComponent                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              OtherComp                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   OtherBodyIndex                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_VRBody_C::BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature");
+
+	Params::_BP_VRBody_C_BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature Parms{};
+
+	Parms.OverlappedComponent = OverlappedComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature
+// (HasOutParams, BlueprintEvent)
+// Parameters:
+// class UPrimitiveComponent*              OverlappedComponent                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              OtherComp                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   OtherBodyIndex                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    bFromSweep                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// struct FHitResult                       SweepResult                                            (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+
+void A_BP_VRBody_C::BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature");
+
+	Params::_BP_VRBody_C_BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature Parms{};
+
+	Parms.OverlappedComponent = OverlappedComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+	Parms.bFromSweep = bFromSweep;
+	Parms.SweepResult = std::move(SweepResult);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function _BP_VRBody._BP_VRBody_C.ReceiveTick
 // (Event, Public, BlueprintEvent)
 // Parameters:
@@ -114,20 +184,6 @@ void A_BP_VRBody_C::CustomEvent_WeaponChanged(class UITEM_WeaponBase_C* Equipped
 	Parms.EquippedWeapon = EquippedWeapon;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function _BP_VRBody._BP_VRBody_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void A_BP_VRBody_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -228,6 +284,20 @@ void A_BP_VRBody_C::AddDebugMessage(const class FString& NewMessage, E_ENUM_Debu
 	Parms.InType = InType;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.InitializeHackerHardware
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void A_BP_VRBody_C::InitializeHackerHardware()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "InitializeHackerHardware");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -459,6 +529,50 @@ bool A_BP_VRBody_C::IsWeaponHolstered()
 	UObject::ProcessEvent(Func, &Parms);
 
 	return Parms.ReturnValue;
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.IsAimingDownSights
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool A_BP_VRBody_C::IsAimingDownSights()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "IsAimingDownSights");
+
+	Params::_BP_VRBody_C_IsAimingDownSights Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.SetADSZoneOffset
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   ForwardOffset                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   UpOffset                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   HalfSize                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_VRBody_C::SetADSZoneOffset(float ForwardOffset, float UpOffset, float HalfSize)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "SetADSZoneOffset");
+
+	Params::_BP_VRBody_C_SetADSZoneOffset Parms{};
+
+	Parms.ForwardOffset = ForwardOffset;
+	Parms.UpOffset = UpOffset;
+	Parms.HalfSize = HalfSize;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

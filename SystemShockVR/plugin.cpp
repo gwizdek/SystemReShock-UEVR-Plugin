@@ -11,12 +11,15 @@
 #include "SDK/MOVECONTROL_FocusableInteract_classes.hpp"
 #include "SDK/MOVECONTROL_StationMove_classes.hpp"
 #include "SDK/COMP_MoveControlManager_classes.hpp"
+#include "SDK/HeadMountedDisplay_structs.hpp"
+#include "SDK/HeadMountedDisplay_classes.hpp"
 
 #include "SDK/_BP_LaserDot_classes.hpp"
 #include "SDK/_BP_ItemSelector_classes.hpp"
 #include "SDK/_BP_MFDMaskComponent_classes.hpp"
 #include "SDK/_BP_HandInteractionComponent_classes.hpp"
 #include "SDK/_BP_VRMovementComponent_classes.hpp"
+#include "SDK/_CH_Hacker_Rig_Skeleton_AnimBlueprint_classes.hpp"
 
 #include "plugin.hpp"
 #include "plugin_utils.hpp"
@@ -35,8 +38,8 @@ std::unique_ptr<UEVRPlugin> g_plugin = std::make_unique<UEVRPlugin>();
 void UEVRPlugin::on_initialize() {
     PLUGIN_LOG_ONCE("Plugin Initializing...");
 
-    //API::get()->log_warn("[plugin][cleanup] Starting Actors Cleanup");
-    //VRBody::cleanup_actors();
+    API::get()->log_warn("[plugin][cleanup] Starting Actors Cleanup");
+    cleanup_actors();
 
     // disable player focus (camera pull) on interactable objects like vending machines / keyboards
     auto move_control = SDK::UMOVECONTROL_FocusableInteract_C::GetDefaultObj();
@@ -116,6 +119,8 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_level_change();
         handle_game_state_change();
         handle_media_display();
+        update_trailing_rotation(delta);
+        handle_ads();
         
         //if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
         //    try_running_test_1();
@@ -171,6 +176,7 @@ bool UEVRPlugin::prepare_pointers() {
 
             m_is_media_display_visible.consume();
             m_neural_hud->IsMediaDisplayVisible(&m_is_media_display_visible.value);
+
         }
 
         // level
@@ -320,7 +326,7 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
     m_hardware_selector_button.set_state(state);
 
     handle_game_state_controller_input(state, vr);
-    handle_smooth_turning(state, vr);
+    handle_smooth_turning(state);
     
 }
 
@@ -370,6 +376,9 @@ void UEVRPlugin::handle_game_state_controller_input(XINPUT_STATE* state, const U
             // Left Shoulder
             if (m_gamepad_left_shoulder.is_pressed()) {
                 g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator2);
+
+                g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator3;
+
                 if (
                     g_vr_body->HandInteractionLeft->HeldGrabComponent == nullptr &&
                     g_vr_body->HandInteractionLeft->IsReachingSocket(UKismetStringLibrary::Conv_StringToName(L"RightInnerWristSocket"), 5.0f)
@@ -378,6 +387,7 @@ void UEVRPlugin::handle_game_state_controller_input(XINPUT_STATE* state, const U
                 }
             }
             if (m_gamepad_left_shoulder.is_released()) {
+                g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
                 g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator0);
             }
 
@@ -396,34 +406,67 @@ void UEVRPlugin::handle_game_state_controller_input(XINPUT_STATE* state, const U
     }
 }
 
-void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state, const UEVR_VRData* vr) {
-    static SDK::AController* pawn_controller{ nullptr };
+void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state) {
+    //static SDK::AController* pawn_controller{ nullptr };
+    //SDK::FXRHMDData HMDData{};
+
     try {
         if (!m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
             return;
         }
 
-        char snap_angle[16] = { 0 };
-        vr->get_mod_value("VR_SnapturnTurnAngle", snap_angle, sizeof(snap_angle));
-        int snap_angle_int = atoi(snap_angle);
-
-        // verify if smooth turning conditions have been met
-        if (snap_angle_int == 359) {
-            vr->set_snap_turn_enabled(false);
-            pawn_controller = m_pawn.get()->Controller;
-            if (!UKismetSystemLibrary::IsValid(pawn_controller)) {
-                return;
-            }
-
-            auto control_rotation = pawn_controller->GetControlRotation();
-            control_rotation.Yaw += (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
-            pawn_controller->SetControlRotation(control_rotation);
-
-            state->Gamepad.sThumbRX = 0;
+        auto pawn_controller = m_pawn.get()->Controller;
+        if (!UKismetSystemLibrary::IsValid(pawn_controller)) {
+            return;
         }
+
+        auto control_rotation = pawn_controller->GetControlRotation();
+        float delta_rotation = (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
+        control_rotation.Yaw += delta_rotation;
+        pawn_controller->SetControlRotation(control_rotation);
+
+        g_vr_body->TrailingRotationComponent->K2_AddWorldRotation( {0.f, delta_rotation, 0.f}, false, &m_reusable_hit_result, false);
+
+        //if (abs(g_vr_body->VRMovementComponent->TrailingAngle) < 15.f) {
+        //    g_vr_body->VRBodyMesh->K2_SetRelativeRotation({ 0.f, -90.f - g_vr_body->VRMovementComponent->TrailingAngle, 0.f }, false, &m_reusable_hit_result, false);
+        //}
+
+        state->Gamepad.sThumbRX = 0;
     }
     catch (...) {
         API::get()->log_error("[plugin][handle_smooth_turning] Exception");
+    }
+}
+
+void UEVRPlugin::update_trailing_rotation(float delta) {
+    try {
+        if (m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass()))
+            return;
+
+        auto pawn_controller = m_pawn.get()->Controller;
+        if (!UKismetSystemLibrary::IsValid(pawn_controller)) {
+            return;
+        }
+        auto control_rotation = pawn_controller->GetControlRotation();
+        auto tc_rot = g_vr_body->TrailingRotationComponent->K2_GetComponentRotation();
+
+        auto pawn_speed = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->COMP_MoveControlManager->CurrentSpeed;
+        auto interp_speed = pow((abs(g_vr_body->VRMovementComponent->TrailingAngle) / 35.f), 5.f) + pow(pawn_speed / 100.f, 2.f);
+
+        g_vr_body->TrailingRotationComponent->K2_SetWorldRotation(
+            SDK::UKismetMathLibrary::RInterpTo(
+                tc_rot,
+                { 0.f, control_rotation.Yaw, 0.f },
+                delta,
+                interp_speed
+            ),
+            false, &m_reusable_hit_result, false
+        );
+
+        g_vr_body->VRBodyMesh->K2_SetWorldRotation({ 0.f, g_vr_body->TrailingRotationComponent->K2_GetComponentRotation().Yaw - 90.f, 0.f }, false, &m_reusable_hit_result, false);
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][update_trailing_rotation] Exception");
     }
 }
 
@@ -553,10 +596,13 @@ void UEVRPlugin::handle_level_change() {
                 APAWN_Hacker_Implant_C* pawn = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get());
                 g_vr_body = VRBody::initialize_vr_body(pawn);
 
-                if (g_vr_body != nullptr) {
+                if (g_vr_body != nullptr && m_neural_hud != nullptr) {
+                    initialize_mcs(pawn);
                     VRBody::initialize_laser_dot();
                     VRBody::overwrite_hacker_crouch_animations();
                     VRBody::initialize_minimap(m_neural_hud);
+                    VRBody::initialize_hacker_hardware(m_neural_hud);
+                    VRBody::initialize_ads();
                     VRItemSelector::initialize(m_neural_hud);
                     PluginUtils::reset_height(0.f);
                 }
@@ -578,10 +624,50 @@ void UEVRPlugin::handle_level_change() {
 }
 
 void UEVRPlugin::handle_media_display() {
-    if (m_game_state.get() == GAME_STATE_CITADEL_STATION && m_is_media_display_visible.has_changed()) {
-        VRBody::set_media_display_visibility(m_is_media_display_visible.get());
+    try {
+        if (m_game_state.get() == GAME_STATE_CITADEL_STATION && m_is_media_display_visible.has_changed()) {
+            VRBody::set_media_display_visibility(m_is_media_display_visible.get());
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][handle_media_display] Exception");
     }
 }
+
+// This is also prototyped in _BP_VRBody Event Graph
+void UEVRPlugin::handle_ads() {
+    try {
+        if (g_vr_body != nullptr) {
+            m_is_ads_active.set_value(g_vr_body->IsAimingDownSights());
+
+            if (m_is_ads_active.enabled()) {
+                if (
+                    SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
+                    m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
+                    ) {
+                    SDK::FKey aim_key{};
+                    static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_83(aim_key);
+                }
+            }
+
+            if (m_is_ads_active.disabled()) {
+                if (
+                    SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
+                    m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
+                    ) {
+                    SDK::FKey aim_key{};
+                    static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_84(aim_key);
+                }
+
+            }
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][handle_ads] Exception");
+    }
+}
+
+
 
 // primary item selector
 void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr) {
@@ -733,8 +819,21 @@ void UEVRPlugin::cleanup_pointers() {
 }
 
 void UEVRPlugin::cleanup_actors() {
-    API::get()->log_warn("[plugin][cleanup] Starting Actors Cleanup");
-    //VRBody::cleanup_actors();
+    try {
+        API::get()->log_warn("[plugin][cleanup_actors] Starting Actors Cleanup");
+        auto world = UWorld::GetWorld();
+        if (!UKismetSystemLibrary::IsValid(world)) {
+            API::get()->log_error("[plugin][cleanup_actors] Invalid World");
+            return;
+        }
+
+        PluginUtils::destroy_actors_by_tag(world, UKismetStringLibrary::Conv_StringToName(L"VRModActor"));
+
+        g_vr_body = nullptr;
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][cleanup_actors] Exception");
+    }
 }
 
 
@@ -1020,4 +1119,230 @@ bool UEVRPlugin::is_valid_vr_body_hacker_implant_pawn() {
     }
 
     return true;
+}
+
+
+
+void UEVRPlugin::initialize_mcs(APAWN_Hacker_Implant_C* pawn) {
+    try {
+        const SDK::FVector pawn_location = pawn->K2_GetActorLocation();
+        SDK::FTransform transform{};
+        transform.Rotation = { 0.f, 0.f, 0.f, 1.f };
+        transform.Translation = { pawn_location.X, pawn_location.Y, pawn_location.Z };
+        transform.Scale3D = { 1.f, 1.f, 1.f };
+
+
+        // --------------------------------------------------------------------
+        // Right Hand
+        // - Actor
+        // - Motion Controller
+        // - Widget Interaction Component
+        // - Laser Pointer for Item Selector and MFD (Capsule Component)
+        // - Minimap
+        // - Vital Bars
+        // - Media Display
+        // - TargetID
+        // --------------------------------------------------------------------
+
+        auto world = UWorld::GetWorld();
+        if (m_world == nullptr) {
+            API::get()->log_error("[plugin][initialize_mcs] World pointer error");
+            return;
+        }
+
+        // actor
+        m_right_hand_actor = PluginUtils::spawn_actor(world, transform, L"VRModActor");
+        if (m_right_hand_actor == nullptr) {
+            API::get()->log_error("[plugin][initialize_mcs] RH Actor error");
+            return;
+        }
+
+        // motion controller component
+        m_rh_controller_component = static_cast<SDK::UMotionControllerComponent*>(
+            m_right_hand_actor->AddComponentByClass(
+                SDK::UMotionControllerComponent::StaticClass(), false, transform, false
+            )
+            );
+        if (m_rh_controller_component == nullptr) {
+            API::get()->log_error("[plugin][initialize_mcs] RH Controller error");
+            return;
+        }
+
+        m_rh_controller_component->MotionSource = SDK::UKismetStringLibrary::Conv_StringToName(L"Right");
+        m_rh_controller_component->Hand = SDK::EControllerHand::Right;
+        m_right_hand_actor->FinishAddComponent(m_rh_controller_component, false, transform);
+
+        m_rh_controller_component->K2_AttachToComponent(
+            pawn->K2_GetRootComponent(),
+            UKismetStringLibrary::Conv_StringToName(L"None"),
+            EAttachmentRule::SnapToTarget,
+            EAttachmentRule::KeepWorld,
+            EAttachmentRule::KeepWorld,
+            true
+        );
+
+        g_vr_body->WristOffsetRight->K2_AttachToComponent(
+            m_rh_controller_component,
+            UKismetStringLibrary::Conv_StringToName(L"None"),
+            EAttachmentRule::KeepRelative,
+            EAttachmentRule::KeepRelative,
+            EAttachmentRule::KeepRelative,
+            true
+        );
+
+
+        //SDK::U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C* vr_body_anim = (SDK::U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C*)g_vr_body->VRBodyMesh->GetAnimInstance();
+        //if (vr_body_anim != nullptr) {
+        //    vr_body_anim->RightWristOffsetComponent = m_rh_controller_component;
+        //}
+        API::get()->log_warn("[plugin][initialize_mcs] Initialized MCs");
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][cleanup_actors] Exception");
+    }
+}
+
+
+
+void UEVRPlugin::SpawnCustom2DScreen() {
+    //if (!CutscenePlaying())
+    //    return;
+    const SDK::FVector pawn_location = m_pawn.get()->K2_GetActorLocation();
+    SDK::FTransform transform{};
+    transform.Rotation = { 0.f, 0.f, 0.f, 1.f };
+    transform.Translation = { pawn_location.X, pawn_location.Y, pawn_location.Z };
+    transform.Scale3D = { 1.f, 1.f, 1.f };
+
+
+    auto world = UWorld::GetWorld();
+    if (world == nullptr) {
+        API::get()->log_error("[vr_body][SpawnCustom2DScreen] World pointer error");
+        return;
+    }
+
+    // actor
+    UEVR_Vector3d uevrVector = { 0.0f, 0.0f, 0.0f };
+    auto uevrActor = PluginUtils::spawn_actor(world, transform, L"VRModActor");
+    auto actor = (SDK::AActor*)uevrActor;
+    if (!actor)
+    {
+        return;
+    }
+
+    static SDK::UStaticMesh* staticMesh = nullptr;
+    auto meshUEVR = uevr::API::get()->find_uobject<uevr::API::UObject>(L"StaticMesh /Engine/BasicShapes/Plane.Plane");
+    auto sdkMesh = (SDK::UObject*)meshUEVR;
+    if (sdkMesh->IsA(SDK::UStaticMesh::StaticClass()))
+    {
+        staticMesh = (SDK::UStaticMesh*)meshUEVR;
+
+        if (!staticMesh)
+        {
+            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Failed to find static mesh");
+            return;
+        }
+        API::get()->log_warn("[plugin][SpawnCustom2DScreen] Found static mesh %s : ", staticMesh->GetFullName().c_str());
+    }
+    else
+    {
+        API::get()->log_warn("[plugin][SpawnCustom2DScreen] Asset found is not a StaticMesh or SkeletalMesh");
+        return;
+    }
+
+    auto material = uevr::API::get()->find_uobject<uevr::API::UObject>(L"Material /Engine/EngineDebugMaterials/DebugMeshMaterial.DebugMeshMaterial");
+    if (!material)
+    {
+        API::get()->log_warn("[plugin][SpawnCustom2DScreen] Failed to find material for 2D screen");
+        return;
+    }
+
+    auto sdkMaterial = (SDK::UMaterial*)material;
+    sdkMaterial->TwoSided = true;
+    sdkMaterial->bDisableDepthTest = true;
+    sdkMaterial->BlendMode = SDK::EBlendMode::BLEND_Translucent;
+    //sdkMaterial->MaterialDomain = SDK::EMaterialDomain::MD_PostProcess;
+    //sdkMaterial->ShadingModel = SDK::EMaterialShadingModel::MSM_Unlit;
+    ////Material /Engine/EngineMaterials/DefaultMaterial.DefaultMaterial
+
+    //auto textureUEVR = uevr::API::get()->find_uobject<uevr::API::UObject>(L"Texture2D /CobraUI/Material/HUD/T_GoggleVignette.T_GoggleVignette");
+    //auto texture = (SDK::UTexture2D*)textureUEVR;
+
+    if (staticMesh)
+    {
+        // create 5 planes for the box
+        for (int i = 0; i < 5; i++)
+        {
+            auto* staticMeshComponent = static_cast<SDK::UStaticMeshComponent*>(actor->AddComponentByClass(SDK::UStaticMeshComponent::StaticClass(),
+                false, // bManualAttachment
+                SDK::FTransform{}, // RelativeTransform
+                false // bDeferConstruction
+            ));
+
+            if (!staticMeshComponent)
+            {
+                API::get()->log_warn("[plugin][SpawnCustom2DScreen] Failed to create UStaticMeshComponent");
+                return;
+            }
+            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Created StaticMeshComponent: %s", staticMeshComponent->GetFullName().c_str());
+
+            staticMeshComponent->SetStaticMesh(staticMesh);
+            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Assigned mesh to StaticMeshComponent");
+
+            staticMeshComponent->K2_AttachToComponent(
+                actor->K2_GetRootComponent(),                      // Parent
+                SDK::FName(),                                      // SocketName (none)
+                SDK::EAttachmentRule::KeepRelative,             // Use the relative location we just set
+                SDK::EAttachmentRule::KeepRelative,             // Use the relative rotation we just set
+                SDK::EAttachmentRule::KeepRelative,             // Use the relative scale we just set
+                false                                            // bWeldSimulatedBodies
+            );
+            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Attached StaticMeshComponent to Actor's root component");
+
+            staticMeshComponent->Activate(true);
+            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Activated StaticMeshComponent");
+
+
+            staticMeshComponent->SetCollisionEnabled(SDK::ECollisionEnabled::NoCollision);
+
+            staticMeshComponent->Activate(true);
+            staticMeshComponent->SetVisibility(true, false);
+            staticMeshComponent->SetHiddenInGame(false, false);
+            staticMeshComponent->SetWorldScale3D({ 1, 1, 1 });
+            staticMeshComponent->SetMobility(SDK::EComponentMobility::Movable);
+            staticMeshComponent->SetRenderCustomDepth(true);
+
+            staticMeshComponent->TranslucencySortPriority = 10000;
+            staticMeshComponent->SetTranslucencySortDistanceOffset(10000);
+            staticMeshComponent->SetCastShadow(false);
+            staticMeshComponent->bAllowCullDistanceVolume = false;
+            staticMeshComponent->LDMaxDrawDistance = 0.0f; // 0 = infinite
+            staticMeshComponent->CachedMaxDrawDistance = 0.0f;
+            staticMeshComponent->bNeverDistanceCull = true;
+
+            auto dynamicMaterial = staticMeshComponent->CreateAndSetMaterialInstanceDynamicFromMaterial(0, sdkMaterial);
+            //Logger::DebugPrint("scopeDynamicMaterial created %s", scopeDynamicMaterial->GetFullName().c_str());
+            //Applying the render texture to the material :
+            //dynamicMaterial->SetTextureParameterValue(SDK::UKismetStringLibrary::Conv_StringToName(L"LinearColor"), texture);
+            dynamicMaterial->SetVectorParameterValue(
+                SDK::UKismetStringLibrary::Conv_StringToName(L"Color"),
+                SDK::FLinearColor{ 0.0f, 0.0f, 0.0f, 9999.0f }
+            );
+        }
+    }
+
+    Custom2DScreen = actor;
+
+    //ResizeBlackBars();
+
+    auto static cameraManager_c = uevr::API::get()->find_uobject<uevr::API::UClass>(L"BlueprintGeneratedClass /Game/Blueprints/Camera/BP_PlayerCameraManager.BP_PlayerCameraManager_C");
+    auto cameraManagerActor = (SDK::AActor*)cameraManager_c->get_first_object_matching(false);
+
+    Custom2DScreen->K2_AttachToActor(cameraManagerActor,
+        SDK::FName(),                                      // SocketName (none)
+        SDK::EAttachmentRule::KeepRelative,             // Use the relative location we just set
+        SDK::EAttachmentRule::KeepRelative,             // Use the relative rotation we just set
+        SDK::EAttachmentRule::KeepRelative,             // Use the relative scale we just set
+        false                                            // bWeldSimulatedBodies
+    );
+    API::get()->log_warn("[plugin][SpawnCustom2DScreen] custom box parent : %ls", actor->GetParentActor()->GetFullName().c_str());
 }
