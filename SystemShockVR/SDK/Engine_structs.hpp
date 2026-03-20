@@ -4015,7 +4015,6 @@ enum class ESkinCacheUsage : uint8
 	Auto                                     = 0,
 	Disabled                                 = 255,
 	Enabled                                  = 1,
-	ESkinCacheUsage_MAX                      = 256,
 };
 
 // Enum Engine.EPhysicsTransformUpdateMode
@@ -4510,7 +4509,6 @@ enum class ESoundWaveLoadingBehavior : uint8
 	LoadOnDemand                             = 3,
 	ForceInline                              = 4,
 	Uninitialized                            = 255,
-	ESoundWaveLoadingBehavior_MAX            = 256,
 };
 
 // Enum Engine.ESplineCoordinateSpace

@@ -1595,7 +1595,7 @@ public:
 
                 auto pos = m_vr_hud->get_2D_hit_position();
                 if (pos.X != 0 && pos.Y != 0) {
-                    ctrl->SetMouseLocation(pos.X, pos.Y);
+                    ctrl->SetMouseLocation((UC::int32)pos.X, (UC::int32)pos.Y);
                 }
 
                 m_vr_hud->update_laser_pointer_length(100.f);
@@ -1619,15 +1619,7 @@ public:
                 ctrl->GetViewportSize(&m_viewport_size_x, &m_viewport_size_y);
 
                 // get uevr world scale
-                char world_scale_option[16] = { 1.0 };
-                vr->get_mod_value("VR_WorldScale", world_scale_option, sizeof(world_scale_option));
-                float world_scale{ 1.f };
-                try {
-                    size_t read = 0;
-                    world_scale = std::stof(world_scale_option, &read);
-                } catch (std::invalid_argument) {
-                    API::get()->log_info("Handle MFD Changes :: Error converting UEVR world scale value to float");
-                }
+                float world_scale = uevr_param_to_float(vr, "VR_WorldScale");
 
                 char ui_distance[32];
                 char ui_size[32];

@@ -1373,7 +1373,7 @@ public:
 
     // this function tries to find and destroy actors we created for attachments, even when we no longer have pointers to them
     // TODO add mfd mask cleanup
-    static int cleanup() {
+    static size_t cleanup() {
         API::get()->log_info("cleanup_widget_components :: Cleaning up stale Widget Components");
         std::vector<SDK::UObject*> actors{};
         std::vector<SDK::UObject*> components{};
@@ -1450,7 +1450,7 @@ public:
         API::get()->log_info("VRHackerHUD :: Testing result");
         API::get()->log_info("VRHackerHUD :: Overlapped obj no: %d", out_components.Num());
         if (result) {
-            for (size_t i = 0; i < out_components.Num(); i++) {
+            for (UC::int32 i = 0; i < out_components.Num(); i++) {
                 API::get()->log_info("VRHackerHUD :: Overlapped obj: %s", out_components[i]->GetFullName().c_str());
                 out_components[i]->SetCollisionResponseToChannel(item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore);
             }
