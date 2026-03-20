@@ -2,14 +2,6 @@
 #define  _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING 1
 #define _DEBUG_DURATIONS 0
 
-#include <windows.h>
-#include <stdio.h>
-#include <string.h>
-#include <memory>
-#include <mutex>
-#include <iostream>
-#include <codecvt>
-#include <chrono>
 #include <map>
 #include <set>
 
@@ -782,20 +774,19 @@ public:
                     SDK::FKey key_name{
                         .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Escape")
                     };
-
-                    // TODO: Close Menu/MFD
-                    //if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                    //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
-                    //}
-                    //else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
-                    //    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
-                    //}
-                    //else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
-                    //    static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_53(key_name);
-                    //}
-                    //else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Pseudospace_C::StaticClass())) {
-                    //    static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
-                    //}
+                    // TODO
+                    if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_118(key_name);
+                    }
+                    else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_118(key_name);
+                    }
+                    else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_96(key_name);
+                    }
+                    else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Pseudospace_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_118(key_name);
+                    }
                 }
             }
 
@@ -827,10 +818,10 @@ public:
                             .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
                         };
 
-                        // TODO Open MFD
-                        //if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                        //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
-                        //}
+                        // TODO
+                        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_43(tab_key);
+                        }
                     }
 
                     handle_mfd_interactions(state, vr);
@@ -863,10 +854,10 @@ public:
                             .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
                         };
 
-                        // TODO Toggle MFD
-                        //if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                        //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
-                        //}
+                        // TODO
+                        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_43(tab_key);
+                        }
                     }
 
                     if (m_hotbar_selector_button.is_held() || m_hardware_selector_button.is_held()) {
@@ -1572,11 +1563,19 @@ public:
 
                 // scroll up
                 if (state->Gamepad.sThumbRY > INPUT_DEADZONE_HI && m_mouse_wheel_debounce_timer > MOUSE_WHEEL_DEBOUNCE_TIME) {
+                    //SDK::FKey key{
+                    //    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"MouseScrollUp")
+                    //};
+                    //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_AnyKey_K2Node_InputKeyEvent_28(key);
                     send_mouse(0x0A, false);
                     m_mouse_wheel_debounce_timer = 0.f;
                 }
                 // scroll down
                 if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_HI && m_mouse_wheel_debounce_timer > MOUSE_WHEEL_DEBOUNCE_TIME) {
+                    //SDK::FKey key{
+                    //    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"MouseScrollDown")
+                    //};
+                    //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_AnyKey_K2Node_InputKeyEvent_28(key);
                     send_mouse(0x0B, false);
                     m_mouse_wheel_debounce_timer = 0.f;
                 }
@@ -1585,10 +1584,18 @@ public:
                 state->Gamepad.sThumbRY = 0;
 
                 if (m_gamepad_btn_a.has_changed()) {
+                    //SDK::FKey lmb{
+                    //    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"LeftMouseButton")
+                    //};
+                    //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_99(lmb);
                     send_mouse(VK_LBUTTON, !m_gamepad_btn_a.value);
                 }
 
                 if (m_gamepad_btn_y.has_changed()) {
+                    //SDK::FKey rmb{
+                    //    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"RightMouseButton")
+                    //};
+                    //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Real_Interact_K2Node_InputActionEvent_101(rmb);
                     send_mouse(VK_RBUTTON, !m_gamepad_btn_y.value);
                 }
                 ctrl->SetIsUsingGamepad(false);
