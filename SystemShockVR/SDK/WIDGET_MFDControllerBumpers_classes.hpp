@@ -12,6 +12,7 @@
 
 #include "Engine_structs.hpp"
 #include "UMG_classes.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 
 
 namespace SDK
@@ -27,14 +28,13 @@ public:
 	class UWidgetAnimation*                       LB_Press;                                          // 0x0270(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, RepSkip, NoDestructor, HasGetValueTypeHash)
 	class UGridMeshWidget*                        MESH_LBHitArea;                                    // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UGridMeshWidget*                        MESH_RBHitArea;                                    // 0x0280(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_ButtonLegend_Icon_C*            WIDGET_LeftBumperIcon;                             // 0x0288(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_ButtonLegend_Icon_C*            WIDGET_RightBumperIcon;                            // 0x0290(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_ButtonLegend_Key_C*             WIDGET_LeftTabButton;                              // 0x0288(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_ButtonLegend_Key_C*             WIDGET_RightTabButton;                             // 0x0290(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_WIDGET_MFDControllerBumpers(int32 EntryPoint);
 	void PreConstruct(bool IsDesignTime);
 	void InitializeControllerBumpers();
-	void UpdatePlatformTextures();
 	void PressLB();
 	void PressRB();
 
@@ -55,8 +55,8 @@ static_assert(offsetof(UWIDGET_MFDControllerBumpers_C, RB_Press) == 0x000268, "M
 static_assert(offsetof(UWIDGET_MFDControllerBumpers_C, LB_Press) == 0x000270, "Member 'UWIDGET_MFDControllerBumpers_C::LB_Press' has a wrong offset!");
 static_assert(offsetof(UWIDGET_MFDControllerBumpers_C, MESH_LBHitArea) == 0x000278, "Member 'UWIDGET_MFDControllerBumpers_C::MESH_LBHitArea' has a wrong offset!");
 static_assert(offsetof(UWIDGET_MFDControllerBumpers_C, MESH_RBHitArea) == 0x000280, "Member 'UWIDGET_MFDControllerBumpers_C::MESH_RBHitArea' has a wrong offset!");
-static_assert(offsetof(UWIDGET_MFDControllerBumpers_C, WIDGET_LeftBumperIcon) == 0x000288, "Member 'UWIDGET_MFDControllerBumpers_C::WIDGET_LeftBumperIcon' has a wrong offset!");
-static_assert(offsetof(UWIDGET_MFDControllerBumpers_C, WIDGET_RightBumperIcon) == 0x000290, "Member 'UWIDGET_MFDControllerBumpers_C::WIDGET_RightBumperIcon' has a wrong offset!");
+static_assert(offsetof(UWIDGET_MFDControllerBumpers_C, WIDGET_LeftTabButton) == 0x000288, "Member 'UWIDGET_MFDControllerBumpers_C::WIDGET_LeftTabButton' has a wrong offset!");
+static_assert(offsetof(UWIDGET_MFDControllerBumpers_C, WIDGET_RightTabButton) == 0x000290, "Member 'UWIDGET_MFDControllerBumpers_C::WIDGET_RightTabButton' has a wrong offset!");
 
 }
 

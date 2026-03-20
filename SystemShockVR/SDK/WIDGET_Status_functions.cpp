@@ -265,5 +265,19 @@ void UWIDGET_Status_C::UpdateStationComputerNodesCount()
 	UObject::ProcessEvent(Func, nullptr);
 }
 
+
+// Function WIDGET_Status.WIDGET_Status_C.UpdateGroveVisitStatus
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWIDGET_Status_C::UpdateGroveVisitStatus()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_Status_C", "UpdateGroveVisitStatus");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
 }
 

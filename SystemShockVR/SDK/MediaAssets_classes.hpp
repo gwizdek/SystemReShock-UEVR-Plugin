@@ -21,6 +21,190 @@
 namespace SDK
 {
 
+// Class MediaAssets.MediaSource
+// 0x0058 (0x0080 - 0x0028)
+class UMediaSource : public UObject
+{
+public:
+	uint8                                         Pad_28[0x58];                                      // 0x0028(0x0058)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetMediaOptionBool(const class FName& Key, bool Value);
+	void SetMediaOptionFloat(const class FName& Key, float Value);
+	void SetMediaOptionInt64(const class FName& Key, int64 Value);
+	void SetMediaOptionString(const class FName& Key, const class FString& Value);
+
+	class FString GetUrl() const;
+	bool Validate() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"MediaSource">();
+	}
+	static class UMediaSource* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMediaSource>();
+	}
+};
+static_assert(alignof(UMediaSource) == 0x000008, "Wrong alignment on UMediaSource");
+static_assert(sizeof(UMediaSource) == 0x000080, "Wrong size on UMediaSource");
+
+// Class MediaAssets.MediaPlaylist
+// 0x0010 (0x0038 - 0x0028)
+class UMediaPlaylist final : public UObject
+{
+public:
+	TArray<class UMediaSource*>                   Items;                                             // 0x0028(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+
+public:
+	bool Add(class UMediaSource* MediaSource);
+	bool AddFile(const class FString& FilePath);
+	bool AddUrl(const class FString& URL);
+	class UMediaSource* Get(int32 Index_0);
+	class UMediaSource* GetNext(int32* InOutIndex);
+	class UMediaSource* GetPrevious(int32* InOutIndex);
+	class UMediaSource* GetRandom(int32* OutIndex);
+	void Insert(class UMediaSource* MediaSource, int32 Index_0);
+	int32 Num();
+	bool Remove(class UMediaSource* MediaSource);
+	bool RemoveAt(int32 Index_0);
+	bool Replace(int32 Index_0, class UMediaSource* Replacement);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"MediaPlaylist">();
+	}
+	static class UMediaPlaylist* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMediaPlaylist>();
+	}
+};
+static_assert(alignof(UMediaPlaylist) == 0x000008, "Wrong alignment on UMediaPlaylist");
+static_assert(sizeof(UMediaPlaylist) == 0x000038, "Wrong size on UMediaPlaylist");
+static_assert(offsetof(UMediaPlaylist, Items) == 0x000028, "Member 'UMediaPlaylist::Items' has a wrong offset!");
+
+// Class MediaAssets.BaseMediaSource
+// 0x0008 (0x0088 - 0x0080)
+class UBaseMediaSource : public UMediaSource
+{
+public:
+	class FName                                   PlayerName;                                        // 0x0080(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"BaseMediaSource">();
+	}
+	static class UBaseMediaSource* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBaseMediaSource>();
+	}
+};
+static_assert(alignof(UBaseMediaSource) == 0x000008, "Wrong alignment on UBaseMediaSource");
+static_assert(sizeof(UBaseMediaSource) == 0x000088, "Wrong size on UBaseMediaSource");
+static_assert(offsetof(UBaseMediaSource, PlayerName) == 0x000080, "Member 'UBaseMediaSource::PlayerName' has a wrong offset!");
+
+// Class MediaAssets.FileMediaSource
+// 0x0028 (0x00B0 - 0x0088)
+class UFileMediaSource final : public UBaseMediaSource
+{
+public:
+	class FString                                 FilePath;                                          // 0x0088(0x0010)(Edit, BlueprintVisible, ZeroConstructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          PrecacheFile;                                      // 0x0098(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_99[0x17];                                      // 0x0099(0x0017)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetFilePath(const class FString& Path);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"FileMediaSource">();
+	}
+	static class UFileMediaSource* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UFileMediaSource>();
+	}
+};
+static_assert(alignof(UFileMediaSource) == 0x000008, "Wrong alignment on UFileMediaSource");
+static_assert(sizeof(UFileMediaSource) == 0x0000B0, "Wrong size on UFileMediaSource");
+static_assert(offsetof(UFileMediaSource, FilePath) == 0x000088, "Member 'UFileMediaSource::FilePath' has a wrong offset!");
+static_assert(offsetof(UFileMediaSource, PrecacheFile) == 0x000098, "Member 'UFileMediaSource::PrecacheFile' has a wrong offset!");
+
+// Class MediaAssets.MediaBlueprintFunctionLibrary
+// 0x0000 (0x0028 - 0x0028)
+class UMediaBlueprintFunctionLibrary final : public UBlueprintFunctionLibrary
+{
+public:
+	static void EnumerateAudioCaptureDevices(TArray<struct FMediaCaptureDevice>* OutDevices, int32 Filter);
+	static void EnumerateVideoCaptureDevices(TArray<struct FMediaCaptureDevice>* OutDevices, int32 Filter);
+	static void EnumerateWebcamCaptureDevices(TArray<struct FMediaCaptureDevice>* OutDevices, int32 Filter);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"MediaBlueprintFunctionLibrary">();
+	}
+	static class UMediaBlueprintFunctionLibrary* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMediaBlueprintFunctionLibrary>();
+	}
+};
+static_assert(alignof(UMediaBlueprintFunctionLibrary) == 0x000008, "Wrong alignment on UMediaBlueprintFunctionLibrary");
+static_assert(sizeof(UMediaBlueprintFunctionLibrary) == 0x000028, "Wrong size on UMediaBlueprintFunctionLibrary");
+
+// Class MediaAssets.MediaComponent
+// 0x0010 (0x00C0 - 0x00B0)
+class UMediaComponent final : public UActorComponent
+{
+public:
+	class UMediaTexture*                          MediaTexture;                                      // 0x00B0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UMediaPlayer*                           MediaPlayer;                                       // 0x00B8(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, Interp, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	class UMediaPlayer* GetMediaPlayer() const;
+	class UMediaTexture* GetMediaTexture() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"MediaComponent">();
+	}
+	static class UMediaComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMediaComponent>();
+	}
+};
+static_assert(alignof(UMediaComponent) == 0x000008, "Wrong alignment on UMediaComponent");
+static_assert(sizeof(UMediaComponent) == 0x0000C0, "Wrong size on UMediaComponent");
+static_assert(offsetof(UMediaComponent, MediaTexture) == 0x0000B0, "Member 'UMediaComponent::MediaTexture' has a wrong offset!");
+static_assert(offsetof(UMediaComponent, MediaPlayer) == 0x0000B8, "Member 'UMediaComponent::MediaPlayer' has a wrong offset!");
+
+// Class MediaAssets.MediaTimeStampInfo
+// 0x0010 (0x0038 - 0x0028)
+class UMediaTimeStampInfo final : public UObject
+{
+public:
+	struct FTimespan                              Time;                                              // 0x0028(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int64                                         SequenceIndex;                                     // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"MediaTimeStampInfo">();
+	}
+	static class UMediaTimeStampInfo* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMediaTimeStampInfo>();
+	}
+};
+static_assert(alignof(UMediaTimeStampInfo) == 0x000008, "Wrong alignment on UMediaTimeStampInfo");
+static_assert(sizeof(UMediaTimeStampInfo) == 0x000038, "Wrong size on UMediaTimeStampInfo");
+static_assert(offsetof(UMediaTimeStampInfo, Time) == 0x000028, "Member 'UMediaTimeStampInfo::Time' has a wrong offset!");
+static_assert(offsetof(UMediaTimeStampInfo, SequenceIndex) == 0x000030, "Member 'UMediaTimeStampInfo::SequenceIndex' has a wrong offset!");
+
 // Class MediaAssets.MediaPlayer
 // 0x0110 (0x0138 - 0x0028)
 class UMediaPlayer final : public UObject
@@ -161,190 +345,6 @@ static_assert(offsetof(UMediaPlayer, HorizontalFieldOfView) == 0x0000E0, "Member
 static_assert(offsetof(UMediaPlayer, VerticalFieldOfView) == 0x0000E4, "Member 'UMediaPlayer::VerticalFieldOfView' has a wrong offset!");
 static_assert(offsetof(UMediaPlayer, ViewRotation) == 0x0000E8, "Member 'UMediaPlayer::ViewRotation' has a wrong offset!");
 static_assert(offsetof(UMediaPlayer, PlayerGuid) == 0x000120, "Member 'UMediaPlayer::PlayerGuid' has a wrong offset!");
-
-// Class MediaAssets.MediaSource
-// 0x0058 (0x0080 - 0x0028)
-class UMediaSource : public UObject
-{
-public:
-	uint8                                         Pad_28[0x58];                                      // 0x0028(0x0058)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetMediaOptionBool(const class FName& Key, bool Value);
-	void SetMediaOptionFloat(const class FName& Key, float Value);
-	void SetMediaOptionInt64(const class FName& Key, int64 Value);
-	void SetMediaOptionString(const class FName& Key, const class FString& Value);
-
-	class FString GetUrl() const;
-	bool Validate() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"MediaSource">();
-	}
-	static class UMediaSource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMediaSource>();
-	}
-};
-static_assert(alignof(UMediaSource) == 0x000008, "Wrong alignment on UMediaSource");
-static_assert(sizeof(UMediaSource) == 0x000080, "Wrong size on UMediaSource");
-
-// Class MediaAssets.MediaTimeStampInfo
-// 0x0010 (0x0038 - 0x0028)
-class UMediaTimeStampInfo final : public UObject
-{
-public:
-	struct FTimespan                              Time;                                              // 0x0028(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int64                                         SequenceIndex;                                     // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"MediaTimeStampInfo">();
-	}
-	static class UMediaTimeStampInfo* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMediaTimeStampInfo>();
-	}
-};
-static_assert(alignof(UMediaTimeStampInfo) == 0x000008, "Wrong alignment on UMediaTimeStampInfo");
-static_assert(sizeof(UMediaTimeStampInfo) == 0x000038, "Wrong size on UMediaTimeStampInfo");
-static_assert(offsetof(UMediaTimeStampInfo, Time) == 0x000028, "Member 'UMediaTimeStampInfo::Time' has a wrong offset!");
-static_assert(offsetof(UMediaTimeStampInfo, SequenceIndex) == 0x000030, "Member 'UMediaTimeStampInfo::SequenceIndex' has a wrong offset!");
-
-// Class MediaAssets.BaseMediaSource
-// 0x0008 (0x0088 - 0x0080)
-class UBaseMediaSource : public UMediaSource
-{
-public:
-	class FName                                   PlayerName;                                        // 0x0080(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"BaseMediaSource">();
-	}
-	static class UBaseMediaSource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBaseMediaSource>();
-	}
-};
-static_assert(alignof(UBaseMediaSource) == 0x000008, "Wrong alignment on UBaseMediaSource");
-static_assert(sizeof(UBaseMediaSource) == 0x000088, "Wrong size on UBaseMediaSource");
-static_assert(offsetof(UBaseMediaSource, PlayerName) == 0x000080, "Member 'UBaseMediaSource::PlayerName' has a wrong offset!");
-
-// Class MediaAssets.FileMediaSource
-// 0x0028 (0x00B0 - 0x0088)
-class UFileMediaSource final : public UBaseMediaSource
-{
-public:
-	class FString                                 FilePath;                                          // 0x0088(0x0010)(Edit, BlueprintVisible, ZeroConstructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          PrecacheFile;                                      // 0x0098(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_99[0x17];                                      // 0x0099(0x0017)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetFilePath(const class FString& Path);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"FileMediaSource">();
-	}
-	static class UFileMediaSource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UFileMediaSource>();
-	}
-};
-static_assert(alignof(UFileMediaSource) == 0x000008, "Wrong alignment on UFileMediaSource");
-static_assert(sizeof(UFileMediaSource) == 0x0000B0, "Wrong size on UFileMediaSource");
-static_assert(offsetof(UFileMediaSource, FilePath) == 0x000088, "Member 'UFileMediaSource::FilePath' has a wrong offset!");
-static_assert(offsetof(UFileMediaSource, PrecacheFile) == 0x000098, "Member 'UFileMediaSource::PrecacheFile' has a wrong offset!");
-
-// Class MediaAssets.MediaBlueprintFunctionLibrary
-// 0x0000 (0x0028 - 0x0028)
-class UMediaBlueprintFunctionLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static void EnumerateAudioCaptureDevices(TArray<struct FMediaCaptureDevice>* OutDevices, int32 Filter);
-	static void EnumerateVideoCaptureDevices(TArray<struct FMediaCaptureDevice>* OutDevices, int32 Filter);
-	static void EnumerateWebcamCaptureDevices(TArray<struct FMediaCaptureDevice>* OutDevices, int32 Filter);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"MediaBlueprintFunctionLibrary">();
-	}
-	static class UMediaBlueprintFunctionLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMediaBlueprintFunctionLibrary>();
-	}
-};
-static_assert(alignof(UMediaBlueprintFunctionLibrary) == 0x000008, "Wrong alignment on UMediaBlueprintFunctionLibrary");
-static_assert(sizeof(UMediaBlueprintFunctionLibrary) == 0x000028, "Wrong size on UMediaBlueprintFunctionLibrary");
-
-// Class MediaAssets.MediaComponent
-// 0x0010 (0x00C0 - 0x00B0)
-class UMediaComponent final : public UActorComponent
-{
-public:
-	class UMediaTexture*                          MediaTexture;                                      // 0x00B0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UMediaPlayer*                           MediaPlayer;                                       // 0x00B8(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, Interp, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	class UMediaPlayer* GetMediaPlayer() const;
-	class UMediaTexture* GetMediaTexture() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"MediaComponent">();
-	}
-	static class UMediaComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMediaComponent>();
-	}
-};
-static_assert(alignof(UMediaComponent) == 0x000008, "Wrong alignment on UMediaComponent");
-static_assert(sizeof(UMediaComponent) == 0x0000C0, "Wrong size on UMediaComponent");
-static_assert(offsetof(UMediaComponent, MediaTexture) == 0x0000B0, "Member 'UMediaComponent::MediaTexture' has a wrong offset!");
-static_assert(offsetof(UMediaComponent, MediaPlayer) == 0x0000B8, "Member 'UMediaComponent::MediaPlayer' has a wrong offset!");
-
-// Class MediaAssets.MediaPlaylist
-// 0x0010 (0x0038 - 0x0028)
-class UMediaPlaylist final : public UObject
-{
-public:
-	TArray<class UMediaSource*>                   Items;                                             // 0x0028(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-
-public:
-	bool Add(class UMediaSource* MediaSource);
-	bool AddFile(const class FString& FilePath);
-	bool AddUrl(const class FString& URL);
-	class UMediaSource* Get(int32 Index_0);
-	class UMediaSource* GetNext(int32* InOutIndex);
-	class UMediaSource* GetPrevious(int32* InOutIndex);
-	class UMediaSource* GetRandom(int32* OutIndex);
-	void Insert(class UMediaSource* MediaSource, int32 Index_0);
-	int32 Num();
-	bool Remove(class UMediaSource* MediaSource);
-	bool RemoveAt(int32 Index_0);
-	bool Replace(int32 Index_0, class UMediaSource* Replacement);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"MediaPlaylist">();
-	}
-	static class UMediaPlaylist* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMediaPlaylist>();
-	}
-};
-static_assert(alignof(UMediaPlaylist) == 0x000008, "Wrong alignment on UMediaPlaylist");
-static_assert(sizeof(UMediaPlaylist) == 0x000038, "Wrong size on UMediaPlaylist");
-static_assert(offsetof(UMediaPlaylist, Items) == 0x000028, "Member 'UMediaPlaylist::Items' has a wrong offset!");
 
 // Class MediaAssets.MediaSoundComponent
 // 0x0160 (0x0820 - 0x06C0)

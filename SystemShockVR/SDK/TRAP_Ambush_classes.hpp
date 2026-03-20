@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "TRAP_Trigger_classes.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "TRAP_Trigger_classes.hpp"
 
 
 namespace SDK

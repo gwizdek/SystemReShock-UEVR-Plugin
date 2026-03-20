@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "WIDGET_Settings_BinaryToggle_classes.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK

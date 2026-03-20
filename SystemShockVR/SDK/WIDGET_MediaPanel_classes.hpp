@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "ENUM_MediaTabFilterType_structs.hpp"
-#include "ENUM_ItemType_structs.hpp"
-#include "UMG_classes.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
+#include "UMG_classes.hpp"
+#include "ENUM_ItemType_structs.hpp"
 
 
 namespace SDK
@@ -95,6 +95,8 @@ public:
 	void ReceiveNavLeft(bool InputState, bool* Result);
 	void ReceiveNavDown(bool InputState, bool* Result);
 	void ReceiveNavUp(bool InputState, bool* Result);
+	void ReceiveNavLeftRelease(bool InputState, bool* Result);
+	void ReceiveNavRightRelease(bool InputState, bool* Result);
 
 public:
 	static class UClass* StaticClass()

@@ -734,30 +734,6 @@ void UWEAPON_MagPulse_C::OnWeaponBecameActivatable(class APAWN_SystemShockCharac
 }
 
 
-// Function WEAPON_MagPulse.WEAPON_MagPulse_C.Activate
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UWEAPON_MagPulse_C::Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WEAPON_MagPulse_C", "Activate");
-
-	Params::WEAPON_MagPulse_C_Activate Parms{};
-
-	Parms.Character = Character;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function WEAPON_MagPulse.WEAPON_MagPulse_C.OnBecomeActivatable
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -814,6 +790,30 @@ void UWEAPON_MagPulse_C::CanActivate(class APAWN_SystemShockCharacter_C* Charact
 		Func = Class->GetFunction("WEAPON_MagPulse_C", "CanActivate");
 
 	Params::WEAPON_MagPulse_C_CanActivate Parms{};
+
+	Parms.Character = Character;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WEAPON_MagPulse.WEAPON_MagPulse_C.Activate
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWEAPON_MagPulse_C::Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WEAPON_MagPulse_C", "Activate");
+
+	Params::WEAPON_MagPulse_C_Activate Parms{};
 
 	Parms.Character = Character;
 

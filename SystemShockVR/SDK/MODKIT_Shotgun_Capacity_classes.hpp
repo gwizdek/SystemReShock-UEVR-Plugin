@@ -21,8 +21,8 @@ namespace SDK
 class UMODKIT_Shotgun_Capacity_C final : public UITEM_WeaponModKit_Base_C
 {
 public:
-	void TryApplyWeaponModifications(class UITEM_WeaponBase_C* Weapon, bool DuringInitialization, bool* Result);
 	void GetModifiedWeaponMode(const struct FSTRUCT_WeaponMode& WeaponMode, struct FSTRUCT_WeaponMode* ResultMode);
+	void TryApplyWeaponModifications(class UITEM_WeaponBase_C* Weapon, bool DuringInitialization, bool* Result);
 
 public:
 	static class UClass* StaticClass()

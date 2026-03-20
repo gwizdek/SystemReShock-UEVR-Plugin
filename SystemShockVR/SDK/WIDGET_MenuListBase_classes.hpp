@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "UMG_classes.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
+#include "UMG_classes.hpp"
 
 
 namespace SDK
@@ -58,6 +58,8 @@ public:
 	void ReceiveNavLeft(bool InputState, bool* Result);
 	void ReceiveNavDown(bool InputState, bool* Result);
 	void ReceiveNavUp(bool InputState, bool* Result);
+	void ReceiveNavLeftRelease(bool InputState, bool* Result);
+	void ReceiveNavRightRelease(bool InputState, bool* Result);
 
 public:
 	static class UClass* StaticClass()

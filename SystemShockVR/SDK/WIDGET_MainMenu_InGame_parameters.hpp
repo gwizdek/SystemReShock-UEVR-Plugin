@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_GameDifficulty_structs.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
 #include "SlateCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ENUM_GameDifficulty_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK::Params
@@ -26,8 +26,7 @@ struct WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -51,11 +50,11 @@ public:
 	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x00F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_F9[0x7];                                       // 0x00F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0100(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_109[0x7];                                      // 0x0109(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0110(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0118(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_2;                // 0x0119(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0119(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_11A[0x6];                                      // 0x011A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	class ACharacter*                             CallFunc_GetPlayerCharacter_ReturnValue;           // 0x0120(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple_1;         // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -71,12 +70,12 @@ public:
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x01B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x01C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x01C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x01C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_2;                // 0x01C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x01CA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame) == 0x000008, "Wrong alignment on WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame");
 static_assert(sizeof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame) == 0x0001D0, "Wrong size on WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, EntryPoint) == 0x000000, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::EntryPoint' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_Not_PreBool_ReturnValue) == 0x000004, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_GetPlayerPawn_ReturnValue) == 0x000008, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000010, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_DynamicCast_bSuccess' has a wrong offset!");
@@ -98,10 +97,10 @@ static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_ComponentBoundEvent_Message) == 0x0000E8, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_ComponentBoundEvent_Message' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_SwitchString_CmpSuccess) == 0x0000F8, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_GetGameInstance_ReturnValue) == 0x000100, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_Not_PreBool_ReturnValue_1) == 0x000108, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_Not_PreBool_ReturnValue) == 0x000108, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_DynamicCast_AsGI_Single_Player) == 0x000110, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_DynamicCast_bSuccess_1) == 0x000118, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_Not_PreBool_ReturnValue_2) == 0x000119, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_Not_PreBool_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_Not_PreBool_ReturnValue_1) == 0x000119, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_GetPlayerCharacter_ReturnValue) == 0x000120, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_GetPlayerCharacter_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_DynamicCast_AsPAWN_Hacker_Simple_1) == 0x000128, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_DynamicCast_AsPAWN_Hacker_Simple_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_DynamicCast_bSuccess_2) == 0x000130, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
@@ -114,7 +113,8 @@ static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_GetPlayerController_ReturnValue_1) == 0x0001B8, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_DynamicCast_AsCON_Hacker) == 0x0001C0, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, K2Node_DynamicCast_bSuccess_3) == 0x0001C8, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_IsUsingGamepad_Result) == 0x0001C9, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_Not_PreBool_ReturnValue_2) == 0x0001C9, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_Not_PreBool_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x0001CA, "Member 'WIDGET_MainMenu_InGame_C_ExecuteUbergraph_WIDGET_MainMenu_InGame::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_MainMenu_InGame.WIDGET_MainMenu_InGame_C.Tick
 // 0x003C (0x003C - 0x0000)

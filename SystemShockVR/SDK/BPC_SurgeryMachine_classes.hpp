@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "ENUM_SurgeryMachineMovementState_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "MOVECONTROL_Base_classes.hpp"
 #include "ENUM_LookControlType_structs.hpp"
 

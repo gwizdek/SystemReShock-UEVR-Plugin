@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_MediaObject_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "SlateCore_structs.hpp"
-#include "UMG_structs.hpp"
 #include "STRUCT_NarrativeSpeakers_structs.hpp"
+#include "SlateCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "UMG_structs.hpp"
+#include "STRUCT_MediaObject_structs.hpp"
 #include "Engine_structs.hpp"
 
 
@@ -93,7 +93,7 @@ static_assert(offsetof(WIDGET_MediaListElement_C_InitializeMediaListElement, Cal
 static_assert(offsetof(WIDGET_MediaListElement_C_InitializeMediaListElement, K2Node_Select_Default) == 0x0001D8, "Member 'WIDGET_MediaListElement_C_InitializeMediaListElement::K2Node_Select_Default' has a wrong offset!");
 
 // Function WIDGET_MediaListElement.WIDGET_MediaListElement_C.EVENT_OnMouseEnter
-// 0x00E0 (0x00E0 - 0x0000)
+// 0x00D8 (0x00D8 - 0x0000)
 struct WIDGET_MediaListElement_C_EVENT_OnMouseEnter final
 {
 public:
@@ -102,28 +102,27 @@ public:
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x00B9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x00BA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_BB[0x5];                                       // 0x00BB(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	class APawn*                                  CallFunc_K2_GetPawn_ReturnValue;                   // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_HasGamepadMovedCursorRecently_Result;     // 0x00D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x00DA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasGamepadMovedCursorRecently_Result;     // 0x00D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter) == 0x000008, "Wrong alignment on WIDGET_MediaListElement_C_EVENT_OnMouseEnter");
-static_assert(sizeof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter) == 0x0000E0, "Wrong size on WIDGET_MediaListElement_C_EVENT_OnMouseEnter");
+static_assert(sizeof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter) == 0x0000D8, "Wrong size on WIDGET_MediaListElement_C_EVENT_OnMouseEnter");
 static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, MyGeometry) == 0x000000, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::MyGeometry' has a wrong offset!");
 static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, MouseEvent) == 0x000038, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::MouseEvent' has a wrong offset!");
 static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, CallFunc_GetPlayerController_ReturnValue) == 0x0000A8, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, K2Node_DynamicCast_AsCON_Hacker) == 0x0000B0, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
 static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, K2Node_DynamicCast_bSuccess) == 0x0000B8, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, CallFunc_Not_PreBool_ReturnValue) == 0x0000B9, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x0000BA, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, CallFunc_K2_GetPawn_ReturnValue) == 0x0000C0, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::CallFunc_K2_GetPawn_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, CallFunc_Not_PreBool_ReturnValue) == 0x0000C8, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x0000D0, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, K2Node_DynamicCast_bSuccess_1) == 0x0000D8, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, CallFunc_HasGamepadMovedCursorRecently_Result) == 0x0000D9, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::CallFunc_HasGamepadMovedCursorRecently_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, CallFunc_IsUsingGamepad_Result) == 0x0000DA, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x0000C8, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, K2Node_DynamicCast_bSuccess_1) == 0x0000D0, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaListElement_C_EVENT_OnMouseEnter, CallFunc_HasGamepadMovedCursorRecently_Result) == 0x0000D1, "Member 'WIDGET_MediaListElement_C_EVENT_OnMouseEnter::CallFunc_HasGamepadMovedCursorRecently_Result' has a wrong offset!");
 
 // Function WIDGET_MediaListElement.WIDGET_MediaListElement_C.EVENT_OnMouseLeave
 // 0x0070 (0x0070 - 0x0000)

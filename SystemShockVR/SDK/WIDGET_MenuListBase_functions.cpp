@@ -480,5 +480,53 @@ void UWIDGET_MenuListBase_C::ReceiveNavUp(bool InputState, bool* Result)
 		*Result = Parms.Result;
 }
 
+
+// Function WIDGET_MenuListBase.WIDGET_MenuListBase_C.ReceiveNavLeftRelease
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_MenuListBase_C::ReceiveNavLeftRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_MenuListBase_C", "ReceiveNavLeftRelease");
+
+	Params::WIDGET_MenuListBase_C_ReceiveNavLeftRelease Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_MenuListBase.WIDGET_MenuListBase_C.ReceiveNavRightRelease
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_MenuListBase_C::ReceiveNavRightRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_MenuListBase_C", "ReceiveNavRightRelease");
+
+	Params::WIDGET_MenuListBase_C_ReceiveNavRightRelease Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
 }
 

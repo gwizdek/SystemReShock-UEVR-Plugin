@@ -632,6 +632,27 @@ void UITEM_EnergyWeapon_Base_C::TryBeginReloading(bool* Result)
 }
 
 
+// Function ITEM_EnergyWeapon_Base.ITEM_EnergyWeapon_Base_C.OnBecomeUnactivatable
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_EnergyWeapon_Base_C::OnBecomeUnactivatable(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_EnergyWeapon_Base_C", "OnBecomeUnactivatable");
+
+	Params::ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
 // Function ITEM_EnergyWeapon_Base.ITEM_EnergyWeapon_Base_C.Activate
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -648,27 +669,6 @@ void UITEM_EnergyWeapon_Base_C::Activate(class APAWN_SystemShockCharacter_C* Cha
 	Params::ITEM_EnergyWeapon_Base_C_Activate Parms{};
 
 	Parms.Character = Character;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function ITEM_EnergyWeapon_Base.ITEM_EnergyWeapon_Base_C.OnBecomeUnactivatable
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_EnergyWeapon_Base_C::OnBecomeUnactivatable(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_EnergyWeapon_Base_C", "OnBecomeUnactivatable");
-
-	Params::ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 

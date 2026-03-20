@@ -10,14 +10,16 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_InteractResults_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
+#include "SystemReShock_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_GameDifficulty_structs.hpp"
 #include "STRUCT_UserTintOption_structs.hpp"
-#include "AttributeSystem_structs.hpp"
+#include "ENUM_GameDifficulty_structs.hpp"
 #include "STRUCT_CharacterLoadoutSettings_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 #include "InputCore_structs.hpp"
 
 
@@ -25,109 +27,129 @@ namespace SDK::Params
 {
 
 // Function CON_Hacker.CON_Hacker_C.ExecuteUbergraph_CON_Hacker
-// 0x0140 (0x0140 - 0x0000)
+// 0x0150 (0x0150 - 0x0000)
 struct CON_Hacker_C_ExecuteUbergraph_CON_Hacker final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UObject>                    CallFunc_Conv_SoftClassReferenceToClass_ReturnValue; // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	TSubclassOf<class UObject>                    K2Node_CustomEvent_Loaded;                         // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0010(0x0010)(ZeroConstructor, NoDestructor)
-	class UClass*                                 K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character; // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_ClassDynamicCast_bSuccess;                  // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UObject>                    K2Node_CustomEvent_Loaded;                         // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValidClass_ReturnValue;                 // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 Temp_class_Variable;                               // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character_1; // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_ClassDynamicCast_bSuccess_1;                // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   K2Node_InputKeyEvent_Key;                          // 0x0058(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputKeyEvent_Key_1;                        // 0x0070(0x0018)(HasGetValueTypeHash)
-	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x0088(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Key_IsGamepadKey_ReturnValue;             // 0x0089(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x008A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_8B[0x1];                                       // 0x008B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetGlobalTimeDilation_ReturnValue;        // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UClass*                                 Temp_class_Variable;                               // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character; // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ClassDynamicCast_bSuccess;                  // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   K2Node_InputKeyEvent_Key;                          // 0x0038(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputKeyEvent_Key_1;                        // 0x0050(0x0018)(HasGetValueTypeHash)
+	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Key_IsGamepadKey_ReturnValue;             // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x006A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6B[0x1];                                       // 0x006B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetGlobalTimeDilation_ReturnValue;        // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue; // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0072(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_73[0x5];                                       // 0x0073(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_Event_DeltaSeconds;                         // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_84[0x4];                                       // 0x0084(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_91[0x7];                                       // 0x0091(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_A9[0x3];                                       // 0x00A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         K2Node_Event_DeltaSeconds;                         // 0x00AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APawn*                                  CallFunc_K2_GetPawn_ReturnValue;                   // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         Temp_float_Variable;                               // 0x00B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_BC[0x4];                                       // 0x00BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FDataTableRowHandle                    K2Node_CustomEvent_LevelCollection;                // 0x00D0(0x0010)(NoDestructor)
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_1;            // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_1;           // 0x00E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x00F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_F2[0x2];                                       // 0x00F2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Temp_float_Variable_1;                             // 0x00F4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(TSubclassOf<class UObject> Loaded)> K2Node_CreateDelegate_OutputDelegate_1;            // 0x00F8(0x0010)(ZeroConstructor, NoDestructor)
-	bool                                          Temp_bool_Variable;                                // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_109[0x7];                                      // 0x0109(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_2;            // 0x0110(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_2;           // 0x0118(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_121[0x3];                                      // 0x0121(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         K2Node_Select_Default;                             // 0x0124(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_3;            // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_3;           // 0x0130(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsLoadingScreenVisible_Result;            // 0x0139(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x013A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class APawn*                                  CallFunc_K2_GetPawn_ReturnValue;                   // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Temp_float_Variable;                               // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_A4[0x4];                                       // 0x00A4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B1[0x7];                                       // 0x00B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FDataTableRowHandle                    K2Node_CustomEvent_LevelCollection;                // 0x00B8(0x0010)(NoDestructor)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_1;            // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_1;           // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x00D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_DA[0x2];                                       // 0x00DA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_float_Variable_1;                             // 0x00DC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(TSubclassOf<class UObject> Loaded)> K2Node_CreateDelegate_OutputDelegate_1;            // 0x00E0(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_F1[0x7];                                       // 0x00F1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_2;            // 0x00F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_2;           // 0x0100(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_109[0x3];                                      // 0x0109(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         K2Node_Select_Default;                             // 0x010C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_3;            // 0x0110(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_3;           // 0x0118(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsLoadingScreenVisible_Result;            // 0x0121(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0122(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_123[0x5];                                      // 0x0123(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UObject>                    CallFunc_Conv_SoftClassReferenceToClass_ReturnValue; // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	class UClass*                                 K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character_1; // 0x0130(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ClassDynamicCast_bSuccess_1;                // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValidClass_ReturnValue;                 // 0x0139(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	EEndPlayReason                                K2Node_Event_EndPlayReason;                        // 0x013A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_13B[0x1];                                      // 0x013B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(EJoyConMouseMode NewMode)>     K2Node_CreateDelegate_OutputDelegate_2;            // 0x013C(0x0010)(ZeroConstructor, NoDestructor)
 };
 static_assert(alignof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker) == 0x000008, "Wrong alignment on CON_Hacker_C_ExecuteUbergraph_CON_Hacker");
-static_assert(sizeof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker) == 0x000140, "Wrong size on CON_Hacker_C_ExecuteUbergraph_CON_Hacker");
+static_assert(sizeof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker) == 0x000150, "Wrong size on CON_Hacker_C_ExecuteUbergraph_CON_Hacker");
 static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, EntryPoint) == 0x000000, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::EntryPoint' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Conv_SoftClassReferenceToClass_ReturnValue) == 0x000008, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Conv_SoftClassReferenceToClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_CustomEvent_Loaded) == 0x000008, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_CustomEvent_Loaded' has a wrong offset!");
 static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_CreateDelegate_OutputDelegate) == 0x000010, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character) == 0x000020, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_ClassDynamicCast_bSuccess) == 0x000028, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_ClassDynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_CustomEvent_Loaded) == 0x000030, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_CustomEvent_Loaded' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_IsValidClass_ReturnValue) == 0x000038, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_IsValidClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, Temp_class_Variable) == 0x000040, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::Temp_class_Variable' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character_1) == 0x000048, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character_1' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_ClassDynamicCast_bSuccess_1) == 0x000050, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_ClassDynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_InputKeyEvent_Key) == 0x000058, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_InputKeyEvent_Key' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_InputKeyEvent_Key_1) == 0x000070, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_InputKeyEvent_Key_1' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x000088, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Key_IsGamepadKey_ReturnValue) == 0x000089, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Key_IsGamepadKey_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Not_PreBool_ReturnValue) == 0x00008A, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGlobalTimeDilation_ReturnValue) == 0x00008C, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGlobalTimeDilation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000090, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGameInstance_ReturnValue) == 0x000098, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsGI_Single_Player) == 0x0000A0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess) == 0x0000A8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_Event_DeltaSeconds) == 0x0000AC, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_Event_DeltaSeconds' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_K2_GetPawn_ReturnValue) == 0x0000B0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_K2_GetPawn_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, Temp_float_Variable) == 0x0000B8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::Temp_float_Variable' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x0000C0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess_1) == 0x0000C8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_CustomEvent_LevelCollection) == 0x0000D0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_CustomEvent_LevelCollection' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGameInstance_ReturnValue_1) == 0x0000E0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGameInstance_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsGI_Single_Player_1) == 0x0000E8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsGI_Single_Player_1' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess_2) == 0x0000F0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_IsValid_ReturnValue) == 0x0000F1, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, Temp_float_Variable_1) == 0x0000F4, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::Temp_float_Variable_1' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_CreateDelegate_OutputDelegate_1) == 0x0000F8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, Temp_bool_Variable) == 0x000108, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGameInstance_ReturnValue_2) == 0x000110, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGameInstance_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsGI_Single_Player_2) == 0x000118, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsGI_Single_Player_2' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess_3) == 0x000120, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_Select_Default) == 0x000124, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGameInstance_ReturnValue_3) == 0x000128, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGameInstance_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsGI_Single_Player_3) == 0x000130, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsGI_Single_Player_3' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess_4) == 0x000138, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_IsLoadingScreenVisible_Result) == 0x000139, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_IsLoadingScreenVisible_Result' has a wrong offset!");
-static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Not_PreBool_ReturnValue_1) == 0x00013A, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, Temp_class_Variable) == 0x000020, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::Temp_class_Variable' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character) == 0x000028, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_ClassDynamicCast_bSuccess) == 0x000030, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_ClassDynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_InputKeyEvent_Key) == 0x000038, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_InputKeyEvent_Key' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_InputKeyEvent_Key_1) == 0x000050, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_InputKeyEvent_Key_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x000068, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Key_IsGamepadKey_ReturnValue) == 0x000069, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Key_IsGamepadKey_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Not_PreBool_ReturnValue) == 0x00006A, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGlobalTimeDilation_ReturnValue) == 0x00006C, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGlobalTimeDilation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000070, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue) == 0x000071, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_BooleanOR_ReturnValue) == 0x000072, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGameInstance_ReturnValue) == 0x000078, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_Event_DeltaSeconds) == 0x000080, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_Event_DeltaSeconds' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsGI_Single_Player) == 0x000088, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess) == 0x000090, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_K2_GetPawn_ReturnValue) == 0x000098, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_K2_GetPawn_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, Temp_float_Variable) == 0x0000A0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::Temp_float_Variable' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x0000A8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess_1) == 0x0000B0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_CustomEvent_LevelCollection) == 0x0000B8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_CustomEvent_LevelCollection' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGameInstance_ReturnValue_1) == 0x0000C8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGameInstance_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsGI_Single_Player_1) == 0x0000D0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsGI_Single_Player_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess_2) == 0x0000D8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_IsValid_ReturnValue) == 0x0000D9, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, Temp_float_Variable_1) == 0x0000DC, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::Temp_float_Variable_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_CreateDelegate_OutputDelegate_1) == 0x0000E0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, Temp_bool_Variable) == 0x0000F0, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGameInstance_ReturnValue_2) == 0x0000F8, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGameInstance_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsGI_Single_Player_2) == 0x000100, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsGI_Single_Player_2' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess_3) == 0x000108, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_Select_Default) == 0x00010C, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_GetGameInstance_ReturnValue_3) == 0x000110, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_GetGameInstance_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_AsGI_Single_Player_3) == 0x000118, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_AsGI_Single_Player_3' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_DynamicCast_bSuccess_4) == 0x000120, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_IsLoadingScreenVisible_Result) == 0x000121, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_IsLoadingScreenVisible_Result' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Not_PreBool_ReturnValue_1) == 0x000122, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_Conv_SoftClassReferenceToClass_ReturnValue) == 0x000128, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_Conv_SoftClassReferenceToClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character_1) == 0x000130, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_ClassDynamicCast_AsPAWN_System_Shock_Character_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_ClassDynamicCast_bSuccess_1) == 0x000138, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_ClassDynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, CallFunc_IsValidClass_ReturnValue) == 0x000139, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::CallFunc_IsValidClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_Event_EndPlayReason) == 0x00013A, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_Event_EndPlayReason' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_ExecuteUbergraph_CON_Hacker, K2Node_CreateDelegate_OutputDelegate_2) == 0x00013C, "Member 'CON_Hacker_C_ExecuteUbergraph_CON_Hacker::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
+
+// Function CON_Hacker.CON_Hacker_C.ReceiveEndPlay
+// 0x0001 (0x0001 - 0x0000)
+struct CON_Hacker_C_ReceiveEndPlay final
+{
+public:
+	EEndPlayReason                                EndPlayReason;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(CON_Hacker_C_ReceiveEndPlay) == 0x000001, "Wrong alignment on CON_Hacker_C_ReceiveEndPlay");
+static_assert(sizeof(CON_Hacker_C_ReceiveEndPlay) == 0x000001, "Wrong size on CON_Hacker_C_ReceiveEndPlay");
+static_assert(offsetof(CON_Hacker_C_ReceiveEndPlay, EndPlayReason) == 0x000000, "Member 'CON_Hacker_C_ReceiveEndPlay::EndPlayReason' has a wrong offset!");
 
 // Function CON_Hacker.CON_Hacker_C.LoadMapByCollection
 // 0x0010 (0x0010 - 0x0000)
@@ -1797,6 +1819,88 @@ static_assert(offsetof(CON_Hacker_C_ActivateBreakerLevers, CallFunc_Array_Get_It
 static_assert(offsetof(CON_Hacker_C_ActivateBreakerLevers, CallFunc_Less_IntInt_ReturnValue) == 0x000030, "Member 'CON_Hacker_C_ActivateBreakerLevers::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(CON_Hacker_C_ActivateBreakerLevers, CallFunc_TryInteract_self_CastInput) == 0x000038, "Member 'CON_Hacker_C_ActivateBreakerLevers::CallFunc_TryInteract_self_CastInput' has a wrong offset!");
 static_assert(offsetof(CON_Hacker_C_ActivateBreakerLevers, CallFunc_TryInteract_InteractResults) == 0x000048, "Member 'CON_Hacker_C_ActivateBreakerLevers::CallFunc_TryInteract_InteractResults' has a wrong offset!");
+
+// Function CON_Hacker.CON_Hacker_C.UpdateCursorPosition
+// 0x002C (0x002C - 0x0000)
+struct CON_Hacker_C_UpdateCursorPosition final
+{
+public:
+	bool                                          CallFunc_IsSageNintendoPlatform_ReturnValue;       // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              CallFunc_GetMousePositionOnPlatform_ReturnValue;   // 0x0004(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_X;                          // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_Y;                          // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_X_1;                        // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_Y_1;                        // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Round_ReturnValue;                        // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Round_ReturnValue_1;                      // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(CON_Hacker_C_UpdateCursorPosition) == 0x000004, "Wrong alignment on CON_Hacker_C_UpdateCursorPosition");
+static_assert(sizeof(CON_Hacker_C_UpdateCursorPosition) == 0x00002C, "Wrong size on CON_Hacker_C_UpdateCursorPosition");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_IsSageNintendoPlatform_ReturnValue) == 0x000000, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_IsSageNintendoPlatform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_GetMousePositionOnPlatform_ReturnValue) == 0x000004, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_GetMousePositionOnPlatform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_BreakVector2D_X) == 0x00000C, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_BreakVector2D_X' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_BreakVector2D_Y) == 0x000010, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_BreakVector2D_Y' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_BreakVector2D_X_1) == 0x000014, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_BreakVector2D_X_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_BreakVector2D_Y_1) == 0x000018, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_BreakVector2D_Y_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_Add_FloatFloat_ReturnValue) == 0x00001C, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000020, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_Round_ReturnValue) == 0x000024, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_Round_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateCursorPosition, CallFunc_Round_ReturnValue_1) == 0x000028, "Member 'CON_Hacker_C_UpdateCursorPosition::CallFunc_Round_ReturnValue_1' has a wrong offset!");
+
+// Function CON_Hacker.CON_Hacker_C.InitializeJoyConMouseMode
+// 0x0038 (0x0038 - 0x0000)
+struct CON_Hacker_C_InitializeJoyConMouseMode final
+{
+public:
+	bool                                          CallFunc_IsSageNintendoPlatform_ReturnValue;       // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(bool MouseEnabled)>            K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings;  // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EJoyConMouseMode                              CallFunc_GetJoyConMouseMode_JoyConMouseMode;       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(EJoyConMouseMode NewMode)>     K2Node_CreateDelegate_OutputDelegate_1;            // 0x0024(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue; // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(CON_Hacker_C_InitializeJoyConMouseMode) == 0x000008, "Wrong alignment on CON_Hacker_C_InitializeJoyConMouseMode");
+static_assert(sizeof(CON_Hacker_C_InitializeJoyConMouseMode) == 0x000038, "Wrong size on CON_Hacker_C_InitializeJoyConMouseMode");
+static_assert(offsetof(CON_Hacker_C_InitializeJoyConMouseMode, CallFunc_IsSageNintendoPlatform_ReturnValue) == 0x000000, "Member 'CON_Hacker_C_InitializeJoyConMouseMode::CallFunc_IsSageNintendoPlatform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_InitializeJoyConMouseMode, K2Node_CreateDelegate_OutputDelegate) == 0x000004, "Member 'CON_Hacker_C_InitializeJoyConMouseMode::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_InitializeJoyConMouseMode, CallFunc_GetShockSettingsForCurrentUser_Settings) == 0x000018, "Member 'CON_Hacker_C_InitializeJoyConMouseMode::CallFunc_GetShockSettingsForCurrentUser_Settings' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_InitializeJoyConMouseMode, CallFunc_GetJoyConMouseMode_JoyConMouseMode) == 0x000020, "Member 'CON_Hacker_C_InitializeJoyConMouseMode::CallFunc_GetJoyConMouseMode_JoyConMouseMode' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_InitializeJoyConMouseMode, K2Node_CreateDelegate_OutputDelegate_1) == 0x000024, "Member 'CON_Hacker_C_InitializeJoyConMouseMode::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_InitializeJoyConMouseMode, CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue) == 0x000034, "Member 'CON_Hacker_C_InitializeJoyConMouseMode::CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue' has a wrong offset!");
+
+// Function CON_Hacker.CON_Hacker_C.EVENT_OnJoyConMouseStateChange
+// 0x0001 (0x0001 - 0x0000)
+struct CON_Hacker_C_EVENT_OnJoyConMouseStateChange final
+{
+public:
+	bool                                          MouseEnabled;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(CON_Hacker_C_EVENT_OnJoyConMouseStateChange) == 0x000001, "Wrong alignment on CON_Hacker_C_EVENT_OnJoyConMouseStateChange");
+static_assert(sizeof(CON_Hacker_C_EVENT_OnJoyConMouseStateChange) == 0x000001, "Wrong size on CON_Hacker_C_EVENT_OnJoyConMouseStateChange");
+static_assert(offsetof(CON_Hacker_C_EVENT_OnJoyConMouseStateChange, MouseEnabled) == 0x000000, "Member 'CON_Hacker_C_EVENT_OnJoyConMouseStateChange::MouseEnabled' has a wrong offset!");
+
+// Function CON_Hacker.CON_Hacker_C.UpdateControllerMode
+// 0x0004 (0x0004 - 0x0000)
+struct CON_Hacker_C_UpdateControllerMode final
+{
+public:
+	ENUM_ControllerType                           OldState;                                          // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(CON_Hacker_C_UpdateControllerMode) == 0x000001, "Wrong alignment on CON_Hacker_C_UpdateControllerMode");
+static_assert(sizeof(CON_Hacker_C_UpdateControllerMode) == 0x000004, "Wrong size on CON_Hacker_C_UpdateControllerMode");
+static_assert(offsetof(CON_Hacker_C_UpdateControllerMode, OldState) == 0x000000, "Member 'CON_Hacker_C_UpdateControllerMode::OldState' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateControllerMode, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member 'CON_Hacker_C_UpdateControllerMode::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateControllerMode, CallFunc_Not_PreBool_ReturnValue_1) == 0x000002, "Member 'CON_Hacker_C_UpdateControllerMode::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CON_Hacker_C_UpdateControllerMode, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000003, "Member 'CON_Hacker_C_UpdateControllerMode::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
 
 }
 

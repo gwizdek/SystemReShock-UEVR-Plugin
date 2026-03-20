@@ -10,15 +10,15 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_CharacterAudioParams_structs.hpp"
+#include "ENUM_Foot_structs.hpp"
 #include "Engine_structs.hpp"
-#include "Engine_classes.hpp"
-#include "ENUM_AudioComponentLocation_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "SystemReShock_structs.hpp"
+#include "STRUCT_CharacterAudioParams_structs.hpp"
 #include "ENUM_LocomotionType_structs.hpp"
 #include "ENUM_HazardType_structs.hpp"
-#include "ENUM_Foot_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "SystemReShock_classes.hpp"
+#include "ENUM_AudioComponentLocation_structs.hpp"
 
 
 namespace SDK
@@ -26,10 +26,9 @@ namespace SDK
 
 // BlueprintGeneratedClass PAWN_SystemShockCharacter.PAWN_SystemShockCharacter_C
 // 0x01C0 (0x0680 - 0x04C0)
-class APAWN_SystemShockCharacter_C : public ACharacter
+class APAWN_SystemShockCharacter_C : public ASystemShock_CharacterBase
 {
 public:
-	uint8                                         Pad_4B8[0x8];                                      // 0x04B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x04C0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	class UCOMP_LimbManager_C*                    COMP_LimbManager;                                  // 0x04C8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UCOMP_ActionManager_C*                  COMP_ActionManager;                                // 0x04D0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
@@ -146,6 +145,7 @@ public:
 	void ApplyKnockback(const struct FVector& LinearImpulse, const struct FVector& ImpactPoint);
 	void TryApplyKnockbackFromDamage(class UAttribDamageType* DamageType, class UOBJ_ImpactData_C* ImpactData, bool* Result);
 	void IsRealspaceCharacter(bool* Result);
+	struct FVector ReceiveGetEnemyTargetLocation();
 	bool ReceiveAnimationMessage(const EActorMessagePriority& Priority, const class FString& Message);
 	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
 	bool ReceivePendingBodyTransforms(class USkeletalMeshComponent* SkeletalMeshComponent, const TArray<struct FTransform>& BodyTransforms);

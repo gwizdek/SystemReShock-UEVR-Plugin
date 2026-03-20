@@ -50,6 +50,8 @@ public:
 	void ReceiveNavAlt2(bool InputState, bool* Result);
 	void ReceiveNavTabLeft(bool InputState, bool* Result);
 	void ReceiveNavTabRight(bool InputState, bool* Result);
+	void ReceiveNavLeftRelease(bool InputState, bool* Result);
+	void ReceiveNavRightRelease(bool InputState, bool* Result);
 
 public:
 	static class UClass* StaticClass()

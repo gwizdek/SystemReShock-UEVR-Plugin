@@ -124,44 +124,6 @@ static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_GetListItemByCategory, R
 static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_GetListItemByCategory, Temp_byte_Variable) == 0x000010, "Member 'WIDGET_OptionsCategoryMenuList_C_GetListItemByCategory::Temp_byte_Variable' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_GetListItemByCategory, K2Node_Select_Default) == 0x000018, "Member 'WIDGET_OptionsCategoryMenuList_C_GetListItemByCategory::K2Node_Select_Default' has a wrong offset!");
 
-// Function WIDGET_OptionsCategoryMenuList.WIDGET_OptionsCategoryMenuList_C.InitializeItemArray
-// 0x0070 (0x0070 - 0x0000)
-struct WIDGET_OptionsCategoryMenuList_C_InitializeItemArray final
-{
-public:
-	TArray<class UWIDGET_MenuListItemBase_C*>     MenuListItems;                                     // 0x0000(0x0010)(Parm, OutParm, ContainsInstancedReference)
-	TArray<class UWIDGET_MenuListItemBase_C*>     ChildItems;                                        // 0x0010(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue;               // 0x0030(0x0010)(ReferenceParm, ContainsInstancedReference)
-	TArray<class UWIDGET_MenuListItemBase_C*>     CallFunc_InitializeItemArray_MenuListItems;        // 0x0040(0x0010)(ReferenceParm, ContainsInstancedReference)
-	class UWidget*                                CallFunc_Array_Get_Item;                           // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWIDGET_MenuListItemBase_C*             K2Node_DynamicCast_AsWIDGET_Menu_List_Item_Base;   // 0x0060(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_6A[0x2];                                       // 0x006A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Add_ReturnValue;                    // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray) == 0x000008, "Wrong alignment on WIDGET_OptionsCategoryMenuList_C_InitializeItemArray");
-static_assert(sizeof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray) == 0x000070, "Wrong size on WIDGET_OptionsCategoryMenuList_C_InitializeItemArray");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, MenuListItems) == 0x000000, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::MenuListItems' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, ChildItems) == 0x000010, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::ChildItems' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, Temp_int_Array_Index_Variable) == 0x000020, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, Temp_int_Loop_Counter_Variable) == 0x000024, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Add_IntInt_ReturnValue) == 0x000028, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_GetAllChildren_ReturnValue) == 0x000030, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_GetAllChildren_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_InitializeItemArray_MenuListItems) == 0x000040, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_InitializeItemArray_MenuListItems' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Array_Get_Item) == 0x000050, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Array_Length_ReturnValue) == 0x000058, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, K2Node_DynamicCast_AsWIDGET_Menu_List_Item_Base) == 0x000060, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::K2Node_DynamicCast_AsWIDGET_Menu_List_Item_Base' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, K2Node_DynamicCast_bSuccess) == 0x000068, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Less_IntInt_ReturnValue) == 0x000069, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Array_Add_ReturnValue) == 0x00006C, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
-
 // Function WIDGET_OptionsCategoryMenuList.WIDGET_OptionsCategoryMenuList_C.SetSelectedItem
 // 0x0098 (0x0098 - 0x0000)
 struct WIDGET_OptionsCategoryMenuList_C_SetSelectedItem final
@@ -201,6 +163,44 @@ static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_SetSelectedItem, CallFun
 static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_SetSelectedItem, K2Node_DynamicCast_AsWIDGET_Option_Category_Menu_List_Item_1) == 0x000088, "Member 'WIDGET_OptionsCategoryMenuList_C_SetSelectedItem::K2Node_DynamicCast_AsWIDGET_Option_Category_Menu_List_Item_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_SetSelectedItem, K2Node_DynamicCast_bSuccess_1) == 0x000090, "Member 'WIDGET_OptionsCategoryMenuList_C_SetSelectedItem::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_SetSelectedItem, CallFunc_Array_IsValidIndex_ReturnValue_1) == 0x000091, "Member 'WIDGET_OptionsCategoryMenuList_C_SetSelectedItem::CallFunc_Array_IsValidIndex_ReturnValue_1' has a wrong offset!");
+
+// Function WIDGET_OptionsCategoryMenuList.WIDGET_OptionsCategoryMenuList_C.InitializeItemArray
+// 0x0070 (0x0070 - 0x0000)
+struct WIDGET_OptionsCategoryMenuList_C_InitializeItemArray final
+{
+public:
+	TArray<class UWIDGET_MenuListItemBase_C*>     MenuListItems;                                     // 0x0000(0x0010)(Parm, OutParm, ContainsInstancedReference)
+	TArray<class UWIDGET_MenuListItemBase_C*>     ChildItems;                                        // 0x0010(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue;               // 0x0030(0x0010)(ReferenceParm, ContainsInstancedReference)
+	TArray<class UWIDGET_MenuListItemBase_C*>     CallFunc_InitializeItemArray_MenuListItems;        // 0x0040(0x0010)(ReferenceParm, ContainsInstancedReference)
+	class UWidget*                                CallFunc_Array_Get_Item;                           // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_MenuListItemBase_C*             K2Node_DynamicCast_AsWIDGET_Menu_List_Item_Base;   // 0x0060(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6A[0x2];                                       // 0x006A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Add_ReturnValue;                    // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray) == 0x000008, "Wrong alignment on WIDGET_OptionsCategoryMenuList_C_InitializeItemArray");
+static_assert(sizeof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray) == 0x000070, "Wrong size on WIDGET_OptionsCategoryMenuList_C_InitializeItemArray");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, MenuListItems) == 0x000000, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::MenuListItems' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, ChildItems) == 0x000010, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::ChildItems' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, Temp_int_Array_Index_Variable) == 0x000020, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, Temp_int_Loop_Counter_Variable) == 0x000024, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Add_IntInt_ReturnValue) == 0x000028, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_GetAllChildren_ReturnValue) == 0x000030, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_GetAllChildren_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_InitializeItemArray_MenuListItems) == 0x000040, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_InitializeItemArray_MenuListItems' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Array_Get_Item) == 0x000050, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Array_Length_ReturnValue) == 0x000058, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, K2Node_DynamicCast_AsWIDGET_Menu_List_Item_Base) == 0x000060, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::K2Node_DynamicCast_AsWIDGET_Menu_List_Item_Base' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, K2Node_DynamicCast_bSuccess) == 0x000068, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Less_IntInt_ReturnValue) == 0x000069, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsCategoryMenuList_C_InitializeItemArray, CallFunc_Array_Add_ReturnValue) == 0x00006C, "Member 'WIDGET_OptionsCategoryMenuList_C_InitializeItemArray::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
 
 }
 

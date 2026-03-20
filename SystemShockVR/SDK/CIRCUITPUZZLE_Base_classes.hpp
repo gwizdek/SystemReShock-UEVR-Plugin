@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "PUZZLE_Base_classes.hpp"
-#include "Engine_structs.hpp"
 #include "ENUM_GeneratedCircuitType_structs.hpp"
-#include "ENUM_PowerState_structs.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_InteractResultType_structs.hpp"
+#include "PUZZLE_Base_classes.hpp"
+#include "ENUM_PowerState_structs.hpp"
 
 
 namespace SDK

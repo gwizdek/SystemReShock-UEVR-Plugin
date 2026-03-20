@@ -10,61 +10,79 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_PrimarySecondary_structs.hpp"
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "InputCore_structs.hpp"
-#include "UMG_classes.hpp"
+#include "SystemReShock_structs.hpp"
+#include "SystemReShock_classes.hpp"
+#include "ENUM_PrimarySecondary_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C
-// 0x00A0 (0x0300 - 0x0260)
-class UWIDGET_ButtonLegend_Key_C : public UUserWidget
+// 0x0170 (0x03D0 - 0x0260)
+class UWIDGET_ButtonLegend_Key_C : public UButtonLegend
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0260(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	class UGridMeshWidget*                        MESH_KeyBackground;                                // 0x0268(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UTextMeshWidget*                        TEXT_KeyCode;                                      // 0x0270(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	struct FKey                                   KeyMapping;                                        // 0x0278(0x0018)(Edit, BlueprintVisible, HasGetValueTypeHash)
+	struct FKey                                   KeyMapping;                                        // 0x0278(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
 	TArray<float>                                 PanelSizeX;                                        // 0x0290(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
 	TArray<float>                                 TextSizeX;                                         // 0x02A0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
 	float                                         DefaultHeight;                                     // 0x02B0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	ENUM_PrimarySecondary                         KeyRank;                                           // 0x02B4(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2B5[0x3];                                      // 0x02B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 InputActionString;                                 // 0x02B8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          AutoSwapToGamepad;                                 // 0x02C8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          IsHighlighted;                                     // 0x02C9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          IsDisabled;                                        // 0x02CA(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2CB[0x1];                                      // 0x02CB(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              PanelSize;                                         // 0x02CC(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              KeySize;                                           // 0x02D4(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              ButtonSize;                                        // 0x02DC(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2E4[0x4];                                      // 0x02E4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UTextMeshWidget*                        SourceTextMeshWidget;                              // 0x02E8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMulticastInlineDelegate<void()>              OnLegendKeySizedChanged;                           // 0x02F0(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	bool                                          IsHighlighted;                                     // 0x02B5(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          IsDisabled;                                        // 0x02B6(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2B7[0x1];                                      // 0x02B7(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              PanelSize;                                         // 0x02B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              KeySize;                                           // 0x02C0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              ButtonSize;                                        // 0x02C8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UTextMeshWidget*                        SourceTextMeshWidget;                              // 0x02D0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMulticastInlineDelegate<void()>              OnLegendKeySizedChanged;                           // 0x02D8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	class UMaterialInstance*                      KeyboardAtlas;                                     // 0x02E8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          TriedLoadingKeyboardAtlas;                         // 0x02F0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2F1[0x7];                                      // 0x02F1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterial*                              MouseAtlas;                                        // 0x02F8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          TriedLoadingMouseAtlas;                            // 0x0300(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_301[0x7];                                      // 0x0301(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTexture*                               GamepadLayoutAtlas;                                // 0x0308(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          TriedLoadingGamepadLayoutAtlas;                    // 0x0310(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_311[0x7];                                      // 0x0311(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterial*                              PlatformButtonMaterial;                            // 0x0318(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          TriedLoadingPlatformButtonMaterial;                // 0x0320(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_321[0x7];                                      // 0x0321(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<ENUM_ControllerType, class FName>        InputActionMap;                                    // 0x0328(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	ENUM_ControllerType                           ControllerMode;                                    // 0x0378(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_379[0x7];                                      // 0x0379(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSet<ENUM_ControllerType>                     DisabledModes;                                     // 0x0380(0x0050)(Edit, BlueprintVisible)
 
 public:
 	void ExecuteUbergraph_WIDGET_ButtonLegend_Key(int32 EntryPoint);
+	void FinalizePlatformButtonAssetLoad(class UObject* LoadedAsset);
+	void FinalizeGamepadLayoutAssetLoad(class UObject* LoadedAsset);
+	void FinalizeMouseAssetLoad(class UObject* LoadedAsset);
+	void FinalizeKeyboardAssetLoad(class UObject* LoadedAsset);
 	void SetDecoratorColor(const struct FColor& Color);
 	void Construct();
 	void PreConstruct(bool IsDesignTime);
 	void InitializeLegendKey();
-	void SetLegendKey(const struct FKey& Key);
-	void SetLegendInputAction(const class FString& ActionString);
+	void SetLegendKey(const struct FKey& Key, TSet<ENUM_ControllerType>& DisabledPlatforms);
+	void SetLegendInputAction(const class FString& ActionString, TSet<ENUM_ControllerType>& NewDisabledModes);
 	void SetLegendColor(const struct FColor& Color);
-	void UpdateWidgetVisibility(bool IsUsingGamepad, bool* Visible);
+	void UpdateWidgetVisibility(bool* Visible);
 	void UpdateLegend();
 	void GetKeyTextColor(struct FColor* Color);
 	void GetKeyPanelSize(struct FVector2D* Result);
-	void ParseInputActionFromString(const class FString& InputString, bool IsUsingGamepad, class FName* Result);
+	void ParseInputActionFromString(const class FString& InputString);
 	void TryUpdateLegendSize();
 	void SetHighlighted(bool State);
 	void SetDisabled(bool State);
-	void EVENT_OnUsingGamepadChanged(bool IsUsingGamepad);
-	void SetAutoSwapToGamepad(bool State);
+	void UpdateMapping();
+	void EVENT_OnActiveControllerTypeChanged(ENUM_ControllerType NewActiveControllerType);
 	struct FVector2D GetDecoratorSizeFromPayload(const class FString& Payload);
 	bool InitializeDecorator(class UTextMeshWidget* TextMeshWidget, const struct FColor& Color);
 
@@ -79,7 +97,7 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_ButtonLegend_Key_C) == 0x000008, "Wrong alignment on UWIDGET_ButtonLegend_Key_C");
-static_assert(sizeof(UWIDGET_ButtonLegend_Key_C) == 0x000300, "Wrong size on UWIDGET_ButtonLegend_Key_C");
+static_assert(sizeof(UWIDGET_ButtonLegend_Key_C) == 0x0003D0, "Wrong size on UWIDGET_ButtonLegend_Key_C");
 static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, UberGraphFrame) == 0x000260, "Member 'UWIDGET_ButtonLegend_Key_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, MESH_KeyBackground) == 0x000268, "Member 'UWIDGET_ButtonLegend_Key_C::MESH_KeyBackground' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, TEXT_KeyCode) == 0x000270, "Member 'UWIDGET_ButtonLegend_Key_C::TEXT_KeyCode' has a wrong offset!");
@@ -88,15 +106,24 @@ static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, PanelSizeX) == 0x000290, "Mem
 static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, TextSizeX) == 0x0002A0, "Member 'UWIDGET_ButtonLegend_Key_C::TextSizeX' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, DefaultHeight) == 0x0002B0, "Member 'UWIDGET_ButtonLegend_Key_C::DefaultHeight' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, KeyRank) == 0x0002B4, "Member 'UWIDGET_ButtonLegend_Key_C::KeyRank' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, InputActionString) == 0x0002B8, "Member 'UWIDGET_ButtonLegend_Key_C::InputActionString' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, AutoSwapToGamepad) == 0x0002C8, "Member 'UWIDGET_ButtonLegend_Key_C::AutoSwapToGamepad' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, IsHighlighted) == 0x0002C9, "Member 'UWIDGET_ButtonLegend_Key_C::IsHighlighted' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, IsDisabled) == 0x0002CA, "Member 'UWIDGET_ButtonLegend_Key_C::IsDisabled' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, PanelSize) == 0x0002CC, "Member 'UWIDGET_ButtonLegend_Key_C::PanelSize' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, KeySize) == 0x0002D4, "Member 'UWIDGET_ButtonLegend_Key_C::KeySize' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, ButtonSize) == 0x0002DC, "Member 'UWIDGET_ButtonLegend_Key_C::ButtonSize' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, SourceTextMeshWidget) == 0x0002E8, "Member 'UWIDGET_ButtonLegend_Key_C::SourceTextMeshWidget' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, OnLegendKeySizedChanged) == 0x0002F0, "Member 'UWIDGET_ButtonLegend_Key_C::OnLegendKeySizedChanged' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, IsHighlighted) == 0x0002B5, "Member 'UWIDGET_ButtonLegend_Key_C::IsHighlighted' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, IsDisabled) == 0x0002B6, "Member 'UWIDGET_ButtonLegend_Key_C::IsDisabled' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, PanelSize) == 0x0002B8, "Member 'UWIDGET_ButtonLegend_Key_C::PanelSize' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, KeySize) == 0x0002C0, "Member 'UWIDGET_ButtonLegend_Key_C::KeySize' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, ButtonSize) == 0x0002C8, "Member 'UWIDGET_ButtonLegend_Key_C::ButtonSize' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, SourceTextMeshWidget) == 0x0002D0, "Member 'UWIDGET_ButtonLegend_Key_C::SourceTextMeshWidget' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, OnLegendKeySizedChanged) == 0x0002D8, "Member 'UWIDGET_ButtonLegend_Key_C::OnLegendKeySizedChanged' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, KeyboardAtlas) == 0x0002E8, "Member 'UWIDGET_ButtonLegend_Key_C::KeyboardAtlas' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, TriedLoadingKeyboardAtlas) == 0x0002F0, "Member 'UWIDGET_ButtonLegend_Key_C::TriedLoadingKeyboardAtlas' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, MouseAtlas) == 0x0002F8, "Member 'UWIDGET_ButtonLegend_Key_C::MouseAtlas' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, TriedLoadingMouseAtlas) == 0x000300, "Member 'UWIDGET_ButtonLegend_Key_C::TriedLoadingMouseAtlas' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, GamepadLayoutAtlas) == 0x000308, "Member 'UWIDGET_ButtonLegend_Key_C::GamepadLayoutAtlas' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, TriedLoadingGamepadLayoutAtlas) == 0x000310, "Member 'UWIDGET_ButtonLegend_Key_C::TriedLoadingGamepadLayoutAtlas' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, PlatformButtonMaterial) == 0x000318, "Member 'UWIDGET_ButtonLegend_Key_C::PlatformButtonMaterial' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, TriedLoadingPlatformButtonMaterial) == 0x000320, "Member 'UWIDGET_ButtonLegend_Key_C::TriedLoadingPlatformButtonMaterial' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, InputActionMap) == 0x000328, "Member 'UWIDGET_ButtonLegend_Key_C::InputActionMap' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, ControllerMode) == 0x000378, "Member 'UWIDGET_ButtonLegend_Key_C::ControllerMode' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Key_C, DisabledModes) == 0x000380, "Member 'UWIDGET_ButtonLegend_Key_C::DisabledModes' has a wrong offset!");
 
 }
 

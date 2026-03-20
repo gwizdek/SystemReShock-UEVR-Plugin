@@ -503,21 +503,21 @@ void UFUNCLIB_GameSettings_C::MakeShockDifficultyBitfield(ENUM_GameDifficulty Co
 }
 
 
-// Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.IsGamepadInputAction
+// Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.GetInputActionControllerType
 // (Static, Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
 // class FName                             ActionName                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // class UObject*                          __WorldContext                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UFUNCLIB_GameSettings_C::IsGamepadInputAction(class FName ActionName, class UObject* __WorldContext, bool* Result)
+void UFUNCLIB_GameSettings_C::GetInputActionControllerType(class FName ActionName, class UObject* __WorldContext, ENUM_ControllerType* Result)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("FUNCLIB_GameSettings_C", "IsGamepadInputAction");
+		Func = StaticClass()->GetFunction("FUNCLIB_GameSettings_C", "GetInputActionControllerType");
 
-	Params::FUNCLIB_GameSettings_C_IsGamepadInputAction Parms{};
+	Params::FUNCLIB_GameSettings_C_GetInputActionControllerType Parms{};
 
 	Parms.ActionName = ActionName;
 	Parms.__WorldContext = __WorldContext;
@@ -543,6 +543,30 @@ void UFUNCLIB_GameSettings_C::GetGamepadInputActionPrefix(class UObject* __World
 		Func = StaticClass()->GetFunction("FUNCLIB_GameSettings_C", "GetGamepadInputActionPrefix");
 
 	Params::FUNCLIB_GameSettings_C_GetGamepadInputActionPrefix Parms{};
+
+	Parms.__WorldContext = __WorldContext;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = std::move(Parms.Result);
+}
+
+
+// Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.GetJCMSInputActionPrefix
+// (Static, Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UObject*                          __WorldContext                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FString                           Result                                                 (Parm, OutParm, ZeroConstructor, HasGetValueTypeHash)
+
+void UFUNCLIB_GameSettings_C::GetJCMSInputActionPrefix(class UObject* __WorldContext, class FString* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("FUNCLIB_GameSettings_C", "GetJCMSInputActionPrefix");
+
+	Params::FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix Parms{};
 
 	Parms.__WorldContext = __WorldContext;
 

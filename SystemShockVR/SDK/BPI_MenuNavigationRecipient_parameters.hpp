@@ -144,5 +144,31 @@ static_assert(sizeof(BPI_MenuNavigationRecipient_C_ReceiveNavTabRight) == 0x0000
 static_assert(offsetof(BPI_MenuNavigationRecipient_C_ReceiveNavTabRight, InputState) == 0x000000, "Member 'BPI_MenuNavigationRecipient_C_ReceiveNavTabRight::InputState' has a wrong offset!");
 static_assert(offsetof(BPI_MenuNavigationRecipient_C_ReceiveNavTabRight, Result) == 0x000001, "Member 'BPI_MenuNavigationRecipient_C_ReceiveNavTabRight::Result' has a wrong offset!");
 
+// Function BPI_MenuNavigationRecipient.BPI_MenuNavigationRecipient_C.ReceiveNavLeftRelease
+// 0x0002 (0x0002 - 0x0000)
+struct BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease) == 0x000001, "Wrong alignment on BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease");
+static_assert(sizeof(BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease) == 0x000002, "Wrong size on BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease");
+static_assert(offsetof(BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease, InputState) == 0x000000, "Member 'BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease::InputState' has a wrong offset!");
+static_assert(offsetof(BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease, Result) == 0x000001, "Member 'BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease::Result' has a wrong offset!");
+
+// Function BPI_MenuNavigationRecipient.BPI_MenuNavigationRecipient_C.ReceiveNavRightRelease
+// 0x0002 (0x0002 - 0x0000)
+struct BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease) == 0x000001, "Wrong alignment on BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease");
+static_assert(sizeof(BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease) == 0x000002, "Wrong size on BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease");
+static_assert(offsetof(BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease, InputState) == 0x000000, "Member 'BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease::InputState' has a wrong offset!");
+static_assert(offsetof(BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease, Result) == 0x000001, "Member 'BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease::Result' has a wrong offset!");
+
 }
 

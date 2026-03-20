@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "ENUM_DoorState_structs.hpp"
 #include "AnimGraphRuntime_structs.hpp"
+#include "ENUM_DoorState_structs.hpp"
 
 
 namespace SDK

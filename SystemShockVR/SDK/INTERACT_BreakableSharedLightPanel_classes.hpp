@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "INTERACT_BreakablePanel_classes.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_LightPanelState_structs.hpp"
-#include "INTERACT_BreakablePanel_classes.hpp"
 
 
 namespace SDK

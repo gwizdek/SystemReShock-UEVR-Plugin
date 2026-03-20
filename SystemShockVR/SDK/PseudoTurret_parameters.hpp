@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "ENUM_PseudoTurretState_structs.hpp"
 #include "Engine_structs.hpp"
+#include "ENUM_PseudoTurretState_structs.hpp"
 #include "ENUM_PseudoShodanState_structs.hpp"
 
 

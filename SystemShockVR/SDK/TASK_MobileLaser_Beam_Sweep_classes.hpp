@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "TASK_Beam_Base_classes.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_MobileLaser_BeamSweepType_structs.hpp"
+#include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "TASK_Beam_Base_classes.hpp"
 #include "ENUM_MobileLaser_BeamState_structs.hpp"
 
 
@@ -46,9 +46,9 @@ public:
 
 public:
 	void ExecuteUbergraph_TASK_MobileLaser_Beam_Sweep(int32 EntryPoint);
+	void ReceiveExecuteAI(class AAIController* OwnerController, class APawn* ControlledPawn);
 	void SetSweepStartLocalDirection();
 	void SetSweepEndLocalDirection();
-	void ReceiveExecuteAI(class AAIController* OwnerController, class APawn* ControlledPawn);
 	void UpdateBeamOn(float DeltaSeconds);
 	void SetBeamState(ENUM_MobileLaser_BeamState State);
 	void UpdateBeamTurningOn(float DeltaSeconds, float* Progress);

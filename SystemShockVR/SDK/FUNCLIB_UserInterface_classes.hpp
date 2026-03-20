@@ -11,6 +11,7 @@
 #include "Basic.hpp"
 
 #include "Engine_classes.hpp"
+#include "SystemReShock_structs.hpp"
 #include "ENUM_HackerGender_structs.hpp"
 
 
@@ -26,9 +27,10 @@ public:
 	static void GetKeyboardButtonAtlasIndex(const struct FKey& Key, class UObject* __WorldContext, int32* Index_0);
 	static void GetMouseButtonAtlasIndex(const struct FKey& Key, class UObject* __WorldContext, int32* Index_0);
 	static void GetGamepadButtonAtlasIndex(const struct FKey& Key, class UObject* __WorldContext, int32* Index_0, float* Rotation);
-	static void GetCurrentPlatform(class UObject* __WorldContext, bool* PC, bool* Xbox, bool* Playstation, bool* SWITCH, bool* Console);
+	static void GetCurrentPlatform(class UObject* __WorldContext, bool* PC, bool* Xbox, bool* Playstation, bool* Switch, bool* Console);
 	static void FlickerElementHandler(class UWidget* InputWidget, bool FlickerEnabled, class UObject* __WorldContext);
 	static void GetFemaleVersionOfSubtitle(class UDataTable* DataTable, class FName SubtitleRowName, class UObject* __WorldContext, struct FSTRUCT_MediaObject* MediaDataStruct);
+	static void Get_Button_Legend_Soft_Texture_for_Platform(ESystemShockPlatform Platform, class UObject* __WorldContext, TSoftObjectPtr<class UTexture>* Texture);
 
 public:
 	static class UClass* StaticClass()

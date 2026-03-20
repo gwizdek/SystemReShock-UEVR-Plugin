@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "BodyType_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "Enum_CorpseOutfits_structs.hpp"
 #include "Enum_CauseOfDeath_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "CORPSE_SkeletalBase_classes.hpp"
 #include "ENUM_HumanCorpseLimbType_structs.hpp"
+#include "CORPSE_SkeletalBase_classes.hpp"
 
 
 namespace SDK

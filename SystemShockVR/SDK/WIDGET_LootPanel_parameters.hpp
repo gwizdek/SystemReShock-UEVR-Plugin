@@ -10,16 +10,16 @@
 
 #include "Basic.hpp"
 
+#include "SlateCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "SlateCore_structs.hpp"
 
 
 namespace SDK::Params
 {
 
 // Function WIDGET_LootPanel.WIDGET_LootPanel_C.ExecuteUbergraph_WIDGET_LootPanel
-// 0x02C0 (0x02C0 - 0x0000)
+// 0x00C8 (0x00C8 - 0x0000)
 struct WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel final
 {
 public:
@@ -27,32 +27,20 @@ public:
 	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FIntPoint                              K2Node_MakeStruct_IntPoint;                        // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FGeometry                              K2Node_ComponentBoundEvent_MyGeometry_1;           // 0x0010(0x0038)(IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          K2Node_ComponentBoundEvent_MouseEvent_1;           // 0x0048(0x0070)()
-	struct FGeometry                              K2Node_ComponentBoundEvent_MyGeometry;             // 0x00B8(0x0038)(IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          K2Node_ComponentBoundEvent_MouseEvent;             // 0x00F0(0x0070)()
-	struct FGeometry                              K2Node_ComponentBoundEvent_Geometry_1;             // 0x0160(0x0038)(IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          K2Node_ComponentBoundEvent_InputEvent_1;           // 0x0198(0x0070)()
-	struct FGeometry                              K2Node_ComponentBoundEvent_Geometry;               // 0x0208(0x0038)(IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          K2Node_ComponentBoundEvent_InputEvent;             // 0x0240(0x0070)()
-	struct FVector2D                              CallFunc_PointerEvent_GetScreenSpacePosition_ReturnValue; // 0x02B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_TakeAllItems_Result;                      // 0x02B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FGeometry                              K2Node_ComponentBoundEvent_Geometry;               // 0x0010(0x0038)(IsPlainOldData, NoDestructor)
+	struct FPointerEvent                          K2Node_ComponentBoundEvent_InputEvent;             // 0x0048(0x0070)()
+	struct FVector2D                              CallFunc_PointerEvent_GetScreenSpacePosition_ReturnValue; // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_TakeAllItems_Result;                      // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel) == 0x000008, "Wrong alignment on WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel");
-static_assert(sizeof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel) == 0x0002C0, "Wrong size on WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel");
+static_assert(sizeof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel) == 0x0000C8, "Wrong size on WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel");
 static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, EntryPoint) == 0x000000, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::EntryPoint' has a wrong offset!");
 static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_Event_IsDesignTime) == 0x000004, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_Event_IsDesignTime' has a wrong offset!");
 static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_MakeStruct_IntPoint) == 0x000008, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_MakeStruct_IntPoint' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_MyGeometry_1) == 0x000010, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_MyGeometry_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_MouseEvent_1) == 0x000048, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_MouseEvent_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_MyGeometry) == 0x0000B8, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_MyGeometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_MouseEvent) == 0x0000F0, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_MouseEvent' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_Geometry_1) == 0x000160, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_Geometry_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_InputEvent_1) == 0x000198, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_InputEvent_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_Geometry) == 0x000208, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_Geometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_InputEvent) == 0x000240, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_InputEvent' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, CallFunc_PointerEvent_GetScreenSpacePosition_ReturnValue) == 0x0002B0, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::CallFunc_PointerEvent_GetScreenSpacePosition_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, CallFunc_TakeAllItems_Result) == 0x0002B8, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::CallFunc_TakeAllItems_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_Geometry) == 0x000010, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_Geometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, K2Node_ComponentBoundEvent_InputEvent) == 0x000048, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::K2Node_ComponentBoundEvent_InputEvent' has a wrong offset!");
+static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, CallFunc_PointerEvent_GetScreenSpacePosition_ReturnValue) == 0x0000B8, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::CallFunc_PointerEvent_GetScreenSpacePosition_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel, CallFunc_TakeAllItems_Result) == 0x0000C0, "Member 'WIDGET_LootPanel_C_ExecuteUbergraph_WIDGET_LootPanel::CallFunc_TakeAllItems_Result' has a wrong offset!");
 
 // Function WIDGET_LootPanel.WIDGET_LootPanel_C.BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_TakeAll_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature
 // 0x00A8 (0x00A8 - 0x0000)
@@ -66,45 +54,6 @@ static_assert(alignof(WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonL
 static_assert(sizeof(WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_TakeAll_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature) == 0x0000A8, "Wrong size on WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_TakeAll_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature");
 static_assert(offsetof(WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_TakeAll_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature, Geometry) == 0x000000, "Member 'WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_TakeAll_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature::Geometry' has a wrong offset!");
 static_assert(offsetof(WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_TakeAll_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature, InputEvent) == 0x000038, "Member 'WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_TakeAll_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature::InputEvent' has a wrong offset!");
-
-// Function WIDGET_LootPanel.WIDGET_LootPanel_C.BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature
-// 0x00A8 (0x00A8 - 0x0000)
-struct WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature final
-{
-public:
-	struct FGeometry                              Geometry;                                          // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          InputEvent;                                        // 0x0038(0x0070)(BlueprintVisible, BlueprintReadOnly, Parm)
-};
-static_assert(alignof(WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature) == 0x000008, "Wrong alignment on WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature");
-static_assert(sizeof(WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature) == 0x0000A8, "Wrong size on WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature");
-static_assert(offsetof(WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature, Geometry) == 0x000000, "Member 'WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature::Geometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature, InputEvent) == 0x000038, "Member 'WIDGET_LootPanel_C_BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature::InputEvent' has a wrong offset!");
-
-// Function WIDGET_LootPanel.WIDGET_LootPanel_C.BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature
-// 0x00A8 (0x00A8 - 0x0000)
-struct WIDGET_LootPanel_C_BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature final
-{
-public:
-	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0070)(BlueprintVisible, BlueprintReadOnly, Parm)
-};
-static_assert(alignof(WIDGET_LootPanel_C_BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature) == 0x000008, "Wrong alignment on WIDGET_LootPanel_C_BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature");
-static_assert(sizeof(WIDGET_LootPanel_C_BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature) == 0x0000A8, "Wrong size on WIDGET_LootPanel_C_BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature");
-static_assert(offsetof(WIDGET_LootPanel_C_BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature, MyGeometry) == 0x000000, "Member 'WIDGET_LootPanel_C_BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature::MyGeometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature, MouseEvent) == 0x000038, "Member 'WIDGET_LootPanel_C_BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature::MouseEvent' has a wrong offset!");
-
-// Function WIDGET_LootPanel.WIDGET_LootPanel_C.BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature
-// 0x00A8 (0x00A8 - 0x0000)
-struct WIDGET_LootPanel_C_BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature final
-{
-public:
-	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0070)(BlueprintVisible, BlueprintReadOnly, Parm)
-};
-static_assert(alignof(WIDGET_LootPanel_C_BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature) == 0x000008, "Wrong alignment on WIDGET_LootPanel_C_BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature");
-static_assert(sizeof(WIDGET_LootPanel_C_BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature) == 0x0000A8, "Wrong size on WIDGET_LootPanel_C_BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature");
-static_assert(offsetof(WIDGET_LootPanel_C_BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature, MyGeometry) == 0x000000, "Member 'WIDGET_LootPanel_C_BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature::MyGeometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_LootPanel_C_BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature, MouseEvent) == 0x000038, "Member 'WIDGET_LootPanel_C_BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature::MouseEvent' has a wrong offset!");
 
 // Function WIDGET_LootPanel.WIDGET_LootPanel_C.PreConstruct
 // 0x0001 (0x0001 - 0x0000)

@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_MeshColor_structs.hpp"
 #include "ENUM_ButtonColorType_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_MeshColor_structs.hpp"
 
 
 namespace SDK::Params
@@ -296,12 +296,13 @@ struct FUNCLIB_ColorUtility_C_GetMeshUIColor final
 {
 public:
 	ENUM_MeshColor                                TargetColor;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         ColorAlpha;                                        // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	class UObject*                                __WorldContext;                                    // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FColor                                 Color;                                             // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FColor                                 K2Node_MakeStruct_Color;                           // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 K2Node_MakeStruct_Color;                           // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FColor                                 K2Node_MakeStruct_Color_1;                         // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FColor                                 K2Node_MakeStruct_Color_2;                         // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FColor                                 K2Node_MakeStruct_Color_3;                         // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -312,10 +313,11 @@ public:
 static_assert(alignof(FUNCLIB_ColorUtility_C_GetMeshUIColor) == 0x000008, "Wrong alignment on FUNCLIB_ColorUtility_C_GetMeshUIColor");
 static_assert(sizeof(FUNCLIB_ColorUtility_C_GetMeshUIColor) == 0x000038, "Wrong size on FUNCLIB_ColorUtility_C_GetMeshUIColor");
 static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, TargetColor) == 0x000000, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::TargetColor' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, ColorAlpha) == 0x000001, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::ColorAlpha' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, __WorldContext) == 0x000008, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::__WorldContext' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, Color) == 0x000010, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::Color' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, K2Node_MakeStruct_Color) == 0x000014, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::K2Node_MakeStruct_Color' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, K2Node_SwitchEnum_CmpSuccess) == 0x000018, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, K2Node_SwitchEnum_CmpSuccess) == 0x000014, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, K2Node_MakeStruct_Color) == 0x000018, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::K2Node_MakeStruct_Color' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, K2Node_MakeStruct_Color_1) == 0x00001C, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::K2Node_MakeStruct_Color_1' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, K2Node_MakeStruct_Color_2) == 0x000020, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::K2Node_MakeStruct_Color_2' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_ColorUtility_C_GetMeshUIColor, K2Node_MakeStruct_Color_3) == 0x000024, "Member 'FUNCLIB_ColorUtility_C_GetMeshUIColor::K2Node_MakeStruct_Color_3' has a wrong offset!");

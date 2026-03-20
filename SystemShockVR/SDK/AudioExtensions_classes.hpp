@@ -16,23 +16,6 @@
 namespace SDK
 {
 
-// Class AudioExtensions.SoundModulatorBase
-// 0x0000 (0x0028 - 0x0028)
-class USoundModulatorBase final : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"SoundModulatorBase">();
-	}
-	static class USoundModulatorBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<USoundModulatorBase>();
-	}
-};
-static_assert(alignof(USoundModulatorBase) == 0x000008, "Wrong alignment on USoundModulatorBase");
-static_assert(sizeof(USoundModulatorBase) == 0x000028, "Wrong size on USoundModulatorBase");
-
 // Class AudioExtensions.SoundfieldEncodingSettingsBase
 // 0x0000 (0x0028 - 0x0028)
 class USoundfieldEncodingSettingsBase : public UObject
@@ -134,6 +117,23 @@ public:
 };
 static_assert(alignof(UReverbPluginSourceSettingsBase) == 0x000008, "Wrong alignment on UReverbPluginSourceSettingsBase");
 static_assert(sizeof(UReverbPluginSourceSettingsBase) == 0x000028, "Wrong size on UReverbPluginSourceSettingsBase");
+
+// Class AudioExtensions.SoundModulatorBase
+// 0x0000 (0x0028 - 0x0028)
+class USoundModulatorBase final : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"SoundModulatorBase">();
+	}
+	static class USoundModulatorBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<USoundModulatorBase>();
+	}
+};
+static_assert(alignof(USoundModulatorBase) == 0x000008, "Wrong alignment on USoundModulatorBase");
+static_assert(sizeof(USoundModulatorBase) == 0x000028, "Wrong size on USoundModulatorBase");
 
 // Class AudioExtensions.SoundfieldEndpointSettingsBase
 // 0x0000 (0x0028 - 0x0028)

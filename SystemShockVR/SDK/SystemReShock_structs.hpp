@@ -160,6 +160,16 @@ enum class EChessPiece : uint8
 	EChessPiece_MAX                          = 7,
 };
 
+// Enum SystemReShock.EJoyConMouseMode
+// NumValues: 0x0004
+enum class EJoyConMouseMode : uint8
+{
+	Off                                      = 0,
+	On                                       = 1,
+	Automatic                                = 2,
+	EJoyConMouseMode_MAX                     = 3,
+};
+
 // Enum SystemReShock.EMeshWidgetScalingType
 // NumValues: 0x0006
 enum class EMeshWidgetScalingType : uint8
@@ -170,6 +180,33 @@ enum class EMeshWidgetScalingType : uint8
 	MatchY                                   = 3,
 	Stretch                                  = 4,
 	EMeshWidgetScalingType_MAX               = 5,
+};
+
+// Enum SystemReShock.ESystemShockPlatformFamily
+// NumValues: 0x0006
+enum class ESystemShockPlatformFamily : uint8
+{
+	Unknown                                  = 0,
+	PC                                       = 1,
+	Xbox                                     = 2,
+	Playstation                              = 3,
+	Switch                                   = 4,
+	ESystemShockPlatformFamily_MAX           = 5,
+};
+
+// Enum SystemReShock.ESystemShockPlatform
+// NumValues: 0x0009
+enum class ESystemShockPlatform : uint8
+{
+	Unhandled                                = 0,
+	Windows                                  = 1,
+	PS4                                      = 2,
+	PS5                                      = 3,
+	XBO                                      = 4,
+	XSX                                      = 5,
+	Switch                                   = 6,
+	Switch2                                  = 7,
+	ESystemShockPlatform_MAX                 = 8,
 };
 
 // Enum SystemReShock.ETextMeshWidgetVerticalAligment

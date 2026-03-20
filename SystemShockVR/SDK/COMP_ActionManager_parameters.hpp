@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "StreamingSaveGameSystem_structs.hpp"
 #include "ENUM_ActionPriority_structs.hpp"
+#include "StreamingSaveGameSystem_structs.hpp"
 #include "CoreGame_structs.hpp"
 #include "STRUCT_CharacterActionParams_structs.hpp"
 
@@ -592,6 +592,25 @@ static_assert(offsetof(COMP_ActionManager_C_GetQueueTimeRemaining, CallFunc_GetP
 static_assert(offsetof(COMP_ActionManager_C_GetQueueTimeRemaining, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'COMP_ActionManager_C_GetQueueTimeRemaining::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(COMP_ActionManager_C_GetQueueTimeRemaining, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x00000C, "Member 'COMP_ActionManager_C_GetQueueTimeRemaining::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
 static_assert(offsetof(COMP_ActionManager_C_GetQueueTimeRemaining, CallFunc_FMax_ReturnValue) == 0x000010, "Member 'COMP_ActionManager_C_GetQueueTimeRemaining::CallFunc_FMax_ReturnValue' has a wrong offset!");
+
+// Function COMP_ActionManager.COMP_ActionManager_C.CanAttackPriorityValueRaw
+// 0x0008 (0x0008 - 0x0000)
+struct COMP_ActionManager_C_CanAttackPriorityValueRaw final
+{
+public:
+	int32                                         rawPriorityValue;                                  // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+	uint8                                         CallFunc_Conv_IntToByte_ReturnValue;               // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_GetValidValue_ReturnValue;                // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_CanBeginAction_Result;                    // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(COMP_ActionManager_C_CanAttackPriorityValueRaw) == 0x000004, "Wrong alignment on COMP_ActionManager_C_CanAttackPriorityValueRaw");
+static_assert(sizeof(COMP_ActionManager_C_CanAttackPriorityValueRaw) == 0x000008, "Wrong size on COMP_ActionManager_C_CanAttackPriorityValueRaw");
+static_assert(offsetof(COMP_ActionManager_C_CanAttackPriorityValueRaw, rawPriorityValue) == 0x000000, "Member 'COMP_ActionManager_C_CanAttackPriorityValueRaw::rawPriorityValue' has a wrong offset!");
+static_assert(offsetof(COMP_ActionManager_C_CanAttackPriorityValueRaw, ReturnValue) == 0x000004, "Member 'COMP_ActionManager_C_CanAttackPriorityValueRaw::ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_ActionManager_C_CanAttackPriorityValueRaw, CallFunc_Conv_IntToByte_ReturnValue) == 0x000005, "Member 'COMP_ActionManager_C_CanAttackPriorityValueRaw::CallFunc_Conv_IntToByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_ActionManager_C_CanAttackPriorityValueRaw, CallFunc_GetValidValue_ReturnValue) == 0x000006, "Member 'COMP_ActionManager_C_CanAttackPriorityValueRaw::CallFunc_GetValidValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_ActionManager_C_CanAttackPriorityValueRaw, CallFunc_CanBeginAction_Result) == 0x000007, "Member 'COMP_ActionManager_C_CanAttackPriorityValueRaw::CallFunc_CanBeginAction_Result' has a wrong offset!");
 
 // Function COMP_ActionManager.COMP_ActionManager_C.ShouldSaveComponent
 // 0x000C (0x000C - 0x0000)

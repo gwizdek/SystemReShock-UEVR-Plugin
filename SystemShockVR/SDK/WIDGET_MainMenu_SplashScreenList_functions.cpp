@@ -157,6 +157,40 @@ void UWIDGET_MainMenu_SplashScreenList_C::BndEvt__WIDGET_MainMenu_SplashScreenLi
 }
 
 
+// Function WIDGET_MainMenu_SplashScreenList.WIDGET_MainMenu_SplashScreenList_C.InitializeList
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UWIDGET_MenuBase_C*               ParentScreen                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_MainMenu_SplashScreenList_C::InitializeList(class UWIDGET_MenuBase_C* ParentScreen)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_MainMenu_SplashScreenList_C", "InitializeList");
+
+	Params::WIDGET_MainMenu_SplashScreenList_C_InitializeList Parms{};
+
+	Parms.ParentScreen = ParentScreen;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_MainMenu_SplashScreenList.WIDGET_MainMenu_SplashScreenList_C.UpdateContinueLoadButtons
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UWIDGET_MainMenu_SplashScreenList_C::UpdateContinueLoadButtons()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_MainMenu_SplashScreenList_C", "UpdateContinueLoadButtons");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function WIDGET_MainMenu_SplashScreenList.WIDGET_MainMenu_SplashScreenList_C.InitializeItemArray
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -178,26 +212,6 @@ void UWIDGET_MainMenu_SplashScreenList_C::InitializeItemArray(TArray<class UWIDG
 }
 
 
-// Function WIDGET_MainMenu_SplashScreenList.WIDGET_MainMenu_SplashScreenList_C.InitializeList
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UWIDGET_MenuBase_C*               ParentScreen                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWIDGET_MainMenu_SplashScreenList_C::InitializeList(class UWIDGET_MenuBase_C* ParentScreen)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_MainMenu_SplashScreenList_C", "InitializeList");
-
-	Params::WIDGET_MainMenu_SplashScreenList_C_InitializeList Parms{};
-
-	Parms.ParentScreen = ParentScreen;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function WIDGET_MainMenu_SplashScreenList.WIDGET_MainMenu_SplashScreenList_C.OnListOpen
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -207,20 +221,6 @@ void UWIDGET_MainMenu_SplashScreenList_C::OnListOpen()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("WIDGET_MainMenu_SplashScreenList_C", "OnListOpen");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WIDGET_MainMenu_SplashScreenList.WIDGET_MainMenu_SplashScreenList_C.UpdateContinueLoadButtons
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void UWIDGET_MainMenu_SplashScreenList_C::UpdateContinueLoadButtons()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_MainMenu_SplashScreenList_C", "UpdateContinueLoadButtons");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

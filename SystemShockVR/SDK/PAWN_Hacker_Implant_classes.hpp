@@ -10,88 +10,106 @@
 
 #include "Basic.hpp"
 
-#include "PAWN_Hacker_Simple_classes.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_MFDTabCategory_structs.hpp"
+#include "PAWN_Hacker_Simple_classes.hpp"
 #include "ENUM_HotbarStyle_structs.hpp"
+#include "ENUM_MFDTabCategory_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass PAWN_Hacker_Implant.PAWN_Hacker_Implant_C
-// 0x0060 (0x0EB0 - 0x0E50)
+// 0x0060 (0x0ED0 - 0x0E70)
 class APAWN_Hacker_Implant_C final : public APAWN_Hacker_Simple_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame_PAWN_Hacker_Implant_C;              // 0x0E50(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UCOMP_ScannableObject_C*                COMP_ScannableObject;                              // 0x0E58(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USpotLightComponent*                    HeadlampLight;                                     // 0x0E60(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UAudioComponent*                        AudioLog;                                          // 0x0E68(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UStaticMeshComponent*                   MediaReaderMesh;                                   // 0x0E70(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UStaticMeshComponent*                   BioScannerMesh;                                    // 0x0E78(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UCOMP_AudioLogManager_C*                COMP_AudioLogManager;                              // 0x0E80(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UCOMP_VoxelScanner_C*                   COMP_VoxelScanner;                                 // 0x0E88(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UCOMP_Hotbar_C*                         COMP_Hotbar;                                       // 0x0E90(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	bool                                          CanHackerRespawn;                                  // 0x0E98(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsAllowedToSaveGames;                              // 0x0E99(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E9A[0x6];                                      // 0x0E9A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMOVECONTROL_DisorientedMove_C*         DisorientationMoveControl;                         // 0x0EA0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FPointerToUberGraphFrame               UberGraphFrame_PAWN_Hacker_Implant_C;              // 0x0E68(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class UCOMP_ScannableObject_C*                COMP_ScannableObject;                              // 0x0E70(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USpotLightComponent*                    HeadlampLight;                                     // 0x0E78(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        AudioLog;                                          // 0x0E80(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UStaticMeshComponent*                   MediaReaderMesh;                                   // 0x0E88(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UStaticMeshComponent*                   BioScannerMesh;                                    // 0x0E90(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UCOMP_AudioLogManager_C*                COMP_AudioLogManager;                              // 0x0E98(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UCOMP_VoxelScanner_C*                   COMP_VoxelScanner;                                 // 0x0EA0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UCOMP_Hotbar_C*                         COMP_Hotbar;                                       // 0x0EA8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	bool                                          CanHackerRespawn;                                  // 0x0EB0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsAllowedToSaveGames;                              // 0x0EB1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_EB2[0x6];                                      // 0x0EB2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMOVECONTROL_DisorientedMove_C*         DisorientationMoveControl;                         // 0x0EB8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MediaPromptPressedTime;                            // 0x0EC0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MediaPromptReleaseThreshold;                       // 0x0EC4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_PAWN_Hacker_Implant(int32 EntryPoint);
-	void InpActEvt_Locked_Hotbar9_K2Node_InputActionEvent_0(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar9_K2Node_InputActionEvent_1(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar8_K2Node_InputActionEvent_2(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar8_K2Node_InputActionEvent_3(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar7_K2Node_InputActionEvent_4(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar7_K2Node_InputActionEvent_5(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar6_K2Node_InputActionEvent_6(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar6_K2Node_InputActionEvent_7(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar5_K2Node_InputActionEvent_8(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar5_K2Node_InputActionEvent_9(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar4_K2Node_InputActionEvent_10(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar4_K2Node_InputActionEvent_11(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar3_K2Node_InputActionEvent_12(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar3_K2Node_InputActionEvent_13(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar2_K2Node_InputActionEvent_14(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar2_K2Node_InputActionEvent_15(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar1_K2Node_InputActionEvent_16(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar1_K2Node_InputActionEvent_17(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar0_K2Node_InputActionEvent_18(const struct FKey& Key);
-	void InpActEvt_Locked_Hotbar0_K2Node_InputActionEvent_19(const struct FKey& Key);
-	void InpActEvt_Locked_SimplifiedSelectConsumable_K2Node_InputActionEvent_20(const struct FKey& Key);
-	void InpActEvt_Locked_SimplifiedSelectExplosive_K2Node_InputActionEvent_21(const struct FKey& Key);
-	void InpActEvt_Locked_SimplifiedSelectHardware_K2Node_InputActionEvent_22(const struct FKey& Key);
-	void InpActEvt_Locked_SimplifiedSelectWeapon_K2Node_InputActionEvent_23(const struct FKey& Key);
-	void InpActEvt_Locked_SimplifiedHotbar1_K2Node_InputActionEvent_24(const struct FKey& Key);
-	void InpActEvt_Locked_SimplifiedHotbar2_K2Node_InputActionEvent_25(const struct FKey& Key);
-	void InpActEvt_Locked_SimplifiedHotbar3_K2Node_InputActionEvent_26(const struct FKey& Key);
-	void InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_27(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_28(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_29(const struct FKey& Key);
-	void InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_30(const struct FKey& Key);
-	void InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_31(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_32(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_33(const struct FKey& Key);
-	void InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_34(const struct FKey& Key);
-	void InpActEvt_Real_Accept_K2Node_InputActionEvent_35(const struct FKey& Key);
-	void InpActEvt_Real_Accept_K2Node_InputActionEvent_36(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(const struct FKey& Key);
-	void InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38(const struct FKey& Key);
-	void InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_39(const struct FKey& Key);
-	void InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_40(const struct FKey& Key);
-	void InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_41(const struct FKey& Key);
-	void InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_42(const struct FKey& Key);
-	void InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_43(const struct FKey& Key);
-	void InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_44(const struct FKey& Key);
-	void InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_45(const struct FKey& Key);
-	void InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_46(const struct FKey& Key);
+	void ClearAcceptHeld();
+	void ClearAcquireTargetHeld();
+	void Impl_Gamepad_AcquireTarget_Released();
+	void Impl_Gamepad_AcquireTarget_Pressed();
+	void Impl_Gamepad_UseExplosive();
+	void Impl_Gamepad_UseConsumable();
+	void Impl_Gamepad_ToggleMFD();
+	void InpActEvt_Ctrl_Shift_F9_K2Node_InputKeyEvent_0(const struct FKey& Key);
+	void InpActEvt_Ctrl_Shift_F10_K2Node_InputKeyEvent_1(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Accept_K2Node_InputActionEvent_0(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Accept_K2Node_InputActionEvent_1(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_AcquireTarget_K2Node_InputActionEvent_2(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_AcquireTarget_K2Node_InputActionEvent_3(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_4(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_AcquireTarget_K2Node_InputActionEvent_5(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_UseExplosive_K2Node_InputActionEvent_6(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_UseConsumable_K2Node_InputActionEvent_7(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_ToggleMFD_K2Node_InputActionEvent_8(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar9_K2Node_InputActionEvent_9(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar9_K2Node_InputActionEvent_10(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar8_K2Node_InputActionEvent_11(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar8_K2Node_InputActionEvent_12(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar7_K2Node_InputActionEvent_13(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar7_K2Node_InputActionEvent_14(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar6_K2Node_InputActionEvent_15(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar6_K2Node_InputActionEvent_16(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar5_K2Node_InputActionEvent_17(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar5_K2Node_InputActionEvent_18(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar4_K2Node_InputActionEvent_19(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar4_K2Node_InputActionEvent_20(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar3_K2Node_InputActionEvent_21(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar3_K2Node_InputActionEvent_22(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar2_K2Node_InputActionEvent_23(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar2_K2Node_InputActionEvent_24(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar1_K2Node_InputActionEvent_25(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar1_K2Node_InputActionEvent_26(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar0_K2Node_InputActionEvent_27(const struct FKey& Key);
+	void InpActEvt_Locked_Hotbar0_K2Node_InputActionEvent_28(const struct FKey& Key);
+	void InpActEvt_Locked_SimplifiedSelectConsumable_K2Node_InputActionEvent_29(const struct FKey& Key);
+	void InpActEvt_Locked_SimplifiedSelectExplosive_K2Node_InputActionEvent_30(const struct FKey& Key);
+	void InpActEvt_Locked_SimplifiedSelectHardware_K2Node_InputActionEvent_31(const struct FKey& Key);
+	void InpActEvt_Locked_SimplifiedSelectWeapon_K2Node_InputActionEvent_32(const struct FKey& Key);
+	void InpActEvt_Locked_SimplifiedHotbar1_K2Node_InputActionEvent_33(const struct FKey& Key);
+	void InpActEvt_Locked_SimplifiedHotbar2_K2Node_InputActionEvent_34(const struct FKey& Key);
+	void InpActEvt_Locked_SimplifiedHotbar3_K2Node_InputActionEvent_35(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_UseConsumable_K2Node_InputActionEvent_36(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_UseExplosive_K2Node_InputActionEvent_37(const struct FKey& Key);
+	void InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_38(const struct FKey& Key);
+	void InpActEvt_Real_AcquireTarget_K2Node_InputActionEvent_39(const struct FKey& Key);
+	void InpActEvt_Real_Accept_K2Node_InputActionEvent_40(const struct FKey& Key);
+	void InpActEvt_Real_Accept_K2Node_InputActionEvent_41(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_42(const struct FKey& Key);
+	void InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_43(const struct FKey& Key);
+	void InpActEvt_Real_ToggleInventory_K2Node_InputActionEvent_44(const struct FKey& Key);
+	void InpActEvt_Real_ToggleMap_K2Node_InputActionEvent_45(const struct FKey& Key);
+	void InpActEvt_Real_HardwareSensaround_K2Node_InputActionEvent_46(const struct FKey& Key);
+	void InpActEvt_Real_HardwareTargetID_K2Node_InputActionEvent_47(const struct FKey& Key);
+	void InpActEvt_Real_HardwareShield_K2Node_InputActionEvent_48(const struct FKey& Key);
+	void InpActEvt_Real_HardwareNavUnit_K2Node_InputActionEvent_49(const struct FKey& Key);
+	void InpActEvt_Real_HardwareEnviropack_K2Node_InputActionEvent_50(const struct FKey& Key);
+	void InpActEvt_Real_HardwareBoots_K2Node_InputActionEvent_51(const struct FKey& Key);
+	void InpActEvt_Real_HardwareBioScan_K2Node_InputActionEvent_52(const struct FKey& Key);
+	void InpActEvt_Real_HardwareLantern_K2Node_InputActionEvent_53(const struct FKey& Key);
 	void IsMultiFunctionDisplayVisible(bool* Result);
 	void GetNeuralHUD(class UWIDGET_PlayerHUD_C** Result);
 	void ReceiveInputForHotbarSlotByIndex(int32 SlotNumber, bool Activate);
 	void SetMinimapCameraFollowsYaw(bool Enable);
-	void HandleReceiveMediaKey(bool IsDown);
+	void HandleReceiveMediaKey(bool IsDown, bool* InputHandled, bool* ShouldTryPress);
 	void EVENT_OnLTEChanged(float CurrValue, float LastValue);
 	void EVENT_OnRespawnHacker();
 	void OnDeathSequenceFinished();
@@ -102,15 +120,15 @@ public:
 	void EVENT_OnDrunkAttribChanged(float CurrValue, float LastValue);
 	void ReceiveUnpossessed(class AController* OldController);
 	void OnInteractionFailed(const class FText& FailedText);
-	void GamepadInteract(bool IsDown);
 	void InitializeAttributes();
+	void GamepadInteract(bool IsDown);
 	void InitializeCharacter(bool* Result);
-	void OnBioPoisoningChanged(class UAttribMod* HazardMod, float CurrValue, float LastValue);
 	void CanSaveGames(bool* Result);
-	void HandleMenuNavTabLeft(bool ButtonDown, bool* Handled);
-	void HandleMenuNavTabRight(bool ButtonDown, bool* Handled);
+	void OnBioPoisoningChanged(class UAttribMod* HazardMod, float CurrValue, float LastValue);
 	void SetEmissiveStrength(float Strength);
 	void InitializeEmissiveStrength(bool BeginPlay);
+	void HandleMenuNavTabLeft(bool ButtonDown, bool* Handled);
+	void HandleMenuNavTabRight(bool ButtonDown, bool* Handled);
 
 public:
 	static class UClass* StaticClass()
@@ -123,19 +141,21 @@ public:
 	}
 };
 static_assert(alignof(APAWN_Hacker_Implant_C) == 0x000010, "Wrong alignment on APAWN_Hacker_Implant_C");
-static_assert(sizeof(APAWN_Hacker_Implant_C) == 0x000EB0, "Wrong size on APAWN_Hacker_Implant_C");
-static_assert(offsetof(APAWN_Hacker_Implant_C, UberGraphFrame_PAWN_Hacker_Implant_C) == 0x000E50, "Member 'APAWN_Hacker_Implant_C::UberGraphFrame_PAWN_Hacker_Implant_C' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, COMP_ScannableObject) == 0x000E58, "Member 'APAWN_Hacker_Implant_C::COMP_ScannableObject' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, HeadlampLight) == 0x000E60, "Member 'APAWN_Hacker_Implant_C::HeadlampLight' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, AudioLog) == 0x000E68, "Member 'APAWN_Hacker_Implant_C::AudioLog' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, MediaReaderMesh) == 0x000E70, "Member 'APAWN_Hacker_Implant_C::MediaReaderMesh' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, BioScannerMesh) == 0x000E78, "Member 'APAWN_Hacker_Implant_C::BioScannerMesh' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, COMP_AudioLogManager) == 0x000E80, "Member 'APAWN_Hacker_Implant_C::COMP_AudioLogManager' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, COMP_VoxelScanner) == 0x000E88, "Member 'APAWN_Hacker_Implant_C::COMP_VoxelScanner' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, COMP_Hotbar) == 0x000E90, "Member 'APAWN_Hacker_Implant_C::COMP_Hotbar' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, CanHackerRespawn) == 0x000E98, "Member 'APAWN_Hacker_Implant_C::CanHackerRespawn' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, IsAllowedToSaveGames) == 0x000E99, "Member 'APAWN_Hacker_Implant_C::IsAllowedToSaveGames' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Implant_C, DisorientationMoveControl) == 0x000EA0, "Member 'APAWN_Hacker_Implant_C::DisorientationMoveControl' has a wrong offset!");
+static_assert(sizeof(APAWN_Hacker_Implant_C) == 0x000ED0, "Wrong size on APAWN_Hacker_Implant_C");
+static_assert(offsetof(APAWN_Hacker_Implant_C, UberGraphFrame_PAWN_Hacker_Implant_C) == 0x000E68, "Member 'APAWN_Hacker_Implant_C::UberGraphFrame_PAWN_Hacker_Implant_C' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, COMP_ScannableObject) == 0x000E70, "Member 'APAWN_Hacker_Implant_C::COMP_ScannableObject' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, HeadlampLight) == 0x000E78, "Member 'APAWN_Hacker_Implant_C::HeadlampLight' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, AudioLog) == 0x000E80, "Member 'APAWN_Hacker_Implant_C::AudioLog' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, MediaReaderMesh) == 0x000E88, "Member 'APAWN_Hacker_Implant_C::MediaReaderMesh' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, BioScannerMesh) == 0x000E90, "Member 'APAWN_Hacker_Implant_C::BioScannerMesh' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, COMP_AudioLogManager) == 0x000E98, "Member 'APAWN_Hacker_Implant_C::COMP_AudioLogManager' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, COMP_VoxelScanner) == 0x000EA0, "Member 'APAWN_Hacker_Implant_C::COMP_VoxelScanner' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, COMP_Hotbar) == 0x000EA8, "Member 'APAWN_Hacker_Implant_C::COMP_Hotbar' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, CanHackerRespawn) == 0x000EB0, "Member 'APAWN_Hacker_Implant_C::CanHackerRespawn' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, IsAllowedToSaveGames) == 0x000EB1, "Member 'APAWN_Hacker_Implant_C::IsAllowedToSaveGames' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, DisorientationMoveControl) == 0x000EB8, "Member 'APAWN_Hacker_Implant_C::DisorientationMoveControl' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, MediaPromptPressedTime) == 0x000EC0, "Member 'APAWN_Hacker_Implant_C::MediaPromptPressedTime' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Implant_C, MediaPromptReleaseThreshold) == 0x000EC4, "Member 'APAWN_Hacker_Implant_C::MediaPromptReleaseThreshold' has a wrong offset!");
 
 }
 

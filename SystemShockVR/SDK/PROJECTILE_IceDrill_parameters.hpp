@@ -17,30 +17,6 @@
 namespace SDK::Params
 {
 
-// Function PROJECTILE_IceDrill.PROJECTILE_IceDrill_C.DestroyProjectile
-// 0x0080 (0x0080 - 0x0000)
-struct PROJECTILE_IceDrill_C_DestroyProjectile final
-{
-public:
-	struct FVector                                ImpactNormal;                                      // 0x0000(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0010(0x0030)(ConstParm, IsPlainOldData, NoDestructor)
-	struct FRotator                               CallFunc_Conv_VectorToRotator_ReturnValue;         // 0x0040(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x004C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x0058(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x0064(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UNiagaraComponent*                      CallFunc_SpawnSystemAtLocation_ReturnValue;        // 0x0070(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(PROJECTILE_IceDrill_C_DestroyProjectile) == 0x000010, "Wrong alignment on PROJECTILE_IceDrill_C_DestroyProjectile");
-static_assert(sizeof(PROJECTILE_IceDrill_C_DestroyProjectile) == 0x000080, "Wrong size on PROJECTILE_IceDrill_C_DestroyProjectile");
-static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, ImpactNormal) == 0x000000, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::ImpactNormal' has a wrong offset!");
-static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_GetTransform_ReturnValue) == 0x000010, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_GetTransform_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_Conv_VectorToRotator_ReturnValue) == 0x000040, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_Conv_VectorToRotator_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_BreakTransform_Location) == 0x00004C, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_BreakTransform_Location' has a wrong offset!");
-static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_BreakTransform_Rotation) == 0x000058, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_BreakTransform_Rotation' has a wrong offset!");
-static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_BreakTransform_Scale) == 0x000064, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_BreakTransform_Scale' has a wrong offset!");
-static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_SpawnSystemAtLocation_ReturnValue) == 0x000070, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_SpawnSystemAtLocation_ReturnValue' has a wrong offset!");
-
 // Function PROJECTILE_IceDrill.PROJECTILE_IceDrill_C.SetLockOnActor
 // 0x0008 (0x0008 - 0x0000)
 struct PROJECTILE_IceDrill_C_SetLockOnActor final
@@ -129,6 +105,30 @@ static_assert(offsetof(PROJECTILE_IceDrill_C_ApplyDamageMod, CallFunc_ApplyDamag
 static_assert(offsetof(PROJECTILE_IceDrill_C_ApplyDamageMod, CallFunc_ApplyDamageMod_DamageMod) == 0x000070, "Member 'PROJECTILE_IceDrill_C_ApplyDamageMod::CallFunc_ApplyDamageMod_DamageMod' has a wrong offset!");
 static_assert(offsetof(PROJECTILE_IceDrill_C_ApplyDamageMod, CallFunc_GetOrCreateAttribInstance_ReturnValue) == 0x000078, "Member 'PROJECTILE_IceDrill_C_ApplyDamageMod::CallFunc_GetOrCreateAttribInstance_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PROJECTILE_IceDrill_C_ApplyDamageMod, CallFunc_ExpireModsMatchingCategory_ReturnValue) == 0x000080, "Member 'PROJECTILE_IceDrill_C_ApplyDamageMod::CallFunc_ExpireModsMatchingCategory_ReturnValue' has a wrong offset!");
+
+// Function PROJECTILE_IceDrill.PROJECTILE_IceDrill_C.DestroyProjectile
+// 0x0080 (0x0080 - 0x0000)
+struct PROJECTILE_IceDrill_C_DestroyProjectile final
+{
+public:
+	struct FVector                                ImpactNormal;                                      // 0x0000(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0010(0x0030)(ConstParm, IsPlainOldData, NoDestructor)
+	struct FRotator                               CallFunc_Conv_VectorToRotator_ReturnValue;         // 0x0040(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x004C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x0058(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x0064(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UNiagaraComponent*                      CallFunc_SpawnSystemAtLocation_ReturnValue;        // 0x0070(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PROJECTILE_IceDrill_C_DestroyProjectile) == 0x000010, "Wrong alignment on PROJECTILE_IceDrill_C_DestroyProjectile");
+static_assert(sizeof(PROJECTILE_IceDrill_C_DestroyProjectile) == 0x000080, "Wrong size on PROJECTILE_IceDrill_C_DestroyProjectile");
+static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, ImpactNormal) == 0x000000, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::ImpactNormal' has a wrong offset!");
+static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_GetTransform_ReturnValue) == 0x000010, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_GetTransform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_Conv_VectorToRotator_ReturnValue) == 0x000040, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_Conv_VectorToRotator_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_BreakTransform_Location) == 0x00004C, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_BreakTransform_Location' has a wrong offset!");
+static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_BreakTransform_Rotation) == 0x000058, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_BreakTransform_Rotation' has a wrong offset!");
+static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_BreakTransform_Scale) == 0x000064, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_BreakTransform_Scale' has a wrong offset!");
+static_assert(offsetof(PROJECTILE_IceDrill_C_DestroyProjectile, CallFunc_SpawnSystemAtLocation_ReturnValue) == 0x000070, "Member 'PROJECTILE_IceDrill_C_DestroyProjectile::CallFunc_SpawnSystemAtLocation_ReturnValue' has a wrong offset!");
 
 }
 

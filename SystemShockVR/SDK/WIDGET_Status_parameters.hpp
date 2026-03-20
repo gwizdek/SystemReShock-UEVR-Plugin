@@ -11,6 +11,7 @@
 #include "Basic.hpp"
 
 #include "SlateCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "UMG_structs.hpp"
 #include "Engine_structs.hpp"
 
@@ -40,7 +41,7 @@ static_assert(offsetof(WIDGET_Status_C_SetStatusVisibility, K2Node_Select_Defaul
 static_assert(offsetof(WIDGET_Status_C_SetStatusVisibility, CallFunc_IsValid_ReturnValue) == 0x000005, "Member 'WIDGET_Status_C_SetStatusVisibility::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_Status.WIDGET_Status_C.InitializeStatus
-// 0x0158 (0x0158 - 0x0000)
+// 0x0160 (0x0160 - 0x0000)
 struct WIDGET_Status_C_InitializeStatus final
 {
 public:
@@ -58,51 +59,53 @@ public:
 	int32                                         CallFunc_Add_IntInt_ReturnValue_3;                 // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Array_Index_Variable_2;                   // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Array_Index_Variable_3;                   // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(class UInventoryBag_C* Bag, int32 SlotIndex)> K2Node_CreateDelegate_OutputDelegate;              // 0x0040(0x0010)(ZeroConstructor, NoDestructor)
-	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue;               // 0x0068(0x0010)(ReferenceParm, ContainsInstancedReference)
-	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue_1;             // 0x0078(0x0010)(ReferenceParm, ContainsInstancedReference)
-	class UWidget*                                CallFunc_Array_Get_Item;                           // 0x0088(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWidget*                                CallFunc_Array_Get_Item_1;                         // 0x0090(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_StatusQuest_C*                  K2Node_DynamicCast_AsWIDGET_Status_Quest;          // 0x0098(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_A1[0x7];                                       // 0x00A1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWIDGET_StatusQuest_C*                  K2Node_DynamicCast_AsWIDGET_Status_Quest_1;        // 0x00A8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B1[0x3];                                       // 0x00B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x00B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x00B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x00BC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_1;                // 0x00BD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_BE[0x2];                                       // 0x00BE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue_2;             // 0x00C0(0x0010)(ReferenceParm, ContainsInstancedReference)
-	class UWidget*                                CallFunc_Array_Get_Item_2;                         // 0x00D0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_2;               // 0x00D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_DC[0x4];                                       // 0x00DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWIDGET_StatusQuest_C*                  K2Node_DynamicCast_AsWIDGET_Status_Quest_2;        // 0x00E0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_2;                // 0x00E9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_EA[0x6];                                       // 0x00EA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue_3;             // 0x00F0(0x0010)(ReferenceParm, ContainsInstancedReference)
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0100(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWidget*                                CallFunc_Array_Get_Item_3;                         // 0x0108(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0110(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x0118(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_119[0x7];                                      // 0x0119(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWIDGET_StatusDeck_C*                   K2Node_DynamicCast_AsWIDGET_Status_Deck;           // 0x0120(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_5;                     // 0x0128(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_129[0x3];                                      // 0x0129(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue_3;               // 0x012C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(int32 NodesRemaining)>         K2Node_CreateDelegate_OutputDelegate_1;            // 0x0130(0x0010)(ZeroConstructor, NoDestructor)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_3;                // 0x0140(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_141[0x3];                                      // 0x0141(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class FName StoryQuestName, bool Value)> K2Node_CreateDelegate_OutputDelegate_2;            // 0x0144(0x0010)(ZeroConstructor, NoDestructor)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color;                     // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class UInventoryBag_C* Bag, int32 SlotIndex)> K2Node_CreateDelegate_OutputDelegate;              // 0x0044(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_69[0x7];                                       // 0x0069(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue;               // 0x0070(0x0010)(ReferenceParm, ContainsInstancedReference)
+	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue_1;             // 0x0080(0x0010)(ReferenceParm, ContainsInstancedReference)
+	class UWidget*                                CallFunc_Array_Get_Item;                           // 0x0090(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWidget*                                CallFunc_Array_Get_Item_1;                         // 0x0098(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_StatusQuest_C*                  K2Node_DynamicCast_AsWIDGET_Status_Quest;          // 0x00A0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A9[0x7];                                       // 0x00A9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_StatusQuest_C*                  K2Node_DynamicCast_AsWIDGET_Status_Quest_1;        // 0x00B0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x00B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B9[0x3];                                       // 0x00B9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x00BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x00C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_1;                // 0x00C5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C6[0x2];                                       // 0x00C6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue_2;             // 0x00C8(0x0010)(ReferenceParm, ContainsInstancedReference)
+	class UWidget*                                CallFunc_Array_Get_Item_2;                         // 0x00D8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_2;               // 0x00E0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_E4[0x4];                                       // 0x00E4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_StatusQuest_C*                  K2Node_DynamicCast_AsWIDGET_Status_Quest_2;        // 0x00E8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_2;                // 0x00F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_F2[0x6];                                       // 0x00F2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue_3;             // 0x00F8(0x0010)(ReferenceParm, ContainsInstancedReference)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0108(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWidget*                                CallFunc_Array_Get_Item_3;                         // 0x0110(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0118(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_121[0x7];                                      // 0x0121(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_StatusDeck_C*                   K2Node_DynamicCast_AsWIDGET_Status_Deck;           // 0x0128(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_5;                     // 0x0130(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_131[0x3];                                      // 0x0131(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue_3;               // 0x0134(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(int32 NodesRemaining)>         K2Node_CreateDelegate_OutputDelegate_1;            // 0x0138(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_3;                // 0x0148(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_149[0x3];                                      // 0x0149(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class FName StoryQuestName, bool Value)> K2Node_CreateDelegate_OutputDelegate_2;            // 0x014C(0x0010)(ZeroConstructor, NoDestructor)
 };
 static_assert(alignof(WIDGET_Status_C_InitializeStatus) == 0x000008, "Wrong alignment on WIDGET_Status_C_InitializeStatus");
-static_assert(sizeof(WIDGET_Status_C_InitializeStatus) == 0x000158, "Wrong size on WIDGET_Status_C_InitializeStatus");
+static_assert(sizeof(WIDGET_Status_C_InitializeStatus) == 0x000160, "Wrong size on WIDGET_Status_C_InitializeStatus");
 static_assert(offsetof(WIDGET_Status_C_InitializeStatus, HUD) == 0x000000, "Member 'WIDGET_Status_C_InitializeStatus::HUD' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_InitializeStatus, SingleplayerGameInstance) == 0x000008, "Member 'WIDGET_Status_C_InitializeStatus::SingleplayerGameInstance' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_InitializeStatus, Temp_int_Loop_Counter_Variable) == 0x000010, "Member 'WIDGET_Status_C_InitializeStatus::Temp_int_Loop_Counter_Variable' has a wrong offset!");
@@ -117,39 +120,40 @@ static_assert(offsetof(WIDGET_Status_C_InitializeStatus, Temp_int_Loop_Counter_V
 static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Add_IntInt_ReturnValue_3) == 0x000034, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Add_IntInt_ReturnValue_3' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_InitializeStatus, Temp_int_Array_Index_Variable_2) == 0x000038, "Member 'WIDGET_Status_C_InitializeStatus::Temp_int_Array_Index_Variable_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_InitializeStatus, Temp_int_Array_Index_Variable_3) == 0x00003C, "Member 'WIDGET_Status_C_InitializeStatus::Temp_int_Array_Index_Variable_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_CreateDelegate_OutputDelegate) == 0x000040, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetPlayerPawn_ReturnValue) == 0x000050, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000058, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess) == 0x000060, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetAllChildren_ReturnValue) == 0x000068, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetAllChildren_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetAllChildren_ReturnValue_1) == 0x000078, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetAllChildren_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Get_Item) == 0x000088, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Get_Item_1) == 0x000090, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Get_Item_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsWIDGET_Status_Quest) == 0x000098, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsWIDGET_Status_Quest' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_1) == 0x0000A0, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsWIDGET_Status_Quest_1) == 0x0000A8, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsWIDGET_Status_Quest_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_2) == 0x0000B0, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Length_ReturnValue) == 0x0000B4, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Length_ReturnValue_1) == 0x0000B8, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Less_IntInt_ReturnValue) == 0x0000BC, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Less_IntInt_ReturnValue_1) == 0x0000BD, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Less_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetAllChildren_ReturnValue_2) == 0x0000C0, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetAllChildren_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Get_Item_2) == 0x0000D0, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Get_Item_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Length_ReturnValue_2) == 0x0000D8, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Length_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsWIDGET_Status_Quest_2) == 0x0000E0, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsWIDGET_Status_Quest_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_3) == 0x0000E8, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Less_IntInt_ReturnValue_2) == 0x0000E9, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Less_IntInt_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetAllChildren_ReturnValue_3) == 0x0000F0, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetAllChildren_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetGameInstance_ReturnValue) == 0x000100, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Get_Item_3) == 0x000108, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Get_Item_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsGI_Single_Player) == 0x000110, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_4) == 0x000118, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsWIDGET_Status_Deck) == 0x000120, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsWIDGET_Status_Deck' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_5) == 0x000128, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_5' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Length_ReturnValue_3) == 0x00012C, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Length_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_CreateDelegate_OutputDelegate_1) == 0x000130, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Less_IntInt_ReturnValue_3) == 0x000140, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Less_IntInt_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_CreateDelegate_OutputDelegate_2) == 0x000144, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetMeshUIColor_Color) == 0x000040, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetMeshUIColor_Color' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_CreateDelegate_OutputDelegate) == 0x000044, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetPlayerPawn_ReturnValue) == 0x000058, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000060, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess) == 0x000068, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetAllChildren_ReturnValue) == 0x000070, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetAllChildren_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetAllChildren_ReturnValue_1) == 0x000080, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetAllChildren_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Get_Item) == 0x000090, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Get_Item_1) == 0x000098, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Get_Item_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsWIDGET_Status_Quest) == 0x0000A0, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsWIDGET_Status_Quest' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_1) == 0x0000A8, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsWIDGET_Status_Quest_1) == 0x0000B0, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsWIDGET_Status_Quest_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_2) == 0x0000B8, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Length_ReturnValue) == 0x0000BC, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Length_ReturnValue_1) == 0x0000C0, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Less_IntInt_ReturnValue) == 0x0000C4, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Less_IntInt_ReturnValue_1) == 0x0000C5, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Less_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetAllChildren_ReturnValue_2) == 0x0000C8, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetAllChildren_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Get_Item_2) == 0x0000D8, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Get_Item_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Length_ReturnValue_2) == 0x0000E0, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Length_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsWIDGET_Status_Quest_2) == 0x0000E8, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsWIDGET_Status_Quest_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_3) == 0x0000F0, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Less_IntInt_ReturnValue_2) == 0x0000F1, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Less_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetAllChildren_ReturnValue_3) == 0x0000F8, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetAllChildren_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_GetGameInstance_ReturnValue) == 0x000108, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Get_Item_3) == 0x000110, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Get_Item_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsGI_Single_Player) == 0x000118, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_4) == 0x000120, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_AsWIDGET_Status_Deck) == 0x000128, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_AsWIDGET_Status_Deck' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_DynamicCast_bSuccess_5) == 0x000130, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_DynamicCast_bSuccess_5' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Array_Length_ReturnValue_3) == 0x000134, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Array_Length_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_CreateDelegate_OutputDelegate_1) == 0x000138, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, CallFunc_Less_IntInt_ReturnValue_3) == 0x000148, "Member 'WIDGET_Status_C_InitializeStatus::CallFunc_Less_IntInt_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_InitializeStatus, K2Node_CreateDelegate_OutputDelegate_2) == 0x00014C, "Member 'WIDGET_Status_C_InitializeStatus::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
 
 // Function WIDGET_Status.WIDGET_Status_C.EVENT_OnStoryQuestChanged
 // 0x01D8 (0x01D8 - 0x0000)
@@ -336,56 +340,49 @@ static_assert(sizeof(WIDGET_Status_C_EVENT_OnNodesChanged) == 0x000004, "Wrong s
 static_assert(offsetof(WIDGET_Status_C_EVENT_OnNodesChanged, NodesRemaining) == 0x000000, "Member 'WIDGET_Status_C_EVENT_OnNodesChanged::NodesRemaining' has a wrong offset!");
 
 // Function WIDGET_Status.WIDGET_Status_C.SetSelectedDeck
-// 0x0158 (0x0158 - 0x0000)
+// 0x0138 (0x0138 - 0x0000)
 struct WIDGET_Status_C_SetSelectedDeck final
 {
 public:
 	class UWIDGET_StatusDeck_C*                   StatusDeck;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UGI_SinglePlayer_C*                     GameInstance;                                      // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_GetLevelNameByDeck_Level;                 // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FText                                   CallFunc_MakeLiteralText_ReturnValue;              // 0x0018(0x0018)()
-	int32                                         CallFunc_GetComputerNodesForLevel_RemainingNodes;  // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_34[0x4];                                       // 0x0034(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   CallFunc_MakeLiteralText_ReturnValue_1;            // 0x0038(0x0018)()
-	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0050(0x0040)(HasGetValueTypeHash)
-	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x0090(0x0010)(ReferenceParm)
-	int32                                         CallFunc_GetSecurityForLevel_Result;               // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_A4[0x4];                                       // 0x00A4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   CallFunc_Format_ReturnValue;                       // 0x00A8(0x0018)()
-	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData_1;            // 0x00C0(0x0040)(HasGetValueTypeHash)
-	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array_1;                          // 0x0100(0x0010)(ReferenceParm)
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0110(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FText                                   CallFunc_Format_ReturnValue_1;                     // 0x0118(0x0018)()
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0130(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_139[0x7];                                      // 0x0139(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x0140(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue_1;              // 0x0148(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0150(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0151(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class FText                                   CallFunc_MakeLiteralText_ReturnValue;              // 0x0010(0x0018)()
+	int32                                         CallFunc_GetComputerNodesForLevel_RemainingNodes;  // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   CallFunc_MakeLiteralText_ReturnValue_1;            // 0x0030(0x0018)()
+	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0048(0x0040)(HasGetValueTypeHash)
+	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x0088(0x0010)(ReferenceParm)
+	int32                                         CallFunc_GetSecurityForLevel_Result;               // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_9C[0x4];                                       // 0x009C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   CallFunc_Format_ReturnValue;                       // 0x00A0(0x0018)()
+	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData_1;            // 0x00B8(0x0040)(HasGetValueTypeHash)
+	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array_1;                          // 0x00F8(0x0010)(ReferenceParm)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0108(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FText                                   CallFunc_Format_ReturnValue_1;                     // 0x0110(0x0018)()
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0130(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0131(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0132(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_Status_C_SetSelectedDeck) == 0x000008, "Wrong alignment on WIDGET_Status_C_SetSelectedDeck");
-static_assert(sizeof(WIDGET_Status_C_SetSelectedDeck) == 0x000158, "Wrong size on WIDGET_Status_C_SetSelectedDeck");
+static_assert(sizeof(WIDGET_Status_C_SetSelectedDeck) == 0x000138, "Wrong size on WIDGET_Status_C_SetSelectedDeck");
 static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, StatusDeck) == 0x000000, "Member 'WIDGET_Status_C_SetSelectedDeck::StatusDeck' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, GameInstance) == 0x000008, "Member 'WIDGET_Status_C_SetSelectedDeck::GameInstance' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_GetLevelNameByDeck_Level) == 0x000010, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_GetLevelNameByDeck_Level' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_MakeLiteralText_ReturnValue) == 0x000018, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_MakeLiteralText_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_GetComputerNodesForLevel_RemainingNodes) == 0x000030, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_GetComputerNodesForLevel_RemainingNodes' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_MakeLiteralText_ReturnValue_1) == 0x000038, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_MakeLiteralText_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_MakeStruct_FormatArgumentData) == 0x000050, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_MakeArray_Array) == 0x000090, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_GetSecurityForLevel_Result) == 0x0000A0, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_GetSecurityForLevel_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_Format_ReturnValue) == 0x0000A8, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_Format_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_MakeStruct_FormatArgumentData_1) == 0x0000C0, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_MakeStruct_FormatArgumentData_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_MakeArray_Array_1) == 0x000100, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_MakeArray_Array_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_GetGameInstance_ReturnValue) == 0x000110, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_Format_ReturnValue_1) == 0x000118, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_Format_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_DynamicCast_AsGI_Single_Player) == 0x000130, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_DynamicCast_bSuccess) == 0x000138, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_PlayAnimation_ReturnValue) == 0x000140, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_PlayAnimation_ReturnValue_1) == 0x000148, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_PlayAnimation_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_IsValid_ReturnValue) == 0x000150, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_IsValid_ReturnValue_1) == 0x000151, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_MakeLiteralText_ReturnValue) == 0x000010, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_MakeLiteralText_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_GetComputerNodesForLevel_RemainingNodes) == 0x000028, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_GetComputerNodesForLevel_RemainingNodes' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_MakeLiteralText_ReturnValue_1) == 0x000030, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_MakeLiteralText_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_MakeStruct_FormatArgumentData) == 0x000048, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_MakeArray_Array) == 0x000088, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_GetSecurityForLevel_Result) == 0x000098, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_GetSecurityForLevel_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_Format_ReturnValue) == 0x0000A0, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_Format_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_MakeStruct_FormatArgumentData_1) == 0x0000B8, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_MakeStruct_FormatArgumentData_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_MakeArray_Array_1) == 0x0000F8, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_MakeArray_Array_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_GetGameInstance_ReturnValue) == 0x000108, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_Format_ReturnValue_1) == 0x000110, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_Format_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_DynamicCast_AsGI_Single_Player) == 0x000128, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, K2Node_DynamicCast_bSuccess) == 0x000130, "Member 'WIDGET_Status_C_SetSelectedDeck::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_IsValid_ReturnValue) == 0x000131, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SetSelectedDeck, CallFunc_IsValid_ReturnValue_1) == 0x000132, "Member 'WIDGET_Status_C_SetSelectedDeck::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
 
 // Function WIDGET_Status.WIDGET_Status_C.EVENT_OnMouseDown_BG
 // 0x0218 (0x0218 - 0x0000)
@@ -405,7 +402,7 @@ static_assert(offsetof(WIDGET_Status_C_EVENT_OnMouseDown_BG, ReturnValue) == 0x0
 static_assert(offsetof(WIDGET_Status_C_EVENT_OnMouseDown_BG, CallFunc_Unhandled_ReturnValue) == 0x000160, "Member 'WIDGET_Status_C_EVENT_OnMouseDown_BG::CallFunc_Unhandled_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_Status.WIDGET_Status_C.SelectCurrentDeck
-// 0x01E0 (0x01E0 - 0x0000)
+// 0x0068 (0x0068 - 0x0000)
 struct WIDGET_Status_C_SelectCurrentDeck final
 {
 public:
@@ -414,47 +411,37 @@ public:
 	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FPointerEvent                          K2Node_MakeStruct_PointerEvent;                    // 0x0018(0x0070)()
-	struct FGeometry                              K2Node_MakeStruct_Geometry;                        // 0x0088(0x0038)(IsPlainOldData, NoDestructor)
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class FName>                           CallFunc_GetDataTableRowNames_OutRowNames;         // 0x00C8(0x0010)(ReferenceParm)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E1[0x3];                                       // 0x00E1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_GetCurrentLevelName_Result;               // 0x00E4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue;               // 0x00F0(0x0010)(ReferenceParm, ContainsInstancedReference)
-	class UWidget*                                CallFunc_Array_Get_Item;                           // 0x0100(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0108(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_10C[0x4];                                      // 0x010C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWIDGET_StatusDeck_C*                   K2Node_DynamicCast_AsWIDGET_Status_Deck;           // 0x0110(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0118(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0119(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_11A[0x6];                                      // 0x011A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FEventReply                            CallFunc_EVENT_OnMouseDown_ReturnValue;            // 0x0120(0x00B8)()
-	bool                                          CallFunc_EqualEqual_NameName_ReturnValue;          // 0x01D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWidget*>                        CallFunc_GetAllChildren_ReturnValue;               // 0x0030(0x0010)(ReferenceParm, ContainsInstancedReference)
+	class FName                                   CallFunc_GetCurrentLevelName_Result;               // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWidget*                                CallFunc_Array_Get_Item;                           // 0x0048(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_StatusDeck_C*                   K2Node_DynamicCast_AsWIDGET_Status_Deck;           // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_NameName_ReturnValue;          // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_Status_C_SelectCurrentDeck) == 0x000008, "Wrong alignment on WIDGET_Status_C_SelectCurrentDeck");
-static_assert(sizeof(WIDGET_Status_C_SelectCurrentDeck) == 0x0001E0, "Wrong size on WIDGET_Status_C_SelectCurrentDeck");
+static_assert(sizeof(WIDGET_Status_C_SelectCurrentDeck) == 0x000068, "Wrong size on WIDGET_Status_C_SelectCurrentDeck");
 static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CurrentLevelName) == 0x000000, "Member 'WIDGET_Status_C_SelectCurrentDeck::CurrentLevelName' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, Temp_int_Array_Index_Variable) == 0x000008, "Member 'WIDGET_Status_C_SelectCurrentDeck::Temp_int_Array_Index_Variable' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, Temp_int_Loop_Counter_Variable) == 0x00000C, "Member 'WIDGET_Status_C_SelectCurrentDeck::Temp_int_Loop_Counter_Variable' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_Add_IntInt_ReturnValue) == 0x000010, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_MakeStruct_PointerEvent) == 0x000018, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_MakeStruct_PointerEvent' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_MakeStruct_Geometry) == 0x000088, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_MakeStruct_Geometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_GetGameInstance_ReturnValue) == 0x0000C0, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_GetDataTableRowNames_OutRowNames) == 0x0000C8, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_GetDataTableRowNames_OutRowNames' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_DynamicCast_AsGI_Single_Player) == 0x0000D8, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_DynamicCast_bSuccess) == 0x0000E0, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_GetCurrentLevelName_Result) == 0x0000E4, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_GetCurrentLevelName_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_GetAllChildren_ReturnValue) == 0x0000F0, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_GetAllChildren_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_Array_Get_Item) == 0x000100, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_Array_Length_ReturnValue) == 0x000108, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_DynamicCast_AsWIDGET_Status_Deck) == 0x000110, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_DynamicCast_AsWIDGET_Status_Deck' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_DynamicCast_bSuccess_1) == 0x000118, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_Less_IntInt_ReturnValue) == 0x000119, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_EVENT_OnMouseDown_ReturnValue) == 0x000120, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_EVENT_OnMouseDown_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_EqualEqual_NameName_ReturnValue) == 0x0001D8, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_EqualEqual_NameName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_GetGameInstance_ReturnValue) == 0x000018, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_DynamicCast_AsGI_Single_Player) == 0x000020, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_GetAllChildren_ReturnValue) == 0x000030, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_GetAllChildren_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_GetCurrentLevelName_Result) == 0x000040, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_GetCurrentLevelName_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_Array_Get_Item) == 0x000048, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_DynamicCast_AsWIDGET_Status_Deck) == 0x000050, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_DynamicCast_AsWIDGET_Status_Deck' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, K2Node_DynamicCast_bSuccess_1) == 0x000058, "Member 'WIDGET_Status_C_SelectCurrentDeck::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_Array_Length_ReturnValue) == 0x00005C, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_Less_IntInt_ReturnValue) == 0x000060, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_SelectCurrentDeck, CallFunc_EqualEqual_NameName_ReturnValue) == 0x000061, "Member 'WIDGET_Status_C_SelectCurrentDeck::CallFunc_EqualEqual_NameName_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_Status.WIDGET_Status_C.SetSelectedDeckByLevel
 // 0x0178 (0x0178 - 0x0000)
@@ -577,6 +564,96 @@ static_assert(offsetof(WIDGET_Status_C_UpdateStationComputerNodesCount, CallFunc
 static_assert(offsetof(WIDGET_Status_C_UpdateStationComputerNodesCount, CallFunc_Add_IntInt_ReturnValue_1) == 0x000068, "Member 'WIDGET_Status_C_UpdateStationComputerNodesCount::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_UpdateStationComputerNodesCount, CallFunc_Array_Length_ReturnValue) == 0x00006C, "Member 'WIDGET_Status_C_UpdateStationComputerNodesCount::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_Status_C_UpdateStationComputerNodesCount, CallFunc_Less_IntInt_ReturnValue) == 0x000070, "Member 'WIDGET_Status_C_UpdateStationComputerNodesCount::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_Status.WIDGET_Status_C.UpdateGroveVisitStatus
+// 0x0098 (0x0098 - 0x0000)
+struct WIDGET_Status_C_UpdateGroveVisitStatus final
+{
+public:
+	class UGI_SinglePlayer_C*                     GameInstance;                                      // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color;                     // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_1;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasVisitedLevel_Result;                   // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasVisitedLevel_Result_1;                 // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasVisitedLevel_Result_2;                 // 0x0013(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasVisitedLevel_Result_3;                 // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x0016(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable_1;                              // 0x0017(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_2;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_GetCurrentLevelName_Result;               // 0x001C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_NameName_ReturnValue;          // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_3;                   // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_GetCurrentLevelName_Result_1;             // 0x002C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_4;                   // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_NameName_ReturnValue_1;        // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable_2;                              // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A[0x2];                                       // 0x003A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_GetCurrentLevelName_Result_2;             // 0x003C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_5;                   // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_NameName_ReturnValue_2;        // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_6;                   // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasCompletedStoryQuest_Completed;         // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_7;                   // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_8;                   // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasVisitedLevel_Result_4;                 // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5D[0x3];                                       // 0x005D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_9;                   // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 K2Node_Select_Default;                             // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasVisitedLevel_Result_5;                 // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_10;                  // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_11;                  // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 K2Node_Select_Default_1;                           // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 K2Node_Select_Default_2;                           // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_7C[0x4];                                       // 0x007C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_Status_C_UpdateGroveVisitStatus) == 0x000008, "Wrong alignment on WIDGET_Status_C_UpdateGroveVisitStatus");
+static_assert(sizeof(WIDGET_Status_C_UpdateGroveVisitStatus) == 0x000098, "Wrong size on WIDGET_Status_C_UpdateGroveVisitStatus");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, GameInstance) == 0x000000, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::GameInstance' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color) == 0x000008, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_1) == 0x00000C, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_HasVisitedLevel_Result) == 0x000010, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_HasVisitedLevel_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_HasVisitedLevel_Result_1) == 0x000011, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_HasVisitedLevel_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, Temp_bool_Variable) == 0x000012, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_HasVisitedLevel_Result_2) == 0x000013, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_HasVisitedLevel_Result_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_BooleanOR_ReturnValue) == 0x000014, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_HasVisitedLevel_Result_3) == 0x000015, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_HasVisitedLevel_Result_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_BooleanOR_ReturnValue_1) == 0x000016, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, Temp_bool_Variable_1) == 0x000017, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_2) == 0x000018, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetCurrentLevelName_Result) == 0x00001C, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetCurrentLevelName_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_EqualEqual_NameName_ReturnValue) == 0x000024, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_EqualEqual_NameName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_3) == 0x000028, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetCurrentLevelName_Result_1) == 0x00002C, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetCurrentLevelName_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_4) == 0x000034, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_EqualEqual_NameName_ReturnValue_1) == 0x000038, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_EqualEqual_NameName_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, Temp_bool_Variable_2) == 0x000039, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::Temp_bool_Variable_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetCurrentLevelName_Result_2) == 0x00003C, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetCurrentLevelName_Result_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_5) == 0x000044, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_5' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_EqualEqual_NameName_ReturnValue_2) == 0x000048, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_EqualEqual_NameName_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_6) == 0x00004C, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_6' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_HasCompletedStoryQuest_Completed) == 0x000050, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_HasCompletedStoryQuest_Completed' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_7) == 0x000054, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_7' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_8) == 0x000058, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_8' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_HasVisitedLevel_Result_4) == 0x00005C, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_HasVisitedLevel_Result_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_9) == 0x000060, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_9' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, K2Node_Select_Default) == 0x000064, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_HasVisitedLevel_Result_5) == 0x000068, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_HasVisitedLevel_Result_5' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_10) == 0x00006C, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_10' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetMeshUIColor_Color_11) == 0x000070, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetMeshUIColor_Color_11' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, K2Node_Select_Default_1) == 0x000074, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, K2Node_Select_Default_2) == 0x000078, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::K2Node_Select_Default_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, CallFunc_GetGameInstance_ReturnValue) == 0x000080, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, K2Node_DynamicCast_AsGI_Single_Player) == 0x000088, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(WIDGET_Status_C_UpdateGroveVisitStatus, K2Node_DynamicCast_bSuccess) == 0x000090, "Member 'WIDGET_Status_C_UpdateGroveVisitStatus::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 }
 

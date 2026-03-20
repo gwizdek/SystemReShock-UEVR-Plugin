@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "CoreGame_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "STRUCT_EffectParams_structs.hpp"
+#include "CoreGame_structs.hpp"
 
 
 namespace SDK

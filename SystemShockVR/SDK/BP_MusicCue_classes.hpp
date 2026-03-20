@@ -10,18 +10,18 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_IntensityThresholds_structs.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_BeatType_structs.hpp"
 #include "ENUM_MusicPlayState_structs.hpp"
-#include "Engine_structs.hpp"
 #include "CoreGame_classes.hpp"
-#include "ENUM_IntensityThresholds_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_MusicCue.BP_MusicCue_C
-// 0x00C8 (0x00F0 - 0x0028)
+// 0x00D8 (0x0100 - 0x0028)
 class UBP_MusicCue_C : public UWorldObject
 {
 public:
@@ -56,6 +56,11 @@ public:
 	class UCurveFloat*                            CombatIntensityCurve;                              // 0x00E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         CurrentCombatIntensityLinear;                      // 0x00E8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          DebugLogMusicStates;                               // 0x00EC(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_ED[0x3];                                       // 0x00ED(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ExpectedCueCount;                                  // 0x00F0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          bAllSoundsBegunPriming;                            // 0x00F4(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_F5[0x3];                                       // 0x00F5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         LoadedCueWaveCount;                                // 0x00F8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void IsMusicPlaying(bool* Result);
@@ -89,9 +94,11 @@ public:
 	void OnFadeFinished();
 	void RemoveInactiveAudioComponents();
 	void GetQuartzBeatType(EQuartzTimeSignatureQuantization* Quantization);
+	void EVENT_OnCueLoaded(const class USoundWave* LoadedSoundWave, const bool WasCancelled);
 	void EVENT_OnQuartzBar(class FName ClockName_0, EQuartzCommandQuantization QuantizationType, int32 NumBars, int32 Beat, float BeatFraction);
 	void PrintCurrentExploreIntensity();
 	void IsMusicDebugLoggingEnabled(bool* Result);
+	void PrimeMusicCue();
 	void UpdateCombatIntensity(float Intensity);
 
 public:
@@ -105,7 +112,7 @@ public:
 	}
 };
 static_assert(alignof(UBP_MusicCue_C) == 0x000008, "Wrong alignment on UBP_MusicCue_C");
-static_assert(sizeof(UBP_MusicCue_C) == 0x0000F0, "Wrong size on UBP_MusicCue_C");
+static_assert(sizeof(UBP_MusicCue_C) == 0x000100, "Wrong size on UBP_MusicCue_C");
 static_assert(offsetof(UBP_MusicCue_C, BPM) == 0x000028, "Member 'UBP_MusicCue_C::BPM' has a wrong offset!");
 static_assert(offsetof(UBP_MusicCue_C, Beats) == 0x00002C, "Member 'UBP_MusicCue_C::Beats' has a wrong offset!");
 static_assert(offsetof(UBP_MusicCue_C, BeatType) == 0x000030, "Member 'UBP_MusicCue_C::BeatType' has a wrong offset!");
@@ -133,6 +140,9 @@ static_assert(offsetof(UBP_MusicCue_C, CurrentExploreIntensityLinear) == 0x0000D
 static_assert(offsetof(UBP_MusicCue_C, CombatIntensityCurve) == 0x0000E0, "Member 'UBP_MusicCue_C::CombatIntensityCurve' has a wrong offset!");
 static_assert(offsetof(UBP_MusicCue_C, CurrentCombatIntensityLinear) == 0x0000E8, "Member 'UBP_MusicCue_C::CurrentCombatIntensityLinear' has a wrong offset!");
 static_assert(offsetof(UBP_MusicCue_C, DebugLogMusicStates) == 0x0000EC, "Member 'UBP_MusicCue_C::DebugLogMusicStates' has a wrong offset!");
+static_assert(offsetof(UBP_MusicCue_C, ExpectedCueCount) == 0x0000F0, "Member 'UBP_MusicCue_C::ExpectedCueCount' has a wrong offset!");
+static_assert(offsetof(UBP_MusicCue_C, bAllSoundsBegunPriming) == 0x0000F4, "Member 'UBP_MusicCue_C::bAllSoundsBegunPriming' has a wrong offset!");
+static_assert(offsetof(UBP_MusicCue_C, LoadedCueWaveCount) == 0x0000F8, "Member 'UBP_MusicCue_C::LoadedCueWaveCount' has a wrong offset!");
 
 }
 

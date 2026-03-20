@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_InteractionType_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "Engine_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "ENUM_FailSucceedIgnore_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 
 
 namespace SDK::Params

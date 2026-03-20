@@ -210,6 +210,29 @@ static_assert(sizeof(FPurchaseConfirmation) == 0x000050, "Wrong size on FPurchas
 static_assert(offsetof(FPurchaseConfirmation, PackageName) == 0x000010, "Member 'FPurchaseConfirmation::PackageName' has a wrong offset!");
 static_assert(offsetof(FPurchaseConfirmation, Type) == 0x000048, "Member 'FPurchaseConfirmation::Type' has a wrong offset!");
 
+// ScriptStruct MagicLeap.MagicLeapGraphicsClientPerformanceInfo
+// 0x001C (0x001C - 0x0000)
+struct FMagicLeapGraphicsClientPerformanceInfo final
+{
+public:
+	float                                         FrameStartCPUCompAcquireCPUTimeMs;                 // 0x0000(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         FrameStartCPUFrameEndGPUTimeMs;                    // 0x0004(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         FrameStartCPUFrameStartCPUTimeMs;                  // 0x0008(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         FrameDurationCPUTimeMs;                            // 0x000C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         FrameDurationGPUTimeMs;                            // 0x0010(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         FrameInternalDurationCPUTimeMs;                    // 0x0014(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         FrameInternalDurationGPUTimeMs;                    // 0x0018(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FMagicLeapGraphicsClientPerformanceInfo) == 0x000004, "Wrong alignment on FMagicLeapGraphicsClientPerformanceInfo");
+static_assert(sizeof(FMagicLeapGraphicsClientPerformanceInfo) == 0x00001C, "Wrong size on FMagicLeapGraphicsClientPerformanceInfo");
+static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameStartCPUCompAcquireCPUTimeMs) == 0x000000, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameStartCPUCompAcquireCPUTimeMs' has a wrong offset!");
+static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameStartCPUFrameEndGPUTimeMs) == 0x000004, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameStartCPUFrameEndGPUTimeMs' has a wrong offset!");
+static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameStartCPUFrameStartCPUTimeMs) == 0x000008, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameStartCPUFrameStartCPUTimeMs' has a wrong offset!");
+static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameDurationCPUTimeMs) == 0x00000C, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameDurationCPUTimeMs' has a wrong offset!");
+static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameDurationGPUTimeMs) == 0x000010, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameDurationGPUTimeMs' has a wrong offset!");
+static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameInternalDurationCPUTimeMs) == 0x000014, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameInternalDurationCPUTimeMs' has a wrong offset!");
+static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameInternalDurationGPUTimeMs) == 0x000018, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameInternalDurationGPUTimeMs' has a wrong offset!");
+
 // ScriptStruct MagicLeap.MagicLeapRaycastHitResult
 // 0x0024 (0x0024 - 0x0000)
 struct FMagicLeapRaycastHitResult final
@@ -256,29 +279,6 @@ static_assert(alignof(FMagicLeapTrackingMeshInfo) == 0x000008, "Wrong alignment 
 static_assert(sizeof(FMagicLeapTrackingMeshInfo) == 0x000018, "Wrong size on FMagicLeapTrackingMeshInfo");
 static_assert(offsetof(FMagicLeapTrackingMeshInfo, Timestamp) == 0x000000, "Member 'FMagicLeapTrackingMeshInfo::Timestamp' has a wrong offset!");
 static_assert(offsetof(FMagicLeapTrackingMeshInfo, BlockData) == 0x000008, "Member 'FMagicLeapTrackingMeshInfo::BlockData' has a wrong offset!");
-
-// ScriptStruct MagicLeap.MagicLeapGraphicsClientPerformanceInfo
-// 0x001C (0x001C - 0x0000)
-struct FMagicLeapGraphicsClientPerformanceInfo final
-{
-public:
-	float                                         FrameStartCPUCompAcquireCPUTimeMs;                 // 0x0000(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         FrameStartCPUFrameEndGPUTimeMs;                    // 0x0004(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         FrameStartCPUFrameStartCPUTimeMs;                  // 0x0008(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         FrameDurationCPUTimeMs;                            // 0x000C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         FrameDurationGPUTimeMs;                            // 0x0010(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         FrameInternalDurationCPUTimeMs;                    // 0x0014(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         FrameInternalDurationGPUTimeMs;                    // 0x0018(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FMagicLeapGraphicsClientPerformanceInfo) == 0x000004, "Wrong alignment on FMagicLeapGraphicsClientPerformanceInfo");
-static_assert(sizeof(FMagicLeapGraphicsClientPerformanceInfo) == 0x00001C, "Wrong size on FMagicLeapGraphicsClientPerformanceInfo");
-static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameStartCPUCompAcquireCPUTimeMs) == 0x000000, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameStartCPUCompAcquireCPUTimeMs' has a wrong offset!");
-static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameStartCPUFrameEndGPUTimeMs) == 0x000004, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameStartCPUFrameEndGPUTimeMs' has a wrong offset!");
-static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameStartCPUFrameStartCPUTimeMs) == 0x000008, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameStartCPUFrameStartCPUTimeMs' has a wrong offset!");
-static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameDurationCPUTimeMs) == 0x00000C, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameDurationCPUTimeMs' has a wrong offset!");
-static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameDurationGPUTimeMs) == 0x000010, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameDurationGPUTimeMs' has a wrong offset!");
-static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameInternalDurationCPUTimeMs) == 0x000014, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameInternalDurationCPUTimeMs' has a wrong offset!");
-static_assert(offsetof(FMagicLeapGraphicsClientPerformanceInfo, FrameInternalDurationGPUTimeMs) == 0x000018, "Member 'FMagicLeapGraphicsClientPerformanceInfo::FrameInternalDurationGPUTimeMs' has a wrong offset!");
 
 // ScriptStruct MagicLeap.MagicLeapHeadTrackingState
 // 0x0008 (0x0008 - 0x0000)

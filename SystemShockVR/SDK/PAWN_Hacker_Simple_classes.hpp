@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
-#include "GameplayState_structs.hpp"
-#include "AttributeSystem_structs.hpp"
-#include "STRUCT_TutorialInstance_structs.hpp"
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 #include "ENUM_HazardType_structs.hpp"
-#include "ENUM_MFDTabCategory_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "STRUCT_TutorialInstance_structs.hpp"
+#include "GameplayState_structs.hpp"
 #include "PAWN_SystemShockCharacter_classes.hpp"
+#include "ENUM_MFDTabCategory_structs.hpp"
 #include "ENUM_HotbarStyle_structs.hpp"
 #include "UMG_structs.hpp"
 #include "ENUM_HackerGender_structs.hpp"
@@ -31,8 +31,9 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass PAWN_Hacker_Simple.PAWN_Hacker_Simple_C
-// 0x07D0 (0x0E50 - 0x0680)
-class APAWN_Hacker_Simple_C : public APAWN_SystemShockCharacter_C
+// 0x07F0 (0x0E70 - 0x0680)
+#pragma pack(push, 0x1)
+class alignas(0x10) APAWN_Hacker_Simple_C : public APAWN_SystemShockCharacter_C
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame_PAWN_Hacker_Simple_C;               // 0x0680(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
@@ -165,32 +166,33 @@ public:
 	float                                         MouseYaw;                                          // 0x0C28(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         MousePitch;                                        // 0x0C2C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         GamepadCursorMoveTimestamp;                        // 0x0C30(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsTryingToLean;                                    // 0x0C34(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C35[0x3];                                      // 0x0C35(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         LastRecoilTimestamp;                               // 0x0C38(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RecoilRecenterDelay;                               // 0x0C3C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CurrentWeaponOffset;                               // 0x0C40(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CurrentKickbackRatio;                              // 0x0C4C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AINTERACT_Base_C*                       RecentInteractable;                                // 0x0C50(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    RecentInteractPrimitive;                           // 0x0C58(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTimerHandle                           DetoxTimerHandle;                                  // 0x0C60(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              LastViewportSize;                                  // 0x0C68(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         LastHorizontalFOV;                                 // 0x0C70(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C74[0x4];                                      // 0x0C74(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               MI_Medipatch_PP;                                   // 0x0C78(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         ChromaticAbberationMax;                            // 0x0C80(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C84[0x4];                                      // 0x0C84(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               MI_Berserk_Side_Effect_PP;                         // 0x0C88(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               Beserk_Patch_Apply_PP;                             // 0x0C90(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               Psychosis_Side_Effect_PP;                          // 0x0C98(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UNiagaraComponent*                      PsychosisSpritesNiagara;                           // 0x0CA0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               Cyberspace_Entry_PP;                               // 0x0CA8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               LensDistortionPP;                                  // 0x0CB0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   ThermalDamageAttribCategory;                       // 0x0CB8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMap<class FName, class UAttributeDef*>       DermalPatchAttribCategoryMap;                      // 0x0CC0(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TArray<ENUM_HazardType>                       BioPoisonHazardTypes;                              // 0x0D10(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class FName                                   QueuedRespawnLevelName;                            // 0x0D20(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_D28[0x8];                                      // 0x0D28(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         GamepadCursorSpeed;                                // 0x0C34(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsTryingToLean;                                    // 0x0C38(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C39[0x3];                                      // 0x0C39(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         LastRecoilTimestamp;                               // 0x0C3C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RecoilRecenterDelay;                               // 0x0C40(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CurrentWeaponOffset;                               // 0x0C44(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CurrentKickbackRatio;                              // 0x0C50(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C54[0x4];                                      // 0x0C54(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class AINTERACT_Base_C*                       RecentInteractable;                                // 0x0C58(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    RecentInteractPrimitive;                           // 0x0C60(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTimerHandle                           DetoxTimerHandle;                                  // 0x0C68(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              LastViewportSize;                                  // 0x0C70(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         LastHorizontalFOV;                                 // 0x0C78(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C7C[0x4];                                      // 0x0C7C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstanceDynamic*               MI_Medipatch_PP;                                   // 0x0C80(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         ChromaticAbberationMax;                            // 0x0C88(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C8C[0x4];                                      // 0x0C8C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstanceDynamic*               MI_Berserk_Side_Effect_PP;                         // 0x0C90(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               Beserk_Patch_Apply_PP;                             // 0x0C98(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               Psychosis_Side_Effect_PP;                          // 0x0CA0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UNiagaraComponent*                      PsychosisSpritesNiagara;                           // 0x0CA8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               Cyberspace_Entry_PP;                               // 0x0CB0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               LensDistortionPP;                                  // 0x0CB8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   ThermalDamageAttribCategory;                       // 0x0CC0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMap<class FName, class UAttributeDef*>       DermalPatchAttribCategoryMap;                      // 0x0CC8(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TArray<ENUM_HazardType>                       BioPoisonHazardTypes;                              // 0x0D18(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	class FName                                   QueuedRespawnLevelName;                            // 0x0D28(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FTransform                             DefaultMeshTransform;                              // 0x0D30(0x0030)(Edit, BlueprintVisible, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          IsHoldingUp;                                       // 0x0D60(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          IsHoldingDown;                                     // 0x0D61(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
@@ -232,6 +234,12 @@ public:
 	bool                                          DebugGamepadRightThumbHeld;                        // 0x0E49(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          DebugGamepadRightTriggerHeld;                      // 0x0E4A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          TEMP_UsingSprintToggle;                            // 0x0E4B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsHoldingRightAction;                              // 0x0E4C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsHoldingLeftAction;                               // 0x0E4D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_E4E[0x2];                                      // 0x0E4E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                GamepadMotionTilt;                                 // 0x0E50(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MagicNumber;                                       // 0x0E5C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          HackerController;                                  // 0x0E60(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_PAWN_Hacker_Simple(int32 EntryPoint);
@@ -242,6 +250,56 @@ public:
 	void OnLanded(const struct FHitResult& Hit);
 	void ReceiveTick(float DeltaSeconds);
 	void ReceiveBeginPlay();
+	void ClearInteractHeldJCMS();
+	void ClearMenuNavTabLeftHeld();
+	void ClearMenuNavTabRightHeld();
+	void ClearMenuNavSortHeld();
+	void ClearMenuNavVaporizeHeld();
+	void ClearMenuNavBackHeld();
+	void ClearMenuNavAlt4Held();
+	void ClearMenuNavAlt3Held();
+	void ClearMenuNavAlt2Held();
+	void ClearMenuNavAlt1Held();
+	void ClearAimHeld();
+	void ClearPrimaryAttackGamepadHeld();
+	void ClearInteractHeldGamepad();
+	void ClearSprintHeld();
+	void ClearCrouchHeld();
+	void ClearJumpHeld();
+	void Impl_Gamepad_MenuNav_Sort_Released();
+	void Impl_Gamepad_MenuNav_Sort_Pressed();
+	void Impl_Gamepad_MenuNav_Vaporize_Released();
+	void Impl_Gamepad_MenuNav_Vaporize_Pressed();
+	void Impl_Gamepad_MenuNav_Back_Released();
+	void Impl_Gamepad_MenuNav_Back_Pressed();
+	void Impl_Gamepad_Escape_Pressed();
+	void Impl_Gamepad_MenuNav_Alt4_Released();
+	void Impl_Gamepad_MenuNav_Alt4_Pressed();
+	void Impl_Gamepad_MenuNav_Alt2_Released();
+	void Impl_Gamepad_MenuNav_Alt2_Pressed();
+	void Impl_Gamepad_MenuNav_Alt3_Released();
+	void Impl_Gamepad_MenuNav_Alt3_Pressed();
+	void Impl_Gamepad_MenuNav_Alt1_Released();
+	void Impl_Gamepad_MenuNav_Alt1_Pressed();
+	void Impl_Gamepad_MenuNav_Accept_Released();
+	void Impl_Gamepad_MenuNav_Accept_Pressed();
+	void Impl_Gamepad_Lean();
+	void Impl_Gamepad_HotbarCyclePrevious();
+	void Impl_Gamepad_HotbarCycleNext();
+	void Impl_Gamepad_Aim_Released();
+	void Impl_Gamepad_Aim_Pressed();
+	void Impl_Gamepad_ModeNext();
+	void Impl_Gamepad_PrimaryAttack_Released();
+	void Impl_Gamepad_PrimaryAttack_Pressed();
+	void Impl_Gamepad_Interact_Released();
+	void Impl_Gamepad_Interact_Pressed();
+	void Impl_Gamepad_Sprint_Released();
+	void Impl_Gamepad_Sprint_Pressed();
+	void Impl_Gamepad_Crouch_Released();
+	void Impl_Gamepad_Crouch_Pressed();
+	void Impl_Gamepad_Jump_Released();
+	void Impl_Gamepad_Jump_Pressed();
+	void InpAxisKeyEvt_Tilt_K2Node_InputVectorAxisEvent_0(const struct FVector& AxisValue);
 	void InpAxisEvt_Locked_ZoomAxis_K2Node_InputAxisEvent_19(float AxisValue);
 	void InpAxisEvt_Gamepad_LookYaw_K2Node_InputAxisEvent_18(float AxisValue);
 	void InpAxisEvt_Gamepad_LookPitch_K2Node_InputAxisEvent_15(float AxisValue);
@@ -252,14 +310,10 @@ public:
 	void InpAxisEvt_MenuNavAxis_Y_K2Node_InputAxisEvent_17(float AxisValue);
 	void InpAxisEvt_MenuNavAxis_X_K2Node_InputAxisEvent_16(float AxisValue);
 	void BndEvt__COMP_VoxelCullableNavAgent_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature(bool bVisibleState);
-	void Medipatch_Apply_PP();
-	void Beserk_Apply_PP();
 	void BioPoisoningEnd();
 	void BioPoisoningStart(bool IsRadiationDamage);
-	void SetWarpEffect_Beserk(float Value);
 	void SensaroundEnd();
 	void SensaroundStart();
-	void Beserk_End_PP();
 	void AsyncPlayPsychosisSystem(TSoftObjectPtr<class UNiagaraSystem> System);
 	void EnergyShieldEnd();
 	void EnergyShieldStart();
@@ -276,14 +330,80 @@ public:
 	void EnhanceVisionStart();
 	void Psychosis_End();
 	void Psychosis_Start();
-	void InpActEvt_Gamepad_MenuNav_Sort_K2Node_InputActionEvent_0(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Sort_K2Node_InputActionEvent_1(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Vaporize_K2Node_InputActionEvent_2(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Vaporize_K2Node_InputActionEvent_3(const struct FKey& Key);
-	void InpActEvt_MenuNav_Sort_K2Node_InputActionEvent_4(const struct FKey& Key);
-	void InpActEvt_MenuNav_Sort_K2Node_InputActionEvent_5(const struct FKey& Key);
-	void InpActEvt_MenuNav_Vaporize_K2Node_InputActionEvent_6(const struct FKey& Key);
-	void InpActEvt_MenuNav_Vaporize_K2Node_InputActionEvent_7(const struct FKey& Key);
+	void Beserk_End_PP();
+	void SetWarpEffect_Beserk(float Value);
+	void Beserk_Apply_PP();
+	void Medipatch_Apply_PP();
+	void InpActEvt_JCMS_Real_Interact_K2Node_InputActionEvent_0(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Interact_K2Node_InputActionEvent_1(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Sort_K2Node_InputActionEvent_2(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Sort_K2Node_InputActionEvent_3(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Sort_K2Node_InputActionEvent_4(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Sort_K2Node_InputActionEvent_5(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Vaporize_K2Node_InputActionEvent_6(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Vaporize_K2Node_InputActionEvent_7(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Vaporize_K2Node_InputActionEvent_8(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Vaporize_K2Node_InputActionEvent_9(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_10(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_11(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_12(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_13(const struct FKey& Key);
+	void InpActEvt_JCMS_Escape_K2Node_InputActionEvent_14(const struct FKey& Key);
+	void InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_15(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt4_K2Node_InputActionEvent_16(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt4_K2Node_InputActionEvent_17(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt4_K2Node_InputActionEvent_18(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt4_K2Node_InputActionEvent_19(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt3_K2Node_InputActionEvent_20(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt3_K2Node_InputActionEvent_21(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt3_K2Node_InputActionEvent_22(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt3_K2Node_InputActionEvent_23(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_24(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_25(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_26(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_27(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_28(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_29(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_30(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_31(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_32(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_33(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Lean_K2Node_InputActionEvent_34(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Lean_K2Node_InputActionEvent_35(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_HotbarCyclePrevious_K2Node_InputActionEvent_36(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_HotbarCyclePrevious_K2Node_InputActionEvent_37(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_HotbarCycleNext_K2Node_InputActionEvent_38(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_HotbarCycleNext_K2Node_InputActionEvent_39(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Aim_K2Node_InputActionEvent_40(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Aim_K2Node_InputActionEvent_41(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_42(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_43(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_ModeNext_K2Node_InputActionEvent_44(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_ModeNext_K2Node_InputActionEvent_45(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_PrimaryAttack_K2Node_InputActionEvent_46(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_PrimaryAttack_K2Node_InputActionEvent_47(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_PrimaryAttack_K2Node_InputActionEvent_48(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_PrimaryAttack_K2Node_InputActionEvent_49(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Interact_K2Node_InputActionEvent_50(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Interact_K2Node_InputActionEvent_51(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Sprint_K2Node_InputActionEvent_52(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Sprint_K2Node_InputActionEvent_53(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Sprint_K2Node_InputActionEvent_54(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Sprint_K2Node_InputActionEvent_55(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Crouch_K2Node_InputActionEvent_56(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Crouch_K2Node_InputActionEvent_57(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Crouch_K2Node_InputActionEvent_58(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Crouch_K2Node_InputActionEvent_59(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Jump_K2Node_InputActionEvent_60(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Jump_K2Node_InputActionEvent_61(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Jump_K2Node_InputActionEvent_62(const struct FKey& Key);
+	void InpActEvt_Gamepad_Real_Jump_K2Node_InputActionEvent_63(const struct FKey& Key);
+	void InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(const struct FKey& Key);
+	void InpActEvt_JCMS_Real_Reload_K2Node_InputActionEvent_65(const struct FKey& Key);
+	void InpActEvt_MenuNav_Sort_K2Node_InputActionEvent_66(const struct FKey& Key);
+	void InpActEvt_MenuNav_Sort_K2Node_InputActionEvent_67(const struct FKey& Key);
+	void InpActEvt_MenuNav_Vaporize_K2Node_InputActionEvent_68(const struct FKey& Key);
+	void InpActEvt_MenuNav_Vaporize_K2Node_InputActionEvent_69(const struct FKey& Key);
 	void InpActEvt_Gamepad_RightTrigger_K2Node_InputKeyEvent_0(const struct FKey& Key);
 	void InpActEvt_Gamepad_RightTrigger_K2Node_InputKeyEvent_1(const struct FKey& Key);
 	void InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_2(const struct FKey& Key);
@@ -300,89 +420,59 @@ public:
 	void InpActEvt_LeftControl_K2Node_InputKeyEvent_13(const struct FKey& Key);
 	void InpActEvt_Tab_K2Node_InputKeyEvent_14(const struct FKey& Key);
 	void InpActEvt_Tab_K2Node_InputKeyEvent_15(const struct FKey& Key);
-	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_8(const struct FKey& Key);
-	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_9(const struct FKey& Key);
-	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_10(const struct FKey& Key);
-	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_11(const struct FKey& Key);
-	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_12(const struct FKey& Key);
-	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_13(const struct FKey& Key);
-	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_14(const struct FKey& Key);
-	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_15(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt4_K2Node_InputActionEvent_16(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt4_K2Node_InputActionEvent_17(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt4_K2Node_InputActionEvent_18(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt4_K2Node_InputActionEvent_19(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt3_K2Node_InputActionEvent_20(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt3_K2Node_InputActionEvent_21(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt3_K2Node_InputActionEvent_22(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt3_K2Node_InputActionEvent_23(const struct FKey& Key);
-	void InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_24(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_25(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_26(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_28(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_29(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_30(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_31(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_32(const struct FKey& Key);
-	void InpActEvt_Real_QuickSave_K2Node_InputActionEvent_33(const struct FKey& Key);
-	void InpActEvt_Real_QuickLoad_K2Node_InputActionEvent_34(const struct FKey& Key);
-	void InpActEvt_Real_LeanRight_K2Node_InputActionEvent_35(const struct FKey& Key);
-	void InpActEvt_Real_LeanRight_K2Node_InputActionEvent_36(const struct FKey& Key);
-	void InpActEvt_Real_LeanLeft_K2Node_InputActionEvent_37(const struct FKey& Key);
-	void InpActEvt_Real_LeanLeft_K2Node_InputActionEvent_38(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Lean_K2Node_InputActionEvent_39(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_40(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_41(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_42(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_43(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_44(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_45(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_46(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_47(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_HotbarCycleNext_K2Node_InputActionEvent_48(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_HotbarCyclePrevious_K2Node_InputActionEvent_49(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_ModeNext_K2Node_InputActionEvent_50(const struct FKey& Key);
-	void InpActEvt_Real_ModeNext_K2Node_InputActionEvent_51(const struct FKey& Key);
-	void InpActEvt_Real_Reload_K2Node_InputActionEvent_52(const struct FKey& Key);
-	void InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_53(const struct FKey& Key);
-	void InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_54(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_PrimaryAttack_K2Node_InputActionEvent_55(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_PrimaryAttack_K2Node_InputActionEvent_56(const struct FKey& Key);
-	void InpActEvt_Real_Interact_K2Node_InputActionEvent_57(const struct FKey& Key);
-	void InpActEvt_Real_Interact_K2Node_InputActionEvent_58(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Interact_K2Node_InputActionEvent_59(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Interact_K2Node_InputActionEvent_60(const struct FKey& Key);
-	void InpActEvt_Real_MoveBackward_K2Node_InputActionEvent_61(const struct FKey& Key);
-	void InpActEvt_Real_MoveBackward_K2Node_InputActionEvent_62(const struct FKey& Key);
-	void InpActEvt_Real_MoveForward_K2Node_InputActionEvent_63(const struct FKey& Key);
-	void InpActEvt_Real_MoveForward_K2Node_InputActionEvent_64(const struct FKey& Key);
-	void InpActEvt_Real_MoveRight_K2Node_InputActionEvent_65(const struct FKey& Key);
-	void InpActEvt_Real_MoveRight_K2Node_InputActionEvent_66(const struct FKey& Key);
-	void InpActEvt_Real_MoveLeft_K2Node_InputActionEvent_67(const struct FKey& Key);
-	void InpActEvt_Real_MoveLeft_K2Node_InputActionEvent_68(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Jump_K2Node_InputActionEvent_69(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Jump_K2Node_InputActionEvent_70(const struct FKey& Key);
-	void InpActEvt_Real_Jump_K2Node_InputActionEvent_71(const struct FKey& Key);
-	void InpActEvt_Real_Jump_K2Node_InputActionEvent_72(const struct FKey& Key);
-	void InpActEvt_Real_Sprint_K2Node_InputActionEvent_73(const struct FKey& Key);
-	void InpActEvt_Real_Sprint_K2Node_InputActionEvent_74(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Sprint_K2Node_InputActionEvent_75(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Sprint_K2Node_InputActionEvent_76(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Crouch_K2Node_InputActionEvent_77(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Crouch_K2Node_InputActionEvent_78(const struct FKey& Key);
-	void InpActEvt_Real_Crouch_K2Node_InputActionEvent_79(const struct FKey& Key);
-	void InpActEvt_Real_Crouch_K2Node_InputActionEvent_80(const struct FKey& Key);
-	void InpActEvt_Real_Aim_K2Node_InputActionEvent_81(const struct FKey& Key);
-	void InpActEvt_Real_Aim_K2Node_InputActionEvent_82(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_83(const struct FKey& Key);
-	void InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_84(const struct FKey& Key);
-	void InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(const struct FKey& Key);
-	void InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_86(const struct FKey& Key);
-	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_87(const struct FKey& Key);
-	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_88(const struct FKey& Key);
-	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_89(const struct FKey& Key);
-	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_90(const struct FKey& Key);
+	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_70(const struct FKey& Key);
+	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_71(const struct FKey& Key);
+	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_72(const struct FKey& Key);
+	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_73(const struct FKey& Key);
+	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_74(const struct FKey& Key);
+	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_75(const struct FKey& Key);
+	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_76(const struct FKey& Key);
+	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_77(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt4_K2Node_InputActionEvent_78(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt4_K2Node_InputActionEvent_79(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt3_K2Node_InputActionEvent_80(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt3_K2Node_InputActionEvent_81(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_82(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_83(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_84(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_85(const struct FKey& Key);
+	void InpActEvt_Real_QuickSave_K2Node_InputActionEvent_86(const struct FKey& Key);
+	void InpActEvt_Real_QuickLoad_K2Node_InputActionEvent_87(const struct FKey& Key);
+	void InpActEvt_Real_LeanRight_K2Node_InputActionEvent_88(const struct FKey& Key);
+	void InpActEvt_Real_LeanRight_K2Node_InputActionEvent_89(const struct FKey& Key);
+	void InpActEvt_Real_LeanLeft_K2Node_InputActionEvent_90(const struct FKey& Key);
+	void InpActEvt_Real_LeanLeft_K2Node_InputActionEvent_91(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_92(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_93(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_94(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_95(const struct FKey& Key);
+	void InpActEvt_Real_ModeNext_K2Node_InputActionEvent_96(const struct FKey& Key);
+	void InpActEvt_Real_Reload_K2Node_InputActionEvent_97(const struct FKey& Key);
+	void InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_98(const struct FKey& Key);
+	void InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_99(const struct FKey& Key);
+	void InpActEvt_Real_Interact_K2Node_InputActionEvent_100(const struct FKey& Key);
+	void InpActEvt_Real_Interact_K2Node_InputActionEvent_101(const struct FKey& Key);
+	void InpActEvt_Real_MoveBackward_K2Node_InputActionEvent_102(const struct FKey& Key);
+	void InpActEvt_Real_MoveBackward_K2Node_InputActionEvent_103(const struct FKey& Key);
+	void InpActEvt_Real_MoveForward_K2Node_InputActionEvent_104(const struct FKey& Key);
+	void InpActEvt_Real_MoveForward_K2Node_InputActionEvent_105(const struct FKey& Key);
+	void InpActEvt_Real_MoveRight_K2Node_InputActionEvent_106(const struct FKey& Key);
+	void InpActEvt_Real_MoveRight_K2Node_InputActionEvent_107(const struct FKey& Key);
+	void InpActEvt_Real_MoveLeft_K2Node_InputActionEvent_108(const struct FKey& Key);
+	void InpActEvt_Real_MoveLeft_K2Node_InputActionEvent_109(const struct FKey& Key);
+	void InpActEvt_Real_Jump_K2Node_InputActionEvent_110(const struct FKey& Key);
+	void InpActEvt_Real_Jump_K2Node_InputActionEvent_111(const struct FKey& Key);
+	void InpActEvt_Real_Sprint_K2Node_InputActionEvent_112(const struct FKey& Key);
+	void InpActEvt_Real_Sprint_K2Node_InputActionEvent_113(const struct FKey& Key);
+	void InpActEvt_Real_Crouch_K2Node_InputActionEvent_114(const struct FKey& Key);
+	void InpActEvt_Real_Crouch_K2Node_InputActionEvent_115(const struct FKey& Key);
+	void InpActEvt_Real_Aim_K2Node_InputActionEvent_116(const struct FKey& Key);
+	void InpActEvt_Real_Aim_K2Node_InputActionEvent_117(const struct FKey& Key);
+	void InpActEvt_Locked_Escape_K2Node_InputActionEvent_118(const struct FKey& Key);
+	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_119(const struct FKey& Key);
+	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_120(const struct FKey& Key);
+	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_121(const struct FKey& Key);
+	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_122(const struct FKey& Key);
 	void InpActEvt_Decimal_K2Node_InputKeyEvent_16(const struct FKey& Key);
 	void InpActEvt_Subtract_K2Node_InputKeyEvent_17(const struct FKey& Key);
 	void InpActEvt_NumPadNine_K2Node_InputKeyEvent_18(const struct FKey& Key);
@@ -402,8 +492,6 @@ public:
 	void OnLoaded_9A78B542483B7F7CB2D9279EC6F3C245(class UObject* Loaded);
 	void SensaroundTimeline__UpdateFunc();
 	void SensaroundTimeline__FinishedFunc();
-	void Berserk_PP_Disable_Timeline__UpdateFunc();
-	void Berserk_PP_Disable_Timeline__FinishedFunc();
 	void Timeline_13__UpdateFunc();
 	void Timeline_13__FinishedFunc();
 	void Timeline_12__UpdateFunc();
@@ -432,6 +520,8 @@ public:
 	void Timeline_1__FinishedFunc();
 	void Psychosis_Enable_Timeline__UpdateFunc();
 	void Psychosis_Enable_Timeline__FinishedFunc();
+	void Berserk_PP_Disable_Timeline__UpdateFunc();
+	void Berserk_PP_Disable_Timeline__FinishedFunc();
 	void UserConstructionScript();
 	void InitializeChannelingInteract();
 	void TryInteract(bool* ValidInteract);
@@ -594,8 +684,9 @@ public:
 		return GetDefaultObjImpl<APAWN_Hacker_Simple_C>();
 	}
 };
+#pragma pack(pop)
 static_assert(alignof(APAWN_Hacker_Simple_C) == 0x000010, "Wrong alignment on APAWN_Hacker_Simple_C");
-static_assert(sizeof(APAWN_Hacker_Simple_C) == 0x000E50, "Wrong size on APAWN_Hacker_Simple_C");
+static_assert(sizeof(APAWN_Hacker_Simple_C) == 0x000E70, "Wrong size on APAWN_Hacker_Simple_C");
 static_assert(offsetof(APAWN_Hacker_Simple_C, UberGraphFrame_PAWN_Hacker_Simple_C) == 0x000680, "Member 'APAWN_Hacker_Simple_C::UberGraphFrame_PAWN_Hacker_Simple_C' has a wrong offset!");
 static_assert(offsetof(APAWN_Hacker_Simple_C, Breathing) == 0x000688, "Member 'APAWN_Hacker_Simple_C::Breathing' has a wrong offset!");
 static_assert(offsetof(APAWN_Hacker_Simple_C, MouthAudio) == 0x000690, "Member 'APAWN_Hacker_Simple_C::MouthAudio' has a wrong offset!");
@@ -708,28 +799,29 @@ static_assert(offsetof(APAWN_Hacker_Simple_C, GamepadYaw) == 0x000C24, "Member '
 static_assert(offsetof(APAWN_Hacker_Simple_C, MouseYaw) == 0x000C28, "Member 'APAWN_Hacker_Simple_C::MouseYaw' has a wrong offset!");
 static_assert(offsetof(APAWN_Hacker_Simple_C, MousePitch) == 0x000C2C, "Member 'APAWN_Hacker_Simple_C::MousePitch' has a wrong offset!");
 static_assert(offsetof(APAWN_Hacker_Simple_C, GamepadCursorMoveTimestamp) == 0x000C30, "Member 'APAWN_Hacker_Simple_C::GamepadCursorMoveTimestamp' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, IsTryingToLean) == 0x000C34, "Member 'APAWN_Hacker_Simple_C::IsTryingToLean' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, LastRecoilTimestamp) == 0x000C38, "Member 'APAWN_Hacker_Simple_C::LastRecoilTimestamp' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, RecoilRecenterDelay) == 0x000C3C, "Member 'APAWN_Hacker_Simple_C::RecoilRecenterDelay' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, CurrentWeaponOffset) == 0x000C40, "Member 'APAWN_Hacker_Simple_C::CurrentWeaponOffset' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, CurrentKickbackRatio) == 0x000C4C, "Member 'APAWN_Hacker_Simple_C::CurrentKickbackRatio' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, RecentInteractable) == 0x000C50, "Member 'APAWN_Hacker_Simple_C::RecentInteractable' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, RecentInteractPrimitive) == 0x000C58, "Member 'APAWN_Hacker_Simple_C::RecentInteractPrimitive' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, DetoxTimerHandle) == 0x000C60, "Member 'APAWN_Hacker_Simple_C::DetoxTimerHandle' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, LastViewportSize) == 0x000C68, "Member 'APAWN_Hacker_Simple_C::LastViewportSize' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, LastHorizontalFOV) == 0x000C70, "Member 'APAWN_Hacker_Simple_C::LastHorizontalFOV' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, MI_Medipatch_PP) == 0x000C78, "Member 'APAWN_Hacker_Simple_C::MI_Medipatch_PP' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, ChromaticAbberationMax) == 0x000C80, "Member 'APAWN_Hacker_Simple_C::ChromaticAbberationMax' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, MI_Berserk_Side_Effect_PP) == 0x000C88, "Member 'APAWN_Hacker_Simple_C::MI_Berserk_Side_Effect_PP' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, Beserk_Patch_Apply_PP) == 0x000C90, "Member 'APAWN_Hacker_Simple_C::Beserk_Patch_Apply_PP' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, Psychosis_Side_Effect_PP) == 0x000C98, "Member 'APAWN_Hacker_Simple_C::Psychosis_Side_Effect_PP' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, PsychosisSpritesNiagara) == 0x000CA0, "Member 'APAWN_Hacker_Simple_C::PsychosisSpritesNiagara' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, Cyberspace_Entry_PP) == 0x000CA8, "Member 'APAWN_Hacker_Simple_C::Cyberspace_Entry_PP' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, LensDistortionPP) == 0x000CB0, "Member 'APAWN_Hacker_Simple_C::LensDistortionPP' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, ThermalDamageAttribCategory) == 0x000CB8, "Member 'APAWN_Hacker_Simple_C::ThermalDamageAttribCategory' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, DermalPatchAttribCategoryMap) == 0x000CC0, "Member 'APAWN_Hacker_Simple_C::DermalPatchAttribCategoryMap' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, BioPoisonHazardTypes) == 0x000D10, "Member 'APAWN_Hacker_Simple_C::BioPoisonHazardTypes' has a wrong offset!");
-static_assert(offsetof(APAWN_Hacker_Simple_C, QueuedRespawnLevelName) == 0x000D20, "Member 'APAWN_Hacker_Simple_C::QueuedRespawnLevelName' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, GamepadCursorSpeed) == 0x000C34, "Member 'APAWN_Hacker_Simple_C::GamepadCursorSpeed' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, IsTryingToLean) == 0x000C38, "Member 'APAWN_Hacker_Simple_C::IsTryingToLean' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, LastRecoilTimestamp) == 0x000C3C, "Member 'APAWN_Hacker_Simple_C::LastRecoilTimestamp' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, RecoilRecenterDelay) == 0x000C40, "Member 'APAWN_Hacker_Simple_C::RecoilRecenterDelay' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, CurrentWeaponOffset) == 0x000C44, "Member 'APAWN_Hacker_Simple_C::CurrentWeaponOffset' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, CurrentKickbackRatio) == 0x000C50, "Member 'APAWN_Hacker_Simple_C::CurrentKickbackRatio' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, RecentInteractable) == 0x000C58, "Member 'APAWN_Hacker_Simple_C::RecentInteractable' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, RecentInteractPrimitive) == 0x000C60, "Member 'APAWN_Hacker_Simple_C::RecentInteractPrimitive' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, DetoxTimerHandle) == 0x000C68, "Member 'APAWN_Hacker_Simple_C::DetoxTimerHandle' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, LastViewportSize) == 0x000C70, "Member 'APAWN_Hacker_Simple_C::LastViewportSize' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, LastHorizontalFOV) == 0x000C78, "Member 'APAWN_Hacker_Simple_C::LastHorizontalFOV' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, MI_Medipatch_PP) == 0x000C80, "Member 'APAWN_Hacker_Simple_C::MI_Medipatch_PP' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, ChromaticAbberationMax) == 0x000C88, "Member 'APAWN_Hacker_Simple_C::ChromaticAbberationMax' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, MI_Berserk_Side_Effect_PP) == 0x000C90, "Member 'APAWN_Hacker_Simple_C::MI_Berserk_Side_Effect_PP' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, Beserk_Patch_Apply_PP) == 0x000C98, "Member 'APAWN_Hacker_Simple_C::Beserk_Patch_Apply_PP' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, Psychosis_Side_Effect_PP) == 0x000CA0, "Member 'APAWN_Hacker_Simple_C::Psychosis_Side_Effect_PP' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, PsychosisSpritesNiagara) == 0x000CA8, "Member 'APAWN_Hacker_Simple_C::PsychosisSpritesNiagara' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, Cyberspace_Entry_PP) == 0x000CB0, "Member 'APAWN_Hacker_Simple_C::Cyberspace_Entry_PP' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, LensDistortionPP) == 0x000CB8, "Member 'APAWN_Hacker_Simple_C::LensDistortionPP' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, ThermalDamageAttribCategory) == 0x000CC0, "Member 'APAWN_Hacker_Simple_C::ThermalDamageAttribCategory' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, DermalPatchAttribCategoryMap) == 0x000CC8, "Member 'APAWN_Hacker_Simple_C::DermalPatchAttribCategoryMap' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, BioPoisonHazardTypes) == 0x000D18, "Member 'APAWN_Hacker_Simple_C::BioPoisonHazardTypes' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, QueuedRespawnLevelName) == 0x000D28, "Member 'APAWN_Hacker_Simple_C::QueuedRespawnLevelName' has a wrong offset!");
 static_assert(offsetof(APAWN_Hacker_Simple_C, DefaultMeshTransform) == 0x000D30, "Member 'APAWN_Hacker_Simple_C::DefaultMeshTransform' has a wrong offset!");
 static_assert(offsetof(APAWN_Hacker_Simple_C, IsHoldingUp) == 0x000D60, "Member 'APAWN_Hacker_Simple_C::IsHoldingUp' has a wrong offset!");
 static_assert(offsetof(APAWN_Hacker_Simple_C, IsHoldingDown) == 0x000D61, "Member 'APAWN_Hacker_Simple_C::IsHoldingDown' has a wrong offset!");
@@ -768,6 +860,11 @@ static_assert(offsetof(APAWN_Hacker_Simple_C, DebugGamepadLeftSpecialHeld) == 0x
 static_assert(offsetof(APAWN_Hacker_Simple_C, DebugGamepadRightThumbHeld) == 0x000E49, "Member 'APAWN_Hacker_Simple_C::DebugGamepadRightThumbHeld' has a wrong offset!");
 static_assert(offsetof(APAWN_Hacker_Simple_C, DebugGamepadRightTriggerHeld) == 0x000E4A, "Member 'APAWN_Hacker_Simple_C::DebugGamepadRightTriggerHeld' has a wrong offset!");
 static_assert(offsetof(APAWN_Hacker_Simple_C, TEMP_UsingSprintToggle) == 0x000E4B, "Member 'APAWN_Hacker_Simple_C::TEMP_UsingSprintToggle' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, IsHoldingRightAction) == 0x000E4C, "Member 'APAWN_Hacker_Simple_C::IsHoldingRightAction' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, IsHoldingLeftAction) == 0x000E4D, "Member 'APAWN_Hacker_Simple_C::IsHoldingLeftAction' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, GamepadMotionTilt) == 0x000E50, "Member 'APAWN_Hacker_Simple_C::GamepadMotionTilt' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, MagicNumber) == 0x000E5C, "Member 'APAWN_Hacker_Simple_C::MagicNumber' has a wrong offset!");
+static_assert(offsetof(APAWN_Hacker_Simple_C, HackerController) == 0x000E60, "Member 'APAWN_Hacker_Simple_C::HackerController' has a wrong offset!");
 
 }
 

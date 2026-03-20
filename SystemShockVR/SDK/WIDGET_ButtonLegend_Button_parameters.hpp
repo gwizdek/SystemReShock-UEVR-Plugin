@@ -10,9 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "SlateCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "UMG_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 
 
 namespace SDK::Params
@@ -54,15 +55,22 @@ static_assert(sizeof(WIDGET_ButtonLegend_Button_C_PreConstruct) == 0x000001, "Wr
 static_assert(offsetof(WIDGET_ButtonLegend_Button_C_PreConstruct, IsDesignTime) == 0x000000, "Member 'WIDGET_ButtonLegend_Button_C_PreConstruct::IsDesignTime' has a wrong offset!");
 
 // Function WIDGET_ButtonLegend_Button.WIDGET_ButtonLegend_Button_C.UpdateKeyWidget
-// 0x0001 (0x0001 - 0x0000)
+// 0x0078 (0x0078 - 0x0000)
 struct WIDGET_ButtonLegend_Button_C_UpdateKeyWidget final
 {
 public:
-	bool                                          CallFunc_IsEmpty_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class FString                                 CallFunc_GetPathName_ReturnValue;                  // 0x0000(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsEmpty_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0018(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	TSet<ENUM_ControllerType>                     K2Node_MakeSet_Set;                                // 0x0028(0x0050)()
 };
-static_assert(alignof(WIDGET_ButtonLegend_Button_C_UpdateKeyWidget) == 0x000001, "Wrong alignment on WIDGET_ButtonLegend_Button_C_UpdateKeyWidget");
-static_assert(sizeof(WIDGET_ButtonLegend_Button_C_UpdateKeyWidget) == 0x000001, "Wrong size on WIDGET_ButtonLegend_Button_C_UpdateKeyWidget");
-static_assert(offsetof(WIDGET_ButtonLegend_Button_C_UpdateKeyWidget, CallFunc_IsEmpty_ReturnValue) == 0x000000, "Member 'WIDGET_ButtonLegend_Button_C_UpdateKeyWidget::CallFunc_IsEmpty_ReturnValue' has a wrong offset!");
+static_assert(alignof(WIDGET_ButtonLegend_Button_C_UpdateKeyWidget) == 0x000008, "Wrong alignment on WIDGET_ButtonLegend_Button_C_UpdateKeyWidget");
+static_assert(sizeof(WIDGET_ButtonLegend_Button_C_UpdateKeyWidget) == 0x000078, "Wrong size on WIDGET_ButtonLegend_Button_C_UpdateKeyWidget");
+static_assert(offsetof(WIDGET_ButtonLegend_Button_C_UpdateKeyWidget, CallFunc_GetPathName_ReturnValue) == 0x000000, "Member 'WIDGET_ButtonLegend_Button_C_UpdateKeyWidget::CallFunc_GetPathName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_Button_C_UpdateKeyWidget, CallFunc_IsEmpty_ReturnValue) == 0x000010, "Member 'WIDGET_ButtonLegend_Button_C_UpdateKeyWidget::CallFunc_IsEmpty_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_Button_C_UpdateKeyWidget, CallFunc_Concat_StrStr_ReturnValue) == 0x000018, "Member 'WIDGET_ButtonLegend_Button_C_UpdateKeyWidget::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_Button_C_UpdateKeyWidget, K2Node_MakeSet_Set) == 0x000028, "Member 'WIDGET_ButtonLegend_Button_C_UpdateKeyWidget::K2Node_MakeSet_Set' has a wrong offset!");
 
 // Function WIDGET_ButtonLegend_Button.WIDGET_ButtonLegend_Button_C.HandleMouseEnter
 // 0x0008 (0x0008 - 0x0000)

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "MeshDescription_structs.hpp"
 #include "EditableMesh_structs.hpp"
+#include "MeshDescription_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 

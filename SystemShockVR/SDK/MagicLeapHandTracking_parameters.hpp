@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "MagicLeapHandTracking_structs.hpp"
+#include "InputCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "LiveLinkInterface_structs.hpp"
-#include "InputCore_structs.hpp"
 
 
 namespace SDK::Params

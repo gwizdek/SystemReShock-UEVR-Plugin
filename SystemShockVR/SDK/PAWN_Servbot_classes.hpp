@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_DeathBlowType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "PAWN_Enemy_classes.hpp"
-#include "ENUM_DeathBlowType_structs.hpp"
 
 
 namespace SDK

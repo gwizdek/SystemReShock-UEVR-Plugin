@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_WirePuzzle_CellData_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_WirePlugState_structs.hpp"
 #include "ENUM_CardinalDirection_structs.hpp"
-#include "STRUCT_TraceInfo_structs.hpp"
 #include "Engine_structs.hpp"
+#include "STRUCT_WirePuzzle_CellData_structs.hpp"
+#include "STRUCT_TraceInfo_structs.hpp"
 
 
 namespace SDK::Params

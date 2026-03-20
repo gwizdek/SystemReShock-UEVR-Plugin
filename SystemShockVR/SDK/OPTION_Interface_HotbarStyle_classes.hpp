@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "WIDGET_Settings_MultiSelector_classes.hpp"
 #include "ENUM_HotbarStyle_structs.hpp"
+#include "WIDGET_Settings_MultiSelector_classes.hpp"
 
 
 namespace SDK

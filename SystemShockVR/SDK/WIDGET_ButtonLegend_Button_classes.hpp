@@ -10,17 +10,17 @@
 
 #include "Basic.hpp"
 
-#include "SlateCore_structs.hpp"
 #include "Engine_structs.hpp"
-#include "InputCore_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "UMG_classes.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 
 
 namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_ButtonLegend_Button.WIDGET_ButtonLegend_Button_C
-// 0x0088 (0x02E8 - 0x0260)
+// 0x0070 (0x02D0 - 0x0260)
 class UWIDGET_ButtonLegend_Button_C final : public UUserWidget
 {
 public:
@@ -33,8 +33,7 @@ public:
 	class FText                                   ButtonActionText;                                  // 0x0290(0x0018)(Edit, BlueprintVisible)
 	TMulticastInlineDelegate<void(const struct FGeometry& Geometry, const struct FPointerEvent& InputEvent)> OnClicked;                                         // 0x02A8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 	class FString                                 ButtonInputAction;                                 // 0x02B8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
-	struct FKey                                   ExplicitKeyMapping;                                // 0x02C8(0x0018)(Edit, BlueprintVisible, HasGetValueTypeHash)
-	bool                                          ShowBackground;                                    // 0x02E0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          ShowBackground;                                    // 0x02C8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 
 public:
 	void ExecuteUbergraph_WIDGET_ButtonLegend_Button(int32 EntryPoint);
@@ -63,7 +62,7 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_ButtonLegend_Button_C) == 0x000008, "Wrong alignment on UWIDGET_ButtonLegend_Button_C");
-static_assert(sizeof(UWIDGET_ButtonLegend_Button_C) == 0x0002E8, "Wrong size on UWIDGET_ButtonLegend_Button_C");
+static_assert(sizeof(UWIDGET_ButtonLegend_Button_C) == 0x0002D0, "Wrong size on UWIDGET_ButtonLegend_Button_C");
 static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, UberGraphFrame) == 0x000260, "Member 'UWIDGET_ButtonLegend_Button_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, ANIM_EnableButton) == 0x000268, "Member 'UWIDGET_ButtonLegend_Button_C::ANIM_EnableButton' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, MESH_ButtonBackground) == 0x000270, "Member 'UWIDGET_ButtonLegend_Button_C::MESH_ButtonBackground' has a wrong offset!");
@@ -73,8 +72,7 @@ static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, WIDGET_ButtonLegend_Key) =
 static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, ButtonActionText) == 0x000290, "Member 'UWIDGET_ButtonLegend_Button_C::ButtonActionText' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, OnClicked) == 0x0002A8, "Member 'UWIDGET_ButtonLegend_Button_C::OnClicked' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, ButtonInputAction) == 0x0002B8, "Member 'UWIDGET_ButtonLegend_Button_C::ButtonInputAction' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, ExplicitKeyMapping) == 0x0002C8, "Member 'UWIDGET_ButtonLegend_Button_C::ExplicitKeyMapping' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, ShowBackground) == 0x0002E0, "Member 'UWIDGET_ButtonLegend_Button_C::ShowBackground' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_Button_C, ShowBackground) == 0x0002C8, "Member 'UWIDGET_ButtonLegend_Button_C::ShowBackground' has a wrong offset!");
 
 }
 

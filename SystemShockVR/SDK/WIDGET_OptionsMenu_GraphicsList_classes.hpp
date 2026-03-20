@@ -34,8 +34,8 @@ public:
 	class UScrollBox*                             SCROLLBOX_OptionsMenuList;                         // 0x0310(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 
 public:
-	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 	void InitializeList(class UWIDGET_MenuBase_C* ParentScreen);
+	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 
 public:
 	static class UClass* StaticClass()

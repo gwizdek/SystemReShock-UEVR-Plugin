@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "ENUM_MobileLaser_BeamSweepType_structs.hpp"
 #include "ENUM_MobileLaser_BeamState_structs.hpp"
+#include "ENUM_MobileLaser_BeamSweepType_structs.hpp"
 #include "Engine_structs.hpp"
 
 
@@ -34,6 +34,19 @@ static_assert(sizeof(TASK_MobileLaser_Beam_Sweep_C_ExecuteUbergraph_TASK_MobileL
 static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_ExecuteUbergraph_TASK_MobileLaser_Beam_Sweep, EntryPoint) == 0x000000, "Member 'TASK_MobileLaser_Beam_Sweep_C_ExecuteUbergraph_TASK_MobileLaser_Beam_Sweep::EntryPoint' has a wrong offset!");
 static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_ExecuteUbergraph_TASK_MobileLaser_Beam_Sweep, K2Node_Event_OwnerController) == 0x000008, "Member 'TASK_MobileLaser_Beam_Sweep_C_ExecuteUbergraph_TASK_MobileLaser_Beam_Sweep::K2Node_Event_OwnerController' has a wrong offset!");
 static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_ExecuteUbergraph_TASK_MobileLaser_Beam_Sweep, K2Node_Event_ControlledPawn) == 0x000010, "Member 'TASK_MobileLaser_Beam_Sweep_C_ExecuteUbergraph_TASK_MobileLaser_Beam_Sweep::K2Node_Event_ControlledPawn' has a wrong offset!");
+
+// Function TASK_MobileLaser_Beam_Sweep.TASK_MobileLaser_Beam_Sweep_C.ReceiveExecuteAI
+// 0x0010 (0x0010 - 0x0000)
+struct TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI final
+{
+public:
+	class AAIController*                          OwnerController;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APawn*                                  ControlledPawn;                                    // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI) == 0x000008, "Wrong alignment on TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI");
+static_assert(sizeof(TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI) == 0x000010, "Wrong size on TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI");
+static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI, OwnerController) == 0x000000, "Member 'TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI::OwnerController' has a wrong offset!");
+static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI, ControlledPawn) == 0x000008, "Member 'TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI::ControlledPawn' has a wrong offset!");
 
 // Function TASK_MobileLaser_Beam_Sweep.TASK_MobileLaser_Beam_Sweep_C.SetSweepStartLocalDirection
 // 0x00D0 (0x00D0 - 0x0000)
@@ -198,19 +211,6 @@ static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_SetSweepEndLocalDirection, 
 static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_SetSweepEndLocalDirection, CallFunc_WorldDirectionToLocalDirection_LocalDirection) == 0x000188, "Member 'TASK_MobileLaser_Beam_Sweep_C_SetSweepEndLocalDirection::CallFunc_WorldDirectionToLocalDirection_LocalDirection' has a wrong offset!");
 static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_SetSweepEndLocalDirection, CallFunc_Normal_ReturnValue_3) == 0x000194, "Member 'TASK_MobileLaser_Beam_Sweep_C_SetSweepEndLocalDirection::CallFunc_Normal_ReturnValue_3' has a wrong offset!");
 static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_SetSweepEndLocalDirection, CallFunc_WorldDirectionToLocalDirection_LocalDirection_1) == 0x0001A0, "Member 'TASK_MobileLaser_Beam_Sweep_C_SetSweepEndLocalDirection::CallFunc_WorldDirectionToLocalDirection_LocalDirection_1' has a wrong offset!");
-
-// Function TASK_MobileLaser_Beam_Sweep.TASK_MobileLaser_Beam_Sweep_C.ReceiveExecuteAI
-// 0x0010 (0x0010 - 0x0000)
-struct TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI final
-{
-public:
-	class AAIController*                          OwnerController;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APawn*                                  ControlledPawn;                                    // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI) == 0x000008, "Wrong alignment on TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI");
-static_assert(sizeof(TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI) == 0x000010, "Wrong size on TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI");
-static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI, OwnerController) == 0x000000, "Member 'TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI::OwnerController' has a wrong offset!");
-static_assert(offsetof(TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI, ControlledPawn) == 0x000008, "Member 'TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI::ControlledPawn' has a wrong offset!");
 
 // Function TASK_MobileLaser_Beam_Sweep.TASK_MobileLaser_Beam_Sweep_C.UpdateBeamOn
 // 0x0250 (0x0250 - 0x0000)

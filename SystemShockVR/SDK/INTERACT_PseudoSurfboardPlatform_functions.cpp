@@ -52,6 +52,34 @@ void AINTERACT_PseudoSurfboardPlatform_C::OnToggleTargetInteractable()
 }
 
 
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnStartedSurfing
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void AINTERACT_PseudoSurfboardPlatform_C::EVENT_OnStartedSurfing()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "EVENT_OnStartedSurfing");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.SetIgnoreNextHackerOverlap
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void AINTERACT_PseudoSurfboardPlatform_C::SetIgnoreNextHackerOverlap()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "SetIgnoreNextHackerOverlap");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.OnPlatformEnableStateChanged
 // (Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -69,20 +97,6 @@ void AINTERACT_PseudoSurfboardPlatform_C::OnPlatformEnableStateChanged(bool Stat
 	Parms.State = State;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnStartedSurfing
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void AINTERACT_PseudoSurfboardPlatform_C::EVENT_OnStartedSurfing()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "EVENT_OnStartedSurfing");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -170,20 +184,6 @@ void AINTERACT_PseudoSurfboardPlatform_C::ActivatePlatform()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "ActivatePlatform");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.SetIgnoreNextHackerOverlap
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void AINTERACT_PseudoSurfboardPlatform_C::SetIgnoreNextHackerOverlap()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoSurfboardPlatform_C", "SetIgnoreNextHackerOverlap");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

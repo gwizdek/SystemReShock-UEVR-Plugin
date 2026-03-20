@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "CoreGame_structs.hpp"
+#include "ENUM_LightPanelState_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "CoreGame_structs.hpp"
 #include "STRUCT_EffectParams_structs.hpp"
-#include "ENUM_LightPanelState_structs.hpp"
 
 
 namespace SDK::Params

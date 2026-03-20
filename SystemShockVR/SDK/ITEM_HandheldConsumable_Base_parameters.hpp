@@ -14,61 +14,6 @@
 namespace SDK::Params
 {
 
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarIcon
-// 0x0028 (0x0028 - 0x0000)
-struct ITEM_HandheldConsumable_Base_C_GetHotbarIcon final
-{
-public:
-	class UTexture*                               ResultIcon;                                        // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UTextureRenderTarget2D*                 CallFunc_GetItemHotbarRenderTargetForItemClass_Result; // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon) == 0x000008, "Wrong alignment on ITEM_HandheldConsumable_Base_C_GetHotbarIcon");
-static_assert(sizeof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon) == 0x000028, "Wrong size on ITEM_HandheldConsumable_Base_C_GetHotbarIcon");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, ResultIcon) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::ResultIcon' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, CallFunc_GetGameInstance_ReturnValue) == 0x000008, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, K2Node_DynamicCast_AsGI_Single_Player) == 0x000010, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, CallFunc_GetItemHotbarRenderTargetForItemClass_Result) == 0x000020, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::CallFunc_GetItemHotbarRenderTargetForItemClass_Result' has a wrong offset!");
-
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarDisplayName
-// 0x0018 (0x0018 - 0x0000)
-struct ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName final
-{
-public:
-	class FText                                   Result;                                            // 0x0000(0x0018)(Parm, OutParm)
-};
-static_assert(alignof(ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName) == 0x000008, "Wrong alignment on ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName");
-static_assert(sizeof(ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName) == 0x000018, "Wrong size on ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName, Result) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName::Result' has a wrong offset!");
-
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarCount
-// 0x0004 (0x0004 - 0x0000)
-struct ITEM_HandheldConsumable_Base_C_GetHotbarCount final
-{
-public:
-	int32                                         ResultCount;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ITEM_HandheldConsumable_Base_C_GetHotbarCount) == 0x000004, "Wrong alignment on ITEM_HandheldConsumable_Base_C_GetHotbarCount");
-static_assert(sizeof(ITEM_HandheldConsumable_Base_C_GetHotbarCount) == 0x000004, "Wrong size on ITEM_HandheldConsumable_Base_C_GetHotbarCount");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarCount, ResultCount) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarCount::ResultCount' has a wrong offset!");
-
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetEquipState
-// 0x0002 (0x0002 - 0x0000)
-struct ITEM_HandheldConsumable_Base_C_GetEquipState final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsEquipped_Result;                        // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_HandheldConsumable_Base_C_GetEquipState) == 0x000001, "Wrong alignment on ITEM_HandheldConsumable_Base_C_GetEquipState");
-static_assert(sizeof(ITEM_HandheldConsumable_Base_C_GetEquipState) == 0x000002, "Wrong size on ITEM_HandheldConsumable_Base_C_GetEquipState");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetEquipState, Result) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_GetEquipState::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetEquipState, CallFunc_IsEquipped_Result) == 0x000001, "Member 'ITEM_HandheldConsumable_Base_C_GetEquipState::CallFunc_IsEquipped_Result' has a wrong offset!");
-
 // Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.EVENT_OnConsumableBagChanged
 // 0x0100 (0x0100 - 0x0000)
 struct ITEM_HandheldConsumable_Base_C_EVENT_OnConsumableBagChanged final
@@ -392,6 +337,61 @@ static_assert(alignof(ITEM_HandheldConsumable_Base_C_GetTotalConsumableItemCount
 static_assert(sizeof(ITEM_HandheldConsumable_Base_C_GetTotalConsumableItemCount) == 0x000004, "Wrong size on ITEM_HandheldConsumable_Base_C_GetTotalConsumableItemCount");
 static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetTotalConsumableItemCount, Result) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_GetTotalConsumableItemCount::Result' has a wrong offset!");
 
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarIcon
+// 0x0028 (0x0028 - 0x0000)
+struct ITEM_HandheldConsumable_Base_C_GetHotbarIcon final
+{
+public:
+	class UTexture*                               ResultIcon;                                        // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTextureRenderTarget2D*                 CallFunc_GetItemHotbarRenderTargetForItemClass_Result; // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon) == 0x000008, "Wrong alignment on ITEM_HandheldConsumable_Base_C_GetHotbarIcon");
+static_assert(sizeof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon) == 0x000028, "Wrong size on ITEM_HandheldConsumable_Base_C_GetHotbarIcon");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, ResultIcon) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::ResultIcon' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, CallFunc_GetGameInstance_ReturnValue) == 0x000008, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, K2Node_DynamicCast_AsGI_Single_Player) == 0x000010, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarIcon, CallFunc_GetItemHotbarRenderTargetForItemClass_Result) == 0x000020, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarIcon::CallFunc_GetItemHotbarRenderTargetForItemClass_Result' has a wrong offset!");
+
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarDisplayName
+// 0x0018 (0x0018 - 0x0000)
+struct ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName final
+{
+public:
+	class FText                                   Result;                                            // 0x0000(0x0018)(Parm, OutParm)
+};
+static_assert(alignof(ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName) == 0x000008, "Wrong alignment on ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName");
+static_assert(sizeof(ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName) == 0x000018, "Wrong size on ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName, Result) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarDisplayName::Result' has a wrong offset!");
+
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetHotbarCount
+// 0x0004 (0x0004 - 0x0000)
+struct ITEM_HandheldConsumable_Base_C_GetHotbarCount final
+{
+public:
+	int32                                         ResultCount;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ITEM_HandheldConsumable_Base_C_GetHotbarCount) == 0x000004, "Wrong alignment on ITEM_HandheldConsumable_Base_C_GetHotbarCount");
+static_assert(sizeof(ITEM_HandheldConsumable_Base_C_GetHotbarCount) == 0x000004, "Wrong size on ITEM_HandheldConsumable_Base_C_GetHotbarCount");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetHotbarCount, ResultCount) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_GetHotbarCount::ResultCount' has a wrong offset!");
+
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.GetEquipState
+// 0x0002 (0x0002 - 0x0000)
+struct ITEM_HandheldConsumable_Base_C_GetEquipState final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsEquipped_Result;                        // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_HandheldConsumable_Base_C_GetEquipState) == 0x000001, "Wrong alignment on ITEM_HandheldConsumable_Base_C_GetEquipState");
+static_assert(sizeof(ITEM_HandheldConsumable_Base_C_GetEquipState) == 0x000002, "Wrong size on ITEM_HandheldConsumable_Base_C_GetEquipState");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetEquipState, Result) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_GetEquipState::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_GetEquipState, CallFunc_IsEquipped_Result) == 0x000001, "Member 'ITEM_HandheldConsumable_Base_C_GetEquipState::CallFunc_IsEquipped_Result' has a wrong offset!");
+
 // Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.TryUseConsumable
 // 0x0028 (0x0028 - 0x0000)
 struct ITEM_HandheldConsumable_Base_C_TryUseConsumable final
@@ -414,19 +414,6 @@ static_assert(offsetof(ITEM_HandheldConsumable_Base_C_TryUseConsumable, CallFunc
 static_assert(offsetof(ITEM_HandheldConsumable_Base_C_TryUseConsumable, CallFunc_Activate_Result) == 0x000018, "Member 'ITEM_HandheldConsumable_Base_C_TryUseConsumable::CallFunc_Activate_Result' has a wrong offset!");
 static_assert(offsetof(ITEM_HandheldConsumable_Base_C_TryUseConsumable, CallFunc_IsValid_ReturnValue) == 0x000019, "Member 'ITEM_HandheldConsumable_Base_C_TryUseConsumable::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ITEM_HandheldConsumable_Base_C_TryUseConsumable, CallFunc_GetBestSlottedItemToConsume_ConsumableItem) == 0x000020, "Member 'ITEM_HandheldConsumable_Base_C_TryUseConsumable::CallFunc_GetBestSlottedItemToConsume_ConsumableItem' has a wrong offset!");
-
-// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.OnInventoryChanged
-// 0x0010 (0x0010 - 0x0000)
-struct ITEM_HandheldConsumable_Base_C_OnInventoryChanged final
-{
-public:
-	class UCOMP_Inventory_C*                      PrevInventory;                                     // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_HandheldConsumable_Base_C_OnInventoryChanged) == 0x000008, "Wrong alignment on ITEM_HandheldConsumable_Base_C_OnInventoryChanged");
-static_assert(sizeof(ITEM_HandheldConsumable_Base_C_OnInventoryChanged) == 0x000010, "Wrong size on ITEM_HandheldConsumable_Base_C_OnInventoryChanged");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_OnInventoryChanged, PrevInventory) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_OnInventoryChanged::PrevInventory' has a wrong offset!");
-static_assert(offsetof(ITEM_HandheldConsumable_Base_C_OnInventoryChanged, Result) == 0x000008, "Member 'ITEM_HandheldConsumable_Base_C_OnInventoryChanged::Result' has a wrong offset!");
 
 // Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.ShouldAutoEquip
 // 0x000C (0x000C - 0x0000)
@@ -463,6 +450,19 @@ static_assert(offsetof(ITEM_HandheldConsumable_Base_C_ShouldForceEquip, Result) 
 static_assert(offsetof(ITEM_HandheldConsumable_Base_C_ShouldForceEquip, CallFunc_Subtract_IntInt_ReturnValue) == 0x000004, "Member 'ITEM_HandheldConsumable_Base_C_ShouldForceEquip::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ITEM_HandheldConsumable_Base_C_ShouldForceEquip, CallFunc_Greater_IntInt_ReturnValue) == 0x000008, "Member 'ITEM_HandheldConsumable_Base_C_ShouldForceEquip::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ITEM_HandheldConsumable_Base_C_ShouldForceEquip, CallFunc_BooleanAND_ReturnValue) == 0x000009, "Member 'ITEM_HandheldConsumable_Base_C_ShouldForceEquip::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
+// Function ITEM_HandheldConsumable_Base.ITEM_HandheldConsumable_Base_C.OnInventoryChanged
+// 0x0010 (0x0010 - 0x0000)
+struct ITEM_HandheldConsumable_Base_C_OnInventoryChanged final
+{
+public:
+	class UCOMP_Inventory_C*                      PrevInventory;                                     // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_HandheldConsumable_Base_C_OnInventoryChanged) == 0x000008, "Wrong alignment on ITEM_HandheldConsumable_Base_C_OnInventoryChanged");
+static_assert(sizeof(ITEM_HandheldConsumable_Base_C_OnInventoryChanged) == 0x000010, "Wrong size on ITEM_HandheldConsumable_Base_C_OnInventoryChanged");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_OnInventoryChanged, PrevInventory) == 0x000000, "Member 'ITEM_HandheldConsumable_Base_C_OnInventoryChanged::PrevInventory' has a wrong offset!");
+static_assert(offsetof(ITEM_HandheldConsumable_Base_C_OnInventoryChanged, Result) == 0x000008, "Member 'ITEM_HandheldConsumable_Base_C_OnInventoryChanged::Result' has a wrong offset!");
 
 }
 

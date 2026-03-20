@@ -222,6 +222,35 @@ EGooglePADErrorCode UGooglePADFunctionLibrary::GetShowCellularDataConfirmationSt
 }
 
 
+// Function GooglePAD.GooglePADFunctionLibrary.GetShowConfirmationDialogStatus
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// EGooglePADConfirmationDialogStatus      Status                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EGooglePADErrorCode                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EGooglePADErrorCode UGooglePADFunctionLibrary::GetShowConfirmationDialogStatus(EGooglePADConfirmationDialogStatus* Status)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("GooglePADFunctionLibrary", "GetShowConfirmationDialogStatus");
+
+	Params::GooglePADFunctionLibrary_GetShowConfirmationDialogStatus Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (Status != nullptr)
+		*Status = Parms.Status;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function GooglePAD.GooglePADFunctionLibrary.GetStorageMethod
 // (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
@@ -425,6 +454,31 @@ EGooglePADErrorCode UGooglePADFunctionLibrary::ShowCellularDataConfirmation()
 		Func = StaticClass()->GetFunction("GooglePADFunctionLibrary", "ShowCellularDataConfirmation");
 
 	Params::GooglePADFunctionLibrary_ShowCellularDataConfirmation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function GooglePAD.GooglePADFunctionLibrary.ShowConfirmationDialog
+// (Final, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// EGooglePADErrorCode                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EGooglePADErrorCode UGooglePADFunctionLibrary::ShowConfirmationDialog()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("GooglePADFunctionLibrary", "ShowConfirmationDialog");
+
+	Params::GooglePADFunctionLibrary_ShowConfirmationDialog Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

@@ -14,21 +14,6 @@
 namespace SDK::Params
 {
 
-// Function HARDWARE_InfraredUnit.HARDWARE_InfraredUnit_C.OnVisionUnitActivated
-// 0x0018 (0x0018 - 0x0000)
-struct HARDWARE_InfraredUnit_C_OnVisionUnitActivated final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated) == 0x000008, "Wrong alignment on HARDWARE_InfraredUnit_C_OnVisionUnitActivated");
-static_assert(sizeof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated) == 0x000018, "Wrong size on HARDWARE_InfraredUnit_C_OnVisionUnitActivated");
-static_assert(offsetof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated, Character) == 0x000000, "Member 'HARDWARE_InfraredUnit_C_OnVisionUnitActivated::Character' has a wrong offset!");
-static_assert(offsetof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000008, "Member 'HARDWARE_InfraredUnit_C_OnVisionUnitActivated::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
-static_assert(offsetof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'HARDWARE_InfraredUnit_C_OnVisionUnitActivated::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-
 // Function HARDWARE_InfraredUnit.HARDWARE_InfraredUnit_C.OnVisionUnitDeactivated
 // 0x0018 (0x0018 - 0x0000)
 struct HARDWARE_InfraredUnit_C_OnVisionUnitDeactivated final
@@ -43,6 +28,21 @@ static_assert(sizeof(HARDWARE_InfraredUnit_C_OnVisionUnitDeactivated) == 0x00001
 static_assert(offsetof(HARDWARE_InfraredUnit_C_OnVisionUnitDeactivated, Character) == 0x000000, "Member 'HARDWARE_InfraredUnit_C_OnVisionUnitDeactivated::Character' has a wrong offset!");
 static_assert(offsetof(HARDWARE_InfraredUnit_C_OnVisionUnitDeactivated, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000008, "Member 'HARDWARE_InfraredUnit_C_OnVisionUnitDeactivated::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
 static_assert(offsetof(HARDWARE_InfraredUnit_C_OnVisionUnitDeactivated, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'HARDWARE_InfraredUnit_C_OnVisionUnitDeactivated::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
+// Function HARDWARE_InfraredUnit.HARDWARE_InfraredUnit_C.OnVisionUnitActivated
+// 0x0018 (0x0018 - 0x0000)
+struct HARDWARE_InfraredUnit_C_OnVisionUnitActivated final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated) == 0x000008, "Wrong alignment on HARDWARE_InfraredUnit_C_OnVisionUnitActivated");
+static_assert(sizeof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated) == 0x000018, "Wrong size on HARDWARE_InfraredUnit_C_OnVisionUnitActivated");
+static_assert(offsetof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated, Character) == 0x000000, "Member 'HARDWARE_InfraredUnit_C_OnVisionUnitActivated::Character' has a wrong offset!");
+static_assert(offsetof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000008, "Member 'HARDWARE_InfraredUnit_C_OnVisionUnitActivated::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(HARDWARE_InfraredUnit_C_OnVisionUnitActivated, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'HARDWARE_InfraredUnit_C_OnVisionUnitActivated::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 }
 

@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_MissionDifficultySettings_structs.hpp"
-#include "Engine_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
+#include "Engine_structs.hpp"
+#include "STRUCT_MissionDifficultySettings_structs.hpp"
 #include "STRUCT_KeycodeSettings_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 
 
 namespace SDK::Params
@@ -894,6 +894,53 @@ static_assert(offsetof(INTERACT_Keypad_C_TryPressKeypadDigit, CallFunc_EqualEqua
 static_assert(offsetof(INTERACT_Keypad_C_TryPressKeypadDigit, CallFunc_BooleanAND_ReturnValue) == 0x0000DD, "Member 'INTERACT_Keypad_C_TryPressKeypadDigit::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_Keypad_C_TryPressKeypadDigit, CallFunc_BooleanAND_ReturnValue_1) == 0x0000DE, "Member 'INTERACT_Keypad_C_TryPressKeypadDigit::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
 
+// Function INTERACT_Keypad.INTERACT_Keypad_C.GetTargetShape
+// 0x0058 (0x0058 - 0x0000)
+struct INTERACT_Keypad_C_GetTargetShape final
+{
+public:
+	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UShapeComponent*                        ShapeComponent;                                    // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_1;    // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_12[0x6];                                       // 0x0012(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class USceneComponent*                        CallFunc_GetAttachParent_ReturnValue;              // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_2;    // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x0023(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UShapeComponent*                        K2Node_DynamicCast_AsShape_Component;              // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class USceneComponent*                        CallFunc_GetAttachParent_ReturnValue_1;            // 0x0038(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_3;    // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_42[0x6];                                       // 0x0042(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ShouldFocusOnInteract_Result;             // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_Keypad_C_GetTargetShape) == 0x000008, "Wrong alignment on INTERACT_Keypad_C_GetTargetShape");
+static_assert(sizeof(INTERACT_Keypad_C_GetTargetShape) == 0x000058, "Wrong size on INTERACT_Keypad_C_GetTargetShape");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CursorPrimitive) == 0x000000, "Member 'INTERACT_Keypad_C_GetTargetShape::CursorPrimitive' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, ShapeComponent) == 0x000008, "Member 'INTERACT_Keypad_C_GetTargetShape::ShapeComponent' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x000010, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue_1) == 0x000011, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_GetAttachParent_ReturnValue) == 0x000018, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_GetAttachParent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue_2) == 0x000020, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000021, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_BooleanOR_ReturnValue) == 0x000022, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_BooleanOR_ReturnValue_1) == 0x000023, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, K2Node_DynamicCast_AsShape_Component) == 0x000028, "Member 'INTERACT_Keypad_C_GetTargetShape::K2Node_DynamicCast_AsShape_Component' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'INTERACT_Keypad_C_GetTargetShape::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_GetAttachParent_ReturnValue_1) == 0x000038, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_GetAttachParent_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue_3) == 0x000040, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_BooleanAND_ReturnValue) == 0x000041, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_GetPlayerController_ReturnValue) == 0x000048, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_ShouldFocusOnInteract_Result) == 0x000050, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_ShouldFocusOnInteract_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000051, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+
 // Function INTERACT_Keypad.INTERACT_Keypad_C.TryPressKeypadClear
 // 0x0018 (0x0018 - 0x0000)
 struct INTERACT_Keypad_C_TryPressKeypadClear final
@@ -1157,70 +1204,6 @@ static_assert(offsetof(INTERACT_Keypad_C_ShouldFocusOnInteract, Result) == 0x000
 static_assert(offsetof(INTERACT_Keypad_C_ShouldFocusOnInteract, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000009, "Member 'INTERACT_Keypad_C_ShouldFocusOnInteract::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_Keypad_C_ShouldFocusOnInteract, CallFunc_ShouldFocusOnInteract_Result) == 0x00000A, "Member 'INTERACT_Keypad_C_ShouldFocusOnInteract::CallFunc_ShouldFocusOnInteract_Result' has a wrong offset!");
 
-// Function INTERACT_Keypad.INTERACT_Keypad_C.EVENT_OnDisableAttribChanged
-// 0x0010 (0x0010 - 0x0000)
-struct INTERACT_Keypad_C_EVENT_OnDisableAttribChanged final
-{
-public:
-	float                                         CurrValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         LastValue;                                         // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         EmissiveScale;                                     // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged) == 0x000004, "Wrong alignment on INTERACT_Keypad_C_EVENT_OnDisableAttribChanged");
-static_assert(sizeof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged) == 0x000010, "Wrong size on INTERACT_Keypad_C_EVENT_OnDisableAttribChanged");
-static_assert(offsetof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged, CurrValue) == 0x000000, "Member 'INTERACT_Keypad_C_EVENT_OnDisableAttribChanged::CurrValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged, LastValue) == 0x000004, "Member 'INTERACT_Keypad_C_EVENT_OnDisableAttribChanged::LastValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged, EmissiveScale) == 0x000008, "Member 'INTERACT_Keypad_C_EVENT_OnDisableAttribChanged::EmissiveScale' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x00000C, "Member 'INTERACT_Keypad_C_EVENT_OnDisableAttribChanged::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-
-// Function INTERACT_Keypad.INTERACT_Keypad_C.GetTargetShape
-// 0x0058 (0x0058 - 0x0000)
-struct INTERACT_Keypad_C_GetTargetShape final
-{
-public:
-	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UShapeComponent*                        ShapeComponent;                                    // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_1;    // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_12[0x6];                                       // 0x0012(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class USceneComponent*                        CallFunc_GetAttachParent_ReturnValue;              // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_2;    // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x0023(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UShapeComponent*                        K2Node_DynamicCast_AsShape_Component;              // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class USceneComponent*                        CallFunc_GetAttachParent_ReturnValue_1;            // 0x0038(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_3;    // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_42[0x6];                                       // 0x0042(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_ShouldFocusOnInteract_Result;             // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_Keypad_C_GetTargetShape) == 0x000008, "Wrong alignment on INTERACT_Keypad_C_GetTargetShape");
-static_assert(sizeof(INTERACT_Keypad_C_GetTargetShape) == 0x000058, "Wrong size on INTERACT_Keypad_C_GetTargetShape");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CursorPrimitive) == 0x000000, "Member 'INTERACT_Keypad_C_GetTargetShape::CursorPrimitive' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, ShapeComponent) == 0x000008, "Member 'INTERACT_Keypad_C_GetTargetShape::ShapeComponent' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x000010, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue_1) == 0x000011, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_GetAttachParent_ReturnValue) == 0x000018, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_GetAttachParent_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue_2) == 0x000020, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000021, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_BooleanOR_ReturnValue) == 0x000022, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_BooleanOR_ReturnValue_1) == 0x000023, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, K2Node_DynamicCast_AsShape_Component) == 0x000028, "Member 'INTERACT_Keypad_C_GetTargetShape::K2Node_DynamicCast_AsShape_Component' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'INTERACT_Keypad_C_GetTargetShape::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_GetAttachParent_ReturnValue_1) == 0x000038, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_GetAttachParent_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue_3) == 0x000040, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_BooleanAND_ReturnValue) == 0x000041, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_GetPlayerController_ReturnValue) == 0x000048, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_ShouldFocusOnInteract_Result) == 0x000050, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_ShouldFocusOnInteract_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_Keypad_C_GetTargetShape, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000051, "Member 'INTERACT_Keypad_C_GetTargetShape::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-
 // Function INTERACT_Keypad.INTERACT_Keypad_C.ShouldSaveActor
 // 0x0048 (0x0048 - 0x0000)
 struct INTERACT_Keypad_C_ShouldSaveActor final
@@ -1255,6 +1238,23 @@ static_assert(offsetof(INTERACT_Keypad_C_ShouldSaveActor, CallFunc_NotEqual_Byte
 static_assert(offsetof(INTERACT_Keypad_C_ShouldSaveActor, CallFunc_BooleanOR_ReturnValue) == 0x000042, "Member 'INTERACT_Keypad_C_ShouldSaveActor::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_Keypad_C_ShouldSaveActor, CallFunc_BooleanOR_ReturnValue_1) == 0x000043, "Member 'INTERACT_Keypad_C_ShouldSaveActor::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(INTERACT_Keypad_C_ShouldSaveActor, CallFunc_BooleanAND_ReturnValue) == 0x000044, "Member 'INTERACT_Keypad_C_ShouldSaveActor::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_Keypad.INTERACT_Keypad_C.EVENT_OnDisableAttribChanged
+// 0x0010 (0x0010 - 0x0000)
+struct INTERACT_Keypad_C_EVENT_OnDisableAttribChanged final
+{
+public:
+	float                                         CurrValue;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         LastValue;                                         // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         EmissiveScale;                                     // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged) == 0x000004, "Wrong alignment on INTERACT_Keypad_C_EVENT_OnDisableAttribChanged");
+static_assert(sizeof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged) == 0x000010, "Wrong size on INTERACT_Keypad_C_EVENT_OnDisableAttribChanged");
+static_assert(offsetof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged, CurrValue) == 0x000000, "Member 'INTERACT_Keypad_C_EVENT_OnDisableAttribChanged::CurrValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged, LastValue) == 0x000004, "Member 'INTERACT_Keypad_C_EVENT_OnDisableAttribChanged::LastValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged, EmissiveScale) == 0x000008, "Member 'INTERACT_Keypad_C_EVENT_OnDisableAttribChanged::EmissiveScale' has a wrong offset!");
+static_assert(offsetof(INTERACT_Keypad_C_EVENT_OnDisableAttribChanged, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x00000C, "Member 'INTERACT_Keypad_C_EVENT_OnDisableAttribChanged::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_Keypad.INTERACT_Keypad_C.CanModifyInteractPower
 // 0x0001 (0x0001 - 0x0000)

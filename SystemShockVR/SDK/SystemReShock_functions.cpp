@@ -17,6 +17,358 @@
 namespace SDK
 {
 
+// Function SystemReShock.ActionManagerBase.CanAttackPriorityValueRaw
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// int32                                   rawPriorityValue                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UActionManagerBase::CanAttackPriorityValueRaw(int32 rawPriorityValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ActionManagerBase", "CanAttackPriorityValueRaw");
+
+	Params::ActionManagerBase_CanAttackPriorityValueRaw Parms{};
+
+	Parms.rawPriorityValue = rawPriorityValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.ActorAnimMessageInterface.ReceiveAnimationMessage
+// (Native, Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// EActorMessagePriority                   Priority                                               (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class FString                           Message                                                (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool IActorAnimMessageInterface::ReceiveAnimationMessage(const EActorMessagePriority& Priority, const class FString& Message)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ActorAnimMessageInterface", "ReceiveAnimationMessage");
+
+	Params::ActorAnimMessageInterface_ReceiveAnimationMessage Parms{};
+
+	Parms.Priority = Priority;
+	Parms.Message = std::move(Message);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.ButtonLegend.LoadAsset
+// (Final, Native, Protected, BlueprintCallable)
+// Parameters:
+// TSoftObjectPtr<class UObject>           Asset                                                  (Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TDelegate<void(class UObject* LoadedAsset)>Callback                                               (Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
+
+void UButtonLegend::LoadAsset(TSoftObjectPtr<class UObject> Asset, TDelegate<void(class UObject* LoadedAsset)> Callback)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ButtonLegend", "LoadAsset");
+
+	Params::ButtonLegend_LoadAsset Parms{};
+
+	Parms.Asset = Asset;
+	Parms.Callback = Callback;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.ResetMouseStates
+// (Final, Native, Public, BlueprintCallable)
+
+void UCameraPanelWidget::ResetMouseStates()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "ResetMouseStates");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.SetHorizontalSurfaceCurvature
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   Ratio                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UCameraPanelWidget::SetHorizontalSurfaceCurvature(float Ratio)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "SetHorizontalSurfaceCurvature");
+
+	Params::CameraPanelWidget_SetHorizontalSurfaceCurvature Parms{};
+
+	Parms.Ratio = Ratio;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.SetVerticalSurfaceCurvature
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   Ratio                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UCameraPanelWidget::SetVerticalSurfaceCurvature(float Ratio)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "SetVerticalSurfaceCurvature");
+
+	Params::CameraPanelWidget_SetVerticalSurfaceCurvature Parms{};
+
+	Parms.Ratio = Ratio;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.SetVirtualMouseScreenLocation
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FVector2D                        ScreenLocation                                         (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UCameraPanelWidget::SetVirtualMouseScreenLocation(const struct FVector2D& ScreenLocation)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "SetVirtualMouseScreenLocation");
+
+	Params::CameraPanelWidget_SetVirtualMouseScreenLocation Parms{};
+
+	Parms.ScreenLocation = std::move(ScreenLocation);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.VirtualMouseButtonDown
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// struct FKey                             MouseButton                                            (Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UCameraPanelWidget::VirtualMouseButtonDown(const struct FKey& MouseButton)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "VirtualMouseButtonDown");
+
+	Params::CameraPanelWidget_VirtualMouseButtonDown Parms{};
+
+	Parms.MouseButton = std::move(MouseButton);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.VirtualMouseButtonUp
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// struct FKey                             MouseButton                                            (Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UCameraPanelWidget::VirtualMouseButtonUp(const struct FKey& MouseButton)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "VirtualMouseButtonUp");
+
+	Params::CameraPanelWidget_VirtualMouseButtonUp Parms{};
+
+	Parms.MouseButton = std::move(MouseButton);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.VirtualMouseDoubleClick
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// struct FKey                             MouseButton                                            (Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UCameraPanelWidget::VirtualMouseDoubleClick(const struct FKey& MouseButton)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "VirtualMouseDoubleClick");
+
+	Params::CameraPanelWidget_VirtualMouseDoubleClick Parms{};
+
+	Parms.MouseButton = std::move(MouseButton);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.GetVirtualMouseScreenLocation
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector2D UCameraPanelWidget::GetVirtualMouseScreenLocation() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "GetVirtualMouseScreenLocation");
+
+	Params::CameraPanelWidget_GetVirtualMouseScreenLocation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.GetVirtualMouseViewportLocation
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector2D UCameraPanelWidget::GetVirtualMouseViewportLocation() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "GetVirtualMouseViewportLocation");
+
+	Params::CameraPanelWidget_GetVirtualMouseViewportLocation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.CameraPanelWidget.ProjectScreenPoint
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable, Const)
+// Parameters:
+// struct FVector2D                        ScreenPoint                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector2D UCameraPanelWidget::ProjectScreenPoint(const struct FVector2D& ScreenPoint) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CameraPanelWidget", "ProjectScreenPoint");
+
+	Params::CameraPanelWidget_ProjectScreenPoint Parms{};
+
+	Parms.ScreenPoint = std::move(ScreenPoint);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.CompassMeshWidget.SetCurrentYawAngle
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   NewAngle                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UCompassMeshWidget::SetCurrentYawAngle(float NewAngle)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CompassMeshWidget", "SetCurrentYawAngle");
+
+	Params::CompassMeshWidget_SetCurrentYawAngle Parms{};
+
+	Parms.NewAngle = NewAngle;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function SystemReShock.PerspectiveMeshWidget.ConvertToDynamicMaterialInstance
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -1208,308 +1560,6 @@ bool ULifeSimulation::IsCellVisibleToObserver(const struct FIntVector& CellLocat
 }
 
 
-// Function SystemReShock.ActorAnimMessageInterface.ReceiveAnimationMessage
-// (Native, Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// EActorMessagePriority                   Priority                                               (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class FString                           Message                                                (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool IActorAnimMessageInterface::ReceiveAnimationMessage(const EActorMessagePriority& Priority, const class FString& Message)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ActorAnimMessageInterface", "ReceiveAnimationMessage");
-
-	Params::ActorAnimMessageInterface_ReceiveAnimationMessage Parms{};
-
-	Parms.Priority = Priority;
-	Parms.Message = std::move(Message);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.ResetMouseStates
-// (Final, Native, Public, BlueprintCallable)
-
-void UCameraPanelWidget::ResetMouseStates()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "ResetMouseStates");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.SetHorizontalSurfaceCurvature
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   Ratio                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UCameraPanelWidget::SetHorizontalSurfaceCurvature(float Ratio)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "SetHorizontalSurfaceCurvature");
-
-	Params::CameraPanelWidget_SetHorizontalSurfaceCurvature Parms{};
-
-	Parms.Ratio = Ratio;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.SetVerticalSurfaceCurvature
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   Ratio                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UCameraPanelWidget::SetVerticalSurfaceCurvature(float Ratio)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "SetVerticalSurfaceCurvature");
-
-	Params::CameraPanelWidget_SetVerticalSurfaceCurvature Parms{};
-
-	Parms.Ratio = Ratio;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.SetVirtualMouseScreenLocation
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
-// Parameters:
-// struct FVector2D                        ScreenLocation                                         (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UCameraPanelWidget::SetVirtualMouseScreenLocation(const struct FVector2D& ScreenLocation)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "SetVirtualMouseScreenLocation");
-
-	Params::CameraPanelWidget_SetVirtualMouseScreenLocation Parms{};
-
-	Parms.ScreenLocation = std::move(ScreenLocation);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.VirtualMouseButtonDown
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// struct FKey                             MouseButton                                            (Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UCameraPanelWidget::VirtualMouseButtonDown(const struct FKey& MouseButton)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "VirtualMouseButtonDown");
-
-	Params::CameraPanelWidget_VirtualMouseButtonDown Parms{};
-
-	Parms.MouseButton = std::move(MouseButton);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.VirtualMouseButtonUp
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// struct FKey                             MouseButton                                            (Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UCameraPanelWidget::VirtualMouseButtonUp(const struct FKey& MouseButton)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "VirtualMouseButtonUp");
-
-	Params::CameraPanelWidget_VirtualMouseButtonUp Parms{};
-
-	Parms.MouseButton = std::move(MouseButton);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.VirtualMouseDoubleClick
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// struct FKey                             MouseButton                                            (Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UCameraPanelWidget::VirtualMouseDoubleClick(const struct FKey& MouseButton)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "VirtualMouseDoubleClick");
-
-	Params::CameraPanelWidget_VirtualMouseDoubleClick Parms{};
-
-	Parms.MouseButton = std::move(MouseButton);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.GetVirtualMouseScreenLocation
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector2D UCameraPanelWidget::GetVirtualMouseScreenLocation() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "GetVirtualMouseScreenLocation");
-
-	Params::CameraPanelWidget_GetVirtualMouseScreenLocation Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.GetVirtualMouseViewportLocation
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector2D UCameraPanelWidget::GetVirtualMouseViewportLocation() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "GetVirtualMouseViewportLocation");
-
-	Params::CameraPanelWidget_GetVirtualMouseViewportLocation Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function SystemReShock.CameraPanelWidget.ProjectScreenPoint
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable, Const)
-// Parameters:
-// struct FVector2D                        ScreenPoint                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector2D UCameraPanelWidget::ProjectScreenPoint(const struct FVector2D& ScreenPoint) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CameraPanelWidget", "ProjectScreenPoint");
-
-	Params::CameraPanelWidget_ProjectScreenPoint Parms{};
-
-	Parms.ScreenPoint = std::move(ScreenPoint);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function SystemReShock.CompassMeshWidget.SetCurrentYawAngle
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   NewAngle                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UCompassMeshWidget::SetCurrentYawAngle(float NewAngle)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CompassMeshWidget", "SetCurrentYawAngle");
-
-	Params::CompassMeshWidget_SetCurrentYawAngle Parms{};
-
-	Parms.NewAngle = NewAngle;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function SystemReShock.PerspectiveMeshSlot.SetPosition
 // (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
 // Parameters:
@@ -2219,6 +2269,255 @@ bool UShockChess::IsGameOver() const
 }
 
 
+// Function SystemReShock.ShockJCMSComponent.AddInputClearDelegate
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// TDelegate<void()>                       Delegate                                               (Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
+
+void UShockJCMSComponent::AddInputClearDelegate(TDelegate<void()> Delegate)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShockJCMSComponent", "AddInputClearDelegate");
+
+	Params::ShockJCMSComponent_AddInputClearDelegate Parms{};
+
+	Parms.Delegate = Delegate;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.ShockJCMSComponent.RemoveInputClearDelegate
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// TDelegate<void()>                       Delegate                                               (Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShockJCMSComponent::RemoveInputClearDelegate(TDelegate<void()> Delegate)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShockJCMSComponent", "RemoveInputClearDelegate");
+
+	Params::ShockJCMSComponent_RemoveInputClearDelegate Parms{};
+
+	Parms.Delegate = Delegate;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.ShockJCMSComponent.SetJoyConMouseMode
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// EJoyConMouseMode                        NewMode                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShockJCMSComponent::SetJoyConMouseMode(EJoyConMouseMode NewMode)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShockJCMSComponent", "SetJoyConMouseMode");
+
+	Params::ShockJCMSComponent_SetJoyConMouseMode Parms{};
+
+	Parms.NewMode = NewMode;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.ShockJCMSComponent.ShouldPreferJoyConMouseSensor
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShockJCMSComponent::ShouldPreferJoyConMouseSensor() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShockJCMSComponent", "ShouldPreferJoyConMouseSensor");
+
+	Params::ShockJCMSComponent_ShouldPreferJoyConMouseSensor Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.ShockPlatformSettingsComponent.PlatformShouldCastDynamicShadowsForLight
+// (Final, BlueprintCosmetic, Native, Protected, BlueprintCallable)
+// Parameters:
+// class ULightComponent*                  inLightComp                                            (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShockPlatformSettingsComponent::PlatformShouldCastDynamicShadowsForLight(class ULightComponent* inLightComp)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShockPlatformSettingsComponent", "PlatformShouldCastDynamicShadowsForLight");
+
+	Params::ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight Parms{};
+
+	Parms.inLightComp = inLightComp;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.ShockSpotlightComponent.AllowSwitchLightOptimizations
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShockSpotlightComponent::AllowSwitchLightOptimizations()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShockSpotlightComponent", "AllowSwitchLightOptimizations");
+
+	Params::ShockSpotlightComponent_AllowSwitchLightOptimizations Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.ShockSpotlightComponent.IsSagePlatform
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShockSpotlightComponent::IsSagePlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShockSpotlightComponent", "IsSagePlatform");
+
+	Params::ShockSpotlightComponent_IsSagePlatform Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.ShockSpotlightComponent.IsSwitchPlatform
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShockSpotlightComponent::IsSwitchPlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShockSpotlightComponent", "IsSwitchPlatform");
+
+	Params::ShockSpotlightComponent_IsSwitchPlatform Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SkillManager_BaseComp.ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext
+// (Event, Public, HasDefaults, BlueprintEvent)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector USkillManager_BaseComp::ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillManager_BaseComp", "ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext");
+
+	Params::SkillManager_BaseComp_ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SkillManager_BaseComp.ReceiveIsDistanceWithinPreferredRange
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   worldDistanceCm                                        (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USkillManager_BaseComp::ReceiveIsDistanceWithinPreferredRange(const float worldDistanceCm)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillManager_BaseComp", "ReceiveIsDistanceWithinPreferredRange");
+
+	Params::SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange Parms{};
+
+	Parms.worldDistanceCm = worldDistanceCm;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
 // Function SystemReShock.SplineMeshWidget.ConvertEndcapToDynamicMaterialInstance
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -2571,6 +2870,256 @@ int32 USystemShockFunctionLibrary::GetBestTicTacToeMove(const TArray<uint8>& Cel
 }
 
 
+// Function SystemReShock.SystemShockFunctionLibrary.GetIdendityTransform
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FTransform                       ReturnValue                                            (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+
+struct FTransform USystemShockFunctionLibrary::GetIdendityTransform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetIdendityTransform");
+
+	Params::SystemShockFunctionLibrary_GetIdendityTransform Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInfinity
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float USystemShockFunctionLibrary::GetInfinity()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetInfinity");
+
+	Params::SystemShockFunctionLibrary_GetInfinity Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidDirectionVector
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector USystemShockFunctionLibrary::GetInvalidDirectionVector()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetInvalidDirectionVector");
+
+	Params::SystemShockFunctionLibrary_GetInvalidDirectionVector Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidLocationVector
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector USystemShockFunctionLibrary::GetInvalidLocationVector()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetInvalidLocationVector");
+
+	Params::SystemShockFunctionLibrary_GetInvalidLocationVector Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidObjectValue
+// (Final, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// class UObject*                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UObject* USystemShockFunctionLibrary::GetInvalidObjectValue()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetInvalidObjectValue");
+
+	Params::SystemShockFunctionLibrary_GetInvalidObjectValue Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidOrientation
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FQuat                            ReturnValue                                            (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+
+struct FQuat USystemShockFunctionLibrary::GetInvalidOrientation()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetInvalidOrientation");
+
+	Params::SystemShockFunctionLibrary_GetInvalidOrientation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidRangeValue
+// (Final, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float USystemShockFunctionLibrary::GetInvalidRangeValue()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetInvalidRangeValue");
+
+	Params::SystemShockFunctionLibrary_GetInvalidRangeValue Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidRotator
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FRotator                         ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+
+struct FRotator USystemShockFunctionLibrary::GetInvalidRotator()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetInvalidRotator");
+
+	Params::SystemShockFunctionLibrary_GetInvalidRotator Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetPlatform
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// ESystemShockPlatform                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+ESystemShockPlatform USystemShockFunctionLibrary::GetPlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetPlatform");
+
+	Params::SystemShockFunctionLibrary_GetPlatform Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetPlatformFamily
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// ESystemShockPlatformFamily              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+ESystemShockPlatformFamily USystemShockFunctionLibrary::GetPlatformFamily()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "GetPlatformFamily");
+
+	Params::SystemShockFunctionLibrary_GetPlatformFamily Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function SystemReShock.SystemShockFunctionLibrary.GetStaticMeshTrackProperties
 // (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable)
 // Parameters:
@@ -2646,6 +3195,349 @@ int32 USystemShockFunctionLibrary::GetTicTacToeScoreForMove(const TArray<uint8>&
 	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsSageNintendoPlatform
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USystemShockFunctionLibrary::IsSageNintendoPlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "IsSageNintendoPlatform");
+
+	Params::SystemShockFunctionLibrary_IsSageNintendoPlatform Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsSwitchNintendoPlatform
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USystemShockFunctionLibrary::IsSwitchNintendoPlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "IsSwitchNintendoPlatform");
+
+	Params::SystemShockFunctionLibrary_IsSwitchNintendoPlatform Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsValidDirection
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FVector                          inTestVector                                           (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USystemShockFunctionLibrary::IsValidDirection(const struct FVector& inTestVector)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "IsValidDirection");
+
+	Params::SystemShockFunctionLibrary_IsValidDirection Parms{};
+
+	Parms.inTestVector = std::move(inTestVector);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsValidLocation
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FVector                          inTestLocation                                         (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USystemShockFunctionLibrary::IsValidLocation(const struct FVector& inTestLocation)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "IsValidLocation");
+
+	Params::SystemShockFunctionLibrary_IsValidLocation Parms{};
+
+	Parms.inTestLocation = std::move(inTestLocation);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsValidOrientation
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FQuat                            inTestOrientation                                      (ConstParm, Parm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USystemShockFunctionLibrary::IsValidOrientation(const struct FQuat& inTestOrientation)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "IsValidOrientation");
+
+	Params::SystemShockFunctionLibrary_IsValidOrientation Parms{};
+
+	Parms.inTestOrientation = std::move(inTestOrientation);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsValidRotation
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FRotator                         inTestRotation                                         (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USystemShockFunctionLibrary::IsValidRotation(const struct FRotator& inTestRotation)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "IsValidRotation");
+
+	Params::SystemShockFunctionLibrary_IsValidRotation Parms{};
+
+	Parms.inTestRotation = std::move(inTestRotation);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsWorldValid
+// (Final, BlueprintAuthorityOnly, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// class UWorld*                           worldInstance                                          (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USystemShockFunctionLibrary::IsWorldValid(const class UWorld* worldInstance)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockFunctionLibrary", "IsWorldValid");
+
+	Params::SystemShockFunctionLibrary_IsWorldValid Parms{};
+
+	Parms.worldInstance = worldInstance;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockNintendoLibrary.ActiveControllerSupportsJoyConMouseLook
+// (Final, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USystemShockNintendoLibrary::ActiveControllerSupportsJoyConMouseLook()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockNintendoLibrary", "ActiveControllerSupportsJoyConMouseLook");
+
+	Params::SystemShockNintendoLibrary_ActiveControllerSupportsJoyConMouseLook Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockNintendoLibrary.GetActiveControllerTypes
+// (Final, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FString USystemShockNintendoLibrary::GetActiveControllerTypes()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockNintendoLibrary", "GetActiveControllerTypes");
+
+	Params::SystemShockNintendoLibrary_GetActiveControllerTypes Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockNintendoLibrary.GetRightJoyConOrientation
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector USystemShockNintendoLibrary::GetRightJoyConOrientation()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockNintendoLibrary", "GetRightJoyConOrientation");
+
+	Params::SystemShockNintendoLibrary_GetRightJoyConOrientation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShockNintendoLibrary.StartNintendoBoostCPUClock
+// (Final, Native, Static, Public, BlueprintCallable)
+
+void USystemShockNintendoLibrary::StartNintendoBoostCPUClock()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockNintendoLibrary", "StartNintendoBoostCPUClock");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.SystemShockNintendoLibrary.StopNintendoBoostCPUClock
+// (Final, Native, Static, Public, BlueprintCallable)
+
+void USystemShockNintendoLibrary::StopNintendoBoostCPUClock()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SystemShockNintendoLibrary", "StopNintendoBoostCPUClock");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function SystemReShock.SystemShock_CharacterBase.ReceiveGetCurrentSkillPreferredMinMaxRange
+// (Event, Public, HasDefaults, BlueprintEvent)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector ASystemShock_CharacterBase::ReceiveGetCurrentSkillPreferredMinMaxRange()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SystemShock_CharacterBase", "ReceiveGetCurrentSkillPreferredMinMaxRange");
+
+	Params::SystemShock_CharacterBase_ReceiveGetCurrentSkillPreferredMinMaxRange Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function SystemReShock.SystemShock_CharacterBase.ReceiveGetEnemyTargetLocation
+// (Event, Public, HasDefaults, BlueprintEvent)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector ASystemShock_CharacterBase::ReceiveGetEnemyTargetLocation()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SystemShock_CharacterBase", "ReceiveGetEnemyTargetLocation");
+
+	Params::SystemShock_CharacterBase_ReceiveGetEnemyTargetLocation Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	return Parms.ReturnValue;
 }

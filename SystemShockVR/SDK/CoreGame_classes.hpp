@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "CoreUObject_classes.hpp"
 #include "CoreGame_structs.hpp"
+#include "CoreUObject_classes.hpp"
 
 
 namespace SDK

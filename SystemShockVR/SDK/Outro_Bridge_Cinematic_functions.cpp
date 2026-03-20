@@ -17,6 +17,40 @@
 namespace SDK
 {
 
+// Function Outro_Bridge_Cinematic.SequenceDirector_C.PlayAudio
+// (BlueprintCallable, BlueprintEvent)
+
+void USequenceDirector_C::PlayAudio()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SequenceDirector_C", "PlayAudio");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Outro_Bridge_Cinematic.SequenceDirector_C.ExecuteUbergraph_SequenceDirector
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USequenceDirector_C::ExecuteUbergraph_SequenceDirector(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SequenceDirector_C", "ExecuteUbergraph_SequenceDirector");
+
+	Params::SequenceDirector_C_ExecuteUbergraph_SequenceDirector Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function Outro_Bridge_Cinematic.SequenceDirector_C.SequenceEvent__ENTRYPOINTSequenceDirector_7
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -282,40 +316,6 @@ void USequenceDirector_C::Hacker_Female_Event_0(class ASkeletalMeshActor* Hacker
 	Params::SequenceDirector_C_Hacker_Female_Event_0 Parms{};
 
 	Parms.Hacker_Female = Hacker_Female;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Outro_Bridge_Cinematic.SequenceDirector_C.PlayAudio
-// (BlueprintCallable, BlueprintEvent)
-
-void USequenceDirector_C::PlayAudio()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SequenceDirector_C", "PlayAudio");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Outro_Bridge_Cinematic.SequenceDirector_C.ExecuteUbergraph_SequenceDirector
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void USequenceDirector_C::ExecuteUbergraph_SequenceDirector(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SequenceDirector_C", "ExecuteUbergraph_SequenceDirector");
-
-	Params::SequenceDirector_C_ExecuteUbergraph_SequenceDirector Parms{};
-
-	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

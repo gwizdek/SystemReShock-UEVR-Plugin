@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "LevelVoxelization_structs.hpp"
 
 

@@ -10,18 +10,18 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "STRUCT_ReferencedLootTable_structs.hpp"
-#include "STRUCT_DeathBlowData_structs.hpp"
-#include "ENUM_LocalBehaviorType_structs.hpp"
-#include "ENUM_PreferredCombatStyle_structs.hpp"
-#include "STRUCT_LocalBehaviorAnimations_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "ENUM_Emotions_structs.hpp"
-#include "ENUM_StayNearSkillTargetState_structs.hpp"
-#include "PAWN_SystemShockCharacter_classes.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "ENUM_Emotions_structs.hpp"
+#include "ENUM_LocalBehaviorType_structs.hpp"
+#include "Engine_structs.hpp"
+#include "ENUM_StayNearSkillTargetState_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ENUM_PreferredCombatStyle_structs.hpp"
+#include "STRUCT_ReferencedLootTable_structs.hpp"
 #include "ENUM_EnemyType_structs.hpp"
+#include "STRUCT_DeathBlowData_structs.hpp"
+#include "STRUCT_LocalBehaviorAnimations_structs.hpp"
+#include "PAWN_SystemShockCharacter_classes.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 #include "SystemReShock_structs.hpp"
 #include "ENUM_TargetAssignmentType_structs.hpp"
@@ -278,6 +278,7 @@ public:
 	void GetLocalVisionRotation(struct FRotator* Result);
 	void TryUpdateSpawnLocation(bool* Result);
 	void IsRealspaceCharacter(bool* Result);
+	struct FVector ReceiveGetCurrentSkillPreferredMinMaxRange();
 	void GetInteractBroken(bool* Result, class FText* BrokenMessage);
 	void GetInteractLocked(class AActor* SourceActor, bool* Result, class FText* LockMessage);
 	void GetInteractBusy(bool* Result, class FText* BusyMessage);

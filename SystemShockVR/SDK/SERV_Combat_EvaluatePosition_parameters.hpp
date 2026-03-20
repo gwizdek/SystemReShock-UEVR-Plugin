@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "ENUM_SpeedType_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "ENUM_PreferredCombatStyle_structs.hpp"
 #include "ENUM_MoveSpeed_structs.hpp"
 

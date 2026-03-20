@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "INTERACT_Lever_classes.hpp"
-#include "ENUM_UpDown_structs.hpp"
 #include "ENUM_Axis_structs.hpp"
+#include "ENUM_UpDown_structs.hpp"
 
 
 namespace SDK

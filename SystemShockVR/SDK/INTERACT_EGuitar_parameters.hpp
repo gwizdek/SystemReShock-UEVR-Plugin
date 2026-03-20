@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_InteractResults_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 
 
 namespace SDK::Params
@@ -33,7 +33,7 @@ static_assert(offsetof(INTERACT_EGuitar_C_GetTargetShape, ShapeComponent) == 0x0
 static_assert(offsetof(INTERACT_EGuitar_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x000010, "Member 'INTERACT_EGuitar_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_EGuitar.INTERACT_EGuitar_C.TryInteract
-// 0x00A0 (0x00A0 - 0x0000)
+// 0x00A8 (0x00A8 - 0x0000)
 struct INTERACT_EGuitar_C_TryInteract final
 {
 public:
@@ -42,29 +42,32 @@ public:
 	ENUM_InteractionType                          InteractionType;                                   // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FSTRUCT_InteractResults                InteractResults;                                   // 0x0018(0x0020)(Parm, OutParm, HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults;          // 0x0038(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0058(0x0020)(HasGetValueTypeHash)
-	class USoundCue*                              CallFunc_Array_Get_Item;                           // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstance*                      CallFunc_Array_Get_Item_1;                         // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue; // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_WrapIntUpperbound_ReturnValue;            // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0038(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults;          // 0x0060(0x0020)(HasGetValueTypeHash)
+	class USoundCue*                              CallFunc_Array_Get_Item;                           // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstance*                      CallFunc_Array_Get_Item_1;                         // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue; // 0x0090(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x009C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_WrapIntUpperbound_ReturnValue;            // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(INTERACT_EGuitar_C_TryInteract) == 0x000008, "Wrong alignment on INTERACT_EGuitar_C_TryInteract");
-static_assert(sizeof(INTERACT_EGuitar_C_TryInteract) == 0x0000A0, "Wrong size on INTERACT_EGuitar_C_TryInteract");
+static_assert(sizeof(INTERACT_EGuitar_C_TryInteract) == 0x0000A8, "Wrong size on INTERACT_EGuitar_C_TryInteract");
 static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, SourceActor) == 0x000000, "Member 'INTERACT_EGuitar_C_TryInteract::SourceActor' has a wrong offset!");
 static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CursorPrimitive) == 0x000008, "Member 'INTERACT_EGuitar_C_TryInteract::CursorPrimitive' has a wrong offset!");
 static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, InteractionType) == 0x000010, "Member 'INTERACT_EGuitar_C_TryInteract::InteractionType' has a wrong offset!");
 static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, InteractResults) == 0x000018, "Member 'INTERACT_EGuitar_C_TryInteract::InteractResults' has a wrong offset!");
-static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults) == 0x000038, "Member 'INTERACT_EGuitar_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults' has a wrong offset!");
-static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_TryInteract_InteractResults) == 0x000058, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_TryInteract_InteractResults' has a wrong offset!");
-static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_Array_Get_Item) == 0x000078, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_Array_Get_Item_1) == 0x000080, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_Array_Get_Item_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x000088, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_Add_IntInt_ReturnValue) == 0x000090, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_Array_Length_ReturnValue) == 0x000094, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_WrapIntUpperbound_ReturnValue) == 0x000098, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_WrapIntUpperbound_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_TryInteract_InteractResults) == 0x000038, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_TryInteract_InteractResults' has a wrong offset!");
+static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_IsValid_ReturnValue) == 0x000058, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults) == 0x000060, "Member 'INTERACT_EGuitar_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults' has a wrong offset!");
+static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_Array_Get_Item) == 0x000080, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_Array_Get_Item_1) == 0x000088, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_Array_Get_Item_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x000090, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_Add_IntInt_ReturnValue) == 0x000098, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_Array_Length_ReturnValue) == 0x00009C, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_EGuitar_C_TryInteract, CallFunc_WrapIntUpperbound_ReturnValue) == 0x0000A0, "Member 'INTERACT_EGuitar_C_TryInteract::CallFunc_WrapIntUpperbound_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_EGuitar.INTERACT_EGuitar_C.ExecuteUbergraph_INTERACT_EGuitar
 // 0x0080 (0x0080 - 0x0000)

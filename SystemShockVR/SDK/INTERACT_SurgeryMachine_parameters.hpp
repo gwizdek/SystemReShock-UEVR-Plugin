@@ -13,10 +13,10 @@
 #include "AttributeSystem_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_SurgeryMachineState_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "ENUM_LeftRight_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "ENUM_LeftRight_structs.hpp"
 
 
 namespace SDK::Params
@@ -96,7 +96,7 @@ static_assert(offsetof(INTERACT_SurgeryMachine_C_GetTargetShape, CallFunc_EqualE
 static_assert(offsetof(INTERACT_SurgeryMachine_C_GetTargetShape, CallFunc_EqualEqual_ObjectObject_ReturnValue_1) == 0x000011, "Member 'INTERACT_SurgeryMachine_C_GetTargetShape::CallFunc_EqualEqual_ObjectObject_ReturnValue_1' has a wrong offset!");
 
 // Function INTERACT_SurgeryMachine.INTERACT_SurgeryMachine_C.TryInteract
-// 0x01F0 (0x01F0 - 0x0000)
+// 0x01F8 (0x01F8 - 0x0000)
 struct INTERACT_SurgeryMachine_C_TryInteract final
 {
 public:
@@ -117,38 +117,41 @@ public:
 	uint8                                         Pad_92[0x6];                                       // 0x0092(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_1;        // 0x0098(0x0020)(HasGetValueTypeHash)
 	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_2;        // 0x00B8(0x0020)(HasGetValueTypeHash)
-	bool                                          CallFunc_IsSurgeryMachineDisabled_Result;          // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x00D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_DA[0x6];                                       // 0x00DA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_3;        // 0x00E0(0x0020)(HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetForwardVector_ReturnValue;             // 0x0100(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue;          // 0x010C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0118(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0124(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_CanPerformChannelingSequence_Result;      // 0x0130(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_131[0x3];                                      // 0x0131(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_AngleBetweenVectors_ReturnValue;          // 0x0134(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_139[0x7];                                      // 0x0139(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_4;        // 0x0140(0x0020)(HasGetValueTypeHash)
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0168(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_169[0x7];                                      // 0x0169(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_5;        // 0x0170(0x0020)(HasGetValueTypeHash)
-	class UCOMP_Inventory_C*                      CallFunc_GetInventoryComponent_Inventory;          // 0x0190(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsSurgeryMachineDestroyed_Result;         // 0x0198(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0199(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsSafeToInteract_Result;                  // 0x019A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19B[0x5];                                      // 0x019B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_6;        // 0x01A0(0x0020)(HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x01C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_LeftRight                                K2Node_Select_Default;                             // 0x01C1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1C2[0x6];                                      // 0x01C2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_7;        // 0x01C8(0x0020)(HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x01E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_3;        // 0x00E8(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_IsSurgeryMachineDisabled_Result;          // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0109(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_10A[0x2];                                      // 0x010A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_GetForwardVector_ReturnValue;             // 0x010C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue;          // 0x0118(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0124(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0130(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_CanPerformChannelingSequence_Result;      // 0x013C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_13D[0x3];                                      // 0x013D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_AngleBetweenVectors_ReturnValue;          // 0x0140(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0144(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_145[0x3];                                      // 0x0145(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_4;        // 0x0148(0x0020)(HasGetValueTypeHash)
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0168(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0170(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_171[0x7];                                      // 0x0171(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_5;        // 0x0178(0x0020)(HasGetValueTypeHash)
+	class UCOMP_Inventory_C*                      CallFunc_GetInventoryComponent_Inventory;          // 0x0198(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsSurgeryMachineDestroyed_Result;         // 0x01A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x01A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsSafeToInteract_Result;                  // 0x01A2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1A3[0x5];                                      // 0x01A3(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_6;        // 0x01A8(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x01C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_LeftRight                                K2Node_Select_Default;                             // 0x01C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1CA[0x6];                                      // 0x01CA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_7;        // 0x01D0(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x01F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(INTERACT_SurgeryMachine_C_TryInteract) == 0x000008, "Wrong alignment on INTERACT_SurgeryMachine_C_TryInteract");
-static_assert(sizeof(INTERACT_SurgeryMachine_C_TryInteract) == 0x0001F0, "Wrong size on INTERACT_SurgeryMachine_C_TryInteract");
+static_assert(sizeof(INTERACT_SurgeryMachine_C_TryInteract) == 0x0001F8, "Wrong size on INTERACT_SurgeryMachine_C_TryInteract");
 static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, SourceActor) == 0x000000, "Member 'INTERACT_SurgeryMachine_C_TryInteract::SourceActor' has a wrong offset!");
 static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CursorPrimitive) == 0x000008, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CursorPrimitive' has a wrong offset!");
 static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, InteractionType) == 0x000010, "Member 'INTERACT_SurgeryMachine_C_TryInteract::InteractionType' has a wrong offset!");
@@ -162,29 +165,31 @@ static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_EqualEqua
 static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, Temp_byte_Variable_1) == 0x000091, "Member 'INTERACT_SurgeryMachine_C_TryInteract::Temp_byte_Variable_1' has a wrong offset!");
 static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_1) == 0x000098, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_1' has a wrong offset!");
 static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_2) == 0x0000B8, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_2' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_IsSurgeryMachineDisabled_Result) == 0x0000D8, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_IsSurgeryMachineDisabled_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_Not_PreBool_ReturnValue) == 0x0000D9, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_3) == 0x0000E0, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_3' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_GetForwardVector_ReturnValue) == 0x000100, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_GetForwardVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_K2_GetActorLocation_ReturnValue) == 0x00010C, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_K2_GetActorLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000118, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_Subtract_VectorVector_ReturnValue) == 0x000124, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_CanPerformChannelingSequence_Result) == 0x000130, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_CanPerformChannelingSequence_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_AngleBetweenVectors_ReturnValue) == 0x000134, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_AngleBetweenVectors_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_Less_FloatFloat_ReturnValue) == 0x000138, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_4) == 0x000140, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_4' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000160, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_DynamicCast_bSuccess) == 0x000168, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_5) == 0x000170, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_5' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_GetInventoryComponent_Inventory) == 0x000190, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_GetInventoryComponent_Inventory' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_IsSurgeryMachineDestroyed_Result) == 0x000198, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_IsSurgeryMachineDestroyed_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_Not_PreBool_ReturnValue_1) == 0x000199, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_IsSafeToInteract_Result) == 0x00019A, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_IsSafeToInteract_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_6) == 0x0001A0, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_6' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x0001C0, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_Select_Default) == 0x0001C1, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_7) == 0x0001C8, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_7' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x0001E8, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x0000D8, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_DynamicCast_bSuccess) == 0x0000E0, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_3) == 0x0000E8, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_3' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_IsSurgeryMachineDisabled_Result) == 0x000108, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_IsSurgeryMachineDisabled_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_Not_PreBool_ReturnValue) == 0x000109, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_GetForwardVector_ReturnValue) == 0x00010C, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_GetForwardVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_K2_GetActorLocation_ReturnValue) == 0x000118, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_K2_GetActorLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000124, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_Subtract_VectorVector_ReturnValue) == 0x000130, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_CanPerformChannelingSequence_Result) == 0x00013C, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_CanPerformChannelingSequence_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_AngleBetweenVectors_ReturnValue) == 0x000140, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_AngleBetweenVectors_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_Less_FloatFloat_ReturnValue) == 0x000144, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_4) == 0x000148, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_4' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000168, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_DynamicCast_bSuccess_1) == 0x000170, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_5) == 0x000178, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_5' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_GetInventoryComponent_Inventory) == 0x000198, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_GetInventoryComponent_Inventory' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_IsSurgeryMachineDestroyed_Result) == 0x0001A0, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_IsSurgeryMachineDestroyed_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_Not_PreBool_ReturnValue_1) == 0x0001A1, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_IsSafeToInteract_Result) == 0x0001A2, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_IsSafeToInteract_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_6) == 0x0001A8, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_6' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x0001C8, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_Select_Default) == 0x0001C9, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_7) == 0x0001D0, "Member 'INTERACT_SurgeryMachine_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_7' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_TryInteract, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x0001F0, "Member 'INTERACT_SurgeryMachine_C_TryInteract::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
 
 // Function INTERACT_SurgeryMachine.INTERACT_SurgeryMachine_C.InitializeSurgeryMachine
 // 0x0060 (0x0060 - 0x0000)
@@ -279,24 +284,17 @@ static_assert(offsetof(INTERACT_SurgeryMachine_C_OnSurgeryMachineDestroyed, Call
 static_assert(offsetof(INTERACT_SurgeryMachine_C_OnSurgeryMachineDestroyed, K2Node_CreateDelegate_OutputDelegate) == 0x000014, "Member 'INTERACT_SurgeryMachine_C_OnSurgeryMachineDestroyed::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
 
 // Function INTERACT_SurgeryMachine.INTERACT_SurgeryMachine_C.UpdateDeathSettings
-// 0x0070 (0x0070 - 0x0000)
+// 0x0002 (0x0002 - 0x0000)
 struct INTERACT_SurgeryMachine_C_UpdateDeathSettings final
 {
 public:
 	bool                                          DuringBeginPlay;                                   // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0008(0x0040)(HasGetValueTypeHash)
-	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x0048(0x0010)(ReferenceParm)
-	class FText                                   CallFunc_Format_ReturnValue;                       // 0x0058(0x0018)()
 };
-static_assert(alignof(INTERACT_SurgeryMachine_C_UpdateDeathSettings) == 0x000008, "Wrong alignment on INTERACT_SurgeryMachine_C_UpdateDeathSettings");
-static_assert(sizeof(INTERACT_SurgeryMachine_C_UpdateDeathSettings) == 0x000070, "Wrong size on INTERACT_SurgeryMachine_C_UpdateDeathSettings");
+static_assert(alignof(INTERACT_SurgeryMachine_C_UpdateDeathSettings) == 0x000001, "Wrong alignment on INTERACT_SurgeryMachine_C_UpdateDeathSettings");
+static_assert(sizeof(INTERACT_SurgeryMachine_C_UpdateDeathSettings) == 0x000002, "Wrong size on INTERACT_SurgeryMachine_C_UpdateDeathSettings");
 static_assert(offsetof(INTERACT_SurgeryMachine_C_UpdateDeathSettings, DuringBeginPlay) == 0x000000, "Member 'INTERACT_SurgeryMachine_C_UpdateDeathSettings::DuringBeginPlay' has a wrong offset!");
 static_assert(offsetof(INTERACT_SurgeryMachine_C_UpdateDeathSettings, Result) == 0x000001, "Member 'INTERACT_SurgeryMachine_C_UpdateDeathSettings::Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_UpdateDeathSettings, K2Node_MakeStruct_FormatArgumentData) == 0x000008, "Member 'INTERACT_SurgeryMachine_C_UpdateDeathSettings::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_UpdateDeathSettings, K2Node_MakeArray_Array) == 0x000048, "Member 'INTERACT_SurgeryMachine_C_UpdateDeathSettings::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_UpdateDeathSettings, CallFunc_Format_ReturnValue) == 0x000058, "Member 'INTERACT_SurgeryMachine_C_UpdateDeathSettings::CallFunc_Format_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_SurgeryMachine.INTERACT_SurgeryMachine_C.UpdateMaterial
 // 0x00C0 (0x00C0 - 0x0000)
@@ -1151,49 +1149,53 @@ static_assert(sizeof(INTERACT_SurgeryMachine_C_UpdateVisibilityState) == 0x00000
 static_assert(offsetof(INTERACT_SurgeryMachine_C_UpdateVisibilityState, State) == 0x000000, "Member 'INTERACT_SurgeryMachine_C_UpdateVisibilityState::State' has a wrong offset!");
 
 // Function INTERACT_SurgeryMachine.INTERACT_SurgeryMachine_C.EVENT_OnMoveControlExpire
-// 0x0078 (0x0078 - 0x0000)
+// 0x0080 (0x0080 - 0x0000)
 struct INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire final
 {
 public:
 	class UMOVECONTROL_Base_C*                    MoveControl;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APAWN_Hacker_Simple_C*                  HackerPawn;                                        // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsDirectlyThreatenedByAnyEnemy_Result;    // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_13[0x5];                                       // 0x0013(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class UMOVECONTROL_Base_C* MoveControl)> K2Node_CreateDelegate_OutputDelegate;              // 0x002C(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCOMP_Inventory_C*                      CallFunc_GetInventoryComponent_Inventory;          // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TScriptInterface<class IINTERF_ANIM_Hacker_C> K2Node_DynamicCast_AsINTERF_ANIM_Hacker;           // 0x0060(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_SetUseIK_Result;                          // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsDirectlyThreatenedByAnyEnemy_Result;    // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x001B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class UMOVECONTROL_Base_C* MoveControl)> K2Node_CreateDelegate_OutputDelegate;              // 0x0034(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCOMP_Inventory_C*                      CallFunc_GetInventoryComponent_Inventory;          // 0x0058(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TScriptInterface<class IINTERF_ANIM_Hacker_C> K2Node_DynamicCast_AsINTERF_ANIM_Hacker;           // 0x0068(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_SetUseIK_Result;                          // 0x0079(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire) == 0x000008, "Wrong alignment on INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire");
-static_assert(sizeof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire) == 0x000078, "Wrong size on INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire");
+static_assert(sizeof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire) == 0x000080, "Wrong size on INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire");
 static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, MoveControl) == 0x000000, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::MoveControl' has a wrong offset!");
 static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, HackerPawn) == 0x000008, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::HackerPawn' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_IsDirectlyThreatenedByAnyEnemy_Result) == 0x000010, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_IsDirectlyThreatenedByAnyEnemy_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_IsValid_ReturnValue) == 0x000011, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_Not_PreBool_ReturnValue) == 0x000012, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_GetGameInstance_ReturnValue) == 0x000018, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_AsGI_Single_Player) == 0x000020, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_CreateDelegate_OutputDelegate) == 0x00002C, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000040, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_bSuccess_1) == 0x000048, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_GetInventoryComponent_Inventory) == 0x000050, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_GetInventoryComponent_Inventory' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_GetAnimInstance_ReturnValue) == 0x000058, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_AsINTERF_ANIM_Hacker) == 0x000060, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_AsINTERF_ANIM_Hacker' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_bSuccess_2) == 0x000070, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_SetUseIK_Result) == 0x000071, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_SetUseIK_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000010, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_IsDirectlyThreatenedByAnyEnemy_Result) == 0x000019, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_IsDirectlyThreatenedByAnyEnemy_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_Not_PreBool_ReturnValue) == 0x00001A, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_IsValid_ReturnValue) == 0x00001B, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_GetGameInstance_ReturnValue) == 0x000020, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_AsGI_Single_Player) == 0x000028, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_bSuccess_1) == 0x000030, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_CreateDelegate_OutputDelegate) == 0x000034, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000048, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_bSuccess_2) == 0x000050, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_GetInventoryComponent_Inventory) == 0x000058, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_GetInventoryComponent_Inventory' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_GetAnimInstance_ReturnValue) == 0x000060, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_AsINTERF_ANIM_Hacker) == 0x000068, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_AsINTERF_ANIM_Hacker' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, K2Node_DynamicCast_bSuccess_3) == 0x000078, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire, CallFunc_SetUseIK_Result) == 0x000079, "Member 'INTERACT_SurgeryMachine_C_EVENT_OnMoveControlExpire::CallFunc_SetUseIK_Result' has a wrong offset!");
 
 // Function INTERACT_SurgeryMachine.INTERACT_SurgeryMachine_C.TryResumeSurgery
 // 0x0060 (0x0060 - 0x0000)

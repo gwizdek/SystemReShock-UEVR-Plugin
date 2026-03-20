@@ -829,21 +829,6 @@ static_assert(offsetof(WEAPON_MagPulse_C_OnWeaponBecameActivatable, Character) =
 static_assert(offsetof(WEAPON_MagPulse_C_OnWeaponBecameActivatable, ShowImmediately) == 0x000008, "Member 'WEAPON_MagPulse_C_OnWeaponBecameActivatable::ShowImmediately' has a wrong offset!");
 static_assert(offsetof(WEAPON_MagPulse_C_OnWeaponBecameActivatable, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000009, "Member 'WEAPON_MagPulse_C_OnWeaponBecameActivatable::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 
-// Function WEAPON_MagPulse.WEAPON_MagPulse_C.Activate
-// 0x0010 (0x0010 - 0x0000)
-struct WEAPON_MagPulse_C_Activate final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Activate_Result;                          // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WEAPON_MagPulse_C_Activate) == 0x000008, "Wrong alignment on WEAPON_MagPulse_C_Activate");
-static_assert(sizeof(WEAPON_MagPulse_C_Activate) == 0x000010, "Wrong size on WEAPON_MagPulse_C_Activate");
-static_assert(offsetof(WEAPON_MagPulse_C_Activate, Character) == 0x000000, "Member 'WEAPON_MagPulse_C_Activate::Character' has a wrong offset!");
-static_assert(offsetof(WEAPON_MagPulse_C_Activate, Result) == 0x000008, "Member 'WEAPON_MagPulse_C_Activate::Result' has a wrong offset!");
-static_assert(offsetof(WEAPON_MagPulse_C_Activate, CallFunc_Activate_Result) == 0x000009, "Member 'WEAPON_MagPulse_C_Activate::CallFunc_Activate_Result' has a wrong offset!");
-
 // Function WEAPON_MagPulse.WEAPON_MagPulse_C.OnBecomeActivatable
 // 0x000C (0x000C - 0x0000)
 struct WEAPON_MagPulse_C_OnBecomeActivatable final
@@ -895,6 +880,21 @@ static_assert(offsetof(WEAPON_MagPulse_C_CanActivate, Character) == 0x000000, "M
 static_assert(offsetof(WEAPON_MagPulse_C_CanActivate, Result) == 0x000008, "Member 'WEAPON_MagPulse_C_CanActivate::Result' has a wrong offset!");
 static_assert(offsetof(WEAPON_MagPulse_C_CanActivate, CallFunc_CanActivate_Result) == 0x000009, "Member 'WEAPON_MagPulse_C_CanActivate::CallFunc_CanActivate_Result' has a wrong offset!");
 static_assert(offsetof(WEAPON_MagPulse_C_CanActivate, CallFunc_Greater_ByteByte_ReturnValue) == 0x00000A, "Member 'WEAPON_MagPulse_C_CanActivate::CallFunc_Greater_ByteByte_ReturnValue' has a wrong offset!");
+
+// Function WEAPON_MagPulse.WEAPON_MagPulse_C.Activate
+// 0x0010 (0x0010 - 0x0000)
+struct WEAPON_MagPulse_C_Activate final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Activate_Result;                          // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WEAPON_MagPulse_C_Activate) == 0x000008, "Wrong alignment on WEAPON_MagPulse_C_Activate");
+static_assert(sizeof(WEAPON_MagPulse_C_Activate) == 0x000010, "Wrong size on WEAPON_MagPulse_C_Activate");
+static_assert(offsetof(WEAPON_MagPulse_C_Activate, Character) == 0x000000, "Member 'WEAPON_MagPulse_C_Activate::Character' has a wrong offset!");
+static_assert(offsetof(WEAPON_MagPulse_C_Activate, Result) == 0x000008, "Member 'WEAPON_MagPulse_C_Activate::Result' has a wrong offset!");
+static_assert(offsetof(WEAPON_MagPulse_C_Activate, CallFunc_Activate_Result) == 0x000009, "Member 'WEAPON_MagPulse_C_Activate::CallFunc_Activate_Result' has a wrong offset!");
 
 }
 

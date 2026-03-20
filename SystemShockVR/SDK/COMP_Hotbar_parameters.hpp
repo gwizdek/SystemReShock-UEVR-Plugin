@@ -859,6 +859,60 @@ static_assert(offsetof(COMP_Hotbar_C_GetFirstFreeSlotIndexWithPreference, CallFu
 static_assert(offsetof(COMP_Hotbar_C_GetFirstFreeSlotIndexWithPreference, CallFunc_Less_IntInt_ReturnValue) == 0x000045, "Member 'COMP_Hotbar_C_GetFirstFreeSlotIndexWithPreference::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(COMP_Hotbar_C_GetFirstFreeSlotIndexWithPreference, CallFunc_Not_PreBool_ReturnValue) == 0x000046, "Member 'COMP_Hotbar_C_GetFirstFreeSlotIndexWithPreference::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 
+// Function COMP_Hotbar.COMP_Hotbar_C.GetFirstSlotWithParentClass
+// 0x0050 (0x0050 - 0x0000)
+struct COMP_Hotbar_C_GetFirstSlotWithParentClass final
+{
+public:
+	class UClass*                                 SlotParentClass;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         SlotIndex;                                         // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Variable;                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IINTERF_HotbarSlottable_C> CallFunc_GetSlotAtIndex_SlottableObject;           // 0x0018(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_LessEqual_IntInt_ReturnValue;             // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                CallFunc_Conv_InterfaceToObject_ReturnValue;       // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(COMP_Hotbar_C_GetFirstSlotWithParentClass) == 0x000008, "Wrong alignment on COMP_Hotbar_C_GetFirstSlotWithParentClass");
+static_assert(sizeof(COMP_Hotbar_C_GetFirstSlotWithParentClass) == 0x000050, "Wrong size on COMP_Hotbar_C_GetFirstSlotWithParentClass");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, SlotParentClass) == 0x000000, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::SlotParentClass' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, SlotIndex) == 0x000008, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::SlotIndex' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, Temp_int_Variable) == 0x00000C, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::Temp_int_Variable' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, CallFunc_Subtract_IntInt_ReturnValue) == 0x000010, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, CallFunc_GetSlotAtIndex_SlottableObject) == 0x000018, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::CallFunc_GetSlotAtIndex_SlottableObject' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, CallFunc_LessEqual_IntInt_ReturnValue) == 0x000028, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::CallFunc_LessEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, CallFunc_Conv_InterfaceToObject_ReturnValue) == 0x000030, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::CallFunc_Conv_InterfaceToObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, CallFunc_IsValid_ReturnValue) == 0x000038, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, CallFunc_GetObjectClass_ReturnValue) == 0x000040, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, CallFunc_ClassIsChildOf_ReturnValue) == 0x000048, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_GetFirstSlotWithParentClass, CallFunc_Add_IntInt_ReturnValue) == 0x00004C, "Member 'COMP_Hotbar_C_GetFirstSlotWithParentClass::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+
+// Function COMP_Hotbar.COMP_Hotbar_C.TryUseFirstConsumableWithParentClass
+// 0x0018 (0x0018 - 0x0000)
+struct COMP_Hotbar_C_TryUseFirstConsumableWithParentClass final
+{
+public:
+	class UClass*                                 SlotParentClass;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Index_0;                                           // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetFirstSlotWithParentClass_SlotIndex;    // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_TryUseConsumableAtSlot_Result;            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(COMP_Hotbar_C_TryUseFirstConsumableWithParentClass) == 0x000008, "Wrong alignment on COMP_Hotbar_C_TryUseFirstConsumableWithParentClass");
+static_assert(sizeof(COMP_Hotbar_C_TryUseFirstConsumableWithParentClass) == 0x000018, "Wrong size on COMP_Hotbar_C_TryUseFirstConsumableWithParentClass");
+static_assert(offsetof(COMP_Hotbar_C_TryUseFirstConsumableWithParentClass, SlotParentClass) == 0x000000, "Member 'COMP_Hotbar_C_TryUseFirstConsumableWithParentClass::SlotParentClass' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_TryUseFirstConsumableWithParentClass, Index_0) == 0x000008, "Member 'COMP_Hotbar_C_TryUseFirstConsumableWithParentClass::Index_0' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_TryUseFirstConsumableWithParentClass, CallFunc_GetFirstSlotWithParentClass_SlotIndex) == 0x00000C, "Member 'COMP_Hotbar_C_TryUseFirstConsumableWithParentClass::CallFunc_GetFirstSlotWithParentClass_SlotIndex' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_TryUseFirstConsumableWithParentClass, CallFunc_TryUseConsumableAtSlot_Result) == 0x000010, "Member 'COMP_Hotbar_C_TryUseFirstConsumableWithParentClass::CallFunc_TryUseConsumableAtSlot_Result' has a wrong offset!");
+static_assert(offsetof(COMP_Hotbar_C_TryUseFirstConsumableWithParentClass, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000011, "Member 'COMP_Hotbar_C_TryUseFirstConsumableWithParentClass::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
+
 // Function COMP_Hotbar.COMP_Hotbar_C.ShouldSaveComponent
 // 0x000C (0x000C - 0x0000)
 struct COMP_Hotbar_C_ShouldSaveComponent final

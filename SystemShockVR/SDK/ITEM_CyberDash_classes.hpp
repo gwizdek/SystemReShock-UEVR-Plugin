@@ -34,8 +34,8 @@ public:
 	void UpdateDashPower(float DeltaTime, bool IsMoving, float* SpeedScale);
 	void GetOwnerPawn(class APAWN_Avatar_C** Pawn);
 	void GetCurrentDashPowerRatio(float* Result);
-	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void GetIsActivated(bool* Result);
+	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void Deactivate(bool* Result);
 
 public:

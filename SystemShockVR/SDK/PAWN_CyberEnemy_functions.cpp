@@ -37,6 +37,26 @@ void APAWN_CyberEnemy_C::ExecuteUbergraph_PAWN_CyberEnemy(int32 EntryPoint)
 }
 
 
+// Function PAWN_CyberEnemy.PAWN_CyberEnemy_C.ReceiveEndPlay
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// EEndPlayReason                          EndPlayReason                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void APAWN_CyberEnemy_C::ReceiveEndPlay(EEndPlayReason EndPlayReason)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_CyberEnemy_C", "ReceiveEndPlay");
+
+	Params::PAWN_CyberEnemy_C_ReceiveEndPlay Parms{};
+
+	Parms.EndPlayReason = EndPlayReason;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function PAWN_CyberEnemy.PAWN_CyberEnemy_C.ReceiveBeginPlay
 // (Event, Protected, BlueprintEvent)
 
@@ -268,26 +288,6 @@ void APAWN_CyberEnemy_C::GetIceShieldSize(float* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
-}
-
-
-// Function PAWN_CyberEnemy.PAWN_CyberEnemy_C.ReceiveEndPlay
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// EEndPlayReason                          EndPlayReason                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void APAWN_CyberEnemy_C::ReceiveEndPlay(EEndPlayReason EndPlayReason)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_CyberEnemy_C", "ReceiveEndPlay");
-
-	Params::PAWN_CyberEnemy_C_ReceiveEndPlay Parms{};
-
-	Parms.EndPlayReason = EndPlayReason;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 

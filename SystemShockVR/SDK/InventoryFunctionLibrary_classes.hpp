@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_UpgradeResult_structs.hpp"
 #include "Engine_classes.hpp"
 #include "ENUM_Axis_structs.hpp"
-#include "ENUM_UpgradeResult_structs.hpp"
 #include "ENUM_WeaponProperty_structs.hpp"
 #include "ENUM_ItemType_structs.hpp"
 

@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "SystemReShock_classes.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "SystemReShock_classes.hpp"
 
 
 namespace SDK

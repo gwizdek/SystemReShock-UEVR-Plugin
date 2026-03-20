@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "Engine_classes.hpp"
 #include "ENUM_SkillType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "STRUCT_DefaultSkillComboParams_structs.hpp"
+#include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "SystemReShock_classes.hpp"
 #include "ENUM_PreferredCombatStyle_structs.hpp"
 
 
@@ -23,7 +23,7 @@ namespace SDK
 
 // BlueprintGeneratedClass COMP_SkillManager.COMP_SkillManager_C
 // 0x0078 (0x0128 - 0x00B0)
-class UCOMP_SkillManager_C final : public UActorComponent
+class UCOMP_SkillManager_C final : public USkillManager_BaseComp
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x00B0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)

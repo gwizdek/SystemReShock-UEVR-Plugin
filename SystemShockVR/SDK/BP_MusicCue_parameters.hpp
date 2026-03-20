@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_IntensityThresholds_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_BeatType_structs.hpp"
-#include "ENUM_IntensityThresholds_structs.hpp"
 #include "STRUCT_MusicCue_Layer_structs.hpp"
 #include "ENUM_MusicPlayState_structs.hpp"
 
@@ -593,30 +593,44 @@ static_assert(offsetof(BP_MusicCue_C_ForceStopMusic, CallFunc_BooleanAND_ReturnV
 static_assert(offsetof(BP_MusicCue_C_ForceStopMusic, CallFunc_IsValid_ReturnValue) == 0x000003, "Member 'BP_MusicCue_C_ForceStopMusic::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 // Function BP_MusicCue.BP_MusicCue_C.StopMusicInternal
-// 0x0028 (0x0028 - 0x0000)
+// 0x0048 (0x0048 - 0x0000)
 struct BP_MusicCue_C_StopMusicInternal final
 {
 public:
 	int32                                         Temp_int_Array_Index_Variable;                     // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UQuartzClockHandle*                     CallFunc_StopClock_ClockHandle;                    // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UBP_MusicLayer_C*                       CallFunc_Array_Get_Item;                           // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsUsingAudioCaching_IsUsingAudioCache;    // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_23[0x1];                                       // 0x0023(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetAudioCacheSize_AudioCacheSizeMegaBytes; // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_TrimAudioCache_ReturnValue;               // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UQuartzClockHandle*                     CallFunc_StopClock_ClockHandle;                    // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UBP_MusicLayer_C*                       CallFunc_Array_Get_Item;                           // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0044(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(BP_MusicCue_C_StopMusicInternal) == 0x000008, "Wrong alignment on BP_MusicCue_C_StopMusicInternal");
-static_assert(sizeof(BP_MusicCue_C_StopMusicInternal) == 0x000028, "Wrong size on BP_MusicCue_C_StopMusicInternal");
+static_assert(sizeof(BP_MusicCue_C_StopMusicInternal) == 0x000048, "Wrong size on BP_MusicCue_C_StopMusicInternal");
 static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, Temp_int_Array_Index_Variable) == 0x000000, "Member 'BP_MusicCue_C_StopMusicInternal::Temp_int_Array_Index_Variable' has a wrong offset!");
 static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, Temp_int_Loop_Counter_Variable) == 0x000004, "Member 'BP_MusicCue_C_StopMusicInternal::Temp_int_Loop_Counter_Variable' has a wrong offset!");
 static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_Add_IntInt_ReturnValue) == 0x000008, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_IsValid_ReturnValue) == 0x00000C, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_StopClock_ClockHandle) == 0x000010, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_StopClock_ClockHandle' has a wrong offset!");
-static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_Array_Get_Item) == 0x000018, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_Array_Length_ReturnValue) == 0x000020, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_Less_IntInt_ReturnValue) == 0x000024, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_GetGameInstance_ReturnValue) == 0x000010, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, K2Node_DynamicCast_AsGI_Single_Player) == 0x000018, "Member 'BP_MusicCue_C_StopMusicInternal::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, K2Node_DynamicCast_bSuccess) == 0x000020, "Member 'BP_MusicCue_C_StopMusicInternal::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_IsValid_ReturnValue) == 0x000021, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_IsUsingAudioCaching_IsUsingAudioCache) == 0x000022, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_IsUsingAudioCaching_IsUsingAudioCache' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_GetAudioCacheSize_AudioCacheSizeMegaBytes) == 0x000024, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_GetAudioCacheSize_AudioCacheSizeMegaBytes' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_TrimAudioCache_ReturnValue) == 0x000028, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_TrimAudioCache_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_StopClock_ClockHandle) == 0x000030, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_StopClock_ClockHandle' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_Array_Get_Item) == 0x000038, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_Array_Length_ReturnValue) == 0x000040, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_StopMusicInternal, CallFunc_Less_IntInt_ReturnValue) == 0x000044, "Member 'BP_MusicCue_C_StopMusicInternal::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 
 // Function BP_MusicCue.BP_MusicCue_C.UpdateExplorationIntensity
 // 0x0004 (0x0004 - 0x0000)
@@ -750,6 +764,28 @@ static_assert(offsetof(BP_MusicCue_C_GetQuartzBeatType, Temp_byte_Variable_5) ==
 static_assert(offsetof(BP_MusicCue_C_GetQuartzBeatType, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000007, "Member 'BP_MusicCue_C_GetQuartzBeatType::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 static_assert(offsetof(BP_MusicCue_C_GetQuartzBeatType, K2Node_Select_Default) == 0x000008, "Member 'BP_MusicCue_C_GetQuartzBeatType::K2Node_Select_Default' has a wrong offset!");
 
+// Function BP_MusicCue.BP_MusicCue_C.EVENT_OnCueLoaded
+// 0x0018 (0x0018 - 0x0000)
+struct BP_MusicCue_C_EVENT_OnCueLoaded final
+{
+public:
+	const class USoundWave*                       LoadedSoundWave;                                   // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          WasCancelled;                                      // 0x0008(0x0001)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B[0x1];                                        // 0x000B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_MusicCue_C_EVENT_OnCueLoaded) == 0x000008, "Wrong alignment on BP_MusicCue_C_EVENT_OnCueLoaded");
+static_assert(sizeof(BP_MusicCue_C_EVENT_OnCueLoaded) == 0x000018, "Wrong size on BP_MusicCue_C_EVENT_OnCueLoaded");
+static_assert(offsetof(BP_MusicCue_C_EVENT_OnCueLoaded, LoadedSoundWave) == 0x000000, "Member 'BP_MusicCue_C_EVENT_OnCueLoaded::LoadedSoundWave' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_EVENT_OnCueLoaded, WasCancelled) == 0x000008, "Member 'BP_MusicCue_C_EVENT_OnCueLoaded::WasCancelled' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_EVENT_OnCueLoaded, CallFunc_Not_PreBool_ReturnValue) == 0x000009, "Member 'BP_MusicCue_C_EVENT_OnCueLoaded::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_EVENT_OnCueLoaded, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x00000A, "Member 'BP_MusicCue_C_EVENT_OnCueLoaded::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_EVENT_OnCueLoaded, CallFunc_Add_IntInt_ReturnValue) == 0x00000C, "Member 'BP_MusicCue_C_EVENT_OnCueLoaded::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_EVENT_OnCueLoaded, CallFunc_BooleanAND_ReturnValue) == 0x000010, "Member 'BP_MusicCue_C_EVENT_OnCueLoaded::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
 // Function BP_MusicCue.BP_MusicCue_C.EVENT_OnQuartzBar
 // 0x0038 (0x0038 - 0x0000)
 struct BP_MusicCue_C_EVENT_OnQuartzBar final
@@ -816,6 +852,44 @@ public:
 static_assert(alignof(BP_MusicCue_C_IsMusicDebugLoggingEnabled) == 0x000001, "Wrong alignment on BP_MusicCue_C_IsMusicDebugLoggingEnabled");
 static_assert(sizeof(BP_MusicCue_C_IsMusicDebugLoggingEnabled) == 0x000001, "Wrong size on BP_MusicCue_C_IsMusicDebugLoggingEnabled");
 static_assert(offsetof(BP_MusicCue_C_IsMusicDebugLoggingEnabled, Result) == 0x000000, "Member 'BP_MusicCue_C_IsMusicDebugLoggingEnabled::Result' has a wrong offset!");
+
+// Function BP_MusicCue.BP_MusicCue_C.PrimeMusicCue
+// 0x0050 (0x0050 - 0x0000)
+struct BP_MusicCue_C_PrimeMusicCue final
+{
+public:
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable_1;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class USoundWave* LoadedSoundWave, bool WasCancelled)> K2Node_CreateDelegate_OutputDelegate;              // 0x0014(0x0010)(ZeroConstructor, NoDestructor)
+	int32                                         Temp_int_Loop_Counter_Variable_1;                  // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UBP_MusicLayer_C*                       CallFunc_Array_Get_Item;                           // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_35[0x3];                                       // 0x0035(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class USoundWave*                             CallFunc_Array_Get_Item_1;                         // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue_2;                 // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_1;                // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(BP_MusicCue_C_PrimeMusicCue) == 0x000008, "Wrong alignment on BP_MusicCue_C_PrimeMusicCue");
+static_assert(sizeof(BP_MusicCue_C_PrimeMusicCue) == 0x000050, "Wrong size on BP_MusicCue_C_PrimeMusicCue");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, Temp_int_Loop_Counter_Variable) == 0x000000, "Member 'BP_MusicCue_C_PrimeMusicCue::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, CallFunc_Add_IntInt_ReturnValue) == 0x000004, "Member 'BP_MusicCue_C_PrimeMusicCue::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, Temp_int_Array_Index_Variable) == 0x000008, "Member 'BP_MusicCue_C_PrimeMusicCue::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, Temp_int_Array_Index_Variable_1) == 0x00000C, "Member 'BP_MusicCue_C_PrimeMusicCue::Temp_int_Array_Index_Variable_1' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, CallFunc_Add_IntInt_ReturnValue_1) == 0x000010, "Member 'BP_MusicCue_C_PrimeMusicCue::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, K2Node_CreateDelegate_OutputDelegate) == 0x000014, "Member 'BP_MusicCue_C_PrimeMusicCue::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, Temp_int_Loop_Counter_Variable_1) == 0x000024, "Member 'BP_MusicCue_C_PrimeMusicCue::Temp_int_Loop_Counter_Variable_1' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, CallFunc_Array_Get_Item) == 0x000028, "Member 'BP_MusicCue_C_PrimeMusicCue::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, CallFunc_Array_Length_ReturnValue) == 0x000030, "Member 'BP_MusicCue_C_PrimeMusicCue::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, CallFunc_Less_IntInt_ReturnValue) == 0x000034, "Member 'BP_MusicCue_C_PrimeMusicCue::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, CallFunc_Array_Get_Item_1) == 0x000038, "Member 'BP_MusicCue_C_PrimeMusicCue::CallFunc_Array_Get_Item_1' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, CallFunc_Array_Length_ReturnValue_1) == 0x000040, "Member 'BP_MusicCue_C_PrimeMusicCue::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, CallFunc_Add_IntInt_ReturnValue_2) == 0x000044, "Member 'BP_MusicCue_C_PrimeMusicCue::CallFunc_Add_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(BP_MusicCue_C_PrimeMusicCue, CallFunc_Less_IntInt_ReturnValue_1) == 0x000048, "Member 'BP_MusicCue_C_PrimeMusicCue::CallFunc_Less_IntInt_ReturnValue_1' has a wrong offset!");
 
 // Function BP_MusicCue.BP_MusicCue_C.UpdateCombatIntensity
 // 0x0004 (0x0004 - 0x0000)

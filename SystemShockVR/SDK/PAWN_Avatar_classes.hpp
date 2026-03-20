@@ -11,12 +11,13 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_PrimarySecondary_structs.hpp"
-#include "AttributeSystem_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "PAWN_SystemShockCharacter_classes.hpp"
 #include "STRUCT_CameraEffectInstance_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ENUM_PrimarySecondary_structs.hpp"
 #include "UMG_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "AttributeSystem_structs.hpp"
+#include "PAWN_SystemShockCharacter_classes.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 
 
@@ -24,7 +25,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass PAWN_Avatar.PAWN_Avatar_C
-// 0x0270 (0x08F0 - 0x0680)
+// 0x02A0 (0x0920 - 0x0680)
 class APAWN_Avatar_C final : public APAWN_SystemShockCharacter_C
 {
 public:
@@ -41,18 +42,20 @@ public:
 	class UTimelineComponent*                     PP_Avatar_Intro_Timeline;                          // 0x06C0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         RollRate;                                          // 0x06C8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         RollAcceleration;                                  // 0x06CC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         MoveStrafeScale;                                   // 0x06D0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         GamepadFramePitch;                                 // 0x06D4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         GamepadFrameYaw;                                   // 0x06D8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         KeyboardFramePitch;                                // 0x06DC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         KeyboardFrameYaw;                                  // 0x06E0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         FrameRoll;                                         // 0x06E4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                FrameRelativeInput;                                // 0x06E8(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                PersistentRelativeInput;                           // 0x06F4(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         MoveKeyDownCount;                                  // 0x0700(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RollScaleTarget;                                   // 0x0704(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RollScaleCurrent;                                  // 0x0708(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_70C[0x4];                                      // 0x070C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          RollLeftPressed;                                   // 0x06D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          RollRightPressed;                                  // 0x06D1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6D2[0x2];                                      // 0x06D2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         MoveStrafeScale;                                   // 0x06D4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GamepadFramePitch;                                 // 0x06D8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GamepadFrameYaw;                                   // 0x06DC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         KeyboardFramePitch;                                // 0x06E0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         KeyboardFrameYaw;                                  // 0x06E4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         FrameRoll;                                         // 0x06E8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                FrameRelativeInput;                                // 0x06EC(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                PersistentRelativeInput;                           // 0x06F8(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         MoveKeyDownCount;                                  // 0x0704(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RollScaleTarget;                                   // 0x0708(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RollScaleCurrent;                                  // 0x070C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class ACYBR_DomainLink_C*                     CurrentDomainLink;                                 // 0x0710(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class ACYBR_DomainLink_C*                     PreviousDomainLink;                                // 0x0718(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWIDGET_CyberspaceHUD_C*                CyberspaceUI;                                      // 0x0720(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -117,13 +120,65 @@ public:
 	bool                                          IsHoldingTabRight;                                 // 0x08D9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_8DA[0x6];                                      // 0x08DA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	TMulticastInlineDelegate<void()>              OnNewSecurityTimerSet;                             // 0x08E0(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	bool                                          GyroActive;                                        // 0x08F0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_8F1[0x3];                                      // 0x08F1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                GamepadMotionTilt;                                 // 0x08F4(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                LastGyroPosition;                                  // 0x0900(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_90C[0x4];                                      // 0x090C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ACON_Hacker_C*                          HackerController;                                  // 0x0910(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_PAWN_Avatar(int32 EntryPoint);
 	void ReceiveUnpossessed(class AController* OldController);
 	void ReceivePossessed(class AController* NewController);
-	void ReceiveBeginPlay();
 	void ReceiveTick(float DeltaSeconds);
+	void ClearMenuNavTabRightHeld();
+	void ClearMenuNavTablLeftHeld();
+	void ClearMenuNavAlt2Held();
+	void ClearMenuNavAlt1Held();
+	void ClearMenuNavBackHeld();
+	void ClearShieldHeld();
+	void ClearPowerHeld();
+	void ClearDecoyHeld();
+	void ClearTurboDashHeld();
+	void ClearRecallHeld();
+	void ClearSecondaryAttackHeld();
+	void ClearPrimaryAttackHeld();
+	void ClearRollRightHeld();
+	void ClearRollLeftHeld();
+	void ClearDescendHeld();
+	void ClearAscendHeld();
+	void Impl_Gamepad_MenuNav_Back_Released();
+	void Impl_Gamepad_MenuNav_Back_Pressed();
+	void Impl_Gamepad_RollRight_Released();
+	void Impl_Gamepad_RollRight_Pressed();
+	void Impl_Gamepad_MenuNav_Alt2_Released();
+	void Impl_Gamepad_MenuNav_Alt2_Pressed();
+	void Impl_Gamepad_MenuNav_Alt1_Released();
+	void Impl_Gamepad_MenuNav_Alt1_Pressed();
+	void Impl_Gamepad_MenuNav_Accept_Released();
+	void Impl_Gamepad_MenuNav_Accept_Pressed();
+	void Impl_Gamepad_Shield_Released();
+	void Impl_Gampad_Shield_Pressed();
+	void Impl_Gamepad_Power_Released();
+	void Impl_Gamepad_Power_Pressed();
+	void Impl_Gamepad_Decoy_Released();
+	void Impl_Gamepad_Decoy_Pressed();
+	void Impl_Gamepad_Recall_Released();
+	void Impl_Gamepad_Recall_Pressed();
+	void Impl_Gamepad_TurboDash_Released();
+	void Impl_Gamepad_TurboDash_Pressed();
+	void Impl_Gamepad_SecondaryAttack_Released();
+	void Impl_Gamepad_SecondaryAttack_Pressed();
+	void Impl_Gamepad_PrimaryAttack_Released();
+	void Impl_Gamepad_PrimaryAttack_Pressed();
+	void Impl_Gamepad_RollLeft_Released();
+	void Impl_Gamepad_RollLeft_Pressed();
+	void Impl_Gamepad_Descend_Released();
+	void Impl_Gamepad_Descend_Pressed();
+	void Impl_Gamepad_Ascend_Released();
+	void Impl_Gamepad_Ascend_Pressed();
+	void InpAxisKeyEvt_Tilt_K2Node_InputVectorAxisEvent_0(const struct FVector& AxisValue);
 	void InpAxisEvt_MenuNavAxis_Y_K2Node_InputAxisEvent_17(float AxisValue);
 	void InpAxisEvt_MenuNavAxis_X_K2Node_InputAxisEvent_16(float AxisValue);
 	void InpAxisEvt_Locked_LookPitch_K2Node_InputAxisEvent_16(float AxisValue);
@@ -132,92 +187,121 @@ public:
 	void InpAxisEvt_Gamepad_Cyber_MoveAxisY_K2Node_InputAxisEvent_13(float AxisValue);
 	void InpAxisEvt_Gamepad_LookPitch_K2Node_InputAxisEvent_12(float AxisValue);
 	void InpAxisEvt_Gamepad_LookYaw_K2Node_InputAxisEvent_11(float AxisValue);
-	void Cyberspace_Intro_Post_Process();
 	void BndEvt__COMP_VoxelCullableNavAgent_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature(bool bVisibleState);
 	void BndEvt__CapsuleComponent_K2Node_ComponentBoundEvent_0_ComponentHitSignature__DelegateSignature(class UPrimitiveComponent* HitComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, const struct FVector& NormalImpulse, const struct FHitResult& Hit);
-	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0(const struct FKey& Key);
-	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1(const struct FKey& Key);
-	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2(const struct FKey& Key);
-	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3(const struct FKey& Key);
-	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4(const struct FKey& Key);
-	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5(const struct FKey& Key);
-	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6(const struct FKey& Key);
-	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7(const struct FKey& Key);
-	void InpActEvt_Cyber_MoveBackward_K2Node_InputActionEvent_8(const struct FKey& Key);
-	void InpActEvt_Cyber_MoveBackward_K2Node_InputActionEvent_9(const struct FKey& Key);
-	void InpActEvt_Cyber_MoveLeft_K2Node_InputActionEvent_10(const struct FKey& Key);
-	void InpActEvt_Cyber_MoveLeft_K2Node_InputActionEvent_11(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_12(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_13(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_14(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_15(const struct FKey& Key);
-	void InpActEvt_PageUp_K2Node_InputKeyEvent_0(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_16(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_17(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_18(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_19(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Power_K2Node_InputActionEvent_20(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Power_K2Node_InputActionEvent_21(const struct FKey& Key);
-	void InpActEvt_Cyber_Power_K2Node_InputActionEvent_22(const struct FKey& Key);
-	void InpActEvt_Cyber_Power_K2Node_InputActionEvent_23(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Shield_K2Node_InputActionEvent_24(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Shield_K2Node_InputActionEvent_25(const struct FKey& Key);
-	void InpActEvt_Cyber_Shield_K2Node_InputActionEvent_26(const struct FKey& Key);
-	void InpActEvt_Cyber_Shield_K2Node_InputActionEvent_27(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_28(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_29(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_30(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_31(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35(const struct FKey& Key);
-	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_36(const struct FKey& Key);
-	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_37(const struct FKey& Key);
-	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_38(const struct FKey& Key);
-	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_39(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Decoy_K2Node_InputActionEvent_40(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Decoy_K2Node_InputActionEvent_41(const struct FKey& Key);
-	void InpActEvt_Cyber_Decoy_K2Node_InputActionEvent_42(const struct FKey& Key);
-	void InpActEvt_Cyber_Decoy_K2Node_InputActionEvent_43(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Recall_K2Node_InputActionEvent_44(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Recall_K2Node_InputActionEvent_45(const struct FKey& Key);
-	void InpActEvt_Cyber_Recall_K2Node_InputActionEvent_46(const struct FKey& Key);
-	void InpActEvt_Cyber_Recall_K2Node_InputActionEvent_47(const struct FKey& Key);
-	void InpActEvt_Cyber_MoveRight_K2Node_InputActionEvent_48(const struct FKey& Key);
-	void InpActEvt_Cyber_MoveRight_K2Node_InputActionEvent_49(const struct FKey& Key);
-	void InpActEvt_Cyber_MoveForward_K2Node_InputActionEvent_50(const struct FKey& Key);
-	void InpActEvt_Cyber_MoveForward_K2Node_InputActionEvent_51(const struct FKey& Key);
-	void InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_52(const struct FKey& Key);
-	void InpActEvt_Locked_Escape_K2Node_InputActionEvent_53(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Ascend_K2Node_InputActionEvent_54(const struct FKey& Key);
+	void Cyberspace_Intro_Post_Process();
+	void InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_0(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_1(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_2(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_3(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_8(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_9(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Recall_K2Node_InputActionEvent_10(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Recall_K2Node_InputActionEvent_11(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Recall_K2Node_InputActionEvent_12(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Recall_K2Node_InputActionEvent_13(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_TurboDash_K2Node_InputActionEvent_14(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_TurboDash_K2Node_InputActionEvent_15(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_TurboDash_K2Node_InputActionEvent_16(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_TurboDash_K2Node_InputActionEvent_17(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_RollRight_K2Node_InputActionEvent_18(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_RollRight_K2Node_InputActionEvent_19(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_RollRight_K2Node_InputActionEvent_20(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_RollRight_K2Node_InputActionEvent_21(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_22(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_23(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_24(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_25(const struct FKey& Key);
+	void InpActEvt_JCMS_Escape_K2Node_InputActionEvent_26(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Shield_K2Node_InputActionEvent_27(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Shield_K2Node_InputActionEvent_28(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Shield_K2Node_InputActionEvent_29(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Shield_K2Node_InputActionEvent_30(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Power_K2Node_InputActionEvent_31(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Power_K2Node_InputActionEvent_32(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Power_K2Node_InputActionEvent_33(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Power_K2Node_InputActionEvent_34(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Decoy_K2Node_InputActionEvent_35(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Decoy_K2Node_InputActionEvent_36(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Decoy_K2Node_InputActionEvent_37(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Decoy_K2Node_InputActionEvent_38(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_SecondaryAttack_K2Node_InputActionEvent_39(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_SecondaryAttack_K2Node_InputActionEvent_40(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_SecondaryAttack_K2Node_InputActionEvent_41(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_SecondaryAttack_K2Node_InputActionEvent_42(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_PrimaryAttack_K2Node_InputActionEvent_43(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_PrimaryAttack_K2Node_InputActionEvent_44(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_PrimaryAttack_K2Node_InputActionEvent_45(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_PrimaryAttack_K2Node_InputActionEvent_46(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_RollLeft_K2Node_InputActionEvent_47(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_RollLeft_K2Node_InputActionEvent_48(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_RollLeft_K2Node_InputActionEvent_49(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_RollLeft_K2Node_InputActionEvent_50(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Descend_K2Node_InputActionEvent_51(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Descend_K2Node_InputActionEvent_52(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Descend_K2Node_InputActionEvent_53(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Descend_K2Node_InputActionEvent_54(const struct FKey& Key);
 	void InpActEvt_Gamepad_Cyber_Ascend_K2Node_InputActionEvent_55(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_PrimaryAttack_K2Node_InputActionEvent_56(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_PrimaryAttack_K2Node_InputActionEvent_57(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_SecondaryAttack_K2Node_InputActionEvent_58(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_SecondaryAttack_K2Node_InputActionEvent_59(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_TurboDash_K2Node_InputActionEvent_60(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_TurboDash_K2Node_InputActionEvent_61(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_RollLeft_K2Node_InputActionEvent_62(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_RollLeft_K2Node_InputActionEvent_63(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_RollRight_K2Node_InputActionEvent_64(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_RollRight_K2Node_InputActionEvent_65(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Descend_K2Node_InputActionEvent_66(const struct FKey& Key);
-	void InpActEvt_Gamepad_Cyber_Descend_K2Node_InputActionEvent_67(const struct FKey& Key);
-	void InpActEvt_Cyber_Descend_K2Node_InputActionEvent_68(const struct FKey& Key);
-	void InpActEvt_Cyber_Descend_K2Node_InputActionEvent_69(const struct FKey& Key);
-	void InpActEvt_Cyber_RollRight_K2Node_InputActionEvent_70(const struct FKey& Key);
-	void InpActEvt_Cyber_RollRight_K2Node_InputActionEvent_71(const struct FKey& Key);
-	void InpActEvt_Cyber_RollLeft_K2Node_InputActionEvent_72(const struct FKey& Key);
-	void InpActEvt_Cyber_RollLeft_K2Node_InputActionEvent_73(const struct FKey& Key);
-	void InpActEvt_Cyber_TurboDash_K2Node_InputActionEvent_74(const struct FKey& Key);
-	void InpActEvt_Cyber_TurboDash_K2Node_InputActionEvent_75(const struct FKey& Key);
-	void InpActEvt_Cyber_PrimaryAttack_K2Node_InputActionEvent_76(const struct FKey& Key);
-	void InpActEvt_Cyber_PrimaryAttack_K2Node_InputActionEvent_77(const struct FKey& Key);
-	void InpActEvt_Cyber_SecondaryAttack_K2Node_InputActionEvent_78(const struct FKey& Key);
-	void InpActEvt_Cyber_SecondaryAttack_K2Node_InputActionEvent_79(const struct FKey& Key);
-	void InpActEvt_Cyber_Ascend_K2Node_InputActionEvent_80(const struct FKey& Key);
-	void InpActEvt_Cyber_Ascend_K2Node_InputActionEvent_81(const struct FKey& Key);
+	void InpActEvt_Gamepad_Cyber_Ascend_K2Node_InputActionEvent_56(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Ascend_K2Node_InputActionEvent_57(const struct FKey& Key);
+	void InpActEvt_JCMS_Cyber_Ascend_K2Node_InputActionEvent_58(const struct FKey& Key);
+	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_59(const struct FKey& Key);
+	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_60(const struct FKey& Key);
+	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_61(const struct FKey& Key);
+	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_62(const struct FKey& Key);
+	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_63(const struct FKey& Key);
+	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_64(const struct FKey& Key);
+	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_65(const struct FKey& Key);
+	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_66(const struct FKey& Key);
+	void InpActEvt_Cyber_MoveBackward_K2Node_InputActionEvent_67(const struct FKey& Key);
+	void InpActEvt_Cyber_MoveBackward_K2Node_InputActionEvent_68(const struct FKey& Key);
+	void InpActEvt_Cyber_MoveLeft_K2Node_InputActionEvent_69(const struct FKey& Key);
+	void InpActEvt_Cyber_MoveLeft_K2Node_InputActionEvent_70(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_71(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_72(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_73(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_74(const struct FKey& Key);
+	void InpActEvt_PageUp_K2Node_InputKeyEvent_0(const struct FKey& Key);
+	void InpActEvt_Cyber_Power_K2Node_InputActionEvent_75(const struct FKey& Key);
+	void InpActEvt_Cyber_Power_K2Node_InputActionEvent_76(const struct FKey& Key);
+	void InpActEvt_Cyber_Shield_K2Node_InputActionEvent_77(const struct FKey& Key);
+	void InpActEvt_Cyber_Shield_K2Node_InputActionEvent_78(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_79(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_80(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_81(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_82(const struct FKey& Key);
+	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_83(const struct FKey& Key);
+	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_84(const struct FKey& Key);
+	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_85(const struct FKey& Key);
+	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_86(const struct FKey& Key);
+	void InpActEvt_Cyber_Decoy_K2Node_InputActionEvent_87(const struct FKey& Key);
+	void InpActEvt_Cyber_Decoy_K2Node_InputActionEvent_88(const struct FKey& Key);
+	void InpActEvt_Cyber_Recall_K2Node_InputActionEvent_89(const struct FKey& Key);
+	void InpActEvt_Cyber_Recall_K2Node_InputActionEvent_90(const struct FKey& Key);
+	void InpActEvt_Cyber_MoveRight_K2Node_InputActionEvent_91(const struct FKey& Key);
+	void InpActEvt_Cyber_MoveRight_K2Node_InputActionEvent_92(const struct FKey& Key);
+	void InpActEvt_Cyber_MoveForward_K2Node_InputActionEvent_93(const struct FKey& Key);
+	void InpActEvt_Cyber_MoveForward_K2Node_InputActionEvent_94(const struct FKey& Key);
+	void InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_95(const struct FKey& Key);
+	void InpActEvt_Locked_Escape_K2Node_InputActionEvent_96(const struct FKey& Key);
+	void InpActEvt_Cyber_Descend_K2Node_InputActionEvent_97(const struct FKey& Key);
+	void InpActEvt_Cyber_Descend_K2Node_InputActionEvent_98(const struct FKey& Key);
+	void InpActEvt_Cyber_RollRight_K2Node_InputActionEvent_99(const struct FKey& Key);
+	void InpActEvt_Cyber_RollRight_K2Node_InputActionEvent_100(const struct FKey& Key);
+	void InpActEvt_Cyber_RollLeft_K2Node_InputActionEvent_101(const struct FKey& Key);
+	void InpActEvt_Cyber_RollLeft_K2Node_InputActionEvent_102(const struct FKey& Key);
+	void InpActEvt_Cyber_TurboDash_K2Node_InputActionEvent_103(const struct FKey& Key);
+	void InpActEvt_Cyber_TurboDash_K2Node_InputActionEvent_104(const struct FKey& Key);
+	void InpActEvt_Cyber_PrimaryAttack_K2Node_InputActionEvent_105(const struct FKey& Key);
+	void InpActEvt_Cyber_PrimaryAttack_K2Node_InputActionEvent_106(const struct FKey& Key);
+	void InpActEvt_Cyber_SecondaryAttack_K2Node_InputActionEvent_107(const struct FKey& Key);
+	void InpActEvt_Cyber_SecondaryAttack_K2Node_InputActionEvent_108(const struct FKey& Key);
+	void InpActEvt_Cyber_Ascend_K2Node_InputActionEvent_109(const struct FKey& Key);
+	void InpActEvt_Cyber_Ascend_K2Node_InputActionEvent_110(const struct FKey& Key);
 	void InpActEvt_Z_K2Node_InputKeyEvent_1(const struct FKey& Key);
 	void PP_Avatar_Intro_Timeline__UpdateFunc();
 	void PP_Avatar_Intro_Timeline__FinishedFunc();
@@ -239,7 +323,6 @@ public:
 	void ShouldBounce(class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, bool* Result);
 	void UpdateDashPower(float DeltaTime);
 	void GetDashItem(class UITEM_CyberDash_C** DashItem);
-	void OnCharacterDied(class UOBJ_ImpactData_C* ImpactData, const struct FAttribDamageInstance& DamageInstance, class AActor* OtherActor, bool* Result);
 	void UpdateDamageEffects(float DeltaTime);
 	void Add_Damage_Effects(float Damage, class UOBJ_ImpactData_C* ImpactData, class AActor* SourceActor);
 	void GetDamageDirectionIndex(class UOBJ_ImpactData_C* ImpactData, class AActor* SourceActor, int32* Result);
@@ -255,8 +338,8 @@ public:
 	void AddTimeToTimer(float PickUpTimestamp, float TimeAddValue);
 	void HandleGamepadInputLookX(float Value);
 	void HandleGamepadInputLookY(float Value);
-	void HandleRollLeft();
-	void HandleRollRight();
+	void HandleRollLeft(bool& PressedState, bool IsPressed);
+	void HandleRollRight(bool& PressedState, bool IsPressed);
 	void HandleSoftware(class UClass* SoftwareClass, bool Activate);
 	void Handle_Menu_Nav_Up(bool ButtonDown);
 	void Handle_Menu_Nav_Down(bool ButtonDown);
@@ -269,9 +352,13 @@ public:
 	void HandleMenuNavAccept(bool ButtonDown);
 	void HandleMenuNavBack(bool ButtonDown);
 	void HandleEscape();
+	void HandleGyroX(float* LookWithGyro);
+	void HandleGyroY(float* LookWithGyro);
+	void ReceiveBeginPlay();
 	void OnCharacterHurt(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UOBJ_ImpactData_C* ImpactData, bool* Result);
-	void GetInventoryComponent(class UCOMP_Inventory_C** Inventory);
 	void InitializeCharacter(bool* Result);
+	void GetInventoryComponent(class UCOMP_Inventory_C** Inventory);
+	void OnCharacterDied(class UOBJ_ImpactData_C* ImpactData, const struct FAttribDamageInstance& DamageInstance, class AActor* OtherActor, bool* Result);
 
 public:
 	static class UClass* StaticClass()
@@ -284,7 +371,7 @@ public:
 	}
 };
 static_assert(alignof(APAWN_Avatar_C) == 0x000010, "Wrong alignment on APAWN_Avatar_C");
-static_assert(sizeof(APAWN_Avatar_C) == 0x0008F0, "Wrong size on APAWN_Avatar_C");
+static_assert(sizeof(APAWN_Avatar_C) == 0x000920, "Wrong size on APAWN_Avatar_C");
 static_assert(offsetof(APAWN_Avatar_C, UberGraphFrame_PAWN_Avatar_C) == 0x000680, "Member 'APAWN_Avatar_C::UberGraphFrame_PAWN_Avatar_C' has a wrong offset!");
 static_assert(offsetof(APAWN_Avatar_C, COMP_AvatarInventory) == 0x000688, "Member 'APAWN_Avatar_C::COMP_AvatarInventory' has a wrong offset!");
 static_assert(offsetof(APAWN_Avatar_C, COMP_VoxelCullableNavAgent) == 0x000690, "Member 'APAWN_Avatar_C::COMP_VoxelCullableNavAgent' has a wrong offset!");
@@ -297,17 +384,19 @@ static_assert(offsetof(APAWN_Avatar_C, PP_Avatar_Intro_Timeline__Direction_1D5DC
 static_assert(offsetof(APAWN_Avatar_C, PP_Avatar_Intro_Timeline) == 0x0006C0, "Member 'APAWN_Avatar_C::PP_Avatar_Intro_Timeline' has a wrong offset!");
 static_assert(offsetof(APAWN_Avatar_C, RollRate) == 0x0006C8, "Member 'APAWN_Avatar_C::RollRate' has a wrong offset!");
 static_assert(offsetof(APAWN_Avatar_C, RollAcceleration) == 0x0006CC, "Member 'APAWN_Avatar_C::RollAcceleration' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, MoveStrafeScale) == 0x0006D0, "Member 'APAWN_Avatar_C::MoveStrafeScale' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, GamepadFramePitch) == 0x0006D4, "Member 'APAWN_Avatar_C::GamepadFramePitch' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, GamepadFrameYaw) == 0x0006D8, "Member 'APAWN_Avatar_C::GamepadFrameYaw' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, KeyboardFramePitch) == 0x0006DC, "Member 'APAWN_Avatar_C::KeyboardFramePitch' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, KeyboardFrameYaw) == 0x0006E0, "Member 'APAWN_Avatar_C::KeyboardFrameYaw' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, FrameRoll) == 0x0006E4, "Member 'APAWN_Avatar_C::FrameRoll' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, FrameRelativeInput) == 0x0006E8, "Member 'APAWN_Avatar_C::FrameRelativeInput' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, PersistentRelativeInput) == 0x0006F4, "Member 'APAWN_Avatar_C::PersistentRelativeInput' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, MoveKeyDownCount) == 0x000700, "Member 'APAWN_Avatar_C::MoveKeyDownCount' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, RollScaleTarget) == 0x000704, "Member 'APAWN_Avatar_C::RollScaleTarget' has a wrong offset!");
-static_assert(offsetof(APAWN_Avatar_C, RollScaleCurrent) == 0x000708, "Member 'APAWN_Avatar_C::RollScaleCurrent' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, RollLeftPressed) == 0x0006D0, "Member 'APAWN_Avatar_C::RollLeftPressed' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, RollRightPressed) == 0x0006D1, "Member 'APAWN_Avatar_C::RollRightPressed' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, MoveStrafeScale) == 0x0006D4, "Member 'APAWN_Avatar_C::MoveStrafeScale' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, GamepadFramePitch) == 0x0006D8, "Member 'APAWN_Avatar_C::GamepadFramePitch' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, GamepadFrameYaw) == 0x0006DC, "Member 'APAWN_Avatar_C::GamepadFrameYaw' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, KeyboardFramePitch) == 0x0006E0, "Member 'APAWN_Avatar_C::KeyboardFramePitch' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, KeyboardFrameYaw) == 0x0006E4, "Member 'APAWN_Avatar_C::KeyboardFrameYaw' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, FrameRoll) == 0x0006E8, "Member 'APAWN_Avatar_C::FrameRoll' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, FrameRelativeInput) == 0x0006EC, "Member 'APAWN_Avatar_C::FrameRelativeInput' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, PersistentRelativeInput) == 0x0006F8, "Member 'APAWN_Avatar_C::PersistentRelativeInput' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, MoveKeyDownCount) == 0x000704, "Member 'APAWN_Avatar_C::MoveKeyDownCount' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, RollScaleTarget) == 0x000708, "Member 'APAWN_Avatar_C::RollScaleTarget' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, RollScaleCurrent) == 0x00070C, "Member 'APAWN_Avatar_C::RollScaleCurrent' has a wrong offset!");
 static_assert(offsetof(APAWN_Avatar_C, CurrentDomainLink) == 0x000710, "Member 'APAWN_Avatar_C::CurrentDomainLink' has a wrong offset!");
 static_assert(offsetof(APAWN_Avatar_C, PreviousDomainLink) == 0x000718, "Member 'APAWN_Avatar_C::PreviousDomainLink' has a wrong offset!");
 static_assert(offsetof(APAWN_Avatar_C, CyberspaceUI) == 0x000720, "Member 'APAWN_Avatar_C::CyberspaceUI' has a wrong offset!");
@@ -365,6 +454,10 @@ static_assert(offsetof(APAWN_Avatar_C, IsHoldingAlt2) == 0x0008D7, "Member 'APAW
 static_assert(offsetof(APAWN_Avatar_C, IsHoldingTabLeft) == 0x0008D8, "Member 'APAWN_Avatar_C::IsHoldingTabLeft' has a wrong offset!");
 static_assert(offsetof(APAWN_Avatar_C, IsHoldingTabRight) == 0x0008D9, "Member 'APAWN_Avatar_C::IsHoldingTabRight' has a wrong offset!");
 static_assert(offsetof(APAWN_Avatar_C, OnNewSecurityTimerSet) == 0x0008E0, "Member 'APAWN_Avatar_C::OnNewSecurityTimerSet' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, GyroActive) == 0x0008F0, "Member 'APAWN_Avatar_C::GyroActive' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, GamepadMotionTilt) == 0x0008F4, "Member 'APAWN_Avatar_C::GamepadMotionTilt' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, LastGyroPosition) == 0x000900, "Member 'APAWN_Avatar_C::LastGyroPosition' has a wrong offset!");
+static_assert(offsetof(APAWN_Avatar_C, HackerController) == 0x000910, "Member 'APAWN_Avatar_C::HackerController' has a wrong offset!");
 
 }
 

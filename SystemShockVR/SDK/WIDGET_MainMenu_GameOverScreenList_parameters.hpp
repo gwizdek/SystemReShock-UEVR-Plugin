@@ -67,6 +67,23 @@ static_assert(alignof(WIDGET_MainMenu_GameOverScreenList_C_BndEvt__WIDGET_MainMe
 static_assert(sizeof(WIDGET_MainMenu_GameOverScreenList_C_BndEvt__WIDGET_MainMenu_GameOverScreenList_WIDGET_Button_Continue_K2Node_ComponentBoundEvent_0_OnMainMenuButtonClicked__DelegateSignature) == 0x000070, "Wrong size on WIDGET_MainMenu_GameOverScreenList_C_BndEvt__WIDGET_MainMenu_GameOverScreenList_WIDGET_Button_Continue_K2Node_ComponentBoundEvent_0_OnMainMenuButtonClicked__DelegateSignature");
 static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_BndEvt__WIDGET_MainMenu_GameOverScreenList_WIDGET_Button_Continue_K2Node_ComponentBoundEvent_0_OnMainMenuButtonClicked__DelegateSignature, InputEvent) == 0x000000, "Member 'WIDGET_MainMenu_GameOverScreenList_C_BndEvt__WIDGET_MainMenu_GameOverScreenList_WIDGET_Button_Continue_K2Node_ComponentBoundEvent_0_OnMainMenuButtonClicked__DelegateSignature::InputEvent' has a wrong offset!");
 
+// Function WIDGET_MainMenu_GameOverScreenList.WIDGET_MainMenu_GameOverScreenList_C.InitializeList
+// 0x0020 (0x0020 - 0x0000)
+struct WIDGET_MainMenu_GameOverScreenList_C_InitializeList final
+{
+public:
+	class UWIDGET_MenuBase_C*                     ParentScreen;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class FString>                         CallFunc_GetExistingSaveGameNames_ReturnValue;     // 0x0008(0x0010)(ReferenceParm)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList) == 0x000008, "Wrong alignment on WIDGET_MainMenu_GameOverScreenList_C_InitializeList");
+static_assert(sizeof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList) == 0x000020, "Wrong size on WIDGET_MainMenu_GameOverScreenList_C_InitializeList");
+static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList, ParentScreen) == 0x000000, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeList::ParentScreen' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList, CallFunc_GetExistingSaveGameNames_ReturnValue) == 0x000008, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeList::CallFunc_GetExistingSaveGameNames_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList, CallFunc_Array_Length_ReturnValue) == 0x000018, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeList::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x00001C, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeList::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+
 // Function WIDGET_MainMenu_GameOverScreenList.WIDGET_MainMenu_GameOverScreenList_C.InitializeItemArray
 // 0x0070 (0x0070 - 0x0000)
 struct WIDGET_MainMenu_GameOverScreenList_C_InitializeItemArray final
@@ -104,23 +121,6 @@ static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeItemArray,
 static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeItemArray, CallFunc_Less_IntInt_ReturnValue) == 0x000059, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeItemArray::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeItemArray, CallFunc_Array_Add_ReturnValue) == 0x00005C, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeItemArray::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeItemArray, CallFunc_InitializeItemArray_MenuListItems) == 0x000060, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeItemArray::CallFunc_InitializeItemArray_MenuListItems' has a wrong offset!");
-
-// Function WIDGET_MainMenu_GameOverScreenList.WIDGET_MainMenu_GameOverScreenList_C.InitializeList
-// 0x0020 (0x0020 - 0x0000)
-struct WIDGET_MainMenu_GameOverScreenList_C_InitializeList final
-{
-public:
-	class UWIDGET_MenuBase_C*                     ParentScreen;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class FString>                         CallFunc_GetExistingSaveGameNames_ReturnValue;     // 0x0008(0x0010)(ReferenceParm)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList) == 0x000008, "Wrong alignment on WIDGET_MainMenu_GameOverScreenList_C_InitializeList");
-static_assert(sizeof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList) == 0x000020, "Wrong size on WIDGET_MainMenu_GameOverScreenList_C_InitializeList");
-static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList, ParentScreen) == 0x000000, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeList::ParentScreen' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList, CallFunc_GetExistingSaveGameNames_ReturnValue) == 0x000008, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeList::CallFunc_GetExistingSaveGameNames_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList, CallFunc_Array_Length_ReturnValue) == 0x000018, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeList::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_GameOverScreenList_C_InitializeList, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x00001C, "Member 'WIDGET_MainMenu_GameOverScreenList_C_InitializeList::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
 
 }
 

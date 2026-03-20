@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ENUM_Emotions_structs.hpp"
+#include "Engine_structs.hpp"
 #include "AIModule_classes.hpp"
 
 

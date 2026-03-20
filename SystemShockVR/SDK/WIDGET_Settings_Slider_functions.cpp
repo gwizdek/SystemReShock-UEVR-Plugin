@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ExecuteUbergraph_WIDGET_Settings_Slider
-// (Final, UbergraphFunction)
+// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
 // int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
@@ -32,6 +32,28 @@ void UWIDGET_Settings_Slider_C::ExecuteUbergraph_WIDGET_Settings_Slider(int32 En
 	Params::WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider Parms{};
 
 	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.Tick
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Parameters:
+// struct FGeometry                        MyGeometry                                             (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+// float                                   InDeltaTime                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_Settings_Slider_C::Tick(const struct FGeometry& MyGeometry, float InDeltaTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_Settings_Slider_C", "Tick");
+
+	Params::WIDGET_Settings_Slider_C_Tick Parms{};
+
+	Parms.MyGeometry = std::move(MyGeometry);
+	Parms.InDeltaTime = InDeltaTime;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -208,30 +230,6 @@ void UWIDGET_Settings_Slider_C::ReceiveNavLeft(bool InputState, bool* Result)
 }
 
 
-// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ReceiveNavRight
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UWIDGET_Settings_Slider_C::ReceiveNavRight(bool InputState, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_Settings_Slider_C", "ReceiveNavRight");
-
-	Params::WIDGET_Settings_Slider_C_ReceiveNavRight Parms{};
-
-	Parms.InputState = InputState;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.InitializeMenuListItem
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -267,6 +265,78 @@ void UWIDGET_Settings_Slider_C::GetScaledCurrentSliderValue(float* Result)
 		Func = Class->GetFunction("WIDGET_Settings_Slider_C", "GetScaledCurrentSliderValue");
 
 	Params::WIDGET_Settings_Slider_C_GetScaledCurrentSliderValue Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ReceiveNavRight
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_Settings_Slider_C::ReceiveNavRight(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_Settings_Slider_C", "ReceiveNavRight");
+
+	Params::WIDGET_Settings_Slider_C_ReceiveNavRight Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ReceiveNavRightRelease
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_Settings_Slider_C::ReceiveNavRightRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_Settings_Slider_C", "ReceiveNavRightRelease");
+
+	Params::WIDGET_Settings_Slider_C_ReceiveNavRightRelease Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ReceiveNavLeftRelease
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_Settings_Slider_C::ReceiveNavLeftRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_Settings_Slider_C", "ReceiveNavLeftRelease");
+
+	Params::WIDGET_Settings_Slider_C_ReceiveNavLeftRelease Parms{};
+
+	Parms.InputState = InputState;
 
 	UObject::ProcessEvent(Func, &Parms);
 

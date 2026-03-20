@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_OptionsMenu_Controls_GeneralList.WIDGET_OptionsMenu_Controls_GeneralList_C
-// 0x0060 (0x0328 - 0x02C8)
+// 0x00B8 (0x0380 - 0x02C8)
 class UWIDGET_OptionsMenu_Controls_GeneralList_C final : public UWIDGET_MenuListBase_C
 {
 public:
@@ -27,17 +27,28 @@ public:
 	class UOPTION_Controls_CrouchToggle_C*        OPTION_Controls_CrouchToggle;                      // 0x02D8(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UOPTION_Controls_CyberInvertY_C*        OPTION_Controls_CyberInvertY;                      // 0x02E0(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UOPTION_Controls_CyberLookSensitivity_C* OPTION_Controls_CyberLookSensitivity;              // 0x02E8(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UOPTION_Controls_HackerInvertY_C*       OPTION_Controls_HackerInvertY;                     // 0x02F0(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UOPTION_Controls_HackerLookSensitivity_C* OPTION_Controls_HackerLookSensitivity;             // 0x02F8(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UOPTION_Controls_SprintToggle_C*        OPTION_Controls_SprintToggle_0;                    // 0x0300(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UScrollBox*                             SCROLLBOX_Options;                                 // 0x0308(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_ListCategoryHeader_C*           WIDGET_ListCategoryHeader_Cyberspace;              // 0x0310(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_ListCategoryHeader_C*           WIDGET_ListCategoryHeader_General;                 // 0x0318(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_ListCategoryHeader_C*           WIDGET_ListCategoryHeader_Realspace;               // 0x0320(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroAvatarInvertY_C*   OPTION_Controls_GyroAvatarInvertY_0;               // 0x02F0(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroCyberLookSensitivityX_C* OPTION_Controls_GyroCyberLookSensitivityX;         // 0x02F8(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroCyberLookSensitivityY_C* OPTION_Controls_GyroCyberLookSensitivityY;         // 0x0300(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroCyberspacespace_C* OPTION_Controls_GyroCyberspacespace;               // 0x0308(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroHackerADSSensitivityX_C* OPTION_Controls_GyroHackerADSSensitivityX;         // 0x0310(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroHackerADSSensitivityY_C* OPTION_Controls_GyroHackerADSSensitivityY;         // 0x0318(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroHackerInvertY_C*   OPTION_Controls_GyroHackerInvertY;                 // 0x0320(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroHackerLookSensitivityX_C* OPTION_Controls_GyroHackerLookSensitivityX;        // 0x0328(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroHackerLookSensitivityY_C* OPTION_Controls_GyroHackerLookSensitivityY;        // 0x0330(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_GyroRealspace_C*       OPTION_Controls_GyroRealspace;                     // 0x0338(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_HackerInvertY_C*       OPTION_Controls_HackerInvertY;                     // 0x0340(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_HackerLookSensitivity_C* OPTION_Controls_HackerLookSensitivity;             // 0x0348(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_JoyconMouse_C*         OPTION_Controls_JoyconMouse;                       // 0x0350(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UOPTION_Controls_SprintToggle_C*        OPTION_Controls_SprintToggle_0;                    // 0x0358(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UScrollBox*                             SCROLLBOX_Options;                                 // 0x0360(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_ListCategoryHeader_C*           WIDGET_ListCategoryHeader_Cyberspace;              // 0x0368(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_ListCategoryHeader_C*           WIDGET_ListCategoryHeader_General;                 // 0x0370(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_ListCategoryHeader_C*           WIDGET_ListCategoryHeader_Realspace;               // 0x0378(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 
 public:
-	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 	void InitializeList(class UWIDGET_MenuBase_C* ParentScreen);
+	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 
 public:
 	static class UClass* StaticClass()
@@ -50,19 +61,30 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_OptionsMenu_Controls_GeneralList_C) == 0x000008, "Wrong alignment on UWIDGET_OptionsMenu_Controls_GeneralList_C");
-static_assert(sizeof(UWIDGET_OptionsMenu_Controls_GeneralList_C) == 0x000328, "Wrong size on UWIDGET_OptionsMenu_Controls_GeneralList_C");
+static_assert(sizeof(UWIDGET_OptionsMenu_Controls_GeneralList_C) == 0x000380, "Wrong size on UWIDGET_OptionsMenu_Controls_GeneralList_C");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_AimAssist) == 0x0002C8, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_AimAssist' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_AimToggle) == 0x0002D0, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_AimToggle' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_CrouchToggle) == 0x0002D8, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_CrouchToggle' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_CyberInvertY) == 0x0002E0, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_CyberInvertY' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_CyberLookSensitivity) == 0x0002E8, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_CyberLookSensitivity' has a wrong offset!");
-static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_HackerInvertY) == 0x0002F0, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_HackerInvertY' has a wrong offset!");
-static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_HackerLookSensitivity) == 0x0002F8, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_HackerLookSensitivity' has a wrong offset!");
-static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_SprintToggle_0) == 0x000300, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_SprintToggle_0' has a wrong offset!");
-static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, SCROLLBOX_Options) == 0x000308, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::SCROLLBOX_Options' has a wrong offset!");
-static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, WIDGET_ListCategoryHeader_Cyberspace) == 0x000310, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::WIDGET_ListCategoryHeader_Cyberspace' has a wrong offset!");
-static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, WIDGET_ListCategoryHeader_General) == 0x000318, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::WIDGET_ListCategoryHeader_General' has a wrong offset!");
-static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, WIDGET_ListCategoryHeader_Realspace) == 0x000320, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::WIDGET_ListCategoryHeader_Realspace' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroAvatarInvertY_0) == 0x0002F0, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroAvatarInvertY_0' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroCyberLookSensitivityX) == 0x0002F8, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroCyberLookSensitivityX' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroCyberLookSensitivityY) == 0x000300, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroCyberLookSensitivityY' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroCyberspacespace) == 0x000308, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroCyberspacespace' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroHackerADSSensitivityX) == 0x000310, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroHackerADSSensitivityX' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroHackerADSSensitivityY) == 0x000318, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroHackerADSSensitivityY' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroHackerInvertY) == 0x000320, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroHackerInvertY' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroHackerLookSensitivityX) == 0x000328, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroHackerLookSensitivityX' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroHackerLookSensitivityY) == 0x000330, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroHackerLookSensitivityY' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_GyroRealspace) == 0x000338, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_GyroRealspace' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_HackerInvertY) == 0x000340, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_HackerInvertY' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_HackerLookSensitivity) == 0x000348, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_HackerLookSensitivity' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_JoyconMouse) == 0x000350, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_JoyconMouse' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, OPTION_Controls_SprintToggle_0) == 0x000358, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::OPTION_Controls_SprintToggle_0' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, SCROLLBOX_Options) == 0x000360, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::SCROLLBOX_Options' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, WIDGET_ListCategoryHeader_Cyberspace) == 0x000368, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::WIDGET_ListCategoryHeader_Cyberspace' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, WIDGET_ListCategoryHeader_General) == 0x000370, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::WIDGET_ListCategoryHeader_General' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_GeneralList_C, WIDGET_ListCategoryHeader_Realspace) == 0x000378, "Member 'UWIDGET_OptionsMenu_Controls_GeneralList_C::WIDGET_ListCategoryHeader_Realspace' has a wrong offset!");
 
 }
 

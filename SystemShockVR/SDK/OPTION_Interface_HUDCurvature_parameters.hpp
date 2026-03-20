@@ -10,9 +10,39 @@
 
 #include "Basic.hpp"
 
+#include "SlateCore_structs.hpp"
+
 
 namespace SDK::Params
 {
+
+// Function OPTION_Interface_HUDCurvature.OPTION_Interface_HUDCurvature_C.ExecuteUbergraph_OPTION_Interface_HUDCurvature
+// 0x0040 (0x0040 - 0x0000)
+struct OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x0004(0x0038)(IsPlainOldData, NoDestructor)
+	float                                         K2Node_Event_InDeltaTime;                          // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature) == 0x000004, "Wrong alignment on OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature");
+static_assert(sizeof(OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature) == 0x000040, "Wrong size on OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature");
+static_assert(offsetof(OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature, EntryPoint) == 0x000000, "Member 'OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature::EntryPoint' has a wrong offset!");
+static_assert(offsetof(OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature, K2Node_Event_MyGeometry) == 0x000004, "Member 'OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature::K2Node_Event_MyGeometry' has a wrong offset!");
+static_assert(offsetof(OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature, K2Node_Event_InDeltaTime) == 0x00003C, "Member 'OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature::K2Node_Event_InDeltaTime' has a wrong offset!");
+
+// Function OPTION_Interface_HUDCurvature.OPTION_Interface_HUDCurvature_C.Tick
+// 0x003C (0x003C - 0x0000)
+struct OPTION_Interface_HUDCurvature_C_Tick final
+{
+public:
+	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	float                                         InDeltaTime;                                       // 0x0038(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(OPTION_Interface_HUDCurvature_C_Tick) == 0x000004, "Wrong alignment on OPTION_Interface_HUDCurvature_C_Tick");
+static_assert(sizeof(OPTION_Interface_HUDCurvature_C_Tick) == 0x00003C, "Wrong size on OPTION_Interface_HUDCurvature_C_Tick");
+static_assert(offsetof(OPTION_Interface_HUDCurvature_C_Tick, MyGeometry) == 0x000000, "Member 'OPTION_Interface_HUDCurvature_C_Tick::MyGeometry' has a wrong offset!");
+static_assert(offsetof(OPTION_Interface_HUDCurvature_C_Tick, InDeltaTime) == 0x000038, "Member 'OPTION_Interface_HUDCurvature_C_Tick::InDeltaTime' has a wrong offset!");
 
 // Function OPTION_Interface_HUDCurvature.OPTION_Interface_HUDCurvature_C.AcceptCurrentValue
 // 0x0010 (0x0010 - 0x0000)
@@ -34,14 +64,12 @@ struct OPTION_Interface_HUDCurvature_C_ApplyDirtyValue final
 {
 public:
 	float                                         CallFunc_GetScaledCurrentSliderValue_Result;       // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsDirty_IsDirty;                          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class USAVE_Settings_C*                       CallFunc_GetSaveSettings_ShockSettings;            // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(OPTION_Interface_HUDCurvature_C_ApplyDirtyValue) == 0x000008, "Wrong alignment on OPTION_Interface_HUDCurvature_C_ApplyDirtyValue");
 static_assert(sizeof(OPTION_Interface_HUDCurvature_C_ApplyDirtyValue) == 0x000010, "Wrong size on OPTION_Interface_HUDCurvature_C_ApplyDirtyValue");
 static_assert(offsetof(OPTION_Interface_HUDCurvature_C_ApplyDirtyValue, CallFunc_GetScaledCurrentSliderValue_Result) == 0x000000, "Member 'OPTION_Interface_HUDCurvature_C_ApplyDirtyValue::CallFunc_GetScaledCurrentSliderValue_Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Interface_HUDCurvature_C_ApplyDirtyValue, CallFunc_IsDirty_IsDirty) == 0x000004, "Member 'OPTION_Interface_HUDCurvature_C_ApplyDirtyValue::CallFunc_IsDirty_IsDirty' has a wrong offset!");
 static_assert(offsetof(OPTION_Interface_HUDCurvature_C_ApplyDirtyValue, CallFunc_GetSaveSettings_ShockSettings) == 0x000008, "Member 'OPTION_Interface_HUDCurvature_C_ApplyDirtyValue::CallFunc_GetSaveSettings_ShockSettings' has a wrong offset!");
 
 // Function OPTION_Interface_HUDCurvature.OPTION_Interface_HUDCurvature_C.OnSliderValueChanged

@@ -377,5 +377,53 @@ void UWIDGET_MenuListItemBase_C::ReceiveNavTabRight(bool InputState, bool* Resul
 		*Result = Parms.Result;
 }
 
+
+// Function WIDGET_MenuListItemBase.WIDGET_MenuListItemBase_C.ReceiveNavLeftRelease
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_MenuListItemBase_C::ReceiveNavLeftRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_MenuListItemBase_C", "ReceiveNavLeftRelease");
+
+	Params::WIDGET_MenuListItemBase_C_ReceiveNavLeftRelease Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_MenuListItemBase.WIDGET_MenuListItemBase_C.ReceiveNavRightRelease
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_MenuListItemBase_C::ReceiveNavRightRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_MenuListItemBase_C", "ReceiveNavRightRelease");
+
+	Params::WIDGET_MenuListItemBase_C_ReceiveNavRightRelease Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
 }
 

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_QuestSoundCue_structs.hpp"
 #include "Engine_structs.hpp"
+#include "STRUCT_QuestSoundCue_structs.hpp"
 #include "INTERACT_Base_classes.hpp"
 #include "ENUM_InteractionType_structs.hpp"
 

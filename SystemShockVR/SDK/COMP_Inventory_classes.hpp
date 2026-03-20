@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_UpgradeResult_structs.hpp"
 #include "STRUCT_InventoryBagParams_structs.hpp"
-#include "ENUM_ItemType_structs.hpp"
 #include "STRUCT_SoftItemParams_structs.hpp"
 #include "Engine_classes.hpp"
+#include "ENUM_UpgradeResult_structs.hpp"
+#include "ENUM_ItemType_structs.hpp"
 
 
 namespace SDK

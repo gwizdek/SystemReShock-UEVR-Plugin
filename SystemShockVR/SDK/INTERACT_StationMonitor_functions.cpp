@@ -106,7 +106,7 @@ void AINTERACT_StationMonitor_C::UserConstructionScript()
 
 
 // Function INTERACT_StationMonitor.INTERACT_StationMonitor_C.InitializeStationMonitor
-// (Protected, BlueprintCallable, BlueprintEvent)
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
 
 void AINTERACT_StationMonitor_C::InitializeStationMonitor()
 {

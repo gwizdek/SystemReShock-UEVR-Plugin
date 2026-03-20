@@ -68,11 +68,11 @@ public:
 	bool                                          bCustomDLSSBinaryExists;                           // 0x0058(0x0001)(Edit, ZeroConstructor, Config, EditConst, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bAllowOTAUpdate;                                   // 0x0059(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	EDLSSPreset                                   DLAAPreset;                                        // 0x005A(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDLSSPreset                                   DLSSQualityPreset;                                 // 0x005B(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDLSSPreset                                   DLSSBalancedPreset;                                // 0x005C(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDLSSPreset                                   DLSSPerformancePreset;                             // 0x005D(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDLSSPreset                                   DLSSUltraPerformancePreset;                        // 0x005E(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5F[0x1];                                       // 0x005F(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_5B[0x1];                                       // 0x005B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	EDLSSPreset                                   DLSSQualityPreset;                                 // 0x005C(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDLSSPreset                                   DLSSBalancedPreset;                                // 0x005D(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDLSSPreset                                   DLSSPerformancePreset;                             // 0x005E(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDLSSPreset                                   DLSSUltraPerformancePreset;                        // 0x005F(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
@@ -100,10 +100,10 @@ static_assert(offsetof(UDLSSSettings, CustomDLSSBinaryPath) == 0x000048, "Member
 static_assert(offsetof(UDLSSSettings, bCustomDLSSBinaryExists) == 0x000058, "Member 'UDLSSSettings::bCustomDLSSBinaryExists' has a wrong offset!");
 static_assert(offsetof(UDLSSSettings, bAllowOTAUpdate) == 0x000059, "Member 'UDLSSSettings::bAllowOTAUpdate' has a wrong offset!");
 static_assert(offsetof(UDLSSSettings, DLAAPreset) == 0x00005A, "Member 'UDLSSSettings::DLAAPreset' has a wrong offset!");
-static_assert(offsetof(UDLSSSettings, DLSSQualityPreset) == 0x00005B, "Member 'UDLSSSettings::DLSSQualityPreset' has a wrong offset!");
-static_assert(offsetof(UDLSSSettings, DLSSBalancedPreset) == 0x00005C, "Member 'UDLSSSettings::DLSSBalancedPreset' has a wrong offset!");
-static_assert(offsetof(UDLSSSettings, DLSSPerformancePreset) == 0x00005D, "Member 'UDLSSSettings::DLSSPerformancePreset' has a wrong offset!");
-static_assert(offsetof(UDLSSSettings, DLSSUltraPerformancePreset) == 0x00005E, "Member 'UDLSSSettings::DLSSUltraPerformancePreset' has a wrong offset!");
+static_assert(offsetof(UDLSSSettings, DLSSQualityPreset) == 0x00005C, "Member 'UDLSSSettings::DLSSQualityPreset' has a wrong offset!");
+static_assert(offsetof(UDLSSSettings, DLSSBalancedPreset) == 0x00005D, "Member 'UDLSSSettings::DLSSBalancedPreset' has a wrong offset!");
+static_assert(offsetof(UDLSSSettings, DLSSPerformancePreset) == 0x00005E, "Member 'UDLSSSettings::DLSSPerformancePreset' has a wrong offset!");
+static_assert(offsetof(UDLSSSettings, DLSSUltraPerformancePreset) == 0x00005F, "Member 'UDLSSSettings::DLSSUltraPerformancePreset' has a wrong offset!");
 
 }
 

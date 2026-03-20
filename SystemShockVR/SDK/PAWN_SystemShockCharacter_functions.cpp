@@ -1450,6 +1450,26 @@ void APAWN_SystemShockCharacter_C::IsRealspaceCharacter(bool* Result)
 }
 
 
+// Function PAWN_SystemShockCharacter.PAWN_SystemShockCharacter_C.ReceiveGetEnemyTargetLocation
+// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+struct FVector APAWN_SystemShockCharacter_C::ReceiveGetEnemyTargetLocation()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_SystemShockCharacter_C", "ReceiveGetEnemyTargetLocation");
+
+	Params::PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
 // Function PAWN_SystemShockCharacter.PAWN_SystemShockCharacter_C.ReceiveAnimationMessage
 // (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:

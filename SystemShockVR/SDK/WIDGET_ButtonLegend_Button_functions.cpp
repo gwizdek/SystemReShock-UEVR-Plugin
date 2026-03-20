@@ -72,7 +72,7 @@ void UWIDGET_ButtonLegend_Button_C::PreConstruct(bool IsDesignTime)
 
 
 // Function WIDGET_ButtonLegend_Button.WIDGET_ButtonLegend_Button_C.UpdateKeyWidget
-// (Protected, BlueprintCallable, BlueprintEvent)
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
 
 void UWIDGET_ButtonLegend_Button_C::UpdateKeyWidget()
 {

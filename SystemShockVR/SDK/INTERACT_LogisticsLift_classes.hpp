@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "INTERACT_Base_classes.hpp"
-#include "ENUM_DoorState_structs.hpp"
-#include "LevelVoxelization_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "ENUM_DoorState_structs.hpp"
+#include "INTERACT_Base_classes.hpp"
+#include "LevelVoxelization_structs.hpp"
 
 
 namespace SDK
@@ -88,9 +88,9 @@ public:
 	void EVENT_RestoreCompartmentActorLocations();
 	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
+	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
 	void CanModifyInteractPower(bool* Result);
 	void SetInteractPowered(bool State, bool* Result);
-	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
 
 public:
 	static class UClass* StaticClass()

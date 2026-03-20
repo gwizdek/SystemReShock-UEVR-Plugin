@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_KeypadState_structs.hpp"
 #include "Engine_structs.hpp"
-#include "INTERACT_Focusable_Base_classes.hpp"
+#include "ENUM_KeypadState_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "INTERACT_Focusable_Base_classes.hpp"
 
 
 namespace SDK
@@ -114,6 +114,7 @@ public:
 	void TryCompleteKeypadEntryTutorial();
 	void EVENT_CreateSoundDetectionEvent();
 	void TryPressKeypadDigit(int32 Digit, struct FSTRUCT_InteractResults* InteractResults);
+	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
 	void TryPressKeypadClear(bool* Result);
 	void TryPressKeypadEraseLast(bool* Result);
 	void GetBoxComponentFromKey(int32 Digit, class UBoxComponent** BoxComponent);
@@ -125,9 +126,8 @@ public:
 	void UpdateKeypadVisibility(bool VisibilityState);
 	void CanInteractWithTargetInteractable(bool* Result, class FText* FailMessage);
 	void ShouldFocusOnInteract(class AController* Controller, bool* Result);
-	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
-	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
 	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
+	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
 	void CanModifyInteractPower(bool* Result);
 	void SetInteractPowered(bool State, bool* Result);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);

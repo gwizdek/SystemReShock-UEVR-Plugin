@@ -17,6 +17,56 @@
 namespace SDK
 {
 
+// Function MovieSceneTracks.MovieSceneCinematicShotSection.SetShotDisplayName
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class FString                           InShotDisplayName                                      (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UMovieSceneCinematicShotSection::SetShotDisplayName(const class FString& InShotDisplayName)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MovieSceneCinematicShotSection", "SetShotDisplayName");
+
+	Params::MovieSceneCinematicShotSection_SetShotDisplayName Parms{};
+
+	Parms.InShotDisplayName = std::move(InShotDisplayName);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MovieSceneTracks.MovieSceneCinematicShotSection.GetShotDisplayName
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FString UMovieSceneCinematicShotSection::GetShotDisplayName() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MovieSceneCinematicShotSection", "GetShotDisplayName");
+
+	Params::MovieSceneCinematicShotSection_GetShotDisplayName Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function MovieSceneTracks.MovieSceneParameterSection.AddBoolParameterKey
 // (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
@@ -593,56 +643,6 @@ const struct FMovieSceneObjectBindingID UMovieSceneCameraCutSection::GetCameraBi
 		Func = Class->GetFunction("MovieSceneCameraCutSection", "GetCameraBindingID");
 
 	Params::MovieSceneCameraCutSection_GetCameraBindingID Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function MovieSceneTracks.MovieSceneCinematicShotSection.SetShotDisplayName
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class FString                           InShotDisplayName                                      (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UMovieSceneCinematicShotSection::SetShotDisplayName(const class FString& InShotDisplayName)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MovieSceneCinematicShotSection", "SetShotDisplayName");
-
-	Params::MovieSceneCinematicShotSection_SetShotDisplayName Parms{};
-
-	Parms.InShotDisplayName = std::move(InShotDisplayName);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MovieSceneTracks.MovieSceneCinematicShotSection.GetShotDisplayName
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class FString UMovieSceneCinematicShotSection::GetShotDisplayName() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MovieSceneCinematicShotSection", "GetShotDisplayName");
-
-	Params::MovieSceneCinematicShotSection_GetShotDisplayName Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

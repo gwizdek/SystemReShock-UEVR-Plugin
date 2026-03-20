@@ -10,20 +10,21 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_HotbarStyle_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 #include "ENUM_MFDTabCategory_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
-#include "ENUM_UpgradeResult_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "Slate_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "AttributeSystem_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "ENUM_CardinalDirection_structs.hpp"
 #include "Engine_structs.hpp"
-#include "AttributeSystem_structs.hpp"
 #include "UMG_structs.hpp"
-#include "ENUM_HotbarStyle_structs.hpp"
 #include "SlateCore_structs.hpp"
 #include "ENUM_CursorMode_structs.hpp"
 #include "STRUCT_QueuedNotification_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
+#include "ENUM_UpgradeResult_structs.hpp"
 #include "ENUM_InteractResultType_structs.hpp"
 
 
@@ -36,7 +37,7 @@ struct WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void(ENUM_ControllerType NewActiveControllerType)> K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor)
 	int32                                         Temp_int_Array_Index_Variable;                     // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -72,13 +73,14 @@ public:
 	TScriptInterface<class IINTERF_HUD_C>         CallFunc_InitializeSettingsForPlayerHUD_PlayerHUD_CastInput; // 0x0150(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	TScriptInterface<class IINTERF_HUD_C>         CallFunc_InitilalizeSubtitleWidget_Player_HUD_CastInput; // 0x0160(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0170(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(bool IsUsingGamepad)>          K2Node_CreateDelegate_OutputDelegate_6;            // 0x0178(0x0010)(ZeroConstructor, NoDestructor)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0188(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0190(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_191[0x7];                                      // 0x0191(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_1;            // 0x0198(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_1;           // 0x01A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x01A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_1;            // 0x0178(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0180(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0188(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_189[0x7];                                      // 0x0189(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_1;           // 0x0190(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0198(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_199[0x3];                                      // 0x0199(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_6;            // 0x019C(0x0010)(ZeroConstructor, NoDestructor)
 };
 static_assert(alignof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD) == 0x000008, "Wrong alignment on WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD");
 static_assert(sizeof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD) == 0x0001B0, "Wrong size on WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD");
@@ -113,12 +115,12 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, Cal
 static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, CallFunc_InitializeSettingsForPlayerHUD_PlayerHUD_CastInput) == 0x000150, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::CallFunc_InitializeSettingsForPlayerHUD_PlayerHUD_CastInput' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, CallFunc_InitilalizeSubtitleWidget_Player_HUD_CastInput) == 0x000160, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::CallFunc_InitilalizeSubtitleWidget_Player_HUD_CastInput' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, CallFunc_GetPlayerController_ReturnValue) == 0x000170, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_CreateDelegate_OutputDelegate_6) == 0x000178, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_CreateDelegate_OutputDelegate_6' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_DynamicCast_AsCON_Hacker) == 0x000188, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_DynamicCast_bSuccess_2) == 0x000190, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, CallFunc_GetGameInstance_ReturnValue_1) == 0x000198, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::CallFunc_GetGameInstance_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_DynamicCast_AsGI_Single_Player_1) == 0x0001A0, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_DynamicCast_AsGI_Single_Player_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_DynamicCast_bSuccess_3) == 0x0001A8, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, CallFunc_GetGameInstance_ReturnValue_1) == 0x000178, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::CallFunc_GetGameInstance_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_DynamicCast_AsCON_Hacker) == 0x000180, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_DynamicCast_bSuccess_2) == 0x000188, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_DynamicCast_AsGI_Single_Player_1) == 0x000190, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_DynamicCast_AsGI_Single_Player_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_DynamicCast_bSuccess_3) == 0x000198, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD, K2Node_CreateDelegate_OutputDelegate_6) == 0x00019C, "Member 'WIDGET_PlayerHUD_C_ExecuteUbergraph_WIDGET_PlayerHUD::K2Node_CreateDelegate_OutputDelegate_6' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.Tick
 // 0x003C (0x003C - 0x0000)
@@ -361,7 +363,7 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_ShowMultiFunctionDisplayTab, CallFunc_
 static_assert(offsetof(WIDGET_PlayerHUD_C_ShowMultiFunctionDisplayTab, CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible) == 0x000011, "Member 'WIDGET_PlayerHUD_C_ShowMultiFunctionDisplayTab::CallFunc_ToggleMultiFunctionDisplay_MainDisplayVisible' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.UpdateInputMode
-// 0x00E8 (0x00E8 - 0x0000)
+// 0x00F0 (0x00F0 - 0x0000)
 struct WIDGET_PlayerHUD_C_UpdateInputMode final
 {
 public:
@@ -371,21 +373,20 @@ public:
 	class UITEM_WeaponBase_C*                     EquippedWeapon;                                    // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_Deactivate_Result;                        // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UITEM_WeaponBase_C*                     CallFunc_GetEquippedWeapon_Weapon;                 // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UITEM_WeaponBase_C*                     CallFunc_GetEquippedWeapon_Weapon;                 // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_GetViewportSize_SizeX;                    // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_GetViewportSize_SizeY;                    // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_MainMenu_InGame_C*              CallFunc_GetMainMenuWidget_Result;                 // 0x0038(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Divide_IntInt_ReturnValue;                // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Divide_IntInt_ReturnValue_1;              // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Divide_IntInt_ReturnValue;                // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Divide_IntInt_ReturnValue_1;              // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_MainMenu_InGame_C*              CallFunc_GetMainMenuWidget_Result;                 // 0x0040(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_2;        // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_3;        // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_4;        // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_6A[0x2];                                       // 0x006A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FGeometry                              CallFunc_GetCachedGeometry_ReturnValue;            // 0x006C(0x0038)(ConstParm, IsPlainOldData, NoDestructor)
 	struct FVector2D                              CallFunc_GetLocalSize_ReturnValue;                 // 0x00A4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -398,28 +399,28 @@ public:
 	uint8                                         Pad_D4[0x4];                                       // 0x00D4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_5;        // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_6;        // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_PlayerHUD_C_UpdateInputMode) == 0x000008, "Wrong alignment on WIDGET_PlayerHUD_C_UpdateInputMode");
-static_assert(sizeof(WIDGET_PlayerHUD_C_UpdateInputMode) == 0x0000E8, "Wrong size on WIDGET_PlayerHUD_C_UpdateInputMode");
+static_assert(sizeof(WIDGET_PlayerHUD_C_UpdateInputMode) == 0x0000F0, "Wrong size on WIDGET_PlayerHUD_C_UpdateInputMode");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, IsMenu_Active) == 0x000000, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::IsMenu_Active' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, EnableCursorTransition) == 0x000001, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::EnableCursorTransition' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, EquippedWeapon) == 0x000008, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::EquippedWeapon' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetPlayerController_ReturnValue) == 0x000010, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_Deactivate_Result) == 0x000018, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_Deactivate_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_IsValid_ReturnValue) == 0x000019, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetEquippedWeapon_Weapon) == 0x000020, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetEquippedWeapon_Weapon' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetPlayerController_ReturnValue_1) == 0x000028, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetPlayerController_ReturnValue_1) == 0x000020, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetEquippedWeapon_Weapon) == 0x000028, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetEquippedWeapon_Weapon' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetViewportSize_SizeX) == 0x000030, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetViewportSize_SizeX' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetViewportSize_SizeY) == 0x000034, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetViewportSize_SizeY' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetMainMenuWidget_Result) == 0x000038, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetMainMenuWidget_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_Divide_IntInt_ReturnValue) == 0x000040, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_Divide_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_Divide_IntInt_ReturnValue_1) == 0x000044, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_Divide_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_Divide_IntInt_ReturnValue) == 0x000038, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_Divide_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_Divide_IntInt_ReturnValue_1) == 0x00003C, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_Divide_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetMainMenuWidget_Result) == 0x000040, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetMainMenuWidget_Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetPlayerController_ReturnValue_2) == 0x000048, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetPlayerController_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetPlayerController_ReturnValue_3) == 0x000050, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetPlayerController_ReturnValue_3' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetPlayerController_ReturnValue_4) == 0x000058, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetPlayerController_ReturnValue_4' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, K2Node_DynamicCast_AsCON_Hacker) == 0x000060, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, K2Node_DynamicCast_bSuccess) == 0x000068, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_IsUsingGamepad_Result) == 0x000069, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000069, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetCachedGeometry_ReturnValue) == 0x00006C, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetCachedGeometry_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetLocalSize_ReturnValue) == 0x0000A4, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetLocalSize_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_SlotAsCanvasSlot_ReturnValue) == 0x0000B0, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_SlotAsCanvasSlot_ReturnValue' has a wrong offset!");
@@ -429,6 +430,7 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetGameTimeI
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_Subtract_Vector2DVector2D_ReturnValue) == 0x0000CC, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_Subtract_Vector2DVector2D_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetPlayerController_ReturnValue_5) == 0x0000D8, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetPlayerController_ReturnValue_5' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_GetPlayerController_ReturnValue_6) == 0x0000E0, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_GetPlayerController_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateInputMode, CallFunc_IsValid_ReturnValue) == 0x0000E8, "Member 'WIDGET_PlayerHUD_C_UpdateInputMode::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.InitializeInventoryHUD
 // 0x0028 (0x0028 - 0x0000)
@@ -731,7 +733,7 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateTargetBracketsOrDeactivate, Call
 static_assert(offsetof(WIDGET_PlayerHUD_C_UpdateTargetBracketsOrDeactivate, CallFunc_BooleanAND_ReturnValue) == 0x00001A, "Member 'WIDGET_PlayerHUD_C_UpdateTargetBracketsOrDeactivate::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.PickupItemAtSlotIndex
-// 0x0330 (0x0330 - 0x0000)
+// 0x0328 (0x0328 - 0x0000)
 struct WIDGET_PlayerHUD_C_PickupItemAtSlotIndex final
 {
 public:
@@ -762,35 +764,35 @@ public:
 	uint8                                         Pad_151[0x7];                                      // 0x0151(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UInventoryBag_C*                        CallFunc_GetBag_Result;                            // 0x0158(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UITEM_Base_C*                           CallFunc_GetCursorItem_Result_2;                   // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_SystemShockCharacter_C*           CallFunc_GetOwnerCharacter_Character_1;            // 0x0168(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_UndoCursorItemMove_Result;                // 0x0170(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0171(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_CanAddItem_Result;                        // 0x0172(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_RemoveItem_Result;                        // 0x0173(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_AddItem_Result_1;                         // 0x0174(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_AddItem_Result_2;                         // 0x0175(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0176(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_177[0x1];                                      // 0x0177(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCOMP_Inventory_C*                      CallFunc_GetInventory_Inventory_1;                 // 0x0178(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_1;    // 0x0180(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_181[0x7];                                      // 0x0181(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0188(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_UndoCursorItemMove_Result;                // 0x0168(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_169[0x7];                                      // 0x0169(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APAWN_SystemShockCharacter_C*           CallFunc_GetOwnerCharacter_Character_1;            // 0x0170(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0178(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_CanAddItem_Result;                        // 0x0179(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_RemoveItem_Result;                        // 0x017A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_AddItem_Result_1;                         // 0x017B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_AddItem_Result_2;                         // 0x017C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsItemRotated_Result;                     // 0x017D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x017E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_17F[0x1];                                      // 0x017F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0180(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UCOMP_Inventory_C*                      CallFunc_GetInventory_Inventory_1;                 // 0x0188(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsInputKeyDown_ReturnValue;               // 0x0190(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_191[0x7];                                      // 0x0191(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_1;    // 0x0191(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_192[0x6];                                      // 0x0192(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	class UITEM_Base_C*                           CallFunc_GetCursorItem_Result_3;                   // 0x0198(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x01A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsItemRotated_Result;                     // 0x01A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_SetCurrentMode_Result;                    // 0x01A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryBeginReloading_Result;                 // 0x01AA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1AB[0x5];                                      // 0x01AB(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_1;             // 0x01B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x01B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1B9[0x3];                                      // 0x01B9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetWeaponModeIndexForAmmo_ModeIndex;      // 0x01BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UITEM_Base_C*                           CallFunc_GetCursorItem_Result_4;                   // 0x01C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UITEM_WeaponModKit_Base_C*              K2Node_DynamicCast_AsITEM_Weapon_Mod_Kit_Base;     // 0x01C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x01D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1D1[0x7];                                      // 0x01D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_SetCurrentMode_Result;                    // 0x01A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryBeginReloading_Result;                 // 0x01A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1AA[0x6];                                      // 0x01AA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UITEM_Base_C*                           CallFunc_GetCursorItem_Result_4;                   // 0x01B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UITEM_WeaponModKit_Base_C*              K2Node_DynamicCast_AsITEM_Weapon_Mod_Kit_Base;     // 0x01B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x01C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1C1[0x7];                                      // 0x01C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_1;             // 0x01C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetWeaponModeIndexForAmmo_ModeIndex;      // 0x01D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x01D4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D5[0x3];                                      // 0x01D5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class UITEM_WeaponBase_C*                     K2Node_DynamicCast_AsITEM_Weapon_Base;             // 0x01D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x01E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_1E1[0x7];                                      // 0x01E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
@@ -808,7 +810,7 @@ public:
 	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x021C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_TryInstallOnSpecificWeapon_Result;        // 0x021D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_MoveItem_Result_1;                        // 0x021E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_21F[0x1];                                      // 0x021F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_TryPlayPickupAnimFromMFD_Result;          // 0x021F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_2;             // 0x0220(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_CanSlotItemClass_Result;                  // 0x0228(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_229[0x7];                                      // 0x0229(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
@@ -819,15 +821,13 @@ public:
 	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0260(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue_1;          // 0x0264(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_LessEqual_IntInt_ReturnValue;             // 0x0265(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryPlayPickupAnimFromMFD_Result;          // 0x0266(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0267(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0268(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_269[0x7];                                      // 0x0269(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UITEM_Base_C*                           CallFunc_RemoveItem_RemovedItem;                   // 0x0270(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FEventReply                            CallFunc_Handled_ReturnValue;                      // 0x0278(0x00B8)()
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0266(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0267(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FEventReply                            CallFunc_Handled_ReturnValue;                      // 0x0268(0x00B8)()
+	class UITEM_Base_C*                           CallFunc_RemoveItem_RemovedItem;                   // 0x0320(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex) == 0x000008, "Wrong alignment on WIDGET_PlayerHUD_C_PickupItemAtSlotIndex");
-static_assert(sizeof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex) == 0x000330, "Wrong size on WIDGET_PlayerHUD_C_PickupItemAtSlotIndex");
+static_assert(sizeof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex) == 0x000328, "Wrong size on WIDGET_PlayerHUD_C_PickupItemAtSlotIndex");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, InventoryBag) == 0x000000, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::InventoryBag' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, BagWidget) == 0x000008, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::BagWidget' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, SlotIndex) == 0x000010, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::SlotIndex' has a wrong offset!");
@@ -851,29 +851,29 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetCur
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_AddItem_Result) == 0x000150, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_AddItem_Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetBag_Result) == 0x000158, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetBag_Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetCursorItem_Result_2) == 0x000160, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetCursorItem_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetOwnerCharacter_Character_1) == 0x000168, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetOwnerCharacter_Character_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_UndoCursorItemMove_Result) == 0x000170, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_UndoCursorItemMove_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000171, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_CanAddItem_Result) == 0x000172, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_CanAddItem_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_RemoveItem_Result) == 0x000173, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_RemoveItem_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_AddItem_Result_1) == 0x000174, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_AddItem_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_AddItem_Result_2) == 0x000175, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_AddItem_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_IsValid_ReturnValue) == 0x000176, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetInventory_Inventory_1) == 0x000178, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetInventory_Inventory_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_EqualEqual_ObjectObject_ReturnValue_1) == 0x000180, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_EqualEqual_ObjectObject_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetPlayerController_ReturnValue) == 0x000188, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_UndoCursorItemMove_Result) == 0x000168, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_UndoCursorItemMove_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetOwnerCharacter_Character_1) == 0x000170, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetOwnerCharacter_Character_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000178, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_CanAddItem_Result) == 0x000179, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_CanAddItem_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_RemoveItem_Result) == 0x00017A, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_RemoveItem_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_AddItem_Result_1) == 0x00017B, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_AddItem_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_AddItem_Result_2) == 0x00017C, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_AddItem_Result_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_IsItemRotated_Result) == 0x00017D, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_IsItemRotated_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_IsValid_ReturnValue) == 0x00017E, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetPlayerController_ReturnValue) == 0x000180, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetInventory_Inventory_1) == 0x000188, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetInventory_Inventory_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_IsInputKeyDown_ReturnValue) == 0x000190, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_IsInputKeyDown_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_EqualEqual_ObjectObject_ReturnValue_1) == 0x000191, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_EqualEqual_ObjectObject_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetCursorItem_Result_3) == 0x000198, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetCursorItem_Result_3' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetObjectClass_ReturnValue) == 0x0001A0, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_IsItemRotated_Result) == 0x0001A8, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_IsItemRotated_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_SetCurrentMode_Result) == 0x0001A9, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_SetCurrentMode_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_TryBeginReloading_Result) == 0x0001AA, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_TryBeginReloading_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetObjectClass_ReturnValue_1) == 0x0001B0, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetObjectClass_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x0001B8, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetWeaponModeIndexForAmmo_ModeIndex) == 0x0001BC, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetWeaponModeIndexForAmmo_ModeIndex' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetCursorItem_Result_4) == 0x0001C0, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetCursorItem_Result_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, K2Node_DynamicCast_AsITEM_Weapon_Mod_Kit_Base) == 0x0001C8, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::K2Node_DynamicCast_AsITEM_Weapon_Mod_Kit_Base' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, K2Node_DynamicCast_bSuccess) == 0x0001D0, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_SetCurrentMode_Result) == 0x0001A8, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_SetCurrentMode_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_TryBeginReloading_Result) == 0x0001A9, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_TryBeginReloading_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetCursorItem_Result_4) == 0x0001B0, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetCursorItem_Result_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, K2Node_DynamicCast_AsITEM_Weapon_Mod_Kit_Base) == 0x0001B8, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::K2Node_DynamicCast_AsITEM_Weapon_Mod_Kit_Base' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, K2Node_DynamicCast_bSuccess) == 0x0001C0, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetObjectClass_ReturnValue_1) == 0x0001C8, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetObjectClass_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetWeaponModeIndexForAmmo_ModeIndex) == 0x0001D0, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetWeaponModeIndexForAmmo_ModeIndex' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x0001D4, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, K2Node_DynamicCast_AsITEM_Weapon_Base) == 0x0001D8, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::K2Node_DynamicCast_AsITEM_Weapon_Base' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, K2Node_DynamicCast_bSuccess_1) == 0x0001E0, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetCursorItem_Result_5) == 0x0001E8, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetCursorItem_Result_5' has a wrong offset!");
@@ -888,6 +888,7 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetSlo
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x00021C, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_TryInstallOnSpecificWeapon_Result) == 0x00021D, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_TryInstallOnSpecificWeapon_Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_MoveItem_Result_1) == 0x00021E, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_MoveItem_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_TryPlayPickupAnimFromMFD_Result) == 0x00021F, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_TryPlayPickupAnimFromMFD_Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetObjectClass_ReturnValue_2) == 0x000220, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetObjectClass_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_CanSlotItemClass_Result) == 0x000228, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_CanSlotItemClass_Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_GetSlotIndicesForItemWithSize_SlotIndices) == 0x000230, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_GetSlotIndicesForItemWithSize_SlotIndices' has a wrong offset!");
@@ -897,11 +898,10 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_Array_
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_Array_Length_ReturnValue) == 0x000260, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_EqualEqual_IntInt_ReturnValue_1) == 0x000264, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_EqualEqual_IntInt_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_LessEqual_IntInt_ReturnValue) == 0x000265, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_LessEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_TryPlayPickupAnimFromMFD_Result) == 0x000266, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_TryPlayPickupAnimFromMFD_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_IsValid_ReturnValue_2) == 0x000267, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_IsValid_ReturnValue_3) == 0x000268, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_RemoveItem_RemovedItem) == 0x000270, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_RemoveItem_RemovedItem' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_Handled_ReturnValue) == 0x000278, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_Handled_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_IsValid_ReturnValue_2) == 0x000266, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_IsValid_ReturnValue_3) == 0x000267, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_Handled_ReturnValue) == 0x000268, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_Handled_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_PickupItemAtSlotIndex, CallFunc_RemoveItem_RemovedItem) == 0x000320, "Member 'WIDGET_PlayerHUD_C_PickupItemAtSlotIndex::CallFunc_RemoveItem_RemovedItem' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.UpdateCursorItem
 // 0x00A8 (0x00A8 - 0x0000)
@@ -1339,19 +1339,17 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnItemUpgraded, DowngradeClass) 
 static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnItemUpgraded, UpgradeResult_0) == 0x000010, "Member 'WIDGET_PlayerHUD_C_EVENT_OnItemUpgraded::UpgradeResult_0' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.ShowHardwareIcons
-// 0x0003 (0x0003 - 0x0000)
+// 0x0002 (0x0002 - 0x0000)
 struct WIDGET_PlayerHUD_C_ShowHardwareIcons final
 {
 public:
 	bool                                          CallFunc_NotEqual_IntInt_ReturnValue;              // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_PlayerHUD_C_ShowHardwareIcons) == 0x000001, "Wrong alignment on WIDGET_PlayerHUD_C_ShowHardwareIcons");
-static_assert(sizeof(WIDGET_PlayerHUD_C_ShowHardwareIcons) == 0x000003, "Wrong size on WIDGET_PlayerHUD_C_ShowHardwareIcons");
+static_assert(sizeof(WIDGET_PlayerHUD_C_ShowHardwareIcons) == 0x000002, "Wrong size on WIDGET_PlayerHUD_C_ShowHardwareIcons");
 static_assert(offsetof(WIDGET_PlayerHUD_C_ShowHardwareIcons, CallFunc_NotEqual_IntInt_ReturnValue) == 0x000000, "Member 'WIDGET_PlayerHUD_C_ShowHardwareIcons::CallFunc_NotEqual_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_ShowHardwareIcons, CallFunc_Less_FloatFloat_ReturnValue) == 0x000001, "Member 'WIDGET_PlayerHUD_C_ShowHardwareIcons::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_ShowHardwareIcons, CallFunc_BooleanAND_ReturnValue) == 0x000002, "Member 'WIDGET_PlayerHUD_C_ShowHardwareIcons::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.HideHardwareIcons
 // 0x0003 (0x0003 - 0x0000)
@@ -3483,7 +3481,7 @@ public:
 	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0020(0x0008)(NoDestructor, HasGetValueTypeHash)
 	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_PlayerHUD_C_OnInventoryBecameVisible) == 0x000008, "Wrong alignment on WIDGET_PlayerHUD_C_OnInventoryBecameVisible");
 static_assert(sizeof(WIDGET_PlayerHUD_C_OnInventoryBecameVisible) == 0x000038, "Wrong size on WIDGET_PlayerHUD_C_OnInventoryBecameVisible");
@@ -3493,7 +3491,7 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_OnInventoryBecameVisible, CallFunc_Get
 static_assert(offsetof(WIDGET_PlayerHUD_C_OnInventoryBecameVisible, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000020, "Member 'WIDGET_PlayerHUD_C_OnInventoryBecameVisible::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_OnInventoryBecameVisible, K2Node_DynamicCast_AsCON_Hacker) == 0x000028, "Member 'WIDGET_PlayerHUD_C_OnInventoryBecameVisible::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_OnInventoryBecameVisible, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'WIDGET_PlayerHUD_C_OnInventoryBecameVisible::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_OnInventoryBecameVisible, CallFunc_IsUsingGamepad_Result) == 0x000031, "Member 'WIDGET_PlayerHUD_C_OnInventoryBecameVisible::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_OnInventoryBecameVisible, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000031, "Member 'WIDGET_PlayerHUD_C_OnInventoryBecameVisible::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.GetHotbarSlotWidgetForObject
 // 0x0058 (0x0058 - 0x0000)
@@ -4179,40 +4177,6 @@ static_assert(sizeof(WIDGET_PlayerHUD_C_EVENT_OnCrashSequenceFinished) == 0x0000
 static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnCrashSequenceFinished, K2Node_CreateDelegate_OutputDelegate) == 0x000000, "Member 'WIDGET_PlayerHUD_C_EVENT_OnCrashSequenceFinished::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnCrashSequenceFinished, CallFunc_IsValid_ReturnValue) == 0x000010, "Member 'WIDGET_PlayerHUD_C_EVENT_OnCrashSequenceFinished::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
-// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.EVENT_OnUsingGamepadChanged
-// 0x0058 (0x0058 - 0x0000)
-struct WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged final
-{
-public:
-	bool                                          IsUsingGamepad;                                    // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue;             // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetViewportSize_SizeX;                    // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetViewportSize_SizeY;                    // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Divide_IntInt_ReturnValue;                // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Divide_IntInt_ReturnValue_1;              // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_2;        // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FAnchors                               K2Node_MakeStruct_Anchors;                         // 0x0038(0x0010)(NoDestructor)
-	class UWIDGET_MainMenu_InGame_C*              CallFunc_GetMainMenuWidget_Result;                 // 0x0048(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged) == 0x000008, "Wrong alignment on WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged");
-static_assert(sizeof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged) == 0x000058, "Wrong size on WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, IsUsingGamepad) == 0x000000, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::IsUsingGamepad' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_SlotAsCanvasSlot_ReturnValue) == 0x000008, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_SlotAsCanvasSlot_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_GetPlayerController_ReturnValue) == 0x000010, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_GetViewportSize_SizeX) == 0x000018, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_GetViewportSize_SizeX' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_GetViewportSize_SizeY) == 0x00001C, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_GetViewportSize_SizeY' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_GetPlayerController_ReturnValue_1) == 0x000020, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_Divide_IntInt_ReturnValue) == 0x000028, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_Divide_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_Divide_IntInt_ReturnValue_1) == 0x00002C, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_Divide_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_GetPlayerController_ReturnValue_2) == 0x000030, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_GetPlayerController_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, K2Node_MakeStruct_Anchors) == 0x000038, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::K2Node_MakeStruct_Anchors' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_GetMainMenuWidget_Result) == 0x000048, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_GetMainMenuWidget_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged, CallFunc_IsValid_ReturnValue) == 0x000050, "Member 'WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.UpdateCountdownTimeRemaining
 // 0x0180 (0x0180 - 0x0000)
 struct WIDGET_PlayerHUD_C_UpdateCountdownTimeRemaining final
@@ -4322,6 +4286,42 @@ static_assert(offsetof(WIDGET_PlayerHUD_C_MoveCursorToHotbarSlotIndex, CallFunc_
 static_assert(offsetof(WIDGET_PlayerHUD_C_MoveCursorToHotbarSlotIndex, CallFunc_Conv_IntPointToVector2D_ReturnValue) == 0x000034, "Member 'WIDGET_PlayerHUD_C_MoveCursorToHotbarSlotIndex::CallFunc_Conv_IntPointToVector2D_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_MoveCursorToHotbarSlotIndex, CallFunc_Multiply_Vector2DVector2D_ReturnValue) == 0x00003C, "Member 'WIDGET_PlayerHUD_C_MoveCursorToHotbarSlotIndex::CallFunc_Multiply_Vector2DVector2D_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_PlayerHUD_C_MoveCursorToHotbarSlotIndex, CallFunc_Add_Vector2DVector2D_ReturnValue) == 0x000044, "Member 'WIDGET_PlayerHUD_C_MoveCursorToHotbarSlotIndex::CallFunc_Add_Vector2DVector2D_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.EVENT on Active Controller Type Changed
+// 0x0058 (0x0058 - 0x0000)
+struct WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed final
+{
+public:
+	ENUM_ControllerType                           NewActiveControllerType;                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue;             // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FAnchors                               K2Node_MakeStruct_Anchors;                         // 0x0010(0x0010)(NoDestructor)
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetViewportSize_SizeX;                    // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetViewportSize_SizeY;                    // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Divide_IntInt_ReturnValue;                // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Divide_IntInt_ReturnValue_1;              // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_2;        // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_MainMenu_InGame_C*              CallFunc_GetMainMenuWidget_Result;                 // 0x0048(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed) == 0x000008, "Wrong alignment on WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed");
+static_assert(sizeof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed) == 0x000058, "Wrong size on WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, NewActiveControllerType) == 0x000000, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::NewActiveControllerType' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000001, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_SlotAsCanvasSlot_ReturnValue) == 0x000008, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_SlotAsCanvasSlot_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, K2Node_MakeStruct_Anchors) == 0x000010, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::K2Node_MakeStruct_Anchors' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_GetPlayerController_ReturnValue) == 0x000020, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_GetViewportSize_SizeX) == 0x000028, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_GetViewportSize_SizeX' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_GetViewportSize_SizeY) == 0x00002C, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_GetViewportSize_SizeY' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_Divide_IntInt_ReturnValue) == 0x000030, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_Divide_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_Divide_IntInt_ReturnValue_1) == 0x000034, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_Divide_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_GetPlayerController_ReturnValue_1) == 0x000038, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_GetPlayerController_ReturnValue_2) == 0x000040, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_GetPlayerController_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_GetMainMenuWidget_Result) == 0x000048, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_GetMainMenuWidget_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed, CallFunc_IsValid_ReturnValue) == 0x000050, "Member 'WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.SetGameLockedForMenus
 // 0x0004 (0x0004 - 0x0000)

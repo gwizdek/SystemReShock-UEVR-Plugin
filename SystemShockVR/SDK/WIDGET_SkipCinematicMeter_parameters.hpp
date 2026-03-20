@@ -11,25 +11,29 @@
 #include "Basic.hpp"
 
 #include "SlateCore_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 
 
 namespace SDK::Params
 {
 
 // Function WIDGET_SkipCinematicMeter.WIDGET_SkipCinematicMeter_C.ExecuteUbergraph_WIDGET_SkipCinematicMeter
-// 0x0040 (0x0040 - 0x0000)
+// 0x0098 (0x0098 - 0x0000)
 struct WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x0004(0x0038)(IsPlainOldData, NoDestructor)
-	float                                         K2Node_Event_InDeltaTime;                          // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSet<ENUM_ControllerType>                     K2Node_MakeSet_Set;                                // 0x0008(0x0050)()
+	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x0058(0x0038)(IsPlainOldData, NoDestructor)
+	float                                         K2Node_Event_InDeltaTime;                          // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter) == 0x000004, "Wrong alignment on WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter");
-static_assert(sizeof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter) == 0x000040, "Wrong size on WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter");
+static_assert(alignof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter) == 0x000008, "Wrong alignment on WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter");
+static_assert(sizeof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter) == 0x000098, "Wrong size on WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter");
 static_assert(offsetof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter, EntryPoint) == 0x000000, "Member 'WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter::EntryPoint' has a wrong offset!");
-static_assert(offsetof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter, K2Node_Event_MyGeometry) == 0x000004, "Member 'WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter::K2Node_Event_MyGeometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter, K2Node_Event_InDeltaTime) == 0x00003C, "Member 'WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter::K2Node_Event_InDeltaTime' has a wrong offset!");
+static_assert(offsetof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter, K2Node_MakeSet_Set) == 0x000008, "Member 'WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter::K2Node_MakeSet_Set' has a wrong offset!");
+static_assert(offsetof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter, K2Node_Event_MyGeometry) == 0x000058, "Member 'WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter::K2Node_Event_MyGeometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter, K2Node_Event_InDeltaTime) == 0x000090, "Member 'WIDGET_SkipCinematicMeter_C_ExecuteUbergraph_WIDGET_SkipCinematicMeter::K2Node_Event_InDeltaTime' has a wrong offset!");
 
 // Function WIDGET_SkipCinematicMeter.WIDGET_SkipCinematicMeter_C.Tick
 // 0x003C (0x003C - 0x0000)

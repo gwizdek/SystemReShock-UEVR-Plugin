@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_UpDown_structs.hpp"
+#include "ENUM_ButtonColorType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "INTERACT_Button_Base_classes.hpp"
-#include "ENUM_ButtonColorType_structs.hpp"
+#include "ENUM_UpDown_structs.hpp"
 
 
 namespace SDK

@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "ENUM_SimplifiedHotbarState_structs.hpp"
-#include "ENUM_HotbarStyle_structs.hpp"
 #include "UMG_classes.hpp"
+#include "ENUM_HotbarStyle_structs.hpp"
 
 
 namespace SDK

@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_InteractionType_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
 
 
 namespace SDK::Params

@@ -211,30 +211,6 @@ void UITEM_ExplosiveBase_C::GetActivateMontage(class UAnimMontage** Montage)
 }
 
 
-// Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.Activate
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_ExplosiveBase_C::Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_ExplosiveBase_C", "Activate");
-
-	Params::ITEM_ExplosiveBase_C_Activate Parms{};
-
-	Parms.Character = Character;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.CanActivate
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
@@ -249,6 +225,30 @@ void UITEM_ExplosiveBase_C::CanActivate(class APAWN_SystemShockCharacter_C* Char
 		Func = Class->GetFunction("ITEM_ExplosiveBase_C", "CanActivate");
 
 	Params::ITEM_ExplosiveBase_C_CanActivate Parms{};
+
+	Parms.Character = Character;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.Activate
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_ExplosiveBase_C::Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_ExplosiveBase_C", "Activate");
+
+	Params::ITEM_ExplosiveBase_C_Activate Parms{};
 
 	Parms.Character = Character;
 

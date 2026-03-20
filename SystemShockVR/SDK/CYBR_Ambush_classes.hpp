@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "CYBR_InteractBase_classes.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "CYBR_InteractBase_classes.hpp"
 
 
 namespace SDK

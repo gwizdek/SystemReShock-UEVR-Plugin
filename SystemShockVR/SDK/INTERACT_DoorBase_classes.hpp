@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ENUM_ButtonColorType_structs.hpp"
-#include "ENUM_DoorIcons_structs.hpp"
-#include "ENUM_DoorState_structs.hpp"
-#include "INTERACT_Channeling_Base_classes.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "ENUM_DoorState_structs.hpp"
+#include "ENUM_DoorIcons_structs.hpp"
+#include "INTERACT_Channeling_Base_classes.hpp"
 
 
 namespace SDK
@@ -160,7 +160,6 @@ public:
 	void TryFixOverlappingActorPhysics();
 	void DisableSafetySensorTemporarily();
 	void RestoreSafetySensorOverlaps();
-	void OnRestoreInventoryAfterSequence(class APAWN_Hacker_Simple_C* HackerPawn);
 	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
 	void SetInteractLocked(bool Locked, bool* Result);
 	void IsHiddenInteractablePrimitive(class APAWN_SystemShockCharacter_C* Character, class UPrimitiveComponent* CursorPrimitive, bool* Result);
@@ -168,6 +167,7 @@ public:
 	void GetInteractLocked(class AActor* SourceActor, bool* Result, class FText* LockMessage);
 	void GetInteractBroken(bool* Result, class FText* BrokenMessage_0);
 	void GetInteractBusy(bool* Result, class FText* BusyMessage_0);
+	void OnRestoreInventoryAfterSequence(class APAWN_Hacker_Simple_C* HackerPawn);
 	void SetInteractPowered(bool State, bool* Result);
 	void CanModifyInteractPower(bool* Result);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);

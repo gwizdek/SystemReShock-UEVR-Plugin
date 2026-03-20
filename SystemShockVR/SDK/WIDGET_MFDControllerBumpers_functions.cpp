@@ -58,7 +58,7 @@ void UWIDGET_MFDControllerBumpers_C::PreConstruct(bool IsDesignTime)
 
 
 // Function WIDGET_MFDControllerBumpers.WIDGET_MFDControllerBumpers_C.InitializeControllerBumpers
-// (Private, BlueprintCallable, BlueprintEvent)
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
 
 void UWIDGET_MFDControllerBumpers_C::InitializeControllerBumpers()
 {
@@ -66,20 +66,6 @@ void UWIDGET_MFDControllerBumpers_C::InitializeControllerBumpers()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("WIDGET_MFDControllerBumpers_C", "InitializeControllerBumpers");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WIDGET_MFDControllerBumpers.WIDGET_MFDControllerBumpers_C.UpdatePlatformTextures
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UWIDGET_MFDControllerBumpers_C::UpdatePlatformTextures()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_MFDControllerBumpers_C", "UpdatePlatformTextures");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

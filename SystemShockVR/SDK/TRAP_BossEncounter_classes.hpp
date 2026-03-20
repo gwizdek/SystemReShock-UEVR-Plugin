@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "TRAP_Trigger_classes.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "ENUM_EncounterLockType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "TRAP_Trigger_classes.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK

@@ -10,20 +10,26 @@
 
 #include "Basic.hpp"
 
-#include "CoreGame_structs.hpp"
+#include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "CoreGame_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass GM_Title.GM_Title_C
-// 0x0018 (0x02D8 - 0x02C0)
+// 0x0020 (0x02E0 - 0x02C0)
 class AGM_Title_C final : public AGameModeBase
 {
 public:
-	class USceneComponent*                        DefaultSceneRoot;                                  // 0x02C0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FEnumHandle>                    InitialMusicStates;                                // 0x02C8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x02C0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class USceneComponent*                        DefaultSceneRoot;                                  // 0x02C8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FEnumHandle>                    InitialMusicStates;                                // 0x02D0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+
+public:
+	void ExecuteUbergraph_GM_Title(int32 EntryPoint);
+	void ReceiveBeginPlay();
 
 public:
 	static class UClass* StaticClass()
@@ -36,9 +42,10 @@ public:
 	}
 };
 static_assert(alignof(AGM_Title_C) == 0x000008, "Wrong alignment on AGM_Title_C");
-static_assert(sizeof(AGM_Title_C) == 0x0002D8, "Wrong size on AGM_Title_C");
-static_assert(offsetof(AGM_Title_C, DefaultSceneRoot) == 0x0002C0, "Member 'AGM_Title_C::DefaultSceneRoot' has a wrong offset!");
-static_assert(offsetof(AGM_Title_C, InitialMusicStates) == 0x0002C8, "Member 'AGM_Title_C::InitialMusicStates' has a wrong offset!");
+static_assert(sizeof(AGM_Title_C) == 0x0002E0, "Wrong size on AGM_Title_C");
+static_assert(offsetof(AGM_Title_C, UberGraphFrame) == 0x0002C0, "Member 'AGM_Title_C::UberGraphFrame' has a wrong offset!");
+static_assert(offsetof(AGM_Title_C, DefaultSceneRoot) == 0x0002C8, "Member 'AGM_Title_C::DefaultSceneRoot' has a wrong offset!");
+static_assert(offsetof(AGM_Title_C, InitialMusicStates) == 0x0002D0, "Member 'AGM_Title_C::InitialMusicStates' has a wrong offset!");
 
 }
 

@@ -17,6 +17,46 @@
 namespace SDK
 {
 
+// Function WIDGET_SplashScreen_NightDive.WIDGET_SplashScreen_NightDive_C.ExecuteUbergraph_WIDGET_SplashScreen_NightDive
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_SplashScreen_NightDive_C::ExecuteUbergraph_WIDGET_SplashScreen_NightDive(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_SplashScreen_NightDive_C", "ExecuteUbergraph_WIDGET_SplashScreen_NightDive");
+
+	Params::WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_SplashScreen_NightDive.WIDGET_SplashScreen_NightDive_C.Play
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           OpenedUrl                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+
+void UWIDGET_SplashScreen_NightDive_C::Play(const class FString& OpenedUrl)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_SplashScreen_NightDive_C", "Play");
+
+	Params::WIDGET_SplashScreen_NightDive_C_Play Parms{};
+
+	Parms.OpenedUrl = std::move(OpenedUrl);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function WIDGET_SplashScreen_NightDive.WIDGET_SplashScreen_NightDive_C.GetFadeOutDuration
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:

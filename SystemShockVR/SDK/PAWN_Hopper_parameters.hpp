@@ -95,8 +95,10 @@ public:
 	struct FAttribDamageInstance                  DamageInstance;                                    // 0x0008(0x0028)(BlueprintVisible, BlueprintReadOnly, Parm)
 	class AActor*                                 OtherActor;                                        // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          Result;                                            // 0x0038(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnCharacterDied_Result;                   // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ShouldHopperExplode_Result;               // 0x003A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsDismembermentAllowed_Result;            // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnCharacterDied_Result;                   // 0x003A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ShouldHopperExplode_Result;               // 0x003B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(PAWN_Hopper_C_OnCharacterDied) == 0x000008, "Wrong alignment on PAWN_Hopper_C_OnCharacterDied");
 static_assert(sizeof(PAWN_Hopper_C_OnCharacterDied) == 0x000040, "Wrong size on PAWN_Hopper_C_OnCharacterDied");
@@ -104,8 +106,10 @@ static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, ImpactData) == 0x000000, "
 static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, DamageInstance) == 0x000008, "Member 'PAWN_Hopper_C_OnCharacterDied::DamageInstance' has a wrong offset!");
 static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, OtherActor) == 0x000030, "Member 'PAWN_Hopper_C_OnCharacterDied::OtherActor' has a wrong offset!");
 static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, Result) == 0x000038, "Member 'PAWN_Hopper_C_OnCharacterDied::Result' has a wrong offset!");
-static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, CallFunc_OnCharacterDied_Result) == 0x000039, "Member 'PAWN_Hopper_C_OnCharacterDied::CallFunc_OnCharacterDied_Result' has a wrong offset!");
-static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, CallFunc_ShouldHopperExplode_Result) == 0x00003A, "Member 'PAWN_Hopper_C_OnCharacterDied::CallFunc_ShouldHopperExplode_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, CallFunc_IsDismembermentAllowed_Result) == 0x000039, "Member 'PAWN_Hopper_C_OnCharacterDied::CallFunc_IsDismembermentAllowed_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, CallFunc_OnCharacterDied_Result) == 0x00003A, "Member 'PAWN_Hopper_C_OnCharacterDied::CallFunc_OnCharacterDied_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, CallFunc_ShouldHopperExplode_Result) == 0x00003B, "Member 'PAWN_Hopper_C_OnCharacterDied::CallFunc_ShouldHopperExplode_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_Hopper_C_OnCharacterDied, CallFunc_BooleanAND_ReturnValue) == 0x00003C, "Member 'PAWN_Hopper_C_OnCharacterDied::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
 // Function PAWN_Hopper.PAWN_Hopper_C.ShouldHopperExplode
 // 0x0038 (0x0038 - 0x0000)

@@ -11,13 +11,13 @@
 #include "Basic.hpp"
 
 #include "StreamingSaveGameSystem_structs.hpp"
-#include "ENUM_GameDifficulty_structs.hpp"
-#include "STRUCT_CombatDifficultySettings_structs.hpp"
 #include "ENUM_DetectionState_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "STRUCT_EnemyStats_structs.hpp"
 #include "STRUCT_EnemyTemplate_structs.hpp"
+#include "ENUM_GameDifficulty_structs.hpp"
+#include "STRUCT_CombatDifficultySettings_structs.hpp"
 
 
 namespace SDK::Params

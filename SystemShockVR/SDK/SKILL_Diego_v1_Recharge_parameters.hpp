@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "AttributeSystem_structs.hpp"
 #include "STRUCT_EnemyStats_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 
 
 namespace SDK::Params

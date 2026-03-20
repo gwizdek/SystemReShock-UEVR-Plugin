@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_PseudoShodanState_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
+#include "ENUM_PseudoShodanState_structs.hpp"
 
 
 namespace SDK::Params
@@ -45,17 +45,6 @@ static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteract
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteractable, CallFunc_TryInteract_InteractResults) == 0x000010, "Member 'INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteractable::CallFunc_TryInteract_InteractResults' has a wrong offset!");
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteractable, CallFunc_IsValid_ReturnValue) == 0x000030, "Member 'INTERACT_PseudoSurfboardPlatform_C_OnToggleTargetInteractable::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
-// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.OnPlatformEnableStateChanged
-// 0x0001 (0x0001 - 0x0000)
-struct INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged final
-{
-public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged");
-static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged");
-static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged, State) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged::State' has a wrong offset!");
-
 // Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnStartedSurfing
 // 0x0038 (0x0038 - 0x0000)
 struct INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing final
@@ -79,6 +68,17 @@ static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing, CallFunc_CreateLevelSequencePlayer_OutActor) == 0x000020, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing::CallFunc_CreateLevelSequencePlayer_OutActor' has a wrong offset!");
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing, CallFunc_CreateLevelSequencePlayer_ReturnValue) == 0x000028, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing::CallFunc_CreateLevelSequencePlayer_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing, CallFunc_IsValid_ReturnValue) == 0x000030, "Member 'INTERACT_PseudoSurfboardPlatform_C_EVENT_OnStartedSurfing::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+
+// Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.OnPlatformEnableStateChanged
+// 0x0001 (0x0001 - 0x0000)
+struct INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged final
+{
+public:
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong alignment on INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged");
+static_assert(sizeof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged) == 0x000001, "Wrong size on INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged");
+static_assert(offsetof(INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged, State) == 0x000000, "Member 'INTERACT_PseudoSurfboardPlatform_C_OnPlatformEnableStateChanged::State' has a wrong offset!");
 
 // Function INTERACT_PseudoSurfboardPlatform.INTERACT_PseudoSurfboardPlatform_C.EVENT_OnCenterMoveExpired
 // 0x0008 (0x0008 - 0x0000)

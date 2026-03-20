@@ -10,15 +10,26 @@
 
 #include "Basic.hpp"
 
-#include "AIModule_structs.hpp"
+#include "GameplayTags_structs.hpp"
 #include "GameplayTasks_structs.hpp"
+#include "AIModule_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "GameplayTags_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function AIModule.BlackboardAssetProvider.GetBlackboardAsset
+// 0x0008 (0x0008 - 0x0000)
+struct BlackboardAssetProvider_GetBlackboardAsset final
+{
+public:
+	class UBlackboardData*                        ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(BlackboardAssetProvider_GetBlackboardAsset) == 0x000008, "Wrong alignment on BlackboardAssetProvider_GetBlackboardAsset");
+static_assert(sizeof(BlackboardAssetProvider_GetBlackboardAsset) == 0x000008, "Wrong size on BlackboardAssetProvider_GetBlackboardAsset");
+static_assert(offsetof(BlackboardAssetProvider_GetBlackboardAsset, ReturnValue) == 0x000000, "Member 'BlackboardAssetProvider_GetBlackboardAsset::ReturnValue' has a wrong offset!");
 
 // Function AIModule.AIAsyncTaskBlueprintProxy.OnMoveCompleted
 // 0x0008 (0x0008 - 0x0000)
@@ -1040,17 +1051,6 @@ static_assert(alignof(BehaviorTreeComponent_GetTagCooldownEndTime) == 0x000004, 
 static_assert(sizeof(BehaviorTreeComponent_GetTagCooldownEndTime) == 0x00000C, "Wrong size on BehaviorTreeComponent_GetTagCooldownEndTime");
 static_assert(offsetof(BehaviorTreeComponent_GetTagCooldownEndTime, CooldownTag) == 0x000000, "Member 'BehaviorTreeComponent_GetTagCooldownEndTime::CooldownTag' has a wrong offset!");
 static_assert(offsetof(BehaviorTreeComponent_GetTagCooldownEndTime, ReturnValue) == 0x000008, "Member 'BehaviorTreeComponent_GetTagCooldownEndTime::ReturnValue' has a wrong offset!");
-
-// Function AIModule.BlackboardAssetProvider.GetBlackboardAsset
-// 0x0008 (0x0008 - 0x0000)
-struct BlackboardAssetProvider_GetBlackboardAsset final
-{
-public:
-	class UBlackboardData*                        ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(BlackboardAssetProvider_GetBlackboardAsset) == 0x000008, "Wrong alignment on BlackboardAssetProvider_GetBlackboardAsset");
-static_assert(sizeof(BlackboardAssetProvider_GetBlackboardAsset) == 0x000008, "Wrong size on BlackboardAssetProvider_GetBlackboardAsset");
-static_assert(offsetof(BlackboardAssetProvider_GetBlackboardAsset, ReturnValue) == 0x000000, "Member 'BlackboardAssetProvider_GetBlackboardAsset::ReturnValue' has a wrong offset!");
 
 // Function AIModule.BlackboardComponent.ClearValue
 // 0x0008 (0x0008 - 0x0000)

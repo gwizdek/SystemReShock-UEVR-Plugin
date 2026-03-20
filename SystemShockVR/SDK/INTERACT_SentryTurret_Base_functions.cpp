@@ -941,30 +941,6 @@ void AINTERACT_SentryTurret_Base_C::OnDeath(class AActor* SourceActor, bool* Res
 }
 
 
-// Function INTERACT_SentryTurret_Base.INTERACT_SentryTurret_Base_C.GetArmorAugmentationPercentage
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UOBJ_ImpactData_C*                ImpactData                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_SentryTurret_Base_C::GetArmorAugmentationPercentage(class UOBJ_ImpactData_C* ImpactData, float* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_SentryTurret_Base_C", "GetArmorAugmentationPercentage");
-
-	Params::INTERACT_SentryTurret_Base_C_GetArmorAugmentationPercentage Parms{};
-
-	Parms.ImpactData = ImpactData;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function INTERACT_SentryTurret_Base.INTERACT_SentryTurret_Base_C.TryInteract
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -1009,6 +985,30 @@ void AINTERACT_SentryTurret_Base_C::UpdateDeathSettings(bool DuringBeginPlay, bo
 	Params::INTERACT_SentryTurret_Base_C_UpdateDeathSettings Parms{};
 
 	Parms.DuringBeginPlay = DuringBeginPlay;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function INTERACT_SentryTurret_Base.INTERACT_SentryTurret_Base_C.GetArmorAugmentationPercentage
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UOBJ_ImpactData_C*                ImpactData                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_SentryTurret_Base_C::GetArmorAugmentationPercentage(class UOBJ_ImpactData_C* ImpactData, float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_SentryTurret_Base_C", "GetArmorAugmentationPercentage");
+
+	Params::INTERACT_SentryTurret_Base_C_GetArmorAugmentationPercentage Parms{};
+
+	Parms.ImpactData = ImpactData;
 
 	UObject::ProcessEvent(Func, &Parms);
 

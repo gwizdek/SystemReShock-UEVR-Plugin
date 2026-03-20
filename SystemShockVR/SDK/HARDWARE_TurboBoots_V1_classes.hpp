@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "HARDWARE_TurboBoots_Base_classes.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK

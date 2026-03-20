@@ -10,26 +10,26 @@
 
 #include "Basic.hpp"
 
-#include "StreamingSaveGameSystem_classes.hpp"
-#include "Engine_structs.hpp"
-#include "STRUCT_AsyncSoundParamArray_structs.hpp"
-#include "STRUCT_EnemyReinforcementVolumes_structs.hpp"
-#include "MenuState_structs.hpp"
-#include "ENUM_GameDifficultyConfigCategory_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "InGameState_structs.hpp"
-#include "STRUCT_LevelRespawnData_structs.hpp"
-#include "GameplayState_structs.hpp"
 #include "ExplorationState_structs.hpp"
+#include "Engine_structs.hpp"
+#include "MenuState_structs.hpp"
+#include "STRUCT_LevelRespawnData_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "STRUCT_EnemyReinforcementVolumes_structs.hpp"
+#include "InGameState_structs.hpp"
 #include "CoreGame_structs.hpp"
+#include "GameplayState_structs.hpp"
 #include "STRUCT_AsyncParticleParamArray_structs.hpp"
+#include "STRUCT_AsyncSoundParamArray_structs.hpp"
 #include "STRUCT_AchievementClassData_structs.hpp"
 #include "STRUCT_DisabledTileData_structs.hpp"
 #include "ENUM_HackerGender_structs.hpp"
 #include "ENUM_SharedBagType_structs.hpp"
+#include "StreamingSaveGameSystem_classes.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
-#include "DLSSBlueprint_structs.hpp"
 #include "ENUM_VolumeType_structs.hpp"
+#include "ENUM_GameDifficultyConfigCategory_structs.hpp"
+#include "DLSSBlueprint_structs.hpp"
 #include "ENUM_MapType_structs.hpp"
 
 
@@ -37,7 +37,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass GI_SinglePlayer.GI_SinglePlayer_C
-// 0x0B88 (0x0DB0 - 0x0228)
+// 0x0BA0 (0x0DC8 - 0x0228)
 class UGI_SinglePlayer_C final : public USingleplayerGameInstance
 {
 public:
@@ -176,6 +176,9 @@ public:
 	ENUM_HackerGender                             HackerGender;                                      // 0x0D98(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_D99[0x7];                                      // 0x0D99(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TMulticastInlineDelegate<void(bool ControllerConnectedState)> OnControllerConnectionStateChange;                 // 0x0DA0(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	struct FVector                                LastPawnLocation;                                  // 0x0DB0(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MoveDistanceForExplorationUpdate;                  // 0x0DBC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MoveDistanceIntensityGain;                         // 0x0DC0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_GI_SinglePlayer(int32 EntryPoint);
@@ -458,6 +461,9 @@ public:
 	void GetProgressRatioThroughGame(float* Result);
 	void PrintAchievementProgress();
 	void SetHackerGenderValue(ENUM_HackerGender NewGender);
+	void UpdatePlayerMoveDistance();
+	void IsUsingAudioCaching(bool* IsUsingAudioCache);
+	void GetAudioCacheSize(float* AudioCacheSizeMegaBytes);
 
 	bool IsInGame() const;
 
@@ -472,7 +478,7 @@ public:
 	}
 };
 static_assert(alignof(UGI_SinglePlayer_C) == 0x000008, "Wrong alignment on UGI_SinglePlayer_C");
-static_assert(sizeof(UGI_SinglePlayer_C) == 0x000DB0, "Wrong size on UGI_SinglePlayer_C");
+static_assert(sizeof(UGI_SinglePlayer_C) == 0x000DC8, "Wrong size on UGI_SinglePlayer_C");
 static_assert(offsetof(UGI_SinglePlayer_C, UberGraphFrame) == 0x000228, "Member 'UGI_SinglePlayer_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UGI_SinglePlayer_C, CurrentLevelName) == 0x000230, "Member 'UGI_SinglePlayer_C::CurrentLevelName' has a wrong offset!");
 static_assert(offsetof(UGI_SinglePlayer_C, PreviousLevelName) == 0x000238, "Member 'UGI_SinglePlayer_C::PreviousLevelName' has a wrong offset!");
@@ -597,6 +603,9 @@ static_assert(offsetof(UGI_SinglePlayer_C, ActiveAlarmSpeakers) == 0x000D80, "Me
 static_assert(offsetof(UGI_SinglePlayer_C, CachedLoadingHUDWidget) == 0x000D90, "Member 'UGI_SinglePlayer_C::CachedLoadingHUDWidget' has a wrong offset!");
 static_assert(offsetof(UGI_SinglePlayer_C, HackerGender) == 0x000D98, "Member 'UGI_SinglePlayer_C::HackerGender' has a wrong offset!");
 static_assert(offsetof(UGI_SinglePlayer_C, OnControllerConnectionStateChange) == 0x000DA0, "Member 'UGI_SinglePlayer_C::OnControllerConnectionStateChange' has a wrong offset!");
+static_assert(offsetof(UGI_SinglePlayer_C, LastPawnLocation) == 0x000DB0, "Member 'UGI_SinglePlayer_C::LastPawnLocation' has a wrong offset!");
+static_assert(offsetof(UGI_SinglePlayer_C, MoveDistanceForExplorationUpdate) == 0x000DBC, "Member 'UGI_SinglePlayer_C::MoveDistanceForExplorationUpdate' has a wrong offset!");
+static_assert(offsetof(UGI_SinglePlayer_C, MoveDistanceIntensityGain) == 0x000DC0, "Member 'UGI_SinglePlayer_C::MoveDistanceIntensityGain' has a wrong offset!");
 
 }
 

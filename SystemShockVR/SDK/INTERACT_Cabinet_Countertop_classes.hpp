@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "INTERACT_LootableBase_classes.hpp"
-#include "ENUM_LeftRight_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "ENUM_LeftRight_structs.hpp"
+#include "INTERACT_LootableBase_classes.hpp"
 
 
 namespace SDK

@@ -10,6 +10,8 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_ControllerType_structs.hpp"
+
 
 namespace SDK::Params
 {
@@ -37,6 +39,17 @@ public:
 static_assert(alignof(WIDGET_MFDControllerBumpers_C_PreConstruct) == 0x000001, "Wrong alignment on WIDGET_MFDControllerBumpers_C_PreConstruct");
 static_assert(sizeof(WIDGET_MFDControllerBumpers_C_PreConstruct) == 0x000001, "Wrong size on WIDGET_MFDControllerBumpers_C_PreConstruct");
 static_assert(offsetof(WIDGET_MFDControllerBumpers_C_PreConstruct, IsDesignTime) == 0x000000, "Member 'WIDGET_MFDControllerBumpers_C_PreConstruct::IsDesignTime' has a wrong offset!");
+
+// Function WIDGET_MFDControllerBumpers.WIDGET_MFDControllerBumpers_C.InitializeControllerBumpers
+// 0x0050 (0x0050 - 0x0000)
+struct WIDGET_MFDControllerBumpers_C_InitializeControllerBumpers final
+{
+public:
+	TSet<ENUM_ControllerType>                     K2Node_MakeSet_Set;                                // 0x0000(0x0050)()
+};
+static_assert(alignof(WIDGET_MFDControllerBumpers_C_InitializeControllerBumpers) == 0x000008, "Wrong alignment on WIDGET_MFDControllerBumpers_C_InitializeControllerBumpers");
+static_assert(sizeof(WIDGET_MFDControllerBumpers_C_InitializeControllerBumpers) == 0x000050, "Wrong size on WIDGET_MFDControllerBumpers_C_InitializeControllerBumpers");
+static_assert(offsetof(WIDGET_MFDControllerBumpers_C_InitializeControllerBumpers, K2Node_MakeSet_Set) == 0x000000, "Member 'WIDGET_MFDControllerBumpers_C_InitializeControllerBumpers::K2Node_MakeSet_Set' has a wrong offset!");
 
 // Function WIDGET_MFDControllerBumpers.WIDGET_MFDControllerBumpers_C.PressLB
 // 0x0008 (0x0008 - 0x0000)

@@ -783,19 +783,19 @@ public:
                         .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Escape")
                     };
 
-
-                    if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
-                    }
-                    else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
-                    }
-                    else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_53(key_name);
-                    }
-                    else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Pseudospace_C::StaticClass())) {
-                        static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
-                    }
+                    // TODO: Close Menu/MFD
+                    //if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                    //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
+                    //}
+                    //else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
+                    //    static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
+                    //}
+                    //else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
+                    //    static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_53(key_name);
+                    //}
+                    //else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Pseudospace_C::StaticClass())) {
+                    //    static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_85(key_name);
+                    //}
                 }
             }
 
@@ -827,9 +827,10 @@ public:
                             .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
                         };
 
-                        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
-                        }
+                        // TODO Open MFD
+                        //if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                        //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
+                        //}
                     }
 
                     handle_mfd_interactions(state, vr);
@@ -862,9 +863,10 @@ public:
                             .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
                         };
 
-                        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
-                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
-                        }
+                        // TODO Toggle MFD
+                        //if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                        //    static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Gamepad_Real_ToggleMFD_K2Node_InputActionEvent_37(tab_key);
+                        //}
                     }
 
                     if (m_hotbar_selector_button.is_held() || m_hardware_selector_button.is_held()) {

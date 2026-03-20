@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
 #include "ENUM_MobileLaser_BeamState_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK::Params

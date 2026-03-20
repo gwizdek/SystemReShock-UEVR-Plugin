@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ActionPriority_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
 #include "ITEM_WeaponBase_classes.hpp"
+#include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ENUM_ActionPriority_structs.hpp"
 
 
 namespace SDK
@@ -127,8 +127,8 @@ public:
 	void GetWeaponModeDisplayName(int32 ModeIndex, bool ShortName, class FText* Result);
 	void OnWeaponBecameActivatable(class APAWN_SystemShockCharacter_C* Character, bool ShowImmediately);
 	void TryBeginReloading(bool* Result);
-	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void OnBecomeUnactivatable(bool* Result);
+	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void Deactivate(bool* Result);
 
 public:

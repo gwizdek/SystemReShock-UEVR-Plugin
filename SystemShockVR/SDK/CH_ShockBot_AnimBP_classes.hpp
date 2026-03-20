@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_DeathBlowType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "AnimGraphRuntime_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ENUM_DeathBlowType_structs.hpp"
 #include "ENUM_Emotions_structs.hpp"
 
 
@@ -78,7 +78,7 @@ public:
 	bool                                          IsCatatonic;                                       // 0x1D50(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_1D51[0x3];                                     // 0x1D51(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         MovementSpeed;                                     // 0x1D54(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         movementAngle;                                     // 0x1D58(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MovementAngle;                                     // 0x1D58(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsAlive;                                           // 0x1D5C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_1D5D[0x3];                                     // 0x1D5D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class UAnimSequenceBase*                      IdleOverride;                                      // 0x1D60(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -191,7 +191,7 @@ static_assert(offsetof(UCH_ShockBot_AnimBP_C, AnimGraphNode_BlendListByBool) == 
 static_assert(offsetof(UCH_ShockBot_AnimBP_C, AnimGraphNode_SequencePlayer) == 0x001CD0, "Member 'UCH_ShockBot_AnimBP_C::AnimGraphNode_SequencePlayer' has a wrong offset!");
 static_assert(offsetof(UCH_ShockBot_AnimBP_C, IsCatatonic) == 0x001D50, "Member 'UCH_ShockBot_AnimBP_C::IsCatatonic' has a wrong offset!");
 static_assert(offsetof(UCH_ShockBot_AnimBP_C, MovementSpeed) == 0x001D54, "Member 'UCH_ShockBot_AnimBP_C::MovementSpeed' has a wrong offset!");
-static_assert(offsetof(UCH_ShockBot_AnimBP_C, movementAngle) == 0x001D58, "Member 'UCH_ShockBot_AnimBP_C::movementAngle' has a wrong offset!");
+static_assert(offsetof(UCH_ShockBot_AnimBP_C, MovementAngle) == 0x001D58, "Member 'UCH_ShockBot_AnimBP_C::MovementAngle' has a wrong offset!");
 static_assert(offsetof(UCH_ShockBot_AnimBP_C, IsAlive) == 0x001D5C, "Member 'UCH_ShockBot_AnimBP_C::IsAlive' has a wrong offset!");
 static_assert(offsetof(UCH_ShockBot_AnimBP_C, IdleOverride) == 0x001D60, "Member 'UCH_ShockBot_AnimBP_C::IdleOverride' has a wrong offset!");
 static_assert(offsetof(UCH_ShockBot_AnimBP_C, UseIdleOverride) == 0x001D68, "Member 'UCH_ShockBot_AnimBP_C::UseIdleOverride' has a wrong offset!");

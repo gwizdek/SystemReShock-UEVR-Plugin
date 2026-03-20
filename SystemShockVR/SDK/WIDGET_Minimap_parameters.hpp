@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "STRUCT_ScannableRegionData_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "STRUCT_LevelInfo_structs.hpp"
 #include "UMG_structs.hpp"
-#include "SlateCore_structs.hpp"
 
 
 namespace SDK::Params

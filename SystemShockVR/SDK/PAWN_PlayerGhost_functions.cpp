@@ -77,6 +77,230 @@ void APAWN_PlayerGhost_C::ReceiveUnpossessed(class AController* OldController)
 }
 
 
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.ClearMenuNavTabRightHeld
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::ClearMenuNavTabRightHeld()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "ClearMenuNavTabRightHeld");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.ClearMenuNavTabLeftHeld
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::ClearMenuNavTabLeftHeld()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "ClearMenuNavTabLeftHeld");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.ClearMenuNavAlt2Held
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::ClearMenuNavAlt2Held()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "ClearMenuNavAlt2Held");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.ClearMenuNavAlt1Held
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::ClearMenuNavAlt1Held()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "ClearMenuNavAlt1Held");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.ClearEscapeHeld
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::ClearEscapeHeld()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "ClearEscapeHeld");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.ClearMenuNavBackHeld
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::ClearMenuNavBackHeld()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "ClearMenuNavBackHeld");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_MenuNav_Alt2_Released
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_MenuNav_Alt2_Released()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_MenuNav_Alt2_Released");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_MenuNav_Alt2_Pressed
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_MenuNav_Alt2_Pressed()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_MenuNav_Alt2_Pressed");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_MenuNav_Alt1_Released
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_MenuNav_Alt1_Released()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_MenuNav_Alt1_Released");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_MenuNav_Alt1_Pressed
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_MenuNav_Alt1_Pressed()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_MenuNav_Alt1_Pressed");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_Escape_Released
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_Escape_Released()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_Escape_Released");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_Escape_Pressed
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_Escape_Pressed()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_Escape_Pressed");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_MenuNav_Back_Released
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_MenuNav_Back_Released()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_MenuNav_Back_Released");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_MenuNav_Back_Pressed
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_MenuNav_Back_Pressed()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_MenuNav_Back_Pressed");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_MenuNav_Accept_Released
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_MenuNav_Accept_Released()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_MenuNav_Accept_Released");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.Impl_Gamepad_MenuNav_Accept_Pressed
+// (BlueprintCallable, BlueprintEvent)
+
+void APAWN_PlayerGhost_C::Impl_Gamepad_MenuNav_Accept_Pressed()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "Impl_Gamepad_MenuNav_Accept_Pressed");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpAxisEvt_MenuNavAxis_Y_K2Node_InputAxisEvent_17
 // (BlueprintEvent)
 // Parameters:
@@ -117,19 +341,19 @@ void APAWN_PlayerGhost_C::InpAxisEvt_MenuNavAxis_X_K2Node_InputAxisEvent_16(floa
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -137,19 +361,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0(const
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -157,19 +381,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1(const
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -177,19 +401,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2(const s
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -197,19 +421,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3(const s
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -217,19 +441,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4(cons
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -237,19 +461,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5(cons
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -257,19 +481,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6(const
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -277,19 +501,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7(const
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -297,19 +521,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8(const
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -317,19 +541,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9(const
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -337,19 +561,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10(cons
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -357,19 +581,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11(cons
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -377,59 +601,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Home_K2Node_InputKeyEvent_1
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Home_K2Node_InputKeyEvent_1(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Home_K2Node_InputKeyEvent_1");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1 Parms{};
-
-	Parms.Key = std::move(Key);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12
-// (BlueprintEvent)
-// Parameters:
-// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
-
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12(const struct FKey& Key)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12");
-
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12 Parms{};
-
-	Parms.Key = std::move(Key);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13
-// (BlueprintEvent)
-// Parameters:
-// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
-
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13(const struct FKey& Key)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13");
-
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -517,19 +701,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEve
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -537,19 +721,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18(co
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -557,19 +741,19 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19(co
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -577,19 +761,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -597,19 +781,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -617,19 +801,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -637,19 +821,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -657,19 +841,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEv
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -677,19 +861,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEv
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -697,19 +881,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionE
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -717,19 +901,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionE
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Locked_Escape_K2Node_InputActionEvent_28
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Locked_Escape_K2Node_InputActionEvent_28(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Locked_Escape_K2Node_InputActionEvent_28");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_28 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -737,19 +921,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Locked_Escape_K2Node_InputActionEvent_28(con
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Locked_Escape_K2Node_InputActionEvent_29
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_Locked_Escape_K2Node_InputActionEvent_29(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Locked_Escape_K2Node_InputActionEvent_29");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_29 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -757,19 +941,19 @@ void APAWN_PlayerGhost_C::InpActEvt_Locked_Escape_K2Node_InputActionEvent_29(con
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -777,19 +961,219 @@ void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30(cons
 }
 
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Home_K2Node_InputKeyEvent_1
 // (BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31(const struct FKey& Key)
+void APAWN_PlayerGhost_C::InpActEvt_Home_K2Node_InputKeyEvent_1(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31");
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Home_K2Node_InputKeyEvent_1");
 
-	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31 Parms{};
+	Params::PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Locked_Escape_K2Node_InputActionEvent_36
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_Locked_Escape_K2Node_InputActionEvent_36(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Locked_Escape_K2Node_InputActionEvent_36");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_36 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Locked_Escape_K2Node_InputActionEvent_37
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_Locked_Escape_K2Node_InputActionEvent_37(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_Locked_Escape_K2Node_InputActionEvent_37");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_37 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void APAWN_PlayerGhost_C::InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_PlayerGhost_C", "InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39");
+
+	Params::PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39 Parms{};
 
 	Parms.Key = std::move(Key);
 

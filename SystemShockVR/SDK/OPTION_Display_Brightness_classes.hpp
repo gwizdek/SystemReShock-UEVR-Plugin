@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "Engine_structs.hpp"
 #include "WIDGET_Settings_Slider_classes.hpp"
 
 
@@ -17,13 +18,16 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass OPTION_Display_Brightness.OPTION_Display_Brightness_C
-// 0x0008 (0x03A0 - 0x0398)
+// 0x0010 (0x03B8 - 0x03A8)
 class UOPTION_Display_Brightness_C final : public UWIDGET_Settings_Slider_C
 {
 public:
-	bool                                          IsRealspace;                                       // 0x0398(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FPointerToUberGraphFrame               UberGraphFrame_OPTION_Display_Brightness_C;        // 0x03A8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	bool                                          isRealspace;                                       // 0x03B0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 
 public:
+	void ExecuteUbergraph_OPTION_Display_Brightness(int32 EntryPoint);
+	void Tick(const struct FGeometry& MyGeometry, float InDeltaTime);
 	void ApplyDirtyValue();
 	void ApplyCleanValue();
 	void AcceptCurrentValue();
@@ -44,8 +48,9 @@ public:
 	}
 };
 static_assert(alignof(UOPTION_Display_Brightness_C) == 0x000008, "Wrong alignment on UOPTION_Display_Brightness_C");
-static_assert(sizeof(UOPTION_Display_Brightness_C) == 0x0003A0, "Wrong size on UOPTION_Display_Brightness_C");
-static_assert(offsetof(UOPTION_Display_Brightness_C, IsRealspace) == 0x000398, "Member 'UOPTION_Display_Brightness_C::IsRealspace' has a wrong offset!");
+static_assert(sizeof(UOPTION_Display_Brightness_C) == 0x0003B8, "Wrong size on UOPTION_Display_Brightness_C");
+static_assert(offsetof(UOPTION_Display_Brightness_C, UberGraphFrame_OPTION_Display_Brightness_C) == 0x0003A8, "Member 'UOPTION_Display_Brightness_C::UberGraphFrame_OPTION_Display_Brightness_C' has a wrong offset!");
+static_assert(offsetof(UOPTION_Display_Brightness_C, isRealspace) == 0x0003B0, "Member 'UOPTION_Display_Brightness_C::isRealspace' has a wrong offset!");
 
 }
 

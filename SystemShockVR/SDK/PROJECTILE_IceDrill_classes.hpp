@@ -26,11 +26,11 @@ public:
 	class AActor*                                 LockOnActor;                                       // 0x03A8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void DestroyProjectile(const struct FVector& ImpactNormal);
 	void SetLockOnActor(class AActor* Actor);
 	void UpdateDrillRotation(float DeltaSeconds);
 	void IncrementalPositionUpdate(float DeltaTime, bool* Result);
 	void ApplyDamageMod(class UAttribManagerComponent* AttribManager, class UOBJ_ImpactData_C* ImpactData, float FrameHitDeltaTime, struct FAttribDamageInstance* DamageInstance, class UAttribMod** DamageMod);
+	void DestroyProjectile(const struct FVector& ImpactNormal);
 
 public:
 	static class UClass* StaticClass()

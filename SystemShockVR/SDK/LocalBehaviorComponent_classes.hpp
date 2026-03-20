@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "Engine_classes.hpp"
 #include "ENUM_LocalBehaviorType_structs.hpp"
 #include "ENUM_LBC_DirectionBehavior_structs.hpp"
-#include "Engine_classes.hpp"
 
 
 namespace SDK

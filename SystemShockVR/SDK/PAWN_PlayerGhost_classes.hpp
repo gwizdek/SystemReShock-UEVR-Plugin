@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass PAWN_PlayerGhost.PAWN_PlayerGhost_C
-// 0x0068 (0x02E8 - 0x0280)
+// 0x0070 (0x02F0 - 0x0280)
 class APAWN_PlayerGhost_C final : public APawn
 {
 public:
@@ -45,47 +45,72 @@ public:
 	uint8                                         Pad_2CD[0x3];                                      // 0x02CD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class UWIDGET_GameOverScreen_C*               GameOverScreenWidget;                              // 0x02D0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	TMulticastInlineDelegate<void()>              CancelSkipSequence;                                // 0x02D8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	class ACON_Hacker_C*                          HackerController;                                  // 0x02E8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_PAWN_PlayerGhost(int32 EntryPoint);
 	void ReceivePossessed(class AController* NewController);
 	void ReceiveUnpossessed(class AController* OldController);
+	void ClearMenuNavTabRightHeld();
+	void ClearMenuNavTabLeftHeld();
+	void ClearMenuNavAlt2Held();
+	void ClearMenuNavAlt1Held();
+	void ClearEscapeHeld();
+	void ClearMenuNavBackHeld();
+	void Impl_Gamepad_MenuNav_Alt2_Released();
+	void Impl_Gamepad_MenuNav_Alt2_Pressed();
+	void Impl_Gamepad_MenuNav_Alt1_Released();
+	void Impl_Gamepad_MenuNav_Alt1_Pressed();
+	void Impl_Gamepad_Escape_Released();
+	void Impl_Gamepad_Escape_Pressed();
+	void Impl_Gamepad_MenuNav_Back_Released();
+	void Impl_Gamepad_MenuNav_Back_Pressed();
+	void Impl_Gamepad_MenuNav_Accept_Released();
+	void Impl_Gamepad_MenuNav_Accept_Pressed();
 	void InpAxisEvt_MenuNavAxis_Y_K2Node_InputAxisEvent_17(float AxisValue);
 	void InpAxisEvt_MenuNavAxis_X_K2Node_InputAxisEvent_16(float AxisValue);
-	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0(const struct FKey& Key);
-	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1(const struct FKey& Key);
-	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2(const struct FKey& Key);
-	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3(const struct FKey& Key);
-	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4(const struct FKey& Key);
-	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5(const struct FKey& Key);
-	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6(const struct FKey& Key);
-	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10(const struct FKey& Key);
-	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11(const struct FKey& Key);
-	void InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0(const struct FKey& Key);
-	void InpActEvt_Home_K2Node_InputKeyEvent_1(const struct FKey& Key);
-	void InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12(const struct FKey& Key);
-	void InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7(const struct FKey& Key);
+	void InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8(const struct FKey& Key);
+	void InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9(const struct FKey& Key);
+	void InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10(const struct FKey& Key);
+	void InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12(const struct FKey& Key);
+	void InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13(const struct FKey& Key);
 	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_14(const struct FKey& Key);
 	void InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_15(const struct FKey& Key);
 	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_16(const struct FKey& Key);
 	void InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_17(const struct FKey& Key);
-	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18(const struct FKey& Key);
-	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26(const struct FKey& Key);
-	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27(const struct FKey& Key);
-	void InpActEvt_Locked_Escape_K2Node_InputActionEvent_28(const struct FKey& Key);
-	void InpActEvt_Locked_Escape_K2Node_InputActionEvent_29(const struct FKey& Key);
-	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30(const struct FKey& Key);
-	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31(const struct FKey& Key);
+	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18(const struct FKey& Key);
+	void InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19(const struct FKey& Key);
+	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20(const struct FKey& Key);
+	void InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21(const struct FKey& Key);
+	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22(const struct FKey& Key);
+	void InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23(const struct FKey& Key);
+	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24(const struct FKey& Key);
+	void InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28(const struct FKey& Key);
+	void InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29(const struct FKey& Key);
+	void InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0(const struct FKey& Key);
+	void InpActEvt_Home_K2Node_InputKeyEvent_1(const struct FKey& Key);
+	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30(const struct FKey& Key);
+	void InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34(const struct FKey& Key);
+	void InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35(const struct FKey& Key);
+	void InpActEvt_Locked_Escape_K2Node_InputActionEvent_36(const struct FKey& Key);
+	void InpActEvt_Locked_Escape_K2Node_InputActionEvent_37(const struct FKey& Key);
+	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38(const struct FKey& Key);
+	void InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39(const struct FKey& Key);
 	void InpActEvt_AnyKey_K2Node_InputKeyEvent_2(const struct FKey& Key);
 	void EVENT_OnStartingLevelFinishedLoading();
 	void HandleMenuNavUp(bool ButtonDown);
@@ -113,7 +138,7 @@ public:
 	}
 };
 static_assert(alignof(APAWN_PlayerGhost_C) == 0x000008, "Wrong alignment on APAWN_PlayerGhost_C");
-static_assert(sizeof(APAWN_PlayerGhost_C) == 0x0002E8, "Wrong size on APAWN_PlayerGhost_C");
+static_assert(sizeof(APAWN_PlayerGhost_C) == 0x0002F0, "Wrong size on APAWN_PlayerGhost_C");
 static_assert(offsetof(APAWN_PlayerGhost_C, UberGraphFrame) == 0x000280, "Member 'APAWN_PlayerGhost_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(APAWN_PlayerGhost_C, MediaSound) == 0x000288, "Member 'APAWN_PlayerGhost_C::MediaSound' has a wrong offset!");
 static_assert(offsetof(APAWN_PlayerGhost_C, Camera) == 0x000290, "Member 'APAWN_PlayerGhost_C::Camera' has a wrong offset!");
@@ -136,6 +161,7 @@ static_assert(offsetof(APAWN_PlayerGhost_C, IsHoldingTabLeft) == 0x0002CB, "Memb
 static_assert(offsetof(APAWN_PlayerGhost_C, IsHoldingTabRight) == 0x0002CC, "Member 'APAWN_PlayerGhost_C::IsHoldingTabRight' has a wrong offset!");
 static_assert(offsetof(APAWN_PlayerGhost_C, GameOverScreenWidget) == 0x0002D0, "Member 'APAWN_PlayerGhost_C::GameOverScreenWidget' has a wrong offset!");
 static_assert(offsetof(APAWN_PlayerGhost_C, CancelSkipSequence) == 0x0002D8, "Member 'APAWN_PlayerGhost_C::CancelSkipSequence' has a wrong offset!");
+static_assert(offsetof(APAWN_PlayerGhost_C, HackerController) == 0x0002E8, "Member 'APAWN_PlayerGhost_C::HackerController' has a wrong offset!");
 
 }
 

@@ -300,34 +300,6 @@ void UOPTION_Controls_InputBind_C::SetOptionListeningForInput(bool IsListening)
 }
 
 
-// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.CycleButtonHighlightLeft
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void UOPTION_Controls_InputBind_C::CycleButtonHighlightLeft()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("OPTION_Controls_InputBind_C", "CycleButtonHighlightLeft");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.CycleButtonHighlightRight
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void UOPTION_Controls_InputBind_C::CycleButtonHighlightRight()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("OPTION_Controls_InputBind_C", "CycleButtonHighlightRight");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.TryStopListeningForInput
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -408,30 +380,6 @@ void UOPTION_Controls_InputBind_C::ReceiveNavLeft(bool InputState, bool* Result)
 		Func = Class->GetFunction("OPTION_Controls_InputBind_C", "ReceiveNavLeft");
 
 	Params::OPTION_Controls_InputBind_C_ReceiveNavLeft Parms{};
-
-	Parms.InputState = InputState;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavRight
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UOPTION_Controls_InputBind_C::ReceiveNavRight(bool InputState, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("OPTION_Controls_InputBind_C", "ReceiveNavRight");
-
-	Params::OPTION_Controls_InputBind_C_ReceiveNavRight Parms{};
 
 	Parms.InputState = InputState;
 
@@ -603,6 +551,52 @@ void UOPTION_Controls_InputBind_C::IsAnythingHovered(bool* Result)
 		Func = Class->GetFunction("OPTION_Controls_InputBind_C", "IsAnythingHovered");
 
 	Params::OPTION_Controls_InputBind_C_IsAnythingHovered Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.InitializeMenuListItem
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UWIDGET_MenuListBase_C*           ParentList                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   Index_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UOPTION_Controls_InputBind_C::InitializeMenuListItem(class UWIDGET_MenuListBase_C* ParentList, int32 Index_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("OPTION_Controls_InputBind_C", "InitializeMenuListItem");
+
+	Params::OPTION_Controls_InputBind_C_InitializeMenuListItem Parms{};
+
+	Parms.ParentList = ParentList;
+	Parms.Index_0 = Index_0;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavRight
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UOPTION_Controls_InputBind_C::ReceiveNavRight(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("OPTION_Controls_InputBind_C", "ReceiveNavRight");
+
+	Params::OPTION_Controls_InputBind_C_ReceiveNavRight Parms{};
+
+	Parms.InputState = InputState;
 
 	UObject::ProcessEvent(Func, &Parms);
 

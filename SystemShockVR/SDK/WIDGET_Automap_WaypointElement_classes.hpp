@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_Automap_WaypointInteraction_structs.hpp"
 #include "Engine_structs.hpp"
 #include "UMG_classes.hpp"
+#include "ENUM_Automap_WaypointInteraction_structs.hpp"
 
 
 namespace SDK

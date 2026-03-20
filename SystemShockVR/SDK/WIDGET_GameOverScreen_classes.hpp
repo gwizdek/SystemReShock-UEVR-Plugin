@@ -11,16 +11,16 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "UMG_classes.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
+#include "UMG_classes.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 
 
 namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_GameOverScreen.WIDGET_GameOverScreen_C
-// 0x0090 (0x02F0 - 0x0260)
+// 0x0080 (0x02E0 - 0x0260)
 class UWIDGET_GameOverScreen_C final : public UUserWidget
 {
 public:
@@ -39,10 +39,8 @@ public:
 	int32                                         MenuItemCount;                                     // 0x02BC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWidget*                                OpenedSubScreen;                                   // 0x02C0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class ACON_Hacker_C*                          CON_Hacker_Ref;                                    // 0x02C8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              PreviousMousePosition;                             // 0x02D0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_PlayerGhost_C*                    PAWNPlayerGhost;                                   // 0x02D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ULevelSequenceDirector*                 GameOverSequenceDirector;                          // 0x02E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ULevelSequencePlayer*                   NewVar_0;                                          // 0x02E8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_PlayerGhost_C*                    PAWNPlayerGhost;                                   // 0x02D0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ULevelSequenceDirector*                 GameOverSequenceDirector;                          // 0x02D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_WIDGET_GameOverScreen(int32 EntryPoint);
@@ -56,11 +54,11 @@ public:
 	void ToggleCursor(bool CursorEnabled);
 	void InvokeNavManager(ENUM_MenuNavigationInput InputType, bool InputState);
 	void ReturnFromSubScreen();
-	void EVENT_OnUsingGamepadChanged(bool IsUsingGamepad);
 	void EVENT_TrySkipSequence();
 	void EVENT_CancelSkipSequence();
 	void RevealGameOver();
 	void EVENT_TriggerSkipSequence();
+	void EVENT_OnActiveControllerTypeChanged(ENUM_ControllerType NewActiveControllerType);
 
 public:
 	static class UClass* StaticClass()
@@ -73,7 +71,7 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_GameOverScreen_C) == 0x000008, "Wrong alignment on UWIDGET_GameOverScreen_C");
-static_assert(sizeof(UWIDGET_GameOverScreen_C) == 0x0002F0, "Wrong size on UWIDGET_GameOverScreen_C");
+static_assert(sizeof(UWIDGET_GameOverScreen_C) == 0x0002E0, "Wrong size on UWIDGET_GameOverScreen_C");
 static_assert(offsetof(UWIDGET_GameOverScreen_C, UberGraphFrame) == 0x000260, "Member 'UWIDGET_GameOverScreen_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_GameOverScreen_C, ANIM_RevealGameOver) == 0x000268, "Member 'UWIDGET_GameOverScreen_C::ANIM_RevealGameOver' has a wrong offset!");
 static_assert(offsetof(UWIDGET_GameOverScreen_C, IMG_Darkener) == 0x000270, "Member 'UWIDGET_GameOverScreen_C::IMG_Darkener' has a wrong offset!");
@@ -89,10 +87,8 @@ static_assert(offsetof(UWIDGET_GameOverScreen_C, MenuSelectedIndex) == 0x0002B8,
 static_assert(offsetof(UWIDGET_GameOverScreen_C, MenuItemCount) == 0x0002BC, "Member 'UWIDGET_GameOverScreen_C::MenuItemCount' has a wrong offset!");
 static_assert(offsetof(UWIDGET_GameOverScreen_C, OpenedSubScreen) == 0x0002C0, "Member 'UWIDGET_GameOverScreen_C::OpenedSubScreen' has a wrong offset!");
 static_assert(offsetof(UWIDGET_GameOverScreen_C, CON_Hacker_Ref) == 0x0002C8, "Member 'UWIDGET_GameOverScreen_C::CON_Hacker_Ref' has a wrong offset!");
-static_assert(offsetof(UWIDGET_GameOverScreen_C, PreviousMousePosition) == 0x0002D0, "Member 'UWIDGET_GameOverScreen_C::PreviousMousePosition' has a wrong offset!");
-static_assert(offsetof(UWIDGET_GameOverScreen_C, PAWNPlayerGhost) == 0x0002D8, "Member 'UWIDGET_GameOverScreen_C::PAWNPlayerGhost' has a wrong offset!");
-static_assert(offsetof(UWIDGET_GameOverScreen_C, GameOverSequenceDirector) == 0x0002E0, "Member 'UWIDGET_GameOverScreen_C::GameOverSequenceDirector' has a wrong offset!");
-static_assert(offsetof(UWIDGET_GameOverScreen_C, NewVar_0) == 0x0002E8, "Member 'UWIDGET_GameOverScreen_C::NewVar_0' has a wrong offset!");
+static_assert(offsetof(UWIDGET_GameOverScreen_C, PAWNPlayerGhost) == 0x0002D0, "Member 'UWIDGET_GameOverScreen_C::PAWNPlayerGhost' has a wrong offset!");
+static_assert(offsetof(UWIDGET_GameOverScreen_C, GameOverSequenceDirector) == 0x0002D8, "Member 'UWIDGET_GameOverScreen_C::GameOverSequenceDirector' has a wrong offset!");
 
 }
 

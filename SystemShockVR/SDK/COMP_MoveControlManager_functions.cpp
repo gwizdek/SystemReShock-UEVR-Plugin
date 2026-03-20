@@ -31,25 +31,27 @@ void UCOMP_MoveControlManager_C::InitializeMoveControls()
 }
 
 
-// Function COMP_MoveControlManager.COMP_MoveControlManager_C.UpdateMoveControls
+// Function COMP_MoveControlManager.COMP_MoveControlManager_C.Update Move Controls
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // float                                   DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // struct FVector2D                        MoveInputAxes                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // struct FVector2D                        LookInputAxes                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FVector                          GyroAxis                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UCOMP_MoveControlManager_C::UpdateMoveControls(float DeltaTime, const struct FVector2D& MoveInputAxes, const struct FVector2D& LookInputAxes)
+void UCOMP_MoveControlManager_C::Update_Move_Controls(float DeltaTime, const struct FVector2D& MoveInputAxes, const struct FVector2D& LookInputAxes, const struct FVector& GyroAxis)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("COMP_MoveControlManager_C", "UpdateMoveControls");
+		Func = Class->GetFunction("COMP_MoveControlManager_C", "Update Move Controls");
 
-	Params::COMP_MoveControlManager_C_UpdateMoveControls Parms{};
+	Params::COMP_MoveControlManager_C_Update_Move_Controls Parms{};
 
 	Parms.DeltaTime = DeltaTime;
 	Parms.MoveInputAxes = std::move(MoveInputAxes);
 	Parms.LookInputAxes = std::move(LookInputAxes);
+	Parms.GyroAxis = std::move(GyroAxis);
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -1206,6 +1208,34 @@ void UCOMP_MoveControlManager_C::ShouldSkateWhileSprinting(bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
+}
+
+
+// Function COMP_MoveControlManager.COMP_MoveControlManager_C.UpdateLookWithGyro
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FVector2D                        LookInputAxis                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FVector                          GyroTilt                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FVector2D                        Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UCOMP_MoveControlManager_C::UpdateLookWithGyro(float DeltaTime, const struct FVector2D& LookInputAxis, const struct FVector& GyroTilt, struct FVector2D* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("COMP_MoveControlManager_C", "UpdateLookWithGyro");
+
+	Params::COMP_MoveControlManager_C_UpdateLookWithGyro Parms{};
+
+	Parms.DeltaTime = DeltaTime;
+	Parms.LookInputAxis = std::move(LookInputAxis);
+	Parms.GyroTilt = std::move(GyroTilt);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = std::move(Parms.Result);
 }
 
 

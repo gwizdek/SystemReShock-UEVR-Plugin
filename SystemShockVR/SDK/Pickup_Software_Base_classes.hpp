@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "CYBR_Pickup_Base_classes.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "CYBR_Pickup_Base_classes.hpp"
 
 
 namespace SDK

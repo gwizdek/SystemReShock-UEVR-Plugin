@@ -10,13 +10,27 @@
 
 #include "Basic.hpp"
 
-#include "InputCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "HeadMountedDisplay_structs.hpp"
+#include "InputCore_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function HeadMountedDisplay.HandKeypointConversion.Conv_HandKeypointToInt32
+// 0x0008 (0x0008 - 0x0000)
+struct HandKeypointConversion_Conv_HandKeypointToInt32 final
+{
+public:
+	EHandKeypoint                                 Input;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HandKeypointConversion_Conv_HandKeypointToInt32) == 0x000004, "Wrong alignment on HandKeypointConversion_Conv_HandKeypointToInt32");
+static_assert(sizeof(HandKeypointConversion_Conv_HandKeypointToInt32) == 0x000008, "Wrong size on HandKeypointConversion_Conv_HandKeypointToInt32");
+static_assert(offsetof(HandKeypointConversion_Conv_HandKeypointToInt32, Input) == 0x000000, "Member 'HandKeypointConversion_Conv_HandKeypointToInt32::Input' has a wrong offset!");
+static_assert(offsetof(HandKeypointConversion_Conv_HandKeypointToInt32, ReturnValue) == 0x000004, "Member 'HandKeypointConversion_Conv_HandKeypointToInt32::ReturnValue' has a wrong offset!");
 
 // Function HeadMountedDisplay.HeadMountedDisplayFunctionLibrary.BreakKey
 // 0x0058 (0x0058 - 0x0000)
@@ -695,20 +709,6 @@ public:
 static_assert(alignof(HeadMountedDisplayFunctionLibrary_UpdateExternalTrackingHMDPosition) == 0x000010, "Wrong alignment on HeadMountedDisplayFunctionLibrary_UpdateExternalTrackingHMDPosition");
 static_assert(sizeof(HeadMountedDisplayFunctionLibrary_UpdateExternalTrackingHMDPosition) == 0x000030, "Wrong size on HeadMountedDisplayFunctionLibrary_UpdateExternalTrackingHMDPosition");
 static_assert(offsetof(HeadMountedDisplayFunctionLibrary_UpdateExternalTrackingHMDPosition, ExternalTrackingTransform) == 0x000000, "Member 'HeadMountedDisplayFunctionLibrary_UpdateExternalTrackingHMDPosition::ExternalTrackingTransform' has a wrong offset!");
-
-// Function HeadMountedDisplay.HandKeypointConversion.Conv_HandKeypointToInt32
-// 0x0008 (0x0008 - 0x0000)
-struct HandKeypointConversion_Conv_HandKeypointToInt32 final
-{
-public:
-	EHandKeypoint                                 Input;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HandKeypointConversion_Conv_HandKeypointToInt32) == 0x000004, "Wrong alignment on HandKeypointConversion_Conv_HandKeypointToInt32");
-static_assert(sizeof(HandKeypointConversion_Conv_HandKeypointToInt32) == 0x000008, "Wrong size on HandKeypointConversion_Conv_HandKeypointToInt32");
-static_assert(offsetof(HandKeypointConversion_Conv_HandKeypointToInt32, Input) == 0x000000, "Member 'HandKeypointConversion_Conv_HandKeypointToInt32::Input' has a wrong offset!");
-static_assert(offsetof(HandKeypointConversion_Conv_HandKeypointToInt32, ReturnValue) == 0x000004, "Member 'HandKeypointConversion_Conv_HandKeypointToInt32::ReturnValue' has a wrong offset!");
 
 // Function HeadMountedDisplay.MotionControllerComponent.GetHandJointPosition
 // 0x0014 (0x0014 - 0x0000)

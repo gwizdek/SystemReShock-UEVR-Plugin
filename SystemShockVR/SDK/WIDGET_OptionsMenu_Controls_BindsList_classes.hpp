@@ -10,9 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_BoundInputActionPair_structs.hpp"
-#include "WIDGET_MenuListBase_classes.hpp"
 #include "ENUM_InputCategory_structs.hpp"
+#include "WIDGET_MenuListBase_classes.hpp"
+#include "ENUM_ControllerType_structs.hpp"
+#include "STRUCT_BoundInputActionPair_structs.hpp"
 #include "ENUM_PrimarySecondary_structs.hpp"
 
 
@@ -20,11 +21,11 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C
-// 0x0230 (0x04F8 - 0x02C8)
+// 0x0238 (0x0500 - 0x02C8)
 class UWIDGET_OptionsMenu_Controls_BindsList_C : public UWIDGET_MenuListBase_C
 {
 public:
-	bool                                          IsGamepad;                                         // 0x02C2(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           ControllerType;                                    // 0x02C2(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsAnOptionListeningForInput;                       // 0x02C3(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_2C4[0x4];                                      // 0x02C4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> RealspaceKeyMap;                                   // 0x02C8(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
@@ -34,23 +35,33 @@ public:
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> DefaultCyberspaceKeyMap;                           // 0x0408(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> DefaultMinigameKeyMap;                             // 0x0458(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
 	TMap<class FName, class UOPTION_Controls_InputBind_C*> OptionKeyMap;                                      // 0x04A8(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
+	bool                                          IsPrimaryHighlighted;                              // 0x04F8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsSecondaryHighlighted;                            // 0x04F9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
 	void InitializeList(class UWIDGET_MenuBase_C* ParentScreen);
 	void StashKeyAction(class FName ActionName, const struct FKey& KeyMapping, ENUM_PrimarySecondary Rank);
 	void GetStashedKeyForAction(class FName ActionName, ENUM_PrimarySecondary Rank, struct FKey* Result);
-	void IsGamepadBindsList(bool* Result);
 	void SetIsOptionListeningForInput(bool IsListening);
 	void GetIsOptionListeningForInput(bool* Result);
 	void UpdateCurrentVisuals();
 	void HasInputKeyMapChanged(const TMap<class FName, struct FSTRUCT_BoundInputActionPair>& OldKeyMap, const TMap<class FName, struct FSTRUCT_BoundInputActionPair>& NewKeyMap, bool* Result);
 	void ResetStashedBinds();
 	void OnListClose();
-	void OnListOpen();
+	void SetPrimaryIsHighlighted(bool NewState);
+	void SetSecondaryIsHighlighted(bool NewState);
+	void GetIsPrimaryHighlighted(bool* IsPrimaryHighlighted_0);
+	void GetIsSecondaryHighlighted(bool* IsSecondaryHighlighted_0);
+	void TryCycleHighlightingLeft();
+	void TryCycleHighlightingRight();
+	void IsBindKeyInScope(const struct FKey& Key, bool* IsInScope);
 	void ReceiveNavAlt1(bool InputState, bool* Result);
 	void ReceiveNavAlt2(bool InputState, bool* Result);
 	void ReceiveNavBack(bool InputState, bool* Result);
 	void EVENT_OnOptionChanged();
+	void OnListOpen();
+	void ReceiveNavDown(bool InputState, bool* Result);
+	void ReceiveNavUp(bool InputState, bool* Result);
 
 public:
 	static class UClass* StaticClass()
@@ -63,8 +74,8 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_OptionsMenu_Controls_BindsList_C) == 0x000008, "Wrong alignment on UWIDGET_OptionsMenu_Controls_BindsList_C");
-static_assert(sizeof(UWIDGET_OptionsMenu_Controls_BindsList_C) == 0x0004F8, "Wrong size on UWIDGET_OptionsMenu_Controls_BindsList_C");
-static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, IsGamepad) == 0x0002C2, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::IsGamepad' has a wrong offset!");
+static_assert(sizeof(UWIDGET_OptionsMenu_Controls_BindsList_C) == 0x000500, "Wrong size on UWIDGET_OptionsMenu_Controls_BindsList_C");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, ControllerType) == 0x0002C2, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::ControllerType' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, IsAnOptionListeningForInput) == 0x0002C3, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::IsAnOptionListeningForInput' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, RealspaceKeyMap) == 0x0002C8, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::RealspaceKeyMap' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, CyberspaceKeyMap) == 0x000318, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::CyberspaceKeyMap' has a wrong offset!");
@@ -73,6 +84,8 @@ static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, DefaultRealspac
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, DefaultCyberspaceKeyMap) == 0x000408, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::DefaultCyberspaceKeyMap' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, DefaultMinigameKeyMap) == 0x000458, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::DefaultMinigameKeyMap' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, OptionKeyMap) == 0x0004A8, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::OptionKeyMap' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, IsPrimaryHighlighted) == 0x0004F8, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::IsPrimaryHighlighted' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_BindsList_C, IsSecondaryHighlighted) == 0x0004F9, "Member 'UWIDGET_OptionsMenu_Controls_BindsList_C::IsSecondaryHighlighted' has a wrong offset!");
 
 }
 

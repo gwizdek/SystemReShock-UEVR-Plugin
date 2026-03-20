@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "SlateCore_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_MainMenuSubScreens_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "WIDGET_MenuListBase_classes.hpp"
 
 
@@ -47,10 +47,10 @@ public:
 	void BndEvt__WIDGET_MainMenu_InGameList_WIDGET_MainMenuButton_SaveGame_K2Node_ComponentBoundEvent_8_OnMainMenuButtonClicked__DelegateSignature(const struct FPointerEvent& InputEvent);
 	void BndEvt__WIDGET_MainMenu_InGameList_WIDGET_MainMenuButton_Options_K2Node_ComponentBoundEvent_7_OnMainMenuButtonClicked__DelegateSignature(const struct FPointerEvent& InputEvent);
 	void BndEvt__WIDGET_MainMenu_InGameList_WIDGET_MainMenuButton_Resume_K2Node_ComponentBoundEvent_6_OnMainMenuButtonClicked__DelegateSignature(const struct FPointerEvent& InputEvent);
-	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 	void OnListClose();
-	void OnListOpen();
 	struct FEventReply EVENT_MouseDown_MeshDebugTrigger(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
+	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
+	void OnListOpen();
 
 public:
 	static class UClass* StaticClass()

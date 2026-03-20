@@ -37,6 +37,20 @@ void UWIDGET_SkipCinematicMeter_C::ExecuteUbergraph_WIDGET_SkipCinematicMeter(in
 }
 
 
+// Function WIDGET_SkipCinematicMeter.WIDGET_SkipCinematicMeter_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void UWIDGET_SkipCinematicMeter_C::Construct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_SkipCinematicMeter_C", "Construct");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function WIDGET_SkipCinematicMeter.WIDGET_SkipCinematicMeter_C.Tick
 // (BlueprintCosmetic, Event, Public, BlueprintEvent)
 // Parameters:

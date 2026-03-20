@@ -233,10 +233,11 @@ void UFUNCLIB_ColorUtility_C::GetCombinedSecondary(TArray<int32>& Secondaries, c
 // (Static, Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
 // ENUM_MeshColor                          TargetColor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// uint8                                   ColorAlpha                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // class UObject*                          __WorldContext                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // struct FColor                           Color                                                  (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UFUNCLIB_ColorUtility_C::GetMeshUIColor(ENUM_MeshColor TargetColor, class UObject* __WorldContext, struct FColor* Color)
+void UFUNCLIB_ColorUtility_C::GetMeshUIColor(ENUM_MeshColor TargetColor, uint8 ColorAlpha, class UObject* __WorldContext, struct FColor* Color)
 {
 	static class UFunction* Func = nullptr;
 
@@ -246,6 +247,7 @@ void UFUNCLIB_ColorUtility_C::GetMeshUIColor(ENUM_MeshColor TargetColor, class U
 	Params::FUNCLIB_ColorUtility_C_GetMeshUIColor Parms{};
 
 	Parms.TargetColor = TargetColor;
+	Parms.ColorAlpha = ColorAlpha;
 	Parms.__WorldContext = __WorldContext;
 
 	GetDefaultObj()->ProcessEvent(Func, &Parms);

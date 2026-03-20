@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "SystemReShock_structs.hpp"
 #include "ENUM_Options_ControlsTabs_structs.hpp"
 
 
@@ -17,7 +18,7 @@ namespace SDK::Params
 {
 
 // Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.ExecuteUbergraph_WIDGET_Controls_TabPanel
-// 0x0050 (0x0050 - 0x0000)
+// 0x0060 (0x0060 - 0x0000)
 struct WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel final
 {
 public:
@@ -32,9 +33,12 @@ public:
 	bool                                          CallFunc_GetCurrentPlatform_Playstation;           // 0x004A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_GetCurrentPlatform_Switch;                // 0x004B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_GetCurrentPlatform_Console;               // 0x004C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsSageNintendoPlatform_ReturnValue;       // 0x004D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_4E[0x2];                                       // 0x004E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Conv_TextToString_ReturnValue_4;          // 0x0050(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 };
 static_assert(alignof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel) == 0x000008, "Wrong alignment on WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel");
-static_assert(sizeof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel) == 0x000050, "Wrong size on WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel");
+static_assert(sizeof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel) == 0x000060, "Wrong size on WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel");
 static_assert(offsetof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel, EntryPoint) == 0x000000, "Member 'WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel::EntryPoint' has a wrong offset!");
 static_assert(offsetof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel, CallFunc_Conv_TextToString_ReturnValue) == 0x000008, "Member 'WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel::CallFunc_Conv_TextToString_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel, CallFunc_Conv_TextToString_ReturnValue_1) == 0x000018, "Member 'WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel::CallFunc_Conv_TextToString_ReturnValue_1' has a wrong offset!");
@@ -45,6 +49,8 @@ static_assert(offsetof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Contro
 static_assert(offsetof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel, CallFunc_GetCurrentPlatform_Playstation) == 0x00004A, "Member 'WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel::CallFunc_GetCurrentPlatform_Playstation' has a wrong offset!");
 static_assert(offsetof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel, CallFunc_GetCurrentPlatform_Switch) == 0x00004B, "Member 'WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel::CallFunc_GetCurrentPlatform_Switch' has a wrong offset!");
 static_assert(offsetof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel, CallFunc_GetCurrentPlatform_Console) == 0x00004C, "Member 'WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel::CallFunc_GetCurrentPlatform_Console' has a wrong offset!");
+static_assert(offsetof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel, CallFunc_IsSageNintendoPlatform_ReturnValue) == 0x00004D, "Member 'WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel::CallFunc_IsSageNintendoPlatform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel, CallFunc_Conv_TextToString_ReturnValue_4) == 0x000050, "Member 'WIDGET_Controls_TabPanel_C_ExecuteUbergraph_WIDGET_Controls_TabPanel::CallFunc_Conv_TextToString_ReturnValue_4' has a wrong offset!");
 
 // Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.SetSelectedTab
 // 0x0068 (0x0068 - 0x0000)
@@ -124,23 +130,17 @@ static_assert(offsetof(WIDGET_Controls_TabPanel_C_GetValidTabs, CallFunc_Array_A
 static_assert(offsetof(WIDGET_Controls_TabPanel_C_GetValidTabs, CallFunc_IsVisible_ReturnValue) == 0x000060, "Member 'WIDGET_Controls_TabPanel_C_GetValidTabs::CallFunc_IsVisible_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.SetLabelFromPlatform
-// 0x0005 (0x0005 - 0x0000)
+// 0x0002 (0x0002 - 0x0000)
 struct WIDGET_Controls_TabPanel_C_SetLabelFromPlatform final
 {
 public:
-	bool                                          CallFunc_GetCurrentPlatform_PC;                    // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetCurrentPlatform_Xbox;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetCurrentPlatform_Playstation;           // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetCurrentPlatform_Switch;                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetCurrentPlatform_Console;               // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform) == 0x000001, "Wrong alignment on WIDGET_Controls_TabPanel_C_SetLabelFromPlatform");
-static_assert(sizeof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform) == 0x000005, "Wrong size on WIDGET_Controls_TabPanel_C_SetLabelFromPlatform");
-static_assert(offsetof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform, CallFunc_GetCurrentPlatform_PC) == 0x000000, "Member 'WIDGET_Controls_TabPanel_C_SetLabelFromPlatform::CallFunc_GetCurrentPlatform_PC' has a wrong offset!");
-static_assert(offsetof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform, CallFunc_GetCurrentPlatform_Xbox) == 0x000001, "Member 'WIDGET_Controls_TabPanel_C_SetLabelFromPlatform::CallFunc_GetCurrentPlatform_Xbox' has a wrong offset!");
-static_assert(offsetof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform, CallFunc_GetCurrentPlatform_Playstation) == 0x000002, "Member 'WIDGET_Controls_TabPanel_C_SetLabelFromPlatform::CallFunc_GetCurrentPlatform_Playstation' has a wrong offset!");
-static_assert(offsetof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform, CallFunc_GetCurrentPlatform_Switch) == 0x000003, "Member 'WIDGET_Controls_TabPanel_C_SetLabelFromPlatform::CallFunc_GetCurrentPlatform_Switch' has a wrong offset!");
-static_assert(offsetof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform, CallFunc_GetCurrentPlatform_Console) == 0x000004, "Member 'WIDGET_Controls_TabPanel_C_SetLabelFromPlatform::CallFunc_GetCurrentPlatform_Console' has a wrong offset!");
+static_assert(sizeof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform) == 0x000002, "Wrong size on WIDGET_Controls_TabPanel_C_SetLabelFromPlatform");
+static_assert(offsetof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform, CallFunc_GetPlatformFamily_ReturnValue) == 0x000000, "Member 'WIDGET_Controls_TabPanel_C_SetLabelFromPlatform::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Controls_TabPanel_C_SetLabelFromPlatform, K2Node_SwitchEnum_CmpSuccess) == 0x000001, "Member 'WIDGET_Controls_TabPanel_C_SetLabelFromPlatform::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 
 // Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.ReceiveNavTabRight
 // 0x0040 (0x0040 - 0x0000)
@@ -300,6 +300,32 @@ static_assert(alignof(WIDGET_Controls_TabPanel_C_ReceiveNavUp) == 0x000001, "Wro
 static_assert(sizeof(WIDGET_Controls_TabPanel_C_ReceiveNavUp) == 0x000002, "Wrong size on WIDGET_Controls_TabPanel_C_ReceiveNavUp");
 static_assert(offsetof(WIDGET_Controls_TabPanel_C_ReceiveNavUp, InputState) == 0x000000, "Member 'WIDGET_Controls_TabPanel_C_ReceiveNavUp::InputState' has a wrong offset!");
 static_assert(offsetof(WIDGET_Controls_TabPanel_C_ReceiveNavUp, Result) == 0x000001, "Member 'WIDGET_Controls_TabPanel_C_ReceiveNavUp::Result' has a wrong offset!");
+
+// Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.ReceiveNavLeftRelease
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease) == 0x000001, "Wrong alignment on WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease");
+static_assert(sizeof(WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease) == 0x000002, "Wrong size on WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease");
+static_assert(offsetof(WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease, InputState) == 0x000000, "Member 'WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease, Result) == 0x000001, "Member 'WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease::Result' has a wrong offset!");
+
+// Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.ReceiveNavRightRelease
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease) == 0x000001, "Wrong alignment on WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease");
+static_assert(sizeof(WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease) == 0x000002, "Wrong size on WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease");
+static_assert(offsetof(WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease, InputState) == 0x000000, "Member 'WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease, Result) == 0x000001, "Member 'WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease::Result' has a wrong offset!");
 
 }
 

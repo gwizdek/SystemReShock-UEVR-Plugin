@@ -11,18 +11,19 @@
 #include "Basic.hpp"
 
 #include "STRUCT_NarrativeSpeakers_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "STRUCT_LevelInfo_structs.hpp"
 #include "STRUCT_DisabledTileData_structs.hpp"
 #include "ENUM_HackerGender_structs.hpp"
-#include "STRUCT_AchievementClassData_structs.hpp"
-#include "STRUCT_MissionDifficultySettings_structs.hpp"
+#include "ExplorationState_structs.hpp"
 #include "Engine_structs.hpp"
+#include "STRUCT_AchievementClassData_structs.hpp"
 #include "STRUCT_MediaObject_structs.hpp"
-#include "ENUM_GameDifficultyConfigCategory_structs.hpp"
-#include "CoreUObject_structs.hpp"
+#include "CoreGame_structs.hpp"
 #include "STRUCT_DialogueCaptionObject_structs.hpp"
 #include "STRUCT_TutorialData_structs.hpp"
 #include "STRUCT_KeycodeSettings_structs.hpp"
+#include "STRUCT_MissionDifficultySettings_structs.hpp"
 #include "STRUCT_AchievementData_structs.hpp"
 #include "STRUCT_LevelAtmosphereSettings_structs.hpp"
 #include "STRUCT_AsyncSoundParams_structs.hpp"
@@ -30,7 +31,6 @@
 #include "STRUCT_AsyncParticleParams_structs.hpp"
 #include "STRUCT_AsyncParticleParamArray_structs.hpp"
 #include "GameplayState_structs.hpp"
-#include "CoreGame_structs.hpp"
 #include "STRUCT_ItemDetailsIconParams_structs.hpp"
 #include "ENUM_SharedBagType_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
@@ -38,10 +38,11 @@
 #include "MenuState_structs.hpp"
 #include "InGameState_structs.hpp"
 #include "STRUCT_MusicParams_structs.hpp"
-#include "DLSSBlueprint_structs.hpp"
 #include "ENUM_VolumeType_structs.hpp"
 #include "STRUCT_CombatDifficultySettings_structs.hpp"
-#include "ExplorationState_structs.hpp"
+#include "ENUM_GameDifficultyConfigCategory_structs.hpp"
+#include "STRUCT_StoryQuestInfo_structs.hpp"
+#include "DLSSBlueprint_structs.hpp"
 #include "STRUCT_LevelMusicSettings_structs.hpp"
 #include "STRUCT_LevelRespawnData_structs.hpp"
 #include "ENUM_MapType_structs.hpp"
@@ -52,7 +53,6 @@
 #include "STRUCT_EnemyClassWeight_structs.hpp"
 #include "STRUCT_EnemyReinforcementVolumes_structs.hpp"
 #include "STRUCT_LevelCollection_structs.hpp"
-#include "STRUCT_StoryQuestInfo_structs.hpp"
 #include "STRUCT_EffectParams_structs.hpp"
 
 
@@ -60,274 +60,278 @@ namespace SDK::Params
 {
 
 // Function GI_SinglePlayer.GI_SinglePlayer_C.ExecuteUbergraph_GI_SinglePlayer
-// 0x0F50 (0x0F50 - 0x0000)
+// 0x0F40 (0x0F40 - 0x0000)
 struct GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(class FName WrittenAchievementName, float WrittenProgress, int32 WrittenUserTag)> K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable_1;                  // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable_2;                  // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue_2;                 // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable_1;                   // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_34[0x4];                                       // 0x0034(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_TryCompleteBinaryAchievement_Result;      // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class FName WrittenAchievementName, float WrittenProgress, int32 WrittenUserTag)> K2Node_CreateDelegate_OutputDelegate;              // 0x000C(0x0010)(ZeroConstructor, NoDestructor)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable_1;                  // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable_2;                  // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue_2;                 // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable_1;                   // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class APlayerController*                      K2Node_CustomEvent_PlayerController;               // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FDataTableRowHandle                    K2Node_CustomEvent_AchievementHandle;              // 0x0040(0x0010)(NoDestructor)
 	int32                                         K2Node_CustomEvent_UserTag;                        // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FName                                   K2Node_CustomEvent_WrittenAchievementName_1;       // 0x0054(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         K2Node_CustomEvent_WrittenProgress_1;              // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         K2Node_CustomEvent_WrittenUserTag_1;               // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable_2;                   // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UAchievementWriteCallbackProxy*         CallFunc_WriteAchievementProgress_ReturnValue;     // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_GetCachedAchievementProgress_bFoundID;    // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_72[0x2];                                       // 0x0072(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         CallFunc_GetCachedAchievementProgress_Progress;    // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryCompleteBinaryAchievement_Result;      // 0x0079(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_7A[0x6];                                       // 0x007A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_TryCompleteBinaryAchievement_Result_1;    // 0x0079(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_7A[0x2];                                       // 0x007A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Loop_Counter_Variable_3;                  // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_7;                     // 0x0080(0x0028)(HasGetValueTypeHash)
-	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_6;                     // 0x00A8(0x0028)(HasGetValueTypeHash)
-	struct FVector                                K2Node_CustomEvent_Location;                       // 0x00D0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_1;            // 0x00DC(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_AsyncSoundParams               K2Node_MakeStruct_STRUCT_AsyncSoundParams;         // 0x00F0(0x0080)(ContainsInstancedReference, HasGetValueTypeHash)
-	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_5;                     // 0x0170(0x0028)(HasGetValueTypeHash)
-	class USceneComponent*                        K2Node_CustomEvent_AttachToComponent_1;            // 0x0198(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   K2Node_CustomEvent_SocketName_1;                   // 0x01A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                K2Node_CustomEvent_RelativeLocation_1;             // 0x01A8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               K2Node_CustomEvent_RelativeRotation_1;             // 0x01B4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FSTRUCT_EffectParams                   K2Node_CustomEvent_SoundParameters;                // 0x01C0(0x0030)(ConstParm, HasGetValueTypeHash)
-	TSoftObjectPtr<class USceneComponent>         CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue; // 0x01F0(0x0028)(InstancedReference, UObjectWrapper, HasGetValueTypeHash)
-	TSoftObjectPtr<class UFXSystemAsset>          K2Node_CustomEvent_System_4;                       // 0x0218(0x0028)(HasGetValueTypeHash)
-	struct FTransform                             K2Node_CustomEvent_Transform;                      // 0x0240(0x0030)(IsPlainOldData, NoDestructor)
-	struct FSTRUCT_AsyncSoundParams               K2Node_MakeStruct_STRUCT_AsyncSoundParams_1;       // 0x0270(0x0080)(ContainsInstancedReference, HasGetValueTypeHash)
-	struct FSTRUCT_AsyncParticleParams            K2Node_MakeStruct_STRUCT_AsyncParticleParams;      // 0x02F0(0x00A0)(ContainsInstancedReference, HasGetValueTypeHash)
-	TSoftObjectPtr<class UFXSystemAsset>          K2Node_CustomEvent_System_3;                       // 0x0390(0x0028)(HasGetValueTypeHash)
-	class USceneComponent*                        K2Node_CustomEvent_AttachToComponent;              // 0x03B8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   K2Node_CustomEvent_SocketName;                     // 0x03C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                K2Node_CustomEvent_RelativeLocation;               // 0x03C8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               K2Node_CustomEvent_RelativeRotation;               // 0x03D4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FSTRUCT_EffectParams                   K2Node_CustomEvent_EffectsParameters;              // 0x03E0(0x0030)(ConstParm, HasGetValueTypeHash)
-	struct FLatentObjectEventHandle               K2Node_CustomEvent_OnSpawnEvent;                   // 0x0410(0x0010)(ContainsInstancedReference)
-	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_4;                     // 0x0420(0x0028)(HasGetValueTypeHash)
-	float                                         K2Node_CustomEvent_FadeInDuration_1;               // 0x0448(0x0004)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_CustomEvent_StartTime_1;                    // 0x044C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAudioComponent*                        K2Node_CustomEvent_AudioComponent_1;               // 0x0450(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_458[0x8];                                      // 0x0458(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CallFunc_MakeTransform_ReturnValue;                // 0x0460(0x0030)(IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0490(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x0491(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_492[0x6];                                      // 0x0492(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class USceneComponent>         CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_1; // 0x0498(0x0028)(InstancedReference, UObjectWrapper, HasGetValueTypeHash)
-	struct FSTRUCT_AsyncParticleParams            K2Node_MakeStruct_STRUCT_AsyncParticleParams_1;    // 0x04C0(0x00A0)(ContainsInstancedReference, HasGetValueTypeHash)
-	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_2;            // 0x0560(0x0010)(ZeroConstructor, NoDestructor)
-	int32                                         Temp_int_Loop_Counter_Variable_3;                  // 0x0570(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_574[0x4];                                      // 0x0574(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UFXSystemAsset>          K2Node_CustomEvent_System_2;                       // 0x0578(0x0028)(HasGetValueTypeHash)
-	class UFXSystemComponent*                     K2Node_CustomEvent_SystemComponent_1;              // 0x05A0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UParticleSystemComponent*               K2Node_DynamicCast_AsParticle_System_Component;    // 0x05A8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x05B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryDecrementSystemComponentRefCount_Result; // 0x05B1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5B2[0x6];                                      // 0x05B2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UNiagaraComponent*                      K2Node_DynamicCast_AsNiagara_Particle_System;      // 0x05B8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x05C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryDecrementSystemComponentRefCount_Result_1; // 0x05C1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryIncrementSystemComponentRefCount_Result; // 0x05C2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5C3[0x1];                                      // 0x05C3(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue_3;                 // 0x05C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable_3;                   // 0x05C8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable_4;                   // 0x05CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TSoftObjectPtr<class UNiagaraSystem>          K2Node_CustomEvent_System_1;                       // 0x05D0(0x0028)(HasGetValueTypeHash)
-	TArray<class UNiagaraComponent*>              K2Node_CustomEvent_SystemComponents_1;             // 0x05F8(0x0010)(ConstParm, ReferenceParm, ContainsInstancedReference)
-	class UNiagaraComponent*                      CallFunc_Array_Get_Item;                           // 0x0608(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_3;            // 0x0610(0x0010)(ZeroConstructor, NoDestructor)
-	bool                                          CallFunc_TryIncrementSystemComponentRefCount_Result_1; // 0x0620(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_621[0x7];                                      // 0x0621(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue_3;                 // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_AC[0x4];                                       // 0x00AC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_6;                     // 0x00B0(0x0028)(HasGetValueTypeHash)
+	struct FVector                                K2Node_CustomEvent_Location;                       // 0x00D8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_1;            // 0x00E4(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_F4[0x4];                                       // 0x00F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_AsyncSoundParams               K2Node_MakeStruct_STRUCT_AsyncSoundParams;         // 0x00F8(0x0080)(ContainsInstancedReference, HasGetValueTypeHash)
+	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_5;                     // 0x0178(0x0028)(HasGetValueTypeHash)
+	class USceneComponent*                        K2Node_CustomEvent_AttachToComponent_1;            // 0x01A0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   K2Node_CustomEvent_SocketName_1;                   // 0x01A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                K2Node_CustomEvent_RelativeLocation_1;             // 0x01B0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               K2Node_CustomEvent_RelativeRotation_1;             // 0x01BC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FSTRUCT_EffectParams                   K2Node_CustomEvent_SoundParameters;                // 0x01C8(0x0030)(ConstParm, HasGetValueTypeHash)
+	TSoftObjectPtr<class USceneComponent>         CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue; // 0x01F8(0x0028)(InstancedReference, UObjectWrapper, HasGetValueTypeHash)
+	TSoftObjectPtr<class UFXSystemAsset>          K2Node_CustomEvent_System_4;                       // 0x0220(0x0028)(HasGetValueTypeHash)
+	uint8                                         Pad_248[0x8];                                      // 0x0248(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             K2Node_CustomEvent_Transform;                      // 0x0250(0x0030)(IsPlainOldData, NoDestructor)
+	struct FSTRUCT_AsyncSoundParams               K2Node_MakeStruct_STRUCT_AsyncSoundParams_1;       // 0x0280(0x0080)(ContainsInstancedReference, HasGetValueTypeHash)
+	struct FSTRUCT_AsyncParticleParams            K2Node_MakeStruct_STRUCT_AsyncParticleParams;      // 0x0300(0x00A0)(ContainsInstancedReference, HasGetValueTypeHash)
+	TSoftObjectPtr<class UFXSystemAsset>          K2Node_CustomEvent_System_3;                       // 0x03A0(0x0028)(HasGetValueTypeHash)
+	class USceneComponent*                        K2Node_CustomEvent_AttachToComponent;              // 0x03C8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   K2Node_CustomEvent_SocketName;                     // 0x03D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                K2Node_CustomEvent_RelativeLocation;               // 0x03D8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               K2Node_CustomEvent_RelativeRotation;               // 0x03E4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FSTRUCT_EffectParams                   K2Node_CustomEvent_EffectsParameters;              // 0x03F0(0x0030)(ConstParm, HasGetValueTypeHash)
+	struct FLatentObjectEventHandle               K2Node_CustomEvent_OnSpawnEvent;                   // 0x0420(0x0010)(ContainsInstancedReference)
+	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_4;                     // 0x0430(0x0028)(HasGetValueTypeHash)
+	float                                         K2Node_CustomEvent_FadeInDuration_1;               // 0x0458(0x0004)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_CustomEvent_StartTime_1;                    // 0x045C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        K2Node_CustomEvent_AudioComponent_1;               // 0x0460(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_468[0x8];                                      // 0x0468(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_MakeTransform_ReturnValue;                // 0x0470(0x0030)(IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x04A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x04A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_4A2[0x6];                                      // 0x04A2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class USceneComponent>         CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_1; // 0x04A8(0x0028)(InstancedReference, UObjectWrapper, HasGetValueTypeHash)
+	struct FSTRUCT_AsyncParticleParams            K2Node_MakeStruct_STRUCT_AsyncParticleParams_1;    // 0x04D0(0x00A0)(ContainsInstancedReference, HasGetValueTypeHash)
+	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_2;            // 0x0570(0x0010)(ZeroConstructor, NoDestructor)
+	int32                                         Temp_int_Array_Index_Variable_2;                   // 0x0580(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_584[0x4];                                      // 0x0584(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UFXSystemAsset>          K2Node_CustomEvent_System_2;                       // 0x0588(0x0028)(HasGetValueTypeHash)
+	class UFXSystemComponent*                     K2Node_CustomEvent_SystemComponent_1;              // 0x05B0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable_4;                  // 0x05B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_5BC[0x4];                                      // 0x05BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UParticleSystemComponent*               K2Node_DynamicCast_AsParticle_System_Component;    // 0x05C0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x05C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5C9[0x3];                                      // 0x05C9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue_4;                 // 0x05CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_TryDecrementSystemComponentRefCount_Result; // 0x05D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5D1[0x7];                                      // 0x05D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UNiagaraComponent*                      K2Node_DynamicCast_AsNiagara_Particle_System;      // 0x05D8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x05E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryDecrementSystemComponentRefCount_Result_1; // 0x05E1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryIncrementSystemComponentRefCount_Result; // 0x05E2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5E3[0x1];                                      // 0x05E3(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Array_Index_Variable_3;                   // 0x05E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TSoftObjectPtr<class UNiagaraSystem>          K2Node_CustomEvent_System_1;                       // 0x05E8(0x0028)(HasGetValueTypeHash)
+	TArray<class UNiagaraComponent*>              K2Node_CustomEvent_SystemComponents_1;             // 0x0610(0x0010)(ConstParm, ReferenceParm, ContainsInstancedReference)
+	class UNiagaraComponent*                      CallFunc_Array_Get_Item;                           // 0x0620(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UNiagaraComponent*                      CallFunc_Array_Get_Item_1;                         // 0x0628(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0630(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_TryDecrementSystemComponentRefCount_Result_2; // 0x0634(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_635[0x3];                                      // 0x0635(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_TryIncrementSystemComponentRefCount_Result_1; // 0x0630(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryDecrementSystemComponentRefCount_Result_2; // 0x0631(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_632[0x2];                                      // 0x0632(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0634(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x0638(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x063C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_63D[0x3];                                      // 0x063D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Loop_Counter_Variable_4;                  // 0x0640(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_644[0x4];                                      // 0x0644(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_3;                     // 0x0648(0x0028)(HasGetValueTypeHash)
-	TArray<class UAudioComponent*>                K2Node_CustomEvent_AudioComponents;                // 0x0670(0x0010)(ConstParm, ReferenceParm, ContainsInstancedReference)
-	int32                                         CallFunc_Array_Length_ReturnValue_2;               // 0x0680(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue_4;                 // 0x0684(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_1;                // 0x0688(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_689[0x7];                                      // 0x0689(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IINTERF_HUD_C>         K2Node_DynamicCast_AsINTERF_HUD;                   // 0x0690(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x06A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnStartedLoadingGame_Result;              // 0x06A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_6A2[0x2];                                      // 0x06A2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_4;            // 0x06A4(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_6B4[0x4];                                      // 0x06B4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UFXSystemComponent*                     K2Node_CustomEvent_SystemComponent;                // 0x06B8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Map_Remove_ReturnValue;                   // 0x06C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x06C1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_6C2[0x2];                                      // 0x06C2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_5;            // 0x06C4(0x0010)(ZeroConstructor, NoDestructor)
-	bool                                          Temp_bool_Variable;                                // 0x06D4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_6D5[0x3];                                      // 0x06D5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UFXSystemComponent*>             K2Node_CustomEvent_SystemComponents;               // 0x06D8(0x0010)(ConstParm, ReferenceParm, ContainsInstancedReference)
-	class USceneComponent*                        K2Node_CustomEvent_SceneComponent;                 // 0x06E8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_3;            // 0x0640(0x0010)(ZeroConstructor, NoDestructor)
+	int32                                         Temp_int_Array_Index_Variable_4;                   // 0x0650(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_654[0x4];                                      // 0x0654(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_3;                     // 0x0658(0x0028)(HasGetValueTypeHash)
+	TArray<class UAudioComponent*>                K2Node_CustomEvent_AudioComponents;                // 0x0680(0x0010)(ConstParm, ReferenceParm, ContainsInstancedReference)
+	int32                                         CallFunc_Array_Length_ReturnValue_2;               // 0x0690(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_1;                // 0x0694(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_695[0x3];                                      // 0x0695(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IINTERF_HUD_C>         K2Node_DynamicCast_AsINTERF_HUD;                   // 0x0698(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x06A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnStartedLoadingGame_Result;              // 0x06A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6AA[0x6];                                      // 0x06AA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UFXSystemComponent*                     K2Node_CustomEvent_SystemComponent;                // 0x06B0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x06B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6B9[0x3];                                      // 0x06B9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_4;            // 0x06BC(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          CallFunc_Map_Remove_ReturnValue;                   // 0x06CC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x06CD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6CE[0x2];                                      // 0x06CE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_5;            // 0x06D0(0x0010)(ZeroConstructor, NoDestructor)
+	TArray<class UFXSystemComponent*>             K2Node_CustomEvent_SystemComponents;               // 0x06E0(0x0010)(ConstParm, ReferenceParm, ContainsInstancedReference)
 	class UFXSystemComponent*                     CallFunc_Array_Get_Item_2;                         // 0x06F0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class UFXSystemComponent*>             CallFunc_GetChildComponentsByClass_ReturnValue;    // 0x06F8(0x0010)(ReferenceParm, ContainsInstancedReference)
-	class UFXSystemComponent*                     CallFunc_Array_Get_Item_3;                         // 0x0708(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_3;               // 0x0710(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_2;                // 0x0714(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_715[0x3];                                      // 0x0715(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue_4;               // 0x0718(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_3;                // 0x071C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_71D[0x3];                                      // 0x071D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Loop_Counter_Variable_5;                  // 0x0720(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_4;                // 0x0724(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_725[0x3];                                      // 0x0725(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue_5;                 // 0x0728(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Map_Remove_ReturnValue_1;                 // 0x072C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x072D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	int32                                         CallFunc_Array_Length_ReturnValue_3;               // 0x06F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_2;                // 0x06FC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6FD[0x3];                                      // 0x06FD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class USceneComponent*                        K2Node_CustomEvent_SceneComponent;                 // 0x0700(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable_5;                  // 0x0708(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_70C[0x4];                                      // 0x070C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UFXSystemComponent*>             CallFunc_GetChildComponentsByClass_ReturnValue;    // 0x0710(0x0010)(ReferenceParm, ContainsInstancedReference)
+	class UFXSystemComponent*                     CallFunc_Array_Get_Item_3;                         // 0x0720(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_4;               // 0x0728(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_3;                // 0x072C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_4;                // 0x072D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_72E[0x2];                                      // 0x072E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_2;                     // 0x0730(0x0028)(HasGetValueTypeHash)
-	struct FSTRUCT_AsyncSoundParams               K2Node_CustomEvent_SoundParams;                    // 0x0758(0x0080)(ContainsInstancedReference, HasGetValueTypeHash)
-	class UObject*                                CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue; // 0x07D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValidSoftObjectReference_ReturnValue;   // 0x07E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	int32                                         CallFunc_Add_IntInt_ReturnValue_5;                 // 0x0730(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_734[0x4];                                      // 0x0734(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_2;                     // 0x0738(0x0028)(HasGetValueTypeHash)
+	struct FSTRUCT_AsyncSoundParams               K2Node_CustomEvent_SoundParams;                    // 0x0760(0x0080)(ContainsInstancedReference, HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Remove_ReturnValue_1;                 // 0x07E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_7E1[0x7];                                      // 0x07E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue;                    // 0x07E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x07F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_4;                    // 0x07F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Temp_bool_Variable_1;                              // 0x07F2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_7F3[0x5];                                      // 0x07F3(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UFXSystemAsset>          K2Node_CustomEvent_System;                         // 0x07F8(0x0028)(ConstParm, HasGetValueTypeHash)
-	struct FSTRUCT_AsyncParticleParams            K2Node_CustomEvent_SystemParams;                   // 0x0820(0x00A0)(ConstParm, ContainsInstancedReference, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_5;               // 0x08C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x08C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_8C5[0x3];                                      // 0x08C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue_1; // 0x08C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UFXSystemAsset*                         K2Node_DynamicCast_AsFXSystem_Asset;               // 0x08D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x08D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_5;                    // 0x08D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_8DA[0x2];                                      // 0x08DA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_6;            // 0x08DC(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_8EC[0x4];                                      // 0x08EC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                Temp_object_Variable;                              // 0x08F0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UObject*                                K2Node_CustomEvent_Loaded;                         // 0x08F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_1;                  // 0x0900(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_5;                     // 0x0908(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_909[0x7];                                      // 0x0909(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                Temp_object_Variable_1;                            // 0x0910(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UObject*                                K2Node_CustomEvent_Loaded_1;                       // 0x0918(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_2;                  // 0x0920(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_6;                     // 0x0928(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_929[0x7];                                      // 0x0929(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue; // 0x07E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValidSoftObjectReference_ReturnValue;   // 0x07F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_7F1[0x7];                                      // 0x07F1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue;                    // 0x07F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0800(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0801(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_4;                    // 0x0802(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable_1;                              // 0x0803(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_804[0x4];                                      // 0x0804(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UFXSystemAsset>          K2Node_CustomEvent_System;                         // 0x0808(0x0028)(ConstParm, HasGetValueTypeHash)
+	struct FSTRUCT_AsyncParticleParams            K2Node_CustomEvent_SystemParams;                   // 0x0830(0x00A0)(ConstParm, ContainsInstancedReference, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_5;               // 0x08D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_8D4[0x4];                                      // 0x08D4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue_1; // 0x08D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x08E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_8E1[0x7];                                      // 0x08E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UFXSystemAsset*                         K2Node_DynamicCast_AsFXSystem_Asset;               // 0x08E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x08F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_5;                    // 0x08F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_8F2[0x6];                                      // 0x08F2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                Temp_object_Variable;                              // 0x08F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_6;            // 0x0900(0x0010)(ZeroConstructor, NoDestructor)
+	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_1;                  // 0x0910(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_5;                     // 0x0918(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_919[0x7];                                      // 0x0919(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                K2Node_CustomEvent_Loaded;                         // 0x0920(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UObject*                                Temp_object_Variable_1;                            // 0x0928(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue_1;                     // 0x0930(0x0028)(HasGetValueTypeHash)
 	float                                         K2Node_CustomEvent_ElapsedTime;                    // 0x0958(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_7;            // 0x095C(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_96C[0x4];                                      // 0x096C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_95C[0x4];                                      // 0x095C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_2;                  // 0x0960(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_6;                     // 0x0968(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_969[0x7];                                      // 0x0969(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UObject*                                CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue_2; // 0x0970(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_3;                  // 0x0978(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_7;                     // 0x0980(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_981[0x7];                                      // 0x0981(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                Temp_object_Variable_2;                            // 0x0988(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_6;                    // 0x0990(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_991[0x7];                                      // 0x0991(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UFXSystemAsset*                         K2Node_DynamicCast_AsFXSystem_Asset_1;             // 0x0998(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_8;                     // 0x09A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9A1[0x7];                                      // 0x09A1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UFXSystemAsset>          CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_2; // 0x09A8(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	bool                                          CallFunc_RemoveAsyncSystemParamsFromQueue_Success; // 0x09D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_9D1[0xF];                                      // 0x09D1(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_AsyncParticleParams            CallFunc_RemoveAsyncSystemParamsFromQueue_SystemParams; // 0x09E0(0x00A0)(ContainsInstancedReference, HasGetValueTypeHash)
-	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue;                       // 0x0A80(0x0028)(HasGetValueTypeHash)
-	float                                         K2Node_CustomEvent_FadeInDuration;                 // 0x0AA8(0x0004)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_CustomEvent_StartTime;                      // 0x0AAC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UVoxelAudioComponent*                   K2Node_CustomEvent_AudioComponent;                 // 0x0AB0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_7;                    // 0x0AB8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue_1;       // 0x0AB9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_ABA[0x6];                                      // 0x0ABA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                K2Node_CustomEvent_Loaded_2;                       // 0x0AC0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FDataTableRowHandle                    K2Node_CustomEvent_LevelCollection_1;              // 0x0AC8(0x0010)(NoDestructor)
-	bool                                          K2Node_CustomEvent_BlockOnLoad;                    // 0x0AD8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_AD9[0x7];                                      // 0x0AD9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FDataTableRowHandle                    K2Node_CustomEvent_LevelCollection;                // 0x0AE0(0x0010)(NoDestructor)
-	TArray<class FName>                           K2Node_CustomEvent_LevelsToKeepLoaded;             // 0x0AF0(0x0010)(ConstParm, ReferenceParm)
-	class FName                                   CallFunc_Array_Get_Item_4;                         // 0x0B00(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_6;               // 0x0B08(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_5;                // 0x0B0C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B0D[0x3];                                      // 0x0B0D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_LevelCollection                CallFunc_GetDataTableRowFromName_OutRow;           // 0x0B10(0x0010)(HasGetValueTypeHash)
-	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x0B20(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B21[0x7];                                      // 0x0B21(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_LevelCollection                CallFunc_GetDataTableRowFromName_OutRow_1;         // 0x0B28(0x0010)(HasGetValueTypeHash)
-	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue_1;    // 0x0B38(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B39[0x3];                                      // 0x0B39(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_8;            // 0x0B3C(0x0010)(ZeroConstructor, NoDestructor)
-	bool                                          CallFunc_TryUpdateCurrentSubLevelName_Result;      // 0x0B4C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B4D[0x3];                                      // 0x0B4D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FName>                           K2Node_MakeArray_Array;                            // 0x0B50(0x0010)(ReferenceParm)
-	bool                                          CallFunc_IsValid_ReturnValue_8;                    // 0x0B60(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B61[0x7];                                      // 0x0B61(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                Temp_object_Variable_3;                            // 0x0B68(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_4;                  // 0x0B70(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_9;                     // 0x0B78(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B79[0x7];                                      // 0x0B79(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                K2Node_CustomEvent_Loaded_3;                       // 0x0B80(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_7;               // 0x0B88(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_B8C[0x4];                                      // 0x0B8C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                Temp_object_Variable_4;                            // 0x0B90(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0B98(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B99[0x7];                                      // 0x0B99(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UNiagaraSystem*                         K2Node_DynamicCast_AsNiagara_System;               // 0x0BA0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_10;                    // 0x0BA8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_BA9[0x3];                                      // 0x0BA9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_Array_Get_Item_5;                         // 0x0BAC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_8;               // 0x0BB4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue_1;             // 0x0BB8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_BB9[0x3];                                      // 0x0BB9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue_9;               // 0x0BBC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue_1;          // 0x0BC0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_BC1[0x3];                                      // 0x0BC1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_LastIndex_ReturnValue;              // 0x0BC4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Array_Get_Item_6;                         // 0x0BC8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UObject*                                K2Node_CustomEvent_Loaded_4;                       // 0x0BD0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_10;              // 0x0BD8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_LastIndex_ReturnValue_1;            // 0x0BDC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue_2;             // 0x0BE0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_BE1[0x7];                                      // 0x0BE1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                Temp_object_Variable_5;                            // 0x0BE8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UParticleSystem*                        K2Node_DynamicCast_AsParticle_System;              // 0x0BF0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_11;                    // 0x0BF8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_BF9[0x7];                                      // 0x0BF9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UNiagaraSystem*                         K2Node_DynamicCast_AsNiagara_System_1;             // 0x0C00(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_12;                    // 0x0C08(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UObject*                                K2Node_CustomEvent_Loaded_1;                       // 0x0978(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_3;                  // 0x0980(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_7;                     // 0x0988(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_6;                    // 0x0989(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_98A[0x6];                                      // 0x098A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class USoundCue>               K2Node_CustomEvent_SoundCue;                       // 0x0990(0x0028)(HasGetValueTypeHash)
+	float                                         K2Node_CustomEvent_FadeInDuration;                 // 0x09B8(0x0004)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_CustomEvent_StartTime;                      // 0x09BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UVoxelAudioComponent*                   K2Node_CustomEvent_AudioComponent;                 // 0x09C0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_7;            // 0x09C8(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_7;                    // 0x09D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue_1;       // 0x09D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9DA[0x6];                                      // 0x09DA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                Temp_object_Variable_2;                            // 0x09E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UObject*                                K2Node_CustomEvent_Loaded_2;                       // 0x09E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UFXSystemAsset*                         K2Node_DynamicCast_AsFXSystem_Asset_1;             // 0x09F0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_8;                     // 0x09F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9F9[0x7];                                      // 0x09F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UFXSystemAsset>          CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_2; // 0x0A00(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	bool                                          CallFunc_RemoveAsyncSystemParamsFromQueue_Success; // 0x0A28(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A29[0x7];                                      // 0x0A29(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_AsyncParticleParams            CallFunc_RemoveAsyncSystemParamsFromQueue_SystemParams; // 0x0A30(0x00A0)(ContainsInstancedReference, HasGetValueTypeHash)
+	struct FDataTableRowHandle                    K2Node_CustomEvent_LevelCollection_1;              // 0x0AD0(0x0010)(NoDestructor)
+	bool                                          K2Node_CustomEvent_BlockOnLoad;                    // 0x0AE0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_AE1[0x7];                                      // 0x0AE1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_LevelCollection                CallFunc_GetDataTableRowFromName_OutRow;           // 0x0AE8(0x0010)(HasGetValueTypeHash)
+	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x0AF8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryUpdateCurrentSubLevelName_Result;      // 0x0AF9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_AFA[0x6];                                      // 0x0AFA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FName>                           K2Node_MakeArray_Array;                            // 0x0B00(0x0010)(ReferenceParm)
+	bool                                          CallFunc_IsValid_ReturnValue_8;                    // 0x0B10(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B11[0x7];                                      // 0x0B11(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FDataTableRowHandle                    K2Node_CustomEvent_LevelCollection;                // 0x0B18(0x0010)(NoDestructor)
+	TArray<class FName>                           K2Node_CustomEvent_LevelsToKeepLoaded;             // 0x0B28(0x0010)(ConstParm, ReferenceParm)
+	class FName                                   CallFunc_Array_Get_Item_4;                         // 0x0B38(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_6;               // 0x0B40(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_5;                // 0x0B44(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B45[0x3];                                      // 0x0B45(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_LevelCollection                CallFunc_GetDataTableRowFromName_OutRow_1;         // 0x0B48(0x0010)(HasGetValueTypeHash)
+	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue_1;    // 0x0B58(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B59[0x3];                                      // 0x0B59(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_8;            // 0x0B5C(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_B6C[0x4];                                      // 0x0B6C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                Temp_object_Variable_3;                            // 0x0B70(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_4;                  // 0x0B78(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_9;                     // 0x0B80(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B81[0x7];                                      // 0x0B81(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                K2Node_CustomEvent_Loaded_3;                       // 0x0B88(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_7;               // 0x0B90(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0B94(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B95[0x3];                                      // 0x0B95(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_Array_Get_Item_5;                         // 0x0B98(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_8;               // 0x0BA0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_1;             // 0x0BA4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_BA5[0x3];                                      // 0x0BA5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue_9;               // 0x0BA8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue_1;          // 0x0BAC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_BAD[0x3];                                      // 0x0BAD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_LastIndex_ReturnValue;              // 0x0BB0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_Array_Get_Item_6;                         // 0x0BB4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_BBC[0x4];                                      // 0x0BBC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                Temp_object_Variable_4;                            // 0x0BC0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UNiagaraSystem*                         K2Node_DynamicCast_AsNiagara_System;               // 0x0BC8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_10;                    // 0x0BD0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_BD1[0x3];                                      // 0x0BD1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue_10;              // 0x0BD4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_LastIndex_ReturnValue_1;            // 0x0BD8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_2;             // 0x0BDC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_BDD[0x3];                                      // 0x0BDD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                K2Node_CustomEvent_Loaded_4;                       // 0x0BE0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class FName>                           K2Node_Select_Default;                             // 0x0BE8(0x0010)(ReferenceParm)
+	class UObject*                                Temp_object_Variable_5;                            // 0x0BF8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UParticleSystem*                        K2Node_DynamicCast_AsParticle_System;              // 0x0C00(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_11;                    // 0x0C08(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_C09[0x7];                                      // 0x0C09(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FName>                           K2Node_Select_Default;                             // 0x0C10(0x0010)(ReferenceParm)
+	class UNiagaraSystem*                         K2Node_DynamicCast_AsNiagara_System_1;             // 0x0C10(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_12;                    // 0x0C18(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C19[0x7];                                      // 0x0C19(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UObject*                                K2Node_CustomEvent_Loaded_5;                       // 0x0C20(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FName                                   CallFunc_Array_Get_Item_7;                         // 0x0C28(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FName                                   CallFunc_Array_Get_Item_8;                         // 0x0C30(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UObject*                                Temp_object_Variable_6;                            // 0x0C38(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_AddUnique_ReturnValue;              // 0x0C40(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C44[0x4];                                      // 0x0C44(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_5;                  // 0x0C48(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_13;                    // 0x0C50(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C51[0x3];                                      // 0x0C51(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_Array_Get_Item_9;                         // 0x0C54(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_9;            // 0x0C5C(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_C6C[0x4];                                      // 0x0C6C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULevelStreaming*                        CallFunc_GetStreamingLevel_ReturnValue;            // 0x0C70(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UObject*                                K2Node_CustomEvent_Loaded_6;                       // 0x0C78(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x0C80(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x0C8C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x0C98(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0CA4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_CA5[0x3];                                      // 0x0CA5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_10;           // 0x0CA8(0x0010)(ZeroConstructor, NoDestructor)
+	int32                                         CallFunc_Array_AddUnique_ReturnValue;              // 0x0C38(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_9;            // 0x0C3C(0x0010)(ZeroConstructor, NoDestructor)
+	class FName                                   CallFunc_Array_Get_Item_9;                         // 0x0C4C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C54[0x4];                                      // 0x0C54(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULevelStreaming*                        CallFunc_GetStreamingLevel_ReturnValue;            // 0x0C58(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UObject*                                Temp_object_Variable_6;                            // 0x0C60(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_5;                  // 0x0C68(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_13;                    // 0x0C70(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C71[0x3];                                      // 0x0C71(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x0C74(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x0C80(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x0C8C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UObject*                                K2Node_CustomEvent_Loaded_6;                       // 0x0C98(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0CA0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_CA1[0x3];                                      // 0x0CA1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_10;           // 0x0CA4(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_CB4[0x4];                                      // 0x0CB4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UVoxelLevelManager*                     CallFunc_SpawnObject_ReturnValue;                  // 0x0CB8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	TArray<class UBatchedLevelVoxelization*>      K2Node_MakeArray_Array_1;                          // 0x0CC0(0x0010)(ReferenceParm)
 	TArray<class UBatchedLevelVoxelization*>      K2Node_MakeArray_Array_2;                          // 0x0CD0(0x0010)(ReferenceParm)
@@ -345,292 +349,294 @@ public:
 	bool                                          CallFunc_IsValid_ReturnValue_9;                    // 0x0D20(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_D21[0x7];                                      // 0x0D21(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UObject*                                Temp_object_Variable_7;                            // 0x0D28(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UObject*                                K2Node_CustomEvent_Loaded_7;                       // 0x0D30(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_6;                  // 0x0D38(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_15;                    // 0x0D40(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_D41[0x7];                                      // 0x0D41(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class USoundCue>               CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_3; // 0x0D48(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_6;                  // 0x0D30(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_15;                    // 0x0D38(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_D39[0x3];                                      // 0x0D39(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue_11;              // 0x0D3C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TSoftObjectPtr<class USoundCue>               CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_3; // 0x0D40(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_3;             // 0x0D68(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_D69[0x7];                                      // 0x0D69(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FSTRUCT_AsyncSoundParams               CallFunc_RemoveAsyncSoundParamsFromQueue_SoundParams; // 0x0D70(0x0080)(ContainsInstancedReference, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_11;              // 0x0DF0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue_3;             // 0x0DF4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Array_RemoveItem_ReturnValue;             // 0x0DF5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_DF6[0x2];                                      // 0x0DF6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class UObject*                                Temp_object_Variable_8;                            // 0x0DF8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsLevelLoaded_ReturnValue;                // 0x0E00(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E01[0x7];                                      // 0x0E01(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                K2Node_CustomEvent_Loaded_7;                       // 0x0DF0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Array_RemoveItem_ReturnValue;             // 0x0DF8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsLevelLoaded_ReturnValue;                // 0x0DF9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_DFA[0x6];                                      // 0x0DFA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                Temp_object_Variable_8;                            // 0x0E00(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class USoundCue*                              K2Node_DynamicCast_AsSound_Cue_7;                  // 0x0E08(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess_16;                    // 0x0E10(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_E11[0x7];                                      // 0x0E11(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UObject*                                K2Node_CustomEvent_Loaded_8;                       // 0x0E18(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   Temp_name_Variable;                                // 0x0E20(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   K2Node_CustomEvent_LevelName_1;                    // 0x0E20(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FName                                   CallFunc_Array_Get_Item_11;                        // 0x0E28(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasCompletedAllAchievements_Result;       // 0x0E30(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E31[0x7];                                      // 0x0E31(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Conv_NameToString_ReturnValue;            // 0x0E38(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0E48(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NotEqual_NameName_ReturnValue;            // 0x0E58(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E59[0x3];                                      // 0x0E59(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Temp_float_Variable;                               // 0x0E5C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   K2Node_CustomEvent_LevelName_1;                    // 0x0E60(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FDataTableRowHandle                    K2Node_MakeStruct_DataTableRowHandle;              // 0x0E68(0x0010)(NoDestructor)
-	bool                                          CallFunc_DoesDataTableRowExist_ReturnValue;        // 0x0E78(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_NameName_ReturnValue_1;          // 0x0E79(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0E7A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0E7B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0E7C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E7D[0x3];                                      // 0x0E7D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Variable;                                 // 0x0E80(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   K2Node_CustomEvent_LevelName;                      // 0x0E84(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   K2Node_CustomEvent_WrittenAchievementName;         // 0x0E8C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_CustomEvent_WrittenProgress;                // 0x0E94(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         K2Node_CustomEvent_WrittenUserTag;                 // 0x0E98(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_DoesDataTableRowExist_ReturnValue_1;      // 0x0E9C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_NameName_ReturnValue_2;          // 0x0E9D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0E9E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E9F[0x1];                                      // 0x0E9F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class FName WrittenAchievementName, float WrittenProgress, int32 WrittenUserTag)> K2Node_CreateDelegate_OutputDelegate_11;           // 0x0EA0(0x0010)(ZeroConstructor, NoDestructor)
-	TArray<class FName>                           K2Node_MakeArray_Array_3;                          // 0x0EB0(0x0010)(ConstParm, ReferenceParm)
-	bool                                          CallFunc_NotEqual_NameName_ReturnValue_3;          // 0x0EC0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x0EC1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_3;                 // 0x0EC2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_10;                   // 0x0EC3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TrySynchronizeAchievements_Result;        // 0x0EC4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_EC5[0x3];                                      // 0x0EC5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_12;           // 0x0EC8(0x0010)(ZeroConstructor, NoDestructor)
-	class UOBJ_TileDescriptorManager_C*           CallFunc_SpawnObject_ReturnValue_1;                // 0x0ED8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 K2Node_Event_MapName;                              // 0x0EE0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Vector_Zero_ReturnValue;                  // 0x0EF0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsStreamingLevels_Result;                 // 0x0EFC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_SetCurrentLevel_ReturnValue;              // 0x0EFD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_2;                // 0x0EFE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_EFF[0x1];                                      // 0x0EFF(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue_1;              // 0x0F00(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple_1;         // 0x0F08(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_17;                    // 0x0F10(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_F11[0x3];                                      // 0x0F11(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_13;           // 0x0F14(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_F24[0x4];                                      // 0x0F24(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IINTERF_HUD_C>         K2Node_DynamicCast_AsINTERF_HUD_1;                 // 0x0F28(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_18;                    // 0x0F38(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnFinishedLoadingGame_Result;             // 0x0F39(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_11;                   // 0x0F3A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_Event_bIsConnected_1;                       // 0x0F3B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	int32                                         K2Node_Event_UserIndex;                            // 0x0F3C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_Event_bIsConnected;                         // 0x0F40(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TrySynchronizeAchievements_Result_1;      // 0x0F41(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FDataTableRowHandle                    K2Node_MakeStruct_DataTableRowHandle;              // 0x0E30(0x0010)(NoDestructor)
+	class FString                                 CallFunc_Conv_NameToString_ReturnValue;            // 0x0E40(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0E50(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_DoesDataTableRowExist_ReturnValue;        // 0x0E60(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_NameName_ReturnValue;            // 0x0E61(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_E62[0x2];                                      // 0x0E62(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   Temp_name_Variable;                                // 0x0E64(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0E6C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasCompletedAllAchievements_Result;       // 0x0E6D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_NameName_ReturnValue_1;          // 0x0E6E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_E6F[0x1];                                      // 0x0E6F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_float_Variable;                               // 0x0E70(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Variable;                                 // 0x0E74(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0E78(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0E79(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_E7A[0x2];                                      // 0x0E7A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   K2Node_CustomEvent_LevelName;                      // 0x0E7C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0E84(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_DoesDataTableRowExist_ReturnValue_1;      // 0x0E85(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_NameName_ReturnValue_2;          // 0x0E86(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_E87[0x1];                                      // 0x0E87(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   K2Node_CustomEvent_WrittenAchievementName;         // 0x0E88(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_CustomEvent_WrittenProgress;                // 0x0E90(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         K2Node_CustomEvent_WrittenUserTag;                 // 0x0E94(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class FName>                           K2Node_MakeArray_Array_3;                          // 0x0E98(0x0010)(ConstParm, ReferenceParm)
+	bool                                          CallFunc_NotEqual_NameName_ReturnValue_3;          // 0x0EA8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x0EA9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_3;                 // 0x0EAA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_10;                   // 0x0EAB(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TrySynchronizeAchievements_Result;        // 0x0EAC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_EAD[0x3];                                      // 0x0EAD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_11;           // 0x0EB0(0x0010)(ZeroConstructor, NoDestructor)
+	class UOBJ_TileDescriptorManager_C*           CallFunc_SpawnObject_ReturnValue_1;                // 0x0EC0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FString                                 K2Node_Event_MapName;                              // 0x0EC8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Vector_Zero_ReturnValue;                  // 0x0ED8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsStreamingLevels_Result;                 // 0x0EE4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_SetCurrentLevel_ReturnValue;              // 0x0EE5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_2;                // 0x0EE6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_EE7[0x1];                                      // 0x0EE7(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue_1;              // 0x0EE8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class FName WrittenAchievementName, float WrittenProgress, int32 WrittenUserTag)> K2Node_CreateDelegate_OutputDelegate_12;           // 0x0EF0(0x0010)(ZeroConstructor, NoDestructor)
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple_1;         // 0x0F00(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_17;                    // 0x0F08(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_F09[0x3];                                      // 0x0F09(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class UObject* Loaded)>        K2Node_CreateDelegate_OutputDelegate_13;           // 0x0F0C(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_F1C[0x4];                                      // 0x0F1C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IINTERF_HUD_C>         K2Node_DynamicCast_AsINTERF_HUD_1;                 // 0x0F20(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_18;                    // 0x0F30(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnFinishedLoadingGame_Result;             // 0x0F31(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_11;                   // 0x0F32(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_Event_bIsConnected_1;                       // 0x0F33(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	int32                                         K2Node_Event_UserIndex;                            // 0x0F34(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_Event_bIsConnected;                         // 0x0F38(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TrySynchronizeAchievements_Result_1;      // 0x0F39(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasCompletedAllAchievements_Result_1;     // 0x0F3A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer) == 0x000010, "Wrong alignment on GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer");
-static_assert(sizeof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer) == 0x000F50, "Wrong size on GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer");
+static_assert(sizeof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer) == 0x000F40, "Wrong size on GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, EntryPoint) == 0x000000, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::EntryPoint' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable) == 0x000004, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate) == 0x000008, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue) == 0x000018, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_1) == 0x00001C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_2) == 0x000020, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_1) == 0x000024, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_2) == 0x000028, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable) == 0x00002C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_1) == 0x000030, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryCompleteBinaryAchievement_Result) == 0x000004, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryCompleteBinaryAchievement_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate) == 0x00000C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue) == 0x00001C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_1) == 0x000020, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_2) == 0x000024, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_1) == 0x000028, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_2) == 0x00002C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable) == 0x000030, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_1) == 0x000034, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_PlayerController) == 0x000038, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_PlayerController' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AchievementHandle) == 0x000040, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AchievementHandle' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_UserTag) == 0x000050, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_UserTag' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenAchievementName_1) == 0x000054, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenAchievementName_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenProgress_1) == 0x00005C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenProgress_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenUserTag_1) == 0x000060, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenUserTag_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_2) == 0x000064, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_2' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_WriteAchievementProgress_ReturnValue) == 0x000068, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_WriteAchievementProgress_ReturnValue' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue) == 0x000070, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetCachedAchievementProgress_bFoundID) == 0x000071, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetCachedAchievementProgress_bFoundID' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetCachedAchievementProgress_Progress) == 0x000074, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetCachedAchievementProgress_Progress' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_FloatFloat_ReturnValue) == 0x000078, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryCompleteBinaryAchievement_Result) == 0x000079, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryCompleteBinaryAchievement_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryCompleteBinaryAchievement_Result_1) == 0x000079, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryCompleteBinaryAchievement_Result_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_3) == 0x00007C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_3' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_7) == 0x000080, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_7' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_6) == 0x0000A8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_6' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Location) == 0x0000D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Location' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_1) == 0x0000DC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_STRUCT_AsyncSoundParams) == 0x0000F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_STRUCT_AsyncSoundParams' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_5) == 0x000170, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AttachToComponent_1) == 0x000198, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AttachToComponent_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SocketName_1) == 0x0001A0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SocketName_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_RelativeLocation_1) == 0x0001A8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_RelativeLocation_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_RelativeRotation_1) == 0x0001B4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_RelativeRotation_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundParameters) == 0x0001C0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundParameters' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue) == 0x0001F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System_4) == 0x000218, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Transform) == 0x000240, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Transform' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_STRUCT_AsyncSoundParams_1) == 0x000270, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_STRUCT_AsyncSoundParams_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_STRUCT_AsyncParticleParams) == 0x0002F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_STRUCT_AsyncParticleParams' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System_3) == 0x000390, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AttachToComponent) == 0x0003B8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AttachToComponent' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SocketName) == 0x0003C0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SocketName' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_RelativeLocation) == 0x0003C8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_RelativeLocation' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_RelativeRotation) == 0x0003D4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_RelativeRotation' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_EffectsParameters) == 0x0003E0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_EffectsParameters' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_OnSpawnEvent) == 0x000410, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_OnSpawnEvent' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_4) == 0x000420, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_FadeInDuration_1) == 0x000448, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_FadeInDuration_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_StartTime_1) == 0x00044C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_StartTime_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AudioComponent_1) == 0x000450, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AudioComponent_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_MakeTransform_ReturnValue) == 0x000460, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_MakeTransform_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_1) == 0x000490, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x000491, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_1) == 0x000498, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_STRUCT_AsyncParticleParams_1) == 0x0004C0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_STRUCT_AsyncParticleParams_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_2) == 0x000560, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_3) == 0x000570, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System_2) == 0x000578, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemComponent_1) == 0x0005A0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemComponent_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsParticle_System_Component) == 0x0005A8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsParticle_System_Component' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess) == 0x0005B0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryDecrementSystemComponentRefCount_Result) == 0x0005B1, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryDecrementSystemComponentRefCount_Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsNiagara_Particle_System) == 0x0005B8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsNiagara_Particle_System' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_1) == 0x0005C0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryDecrementSystemComponentRefCount_Result_1) == 0x0005C1, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryDecrementSystemComponentRefCount_Result_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryIncrementSystemComponentRefCount_Result) == 0x0005C2, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryIncrementSystemComponentRefCount_Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_3) == 0x0005C4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_3) == 0x0005C8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_4) == 0x0005CC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System_1) == 0x0005D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemComponents_1) == 0x0005F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemComponents_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item) == 0x000608, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_3) == 0x000610, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryIncrementSystemComponentRefCount_Result_1) == 0x000620, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryIncrementSystemComponentRefCount_Result_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_3) == 0x0000A8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_6) == 0x0000B0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_6' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Location) == 0x0000D8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Location' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_1) == 0x0000E4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_STRUCT_AsyncSoundParams) == 0x0000F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_STRUCT_AsyncSoundParams' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_5) == 0x000178, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AttachToComponent_1) == 0x0001A0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AttachToComponent_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SocketName_1) == 0x0001A8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SocketName_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_RelativeLocation_1) == 0x0001B0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_RelativeLocation_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_RelativeRotation_1) == 0x0001BC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_RelativeRotation_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundParameters) == 0x0001C8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundParameters' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue) == 0x0001F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System_4) == 0x000220, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Transform) == 0x000250, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Transform' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_STRUCT_AsyncSoundParams_1) == 0x000280, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_STRUCT_AsyncSoundParams_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_STRUCT_AsyncParticleParams) == 0x000300, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_STRUCT_AsyncParticleParams' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System_3) == 0x0003A0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AttachToComponent) == 0x0003C8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AttachToComponent' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SocketName) == 0x0003D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SocketName' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_RelativeLocation) == 0x0003D8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_RelativeLocation' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_RelativeRotation) == 0x0003E4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_RelativeRotation' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_EffectsParameters) == 0x0003F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_EffectsParameters' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_OnSpawnEvent) == 0x000420, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_OnSpawnEvent' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_4) == 0x000430, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_FadeInDuration_1) == 0x000458, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_FadeInDuration_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_StartTime_1) == 0x00045C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_StartTime_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AudioComponent_1) == 0x000460, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AudioComponent_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_MakeTransform_ReturnValue) == 0x000470, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_MakeTransform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_1) == 0x0004A0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x0004A1, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_1) == 0x0004A8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_STRUCT_AsyncParticleParams_1) == 0x0004D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_STRUCT_AsyncParticleParams_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_2) == 0x000570, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_2) == 0x000580, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System_2) == 0x000588, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemComponent_1) == 0x0005B0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemComponent_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_4) == 0x0005B8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsParticle_System_Component) == 0x0005C0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsParticle_System_Component' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess) == 0x0005C8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_4) == 0x0005CC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryDecrementSystemComponentRefCount_Result) == 0x0005D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryDecrementSystemComponentRefCount_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsNiagara_Particle_System) == 0x0005D8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsNiagara_Particle_System' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_1) == 0x0005E0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryDecrementSystemComponentRefCount_Result_1) == 0x0005E1, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryDecrementSystemComponentRefCount_Result_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryIncrementSystemComponentRefCount_Result) == 0x0005E2, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryIncrementSystemComponentRefCount_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_3) == 0x0005E4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System_1) == 0x0005E8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemComponents_1) == 0x000610, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemComponents_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item) == 0x000620, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_1) == 0x000628, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue) == 0x000630, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryDecrementSystemComponentRefCount_Result_2) == 0x000634, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryDecrementSystemComponentRefCount_Result_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryIncrementSystemComponentRefCount_Result_1) == 0x000630, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryIncrementSystemComponentRefCount_Result_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryDecrementSystemComponentRefCount_Result_2) == 0x000631, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryDecrementSystemComponentRefCount_Result_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue) == 0x000634, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_1) == 0x000638, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue) == 0x00063C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_4) == 0x000640, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_3) == 0x000648, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AudioComponents) == 0x000670, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AudioComponents' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_2) == 0x000680, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_4) == 0x000684, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_1) == 0x000688, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsINTERF_HUD) == 0x000690, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsINTERF_HUD' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_2) == 0x0006A0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_OnStartedLoadingGame_Result) == 0x0006A1, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_OnStartedLoadingGame_Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_4) == 0x0006A4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemComponent) == 0x0006B8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemComponent' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Map_Remove_ReturnValue) == 0x0006C0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Map_Remove_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_2) == 0x0006C1, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_5) == 0x0006C4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_bool_Variable) == 0x0006D4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemComponents) == 0x0006D8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemComponents' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SceneComponent) == 0x0006E8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SceneComponent' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_3) == 0x000640, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Array_Index_Variable_4) == 0x000650, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Array_Index_Variable_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_3) == 0x000658, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AudioComponents) == 0x000680, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AudioComponents' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_2) == 0x000690, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_1) == 0x000694, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsINTERF_HUD) == 0x000698, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsINTERF_HUD' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_2) == 0x0006A8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_OnStartedLoadingGame_Result) == 0x0006A9, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_OnStartedLoadingGame_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemComponent) == 0x0006B0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemComponent' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_2) == 0x0006B8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_4) == 0x0006BC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Map_Remove_ReturnValue) == 0x0006CC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Map_Remove_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_bool_Variable) == 0x0006CD, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_5) == 0x0006D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemComponents) == 0x0006E0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemComponents' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_2) == 0x0006F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetChildComponentsByClass_ReturnValue) == 0x0006F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetChildComponentsByClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_3) == 0x000708, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_3) == 0x000710, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_2) == 0x000714, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_4) == 0x000718, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_3) == 0x00071C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_5) == 0x000720, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_4) == 0x000724, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_5) == 0x000728, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Map_Remove_ReturnValue_1) == 0x00072C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Map_Remove_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_3) == 0x00072D, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_2) == 0x000730, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundParams) == 0x000758, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundParams' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue) == 0x0007D8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValidSoftObjectReference_ReturnValue) == 0x0007E0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValidSoftObjectReference_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue) == 0x0007E8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_3) == 0x0007F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_4) == 0x0007F1, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_bool_Variable_1) == 0x0007F2, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_bool_Variable_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System) == 0x0007F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemParams) == 0x000820, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemParams' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_5) == 0x0008C0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Greater_IntInt_ReturnValue) == 0x0008C4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue_1) == 0x0008C8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsFXSystem_Asset) == 0x0008D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsFXSystem_Asset' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_4) == 0x0008D8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_5) == 0x0008D9, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_6) == 0x0008DC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_6' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable) == 0x0008F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded) == 0x0008F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_1) == 0x000900, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_5) == 0x000908, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_1) == 0x000910, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_1) == 0x000918, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_2) == 0x000920, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_6) == 0x000928, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_6' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_3) == 0x0006F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_2) == 0x0006FC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SceneComponent) == 0x000700, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SceneComponent' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Loop_Counter_Variable_5) == 0x000708, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Loop_Counter_Variable_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetChildComponentsByClass_ReturnValue) == 0x000710, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetChildComponentsByClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_3) == 0x000720, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_4) == 0x000728, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_3) == 0x00072C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_4) == 0x00072D, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Add_IntInt_ReturnValue_5) == 0x000730, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Add_IntInt_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_2) == 0x000738, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundParams) == 0x000760, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundParams' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Map_Remove_ReturnValue_1) == 0x0007E0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Map_Remove_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue) == 0x0007E8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValidSoftObjectReference_ReturnValue) == 0x0007F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValidSoftObjectReference_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue) == 0x0007F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_3) == 0x000800, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_3) == 0x000801, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_4) == 0x000802, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_bool_Variable_1) == 0x000803, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_System) == 0x000808, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_System' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SystemParams) == 0x000830, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SystemParams' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_5) == 0x0008D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue_1) == 0x0008D8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Greater_IntInt_ReturnValue) == 0x0008E0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsFXSystem_Asset) == 0x0008E8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsFXSystem_Asset' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_4) == 0x0008F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_5) == 0x0008F1, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable) == 0x0008F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_6) == 0x000900, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_6' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_1) == 0x000910, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_5) == 0x000918, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded) == 0x000920, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_1) == 0x000928, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue_1) == 0x000930, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_ElapsedTime) == 0x000958, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_ElapsedTime' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_7) == 0x00095C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_7' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_2) == 0x000960, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_6) == 0x000968, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_6' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue_2) == 0x000970, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_SoftObjectReferenceToObject_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_3) == 0x000978, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_7) == 0x000980, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_7' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_2) == 0x000988, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_6) == 0x000990, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_6' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsFXSystem_Asset_1) == 0x000998, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsFXSystem_Asset_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_8) == 0x0009A0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_8' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_2) == 0x0009A8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_RemoveAsyncSystemParamsFromQueue_Success) == 0x0009D0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_RemoveAsyncSystemParamsFromQueue_Success' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_RemoveAsyncSystemParamsFromQueue_SystemParams) == 0x0009E0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_RemoveAsyncSystemParamsFromQueue_SystemParams' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue) == 0x000A80, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_FadeInDuration) == 0x000AA8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_FadeInDuration' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_StartTime) == 0x000AAC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_StartTime' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AudioComponent) == 0x000AB0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AudioComponent' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_7) == 0x000AB8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_7' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_LessEqual_FloatFloat_ReturnValue_1) == 0x000AB9, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_LessEqual_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_2) == 0x000AC0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelCollection_1) == 0x000AC8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelCollection_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_BlockOnLoad) == 0x000AD8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_BlockOnLoad' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelCollection) == 0x000AE0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelCollection' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelsToKeepLoaded) == 0x000AF0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelsToKeepLoaded' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_4) == 0x000B00, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_6) == 0x000B08, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_6' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_5) == 0x000B0C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetDataTableRowFromName_OutRow) == 0x000B10, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000B20, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetDataTableRowFromName_OutRow_1) == 0x000B28, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetDataTableRowFromName_OutRow_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetDataTableRowFromName_ReturnValue_1) == 0x000B38, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetDataTableRowFromName_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_8) == 0x000B3C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_8' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryUpdateCurrentSubLevelName_Result) == 0x000B4C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryUpdateCurrentSubLevelName_Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeArray_Array) == 0x000B50, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_8) == 0x000B60, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_8' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_3) == 0x000B68, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_4) == 0x000B70, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_9) == 0x000B78, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_9' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_3) == 0x000B80, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_7) == 0x000B88, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_7' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_4) == 0x000B90, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000B98, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsNiagara_System) == 0x000BA0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsNiagara_System' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_10) == 0x000BA8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_10' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_5) == 0x000BAC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_8) == 0x000BB4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_8' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Greater_IntInt_ReturnValue_1) == 0x000BB8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Greater_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_9) == 0x000BBC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_9' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_EqualEqual_IntInt_ReturnValue_1) == 0x000BC0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_EqualEqual_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_LastIndex_ReturnValue) == 0x000BC4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_LastIndex_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_6) == 0x000BC8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_6' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_4) == 0x000BD0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_4' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_10) == 0x000BD8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_10' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_LastIndex_ReturnValue_1) == 0x000BDC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_LastIndex_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Greater_IntInt_ReturnValue_2) == 0x000BE0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Greater_IntInt_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_5) == 0x000BE8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsParticle_System) == 0x000BF0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsParticle_System' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_11) == 0x000BF8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_11' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsNiagara_System_1) == 0x000C00, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsNiagara_System_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_12) == 0x000C08, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_12' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Select_Default) == 0x000C10, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_1) == 0x000978, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_3) == 0x000980, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_7) == 0x000988, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_7' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_6) == 0x000989, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_SoundCue) == 0x000990, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_SoundCue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_FadeInDuration) == 0x0009B8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_FadeInDuration' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_StartTime) == 0x0009BC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_StartTime' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_AudioComponent) == 0x0009C0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_AudioComponent' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_7) == 0x0009C8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_7' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_7) == 0x0009D8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_7' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_LessEqual_FloatFloat_ReturnValue_1) == 0x0009D9, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_LessEqual_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_2) == 0x0009E0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_2) == 0x0009E8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsFXSystem_Asset_1) == 0x0009F0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsFXSystem_Asset_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_8) == 0x0009F8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_8' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_2) == 0x000A00, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_RemoveAsyncSystemParamsFromQueue_Success) == 0x000A28, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_RemoveAsyncSystemParamsFromQueue_Success' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_RemoveAsyncSystemParamsFromQueue_SystemParams) == 0x000A30, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_RemoveAsyncSystemParamsFromQueue_SystemParams' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelCollection_1) == 0x000AD0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelCollection_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_BlockOnLoad) == 0x000AE0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_BlockOnLoad' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetDataTableRowFromName_OutRow) == 0x000AE8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000AF8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TryUpdateCurrentSubLevelName_Result) == 0x000AF9, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TryUpdateCurrentSubLevelName_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeArray_Array) == 0x000B00, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_8) == 0x000B10, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_8' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelCollection) == 0x000B18, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelCollection' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelsToKeepLoaded) == 0x000B28, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelsToKeepLoaded' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_4) == 0x000B38, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_6) == 0x000B40, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Less_IntInt_ReturnValue_5) == 0x000B44, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Less_IntInt_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetDataTableRowFromName_OutRow_1) == 0x000B48, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetDataTableRowFromName_OutRow_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetDataTableRowFromName_ReturnValue_1) == 0x000B58, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetDataTableRowFromName_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_8) == 0x000B5C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_8' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_3) == 0x000B70, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_4) == 0x000B78, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_9) == 0x000B80, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_9' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_3) == 0x000B88, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_7) == 0x000B90, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_7' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000B94, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_5) == 0x000B98, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_8) == 0x000BA0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_8' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Greater_IntInt_ReturnValue_1) == 0x000BA4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Greater_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_9) == 0x000BA8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_9' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_EqualEqual_IntInt_ReturnValue_1) == 0x000BAC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_EqualEqual_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_LastIndex_ReturnValue) == 0x000BB0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_LastIndex_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_6) == 0x000BB4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_6' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_4) == 0x000BC0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsNiagara_System) == 0x000BC8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsNiagara_System' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_10) == 0x000BD0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_10' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_10) == 0x000BD4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_10' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_LastIndex_ReturnValue_1) == 0x000BD8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_LastIndex_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Greater_IntInt_ReturnValue_2) == 0x000BDC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Greater_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_4) == 0x000BE0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_4' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Select_Default) == 0x000BE8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_5) == 0x000BF8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsParticle_System) == 0x000C00, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsParticle_System' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_11) == 0x000C08, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_11' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsNiagara_System_1) == 0x000C10, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsNiagara_System_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_12) == 0x000C18, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_12' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_5) == 0x000C20, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_5' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_7) == 0x000C28, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_7' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_8) == 0x000C30, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_8' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_6) == 0x000C38, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_6' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_AddUnique_ReturnValue) == 0x000C40, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_AddUnique_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_5) == 0x000C48, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_5' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_13) == 0x000C50, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_13' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_9) == 0x000C54, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_9' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_9) == 0x000C5C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_9' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetStreamingLevel_ReturnValue) == 0x000C70, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetStreamingLevel_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_6) == 0x000C78, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_6' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BreakTransform_Location) == 0x000C80, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BreakTransform_Location' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BreakTransform_Rotation) == 0x000C8C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BreakTransform_Rotation' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BreakTransform_Scale) == 0x000C98, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BreakTransform_Scale' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Not_PreBool_ReturnValue) == 0x000CA4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_10) == 0x000CA8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_10' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_AddUnique_ReturnValue) == 0x000C38, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_AddUnique_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_9) == 0x000C3C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_9' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_9) == 0x000C4C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_9' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetStreamingLevel_ReturnValue) == 0x000C58, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetStreamingLevel_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_6) == 0x000C60, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_6' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_5) == 0x000C68, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_5' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_13) == 0x000C70, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_13' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BreakTransform_Location) == 0x000C74, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BreakTransform_Location' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BreakTransform_Rotation) == 0x000C80, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BreakTransform_Rotation' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BreakTransform_Scale) == 0x000C8C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BreakTransform_Scale' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_6) == 0x000C98, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_6' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Not_PreBool_ReturnValue) == 0x000CA0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_10) == 0x000CA4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_10' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_SpawnObject_ReturnValue) == 0x000CB8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_SpawnObject_ReturnValue' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeArray_Array_1) == 0x000CC0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeArray_Array_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeArray_Array_2) == 0x000CD0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeArray_Array_2' has a wrong offset!");
@@ -644,67 +650,68 @@ static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_10) == 0x000D18, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_10' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_9) == 0x000D20, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_9' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_7) == 0x000D28, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_7' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_7) == 0x000D30, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_7' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_6) == 0x000D38, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_6' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_15) == 0x000D40, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_15' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_3) == 0x000D48, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_6) == 0x000D30, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_6' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_15) == 0x000D38, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_15' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_11) == 0x000D3C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_11' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_3) == 0x000D40, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Greater_IntInt_ReturnValue_3) == 0x000D68, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Greater_IntInt_ReturnValue_3' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_RemoveAsyncSoundParamsFromQueue_SoundParams) == 0x000D70, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_RemoveAsyncSoundParamsFromQueue_SoundParams' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Length_ReturnValue_11) == 0x000DF0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Length_ReturnValue_11' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Greater_IntInt_ReturnValue_3) == 0x000DF4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Greater_IntInt_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_RemoveItem_ReturnValue) == 0x000DF5, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_RemoveItem_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_8) == 0x000DF8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_8' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsLevelLoaded_ReturnValue) == 0x000E00, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsLevelLoaded_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_7) == 0x000DF0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_7' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_RemoveItem_ReturnValue) == 0x000DF8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_RemoveItem_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsLevelLoaded_ReturnValue) == 0x000DF9, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsLevelLoaded_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_object_Variable_8) == 0x000E00, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_object_Variable_8' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsSound_Cue_7) == 0x000E08, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsSound_Cue_7' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_16) == 0x000E10, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_16' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_Loaded_8) == 0x000E18, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_Loaded_8' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_name_Variable) == 0x000E20, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_name_Variable' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelName_1) == 0x000E20, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelName_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Array_Get_Item_11) == 0x000E28, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Array_Get_Item_11' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_HasCompletedAllAchievements_Result) == 0x000E30, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_HasCompletedAllAchievements_Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_NameToString_ReturnValue) == 0x000E38, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_NameToString_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Concat_StrStr_ReturnValue) == 0x000E48, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_NotEqual_NameName_ReturnValue) == 0x000E58, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_NotEqual_NameName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_float_Variable) == 0x000E5C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_float_Variable' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelName_1) == 0x000E60, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelName_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_DataTableRowHandle) == 0x000E68, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_DataTableRowHandle' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_DoesDataTableRowExist_ReturnValue) == 0x000E78, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_DoesDataTableRowExist_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_NotEqual_NameName_ReturnValue_1) == 0x000E79, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_NotEqual_NameName_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000E7A, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BooleanAND_ReturnValue) == 0x000E7B, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BooleanAND_ReturnValue_1) == 0x000E7C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Variable) == 0x000E80, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Variable' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelName) == 0x000E84, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelName' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenAchievementName) == 0x000E8C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenAchievementName' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenProgress) == 0x000E94, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenProgress' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenUserTag) == 0x000E98, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenUserTag' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_DoesDataTableRowExist_ReturnValue_1) == 0x000E9C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_DoesDataTableRowExist_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_NotEqual_NameName_ReturnValue_2) == 0x000E9D, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_NotEqual_NameName_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Not_PreBool_ReturnValue_1) == 0x000E9E, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_11) == 0x000EA0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_11' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeArray_Array_3) == 0x000EB0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeArray_Array_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_NotEqual_NameName_ReturnValue_3) == 0x000EC0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_NotEqual_NameName_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BooleanAND_ReturnValue_2) == 0x000EC1, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BooleanAND_ReturnValue_3) == 0x000EC2, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BooleanAND_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_10) == 0x000EC3, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_10' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TrySynchronizeAchievements_Result) == 0x000EC4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TrySynchronizeAchievements_Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_12) == 0x000EC8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_12' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_SpawnObject_ReturnValue_1) == 0x000ED8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_SpawnObject_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Event_MapName) == 0x000EE0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Event_MapName' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Vector_Zero_ReturnValue) == 0x000EF0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Vector_Zero_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsStreamingLevels_Result) == 0x000EFC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsStreamingLevels_Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_SetCurrentLevel_ReturnValue) == 0x000EFD, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_SetCurrentLevel_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Not_PreBool_ReturnValue_2) == 0x000EFE, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Not_PreBool_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetPlayerPawn_ReturnValue_1) == 0x000F00, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetPlayerPawn_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsPAWN_Hacker_Simple_1) == 0x000F08, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsPAWN_Hacker_Simple_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_17) == 0x000F10, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_17' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_13) == 0x000F14, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_13' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsINTERF_HUD_1) == 0x000F28, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsINTERF_HUD_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_18) == 0x000F38, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_18' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_OnFinishedLoadingGame_Result) == 0x000F39, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_OnFinishedLoadingGame_Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_11) == 0x000F3A, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_11' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Event_bIsConnected_1) == 0x000F3B, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Event_bIsConnected_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Event_UserIndex) == 0x000F3C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Event_UserIndex' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Event_bIsConnected) == 0x000F40, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Event_bIsConnected' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TrySynchronizeAchievements_Result_1) == 0x000F41, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TrySynchronizeAchievements_Result_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeStruct_DataTableRowHandle) == 0x000E30, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeStruct_DataTableRowHandle' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Conv_NameToString_ReturnValue) == 0x000E40, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Conv_NameToString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Concat_StrStr_ReturnValue) == 0x000E50, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_DoesDataTableRowExist_ReturnValue) == 0x000E60, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_DoesDataTableRowExist_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_NotEqual_NameName_ReturnValue) == 0x000E61, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_NotEqual_NameName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_name_Variable) == 0x000E64, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_name_Variable' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BooleanAND_ReturnValue) == 0x000E6C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_HasCompletedAllAchievements_Result) == 0x000E6D, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_HasCompletedAllAchievements_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_NotEqual_NameName_ReturnValue_1) == 0x000E6E, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_NotEqual_NameName_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_float_Variable) == 0x000E70, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_float_Variable' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, Temp_int_Variable) == 0x000E74, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::Temp_int_Variable' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000E78, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BooleanAND_ReturnValue_1) == 0x000E79, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_LevelName) == 0x000E7C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_LevelName' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Not_PreBool_ReturnValue_1) == 0x000E84, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_DoesDataTableRowExist_ReturnValue_1) == 0x000E85, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_DoesDataTableRowExist_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_NotEqual_NameName_ReturnValue_2) == 0x000E86, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_NotEqual_NameName_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenAchievementName) == 0x000E88, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenAchievementName' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenProgress) == 0x000E90, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenProgress' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CustomEvent_WrittenUserTag) == 0x000E94, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CustomEvent_WrittenUserTag' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_MakeArray_Array_3) == 0x000E98, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_MakeArray_Array_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_NotEqual_NameName_ReturnValue_3) == 0x000EA8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_NotEqual_NameName_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BooleanAND_ReturnValue_2) == 0x000EA9, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_BooleanAND_ReturnValue_3) == 0x000EAA, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_BooleanAND_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_10) == 0x000EAB, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_10' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TrySynchronizeAchievements_Result) == 0x000EAC, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TrySynchronizeAchievements_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_11) == 0x000EB0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_11' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_SpawnObject_ReturnValue_1) == 0x000EC0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_SpawnObject_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Event_MapName) == 0x000EC8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Event_MapName' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Vector_Zero_ReturnValue) == 0x000ED8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Vector_Zero_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsStreamingLevels_Result) == 0x000EE4, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsStreamingLevels_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_SetCurrentLevel_ReturnValue) == 0x000EE5, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_SetCurrentLevel_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_Not_PreBool_ReturnValue_2) == 0x000EE6, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_Not_PreBool_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_GetPlayerPawn_ReturnValue_1) == 0x000EE8, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_GetPlayerPawn_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_12) == 0x000EF0, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_12' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsPAWN_Hacker_Simple_1) == 0x000F00, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsPAWN_Hacker_Simple_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_17) == 0x000F08, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_17' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_CreateDelegate_OutputDelegate_13) == 0x000F0C, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_CreateDelegate_OutputDelegate_13' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_AsINTERF_HUD_1) == 0x000F20, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_AsINTERF_HUD_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_DynamicCast_bSuccess_18) == 0x000F30, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_DynamicCast_bSuccess_18' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_OnFinishedLoadingGame_Result) == 0x000F31, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_OnFinishedLoadingGame_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_IsValid_ReturnValue_11) == 0x000F32, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_IsValid_ReturnValue_11' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Event_bIsConnected_1) == 0x000F33, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Event_bIsConnected_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Event_UserIndex) == 0x000F34, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Event_UserIndex' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, K2Node_Event_bIsConnected) == 0x000F38, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::K2Node_Event_bIsConnected' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_TrySynchronizeAchievements_Result_1) == 0x000F39, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_TrySynchronizeAchievements_Result_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer, CallFunc_HasCompletedAllAchievements_Result_1) == 0x000F3A, "Member 'GI_SinglePlayer_C_ExecuteUbergraph_GI_SinglePlayer::CallFunc_HasCompletedAllAchievements_Result_1' has a wrong offset!");
 
 // Function GI_SinglePlayer.GI_SinglePlayer_C.OnOnlineConnectionStatusChange
 // 0x0001 (0x0001 - 0x0000)
@@ -2940,8 +2947,8 @@ public:
 	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TScriptInterface<class IINTERF_HUD_C>         K2Node_DynamicCast_AsINTERF_HUD;                   // 0x0020(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnPersistentMapMove_Result;               // 0x0032(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnPersistentMapMove_Result;               // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0032(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0033(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(GI_SinglePlayer_C_OpenPersistentMapByType) == 0x000008, "Wrong alignment on GI_SinglePlayer_C_OpenPersistentMapByType");
@@ -2952,8 +2959,8 @@ static_assert(offsetof(GI_SinglePlayer_C_OpenPersistentMapByType, K2Node_Dynamic
 static_assert(offsetof(GI_SinglePlayer_C_OpenPersistentMapByType, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'GI_SinglePlayer_C_OpenPersistentMapByType::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_OpenPersistentMapByType, K2Node_DynamicCast_AsINTERF_HUD) == 0x000020, "Member 'GI_SinglePlayer_C_OpenPersistentMapByType::K2Node_DynamicCast_AsINTERF_HUD' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_OpenPersistentMapByType, K2Node_DynamicCast_bSuccess_1) == 0x000030, "Member 'GI_SinglePlayer_C_OpenPersistentMapByType::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_OpenPersistentMapByType, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000031, "Member 'GI_SinglePlayer_C_OpenPersistentMapByType::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_OpenPersistentMapByType, CallFunc_OnPersistentMapMove_Result) == 0x000032, "Member 'GI_SinglePlayer_C_OpenPersistentMapByType::CallFunc_OnPersistentMapMove_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_OpenPersistentMapByType, CallFunc_OnPersistentMapMove_Result) == 0x000031, "Member 'GI_SinglePlayer_C_OpenPersistentMapByType::CallFunc_OnPersistentMapMove_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_OpenPersistentMapByType, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000032, "Member 'GI_SinglePlayer_C_OpenPersistentMapByType::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_OpenPersistentMapByType, K2Node_SwitchEnum_CmpSuccess) == 0x000033, "Member 'GI_SinglePlayer_C_OpenPersistentMapByType::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 
 // Function GI_SinglePlayer.GI_SinglePlayer_C.OnBeginLoadingLevelCollectionInternal
@@ -3339,9 +3346,10 @@ public:
 	class UClass*                                 MusicCueClass;                                     // 0x0038(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_TryFadeInStoppedMusicByClass_Result;      // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryInterruptCurrentMusic_Result;          // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryInterruptCurrentMusic_Result_1;        // 0x0043(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_IsUsingAudioCaching_IsUsingAudioCache;    // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryInterruptCurrentMusic_Result;          // 0x0043(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryInterruptCurrentMusic_Result_1;        // 0x0044(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_45[0x3];                                       // 0x0045(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class UBP_MusicCue_C*                         CallFunc_SpawnObject_ReturnValue;                  // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValidSoftClassReference_ReturnValue;    // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
@@ -3358,8 +3366,9 @@ static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, MusicCue) == 0x00003
 static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, MusicCueClass) == 0x000038, "Member 'GI_SinglePlayer_C_PlayMusicInternal::MusicCueClass' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, CallFunc_TryFadeInStoppedMusicByClass_Result) == 0x000040, "Member 'GI_SinglePlayer_C_PlayMusicInternal::CallFunc_TryFadeInStoppedMusicByClass_Result' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, CallFunc_Not_PreBool_ReturnValue) == 0x000041, "Member 'GI_SinglePlayer_C_PlayMusicInternal::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, CallFunc_TryInterruptCurrentMusic_Result) == 0x000042, "Member 'GI_SinglePlayer_C_PlayMusicInternal::CallFunc_TryInterruptCurrentMusic_Result' has a wrong offset!");
-static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, CallFunc_TryInterruptCurrentMusic_Result_1) == 0x000043, "Member 'GI_SinglePlayer_C_PlayMusicInternal::CallFunc_TryInterruptCurrentMusic_Result_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, CallFunc_IsUsingAudioCaching_IsUsingAudioCache) == 0x000042, "Member 'GI_SinglePlayer_C_PlayMusicInternal::CallFunc_IsUsingAudioCaching_IsUsingAudioCache' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, CallFunc_TryInterruptCurrentMusic_Result) == 0x000043, "Member 'GI_SinglePlayer_C_PlayMusicInternal::CallFunc_TryInterruptCurrentMusic_Result' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, CallFunc_TryInterruptCurrentMusic_Result_1) == 0x000044, "Member 'GI_SinglePlayer_C_PlayMusicInternal::CallFunc_TryInterruptCurrentMusic_Result_1' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, CallFunc_SpawnObject_ReturnValue) == 0x000048, "Member 'GI_SinglePlayer_C_PlayMusicInternal::CallFunc_SpawnObject_ReturnValue' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, CallFunc_IsValidSoftClassReference_ReturnValue) == 0x000050, "Member 'GI_SinglePlayer_C_PlayMusicInternal::CallFunc_IsValidSoftClassReference_ReturnValue' has a wrong offset!");
 static_assert(offsetof(GI_SinglePlayer_C_PlayMusicInternal, K2Node_CreateDelegate_OutputDelegate) == 0x000054, "Member 'GI_SinglePlayer_C_PlayMusicInternal::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
@@ -8041,6 +8050,66 @@ public:
 static_assert(alignof(GI_SinglePlayer_C_SetHackerGenderValue) == 0x000001, "Wrong alignment on GI_SinglePlayer_C_SetHackerGenderValue");
 static_assert(sizeof(GI_SinglePlayer_C_SetHackerGenderValue) == 0x000001, "Wrong size on GI_SinglePlayer_C_SetHackerGenderValue");
 static_assert(offsetof(GI_SinglePlayer_C_SetHackerGenderValue, NewGender) == 0x000000, "Member 'GI_SinglePlayer_C_SetHackerGenderValue::NewGender' has a wrong offset!");
+
+// Function GI_SinglePlayer.GI_SinglePlayer_C.UpdatePlayerMoveDistance
+// 0x0038 (0x0038 - 0x0000)
+struct GI_SinglePlayer_C_UpdatePlayerMoveDistance final
+{
+public:
+	class APawn*                                  Pawn;                                              // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue;          // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FMin_ReturnValue;                         // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetActorLocation_ReturnValue_1;        // 0x001C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Vector_Distance_ReturnValue;              // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x002D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2E[0x2];                                       // 0x002E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(GI_SinglePlayer_C_UpdatePlayerMoveDistance) == 0x000008, "Wrong alignment on GI_SinglePlayer_C_UpdatePlayerMoveDistance");
+static_assert(sizeof(GI_SinglePlayer_C_UpdatePlayerMoveDistance) == 0x000038, "Wrong size on GI_SinglePlayer_C_UpdatePlayerMoveDistance");
+static_assert(offsetof(GI_SinglePlayer_C_UpdatePlayerMoveDistance, Pawn) == 0x000000, "Member 'GI_SinglePlayer_C_UpdatePlayerMoveDistance::Pawn' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_UpdatePlayerMoveDistance, CallFunc_K2_GetActorLocation_ReturnValue) == 0x000008, "Member 'GI_SinglePlayer_C_UpdatePlayerMoveDistance::CallFunc_K2_GetActorLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_UpdatePlayerMoveDistance, CallFunc_Add_FloatFloat_ReturnValue) == 0x000014, "Member 'GI_SinglePlayer_C_UpdatePlayerMoveDistance::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_UpdatePlayerMoveDistance, CallFunc_FMin_ReturnValue) == 0x000018, "Member 'GI_SinglePlayer_C_UpdatePlayerMoveDistance::CallFunc_FMin_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_UpdatePlayerMoveDistance, CallFunc_K2_GetActorLocation_ReturnValue_1) == 0x00001C, "Member 'GI_SinglePlayer_C_UpdatePlayerMoveDistance::CallFunc_K2_GetActorLocation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_UpdatePlayerMoveDistance, CallFunc_Vector_Distance_ReturnValue) == 0x000028, "Member 'GI_SinglePlayer_C_UpdatePlayerMoveDistance::CallFunc_Vector_Distance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_UpdatePlayerMoveDistance, CallFunc_IsValid_ReturnValue) == 0x00002C, "Member 'GI_SinglePlayer_C_UpdatePlayerMoveDistance::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_UpdatePlayerMoveDistance, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x00002D, "Member 'GI_SinglePlayer_C_UpdatePlayerMoveDistance::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_UpdatePlayerMoveDistance, CallFunc_GetPlayerPawn_ReturnValue) == 0x000030, "Member 'GI_SinglePlayer_C_UpdatePlayerMoveDistance::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
+
+// Function GI_SinglePlayer.GI_SinglePlayer_C.IsUsingAudioCaching
+// 0x0020 (0x0020 - 0x0000)
+struct GI_SinglePlayer_C_IsUsingAudioCaching final
+{
+public:
+	bool                                          IsUsingAudioCache;                                 // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(GI_SinglePlayer_C_IsUsingAudioCaching) == 0x000008, "Wrong alignment on GI_SinglePlayer_C_IsUsingAudioCaching");
+static_assert(sizeof(GI_SinglePlayer_C_IsUsingAudioCaching) == 0x000020, "Wrong size on GI_SinglePlayer_C_IsUsingAudioCaching");
+static_assert(offsetof(GI_SinglePlayer_C_IsUsingAudioCaching, IsUsingAudioCache) == 0x000000, "Member 'GI_SinglePlayer_C_IsUsingAudioCaching::IsUsingAudioCache' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_IsUsingAudioCaching, CallFunc_GetPlatformName_ReturnValue) == 0x000008, "Member 'GI_SinglePlayer_C_IsUsingAudioCaching::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_IsUsingAudioCaching, K2Node_SwitchString_CmpSuccess) == 0x000018, "Member 'GI_SinglePlayer_C_IsUsingAudioCaching::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
+
+// Function GI_SinglePlayer.GI_SinglePlayer_C.GetAudioCacheSize
+// 0x0020 (0x0020 - 0x0000)
+struct GI_SinglePlayer_C_GetAudioCacheSize final
+{
+public:
+	float                                         AudioCacheSizeMegaBytes;                           // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(GI_SinglePlayer_C_GetAudioCacheSize) == 0x000008, "Wrong alignment on GI_SinglePlayer_C_GetAudioCacheSize");
+static_assert(sizeof(GI_SinglePlayer_C_GetAudioCacheSize) == 0x000020, "Wrong size on GI_SinglePlayer_C_GetAudioCacheSize");
+static_assert(offsetof(GI_SinglePlayer_C_GetAudioCacheSize, AudioCacheSizeMegaBytes) == 0x000000, "Member 'GI_SinglePlayer_C_GetAudioCacheSize::AudioCacheSizeMegaBytes' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_GetAudioCacheSize, CallFunc_GetPlatformName_ReturnValue) == 0x000008, "Member 'GI_SinglePlayer_C_GetAudioCacheSize::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(GI_SinglePlayer_C_GetAudioCacheSize, K2Node_SwitchString_CmpSuccess) == 0x000018, "Member 'GI_SinglePlayer_C_GetAudioCacheSize::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
 
 // Function GI_SinglePlayer.GI_SinglePlayer_C.IsInGame
 // 0x0020 (0x0020 - 0x0000)

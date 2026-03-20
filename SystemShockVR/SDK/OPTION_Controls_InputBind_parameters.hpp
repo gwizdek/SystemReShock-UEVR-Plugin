@@ -11,10 +11,12 @@
 #include "Basic.hpp"
 
 #include "SlateCore_structs.hpp"
-#include "InputCore_structs.hpp"
-#include "ENUM_PrimarySecondary_structs.hpp"
-#include "UMG_structs.hpp"
 #include "STRUCT_BoundInputActionPair_structs.hpp"
+#include "InputCore_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "UMG_structs.hpp"
+#include "ENUM_PrimarySecondary_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 
 
 namespace SDK::Params
@@ -192,56 +194,18 @@ static_assert(sizeof(OPTION_Controls_InputBind_C_EVENT_OnMouseExit_Background) =
 static_assert(offsetof(OPTION_Controls_InputBind_C_EVENT_OnMouseExit_Background, MouseEvent) == 0x000000, "Member 'OPTION_Controls_InputBind_C_EVENT_OnMouseExit_Background::MouseEvent' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.SetOptionListeningForInput
-// 0x0028 (0x0028 - 0x0000)
+// 0x0018 (0x0018 - 0x0000)
 struct OPTION_Controls_InputBind_C_SetOptionListeningForInput final
 {
 public:
 	bool                                          IsListening;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<class UWIDGET_MenuListItemBase_C*>     ParentChildItems;                                  // 0x0008(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
-	class UWIDGET_OptionsMenu_Controls_BindsList_C* K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List; // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(OPTION_Controls_InputBind_C_SetOptionListeningForInput) == 0x000008, "Wrong alignment on OPTION_Controls_InputBind_C_SetOptionListeningForInput");
-static_assert(sizeof(OPTION_Controls_InputBind_C_SetOptionListeningForInput) == 0x000028, "Wrong size on OPTION_Controls_InputBind_C_SetOptionListeningForInput");
+static_assert(sizeof(OPTION_Controls_InputBind_C_SetOptionListeningForInput) == 0x000018, "Wrong size on OPTION_Controls_InputBind_C_SetOptionListeningForInput");
 static_assert(offsetof(OPTION_Controls_InputBind_C_SetOptionListeningForInput, IsListening) == 0x000000, "Member 'OPTION_Controls_InputBind_C_SetOptionListeningForInput::IsListening' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_SetOptionListeningForInput, ParentChildItems) == 0x000008, "Member 'OPTION_Controls_InputBind_C_SetOptionListeningForInput::ParentChildItems' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_SetOptionListeningForInput, K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List) == 0x000018, "Member 'OPTION_Controls_InputBind_C_SetOptionListeningForInput::K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_SetOptionListeningForInput, K2Node_DynamicCast_bSuccess) == 0x000020, "Member 'OPTION_Controls_InputBind_C_SetOptionListeningForInput::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-
-// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.CycleButtonHighlightLeft
-// 0x0150 (0x0150 - 0x0000)
-struct OPTION_Controls_InputBind_C_CycleButtonHighlightLeft final
-{
-public:
-	struct FPointerEvent                          K2Node_MakeStruct_PointerEvent;                    // 0x0000(0x0070)()
-	struct FGeometry                              CallFunc_GetCachedGeometry_ReturnValue;            // 0x0070(0x0038)(ConstParm, IsPlainOldData, NoDestructor)
-	struct FGeometry                              CallFunc_GetCachedGeometry_ReturnValue_1;          // 0x00A8(0x0038)(ConstParm, IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          K2Node_MakeStruct_PointerEvent_1;                  // 0x00E0(0x0070)()
-};
-static_assert(alignof(OPTION_Controls_InputBind_C_CycleButtonHighlightLeft) == 0x000008, "Wrong alignment on OPTION_Controls_InputBind_C_CycleButtonHighlightLeft");
-static_assert(sizeof(OPTION_Controls_InputBind_C_CycleButtonHighlightLeft) == 0x000150, "Wrong size on OPTION_Controls_InputBind_C_CycleButtonHighlightLeft");
-static_assert(offsetof(OPTION_Controls_InputBind_C_CycleButtonHighlightLeft, K2Node_MakeStruct_PointerEvent) == 0x000000, "Member 'OPTION_Controls_InputBind_C_CycleButtonHighlightLeft::K2Node_MakeStruct_PointerEvent' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_CycleButtonHighlightLeft, CallFunc_GetCachedGeometry_ReturnValue) == 0x000070, "Member 'OPTION_Controls_InputBind_C_CycleButtonHighlightLeft::CallFunc_GetCachedGeometry_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_CycleButtonHighlightLeft, CallFunc_GetCachedGeometry_ReturnValue_1) == 0x0000A8, "Member 'OPTION_Controls_InputBind_C_CycleButtonHighlightLeft::CallFunc_GetCachedGeometry_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_CycleButtonHighlightLeft, K2Node_MakeStruct_PointerEvent_1) == 0x0000E0, "Member 'OPTION_Controls_InputBind_C_CycleButtonHighlightLeft::K2Node_MakeStruct_PointerEvent_1' has a wrong offset!");
-
-// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.CycleButtonHighlightRight
-// 0x0150 (0x0150 - 0x0000)
-struct OPTION_Controls_InputBind_C_CycleButtonHighlightRight final
-{
-public:
-	struct FPointerEvent                          K2Node_MakeStruct_PointerEvent;                    // 0x0000(0x0070)()
-	struct FGeometry                              CallFunc_GetCachedGeometry_ReturnValue;            // 0x0070(0x0038)(ConstParm, IsPlainOldData, NoDestructor)
-	struct FGeometry                              CallFunc_GetCachedGeometry_ReturnValue_1;          // 0x00A8(0x0038)(ConstParm, IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          K2Node_MakeStruct_PointerEvent_1;                  // 0x00E0(0x0070)()
-};
-static_assert(alignof(OPTION_Controls_InputBind_C_CycleButtonHighlightRight) == 0x000008, "Wrong alignment on OPTION_Controls_InputBind_C_CycleButtonHighlightRight");
-static_assert(sizeof(OPTION_Controls_InputBind_C_CycleButtonHighlightRight) == 0x000150, "Wrong size on OPTION_Controls_InputBind_C_CycleButtonHighlightRight");
-static_assert(offsetof(OPTION_Controls_InputBind_C_CycleButtonHighlightRight, K2Node_MakeStruct_PointerEvent) == 0x000000, "Member 'OPTION_Controls_InputBind_C_CycleButtonHighlightRight::K2Node_MakeStruct_PointerEvent' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_CycleButtonHighlightRight, CallFunc_GetCachedGeometry_ReturnValue) == 0x000070, "Member 'OPTION_Controls_InputBind_C_CycleButtonHighlightRight::CallFunc_GetCachedGeometry_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_CycleButtonHighlightRight, CallFunc_GetCachedGeometry_ReturnValue_1) == 0x0000A8, "Member 'OPTION_Controls_InputBind_C_CycleButtonHighlightRight::CallFunc_GetCachedGeometry_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_CycleButtonHighlightRight, K2Node_MakeStruct_PointerEvent_1) == 0x0000E0, "Member 'OPTION_Controls_InputBind_C_CycleButtonHighlightRight::K2Node_MakeStruct_PointerEvent_1' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.TryStopListeningForInput
 // 0x0001 (0x0001 - 0x0000)
@@ -261,44 +225,44 @@ struct OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope final
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 	bool                                          Result;                                            // 0x0018(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Key_IsGamepadKey_ReturnValue;             // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UWIDGET_OptionsMenu_Controls_BindsList_C* K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List; // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsGamepadBindsList_Result;                // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_BoolBool_ReturnValue;          // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsBindKeyInScope_IsInScope;               // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope) == 0x000008, "Wrong alignment on OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope");
 static_assert(sizeof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope) == 0x000030, "Wrong size on OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope");
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope, Key) == 0x000000, "Member 'OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope::Key' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope, Result) == 0x000018, "Member 'OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope::Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope, CallFunc_Key_IsGamepadKey_ReturnValue) == 0x000019, "Member 'OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope::CallFunc_Key_IsGamepadKey_ReturnValue' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope, K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List) == 0x000020, "Member 'OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope::K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope, CallFunc_IsGamepadBindsList_Result) == 0x000029, "Member 'OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope::CallFunc_IsGamepadBindsList_Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope, CallFunc_EqualEqual_BoolBool_ReturnValue) == 0x00002A, "Member 'OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope::CallFunc_EqualEqual_BoolBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope, CallFunc_IsBindKeyInScope_IsInScope) == 0x000029, "Member 'OPTION_Controls_InputBind_C_IsKeyInCorrectBindScope::CallFunc_IsBindKeyInScope_IsInScope' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.UpdateVisuals
-// 0x0050 (0x0050 - 0x0000)
+// 0x00F0 (0x00F0 - 0x0000)
 struct OPTION_Controls_InputBind_C_UpdateVisuals final
 {
 public:
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue;            // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue_1;          // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_OptionsMenu_Controls_BindsList_C* K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List; // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   CallFunc_GetStashedKeyForAction_Result;            // 0x0020(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   CallFunc_GetStashedKeyForAction_Result_1;          // 0x0038(0x0018)(HasGetValueTypeHash)
+	TSet<ENUM_ControllerType>                     K2Node_MakeSet_Set;                                // 0x0000(0x0050)()
+	TSet<ENUM_ControllerType>                     K2Node_MakeSet_Set_1;                              // 0x0050(0x0050)()
+	class FName                                   CallFunc_Conv_StringToName_ReturnValue;            // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_Conv_StringToName_ReturnValue_1;          // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_OptionsMenu_Controls_BindsList_C* K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List; // 0x00B0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   CallFunc_GetStashedKeyForAction_Result;            // 0x00C0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   CallFunc_GetStashedKeyForAction_Result_1;          // 0x00D8(0x0018)(HasGetValueTypeHash)
 };
 static_assert(alignof(OPTION_Controls_InputBind_C_UpdateVisuals) == 0x000008, "Wrong alignment on OPTION_Controls_InputBind_C_UpdateVisuals");
-static_assert(sizeof(OPTION_Controls_InputBind_C_UpdateVisuals) == 0x000050, "Wrong size on OPTION_Controls_InputBind_C_UpdateVisuals");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, CallFunc_Conv_StringToName_ReturnValue) == 0x000000, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::CallFunc_Conv_StringToName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, CallFunc_Conv_StringToName_ReturnValue_1) == 0x000008, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::CallFunc_Conv_StringToName_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List) == 0x000010, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, CallFunc_GetStashedKeyForAction_Result) == 0x000020, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::CallFunc_GetStashedKeyForAction_Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, CallFunc_GetStashedKeyForAction_Result_1) == 0x000038, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::CallFunc_GetStashedKeyForAction_Result_1' has a wrong offset!");
+static_assert(sizeof(OPTION_Controls_InputBind_C_UpdateVisuals) == 0x0000F0, "Wrong size on OPTION_Controls_InputBind_C_UpdateVisuals");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, K2Node_MakeSet_Set) == 0x000000, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::K2Node_MakeSet_Set' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, K2Node_MakeSet_Set_1) == 0x000050, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::K2Node_MakeSet_Set_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, CallFunc_Conv_StringToName_ReturnValue) == 0x0000A0, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::CallFunc_Conv_StringToName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, CallFunc_Conv_StringToName_ReturnValue_1) == 0x0000A8, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::CallFunc_Conv_StringToName_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List) == 0x0000B0, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, K2Node_DynamicCast_bSuccess) == 0x0000B8, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, CallFunc_GetStashedKeyForAction_Result) == 0x0000C0, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::CallFunc_GetStashedKeyForAction_Result' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateVisuals, CallFunc_GetStashedKeyForAction_Result_1) == 0x0000D8, "Member 'OPTION_Controls_InputBind_C_UpdateVisuals::CallFunc_GetStashedKeyForAction_Result_1' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.SelectDefaultValue
 // 0x00B0 (0x00B0 - 0x0000)
@@ -307,7 +271,7 @@ struct OPTION_Controls_InputBind_C_SelectDefaultValue final
 public:
 	struct FSTRUCT_BoundInputActionPair           DefaultBindPair;                                   // 0x0000(0x0030)(Edit, BlueprintVisible, HasGetValueTypeHash)
 	class FName                                   CallFunc_Conv_StringToName_ReturnValue;            // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsGamepadInputAction_Result;              // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           CallFunc_GetInputActionControllerType_Result;      // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_39[0x3];                                       // 0x0039(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class FName                                   CallFunc_Conv_StringToName_ReturnValue_1;          // 0x003C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
@@ -328,7 +292,7 @@ static_assert(alignof(OPTION_Controls_InputBind_C_SelectDefaultValue) == 0x00000
 static_assert(sizeof(OPTION_Controls_InputBind_C_SelectDefaultValue) == 0x0000B0, "Wrong size on OPTION_Controls_InputBind_C_SelectDefaultValue");
 static_assert(offsetof(OPTION_Controls_InputBind_C_SelectDefaultValue, DefaultBindPair) == 0x000000, "Member 'OPTION_Controls_InputBind_C_SelectDefaultValue::DefaultBindPair' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_SelectDefaultValue, CallFunc_Conv_StringToName_ReturnValue) == 0x000030, "Member 'OPTION_Controls_InputBind_C_SelectDefaultValue::CallFunc_Conv_StringToName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_SelectDefaultValue, CallFunc_IsGamepadInputAction_Result) == 0x000038, "Member 'OPTION_Controls_InputBind_C_SelectDefaultValue::CallFunc_IsGamepadInputAction_Result' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_SelectDefaultValue, CallFunc_GetInputActionControllerType_Result) == 0x000038, "Member 'OPTION_Controls_InputBind_C_SelectDefaultValue::CallFunc_GetInputActionControllerType_Result' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_SelectDefaultValue, CallFunc_Conv_StringToName_ReturnValue_1) == 0x00003C, "Member 'OPTION_Controls_InputBind_C_SelectDefaultValue::CallFunc_Conv_StringToName_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_SelectDefaultValue, K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List) == 0x000048, "Member 'OPTION_Controls_InputBind_C_SelectDefaultValue::K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_SelectDefaultValue, K2Node_DynamicCast_bSuccess) == 0x000050, "Member 'OPTION_Controls_InputBind_C_SelectDefaultValue::K2Node_DynamicCast_bSuccess' has a wrong offset!");
@@ -340,170 +304,164 @@ static_assert(offsetof(OPTION_Controls_InputBind_C_SelectDefaultValue, CallFunc_
 static_assert(offsetof(OPTION_Controls_InputBind_C_SelectDefaultValue, CallFunc_GetDefaultBindPairForCategory_Result) == 0x000080, "Member 'OPTION_Controls_InputBind_C_SelectDefaultValue::CallFunc_GetDefaultBindPairForCategory_Result' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavLeft
-// 0x0005 (0x0005 - 0x0000)
+// 0x0002 (0x0002 - 0x0000)
 struct OPTION_Controls_InputBind_C_ReceiveNavLeft final
 {
 public:
 	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(OPTION_Controls_InputBind_C_ReceiveNavLeft) == 0x000001, "Wrong alignment on OPTION_Controls_InputBind_C_ReceiveNavLeft");
-static_assert(sizeof(OPTION_Controls_InputBind_C_ReceiveNavLeft) == 0x000005, "Wrong size on OPTION_Controls_InputBind_C_ReceiveNavLeft");
+static_assert(sizeof(OPTION_Controls_InputBind_C_ReceiveNavLeft) == 0x000002, "Wrong size on OPTION_Controls_InputBind_C_ReceiveNavLeft");
 static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavLeft, InputState) == 0x000000, "Member 'OPTION_Controls_InputBind_C_ReceiveNavLeft::InputState' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavLeft, Result) == 0x000001, "Member 'OPTION_Controls_InputBind_C_ReceiveNavLeft::Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavLeft, CallFunc_Not_PreBool_ReturnValue) == 0x000002, "Member 'OPTION_Controls_InputBind_C_ReceiveNavLeft::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavLeft, CallFunc_Not_PreBool_ReturnValue_1) == 0x000003, "Member 'OPTION_Controls_InputBind_C_ReceiveNavLeft::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavLeft, CallFunc_BooleanOR_ReturnValue) == 0x000004, "Member 'OPTION_Controls_InputBind_C_ReceiveNavLeft::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-
-// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavRight
-// 0x0005 (0x0005 - 0x0000)
-struct OPTION_Controls_InputBind_C_ReceiveNavRight final
-{
-public:
-	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(OPTION_Controls_InputBind_C_ReceiveNavRight) == 0x000001, "Wrong alignment on OPTION_Controls_InputBind_C_ReceiveNavRight");
-static_assert(sizeof(OPTION_Controls_InputBind_C_ReceiveNavRight) == 0x000005, "Wrong size on OPTION_Controls_InputBind_C_ReceiveNavRight");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, InputState) == 0x000000, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::InputState' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, Result) == 0x000001, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, CallFunc_Not_PreBool_ReturnValue) == 0x000002, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, CallFunc_Not_PreBool_ReturnValue_1) == 0x000003, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, CallFunc_BooleanOR_ReturnValue) == 0x000004, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.UpdateCurrentVisuals
-// 0x00F8 (0x00F8 - 0x0000)
+// 0x00D0 (0x00D0 - 0x0000)
 struct OPTION_Controls_InputBind_C_UpdateCurrentVisuals final
 {
 public:
 	class FText                                   PressKeyText_Gamepad_Switch;                       // 0x0000(0x0018)(Edit, BlueprintVisible)
 	class FText                                   PressKeyText_Gamepad_PlayStation;                  // 0x0018(0x0018)(Edit, BlueprintVisible)
 	class FText                                   PressKeyText_Gamepad_Xbox;                         // 0x0030(0x0018)(Edit, BlueprintVisible)
-	bool                                          Temp_bool_Variable;                                // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x004A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable_1;                              // 0x004B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4C[0x4];                                       // 0x004C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0050(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetPlatformName_ReturnValue_1;            // 0x0060(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_SwitchString_CmpSuccess_1;                  // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ESlateVisibility                              Temp_byte_Variable_2;                              // 0x0072(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_3;                              // 0x0073(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable_2;                              // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ESlateVisibility                              Temp_byte_Variable_4;                              // 0x0075(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_5;                              // 0x0076(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_77[0x1];                                       // 0x0077(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable_3;                              // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ESlateVisibility                              Temp_byte_Variable_6;                              // 0x0091(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0092(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ESlateVisibility                              Temp_byte_Variable_7;                              // 0x0093(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable_4;                              // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ESlateVisibility                              Temp_byte_Variable_8;                              // 0x0095(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_96[0x2];                                       // 0x0096(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker_1;                 // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result_1;                  // 0x00A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x00AA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x00AB(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x00AC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x00AD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x00AE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x00AF(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_2;                // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x00B1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B2[0x2];                                       // 0x00B2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_SelectFloat_ReturnValue;                  // 0x00B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanOR_ReturnValue_2;                  // 0x00B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x00B9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_3;                // 0x00BA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsAnythingHighlightedOrListening_Result;  // 0x00BB(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsAnythingHighlightedOrListening_Result_1; // 0x00BC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_BD[0x3];                                       // 0x00BD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_SelectFloat_ReturnValue_1;                // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_9;                              // 0x00C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default_1;                           // 0x00C5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default_2;                           // 0x00C6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default_3;                           // 0x00C7(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default_4;                           // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               CallFunc_GetDynamicFontMaterial_ReturnValue;       // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanOR_ReturnValue_3;                  // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_D9[0x7];                                       // 0x00D9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               CallFunc_ConvertToDynamicMaterialInstance_ReturnValue; // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue_3;                 // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_SelectFloat_ReturnValue_2;                // 0x00EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               CallFunc_ConvertToDynamicMaterialInstance_ReturnValue_1; // 0x00F0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x004A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESlateVisibility                              Temp_byte_Variable_2;                              // 0x004B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_3;                              // 0x004C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable_1;                              // 0x004D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x004E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GetIsHighlighted_Result;                  // 0x004F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsHighlighted_Result_1;                // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsHighlighted_Result_2;                // 0x0052(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsHighlighted_Result_3;                // 0x0053(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted; // 0x0054(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted_1; // 0x0055(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted; // 0x0056(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted_1; // 0x0057(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable_2;                              // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESlateVisibility                              Temp_byte_Variable_4;                              // 0x0059(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_5;                              // 0x005A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue_1;          // 0x005B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable_3;                              // 0x005D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5E[0x2];                                       // 0x005E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESlateVisibility                              Temp_byte_Variable_6;                              // 0x0072(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_7;                              // 0x0073(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker_1;                 // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0088(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsUsingGamepad_Result_1;                  // 0x0089(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x008A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x008B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x008C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x008D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x008E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable_4;                              // 0x008F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0091(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x0092(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_3;                 // 0x0093(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_SelectFloat_ReturnValue;                  // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_2;                // 0x0098(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_2;                  // 0x0099(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_4;                 // 0x009A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_3;                // 0x009B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_5;                 // 0x009C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESlateVisibility                              Temp_byte_Variable_8;                              // 0x009D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsAnythingHighlightedOrListening_Result;  // 0x009E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_3;                  // 0x009F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_SelectFloat_ReturnValue_1;                // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue_6;                 // 0x00A4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsAnythingHighlightedOrListening_Result_1; // 0x00A5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_7;                 // 0x00A6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A7[0x1];                                       // 0x00A7(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_SelectFloat_ReturnValue_2;                // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default_1;                           // 0x00AC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_9;                              // 0x00AD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default_2;                           // 0x00AE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default_3;                           // 0x00AF(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default_4;                           // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B1[0x7];                                       // 0x00B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstanceDynamic*               CallFunc_GetDynamicFontMaterial_ReturnValue;       // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               CallFunc_ConvertToDynamicMaterialInstance_ReturnValue; // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               CallFunc_ConvertToDynamicMaterialInstance_ReturnValue_1; // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals) == 0x000008, "Wrong alignment on OPTION_Controls_InputBind_C_UpdateCurrentVisuals");
-static_assert(sizeof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals) == 0x0000F8, "Wrong size on OPTION_Controls_InputBind_C_UpdateCurrentVisuals");
+static_assert(sizeof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals) == 0x0000D0, "Wrong size on OPTION_Controls_InputBind_C_UpdateCurrentVisuals");
 static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, PressKeyText_Gamepad_Switch) == 0x000000, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::PressKeyText_Gamepad_Switch' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, PressKeyText_Gamepad_PlayStation) == 0x000018, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::PressKeyText_Gamepad_PlayStation' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, PressKeyText_Gamepad_Xbox) == 0x000030, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::PressKeyText_Gamepad_Xbox' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable) == 0x000048, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable) == 0x000049, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_1) == 0x00004A, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable_1) == 0x00004B, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetPlatformName_ReturnValue) == 0x000050, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetPlatformName_ReturnValue_1) == 0x000060, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetPlatformName_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_SwitchString_CmpSuccess) == 0x000070, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_SwitchString_CmpSuccess_1) == 0x000071, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_SwitchString_CmpSuccess_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_2) == 0x000072, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_2' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_3) == 0x000073, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_3' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable_2) == 0x000074, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable_2' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_4) == 0x000075, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_4' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_5) == 0x000076, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_5' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetPlayerController_ReturnValue) == 0x000078, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable_3) == 0x000080, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable_3' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_DynamicCast_AsCON_Hacker) == 0x000088, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_DynamicCast_bSuccess) == 0x000090, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_6) == 0x000091, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_6' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_IsUsingGamepad_Result) == 0x000092, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_7) == 0x000093, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_7' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable_4) == 0x000094, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable_4' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_8) == 0x000095, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_8' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetPlayerController_ReturnValue_1) == 0x000098, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_DynamicCast_AsCON_Hacker_1) == 0x0000A0, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_DynamicCast_AsCON_Hacker_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_DynamicCast_bSuccess_1) == 0x0000A8, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_IsUsingGamepad_Result_1) == 0x0000A9, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_IsUsingGamepad_Result_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default) == 0x0000AA, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_Not_PreBool_ReturnValue) == 0x0000AB, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanOR_ReturnValue) == 0x0000AC, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue) == 0x0000AD, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_Not_PreBool_ReturnValue_1) == 0x0000AE, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanOR_ReturnValue_1) == 0x0000AF, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_Not_PreBool_ReturnValue_2) == 0x0000B0, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_Not_PreBool_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_1) == 0x0000B1, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_SelectFloat_ReturnValue) == 0x0000B4, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_SelectFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanOR_ReturnValue_2) == 0x0000B8, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanOR_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_2) == 0x0000B9, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_Not_PreBool_ReturnValue_3) == 0x0000BA, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_Not_PreBool_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_IsAnythingHighlightedOrListening_Result) == 0x0000BB, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_IsAnythingHighlightedOrListening_Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_IsAnythingHighlightedOrListening_Result_1) == 0x0000BC, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_IsAnythingHighlightedOrListening_Result_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_SelectFloat_ReturnValue_1) == 0x0000C0, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_SelectFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_9) == 0x0000C4, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_9' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default_1) == 0x0000C5, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default_2) == 0x0000C6, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default_2' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default_3) == 0x0000C7, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default_3' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default_4) == 0x0000C8, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default_4' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetDynamicFontMaterial_ReturnValue) == 0x0000D0, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetDynamicFontMaterial_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanOR_ReturnValue_3) == 0x0000D8, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanOR_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_ConvertToDynamicMaterialInstance_ReturnValue) == 0x0000E0, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_ConvertToDynamicMaterialInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_3) == 0x0000E8, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_SelectFloat_ReturnValue_2) == 0x0000EC, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_SelectFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_ConvertToDynamicMaterialInstance_ReturnValue_1) == 0x0000F0, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_ConvertToDynamicMaterialInstance_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable) == 0x000048, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_1) == 0x000049, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable) == 0x00004A, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_2) == 0x00004B, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_2' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_3) == 0x00004C, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_3' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable_1) == 0x00004D, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetPlatformFamily_ReturnValue) == 0x00004E, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetIsHighlighted_Result) == 0x00004F, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetIsHighlighted_Result' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_SwitchEnum_CmpSuccess) == 0x000050, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetIsHighlighted_Result_1) == 0x000051, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetIsHighlighted_Result_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetIsHighlighted_Result_2) == 0x000052, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetIsHighlighted_Result_2' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetIsHighlighted_Result_3) == 0x000053, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetIsHighlighted_Result_3' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted) == 0x000054, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted_1) == 0x000055, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted) == 0x000056, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted_1) == 0x000057, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable_2) == 0x000058, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable_2' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_4) == 0x000059, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_4' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_5) == 0x00005A, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_5' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetPlatformFamily_ReturnValue_1) == 0x00005B, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetPlatformFamily_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_SwitchEnum_CmpSuccess_1) == 0x00005C, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_SwitchEnum_CmpSuccess_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable_3) == 0x00005D, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable_3' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetPlayerController_ReturnValue) == 0x000060, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_DynamicCast_AsCON_Hacker) == 0x000068, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_DynamicCast_bSuccess) == 0x000070, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_IsUsingGamepad_Result) == 0x000071, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_6) == 0x000072, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_6' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_7) == 0x000073, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_7' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetPlayerController_ReturnValue_1) == 0x000078, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_DynamicCast_AsCON_Hacker_1) == 0x000080, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_DynamicCast_AsCON_Hacker_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_DynamicCast_bSuccess_1) == 0x000088, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_IsUsingGamepad_Result_1) == 0x000089, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_IsUsingGamepad_Result_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_Not_PreBool_ReturnValue) == 0x00008A, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanOR_ReturnValue) == 0x00008B, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue) == 0x00008C, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_1) == 0x00008D, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_Not_PreBool_ReturnValue_1) == 0x00008E, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_bool_Variable_4) == 0x00008F, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_bool_Variable_4' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanOR_ReturnValue_1) == 0x000090, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default) == 0x000091, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_2) == 0x000092, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_3) == 0x000093, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_SelectFloat_ReturnValue) == 0x000094, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_SelectFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_Not_PreBool_ReturnValue_2) == 0x000098, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_Not_PreBool_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanOR_ReturnValue_2) == 0x000099, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanOR_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_4) == 0x00009A, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_Not_PreBool_ReturnValue_3) == 0x00009B, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_Not_PreBool_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_5) == 0x00009C, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_8) == 0x00009D, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_8' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_IsAnythingHighlightedOrListening_Result) == 0x00009E, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_IsAnythingHighlightedOrListening_Result' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanOR_ReturnValue_3) == 0x00009F, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanOR_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_SelectFloat_ReturnValue_1) == 0x0000A0, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_SelectFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_6) == 0x0000A4, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_IsAnythingHighlightedOrListening_Result_1) == 0x0000A5, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_IsAnythingHighlightedOrListening_Result_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_BooleanAND_ReturnValue_7) == 0x0000A6, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_BooleanAND_ReturnValue_7' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_SelectFloat_ReturnValue_2) == 0x0000A8, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_SelectFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default_1) == 0x0000AC, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, Temp_byte_Variable_9) == 0x0000AD, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::Temp_byte_Variable_9' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default_2) == 0x0000AE, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default_2' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default_3) == 0x0000AF, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default_3' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, K2Node_Select_Default_4) == 0x0000B0, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::K2Node_Select_Default_4' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_GetDynamicFontMaterial_ReturnValue) == 0x0000B8, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_GetDynamicFontMaterial_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_ConvertToDynamicMaterialInstance_ReturnValue) == 0x0000C0, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_ConvertToDynamicMaterialInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_UpdateCurrentVisuals, CallFunc_ConvertToDynamicMaterialInstance_ReturnValue_1) == 0x0000C8, "Member 'OPTION_Controls_InputBind_C_UpdateCurrentVisuals::CallFunc_ConvertToDynamicMaterialInstance_ReturnValue_1' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.TryUnhighlightOption
 // 0x0002 (0x0002 - 0x0000)
@@ -539,23 +497,31 @@ static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnyOptionListeningForInput,
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnyOptionListeningForInput, CallFunc_GetIsOptionListeningForInput_Result) == 0x000021, "Member 'OPTION_Controls_InputBind_C_IsAnyOptionListeningForInput::CallFunc_GetIsOptionListeningForInput_Result' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.IsAnythingHighlightedOrListening
-// 0x0005 (0x0005 - 0x0000)
+// 0x0009 (0x0009 - 0x0000)
 struct OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening final
 {
 public:
 	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_2;                  // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_3;                  // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsHighlighted_Result;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted; // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted; // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_2;                  // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_3;                  // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening) == 0x000001, "Wrong alignment on OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening");
-static_assert(sizeof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening) == 0x000005, "Wrong size on OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening");
+static_assert(sizeof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening) == 0x000009, "Wrong size on OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening");
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, Result) == 0x000000, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::Result' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_BooleanOR_ReturnValue) == 0x000001, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_BooleanOR_ReturnValue_1) == 0x000002, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_BooleanOR_ReturnValue_2) == 0x000003, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_BooleanOR_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_BooleanOR_ReturnValue_3) == 0x000004, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_BooleanOR_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_GetIsHighlighted_Result) == 0x000001, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_GetIsHighlighted_Result' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted) == 0x000002, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted) == 0x000003, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_BooleanOR_ReturnValue) == 0x000004, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_BooleanAND_ReturnValue) == 0x000005, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_BooleanOR_ReturnValue_1) == 0x000006, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_BooleanOR_ReturnValue_2) == 0x000007, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_BooleanOR_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening, CallFunc_BooleanOR_ReturnValue_3) == 0x000008, "Member 'OPTION_Controls_InputBind_C_IsAnythingHighlightedOrListening::CallFunc_BooleanOR_ReturnValue_3' has a wrong offset!");
 
 // Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.StartListeningForInput
 // 0x0010 (0x0010 - 0x0000)
@@ -648,18 +614,55 @@ static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHovered, CallFunc_I
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHovered, CallFunc_BooleanOR_ReturnValue) == 0x000004, "Member 'OPTION_Controls_InputBind_C_IsAnythingHovered::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_IsAnythingHovered, CallFunc_BooleanOR_ReturnValue_1) == 0x000005, "Member 'OPTION_Controls_InputBind_C_IsAnythingHovered::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
 
-// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavAccept
+// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.InitializeMenuListItem
+// 0x0020 (0x0020 - 0x0000)
+struct OPTION_Controls_InputBind_C_InitializeMenuListItem final
+{
+public:
+	class UWIDGET_MenuListBase_C*                 ParentList;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Index_0;                                           // 0x0008(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_OptionsMenu_Controls_BindsList_C* K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List; // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(OPTION_Controls_InputBind_C_InitializeMenuListItem) == 0x000008, "Wrong alignment on OPTION_Controls_InputBind_C_InitializeMenuListItem");
+static_assert(sizeof(OPTION_Controls_InputBind_C_InitializeMenuListItem) == 0x000020, "Wrong size on OPTION_Controls_InputBind_C_InitializeMenuListItem");
+static_assert(offsetof(OPTION_Controls_InputBind_C_InitializeMenuListItem, ParentList) == 0x000000, "Member 'OPTION_Controls_InputBind_C_InitializeMenuListItem::ParentList' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_InitializeMenuListItem, Index_0) == 0x000008, "Member 'OPTION_Controls_InputBind_C_InitializeMenuListItem::Index_0' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_InitializeMenuListItem, K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List) == 0x000010, "Member 'OPTION_Controls_InputBind_C_InitializeMenuListItem::K2Node_DynamicCast_AsWIDGET_Options_Menu_Controls_Binds_List' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_InitializeMenuListItem, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'OPTION_Controls_InputBind_C_InitializeMenuListItem::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
+// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavRight
 // 0x0002 (0x0002 - 0x0000)
-struct OPTION_Controls_InputBind_C_ReceiveNavAccept final
+struct OPTION_Controls_InputBind_C_ReceiveNavRight final
 {
 public:
 	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 };
+static_assert(alignof(OPTION_Controls_InputBind_C_ReceiveNavRight) == 0x000001, "Wrong alignment on OPTION_Controls_InputBind_C_ReceiveNavRight");
+static_assert(sizeof(OPTION_Controls_InputBind_C_ReceiveNavRight) == 0x000002, "Wrong size on OPTION_Controls_InputBind_C_ReceiveNavRight");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, InputState) == 0x000000, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::InputState' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavRight, Result) == 0x000001, "Member 'OPTION_Controls_InputBind_C_ReceiveNavRight::Result' has a wrong offset!");
+
+// Function OPTION_Controls_InputBind.OPTION_Controls_InputBind_C.ReceiveNavAccept
+// 0x0005 (0x0005 - 0x0000)
+struct OPTION_Controls_InputBind_C_ReceiveNavAccept final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsHighlighted_Result;                  // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted; // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted; // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
 static_assert(alignof(OPTION_Controls_InputBind_C_ReceiveNavAccept) == 0x000001, "Wrong alignment on OPTION_Controls_InputBind_C_ReceiveNavAccept");
-static_assert(sizeof(OPTION_Controls_InputBind_C_ReceiveNavAccept) == 0x000002, "Wrong size on OPTION_Controls_InputBind_C_ReceiveNavAccept");
+static_assert(sizeof(OPTION_Controls_InputBind_C_ReceiveNavAccept) == 0x000005, "Wrong size on OPTION_Controls_InputBind_C_ReceiveNavAccept");
 static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavAccept, InputState) == 0x000000, "Member 'OPTION_Controls_InputBind_C_ReceiveNavAccept::InputState' has a wrong offset!");
 static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavAccept, Result) == 0x000001, "Member 'OPTION_Controls_InputBind_C_ReceiveNavAccept::Result' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavAccept, CallFunc_GetIsHighlighted_Result) == 0x000002, "Member 'OPTION_Controls_InputBind_C_ReceiveNavAccept::CallFunc_GetIsHighlighted_Result' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavAccept, CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted) == 0x000003, "Member 'OPTION_Controls_InputBind_C_ReceiveNavAccept::CallFunc_GetIsSecondaryHighlighted_IsSecondaryHighlighted' has a wrong offset!");
+static_assert(offsetof(OPTION_Controls_InputBind_C_ReceiveNavAccept, CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted) == 0x000004, "Member 'OPTION_Controls_InputBind_C_ReceiveNavAccept::CallFunc_GetIsPrimaryHighlighted_IsPrimaryHighlighted' has a wrong offset!");
 
 }
 

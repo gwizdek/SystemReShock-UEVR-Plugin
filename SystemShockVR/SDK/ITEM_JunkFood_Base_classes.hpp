@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "AttributeSystem_structs.hpp"
-#include "Engine_structs.hpp"
 #include "ITEM_Junk_Base_classes.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK

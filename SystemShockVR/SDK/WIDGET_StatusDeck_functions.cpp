@@ -58,11 +58,11 @@ void UWIDGET_StatusDeck_C::PreConstruct(bool IsDesignTime)
 
 
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.GetDeckLevelName
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
-// class FName                             LevelName                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FName                             LevelName_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWIDGET_StatusDeck_C::GetDeckLevelName(class FName* LevelName)
+void UWIDGET_StatusDeck_C::GetDeckLevelName(class FName* LevelName_0)
 {
 	static class UFunction* Func = nullptr;
 
@@ -73,8 +73,8 @@ void UWIDGET_StatusDeck_C::GetDeckLevelName(class FName* LevelName)
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (LevelName != nullptr)
-		*LevelName = Parms.LevelName;
+	if (LevelName_0 != nullptr)
+		*LevelName_0 = Parms.LevelName_0;
 }
 
 
@@ -101,10 +101,10 @@ void UWIDGET_StatusDeck_C::InitializeStatusDeck(class UWIDGET_Status_C* Status)
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.HasVisitedLevel
 // (Private, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
-// class FName                             LevelName                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FName                             LevelName_0                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    HasVisited                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void UWIDGET_StatusDeck_C::HasVisitedLevel(class FName LevelName, bool* HasVisited)
+void UWIDGET_StatusDeck_C::HasVisitedLevel(class FName LevelName_0, bool* HasVisited)
 {
 	static class UFunction* Func = nullptr;
 
@@ -113,7 +113,7 @@ void UWIDGET_StatusDeck_C::HasVisitedLevel(class FName LevelName, bool* HasVisit
 
 	Params::WIDGET_StatusDeck_C_HasVisitedLevel Parms{};
 
-	Parms.LevelName = LevelName;
+	Parms.LevelName_0 = LevelName_0;
 
 	UObject::ProcessEvent(Func, &Parms);
 

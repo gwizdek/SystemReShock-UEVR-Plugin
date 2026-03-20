@@ -10,9 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "SystemReShock_structs.hpp"
+#include "STRUCT_MediaObject_structs.hpp"
 #include "ENUM_HackerGender_structs.hpp"
 #include "InputCore_structs.hpp"
-#include "STRUCT_MediaObject_structs.hpp"
 
 
 namespace SDK::Params
@@ -45,63 +46,78 @@ static_assert(offsetof(FUNCLIB_UserInterface_C_GetButtonLegendTextureForPlatform
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetButtonLegendTextureForPlatformName, CallFunc_Array_Get_Item) == 0x000048, "Member 'FUNCLIB_UserInterface_C_GetButtonLegendTextureForPlatformName::CallFunc_Array_Get_Item' has a wrong offset!");
 
 // Function FUNCLIB_UserInterface.FUNCLIB_UserInterface_C.GetKeyboardButtonAtlasIndex
-// 0x0040 (0x0040 - 0x0000)
+// 0x0070 (0x0070 - 0x0000)
 struct FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 	class UObject*                                __WorldContext;                                    // 0x0018(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Index_0;                                           // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue;            // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_1;          // 0x0025(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_2;          // 0x0026(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_3;          // 0x0027(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_4;          // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_5;          // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_6;          // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_7;          // 0x002B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_8;          // 0x002D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x002E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_9;          // 0x002F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_2;                  // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_10;         // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_3;                  // 0x0032(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_11;         // 0x0033(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_4;                  // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_5;                  // 0x0035(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_6;                  // 0x0036(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_7;                  // 0x0037(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_8;                  // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_9;                  // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   CallFunc_Key_GetDisplayName_ReturnValue;           // 0x0028(0x0018)()
+	class FString                                 CallFunc_Conv_TextToString_ReturnValue;            // 0x0040(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Len_ReturnValue;                          // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue;            // 0x0054(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0055(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_1;             // 0x0056(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_1;          // 0x0057(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_2;          // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_3;          // 0x0059(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_4;          // 0x005A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_5;          // 0x005B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_6;          // 0x005D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x005E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_7;          // 0x005F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_2;                  // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_8;          // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_3;                  // 0x0062(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_9;          // 0x0063(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_4;                  // 0x0064(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_10;         // 0x0065(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_5;                  // 0x0066(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_11;         // 0x0067(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_6;                  // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_7;                  // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_8;                  // 0x006A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_9;                  // 0x006B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_10;                 // 0x006C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_11;                 // 0x006D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex) == 0x000008, "Wrong alignment on FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex");
-static_assert(sizeof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex) == 0x000040, "Wrong size on FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex");
+static_assert(sizeof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex) == 0x000070, "Wrong size on FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, Key) == 0x000000, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::Key' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, __WorldContext) == 0x000018, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::__WorldContext' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, Index_0) == 0x000020, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::Index_0' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue) == 0x000024, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_1) == 0x000025, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_2) == 0x000026, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_3) == 0x000027, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_4) == 0x000028, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_5) == 0x000029, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_6) == 0x00002A, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_6' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_7) == 0x00002B, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_7' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue) == 0x00002C, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_8) == 0x00002D, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_8' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_1) == 0x00002E, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_9) == 0x00002F, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_9' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_2) == 0x000030, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_10) == 0x000031, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_10' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_3) == 0x000032, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_11) == 0x000033, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_11' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_4) == 0x000034, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_5) == 0x000035, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_6) == 0x000036, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_6' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_7) == 0x000037, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_7' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_8) == 0x000038, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_8' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_9) == 0x000039, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_9' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_Key_GetDisplayName_ReturnValue) == 0x000028, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_Key_GetDisplayName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_Conv_TextToString_ReturnValue) == 0x000040, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_Conv_TextToString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_Len_ReturnValue) == 0x000050, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_Len_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue) == 0x000054, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_Greater_IntInt_ReturnValue) == 0x000055, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_Greater_IntInt_ReturnValue_1) == 0x000056, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_Greater_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_1) == 0x000057, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_2) == 0x000058, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_3) == 0x000059, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_4) == 0x00005A, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_5) == 0x00005B, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue) == 0x00005C, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_6) == 0x00005D, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_1) == 0x00005E, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_7) == 0x00005F, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_7' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_2) == 0x000060, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_8) == 0x000061, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_8' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_3) == 0x000062, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_9) == 0x000063, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_9' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_4) == 0x000064, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_10) == 0x000065, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_10' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_5) == 0x000066, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_11) == 0x000067, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_11' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_6) == 0x000068, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_7) == 0x000069, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_7' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_8) == 0x00006A, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_8' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_9) == 0x00006B, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_9' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_10) == 0x00006C, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_10' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_11) == 0x00006D, "Member 'FUNCLIB_UserInterface_C_GetKeyboardButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_11' has a wrong offset!");
 
 // Function FUNCLIB_UserInterface.FUNCLIB_UserInterface_C.GetMouseButtonAtlasIndex
 // 0x0030 (0x0030 - 0x0000)
@@ -137,7 +153,7 @@ static_assert(offsetof(FUNCLIB_UserInterface_C_GetMouseButtonAtlasIndex, CallFun
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetMouseButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_7) == 0x00002C, "Member 'FUNCLIB_UserInterface_C_GetMouseButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_7' has a wrong offset!");
 
 // Function FUNCLIB_UserInterface.FUNCLIB_UserInterface_C.GetGamepadButtonAtlasIndex
-// 0x0040 (0x0040 - 0x0000)
+// 0x0048 (0x0048 - 0x0000)
 struct FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex final
 {
 public:
@@ -145,60 +161,74 @@ public:
 	class UObject*                                __WorldContext;                                    // 0x0018(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Index_0;                                           // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         Rotation;                                          // 0x0024(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue;            // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_1;          // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_2;          // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_3;          // 0x002B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_4;          // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_5;          // 0x002D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_6;          // 0x002E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_7;          // 0x002F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_8;          // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_9;          // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0032(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x0033(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_10;         // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_11;         // 0x0035(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_12;         // 0x0036(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_13;         // 0x0037(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_14;         // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_15;         // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_16;         // 0x003A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_17;         // 0x003B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_18;         // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_19;         // 0x003D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          IsNotSwitch;                                       // 0x0028(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_PC;                    // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_Xbox;                  // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_Playstation;           // 0x002B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_Switch;                // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetCurrentPlatform_Console;               // 0x002D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x002E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue;            // 0x002F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_1;          // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_2;          // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_3;          // 0x0032(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_4;          // 0x0033(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_5;          // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_6;          // 0x0035(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_7;          // 0x0036(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_8;          // 0x0037(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_9;          // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x003A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_10;         // 0x003B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_11;         // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_12;         // 0x003D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_13;         // 0x003E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_14;         // 0x003F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_15;         // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_16;         // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_17;         // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_18;         // 0x0043(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_19;         // 0x0044(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex) == 0x000008, "Wrong alignment on FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex");
-static_assert(sizeof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex) == 0x000040, "Wrong size on FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex");
+static_assert(sizeof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex) == 0x000048, "Wrong size on FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, Key) == 0x000000, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::Key' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, __WorldContext) == 0x000018, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::__WorldContext' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, Index_0) == 0x000020, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::Index_0' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, Rotation) == 0x000024, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::Rotation' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue) == 0x000028, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_1) == 0x000029, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_2) == 0x00002A, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_3) == 0x00002B, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_4) == 0x00002C, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_5) == 0x00002D, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_6) == 0x00002E, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_6' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_7) == 0x00002F, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_7' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_8) == 0x000030, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_8' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_9) == 0x000031, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_9' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue) == 0x000032, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_1) == 0x000033, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_10) == 0x000034, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_10' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_11) == 0x000035, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_11' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_12) == 0x000036, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_12' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_13) == 0x000037, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_13' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_14) == 0x000038, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_14' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_15) == 0x000039, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_15' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_16) == 0x00003A, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_16' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_17) == 0x00003B, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_17' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_18) == 0x00003C, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_18' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_19) == 0x00003D, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_19' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, IsNotSwitch) == 0x000028, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::IsNotSwitch' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_GetCurrentPlatform_PC) == 0x000029, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_GetCurrentPlatform_PC' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_GetCurrentPlatform_Xbox) == 0x00002A, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_GetCurrentPlatform_Xbox' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_GetCurrentPlatform_Playstation) == 0x00002B, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_GetCurrentPlatform_Playstation' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_GetCurrentPlatform_Switch) == 0x00002C, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_GetCurrentPlatform_Switch' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_GetCurrentPlatform_Console) == 0x00002D, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_GetCurrentPlatform_Console' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_Not_PreBool_ReturnValue) == 0x00002E, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue) == 0x00002F, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_1) == 0x000030, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_2) == 0x000031, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_3) == 0x000032, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_4) == 0x000033, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_5) == 0x000034, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_6) == 0x000035, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_7) == 0x000036, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_7' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_8) == 0x000037, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_8' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_9) == 0x000038, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_9' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue) == 0x000039, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_BooleanOR_ReturnValue_1) == 0x00003A, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_10) == 0x00003B, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_10' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_11) == 0x00003C, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_11' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_12) == 0x00003D, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_12' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_13) == 0x00003E, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_13' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_14) == 0x00003F, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_14' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_15) == 0x000040, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_15' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_16) == 0x000041, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_16' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_17) == 0x000042, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_17' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_18) == 0x000043, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_18' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex, CallFunc_EqualEqual_KeyKey_ReturnValue_19) == 0x000044, "Member 'FUNCLIB_UserInterface_C_GetGamepadButtonAtlasIndex::CallFunc_EqualEqual_KeyKey_ReturnValue_19' has a wrong offset!");
 
 // Function FUNCLIB_UserInterface.FUNCLIB_UserInterface_C.GetCurrentPlatform
-// 0x0028 (0x0028 - 0x0000)
+// 0x0010 (0x0010 - 0x0000)
 struct FUNCLIB_UserInterface_C_GetCurrentPlatform final
 {
 public:
@@ -206,22 +236,21 @@ public:
 	bool                                          PC;                                                // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          Xbox;                                              // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          Playstation;                                       // 0x000A(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          SWITCH;                                            // 0x000B(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Switch;                                            // 0x000B(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          Console;                                           // 0x000C(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0010(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x000D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x000E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(FUNCLIB_UserInterface_C_GetCurrentPlatform) == 0x000008, "Wrong alignment on FUNCLIB_UserInterface_C_GetCurrentPlatform");
-static_assert(sizeof(FUNCLIB_UserInterface_C_GetCurrentPlatform) == 0x000028, "Wrong size on FUNCLIB_UserInterface_C_GetCurrentPlatform");
+static_assert(sizeof(FUNCLIB_UserInterface_C_GetCurrentPlatform) == 0x000010, "Wrong size on FUNCLIB_UserInterface_C_GetCurrentPlatform");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, __WorldContext) == 0x000000, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::__WorldContext' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, PC) == 0x000008, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::PC' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, Xbox) == 0x000009, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::Xbox' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, Playstation) == 0x00000A, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::Playstation' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, SWITCH) == 0x00000B, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::SWITCH' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, Switch) == 0x00000B, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::Switch' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, Console) == 0x00000C, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::Console' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, CallFunc_GetPlatformName_ReturnValue) == 0x000010, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, K2Node_SwitchString_CmpSuccess) == 0x000020, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, CallFunc_GetPlatformFamily_ReturnValue) == 0x00000D, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_GetCurrentPlatform, K2Node_SwitchEnum_CmpSuccess) == 0x00000E, "Member 'FUNCLIB_UserInterface_C_GetCurrentPlatform::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 
 // Function FUNCLIB_UserInterface.FUNCLIB_UserInterface_C.FlickerElementHandler
 // 0x0078 (0x0078 - 0x0000)
@@ -311,6 +340,47 @@ static_assert(offsetof(FUNCLIB_UserInterface_C_GetFemaleVersionOfSubtitle, CallF
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetFemaleVersionOfSubtitle, CallFunc_Conv_StringToName_ReturnValue) == 0x0001D8, "Member 'FUNCLIB_UserInterface_C_GetFemaleVersionOfSubtitle::CallFunc_Conv_StringToName_ReturnValue' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetFemaleVersionOfSubtitle, CallFunc_GetDataTableRowFromName_OutRow_1) == 0x0001E0, "Member 'FUNCLIB_UserInterface_C_GetFemaleVersionOfSubtitle::CallFunc_GetDataTableRowFromName_OutRow_1' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_UserInterface_C_GetFemaleVersionOfSubtitle, CallFunc_GetDataTableRowFromName_ReturnValue_1) == 0x000260, "Member 'FUNCLIB_UserInterface_C_GetFemaleVersionOfSubtitle::CallFunc_GetDataTableRowFromName_ReturnValue_1' has a wrong offset!");
+
+// Function FUNCLIB_UserInterface.FUNCLIB_UserInterface_C.Get Button Legend Soft Texture for Platform
+// 0x01C8 (0x01C8 - 0x0000)
+struct FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform final
+{
+public:
+	ESystemShockPlatform                          Platform;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                __WorldContext;                                    // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TSoftObjectPtr<class UTexture>                Texture;                                           // 0x0010(0x0028)(Parm, OutParm, HasGetValueTypeHash)
+	TArray<TSoftObjectPtr<class UTexture>>        PlatformIconsSoftTexture;                          // 0x0038(0x0010)(Edit, BlueprintVisible)
+	ESystemShockPlatform                          Temp_byte_Variable;                                // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UTexture>                Temp_softobject_Variable;                          // 0x0050(0x0028)(HasGetValueTypeHash)
+	TSoftObjectPtr<class UTexture>                Temp_softobject_Variable_1;                        // 0x0078(0x0028)(HasGetValueTypeHash)
+	TSoftObjectPtr<class UTexture>                Temp_softobject_Variable_2;                        // 0x00A0(0x0028)(HasGetValueTypeHash)
+	TSoftObjectPtr<class UTexture>                Temp_softobject_Variable_3;                        // 0x00C8(0x0028)(HasGetValueTypeHash)
+	TSoftObjectPtr<class UTexture>                Temp_softobject_Variable_4;                        // 0x00F0(0x0028)(HasGetValueTypeHash)
+	TSoftObjectPtr<class UTexture>                Temp_softobject_Variable_5;                        // 0x0118(0x0028)(HasGetValueTypeHash)
+	TSoftObjectPtr<class UTexture>                Temp_softobject_Variable_6;                        // 0x0140(0x0028)(HasGetValueTypeHash)
+	TSoftObjectPtr<class UTexture>                Temp_softobject_Variable_7;                        // 0x0168(0x0028)(HasGetValueTypeHash)
+	TArray<TSoftObjectPtr<class UTexture>>        K2Node_MakeArray_Array;                            // 0x0190(0x0010)(ReferenceParm)
+	TSoftObjectPtr<class UTexture>                K2Node_Select_Default;                             // 0x01A0(0x0028)(HasGetValueTypeHash)
+};
+static_assert(alignof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform) == 0x000008, "Wrong alignment on FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform");
+static_assert(sizeof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform) == 0x0001C8, "Wrong size on FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Platform) == 0x000000, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Platform' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, __WorldContext) == 0x000008, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::__WorldContext' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Texture) == 0x000010, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Texture' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, PlatformIconsSoftTexture) == 0x000038, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::PlatformIconsSoftTexture' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Temp_byte_Variable) == 0x000048, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Temp_softobject_Variable) == 0x000050, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Temp_softobject_Variable' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Temp_softobject_Variable_1) == 0x000078, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Temp_softobject_Variable_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Temp_softobject_Variable_2) == 0x0000A0, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Temp_softobject_Variable_2' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Temp_softobject_Variable_3) == 0x0000C8, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Temp_softobject_Variable_3' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Temp_softobject_Variable_4) == 0x0000F0, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Temp_softobject_Variable_4' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Temp_softobject_Variable_5) == 0x000118, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Temp_softobject_Variable_5' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Temp_softobject_Variable_6) == 0x000140, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Temp_softobject_Variable_6' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, Temp_softobject_Variable_7) == 0x000168, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::Temp_softobject_Variable_7' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, K2Node_MakeArray_Array) == 0x000190, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform, K2Node_Select_Default) == 0x0001A0, "Member 'FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform::K2Node_Select_Default' has a wrong offset!");
 
 }
 

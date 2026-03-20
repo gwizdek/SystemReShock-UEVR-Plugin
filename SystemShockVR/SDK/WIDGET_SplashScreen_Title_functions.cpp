@@ -545,26 +545,6 @@ void UWIDGET_SplashScreen_Title_C::ShowOptionsScreen()
 }
 
 
-// Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.EVENT_OnUsingGamepadChanged
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UWIDGET_SplashScreen_Title_C::EVENT_OnUsingGamepadChanged(bool IsUsingGamepad)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_SplashScreen_Title_C", "EVENT_OnUsingGamepadChanged");
-
-	Params::WIDGET_SplashScreen_Title_C_EVENT_OnUsingGamepadChanged Parms{};
-
-	Parms.IsUsingGamepad = IsUsingGamepad;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.ShowPlayerUsername
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -576,6 +556,26 @@ void UWIDGET_SplashScreen_Title_C::ShowPlayerUsername()
 		Func = Class->GetFunction("WIDGET_SplashScreen_Title_C", "ShowPlayerUsername");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.EVENT_OnActiveControllerTypeChanged
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// ENUM_ControllerType                     NewActiveControllerType                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_SplashScreen_Title_C::EVENT_OnActiveControllerTypeChanged(ENUM_ControllerType NewActiveControllerType)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_SplashScreen_Title_C", "EVENT_OnActiveControllerTypeChanged");
+
+	Params::WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged Parms{};
+
+	Parms.NewActiveControllerType = NewActiveControllerType;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 

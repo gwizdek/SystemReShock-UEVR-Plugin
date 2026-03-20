@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "ENUM_UpDown_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_ButtonColorType_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
 
 

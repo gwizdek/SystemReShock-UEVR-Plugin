@@ -10,16 +10,16 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_KeycodeSettings_structs.hpp"
+#include "STRUCT_MissionDifficultySettings_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "STRUCT_NarrativeSpeakers_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
-#include "Engine_structs.hpp"
-#include "STRUCT_MissionDifficultySettings_structs.hpp"
+#include "STRUCT_KeycodeSettings_structs.hpp"
 #include "STRUCT_BroadcastData_structs.hpp"
-#include "STRUCT_NarrativeSpeakers_structs.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 
 
 namespace SDK::Params

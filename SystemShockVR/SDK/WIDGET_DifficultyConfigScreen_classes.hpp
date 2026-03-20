@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "WIDGET_MenuBase_classes.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "WIDGET_MenuBase_classes.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 
 

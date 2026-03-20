@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "PICKUP_Base_classes.hpp"
 #include "ENUM_LaserRapierColor_structs.hpp"
+#include "PICKUP_Base_classes.hpp"
 
 
 namespace SDK

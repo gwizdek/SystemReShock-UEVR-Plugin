@@ -369,19 +369,5 @@ void UWIDGET_MultiFunctionDisplayTabs_C::UpdateMaterialParameters()
 	UObject::ProcessEvent(Func, nullptr);
 }
 
-
-// Function WIDGET_MultiFunctionDisplayTabs.WIDGET_MultiFunctionDisplayTabs_C.UpdateGamepadIconVisibility
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UWIDGET_MultiFunctionDisplayTabs_C::UpdateGamepadIconVisibility()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_MultiFunctionDisplayTabs_C", "UpdateGamepadIconVisibility");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
 }
 

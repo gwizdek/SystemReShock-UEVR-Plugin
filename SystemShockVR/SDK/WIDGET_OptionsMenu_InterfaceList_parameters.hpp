@@ -14,6 +14,17 @@
 namespace SDK::Params
 {
 
+// Function WIDGET_OptionsMenu_InterfaceList.WIDGET_OptionsMenu_InterfaceList_C.InitializeList
+// 0x0008 (0x0008 - 0x0000)
+struct WIDGET_OptionsMenu_InterfaceList_C_InitializeList final
+{
+public:
+	class UWIDGET_MenuBase_C*                     ParentScreen;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WIDGET_OptionsMenu_InterfaceList_C_InitializeList) == 0x000008, "Wrong alignment on WIDGET_OptionsMenu_InterfaceList_C_InitializeList");
+static_assert(sizeof(WIDGET_OptionsMenu_InterfaceList_C_InitializeList) == 0x000008, "Wrong size on WIDGET_OptionsMenu_InterfaceList_C_InitializeList");
+static_assert(offsetof(WIDGET_OptionsMenu_InterfaceList_C_InitializeList, ParentScreen) == 0x000000, "Member 'WIDGET_OptionsMenu_InterfaceList_C_InitializeList::ParentScreen' has a wrong offset!");
+
 // Function WIDGET_OptionsMenu_InterfaceList.WIDGET_OptionsMenu_InterfaceList_C.InitializeItemArray
 // 0x0070 (0x0070 - 0x0000)
 struct WIDGET_OptionsMenu_InterfaceList_C_InitializeItemArray final
@@ -51,17 +62,6 @@ static_assert(offsetof(WIDGET_OptionsMenu_InterfaceList_C_InitializeItemArray, K
 static_assert(offsetof(WIDGET_OptionsMenu_InterfaceList_C_InitializeItemArray, CallFunc_Less_IntInt_ReturnValue) == 0x000059, "Member 'WIDGET_OptionsMenu_InterfaceList_C_InitializeItemArray::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_InterfaceList_C_InitializeItemArray, CallFunc_Array_Add_ReturnValue) == 0x00005C, "Member 'WIDGET_OptionsMenu_InterfaceList_C_InitializeItemArray::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_InterfaceList_C_InitializeItemArray, CallFunc_InitializeItemArray_MenuListItems) == 0x000060, "Member 'WIDGET_OptionsMenu_InterfaceList_C_InitializeItemArray::CallFunc_InitializeItemArray_MenuListItems' has a wrong offset!");
-
-// Function WIDGET_OptionsMenu_InterfaceList.WIDGET_OptionsMenu_InterfaceList_C.InitializeList
-// 0x0008 (0x0008 - 0x0000)
-struct WIDGET_OptionsMenu_InterfaceList_C_InitializeList final
-{
-public:
-	class UWIDGET_MenuBase_C*                     ParentScreen;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WIDGET_OptionsMenu_InterfaceList_C_InitializeList) == 0x000008, "Wrong alignment on WIDGET_OptionsMenu_InterfaceList_C_InitializeList");
-static_assert(sizeof(WIDGET_OptionsMenu_InterfaceList_C_InitializeList) == 0x000008, "Wrong size on WIDGET_OptionsMenu_InterfaceList_C_InitializeList");
-static_assert(offsetof(WIDGET_OptionsMenu_InterfaceList_C_InitializeList, ParentScreen) == 0x000000, "Member 'WIDGET_OptionsMenu_InterfaceList_C_InitializeList::ParentScreen' has a wrong offset!");
 
 }
 

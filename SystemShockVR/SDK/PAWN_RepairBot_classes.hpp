@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "PAWN_Enemy_classes.hpp"
 #include "CoreUObject_structs.hpp"
+#include "PAWN_Enemy_classes.hpp"
 
 
 namespace SDK

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "GameplayTags_structs.hpp"
 #include "AIModule_classes.hpp"
+#include "GameplayTags_structs.hpp"
 
 
 namespace SDK

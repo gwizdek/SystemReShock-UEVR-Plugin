@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_InteractionType_structs.hpp"
-#include "ENUM_Axis_structs.hpp"
 #include "ENUM_UpgradeResult_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "INTERACT_Base_classes.hpp"
+#include "ENUM_Axis_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 
 
 namespace SDK
@@ -23,8 +23,7 @@ namespace SDK
 
 // BlueprintGeneratedClass PICKUP_Base.PICKUP_Base_C
 // 0x0170 (0x0478 - 0x0308)
-#pragma pack(push, 0x1)
-class alignas(0x08) APICKUP_Base_C : public AINTERACT_Base_C
+class APICKUP_Base_C : public AINTERACT_Base_C
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame_PICKUP_Base_C;                      // 0x0308(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
@@ -109,7 +108,6 @@ public:
 		return GetDefaultObjImpl<APICKUP_Base_C>();
 	}
 };
-#pragma pack(pop)
 static_assert(alignof(APICKUP_Base_C) == 0x000008, "Wrong alignment on APICKUP_Base_C");
 static_assert(sizeof(APICKUP_Base_C) == 0x000478, "Wrong size on APICKUP_Base_C");
 static_assert(offsetof(APICKUP_Base_C, UberGraphFrame_PICKUP_Base_C) == 0x000308, "Member 'APICKUP_Base_C::UberGraphFrame_PICKUP_Base_C' has a wrong offset!");

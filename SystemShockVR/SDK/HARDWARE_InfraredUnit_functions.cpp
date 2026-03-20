@@ -17,26 +17,6 @@
 namespace SDK
 {
 
-// Function HARDWARE_InfraredUnit.HARDWARE_InfraredUnit_C.OnVisionUnitActivated
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UHARDWARE_InfraredUnit_C::OnVisionUnitActivated(class APAWN_SystemShockCharacter_C* Character)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HARDWARE_InfraredUnit_C", "OnVisionUnitActivated");
-
-	Params::HARDWARE_InfraredUnit_C_OnVisionUnitActivated Parms{};
-
-	Parms.Character = Character;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function HARDWARE_InfraredUnit.HARDWARE_InfraredUnit_C.OnVisionUnitDeactivated
 // (Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -50,6 +30,26 @@ void UHARDWARE_InfraredUnit_C::OnVisionUnitDeactivated(class APAWN_SystemShockCh
 		Func = Class->GetFunction("HARDWARE_InfraredUnit_C", "OnVisionUnitDeactivated");
 
 	Params::HARDWARE_InfraredUnit_C_OnVisionUnitDeactivated Parms{};
+
+	Parms.Character = Character;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function HARDWARE_InfraredUnit.HARDWARE_InfraredUnit_C.OnVisionUnitActivated
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UHARDWARE_InfraredUnit_C::OnVisionUnitActivated(class APAWN_SystemShockCharacter_C* Character)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HARDWARE_InfraredUnit_C", "OnVisionUnitActivated");
+
+	Params::HARDWARE_InfraredUnit_C_OnVisionUnitActivated Parms{};
 
 	Parms.Character = Character;
 

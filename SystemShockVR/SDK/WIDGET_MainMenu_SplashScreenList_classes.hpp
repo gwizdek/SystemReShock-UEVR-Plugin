@@ -40,10 +40,10 @@ public:
 	void BndEvt__WIDGET_MainMenu_SplashScreenList_WIDGET_MainMenuButton_LoadGame_K2Node_ComponentBoundEvent_7_OnMainMenuButtonClicked__DelegateSignature(const struct FPointerEvent& InputEvent);
 	void BndEvt__WIDGET_MainMenu_SplashScreenList_WIDGET_MainMenuButton_NewGame_K2Node_ComponentBoundEvent_6_OnMainMenuButtonClicked__DelegateSignature(const struct FPointerEvent& InputEvent);
 	void BndEvt__WIDGET_MainMenu_SplashScreenList_WIDGET_MainMenuButton_Continue_K2Node_ComponentBoundEvent_5_OnMainMenuButtonClicked__DelegateSignature(const struct FPointerEvent& InputEvent);
-	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 	void InitializeList(class UWIDGET_MenuBase_C* ParentScreen);
-	void OnListOpen();
 	void UpdateContinueLoadButtons();
+	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
+	void OnListOpen();
 
 public:
 	static class UClass* StaticClass()

@@ -37,6 +37,26 @@ void ACON_Hacker_C::ExecuteUbergraph_CON_Hacker(int32 EntryPoint)
 }
 
 
+// Function CON_Hacker.CON_Hacker_C.ReceiveEndPlay
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// EEndPlayReason                          EndPlayReason                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ACON_Hacker_C::ReceiveEndPlay(EEndPlayReason EndPlayReason)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CON_Hacker_C", "ReceiveEndPlay");
+
+	Params::CON_Hacker_C_ReceiveEndPlay Parms{};
+
+	Parms.EndPlayReason = EndPlayReason;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function CON_Hacker.CON_Hacker_C.AsyncLoadCyberspacePawnClass
 // (BlueprintCallable, BlueprintEvent)
 
@@ -1071,6 +1091,68 @@ void ACON_Hacker_C::ActivateBreakerLevers()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("CON_Hacker_C", "ActivateBreakerLevers");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function CON_Hacker.CON_Hacker_C.UpdateCursorPosition
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ACON_Hacker_C::UpdateCursorPosition()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CON_Hacker_C", "UpdateCursorPosition");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function CON_Hacker.CON_Hacker_C.InitializeJoyConMouseMode
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ACON_Hacker_C::InitializeJoyConMouseMode()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CON_Hacker_C", "InitializeJoyConMouseMode");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function CON_Hacker.CON_Hacker_C.EVENT_OnJoyConMouseStateChange
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    MouseEnabled                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void ACON_Hacker_C::EVENT_OnJoyConMouseStateChange(bool MouseEnabled)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CON_Hacker_C", "EVENT_OnJoyConMouseStateChange");
+
+	Params::CON_Hacker_C_EVENT_OnJoyConMouseStateChange Parms{};
+
+	Parms.MouseEnabled = MouseEnabled;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function CON_Hacker.CON_Hacker_C.UpdateControllerMode
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ACON_Hacker_C::UpdateControllerMode()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CON_Hacker_C", "UpdateControllerMode");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

@@ -91,20 +91,6 @@ void AACTOR_Saturn_C::ReceiveBeginPlay()
 }
 
 
-// Function ACTOR_Saturn.ACTOR_Saturn_C.UserConstructionScript
-// (Event, Public, BlueprintCallable, BlueprintEvent)
-
-void AACTOR_Saturn_C::UserConstructionScript()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ACTOR_Saturn_C", "UserConstructionScript");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function ACTOR_Saturn.ACTOR_Saturn_C.UpdateSunMaterialParameters
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:

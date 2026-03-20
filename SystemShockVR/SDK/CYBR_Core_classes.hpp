@@ -24,7 +24,7 @@ class ACYBR_Core_C final : public ACYBR_InteractBase_C
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame_CYBR_Core_C;                        // 0x0238(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UAudioComponent*                        Audio_loop;                                        // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        Audio_Loop;                                        // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UCOMP_AttribManager_C*                  COMP_AttribManager;                                // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   Sphere;                                            // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	float                                         Death_DeathFloat_0D9EBA8F48A22B576BE371A611AB3F43; // 0x0258(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -70,7 +70,7 @@ public:
 static_assert(alignof(ACYBR_Core_C) == 0x000008, "Wrong alignment on ACYBR_Core_C");
 static_assert(sizeof(ACYBR_Core_C) == 0x0002D0, "Wrong size on ACYBR_Core_C");
 static_assert(offsetof(ACYBR_Core_C, UberGraphFrame_CYBR_Core_C) == 0x000238, "Member 'ACYBR_Core_C::UberGraphFrame_CYBR_Core_C' has a wrong offset!");
-static_assert(offsetof(ACYBR_Core_C, Audio_loop) == 0x000240, "Member 'ACYBR_Core_C::Audio_loop' has a wrong offset!");
+static_assert(offsetof(ACYBR_Core_C, Audio_Loop) == 0x000240, "Member 'ACYBR_Core_C::Audio_Loop' has a wrong offset!");
 static_assert(offsetof(ACYBR_Core_C, COMP_AttribManager) == 0x000248, "Member 'ACYBR_Core_C::COMP_AttribManager' has a wrong offset!");
 static_assert(offsetof(ACYBR_Core_C, Sphere) == 0x000250, "Member 'ACYBR_Core_C::Sphere' has a wrong offset!");
 static_assert(offsetof(ACYBR_Core_C, Death_DeathFloat_0D9EBA8F48A22B576BE371A611AB3F43) == 0x000258, "Member 'ACYBR_Core_C::Death_DeathFloat_0D9EBA8F48A22B576BE371A611AB3F43' has a wrong offset!");

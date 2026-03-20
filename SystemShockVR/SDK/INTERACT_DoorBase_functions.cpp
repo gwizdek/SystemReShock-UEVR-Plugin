@@ -1301,26 +1301,6 @@ void AINTERACT_DoorBase_C::RestoreSafetySensorOverlaps()
 }
 
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.OnRestoreInventoryAfterSequence
-// (Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_Hacker_Simple_C*            HackerPawn                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_DoorBase_C::OnRestoreInventoryAfterSequence(class APAWN_Hacker_Simple_C* HackerPawn)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_DoorBase_C", "OnRestoreInventoryAfterSequence");
-
-	Params::INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence Parms{};
-
-	Parms.HackerPawn = HackerPawn;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetTargetShape
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -1491,6 +1471,26 @@ void AINTERACT_DoorBase_C::GetInteractBusy(bool* Result, class FText* BusyMessag
 
 	if (BusyMessage_0 != nullptr)
 		*BusyMessage_0 = std::move(Parms.BusyMessage_0);
+}
+
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.OnRestoreInventoryAfterSequence
+// (Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_Hacker_Simple_C*            HackerPawn                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_DoorBase_C::OnRestoreInventoryAfterSequence(class APAWN_Hacker_Simple_C* HackerPawn)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_DoorBase_C", "OnRestoreInventoryAfterSequence");
+
+	Params::INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence Parms{};
+
+	Parms.HackerPawn = HackerPawn;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 

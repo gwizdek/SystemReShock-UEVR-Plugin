@@ -13,8 +13,8 @@
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ENUM_GameDifficulty_structs.hpp"
 #include "ENUM_DetectionState_structs.hpp"
+#include "ENUM_GameDifficulty_structs.hpp"
 
 
 namespace SDK

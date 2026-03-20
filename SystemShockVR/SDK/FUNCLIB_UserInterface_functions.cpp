@@ -44,7 +44,7 @@ void UFUNCLIB_UserInterface_C::GetButtonLegendTextureForPlatformName(const class
 
 
 // Function FUNCLIB_UserInterface.FUNCLIB_UserInterface_C.GetKeyboardButtonAtlasIndex
-// (Static, Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// (Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 // class UObject*                          __WorldContext                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -132,10 +132,10 @@ void UFUNCLIB_UserInterface_C::GetGamepadButtonAtlasIndex(const struct FKey& Key
 // bool                                    PC                                                     (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    Xbox                                                   (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    Playstation                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    SWITCH                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Switch                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    Console                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void UFUNCLIB_UserInterface_C::GetCurrentPlatform(class UObject* __WorldContext, bool* PC, bool* Xbox, bool* Playstation, bool* SWITCH, bool* Console)
+void UFUNCLIB_UserInterface_C::GetCurrentPlatform(class UObject* __WorldContext, bool* PC, bool* Xbox, bool* Playstation, bool* Switch, bool* Console)
 {
 	static class UFunction* Func = nullptr;
 
@@ -157,8 +157,8 @@ void UFUNCLIB_UserInterface_C::GetCurrentPlatform(class UObject* __WorldContext,
 	if (Playstation != nullptr)
 		*Playstation = Parms.Playstation;
 
-	if (SWITCH != nullptr)
-		*SWITCH = Parms.SWITCH;
+	if (Switch != nullptr)
+		*Switch = Parms.Switch;
 
 	if (Console != nullptr)
 		*Console = Parms.Console;
@@ -214,6 +214,32 @@ void UFUNCLIB_UserInterface_C::GetFemaleVersionOfSubtitle(class UDataTable* Data
 
 	if (MediaDataStruct != nullptr)
 		*MediaDataStruct = std::move(Parms.MediaDataStruct);
+}
+
+
+// Function FUNCLIB_UserInterface.FUNCLIB_UserInterface_C.Get Button Legend Soft Texture for Platform
+// (Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// ESystemShockPlatform                    Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UObject*                          __WorldContext                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// TSoftObjectPtr<class UTexture>          Texture                                                (Parm, OutParm, HasGetValueTypeHash)
+
+void UFUNCLIB_UserInterface_C::Get_Button_Legend_Soft_Texture_for_Platform(ESystemShockPlatform Platform, class UObject* __WorldContext, TSoftObjectPtr<class UTexture>* Texture)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("FUNCLIB_UserInterface_C", "Get Button Legend Soft Texture for Platform");
+
+	Params::FUNCLIB_UserInterface_C_Get_Button_Legend_Soft_Texture_for_Platform Parms{};
+
+	Parms.Platform = Platform;
+	Parms.__WorldContext = __WorldContext;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	if (Texture != nullptr)
+		*Texture = Parms.Texture;
 }
 
 }

@@ -37,6 +37,20 @@ void UWIDGET_ListCategoryHeader_C::ExecuteUbergraph_WIDGET_ListCategoryHeader(in
 }
 
 
+// Function WIDGET_ListCategoryHeader.WIDGET_ListCategoryHeader_C.OnInitialized
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void UWIDGET_ListCategoryHeader_C::OnInitialized()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_ListCategoryHeader_C", "OnInitialized");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function WIDGET_ListCategoryHeader.WIDGET_ListCategoryHeader_C.PreConstruct
 // (BlueprintCosmetic, Event, Public, BlueprintEvent)
 // Parameters:
@@ -54,6 +68,41 @@ void UWIDGET_ListCategoryHeader_C::PreConstruct(bool IsDesignTime)
 	Parms.IsDesignTime = IsDesignTime;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_ListCategoryHeader.WIDGET_ListCategoryHeader_C.SetVisibilityBasedOnPlatform
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWIDGET_ListCategoryHeader_C::SetVisibilityBasedOnPlatform()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_ListCategoryHeader_C", "SetVisibilityBasedOnPlatform");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WIDGET_ListCategoryHeader.WIDGET_ListCategoryHeader_C.SetVisibilityBasedOnBuildType
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Hidden                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_ListCategoryHeader_C::SetVisibilityBasedOnBuildType(bool* Hidden)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_ListCategoryHeader_C", "SetVisibilityBasedOnBuildType");
+
+	Params::WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Hidden != nullptr)
+		*Hidden = Parms.Hidden;
 }
 
 }

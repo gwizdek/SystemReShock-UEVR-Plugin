@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "PAWN_SystemShockCharacter_classes.hpp"
 
 
@@ -41,12 +41,12 @@ public:
 public:
 	void ExecuteUbergraph_CYBR_Decoy(int32 EntryPoint);
 	void ReceiveTick(float DeltaSeconds);
-	void ReceiveBeginPlay();
 	void EVENT_DeployDecoy();
 	void EVENT_PlaySearchAnimation();
 	void EVENT_AlertNearbyEnemies();
 	void EVENT_OnLifetimeExpired();
 	void EVENT_DelayedDestroyDecoy();
+	void ReceiveBeginPlay();
 	void OnCharacterDied(class UOBJ_ImpactData_C* ImpactData, const struct FAttribDamageInstance& DamageInstance, class AActor* OtherActor, bool* Result);
 
 public:

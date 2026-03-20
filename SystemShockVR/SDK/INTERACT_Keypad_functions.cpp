@@ -566,6 +566,30 @@ void AINTERACT_Keypad_C::TryPressKeypadDigit(int32 Digit, struct FSTRUCT_Interac
 }
 
 
+// Function INTERACT_Keypad.INTERACT_Keypad_C.GetTargetShape
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UShapeComponent*                  ShapeComponent                                         (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_Keypad_C::GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_Keypad_C", "GetTargetShape");
+
+	Params::INTERACT_Keypad_C_GetTargetShape Parms{};
+
+	Parms.CursorPrimitive = CursorPrimitive;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (ShapeComponent != nullptr)
+		*ShapeComponent = Parms.ShapeComponent;
+}
+
+
 // Function INTERACT_Keypad.INTERACT_Keypad_C.TryPressKeypadClear
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -801,52 +825,6 @@ void AINTERACT_Keypad_C::ShouldFocusOnInteract(class AController* Controller, bo
 }
 
 
-// Function INTERACT_Keypad.INTERACT_Keypad_C.EVENT_OnDisableAttribChanged
-// (Private, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// float                                   CurrValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// float                                   LastValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_Keypad_C::EVENT_OnDisableAttribChanged(float CurrValue, float LastValue)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_Keypad_C", "EVENT_OnDisableAttribChanged");
-
-	Params::INTERACT_Keypad_C_EVENT_OnDisableAttribChanged Parms{};
-
-	Parms.CurrValue = CurrValue;
-	Parms.LastValue = LastValue;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function INTERACT_Keypad.INTERACT_Keypad_C.GetTargetShape
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UPrimitiveComponent*              CursorPrimitive                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class UShapeComponent*                  ShapeComponent                                         (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_Keypad_C::GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_Keypad_C", "GetTargetShape");
-
-	Params::INTERACT_Keypad_C_GetTargetShape Parms{};
-
-	Parms.CursorPrimitive = CursorPrimitive;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (ShapeComponent != nullptr)
-		*ShapeComponent = Parms.ShapeComponent;
-}
-
-
 // Function INTERACT_Keypad.INTERACT_Keypad_C.ShouldSaveActor
 // (Event, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -868,6 +846,28 @@ bool AINTERACT_Keypad_C::ShouldSaveActor(struct FStreamingSaveGameActorParams* P
 		*Params_0 = std::move(Parms.Params_0);
 
 	return Parms.ReturnValue;
+}
+
+
+// Function INTERACT_Keypad.INTERACT_Keypad_C.EVENT_OnDisableAttribChanged
+// (Private, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   CurrValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   LastValue                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_Keypad_C::EVENT_OnDisableAttribChanged(float CurrValue, float LastValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_Keypad_C", "EVENT_OnDisableAttribChanged");
+
+	Params::INTERACT_Keypad_C_EVENT_OnDisableAttribChanged Parms{};
+
+	Parms.CurrValue = CurrValue;
+	Parms.LastValue = LastValue;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 

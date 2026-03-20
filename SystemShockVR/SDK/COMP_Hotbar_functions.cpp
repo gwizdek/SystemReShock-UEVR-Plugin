@@ -696,6 +696,50 @@ void UCOMP_Hotbar_C::GetFirstFreeSlotIndexWithPreference(class UClass* Slottable
 }
 
 
+// Function COMP_Hotbar.COMP_Hotbar_C.GetFirstSlotWithParentClass
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class UClass*                           SlotParentClass                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   SlotIndex                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UCOMP_Hotbar_C::GetFirstSlotWithParentClass(class UClass* SlotParentClass, int32* SlotIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("COMP_Hotbar_C", "GetFirstSlotWithParentClass");
+
+	Params::COMP_Hotbar_C_GetFirstSlotWithParentClass Parms{};
+
+	Parms.SlotParentClass = SlotParentClass;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (SlotIndex != nullptr)
+		*SlotIndex = Parms.SlotIndex;
+}
+
+
+// Function COMP_Hotbar.COMP_Hotbar_C.TryUseFirstConsumableWithParentClass
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UClass*                           SlotParentClass                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UCOMP_Hotbar_C::TryUseFirstConsumableWithParentClass(class UClass* SlotParentClass)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("COMP_Hotbar_C", "TryUseFirstConsumableWithParentClass");
+
+	Params::COMP_Hotbar_C_TryUseFirstConsumableWithParentClass Parms{};
+
+	Parms.SlotParentClass = SlotParentClass;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function COMP_Hotbar.COMP_Hotbar_C.ShouldSaveComponent
 // (Event, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:

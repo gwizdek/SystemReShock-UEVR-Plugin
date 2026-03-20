@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ITEM_HardwareBase_classes.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK
@@ -32,8 +32,8 @@ public:
 	void EnableMediaReaderDisplayMesh();
 	void OnLoaded_2B54F99340094416C6C6069C21D1072C(class UObject* Loaded);
 	void OnLoaded_65EE3A914F0C398482905DB02E5CDD54(class UObject* Loaded);
-	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
 	void OnIncomingTransmission();
+	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
 	void OnAddedToInventory();
 	void OnBeginPlay();
 

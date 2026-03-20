@@ -571,6 +571,29 @@ void UCOMP_ActionManager_C::GetQueueTimeRemaining(float* Result)
 }
 
 
+// Function COMP_ActionManager.COMP_ActionManager_C.CanAttackPriorityValueRaw
+// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int32                                   rawPriorityValue                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool UCOMP_ActionManager_C::CanAttackPriorityValueRaw(int32 rawPriorityValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("COMP_ActionManager_C", "CanAttackPriorityValueRaw");
+
+	Params::COMP_ActionManager_C_CanAttackPriorityValueRaw Parms{};
+
+	Parms.rawPriorityValue = rawPriorityValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
 // Function COMP_ActionManager.COMP_ActionManager_C.ShouldSaveComponent
 // (Event, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:

@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 #include "INTERACT_Focusable_Base_classes.hpp"
 #include "ENUM_FailSucceedIgnore_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
 
 
 namespace SDK

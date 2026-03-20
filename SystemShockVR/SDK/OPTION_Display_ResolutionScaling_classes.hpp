@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "Engine_structs.hpp"
 #include "WIDGET_Settings_Slider_classes.hpp"
 
 
@@ -17,10 +18,15 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass OPTION_Display_ResolutionScaling.OPTION_Display_ResolutionScaling_C
-// 0x0000 (0x0398 - 0x0398)
+// 0x0008 (0x03B0 - 0x03A8)
 class UOPTION_Display_ResolutionScaling_C final : public UWIDGET_Settings_Slider_C
 {
 public:
+	struct FPointerToUberGraphFrame               UberGraphFrame_OPTION_Display_ResolutionScaling_C; // 0x03A8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+
+public:
+	void ExecuteUbergraph_OPTION_Display_ResolutionScaling(int32 EntryPoint);
+	void Tick(const struct FGeometry& MyGeometry, float InDeltaTime);
 	void ApplyDirtyValue();
 	void ApplyCleanValue();
 	void AcceptCurrentValue();
@@ -40,7 +46,8 @@ public:
 	}
 };
 static_assert(alignof(UOPTION_Display_ResolutionScaling_C) == 0x000008, "Wrong alignment on UOPTION_Display_ResolutionScaling_C");
-static_assert(sizeof(UOPTION_Display_ResolutionScaling_C) == 0x000398, "Wrong size on UOPTION_Display_ResolutionScaling_C");
+static_assert(sizeof(UOPTION_Display_ResolutionScaling_C) == 0x0003B0, "Wrong size on UOPTION_Display_ResolutionScaling_C");
+static_assert(offsetof(UOPTION_Display_ResolutionScaling_C, UberGraphFrame_OPTION_Display_ResolutionScaling_C) == 0x0003A8, "Member 'UOPTION_Display_ResolutionScaling_C::UberGraphFrame_OPTION_Display_ResolutionScaling_C' has a wrong offset!");
 
 }
 

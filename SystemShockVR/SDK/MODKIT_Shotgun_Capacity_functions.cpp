@@ -17,6 +17,30 @@
 namespace SDK
 {
 
+// Function MODKIT_Shotgun_Capacity.MODKIT_Shotgun_Capacity_C.GetModifiedWeaponMode
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FSTRUCT_WeaponMode               WeaponMode                                             (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+// struct FSTRUCT_WeaponMode               ResultMode                                             (Parm, OutParm, HasGetValueTypeHash)
+
+void UMODKIT_Shotgun_Capacity_C::GetModifiedWeaponMode(const struct FSTRUCT_WeaponMode& WeaponMode, struct FSTRUCT_WeaponMode* ResultMode)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MODKIT_Shotgun_Capacity_C", "GetModifiedWeaponMode");
+
+	Params::MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode Parms{};
+
+	Parms.WeaponMode = std::move(WeaponMode);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (ResultMode != nullptr)
+		*ResultMode = std::move(Parms.ResultMode);
+}
+
+
 // Function MODKIT_Shotgun_Capacity.MODKIT_Shotgun_Capacity_C.TryApplyWeaponModifications
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -40,30 +64,6 @@ void UMODKIT_Shotgun_Capacity_C::TryApplyWeaponModifications(class UITEM_WeaponB
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
-}
-
-
-// Function MODKIT_Shotgun_Capacity.MODKIT_Shotgun_Capacity_C.GetModifiedWeaponMode
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// struct FSTRUCT_WeaponMode               WeaponMode                                             (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
-// struct FSTRUCT_WeaponMode               ResultMode                                             (Parm, OutParm, HasGetValueTypeHash)
-
-void UMODKIT_Shotgun_Capacity_C::GetModifiedWeaponMode(const struct FSTRUCT_WeaponMode& WeaponMode, struct FSTRUCT_WeaponMode* ResultMode)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MODKIT_Shotgun_Capacity_C", "GetModifiedWeaponMode");
-
-	Params::MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode Parms{};
-
-	Parms.WeaponMode = std::move(WeaponMode);
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (ResultMode != nullptr)
-		*ResultMode = std::move(Parms.ResultMode);
 }
 
 }

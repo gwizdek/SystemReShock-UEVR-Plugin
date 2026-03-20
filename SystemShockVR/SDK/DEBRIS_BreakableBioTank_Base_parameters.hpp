@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_BiohazardBarrelCondition_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_BiohazardBarrelCondition_structs.hpp"
 #include "Engine_structs.hpp"
 
 

@@ -37,7 +37,7 @@ public:
 	class UStaticMeshComponent*                   IceShield_LargeChunk2;                             // 0x0B48(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   IceShield_LargeChunk1;                             // 0x0B50(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UAudioComponent*                        Audio_Loop_Attack;                                 // 0x0B58(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UAudioComponent*                        Audio_loop;                                        // 0x0B60(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        Audio_Loop;                                        // 0x0B60(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UNiagaraComponent*                      Niagara;                                           // 0x0B68(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class ABULLORANG_Base_C*                      Bullorang;                                         // 0x0B70(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         BullorangCurrentRotationRate;                      // 0x0B78(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -81,7 +81,7 @@ static_assert(offsetof(APAWN_CyberBully_C, IceShield_LargeChunk3) == 0x000B40, "
 static_assert(offsetof(APAWN_CyberBully_C, IceShield_LargeChunk2) == 0x000B48, "Member 'APAWN_CyberBully_C::IceShield_LargeChunk2' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberBully_C, IceShield_LargeChunk1) == 0x000B50, "Member 'APAWN_CyberBully_C::IceShield_LargeChunk1' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberBully_C, Audio_Loop_Attack) == 0x000B58, "Member 'APAWN_CyberBully_C::Audio_Loop_Attack' has a wrong offset!");
-static_assert(offsetof(APAWN_CyberBully_C, Audio_loop) == 0x000B60, "Member 'APAWN_CyberBully_C::Audio_loop' has a wrong offset!");
+static_assert(offsetof(APAWN_CyberBully_C, Audio_Loop) == 0x000B60, "Member 'APAWN_CyberBully_C::Audio_Loop' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberBully_C, Niagara) == 0x000B68, "Member 'APAWN_CyberBully_C::Niagara' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberBully_C, Bullorang) == 0x000B70, "Member 'APAWN_CyberBully_C::Bullorang' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberBully_C, BullorangCurrentRotationRate) == 0x000B78, "Member 'APAWN_CyberBully_C::BullorangCurrentRotationRate' has a wrong offset!");

@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "ENUM_DoorState_structs.hpp"
-#include "CYBR_InteractBase_classes.hpp"
-#include "LevelVoxelization_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "CYBR_InteractBase_classes.hpp"
+#include "ENUM_DoorState_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "LevelVoxelization_structs.hpp"
 
 
 namespace SDK
@@ -51,8 +51,10 @@ public:
 public:
 	void ExecuteUbergraph_CYBR_Barrier(int32 EntryPoint);
 	void ReceiveTick(float DeltaSeconds);
+	void ReceiveBeginPlay();
 	void UserConstructionScript();
 	void EVENT_OnEnemyDied(class APAWN_SystemShockCharacter_C* Character);
+	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 	void InitializeCyberBarrier();
 	void TryOpenBarrier();
 	void TryCloseBarrier();
@@ -60,8 +62,6 @@ public:
 	void UpdateBarrierState(float DeltaSeconds);
 	void UpdateBarrierEffectsDimensions();
 	void EVENT_OnQuestStateChanged(class FName StoryQuestName, bool Value);
-	void ReceiveBeginPlay();
-	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 
 public:
 	static class UClass* StaticClass()

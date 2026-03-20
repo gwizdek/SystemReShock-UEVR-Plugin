@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ITEM_WeaponBase_classes.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_LeftRightCenter_structs.hpp"
-#include "ITEM_WeaponBase_classes.hpp"
 #include "ENUM_Melee_AttackState_structs.hpp"
 
 
@@ -165,9 +165,9 @@ public:
 	void GetOwnerHeadTransform(struct FTransform* Result);
 	void EVENT_OnImpactEffectsSpawned(class UObject* Object);
 	void GetTraceSocketName(class FName* Result);
-	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void OnBecomeActivatable(bool* Result);
 	void OnBecomeUnactivatable(bool* Result);
+	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void Deactivate(bool* Result);
 	void CanActivate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 

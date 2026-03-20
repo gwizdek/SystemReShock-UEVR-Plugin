@@ -171,27 +171,6 @@ void UWIDGET_MainMenu_InGameList_C::BndEvt__WIDGET_MainMenu_InGameList_WIDGET_Ma
 }
 
 
-// Function WIDGET_MainMenu_InGameList.WIDGET_MainMenu_InGameList_C.InitializeItemArray
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// TArray<class UWIDGET_MenuListItemBase_C*>MenuListItems                                          (Parm, OutParm, ContainsInstancedReference)
-
-void UWIDGET_MainMenu_InGameList_C::InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_MainMenu_InGameList_C", "InitializeItemArray");
-
-	Params::WIDGET_MainMenu_InGameList_C_InitializeItemArray Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (MenuListItems != nullptr)
-		*MenuListItems = std::move(Parms.MenuListItems);
-}
-
-
 // Function WIDGET_MainMenu_InGameList.WIDGET_MainMenu_InGameList_C.OnListClose
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -201,20 +180,6 @@ void UWIDGET_MainMenu_InGameList_C::OnListClose()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("WIDGET_MainMenu_InGameList_C", "OnListClose");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WIDGET_MainMenu_InGameList.WIDGET_MainMenu_InGameList_C.OnListOpen
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void UWIDGET_MainMenu_InGameList_C::OnListOpen()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_MainMenu_InGameList_C", "OnListOpen");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -242,6 +207,41 @@ struct FEventReply UWIDGET_MainMenu_InGameList_C::EVENT_MouseDown_MeshDebugTrigg
 	UObject::ProcessEvent(Func, &Parms);
 
 	return Parms.ReturnValue;
+}
+
+
+// Function WIDGET_MainMenu_InGameList.WIDGET_MainMenu_InGameList_C.InitializeItemArray
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// TArray<class UWIDGET_MenuListItemBase_C*>MenuListItems                                          (Parm, OutParm, ContainsInstancedReference)
+
+void UWIDGET_MainMenu_InGameList_C::InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_MainMenu_InGameList_C", "InitializeItemArray");
+
+	Params::WIDGET_MainMenu_InGameList_C_InitializeItemArray Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (MenuListItems != nullptr)
+		*MenuListItems = std::move(Parms.MenuListItems);
+}
+
+
+// Function WIDGET_MainMenu_InGameList.WIDGET_MainMenu_InGameList_C.OnListOpen
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UWIDGET_MainMenu_InGameList_C::OnListOpen()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_MainMenu_InGameList_C", "OnListOpen");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

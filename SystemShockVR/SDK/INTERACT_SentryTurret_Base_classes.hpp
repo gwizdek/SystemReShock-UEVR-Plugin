@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_DoorState_structs.hpp"
-#include "ENUM_InteractResultType_structs.hpp"
-#include "INTERACT_DestructibleBase_classes.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "ENUM_DoorState_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
+#include "INTERACT_DestructibleBase_classes.hpp"
+#include "ENUM_InteractResultType_structs.hpp"
 
 
 namespace SDK
@@ -107,9 +107,9 @@ public:
 	void TryStopRotating();
 	void InitializeDestructible();
 	void OnDeath(class AActor* SourceActor, bool* Result);
-	void GetArmorAugmentationPercentage(class UOBJ_ImpactData_C* ImpactData, float* Result);
 	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 	void UpdateDeathSettings(bool DuringBeginPlay, bool* Result);
+	void GetArmorAugmentationPercentage(class UOBJ_ImpactData_C* ImpactData, float* Result);
 	void GetDefaultOverrideAttributes(TArray<struct FDefaultAttribute>* Result);
 
 public:

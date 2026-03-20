@@ -17,6 +17,26 @@
 namespace SDK
 {
 
+// Function WIDGET_OptionsMenu_GraphicsList.WIDGET_OptionsMenu_GraphicsList_C.InitializeList
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UWIDGET_MenuBase_C*               ParentScreen                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_OptionsMenu_GraphicsList_C::InitializeList(class UWIDGET_MenuBase_C* ParentScreen)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_GraphicsList_C", "InitializeList");
+
+	Params::WIDGET_OptionsMenu_GraphicsList_C_InitializeList Parms{};
+
+	Parms.ParentScreen = ParentScreen;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function WIDGET_OptionsMenu_GraphicsList.WIDGET_OptionsMenu_GraphicsList_C.InitializeItemArray
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -35,26 +55,6 @@ void UWIDGET_OptionsMenu_GraphicsList_C::InitializeItemArray(TArray<class UWIDGE
 
 	if (MenuListItems != nullptr)
 		*MenuListItems = std::move(Parms.MenuListItems);
-}
-
-
-// Function WIDGET_OptionsMenu_GraphicsList.WIDGET_OptionsMenu_GraphicsList_C.InitializeList
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UWIDGET_MenuBase_C*               ParentScreen                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWIDGET_OptionsMenu_GraphicsList_C::InitializeList(class UWIDGET_MenuBase_C* ParentScreen)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_OptionsMenu_GraphicsList_C", "InitializeList");
-
-	Params::WIDGET_OptionsMenu_GraphicsList_C_InitializeList Parms{};
-
-	Parms.ParentScreen = ParentScreen;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "SlateCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "UMG_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "STRUCT_ItemUI_structs.hpp"
+#include "UMG_structs.hpp"
 
 
 namespace SDK::Params

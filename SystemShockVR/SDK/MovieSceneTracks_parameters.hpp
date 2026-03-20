@@ -18,6 +18,28 @@
 namespace SDK::Params
 {
 
+// Function MovieSceneTracks.MovieSceneCinematicShotSection.SetShotDisplayName
+// 0x0010 (0x0010 - 0x0000)
+struct MovieSceneCinematicShotSection_SetShotDisplayName final
+{
+public:
+	class FString                                 InShotDisplayName;                                 // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MovieSceneCinematicShotSection_SetShotDisplayName) == 0x000008, "Wrong alignment on MovieSceneCinematicShotSection_SetShotDisplayName");
+static_assert(sizeof(MovieSceneCinematicShotSection_SetShotDisplayName) == 0x000010, "Wrong size on MovieSceneCinematicShotSection_SetShotDisplayName");
+static_assert(offsetof(MovieSceneCinematicShotSection_SetShotDisplayName, InShotDisplayName) == 0x000000, "Member 'MovieSceneCinematicShotSection_SetShotDisplayName::InShotDisplayName' has a wrong offset!");
+
+// Function MovieSceneTracks.MovieSceneCinematicShotSection.GetShotDisplayName
+// 0x0010 (0x0010 - 0x0000)
+struct MovieSceneCinematicShotSection_GetShotDisplayName final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MovieSceneCinematicShotSection_GetShotDisplayName) == 0x000008, "Wrong alignment on MovieSceneCinematicShotSection_GetShotDisplayName");
+static_assert(sizeof(MovieSceneCinematicShotSection_GetShotDisplayName) == 0x000010, "Wrong size on MovieSceneCinematicShotSection_GetShotDisplayName");
+static_assert(offsetof(MovieSceneCinematicShotSection_GetShotDisplayName, ReturnValue) == 0x000000, "Member 'MovieSceneCinematicShotSection_GetShotDisplayName::ReturnValue' has a wrong offset!");
+
 // Function MovieSceneTracks.MovieSceneParameterSection.AddBoolParameterKey
 // 0x0010 (0x0010 - 0x0000)
 struct MovieSceneParameterSection_AddBoolParameterKey final
@@ -303,28 +325,6 @@ public:
 static_assert(alignof(MovieSceneCameraCutSection_GetCameraBindingID) == 0x000004, "Wrong alignment on MovieSceneCameraCutSection_GetCameraBindingID");
 static_assert(sizeof(MovieSceneCameraCutSection_GetCameraBindingID) == 0x000018, "Wrong size on MovieSceneCameraCutSection_GetCameraBindingID");
 static_assert(offsetof(MovieSceneCameraCutSection_GetCameraBindingID, ReturnValue) == 0x000000, "Member 'MovieSceneCameraCutSection_GetCameraBindingID::ReturnValue' has a wrong offset!");
-
-// Function MovieSceneTracks.MovieSceneCinematicShotSection.SetShotDisplayName
-// 0x0010 (0x0010 - 0x0000)
-struct MovieSceneCinematicShotSection_SetShotDisplayName final
-{
-public:
-	class FString                                 InShotDisplayName;                                 // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MovieSceneCinematicShotSection_SetShotDisplayName) == 0x000008, "Wrong alignment on MovieSceneCinematicShotSection_SetShotDisplayName");
-static_assert(sizeof(MovieSceneCinematicShotSection_SetShotDisplayName) == 0x000010, "Wrong size on MovieSceneCinematicShotSection_SetShotDisplayName");
-static_assert(offsetof(MovieSceneCinematicShotSection_SetShotDisplayName, InShotDisplayName) == 0x000000, "Member 'MovieSceneCinematicShotSection_SetShotDisplayName::InShotDisplayName' has a wrong offset!");
-
-// Function MovieSceneTracks.MovieSceneCinematicShotSection.GetShotDisplayName
-// 0x0010 (0x0010 - 0x0000)
-struct MovieSceneCinematicShotSection_GetShotDisplayName final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MovieSceneCinematicShotSection_GetShotDisplayName) == 0x000008, "Wrong alignment on MovieSceneCinematicShotSection_GetShotDisplayName");
-static_assert(sizeof(MovieSceneCinematicShotSection_GetShotDisplayName) == 0x000010, "Wrong size on MovieSceneCinematicShotSection_GetShotDisplayName");
-static_assert(offsetof(MovieSceneCinematicShotSection_GetShotDisplayName, ReturnValue) == 0x000000, "Member 'MovieSceneCinematicShotSection_GetShotDisplayName::ReturnValue' has a wrong offset!");
 
 // Function MovieSceneTracks.MovieSceneLevelVisibilitySection.SetLevelNames
 // 0x0010 (0x0010 - 0x0000)

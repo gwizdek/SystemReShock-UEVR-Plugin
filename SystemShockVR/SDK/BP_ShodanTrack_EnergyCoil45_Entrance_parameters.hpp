@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "AttributeSystem_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 
 
 namespace SDK::Params

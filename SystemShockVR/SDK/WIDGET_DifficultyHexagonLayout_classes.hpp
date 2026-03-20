@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_GameDifficultyConfigCategory_structs.hpp"
 #include "UMG_classes.hpp"
 

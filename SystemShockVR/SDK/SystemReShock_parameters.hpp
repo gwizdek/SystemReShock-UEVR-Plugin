@@ -11,13 +11,169 @@
 #include "Basic.hpp"
 
 #include "SystemReShock_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "InputCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "LevelVoxelization_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function SystemReShock.ActionManagerBase.CanAttackPriorityValueRaw
+// 0x0008 (0x0008 - 0x0000)
+struct ActionManagerBase_CanAttackPriorityValueRaw final
+{
+public:
+	int32                                         rawPriorityValue;                                  // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(ActionManagerBase_CanAttackPriorityValueRaw) == 0x000004, "Wrong alignment on ActionManagerBase_CanAttackPriorityValueRaw");
+static_assert(sizeof(ActionManagerBase_CanAttackPriorityValueRaw) == 0x000008, "Wrong size on ActionManagerBase_CanAttackPriorityValueRaw");
+static_assert(offsetof(ActionManagerBase_CanAttackPriorityValueRaw, rawPriorityValue) == 0x000000, "Member 'ActionManagerBase_CanAttackPriorityValueRaw::rawPriorityValue' has a wrong offset!");
+static_assert(offsetof(ActionManagerBase_CanAttackPriorityValueRaw, ReturnValue) == 0x000004, "Member 'ActionManagerBase_CanAttackPriorityValueRaw::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.ActorAnimMessageInterface.ReceiveAnimationMessage
+// 0x0020 (0x0020 - 0x0000)
+struct ActorAnimMessageInterface_ReceiveAnimationMessage final
+{
+public:
+	EActorMessagePriority                         Priority;                                          // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 Message;                                           // 0x0008(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0018(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(ActorAnimMessageInterface_ReceiveAnimationMessage) == 0x000008, "Wrong alignment on ActorAnimMessageInterface_ReceiveAnimationMessage");
+static_assert(sizeof(ActorAnimMessageInterface_ReceiveAnimationMessage) == 0x000020, "Wrong size on ActorAnimMessageInterface_ReceiveAnimationMessage");
+static_assert(offsetof(ActorAnimMessageInterface_ReceiveAnimationMessage, Priority) == 0x000000, "Member 'ActorAnimMessageInterface_ReceiveAnimationMessage::Priority' has a wrong offset!");
+static_assert(offsetof(ActorAnimMessageInterface_ReceiveAnimationMessage, Message) == 0x000008, "Member 'ActorAnimMessageInterface_ReceiveAnimationMessage::Message' has a wrong offset!");
+static_assert(offsetof(ActorAnimMessageInterface_ReceiveAnimationMessage, ReturnValue) == 0x000018, "Member 'ActorAnimMessageInterface_ReceiveAnimationMessage::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.ButtonLegend.LoadAsset
+// 0x0038 (0x0038 - 0x0000)
+struct ButtonLegend_LoadAsset final
+{
+public:
+	TSoftObjectPtr<class UObject>                 Asset;                                             // 0x0000(0x0028)(Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TDelegate<void(class UObject* LoadedAsset)>   Callback;                                          // 0x0028(0x0010)(Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ButtonLegend_LoadAsset) == 0x000008, "Wrong alignment on ButtonLegend_LoadAsset");
+static_assert(sizeof(ButtonLegend_LoadAsset) == 0x000038, "Wrong size on ButtonLegend_LoadAsset");
+static_assert(offsetof(ButtonLegend_LoadAsset, Asset) == 0x000000, "Member 'ButtonLegend_LoadAsset::Asset' has a wrong offset!");
+static_assert(offsetof(ButtonLegend_LoadAsset, Callback) == 0x000028, "Member 'ButtonLegend_LoadAsset::Callback' has a wrong offset!");
+
+// Function SystemReShock.CameraPanelWidget.SetHorizontalSurfaceCurvature
+// 0x0004 (0x0004 - 0x0000)
+struct CameraPanelWidget_SetHorizontalSurfaceCurvature final
+{
+public:
+	float                                         Ratio;                                             // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CameraPanelWidget_SetHorizontalSurfaceCurvature) == 0x000004, "Wrong alignment on CameraPanelWidget_SetHorizontalSurfaceCurvature");
+static_assert(sizeof(CameraPanelWidget_SetHorizontalSurfaceCurvature) == 0x000004, "Wrong size on CameraPanelWidget_SetHorizontalSurfaceCurvature");
+static_assert(offsetof(CameraPanelWidget_SetHorizontalSurfaceCurvature, Ratio) == 0x000000, "Member 'CameraPanelWidget_SetHorizontalSurfaceCurvature::Ratio' has a wrong offset!");
+
+// Function SystemReShock.CameraPanelWidget.SetVerticalSurfaceCurvature
+// 0x0004 (0x0004 - 0x0000)
+struct CameraPanelWidget_SetVerticalSurfaceCurvature final
+{
+public:
+	float                                         Ratio;                                             // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CameraPanelWidget_SetVerticalSurfaceCurvature) == 0x000004, "Wrong alignment on CameraPanelWidget_SetVerticalSurfaceCurvature");
+static_assert(sizeof(CameraPanelWidget_SetVerticalSurfaceCurvature) == 0x000004, "Wrong size on CameraPanelWidget_SetVerticalSurfaceCurvature");
+static_assert(offsetof(CameraPanelWidget_SetVerticalSurfaceCurvature, Ratio) == 0x000000, "Member 'CameraPanelWidget_SetVerticalSurfaceCurvature::Ratio' has a wrong offset!");
+
+// Function SystemReShock.CameraPanelWidget.SetVirtualMouseScreenLocation
+// 0x0008 (0x0008 - 0x0000)
+struct CameraPanelWidget_SetVirtualMouseScreenLocation final
+{
+public:
+	struct FVector2D                              ScreenLocation;                                    // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CameraPanelWidget_SetVirtualMouseScreenLocation) == 0x000004, "Wrong alignment on CameraPanelWidget_SetVirtualMouseScreenLocation");
+static_assert(sizeof(CameraPanelWidget_SetVirtualMouseScreenLocation) == 0x000008, "Wrong size on CameraPanelWidget_SetVirtualMouseScreenLocation");
+static_assert(offsetof(CameraPanelWidget_SetVirtualMouseScreenLocation, ScreenLocation) == 0x000000, "Member 'CameraPanelWidget_SetVirtualMouseScreenLocation::ScreenLocation' has a wrong offset!");
+
+// Function SystemReShock.CameraPanelWidget.VirtualMouseButtonDown
+// 0x0018 (0x0018 - 0x0000)
+struct CameraPanelWidget_VirtualMouseButtonDown final
+{
+public:
+	struct FKey                                   MouseButton;                                       // 0x0000(0x0018)(Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CameraPanelWidget_VirtualMouseButtonDown) == 0x000008, "Wrong alignment on CameraPanelWidget_VirtualMouseButtonDown");
+static_assert(sizeof(CameraPanelWidget_VirtualMouseButtonDown) == 0x000018, "Wrong size on CameraPanelWidget_VirtualMouseButtonDown");
+static_assert(offsetof(CameraPanelWidget_VirtualMouseButtonDown, MouseButton) == 0x000000, "Member 'CameraPanelWidget_VirtualMouseButtonDown::MouseButton' has a wrong offset!");
+
+// Function SystemReShock.CameraPanelWidget.VirtualMouseButtonUp
+// 0x0018 (0x0018 - 0x0000)
+struct CameraPanelWidget_VirtualMouseButtonUp final
+{
+public:
+	struct FKey                                   MouseButton;                                       // 0x0000(0x0018)(Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CameraPanelWidget_VirtualMouseButtonUp) == 0x000008, "Wrong alignment on CameraPanelWidget_VirtualMouseButtonUp");
+static_assert(sizeof(CameraPanelWidget_VirtualMouseButtonUp) == 0x000018, "Wrong size on CameraPanelWidget_VirtualMouseButtonUp");
+static_assert(offsetof(CameraPanelWidget_VirtualMouseButtonUp, MouseButton) == 0x000000, "Member 'CameraPanelWidget_VirtualMouseButtonUp::MouseButton' has a wrong offset!");
+
+// Function SystemReShock.CameraPanelWidget.VirtualMouseDoubleClick
+// 0x0018 (0x0018 - 0x0000)
+struct CameraPanelWidget_VirtualMouseDoubleClick final
+{
+public:
+	struct FKey                                   MouseButton;                                       // 0x0000(0x0018)(Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CameraPanelWidget_VirtualMouseDoubleClick) == 0x000008, "Wrong alignment on CameraPanelWidget_VirtualMouseDoubleClick");
+static_assert(sizeof(CameraPanelWidget_VirtualMouseDoubleClick) == 0x000018, "Wrong size on CameraPanelWidget_VirtualMouseDoubleClick");
+static_assert(offsetof(CameraPanelWidget_VirtualMouseDoubleClick, MouseButton) == 0x000000, "Member 'CameraPanelWidget_VirtualMouseDoubleClick::MouseButton' has a wrong offset!");
+
+// Function SystemReShock.CameraPanelWidget.GetVirtualMouseScreenLocation
+// 0x0008 (0x0008 - 0x0000)
+struct CameraPanelWidget_GetVirtualMouseScreenLocation final
+{
+public:
+	struct FVector2D                              ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CameraPanelWidget_GetVirtualMouseScreenLocation) == 0x000004, "Wrong alignment on CameraPanelWidget_GetVirtualMouseScreenLocation");
+static_assert(sizeof(CameraPanelWidget_GetVirtualMouseScreenLocation) == 0x000008, "Wrong size on CameraPanelWidget_GetVirtualMouseScreenLocation");
+static_assert(offsetof(CameraPanelWidget_GetVirtualMouseScreenLocation, ReturnValue) == 0x000000, "Member 'CameraPanelWidget_GetVirtualMouseScreenLocation::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.CameraPanelWidget.GetVirtualMouseViewportLocation
+// 0x0008 (0x0008 - 0x0000)
+struct CameraPanelWidget_GetVirtualMouseViewportLocation final
+{
+public:
+	struct FVector2D                              ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CameraPanelWidget_GetVirtualMouseViewportLocation) == 0x000004, "Wrong alignment on CameraPanelWidget_GetVirtualMouseViewportLocation");
+static_assert(sizeof(CameraPanelWidget_GetVirtualMouseViewportLocation) == 0x000008, "Wrong size on CameraPanelWidget_GetVirtualMouseViewportLocation");
+static_assert(offsetof(CameraPanelWidget_GetVirtualMouseViewportLocation, ReturnValue) == 0x000000, "Member 'CameraPanelWidget_GetVirtualMouseViewportLocation::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.CameraPanelWidget.ProjectScreenPoint
+// 0x0010 (0x0010 - 0x0000)
+struct CameraPanelWidget_ProjectScreenPoint final
+{
+public:
+	struct FVector2D                              ScreenPoint;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector2D                              ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CameraPanelWidget_ProjectScreenPoint) == 0x000004, "Wrong alignment on CameraPanelWidget_ProjectScreenPoint");
+static_assert(sizeof(CameraPanelWidget_ProjectScreenPoint) == 0x000010, "Wrong size on CameraPanelWidget_ProjectScreenPoint");
+static_assert(offsetof(CameraPanelWidget_ProjectScreenPoint, ScreenPoint) == 0x000000, "Member 'CameraPanelWidget_ProjectScreenPoint::ScreenPoint' has a wrong offset!");
+static_assert(offsetof(CameraPanelWidget_ProjectScreenPoint, ReturnValue) == 0x000008, "Member 'CameraPanelWidget_ProjectScreenPoint::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.CompassMeshWidget.SetCurrentYawAngle
+// 0x0004 (0x0004 - 0x0000)
+struct CompassMeshWidget_SetCurrentYawAngle final
+{
+public:
+	float                                         NewAngle;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(CompassMeshWidget_SetCurrentYawAngle) == 0x000004, "Wrong alignment on CompassMeshWidget_SetCurrentYawAngle");
+static_assert(sizeof(CompassMeshWidget_SetCurrentYawAngle) == 0x000004, "Wrong size on CompassMeshWidget_SetCurrentYawAngle");
+static_assert(offsetof(CompassMeshWidget_SetCurrentYawAngle, NewAngle) == 0x000000, "Member 'CompassMeshWidget_SetCurrentYawAngle::NewAngle' has a wrong offset!");
 
 // Function SystemReShock.PerspectiveMeshWidget.ConvertToDynamicMaterialInstance
 // 0x0010 (0x0010 - 0x0000)
@@ -594,135 +750,6 @@ static_assert(sizeof(LifeSimulation_IsCellVisibleToObserver) == 0x000010, "Wrong
 static_assert(offsetof(LifeSimulation_IsCellVisibleToObserver, CellLocation) == 0x000000, "Member 'LifeSimulation_IsCellVisibleToObserver::CellLocation' has a wrong offset!");
 static_assert(offsetof(LifeSimulation_IsCellVisibleToObserver, ReturnValue) == 0x00000C, "Member 'LifeSimulation_IsCellVisibleToObserver::ReturnValue' has a wrong offset!");
 
-// Function SystemReShock.ActorAnimMessageInterface.ReceiveAnimationMessage
-// 0x0020 (0x0020 - 0x0000)
-struct ActorAnimMessageInterface_ReceiveAnimationMessage final
-{
-public:
-	EActorMessagePriority                         Priority;                                          // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 Message;                                           // 0x0008(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0018(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(ActorAnimMessageInterface_ReceiveAnimationMessage) == 0x000008, "Wrong alignment on ActorAnimMessageInterface_ReceiveAnimationMessage");
-static_assert(sizeof(ActorAnimMessageInterface_ReceiveAnimationMessage) == 0x000020, "Wrong size on ActorAnimMessageInterface_ReceiveAnimationMessage");
-static_assert(offsetof(ActorAnimMessageInterface_ReceiveAnimationMessage, Priority) == 0x000000, "Member 'ActorAnimMessageInterface_ReceiveAnimationMessage::Priority' has a wrong offset!");
-static_assert(offsetof(ActorAnimMessageInterface_ReceiveAnimationMessage, Message) == 0x000008, "Member 'ActorAnimMessageInterface_ReceiveAnimationMessage::Message' has a wrong offset!");
-static_assert(offsetof(ActorAnimMessageInterface_ReceiveAnimationMessage, ReturnValue) == 0x000018, "Member 'ActorAnimMessageInterface_ReceiveAnimationMessage::ReturnValue' has a wrong offset!");
-
-// Function SystemReShock.CameraPanelWidget.SetHorizontalSurfaceCurvature
-// 0x0004 (0x0004 - 0x0000)
-struct CameraPanelWidget_SetHorizontalSurfaceCurvature final
-{
-public:
-	float                                         Ratio;                                             // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CameraPanelWidget_SetHorizontalSurfaceCurvature) == 0x000004, "Wrong alignment on CameraPanelWidget_SetHorizontalSurfaceCurvature");
-static_assert(sizeof(CameraPanelWidget_SetHorizontalSurfaceCurvature) == 0x000004, "Wrong size on CameraPanelWidget_SetHorizontalSurfaceCurvature");
-static_assert(offsetof(CameraPanelWidget_SetHorizontalSurfaceCurvature, Ratio) == 0x000000, "Member 'CameraPanelWidget_SetHorizontalSurfaceCurvature::Ratio' has a wrong offset!");
-
-// Function SystemReShock.CameraPanelWidget.SetVerticalSurfaceCurvature
-// 0x0004 (0x0004 - 0x0000)
-struct CameraPanelWidget_SetVerticalSurfaceCurvature final
-{
-public:
-	float                                         Ratio;                                             // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CameraPanelWidget_SetVerticalSurfaceCurvature) == 0x000004, "Wrong alignment on CameraPanelWidget_SetVerticalSurfaceCurvature");
-static_assert(sizeof(CameraPanelWidget_SetVerticalSurfaceCurvature) == 0x000004, "Wrong size on CameraPanelWidget_SetVerticalSurfaceCurvature");
-static_assert(offsetof(CameraPanelWidget_SetVerticalSurfaceCurvature, Ratio) == 0x000000, "Member 'CameraPanelWidget_SetVerticalSurfaceCurvature::Ratio' has a wrong offset!");
-
-// Function SystemReShock.CameraPanelWidget.SetVirtualMouseScreenLocation
-// 0x0008 (0x0008 - 0x0000)
-struct CameraPanelWidget_SetVirtualMouseScreenLocation final
-{
-public:
-	struct FVector2D                              ScreenLocation;                                    // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CameraPanelWidget_SetVirtualMouseScreenLocation) == 0x000004, "Wrong alignment on CameraPanelWidget_SetVirtualMouseScreenLocation");
-static_assert(sizeof(CameraPanelWidget_SetVirtualMouseScreenLocation) == 0x000008, "Wrong size on CameraPanelWidget_SetVirtualMouseScreenLocation");
-static_assert(offsetof(CameraPanelWidget_SetVirtualMouseScreenLocation, ScreenLocation) == 0x000000, "Member 'CameraPanelWidget_SetVirtualMouseScreenLocation::ScreenLocation' has a wrong offset!");
-
-// Function SystemReShock.CameraPanelWidget.VirtualMouseButtonDown
-// 0x0018 (0x0018 - 0x0000)
-struct CameraPanelWidget_VirtualMouseButtonDown final
-{
-public:
-	struct FKey                                   MouseButton;                                       // 0x0000(0x0018)(Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CameraPanelWidget_VirtualMouseButtonDown) == 0x000008, "Wrong alignment on CameraPanelWidget_VirtualMouseButtonDown");
-static_assert(sizeof(CameraPanelWidget_VirtualMouseButtonDown) == 0x000018, "Wrong size on CameraPanelWidget_VirtualMouseButtonDown");
-static_assert(offsetof(CameraPanelWidget_VirtualMouseButtonDown, MouseButton) == 0x000000, "Member 'CameraPanelWidget_VirtualMouseButtonDown::MouseButton' has a wrong offset!");
-
-// Function SystemReShock.CameraPanelWidget.VirtualMouseButtonUp
-// 0x0018 (0x0018 - 0x0000)
-struct CameraPanelWidget_VirtualMouseButtonUp final
-{
-public:
-	struct FKey                                   MouseButton;                                       // 0x0000(0x0018)(Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CameraPanelWidget_VirtualMouseButtonUp) == 0x000008, "Wrong alignment on CameraPanelWidget_VirtualMouseButtonUp");
-static_assert(sizeof(CameraPanelWidget_VirtualMouseButtonUp) == 0x000018, "Wrong size on CameraPanelWidget_VirtualMouseButtonUp");
-static_assert(offsetof(CameraPanelWidget_VirtualMouseButtonUp, MouseButton) == 0x000000, "Member 'CameraPanelWidget_VirtualMouseButtonUp::MouseButton' has a wrong offset!");
-
-// Function SystemReShock.CameraPanelWidget.VirtualMouseDoubleClick
-// 0x0018 (0x0018 - 0x0000)
-struct CameraPanelWidget_VirtualMouseDoubleClick final
-{
-public:
-	struct FKey                                   MouseButton;                                       // 0x0000(0x0018)(Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CameraPanelWidget_VirtualMouseDoubleClick) == 0x000008, "Wrong alignment on CameraPanelWidget_VirtualMouseDoubleClick");
-static_assert(sizeof(CameraPanelWidget_VirtualMouseDoubleClick) == 0x000018, "Wrong size on CameraPanelWidget_VirtualMouseDoubleClick");
-static_assert(offsetof(CameraPanelWidget_VirtualMouseDoubleClick, MouseButton) == 0x000000, "Member 'CameraPanelWidget_VirtualMouseDoubleClick::MouseButton' has a wrong offset!");
-
-// Function SystemReShock.CameraPanelWidget.GetVirtualMouseScreenLocation
-// 0x0008 (0x0008 - 0x0000)
-struct CameraPanelWidget_GetVirtualMouseScreenLocation final
-{
-public:
-	struct FVector2D                              ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CameraPanelWidget_GetVirtualMouseScreenLocation) == 0x000004, "Wrong alignment on CameraPanelWidget_GetVirtualMouseScreenLocation");
-static_assert(sizeof(CameraPanelWidget_GetVirtualMouseScreenLocation) == 0x000008, "Wrong size on CameraPanelWidget_GetVirtualMouseScreenLocation");
-static_assert(offsetof(CameraPanelWidget_GetVirtualMouseScreenLocation, ReturnValue) == 0x000000, "Member 'CameraPanelWidget_GetVirtualMouseScreenLocation::ReturnValue' has a wrong offset!");
-
-// Function SystemReShock.CameraPanelWidget.GetVirtualMouseViewportLocation
-// 0x0008 (0x0008 - 0x0000)
-struct CameraPanelWidget_GetVirtualMouseViewportLocation final
-{
-public:
-	struct FVector2D                              ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CameraPanelWidget_GetVirtualMouseViewportLocation) == 0x000004, "Wrong alignment on CameraPanelWidget_GetVirtualMouseViewportLocation");
-static_assert(sizeof(CameraPanelWidget_GetVirtualMouseViewportLocation) == 0x000008, "Wrong size on CameraPanelWidget_GetVirtualMouseViewportLocation");
-static_assert(offsetof(CameraPanelWidget_GetVirtualMouseViewportLocation, ReturnValue) == 0x000000, "Member 'CameraPanelWidget_GetVirtualMouseViewportLocation::ReturnValue' has a wrong offset!");
-
-// Function SystemReShock.CameraPanelWidget.ProjectScreenPoint
-// 0x0010 (0x0010 - 0x0000)
-struct CameraPanelWidget_ProjectScreenPoint final
-{
-public:
-	struct FVector2D                              ScreenPoint;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector2D                              ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CameraPanelWidget_ProjectScreenPoint) == 0x000004, "Wrong alignment on CameraPanelWidget_ProjectScreenPoint");
-static_assert(sizeof(CameraPanelWidget_ProjectScreenPoint) == 0x000010, "Wrong size on CameraPanelWidget_ProjectScreenPoint");
-static_assert(offsetof(CameraPanelWidget_ProjectScreenPoint, ScreenPoint) == 0x000000, "Member 'CameraPanelWidget_ProjectScreenPoint::ScreenPoint' has a wrong offset!");
-static_assert(offsetof(CameraPanelWidget_ProjectScreenPoint, ReturnValue) == 0x000008, "Member 'CameraPanelWidget_ProjectScreenPoint::ReturnValue' has a wrong offset!");
-
-// Function SystemReShock.CompassMeshWidget.SetCurrentYawAngle
-// 0x0004 (0x0004 - 0x0000)
-struct CompassMeshWidget_SetCurrentYawAngle final
-{
-public:
-	float                                         NewAngle;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(CompassMeshWidget_SetCurrentYawAngle) == 0x000004, "Wrong alignment on CompassMeshWidget_SetCurrentYawAngle");
-static_assert(sizeof(CompassMeshWidget_SetCurrentYawAngle) == 0x000004, "Wrong size on CompassMeshWidget_SetCurrentYawAngle");
-static_assert(offsetof(CompassMeshWidget_SetCurrentYawAngle, NewAngle) == 0x000000, "Member 'CompassMeshWidget_SetCurrentYawAngle::NewAngle' has a wrong offset!");
-
 // Function SystemReShock.PerspectiveMeshSlot.SetPosition
 // 0x0008 (0x0008 - 0x0000)
 struct PerspectiveMeshSlot_SetPosition final
@@ -1076,6 +1103,125 @@ static_assert(alignof(ShockChess_IsGameOver) == 0x000001, "Wrong alignment on Sh
 static_assert(sizeof(ShockChess_IsGameOver) == 0x000001, "Wrong size on ShockChess_IsGameOver");
 static_assert(offsetof(ShockChess_IsGameOver, ReturnValue) == 0x000000, "Member 'ShockChess_IsGameOver::ReturnValue' has a wrong offset!");
 
+// Function SystemReShock.ShockJCMSComponent.AddInputClearDelegate
+// 0x0010 (0x0010 - 0x0000)
+struct ShockJCMSComponent_AddInputClearDelegate final
+{
+public:
+	TDelegate<void()>                             Delegate;                                          // 0x0000(0x0010)(Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ShockJCMSComponent_AddInputClearDelegate) == 0x000004, "Wrong alignment on ShockJCMSComponent_AddInputClearDelegate");
+static_assert(sizeof(ShockJCMSComponent_AddInputClearDelegate) == 0x000010, "Wrong size on ShockJCMSComponent_AddInputClearDelegate");
+static_assert(offsetof(ShockJCMSComponent_AddInputClearDelegate, Delegate) == 0x000000, "Member 'ShockJCMSComponent_AddInputClearDelegate::Delegate' has a wrong offset!");
+
+// Function SystemReShock.ShockJCMSComponent.RemoveInputClearDelegate
+// 0x0014 (0x0014 - 0x0000)
+struct ShockJCMSComponent_RemoveInputClearDelegate final
+{
+public:
+	TDelegate<void()>                             Delegate;                                          // 0x0000(0x0010)(Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(ShockJCMSComponent_RemoveInputClearDelegate) == 0x000004, "Wrong alignment on ShockJCMSComponent_RemoveInputClearDelegate");
+static_assert(sizeof(ShockJCMSComponent_RemoveInputClearDelegate) == 0x000014, "Wrong size on ShockJCMSComponent_RemoveInputClearDelegate");
+static_assert(offsetof(ShockJCMSComponent_RemoveInputClearDelegate, Delegate) == 0x000000, "Member 'ShockJCMSComponent_RemoveInputClearDelegate::Delegate' has a wrong offset!");
+static_assert(offsetof(ShockJCMSComponent_RemoveInputClearDelegate, ReturnValue) == 0x000010, "Member 'ShockJCMSComponent_RemoveInputClearDelegate::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.ShockJCMSComponent.SetJoyConMouseMode
+// 0x0001 (0x0001 - 0x0000)
+struct ShockJCMSComponent_SetJoyConMouseMode final
+{
+public:
+	EJoyConMouseMode                              NewMode;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ShockJCMSComponent_SetJoyConMouseMode) == 0x000001, "Wrong alignment on ShockJCMSComponent_SetJoyConMouseMode");
+static_assert(sizeof(ShockJCMSComponent_SetJoyConMouseMode) == 0x000001, "Wrong size on ShockJCMSComponent_SetJoyConMouseMode");
+static_assert(offsetof(ShockJCMSComponent_SetJoyConMouseMode, NewMode) == 0x000000, "Member 'ShockJCMSComponent_SetJoyConMouseMode::NewMode' has a wrong offset!");
+
+// Function SystemReShock.ShockJCMSComponent.ShouldPreferJoyConMouseSensor
+// 0x0001 (0x0001 - 0x0000)
+struct ShockJCMSComponent_ShouldPreferJoyConMouseSensor final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ShockJCMSComponent_ShouldPreferJoyConMouseSensor) == 0x000001, "Wrong alignment on ShockJCMSComponent_ShouldPreferJoyConMouseSensor");
+static_assert(sizeof(ShockJCMSComponent_ShouldPreferJoyConMouseSensor) == 0x000001, "Wrong size on ShockJCMSComponent_ShouldPreferJoyConMouseSensor");
+static_assert(offsetof(ShockJCMSComponent_ShouldPreferJoyConMouseSensor, ReturnValue) == 0x000000, "Member 'ShockJCMSComponent_ShouldPreferJoyConMouseSensor::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.ShockPlatformSettingsComponent.PlatformShouldCastDynamicShadowsForLight
+// 0x0010 (0x0010 - 0x0000)
+struct ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight final
+{
+public:
+	class ULightComponent*                        inLightComp;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight) == 0x000008, "Wrong alignment on ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight");
+static_assert(sizeof(ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight) == 0x000010, "Wrong size on ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight");
+static_assert(offsetof(ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight, inLightComp) == 0x000000, "Member 'ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight::inLightComp' has a wrong offset!");
+static_assert(offsetof(ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight, ReturnValue) == 0x000008, "Member 'ShockPlatformSettingsComponent_PlatformShouldCastDynamicShadowsForLight::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.ShockSpotlightComponent.AllowSwitchLightOptimizations
+// 0x0001 (0x0001 - 0x0000)
+struct ShockSpotlightComponent_AllowSwitchLightOptimizations final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ShockSpotlightComponent_AllowSwitchLightOptimizations) == 0x000001, "Wrong alignment on ShockSpotlightComponent_AllowSwitchLightOptimizations");
+static_assert(sizeof(ShockSpotlightComponent_AllowSwitchLightOptimizations) == 0x000001, "Wrong size on ShockSpotlightComponent_AllowSwitchLightOptimizations");
+static_assert(offsetof(ShockSpotlightComponent_AllowSwitchLightOptimizations, ReturnValue) == 0x000000, "Member 'ShockSpotlightComponent_AllowSwitchLightOptimizations::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.ShockSpotlightComponent.IsSagePlatform
+// 0x0001 (0x0001 - 0x0000)
+struct ShockSpotlightComponent_IsSagePlatform final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ShockSpotlightComponent_IsSagePlatform) == 0x000001, "Wrong alignment on ShockSpotlightComponent_IsSagePlatform");
+static_assert(sizeof(ShockSpotlightComponent_IsSagePlatform) == 0x000001, "Wrong size on ShockSpotlightComponent_IsSagePlatform");
+static_assert(offsetof(ShockSpotlightComponent_IsSagePlatform, ReturnValue) == 0x000000, "Member 'ShockSpotlightComponent_IsSagePlatform::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.ShockSpotlightComponent.IsSwitchPlatform
+// 0x0001 (0x0001 - 0x0000)
+struct ShockSpotlightComponent_IsSwitchPlatform final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ShockSpotlightComponent_IsSwitchPlatform) == 0x000001, "Wrong alignment on ShockSpotlightComponent_IsSwitchPlatform");
+static_assert(sizeof(ShockSpotlightComponent_IsSwitchPlatform) == 0x000001, "Wrong size on ShockSpotlightComponent_IsSwitchPlatform");
+static_assert(offsetof(ShockSpotlightComponent_IsSwitchPlatform, ReturnValue) == 0x000000, "Member 'ShockSpotlightComponent_IsSwitchPlatform::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SkillManager_BaseComp.ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext
+// 0x000C (0x000C - 0x0000)
+struct SkillManager_BaseComp_ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillManager_BaseComp_ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext) == 0x000004, "Wrong alignment on SkillManager_BaseComp_ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext");
+static_assert(sizeof(SkillManager_BaseComp_ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext) == 0x00000C, "Wrong size on SkillManager_BaseComp_ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext");
+static_assert(offsetof(SkillManager_BaseComp_ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext, ReturnValue) == 0x000000, "Member 'SkillManager_BaseComp_ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SkillManager_BaseComp.ReceiveIsDistanceWithinPreferredRange
+// 0x0008 (0x0008 - 0x0000)
+struct SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange final
+{
+public:
+	float                                         worldDistanceCm;                                   // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange) == 0x000004, "Wrong alignment on SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange");
+static_assert(sizeof(SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange) == 0x000008, "Wrong size on SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange");
+static_assert(offsetof(SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange, worldDistanceCm) == 0x000000, "Member 'SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange::worldDistanceCm' has a wrong offset!");
+static_assert(offsetof(SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange, ReturnValue) == 0x000004, "Member 'SkillManager_BaseComp_ReceiveIsDistanceWithinPreferredRange::ReturnValue' has a wrong offset!");
+
 // Function SystemReShock.SplineMeshWidget.ConvertEndcapToDynamicMaterialInstance
 // 0x0008 (0x0008 - 0x0000)
 struct SplineMeshWidget_ConvertEndcapToDynamicMaterialInstance final
@@ -1245,6 +1391,116 @@ static_assert(offsetof(SystemShockFunctionLibrary_GetBestTicTacToeMove, bWrapLev
 static_assert(offsetof(SystemShockFunctionLibrary_GetBestTicTacToeMove, ScoreTable) == 0x000018, "Member 'SystemShockFunctionLibrary_GetBestTicTacToeMove::ScoreTable' has a wrong offset!");
 static_assert(offsetof(SystemShockFunctionLibrary_GetBestTicTacToeMove, ReturnValue) == 0x000028, "Member 'SystemShockFunctionLibrary_GetBestTicTacToeMove::ReturnValue' has a wrong offset!");
 
+// Function SystemReShock.SystemShockFunctionLibrary.GetIdendityTransform
+// 0x0030 (0x0030 - 0x0000)
+struct SystemShockFunctionLibrary_GetIdendityTransform final
+{
+public:
+	struct FTransform                             ReturnValue;                                       // 0x0000(0x0030)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetIdendityTransform) == 0x000010, "Wrong alignment on SystemShockFunctionLibrary_GetIdendityTransform");
+static_assert(sizeof(SystemShockFunctionLibrary_GetIdendityTransform) == 0x000030, "Wrong size on SystemShockFunctionLibrary_GetIdendityTransform");
+static_assert(offsetof(SystemShockFunctionLibrary_GetIdendityTransform, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetIdendityTransform::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInfinity
+// 0x0004 (0x0004 - 0x0000)
+struct SystemShockFunctionLibrary_GetInfinity final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetInfinity) == 0x000004, "Wrong alignment on SystemShockFunctionLibrary_GetInfinity");
+static_assert(sizeof(SystemShockFunctionLibrary_GetInfinity) == 0x000004, "Wrong size on SystemShockFunctionLibrary_GetInfinity");
+static_assert(offsetof(SystemShockFunctionLibrary_GetInfinity, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetInfinity::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidDirectionVector
+// 0x000C (0x000C - 0x0000)
+struct SystemShockFunctionLibrary_GetInvalidDirectionVector final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetInvalidDirectionVector) == 0x000004, "Wrong alignment on SystemShockFunctionLibrary_GetInvalidDirectionVector");
+static_assert(sizeof(SystemShockFunctionLibrary_GetInvalidDirectionVector) == 0x00000C, "Wrong size on SystemShockFunctionLibrary_GetInvalidDirectionVector");
+static_assert(offsetof(SystemShockFunctionLibrary_GetInvalidDirectionVector, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetInvalidDirectionVector::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidLocationVector
+// 0x000C (0x000C - 0x0000)
+struct SystemShockFunctionLibrary_GetInvalidLocationVector final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetInvalidLocationVector) == 0x000004, "Wrong alignment on SystemShockFunctionLibrary_GetInvalidLocationVector");
+static_assert(sizeof(SystemShockFunctionLibrary_GetInvalidLocationVector) == 0x00000C, "Wrong size on SystemShockFunctionLibrary_GetInvalidLocationVector");
+static_assert(offsetof(SystemShockFunctionLibrary_GetInvalidLocationVector, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetInvalidLocationVector::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidObjectValue
+// 0x0008 (0x0008 - 0x0000)
+struct SystemShockFunctionLibrary_GetInvalidObjectValue final
+{
+public:
+	class UObject*                                ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetInvalidObjectValue) == 0x000008, "Wrong alignment on SystemShockFunctionLibrary_GetInvalidObjectValue");
+static_assert(sizeof(SystemShockFunctionLibrary_GetInvalidObjectValue) == 0x000008, "Wrong size on SystemShockFunctionLibrary_GetInvalidObjectValue");
+static_assert(offsetof(SystemShockFunctionLibrary_GetInvalidObjectValue, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetInvalidObjectValue::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidOrientation
+// 0x0010 (0x0010 - 0x0000)
+struct SystemShockFunctionLibrary_GetInvalidOrientation final
+{
+public:
+	struct FQuat                                  ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetInvalidOrientation) == 0x000010, "Wrong alignment on SystemShockFunctionLibrary_GetInvalidOrientation");
+static_assert(sizeof(SystemShockFunctionLibrary_GetInvalidOrientation) == 0x000010, "Wrong size on SystemShockFunctionLibrary_GetInvalidOrientation");
+static_assert(offsetof(SystemShockFunctionLibrary_GetInvalidOrientation, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetInvalidOrientation::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidRangeValue
+// 0x0004 (0x0004 - 0x0000)
+struct SystemShockFunctionLibrary_GetInvalidRangeValue final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetInvalidRangeValue) == 0x000004, "Wrong alignment on SystemShockFunctionLibrary_GetInvalidRangeValue");
+static_assert(sizeof(SystemShockFunctionLibrary_GetInvalidRangeValue) == 0x000004, "Wrong size on SystemShockFunctionLibrary_GetInvalidRangeValue");
+static_assert(offsetof(SystemShockFunctionLibrary_GetInvalidRangeValue, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetInvalidRangeValue::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetInvalidRotator
+// 0x000C (0x000C - 0x0000)
+struct SystemShockFunctionLibrary_GetInvalidRotator final
+{
+public:
+	struct FRotator                               ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetInvalidRotator) == 0x000004, "Wrong alignment on SystemShockFunctionLibrary_GetInvalidRotator");
+static_assert(sizeof(SystemShockFunctionLibrary_GetInvalidRotator) == 0x00000C, "Wrong size on SystemShockFunctionLibrary_GetInvalidRotator");
+static_assert(offsetof(SystemShockFunctionLibrary_GetInvalidRotator, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetInvalidRotator::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetPlatform
+// 0x0001 (0x0001 - 0x0000)
+struct SystemShockFunctionLibrary_GetPlatform final
+{
+public:
+	ESystemShockPlatform                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetPlatform) == 0x000001, "Wrong alignment on SystemShockFunctionLibrary_GetPlatform");
+static_assert(sizeof(SystemShockFunctionLibrary_GetPlatform) == 0x000001, "Wrong size on SystemShockFunctionLibrary_GetPlatform");
+static_assert(offsetof(SystemShockFunctionLibrary_GetPlatform, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetPlatform::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.GetPlatformFamily
+// 0x0001 (0x0001 - 0x0000)
+struct SystemShockFunctionLibrary_GetPlatformFamily final
+{
+public:
+	ESystemShockPlatformFamily                    ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_GetPlatformFamily) == 0x000001, "Wrong alignment on SystemShockFunctionLibrary_GetPlatformFamily");
+static_assert(sizeof(SystemShockFunctionLibrary_GetPlatformFamily) == 0x000001, "Wrong size on SystemShockFunctionLibrary_GetPlatformFamily");
+static_assert(offsetof(SystemShockFunctionLibrary_GetPlatformFamily, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_GetPlatformFamily::ReturnValue' has a wrong offset!");
+
 // Function SystemReShock.SystemShockFunctionLibrary.GetStaticMeshTrackProperties
 // 0x0038 (0x0038 - 0x0000)
 struct SystemShockFunctionLibrary_GetStaticMeshTrackProperties final
@@ -1293,6 +1549,153 @@ static_assert(offsetof(SystemShockFunctionLibrary_GetTicTacToeScoreForMove, NewS
 static_assert(offsetof(SystemShockFunctionLibrary_GetTicTacToeScoreForMove, bWrapLevel) == 0x000019, "Member 'SystemShockFunctionLibrary_GetTicTacToeScoreForMove::bWrapLevel' has a wrong offset!");
 static_assert(offsetof(SystemShockFunctionLibrary_GetTicTacToeScoreForMove, ScoreTable) == 0x000020, "Member 'SystemShockFunctionLibrary_GetTicTacToeScoreForMove::ScoreTable' has a wrong offset!");
 static_assert(offsetof(SystemShockFunctionLibrary_GetTicTacToeScoreForMove, ReturnValue) == 0x000030, "Member 'SystemShockFunctionLibrary_GetTicTacToeScoreForMove::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsSageNintendoPlatform
+// 0x0001 (0x0001 - 0x0000)
+struct SystemShockFunctionLibrary_IsSageNintendoPlatform final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_IsSageNintendoPlatform) == 0x000001, "Wrong alignment on SystemShockFunctionLibrary_IsSageNintendoPlatform");
+static_assert(sizeof(SystemShockFunctionLibrary_IsSageNintendoPlatform) == 0x000001, "Wrong size on SystemShockFunctionLibrary_IsSageNintendoPlatform");
+static_assert(offsetof(SystemShockFunctionLibrary_IsSageNintendoPlatform, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_IsSageNintendoPlatform::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsSwitchNintendoPlatform
+// 0x0001 (0x0001 - 0x0000)
+struct SystemShockFunctionLibrary_IsSwitchNintendoPlatform final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockFunctionLibrary_IsSwitchNintendoPlatform) == 0x000001, "Wrong alignment on SystemShockFunctionLibrary_IsSwitchNintendoPlatform");
+static_assert(sizeof(SystemShockFunctionLibrary_IsSwitchNintendoPlatform) == 0x000001, "Wrong size on SystemShockFunctionLibrary_IsSwitchNintendoPlatform");
+static_assert(offsetof(SystemShockFunctionLibrary_IsSwitchNintendoPlatform, ReturnValue) == 0x000000, "Member 'SystemShockFunctionLibrary_IsSwitchNintendoPlatform::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsValidDirection
+// 0x0010 (0x0010 - 0x0000)
+struct SystemShockFunctionLibrary_IsValidDirection final
+{
+public:
+	struct FVector                                inTestVector;                                      // 0x0000(0x000C)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x000C(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(SystemShockFunctionLibrary_IsValidDirection) == 0x000004, "Wrong alignment on SystemShockFunctionLibrary_IsValidDirection");
+static_assert(sizeof(SystemShockFunctionLibrary_IsValidDirection) == 0x000010, "Wrong size on SystemShockFunctionLibrary_IsValidDirection");
+static_assert(offsetof(SystemShockFunctionLibrary_IsValidDirection, inTestVector) == 0x000000, "Member 'SystemShockFunctionLibrary_IsValidDirection::inTestVector' has a wrong offset!");
+static_assert(offsetof(SystemShockFunctionLibrary_IsValidDirection, ReturnValue) == 0x00000C, "Member 'SystemShockFunctionLibrary_IsValidDirection::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsValidLocation
+// 0x0010 (0x0010 - 0x0000)
+struct SystemShockFunctionLibrary_IsValidLocation final
+{
+public:
+	struct FVector                                inTestLocation;                                    // 0x0000(0x000C)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x000C(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(SystemShockFunctionLibrary_IsValidLocation) == 0x000004, "Wrong alignment on SystemShockFunctionLibrary_IsValidLocation");
+static_assert(sizeof(SystemShockFunctionLibrary_IsValidLocation) == 0x000010, "Wrong size on SystemShockFunctionLibrary_IsValidLocation");
+static_assert(offsetof(SystemShockFunctionLibrary_IsValidLocation, inTestLocation) == 0x000000, "Member 'SystemShockFunctionLibrary_IsValidLocation::inTestLocation' has a wrong offset!");
+static_assert(offsetof(SystemShockFunctionLibrary_IsValidLocation, ReturnValue) == 0x00000C, "Member 'SystemShockFunctionLibrary_IsValidLocation::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsValidOrientation
+// 0x0020 (0x0020 - 0x0000)
+struct SystemShockFunctionLibrary_IsValidOrientation final
+{
+public:
+	struct FQuat                                  inTestOrientation;                                 // 0x0000(0x0010)(ConstParm, Parm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0xF];                                       // 0x0011(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(SystemShockFunctionLibrary_IsValidOrientation) == 0x000010, "Wrong alignment on SystemShockFunctionLibrary_IsValidOrientation");
+static_assert(sizeof(SystemShockFunctionLibrary_IsValidOrientation) == 0x000020, "Wrong size on SystemShockFunctionLibrary_IsValidOrientation");
+static_assert(offsetof(SystemShockFunctionLibrary_IsValidOrientation, inTestOrientation) == 0x000000, "Member 'SystemShockFunctionLibrary_IsValidOrientation::inTestOrientation' has a wrong offset!");
+static_assert(offsetof(SystemShockFunctionLibrary_IsValidOrientation, ReturnValue) == 0x000010, "Member 'SystemShockFunctionLibrary_IsValidOrientation::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsValidRotation
+// 0x0010 (0x0010 - 0x0000)
+struct SystemShockFunctionLibrary_IsValidRotation final
+{
+public:
+	struct FRotator                               inTestRotation;                                    // 0x0000(0x000C)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x000C(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(SystemShockFunctionLibrary_IsValidRotation) == 0x000004, "Wrong alignment on SystemShockFunctionLibrary_IsValidRotation");
+static_assert(sizeof(SystemShockFunctionLibrary_IsValidRotation) == 0x000010, "Wrong size on SystemShockFunctionLibrary_IsValidRotation");
+static_assert(offsetof(SystemShockFunctionLibrary_IsValidRotation, inTestRotation) == 0x000000, "Member 'SystemShockFunctionLibrary_IsValidRotation::inTestRotation' has a wrong offset!");
+static_assert(offsetof(SystemShockFunctionLibrary_IsValidRotation, ReturnValue) == 0x00000C, "Member 'SystemShockFunctionLibrary_IsValidRotation::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockFunctionLibrary.IsWorldValid
+// 0x0010 (0x0010 - 0x0000)
+struct SystemShockFunctionLibrary_IsWorldValid final
+{
+public:
+	const class UWorld*                           worldInstance;                                     // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(SystemShockFunctionLibrary_IsWorldValid) == 0x000008, "Wrong alignment on SystemShockFunctionLibrary_IsWorldValid");
+static_assert(sizeof(SystemShockFunctionLibrary_IsWorldValid) == 0x000010, "Wrong size on SystemShockFunctionLibrary_IsWorldValid");
+static_assert(offsetof(SystemShockFunctionLibrary_IsWorldValid, worldInstance) == 0x000000, "Member 'SystemShockFunctionLibrary_IsWorldValid::worldInstance' has a wrong offset!");
+static_assert(offsetof(SystemShockFunctionLibrary_IsWorldValid, ReturnValue) == 0x000008, "Member 'SystemShockFunctionLibrary_IsWorldValid::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockNintendoLibrary.ActiveControllerSupportsJoyConMouseLook
+// 0x0001 (0x0001 - 0x0000)
+struct SystemShockNintendoLibrary_ActiveControllerSupportsJoyConMouseLook final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockNintendoLibrary_ActiveControllerSupportsJoyConMouseLook) == 0x000001, "Wrong alignment on SystemShockNintendoLibrary_ActiveControllerSupportsJoyConMouseLook");
+static_assert(sizeof(SystemShockNintendoLibrary_ActiveControllerSupportsJoyConMouseLook) == 0x000001, "Wrong size on SystemShockNintendoLibrary_ActiveControllerSupportsJoyConMouseLook");
+static_assert(offsetof(SystemShockNintendoLibrary_ActiveControllerSupportsJoyConMouseLook, ReturnValue) == 0x000000, "Member 'SystemShockNintendoLibrary_ActiveControllerSupportsJoyConMouseLook::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockNintendoLibrary.GetActiveControllerTypes
+// 0x0010 (0x0010 - 0x0000)
+struct SystemShockNintendoLibrary_GetActiveControllerTypes final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockNintendoLibrary_GetActiveControllerTypes) == 0x000008, "Wrong alignment on SystemShockNintendoLibrary_GetActiveControllerTypes");
+static_assert(sizeof(SystemShockNintendoLibrary_GetActiveControllerTypes) == 0x000010, "Wrong size on SystemShockNintendoLibrary_GetActiveControllerTypes");
+static_assert(offsetof(SystemShockNintendoLibrary_GetActiveControllerTypes, ReturnValue) == 0x000000, "Member 'SystemShockNintendoLibrary_GetActiveControllerTypes::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShockNintendoLibrary.GetRightJoyConOrientation
+// 0x000C (0x000C - 0x0000)
+struct SystemShockNintendoLibrary_GetRightJoyConOrientation final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShockNintendoLibrary_GetRightJoyConOrientation) == 0x000004, "Wrong alignment on SystemShockNintendoLibrary_GetRightJoyConOrientation");
+static_assert(sizeof(SystemShockNintendoLibrary_GetRightJoyConOrientation) == 0x00000C, "Wrong size on SystemShockNintendoLibrary_GetRightJoyConOrientation");
+static_assert(offsetof(SystemShockNintendoLibrary_GetRightJoyConOrientation, ReturnValue) == 0x000000, "Member 'SystemShockNintendoLibrary_GetRightJoyConOrientation::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShock_CharacterBase.ReceiveGetCurrentSkillPreferredMinMaxRange
+// 0x000C (0x000C - 0x0000)
+struct SystemShock_CharacterBase_ReceiveGetCurrentSkillPreferredMinMaxRange final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShock_CharacterBase_ReceiveGetCurrentSkillPreferredMinMaxRange) == 0x000004, "Wrong alignment on SystemShock_CharacterBase_ReceiveGetCurrentSkillPreferredMinMaxRange");
+static_assert(sizeof(SystemShock_CharacterBase_ReceiveGetCurrentSkillPreferredMinMaxRange) == 0x00000C, "Wrong size on SystemShock_CharacterBase_ReceiveGetCurrentSkillPreferredMinMaxRange");
+static_assert(offsetof(SystemShock_CharacterBase_ReceiveGetCurrentSkillPreferredMinMaxRange, ReturnValue) == 0x000000, "Member 'SystemShock_CharacterBase_ReceiveGetCurrentSkillPreferredMinMaxRange::ReturnValue' has a wrong offset!");
+
+// Function SystemReShock.SystemShock_CharacterBase.ReceiveGetEnemyTargetLocation
+// 0x000C (0x000C - 0x0000)
+struct SystemShock_CharacterBase_ReceiveGetEnemyTargetLocation final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SystemShock_CharacterBase_ReceiveGetEnemyTargetLocation) == 0x000004, "Wrong alignment on SystemShock_CharacterBase_ReceiveGetEnemyTargetLocation");
+static_assert(sizeof(SystemShock_CharacterBase_ReceiveGetEnemyTargetLocation) == 0x00000C, "Wrong size on SystemShock_CharacterBase_ReceiveGetEnemyTargetLocation");
+static_assert(offsetof(SystemShock_CharacterBase_ReceiveGetEnemyTargetLocation, ReturnValue) == 0x000000, "Member 'SystemShock_CharacterBase_ReceiveGetEnemyTargetLocation::ReturnValue' has a wrong offset!");
 
 // Function SystemReShock.TextMeshDecoratorInterface.GetDecoratorSizeFromPayload
 // 0x0018 (0x0018 - 0x0000)

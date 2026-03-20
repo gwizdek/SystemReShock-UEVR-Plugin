@@ -10,19 +10,19 @@
 
 #include "Basic.hpp"
 
-#include "CoreGame_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
-#include "Engine_structs.hpp"
-#include "SystemReShock_structs.hpp"
-#include "STRUCT_EffectParams_structs.hpp"
-#include "AttributeSystem_structs.hpp"
 #include "ENUM_HazardType_structs.hpp"
+#include "AttributeSystem_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "Engine_structs.hpp"
+#include "STRUCT_CharacterLoadoutSettings_structs.hpp"
+#include "STRUCT_EffectParams_structs.hpp"
+#include "CoreGame_structs.hpp"
 #include "NamedInteger_structs.hpp"
 #include "ENUM_Foot_structs.hpp"
 #include "ENUM_LocomotionType_structs.hpp"
 #include "ENUM_AudioComponentLocation_structs.hpp"
-#include "STRUCT_CharacterLoadoutSettings_structs.hpp"
 #include "STRUCT_SoftItemParams_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
 #include "STRUCT_FootstepAudioData_structs.hpp"
@@ -1574,6 +1574,37 @@ public:
 static_assert(alignof(PAWN_SystemShockCharacter_C_IsRealspaceCharacter) == 0x000001, "Wrong alignment on PAWN_SystemShockCharacter_C_IsRealspaceCharacter");
 static_assert(sizeof(PAWN_SystemShockCharacter_C_IsRealspaceCharacter) == 0x000001, "Wrong size on PAWN_SystemShockCharacter_C_IsRealspaceCharacter");
 static_assert(offsetof(PAWN_SystemShockCharacter_C_IsRealspaceCharacter, Result) == 0x000000, "Member 'PAWN_SystemShockCharacter_C_IsRealspaceCharacter::Result' has a wrong offset!");
+
+// Function PAWN_SystemShockCharacter.PAWN_SystemShockCharacter_C.ReceiveGetEnemyTargetLocation
+// 0x0058 (0x0058 - 0x0000)
+struct PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetInvalidLocationVector_ReturnValue;     // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetInvalidLocationVector_ReturnValue_1;   // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetInvalidLocationVector_ReturnValue_2;   // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Enemy_C*                          K2Node_DynamicCast_AsPAWN_Enemy;                   // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A[0x6];                                       // 0x003A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UOBJ_EnemyTarget_C*                     CallFunc_GetTarget_Target;                         // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_Get_Target_Location_Location;             // 0x004C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation) == 0x000008, "Wrong alignment on PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation");
+static_assert(sizeof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation) == 0x000058, "Wrong size on PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, ReturnValue) == 0x000000, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, CallFunc_GetInvalidLocationVector_ReturnValue) == 0x00000C, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::CallFunc_GetInvalidLocationVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, CallFunc_GetInvalidLocationVector_ReturnValue_1) == 0x000018, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::CallFunc_GetInvalidLocationVector_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, CallFunc_GetInvalidLocationVector_ReturnValue_2) == 0x000024, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::CallFunc_GetInvalidLocationVector_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, K2Node_DynamicCast_AsPAWN_Enemy) == 0x000030, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::K2Node_DynamicCast_AsPAWN_Enemy' has a wrong offset!");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, K2Node_DynamicCast_bSuccess) == 0x000038, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, CallFunc_IsValid_ReturnValue) == 0x000039, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, CallFunc_GetTarget_Target) == 0x000040, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::CallFunc_GetTarget_Target' has a wrong offset!");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, CallFunc_IsValid_ReturnValue_1) == 0x000048, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation, CallFunc_Get_Target_Location_Location) == 0x00004C, "Member 'PAWN_SystemShockCharacter_C_ReceiveGetEnemyTargetLocation::CallFunc_Get_Target_Location_Location' has a wrong offset!");
 
 // Function PAWN_SystemShockCharacter.PAWN_SystemShockCharacter_C.ReceiveAnimationMessage
 // 0x0038 (0x0038 - 0x0000)

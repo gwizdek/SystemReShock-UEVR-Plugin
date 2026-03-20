@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "PICKUP_Base_classes.hpp"
-#include "Engine_structs.hpp"
 
 
 namespace SDK
@@ -23,7 +23,6 @@ namespace SDK
 class APICKUP_WeaponModKit_Base_C : public APICKUP_Base_C
 {
 public:
-	uint8                                         Pad_474[0x4];                                      // 0x0474(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FPointerToUberGraphFrame               UberGraphFrame_PICKUP_WeaponModKit_Base_C;         // 0x0478(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	bool                                          IsInModStation;                                    // 0x0480(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_481[0x7];                                      // 0x0481(0x0007)(Fixing Size After Last Property [ Dumper-7 ])

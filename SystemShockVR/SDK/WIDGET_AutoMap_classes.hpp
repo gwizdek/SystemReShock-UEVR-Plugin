@@ -11,14 +11,14 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_CursorMode_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "UMG_structs.hpp"
 #include "UMG_classes.hpp"
+#include "ENUM_CursorMode_structs.hpp"
 #include "ENUM_CardinalDirection_structs.hpp"
-#include "SlateCore_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
 
 
 namespace SDK

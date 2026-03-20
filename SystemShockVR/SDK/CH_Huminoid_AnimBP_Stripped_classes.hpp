@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_DeathBlowType_structs.hpp"
 #include "ControlRig_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "ENUM_DeathBlowType_structs.hpp"
 #include "AnimGraphRuntime_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_Emotions_structs.hpp"
@@ -80,7 +80,7 @@ public:
 	bool                                          IsAlive;                                           // 0x19DD(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_19DE[0x2];                                     // 0x19DE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         MovementSpeed;                                     // 0x19E0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         movementAngle;                                     // 0x19E4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MovementAngle;                                     // 0x19E4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                SmoothLookAtLocation;                              // 0x19E8(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          EnableLookAt;                                      // 0x19F4(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_19F5[0x3];                                     // 0x19F5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
@@ -224,7 +224,7 @@ static_assert(offsetof(UCH_Huminoid_AnimBP_Stripped_C, __CustomProperty_LookAtAl
 static_assert(offsetof(UCH_Huminoid_AnimBP_Stripped_C, DeathBlow) == 0x0019DC, "Member 'UCH_Huminoid_AnimBP_Stripped_C::DeathBlow' has a wrong offset!");
 static_assert(offsetof(UCH_Huminoid_AnimBP_Stripped_C, IsAlive) == 0x0019DD, "Member 'UCH_Huminoid_AnimBP_Stripped_C::IsAlive' has a wrong offset!");
 static_assert(offsetof(UCH_Huminoid_AnimBP_Stripped_C, MovementSpeed) == 0x0019E0, "Member 'UCH_Huminoid_AnimBP_Stripped_C::MovementSpeed' has a wrong offset!");
-static_assert(offsetof(UCH_Huminoid_AnimBP_Stripped_C, movementAngle) == 0x0019E4, "Member 'UCH_Huminoid_AnimBP_Stripped_C::movementAngle' has a wrong offset!");
+static_assert(offsetof(UCH_Huminoid_AnimBP_Stripped_C, MovementAngle) == 0x0019E4, "Member 'UCH_Huminoid_AnimBP_Stripped_C::MovementAngle' has a wrong offset!");
 static_assert(offsetof(UCH_Huminoid_AnimBP_Stripped_C, SmoothLookAtLocation) == 0x0019E8, "Member 'UCH_Huminoid_AnimBP_Stripped_C::SmoothLookAtLocation' has a wrong offset!");
 static_assert(offsetof(UCH_Huminoid_AnimBP_Stripped_C, EnableLookAt) == 0x0019F4, "Member 'UCH_Huminoid_AnimBP_Stripped_C::EnableLookAt' has a wrong offset!");
 static_assert(offsetof(UCH_Huminoid_AnimBP_Stripped_C, LookAtLocation) == 0x0019F8, "Member 'UCH_Huminoid_AnimBP_Stripped_C::LookAtLocation' has a wrong offset!");

@@ -349,30 +349,6 @@ void UWIDGET_Settings_MultiSelector_C::OnMultiSelectorValueModifiedByUser()
 }
 
 
-// Function WIDGET_Settings_MultiSelector.WIDGET_Settings_MultiSelector_C.ReceiveNavRight
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UWIDGET_Settings_MultiSelector_C::ReceiveNavRight(bool InputState, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_Settings_MultiSelector_C", "ReceiveNavRight");
-
-	Params::WIDGET_Settings_MultiSelector_C_ReceiveNavRight Parms{};
-
-	Parms.InputState = InputState;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function WIDGET_Settings_MultiSelector.WIDGET_Settings_MultiSelector_C.ReceiveNavLeft
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -387,6 +363,30 @@ void UWIDGET_Settings_MultiSelector_C::ReceiveNavLeft(bool InputState, bool* Res
 		Func = Class->GetFunction("WIDGET_Settings_MultiSelector_C", "ReceiveNavLeft");
 
 	Params::WIDGET_Settings_MultiSelector_C_ReceiveNavLeft Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_Settings_MultiSelector.WIDGET_Settings_MultiSelector_C.ReceiveNavRight
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_Settings_MultiSelector_C::ReceiveNavRight(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_Settings_MultiSelector_C", "ReceiveNavRight");
+
+	Params::WIDGET_Settings_MultiSelector_C_ReceiveNavRight Parms{};
 
 	Parms.InputState = InputState;
 
