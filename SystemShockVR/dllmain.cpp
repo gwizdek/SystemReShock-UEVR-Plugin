@@ -97,7 +97,7 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 
 using namespace uevr;
 
-const char* MOD_VERSION = "1.4.0";
+const char* MOD_VERSION = "1.5.0 (Game 2.1)";
 const int CB_DURATION_SAMPLE_RATE = 100;
 
 typedef struct _TIMER_STRUCT
