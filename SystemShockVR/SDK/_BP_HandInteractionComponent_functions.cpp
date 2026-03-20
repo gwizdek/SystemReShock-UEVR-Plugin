@@ -37,6 +37,20 @@ void U_BP_HandInteractionComponent_C::ExecuteUbergraph__BP_HandInteractionCompon
 }
 
 
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ReceiveBeginPlay
+// (Event, Public, BlueprintEvent)
+
+void U_BP_HandInteractionComponent_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.CustomEvent_WeaponHolstered
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -108,20 +122,6 @@ void U_BP_HandInteractionComponent_C::ReceiveTick(float DeltaSeconds)
 	Parms.DeltaSeconds = DeltaSeconds;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ReceiveBeginPlay
-// (Event, Public, BlueprintEvent)
-
-void U_BP_HandInteractionComponent_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -348,34 +348,6 @@ void U_BP_HandInteractionComponent_C::HandleWeaponInteractionSources()
 }
 
 
-// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ComputeIsReachingShieldToggler
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void U_BP_HandInteractionComponent_C::ComputeIsReachingShieldToggler()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ComputeIsReachingShieldToggler");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ComputeIsReachingSensaroundToggler
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void U_BP_HandInteractionComponent_C::ComputeIsReachingSensaroundToggler()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ComputeIsReachingSensaroundToggler");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.IsReachingSocket
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -398,6 +370,27 @@ bool U_BP_HandInteractionComponent_C::IsReachingSocket(class FName InTogglerName
 	UObject::ProcessEvent(Func, &Parms);
 
 	return Parms.ReturnValue;
+}
+
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.IsManuallyPointing
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void U_BP_HandInteractionComponent_C::IsManuallyPointing(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "IsManuallyPointing");
+
+	Params::_BP_HandInteractionComponent_C_IsManuallyPointing Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
 }
 
 }

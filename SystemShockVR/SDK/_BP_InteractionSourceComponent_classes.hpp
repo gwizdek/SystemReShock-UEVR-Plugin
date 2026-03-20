@@ -10,10 +10,11 @@
 
 #include "Basic.hpp"
 
+#include "_ENUM_VRHandPose_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "CoreUObject_structs.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_InteractionSourceType_structs.hpp"
 
 
 namespace SDK
@@ -40,12 +41,15 @@ public:
 	bool                                          IsInteracting;                                     // 0x0299(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          IsEnabled;                                         // 0x029A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          IsSnapping;                                        // 0x029B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	E_ENUM_InteractionSourceType                  Type;                                              // 0x029C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_InteractionSourceComponent(int32 EntryPoint);
 	void ReceiveBeginPlay();
-	void InitInteractionSource(const struct FTransform& InInteractionSourceTransform, const struct FTransform& InWristTransform, float InOuterInteractionDistance, float InInnerInteractionDistance, E_ENUM_VRHandPose InInteractionPose, bool InIsSnappable, bool InIsEnabled);
-	void GetInteractionSourceParams(struct FTransform* InteractionSourceTransform_0, struct FTransform* WristTransform_0, bool* SnapHandToSource, float* InnerInteractionDistance_0, float* OuterInteractionDistance_0, class UStaticMeshComponent** TargetMesh_0, E_ENUM_VRHandPose* InteractionPose_0, bool* IsEnabled_0);
+	void InitInteractionSource(E_ENUM_InteractionSourceType Type_0, const struct FTransform& InInteractionSourceTransform, const struct FTransform& InWristTransform, float InOuterInteractionDistance, float InInnerInteractionDistance, E_ENUM_VRHandPose InInteractionPose, bool InIsSnappable, bool InIsEnabled);
+	void InitTriggerSource();
+	void InitGripSource();
+	void GetInteractionSourceParams(struct FTransform* InteractionSourceTransform_0, struct FTransform* WristTransform_0, bool* SnapHandToSource, float* InnerInteractionDistance_0, float* OuterInteractionDistance_0, class UStaticMeshComponent** TargetMesh_0, E_ENUM_VRHandPose* InteractionPose_0, bool* IsEnabled_0, E_ENUM_InteractionSourceType* Type_0);
 	void GetState(bool* IsEnabled_0, bool* IsInteracting_0, bool* IsSnapping_0);
 
 public:
@@ -73,6 +77,7 @@ static_assert(offsetof(U_BP_InteractionSourceComponent_C, InteractionPose) == 0x
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, IsInteracting) == 0x000299, "Member 'U_BP_InteractionSourceComponent_C::IsInteracting' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, IsEnabled) == 0x00029A, "Member 'U_BP_InteractionSourceComponent_C::IsEnabled' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, IsSnapping) == 0x00029B, "Member 'U_BP_InteractionSourceComponent_C::IsSnapping' has a wrong offset!");
+static_assert(offsetof(U_BP_InteractionSourceComponent_C, Type) == 0x00029C, "Member 'U_BP_InteractionSourceComponent_C::Type' has a wrong offset!");
 
 }
 

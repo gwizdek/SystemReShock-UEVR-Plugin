@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_ItemSelector._BP_ItemSelector_C
-// 0x0090 (0x02B0 - 0x0220)
+// 0x0098 (0x02B8 - 0x0220)
 class A_BP_ItemSelector_C final : public AActor
 {
 public:
@@ -39,6 +39,7 @@ public:
 	class UMotionControllerComponent*             MotionController;                                  // 0x0298(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class U_BP_HandInteractionComponent_C*        InteractionComponent;                              // 0x02A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWidgetComponent*                       SelectedHotbarSlot;                                // 0x02A8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsActive;                                          // 0x02B0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
 	void ExecuteUbergraph__BP_ItemSelector(int32 EntryPoint);
@@ -58,7 +59,7 @@ public:
 	}
 };
 static_assert(alignof(A_BP_ItemSelector_C) == 0x000008, "Wrong alignment on A_BP_ItemSelector_C");
-static_assert(sizeof(A_BP_ItemSelector_C) == 0x0002B0, "Wrong size on A_BP_ItemSelector_C");
+static_assert(sizeof(A_BP_ItemSelector_C) == 0x0002B8, "Wrong size on A_BP_ItemSelector_C");
 static_assert(offsetof(A_BP_ItemSelector_C, UberGraphFrame) == 0x000220, "Member 'A_BP_ItemSelector_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot9) == 0x000228, "Member 'A_BP_ItemSelector_C::HotbarSlot9' has a wrong offset!");
 static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlot8) == 0x000230, "Member 'A_BP_ItemSelector_C::HotbarSlot8' has a wrong offset!");
@@ -76,6 +77,7 @@ static_assert(offsetof(A_BP_ItemSelector_C, HotbarSlots) == 0x000288, "Member 'A
 static_assert(offsetof(A_BP_ItemSelector_C, MotionController) == 0x000298, "Member 'A_BP_ItemSelector_C::MotionController' has a wrong offset!");
 static_assert(offsetof(A_BP_ItemSelector_C, InteractionComponent) == 0x0002A0, "Member 'A_BP_ItemSelector_C::InteractionComponent' has a wrong offset!");
 static_assert(offsetof(A_BP_ItemSelector_C, SelectedHotbarSlot) == 0x0002A8, "Member 'A_BP_ItemSelector_C::SelectedHotbarSlot' has a wrong offset!");
+static_assert(offsetof(A_BP_ItemSelector_C, IsActive) == 0x0002B0, "Member 'A_BP_ItemSelector_C::IsActive' has a wrong offset!");
 
 }
 

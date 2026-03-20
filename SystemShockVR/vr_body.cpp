@@ -128,27 +128,22 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         // Re-Attach Hacker Hardware
         static_cast<APAWN_Hacker_Implant_C*>(pawn)->MediaReaderMesh->K2_AttachToComponent(
             vr_body->VRBodyMesh,
-            UKismetStringLibrary::Conv_StringToName(L"LeftForeArmRoll1"),
+            UKismetStringLibrary::Conv_StringToName(L"MediaReaderSocket"),
             EAttachmentRule::SnapToTarget,
-            EAttachmentRule::KeepRelative,
+            EAttachmentRule::SnapToTarget,
             EAttachmentRule::KeepWorld,
             true
         );
-        static_cast<APAWN_Hacker_Implant_C*>(pawn)->MediaReaderMesh->K2_SetRelativeLocationAndRotation(
-            { 7.f, 3.f, 0.5f }, { 0.f, 3.f, 77.f }, false, &SweepHitResult, false
-        );
+
         API::get()->log_warn("[vr_body][initialize_vr_body] Attached Media Reader");
 
         static_cast<APAWN_Hacker_Implant_C*>(pawn)->BioScannerMesh->K2_AttachToComponent(
             vr_body->VRBodyMesh,
-            UKismetStringLibrary::Conv_StringToName(L"LeftForeArmRoll1"),
+            UKismetStringLibrary::Conv_StringToName(L"BioScannerSocket"),
             EAttachmentRule::SnapToTarget,
-            EAttachmentRule::KeepRelative,
+            EAttachmentRule::SnapToTarget,
             EAttachmentRule::KeepWorld,
             true
-        );
-        static_cast<APAWN_Hacker_Implant_C*>(pawn)->BioScannerMesh->K2_SetRelativeLocationAndRotation(
-            { 7.982f, -2.402f, -0.348f }, { 78.560f, -94.624f, 175.497f }, false, &SweepHitResult, false
         );
         API::get()->log_warn("[vr_body][initialize_vr_body] Attached Bio Scanner");
 
@@ -158,6 +153,9 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
             WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Ignore
         );
+
+        vr_body->WidgetInteractionChannel = WIDGET_INTERACTION_TRACE_CHANNEL;
+        vr_body->CloseVRMenu();
 
         UWIDGET_PlayerHUD_C* neural_hud{ nullptr };
         pawn->GetNeuralHUD(&neural_hud);
@@ -334,11 +332,11 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
         hardware_widget_components[2] = g_vr_body->HackerHardware->EnviroPakWidgetComponent;
         hardware_widget_components[3] = g_vr_body->HackerHardware->TurboBootsWidgetComponent;
 
-        g_vr_body->LeftIndexFingerCollision->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
-        g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
-        g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToChannel(
-            WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
-        );
+        //g_vr_body->LeftIndexFingerCollision->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
+        //g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+        //g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToChannel(
+        //    WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
+        //);
 
         for (int i = 0; i < 4; i++) {
             //if (m_hacker_hardware_widget_components[i] != nullptr) {
@@ -392,6 +390,7 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
 
             API::get()->log_warn("[vr_body][initialize_hacker_hardware] reseting PANELs");
             // recreate panel slot for widget and place it at original position on canvas panel
+            // don't do it for right side buttons (Turbo Boots)
             auto panel_slot = i < 3
                 ? (SDK::UCanvasPanelSlot*)neural_hud->PANEL_LeftHardware->AddChild(hardware_widgets[i])
                 : (SDK::UCanvasPanelSlot*)neural_hud->PANEL_RightHardware->AddChild(hardware_widgets[i]);
@@ -407,5 +406,29 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
     }
 }
 
+void VRBody::initialize_hand_item_collisions() {
+    // Index Finger Overlappers
+    g_vr_body->LeftIndexFingerCollision->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
+    g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+    g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToChannel(
+        WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
+    );
+
+    g_vr_body->RightIndexFingerCollision->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
+    g_vr_body->RightIndexFingerCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+    g_vr_body->RightIndexFingerCollision->SetCollisionResponseToChannel(
+        WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
+    );
+    g_vr_body->RightIndexFingerCollision->SetCollisionResponseToChannel(
+        SDK::ECollisionChannel::ECC_GameTraceChannel1, SDK::ECollisionResponse::ECR_Overlap // Scanner
+    );
+
+    // Hand Item Collision Boxes
+    g_vr_body->ItemInteractCollision->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
+    g_vr_body->ItemInteractCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+    g_vr_body->ItemInteractCollision->SetCollisionResponseToChannel(
+        WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
+    );
+}
 
 

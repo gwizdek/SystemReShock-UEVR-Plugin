@@ -37,6 +37,66 @@ void A_BP_VRBody_C::ExecuteUbergraph__BP_VRBody(int32 EntryPoint)
 }
 
 
+// Function _BP_VRBody._BP_VRBody_C.BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature
+// (HasOutParams, BlueprintEvent)
+// Parameters:
+// class UPrimitiveComponent*              OverlappedComponent                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              OtherComp                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   OtherBodyIndex                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    bFromSweep                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// struct FHitResult                       SweepResult                                            (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+
+void A_BP_VRBody_C::BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature");
+
+	Params::_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature Parms{};
+
+	Parms.OverlappedComponent = OverlappedComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+	Parms.bFromSweep = bFromSweep;
+	Parms.SweepResult = std::move(SweepResult);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature
+// (HasOutParams, BlueprintEvent)
+// Parameters:
+// class UPrimitiveComponent*              OverlappedComponent                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              OtherComp                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   OtherBodyIndex                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    bFromSweep                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// struct FHitResult                       SweepResult                                            (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+
+void A_BP_VRBody_C::BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature");
+
+	Params::_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature Parms{};
+
+	Parms.OverlappedComponent = OverlappedComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+	Parms.bFromSweep = bFromSweep;
+	Parms.SweepResult = std::move(SweepResult);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function _BP_VRBody._BP_VRBody_C.ReceiveBeginPlay
 // (Event, Protected, BlueprintEvent)
 
@@ -232,10 +292,10 @@ void A_BP_VRBody_C::HolsterWeapon()
 // Function _BP_VRBody._BP_VRBody_C.TryGrabAction
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// E_ENUM_VRHand                           inHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // E_ENUM_VRHandPose                       InPose                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand inHand, E_ENUM_VRHandPose InPose)
+void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand InHand, E_ENUM_VRHandPose InPose)
 {
 	static class UFunction* Func = nullptr;
 
@@ -244,7 +304,7 @@ void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand inHand, E_ENUM_VRHandPose InPose
 
 	Params::_BP_VRBody_C_TryGrabAction Parms{};
 
-	Parms.inHand = inHand;
+	Parms.InHand = InHand;
 	Parms.InPose = InPose;
 
 	UObject::ProcessEvent(Func, &Parms);
@@ -346,9 +406,9 @@ void A_BP_VRBody_C::InitializeAnimations()
 // Function _BP_VRBody._BP_VRBody_C.ShowItemSelector
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// E_ENUM_VRHand                           inHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_VRBody_C::ShowItemSelector(E_ENUM_VRHand inHand)
+void A_BP_VRBody_C::ShowItemSelector(E_ENUM_VRHand InHand)
 {
 	static class UFunction* Func = nullptr;
 
@@ -357,7 +417,7 @@ void A_BP_VRBody_C::ShowItemSelector(E_ENUM_VRHand inHand)
 
 	Params::_BP_VRBody_C_ShowItemSelector Parms{};
 
-	Parms.inHand = inHand;
+	Parms.InHand = InHand;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -493,10 +553,11 @@ void A_BP_VRBody_C::GetHackerMoveControlManager(class UCOMP_MoveControlManager_C
 // Function _BP_VRBody._BP_VRBody_C.AttachLaserPointer
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// E_ENUM_VRHand                           inHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    InAttachToCurrentWeapon                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    InEnabled                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void A_BP_VRBody_C::AttachLaserPointer(E_ENUM_VRHand inHand, bool InAttachToCurrentWeapon)
+void A_BP_VRBody_C::AttachLaserPointer(E_ENUM_VRHand InHand, bool InAttachToCurrentWeapon, bool InEnabled)
 {
 	static class UFunction* Func = nullptr;
 
@@ -505,8 +566,9 @@ void A_BP_VRBody_C::AttachLaserPointer(E_ENUM_VRHand inHand, bool InAttachToCurr
 
 	Params::_BP_VRBody_C_AttachLaserPointer Parms{};
 
-	Parms.inHand = inHand;
+	Parms.InHand = InHand;
 	Parms.InAttachToCurrentWeapon = InAttachToCurrentWeapon;
+	Parms.InEnabled = InEnabled;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -573,6 +635,106 @@ void A_BP_VRBody_C::SetADSZoneOffset(float ForwardOffset, float UpOffset, float 
 	Parms.HalfSize = HalfSize;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.UpdatePickableSocketPos
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void A_BP_VRBody_C::UpdatePickableSocketPos()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "UpdatePickableSocketPos");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.TriggerWidgetInteractionAction
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InPressLMB                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void A_BP_VRBody_C::TriggerWidgetInteractionAction(bool InPressLMB)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "TriggerWidgetInteractionAction");
+
+	Params::_BP_VRBody_C_TriggerWidgetInteractionAction Parms{};
+
+	Parms.InPressLMB = InPressLMB;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.OpenVRMenu
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void A_BP_VRBody_C::OpenVRMenu()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "OpenVRMenu");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.CloseVRMenu
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void A_BP_VRBody_C::CloseVRMenu()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "CloseVRMenu");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.SetHandItemCollision
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FName                             SocketName                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FTransform                       RelativeTransform                                      (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+// ECollisionEnabled                       Collision                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_VRBody_C::SetHandItemCollision(class FName SocketName, const struct FTransform& RelativeTransform, ECollisionEnabled Collision)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "SetHandItemCollision");
+
+	Params::_BP_VRBody_C_SetHandItemCollision Parms{};
+
+	Parms.SocketName = SocketName;
+	Parms.RelativeTransform = std::move(RelativeTransform);
+	Parms.Collision = Collision;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.DisableHandItemCollisions
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void A_BP_VRBody_C::DisableHandItemCollisions()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "DisableHandItemCollisions");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

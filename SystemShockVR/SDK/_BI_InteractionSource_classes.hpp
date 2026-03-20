@@ -12,6 +12,7 @@
 
 #include "CoreUObject_classes.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_InteractionSourceType_structs.hpp"
 
 
 namespace SDK
@@ -22,7 +23,7 @@ namespace SDK
 class I_BI_InteractionSource_C final : public IInterface
 {
 public:
-	void GetInteractionSourceParams(struct FTransform* InteractionSourceTransform, struct FTransform* WristTransform, bool* SnapHandToSource, float* InnerInteractionDistance, float* OuterInteractionDistance, class UStaticMeshComponent** TargetMesh, E_ENUM_VRHandPose* InteractionPose, bool* IsEnabled);
+	void GetInteractionSourceParams(struct FTransform* InteractionSourceTransform, struct FTransform* WristTransform, bool* SnapHandToSource, float* InnerInteractionDistance, float* OuterInteractionDistance, class UStaticMeshComponent** TargetMesh, E_ENUM_VRHandPose* InteractionPose, bool* IsEnabled, E_ENUM_InteractionSourceType* Type);
 	void GetState(bool* IsEnabled, bool* IsInteracting, bool* IsSnapping);
 
 public:

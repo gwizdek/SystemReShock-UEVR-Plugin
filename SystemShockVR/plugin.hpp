@@ -157,8 +157,6 @@ private:
 public:
     bool prepare_pointers();
     void prepare_game_state();
-    void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
-    void handle_game_state_controller_input(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_smooth_turning(XINPUT_STATE* state);
     void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_game_state_change();
@@ -174,6 +172,11 @@ public:
     void initialize_mcs(SDK::APAWN_Hacker_Implant_C* pawn);
     static void cleanup_actors();
     void SpawnCustom2DScreen();
+    void toggle_gui();
+    
+    // Input handlers
+    void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
+    void handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
 
     SDK::AActor* Custom2DScreen{ nullptr };
 };

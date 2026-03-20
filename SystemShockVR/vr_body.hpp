@@ -30,7 +30,7 @@ public:
     // Hacker Hardware
     static void initialize_hacker_hardware(SDK::UWIDGET_PlayerHUD_C* neural_hud);
 
-
+    static void initialize_hand_item_collisions();
 
     //void set_player_response_to_all_collision_channels(SDK::ECollisionResponse response);
 };

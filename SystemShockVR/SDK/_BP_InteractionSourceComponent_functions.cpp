@@ -52,8 +52,9 @@ void U_BP_InteractionSourceComponent_C::ReceiveBeginPlay()
 
 
 // Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.InitInteractionSource
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
+// E_ENUM_InteractionSourceType            Type_0                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // struct FTransform                       InInteractionSourceTransform                           (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
 // struct FTransform                       InWristTransform                                       (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
 // float                                   InOuterInteractionDistance                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -62,7 +63,7 @@ void U_BP_InteractionSourceComponent_C::ReceiveBeginPlay()
 // bool                                    InIsSnappable                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    InIsEnabled                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void U_BP_InteractionSourceComponent_C::InitInteractionSource(const struct FTransform& InInteractionSourceTransform, const struct FTransform& InWristTransform, float InOuterInteractionDistance, float InInnerInteractionDistance, E_ENUM_VRHandPose InInteractionPose, bool InIsSnappable, bool InIsEnabled)
+void U_BP_InteractionSourceComponent_C::InitInteractionSource(E_ENUM_InteractionSourceType Type_0, const struct FTransform& InInteractionSourceTransform, const struct FTransform& InWristTransform, float InOuterInteractionDistance, float InInnerInteractionDistance, E_ENUM_VRHandPose InInteractionPose, bool InIsSnappable, bool InIsEnabled)
 {
 	static class UFunction* Func = nullptr;
 
@@ -71,6 +72,7 @@ void U_BP_InteractionSourceComponent_C::InitInteractionSource(const struct FTran
 
 	Params::_BP_InteractionSourceComponent_C_InitInteractionSource Parms{};
 
+	Parms.Type_0 = Type_0;
 	Parms.InInteractionSourceTransform = std::move(InInteractionSourceTransform);
 	Parms.InWristTransform = std::move(InWristTransform);
 	Parms.InOuterInteractionDistance = InOuterInteractionDistance;
@@ -80,6 +82,34 @@ void U_BP_InteractionSourceComponent_C::InitInteractionSource(const struct FTran
 	Parms.InIsEnabled = InIsEnabled;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.InitTriggerSource
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void U_BP_InteractionSourceComponent_C::InitTriggerSource()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "InitTriggerSource");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.InitGripSource
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void U_BP_InteractionSourceComponent_C::InitGripSource()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "InitGripSource");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -94,8 +124,9 @@ void U_BP_InteractionSourceComponent_C::InitInteractionSource(const struct FTran
 // class UStaticMeshComponent*             TargetMesh_0                                           (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // E_ENUM_VRHandPose                       InteractionPose_0                                      (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    IsEnabled_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// E_ENUM_InteractionSourceType            Type_0                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void U_BP_InteractionSourceComponent_C::GetInteractionSourceParams(struct FTransform* InteractionSourceTransform_0, struct FTransform* WristTransform_0, bool* SnapHandToSource, float* InnerInteractionDistance_0, float* OuterInteractionDistance_0, class UStaticMeshComponent** TargetMesh_0, E_ENUM_VRHandPose* InteractionPose_0, bool* IsEnabled_0)
+void U_BP_InteractionSourceComponent_C::GetInteractionSourceParams(struct FTransform* InteractionSourceTransform_0, struct FTransform* WristTransform_0, bool* SnapHandToSource, float* InnerInteractionDistance_0, float* OuterInteractionDistance_0, class UStaticMeshComponent** TargetMesh_0, E_ENUM_VRHandPose* InteractionPose_0, bool* IsEnabled_0, E_ENUM_InteractionSourceType* Type_0)
 {
 	static class UFunction* Func = nullptr;
 
@@ -129,6 +160,9 @@ void U_BP_InteractionSourceComponent_C::GetInteractionSourceParams(struct FTrans
 
 	if (IsEnabled_0 != nullptr)
 		*IsEnabled_0 = Parms.IsEnabled_0;
+
+	if (Type_0 != nullptr)
+		*Type_0 = Parms.Type_0;
 }
 
 

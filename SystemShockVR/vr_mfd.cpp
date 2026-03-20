@@ -62,7 +62,7 @@ void VRMFD::show_mfd() {
         //g_vr_body->DebugWidgetComponent->SetRelativeScale3D({ 0.03f, 0.03f, 0.03f });
 
         g_vr_body->MFDMaskComponent->Show(1.0f, VRMFD::m_mfd_depth);
-        g_vr_body->AttachLaserPointer(E_ENUM_VRHand::NewEnumerator1, false);
+        g_vr_body->AttachLaserPointer(E_ENUM_VRHand::NewEnumerator1, false, true);
 
         if (!g_vr_body->IsWeaponHolstered()) {
             // use holster weapon button: holster weapon

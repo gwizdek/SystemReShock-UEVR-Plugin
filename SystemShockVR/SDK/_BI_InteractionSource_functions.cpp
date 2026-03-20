@@ -28,8 +28,9 @@ namespace SDK
 // class UStaticMeshComponent*             TargetMesh                                             (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // E_ENUM_VRHandPose                       InteractionPose                                        (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// E_ENUM_InteractionSourceType            Type                                                   (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void I_BI_InteractionSource_C::GetInteractionSourceParams(struct FTransform* InteractionSourceTransform, struct FTransform* WristTransform, bool* SnapHandToSource, float* InnerInteractionDistance, float* OuterInteractionDistance, class UStaticMeshComponent** TargetMesh, E_ENUM_VRHandPose* InteractionPose, bool* IsEnabled)
+void I_BI_InteractionSource_C::GetInteractionSourceParams(struct FTransform* InteractionSourceTransform, struct FTransform* WristTransform, bool* SnapHandToSource, float* InnerInteractionDistance, float* OuterInteractionDistance, class UStaticMeshComponent** TargetMesh, E_ENUM_VRHandPose* InteractionPose, bool* IsEnabled, E_ENUM_InteractionSourceType* Type)
 {
 	static class UFunction* Func = nullptr;
 
@@ -63,6 +64,9 @@ void I_BI_InteractionSource_C::GetInteractionSourceParams(struct FTransform* Int
 
 	if (IsEnabled != nullptr)
 		*IsEnabled = Parms.IsEnabled;
+
+	if (Type != nullptr)
+		*Type = Parms.Type;
 }
 
 

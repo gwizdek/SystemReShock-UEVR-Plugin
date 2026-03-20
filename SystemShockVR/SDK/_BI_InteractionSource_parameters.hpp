@@ -12,6 +12,7 @@
 
 #include "CoreUObject_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_InteractionSourceType_structs.hpp"
 
 
 namespace SDK::Params
@@ -32,6 +33,7 @@ public:
 	class UStaticMeshComponent*                   TargetMesh;                                        // 0x0070(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_VRHandPose                             InteractionPose;                                   // 0x0078(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsEnabled;                                         // 0x0079(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	E_ENUM_InteractionSourceType                  Type;                                              // 0x007A(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BI_InteractionSource_C_GetInteractionSourceParams) == 0x000010, "Wrong alignment on _BI_InteractionSource_C_GetInteractionSourceParams");
 static_assert(sizeof(_BI_InteractionSource_C_GetInteractionSourceParams) == 0x000080, "Wrong size on _BI_InteractionSource_C_GetInteractionSourceParams");
@@ -43,6 +45,7 @@ static_assert(offsetof(_BI_InteractionSource_C_GetInteractionSourceParams, Outer
 static_assert(offsetof(_BI_InteractionSource_C_GetInteractionSourceParams, TargetMesh) == 0x000070, "Member '_BI_InteractionSource_C_GetInteractionSourceParams::TargetMesh' has a wrong offset!");
 static_assert(offsetof(_BI_InteractionSource_C_GetInteractionSourceParams, InteractionPose) == 0x000078, "Member '_BI_InteractionSource_C_GetInteractionSourceParams::InteractionPose' has a wrong offset!");
 static_assert(offsetof(_BI_InteractionSource_C_GetInteractionSourceParams, IsEnabled) == 0x000079, "Member '_BI_InteractionSource_C_GetInteractionSourceParams::IsEnabled' has a wrong offset!");
+static_assert(offsetof(_BI_InteractionSource_C_GetInteractionSourceParams, Type) == 0x00007A, "Member '_BI_InteractionSource_C_GetInteractionSourceParams::Type' has a wrong offset!");
 
 // Function _BI_InteractionSource._BI_InteractionSource_C.GetState
 // 0x0003 (0x0003 - 0x0000)

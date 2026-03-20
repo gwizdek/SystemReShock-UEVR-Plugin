@@ -10,87 +10,186 @@
 
 #include "Basic.hpp"
 
+#include "InputCore_structs.hpp"
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
 #include "Engine_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
-#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 
 
 namespace SDK::Params
 {
 
 // Function _BP_VRBody._BP_VRBody_C.ExecuteUbergraph__BP_VRBody
-// 0x0160 (0x0160 - 0x0000)
+// 0x0310 (0x0310 - 0x0000)
 struct _BP_VRBody_C_ExecuteUbergraph__BP_VRBody final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(class UITEM_WeaponBase_C* Weapon)> K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor)
-	TDelegate<void(class UITEM_WeaponBase_C* Weapon)> K2Node_CreateDelegate_OutputDelegate_1;            // 0x0014(0x0010)(ZeroConstructor, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UITEM_WeaponBase_C*                     K2Node_CustomEvent_EquippedWeapon;                 // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class UITEM_WeaponBase_C* EquippedWeapon)> K2Node_CreateDelegate_OutputDelegate_2;            // 0x0034(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UITEM_WeaponBase_C*                     K2Node_CustomEvent_Weapon_1;                       // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UITEM_WeaponBase_C*                     K2Node_CustomEvent_Weapon;                         // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsManuallyPointing_Result;                // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class UITEM_WeaponBase_C*                     K2Node_CustomEvent_EquippedWeapon;                 // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class UITEM_WeaponBase_C* EquippedWeapon)> K2Node_CreateDelegate_OutputDelegate;              // 0x0014(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UITEM_WeaponBase_C*                     K2Node_CustomEvent_Weapon_1;                       // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class UITEM_WeaponBase_C* Weapon)> K2Node_CreateDelegate_OutputDelegate_1;            // 0x0030(0x0010)(ZeroConstructor, NoDestructor)
+	class UITEM_WeaponBase_C*                     K2Node_CustomEvent_Weapon;                         // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(class UITEM_WeaponBase_C* Weapon)> K2Node_CreateDelegate_OutputDelegate_2;            // 0x0048(0x0010)(ZeroConstructor, NoDestructor)
 	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0059(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5A[0x2];                                       // 0x005A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         K2Node_Event_DeltaSeconds;                         // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UCOMP_HackerInventory_C*                CallFunc_GetHackerInventory_ReturnValue;           // 0x0060(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_4;                    // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_69[0x7];                                       // 0x0069(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class AActor*>                         K2Node_MakeArray_Array;                            // 0x0070(0x0010)(ReferenceParm)
-	class UCOMP_MoveControlManager_C*             CallFunc_GetHackerMoveControlManager_COMP_MoveControlManager; // 0x0080(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Implant_C*                 CallFunc_GetActorOfClass_ReturnValue;              // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_5;                    // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_91[0x7];                                       // 0x0091(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent_1;  // 0x0098(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor_1;           // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp_1;            // 0x00A8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex_1;       // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_ComponentBoundEvent_bFromSweep;             // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UCOMP_MoveControlManager_C*             CallFunc_GetHackerMoveControlManager_COMP_MoveControlManager; // 0x0070(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Implant_C*                 CallFunc_GetActorOfClass_ReturnValue;              // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_4;                    // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_5;                    // 0x0081(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_82[0x6];                                       // 0x0082(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class AActor*>                         K2Node_MakeArray_Array;                            // 0x0088(0x0010)(ReferenceParm)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent_3;  // 0x0098(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor_3;           // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp_3;            // 0x00A8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex_3;       // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ComponentBoundEvent_bFromSweep_2;           // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_B5[0x3];                                       // 0x00B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             K2Node_ComponentBoundEvent_SweepResult;            // 0x00B8(0x0088)(ConstParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent;    // 0x0140(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor;             // 0x0148(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp;              // 0x0150(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex;         // 0x0158(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             K2Node_ComponentBoundEvent_SweepResult_2;          // 0x00B8(0x0088)(ConstParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent_2;  // 0x0140(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor_2;           // 0x0148(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp_2;            // 0x0150(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex_2;       // 0x0158(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_15C[0x4];                                      // 0x015C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUserWidget*                            CallFunc_GetWidget_ReturnValue;                    // 0x0160(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent_1;  // 0x0168(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor_1;           // 0x0170(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp_1;            // 0x0178(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex_1;       // 0x0180(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ComponentBoundEvent_bFromSweep_1;           // 0x0184(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_185[0x3];                                      // 0x0185(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             K2Node_ComponentBoundEvent_SweepResult_1;          // 0x0188(0x0088)(ConstParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	class U_WIDGET_VRMenu_C*                      K2Node_DynamicCast_As_WIDGET_VRMenu;               // 0x0210(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0218(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsManuallyPointing_Result_1;              // 0x0219(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x021A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21B[0x5];                                      // 0x021B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   K2Node_MakeStruct_Key;                             // 0x0220(0x0018)(HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_6;                    // 0x0238(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_239[0x7];                                      // 0x0239(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0240(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OverlappedComponent;    // 0x0248(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 K2Node_ComponentBoundEvent_OtherActor;             // 0x0250(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    K2Node_ComponentBoundEvent_OtherComp;              // 0x0258(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         K2Node_ComponentBoundEvent_OtherBodyIndex;         // 0x0260(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ComponentBoundEvent_bFromSweep;             // 0x0264(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_265[0x3];                                      // 0x0265(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             K2Node_ComponentBoundEvent_SweepResult;            // 0x0268(0x0088)(ConstParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x02F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2F1[0x7];                                      // 0x02F1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetDisplayName_ReturnValue;               // 0x02F8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0308(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody) == 0x000008, "Wrong alignment on _BP_VRBody_C_ExecuteUbergraph__BP_VRBody");
-static_assert(sizeof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody) == 0x000160, "Wrong size on _BP_VRBody_C_ExecuteUbergraph__BP_VRBody");
+static_assert(sizeof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody) == 0x000310, "Wrong size on _BP_VRBody_C_ExecuteUbergraph__BP_VRBody");
 static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, EntryPoint) == 0x000000, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::EntryPoint' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CreateDelegate_OutputDelegate) == 0x000004, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CreateDelegate_OutputDelegate_1) == 0x000014, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue) == 0x000024, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CustomEvent_EquippedWeapon) == 0x000028, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CustomEvent_EquippedWeapon' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_1) == 0x000030, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CreateDelegate_OutputDelegate_2) == 0x000034, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CustomEvent_Weapon_1) == 0x000048, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CustomEvent_Weapon_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CustomEvent_Weapon) == 0x000050, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CustomEvent_Weapon' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsManuallyPointing_Result) == 0x000004, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsManuallyPointing_Result' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue) == 0x000005, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CustomEvent_EquippedWeapon) == 0x000008, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CustomEvent_EquippedWeapon' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_1) == 0x000010, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CreateDelegate_OutputDelegate) == 0x000014, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CustomEvent_Weapon_1) == 0x000028, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CustomEvent_Weapon_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CreateDelegate_OutputDelegate_1) == 0x000030, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CustomEvent_Weapon) == 0x000040, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CustomEvent_Weapon' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_CreateDelegate_OutputDelegate_2) == 0x000048, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_2) == 0x000058, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_3) == 0x000059, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_Event_DeltaSeconds) == 0x00005C, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_Event_DeltaSeconds' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_GetHackerInventory_ReturnValue) == 0x000060, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_GetHackerInventory_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_4) == 0x000068, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_MakeArray_Array) == 0x000070, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_GetHackerMoveControlManager_COMP_MoveControlManager) == 0x000080, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_GetHackerMoveControlManager_COMP_MoveControlManager' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_GetActorOfClass_ReturnValue) == 0x000088, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_GetActorOfClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_5) == 0x000090, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OverlappedComponent_1) == 0x000098, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OverlappedComponent_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherActor_1) == 0x0000A0, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherActor_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherComp_1) == 0x0000A8, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherComp_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherBodyIndex_1) == 0x0000B0, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherBodyIndex_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_bFromSweep) == 0x0000B4, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_bFromSweep' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_SweepResult) == 0x0000B8, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_SweepResult' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OverlappedComponent) == 0x000140, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OverlappedComponent' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherActor) == 0x000148, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherActor' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherComp) == 0x000150, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherComp' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherBodyIndex) == 0x000158, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_3) == 0x000068, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_GetHackerMoveControlManager_COMP_MoveControlManager) == 0x000070, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_GetHackerMoveControlManager_COMP_MoveControlManager' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_GetActorOfClass_ReturnValue) == 0x000078, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_GetActorOfClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_4) == 0x000080, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_5) == 0x000081, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_MakeArray_Array) == 0x000088, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OverlappedComponent_3) == 0x000098, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OverlappedComponent_3' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherActor_3) == 0x0000A0, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherActor_3' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherComp_3) == 0x0000A8, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherComp_3' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherBodyIndex_3) == 0x0000B0, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherBodyIndex_3' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_bFromSweep_2) == 0x0000B4, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_bFromSweep_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_SweepResult_2) == 0x0000B8, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_SweepResult_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OverlappedComponent_2) == 0x000140, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OverlappedComponent_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherActor_2) == 0x000148, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherActor_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherComp_2) == 0x000150, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherComp_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherBodyIndex_2) == 0x000158, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherBodyIndex_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_GetWidget_ReturnValue) == 0x000160, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_GetWidget_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OverlappedComponent_1) == 0x000168, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OverlappedComponent_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherActor_1) == 0x000170, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherActor_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherComp_1) == 0x000178, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherComp_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherBodyIndex_1) == 0x000180, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherBodyIndex_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_bFromSweep_1) == 0x000184, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_bFromSweep_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_SweepResult_1) == 0x000188, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_SweepResult_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_DynamicCast_As_WIDGET_VRMenu) == 0x000210, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_DynamicCast_As_WIDGET_VRMenu' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_DynamicCast_bSuccess) == 0x000218, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsManuallyPointing_Result_1) == 0x000219, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsManuallyPointing_Result_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_BooleanOR_ReturnValue) == 0x00021A, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_MakeStruct_Key) == 0x000220, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_MakeStruct_Key' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_IsValid_ReturnValue_6) == 0x000238, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_IsValid_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_GetObjectClass_ReturnValue) == 0x000240, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OverlappedComponent) == 0x000248, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OverlappedComponent' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherActor) == 0x000250, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherActor' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherComp) == 0x000258, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherComp' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_OtherBodyIndex) == 0x000260, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_bFromSweep) == 0x000264, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_bFromSweep' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, K2Node_ComponentBoundEvent_SweepResult) == 0x000268, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::K2Node_ComponentBoundEvent_SweepResult' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_ClassIsChildOf_ReturnValue) == 0x0002F0, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_GetDisplayName_ReturnValue) == 0x0002F8, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_GetDisplayName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ExecuteUbergraph__BP_VRBody, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000308, "Member '_BP_VRBody_C_ExecuteUbergraph__BP_VRBody::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+
+// Function _BP_VRBody._BP_VRBody_C.BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature
+// 0x00A8 (0x00A8 - 0x0000)
+struct _BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature final
+{
+public:
+	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          bFromSweep;                                        // 0x001C(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             SweepResult;                                       // 0x0020(0x0088)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+};
+static_assert(alignof(_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature) == 0x000008, "Wrong alignment on _BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature");
+static_assert(sizeof(_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature) == 0x0000A8, "Wrong size on _BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature, OverlappedComponent) == 0x000000, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature::OverlappedComponent' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature, OtherActor) == 0x000008, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature::OtherActor' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature, OtherComp) == 0x000010, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature::OtherComp' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature, OtherBodyIndex) == 0x000018, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature::OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature, bFromSweep) == 0x00001C, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature::bFromSweep' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature, SweepResult) == 0x000020, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature::SweepResult' has a wrong offset!");
+
+// Function _BP_VRBody._BP_VRBody_C.BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature
+// 0x00A8 (0x00A8 - 0x0000)
+struct _BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature final
+{
+public:
+	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          bFromSweep;                                        // 0x001C(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             SweepResult;                                       // 0x0020(0x0088)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+};
+static_assert(alignof(_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature) == 0x000008, "Wrong alignment on _BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature");
+static_assert(sizeof(_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature) == 0x0000A8, "Wrong size on _BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature, OverlappedComponent) == 0x000000, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature::OverlappedComponent' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature, OtherActor) == 0x000008, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature::OtherActor' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature, OtherComp) == 0x000010, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature::OtherComp' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature, OtherBodyIndex) == 0x000018, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature::OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature, bFromSweep) == 0x00001C, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature::bFromSweep' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature, SweepResult) == 0x000020, "Member '_BP_VRBody_C_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature::SweepResult' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature
 // 0x0020 (0x0020 - 0x0000)
@@ -224,7 +323,7 @@ static_assert(offsetof(_BP_VRBody_C_PlayUnloadWeaponAnim, CallFunc_DoesImplement
 struct _BP_VRBody_C_TryGrabAction final
 {
 public:
-	E_ENUM_VRHand                                 inHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 InHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_VRHandPose                             InPose;                                            // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          TryGrabSuccess;                                    // 0x0002(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -232,7 +331,7 @@ public:
 };
 static_assert(alignof(_BP_VRBody_C_TryGrabAction) == 0x000001, "Wrong alignment on _BP_VRBody_C_TryGrabAction");
 static_assert(sizeof(_BP_VRBody_C_TryGrabAction) == 0x000005, "Wrong size on _BP_VRBody_C_TryGrabAction");
-static_assert(offsetof(_BP_VRBody_C_TryGrabAction, inHand) == 0x000000, "Member '_BP_VRBody_C_TryGrabAction::inHand' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_TryGrabAction, InHand) == 0x000000, "Member '_BP_VRBody_C_TryGrabAction::InHand' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_TryGrabAction, InPose) == 0x000001, "Member '_BP_VRBody_C_TryGrabAction::InPose' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_TryGrabAction, TryGrabSuccess) == 0x000002, "Member '_BP_VRBody_C_TryGrabAction::TryGrabSuccess' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_TryGrabAction, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000003, "Member '_BP_VRBody_C_TryGrabAction::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
@@ -346,14 +445,14 @@ static_assert(offsetof(_BP_VRBody_C_InitializeAnimations, K2Node_DynamicCast_bSu
 struct _BP_VRBody_C_ShowItemSelector final
 {
 public:
-	E_ENUM_VRHand                                 inHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 InHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BP_VRBody_C_ShowItemSelector) == 0x000001, "Wrong alignment on _BP_VRBody_C_ShowItemSelector");
 static_assert(sizeof(_BP_VRBody_C_ShowItemSelector) == 0x000001, "Wrong size on _BP_VRBody_C_ShowItemSelector");
-static_assert(offsetof(_BP_VRBody_C_ShowItemSelector, inHand) == 0x000000, "Member '_BP_VRBody_C_ShowItemSelector::inHand' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ShowItemSelector, InHand) == 0x000000, "Member '_BP_VRBody_C_ShowItemSelector::InHand' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.ChangeEquippedWeapon
-// 0x0190 (0x0190 - 0x0000)
+// 0x01B0 (0x01B0 - 0x0000)
 struct _BP_VRBody_C_ChangeEquippedWeapon final
 {
 public:
@@ -367,30 +466,33 @@ public:
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_43[0x5];                                       // 0x0043(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class I_BI_VRWeapon_C>       K2Node_DynamicCast_As_BI_VRWeapon;                 // 0x0048(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class I_BI_VRWeapon_C>       K2Node_DynamicCast_As_BI_VRWeapon_1;               // 0x0060(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_71[0x7];                                       // 0x0071(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class I_BI_VRWeapon_C>       K2Node_DynamicCast_As_BI_VRWeapon_2;               // 0x0078(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0088(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_89[0x3];                                       // 0x0089(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_GetDefaultParams_OutAttachSocketName;     // 0x008C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	E_ENUM_VRHandPose                             CallFunc_GetDefaultParams_OutGripHandPose;         // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_95[0xB];                                       // 0x0095(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CallFunc_GetDefaultParams_OutWeaponOffset;         // 0x00A0(0x0030)(IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims; // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x00D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_D2[0x2];                                       // 0x00D2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x00D4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x00E0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x00EC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult; // 0x00F8(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0180(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class FString                                 CallFunc_GetDisplayName_ReturnValue_1;             // 0x0048(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_1;              // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	TScriptInterface<class I_BI_VRWeapon_C>       K2Node_DynamicCast_As_BI_VRWeapon;                 // 0x0068(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_79[0x7];                                       // 0x0079(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class I_BI_VRWeapon_C>       K2Node_DynamicCast_As_BI_VRWeapon_1;               // 0x0080(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_91[0x7];                                       // 0x0091(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class I_BI_VRWeapon_C>       K2Node_DynamicCast_As_BI_VRWeapon_2;               // 0x0098(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A9[0x3];                                       // 0x00A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_GetDefaultParams_OutAttachSocketName;     // 0x00AC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHandPose                             CallFunc_GetDefaultParams_OutGripHandPose;         // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B5[0xB];                                       // 0x00B5(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_GetDefaultParams_OutWeaponOffset;         // 0x00C0(0x0030)(IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims; // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetDefaultParams_OutEnabledLaserPointer;  // 0x00F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetDefaultParams_OutMainHand;             // 0x00F2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x00F3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x00F4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x0100(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x010C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult; // 0x0118(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x01A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_VRBody_C_ChangeEquippedWeapon) == 0x000010, "Wrong alignment on _BP_VRBody_C_ChangeEquippedWeapon");
-static_assert(sizeof(_BP_VRBody_C_ChangeEquippedWeapon) == 0x000190, "Wrong size on _BP_VRBody_C_ChangeEquippedWeapon");
+static_assert(sizeof(_BP_VRBody_C_ChangeEquippedWeapon) == 0x0001B0, "Wrong size on _BP_VRBody_C_ChangeEquippedWeapon");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, InWeapon) == 0x000000, "Member '_BP_VRBody_C_ChangeEquippedWeapon::InWeapon' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, LocalWeaponAnimBP) == 0x000008, "Member '_BP_VRBody_C_ChangeEquippedWeapon::LocalWeaponAnimBP' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, LocalWeaponMesh) == 0x000010, "Member '_BP_VRBody_C_ChangeEquippedWeapon::LocalWeaponMesh' has a wrong offset!");
@@ -400,22 +502,26 @@ static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_Concat_StrStr
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_DoesImplementInterface_ReturnValue) == 0x000040, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_IsValid_ReturnValue) == 0x000041, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BooleanAND_ReturnValue) == 0x000042, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_As_BI_VRWeapon) == 0x000048, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_As_BI_VRWeapon' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_bSuccess) == 0x000058, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_As_BI_VRWeapon_1) == 0x000060, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_As_BI_VRWeapon_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_bSuccess_1) == 0x000070, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_As_BI_VRWeapon_2) == 0x000078, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_As_BI_VRWeapon_2' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_bSuccess_2) == 0x000088, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutAttachSocketName) == 0x00008C, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutAttachSocketName' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutGripHandPose) == 0x000094, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutGripHandPose' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutWeaponOffset) == 0x0000A0, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutWeaponOffset' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims) == 0x0000D0, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_IsValid_ReturnValue_1) == 0x0000D1, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Location) == 0x0000D4, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Location' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Rotation) == 0x0000E0, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Rotation' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Scale) == 0x0000EC, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Scale' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult) == 0x0000F8, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000180, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDisplayName_ReturnValue_1) == 0x000048, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDisplayName_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_Concat_StrStr_ReturnValue_1) == 0x000058, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_Concat_StrStr_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_As_BI_VRWeapon) == 0x000068, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_As_BI_VRWeapon' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_bSuccess) == 0x000078, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_As_BI_VRWeapon_1) == 0x000080, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_As_BI_VRWeapon_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_bSuccess_1) == 0x000090, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_As_BI_VRWeapon_2) == 0x000098, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_As_BI_VRWeapon_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, K2Node_DynamicCast_bSuccess_2) == 0x0000A8, "Member '_BP_VRBody_C_ChangeEquippedWeapon::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutAttachSocketName) == 0x0000AC, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutAttachSocketName' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutGripHandPose) == 0x0000B4, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutGripHandPose' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutWeaponOffset) == 0x0000C0, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutWeaponOffset' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims) == 0x0000F0, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutEnabledLaserPointer) == 0x0000F1, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutEnabledLaserPointer' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutMainHand) == 0x0000F2, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutMainHand' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_IsValid_ReturnValue_1) == 0x0000F3, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Location) == 0x0000F4, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Location' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Rotation) == 0x000100, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Rotation' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Scale) == 0x00010C, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Scale' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult) == 0x000118, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_K2_AttachToComponent_ReturnValue) == 0x0001A0, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.GetWeaponAnimInstance
 // 0x0030 (0x0030 - 0x0000)
@@ -540,37 +646,45 @@ static_assert(offsetof(_BP_VRBody_C_GetHackerMoveControlManager, COMP_MoveContro
 static_assert(offsetof(_BP_VRBody_C_GetHackerMoveControlManager, CallFunc_IsValid_ReturnValue) == 0x000008, "Member '_BP_VRBody_C_GetHackerMoveControlManager::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.AttachLaserPointer
-// 0x0038 (0x0038 - 0x0000)
+// 0x0058 (0x0058 - 0x0000)
 struct _BP_VRBody_C_AttachLaserPointer final
 {
 public:
-	E_ENUM_VRHand                                 inHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 InHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          InAttachToCurrentWeapon;                           // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          InEnabled;                                         // 0x0002(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          IsEnabled;                                         // 0x0003(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UMotionControllerComponent*             LocalSelectedMC;                                   // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UCameraComponent*                       LocalPlayerCamera;                                 // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class USkeletalMeshComponent*                 LocalWeaponMesh;                                   // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	E_ENUM_VRHand                                 Temp_byte_Variable;                                // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_23[0x5];                                       // 0x0023(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMotionControllerComponent*             K2Node_Select_Default;                             // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_K2_AttachToComponent_ReturnValue_1;       // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class FString                                 CallFunc_Conv_BoolToString_ReturnValue;            // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0030(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	E_ENUM_VRHand                                 Temp_byte_Variable;                                // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_43[0x5];                                       // 0x0043(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMotionControllerComponent*             K2Node_Select_Default;                             // 0x0048(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue_1;       // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_VRBody_C_AttachLaserPointer) == 0x000008, "Wrong alignment on _BP_VRBody_C_AttachLaserPointer");
-static_assert(sizeof(_BP_VRBody_C_AttachLaserPointer) == 0x000038, "Wrong size on _BP_VRBody_C_AttachLaserPointer");
-static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, inHand) == 0x000000, "Member '_BP_VRBody_C_AttachLaserPointer::inHand' has a wrong offset!");
+static_assert(sizeof(_BP_VRBody_C_AttachLaserPointer) == 0x000058, "Wrong size on _BP_VRBody_C_AttachLaserPointer");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, InHand) == 0x000000, "Member '_BP_VRBody_C_AttachLaserPointer::InHand' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, InAttachToCurrentWeapon) == 0x000001, "Member '_BP_VRBody_C_AttachLaserPointer::InAttachToCurrentWeapon' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, InEnabled) == 0x000002, "Member '_BP_VRBody_C_AttachLaserPointer::InEnabled' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, IsEnabled) == 0x000003, "Member '_BP_VRBody_C_AttachLaserPointer::IsEnabled' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, LocalSelectedMC) == 0x000008, "Member '_BP_VRBody_C_AttachLaserPointer::LocalSelectedMC' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, LocalPlayerCamera) == 0x000010, "Member '_BP_VRBody_C_AttachLaserPointer::LocalPlayerCamera' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, LocalWeaponMesh) == 0x000018, "Member '_BP_VRBody_C_AttachLaserPointer::LocalWeaponMesh' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_IsValid_ReturnValue) == 0x000020, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, Temp_byte_Variable) == 0x000021, "Member '_BP_VRBody_C_AttachLaserPointer::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_IsValid_ReturnValue_1) == 0x000022, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, K2Node_Select_Default) == 0x000028, "Member '_BP_VRBody_C_AttachLaserPointer::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000030, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue_1) == 0x000031, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_Conv_BoolToString_ReturnValue) == 0x000020, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_Conv_BoolToString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_Concat_StrStr_ReturnValue) == 0x000030, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_IsValid_ReturnValue) == 0x000040, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, Temp_byte_Variable) == 0x000041, "Member '_BP_VRBody_C_AttachLaserPointer::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_IsValid_ReturnValue_1) == 0x000042, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, K2Node_Select_Default) == 0x000048, "Member '_BP_VRBody_C_AttachLaserPointer::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000050, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue_1) == 0x000051, "Member '_BP_VRBody_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue_1' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.IsWeaponHolstered
 // 0x0018 (0x0018 - 0x0000)
@@ -636,6 +750,114 @@ static_assert(offsetof(_BP_VRBody_C_SetADSZoneOffset, HalfSize) == 0x000008, "Me
 static_assert(offsetof(_BP_VRBody_C_SetADSZoneOffset, CallFunc_SelectFloat_ReturnValue) == 0x00000C, "Member '_BP_VRBody_C_SetADSZoneOffset::CallFunc_SelectFloat_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_SetADSZoneOffset, CallFunc_MakeVector_ReturnValue) == 0x000010, "Member '_BP_VRBody_C_SetADSZoneOffset::CallFunc_MakeVector_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_SetADSZoneOffset, CallFunc_K2_SetRelativeLocation_SweepHitResult) == 0x00001C, "Member '_BP_VRBody_C_SetADSZoneOffset::CallFunc_K2_SetRelativeLocation_SweepHitResult' has a wrong offset!");
+
+// Function _BP_VRBody._BP_VRBody_C.UpdatePickableSocketPos
+// 0x0120 (0x0120 - 0x0000)
+struct _BP_VRBody_C_UpdatePickableSocketPos final
+{
+public:
+	bool                                          CallFunc_IsWeaponHolstered_ReturnValue;            // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_DoesImplementInterface_ReturnValue;       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0xF];                                       // 0x0011(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_GetSocketTransform_ReturnValue;           // 0x0020(0x0030)(IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x0050(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x005C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x0068(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_TransformToBoneSpace_OutPosition;         // 0x0074(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_TransformToBoneSpace_OutRotation;         // 0x0080(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FHitResult                             CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult; // 0x008C(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+};
+static_assert(alignof(_BP_VRBody_C_UpdatePickableSocketPos) == 0x000010, "Wrong alignment on _BP_VRBody_C_UpdatePickableSocketPos");
+static_assert(sizeof(_BP_VRBody_C_UpdatePickableSocketPos) == 0x000120, "Wrong size on _BP_VRBody_C_UpdatePickableSocketPos");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_IsWeaponHolstered_ReturnValue) == 0x000000, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_IsWeaponHolstered_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_GetAnimInstance_ReturnValue) == 0x000008, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_DoesImplementInterface_ReturnValue) == 0x000010, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_GetSocketTransform_ReturnValue) == 0x000020, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_GetSocketTransform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_BreakTransform_Location) == 0x000050, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_BreakTransform_Location' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_BreakTransform_Rotation) == 0x00005C, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_BreakTransform_Rotation' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_BreakTransform_Scale) == 0x000068, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_BreakTransform_Scale' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_TransformToBoneSpace_OutPosition) == 0x000074, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_TransformToBoneSpace_OutPosition' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_TransformToBoneSpace_OutRotation) == 0x000080, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_TransformToBoneSpace_OutRotation' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_UpdatePickableSocketPos, CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult) == 0x00008C, "Member '_BP_VRBody_C_UpdatePickableSocketPos::CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult' has a wrong offset!");
+
+// Function _BP_VRBody._BP_VRBody_C.TriggerWidgetInteractionAction
+// 0x0001 (0x0001 - 0x0000)
+struct _BP_VRBody_C_TriggerWidgetInteractionAction final
+{
+public:
+	bool                                          InPressLMB;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_VRBody_C_TriggerWidgetInteractionAction) == 0x000001, "Wrong alignment on _BP_VRBody_C_TriggerWidgetInteractionAction");
+static_assert(sizeof(_BP_VRBody_C_TriggerWidgetInteractionAction) == 0x000001, "Wrong size on _BP_VRBody_C_TriggerWidgetInteractionAction");
+static_assert(offsetof(_BP_VRBody_C_TriggerWidgetInteractionAction, InPressLMB) == 0x000000, "Member '_BP_VRBody_C_TriggerWidgetInteractionAction::InPressLMB' has a wrong offset!");
+
+// Function _BP_VRBody._BP_VRBody_C.OpenVRMenu
+// 0x00F0 (0x00F0 - 0x0000)
+struct _BP_VRBody_C_OpenVRMenu final
+{
+public:
+	struct FTransform                             LVRMenuTransform;                                  // 0x0000(0x0030)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor)
+	struct FHitResult                             CallFunc_K2_SetWorldTransform_SweepHitResult;      // 0x0030(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	uint8                                         Pad_B8[0x8];                                       // 0x00B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_K2_GetComponentToWorld_ReturnValue;       // 0x00C0(0x0030)(IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_VRBody_C_OpenVRMenu) == 0x000010, "Wrong alignment on _BP_VRBody_C_OpenVRMenu");
+static_assert(sizeof(_BP_VRBody_C_OpenVRMenu) == 0x0000F0, "Wrong size on _BP_VRBody_C_OpenVRMenu");
+static_assert(offsetof(_BP_VRBody_C_OpenVRMenu, LVRMenuTransform) == 0x000000, "Member '_BP_VRBody_C_OpenVRMenu::LVRMenuTransform' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_OpenVRMenu, CallFunc_K2_SetWorldTransform_SweepHitResult) == 0x000030, "Member '_BP_VRBody_C_OpenVRMenu::CallFunc_K2_SetWorldTransform_SweepHitResult' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_OpenVRMenu, CallFunc_K2_GetComponentToWorld_ReturnValue) == 0x0000C0, "Member '_BP_VRBody_C_OpenVRMenu::CallFunc_K2_GetComponentToWorld_ReturnValue' has a wrong offset!");
+
+// Function _BP_VRBody._BP_VRBody_C.CloseVRMenu
+// 0x0088 (0x0088 - 0x0000)
+struct _BP_VRBody_C_CloseVRMenu final
+{
+public:
+	struct FHitResult                             CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult; // 0x0000(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+};
+static_assert(alignof(_BP_VRBody_C_CloseVRMenu) == 0x000004, "Wrong alignment on _BP_VRBody_C_CloseVRMenu");
+static_assert(sizeof(_BP_VRBody_C_CloseVRMenu) == 0x000088, "Wrong size on _BP_VRBody_C_CloseVRMenu");
+static_assert(offsetof(_BP_VRBody_C_CloseVRMenu, CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult) == 0x000000, "Member '_BP_VRBody_C_CloseVRMenu::CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult' has a wrong offset!");
+
+// Function _BP_VRBody._BP_VRBody_C.SetHandItemCollision
+// 0x0100 (0x0100 - 0x0000)
+struct _BP_VRBody_C_SetHandItemCollision final
+{
+public:
+	class FName                                   SocketName;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RelativeTransform;                                 // 0x0010(0x0030)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	ECollisionEnabled                             Collision;                                         // 0x0040(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x0044(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x0050(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x005C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult; // 0x006C(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+};
+static_assert(alignof(_BP_VRBody_C_SetHandItemCollision) == 0x000010, "Wrong alignment on _BP_VRBody_C_SetHandItemCollision");
+static_assert(sizeof(_BP_VRBody_C_SetHandItemCollision) == 0x000100, "Wrong size on _BP_VRBody_C_SetHandItemCollision");
+static_assert(offsetof(_BP_VRBody_C_SetHandItemCollision, SocketName) == 0x000000, "Member '_BP_VRBody_C_SetHandItemCollision::SocketName' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_SetHandItemCollision, RelativeTransform) == 0x000010, "Member '_BP_VRBody_C_SetHandItemCollision::RelativeTransform' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_SetHandItemCollision, Collision) == 0x000040, "Member '_BP_VRBody_C_SetHandItemCollision::Collision' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_SetHandItemCollision, CallFunc_BreakTransform_Location) == 0x000044, "Member '_BP_VRBody_C_SetHandItemCollision::CallFunc_BreakTransform_Location' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_SetHandItemCollision, CallFunc_BreakTransform_Rotation) == 0x000050, "Member '_BP_VRBody_C_SetHandItemCollision::CallFunc_BreakTransform_Rotation' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_SetHandItemCollision, CallFunc_BreakTransform_Scale) == 0x00005C, "Member '_BP_VRBody_C_SetHandItemCollision::CallFunc_BreakTransform_Scale' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_SetHandItemCollision, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000068, "Member '_BP_VRBody_C_SetHandItemCollision::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_SetHandItemCollision, CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult) == 0x00006C, "Member '_BP_VRBody_C_SetHandItemCollision::CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult' has a wrong offset!");
+
+// Function _BP_VRBody._BP_VRBody_C.DisableHandItemCollisions
+// 0x0030 (0x0030 - 0x0000)
+struct _BP_VRBody_C_DisableHandItemCollisions final
+{
+public:
+	struct FTransform                             CallFunc_MakeTransform_ReturnValue;                // 0x0000(0x0030)(IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_VRBody_C_DisableHandItemCollisions) == 0x000010, "Wrong alignment on _BP_VRBody_C_DisableHandItemCollisions");
+static_assert(sizeof(_BP_VRBody_C_DisableHandItemCollisions) == 0x000030, "Wrong size on _BP_VRBody_C_DisableHandItemCollisions");
+static_assert(offsetof(_BP_VRBody_C_DisableHandItemCollisions, CallFunc_MakeTransform_ReturnValue) == 0x000000, "Member '_BP_VRBody_C_DisableHandItemCollisions::CallFunc_MakeTransform_ReturnValue' has a wrong offset!");
 
 }
 
