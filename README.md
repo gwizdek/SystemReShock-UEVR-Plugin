@@ -1,13 +1,16 @@
 # SystemReShock UEVR Plugin
+  
+> [!WARNING]
+> The profile doesn't work with the GOG version and the Demo version of the game
 
 > [!WARNING]
-> **2025-09-21 This mod is not working with version 1.3.0 of the game yet. I'm working on it. More info on Flat2VR Discord.**
-  
-> [!WARNING]
-> The profile doesn't work with the Demo version of the game available on Steam
+> Windows Defender doesn't like the `SystemReShockVR.dll` file included inside the profile v1.4.0.
+> It will try to remove it from `\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\plugins` folder when importing the profile.  
+> Add a exception rule to `\Users\{username}\AppData\Roaming\UnrealVRMod` folder before importing the profile.  
+> Double check, that the `SystemReShockVR.dll` file is inside the profile folder before playing the game.
   
 > [!NOTE]
-> The 1.3.0 version is also available through Unreal Easy Injector https://uevrdeluxe.org and https://uevr-profiles.com  
+> The 1.4.0 version is also available through Unreal Easy Injector https://uevrdeluxe.org and https://uevr-profiles.com  
 
 > [!NOTE]
 > Optional mod files available:
