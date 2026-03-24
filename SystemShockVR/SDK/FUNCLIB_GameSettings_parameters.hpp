@@ -10,13 +10,15 @@
 
 #include "Basic.hpp"
 
-#include "InputCore_structs.hpp"
-#include "ENUM_GameDifficultyConfigCategory_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_PrimarySecondary_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 #include "ENUM_InputCategory_structs.hpp"
 #include "STRUCT_BoundInputActionPair_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
+#include "ENUM_GameDifficultyConfigCategory_structs.hpp"
+#include "InputCore_structs.hpp"
 #include "Engine_structs.hpp"
 
 
@@ -54,7 +56,7 @@ static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKey, CallFunc_Map_Find_Ret
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKey, K2Node_Select_Default) == 0x0000C0, "Member 'FUNCLIB_GameSettings_C_GetBoundKey::K2Node_Select_Default' has a wrong offset!");
 
 // Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.GetBoundKeyForCurrentUser
-// 0x0148 (0x0148 - 0x0000)
+// 0x0180 (0x0180 - 0x0000)
 struct FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser final
 {
 public:
@@ -63,57 +65,75 @@ public:
 	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UObject*                                __WorldContext;                                    // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FKey                                   BoundKey;                                          // 0x0018(0x0018)(Parm, OutParm, HasGetValueTypeHash)
-	TArray<struct FInputActionKeyMapping>         MappedKeys;                                        // 0x0030(0x0010)(Edit, BlueprintVisible)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> KeyActionPairMap;                                  // 0x0040(0x0050)(Edit, BlueprintVisible)
-	class USAVE_Settings_C*                       ShockSettings;                                     // 0x0090(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsGamepadInputAction_Result;              // 0x0098(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetInputCategoryFromActionName_Found;     // 0x0099(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_InputCategory                            CallFunc_GetInputCategoryFromActionName_Result;    // 0x009A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9B[0x1];                                       // 0x009B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Conv_ByteToInt_ReturnValue;               // 0x009C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Conv_ByteToInt_ReturnValue_1;             // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_A4[0x4];                                       // 0x00A4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue;             // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FInputActionKeyMapping>         CallFunc_GetActionMappingByName_OutMappings;       // 0x00B0(0x0010)(ReferenceParm)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C1[0x3];                                       // 0x00C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Map_Length_ReturnValue;                   // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_GetInputKeyMapForCategory_Result;         // 0x00D0(0x0050)()
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0120(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue_1;             // 0x0124(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_125[0x3];                                      // 0x0125(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   CallFunc_GetBoundKey_BoundKey;                     // 0x0128(0x0018)(HasGetValueTypeHash)
-	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings;  // 0x0140(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FInputAxisKeyMapping>           MappedAxes;                                        // 0x0030(0x0010)(Edit, BlueprintVisible)
+	TArray<struct FInputActionKeyMapping>         MappedKeys;                                        // 0x0040(0x0010)(Edit, BlueprintVisible)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> KeyActionPairMap;                                  // 0x0050(0x0050)(Edit, BlueprintVisible)
+	class USAVE_Settings_C*                       ShockSettings;                                     // 0x00A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue;               // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue_1;             // 0x00AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue;             // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FInputAxisKeyMapping>           CallFunc_GetAxisMappingByName_OutMappings;         // 0x00B8(0x0010)(ReferenceParm)
+	ENUM_ControllerType                           CallFunc_GetInputActionControllerType_Result;      // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x00C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetInputCategoryFromActionName_Found;     // 0x00CA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_InputCategory                            CallFunc_GetInputCategoryFromActionName_Result;    // 0x00CB(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue_2;             // 0x00CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue_3;             // 0x00D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_D4[0x4];                                       // 0x00D4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_1;           // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FInputActionKeyMapping>         CallFunc_GetActionMappingByName_OutMappings;       // 0x00E0(0x0010)(ReferenceParm)
+	int32                                         CallFunc_Map_Length_ReturnValue;                   // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x00F4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_F5[0x3];                                       // 0x00F5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x00F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_1;             // 0x00FC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_FD[0x3];                                       // 0x00FD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x0100(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_2;             // 0x0104(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_105[0x3];                                      // 0x0105(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_GetInputKeyMapForCategory_Result;         // 0x0108(0x0050)()
+	int32                                         CallFunc_Array_Length_ReturnValue_2;               // 0x0158(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_3;             // 0x015C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_15D[0x3];                                      // 0x015D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   CallFunc_GetBoundKey_BoundKey;                     // 0x0160(0x0018)(HasGetValueTypeHash)
+	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings;  // 0x0178(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser) == 0x000008, "Wrong alignment on FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser");
-static_assert(sizeof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser) == 0x000148, "Wrong size on FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser");
+static_assert(sizeof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser) == 0x000180, "Wrong size on FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, ActionName) == 0x000000, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::ActionName' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, Rank) == 0x000008, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::Rank' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, __WorldContext) == 0x000010, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::__WorldContext' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, BoundKey) == 0x000018, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::BoundKey' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, MappedKeys) == 0x000030, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::MappedKeys' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, KeyActionPairMap) == 0x000040, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::KeyActionPairMap' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, ShockSettings) == 0x000090, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::ShockSettings' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_IsGamepadInputAction_Result) == 0x000098, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_IsGamepadInputAction_Result' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputCategoryFromActionName_Found) == 0x000099, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputCategoryFromActionName_Found' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputCategoryFromActionName_Result) == 0x00009A, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputCategoryFromActionName_Result' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Conv_ByteToInt_ReturnValue) == 0x00009C, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Conv_ByteToInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Conv_ByteToInt_ReturnValue_1) == 0x0000A0, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Conv_ByteToInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputSettings_ReturnValue) == 0x0000A8, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputSettings_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetActionMappingByName_OutMappings) == 0x0000B0, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetActionMappingByName_OutMappings' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_IsValid_ReturnValue) == 0x0000C0, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Map_Length_ReturnValue) == 0x0000C4, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Map_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Greater_IntInt_ReturnValue) == 0x0000C8, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputKeyMapForCategory_Result) == 0x0000D0, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputKeyMapForCategory_Result' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Array_Length_ReturnValue) == 0x000120, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Greater_IntInt_ReturnValue_1) == 0x000124, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Greater_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetBoundKey_BoundKey) == 0x000128, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetBoundKey_BoundKey' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetShockSettingsForCurrentUser_Settings) == 0x000140, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetShockSettingsForCurrentUser_Settings' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, MappedAxes) == 0x000030, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::MappedAxes' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, MappedKeys) == 0x000040, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::MappedKeys' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, KeyActionPairMap) == 0x000050, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::KeyActionPairMap' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, ShockSettings) == 0x0000A0, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::ShockSettings' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Conv_ByteToInt_ReturnValue) == 0x0000A8, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Conv_ByteToInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Conv_ByteToInt_ReturnValue_1) == 0x0000AC, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Conv_ByteToInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputSettings_ReturnValue) == 0x0000B0, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputSettings_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetAxisMappingByName_OutMappings) == 0x0000B8, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetAxisMappingByName_OutMappings' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputActionControllerType_Result) == 0x0000C8, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputActionControllerType_Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_IsValid_ReturnValue) == 0x0000C9, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputCategoryFromActionName_Found) == 0x0000CA, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputCategoryFromActionName_Found' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputCategoryFromActionName_Result) == 0x0000CB, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputCategoryFromActionName_Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Conv_ByteToInt_ReturnValue_2) == 0x0000CC, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Conv_ByteToInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Conv_ByteToInt_ReturnValue_3) == 0x0000D0, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Conv_ByteToInt_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputSettings_ReturnValue_1) == 0x0000D8, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputSettings_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetActionMappingByName_OutMappings) == 0x0000E0, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetActionMappingByName_OutMappings' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Map_Length_ReturnValue) == 0x0000F0, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Map_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Greater_IntInt_ReturnValue) == 0x0000F4, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Array_Length_ReturnValue) == 0x0000F8, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Greater_IntInt_ReturnValue_1) == 0x0000FC, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Greater_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Array_Length_ReturnValue_1) == 0x000100, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Greater_IntInt_ReturnValue_2) == 0x000104, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Greater_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetInputKeyMapForCategory_Result) == 0x000108, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetInputKeyMapForCategory_Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Array_Length_ReturnValue_2) == 0x000158, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Array_Length_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_Greater_IntInt_ReturnValue_3) == 0x00015C, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_Greater_IntInt_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetBoundKey_BoundKey) == 0x000160, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetBoundKey_BoundKey' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser, CallFunc_GetShockSettingsForCurrentUser_Settings) == 0x000178, "Member 'FUNCLIB_GameSettings_C_GetBoundKeyForCurrentUser::CallFunc_GetShockSettingsForCurrentUser_Settings' has a wrong offset!");
 
 // Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.IsValidKeyToBind
-// 0x0058 (0x0058 - 0x0000)
+// 0x0080 (0x0080 - 0x0000)
 struct FUNCLIB_GameSettings_C_IsValidKeyToBind final
 {
 public:
@@ -121,29 +141,38 @@ public:
 	class UObject*                                __WorldContext;                                    // 0x0018(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          Result;                                            // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FKey>                           UnbindableKeys;                                    // 0x0028(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TArray<struct FKey>                           K2Node_MakeArray_Array;                            // 0x0038(0x0010)(ReferenceParm)
-	bool                                          CallFunc_Key_IsGamepadKey_ReturnValue;             // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Array_Contains_ReturnValue;               // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x004A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4B[0x1];                                       // 0x004B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetGamepadButtonAtlasIndex_Index;         // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetGamepadButtonAtlasIndex_Rotation;      // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0054(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	TArray<struct FKey>                           UnbindableGamepadKeys;                             // 0x0028(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TArray<struct FKey>                           UnbindableKBMKeys;                                 // 0x0038(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TArray<struct FKey>                           K2Node_MakeArray_Array;                            // 0x0048(0x0010)(ReferenceParm)
+	bool                                          CallFunc_Key_IsGamepadKey_ReturnValue;             // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FKey>                           K2Node_MakeArray_Array_1;                          // 0x0060(0x0010)(ReferenceParm)
+	bool                                          CallFunc_Array_Contains_ReturnValue;               // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_72[0x2];                                       // 0x0072(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetGamepadButtonAtlasIndex_Index;         // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetGamepadButtonAtlasIndex_Rotation;      // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x007C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Array_Contains_ReturnValue_1;             // 0x007D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x007E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(FUNCLIB_GameSettings_C_IsValidKeyToBind) == 0x000008, "Wrong alignment on FUNCLIB_GameSettings_C_IsValidKeyToBind");
-static_assert(sizeof(FUNCLIB_GameSettings_C_IsValidKeyToBind) == 0x000058, "Wrong size on FUNCLIB_GameSettings_C_IsValidKeyToBind");
+static_assert(sizeof(FUNCLIB_GameSettings_C_IsValidKeyToBind) == 0x000080, "Wrong size on FUNCLIB_GameSettings_C_IsValidKeyToBind");
 static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, Key) == 0x000000, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::Key' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, __WorldContext) == 0x000018, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::__WorldContext' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, Result) == 0x000020, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::Result' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, UnbindableKeys) == 0x000028, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::UnbindableKeys' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, K2Node_MakeArray_Array) == 0x000038, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_Key_IsGamepadKey_ReturnValue) == 0x000048, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_Key_IsGamepadKey_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_Array_Contains_ReturnValue) == 0x000049, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_Array_Contains_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_Not_PreBool_ReturnValue) == 0x00004A, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_GetGamepadButtonAtlasIndex_Index) == 0x00004C, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_GetGamepadButtonAtlasIndex_Index' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_GetGamepadButtonAtlasIndex_Rotation) == 0x000050, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_GetGamepadButtonAtlasIndex_Rotation' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000054, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, UnbindableGamepadKeys) == 0x000028, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::UnbindableGamepadKeys' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, UnbindableKBMKeys) == 0x000038, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::UnbindableKBMKeys' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, K2Node_MakeArray_Array) == 0x000048, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_Key_IsGamepadKey_ReturnValue) == 0x000058, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_Key_IsGamepadKey_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, K2Node_MakeArray_Array_1) == 0x000060, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::K2Node_MakeArray_Array_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_Array_Contains_ReturnValue) == 0x000070, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_Array_Contains_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_Not_PreBool_ReturnValue) == 0x000071, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_GetGamepadButtonAtlasIndex_Index) == 0x000074, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_GetGamepadButtonAtlasIndex_Index' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_GetGamepadButtonAtlasIndex_Rotation) == 0x000078, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_GetGamepadButtonAtlasIndex_Rotation' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x00007C, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_Array_Contains_ReturnValue_1) == 0x00007D, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_Array_Contains_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsValidKeyToBind, CallFunc_Not_PreBool_ReturnValue_1) == 0x00007E, "Member 'FUNCLIB_GameSettings_C_IsValidKeyToBind::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
 
 // Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.SetKeyAction
 // 0x01F0 (0x01F0 - 0x0000)
@@ -584,27 +613,32 @@ static_assert(offsetof(FUNCLIB_GameSettings_C_MakeShockDifficultyBitfield, Diffi
 static_assert(offsetof(FUNCLIB_GameSettings_C_MakeShockDifficultyBitfield, K2Node_MakeArray_Array) == 0x000018, "Member 'FUNCLIB_GameSettings_C_MakeShockDifficultyBitfield::K2Node_MakeArray_Array' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_MakeShockDifficultyBitfield, CallFunc_MakeIntFromByteArray_ReturnValue) == 0x000028, "Member 'FUNCLIB_GameSettings_C_MakeShockDifficultyBitfield::CallFunc_MakeIntFromByteArray_ReturnValue' has a wrong offset!");
 
-// Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.IsGamepadInputAction
-// 0x0040 (0x0040 - 0x0000)
-struct FUNCLIB_GameSettings_C_IsGamepadInputAction final
+// Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.GetInputActionControllerType
+// 0x0058 (0x0058 - 0x0000)
+struct FUNCLIB_GameSettings_C_GetInputActionControllerType final
 {
 public:
 	class FName                                   ActionName;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UObject*                                __WorldContext;                                    // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           Result;                                            // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class FString                                 CallFunc_Conv_NameToString_ReturnValue;            // 0x0018(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetGamepadInputActionPrefix_Result;       // 0x0028(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_GetJCMSInputActionPrefix_Result;          // 0x0028(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetGamepadInputActionPrefix_Result;       // 0x0040(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_StartsWith_ReturnValue_1;                 // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(FUNCLIB_GameSettings_C_IsGamepadInputAction) == 0x000008, "Wrong alignment on FUNCLIB_GameSettings_C_IsGamepadInputAction");
-static_assert(sizeof(FUNCLIB_GameSettings_C_IsGamepadInputAction) == 0x000040, "Wrong size on FUNCLIB_GameSettings_C_IsGamepadInputAction");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsGamepadInputAction, ActionName) == 0x000000, "Member 'FUNCLIB_GameSettings_C_IsGamepadInputAction::ActionName' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsGamepadInputAction, __WorldContext) == 0x000008, "Member 'FUNCLIB_GameSettings_C_IsGamepadInputAction::__WorldContext' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsGamepadInputAction, Result) == 0x000010, "Member 'FUNCLIB_GameSettings_C_IsGamepadInputAction::Result' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsGamepadInputAction, CallFunc_Conv_NameToString_ReturnValue) == 0x000018, "Member 'FUNCLIB_GameSettings_C_IsGamepadInputAction::CallFunc_Conv_NameToString_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsGamepadInputAction, CallFunc_GetGamepadInputActionPrefix_Result) == 0x000028, "Member 'FUNCLIB_GameSettings_C_IsGamepadInputAction::CallFunc_GetGamepadInputActionPrefix_Result' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_IsGamepadInputAction, CallFunc_StartsWith_ReturnValue) == 0x000038, "Member 'FUNCLIB_GameSettings_C_IsGamepadInputAction::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
+static_assert(alignof(FUNCLIB_GameSettings_C_GetInputActionControllerType) == 0x000008, "Wrong alignment on FUNCLIB_GameSettings_C_GetInputActionControllerType");
+static_assert(sizeof(FUNCLIB_GameSettings_C_GetInputActionControllerType) == 0x000058, "Wrong size on FUNCLIB_GameSettings_C_GetInputActionControllerType");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionControllerType, ActionName) == 0x000000, "Member 'FUNCLIB_GameSettings_C_GetInputActionControllerType::ActionName' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionControllerType, __WorldContext) == 0x000008, "Member 'FUNCLIB_GameSettings_C_GetInputActionControllerType::__WorldContext' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionControllerType, Result) == 0x000010, "Member 'FUNCLIB_GameSettings_C_GetInputActionControllerType::Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionControllerType, CallFunc_Conv_NameToString_ReturnValue) == 0x000018, "Member 'FUNCLIB_GameSettings_C_GetInputActionControllerType::CallFunc_Conv_NameToString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionControllerType, CallFunc_GetJCMSInputActionPrefix_Result) == 0x000028, "Member 'FUNCLIB_GameSettings_C_GetInputActionControllerType::CallFunc_GetJCMSInputActionPrefix_Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionControllerType, CallFunc_StartsWith_ReturnValue) == 0x000038, "Member 'FUNCLIB_GameSettings_C_GetInputActionControllerType::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionControllerType, CallFunc_GetGamepadInputActionPrefix_Result) == 0x000040, "Member 'FUNCLIB_GameSettings_C_GetInputActionControllerType::CallFunc_GetGamepadInputActionPrefix_Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionControllerType, CallFunc_StartsWith_ReturnValue_1) == 0x000050, "Member 'FUNCLIB_GameSettings_C_GetInputActionControllerType::CallFunc_StartsWith_ReturnValue_1' has a wrong offset!");
 
 // Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.GetGamepadInputActionPrefix
 // 0x0018 (0x0018 - 0x0000)
@@ -618,6 +652,19 @@ static_assert(alignof(FUNCLIB_GameSettings_C_GetGamepadInputActionPrefix) == 0x0
 static_assert(sizeof(FUNCLIB_GameSettings_C_GetGamepadInputActionPrefix) == 0x000018, "Wrong size on FUNCLIB_GameSettings_C_GetGamepadInputActionPrefix");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetGamepadInputActionPrefix, __WorldContext) == 0x000000, "Member 'FUNCLIB_GameSettings_C_GetGamepadInputActionPrefix::__WorldContext' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetGamepadInputActionPrefix, Result) == 0x000008, "Member 'FUNCLIB_GameSettings_C_GetGamepadInputActionPrefix::Result' has a wrong offset!");
+
+// Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.GetJCMSInputActionPrefix
+// 0x0018 (0x0018 - 0x0000)
+struct FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix final
+{
+public:
+	class UObject*                                __WorldContext;                                    // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FString                                 Result;                                            // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, HasGetValueTypeHash)
+};
+static_assert(alignof(FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix) == 0x000008, "Wrong alignment on FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix");
+static_assert(sizeof(FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix) == 0x000018, "Wrong size on FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix, __WorldContext) == 0x000000, "Member 'FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix::__WorldContext' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix, Result) == 0x000008, "Member 'FUNCLIB_GameSettings_C_GetJCMSInputActionPrefix::Result' has a wrong offset!");
 
 // Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.GetInputActionPrefixForCategory
 // 0x0068 (0x0068 - 0x0000)
@@ -647,7 +694,7 @@ static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionPrefixForCategory, T
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputActionPrefixForCategory, K2Node_Select_Default) == 0x000058, "Member 'FUNCLIB_GameSettings_C_GetInputActionPrefixForCategory::K2Node_Select_Default' has a wrong offset!");
 
 // Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.GetInputCategoryFromActionName
-// 0x0080 (0x0080 - 0x0000)
+// 0x0098 (0x0098 - 0x0000)
 struct FUNCLIB_GameSettings_C_GetInputCategoryFromActionName final
 {
 public:
@@ -663,20 +710,23 @@ public:
 	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class FString                                 CallFunc_Conv_NameToString_ReturnValue;            // 0x0030(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Variable;                                 // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetGamepadInputActionPrefix_Result;       // 0x0048(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	int32                                         CallFunc_ReplaceInline_ReturnValue;                // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_LessEqual_IntInt_ReturnValue;             // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5D[0x3];                                       // 0x005D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         CallFunc_Conv_IntToByte_ReturnValue;               // 0x0064(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         CallFunc_GetValidValue_ReturnValue;                // 0x0065(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_66[0x2];                                       // 0x0066(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result;   // 0x0068(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetJCMSInputActionPrefix_Result;          // 0x0048(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_GetGamepadInputActionPrefix_Result;       // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         CallFunc_ReplaceInline_ReturnValue;                // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_ReplaceInline_ReturnValue_1;              // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Variable;                                 // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_LessEqual_IntInt_ReturnValue;             // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_75[0x3];                                       // 0x0075(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_Conv_IntToByte_ReturnValue;               // 0x007C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_GetValidValue_ReturnValue;                // 0x007D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_7E[0x2];                                       // 0x007E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result;   // 0x0080(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName) == 0x000008, "Wrong alignment on FUNCLIB_GameSettings_C_GetInputCategoryFromActionName");
-static_assert(sizeof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName) == 0x000080, "Wrong size on FUNCLIB_GameSettings_C_GetInputCategoryFromActionName");
+static_assert(sizeof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName) == 0x000098, "Wrong size on FUNCLIB_GameSettings_C_GetInputCategoryFromActionName");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, ActionName) == 0x000000, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::ActionName' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, __WorldContext) == 0x000008, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::__WorldContext' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, Found) == 0x000010, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::Found' has a wrong offset!");
@@ -687,15 +737,17 @@ static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, Ac
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_MakeLiteralInt_ReturnValue) == 0x000028, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_MakeLiteralInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_Conv_NameToString_ReturnValue) == 0x000030, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_Conv_NameToString_ReturnValue' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_Subtract_IntInt_ReturnValue) == 0x000040, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, Temp_int_Variable) == 0x000044, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::Temp_int_Variable' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_GetGamepadInputActionPrefix_Result) == 0x000048, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_GetGamepadInputActionPrefix_Result' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_ReplaceInline_ReturnValue) == 0x000058, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_ReplaceInline_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_LessEqual_IntInt_ReturnValue) == 0x00005C, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_LessEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_Add_IntInt_ReturnValue) == 0x000060, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_Conv_IntToByte_ReturnValue) == 0x000064, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_Conv_IntToByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_GetValidValue_ReturnValue) == 0x000065, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_GetValidValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_GetInputActionPrefixForCategory_Result) == 0x000068, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_GetInputActionPrefixForCategory_Result' has a wrong offset!");
-static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_StartsWith_ReturnValue) == 0x000078, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_GetJCMSInputActionPrefix_Result) == 0x000048, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_GetJCMSInputActionPrefix_Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_GetGamepadInputActionPrefix_Result) == 0x000058, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_GetGamepadInputActionPrefix_Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_ReplaceInline_ReturnValue) == 0x000068, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_ReplaceInline_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_ReplaceInline_ReturnValue_1) == 0x00006C, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_ReplaceInline_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, Temp_int_Variable) == 0x000070, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::Temp_int_Variable' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_LessEqual_IntInt_ReturnValue) == 0x000074, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_LessEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_Add_IntInt_ReturnValue) == 0x000078, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_Conv_IntToByte_ReturnValue) == 0x00007C, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_Conv_IntToByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_GetValidValue_ReturnValue) == 0x00007D, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_GetValidValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_GetInputActionPrefixForCategory_Result) == 0x000080, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_GetInputActionPrefixForCategory_Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_GetInputCategoryFromActionName, CallFunc_StartsWith_ReturnValue) == 0x000090, "Member 'FUNCLIB_GameSettings_C_GetInputCategoryFromActionName::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
 
 // Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.IsMedicalDemo
 // 0x0010 (0x0010 - 0x0000)
@@ -717,11 +769,15 @@ struct FUNCLIB_GameSettings_C_IsDismembermentAllowed final
 public:
 	class UObject*                                __WorldContext;                                    // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(FUNCLIB_GameSettings_C_IsDismembermentAllowed) == 0x000008, "Wrong alignment on FUNCLIB_GameSettings_C_IsDismembermentAllowed");
 static_assert(sizeof(FUNCLIB_GameSettings_C_IsDismembermentAllowed) == 0x000010, "Wrong size on FUNCLIB_GameSettings_C_IsDismembermentAllowed");
 static_assert(offsetof(FUNCLIB_GameSettings_C_IsDismembermentAllowed, __WorldContext) == 0x000000, "Member 'FUNCLIB_GameSettings_C_IsDismembermentAllowed::__WorldContext' has a wrong offset!");
 static_assert(offsetof(FUNCLIB_GameSettings_C_IsDismembermentAllowed, Result) == 0x000008, "Member 'FUNCLIB_GameSettings_C_IsDismembermentAllowed::Result' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsDismembermentAllowed, CallFunc_GetPlatformFamily_ReturnValue) == 0x000009, "Member 'FUNCLIB_GameSettings_C_IsDismembermentAllowed::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(FUNCLIB_GameSettings_C_IsDismembermentAllowed, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x00000A, "Member 'FUNCLIB_GameSettings_C_IsDismembermentAllowed::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
 
 // Function FUNCLIB_GameSettings.FUNCLIB_GameSettings_C.GetAcceleratedGamepadInputRotation
 // 0x0068 (0x0068 - 0x0000)

@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "INTERACT_SentryTurret_Base_classes.hpp"
+#include "ENUM_VisionTraceType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "INTERACT_SentryTurret_Base_classes.hpp"
 #include "ENUM_DetectionState_structs.hpp"
 #include "ENUM_DoorState_structs.hpp"
-#include "ENUM_VisionTraceType_structs.hpp"
 
 
 namespace SDK
@@ -78,12 +78,12 @@ public:
 	void GetElapsedTimeSinceLastAttack(float* Result);
 	void OnMagneticDisableStateChanged(bool DisableState);
 	void TryDeploySentryTurret(class AActor* SourceActor, bool* Result);
-	void GetThreatLevel(int32* ThreatLevel);
-	void CanHackDestructible(class APAWN_SystemShockCharacter_C* SourceCharacter, bool* Result);
 	void InitializeDestructible();
 	void OnTakeDamage(class AActor* OtherActor, const struct FAttribDamageInstance& DamageInstance, class UObject* UserParams, bool* Result);
 	void OnDeath(class AActor* SourceActor, bool* Result);
 	void UpdateDeathSettings(bool DuringBeginPlay, bool* Result);
+	void GetThreatLevel(int32* ThreatLevel);
+	void CanHackDestructible(class APAWN_SystemShockCharacter_C* SourceCharacter, bool* Result);
 	void GetDetectionComponent(class UCOMP_EnemyDetection_C** Result);
 
 public:

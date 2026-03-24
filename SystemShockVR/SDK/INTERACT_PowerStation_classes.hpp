@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_PowerStationRechargeState_structs.hpp"
 #include "Engine_structs.hpp"
 #include "INTERACT_Channeling_Base_classes.hpp"
-#include "ENUM_PowerStationRechargeState_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
 

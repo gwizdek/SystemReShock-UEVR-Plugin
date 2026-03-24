@@ -46,8 +46,8 @@ public:
 	void BndEvt__WIDGET_OptionsCategoryMenuList_WIDGET_OptionMenuCategory_Controls_K2Node_ComponentBoundEvent_1_OnCategoryButtonClicked__DelegateSignature(int32 ItemIndex);
 	void BndEvt__WIDGET_OptionsCategoryMenuList_WIDGET_OptionMenuCategory_Gameplay_K2Node_ComponentBoundEvent_0_OnCategoryButtonClicked__DelegateSignature(int32 ItemIndex);
 	void GetListItemByCategory(ENUM_OptionCategories Category, class UWIDGET_OptionCategoryMenuListItem_C** Result);
-	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 	void SetSelectedItem(int32 ItemIndex, class FText* CategoryText);
+	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 
 public:
 	static class UClass* StaticClass()

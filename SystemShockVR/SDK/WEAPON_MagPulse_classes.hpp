@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ITEM_ProjectileWeapon_Base_classes.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK
@@ -83,10 +83,10 @@ public:
 	void MoveAmmoFromChamberToMagazine();
 	void CanEmptyAmmoInMagazineOrChamber(bool* Result);
 	void OnWeaponBecameActivatable(class APAWN_SystemShockCharacter_C* Character, bool ShowImmediately);
-	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void OnBecomeActivatable(bool* Result);
 	void OnBecomeUnactivatable(bool* Result);
 	void CanActivate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
+	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 
 public:
 	static class UClass* StaticClass()

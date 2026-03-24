@@ -13,6 +13,7 @@
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "ENUM_InteractResultType_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 
 
 namespace SDK
@@ -31,22 +32,24 @@ public:
 	class UMaterialInterface*                     LastCursorMaterial;                                // 0x00D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         LastCursorHitDistance;                             // 0x00E0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         MaxScanRadius;                                     // 0x00E4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ETraceTypeQuery                               InteractTraceChannel;                              // 0x00E8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(class UObject* Interactable, class UPrimitiveComponent* Primitive, class FText Description)> OnScanDataChanged;                                 // 0x00F0(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
-	float                                         CachedScanDistance;                                // 0x0100(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_104[0x4];                                      // 0x0104(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   LastDescription;                                   // 0x0108(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance)
-	ENUM_InteractResultType                       FeedbackType;                                      // 0x0120(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_121[0x7];                                      // 0x0121(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   FeedbackMessage;                                   // 0x0128(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TMulticastInlineDelegate<void(ENUM_InteractResultType FeedbackType, class FText FeedbackMessage)> OnFeedbackDataChanged;                             // 0x0140(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
-	class FName                                   LastDescriptorRowName;                             // 0x0150(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class FText>                           LastFeedbackMessages;                              // 0x0158(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class UShuffler*                              FeedbackShuffler;                                  // 0x0168(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class FText>                           FeedbackMessageHistory;                            // 0x0170(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TMulticastInlineDelegate<void(class UPrimitiveComponent* ScannedPrimitive, float Distance)> OnScannerUpdated;                                  // 0x0180(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
-	bool                                          IsScannerEnabled;                                  // 0x0190(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	TMulticastInlineDelegate<void(class UObject* Interactable, class UPrimitiveComponent* Primitive, class FText Description)> OnScanDataChanged;                                 // 0x00E8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	float                                         CachedScanDistance;                                // 0x00F8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_FC[0x4];                                       // 0x00FC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   LastDescription;                                   // 0x0100(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance)
+	ENUM_InteractResultType                       FeedbackType;                                      // 0x0118(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_119[0x7];                                      // 0x0119(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   FeedbackMessage;                                   // 0x0120(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMulticastInlineDelegate<void(ENUM_InteractResultType FeedbackType, class FText FeedbackMessage)> OnFeedbackDataChanged;                             // 0x0138(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	class FName                                   LastDescriptorRowName;                             // 0x0148(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class FText>                           LastFeedbackMessages;                              // 0x0150(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	class UShuffler*                              FeedbackShuffler;                                  // 0x0160(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class FText>                           FeedbackMessageHistory;                            // 0x0168(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMulticastInlineDelegate<void(class UPrimitiveComponent* ScannedPrimitive, float Distance)> OnScannerUpdated;                                  // 0x0178(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	bool                                          IsScannerEnabled;                                  // 0x0188(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_189[0x3];                                      // 0x0189(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         MaxScanRadius_Gamepad;                             // 0x018C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MaxScanRadius_PC;                                  // 0x0190(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ETraceTypeQuery                               InteractTraceChannel;                              // 0x0194(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_COMP_Scanner(int32 EntryPoint);
@@ -66,6 +69,8 @@ public:
 	void EVENT_OnScanRangeChanged(float CurrValue, float LastValue);
 	void IsScannerDisabled(bool* Result);
 	void SetScannerEnabled(bool State);
+	void EVENT_OnControllerTypeChange(ENUM_ControllerType NewActiveControllerType);
+	void IsUsingGamepad();
 
 public:
 	static class UClass* StaticClass()
@@ -87,19 +92,21 @@ static_assert(offsetof(UCOMP_Scanner_C, LastCursorPrimitive) == 0x0000D0, "Membe
 static_assert(offsetof(UCOMP_Scanner_C, LastCursorMaterial) == 0x0000D8, "Member 'UCOMP_Scanner_C::LastCursorMaterial' has a wrong offset!");
 static_assert(offsetof(UCOMP_Scanner_C, LastCursorHitDistance) == 0x0000E0, "Member 'UCOMP_Scanner_C::LastCursorHitDistance' has a wrong offset!");
 static_assert(offsetof(UCOMP_Scanner_C, MaxScanRadius) == 0x0000E4, "Member 'UCOMP_Scanner_C::MaxScanRadius' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, InteractTraceChannel) == 0x0000E8, "Member 'UCOMP_Scanner_C::InteractTraceChannel' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, OnScanDataChanged) == 0x0000F0, "Member 'UCOMP_Scanner_C::OnScanDataChanged' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, CachedScanDistance) == 0x000100, "Member 'UCOMP_Scanner_C::CachedScanDistance' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, LastDescription) == 0x000108, "Member 'UCOMP_Scanner_C::LastDescription' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, FeedbackType) == 0x000120, "Member 'UCOMP_Scanner_C::FeedbackType' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, FeedbackMessage) == 0x000128, "Member 'UCOMP_Scanner_C::FeedbackMessage' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, OnFeedbackDataChanged) == 0x000140, "Member 'UCOMP_Scanner_C::OnFeedbackDataChanged' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, LastDescriptorRowName) == 0x000150, "Member 'UCOMP_Scanner_C::LastDescriptorRowName' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, LastFeedbackMessages) == 0x000158, "Member 'UCOMP_Scanner_C::LastFeedbackMessages' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, FeedbackShuffler) == 0x000168, "Member 'UCOMP_Scanner_C::FeedbackShuffler' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, FeedbackMessageHistory) == 0x000170, "Member 'UCOMP_Scanner_C::FeedbackMessageHistory' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, OnScannerUpdated) == 0x000180, "Member 'UCOMP_Scanner_C::OnScannerUpdated' has a wrong offset!");
-static_assert(offsetof(UCOMP_Scanner_C, IsScannerEnabled) == 0x000190, "Member 'UCOMP_Scanner_C::IsScannerEnabled' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, OnScanDataChanged) == 0x0000E8, "Member 'UCOMP_Scanner_C::OnScanDataChanged' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, CachedScanDistance) == 0x0000F8, "Member 'UCOMP_Scanner_C::CachedScanDistance' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, LastDescription) == 0x000100, "Member 'UCOMP_Scanner_C::LastDescription' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, FeedbackType) == 0x000118, "Member 'UCOMP_Scanner_C::FeedbackType' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, FeedbackMessage) == 0x000120, "Member 'UCOMP_Scanner_C::FeedbackMessage' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, OnFeedbackDataChanged) == 0x000138, "Member 'UCOMP_Scanner_C::OnFeedbackDataChanged' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, LastDescriptorRowName) == 0x000148, "Member 'UCOMP_Scanner_C::LastDescriptorRowName' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, LastFeedbackMessages) == 0x000150, "Member 'UCOMP_Scanner_C::LastFeedbackMessages' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, FeedbackShuffler) == 0x000160, "Member 'UCOMP_Scanner_C::FeedbackShuffler' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, FeedbackMessageHistory) == 0x000168, "Member 'UCOMP_Scanner_C::FeedbackMessageHistory' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, OnScannerUpdated) == 0x000178, "Member 'UCOMP_Scanner_C::OnScannerUpdated' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, IsScannerEnabled) == 0x000188, "Member 'UCOMP_Scanner_C::IsScannerEnabled' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, MaxScanRadius_Gamepad) == 0x00018C, "Member 'UCOMP_Scanner_C::MaxScanRadius_Gamepad' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, MaxScanRadius_PC) == 0x000190, "Member 'UCOMP_Scanner_C::MaxScanRadius_PC' has a wrong offset!");
+static_assert(offsetof(UCOMP_Scanner_C, InteractTraceChannel) == 0x000194, "Member 'UCOMP_Scanner_C::InteractTraceChannel' has a wrong offset!");
 
 }
 

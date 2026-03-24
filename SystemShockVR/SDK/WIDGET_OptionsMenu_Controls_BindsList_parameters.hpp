@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "STRUCT_BoundInputActionPair_structs.hpp"
+#include "InputCore_structs.hpp"
 #include "ENUM_InputCategory_structs.hpp"
 #include "ENUM_PrimarySecondary_structs.hpp"
-#include "InputCore_structs.hpp"
 
 
 namespace SDK::Params
@@ -105,17 +105,6 @@ static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_GetStashedKeyForA
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_GetStashedKeyForAction, CallFunc_GetInputCategoryFromActionName_Result) == 0x00002A, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_GetStashedKeyForAction::CallFunc_GetInputCategoryFromActionName_Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_GetStashedKeyForAction, K2Node_Select_Default) == 0x000030, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_GetStashedKeyForAction::K2Node_Select_Default' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_GetStashedKeyForAction, CallFunc_GetBoundKey_BoundKey) == 0x000080, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_GetStashedKeyForAction::CallFunc_GetBoundKey_BoundKey' has a wrong offset!");
-
-// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.IsGamepadBindsList
-// 0x0001 (0x0001 - 0x0000)
-struct WIDGET_OptionsMenu_Controls_BindsList_C_IsGamepadBindsList final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_IsGamepadBindsList) == 0x000001, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_IsGamepadBindsList");
-static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_IsGamepadBindsList) == 0x000001, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_IsGamepadBindsList");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_IsGamepadBindsList, Result) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_IsGamepadBindsList::Result' has a wrong offset!");
 
 // Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.SetIsOptionListeningForInput
 // 0x0001 (0x0001 - 0x0000)
@@ -256,16 +245,16 @@ static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_HasInputKeyMapCha
 struct WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds final
 {
 public:
-	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings;  // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result;   // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result;   // 0x0000(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings;  // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result_1; // 0x0018(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result;           // 0x0028(0x0050)()
-	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_1; // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_1;         // 0x0080(0x0050)()
-	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result_2; // 0x00D0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_2; // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_2;         // 0x00E8(0x0050)()
-	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_3; // 0x0138(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_1; // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result;           // 0x0030(0x0050)()
+	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result_2; // 0x0080(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_2; // 0x0090(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_1;         // 0x0098(0x0050)()
+	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_3; // 0x00E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_2;         // 0x00F0(0x0050)()
 	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_4; // 0x0140(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_5; // 0x0148(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result_3; // 0x0150(0x0010)(ZeroConstructor, HasGetValueTypeHash)
@@ -282,16 +271,16 @@ public:
 };
 static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds) == 0x000008, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds");
 static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds) == 0x000288, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetInputActionPrefixForCategory_Result) == 0x000008, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetInputActionPrefixForCategory_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetInputActionPrefixForCategory_Result) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetInputActionPrefixForCategory_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings) == 0x000010, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetInputActionPrefixForCategory_Result_1) == 0x000018, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetInputActionPrefixForCategory_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_BuildDefaultInputKeyMap_Result) == 0x000028, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_BuildDefaultInputKeyMap_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings_1) == 0x000078, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_BuildDefaultInputKeyMap_Result_1) == 0x000080, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_BuildDefaultInputKeyMap_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetInputActionPrefixForCategory_Result_2) == 0x0000D0, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetInputActionPrefixForCategory_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings_2) == 0x0000E0, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_BuildDefaultInputKeyMap_Result_2) == 0x0000E8, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_BuildDefaultInputKeyMap_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings_3) == 0x000138, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings_1) == 0x000028, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_BuildDefaultInputKeyMap_Result) == 0x000030, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_BuildDefaultInputKeyMap_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetInputActionPrefixForCategory_Result_2) == 0x000080, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetInputActionPrefixForCategory_Result_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings_2) == 0x000090, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_BuildDefaultInputKeyMap_Result_1) == 0x000098, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_BuildDefaultInputKeyMap_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings_3) == 0x0000E8, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_BuildDefaultInputKeyMap_Result_2) == 0x0000F0, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_BuildDefaultInputKeyMap_Result_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings_4) == 0x000140, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings_4' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetShockSettingsForCurrentUser_Settings_5) == 0x000148, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetShockSettingsForCurrentUser_Settings_5' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetInputActionPrefixForCategory_Result_3) == 0x000150, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetInputActionPrefixForCategory_Result_3' has a wrong offset!");
@@ -303,6 +292,93 @@ static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetInputActionPrefixForCategory_Result_5) == 0x000220, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetInputActionPrefixForCategory_Result_5' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetOrCreateInputKeyMapForCategory_Result_2) == 0x000230, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetOrCreateInputKeyMapForCategory_Result_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds, CallFunc_GetOrCreateInputKeyMapForCategory_IsDefault_2) == 0x000280, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ResetStashedBinds::CallFunc_GetOrCreateInputKeyMapForCategory_IsDefault_2' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.SetPrimaryIsHighlighted
+// 0x0001 (0x0001 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_BindsList_C_SetPrimaryIsHighlighted final
+{
+public:
+	bool                                          NewState;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_SetPrimaryIsHighlighted) == 0x000001, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_SetPrimaryIsHighlighted");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_SetPrimaryIsHighlighted) == 0x000001, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_SetPrimaryIsHighlighted");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_SetPrimaryIsHighlighted, NewState) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_SetPrimaryIsHighlighted::NewState' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.SetSecondaryIsHighlighted
+// 0x0001 (0x0001 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_BindsList_C_SetSecondaryIsHighlighted final
+{
+public:
+	bool                                          NewState;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_SetSecondaryIsHighlighted) == 0x000001, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_SetSecondaryIsHighlighted");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_SetSecondaryIsHighlighted) == 0x000001, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_SetSecondaryIsHighlighted");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_SetSecondaryIsHighlighted, NewState) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_SetSecondaryIsHighlighted::NewState' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.GetIsPrimaryHighlighted
+// 0x0001 (0x0001 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_BindsList_C_GetIsPrimaryHighlighted final
+{
+public:
+	bool                                          IsPrimaryHighlighted_0;                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_GetIsPrimaryHighlighted) == 0x000001, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_GetIsPrimaryHighlighted");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_GetIsPrimaryHighlighted) == 0x000001, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_GetIsPrimaryHighlighted");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_GetIsPrimaryHighlighted, IsPrimaryHighlighted_0) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_GetIsPrimaryHighlighted::IsPrimaryHighlighted_0' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.GetIsSecondaryHighlighted
+// 0x0001 (0x0001 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_BindsList_C_GetIsSecondaryHighlighted final
+{
+public:
+	bool                                          IsSecondaryHighlighted_0;                          // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_GetIsSecondaryHighlighted) == 0x000001, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_GetIsSecondaryHighlighted");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_GetIsSecondaryHighlighted) == 0x000001, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_GetIsSecondaryHighlighted");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_GetIsSecondaryHighlighted, IsSecondaryHighlighted_0) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_GetIsSecondaryHighlighted::IsSecondaryHighlighted_0' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.TryCycleHighlightingLeft
+// 0x0003 (0x0003 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft final
+{
+public:
+	bool                                          OldState;                                          // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft) == 0x000001, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft) == 0x000003, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft, OldState) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft::OldState' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft, CallFunc_BooleanOR_ReturnValue) == 0x000002, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingLeft::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.TryCycleHighlightingRight
+// 0x0003 (0x0003 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight final
+{
+public:
+	bool                                          OldState;                                          // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight) == 0x000001, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight) == 0x000003, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight, OldState) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight::OldState' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight, CallFunc_BooleanOR_ReturnValue) == 0x000002, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_TryCycleHighlightingRight::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.IsBindKeyInScope
+// 0x0020 (0x0020 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+	bool                                          IsInScope;                                         // 0x0018(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope) == 0x000008, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope) == 0x000020, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope, Key) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope::Key' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope, IsInScope) == 0x000018, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope::IsInScope' has a wrong offset!");
 
 // Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.ReceiveNavAlt1
 // 0x0050 (0x0050 - 0x0000)
@@ -345,8 +421,8 @@ public:
 	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result_1; // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result;           // 0x0030(0x0050)()
 	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_1; // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result_2; // 0x0088(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_1;         // 0x0098(0x0050)()
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_1;         // 0x0088(0x0050)()
+	class FString                                 CallFunc_GetInputActionPrefixForCategory_Result_2; // 0x00D8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_2; // 0x00E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_2;         // 0x00F0(0x0050)()
 };
@@ -359,8 +435,8 @@ static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, C
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, CallFunc_GetInputActionPrefixForCategory_Result_1) == 0x000020, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2::CallFunc_GetInputActionPrefixForCategory_Result_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, CallFunc_BuildDefaultInputKeyMap_Result) == 0x000030, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2::CallFunc_BuildDefaultInputKeyMap_Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, CallFunc_GetShockSettingsForCurrentUser_Settings_1) == 0x000080, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2::CallFunc_GetShockSettingsForCurrentUser_Settings_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, CallFunc_GetInputActionPrefixForCategory_Result_2) == 0x000088, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2::CallFunc_GetInputActionPrefixForCategory_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, CallFunc_BuildDefaultInputKeyMap_Result_1) == 0x000098, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2::CallFunc_BuildDefaultInputKeyMap_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, CallFunc_BuildDefaultInputKeyMap_Result_1) == 0x000088, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2::CallFunc_BuildDefaultInputKeyMap_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, CallFunc_GetInputActionPrefixForCategory_Result_2) == 0x0000D8, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2::CallFunc_GetInputActionPrefixForCategory_Result_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, CallFunc_GetShockSettingsForCurrentUser_Settings_2) == 0x0000E8, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2::CallFunc_GetShockSettingsForCurrentUser_Settings_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2, CallFunc_BuildDefaultInputKeyMap_Result_2) == 0x0000F0, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavAlt2::CallFunc_BuildDefaultInputKeyMap_Result_2' has a wrong offset!");
 
@@ -378,7 +454,7 @@ static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavBack, I
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavBack, Result) == 0x000001, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavBack::Result' has a wrong offset!");
 
 // Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.EVENT_OnOptionChanged
-// 0x0328 (0x0328 - 0x0000)
+// 0x0330 (0x0330 - 0x0000)
 struct WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged final
 {
 public:
@@ -407,23 +483,24 @@ public:
 	bool                                          CallFunc_HasInputKeyMapChanged_Result_1;           // 0x0258(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0259(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_HasInputKeyMapChanged_Result_2;           // 0x025A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x025B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_25C[0x4];                                      // 0x025C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_25B[0x5];                                      // 0x025B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_1; // 0x0260(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0268(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x0268(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_269[0x7];                                      // 0x0269(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_GetInputKeyMapForCategory_Result_1;       // 0x0270(0x0050)()
-	bool                                          CallFunc_HasInputKeyMapChanged_Result_3;           // 0x02C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x02C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_2C1[0x7];                                      // 0x02C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings_2; // 0x02C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_GetInputKeyMapForCategory_Result_2;       // 0x02D0(0x0050)()
-	bool                                          CallFunc_HasInputKeyMapChanged_Result_4;           // 0x0320(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_HasInputKeyMapChanged_Result_5;           // 0x0321(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_2;                  // 0x0322(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_3;                  // 0x0323(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasInputKeyMapChanged_Result_3;           // 0x02D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2D1[0x7];                                      // 0x02D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_GetInputKeyMapForCategory_Result_2;       // 0x02D8(0x0050)()
+	bool                                          CallFunc_HasInputKeyMapChanged_Result_4;           // 0x0328(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasInputKeyMapChanged_Result_5;           // 0x0329(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_2;                  // 0x032A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_3;                  // 0x032B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged) == 0x000008, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged");
-static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged) == 0x000328, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged) == 0x000330, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, SavedMinigameKeyMap) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::SavedMinigameKeyMap' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, SavedCyberspaceKeyMap) == 0x000050, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::SavedCyberspaceKeyMap' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, SavedRealspaceKeyMap) == 0x0000A0, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::SavedRealspaceKeyMap' has a wrong offset!");
@@ -445,17 +522,51 @@ static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionCha
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_HasInputKeyMapChanged_Result_1) == 0x000258, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_HasInputKeyMapChanged_Result_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_BooleanOR_ReturnValue) == 0x000259, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_HasInputKeyMapChanged_Result_2) == 0x00025A, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_HasInputKeyMapChanged_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_BooleanOR_ReturnValue_1) == 0x00025B, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_GetShockSettingsForCurrentUser_Settings_1) == 0x000260, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_GetShockSettingsForCurrentUser_Settings_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_Not_PreBool_ReturnValue) == 0x000268, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_BooleanOR_ReturnValue_1) == 0x000268, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_GetInputKeyMapForCategory_Result_1) == 0x000270, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_GetInputKeyMapForCategory_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_HasInputKeyMapChanged_Result_3) == 0x0002C0, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_HasInputKeyMapChanged_Result_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_Not_PreBool_ReturnValue) == 0x0002C0, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_GetShockSettingsForCurrentUser_Settings_2) == 0x0002C8, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_GetShockSettingsForCurrentUser_Settings_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_GetInputKeyMapForCategory_Result_2) == 0x0002D0, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_GetInputKeyMapForCategory_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_HasInputKeyMapChanged_Result_4) == 0x000320, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_HasInputKeyMapChanged_Result_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_HasInputKeyMapChanged_Result_5) == 0x000321, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_HasInputKeyMapChanged_Result_5' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_BooleanOR_ReturnValue_2) == 0x000322, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_BooleanOR_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_BooleanOR_ReturnValue_3) == 0x000323, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_BooleanOR_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_HasInputKeyMapChanged_Result_3) == 0x0002D0, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_HasInputKeyMapChanged_Result_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_GetInputKeyMapForCategory_Result_2) == 0x0002D8, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_GetInputKeyMapForCategory_Result_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_HasInputKeyMapChanged_Result_4) == 0x000328, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_HasInputKeyMapChanged_Result_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_HasInputKeyMapChanged_Result_5) == 0x000329, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_HasInputKeyMapChanged_Result_5' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_BooleanOR_ReturnValue_2) == 0x00032A, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_BooleanOR_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged, CallFunc_BooleanOR_ReturnValue_3) == 0x00032B, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_EVENT_OnOptionChanged::CallFunc_BooleanOR_ReturnValue_3' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.ReceiveNavDown
+// 0x0004 (0x0004 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavDown_Result;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown) == 0x000001, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown) == 0x000004, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown, InputState) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown, Result) == 0x000001, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown::Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown, CallFunc_ReceiveNavDown_Result) == 0x000002, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown::CallFunc_ReceiveNavDown_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown, CallFunc_BooleanOR_ReturnValue) == 0x000003, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.ReceiveNavUp
+// 0x0004 (0x0004 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavUp_Result;                      // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp) == 0x000001, "Wrong alignment on WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp) == 0x000004, "Wrong size on WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp, InputState) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp, Result) == 0x000001, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp::Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp, CallFunc_ReceiveNavUp_Result) == 0x000002, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp::CallFunc_ReceiveNavUp_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp, CallFunc_BooleanOR_ReturnValue) == 0x000003, "Member 'WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 
 }
 

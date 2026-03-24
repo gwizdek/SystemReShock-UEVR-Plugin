@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "Engine_structs.hpp"
 #include "WIDGET_Settings_Slider_classes.hpp"
 
 
@@ -17,10 +18,15 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass OPTION_Interface_HUDCurvature.OPTION_Interface_HUDCurvature_C
-// 0x0000 (0x0398 - 0x0398)
+// 0x0008 (0x03B0 - 0x03A8)
 class UOPTION_Interface_HUDCurvature_C final : public UWIDGET_Settings_Slider_C
 {
 public:
+	struct FPointerToUberGraphFrame               UberGraphFrame_OPTION_Interface_HUDCurvature_C;    // 0x03A8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+
+public:
+	void ExecuteUbergraph_OPTION_Interface_HUDCurvature(int32 EntryPoint);
+	void Tick(const struct FGeometry& MyGeometry, float InDeltaTime);
 	void AcceptCurrentValue();
 	void ApplyDirtyValue();
 	void OnSliderValueChanged(float NewValue);
@@ -41,7 +47,8 @@ public:
 	}
 };
 static_assert(alignof(UOPTION_Interface_HUDCurvature_C) == 0x000008, "Wrong alignment on UOPTION_Interface_HUDCurvature_C");
-static_assert(sizeof(UOPTION_Interface_HUDCurvature_C) == 0x000398, "Wrong size on UOPTION_Interface_HUDCurvature_C");
+static_assert(sizeof(UOPTION_Interface_HUDCurvature_C) == 0x0003B0, "Wrong size on UOPTION_Interface_HUDCurvature_C");
+static_assert(offsetof(UOPTION_Interface_HUDCurvature_C, UberGraphFrame_OPTION_Interface_HUDCurvature_C) == 0x0003A8, "Member 'UOPTION_Interface_HUDCurvature_C::UberGraphFrame_OPTION_Interface_HUDCurvature_C' has a wrong offset!");
 
 }
 

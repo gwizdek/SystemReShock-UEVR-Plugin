@@ -20,9 +20,9 @@ namespace SDK
 // Function WIDGET_InventoryContextMenu.WIDGET_InventoryContextMenu_C.InitializeInventoryContextMenu
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UWIDGET_PlayerHUD_C*              HUDWidget_0                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UWIDGET_PlayerHUD_C*              HudWidget_0                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWIDGET_InventoryContextMenu_C::InitializeInventoryContextMenu(class UWIDGET_PlayerHUD_C* HUDWidget_0)
+void UWIDGET_InventoryContextMenu_C::InitializeInventoryContextMenu(class UWIDGET_PlayerHUD_C* HudWidget_0)
 {
 	static class UFunction* Func = nullptr;
 
@@ -31,7 +31,7 @@ void UWIDGET_InventoryContextMenu_C::InitializeInventoryContextMenu(class UWIDGE
 
 	Params::WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu Parms{};
 
-	Parms.HUDWidget_0 = HUDWidget_0;
+	Parms.HudWidget_0 = HudWidget_0;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

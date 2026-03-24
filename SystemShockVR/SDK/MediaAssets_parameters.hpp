@@ -10,14 +10,332 @@
 
 #include "Basic.hpp"
 
+#include "MediaUtils_structs.hpp"
 #include "MediaAssets_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "MediaUtils_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function MediaAssets.MediaSource.SetMediaOptionBool
+// 0x000C (0x000C - 0x0000)
+struct MediaSource_SetMediaOptionBool final
+{
+public:
+	class FName                                   Key;                                               // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Value;                                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaSource_SetMediaOptionBool) == 0x000004, "Wrong alignment on MediaSource_SetMediaOptionBool");
+static_assert(sizeof(MediaSource_SetMediaOptionBool) == 0x00000C, "Wrong size on MediaSource_SetMediaOptionBool");
+static_assert(offsetof(MediaSource_SetMediaOptionBool, Key) == 0x000000, "Member 'MediaSource_SetMediaOptionBool::Key' has a wrong offset!");
+static_assert(offsetof(MediaSource_SetMediaOptionBool, Value) == 0x000008, "Member 'MediaSource_SetMediaOptionBool::Value' has a wrong offset!");
+
+// Function MediaAssets.MediaSource.SetMediaOptionFloat
+// 0x000C (0x000C - 0x0000)
+struct MediaSource_SetMediaOptionFloat final
+{
+public:
+	class FName                                   Key;                                               // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Value;                                             // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaSource_SetMediaOptionFloat) == 0x000004, "Wrong alignment on MediaSource_SetMediaOptionFloat");
+static_assert(sizeof(MediaSource_SetMediaOptionFloat) == 0x00000C, "Wrong size on MediaSource_SetMediaOptionFloat");
+static_assert(offsetof(MediaSource_SetMediaOptionFloat, Key) == 0x000000, "Member 'MediaSource_SetMediaOptionFloat::Key' has a wrong offset!");
+static_assert(offsetof(MediaSource_SetMediaOptionFloat, Value) == 0x000008, "Member 'MediaSource_SetMediaOptionFloat::Value' has a wrong offset!");
+
+// Function MediaAssets.MediaSource.SetMediaOptionInt64
+// 0x0010 (0x0010 - 0x0000)
+struct MediaSource_SetMediaOptionInt64 final
+{
+public:
+	class FName                                   Key;                                               // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int64                                         Value;                                             // 0x0008(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaSource_SetMediaOptionInt64) == 0x000008, "Wrong alignment on MediaSource_SetMediaOptionInt64");
+static_assert(sizeof(MediaSource_SetMediaOptionInt64) == 0x000010, "Wrong size on MediaSource_SetMediaOptionInt64");
+static_assert(offsetof(MediaSource_SetMediaOptionInt64, Key) == 0x000000, "Member 'MediaSource_SetMediaOptionInt64::Key' has a wrong offset!");
+static_assert(offsetof(MediaSource_SetMediaOptionInt64, Value) == 0x000008, "Member 'MediaSource_SetMediaOptionInt64::Value' has a wrong offset!");
+
+// Function MediaAssets.MediaSource.SetMediaOptionString
+// 0x0018 (0x0018 - 0x0000)
+struct MediaSource_SetMediaOptionString final
+{
+public:
+	class FName                                   Key;                                               // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 Value;                                             // 0x0008(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaSource_SetMediaOptionString) == 0x000008, "Wrong alignment on MediaSource_SetMediaOptionString");
+static_assert(sizeof(MediaSource_SetMediaOptionString) == 0x000018, "Wrong size on MediaSource_SetMediaOptionString");
+static_assert(offsetof(MediaSource_SetMediaOptionString, Key) == 0x000000, "Member 'MediaSource_SetMediaOptionString::Key' has a wrong offset!");
+static_assert(offsetof(MediaSource_SetMediaOptionString, Value) == 0x000008, "Member 'MediaSource_SetMediaOptionString::Value' has a wrong offset!");
+
+// Function MediaAssets.MediaSource.GetUrl
+// 0x0010 (0x0010 - 0x0000)
+struct MediaSource_GetUrl final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaSource_GetUrl) == 0x000008, "Wrong alignment on MediaSource_GetUrl");
+static_assert(sizeof(MediaSource_GetUrl) == 0x000010, "Wrong size on MediaSource_GetUrl");
+static_assert(offsetof(MediaSource_GetUrl, ReturnValue) == 0x000000, "Member 'MediaSource_GetUrl::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaSource.Validate
+// 0x0001 (0x0001 - 0x0000)
+struct MediaSource_Validate final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaSource_Validate) == 0x000001, "Wrong alignment on MediaSource_Validate");
+static_assert(sizeof(MediaSource_Validate) == 0x000001, "Wrong size on MediaSource_Validate");
+static_assert(offsetof(MediaSource_Validate, ReturnValue) == 0x000000, "Member 'MediaSource_Validate::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.Add
+// 0x0010 (0x0010 - 0x0000)
+struct MediaPlaylist_Add final
+{
+public:
+	class UMediaSource*                           MediaSource;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaPlaylist_Add) == 0x000008, "Wrong alignment on MediaPlaylist_Add");
+static_assert(sizeof(MediaPlaylist_Add) == 0x000010, "Wrong size on MediaPlaylist_Add");
+static_assert(offsetof(MediaPlaylist_Add, MediaSource) == 0x000000, "Member 'MediaPlaylist_Add::MediaSource' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_Add, ReturnValue) == 0x000008, "Member 'MediaPlaylist_Add::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.AddFile
+// 0x0018 (0x0018 - 0x0000)
+struct MediaPlaylist_AddFile final
+{
+public:
+	class FString                                 FilePath;                                          // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaPlaylist_AddFile) == 0x000008, "Wrong alignment on MediaPlaylist_AddFile");
+static_assert(sizeof(MediaPlaylist_AddFile) == 0x000018, "Wrong size on MediaPlaylist_AddFile");
+static_assert(offsetof(MediaPlaylist_AddFile, FilePath) == 0x000000, "Member 'MediaPlaylist_AddFile::FilePath' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_AddFile, ReturnValue) == 0x000010, "Member 'MediaPlaylist_AddFile::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.AddUrl
+// 0x0018 (0x0018 - 0x0000)
+struct MediaPlaylist_AddUrl final
+{
+public:
+	class FString                                 URL;                                               // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaPlaylist_AddUrl) == 0x000008, "Wrong alignment on MediaPlaylist_AddUrl");
+static_assert(sizeof(MediaPlaylist_AddUrl) == 0x000018, "Wrong size on MediaPlaylist_AddUrl");
+static_assert(offsetof(MediaPlaylist_AddUrl, URL) == 0x000000, "Member 'MediaPlaylist_AddUrl::URL' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_AddUrl, ReturnValue) == 0x000010, "Member 'MediaPlaylist_AddUrl::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.Get
+// 0x0010 (0x0010 - 0x0000)
+struct MediaPlaylist_Get final
+{
+public:
+	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMediaSource*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaPlaylist_Get) == 0x000008, "Wrong alignment on MediaPlaylist_Get");
+static_assert(sizeof(MediaPlaylist_Get) == 0x000010, "Wrong size on MediaPlaylist_Get");
+static_assert(offsetof(MediaPlaylist_Get, Index_0) == 0x000000, "Member 'MediaPlaylist_Get::Index_0' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_Get, ReturnValue) == 0x000008, "Member 'MediaPlaylist_Get::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.GetNext
+// 0x0010 (0x0010 - 0x0000)
+struct MediaPlaylist_GetNext final
+{
+public:
+	int32                                         InOutIndex;                                        // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMediaSource*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaPlaylist_GetNext) == 0x000008, "Wrong alignment on MediaPlaylist_GetNext");
+static_assert(sizeof(MediaPlaylist_GetNext) == 0x000010, "Wrong size on MediaPlaylist_GetNext");
+static_assert(offsetof(MediaPlaylist_GetNext, InOutIndex) == 0x000000, "Member 'MediaPlaylist_GetNext::InOutIndex' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_GetNext, ReturnValue) == 0x000008, "Member 'MediaPlaylist_GetNext::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.GetPrevious
+// 0x0010 (0x0010 - 0x0000)
+struct MediaPlaylist_GetPrevious final
+{
+public:
+	int32                                         InOutIndex;                                        // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMediaSource*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaPlaylist_GetPrevious) == 0x000008, "Wrong alignment on MediaPlaylist_GetPrevious");
+static_assert(sizeof(MediaPlaylist_GetPrevious) == 0x000010, "Wrong size on MediaPlaylist_GetPrevious");
+static_assert(offsetof(MediaPlaylist_GetPrevious, InOutIndex) == 0x000000, "Member 'MediaPlaylist_GetPrevious::InOutIndex' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_GetPrevious, ReturnValue) == 0x000008, "Member 'MediaPlaylist_GetPrevious::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.GetRandom
+// 0x0010 (0x0010 - 0x0000)
+struct MediaPlaylist_GetRandom final
+{
+public:
+	int32                                         OutIndex;                                          // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMediaSource*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaPlaylist_GetRandom) == 0x000008, "Wrong alignment on MediaPlaylist_GetRandom");
+static_assert(sizeof(MediaPlaylist_GetRandom) == 0x000010, "Wrong size on MediaPlaylist_GetRandom");
+static_assert(offsetof(MediaPlaylist_GetRandom, OutIndex) == 0x000000, "Member 'MediaPlaylist_GetRandom::OutIndex' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_GetRandom, ReturnValue) == 0x000008, "Member 'MediaPlaylist_GetRandom::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.Insert
+// 0x0010 (0x0010 - 0x0000)
+struct MediaPlaylist_Insert final
+{
+public:
+	class UMediaSource*                           MediaSource;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Index_0;                                           // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaPlaylist_Insert) == 0x000008, "Wrong alignment on MediaPlaylist_Insert");
+static_assert(sizeof(MediaPlaylist_Insert) == 0x000010, "Wrong size on MediaPlaylist_Insert");
+static_assert(offsetof(MediaPlaylist_Insert, MediaSource) == 0x000000, "Member 'MediaPlaylist_Insert::MediaSource' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_Insert, Index_0) == 0x000008, "Member 'MediaPlaylist_Insert::Index_0' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.Num
+// 0x0004 (0x0004 - 0x0000)
+struct MediaPlaylist_Num final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaPlaylist_Num) == 0x000004, "Wrong alignment on MediaPlaylist_Num");
+static_assert(sizeof(MediaPlaylist_Num) == 0x000004, "Wrong size on MediaPlaylist_Num");
+static_assert(offsetof(MediaPlaylist_Num, ReturnValue) == 0x000000, "Member 'MediaPlaylist_Num::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.Remove
+// 0x0010 (0x0010 - 0x0000)
+struct MediaPlaylist_Remove final
+{
+public:
+	class UMediaSource*                           MediaSource;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaPlaylist_Remove) == 0x000008, "Wrong alignment on MediaPlaylist_Remove");
+static_assert(sizeof(MediaPlaylist_Remove) == 0x000010, "Wrong size on MediaPlaylist_Remove");
+static_assert(offsetof(MediaPlaylist_Remove, MediaSource) == 0x000000, "Member 'MediaPlaylist_Remove::MediaSource' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_Remove, ReturnValue) == 0x000008, "Member 'MediaPlaylist_Remove::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.RemoveAt
+// 0x0008 (0x0008 - 0x0000)
+struct MediaPlaylist_RemoveAt final
+{
+public:
+	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaPlaylist_RemoveAt) == 0x000004, "Wrong alignment on MediaPlaylist_RemoveAt");
+static_assert(sizeof(MediaPlaylist_RemoveAt) == 0x000008, "Wrong size on MediaPlaylist_RemoveAt");
+static_assert(offsetof(MediaPlaylist_RemoveAt, Index_0) == 0x000000, "Member 'MediaPlaylist_RemoveAt::Index_0' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_RemoveAt, ReturnValue) == 0x000004, "Member 'MediaPlaylist_RemoveAt::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaPlaylist.Replace
+// 0x0018 (0x0018 - 0x0000)
+struct MediaPlaylist_Replace final
+{
+public:
+	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMediaSource*                           Replacement;                                       // 0x0008(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaPlaylist_Replace) == 0x000008, "Wrong alignment on MediaPlaylist_Replace");
+static_assert(sizeof(MediaPlaylist_Replace) == 0x000018, "Wrong size on MediaPlaylist_Replace");
+static_assert(offsetof(MediaPlaylist_Replace, Index_0) == 0x000000, "Member 'MediaPlaylist_Replace::Index_0' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_Replace, Replacement) == 0x000008, "Member 'MediaPlaylist_Replace::Replacement' has a wrong offset!");
+static_assert(offsetof(MediaPlaylist_Replace, ReturnValue) == 0x000010, "Member 'MediaPlaylist_Replace::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.FileMediaSource.SetFilePath
+// 0x0010 (0x0010 - 0x0000)
+struct FileMediaSource_SetFilePath final
+{
+public:
+	class FString                                 Path;                                              // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FileMediaSource_SetFilePath) == 0x000008, "Wrong alignment on FileMediaSource_SetFilePath");
+static_assert(sizeof(FileMediaSource_SetFilePath) == 0x000010, "Wrong size on FileMediaSource_SetFilePath");
+static_assert(offsetof(FileMediaSource_SetFilePath, Path) == 0x000000, "Member 'FileMediaSource_SetFilePath::Path' has a wrong offset!");
+
+// Function MediaAssets.MediaBlueprintFunctionLibrary.EnumerateAudioCaptureDevices
+// 0x0018 (0x0018 - 0x0000)
+struct MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices final
+{
+public:
+	TArray<struct FMediaCaptureDevice>            OutDevices;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
+	int32                                         Filter;                                            // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices) == 0x000008, "Wrong alignment on MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices");
+static_assert(sizeof(MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices) == 0x000018, "Wrong size on MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices");
+static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices, OutDevices) == 0x000000, "Member 'MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices::OutDevices' has a wrong offset!");
+static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices, Filter) == 0x000010, "Member 'MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices::Filter' has a wrong offset!");
+
+// Function MediaAssets.MediaBlueprintFunctionLibrary.EnumerateVideoCaptureDevices
+// 0x0018 (0x0018 - 0x0000)
+struct MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices final
+{
+public:
+	TArray<struct FMediaCaptureDevice>            OutDevices;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
+	int32                                         Filter;                                            // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices) == 0x000008, "Wrong alignment on MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices");
+static_assert(sizeof(MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices) == 0x000018, "Wrong size on MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices");
+static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices, OutDevices) == 0x000000, "Member 'MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices::OutDevices' has a wrong offset!");
+static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices, Filter) == 0x000010, "Member 'MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices::Filter' has a wrong offset!");
+
+// Function MediaAssets.MediaBlueprintFunctionLibrary.EnumerateWebcamCaptureDevices
+// 0x0018 (0x0018 - 0x0000)
+struct MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices final
+{
+public:
+	TArray<struct FMediaCaptureDevice>            OutDevices;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
+	int32                                         Filter;                                            // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices) == 0x000008, "Wrong alignment on MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices");
+static_assert(sizeof(MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices) == 0x000018, "Wrong size on MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices");
+static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices, OutDevices) == 0x000000, "Member 'MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices::OutDevices' has a wrong offset!");
+static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices, Filter) == 0x000010, "Member 'MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices::Filter' has a wrong offset!");
+
+// Function MediaAssets.MediaComponent.GetMediaPlayer
+// 0x0008 (0x0008 - 0x0000)
+struct MediaComponent_GetMediaPlayer final
+{
+public:
+	class UMediaPlayer*                           ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaComponent_GetMediaPlayer) == 0x000008, "Wrong alignment on MediaComponent_GetMediaPlayer");
+static_assert(sizeof(MediaComponent_GetMediaPlayer) == 0x000008, "Wrong size on MediaComponent_GetMediaPlayer");
+static_assert(offsetof(MediaComponent_GetMediaPlayer, ReturnValue) == 0x000000, "Member 'MediaComponent_GetMediaPlayer::ReturnValue' has a wrong offset!");
+
+// Function MediaAssets.MediaComponent.GetMediaTexture
+// 0x0008 (0x0008 - 0x0000)
+struct MediaComponent_GetMediaTexture final
+{
+public:
+	class UMediaTexture*                          ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MediaComponent_GetMediaTexture) == 0x000008, "Wrong alignment on MediaComponent_GetMediaTexture");
+static_assert(sizeof(MediaComponent_GetMediaTexture) == 0x000008, "Wrong size on MediaComponent_GetMediaTexture");
+static_assert(offsetof(MediaComponent_GetMediaTexture, ReturnValue) == 0x000000, "Member 'MediaComponent_GetMediaTexture::ReturnValue' has a wrong offset!");
 
 // Function MediaAssets.MediaPlayer.CanPlaySource
 // 0x0010 (0x0010 - 0x0000)
@@ -935,324 +1253,6 @@ public:
 static_assert(alignof(MediaPlayer_SupportsSeeking) == 0x000001, "Wrong alignment on MediaPlayer_SupportsSeeking");
 static_assert(sizeof(MediaPlayer_SupportsSeeking) == 0x000001, "Wrong size on MediaPlayer_SupportsSeeking");
 static_assert(offsetof(MediaPlayer_SupportsSeeking, ReturnValue) == 0x000000, "Member 'MediaPlayer_SupportsSeeking::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaSource.SetMediaOptionBool
-// 0x000C (0x000C - 0x0000)
-struct MediaSource_SetMediaOptionBool final
-{
-public:
-	class FName                                   Key;                                               // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Value;                                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaSource_SetMediaOptionBool) == 0x000004, "Wrong alignment on MediaSource_SetMediaOptionBool");
-static_assert(sizeof(MediaSource_SetMediaOptionBool) == 0x00000C, "Wrong size on MediaSource_SetMediaOptionBool");
-static_assert(offsetof(MediaSource_SetMediaOptionBool, Key) == 0x000000, "Member 'MediaSource_SetMediaOptionBool::Key' has a wrong offset!");
-static_assert(offsetof(MediaSource_SetMediaOptionBool, Value) == 0x000008, "Member 'MediaSource_SetMediaOptionBool::Value' has a wrong offset!");
-
-// Function MediaAssets.MediaSource.SetMediaOptionFloat
-// 0x000C (0x000C - 0x0000)
-struct MediaSource_SetMediaOptionFloat final
-{
-public:
-	class FName                                   Key;                                               // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Value;                                             // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaSource_SetMediaOptionFloat) == 0x000004, "Wrong alignment on MediaSource_SetMediaOptionFloat");
-static_assert(sizeof(MediaSource_SetMediaOptionFloat) == 0x00000C, "Wrong size on MediaSource_SetMediaOptionFloat");
-static_assert(offsetof(MediaSource_SetMediaOptionFloat, Key) == 0x000000, "Member 'MediaSource_SetMediaOptionFloat::Key' has a wrong offset!");
-static_assert(offsetof(MediaSource_SetMediaOptionFloat, Value) == 0x000008, "Member 'MediaSource_SetMediaOptionFloat::Value' has a wrong offset!");
-
-// Function MediaAssets.MediaSource.SetMediaOptionInt64
-// 0x0010 (0x0010 - 0x0000)
-struct MediaSource_SetMediaOptionInt64 final
-{
-public:
-	class FName                                   Key;                                               // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int64                                         Value;                                             // 0x0008(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaSource_SetMediaOptionInt64) == 0x000008, "Wrong alignment on MediaSource_SetMediaOptionInt64");
-static_assert(sizeof(MediaSource_SetMediaOptionInt64) == 0x000010, "Wrong size on MediaSource_SetMediaOptionInt64");
-static_assert(offsetof(MediaSource_SetMediaOptionInt64, Key) == 0x000000, "Member 'MediaSource_SetMediaOptionInt64::Key' has a wrong offset!");
-static_assert(offsetof(MediaSource_SetMediaOptionInt64, Value) == 0x000008, "Member 'MediaSource_SetMediaOptionInt64::Value' has a wrong offset!");
-
-// Function MediaAssets.MediaSource.SetMediaOptionString
-// 0x0018 (0x0018 - 0x0000)
-struct MediaSource_SetMediaOptionString final
-{
-public:
-	class FName                                   Key;                                               // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 Value;                                             // 0x0008(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaSource_SetMediaOptionString) == 0x000008, "Wrong alignment on MediaSource_SetMediaOptionString");
-static_assert(sizeof(MediaSource_SetMediaOptionString) == 0x000018, "Wrong size on MediaSource_SetMediaOptionString");
-static_assert(offsetof(MediaSource_SetMediaOptionString, Key) == 0x000000, "Member 'MediaSource_SetMediaOptionString::Key' has a wrong offset!");
-static_assert(offsetof(MediaSource_SetMediaOptionString, Value) == 0x000008, "Member 'MediaSource_SetMediaOptionString::Value' has a wrong offset!");
-
-// Function MediaAssets.MediaSource.GetUrl
-// 0x0010 (0x0010 - 0x0000)
-struct MediaSource_GetUrl final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaSource_GetUrl) == 0x000008, "Wrong alignment on MediaSource_GetUrl");
-static_assert(sizeof(MediaSource_GetUrl) == 0x000010, "Wrong size on MediaSource_GetUrl");
-static_assert(offsetof(MediaSource_GetUrl, ReturnValue) == 0x000000, "Member 'MediaSource_GetUrl::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaSource.Validate
-// 0x0001 (0x0001 - 0x0000)
-struct MediaSource_Validate final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaSource_Validate) == 0x000001, "Wrong alignment on MediaSource_Validate");
-static_assert(sizeof(MediaSource_Validate) == 0x000001, "Wrong size on MediaSource_Validate");
-static_assert(offsetof(MediaSource_Validate, ReturnValue) == 0x000000, "Member 'MediaSource_Validate::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.FileMediaSource.SetFilePath
-// 0x0010 (0x0010 - 0x0000)
-struct FileMediaSource_SetFilePath final
-{
-public:
-	class FString                                 Path;                                              // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FileMediaSource_SetFilePath) == 0x000008, "Wrong alignment on FileMediaSource_SetFilePath");
-static_assert(sizeof(FileMediaSource_SetFilePath) == 0x000010, "Wrong size on FileMediaSource_SetFilePath");
-static_assert(offsetof(FileMediaSource_SetFilePath, Path) == 0x000000, "Member 'FileMediaSource_SetFilePath::Path' has a wrong offset!");
-
-// Function MediaAssets.MediaBlueprintFunctionLibrary.EnumerateAudioCaptureDevices
-// 0x0018 (0x0018 - 0x0000)
-struct MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices final
-{
-public:
-	TArray<struct FMediaCaptureDevice>            OutDevices;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
-	int32                                         Filter;                                            // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices) == 0x000008, "Wrong alignment on MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices");
-static_assert(sizeof(MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices) == 0x000018, "Wrong size on MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices");
-static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices, OutDevices) == 0x000000, "Member 'MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices::OutDevices' has a wrong offset!");
-static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices, Filter) == 0x000010, "Member 'MediaBlueprintFunctionLibrary_EnumerateAudioCaptureDevices::Filter' has a wrong offset!");
-
-// Function MediaAssets.MediaBlueprintFunctionLibrary.EnumerateVideoCaptureDevices
-// 0x0018 (0x0018 - 0x0000)
-struct MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices final
-{
-public:
-	TArray<struct FMediaCaptureDevice>            OutDevices;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
-	int32                                         Filter;                                            // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices) == 0x000008, "Wrong alignment on MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices");
-static_assert(sizeof(MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices) == 0x000018, "Wrong size on MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices");
-static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices, OutDevices) == 0x000000, "Member 'MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices::OutDevices' has a wrong offset!");
-static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices, Filter) == 0x000010, "Member 'MediaBlueprintFunctionLibrary_EnumerateVideoCaptureDevices::Filter' has a wrong offset!");
-
-// Function MediaAssets.MediaBlueprintFunctionLibrary.EnumerateWebcamCaptureDevices
-// 0x0018 (0x0018 - 0x0000)
-struct MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices final
-{
-public:
-	TArray<struct FMediaCaptureDevice>            OutDevices;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
-	int32                                         Filter;                                            // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices) == 0x000008, "Wrong alignment on MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices");
-static_assert(sizeof(MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices) == 0x000018, "Wrong size on MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices");
-static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices, OutDevices) == 0x000000, "Member 'MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices::OutDevices' has a wrong offset!");
-static_assert(offsetof(MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices, Filter) == 0x000010, "Member 'MediaBlueprintFunctionLibrary_EnumerateWebcamCaptureDevices::Filter' has a wrong offset!");
-
-// Function MediaAssets.MediaComponent.GetMediaPlayer
-// 0x0008 (0x0008 - 0x0000)
-struct MediaComponent_GetMediaPlayer final
-{
-public:
-	class UMediaPlayer*                           ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaComponent_GetMediaPlayer) == 0x000008, "Wrong alignment on MediaComponent_GetMediaPlayer");
-static_assert(sizeof(MediaComponent_GetMediaPlayer) == 0x000008, "Wrong size on MediaComponent_GetMediaPlayer");
-static_assert(offsetof(MediaComponent_GetMediaPlayer, ReturnValue) == 0x000000, "Member 'MediaComponent_GetMediaPlayer::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaComponent.GetMediaTexture
-// 0x0008 (0x0008 - 0x0000)
-struct MediaComponent_GetMediaTexture final
-{
-public:
-	class UMediaTexture*                          ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaComponent_GetMediaTexture) == 0x000008, "Wrong alignment on MediaComponent_GetMediaTexture");
-static_assert(sizeof(MediaComponent_GetMediaTexture) == 0x000008, "Wrong size on MediaComponent_GetMediaTexture");
-static_assert(offsetof(MediaComponent_GetMediaTexture, ReturnValue) == 0x000000, "Member 'MediaComponent_GetMediaTexture::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.Add
-// 0x0010 (0x0010 - 0x0000)
-struct MediaPlaylist_Add final
-{
-public:
-	class UMediaSource*                           MediaSource;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaPlaylist_Add) == 0x000008, "Wrong alignment on MediaPlaylist_Add");
-static_assert(sizeof(MediaPlaylist_Add) == 0x000010, "Wrong size on MediaPlaylist_Add");
-static_assert(offsetof(MediaPlaylist_Add, MediaSource) == 0x000000, "Member 'MediaPlaylist_Add::MediaSource' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_Add, ReturnValue) == 0x000008, "Member 'MediaPlaylist_Add::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.AddFile
-// 0x0018 (0x0018 - 0x0000)
-struct MediaPlaylist_AddFile final
-{
-public:
-	class FString                                 FilePath;                                          // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaPlaylist_AddFile) == 0x000008, "Wrong alignment on MediaPlaylist_AddFile");
-static_assert(sizeof(MediaPlaylist_AddFile) == 0x000018, "Wrong size on MediaPlaylist_AddFile");
-static_assert(offsetof(MediaPlaylist_AddFile, FilePath) == 0x000000, "Member 'MediaPlaylist_AddFile::FilePath' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_AddFile, ReturnValue) == 0x000010, "Member 'MediaPlaylist_AddFile::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.AddUrl
-// 0x0018 (0x0018 - 0x0000)
-struct MediaPlaylist_AddUrl final
-{
-public:
-	class FString                                 URL;                                               // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaPlaylist_AddUrl) == 0x000008, "Wrong alignment on MediaPlaylist_AddUrl");
-static_assert(sizeof(MediaPlaylist_AddUrl) == 0x000018, "Wrong size on MediaPlaylist_AddUrl");
-static_assert(offsetof(MediaPlaylist_AddUrl, URL) == 0x000000, "Member 'MediaPlaylist_AddUrl::URL' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_AddUrl, ReturnValue) == 0x000010, "Member 'MediaPlaylist_AddUrl::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.Get
-// 0x0010 (0x0010 - 0x0000)
-struct MediaPlaylist_Get final
-{
-public:
-	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMediaSource*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaPlaylist_Get) == 0x000008, "Wrong alignment on MediaPlaylist_Get");
-static_assert(sizeof(MediaPlaylist_Get) == 0x000010, "Wrong size on MediaPlaylist_Get");
-static_assert(offsetof(MediaPlaylist_Get, Index_0) == 0x000000, "Member 'MediaPlaylist_Get::Index_0' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_Get, ReturnValue) == 0x000008, "Member 'MediaPlaylist_Get::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.GetNext
-// 0x0010 (0x0010 - 0x0000)
-struct MediaPlaylist_GetNext final
-{
-public:
-	int32                                         InOutIndex;                                        // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMediaSource*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaPlaylist_GetNext) == 0x000008, "Wrong alignment on MediaPlaylist_GetNext");
-static_assert(sizeof(MediaPlaylist_GetNext) == 0x000010, "Wrong size on MediaPlaylist_GetNext");
-static_assert(offsetof(MediaPlaylist_GetNext, InOutIndex) == 0x000000, "Member 'MediaPlaylist_GetNext::InOutIndex' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_GetNext, ReturnValue) == 0x000008, "Member 'MediaPlaylist_GetNext::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.GetPrevious
-// 0x0010 (0x0010 - 0x0000)
-struct MediaPlaylist_GetPrevious final
-{
-public:
-	int32                                         InOutIndex;                                        // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMediaSource*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaPlaylist_GetPrevious) == 0x000008, "Wrong alignment on MediaPlaylist_GetPrevious");
-static_assert(sizeof(MediaPlaylist_GetPrevious) == 0x000010, "Wrong size on MediaPlaylist_GetPrevious");
-static_assert(offsetof(MediaPlaylist_GetPrevious, InOutIndex) == 0x000000, "Member 'MediaPlaylist_GetPrevious::InOutIndex' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_GetPrevious, ReturnValue) == 0x000008, "Member 'MediaPlaylist_GetPrevious::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.GetRandom
-// 0x0010 (0x0010 - 0x0000)
-struct MediaPlaylist_GetRandom final
-{
-public:
-	int32                                         OutIndex;                                          // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMediaSource*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaPlaylist_GetRandom) == 0x000008, "Wrong alignment on MediaPlaylist_GetRandom");
-static_assert(sizeof(MediaPlaylist_GetRandom) == 0x000010, "Wrong size on MediaPlaylist_GetRandom");
-static_assert(offsetof(MediaPlaylist_GetRandom, OutIndex) == 0x000000, "Member 'MediaPlaylist_GetRandom::OutIndex' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_GetRandom, ReturnValue) == 0x000008, "Member 'MediaPlaylist_GetRandom::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.Insert
-// 0x0010 (0x0010 - 0x0000)
-struct MediaPlaylist_Insert final
-{
-public:
-	class UMediaSource*                           MediaSource;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Index_0;                                           // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaPlaylist_Insert) == 0x000008, "Wrong alignment on MediaPlaylist_Insert");
-static_assert(sizeof(MediaPlaylist_Insert) == 0x000010, "Wrong size on MediaPlaylist_Insert");
-static_assert(offsetof(MediaPlaylist_Insert, MediaSource) == 0x000000, "Member 'MediaPlaylist_Insert::MediaSource' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_Insert, Index_0) == 0x000008, "Member 'MediaPlaylist_Insert::Index_0' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.Num
-// 0x0004 (0x0004 - 0x0000)
-struct MediaPlaylist_Num final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MediaPlaylist_Num) == 0x000004, "Wrong alignment on MediaPlaylist_Num");
-static_assert(sizeof(MediaPlaylist_Num) == 0x000004, "Wrong size on MediaPlaylist_Num");
-static_assert(offsetof(MediaPlaylist_Num, ReturnValue) == 0x000000, "Member 'MediaPlaylist_Num::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.Remove
-// 0x0010 (0x0010 - 0x0000)
-struct MediaPlaylist_Remove final
-{
-public:
-	class UMediaSource*                           MediaSource;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaPlaylist_Remove) == 0x000008, "Wrong alignment on MediaPlaylist_Remove");
-static_assert(sizeof(MediaPlaylist_Remove) == 0x000010, "Wrong size on MediaPlaylist_Remove");
-static_assert(offsetof(MediaPlaylist_Remove, MediaSource) == 0x000000, "Member 'MediaPlaylist_Remove::MediaSource' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_Remove, ReturnValue) == 0x000008, "Member 'MediaPlaylist_Remove::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.RemoveAt
-// 0x0008 (0x0008 - 0x0000)
-struct MediaPlaylist_RemoveAt final
-{
-public:
-	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaPlaylist_RemoveAt) == 0x000004, "Wrong alignment on MediaPlaylist_RemoveAt");
-static_assert(sizeof(MediaPlaylist_RemoveAt) == 0x000008, "Wrong size on MediaPlaylist_RemoveAt");
-static_assert(offsetof(MediaPlaylist_RemoveAt, Index_0) == 0x000000, "Member 'MediaPlaylist_RemoveAt::Index_0' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_RemoveAt, ReturnValue) == 0x000004, "Member 'MediaPlaylist_RemoveAt::ReturnValue' has a wrong offset!");
-
-// Function MediaAssets.MediaPlaylist.Replace
-// 0x0018 (0x0018 - 0x0000)
-struct MediaPlaylist_Replace final
-{
-public:
-	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMediaSource*                           Replacement;                                       // 0x0008(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(MediaPlaylist_Replace) == 0x000008, "Wrong alignment on MediaPlaylist_Replace");
-static_assert(sizeof(MediaPlaylist_Replace) == 0x000018, "Wrong size on MediaPlaylist_Replace");
-static_assert(offsetof(MediaPlaylist_Replace, Index_0) == 0x000000, "Member 'MediaPlaylist_Replace::Index_0' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_Replace, Replacement) == 0x000008, "Member 'MediaPlaylist_Replace::Replacement' has a wrong offset!");
-static_assert(offsetof(MediaPlaylist_Replace, ReturnValue) == 0x000010, "Member 'MediaPlaylist_Replace::ReturnValue' has a wrong offset!");
 
 // Function MediaAssets.MediaSoundComponent.BP_GetAttenuationSettingsToApply
 // 0x03A8 (0x03A8 - 0x0000)

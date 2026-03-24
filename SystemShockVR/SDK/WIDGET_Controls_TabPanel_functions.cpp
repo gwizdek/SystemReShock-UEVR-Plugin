@@ -37,6 +37,20 @@ void UWIDGET_Controls_TabPanel_C::ExecuteUbergraph_WIDGET_Controls_TabPanel(int3
 }
 
 
+// Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.BndEvt__WIDGET_Controls_TabPanel_WIDGET_SubMenu_JoyConMouseBinds_K2Node_ComponentBoundEvent_5_TabClicked__DelegateSignature
+// (BlueprintEvent)
+
+void UWIDGET_Controls_TabPanel_C::BndEvt__WIDGET_Controls_TabPanel_WIDGET_SubMenu_JoyConMouseBinds_K2Node_ComponentBoundEvent_5_TabClicked__DelegateSignature()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_Controls_TabPanel_C", "BndEvt__WIDGET_Controls_TabPanel_WIDGET_SubMenu_JoyConMouseBinds_K2Node_ComponentBoundEvent_5_TabClicked__DelegateSignature");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.Construct
 // (BlueprintCosmetic, Event, Public, BlueprintEvent)
 
@@ -394,6 +408,54 @@ void UWIDGET_Controls_TabPanel_C::ReceiveNavUp(bool InputState, bool* Result)
 		Func = Class->GetFunction("WIDGET_Controls_TabPanel_C", "ReceiveNavUp");
 
 	Params::WIDGET_Controls_TabPanel_C_ReceiveNavUp Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.ReceiveNavLeftRelease
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_Controls_TabPanel_C::ReceiveNavLeftRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_Controls_TabPanel_C", "ReceiveNavLeftRelease");
+
+	Params::WIDGET_Controls_TabPanel_C_ReceiveNavLeftRelease Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C.ReceiveNavRightRelease
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_Controls_TabPanel_C::ReceiveNavRightRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_Controls_TabPanel_C", "ReceiveNavRightRelease");
+
+	Params::WIDGET_Controls_TabPanel_C_ReceiveNavRightRelease Parms{};
 
 	Parms.InputState = InputState;
 

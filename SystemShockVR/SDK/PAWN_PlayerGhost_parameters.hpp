@@ -17,211 +17,278 @@ namespace SDK::Params
 {
 
 // Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.ExecuteUbergraph_PAWN_PlayerGhost
-// 0x05F0 (0x05F0 - 0x0000)
+// 0x0788 (0x0788 - 0x0000)
 struct PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   K2Node_InputActionEvent_Key_18;                    // 0x0008(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable;                              // 0x0020(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_17;                    // 0x0038(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_16;                    // 0x0050(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_1;                            // 0x0068(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_15;                    // 0x0080(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_14;                    // 0x0098(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_2;                            // 0x00B0(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_13;                    // 0x00C8(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_12;                    // 0x00E0(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_3;                            // 0x00F8(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputKeyEvent_Key_1;                        // 0x0110(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputKeyEvent_Key;                          // 0x0128(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_11;                    // 0x0140(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_10;                    // 0x0158(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_4;                            // 0x0170(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_9;                     // 0x0188(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_8;                     // 0x01A0(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_5;                            // 0x01B8(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_7;                     // 0x01D0(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_6;                     // 0x01E8(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_6;                            // 0x0200(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_5;                     // 0x0218(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_4;                     // 0x0230(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_7;                            // 0x0248(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_3;                     // 0x0260(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_2;                     // 0x0278(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_8;                            // 0x0290(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_1;                     // 0x02A8(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key;                       // 0x02C0(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_9;                            // 0x02D8(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_10;                           // 0x02F0(0x0018)(HasGetValueTypeHash)
-	class AController*                            CallFunc_GetController_ReturnValue;                // 0x0308(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0310(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0311(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_312[0x6];                                      // 0x0312(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   K2Node_InputActionEvent_Key_22;                    // 0x0318(0x0018)(HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0330(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_331[0x3];                                      // 0x0331(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         K2Node_InputAxisEvent_AxisValue_1;                 // 0x0334(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_InputAxisEvent_AxisValue;                   // 0x0338(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x033C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue_1;            // 0x033D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x033E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue_1;         // 0x033F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FKey                                   K2Node_InputActionEvent_Key_23;                    // 0x0340(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_11;                           // 0x0358(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_24;                    // 0x0370(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_25;                    // 0x0388(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_12;                           // 0x03A0(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_26;                    // 0x03B8(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_27;                    // 0x03D0(0x0018)(HasGetValueTypeHash)
-	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x03E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3E9[0x7];                                      // 0x03E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x03F0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0400(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_401[0x7];                                      // 0x0401(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   Temp_struct_Variable_13;                           // 0x0408(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_28;                    // 0x0420(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_29;                    // 0x0438(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   Temp_struct_Variable_14;                           // 0x0450(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_30;                    // 0x0468(0x0018)(HasGetValueTypeHash)
-	class AController*                            K2Node_Event_OldController;                        // 0x0480(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_31;                    // 0x0488(0x0018)(HasGetValueTypeHash)
-	class AController*                            K2Node_Event_NewController;                        // 0x04A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x04A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x04B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4B1[0x7];                                      // 0x04B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker_1;                 // 0x04B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x04C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4C1[0x7];                                      // 0x04C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWIDGET_PreGameScreen_C*                CallFunc_Create_ReturnValue;                       // 0x04C8(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_LoadingScreen_C*                CallFunc_Create_ReturnValue_1;                     // 0x04D0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker_2;                 // 0x04D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x04E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4E1[0x7];                                      // 0x04E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AGameModeBase*                          CallFunc_GetGameMode_ReturnValue;                  // 0x04E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_GameOverScreen_C*               CallFunc_Create_ReturnValue_2;                     // 0x04F0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AGM_CitadelStation_C*                   K2Node_DynamicCast_AsGM_Citadel_Station;           // 0x04F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0500(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryLoadStartingLevel_Result;              // 0x0501(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_502[0x6];                                      // 0x0502(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   K2Node_InputActionEvent_Key_19;                    // 0x0508(0x0018)(HasGetValueTypeHash)
-	bool                                          CallFunc_ShouldShowIntroSequence_Result;           // 0x0520(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_521[0x7];                                      // 0x0521(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AGameModeBase*                          CallFunc_GetGameMode_ReturnValue_1;                // 0x0528(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AGM_Title_C*                            K2Node_DynamicCast_AsGM_Title;                     // 0x0530(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x0538(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_539[0x7];                                      // 0x0539(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   Temp_struct_Variable_15;                           // 0x0540(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_20;                    // 0x0558(0x0018)(HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0570(0x0010)(ZeroConstructor, NoDestructor)
-	class AGameModeBase*                          CallFunc_GetGameMode_ReturnValue_2;                // 0x0580(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetCurrentLevelName_ReturnValue;          // 0x0588(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class AGM_CitadelStation_C*                   K2Node_DynamicCast_AsGM_Citadel_Station_1;         // 0x0598(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_5;                     // 0x05A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue;            // 0x05A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5A2[0x6];                                      // 0x05A2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   K2Node_InputKeyEvent_Key_2;                        // 0x05A8(0x0018)(HasGetValueTypeHash)
-	struct FKey                                   K2Node_InputActionEvent_Key_21;                    // 0x05C0(0x0018)(HasGetValueTypeHash)
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x05D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x05E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_6;                     // 0x05E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UWIDGET_GameOverScreen_C*               CallFunc_Create_ReturnValue;                       // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue; // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_12[0x6];                                       // 0x0012(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_LoadingScreen_C*                CallFunc_Create_ReturnValue_1;                     // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_PreGameScreen_C*                CallFunc_Create_ReturnValue_2;                     // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_1; // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_32[0x2];                                       // 0x0032(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0034(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x0044(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_2;            // 0x0054(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_3;            // 0x0064(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_4;            // 0x0074(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_84[0x4];                                       // 0x0084(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   K2Node_InputActionEvent_Key_25;                    // 0x0088(0x0018)(HasGetValueTypeHash)
+	bool                                          CallFunc_RemoveInputClearDelegate_ReturnValue;     // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A1[0x3];                                       // 0x00A1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_5;            // 0x00A4(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          CallFunc_RemoveInputClearDelegate_ReturnValue_1;   // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_RemoveInputClearDelegate_ReturnValue_2;   // 0x00B5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_2; // 0x00B6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B7[0x1];                                       // 0x00B7(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   Temp_struct_Variable;                              // 0x00B8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key;                       // 0x00D0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_1;                     // 0x00E8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_1;                            // 0x0100(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_2;                     // 0x0118(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_3;                     // 0x0130(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_2;                            // 0x0148(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_4;                     // 0x0160(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_5;                     // 0x0178(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_3;                            // 0x0190(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_4;                            // 0x01A8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_6;                     // 0x01C0(0x0018)(HasGetValueTypeHash)
+	bool                                          CallFunc_RemoveInputClearDelegate_ReturnValue_3;   // 0x01D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_3; // 0x01D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1DA[0x6];                                      // 0x01DA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   K2Node_InputActionEvent_Key_7;                     // 0x01E0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_5;                            // 0x01F8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_8;                     // 0x0210(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_9;                     // 0x0228(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_6;                            // 0x0240(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_10;                    // 0x0258(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_11;                    // 0x0270(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_7;                            // 0x0288(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_12;                    // 0x02A0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_26;                    // 0x02B8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_13;                    // 0x02D0(0x0018)(HasGetValueTypeHash)
+	bool                                          CallFunc_RemoveInputClearDelegate_ReturnValue_4;   // 0x02E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_4; // 0x02E9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2EA[0x6];                                      // 0x02EA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   Temp_struct_Variable_8;                            // 0x02F0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_14;                    // 0x0308(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_15;                    // 0x0320(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_9;                            // 0x0338(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_16;                    // 0x0350(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_17;                    // 0x0368(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_10;                           // 0x0380(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_18;                    // 0x0398(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_19;                    // 0x03B0(0x0018)(HasGetValueTypeHash)
+	bool                                          CallFunc_RemoveInputClearDelegate_ReturnValue_5;   // 0x03C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_5; // 0x03C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3CA[0x6];                                      // 0x03CA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   Temp_struct_Variable_11;                           // 0x03D0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_20;                    // 0x03E8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_21;                    // 0x0400(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_12;                           // 0x0418(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_22;                    // 0x0430(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_23;                    // 0x0448(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_27;                    // 0x0460(0x0018)(HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0478(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_479[0x7];                                      // 0x0479(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AController*                            CallFunc_GetController_ReturnValue;                // 0x0480(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_4;                    // 0x0488(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_5;                    // 0x0489(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_48A[0x2];                                      // 0x048A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         K2Node_InputAxisEvent_AxisValue_1;                 // 0x048C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_InputAxisEvent_AxisValue;                   // 0x0490(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0494(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue_1;            // 0x0495(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0496(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue_1;         // 0x0497(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FKey                                   Temp_struct_Variable_13;                           // 0x0498(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_28;                    // 0x04B0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_29;                    // 0x04C8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputKeyEvent_Key;                          // 0x04E0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputKeyEvent_Key_1;                        // 0x04F8(0x0018)(HasGetValueTypeHash)
+	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x0510(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_511[0x7];                                      // 0x0511(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0518(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0528(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_529[0x7];                                      // 0x0529(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   Temp_struct_Variable_14;                           // 0x0530(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_30;                    // 0x0548(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_31;                    // 0x0560(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_15;                           // 0x0578(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_32;                    // 0x0590(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_33;                    // 0x05A8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_16;                           // 0x05C0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_34;                    // 0x05D8(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_35;                    // 0x05F0(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_17;                           // 0x0608(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_36;                    // 0x0620(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_37;                    // 0x0638(0x0018)(HasGetValueTypeHash)
+	class AController*                            K2Node_Event_OldController;                        // 0x0650(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable_18;                           // 0x0658(0x0018)(HasGetValueTypeHash)
+	class AController*                            K2Node_Event_NewController;                        // 0x0670(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AGameModeBase*                          CallFunc_GetGameMode_ReturnValue;                  // 0x0678(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0680(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0688(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_689[0x7];                                      // 0x0689(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AGM_CitadelStation_C*                   K2Node_DynamicCast_AsGM_Citadel_Station;           // 0x0690(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0698(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryLoadStartingLevel_Result;              // 0x0699(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ShouldShowIntroSequence_Result;           // 0x069A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_69B[0x5];                                      // 0x069B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class AGameModeBase*                          CallFunc_GetGameMode_ReturnValue_1;                // 0x06A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_38;                    // 0x06A8(0x0018)(HasGetValueTypeHash)
+	class AGM_Title_C*                            K2Node_DynamicCast_AsGM_Title;                     // 0x06C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x06C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6C9[0x3];                                      // 0x06C9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_6;            // 0x06CC(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_6DC[0x4];                                      // 0x06DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class AGameModeBase*                          CallFunc_GetGameMode_ReturnValue_2;                // 0x06E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AGM_CitadelStation_C*                   K2Node_DynamicCast_AsGM_Citadel_Station_1;         // 0x06E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x06F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_6F1[0x7];                                      // 0x06F1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetCurrentLevelName_ReturnValue;          // 0x06F8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0708(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue;            // 0x0710(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_711[0x7];                                      // 0x0711(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0718(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x0720(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_721[0x7];                                      // 0x0721(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   Temp_struct_Variable_19;                           // 0x0728(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_24;                    // 0x0740(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputActionEvent_Key_39;                    // 0x0758(0x0018)(HasGetValueTypeHash)
+	struct FKey                                   K2Node_InputKeyEvent_Key_2;                        // 0x0770(0x0018)(HasGetValueTypeHash)
 };
 static_assert(alignof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost");
-static_assert(sizeof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost) == 0x0005F0, "Wrong size on PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost");
+static_assert(sizeof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost) == 0x000788, "Wrong size on PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost");
 static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, EntryPoint) == 0x000000, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::EntryPoint' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_18) == 0x000008, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_18' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable) == 0x000020, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_17) == 0x000038, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_17' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_16) == 0x000050, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_16' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_1) == 0x000068, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_15) == 0x000080, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_15' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_14) == 0x000098, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_14' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_2) == 0x0000B0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_2' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_13) == 0x0000C8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_13' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_12) == 0x0000E0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_12' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_3) == 0x0000F8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_3' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputKeyEvent_Key_1) == 0x000110, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputKeyEvent_Key_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputKeyEvent_Key) == 0x000128, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputKeyEvent_Key' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_11) == 0x000140, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_11' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_10) == 0x000158, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_10' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_4) == 0x000170, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_4' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_9) == 0x000188, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_9' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_8) == 0x0001A0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_8' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_5) == 0x0001B8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_5' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_7) == 0x0001D0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_7' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_6) == 0x0001E8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_6' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_6) == 0x000200, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_6' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_5) == 0x000218, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_5' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_4) == 0x000230, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_4' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_7) == 0x000248, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_7' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_3) == 0x000260, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_3' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_2) == 0x000278, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_2' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_8) == 0x000290, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_8' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_1) == 0x0002A8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key) == 0x0002C0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_9) == 0x0002D8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_9' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_10) == 0x0002F0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_10' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetController_ReturnValue) == 0x000308, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsValid_ReturnValue) == 0x000310, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsValid_ReturnValue_1) == 0x000311, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_22) == 0x000318, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_22' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsValid_ReturnValue_2) == 0x000330, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputAxisEvent_AxisValue_1) == 0x000334, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputAxisEvent_AxisValue_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputAxisEvent_AxisValue) == 0x000338, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputAxisEvent_AxisValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Less_FloatFloat_ReturnValue) == 0x00033C, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Less_FloatFloat_ReturnValue_1) == 0x00033D, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Less_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Greater_FloatFloat_ReturnValue) == 0x00033E, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Greater_FloatFloat_ReturnValue_1) == 0x00033F, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Greater_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_23) == 0x000340, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_23' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_11) == 0x000358, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_11' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_24) == 0x000370, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_24' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_25) == 0x000388, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_25' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_12) == 0x0003A0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_12' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_26) == 0x0003B8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_26' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_27) == 0x0003D0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_27' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x0003E8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetPlatformName_ReturnValue) == 0x0003F0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Not_PreBool_ReturnValue) == 0x000400, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_13) == 0x000408, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_13' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_28) == 0x000420, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_28' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_29) == 0x000438, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_29' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_14) == 0x000450, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_14' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_30) == 0x000468, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_30' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_Event_OldController) == 0x000480, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_Event_OldController' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_31) == 0x000488, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_31' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_Event_NewController) == 0x0004A0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_Event_NewController' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsCON_Hacker) == 0x0004A8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess) == 0x0004B0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsCON_Hacker_1) == 0x0004B8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsCON_Hacker_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_1) == 0x0004C0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Create_ReturnValue) == 0x0004C8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Create_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Create_ReturnValue_1) == 0x0004D0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Create_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsCON_Hacker_2) == 0x0004D8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsCON_Hacker_2' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_2) == 0x0004E0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetGameMode_ReturnValue) == 0x0004E8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetGameMode_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Create_ReturnValue_2) == 0x0004F0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Create_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsGM_Citadel_Station) == 0x0004F8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsGM_Citadel_Station' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_3) == 0x000500, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_TryLoadStartingLevel_Result) == 0x000501, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_TryLoadStartingLevel_Result' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_19) == 0x000508, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_19' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_ShouldShowIntroSequence_Result) == 0x000520, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_ShouldShowIntroSequence_Result' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetGameMode_ReturnValue_1) == 0x000528, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetGameMode_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsGM_Title) == 0x000530, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsGM_Title' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_4) == 0x000538, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_15) == 0x000540, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_15' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_20) == 0x000558, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_20' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_CreateDelegate_OutputDelegate) == 0x000570, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetGameMode_ReturnValue_2) == 0x000580, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetGameMode_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetCurrentLevelName_ReturnValue) == 0x000588, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetCurrentLevelName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsGM_Citadel_Station_1) == 0x000598, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsGM_Citadel_Station_1' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_5) == 0x0005A0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_5' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_EqualEqual_StrStr_ReturnValue) == 0x0005A1, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_EqualEqual_StrStr_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputKeyEvent_Key_2) == 0x0005A8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputKeyEvent_Key_2' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_21) == 0x0005C0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_21' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetGameInstance_ReturnValue) == 0x0005D8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsGI_Single_Player) == 0x0005E0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_6) == 0x0005E8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_6' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Create_ReturnValue) == 0x000008, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Create_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue) == 0x000010, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsValid_ReturnValue) == 0x000011, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Create_ReturnValue_1) == 0x000018, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Create_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsValid_ReturnValue_1) == 0x000020, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Create_ReturnValue_2) == 0x000028, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Create_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_1) == 0x000030, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsValid_ReturnValue_2) == 0x000031, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_CreateDelegate_OutputDelegate) == 0x000034, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_CreateDelegate_OutputDelegate_1) == 0x000044, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_CreateDelegate_OutputDelegate_2) == 0x000054, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_CreateDelegate_OutputDelegate_3) == 0x000064, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_CreateDelegate_OutputDelegate_3' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_CreateDelegate_OutputDelegate_4) == 0x000074, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_CreateDelegate_OutputDelegate_4' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_25) == 0x000088, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_25' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_RemoveInputClearDelegate_ReturnValue) == 0x0000A0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_RemoveInputClearDelegate_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_CreateDelegate_OutputDelegate_5) == 0x0000A4, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_CreateDelegate_OutputDelegate_5' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_RemoveInputClearDelegate_ReturnValue_1) == 0x0000B4, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_RemoveInputClearDelegate_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_RemoveInputClearDelegate_ReturnValue_2) == 0x0000B5, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_RemoveInputClearDelegate_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_2) == 0x0000B6, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable) == 0x0000B8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key) == 0x0000D0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_1) == 0x0000E8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_1) == 0x000100, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_2) == 0x000118, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_2' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_3) == 0x000130, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_3' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_2) == 0x000148, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_2' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_4) == 0x000160, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_4' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_5) == 0x000178, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_5' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_3) == 0x000190, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_3' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_4) == 0x0001A8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_4' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_6) == 0x0001C0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_6' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_RemoveInputClearDelegate_ReturnValue_3) == 0x0001D8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_RemoveInputClearDelegate_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_3) == 0x0001D9, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_7) == 0x0001E0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_7' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_5) == 0x0001F8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_5' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_8) == 0x000210, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_8' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_9) == 0x000228, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_9' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_6) == 0x000240, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_6' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_10) == 0x000258, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_10' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_11) == 0x000270, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_11' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_7) == 0x000288, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_7' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_12) == 0x0002A0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_12' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_26) == 0x0002B8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_26' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_13) == 0x0002D0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_13' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_RemoveInputClearDelegate_ReturnValue_4) == 0x0002E8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_RemoveInputClearDelegate_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_4) == 0x0002E9, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_8) == 0x0002F0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_8' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_14) == 0x000308, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_14' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_15) == 0x000320, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_15' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_9) == 0x000338, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_9' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_16) == 0x000350, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_16' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_17) == 0x000368, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_17' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_10) == 0x000380, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_10' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_18) == 0x000398, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_18' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_19) == 0x0003B0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_19' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_RemoveInputClearDelegate_ReturnValue_5) == 0x0003C8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_RemoveInputClearDelegate_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_5) == 0x0003C9, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_ShouldPreferJoyConMouseSensor_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_11) == 0x0003D0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_11' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_20) == 0x0003E8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_20' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_21) == 0x000400, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_21' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_12) == 0x000418, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_12' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_22) == 0x000430, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_22' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_23) == 0x000448, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_23' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_27) == 0x000460, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_27' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsValid_ReturnValue_3) == 0x000478, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetController_ReturnValue) == 0x000480, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsValid_ReturnValue_4) == 0x000488, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsValid_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsValid_ReturnValue_5) == 0x000489, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsValid_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputAxisEvent_AxisValue_1) == 0x00048C, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputAxisEvent_AxisValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputAxisEvent_AxisValue) == 0x000490, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputAxisEvent_AxisValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Less_FloatFloat_ReturnValue) == 0x000494, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Less_FloatFloat_ReturnValue_1) == 0x000495, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Less_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000496, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Greater_FloatFloat_ReturnValue_1) == 0x000497, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Greater_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_13) == 0x000498, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_13' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_28) == 0x0004B0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_28' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_29) == 0x0004C8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_29' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputKeyEvent_Key) == 0x0004E0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputKeyEvent_Key' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputKeyEvent_Key_1) == 0x0004F8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputKeyEvent_Key_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x000510, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetPlatformName_ReturnValue) == 0x000518, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_Not_PreBool_ReturnValue) == 0x000528, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_14) == 0x000530, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_14' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_30) == 0x000548, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_30' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_31) == 0x000560, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_31' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_15) == 0x000578, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_15' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_32) == 0x000590, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_32' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_33) == 0x0005A8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_33' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_16) == 0x0005C0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_16' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_34) == 0x0005D8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_34' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_35) == 0x0005F0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_35' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_17) == 0x000608, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_17' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_36) == 0x000620, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_36' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_37) == 0x000638, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_37' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_Event_OldController) == 0x000650, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_Event_OldController' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_18) == 0x000658, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_18' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_Event_NewController) == 0x000670, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_Event_NewController' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetGameMode_ReturnValue) == 0x000678, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetGameMode_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsCON_Hacker) == 0x000680, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess) == 0x000688, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsGM_Citadel_Station) == 0x000690, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsGM_Citadel_Station' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_1) == 0x000698, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_TryLoadStartingLevel_Result) == 0x000699, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_TryLoadStartingLevel_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_ShouldShowIntroSequence_Result) == 0x00069A, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_ShouldShowIntroSequence_Result' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetGameMode_ReturnValue_1) == 0x0006A0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetGameMode_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_38) == 0x0006A8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_38' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsGM_Title) == 0x0006C0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsGM_Title' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_2) == 0x0006C8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_CreateDelegate_OutputDelegate_6) == 0x0006CC, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_CreateDelegate_OutputDelegate_6' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetGameMode_ReturnValue_2) == 0x0006E0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetGameMode_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsGM_Citadel_Station_1) == 0x0006E8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsGM_Citadel_Station_1' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_3) == 0x0006F0, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetCurrentLevelName_ReturnValue) == 0x0006F8, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetCurrentLevelName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_GetGameInstance_ReturnValue) == 0x000708, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, CallFunc_EqualEqual_StrStr_ReturnValue) == 0x000710, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::CallFunc_EqualEqual_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_AsGI_Single_Player) == 0x000718, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_DynamicCast_bSuccess_4) == 0x000720, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, Temp_struct_Variable_19) == 0x000728, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::Temp_struct_Variable_19' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_24) == 0x000740, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_24' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputActionEvent_Key_39) == 0x000758, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputActionEvent_Key_39' has a wrong offset!");
+static_assert(offsetof(PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost, K2Node_InputKeyEvent_Key_2) == 0x000770, "Member 'PAWN_PlayerGhost_C_ExecuteUbergraph_PAWN_PlayerGhost::K2Node_InputKeyEvent_Key_2' has a wrong offset!");
 
 // Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.ReceivePossessed
 // 0x0008 (0x0008 - 0x0000)
@@ -267,181 +334,159 @@ static_assert(alignof(PAWN_PlayerGhost_C_InpAxisEvt_MenuNavAxis_X_K2Node_InputAx
 static_assert(sizeof(PAWN_PlayerGhost_C_InpAxisEvt_MenuNavAxis_X_K2Node_InputAxisEvent_16) == 0x000004, "Wrong size on PAWN_PlayerGhost_C_InpAxisEvt_MenuNavAxis_X_K2Node_InputAxisEvent_16");
 static_assert(offsetof(PAWN_PlayerGhost_C_InpAxisEvt_MenuNavAxis_X_K2Node_InputAxisEvent_16, AxisValue) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpAxisEvt_MenuNavAxis_X_K2Node_InputAxisEvent_16::AxisValue' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0 final
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_0::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_0::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1 final
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_1::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_1::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2 final
+struct PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_2::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_2::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3 final
+struct PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_3::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt2_K2Node_InputActionEvent_3::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4 final
+struct PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_4::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_4::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5 final
+struct PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_5::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Alt1_K2Node_InputActionEvent_5::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6 final
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_6::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_6::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7 final
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_7::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_7::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8 final
+struct PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_8::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_8::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9 final
+struct PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_9::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_JCMS_Escape_K2Node_InputActionEvent_9::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10 final
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_10::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_10::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11 final
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_11::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_11::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0 final
+struct PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_12::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Home_K2Node_InputKeyEvent_1
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1 final
+struct PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1::Key' has a wrong offset!");
-
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12
-// 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12 final
-{
-public:
-	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_12::Key' has a wrong offset!");
-
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13
-// 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13 final
-{
-public:
-	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
-};
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_Escape_K2Node_InputActionEvent_13::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_JCMS_MenuNav_Back_K2Node_InputActionEvent_13::Key' has a wrong offset!");
 
 // Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Back_K2Node_InputActionEvent_14
 // 0x0018 (0x0018 - 0x0000)
@@ -487,159 +532,269 @@ static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Accept_K2Node
 static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_17) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_17");
 static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_17, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Accept_K2Node_InputActionEvent_17::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_18::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_18::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_19::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Down_K2Node_InputActionEvent_19::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_20::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_20::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt1_K2Node_InputActionEvent_21::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Up_K2Node_InputActionEvent_21::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_22::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_22::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_Alt2_K2Node_InputActionEvent_23::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Right_K2Node_InputActionEvent_23::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_24::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_24::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_25::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Left_K2Node_InputActionEvent_25::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_26::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_26::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_27::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt2_K2Node_InputActionEvent_27::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Locked_Escape_K2Node_InputActionEvent_28
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_28 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_28) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_28");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_28) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_28");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_28, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_28::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_28::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Locked_Escape_K2Node_InputActionEvent_29
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_29 final
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_29) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_29");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_29) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_29");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_29, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_29::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Alt1_K2Node_InputActionEvent_29::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30 final
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_30::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_RightThumbstick_K2Node_InputKeyEvent_0::Key' has a wrong offset!");
 
-// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Home_K2Node_InputKeyEvent_1
 // 0x0018 (0x0018 - 0x0000)
-struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31 final
+struct PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1 final
 {
 public:
 	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 };
-static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31");
-static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31");
-static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_31::Key' has a wrong offset!");
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Home_K2Node_InputKeyEvent_1::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_30::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Accept_K2Node_InputActionEvent_31::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_32::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabLeft_K2Node_InputActionEvent_33::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_34::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Gamepad_MenuNav_TabRight_K2Node_InputActionEvent_35::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Locked_Escape_K2Node_InputActionEvent_36
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_36 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_36) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_36");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_36) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_36");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_36, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_36::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_Locked_Escape_K2Node_InputActionEvent_37
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_37 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_37) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_37");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_37) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_37");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_37, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_Locked_Escape_K2Node_InputActionEvent_37::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_38::Key' has a wrong offset!");
+
+// Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39
+// 0x0018 (0x0018 - 0x0000)
+struct PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39 final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39) == 0x000008, "Wrong alignment on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39");
+static_assert(sizeof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39) == 0x000018, "Wrong size on PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39");
+static_assert(offsetof(PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39, Key) == 0x000000, "Member 'PAWN_PlayerGhost_C_InpActEvt_MenuNav_Back_K2Node_InputActionEvent_39::Key' has a wrong offset!");
 
 // Function PAWN_PlayerGhost.PAWN_PlayerGhost_C.InpActEvt_AnyKey_K2Node_InputKeyEvent_2
 // 0x0018 (0x0018 - 0x0000)

@@ -10,17 +10,17 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_Options_ControlsTabs_structs.hpp"
-#include "WIDGET_OptionsMenu_Base_classes.hpp"
 #include "Engine_structs.hpp"
+#include "WIDGET_OptionsMenu_Base_classes.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
+#include "ENUM_Options_ControlsTabs_structs.hpp"
 
 
 namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_OptionsMenu_Controls.WIDGET_OptionsMenu_Controls_C
-// 0x0038 (0x0340 - 0x0308)
+// 0x0040 (0x0348 - 0x0308)
 class UWIDGET_OptionsMenu_Controls_C final : public UWIDGET_OptionsMenu_Base_C
 {
 public:
@@ -30,7 +30,8 @@ public:
 	class UWIDGET_OptionsMenu_Controls_GamepadList_C* WIDGET_OptionsMenu_Controls_GamepadList;           // 0x0320(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UWIDGET_OptionsMenu_Controls_GeneralList_C* WIDGET_OptionsMenu_Controls_GeneralList;           // 0x0328(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UWIDGET_OptionsMenu_Controls_KeyboardBindList_C* WIDGET_OptionsMenu_Controls_InputBindList;         // 0x0330(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_Controls_TabPanel_C*            WIDGET_SubMenu_ListPanel;                          // 0x0338(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_OptionsMenu_Controls_JCMSBindsList_C* WIDGET_OptionsMenu_Controls_JCMSBindsList;         // 0x0338(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_Controls_TabPanel_C*            WIDGET_SubMenu_ListPanel;                          // 0x0340(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_WIDGET_OptionsMenu_Controls(int32 EntryPoint);
@@ -53,14 +54,15 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_OptionsMenu_Controls_C) == 0x000008, "Wrong alignment on UWIDGET_OptionsMenu_Controls_C");
-static_assert(sizeof(UWIDGET_OptionsMenu_Controls_C) == 0x000340, "Wrong size on UWIDGET_OptionsMenu_Controls_C");
+static_assert(sizeof(UWIDGET_OptionsMenu_Controls_C) == 0x000348, "Wrong size on UWIDGET_OptionsMenu_Controls_C");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_C, UberGraphFrame) == 0x000308, "Member 'UWIDGET_OptionsMenu_Controls_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_C, IMAGE_PanelBackground) == 0x000310, "Member 'UWIDGET_OptionsMenu_Controls_C::IMAGE_PanelBackground' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_C, WIDGET_OptionsMenu_Controls_GamepadBindsList) == 0x000318, "Member 'UWIDGET_OptionsMenu_Controls_C::WIDGET_OptionsMenu_Controls_GamepadBindsList' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_C, WIDGET_OptionsMenu_Controls_GamepadList) == 0x000320, "Member 'UWIDGET_OptionsMenu_Controls_C::WIDGET_OptionsMenu_Controls_GamepadList' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_C, WIDGET_OptionsMenu_Controls_GeneralList) == 0x000328, "Member 'UWIDGET_OptionsMenu_Controls_C::WIDGET_OptionsMenu_Controls_GeneralList' has a wrong offset!");
 static_assert(offsetof(UWIDGET_OptionsMenu_Controls_C, WIDGET_OptionsMenu_Controls_InputBindList) == 0x000330, "Member 'UWIDGET_OptionsMenu_Controls_C::WIDGET_OptionsMenu_Controls_InputBindList' has a wrong offset!");
-static_assert(offsetof(UWIDGET_OptionsMenu_Controls_C, WIDGET_SubMenu_ListPanel) == 0x000338, "Member 'UWIDGET_OptionsMenu_Controls_C::WIDGET_SubMenu_ListPanel' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_C, WIDGET_OptionsMenu_Controls_JCMSBindsList) == 0x000338, "Member 'UWIDGET_OptionsMenu_Controls_C::WIDGET_OptionsMenu_Controls_JCMSBindsList' has a wrong offset!");
+static_assert(offsetof(UWIDGET_OptionsMenu_Controls_C, WIDGET_SubMenu_ListPanel) == 0x000340, "Member 'UWIDGET_OptionsMenu_Controls_C::WIDGET_SubMenu_ListPanel' has a wrong offset!");
 
 }
 

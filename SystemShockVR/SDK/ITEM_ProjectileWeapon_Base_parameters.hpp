@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "CoreGame_structs.hpp"
-#include "ENUM_ActionPriority_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
+#include "ENUM_ActionPriority_structs.hpp"
 #include "STRUCT_WeaponMode_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
+#include "Engine_structs.hpp"
+#include "CoreGame_structs.hpp"
 
 
 namespace SDK::Params
@@ -1505,21 +1505,6 @@ static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryBeginReloading, CallFunc_
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryBeginReloading, CallFunc_IsEquipped_Result) == 0x000006, "Member 'ITEM_ProjectileWeapon_Base_C_TryBeginReloading::CallFunc_IsEquipped_Result' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_TryBeginReloading, CallFunc_CanRefillMagazine_Result) == 0x000007, "Member 'ITEM_ProjectileWeapon_Base_C_TryBeginReloading::CallFunc_CanRefillMagazine_Result' has a wrong offset!");
 
-// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.Activate
-// 0x0010 (0x0010 - 0x0000)
-struct ITEM_ProjectileWeapon_Base_C_Activate final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Activate_Result;                          // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_ProjectileWeapon_Base_C_Activate) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_Activate");
-static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_Activate) == 0x000010, "Wrong size on ITEM_ProjectileWeapon_Base_C_Activate");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_Activate, Character) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_Activate::Character' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_Activate, Result) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_Activate::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_Activate, CallFunc_Activate_Result) == 0x000009, "Member 'ITEM_ProjectileWeapon_Base_C_Activate::CallFunc_Activate_Result' has a wrong offset!");
-
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.OnBecomeUnactivatable
 // 0x0003 (0x0003 - 0x0000)
 struct ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable final
@@ -1534,6 +1519,21 @@ static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable) == 0x00
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable, CallFunc_ShouldAutoReload_Result) == 0x000001, "Member 'ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable::CallFunc_ShouldAutoReload_Result' has a wrong offset!");
 static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000002, "Member 'ITEM_ProjectileWeapon_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
+
+// Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.Activate
+// 0x0010 (0x0010 - 0x0000)
+struct ITEM_ProjectileWeapon_Base_C_Activate final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Activate_Result;                          // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_ProjectileWeapon_Base_C_Activate) == 0x000008, "Wrong alignment on ITEM_ProjectileWeapon_Base_C_Activate");
+static_assert(sizeof(ITEM_ProjectileWeapon_Base_C_Activate) == 0x000010, "Wrong size on ITEM_ProjectileWeapon_Base_C_Activate");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_Activate, Character) == 0x000000, "Member 'ITEM_ProjectileWeapon_Base_C_Activate::Character' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_Activate, Result) == 0x000008, "Member 'ITEM_ProjectileWeapon_Base_C_Activate::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ProjectileWeapon_Base_C_Activate, CallFunc_Activate_Result) == 0x000009, "Member 'ITEM_ProjectileWeapon_Base_C_Activate::CallFunc_Activate_Result' has a wrong offset!");
 
 // Function ITEM_ProjectileWeapon_Base.ITEM_ProjectileWeapon_Base_C.Deactivate
 // 0x0003 (0x0003 - 0x0000)

@@ -111,7 +111,7 @@ void VRItemSelector::activate_current_quick_slot() {
         };
 
         // holster weapon
-        g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_24(h_key_name);
+        g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
     }
 }
 

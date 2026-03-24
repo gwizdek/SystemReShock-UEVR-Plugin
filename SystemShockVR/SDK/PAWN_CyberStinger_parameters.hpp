@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "AttributeSystem_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 #include "ENUM_Emotions_structs.hpp"
 
 

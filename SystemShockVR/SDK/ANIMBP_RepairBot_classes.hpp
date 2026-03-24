@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "AnimGraphRuntime_structs.hpp"
+#include "ENUM_DeathBlowType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "ENUM_DeathBlowType_structs.hpp"
+#include "AnimGraphRuntime_structs.hpp"
 #include "ENUM_Emotions_structs.hpp"
 
 

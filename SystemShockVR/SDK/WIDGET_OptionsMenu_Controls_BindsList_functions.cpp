@@ -87,27 +87,6 @@ void UWIDGET_OptionsMenu_Controls_BindsList_C::GetStashedKeyForAction(class FNam
 }
 
 
-// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.IsGamepadBindsList
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UWIDGET_OptionsMenu_Controls_BindsList_C::IsGamepadBindsList(bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "IsGamepadBindsList");
-
-	Params::WIDGET_OptionsMenu_Controls_BindsList_C_IsGamepadBindsList Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.SetIsOptionListeningForInput
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -217,17 +196,137 @@ void UWIDGET_OptionsMenu_Controls_BindsList_C::OnListClose()
 }
 
 
-// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.OnListOpen
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.SetPrimaryIsHighlighted
 // (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewState                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void UWIDGET_OptionsMenu_Controls_BindsList_C::OnListOpen()
+void UWIDGET_OptionsMenu_Controls_BindsList_C::SetPrimaryIsHighlighted(bool NewState)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "OnListOpen");
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "SetPrimaryIsHighlighted");
+
+	Params::WIDGET_OptionsMenu_Controls_BindsList_C_SetPrimaryIsHighlighted Parms{};
+
+	Parms.NewState = NewState;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.SetSecondaryIsHighlighted
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewState                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_OptionsMenu_Controls_BindsList_C::SetSecondaryIsHighlighted(bool NewState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "SetSecondaryIsHighlighted");
+
+	Params::WIDGET_OptionsMenu_Controls_BindsList_C_SetSecondaryIsHighlighted Parms{};
+
+	Parms.NewState = NewState;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.GetIsPrimaryHighlighted
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    IsPrimaryHighlighted_0                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_OptionsMenu_Controls_BindsList_C::GetIsPrimaryHighlighted(bool* IsPrimaryHighlighted_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "GetIsPrimaryHighlighted");
+
+	Params::WIDGET_OptionsMenu_Controls_BindsList_C_GetIsPrimaryHighlighted Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsPrimaryHighlighted_0 != nullptr)
+		*IsPrimaryHighlighted_0 = Parms.IsPrimaryHighlighted_0;
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.GetIsSecondaryHighlighted
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    IsSecondaryHighlighted_0                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_OptionsMenu_Controls_BindsList_C::GetIsSecondaryHighlighted(bool* IsSecondaryHighlighted_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "GetIsSecondaryHighlighted");
+
+	Params::WIDGET_OptionsMenu_Controls_BindsList_C_GetIsSecondaryHighlighted Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsSecondaryHighlighted_0 != nullptr)
+		*IsSecondaryHighlighted_0 = Parms.IsSecondaryHighlighted_0;
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.TryCycleHighlightingLeft
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWIDGET_OptionsMenu_Controls_BindsList_C::TryCycleHighlightingLeft()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "TryCycleHighlightingLeft");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.TryCycleHighlightingRight
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWIDGET_OptionsMenu_Controls_BindsList_C::TryCycleHighlightingRight()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "TryCycleHighlightingRight");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.IsBindKeyInScope
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+// bool                                    IsInScope                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_OptionsMenu_Controls_BindsList_C::IsBindKeyInScope(const struct FKey& Key, bool* IsInScope)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "IsBindKeyInScope");
+
+	Params::WIDGET_OptionsMenu_Controls_BindsList_C_IsBindKeyInScope Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsInScope != nullptr)
+		*IsInScope = Parms.IsInScope;
 }
 
 
@@ -314,6 +413,68 @@ void UWIDGET_OptionsMenu_Controls_BindsList_C::EVENT_OnOptionChanged()
 		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "EVENT_OnOptionChanged");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.OnListOpen
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWIDGET_OptionsMenu_Controls_BindsList_C::OnListOpen()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "OnListOpen");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.ReceiveNavDown
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_OptionsMenu_Controls_BindsList_C::ReceiveNavDown(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "ReceiveNavDown");
+
+	Params::WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavDown Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_BindsList.WIDGET_OptionsMenu_Controls_BindsList_C.ReceiveNavUp
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_OptionsMenu_Controls_BindsList_C::ReceiveNavUp(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_BindsList_C", "ReceiveNavUp");
+
+	Params::WIDGET_OptionsMenu_Controls_BindsList_C_ReceiveNavUp Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
 }
 
 }

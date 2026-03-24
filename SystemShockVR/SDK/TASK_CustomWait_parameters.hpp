@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_GameDifficulty_structs.hpp"
-#include "STRUCT_CombatDifficultySettings_structs.hpp"
 #include "ENUM_SpeedType_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "ENUM_GameDifficulty_structs.hpp"
+#include "STRUCT_CombatDifficultySettings_structs.hpp"
 
 
 namespace SDK::Params

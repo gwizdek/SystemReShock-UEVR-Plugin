@@ -10,11 +10,12 @@
 
 #include "Basic.hpp"
 
+#include "STRUCT_LevelInfo_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
 #include "StreamingSaveGameSystem_structs.hpp"
 #include "STRUCT_LevelAtmosphereSettings_structs.hpp"
-#include "STRUCT_LevelInfo_structs.hpp"
+#include "Engine_structs.hpp"
+#include "SystemReShock_structs.hpp"
 
 
 namespace SDK::Params
@@ -26,20 +27,20 @@ struct ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_Event_DeltaSeconds;                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsSimulatingInEditor_ReturnValue;         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_ComponentBoundEvent_bVisibleState;          // 0x000B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsSimulatingInEditor_ReturnValue;         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_ComponentBoundEvent_bVisibleState;          // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         K2Node_Event_DeltaSeconds;                         // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn) == 0x000004, "Wrong alignment on ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn");
 static_assert(sizeof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn) == 0x00000C, "Wrong size on ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn");
 static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, EntryPoint) == 0x000000, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::EntryPoint' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, K2Node_Event_DeltaSeconds) == 0x000004, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::K2Node_Event_DeltaSeconds' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, CallFunc_IsSimulatingInEditor_ReturnValue) == 0x000008, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::CallFunc_IsSimulatingInEditor_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, CallFunc_Not_PreBool_ReturnValue) == 0x000009, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, CallFunc_IsValid_ReturnValue) == 0x00000A, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, K2Node_ComponentBoundEvent_bVisibleState) == 0x00000B, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::K2Node_ComponentBoundEvent_bVisibleState' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, CallFunc_IsSimulatingInEditor_ReturnValue) == 0x000004, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::CallFunc_IsSimulatingInEditor_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, CallFunc_Not_PreBool_ReturnValue) == 0x000005, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, CallFunc_IsValid_ReturnValue) == 0x000006, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, K2Node_ComponentBoundEvent_bVisibleState) == 0x000007, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::K2Node_ComponentBoundEvent_bVisibleState' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn, K2Node_Event_DeltaSeconds) == 0x000008, "Member 'ACTOR_Saturn_C_ExecuteUbergraph_ACTOR_Saturn::K2Node_Event_DeltaSeconds' has a wrong offset!");
 
 // Function ACTOR_Saturn.ACTOR_Saturn_C.ReceiveTick
 // 0x0004 (0x0004 - 0x0000)
@@ -63,17 +64,6 @@ static_assert(alignof(ACTOR_Saturn_C_BndEvt__ACTOR_Saturn_COMP_ExteriorCullable_
 static_assert(sizeof(ACTOR_Saturn_C_BndEvt__ACTOR_Saturn_COMP_ExteriorCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature) == 0x000001, "Wrong size on ACTOR_Saturn_C_BndEvt__ACTOR_Saturn_COMP_ExteriorCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature");
 static_assert(offsetof(ACTOR_Saturn_C_BndEvt__ACTOR_Saturn_COMP_ExteriorCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature, bVisibleState) == 0x000000, "Member 'ACTOR_Saturn_C_BndEvt__ACTOR_Saturn_COMP_ExteriorCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature::bVisibleState' has a wrong offset!");
 
-// Function ACTOR_Saturn.ACTOR_Saturn_C.UserConstructionScript
-// 0x0004 (0x0004 - 0x0000)
-struct ACTOR_Saturn_C_UserConstructionScript final
-{
-public:
-	float                                         TotalPlanetSize;                                   // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ACTOR_Saturn_C_UserConstructionScript) == 0x000004, "Wrong alignment on ACTOR_Saturn_C_UserConstructionScript");
-static_assert(sizeof(ACTOR_Saturn_C_UserConstructionScript) == 0x000004, "Wrong size on ACTOR_Saturn_C_UserConstructionScript");
-static_assert(offsetof(ACTOR_Saturn_C_UserConstructionScript, TotalPlanetSize) == 0x000000, "Member 'ACTOR_Saturn_C_UserConstructionScript::TotalPlanetSize' has a wrong offset!");
-
 // Function ACTOR_Saturn.ACTOR_Saturn_C.UpdateSunMaterialParameters
 // 0x0018 (0x0018 - 0x0000)
 struct ACTOR_Saturn_C_UpdateSunMaterialParameters final
@@ -88,97 +78,112 @@ static_assert(offsetof(ACTOR_Saturn_C_UpdateSunMaterialParameters, Material) == 
 static_assert(offsetof(ACTOR_Saturn_C_UpdateSunMaterialParameters, CallFunc_Conv_VectorToLinearColor_ReturnValue) == 0x000008, "Member 'ACTOR_Saturn_C_UpdateSunMaterialParameters::CallFunc_Conv_VectorToLinearColor_ReturnValue' has a wrong offset!");
 
 // Function ACTOR_Saturn.ACTOR_Saturn_C.InitializeMeshMaterials
-// 0x00D0 (0x00D0 - 0x0000)
+// 0x00F0 (0x00F0 - 0x0000)
 struct ACTOR_Saturn_C_InitializeMeshMaterials final
 {
 public:
 	float                                         RingsMaxDensityOffset;                             // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         ActorScale;                                        // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetActorScale3D_ReturnValue;              // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetMaxElement_ReturnValue;                // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_BreakVector_X;                            // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y;                            // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z;                            // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector4                               K2Node_MakeStruct_Vector4;                         // 0x0030(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_2;        // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_3;        // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_4;        // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_5;        // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_6;        // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_7;        // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_8;        // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_2;        // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_9;        // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue; // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_2;             // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_10;       // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_11;       // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_12;       // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_13;       // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_3;        // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_14;       // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_3;             // 0x009C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_15;       // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_4;        // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_16;       // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_17;       // 0x00AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue_1; // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_18;       // 0x00B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_19;       // 0x00BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue_2; // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue; // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_12[0x6];                                       // 0x0012(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue_1; // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue_1;          // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_22[0x2];                                       // 0x0022(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_GetActorScale3D_ReturnValue;              // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetMaxElement_ReturnValue;                // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_BreakVector_X;                            // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y;                            // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z;                            // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4C[0x4];                                       // 0x004C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector4                               K2Node_MakeStruct_Vector4;                         // 0x0050(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_2;        // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_3;        // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_4;        // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_5;        // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_6;        // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_7;        // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_8;        // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_2;        // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_9;        // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_94[0x4];                                       // 0x0094(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue_2; // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_2;             // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_10;       // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_11;       // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_12;       // 0x00AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_13;       // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_3;        // 0x00B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_14;       // 0x00B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_3;             // 0x00BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_15;       // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_4;        // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_16;       // 0x00C8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_17;       // 0x00CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue_3; // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_18;       // 0x00D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_19;       // 0x00DC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue_4; // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(ACTOR_Saturn_C_InitializeMeshMaterials) == 0x000010, "Wrong alignment on ACTOR_Saturn_C_InitializeMeshMaterials");
-static_assert(sizeof(ACTOR_Saturn_C_InitializeMeshMaterials) == 0x0000D0, "Wrong size on ACTOR_Saturn_C_InitializeMeshMaterials");
+static_assert(sizeof(ACTOR_Saturn_C_InitializeMeshMaterials) == 0x0000F0, "Wrong size on ACTOR_Saturn_C_InitializeMeshMaterials");
 static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, RingsMaxDensityOffset) == 0x000000, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::RingsMaxDensityOffset' has a wrong offset!");
 static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, ActorScale) == 0x000004, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::ActorScale' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_GetActorScale3D_ReturnValue) == 0x000008, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_GetActorScale3D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_GetMaxElement_ReturnValue) == 0x000014, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_GetMaxElement_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Add_FloatFloat_ReturnValue) == 0x000018, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00001C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_IsValid_ReturnValue) == 0x000020, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_BreakVector_X) == 0x000024, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_BreakVector_X' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_BreakVector_Y) == 0x000028, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_BreakVector_Y' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_BreakVector_Z) == 0x00002C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_BreakVector_Z' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, K2Node_MakeStruct_Vector4) == 0x000030, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::K2Node_MakeStruct_Vector4' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000040, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000044, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_2) == 0x000048, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_3) == 0x00004C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000050, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x000054, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_4) == 0x000058, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_5) == 0x00005C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_6) == 0x000060, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_6' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_7) == 0x000064, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_7' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_8) == 0x000068, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_8' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue_2) == 0x00006C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_9) == 0x000070, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_9' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x000078, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Add_FloatFloat_ReturnValue_2) == 0x000080, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Add_FloatFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_10) == 0x000084, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_10' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_11) == 0x000088, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_11' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_12) == 0x00008C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_12' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_13) == 0x000090, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_13' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue_3) == 0x000094, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_14) == 0x000098, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_14' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Add_FloatFloat_ReturnValue_3) == 0x00009C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Add_FloatFloat_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_15) == 0x0000A0, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_15' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue_4) == 0x0000A4, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_16) == 0x0000A8, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_16' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_17) == 0x0000AC, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_17' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_CreateDynamicMaterialInstance_ReturnValue_1) == 0x0000B0, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_CreateDynamicMaterialInstance_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_18) == 0x0000B8, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_18' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_19) == 0x0000BC, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_19' has a wrong offset!");
-static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_CreateDynamicMaterialInstance_ReturnValue_2) == 0x0000C0, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_CreateDynamicMaterialInstance_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x000008, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_GetPlatformFamily_ReturnValue) == 0x000010, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, K2Node_SwitchEnum_CmpSuccess) == 0x000011, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_CreateDynamicMaterialInstance_ReturnValue_1) == 0x000018, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_CreateDynamicMaterialInstance_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_GetPlatformFamily_ReturnValue_1) == 0x000020, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_GetPlatformFamily_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, K2Node_SwitchEnum_CmpSuccess_1) == 0x000021, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::K2Node_SwitchEnum_CmpSuccess_1' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_GetActorScale3D_ReturnValue) == 0x000024, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_GetActorScale3D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_GetMaxElement_ReturnValue) == 0x000030, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_GetMaxElement_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Add_FloatFloat_ReturnValue) == 0x000034, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000038, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_IsValid_ReturnValue) == 0x00003C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_BreakVector_X) == 0x000040, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_BreakVector_X' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_BreakVector_Y) == 0x000044, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_BreakVector_Y' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_BreakVector_Z) == 0x000048, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_BreakVector_Z' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, K2Node_MakeStruct_Vector4) == 0x000050, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::K2Node_MakeStruct_Vector4' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000060, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000064, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_2) == 0x000068, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_3) == 0x00006C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000070, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x000074, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_4) == 0x000078, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_5) == 0x00007C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_6) == 0x000080, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_7) == 0x000084, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_7' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_8) == 0x000088, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_8' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue_2) == 0x00008C, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_9) == 0x000090, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_9' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_CreateDynamicMaterialInstance_ReturnValue_2) == 0x000098, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_CreateDynamicMaterialInstance_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Add_FloatFloat_ReturnValue_2) == 0x0000A0, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Add_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_10) == 0x0000A4, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_10' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_11) == 0x0000A8, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_11' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_12) == 0x0000AC, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_12' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_13) == 0x0000B0, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_13' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue_3) == 0x0000B4, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_14) == 0x0000B8, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_14' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Add_FloatFloat_ReturnValue_3) == 0x0000BC, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Add_FloatFloat_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_15) == 0x0000C0, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_15' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Subtract_FloatFloat_ReturnValue_4) == 0x0000C4, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Subtract_FloatFloat_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_16) == 0x0000C8, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_16' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_17) == 0x0000CC, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_17' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_CreateDynamicMaterialInstance_ReturnValue_3) == 0x0000D0, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_CreateDynamicMaterialInstance_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_18) == 0x0000D8, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_18' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_Multiply_FloatFloat_ReturnValue_19) == 0x0000DC, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_Multiply_FloatFloat_ReturnValue_19' has a wrong offset!");
+static_assert(offsetof(ACTOR_Saturn_C_InitializeMeshMaterials, CallFunc_CreateDynamicMaterialInstance_ReturnValue_4) == 0x0000E0, "Member 'ACTOR_Saturn_C_InitializeMeshMaterials::CallFunc_CreateDynamicMaterialInstance_ReturnValue_4' has a wrong offset!");
 
 // Function ACTOR_Saturn.ACTOR_Saturn_C.UpdateSunSettings
 // 0x004C (0x004C - 0x0000)

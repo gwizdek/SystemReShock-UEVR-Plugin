@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "RigVM_structs.hpp"
 #include "CoreUObject_classes.hpp"
+#include "RigVM_structs.hpp"
 
 
 namespace SDK

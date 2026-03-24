@@ -39,6 +39,7 @@ public:
 	struct FTimerHandle                           debounceTimer;                                     // 0x0278(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 	float                                         debounceTime;                                      // 0x0280(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsLookingAt;                                       // 0x0284(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsVisible;                                         // 0x0285(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
 	void ExecuteUbergraph__BP_HackerHardware(int32 EntryPoint);
@@ -77,6 +78,7 @@ static_assert(offsetof(A_BP_HackerHardware_C, IsToggable) == 0x000270, "Member '
 static_assert(offsetof(A_BP_HackerHardware_C, debounceTimer) == 0x000278, "Member 'A_BP_HackerHardware_C::debounceTimer' has a wrong offset!");
 static_assert(offsetof(A_BP_HackerHardware_C, debounceTime) == 0x000280, "Member 'A_BP_HackerHardware_C::debounceTime' has a wrong offset!");
 static_assert(offsetof(A_BP_HackerHardware_C, IsLookingAt) == 0x000284, "Member 'A_BP_HackerHardware_C::IsLookingAt' has a wrong offset!");
+static_assert(offsetof(A_BP_HackerHardware_C, IsVisible) == 0x000285, "Member 'A_BP_HackerHardware_C::IsVisible' has a wrong offset!");
 
 }
 

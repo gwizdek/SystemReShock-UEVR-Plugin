@@ -256,5 +256,53 @@ void IBPI_MenuNavigationRecipient_C::ReceiveNavTabRight(bool InputState, bool* R
 		*Result = Parms.Result;
 }
 
+
+// Function BPI_MenuNavigationRecipient.BPI_MenuNavigationRecipient_C.ReceiveNavLeftRelease
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void IBPI_MenuNavigationRecipient_C::ReceiveNavLeftRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BPI_MenuNavigationRecipient_C", "ReceiveNavLeftRelease");
+
+	Params::BPI_MenuNavigationRecipient_C_ReceiveNavLeftRelease Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function BPI_MenuNavigationRecipient.BPI_MenuNavigationRecipient_C.ReceiveNavRightRelease
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InputState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void IBPI_MenuNavigationRecipient_C::ReceiveNavRightRelease(bool InputState, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BPI_MenuNavigationRecipient_C", "ReceiveNavRightRelease");
+
+	Params::BPI_MenuNavigationRecipient_C_ReceiveNavRightRelease Parms{};
+
+	Parms.InputState = InputState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
 }
 

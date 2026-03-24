@@ -60,7 +60,6 @@ public:
 	struct FEventReply OnBackgroundPanelMouseMove(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
 	void IsTabEnabled(ENUM_MFDTabCategory TabCategory, bool* Result);
 	void UpdateMaterialParameters();
-	void UpdateGamepadIconVisibility();
 
 public:
 	static class UClass* StaticClass()

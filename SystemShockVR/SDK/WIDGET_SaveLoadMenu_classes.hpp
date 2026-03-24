@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "WIDGET_MenuBase_classes.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_SaveLoad_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
+#include "WIDGET_MenuBase_classes.hpp"
 #include "UMG_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 
 
 namespace SDK

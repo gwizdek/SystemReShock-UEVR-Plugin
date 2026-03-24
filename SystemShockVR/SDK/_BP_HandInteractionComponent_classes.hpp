@@ -10,9 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_VRHandPose_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_VRHand_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 
@@ -59,21 +60,23 @@ public:
 	float                                         GrabRadiusFromGripPosition;                        // 0x0300(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsIndexFingerActive;                               // 0x0304(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          IsReachingBackpack;                                // 0x0305(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsHoldingWeapon;                                   // 0x0306(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsMainHand;                                        // 0x0307(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          IsGrabbingItem;                                    // 0x0308(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsSnappedToWeaponSource;                           // 0x0309(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_30A[0x6];                                      // 0x030A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          IsHoldingHandheldConsumable;                       // 0x0306(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsHoldingWeapon;                                   // 0x0307(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          bIsMainHand;                                       // 0x0308(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          IsGrabbingItem;                                    // 0x0309(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsSnappedToWeaponSource;                           // 0x030A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_30B[0x5];                                      // 0x030B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	class U_BP_InteractionSourceComponent_C*      ActiveWeaponInteractionSource;                     // 0x0310(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsChannelingWeaponSource;                          // 0x0318(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	E_ENUM_VRHand                                 Hand;                                              // 0x0319(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_HandInteractionComponent(int32 EntryPoint);
-	void ReceiveBeginPlay();
 	void CustomEvent_WeaponHolstered(class UITEM_WeaponBase_C* Weapon);
 	void EventVRBodyInitialized();
 	void CustomEvent_WeaponDrawn(class UITEM_WeaponBase_C* Weapon);
 	void ReceiveTick(float DeltaSeconds);
+	void ReceiveBeginPlay();
 	void HandleOverlappingInteractable();
 	void ComputeIsReachingBackpack();
 	void SetInteractionPose(E_ENUM_VRHandPose InPose, float InWeight);
@@ -81,15 +84,17 @@ public:
 	void HandleOverlappingIndexFinger();
 	void HandleCollidingIndexFinger();
 	void HandleEventWeaponDrawn(class UITEM_WeaponBase_C* WeaponRef_0);
+	void HandleEventWeaponHolstered(class UITEM_WeaponBase_C* WeaponRef_0);
 	void TryPuzzleInteract();
 	void TryPutingInBackpack();
 	void TryGrab();
 	void TryRelease();
 	void GetGrabComponentNearMotionController(class UGrabComponent_C** NearestComponent);
-	bool ComputeIsHoldingWeapon();
 	void HandleWeaponInteractionSources();
 	bool IsReachingSocket(class FName InTogglerName, float InRange);
 	void IsManuallyPointing(bool* Result);
+	bool IsMainHand();
+	bool IsItemSelectorActive();
 
 public:
 	static class UClass* StaticClass()
@@ -132,12 +137,14 @@ static_assert(offsetof(U_BP_HandInteractionComponent_C, HeldGrabComponent) == 0x
 static_assert(offsetof(U_BP_HandInteractionComponent_C, GrabRadiusFromGripPosition) == 0x000300, "Member 'U_BP_HandInteractionComponent_C::GrabRadiusFromGripPosition' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsIndexFingerActive) == 0x000304, "Member 'U_BP_HandInteractionComponent_C::IsIndexFingerActive' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsReachingBackpack) == 0x000305, "Member 'U_BP_HandInteractionComponent_C::IsReachingBackpack' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsHoldingWeapon) == 0x000306, "Member 'U_BP_HandInteractionComponent_C::IsHoldingWeapon' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsMainHand) == 0x000307, "Member 'U_BP_HandInteractionComponent_C::IsMainHand' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsGrabbingItem) == 0x000308, "Member 'U_BP_HandInteractionComponent_C::IsGrabbingItem' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToWeaponSource) == 0x000309, "Member 'U_BP_HandInteractionComponent_C::IsSnappedToWeaponSource' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsHoldingHandheldConsumable) == 0x000306, "Member 'U_BP_HandInteractionComponent_C::IsHoldingHandheldConsumable' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsHoldingWeapon) == 0x000307, "Member 'U_BP_HandInteractionComponent_C::IsHoldingWeapon' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, bIsMainHand) == 0x000308, "Member 'U_BP_HandInteractionComponent_C::bIsMainHand' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsGrabbingItem) == 0x000309, "Member 'U_BP_HandInteractionComponent_C::IsGrabbingItem' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToWeaponSource) == 0x00030A, "Member 'U_BP_HandInteractionComponent_C::IsSnappedToWeaponSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, ActiveWeaponInteractionSource) == 0x000310, "Member 'U_BP_HandInteractionComponent_C::ActiveWeaponInteractionSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsChannelingWeaponSource) == 0x000318, "Member 'U_BP_HandInteractionComponent_C::IsChannelingWeaponSource' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, Hand) == 0x000319, "Member 'U_BP_HandInteractionComponent_C::Hand' has a wrong offset!");
 
 }
 

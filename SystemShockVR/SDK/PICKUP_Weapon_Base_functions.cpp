@@ -92,20 +92,6 @@ void APICKUP_Weapon_Base_C::GetRenderIconClassCollection(struct FObjectClassColl
 }
 
 
-// Function PICKUP_Weapon_Base.PICKUP_Weapon_Base_C.TryInitializeItemInstance
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void APICKUP_Weapon_Base_C::TryInitializeItemInstance()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PICKUP_Weapon_Base_C", "TryInitializeItemInstance");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function PICKUP_Weapon_Base.PICKUP_Weapon_Base_C.UpdateMeshEmissiveStrength
 // (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -123,6 +109,20 @@ void APICKUP_Weapon_Base_C::UpdateMeshEmissiveStrength(float Scale)
 	Parms.Scale = Scale;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function PICKUP_Weapon_Base.PICKUP_Weapon_Base_C.TryInitializeItemInstance
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void APICKUP_Weapon_Base_C::TryInitializeItemInstance()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PICKUP_Weapon_Base_C", "TryInitializeItemInstance");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

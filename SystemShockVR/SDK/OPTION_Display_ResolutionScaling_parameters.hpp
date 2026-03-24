@@ -10,9 +10,39 @@
 
 #include "Basic.hpp"
 
+#include "SlateCore_structs.hpp"
+
 
 namespace SDK::Params
 {
+
+// Function OPTION_Display_ResolutionScaling.OPTION_Display_ResolutionScaling_C.ExecuteUbergraph_OPTION_Display_ResolutionScaling
+// 0x0040 (0x0040 - 0x0000)
+struct OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x0004(0x0038)(IsPlainOldData, NoDestructor)
+	float                                         K2Node_Event_InDeltaTime;                          // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling) == 0x000004, "Wrong alignment on OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling");
+static_assert(sizeof(OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling) == 0x000040, "Wrong size on OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling");
+static_assert(offsetof(OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling, EntryPoint) == 0x000000, "Member 'OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling::EntryPoint' has a wrong offset!");
+static_assert(offsetof(OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling, K2Node_Event_MyGeometry) == 0x000004, "Member 'OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling::K2Node_Event_MyGeometry' has a wrong offset!");
+static_assert(offsetof(OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling, K2Node_Event_InDeltaTime) == 0x00003C, "Member 'OPTION_Display_ResolutionScaling_C_ExecuteUbergraph_OPTION_Display_ResolutionScaling::K2Node_Event_InDeltaTime' has a wrong offset!");
+
+// Function OPTION_Display_ResolutionScaling.OPTION_Display_ResolutionScaling_C.Tick
+// 0x003C (0x003C - 0x0000)
+struct OPTION_Display_ResolutionScaling_C_Tick final
+{
+public:
+	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	float                                         InDeltaTime;                                       // 0x0038(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(OPTION_Display_ResolutionScaling_C_Tick) == 0x000004, "Wrong alignment on OPTION_Display_ResolutionScaling_C_Tick");
+static_assert(sizeof(OPTION_Display_ResolutionScaling_C_Tick) == 0x00003C, "Wrong size on OPTION_Display_ResolutionScaling_C_Tick");
+static_assert(offsetof(OPTION_Display_ResolutionScaling_C_Tick, MyGeometry) == 0x000000, "Member 'OPTION_Display_ResolutionScaling_C_Tick::MyGeometry' has a wrong offset!");
+static_assert(offsetof(OPTION_Display_ResolutionScaling_C_Tick, InDeltaTime) == 0x000038, "Member 'OPTION_Display_ResolutionScaling_C_Tick::InDeltaTime' has a wrong offset!");
 
 // Function OPTION_Display_ResolutionScaling.OPTION_Display_ResolutionScaling_C.ApplyDirtyValue
 // 0x0018 (0x0018 - 0x0000)

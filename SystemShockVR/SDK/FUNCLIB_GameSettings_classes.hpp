@@ -12,6 +12,8 @@
 
 #include "Engine_classes.hpp"
 #include "ENUM_PrimarySecondary_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 #include "ENUM_InputCategory_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 #include "ENUM_GameDifficultyConfigCategory_structs.hpp"
@@ -42,8 +44,9 @@ public:
 	static void GetShockDifficultyValuesFromBitfield(int32 DifficultyBitfield, class UObject* __WorldContext, ENUM_GameDifficulty* Combat, ENUM_GameDifficulty* Mission, ENUM_GameDifficulty* Puzzle, ENUM_GameDifficulty* Cyber);
 	static void GetShockDifficultyByType(int32 Bitfield, ENUM_GameDifficultyConfigCategory Type, class UObject* __WorldContext, ENUM_GameDifficulty* Difficulty);
 	static void MakeShockDifficultyBitfield(ENUM_GameDifficulty Combat, ENUM_GameDifficulty Mission, ENUM_GameDifficulty Puzzle, ENUM_GameDifficulty Cyber, class UObject* __WorldContext, int32* DifficultyBitfield);
-	static void IsGamepadInputAction(class FName ActionName, class UObject* __WorldContext, bool* Result);
+	static void GetInputActionControllerType(class FName ActionName, class UObject* __WorldContext, ENUM_ControllerType* Result);
 	static void GetGamepadInputActionPrefix(class UObject* __WorldContext, class FString* Result);
+	static void GetJCMSInputActionPrefix(class UObject* __WorldContext, class FString* Result);
 	static void GetInputActionPrefixForCategory(ENUM_InputCategory InputCategory, class UObject* __WorldContext, class FString* Result);
 	static void GetInputCategoryFromActionName(class FName ActionName, class UObject* __WorldContext, bool* Found, ENUM_InputCategory* Result);
 	static void IsMedicalDemo(class UObject* __WorldContext, bool* Result);

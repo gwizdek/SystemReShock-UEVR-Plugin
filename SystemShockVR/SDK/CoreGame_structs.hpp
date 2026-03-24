@@ -289,20 +289,6 @@ static_assert(sizeof(FPolyhedronFace) == 0x000020, "Wrong size on FPolyhedronFac
 static_assert(offsetof(FPolyhedronFace, Normal) == 0x000000, "Member 'FPolyhedronFace::Normal' has a wrong offset!");
 static_assert(offsetof(FPolyhedronFace, VertexIndices) == 0x000010, "Member 'FPolyhedronFace::VertexIndices' has a wrong offset!");
 
-// ScriptStruct CoreGame.UnsharedPolyhedronFace
-// 0x0018 (0x0038 - 0x0020)
-struct FUnsharedPolyhedronFace final : public FPolyhedronFace
-{
-public:
-	int32                                         PolyhedronIndex;                                   // 0x0020(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FPolyhedronEdge>                OppositeEdges;                                     // 0x0028(0x0010)(Edit, ZeroConstructor, EditConst, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FUnsharedPolyhedronFace) == 0x000008, "Wrong alignment on FUnsharedPolyhedronFace");
-static_assert(sizeof(FUnsharedPolyhedronFace) == 0x000038, "Wrong size on FUnsharedPolyhedronFace");
-static_assert(offsetof(FUnsharedPolyhedronFace, PolyhedronIndex) == 0x000020, "Member 'FUnsharedPolyhedronFace::PolyhedronIndex' has a wrong offset!");
-static_assert(offsetof(FUnsharedPolyhedronFace, OppositeEdges) == 0x000028, "Member 'FUnsharedPolyhedronFace::OppositeEdges' has a wrong offset!");
-
 // ScriptStruct CoreGame.SharedPolyhedronFace
 // 0x0028 (0x0048 - 0x0020)
 struct FSharedPolyhedronFace final : public FPolyhedronFace
@@ -317,6 +303,20 @@ static_assert(sizeof(FSharedPolyhedronFace) == 0x000048, "Wrong size on FSharedP
 static_assert(offsetof(FSharedPolyhedronFace, PolyhedronIndices) == 0x000020, "Member 'FSharedPolyhedronFace::PolyhedronIndices' has a wrong offset!");
 static_assert(offsetof(FSharedPolyhedronFace, OppositeEdgesA) == 0x000028, "Member 'FSharedPolyhedronFace::OppositeEdgesA' has a wrong offset!");
 static_assert(offsetof(FSharedPolyhedronFace, OppositeEdgesB) == 0x000038, "Member 'FSharedPolyhedronFace::OppositeEdgesB' has a wrong offset!");
+
+// ScriptStruct CoreGame.UnsharedPolyhedronFace
+// 0x0018 (0x0038 - 0x0020)
+struct FUnsharedPolyhedronFace final : public FPolyhedronFace
+{
+public:
+	int32                                         PolyhedronIndex;                                   // 0x0020(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FPolyhedronEdge>                OppositeEdges;                                     // 0x0028(0x0010)(Edit, ZeroConstructor, EditConst, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FUnsharedPolyhedronFace) == 0x000008, "Wrong alignment on FUnsharedPolyhedronFace");
+static_assert(sizeof(FUnsharedPolyhedronFace) == 0x000038, "Wrong size on FUnsharedPolyhedronFace");
+static_assert(offsetof(FUnsharedPolyhedronFace, PolyhedronIndex) == 0x000020, "Member 'FUnsharedPolyhedronFace::PolyhedronIndex' has a wrong offset!");
+static_assert(offsetof(FUnsharedPolyhedronFace, OppositeEdges) == 0x000028, "Member 'FUnsharedPolyhedronFace::OppositeEdges' has a wrong offset!");
 
 // ScriptStruct CoreGame.Polyhedron
 // 0x0050 (0x0050 - 0x0000)

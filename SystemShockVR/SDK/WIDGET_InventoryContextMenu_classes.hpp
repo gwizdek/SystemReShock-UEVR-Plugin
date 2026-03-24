@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "UMG_classes.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
+#include "UMG_classes.hpp"
 
 
 namespace SDK
@@ -42,7 +42,7 @@ public:
 	uint8                                         Pad_2CC[0x4];                                      // 0x02CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UWIDGET_InventoryPanel_C*               ContextInventoryPanel;                             // 0x02D0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UCONTEXT_Base_C*                        SelectedOptionWidget;                              // 0x02D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    HUDWidget;                                         // 0x02E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    HudWidget;                                         // 0x02E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         OpenStartTimestamp;                                // 0x02E8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         OpenAnimationDuration;                             // 0x02EC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UMaterialInstanceDynamic*               DropMat;                                           // 0x02F0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -50,7 +50,7 @@ public:
 	class UMaterialInstanceDynamic*               VaporizeMat;                                       // 0x0300(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void InitializeInventoryContextMenu(class UWIDGET_PlayerHUD_C* HUDWidget_0);
+	void InitializeInventoryContextMenu(class UWIDGET_PlayerHUD_C* HudWidget_0);
 	void SetInventoryContextMenuEnabled(bool Enabled, const struct FVector2D& MousePosition, class UInventoryBag_C* ItemBag, int32 BagSlot, class UWIDGET_InventoryPanel_C* InventoryPanel, bool* Result);
 	void SetContextItemMouseOver(bool CursorOver, bool Disabled, class UTextMeshWidget* TextMesh, class UGridMeshWidget* ImageMesh);
 	void IsInventoryContextEnabled(bool* Result);
@@ -90,7 +90,7 @@ static_assert(offsetof(UWIDGET_InventoryContextMenu_C, ContextOffset) == 0x0002B
 static_assert(offsetof(UWIDGET_InventoryContextMenu_C, LastEnableCursorPosition) == 0x0002C4, "Member 'UWIDGET_InventoryContextMenu_C::LastEnableCursorPosition' has a wrong offset!");
 static_assert(offsetof(UWIDGET_InventoryContextMenu_C, ContextInventoryPanel) == 0x0002D0, "Member 'UWIDGET_InventoryContextMenu_C::ContextInventoryPanel' has a wrong offset!");
 static_assert(offsetof(UWIDGET_InventoryContextMenu_C, SelectedOptionWidget) == 0x0002D8, "Member 'UWIDGET_InventoryContextMenu_C::SelectedOptionWidget' has a wrong offset!");
-static_assert(offsetof(UWIDGET_InventoryContextMenu_C, HUDWidget) == 0x0002E0, "Member 'UWIDGET_InventoryContextMenu_C::HUDWidget' has a wrong offset!");
+static_assert(offsetof(UWIDGET_InventoryContextMenu_C, HudWidget) == 0x0002E0, "Member 'UWIDGET_InventoryContextMenu_C::HudWidget' has a wrong offset!");
 static_assert(offsetof(UWIDGET_InventoryContextMenu_C, OpenStartTimestamp) == 0x0002E8, "Member 'UWIDGET_InventoryContextMenu_C::OpenStartTimestamp' has a wrong offset!");
 static_assert(offsetof(UWIDGET_InventoryContextMenu_C, OpenAnimationDuration) == 0x0002EC, "Member 'UWIDGET_InventoryContextMenu_C::OpenAnimationDuration' has a wrong offset!");
 static_assert(offsetof(UWIDGET_InventoryContextMenu_C, DropMat) == 0x0002F0, "Member 'UWIDGET_InventoryContextMenu_C::DropMat' has a wrong offset!");

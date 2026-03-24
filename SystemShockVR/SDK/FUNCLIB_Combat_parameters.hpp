@@ -12,10 +12,10 @@
 
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_EnemyAttackType_structs.hpp"
 #include "AttributeSystem_structs.hpp"
-#include "STRUCT_EnemyStats_structs.hpp"
+#include "ENUM_EnemyAttackType_structs.hpp"
 #include "LevelVoxelization_structs.hpp"
+#include "STRUCT_EnemyStats_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 #include "STRUCT_CombatDifficultySettings_structs.hpp"
 

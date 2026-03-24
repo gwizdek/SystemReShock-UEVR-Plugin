@@ -56,8 +56,8 @@ public:
 	void ReplaceHardwareInputActionStringInText(const class FText& Text, class FText* Result);
 	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
 	void GetDisplayProperties(class USkeletalMesh** SkeletalMesh, class UClass** AnimInstanceClass, class UMaterialInterface** OverrideMaterial);
-	void OnBeginPlay();
 	void OnAddedToInventory();
+	void OnBeginPlay();
 	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void Deactivate(bool* Result);
 	void GetIsActivated(bool* Result);

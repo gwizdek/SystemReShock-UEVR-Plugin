@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_ShodanPulseType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "ENUM_ShodanTetherState_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ENUM_ShodanPulseType_structs.hpp"
 
 
 namespace SDK

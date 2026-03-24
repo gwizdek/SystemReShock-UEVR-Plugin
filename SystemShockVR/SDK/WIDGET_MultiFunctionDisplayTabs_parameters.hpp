@@ -136,22 +136,5 @@ static_assert(offsetof(WIDGET_MultiFunctionDisplayTabs_C_UpdateMaterialParameter
 static_assert(offsetof(WIDGET_MultiFunctionDisplayTabs_C_UpdateMaterialParameters, CallFunc_ConvertBorderToDynamicMaterialInstance_ReturnValue) == 0x000038, "Member 'WIDGET_MultiFunctionDisplayTabs_C_UpdateMaterialParameters::CallFunc_ConvertBorderToDynamicMaterialInstance_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MultiFunctionDisplayTabs_C_UpdateMaterialParameters, CallFunc_ConvertToDynamicMaterialInstance_ReturnValue) == 0x000040, "Member 'WIDGET_MultiFunctionDisplayTabs_C_UpdateMaterialParameters::CallFunc_ConvertToDynamicMaterialInstance_ReturnValue' has a wrong offset!");
 
-// Function WIDGET_MultiFunctionDisplayTabs.WIDGET_MultiFunctionDisplayTabs_C.UpdateGamepadIconVisibility
-// 0x0018 (0x0018 - 0x0000)
-struct WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility final
-{
-public:
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility) == 0x000008, "Wrong alignment on WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility");
-static_assert(sizeof(WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility) == 0x000018, "Wrong size on WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility");
-static_assert(offsetof(WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility, CallFunc_GetPlayerController_ReturnValue) == 0x000000, "Member 'WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility, K2Node_DynamicCast_AsCON_Hacker) == 0x000008, "Member 'WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility, CallFunc_IsUsingGamepad_Result) == 0x000011, "Member 'WIDGET_MultiFunctionDisplayTabs_C_UpdateGamepadIconVisibility::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
-
 }
 

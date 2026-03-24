@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "ENUM_LeftRight_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "STRUCT_MoveControlParams_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params

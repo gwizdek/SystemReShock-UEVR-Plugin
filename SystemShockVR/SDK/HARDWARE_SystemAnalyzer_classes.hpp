@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ITEM_HardwareBase_classes.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK
@@ -28,8 +28,8 @@ public:
 	void ExecuteUbergraph_HARDWARE_SystemAnalyzer(int32 EntryPoint);
 	void OnQuestNotification(class FName QuestName, const class FText& NotificationText, float NotificationDelay);
 	void ListenForQuestNotifications();
-	void OnBeginPlay();
 	void OnAddedToInventory();
+	void OnBeginPlay();
 
 public:
 	static class UClass* StaticClass()

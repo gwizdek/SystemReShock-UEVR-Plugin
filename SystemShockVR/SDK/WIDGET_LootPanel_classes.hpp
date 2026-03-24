@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_LootPanel.WIDGET_LootPanel_C
-// 0x0060 (0x02C0 - 0x0260)
+// 0x0048 (0x02A8 - 0x0260)
 class UWIDGET_LootPanel_C final : public UUserWidget
 {
 public:
@@ -27,20 +27,14 @@ public:
 	class UCanvasPanel*                           PANEL_Buttons;                                     // 0x0270(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UCanvasPanel*                           PANEL_Inventory;                                   // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UTextMeshWidget*                        TEXT_InventoryOwner;                               // 0x0280(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_ButtonLegend_Button_C*          WIDGET_ButtonLegend_Close;                         // 0x0288(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_ButtonLegend_Button_C*          WIDGET_ButtonLegend_TakeAll;                       // 0x0290(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_ScalableButton_C*               WIDGET_CloseButton;                                // 0x0298(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_InventoryPanel_C*               WIDGET_InventoryPanel;                             // 0x02A0(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_ScalableButton_C*               WIDGET_TakeAllButton;                              // 0x02A8(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UInventoryBag_C*                        LootBag;                                           // 0x02B0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_PlayerHUD_C*                    PlayerHUDWidget;                                   // 0x02B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_ButtonLegend_Button_C*          WIDGET_ButtonLegend_TakeAll;                       // 0x0288(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_InventoryPanel_C*               WIDGET_InventoryPanel;                             // 0x0290(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UInventoryBag_C*                        LootBag;                                           // 0x0298(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    PlayerHUDWidget;                                   // 0x02A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_WIDGET_LootPanel(int32 EntryPoint);
 	void BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_TakeAll_K2Node_ComponentBoundEvent_1_OnClicked__DelegateSignature(const struct FGeometry& Geometry, const struct FPointerEvent& InputEvent);
-	void BndEvt__WIDGET_LootPanel_WIDGET_ButtonLegend_Button_K2Node_ComponentBoundEvent_0_OnClicked__DelegateSignature(const struct FGeometry& Geometry, const struct FPointerEvent& InputEvent);
-	void BndEvt__WIDGET_CloseButton_K2Node_ComponentBoundEvent_3_OnMouseButtonActivated__DelegateSignature(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
-	void BndEvt__WIDGET_TakeAllButton_K2Node_ComponentBoundEvent_2_OnMouseButtonActivated__DelegateSignature(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
 	void PreConstruct(bool IsDesignTime);
 	void TakeAllItems(const struct FVector2D& MouseScreenPosition, bool* Result);
 	void SetLootBag(class UInventoryBag_C* InventoryBag);
@@ -58,19 +52,16 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_LootPanel_C) == 0x000008, "Wrong alignment on UWIDGET_LootPanel_C");
-static_assert(sizeof(UWIDGET_LootPanel_C) == 0x0002C0, "Wrong size on UWIDGET_LootPanel_C");
+static_assert(sizeof(UWIDGET_LootPanel_C) == 0x0002A8, "Wrong size on UWIDGET_LootPanel_C");
 static_assert(offsetof(UWIDGET_LootPanel_C, UberGraphFrame) == 0x000260, "Member 'UWIDGET_LootPanel_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_LootPanel_C, MESH_Background) == 0x000268, "Member 'UWIDGET_LootPanel_C::MESH_Background' has a wrong offset!");
 static_assert(offsetof(UWIDGET_LootPanel_C, PANEL_Buttons) == 0x000270, "Member 'UWIDGET_LootPanel_C::PANEL_Buttons' has a wrong offset!");
 static_assert(offsetof(UWIDGET_LootPanel_C, PANEL_Inventory) == 0x000278, "Member 'UWIDGET_LootPanel_C::PANEL_Inventory' has a wrong offset!");
 static_assert(offsetof(UWIDGET_LootPanel_C, TEXT_InventoryOwner) == 0x000280, "Member 'UWIDGET_LootPanel_C::TEXT_InventoryOwner' has a wrong offset!");
-static_assert(offsetof(UWIDGET_LootPanel_C, WIDGET_ButtonLegend_Close) == 0x000288, "Member 'UWIDGET_LootPanel_C::WIDGET_ButtonLegend_Close' has a wrong offset!");
-static_assert(offsetof(UWIDGET_LootPanel_C, WIDGET_ButtonLegend_TakeAll) == 0x000290, "Member 'UWIDGET_LootPanel_C::WIDGET_ButtonLegend_TakeAll' has a wrong offset!");
-static_assert(offsetof(UWIDGET_LootPanel_C, WIDGET_CloseButton) == 0x000298, "Member 'UWIDGET_LootPanel_C::WIDGET_CloseButton' has a wrong offset!");
-static_assert(offsetof(UWIDGET_LootPanel_C, WIDGET_InventoryPanel) == 0x0002A0, "Member 'UWIDGET_LootPanel_C::WIDGET_InventoryPanel' has a wrong offset!");
-static_assert(offsetof(UWIDGET_LootPanel_C, WIDGET_TakeAllButton) == 0x0002A8, "Member 'UWIDGET_LootPanel_C::WIDGET_TakeAllButton' has a wrong offset!");
-static_assert(offsetof(UWIDGET_LootPanel_C, LootBag) == 0x0002B0, "Member 'UWIDGET_LootPanel_C::LootBag' has a wrong offset!");
-static_assert(offsetof(UWIDGET_LootPanel_C, PlayerHUDWidget) == 0x0002B8, "Member 'UWIDGET_LootPanel_C::PlayerHUDWidget' has a wrong offset!");
+static_assert(offsetof(UWIDGET_LootPanel_C, WIDGET_ButtonLegend_TakeAll) == 0x000288, "Member 'UWIDGET_LootPanel_C::WIDGET_ButtonLegend_TakeAll' has a wrong offset!");
+static_assert(offsetof(UWIDGET_LootPanel_C, WIDGET_InventoryPanel) == 0x000290, "Member 'UWIDGET_LootPanel_C::WIDGET_InventoryPanel' has a wrong offset!");
+static_assert(offsetof(UWIDGET_LootPanel_C, LootBag) == 0x000298, "Member 'UWIDGET_LootPanel_C::LootBag' has a wrong offset!");
+static_assert(offsetof(UWIDGET_LootPanel_C, PlayerHUDWidget) == 0x0002A0, "Member 'UWIDGET_LootPanel_C::PlayerHUDWidget' has a wrong offset!");
 
 }
 

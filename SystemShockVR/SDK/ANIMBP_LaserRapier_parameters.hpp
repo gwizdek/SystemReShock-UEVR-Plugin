@@ -16,6 +16,17 @@
 namespace SDK::Params
 {
 
+// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.ExecuteUbergraph_ANIMBP_LaserRapier
+// 0x0004 (0x0004 - 0x0000)
+struct ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier) == 0x000004, "Wrong alignment on ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier");
+static_assert(sizeof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier) == 0x000004, "Wrong size on ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier");
+static_assert(offsetof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier, EntryPoint) == 0x000000, "Member 'ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier::EntryPoint' has a wrong offset!");
+
 // Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.AnimGraph
 // 0x0010 (0x0010 - 0x0000)
 struct ANIMBP_LaserRapier_C_AnimGraph final
@@ -26,60 +37,6 @@ public:
 static_assert(alignof(ANIMBP_LaserRapier_C_AnimGraph) == 0x000008, "Wrong alignment on ANIMBP_LaserRapier_C_AnimGraph");
 static_assert(sizeof(ANIMBP_LaserRapier_C_AnimGraph) == 0x000010, "Wrong size on ANIMBP_LaserRapier_C_AnimGraph");
 static_assert(offsetof(ANIMBP_LaserRapier_C_AnimGraph, AnimGraph_0) == 0x000000, "Member 'ANIMBP_LaserRapier_C_AnimGraph::AnimGraph_0' has a wrong offset!");
-
-// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.BlueprintUpdateAnimation
-// 0x0004 (0x0004 - 0x0000)
-struct ANIMBP_LaserRapier_C_BlueprintUpdateAnimation final
-{
-public:
-	float                                         DeltaTimeX;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ANIMBP_LaserRapier_C_BlueprintUpdateAnimation) == 0x000004, "Wrong alignment on ANIMBP_LaserRapier_C_BlueprintUpdateAnimation");
-static_assert(sizeof(ANIMBP_LaserRapier_C_BlueprintUpdateAnimation) == 0x000004, "Wrong size on ANIMBP_LaserRapier_C_BlueprintUpdateAnimation");
-static_assert(offsetof(ANIMBP_LaserRapier_C_BlueprintUpdateAnimation, DeltaTimeX) == 0x000000, "Member 'ANIMBP_LaserRapier_C_BlueprintUpdateAnimation::DeltaTimeX' has a wrong offset!");
-
-// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.UseSourceMesh
-// 0x0001 (0x0001 - 0x0000)
-struct ANIMBP_LaserRapier_C_UseSourceMesh final
-{
-public:
-	bool                                          Value;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ANIMBP_LaserRapier_C_UseSourceMesh) == 0x000001, "Wrong alignment on ANIMBP_LaserRapier_C_UseSourceMesh");
-static_assert(sizeof(ANIMBP_LaserRapier_C_UseSourceMesh) == 0x000001, "Wrong size on ANIMBP_LaserRapier_C_UseSourceMesh");
-static_assert(offsetof(ANIMBP_LaserRapier_C_UseSourceMesh, Value) == 0x000000, "Member 'ANIMBP_LaserRapier_C_UseSourceMesh::Value' has a wrong offset!");
-
-// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.SetSourceMesh
-// 0x0008 (0x0008 - 0x0000)
-struct ANIMBP_LaserRapier_C_SetSourceMesh final
-{
-public:
-	class USkeletalMeshComponent*                 SourceMesh;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ANIMBP_LaserRapier_C_SetSourceMesh) == 0x000008, "Wrong alignment on ANIMBP_LaserRapier_C_SetSourceMesh");
-static_assert(sizeof(ANIMBP_LaserRapier_C_SetSourceMesh) == 0x000008, "Wrong size on ANIMBP_LaserRapier_C_SetSourceMesh");
-static_assert(offsetof(ANIMBP_LaserRapier_C_SetSourceMesh, SourceMesh) == 0x000000, "Member 'ANIMBP_LaserRapier_C_SetSourceMesh::SourceMesh' has a wrong offset!");
-
-// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.ExecuteUbergraph_ANIMBP_LaserRapier
-// 0x0018 (0x0018 - 0x0000)
-struct ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         K2Node_Event_DeltaTimeX;                           // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_Event_Value;                                // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class USkeletalMeshComponent*                 K2Node_Event_SourceMesh;                           // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier) == 0x000008, "Wrong alignment on ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier");
-static_assert(sizeof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier) == 0x000018, "Wrong size on ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier");
-static_assert(offsetof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier, EntryPoint) == 0x000000, "Member 'ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier::EntryPoint' has a wrong offset!");
-static_assert(offsetof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier, CallFunc_IsValid_ReturnValue) == 0x000004, "Member 'ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier, K2Node_Event_DeltaTimeX) == 0x000008, "Member 'ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier::K2Node_Event_DeltaTimeX' has a wrong offset!");
-static_assert(offsetof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier, K2Node_Event_Value) == 0x00000C, "Member 'ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier::K2Node_Event_Value' has a wrong offset!");
-static_assert(offsetof(ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier, K2Node_Event_SourceMesh) == 0x000010, "Member 'ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier::K2Node_Event_SourceMesh' has a wrong offset!");
 
 }
 

@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "ENUM_SaveLoad_structs.hpp"
+#include "UMG_structs.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
 #include "Engine_structs.hpp"
 #include "SlateCore_structs.hpp"
-#include "UMG_structs.hpp"
 
 
 namespace SDK::Params

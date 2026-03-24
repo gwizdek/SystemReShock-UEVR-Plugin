@@ -37,6 +37,86 @@ void UWIDGET_ButtonLegend_Key_C::ExecuteUbergraph_WIDGET_ButtonLegend_Key(int32 
 }
 
 
+// Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.FinalizePlatformButtonAssetLoad
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UObject*                          LoadedAsset                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_ButtonLegend_Key_C::FinalizePlatformButtonAssetLoad(class UObject* LoadedAsset)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_ButtonLegend_Key_C", "FinalizePlatformButtonAssetLoad");
+
+	Params::WIDGET_ButtonLegend_Key_C_FinalizePlatformButtonAssetLoad Parms{};
+
+	Parms.LoadedAsset = LoadedAsset;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.FinalizeGamepadLayoutAssetLoad
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UObject*                          LoadedAsset                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_ButtonLegend_Key_C::FinalizeGamepadLayoutAssetLoad(class UObject* LoadedAsset)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_ButtonLegend_Key_C", "FinalizeGamepadLayoutAssetLoad");
+
+	Params::WIDGET_ButtonLegend_Key_C_FinalizeGamepadLayoutAssetLoad Parms{};
+
+	Parms.LoadedAsset = LoadedAsset;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.FinalizeMouseAssetLoad
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UObject*                          LoadedAsset                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_ButtonLegend_Key_C::FinalizeMouseAssetLoad(class UObject* LoadedAsset)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_ButtonLegend_Key_C", "FinalizeMouseAssetLoad");
+
+	Params::WIDGET_ButtonLegend_Key_C_FinalizeMouseAssetLoad Parms{};
+
+	Parms.LoadedAsset = LoadedAsset;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.FinalizeKeyboardAssetLoad
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UObject*                          LoadedAsset                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_ButtonLegend_Key_C::FinalizeKeyboardAssetLoad(class UObject* LoadedAsset)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_ButtonLegend_Key_C", "FinalizeKeyboardAssetLoad");
+
+	Params::WIDGET_ButtonLegend_Key_C_FinalizeKeyboardAssetLoad Parms{};
+
+	Parms.LoadedAsset = LoadedAsset;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.SetDecoratorColor
 // (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -106,11 +186,12 @@ void UWIDGET_ButtonLegend_Key_C::InitializeLegendKey()
 
 
 // Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.SetLegendKey
-// (Public, BlueprintCallable, BlueprintEvent)
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+// TSet<ENUM_ControllerType>               DisabledPlatforms                                      (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 
-void UWIDGET_ButtonLegend_Key_C::SetLegendKey(const struct FKey& Key)
+void UWIDGET_ButtonLegend_Key_C::SetLegendKey(const struct FKey& Key, TSet<ENUM_ControllerType>& DisabledPlatforms)
 {
 	static class UFunction* Func = nullptr;
 
@@ -120,17 +201,21 @@ void UWIDGET_ButtonLegend_Key_C::SetLegendKey(const struct FKey& Key)
 	Params::WIDGET_ButtonLegend_Key_C_SetLegendKey Parms{};
 
 	Parms.Key = std::move(Key);
+	Parms.DisabledPlatforms = std::move(DisabledPlatforms);
 
 	UObject::ProcessEvent(Func, &Parms);
+
+	DisabledPlatforms = std::move(Parms.DisabledPlatforms);
 }
 
 
 // Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.SetLegendInputAction
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class FString                           ActionString                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// TSet<ENUM_ControllerType>               NewDisabledModes                                       (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 
-void UWIDGET_ButtonLegend_Key_C::SetLegendInputAction(const class FString& ActionString)
+void UWIDGET_ButtonLegend_Key_C::SetLegendInputAction(const class FString& ActionString, TSet<ENUM_ControllerType>& NewDisabledModes)
 {
 	static class UFunction* Func = nullptr;
 
@@ -140,8 +225,11 @@ void UWIDGET_ButtonLegend_Key_C::SetLegendInputAction(const class FString& Actio
 	Params::WIDGET_ButtonLegend_Key_C_SetLegendInputAction Parms{};
 
 	Parms.ActionString = std::move(ActionString);
+	Parms.NewDisabledModes = std::move(NewDisabledModes);
 
 	UObject::ProcessEvent(Func, &Parms);
+
+	NewDisabledModes = std::move(Parms.NewDisabledModes);
 }
 
 
@@ -168,10 +256,9 @@ void UWIDGET_ButtonLegend_Key_C::SetLegendColor(const struct FColor& Color)
 // Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.UpdateWidgetVisibility
 // (Protected, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    Visible                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void UWIDGET_ButtonLegend_Key_C::UpdateWidgetVisibility(bool IsUsingGamepad, bool* Visible)
+void UWIDGET_ButtonLegend_Key_C::UpdateWidgetVisibility(bool* Visible)
 {
 	static class UFunction* Func = nullptr;
 
@@ -179,8 +266,6 @@ void UWIDGET_ButtonLegend_Key_C::UpdateWidgetVisibility(bool IsUsingGamepad, boo
 		Func = Class->GetFunction("WIDGET_ButtonLegend_Key_C", "UpdateWidgetVisibility");
 
 	Params::WIDGET_ButtonLegend_Key_C_UpdateWidgetVisibility Parms{};
-
-	Parms.IsUsingGamepad = IsUsingGamepad;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -246,13 +331,11 @@ void UWIDGET_ButtonLegend_Key_C::GetKeyPanelSize(struct FVector2D* Result)
 
 
 // Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.ParseInputActionFromString
-// (Private, HasOutParams, BlueprintCallable, BlueprintEvent)
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class FString                           InputString                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// class FName                             Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWIDGET_ButtonLegend_Key_C::ParseInputActionFromString(const class FString& InputString, bool IsUsingGamepad, class FName* Result)
+void UWIDGET_ButtonLegend_Key_C::ParseInputActionFromString(const class FString& InputString)
 {
 	static class UFunction* Func = nullptr;
 
@@ -262,12 +345,8 @@ void UWIDGET_ButtonLegend_Key_C::ParseInputActionFromString(const class FString&
 	Params::WIDGET_ButtonLegend_Key_C_ParseInputActionFromString Parms{};
 
 	Parms.InputString = std::move(InputString);
-	Parms.IsUsingGamepad = IsUsingGamepad;
 
 	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
 }
 
 
@@ -325,48 +404,42 @@ void UWIDGET_ButtonLegend_Key_C::SetDisabled(bool State)
 }
 
 
-// Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.EVENT_OnUsingGamepadChanged
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.UpdateMapping
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void UWIDGET_ButtonLegend_Key_C::EVENT_OnUsingGamepadChanged(bool IsUsingGamepad)
+void UWIDGET_ButtonLegend_Key_C::UpdateMapping()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_ButtonLegend_Key_C", "EVENT_OnUsingGamepadChanged");
+		Func = Class->GetFunction("WIDGET_ButtonLegend_Key_C", "UpdateMapping");
 
-	Params::WIDGET_ButtonLegend_Key_C_EVENT_OnUsingGamepadChanged Parms{};
-
-	Parms.IsUsingGamepad = IsUsingGamepad;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.SetAutoSwapToGamepad
+// Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.EVENT_OnActiveControllerTypeChanged
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     NewActiveControllerType                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWIDGET_ButtonLegend_Key_C::SetAutoSwapToGamepad(bool State)
+void UWIDGET_ButtonLegend_Key_C::EVENT_OnActiveControllerTypeChanged(ENUM_ControllerType NewActiveControllerType)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_ButtonLegend_Key_C", "SetAutoSwapToGamepad");
+		Func = Class->GetFunction("WIDGET_ButtonLegend_Key_C", "EVENT_OnActiveControllerTypeChanged");
 
-	Params::WIDGET_ButtonLegend_Key_C_SetAutoSwapToGamepad Parms{};
+	Params::WIDGET_ButtonLegend_Key_C_EVENT_OnActiveControllerTypeChanged Parms{};
 
-	Parms.State = State;
+	Parms.NewActiveControllerType = NewActiveControllerType;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
 // Function WIDGET_ButtonLegend_Key.WIDGET_ButtonLegend_Key_C.GetDecoratorSizeFromPayload
-// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// (Event, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class FString                           Payload                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)

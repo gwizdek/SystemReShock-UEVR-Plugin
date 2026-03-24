@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_ActionWeight_structs.hpp"
 #include "TASK_PerformActionBase_classes.hpp"
+#include "STRUCT_ActionWeight_structs.hpp"
 
 
 namespace SDK

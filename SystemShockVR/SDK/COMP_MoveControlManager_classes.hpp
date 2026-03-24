@@ -10,14 +10,15 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_MoveControlParams_structs.hpp"
-#include "ENUM_CameraBobType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_HackerGender_structs.hpp"
-#include "AttributeSystem_structs.hpp"
-#include "STRUCT_CameraBobParams_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "STRUCT_MoveControlParams_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "STRUCT_CameraBobParams_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "AttributeSystem_structs.hpp"
+#include "ENUM_CameraBobType_structs.hpp"
 #include "ENUM_PlayerMoveSpeed_structs.hpp"
 #include "ENUM_MoveInputActionType_structs.hpp"
 #include "ENUM_OffReducedNormal_structs.hpp"
@@ -27,7 +28,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass COMP_MoveControlManager.COMP_MoveControlManager_C
-// 0x0C18 (0x0CC8 - 0x00B0)
+// 0x0C30 (0x0CE0 - 0x00B0)
 class UCOMP_MoveControlManager_C final : public UActorComponent
 {
 public:
@@ -174,10 +175,14 @@ public:
 	class UDataTable*                             SkateStepImpactTable;                              // 0x0C18(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FAttribModApplyData                    SprintDirectionSpeedScaleMod;                      // 0x0C20(0x00A0)(Edit, BlueprintVisible, DisableEditOnInstance)
 	float                                         MaxSkateTurnBankRoll;                              // 0x0CC0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                LastGyroPosition;                                  // 0x0CC4(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              LastGoodGyroVector;                                // 0x0CD0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         SwitchGyroXMagicNumber;                            // 0x0CD8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         SwitchGyroYMagicNumber;                            // 0x0CDC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void InitializeMoveControls();
-	void UpdateMoveControls(float DeltaTime, const struct FVector2D& MoveInputAxes, const struct FVector2D& LookInputAxes);
+	void Update_Move_Controls(float DeltaTime, const struct FVector2D& MoveInputAxes, const struct FVector2D& LookInputAxes, const struct FVector& GyroAxis);
 	void RegisterMoveControl(class UMOVECONTROL_Base_C* MoveControl, bool LowPriority, bool* Result);
 	void GetActiveMoveControl(class UMOVECONTROL_Base_C** ActiveMoveControl);
 	void MoveActionChanged(const struct FSTRUCT_MoveInputAction& Action, bool Relative, bool* Result);
@@ -236,6 +241,7 @@ public:
 	void EVENT_OnBrakingDecelerationChanged(float CurrValue, float LastValue);
 	void UpdateFatigueState(bool IsFatigued);
 	void ShouldSkateWhileSprinting(bool* Result);
+	void UpdateLookWithGyro(float DeltaTime, const struct FVector2D& LookInputAxis, const struct FVector& GyroTilt, struct FVector2D* Result);
 	void ClearMoveActionInputValues();
 	void EVENT_OnAirControlChanged(float CurrValue, float LastValue);
 	bool ShouldSaveComponent(struct FStreamingSaveGameComponentParams* Params_0);
@@ -251,7 +257,7 @@ public:
 	}
 };
 static_assert(alignof(UCOMP_MoveControlManager_C) == 0x000008, "Wrong alignment on UCOMP_MoveControlManager_C");
-static_assert(sizeof(UCOMP_MoveControlManager_C) == 0x000CC8, "Wrong size on UCOMP_MoveControlManager_C");
+static_assert(sizeof(UCOMP_MoveControlManager_C) == 0x000CE0, "Wrong size on UCOMP_MoveControlManager_C");
 static_assert(offsetof(UCOMP_MoveControlManager_C, MoveControls) == 0x0000B0, "Member 'UCOMP_MoveControlManager_C::MoveControls' has a wrong offset!");
 static_assert(offsetof(UCOMP_MoveControlManager_C, MoveControlParams) == 0x0000C0, "Member 'UCOMP_MoveControlManager_C::MoveControlParams' has a wrong offset!");
 static_assert(offsetof(UCOMP_MoveControlManager_C, LastMoveInputAxes) == 0x0000E8, "Member 'UCOMP_MoveControlManager_C::LastMoveInputAxes' has a wrong offset!");
@@ -380,6 +386,10 @@ static_assert(offsetof(UCOMP_MoveControlManager_C, OnMoveControlRegistered) == 0
 static_assert(offsetof(UCOMP_MoveControlManager_C, SkateStepImpactTable) == 0x000C18, "Member 'UCOMP_MoveControlManager_C::SkateStepImpactTable' has a wrong offset!");
 static_assert(offsetof(UCOMP_MoveControlManager_C, SprintDirectionSpeedScaleMod) == 0x000C20, "Member 'UCOMP_MoveControlManager_C::SprintDirectionSpeedScaleMod' has a wrong offset!");
 static_assert(offsetof(UCOMP_MoveControlManager_C, MaxSkateTurnBankRoll) == 0x000CC0, "Member 'UCOMP_MoveControlManager_C::MaxSkateTurnBankRoll' has a wrong offset!");
+static_assert(offsetof(UCOMP_MoveControlManager_C, LastGyroPosition) == 0x000CC4, "Member 'UCOMP_MoveControlManager_C::LastGyroPosition' has a wrong offset!");
+static_assert(offsetof(UCOMP_MoveControlManager_C, LastGoodGyroVector) == 0x000CD0, "Member 'UCOMP_MoveControlManager_C::LastGoodGyroVector' has a wrong offset!");
+static_assert(offsetof(UCOMP_MoveControlManager_C, SwitchGyroXMagicNumber) == 0x000CD8, "Member 'UCOMP_MoveControlManager_C::SwitchGyroXMagicNumber' has a wrong offset!");
+static_assert(offsetof(UCOMP_MoveControlManager_C, SwitchGyroYMagicNumber) == 0x000CDC, "Member 'UCOMP_MoveControlManager_C::SwitchGyroYMagicNumber' has a wrong offset!");
 
 }
 

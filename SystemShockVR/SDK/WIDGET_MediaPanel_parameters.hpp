@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "ENUM_MediaTabFilterType_structs.hpp"
-#include "STRUCT_MediaObject_structs.hpp"
+#include "STRUCT_LevelInfo_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
-#include "STRUCT_LevelInfo_structs.hpp"
+#include "STRUCT_MediaObject_structs.hpp"
 #include "ENUM_ItemType_structs.hpp"
 
 
@@ -1252,6 +1252,32 @@ static_assert(offsetof(WIDGET_MediaPanel_C_ReceiveNavUp, K2Node_DynamicCast_bSuc
 static_assert(offsetof(WIDGET_MediaPanel_C_ReceiveNavUp, CallFunc_Array_Length_ReturnValue) == 0x000084, "Member 'WIDGET_MediaPanel_C_ReceiveNavUp::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MediaPanel_C_ReceiveNavUp, CallFunc_Wrap_ReturnValue_1) == 0x000088, "Member 'WIDGET_MediaPanel_C_ReceiveNavUp::CallFunc_Wrap_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WIDGET_MediaPanel_C_ReceiveNavUp, CallFunc_Array_Find_ReturnValue_1) == 0x00008C, "Member 'WIDGET_MediaPanel_C_ReceiveNavUp::CallFunc_Array_Find_ReturnValue_1' has a wrong offset!");
+
+// Function WIDGET_MediaPanel.WIDGET_MediaPanel_C.ReceiveNavLeftRelease
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_MediaPanel_C_ReceiveNavLeftRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_MediaPanel_C_ReceiveNavLeftRelease) == 0x000001, "Wrong alignment on WIDGET_MediaPanel_C_ReceiveNavLeftRelease");
+static_assert(sizeof(WIDGET_MediaPanel_C_ReceiveNavLeftRelease) == 0x000002, "Wrong size on WIDGET_MediaPanel_C_ReceiveNavLeftRelease");
+static_assert(offsetof(WIDGET_MediaPanel_C_ReceiveNavLeftRelease, InputState) == 0x000000, "Member 'WIDGET_MediaPanel_C_ReceiveNavLeftRelease::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPanel_C_ReceiveNavLeftRelease, Result) == 0x000001, "Member 'WIDGET_MediaPanel_C_ReceiveNavLeftRelease::Result' has a wrong offset!");
+
+// Function WIDGET_MediaPanel.WIDGET_MediaPanel_C.ReceiveNavRightRelease
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_MediaPanel_C_ReceiveNavRightRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_MediaPanel_C_ReceiveNavRightRelease) == 0x000001, "Wrong alignment on WIDGET_MediaPanel_C_ReceiveNavRightRelease");
+static_assert(sizeof(WIDGET_MediaPanel_C_ReceiveNavRightRelease) == 0x000002, "Wrong size on WIDGET_MediaPanel_C_ReceiveNavRightRelease");
+static_assert(offsetof(WIDGET_MediaPanel_C_ReceiveNavRightRelease, InputState) == 0x000000, "Member 'WIDGET_MediaPanel_C_ReceiveNavRightRelease::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPanel_C_ReceiveNavRightRelease, Result) == 0x000001, "Member 'WIDGET_MediaPanel_C_ReceiveNavRightRelease::Result' has a wrong offset!");
 
 }
 

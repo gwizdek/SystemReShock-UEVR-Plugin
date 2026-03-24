@@ -74,11 +74,11 @@ public:
 	void BindEventsForInteract(class AINTERACT_Base_C* Interactable);
 	void EVENT_OnTargetInteractDestroyed(class AINTERACT_Base_C* Interact);
 	void EVENT_OnDisableAttribChanged(float CurrValue, float LastValue);
-	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 	void GetTargetShape(class UPrimitiveComponent* CursorPrimitive, class UShapeComponent** ShapeComponent);
 	bool ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0);
 	void SetInteractPowered(bool State, bool* Result);
 	void CanModifyInteractPower(bool* Result);
+	void TryInteract(class AActor* SourceActor, class UPrimitiveComponent* CursorPrimitive, ENUM_InteractionType InteractionType, struct FSTRUCT_InteractResults* InteractResults);
 
 public:
 	static class UClass* StaticClass()

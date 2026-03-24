@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "StreamingSaveGameSystem_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "ENUM_DoorState_structs.hpp"
+#include "StreamingSaveGameSystem_structs.hpp"
 
 
 namespace SDK::Params
@@ -123,7 +123,7 @@ static_assert(sizeof(INTERACT_ScreenCamera_C_TryDestroyRenderTarget) == 0x000001
 static_assert(offsetof(INTERACT_ScreenCamera_C_TryDestroyRenderTarget, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'INTERACT_ScreenCamera_C_TryDestroyRenderTarget::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_ScreenCamera.INTERACT_ScreenCamera_C.UpdateSwivelYaw
-// 0x007C (0x007C - 0x0000)
+// 0x0080 (0x0080 - 0x0000)
 struct INTERACT_ScreenCamera_C_UpdateSwivelYaw final
 {
 public:
@@ -136,36 +136,39 @@ public:
 	float                                         PatrolRouteElapsedTime;                            // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         PatrolRouteTotalSeconds;                           // 0x0014(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         PatrolRouteOneWaySeconds;                          // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetSentryTurretRelativeYaw_Result;        // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NearlyEqual_FloatFloat_ReturnValue;       // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Lerp_ReturnValue;                         // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_32[0x2];                                       // 0x0032(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Conv_IntToFloat_ReturnValue;              // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Conv_IntToFloat_ReturnValue_1;            // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_MapRangeClamped_ReturnValue;              // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_MultiplyByPi_ReturnValue;                 // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Cos_ReturnValue;                          // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_IntFloat_ReturnValue;            // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_2;             // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue_1;       // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_IntFloat_ReturnValue_1;          // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_2;        // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FMax_ReturnValue;                         // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FMod_Remainder;                           // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_FMod_ReturnValue;                         // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_DoorState                                CallFunc_GetDoorState_Result;                      // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x001D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1E[0x2];                                       // 0x001E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetSentryTurretRelativeYaw_Result;        // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NearlyEqual_FloatFloat_ReturnValue;       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Lerp_ReturnValue;                         // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0035(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_36[0x2];                                       // 0x0036(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Conv_IntToFloat_ReturnValue;              // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Conv_IntToFloat_ReturnValue_1;            // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_MapRangeClamped_ReturnValue;              // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_MultiplyByPi_ReturnValue;                 // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Cos_ReturnValue;                          // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_IntFloat_ReturnValue;            // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_2;             // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue_1;       // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_IntFloat_ReturnValue_1;          // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_2;        // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FMax_ReturnValue;                         // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FMod_Remainder;                           // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_FMod_ReturnValue;                         // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(INTERACT_ScreenCamera_C_UpdateSwivelYaw) == 0x000004, "Wrong alignment on INTERACT_ScreenCamera_C_UpdateSwivelYaw");
-static_assert(sizeof(INTERACT_ScreenCamera_C_UpdateSwivelYaw) == 0x00007C, "Wrong size on INTERACT_ScreenCamera_C_UpdateSwivelYaw");
+static_assert(sizeof(INTERACT_ScreenCamera_C_UpdateSwivelYaw) == 0x000080, "Wrong size on INTERACT_ScreenCamera_C_UpdateSwivelYaw");
 static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, PlaySounds) == 0x000000, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::PlaySounds' has a wrong offset!");
 static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, HasReachedDestination) == 0x000001, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::HasReachedDestination' has a wrong offset!");
 static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, ElapsedTransitionTime) == 0x000004, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::ElapsedTransitionTime' has a wrong offset!");
@@ -174,31 +177,33 @@ static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, PatrolCountCompl
 static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, PatrolRouteElapsedTime) == 0x000010, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::PatrolRouteElapsedTime' has a wrong offset!");
 static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, PatrolRouteTotalSeconds) == 0x000014, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::PatrolRouteTotalSeconds' has a wrong offset!");
 static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, PatrolRouteOneWaySeconds) == 0x000018, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::PatrolRouteOneWaySeconds' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_GetSentryTurretRelativeYaw_Result) == 0x00001C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_GetSentryTurretRelativeYaw_Result' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000020, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_NearlyEqual_FloatFloat_ReturnValue) == 0x000024, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_NearlyEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000028, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Lerp_ReturnValue) == 0x00002C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Lerp_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Less_FloatFloat_ReturnValue) == 0x000030, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000031, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Conv_IntToFloat_ReturnValue) == 0x000034, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Conv_IntToFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Conv_IntToFloat_ReturnValue_1) == 0x000038, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Conv_IntToFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x00003C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_MapRangeClamped_ReturnValue) == 0x000040, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_MapRangeClamped_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Add_FloatFloat_ReturnValue) == 0x000044, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_MultiplyByPi_ReturnValue) == 0x000048, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_MultiplyByPi_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Cos_ReturnValue) == 0x00004C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Cos_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000050, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000054, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Multiply_IntFloat_ReturnValue) == 0x000058, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Multiply_IntFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Add_FloatFloat_ReturnValue_2) == 0x00005C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Add_FloatFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_GetPlayTimeInSeconds_ReturnValue_1) == 0x000060, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_GetPlayTimeInSeconds_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Multiply_IntFloat_ReturnValue_1) == 0x000064, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Multiply_IntFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Subtract_FloatFloat_ReturnValue_2) == 0x000068, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Subtract_FloatFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Divide_FloatFloat_ReturnValue) == 0x00006C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_FMax_ReturnValue) == 0x000070, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_FMax_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_FMod_Remainder) == 0x000074, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_FMod_Remainder' has a wrong offset!");
-static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_FMod_ReturnValue) == 0x000078, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_FMod_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_GetDoorState_Result) == 0x00001C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_GetDoorState_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, K2Node_SwitchEnum_CmpSuccess) == 0x00001D, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_GetSentryTurretRelativeYaw_Result) == 0x000020, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_GetSentryTurretRelativeYaw_Result' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000024, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_NearlyEqual_FloatFloat_ReturnValue) == 0x000028, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_NearlyEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x00002C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Lerp_ReturnValue) == 0x000030, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Lerp_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Less_FloatFloat_ReturnValue) == 0x000034, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000035, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Conv_IntToFloat_ReturnValue) == 0x000038, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Conv_IntToFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Conv_IntToFloat_ReturnValue_1) == 0x00003C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Conv_IntToFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x000040, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_MapRangeClamped_ReturnValue) == 0x000044, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_MapRangeClamped_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Add_FloatFloat_ReturnValue) == 0x000048, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_MultiplyByPi_ReturnValue) == 0x00004C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_MultiplyByPi_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Cos_ReturnValue) == 0x000050, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Cos_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000054, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000058, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Multiply_IntFloat_ReturnValue) == 0x00005C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Multiply_IntFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Add_FloatFloat_ReturnValue_2) == 0x000060, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Add_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_GetPlayTimeInSeconds_ReturnValue_1) == 0x000064, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_GetPlayTimeInSeconds_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Multiply_IntFloat_ReturnValue_1) == 0x000068, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Multiply_IntFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Subtract_FloatFloat_ReturnValue_2) == 0x00006C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Subtract_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_Divide_FloatFloat_ReturnValue) == 0x000070, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_FMax_ReturnValue) == 0x000074, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_FMax_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_FMod_Remainder) == 0x000078, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_FMod_Remainder' has a wrong offset!");
+static_assert(offsetof(INTERACT_ScreenCamera_C_UpdateSwivelYaw, CallFunc_FMod_ReturnValue) == 0x00007C, "Member 'INTERACT_ScreenCamera_C_UpdateSwivelYaw::CallFunc_FMod_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_ScreenCamera.INTERACT_ScreenCamera_C.HasTickBehaviorWhilePerceptible
 // 0x0006 (0x0006 - 0x0000)

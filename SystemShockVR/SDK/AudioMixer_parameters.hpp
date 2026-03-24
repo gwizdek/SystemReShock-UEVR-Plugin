@@ -633,6 +633,39 @@ static_assert(sizeof(AudioMixerBlueprintLibrary_TrimAudioCache) == 0x000008, "Wr
 static_assert(offsetof(AudioMixerBlueprintLibrary_TrimAudioCache, InMegabytesToFree) == 0x000000, "Member 'AudioMixerBlueprintLibrary_TrimAudioCache::InMegabytesToFree' has a wrong offset!");
 static_assert(offsetof(AudioMixerBlueprintLibrary_TrimAudioCache, ReturnValue) == 0x000004, "Member 'AudioMixerBlueprintLibrary_TrimAudioCache::ReturnValue' has a wrong offset!");
 
+// Function AudioMixer.SubmixEffectDynamicsProcessorPreset.SetAudioBus
+// 0x0008 (0x0008 - 0x0000)
+struct SubmixEffectDynamicsProcessorPreset_SetAudioBus final
+{
+public:
+	class UAudioBus*                              AudioBus;                                          // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SubmixEffectDynamicsProcessorPreset_SetAudioBus) == 0x000008, "Wrong alignment on SubmixEffectDynamicsProcessorPreset_SetAudioBus");
+static_assert(sizeof(SubmixEffectDynamicsProcessorPreset_SetAudioBus) == 0x000008, "Wrong size on SubmixEffectDynamicsProcessorPreset_SetAudioBus");
+static_assert(offsetof(SubmixEffectDynamicsProcessorPreset_SetAudioBus, AudioBus) == 0x000000, "Member 'SubmixEffectDynamicsProcessorPreset_SetAudioBus::AudioBus' has a wrong offset!");
+
+// Function AudioMixer.SubmixEffectDynamicsProcessorPreset.SetExternalSubmix
+// 0x0008 (0x0008 - 0x0000)
+struct SubmixEffectDynamicsProcessorPreset_SetExternalSubmix final
+{
+public:
+	class USoundSubmix*                           Submix;                                            // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SubmixEffectDynamicsProcessorPreset_SetExternalSubmix) == 0x000008, "Wrong alignment on SubmixEffectDynamicsProcessorPreset_SetExternalSubmix");
+static_assert(sizeof(SubmixEffectDynamicsProcessorPreset_SetExternalSubmix) == 0x000008, "Wrong size on SubmixEffectDynamicsProcessorPreset_SetExternalSubmix");
+static_assert(offsetof(SubmixEffectDynamicsProcessorPreset_SetExternalSubmix, Submix) == 0x000000, "Member 'SubmixEffectDynamicsProcessorPreset_SetExternalSubmix::Submix' has a wrong offset!");
+
+// Function AudioMixer.SubmixEffectDynamicsProcessorPreset.SetSettings
+// 0x0060 (0x0060 - 0x0000)
+struct SubmixEffectDynamicsProcessorPreset_SetSettings final
+{
+public:
+	struct FSubmixEffectDynamicsProcessorSettings Settings_0;                                        // 0x0000(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SubmixEffectDynamicsProcessorPreset_SetSettings) == 0x000008, "Wrong alignment on SubmixEffectDynamicsProcessorPreset_SetSettings");
+static_assert(sizeof(SubmixEffectDynamicsProcessorPreset_SetSettings) == 0x000060, "Wrong size on SubmixEffectDynamicsProcessorPreset_SetSettings");
+static_assert(offsetof(SubmixEffectDynamicsProcessorPreset_SetSettings, Settings_0) == 0x000000, "Member 'SubmixEffectDynamicsProcessorPreset_SetSettings::Settings_0' has a wrong offset!");
+
 // Function AudioMixer.QuartzClockHandle.GetCurrentTimestamp
 // 0x0018 (0x0018 - 0x0000)
 struct QuartzClockHandle_GetCurrentTimestamp final
@@ -1035,50 +1068,6 @@ static_assert(sizeof(QuartzClockHandle_GetTicksPerSecond) == 0x000010, "Wrong si
 static_assert(offsetof(QuartzClockHandle_GetTicksPerSecond, WorldContextObject) == 0x000000, "Member 'QuartzClockHandle_GetTicksPerSecond::WorldContextObject' has a wrong offset!");
 static_assert(offsetof(QuartzClockHandle_GetTicksPerSecond, ReturnValue) == 0x000008, "Member 'QuartzClockHandle_GetTicksPerSecond::ReturnValue' has a wrong offset!");
 
-// Function AudioMixer.SubmixEffectDynamicsProcessorPreset.SetAudioBus
-// 0x0008 (0x0008 - 0x0000)
-struct SubmixEffectDynamicsProcessorPreset_SetAudioBus final
-{
-public:
-	class UAudioBus*                              AudioBus;                                          // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SubmixEffectDynamicsProcessorPreset_SetAudioBus) == 0x000008, "Wrong alignment on SubmixEffectDynamicsProcessorPreset_SetAudioBus");
-static_assert(sizeof(SubmixEffectDynamicsProcessorPreset_SetAudioBus) == 0x000008, "Wrong size on SubmixEffectDynamicsProcessorPreset_SetAudioBus");
-static_assert(offsetof(SubmixEffectDynamicsProcessorPreset_SetAudioBus, AudioBus) == 0x000000, "Member 'SubmixEffectDynamicsProcessorPreset_SetAudioBus::AudioBus' has a wrong offset!");
-
-// Function AudioMixer.SubmixEffectDynamicsProcessorPreset.SetExternalSubmix
-// 0x0008 (0x0008 - 0x0000)
-struct SubmixEffectDynamicsProcessorPreset_SetExternalSubmix final
-{
-public:
-	class USoundSubmix*                           Submix;                                            // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SubmixEffectDynamicsProcessorPreset_SetExternalSubmix) == 0x000008, "Wrong alignment on SubmixEffectDynamicsProcessorPreset_SetExternalSubmix");
-static_assert(sizeof(SubmixEffectDynamicsProcessorPreset_SetExternalSubmix) == 0x000008, "Wrong size on SubmixEffectDynamicsProcessorPreset_SetExternalSubmix");
-static_assert(offsetof(SubmixEffectDynamicsProcessorPreset_SetExternalSubmix, Submix) == 0x000000, "Member 'SubmixEffectDynamicsProcessorPreset_SetExternalSubmix::Submix' has a wrong offset!");
-
-// Function AudioMixer.SubmixEffectDynamicsProcessorPreset.SetSettings
-// 0x0060 (0x0060 - 0x0000)
-struct SubmixEffectDynamicsProcessorPreset_SetSettings final
-{
-public:
-	struct FSubmixEffectDynamicsProcessorSettings Settings_0;                                        // 0x0000(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SubmixEffectDynamicsProcessorPreset_SetSettings) == 0x000008, "Wrong alignment on SubmixEffectDynamicsProcessorPreset_SetSettings");
-static_assert(sizeof(SubmixEffectDynamicsProcessorPreset_SetSettings) == 0x000060, "Wrong size on SubmixEffectDynamicsProcessorPreset_SetSettings");
-static_assert(offsetof(SubmixEffectDynamicsProcessorPreset_SetSettings, Settings_0) == 0x000000, "Member 'SubmixEffectDynamicsProcessorPreset_SetSettings::Settings_0' has a wrong offset!");
-
-// Function AudioMixer.SubmixEffectSubmixEQPreset.SetSettings
-// 0x0010 (0x0010 - 0x0000)
-struct SubmixEffectSubmixEQPreset_SetSettings final
-{
-public:
-	struct FSubmixEffectSubmixEQSettings          InSettings;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SubmixEffectSubmixEQPreset_SetSettings) == 0x000008, "Wrong alignment on SubmixEffectSubmixEQPreset_SetSettings");
-static_assert(sizeof(SubmixEffectSubmixEQPreset_SetSettings) == 0x000010, "Wrong size on SubmixEffectSubmixEQPreset_SetSettings");
-static_assert(offsetof(SubmixEffectSubmixEQPreset_SetSettings, InSettings) == 0x000000, "Member 'SubmixEffectSubmixEQPreset_SetSettings::InSettings' has a wrong offset!");
-
 // Function AudioMixer.SubmixEffectReverbPreset.SetSettings
 // 0x0040 (0x0040 - 0x0000)
 struct SubmixEffectReverbPreset_SetSettings final
@@ -1104,6 +1093,17 @@ static_assert(sizeof(SubmixEffectReverbPreset_SetSettingsWithReverbEffect) == 0x
 static_assert(offsetof(SubmixEffectReverbPreset_SetSettingsWithReverbEffect, InReverbEffect) == 0x000000, "Member 'SubmixEffectReverbPreset_SetSettingsWithReverbEffect::InReverbEffect' has a wrong offset!");
 static_assert(offsetof(SubmixEffectReverbPreset_SetSettingsWithReverbEffect, WetLevel) == 0x000008, "Member 'SubmixEffectReverbPreset_SetSettingsWithReverbEffect::WetLevel' has a wrong offset!");
 static_assert(offsetof(SubmixEffectReverbPreset_SetSettingsWithReverbEffect, DryLevel) == 0x00000C, "Member 'SubmixEffectReverbPreset_SetSettingsWithReverbEffect::DryLevel' has a wrong offset!");
+
+// Function AudioMixer.SubmixEffectSubmixEQPreset.SetSettings
+// 0x0010 (0x0010 - 0x0000)
+struct SubmixEffectSubmixEQPreset_SetSettings final
+{
+public:
+	struct FSubmixEffectSubmixEQSettings          InSettings;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SubmixEffectSubmixEQPreset_SetSettings) == 0x000008, "Wrong alignment on SubmixEffectSubmixEQPreset_SetSettings");
+static_assert(sizeof(SubmixEffectSubmixEQPreset_SetSettings) == 0x000010, "Wrong size on SubmixEffectSubmixEQPreset_SetSettings");
+static_assert(offsetof(SubmixEffectSubmixEQPreset_SetSettings, InSettings) == 0x000000, "Member 'SubmixEffectSubmixEQPreset_SetSettings::InSettings' has a wrong offset!");
 
 // Function AudioMixer.QuartzSubsystem.CreateNewClock
 // 0x0040 (0x0040 - 0x0000)

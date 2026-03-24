@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "UMG_classes.hpp"
 #include "ENUM_TargetID_TargetStatus_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "UMG_classes.hpp"
 #include "ENUM_MeshColor_structs.hpp"
 
 

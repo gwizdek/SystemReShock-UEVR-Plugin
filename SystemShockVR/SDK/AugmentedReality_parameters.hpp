@@ -18,446 +18,6 @@
 namespace SDK::Params
 {
 
-// Function AugmentedReality.ARComponent.GetMRMesh
-// 0x0008 (0x0008 - 0x0000)
-struct ARComponent_GetMRMesh final
-{
-public:
-	class UMRMeshComponent*                       ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARComponent_GetMRMesh) == 0x000008, "Wrong alignment on ARComponent_GetMRMesh");
-static_assert(sizeof(ARComponent_GetMRMesh) == 0x000008, "Wrong size on ARComponent_GetMRMesh");
-static_assert(offsetof(ARComponent_GetMRMesh, ReturnValue) == 0x000000, "Member 'ARComponent_GetMRMesh::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARComponent.SetNativeID
-// 0x0010 (0x0010 - 0x0000)
-struct ARComponent_SetNativeID final
-{
-public:
-	struct FGuid                                  NativeID_0;                                        // 0x0000(0x0010)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARComponent_SetNativeID) == 0x000004, "Wrong alignment on ARComponent_SetNativeID");
-static_assert(sizeof(ARComponent_SetNativeID) == 0x000010, "Wrong size on ARComponent_SetNativeID");
-static_assert(offsetof(ARComponent_SetNativeID, NativeID_0) == 0x000000, "Member 'ARComponent_SetNativeID::NativeID_0' has a wrong offset!");
-
-// Function AugmentedReality.ARPlaneComponent.GetObjectClassificationDebugColors
-// 0x0050 (0x0050 - 0x0000)
-struct ARPlaneComponent_GetObjectClassificationDebugColors final
-{
-public:
-	TMap<EARObjectClassification, struct FLinearColor> ReturnValue;                                       // 0x0000(0x0050)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARPlaneComponent_GetObjectClassificationDebugColors) == 0x000008, "Wrong alignment on ARPlaneComponent_GetObjectClassificationDebugColors");
-static_assert(sizeof(ARPlaneComponent_GetObjectClassificationDebugColors) == 0x000050, "Wrong size on ARPlaneComponent_GetObjectClassificationDebugColors");
-static_assert(offsetof(ARPlaneComponent_GetObjectClassificationDebugColors, ReturnValue) == 0x000000, "Member 'ARPlaneComponent_GetObjectClassificationDebugColors::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARPlaneComponent.SetObjectClassificationDebugColors
-// 0x0050 (0x0050 - 0x0000)
-struct ARPlaneComponent_SetObjectClassificationDebugColors final
-{
-public:
-	TMap<EARObjectClassification, struct FLinearColor> InColors;                                          // 0x0000(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARPlaneComponent_SetObjectClassificationDebugColors) == 0x000008, "Wrong alignment on ARPlaneComponent_SetObjectClassificationDebugColors");
-static_assert(sizeof(ARPlaneComponent_SetObjectClassificationDebugColors) == 0x000050, "Wrong size on ARPlaneComponent_SetObjectClassificationDebugColors");
-static_assert(offsetof(ARPlaneComponent_SetObjectClassificationDebugColors, InColors) == 0x000000, "Member 'ARPlaneComponent_SetObjectClassificationDebugColors::InColors' has a wrong offset!");
-
-// Function AugmentedReality.ARPlaneComponent.SetPlaneComponentDebugMode
-// 0x0001 (0x0001 - 0x0000)
-struct ARPlaneComponent_SetPlaneComponentDebugMode final
-{
-public:
-	EPlaneComponentDebugMode                      NewDebugMode;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARPlaneComponent_SetPlaneComponentDebugMode) == 0x000001, "Wrong alignment on ARPlaneComponent_SetPlaneComponentDebugMode");
-static_assert(sizeof(ARPlaneComponent_SetPlaneComponentDebugMode) == 0x000001, "Wrong size on ARPlaneComponent_SetPlaneComponentDebugMode");
-static_assert(offsetof(ARPlaneComponent_SetPlaneComponentDebugMode, NewDebugMode) == 0x000000, "Member 'ARPlaneComponent_SetPlaneComponentDebugMode::NewDebugMode' has a wrong offset!");
-
-// Function AugmentedReality.ARPlaneComponent.ReceiveAdd
-// 0x0080 (0x0080 - 0x0000)
-struct ARPlaneComponent_ReceiveAdd final
-{
-public:
-	struct FARPlaneUpdatePayload                  Payload;                                           // 0x0000(0x0080)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARPlaneComponent_ReceiveAdd) == 0x000010, "Wrong alignment on ARPlaneComponent_ReceiveAdd");
-static_assert(sizeof(ARPlaneComponent_ReceiveAdd) == 0x000080, "Wrong size on ARPlaneComponent_ReceiveAdd");
-static_assert(offsetof(ARPlaneComponent_ReceiveAdd, Payload) == 0x000000, "Member 'ARPlaneComponent_ReceiveAdd::Payload' has a wrong offset!");
-
-// Function AugmentedReality.ARPlaneComponent.ReceiveUpdate
-// 0x0080 (0x0080 - 0x0000)
-struct ARPlaneComponent_ReceiveUpdate final
-{
-public:
-	struct FARPlaneUpdatePayload                  Payload;                                           // 0x0000(0x0080)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARPlaneComponent_ReceiveUpdate) == 0x000010, "Wrong alignment on ARPlaneComponent_ReceiveUpdate");
-static_assert(sizeof(ARPlaneComponent_ReceiveUpdate) == 0x000080, "Wrong size on ARPlaneComponent_ReceiveUpdate");
-static_assert(offsetof(ARPlaneComponent_ReceiveUpdate, Payload) == 0x000000, "Member 'ARPlaneComponent_ReceiveUpdate::Payload' has a wrong offset!");
-
-// Function AugmentedReality.ARPlaneComponent.ServerUpdatePayload
-// 0x0080 (0x0080 - 0x0000)
-struct ARPlaneComponent_ServerUpdatePayload final
-{
-public:
-	struct FARPlaneUpdatePayload                  NewPayload;                                        // 0x0000(0x0080)(ConstParm, Parm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARPlaneComponent_ServerUpdatePayload) == 0x000010, "Wrong alignment on ARPlaneComponent_ServerUpdatePayload");
-static_assert(sizeof(ARPlaneComponent_ServerUpdatePayload) == 0x000080, "Wrong size on ARPlaneComponent_ServerUpdatePayload");
-static_assert(offsetof(ARPlaneComponent_ServerUpdatePayload, NewPayload) == 0x000000, "Member 'ARPlaneComponent_ServerUpdatePayload::NewPayload' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.AddCandidateImage
-// 0x0008 (0x0008 - 0x0000)
-struct ARSessionConfig_AddCandidateImage final
-{
-public:
-	class UARCandidateImage*                      NewCandidateImage;                                 // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_AddCandidateImage) == 0x000008, "Wrong alignment on ARSessionConfig_AddCandidateImage");
-static_assert(sizeof(ARSessionConfig_AddCandidateImage) == 0x000008, "Wrong size on ARSessionConfig_AddCandidateImage");
-static_assert(offsetof(ARSessionConfig_AddCandidateImage, NewCandidateImage) == 0x000000, "Member 'ARSessionConfig_AddCandidateImage::NewCandidateImage' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.AddCandidateObject
-// 0x0008 (0x0008 - 0x0000)
-struct ARSessionConfig_AddCandidateObject final
-{
-public:
-	class UARCandidateObject*                     CandidateObject;                                   // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_AddCandidateObject) == 0x000008, "Wrong alignment on ARSessionConfig_AddCandidateObject");
-static_assert(sizeof(ARSessionConfig_AddCandidateObject) == 0x000008, "Wrong size on ARSessionConfig_AddCandidateObject");
-static_assert(offsetof(ARSessionConfig_AddCandidateObject, CandidateObject) == 0x000000, "Member 'ARSessionConfig_AddCandidateObject::CandidateObject' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetCandidateObjectList
-// 0x0010 (0x0010 - 0x0000)
-struct ARSessionConfig_SetCandidateObjectList final
-{
-public:
-	TArray<class UARCandidateObject*>             InCandidateObjects;                                // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetCandidateObjectList) == 0x000008, "Wrong alignment on ARSessionConfig_SetCandidateObjectList");
-static_assert(sizeof(ARSessionConfig_SetCandidateObjectList) == 0x000010, "Wrong size on ARSessionConfig_SetCandidateObjectList");
-static_assert(offsetof(ARSessionConfig_SetCandidateObjectList, InCandidateObjects) == 0x000000, "Member 'ARSessionConfig_SetCandidateObjectList::InCandidateObjects' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetDesiredVideoFormat
-// 0x000C (0x000C - 0x0000)
-struct ARSessionConfig_SetDesiredVideoFormat final
-{
-public:
-	struct FARVideoFormat                         NewFormat;                                         // 0x0000(0x000C)(Parm, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetDesiredVideoFormat) == 0x000004, "Wrong alignment on ARSessionConfig_SetDesiredVideoFormat");
-static_assert(sizeof(ARSessionConfig_SetDesiredVideoFormat) == 0x00000C, "Wrong size on ARSessionConfig_SetDesiredVideoFormat");
-static_assert(offsetof(ARSessionConfig_SetDesiredVideoFormat, NewFormat) == 0x000000, "Member 'ARSessionConfig_SetDesiredVideoFormat::NewFormat' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetEnableAutoFocus
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_SetEnableAutoFocus final
-{
-public:
-	bool                                          bNewValue;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetEnableAutoFocus) == 0x000001, "Wrong alignment on ARSessionConfig_SetEnableAutoFocus");
-static_assert(sizeof(ARSessionConfig_SetEnableAutoFocus) == 0x000001, "Wrong size on ARSessionConfig_SetEnableAutoFocus");
-static_assert(offsetof(ARSessionConfig_SetEnableAutoFocus, bNewValue) == 0x000000, "Member 'ARSessionConfig_SetEnableAutoFocus::bNewValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetFaceTrackingDirection
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_SetFaceTrackingDirection final
-{
-public:
-	EARFaceTrackingDirection                      InDirection;                                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetFaceTrackingDirection) == 0x000001, "Wrong alignment on ARSessionConfig_SetFaceTrackingDirection");
-static_assert(sizeof(ARSessionConfig_SetFaceTrackingDirection) == 0x000001, "Wrong size on ARSessionConfig_SetFaceTrackingDirection");
-static_assert(offsetof(ARSessionConfig_SetFaceTrackingDirection, InDirection) == 0x000000, "Member 'ARSessionConfig_SetFaceTrackingDirection::InDirection' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetFaceTrackingUpdate
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_SetFaceTrackingUpdate final
-{
-public:
-	EARFaceTrackingUpdate                         InUpdate;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetFaceTrackingUpdate) == 0x000001, "Wrong alignment on ARSessionConfig_SetFaceTrackingUpdate");
-static_assert(sizeof(ARSessionConfig_SetFaceTrackingUpdate) == 0x000001, "Wrong size on ARSessionConfig_SetFaceTrackingUpdate");
-static_assert(offsetof(ARSessionConfig_SetFaceTrackingUpdate, InUpdate) == 0x000000, "Member 'ARSessionConfig_SetFaceTrackingUpdate::InUpdate' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetResetCameraTracking
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_SetResetCameraTracking final
-{
-public:
-	bool                                          bNewValue;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetResetCameraTracking) == 0x000001, "Wrong alignment on ARSessionConfig_SetResetCameraTracking");
-static_assert(sizeof(ARSessionConfig_SetResetCameraTracking) == 0x000001, "Wrong size on ARSessionConfig_SetResetCameraTracking");
-static_assert(offsetof(ARSessionConfig_SetResetCameraTracking, bNewValue) == 0x000000, "Member 'ARSessionConfig_SetResetCameraTracking::bNewValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetResetTrackedObjects
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_SetResetTrackedObjects final
-{
-public:
-	bool                                          bNewValue;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetResetTrackedObjects) == 0x000001, "Wrong alignment on ARSessionConfig_SetResetTrackedObjects");
-static_assert(sizeof(ARSessionConfig_SetResetTrackedObjects) == 0x000001, "Wrong size on ARSessionConfig_SetResetTrackedObjects");
-static_assert(offsetof(ARSessionConfig_SetResetTrackedObjects, bNewValue) == 0x000000, "Member 'ARSessionConfig_SetResetTrackedObjects::bNewValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetSceneReconstructionMethod
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_SetSceneReconstructionMethod final
-{
-public:
-	EARSceneReconstruction                        InSceneReconstructionMethod;                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetSceneReconstructionMethod) == 0x000001, "Wrong alignment on ARSessionConfig_SetSceneReconstructionMethod");
-static_assert(sizeof(ARSessionConfig_SetSceneReconstructionMethod) == 0x000001, "Wrong size on ARSessionConfig_SetSceneReconstructionMethod");
-static_assert(offsetof(ARSessionConfig_SetSceneReconstructionMethod, InSceneReconstructionMethod) == 0x000000, "Member 'ARSessionConfig_SetSceneReconstructionMethod::InSceneReconstructionMethod' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetSessionTrackingFeatureToEnable
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_SetSessionTrackingFeatureToEnable final
-{
-public:
-	EARSessionTrackingFeature                     InSessionTrackingFeature;                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetSessionTrackingFeatureToEnable) == 0x000001, "Wrong alignment on ARSessionConfig_SetSessionTrackingFeatureToEnable");
-static_assert(sizeof(ARSessionConfig_SetSessionTrackingFeatureToEnable) == 0x000001, "Wrong size on ARSessionConfig_SetSessionTrackingFeatureToEnable");
-static_assert(offsetof(ARSessionConfig_SetSessionTrackingFeatureToEnable, InSessionTrackingFeature) == 0x000000, "Member 'ARSessionConfig_SetSessionTrackingFeatureToEnable::InSessionTrackingFeature' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.SetWorldMapData
-// 0x0010 (0x0010 - 0x0000)
-struct ARSessionConfig_SetWorldMapData final
-{
-public:
-	TArray<uint8>                                 WorldMapData_0;                                    // 0x0000(0x0010)(Parm, ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_SetWorldMapData) == 0x000008, "Wrong alignment on ARSessionConfig_SetWorldMapData");
-static_assert(sizeof(ARSessionConfig_SetWorldMapData) == 0x000010, "Wrong size on ARSessionConfig_SetWorldMapData");
-static_assert(offsetof(ARSessionConfig_SetWorldMapData, WorldMapData_0) == 0x000000, "Member 'ARSessionConfig_SetWorldMapData::WorldMapData_0' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetCandidateImageList
-// 0x0010 (0x0010 - 0x0000)
-struct ARSessionConfig_GetCandidateImageList final
-{
-public:
-	TArray<class UARCandidateImage*>              ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetCandidateImageList) == 0x000008, "Wrong alignment on ARSessionConfig_GetCandidateImageList");
-static_assert(sizeof(ARSessionConfig_GetCandidateImageList) == 0x000010, "Wrong size on ARSessionConfig_GetCandidateImageList");
-static_assert(offsetof(ARSessionConfig_GetCandidateImageList, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetCandidateImageList::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetCandidateObjectList
-// 0x0010 (0x0010 - 0x0000)
-struct ARSessionConfig_GetCandidateObjectList final
-{
-public:
-	TArray<class UARCandidateObject*>             ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetCandidateObjectList) == 0x000008, "Wrong alignment on ARSessionConfig_GetCandidateObjectList");
-static_assert(sizeof(ARSessionConfig_GetCandidateObjectList) == 0x000010, "Wrong size on ARSessionConfig_GetCandidateObjectList");
-static_assert(offsetof(ARSessionConfig_GetCandidateObjectList, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetCandidateObjectList::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetDesiredVideoFormat
-// 0x000C (0x000C - 0x0000)
-struct ARSessionConfig_GetDesiredVideoFormat final
-{
-public:
-	struct FARVideoFormat                         ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetDesiredVideoFormat) == 0x000004, "Wrong alignment on ARSessionConfig_GetDesiredVideoFormat");
-static_assert(sizeof(ARSessionConfig_GetDesiredVideoFormat) == 0x00000C, "Wrong size on ARSessionConfig_GetDesiredVideoFormat");
-static_assert(offsetof(ARSessionConfig_GetDesiredVideoFormat, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetDesiredVideoFormat::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetEnabledSessionTrackingFeature
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetEnabledSessionTrackingFeature final
-{
-public:
-	EARSessionTrackingFeature                     ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetEnabledSessionTrackingFeature) == 0x000001, "Wrong alignment on ARSessionConfig_GetEnabledSessionTrackingFeature");
-static_assert(sizeof(ARSessionConfig_GetEnabledSessionTrackingFeature) == 0x000001, "Wrong size on ARSessionConfig_GetEnabledSessionTrackingFeature");
-static_assert(offsetof(ARSessionConfig_GetEnabledSessionTrackingFeature, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetEnabledSessionTrackingFeature::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetEnvironmentCaptureProbeType
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetEnvironmentCaptureProbeType final
-{
-public:
-	EAREnvironmentCaptureProbeType                ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetEnvironmentCaptureProbeType) == 0x000001, "Wrong alignment on ARSessionConfig_GetEnvironmentCaptureProbeType");
-static_assert(sizeof(ARSessionConfig_GetEnvironmentCaptureProbeType) == 0x000001, "Wrong size on ARSessionConfig_GetEnvironmentCaptureProbeType");
-static_assert(offsetof(ARSessionConfig_GetEnvironmentCaptureProbeType, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetEnvironmentCaptureProbeType::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetFaceTrackingDirection
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetFaceTrackingDirection final
-{
-public:
-	EARFaceTrackingDirection                      ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetFaceTrackingDirection) == 0x000001, "Wrong alignment on ARSessionConfig_GetFaceTrackingDirection");
-static_assert(sizeof(ARSessionConfig_GetFaceTrackingDirection) == 0x000001, "Wrong size on ARSessionConfig_GetFaceTrackingDirection");
-static_assert(offsetof(ARSessionConfig_GetFaceTrackingDirection, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetFaceTrackingDirection::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetFaceTrackingUpdate
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetFaceTrackingUpdate final
-{
-public:
-	EARFaceTrackingUpdate                         ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetFaceTrackingUpdate) == 0x000001, "Wrong alignment on ARSessionConfig_GetFaceTrackingUpdate");
-static_assert(sizeof(ARSessionConfig_GetFaceTrackingUpdate) == 0x000001, "Wrong size on ARSessionConfig_GetFaceTrackingUpdate");
-static_assert(offsetof(ARSessionConfig_GetFaceTrackingUpdate, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetFaceTrackingUpdate::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetFrameSyncMode
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetFrameSyncMode final
-{
-public:
-	EARFrameSyncMode                              ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetFrameSyncMode) == 0x000001, "Wrong alignment on ARSessionConfig_GetFrameSyncMode");
-static_assert(sizeof(ARSessionConfig_GetFrameSyncMode) == 0x000001, "Wrong size on ARSessionConfig_GetFrameSyncMode");
-static_assert(offsetof(ARSessionConfig_GetFrameSyncMode, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetFrameSyncMode::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetLightEstimationMode
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetLightEstimationMode final
-{
-public:
-	EARLightEstimationMode                        ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetLightEstimationMode) == 0x000001, "Wrong alignment on ARSessionConfig_GetLightEstimationMode");
-static_assert(sizeof(ARSessionConfig_GetLightEstimationMode) == 0x000001, "Wrong size on ARSessionConfig_GetLightEstimationMode");
-static_assert(offsetof(ARSessionConfig_GetLightEstimationMode, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetLightEstimationMode::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetMaxNumSimultaneousImagesTracked
-// 0x0004 (0x0004 - 0x0000)
-struct ARSessionConfig_GetMaxNumSimultaneousImagesTracked final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetMaxNumSimultaneousImagesTracked) == 0x000004, "Wrong alignment on ARSessionConfig_GetMaxNumSimultaneousImagesTracked");
-static_assert(sizeof(ARSessionConfig_GetMaxNumSimultaneousImagesTracked) == 0x000004, "Wrong size on ARSessionConfig_GetMaxNumSimultaneousImagesTracked");
-static_assert(offsetof(ARSessionConfig_GetMaxNumSimultaneousImagesTracked, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetMaxNumSimultaneousImagesTracked::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetPlaneDetectionMode
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetPlaneDetectionMode final
-{
-public:
-	EARPlaneDetectionMode                         ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetPlaneDetectionMode) == 0x000001, "Wrong alignment on ARSessionConfig_GetPlaneDetectionMode");
-static_assert(sizeof(ARSessionConfig_GetPlaneDetectionMode) == 0x000001, "Wrong size on ARSessionConfig_GetPlaneDetectionMode");
-static_assert(offsetof(ARSessionConfig_GetPlaneDetectionMode, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetPlaneDetectionMode::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetSceneReconstructionMethod
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetSceneReconstructionMethod final
-{
-public:
-	EARSceneReconstruction                        ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetSceneReconstructionMethod) == 0x000001, "Wrong alignment on ARSessionConfig_GetSceneReconstructionMethod");
-static_assert(sizeof(ARSessionConfig_GetSceneReconstructionMethod) == 0x000001, "Wrong size on ARSessionConfig_GetSceneReconstructionMethod");
-static_assert(offsetof(ARSessionConfig_GetSceneReconstructionMethod, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetSceneReconstructionMethod::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetSessionType
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetSessionType final
-{
-public:
-	EARSessionType                                ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetSessionType) == 0x000001, "Wrong alignment on ARSessionConfig_GetSessionType");
-static_assert(sizeof(ARSessionConfig_GetSessionType) == 0x000001, "Wrong size on ARSessionConfig_GetSessionType");
-static_assert(offsetof(ARSessionConfig_GetSessionType, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetSessionType::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetWorldAlignment
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_GetWorldAlignment final
-{
-public:
-	EARWorldAlignment                             ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetWorldAlignment) == 0x000001, "Wrong alignment on ARSessionConfig_GetWorldAlignment");
-static_assert(sizeof(ARSessionConfig_GetWorldAlignment) == 0x000001, "Wrong size on ARSessionConfig_GetWorldAlignment");
-static_assert(offsetof(ARSessionConfig_GetWorldAlignment, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetWorldAlignment::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.GetWorldMapData
-// 0x0010 (0x0010 - 0x0000)
-struct ARSessionConfig_GetWorldMapData final
-{
-public:
-	TArray<uint8>                                 ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_GetWorldMapData) == 0x000008, "Wrong alignment on ARSessionConfig_GetWorldMapData");
-static_assert(sizeof(ARSessionConfig_GetWorldMapData) == 0x000010, "Wrong size on ARSessionConfig_GetWorldMapData");
-static_assert(offsetof(ARSessionConfig_GetWorldMapData, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetWorldMapData::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.ShouldEnableAutoFocus
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_ShouldEnableAutoFocus final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_ShouldEnableAutoFocus) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldEnableAutoFocus");
-static_assert(sizeof(ARSessionConfig_ShouldEnableAutoFocus) == 0x000001, "Wrong size on ARSessionConfig_ShouldEnableAutoFocus");
-static_assert(offsetof(ARSessionConfig_ShouldEnableAutoFocus, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldEnableAutoFocus::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.ShouldEnableCameraTracking
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_ShouldEnableCameraTracking final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_ShouldEnableCameraTracking) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldEnableCameraTracking");
-static_assert(sizeof(ARSessionConfig_ShouldEnableCameraTracking) == 0x000001, "Wrong size on ARSessionConfig_ShouldEnableCameraTracking");
-static_assert(offsetof(ARSessionConfig_ShouldEnableCameraTracking, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldEnableCameraTracking::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.ShouldRenderCameraOverlay
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_ShouldRenderCameraOverlay final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_ShouldRenderCameraOverlay) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldRenderCameraOverlay");
-static_assert(sizeof(ARSessionConfig_ShouldRenderCameraOverlay) == 0x000001, "Wrong size on ARSessionConfig_ShouldRenderCameraOverlay");
-static_assert(offsetof(ARSessionConfig_ShouldRenderCameraOverlay, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldRenderCameraOverlay::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.ShouldResetCameraTracking
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_ShouldResetCameraTracking final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_ShouldResetCameraTracking) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldResetCameraTracking");
-static_assert(sizeof(ARSessionConfig_ShouldResetCameraTracking) == 0x000001, "Wrong size on ARSessionConfig_ShouldResetCameraTracking");
-static_assert(offsetof(ARSessionConfig_ShouldResetCameraTracking, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldResetCameraTracking::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARSessionConfig.ShouldResetTrackedObjects
-// 0x0001 (0x0001 - 0x0000)
-struct ARSessionConfig_ShouldResetTrackedObjects final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARSessionConfig_ShouldResetTrackedObjects) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldResetTrackedObjects");
-static_assert(sizeof(ARSessionConfig_ShouldResetTrackedObjects) == 0x000001, "Wrong size on ARSessionConfig_ShouldResetTrackedObjects");
-static_assert(offsetof(ARSessionConfig_ShouldResetTrackedObjects, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldResetTrackedObjects::ReturnValue' has a wrong offset!");
-
 // Function AugmentedReality.ARBlueprintLibrary.AddManualEnvironmentCaptureProbe
 // 0x001C (0x001C - 0x0000)
 struct ARBlueprintLibrary_AddManualEnvironmentCaptureProbe final
@@ -1239,49 +799,572 @@ static_assert(alignof(ARBlueprintLibrary_UnpinComponent) == 0x000008, "Wrong ali
 static_assert(sizeof(ARBlueprintLibrary_UnpinComponent) == 0x000008, "Wrong size on ARBlueprintLibrary_UnpinComponent");
 static_assert(offsetof(ARBlueprintLibrary_UnpinComponent, ComponentToUnpin) == 0x000000, "Member 'ARBlueprintLibrary_UnpinComponent::ComponentToUnpin' has a wrong offset!");
 
-// Function AugmentedReality.ARQRCodeComponent.SetQRCodeComponentDebugMode
+// Function AugmentedReality.ARCandidateObject.SetBoundingBox
+// 0x001C (0x001C - 0x0000)
+struct ARCandidateObject_SetBoundingBox final
+{
+public:
+	struct FBox                                   InBoundingBox;                                     // 0x0000(0x001C)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateObject_SetBoundingBox) == 0x000004, "Wrong alignment on ARCandidateObject_SetBoundingBox");
+static_assert(sizeof(ARCandidateObject_SetBoundingBox) == 0x00001C, "Wrong size on ARCandidateObject_SetBoundingBox");
+static_assert(offsetof(ARCandidateObject_SetBoundingBox, InBoundingBox) == 0x000000, "Member 'ARCandidateObject_SetBoundingBox::InBoundingBox' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateObject.SetCandidateObjectData
+// 0x0010 (0x0010 - 0x0000)
+struct ARCandidateObject_SetCandidateObjectData final
+{
+public:
+	TArray<uint8>                                 InCandidateObject;                                 // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateObject_SetCandidateObjectData) == 0x000008, "Wrong alignment on ARCandidateObject_SetCandidateObjectData");
+static_assert(sizeof(ARCandidateObject_SetCandidateObjectData) == 0x000010, "Wrong size on ARCandidateObject_SetCandidateObjectData");
+static_assert(offsetof(ARCandidateObject_SetCandidateObjectData, InCandidateObject) == 0x000000, "Member 'ARCandidateObject_SetCandidateObjectData::InCandidateObject' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateObject.SetFriendlyName
+// 0x0010 (0x0010 - 0x0000)
+struct ARCandidateObject_SetFriendlyName final
+{
+public:
+	class FString                                 NewName;                                           // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateObject_SetFriendlyName) == 0x000008, "Wrong alignment on ARCandidateObject_SetFriendlyName");
+static_assert(sizeof(ARCandidateObject_SetFriendlyName) == 0x000010, "Wrong size on ARCandidateObject_SetFriendlyName");
+static_assert(offsetof(ARCandidateObject_SetFriendlyName, NewName) == 0x000000, "Member 'ARCandidateObject_SetFriendlyName::NewName' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateObject.GetBoundingBox
+// 0x001C (0x001C - 0x0000)
+struct ARCandidateObject_GetBoundingBox final
+{
+public:
+	struct FBox                                   ReturnValue;                                       // 0x0000(0x001C)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateObject_GetBoundingBox) == 0x000004, "Wrong alignment on ARCandidateObject_GetBoundingBox");
+static_assert(sizeof(ARCandidateObject_GetBoundingBox) == 0x00001C, "Wrong size on ARCandidateObject_GetBoundingBox");
+static_assert(offsetof(ARCandidateObject_GetBoundingBox, ReturnValue) == 0x000000, "Member 'ARCandidateObject_GetBoundingBox::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateObject.GetCandidateObjectData
+// 0x0010 (0x0010 - 0x0000)
+struct ARCandidateObject_GetCandidateObjectData final
+{
+public:
+	TArray<uint8>                                 ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateObject_GetCandidateObjectData) == 0x000008, "Wrong alignment on ARCandidateObject_GetCandidateObjectData");
+static_assert(sizeof(ARCandidateObject_GetCandidateObjectData) == 0x000010, "Wrong size on ARCandidateObject_GetCandidateObjectData");
+static_assert(offsetof(ARCandidateObject_GetCandidateObjectData, ReturnValue) == 0x000000, "Member 'ARCandidateObject_GetCandidateObjectData::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateObject.GetFriendlyName
+// 0x0010 (0x0010 - 0x0000)
+struct ARCandidateObject_GetFriendlyName final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateObject_GetFriendlyName) == 0x000008, "Wrong alignment on ARCandidateObject_GetFriendlyName");
+static_assert(sizeof(ARCandidateObject_GetFriendlyName) == 0x000010, "Wrong size on ARCandidateObject_GetFriendlyName");
+static_assert(offsetof(ARCandidateObject_GetFriendlyName, ReturnValue) == 0x000000, "Member 'ARCandidateObject_GetFriendlyName::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARTrackedGeometry.GetUnderlyingMesh
+// 0x0008 (0x0008 - 0x0000)
+struct ARTrackedGeometry_GetUnderlyingMesh final
+{
+public:
+	class UMRMeshComponent*                       ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARTrackedGeometry_GetUnderlyingMesh) == 0x000008, "Wrong alignment on ARTrackedGeometry_GetUnderlyingMesh");
+static_assert(sizeof(ARTrackedGeometry_GetUnderlyingMesh) == 0x000008, "Wrong size on ARTrackedGeometry_GetUnderlyingMesh");
+static_assert(offsetof(ARTrackedGeometry_GetUnderlyingMesh, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetUnderlyingMesh::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARTrackedGeometry.GetDebugName
+// 0x0008 (0x0008 - 0x0000)
+struct ARTrackedGeometry_GetDebugName final
+{
+public:
+	class FName                                   ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARTrackedGeometry_GetDebugName) == 0x000004, "Wrong alignment on ARTrackedGeometry_GetDebugName");
+static_assert(sizeof(ARTrackedGeometry_GetDebugName) == 0x000008, "Wrong size on ARTrackedGeometry_GetDebugName");
+static_assert(offsetof(ARTrackedGeometry_GetDebugName, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetDebugName::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARTrackedGeometry.GetLastUpdateFrameNumber
+// 0x0004 (0x0004 - 0x0000)
+struct ARTrackedGeometry_GetLastUpdateFrameNumber final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARTrackedGeometry_GetLastUpdateFrameNumber) == 0x000004, "Wrong alignment on ARTrackedGeometry_GetLastUpdateFrameNumber");
+static_assert(sizeof(ARTrackedGeometry_GetLastUpdateFrameNumber) == 0x000004, "Wrong size on ARTrackedGeometry_GetLastUpdateFrameNumber");
+static_assert(offsetof(ARTrackedGeometry_GetLastUpdateFrameNumber, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetLastUpdateFrameNumber::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARTrackedGeometry.GetLastUpdateTimestamp
+// 0x0004 (0x0004 - 0x0000)
+struct ARTrackedGeometry_GetLastUpdateTimestamp final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARTrackedGeometry_GetLastUpdateTimestamp) == 0x000004, "Wrong alignment on ARTrackedGeometry_GetLastUpdateTimestamp");
+static_assert(sizeof(ARTrackedGeometry_GetLastUpdateTimestamp) == 0x000004, "Wrong size on ARTrackedGeometry_GetLastUpdateTimestamp");
+static_assert(offsetof(ARTrackedGeometry_GetLastUpdateTimestamp, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetLastUpdateTimestamp::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARTrackedGeometry.GetLocalToTrackingTransform
+// 0x0030 (0x0030 - 0x0000)
+struct ARTrackedGeometry_GetLocalToTrackingTransform final
+{
+public:
+	struct FTransform                             ReturnValue;                                       // 0x0000(0x0030)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARTrackedGeometry_GetLocalToTrackingTransform) == 0x000010, "Wrong alignment on ARTrackedGeometry_GetLocalToTrackingTransform");
+static_assert(sizeof(ARTrackedGeometry_GetLocalToTrackingTransform) == 0x000030, "Wrong size on ARTrackedGeometry_GetLocalToTrackingTransform");
+static_assert(offsetof(ARTrackedGeometry_GetLocalToTrackingTransform, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetLocalToTrackingTransform::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARTrackedGeometry.GetLocalToWorldTransform
+// 0x0030 (0x0030 - 0x0000)
+struct ARTrackedGeometry_GetLocalToWorldTransform final
+{
+public:
+	struct FTransform                             ReturnValue;                                       // 0x0000(0x0030)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARTrackedGeometry_GetLocalToWorldTransform) == 0x000010, "Wrong alignment on ARTrackedGeometry_GetLocalToWorldTransform");
+static_assert(sizeof(ARTrackedGeometry_GetLocalToWorldTransform) == 0x000030, "Wrong size on ARTrackedGeometry_GetLocalToWorldTransform");
+static_assert(offsetof(ARTrackedGeometry_GetLocalToWorldTransform, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetLocalToWorldTransform::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARTrackedGeometry.GetName
+// 0x0010 (0x0010 - 0x0000)
+struct ARTrackedGeometry_GetName final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARTrackedGeometry_GetName) == 0x000008, "Wrong alignment on ARTrackedGeometry_GetName");
+static_assert(sizeof(ARTrackedGeometry_GetName) == 0x000010, "Wrong size on ARTrackedGeometry_GetName");
+static_assert(offsetof(ARTrackedGeometry_GetName, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetName::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARTrackedGeometry.GetObjectClassification
 // 0x0001 (0x0001 - 0x0000)
-struct ARQRCodeComponent_SetQRCodeComponentDebugMode final
+struct ARTrackedGeometry_GetObjectClassification final
 {
 public:
-	EQRCodeComponentDebugMode                     NewDebugMode;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EARObjectClassification                       ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ARQRCodeComponent_SetQRCodeComponentDebugMode) == 0x000001, "Wrong alignment on ARQRCodeComponent_SetQRCodeComponentDebugMode");
-static_assert(sizeof(ARQRCodeComponent_SetQRCodeComponentDebugMode) == 0x000001, "Wrong size on ARQRCodeComponent_SetQRCodeComponentDebugMode");
-static_assert(offsetof(ARQRCodeComponent_SetQRCodeComponentDebugMode, NewDebugMode) == 0x000000, "Member 'ARQRCodeComponent_SetQRCodeComponentDebugMode::NewDebugMode' has a wrong offset!");
+static_assert(alignof(ARTrackedGeometry_GetObjectClassification) == 0x000001, "Wrong alignment on ARTrackedGeometry_GetObjectClassification");
+static_assert(sizeof(ARTrackedGeometry_GetObjectClassification) == 0x000001, "Wrong size on ARTrackedGeometry_GetObjectClassification");
+static_assert(offsetof(ARTrackedGeometry_GetObjectClassification, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetObjectClassification::ReturnValue' has a wrong offset!");
 
-// Function AugmentedReality.ARQRCodeComponent.ReceiveAdd
-// 0x0070 (0x0070 - 0x0000)
-struct ARQRCodeComponent_ReceiveAdd final
+// Function AugmentedReality.ARTrackedGeometry.GetTrackingState
+// 0x0001 (0x0001 - 0x0000)
+struct ARTrackedGeometry_GetTrackingState final
 {
 public:
-	struct FARQRCodeUpdatePayload                 Payload;                                           // 0x0000(0x0070)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	EARTrackingState                              ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ARQRCodeComponent_ReceiveAdd) == 0x000010, "Wrong alignment on ARQRCodeComponent_ReceiveAdd");
-static_assert(sizeof(ARQRCodeComponent_ReceiveAdd) == 0x000070, "Wrong size on ARQRCodeComponent_ReceiveAdd");
-static_assert(offsetof(ARQRCodeComponent_ReceiveAdd, Payload) == 0x000000, "Member 'ARQRCodeComponent_ReceiveAdd::Payload' has a wrong offset!");
+static_assert(alignof(ARTrackedGeometry_GetTrackingState) == 0x000001, "Wrong alignment on ARTrackedGeometry_GetTrackingState");
+static_assert(sizeof(ARTrackedGeometry_GetTrackingState) == 0x000001, "Wrong size on ARTrackedGeometry_GetTrackingState");
+static_assert(offsetof(ARTrackedGeometry_GetTrackingState, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetTrackingState::ReturnValue' has a wrong offset!");
 
-// Function AugmentedReality.ARQRCodeComponent.ReceiveUpdate
-// 0x0070 (0x0070 - 0x0000)
-struct ARQRCodeComponent_ReceiveUpdate final
+// Function AugmentedReality.ARTrackedGeometry.HasSpatialMeshUsageFlag
+// 0x0002 (0x0002 - 0x0000)
+struct ARTrackedGeometry_HasSpatialMeshUsageFlag final
 {
 public:
-	struct FARQRCodeUpdatePayload                 Payload;                                           // 0x0000(0x0070)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	EARSpatialMeshUsageFlags                      InFlag;                                            // 0x0000(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ARQRCodeComponent_ReceiveUpdate) == 0x000010, "Wrong alignment on ARQRCodeComponent_ReceiveUpdate");
-static_assert(sizeof(ARQRCodeComponent_ReceiveUpdate) == 0x000070, "Wrong size on ARQRCodeComponent_ReceiveUpdate");
-static_assert(offsetof(ARQRCodeComponent_ReceiveUpdate, Payload) == 0x000000, "Member 'ARQRCodeComponent_ReceiveUpdate::Payload' has a wrong offset!");
+static_assert(alignof(ARTrackedGeometry_HasSpatialMeshUsageFlag) == 0x000001, "Wrong alignment on ARTrackedGeometry_HasSpatialMeshUsageFlag");
+static_assert(sizeof(ARTrackedGeometry_HasSpatialMeshUsageFlag) == 0x000002, "Wrong size on ARTrackedGeometry_HasSpatialMeshUsageFlag");
+static_assert(offsetof(ARTrackedGeometry_HasSpatialMeshUsageFlag, InFlag) == 0x000000, "Member 'ARTrackedGeometry_HasSpatialMeshUsageFlag::InFlag' has a wrong offset!");
+static_assert(offsetof(ARTrackedGeometry_HasSpatialMeshUsageFlag, ReturnValue) == 0x000001, "Member 'ARTrackedGeometry_HasSpatialMeshUsageFlag::ReturnValue' has a wrong offset!");
 
-// Function AugmentedReality.ARQRCodeComponent.ServerUpdatePayload
-// 0x0070 (0x0070 - 0x0000)
-struct ARQRCodeComponent_ServerUpdatePayload final
+// Function AugmentedReality.ARTrackedGeometry.IsTracked
+// 0x0001 (0x0001 - 0x0000)
+struct ARTrackedGeometry_IsTracked final
 {
 public:
-	struct FARQRCodeUpdatePayload                 NewPayload;                                        // 0x0000(0x0070)(ConstParm, Parm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ARQRCodeComponent_ServerUpdatePayload) == 0x000010, "Wrong alignment on ARQRCodeComponent_ServerUpdatePayload");
-static_assert(sizeof(ARQRCodeComponent_ServerUpdatePayload) == 0x000070, "Wrong size on ARQRCodeComponent_ServerUpdatePayload");
-static_assert(offsetof(ARQRCodeComponent_ServerUpdatePayload, NewPayload) == 0x000000, "Member 'ARQRCodeComponent_ServerUpdatePayload::NewPayload' has a wrong offset!");
+static_assert(alignof(ARTrackedGeometry_IsTracked) == 0x000001, "Wrong alignment on ARTrackedGeometry_IsTracked");
+static_assert(sizeof(ARTrackedGeometry_IsTracked) == 0x000001, "Wrong size on ARTrackedGeometry_IsTracked");
+static_assert(offsetof(ARTrackedGeometry_IsTracked, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_IsTracked::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARTrackedObject.GetDetectedObject
+// 0x0008 (0x0008 - 0x0000)
+struct ARTrackedObject_GetDetectedObject final
+{
+public:
+	class UARCandidateObject*                     ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARTrackedObject_GetDetectedObject) == 0x000008, "Wrong alignment on ARTrackedObject_GetDetectedObject");
+static_assert(sizeof(ARTrackedObject_GetDetectedObject) == 0x000008, "Wrong size on ARTrackedObject_GetDetectedObject");
+static_assert(offsetof(ARTrackedObject_GetDetectedObject, ReturnValue) == 0x000000, "Member 'ARTrackedObject_GetDetectedObject::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.AddCandidateImage
+// 0x0008 (0x0008 - 0x0000)
+struct ARSessionConfig_AddCandidateImage final
+{
+public:
+	class UARCandidateImage*                      NewCandidateImage;                                 // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_AddCandidateImage) == 0x000008, "Wrong alignment on ARSessionConfig_AddCandidateImage");
+static_assert(sizeof(ARSessionConfig_AddCandidateImage) == 0x000008, "Wrong size on ARSessionConfig_AddCandidateImage");
+static_assert(offsetof(ARSessionConfig_AddCandidateImage, NewCandidateImage) == 0x000000, "Member 'ARSessionConfig_AddCandidateImage::NewCandidateImage' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.AddCandidateObject
+// 0x0008 (0x0008 - 0x0000)
+struct ARSessionConfig_AddCandidateObject final
+{
+public:
+	class UARCandidateObject*                     CandidateObject;                                   // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_AddCandidateObject) == 0x000008, "Wrong alignment on ARSessionConfig_AddCandidateObject");
+static_assert(sizeof(ARSessionConfig_AddCandidateObject) == 0x000008, "Wrong size on ARSessionConfig_AddCandidateObject");
+static_assert(offsetof(ARSessionConfig_AddCandidateObject, CandidateObject) == 0x000000, "Member 'ARSessionConfig_AddCandidateObject::CandidateObject' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetCandidateObjectList
+// 0x0010 (0x0010 - 0x0000)
+struct ARSessionConfig_SetCandidateObjectList final
+{
+public:
+	TArray<class UARCandidateObject*>             InCandidateObjects;                                // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetCandidateObjectList) == 0x000008, "Wrong alignment on ARSessionConfig_SetCandidateObjectList");
+static_assert(sizeof(ARSessionConfig_SetCandidateObjectList) == 0x000010, "Wrong size on ARSessionConfig_SetCandidateObjectList");
+static_assert(offsetof(ARSessionConfig_SetCandidateObjectList, InCandidateObjects) == 0x000000, "Member 'ARSessionConfig_SetCandidateObjectList::InCandidateObjects' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetDesiredVideoFormat
+// 0x000C (0x000C - 0x0000)
+struct ARSessionConfig_SetDesiredVideoFormat final
+{
+public:
+	struct FARVideoFormat                         NewFormat;                                         // 0x0000(0x000C)(Parm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetDesiredVideoFormat) == 0x000004, "Wrong alignment on ARSessionConfig_SetDesiredVideoFormat");
+static_assert(sizeof(ARSessionConfig_SetDesiredVideoFormat) == 0x00000C, "Wrong size on ARSessionConfig_SetDesiredVideoFormat");
+static_assert(offsetof(ARSessionConfig_SetDesiredVideoFormat, NewFormat) == 0x000000, "Member 'ARSessionConfig_SetDesiredVideoFormat::NewFormat' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetEnableAutoFocus
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_SetEnableAutoFocus final
+{
+public:
+	bool                                          bNewValue;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetEnableAutoFocus) == 0x000001, "Wrong alignment on ARSessionConfig_SetEnableAutoFocus");
+static_assert(sizeof(ARSessionConfig_SetEnableAutoFocus) == 0x000001, "Wrong size on ARSessionConfig_SetEnableAutoFocus");
+static_assert(offsetof(ARSessionConfig_SetEnableAutoFocus, bNewValue) == 0x000000, "Member 'ARSessionConfig_SetEnableAutoFocus::bNewValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetFaceTrackingDirection
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_SetFaceTrackingDirection final
+{
+public:
+	EARFaceTrackingDirection                      InDirection;                                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetFaceTrackingDirection) == 0x000001, "Wrong alignment on ARSessionConfig_SetFaceTrackingDirection");
+static_assert(sizeof(ARSessionConfig_SetFaceTrackingDirection) == 0x000001, "Wrong size on ARSessionConfig_SetFaceTrackingDirection");
+static_assert(offsetof(ARSessionConfig_SetFaceTrackingDirection, InDirection) == 0x000000, "Member 'ARSessionConfig_SetFaceTrackingDirection::InDirection' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetFaceTrackingUpdate
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_SetFaceTrackingUpdate final
+{
+public:
+	EARFaceTrackingUpdate                         InUpdate;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetFaceTrackingUpdate) == 0x000001, "Wrong alignment on ARSessionConfig_SetFaceTrackingUpdate");
+static_assert(sizeof(ARSessionConfig_SetFaceTrackingUpdate) == 0x000001, "Wrong size on ARSessionConfig_SetFaceTrackingUpdate");
+static_assert(offsetof(ARSessionConfig_SetFaceTrackingUpdate, InUpdate) == 0x000000, "Member 'ARSessionConfig_SetFaceTrackingUpdate::InUpdate' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetResetCameraTracking
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_SetResetCameraTracking final
+{
+public:
+	bool                                          bNewValue;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetResetCameraTracking) == 0x000001, "Wrong alignment on ARSessionConfig_SetResetCameraTracking");
+static_assert(sizeof(ARSessionConfig_SetResetCameraTracking) == 0x000001, "Wrong size on ARSessionConfig_SetResetCameraTracking");
+static_assert(offsetof(ARSessionConfig_SetResetCameraTracking, bNewValue) == 0x000000, "Member 'ARSessionConfig_SetResetCameraTracking::bNewValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetResetTrackedObjects
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_SetResetTrackedObjects final
+{
+public:
+	bool                                          bNewValue;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetResetTrackedObjects) == 0x000001, "Wrong alignment on ARSessionConfig_SetResetTrackedObjects");
+static_assert(sizeof(ARSessionConfig_SetResetTrackedObjects) == 0x000001, "Wrong size on ARSessionConfig_SetResetTrackedObjects");
+static_assert(offsetof(ARSessionConfig_SetResetTrackedObjects, bNewValue) == 0x000000, "Member 'ARSessionConfig_SetResetTrackedObjects::bNewValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetSceneReconstructionMethod
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_SetSceneReconstructionMethod final
+{
+public:
+	EARSceneReconstruction                        InSceneReconstructionMethod;                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetSceneReconstructionMethod) == 0x000001, "Wrong alignment on ARSessionConfig_SetSceneReconstructionMethod");
+static_assert(sizeof(ARSessionConfig_SetSceneReconstructionMethod) == 0x000001, "Wrong size on ARSessionConfig_SetSceneReconstructionMethod");
+static_assert(offsetof(ARSessionConfig_SetSceneReconstructionMethod, InSceneReconstructionMethod) == 0x000000, "Member 'ARSessionConfig_SetSceneReconstructionMethod::InSceneReconstructionMethod' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetSessionTrackingFeatureToEnable
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_SetSessionTrackingFeatureToEnable final
+{
+public:
+	EARSessionTrackingFeature                     InSessionTrackingFeature;                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetSessionTrackingFeatureToEnable) == 0x000001, "Wrong alignment on ARSessionConfig_SetSessionTrackingFeatureToEnable");
+static_assert(sizeof(ARSessionConfig_SetSessionTrackingFeatureToEnable) == 0x000001, "Wrong size on ARSessionConfig_SetSessionTrackingFeatureToEnable");
+static_assert(offsetof(ARSessionConfig_SetSessionTrackingFeatureToEnable, InSessionTrackingFeature) == 0x000000, "Member 'ARSessionConfig_SetSessionTrackingFeatureToEnable::InSessionTrackingFeature' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.SetWorldMapData
+// 0x0010 (0x0010 - 0x0000)
+struct ARSessionConfig_SetWorldMapData final
+{
+public:
+	TArray<uint8>                                 WorldMapData_0;                                    // 0x0000(0x0010)(Parm, ZeroConstructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_SetWorldMapData) == 0x000008, "Wrong alignment on ARSessionConfig_SetWorldMapData");
+static_assert(sizeof(ARSessionConfig_SetWorldMapData) == 0x000010, "Wrong size on ARSessionConfig_SetWorldMapData");
+static_assert(offsetof(ARSessionConfig_SetWorldMapData, WorldMapData_0) == 0x000000, "Member 'ARSessionConfig_SetWorldMapData::WorldMapData_0' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetCandidateImageList
+// 0x0010 (0x0010 - 0x0000)
+struct ARSessionConfig_GetCandidateImageList final
+{
+public:
+	TArray<class UARCandidateImage*>              ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetCandidateImageList) == 0x000008, "Wrong alignment on ARSessionConfig_GetCandidateImageList");
+static_assert(sizeof(ARSessionConfig_GetCandidateImageList) == 0x000010, "Wrong size on ARSessionConfig_GetCandidateImageList");
+static_assert(offsetof(ARSessionConfig_GetCandidateImageList, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetCandidateImageList::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetCandidateObjectList
+// 0x0010 (0x0010 - 0x0000)
+struct ARSessionConfig_GetCandidateObjectList final
+{
+public:
+	TArray<class UARCandidateObject*>             ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetCandidateObjectList) == 0x000008, "Wrong alignment on ARSessionConfig_GetCandidateObjectList");
+static_assert(sizeof(ARSessionConfig_GetCandidateObjectList) == 0x000010, "Wrong size on ARSessionConfig_GetCandidateObjectList");
+static_assert(offsetof(ARSessionConfig_GetCandidateObjectList, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetCandidateObjectList::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetDesiredVideoFormat
+// 0x000C (0x000C - 0x0000)
+struct ARSessionConfig_GetDesiredVideoFormat final
+{
+public:
+	struct FARVideoFormat                         ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetDesiredVideoFormat) == 0x000004, "Wrong alignment on ARSessionConfig_GetDesiredVideoFormat");
+static_assert(sizeof(ARSessionConfig_GetDesiredVideoFormat) == 0x00000C, "Wrong size on ARSessionConfig_GetDesiredVideoFormat");
+static_assert(offsetof(ARSessionConfig_GetDesiredVideoFormat, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetDesiredVideoFormat::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetEnabledSessionTrackingFeature
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetEnabledSessionTrackingFeature final
+{
+public:
+	EARSessionTrackingFeature                     ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetEnabledSessionTrackingFeature) == 0x000001, "Wrong alignment on ARSessionConfig_GetEnabledSessionTrackingFeature");
+static_assert(sizeof(ARSessionConfig_GetEnabledSessionTrackingFeature) == 0x000001, "Wrong size on ARSessionConfig_GetEnabledSessionTrackingFeature");
+static_assert(offsetof(ARSessionConfig_GetEnabledSessionTrackingFeature, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetEnabledSessionTrackingFeature::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetEnvironmentCaptureProbeType
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetEnvironmentCaptureProbeType final
+{
+public:
+	EAREnvironmentCaptureProbeType                ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetEnvironmentCaptureProbeType) == 0x000001, "Wrong alignment on ARSessionConfig_GetEnvironmentCaptureProbeType");
+static_assert(sizeof(ARSessionConfig_GetEnvironmentCaptureProbeType) == 0x000001, "Wrong size on ARSessionConfig_GetEnvironmentCaptureProbeType");
+static_assert(offsetof(ARSessionConfig_GetEnvironmentCaptureProbeType, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetEnvironmentCaptureProbeType::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetFaceTrackingDirection
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetFaceTrackingDirection final
+{
+public:
+	EARFaceTrackingDirection                      ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetFaceTrackingDirection) == 0x000001, "Wrong alignment on ARSessionConfig_GetFaceTrackingDirection");
+static_assert(sizeof(ARSessionConfig_GetFaceTrackingDirection) == 0x000001, "Wrong size on ARSessionConfig_GetFaceTrackingDirection");
+static_assert(offsetof(ARSessionConfig_GetFaceTrackingDirection, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetFaceTrackingDirection::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetFaceTrackingUpdate
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetFaceTrackingUpdate final
+{
+public:
+	EARFaceTrackingUpdate                         ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetFaceTrackingUpdate) == 0x000001, "Wrong alignment on ARSessionConfig_GetFaceTrackingUpdate");
+static_assert(sizeof(ARSessionConfig_GetFaceTrackingUpdate) == 0x000001, "Wrong size on ARSessionConfig_GetFaceTrackingUpdate");
+static_assert(offsetof(ARSessionConfig_GetFaceTrackingUpdate, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetFaceTrackingUpdate::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetFrameSyncMode
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetFrameSyncMode final
+{
+public:
+	EARFrameSyncMode                              ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetFrameSyncMode) == 0x000001, "Wrong alignment on ARSessionConfig_GetFrameSyncMode");
+static_assert(sizeof(ARSessionConfig_GetFrameSyncMode) == 0x000001, "Wrong size on ARSessionConfig_GetFrameSyncMode");
+static_assert(offsetof(ARSessionConfig_GetFrameSyncMode, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetFrameSyncMode::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetLightEstimationMode
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetLightEstimationMode final
+{
+public:
+	EARLightEstimationMode                        ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetLightEstimationMode) == 0x000001, "Wrong alignment on ARSessionConfig_GetLightEstimationMode");
+static_assert(sizeof(ARSessionConfig_GetLightEstimationMode) == 0x000001, "Wrong size on ARSessionConfig_GetLightEstimationMode");
+static_assert(offsetof(ARSessionConfig_GetLightEstimationMode, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetLightEstimationMode::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetMaxNumSimultaneousImagesTracked
+// 0x0004 (0x0004 - 0x0000)
+struct ARSessionConfig_GetMaxNumSimultaneousImagesTracked final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetMaxNumSimultaneousImagesTracked) == 0x000004, "Wrong alignment on ARSessionConfig_GetMaxNumSimultaneousImagesTracked");
+static_assert(sizeof(ARSessionConfig_GetMaxNumSimultaneousImagesTracked) == 0x000004, "Wrong size on ARSessionConfig_GetMaxNumSimultaneousImagesTracked");
+static_assert(offsetof(ARSessionConfig_GetMaxNumSimultaneousImagesTracked, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetMaxNumSimultaneousImagesTracked::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetPlaneDetectionMode
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetPlaneDetectionMode final
+{
+public:
+	EARPlaneDetectionMode                         ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetPlaneDetectionMode) == 0x000001, "Wrong alignment on ARSessionConfig_GetPlaneDetectionMode");
+static_assert(sizeof(ARSessionConfig_GetPlaneDetectionMode) == 0x000001, "Wrong size on ARSessionConfig_GetPlaneDetectionMode");
+static_assert(offsetof(ARSessionConfig_GetPlaneDetectionMode, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetPlaneDetectionMode::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetSceneReconstructionMethod
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetSceneReconstructionMethod final
+{
+public:
+	EARSceneReconstruction                        ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetSceneReconstructionMethod) == 0x000001, "Wrong alignment on ARSessionConfig_GetSceneReconstructionMethod");
+static_assert(sizeof(ARSessionConfig_GetSceneReconstructionMethod) == 0x000001, "Wrong size on ARSessionConfig_GetSceneReconstructionMethod");
+static_assert(offsetof(ARSessionConfig_GetSceneReconstructionMethod, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetSceneReconstructionMethod::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetSessionType
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetSessionType final
+{
+public:
+	EARSessionType                                ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetSessionType) == 0x000001, "Wrong alignment on ARSessionConfig_GetSessionType");
+static_assert(sizeof(ARSessionConfig_GetSessionType) == 0x000001, "Wrong size on ARSessionConfig_GetSessionType");
+static_assert(offsetof(ARSessionConfig_GetSessionType, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetSessionType::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetWorldAlignment
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_GetWorldAlignment final
+{
+public:
+	EARWorldAlignment                             ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetWorldAlignment) == 0x000001, "Wrong alignment on ARSessionConfig_GetWorldAlignment");
+static_assert(sizeof(ARSessionConfig_GetWorldAlignment) == 0x000001, "Wrong size on ARSessionConfig_GetWorldAlignment");
+static_assert(offsetof(ARSessionConfig_GetWorldAlignment, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetWorldAlignment::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.GetWorldMapData
+// 0x0010 (0x0010 - 0x0000)
+struct ARSessionConfig_GetWorldMapData final
+{
+public:
+	TArray<uint8>                                 ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_GetWorldMapData) == 0x000008, "Wrong alignment on ARSessionConfig_GetWorldMapData");
+static_assert(sizeof(ARSessionConfig_GetWorldMapData) == 0x000010, "Wrong size on ARSessionConfig_GetWorldMapData");
+static_assert(offsetof(ARSessionConfig_GetWorldMapData, ReturnValue) == 0x000000, "Member 'ARSessionConfig_GetWorldMapData::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.ShouldEnableAutoFocus
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_ShouldEnableAutoFocus final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_ShouldEnableAutoFocus) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldEnableAutoFocus");
+static_assert(sizeof(ARSessionConfig_ShouldEnableAutoFocus) == 0x000001, "Wrong size on ARSessionConfig_ShouldEnableAutoFocus");
+static_assert(offsetof(ARSessionConfig_ShouldEnableAutoFocus, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldEnableAutoFocus::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.ShouldEnableCameraTracking
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_ShouldEnableCameraTracking final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_ShouldEnableCameraTracking) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldEnableCameraTracking");
+static_assert(sizeof(ARSessionConfig_ShouldEnableCameraTracking) == 0x000001, "Wrong size on ARSessionConfig_ShouldEnableCameraTracking");
+static_assert(offsetof(ARSessionConfig_ShouldEnableCameraTracking, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldEnableCameraTracking::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.ShouldRenderCameraOverlay
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_ShouldRenderCameraOverlay final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_ShouldRenderCameraOverlay) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldRenderCameraOverlay");
+static_assert(sizeof(ARSessionConfig_ShouldRenderCameraOverlay) == 0x000001, "Wrong size on ARSessionConfig_ShouldRenderCameraOverlay");
+static_assert(offsetof(ARSessionConfig_ShouldRenderCameraOverlay, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldRenderCameraOverlay::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.ShouldResetCameraTracking
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_ShouldResetCameraTracking final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_ShouldResetCameraTracking) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldResetCameraTracking");
+static_assert(sizeof(ARSessionConfig_ShouldResetCameraTracking) == 0x000001, "Wrong size on ARSessionConfig_ShouldResetCameraTracking");
+static_assert(offsetof(ARSessionConfig_ShouldResetCameraTracking, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldResetCameraTracking::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARSessionConfig.ShouldResetTrackedObjects
+// 0x0001 (0x0001 - 0x0000)
+struct ARSessionConfig_ShouldResetTrackedObjects final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARSessionConfig_ShouldResetTrackedObjects) == 0x000001, "Wrong alignment on ARSessionConfig_ShouldResetTrackedObjects");
+static_assert(sizeof(ARSessionConfig_ShouldResetTrackedObjects) == 0x000001, "Wrong size on ARSessionConfig_ShouldResetTrackedObjects");
+static_assert(offsetof(ARSessionConfig_ShouldResetTrackedObjects, ReturnValue) == 0x000000, "Member 'ARSessionConfig_ShouldResetTrackedObjects::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARActor.AddARComponent
+// 0x0020 (0x0020 - 0x0000)
+struct ARActor_AddARComponent final
+{
+public:
+	TSubclassOf<class UARComponent>               InComponentClass;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGuid                                  NativeID;                                          // 0x0008(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UARComponent*                           ReturnValue;                                       // 0x0018(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARActor_AddARComponent) == 0x000008, "Wrong alignment on ARActor_AddARComponent");
+static_assert(sizeof(ARActor_AddARComponent) == 0x000020, "Wrong size on ARActor_AddARComponent");
+static_assert(offsetof(ARActor_AddARComponent, InComponentClass) == 0x000000, "Member 'ARActor_AddARComponent::InComponentClass' has a wrong offset!");
+static_assert(offsetof(ARActor_AddARComponent, NativeID) == 0x000008, "Member 'ARActor_AddARComponent::NativeID' has a wrong offset!");
+static_assert(offsetof(ARActor_AddARComponent, ReturnValue) == 0x000018, "Member 'ARActor_AddARComponent::ReturnValue' has a wrong offset!");
 
 // Function AugmentedReality.ARBasicLightEstimate.GetAmbientColor
 // 0x0010 (0x0010 - 0x0000)
@@ -1315,76 +1398,6 @@ public:
 static_assert(alignof(ARBasicLightEstimate_GetAmbientIntensityLumens) == 0x000004, "Wrong alignment on ARBasicLightEstimate_GetAmbientIntensityLumens");
 static_assert(sizeof(ARBasicLightEstimate_GetAmbientIntensityLumens) == 0x000004, "Wrong size on ARBasicLightEstimate_GetAmbientIntensityLumens");
 static_assert(offsetof(ARBasicLightEstimate_GetAmbientIntensityLumens, ReturnValue) == 0x000000, "Member 'ARBasicLightEstimate_GetAmbientIntensityLumens::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateImage.GetCandidateTexture
-// 0x0008 (0x0008 - 0x0000)
-struct ARCandidateImage_GetCandidateTexture final
-{
-public:
-	class UTexture2D*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateImage_GetCandidateTexture) == 0x000008, "Wrong alignment on ARCandidateImage_GetCandidateTexture");
-static_assert(sizeof(ARCandidateImage_GetCandidateTexture) == 0x000008, "Wrong size on ARCandidateImage_GetCandidateTexture");
-static_assert(offsetof(ARCandidateImage_GetCandidateTexture, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetCandidateTexture::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateImage.GetFriendlyName
-// 0x0010 (0x0010 - 0x0000)
-struct ARCandidateImage_GetFriendlyName final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateImage_GetFriendlyName) == 0x000008, "Wrong alignment on ARCandidateImage_GetFriendlyName");
-static_assert(sizeof(ARCandidateImage_GetFriendlyName) == 0x000010, "Wrong size on ARCandidateImage_GetFriendlyName");
-static_assert(offsetof(ARCandidateImage_GetFriendlyName, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetFriendlyName::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateImage.GetOrientation
-// 0x0001 (0x0001 - 0x0000)
-struct ARCandidateImage_GetOrientation final
-{
-public:
-	EARCandidateImageOrientation                  ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateImage_GetOrientation) == 0x000001, "Wrong alignment on ARCandidateImage_GetOrientation");
-static_assert(sizeof(ARCandidateImage_GetOrientation) == 0x000001, "Wrong size on ARCandidateImage_GetOrientation");
-static_assert(offsetof(ARCandidateImage_GetOrientation, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetOrientation::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateImage.GetPhysicalHeight
-// 0x0004 (0x0004 - 0x0000)
-struct ARCandidateImage_GetPhysicalHeight final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateImage_GetPhysicalHeight) == 0x000004, "Wrong alignment on ARCandidateImage_GetPhysicalHeight");
-static_assert(sizeof(ARCandidateImage_GetPhysicalHeight) == 0x000004, "Wrong size on ARCandidateImage_GetPhysicalHeight");
-static_assert(offsetof(ARCandidateImage_GetPhysicalHeight, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetPhysicalHeight::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateImage.GetPhysicalWidth
-// 0x0004 (0x0004 - 0x0000)
-struct ARCandidateImage_GetPhysicalWidth final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateImage_GetPhysicalWidth) == 0x000004, "Wrong alignment on ARCandidateImage_GetPhysicalWidth");
-static_assert(sizeof(ARCandidateImage_GetPhysicalWidth) == 0x000004, "Wrong size on ARCandidateImage_GetPhysicalWidth");
-static_assert(offsetof(ARCandidateImage_GetPhysicalWidth, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetPhysicalWidth::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARActor.AddARComponent
-// 0x0020 (0x0020 - 0x0000)
-struct ARActor_AddARComponent final
-{
-public:
-	TSubclassOf<class UARComponent>               InComponentClass;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGuid                                  NativeID;                                          // 0x0008(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UARComponent*                           ReturnValue;                                       // 0x0018(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARActor_AddARComponent) == 0x000008, "Wrong alignment on ARActor_AddARComponent");
-static_assert(sizeof(ARActor_AddARComponent) == 0x000020, "Wrong size on ARActor_AddARComponent");
-static_assert(offsetof(ARActor_AddARComponent, InComponentClass) == 0x000000, "Member 'ARActor_AddARComponent::InComponentClass' has a wrong offset!");
-static_assert(offsetof(ARActor_AddARComponent, NativeID) == 0x000008, "Member 'ARActor_AddARComponent::NativeID' has a wrong offset!");
-static_assert(offsetof(ARActor_AddARComponent, ReturnValue) == 0x000018, "Member 'ARActor_AddARComponent::ReturnValue' has a wrong offset!");
 
 // Function AugmentedReality.ARTraceResultLibrary.GetDistanceFromCamera
 // 0x0070 (0x0070 - 0x0000)
@@ -1467,6 +1480,83 @@ static_assert(sizeof(ARTraceResultLibrary_GetTrackedGeometry) == 0x000070, "Wron
 static_assert(offsetof(ARTraceResultLibrary_GetTrackedGeometry, TraceResult) == 0x000000, "Member 'ARTraceResultLibrary_GetTrackedGeometry::TraceResult' has a wrong offset!");
 static_assert(offsetof(ARTraceResultLibrary_GetTrackedGeometry, ReturnValue) == 0x000060, "Member 'ARTraceResultLibrary_GetTrackedGeometry::ReturnValue' has a wrong offset!");
 
+// Function AugmentedReality.AREnvironmentCaptureProbe.GetEnvironmentCaptureTexture
+// 0x0008 (0x0008 - 0x0000)
+struct AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture final
+{
+public:
+	class UAREnvironmentCaptureProbeTexture*      ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture) == 0x000008, "Wrong alignment on AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture");
+static_assert(sizeof(AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture) == 0x000008, "Wrong size on AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture");
+static_assert(offsetof(AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture, ReturnValue) == 0x000000, "Member 'AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.AREnvironmentCaptureProbe.GetExtent
+// 0x000C (0x000C - 0x0000)
+struct AREnvironmentCaptureProbe_GetExtent final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(AREnvironmentCaptureProbe_GetExtent) == 0x000004, "Wrong alignment on AREnvironmentCaptureProbe_GetExtent");
+static_assert(sizeof(AREnvironmentCaptureProbe_GetExtent) == 0x00000C, "Wrong size on AREnvironmentCaptureProbe_GetExtent");
+static_assert(offsetof(AREnvironmentCaptureProbe_GetExtent, ReturnValue) == 0x000000, "Member 'AREnvironmentCaptureProbe_GetExtent::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateImage.GetCandidateTexture
+// 0x0008 (0x0008 - 0x0000)
+struct ARCandidateImage_GetCandidateTexture final
+{
+public:
+	class UTexture2D*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateImage_GetCandidateTexture) == 0x000008, "Wrong alignment on ARCandidateImage_GetCandidateTexture");
+static_assert(sizeof(ARCandidateImage_GetCandidateTexture) == 0x000008, "Wrong size on ARCandidateImage_GetCandidateTexture");
+static_assert(offsetof(ARCandidateImage_GetCandidateTexture, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetCandidateTexture::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateImage.GetFriendlyName
+// 0x0010 (0x0010 - 0x0000)
+struct ARCandidateImage_GetFriendlyName final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateImage_GetFriendlyName) == 0x000008, "Wrong alignment on ARCandidateImage_GetFriendlyName");
+static_assert(sizeof(ARCandidateImage_GetFriendlyName) == 0x000010, "Wrong size on ARCandidateImage_GetFriendlyName");
+static_assert(offsetof(ARCandidateImage_GetFriendlyName, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetFriendlyName::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateImage.GetOrientation
+// 0x0001 (0x0001 - 0x0000)
+struct ARCandidateImage_GetOrientation final
+{
+public:
+	EARCandidateImageOrientation                  ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateImage_GetOrientation) == 0x000001, "Wrong alignment on ARCandidateImage_GetOrientation");
+static_assert(sizeof(ARCandidateImage_GetOrientation) == 0x000001, "Wrong size on ARCandidateImage_GetOrientation");
+static_assert(offsetof(ARCandidateImage_GetOrientation, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetOrientation::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateImage.GetPhysicalHeight
+// 0x0004 (0x0004 - 0x0000)
+struct ARCandidateImage_GetPhysicalHeight final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateImage_GetPhysicalHeight) == 0x000004, "Wrong alignment on ARCandidateImage_GetPhysicalHeight");
+static_assert(sizeof(ARCandidateImage_GetPhysicalHeight) == 0x000004, "Wrong size on ARCandidateImage_GetPhysicalHeight");
+static_assert(offsetof(ARCandidateImage_GetPhysicalHeight, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetPhysicalHeight::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARCandidateImage.GetPhysicalWidth
+// 0x0004 (0x0004 - 0x0000)
+struct ARCandidateImage_GetPhysicalWidth final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARCandidateImage_GetPhysicalWidth) == 0x000004, "Wrong alignment on ARCandidateImage_GetPhysicalWidth");
+static_assert(sizeof(ARCandidateImage_GetPhysicalWidth) == 0x000004, "Wrong size on ARCandidateImage_GetPhysicalWidth");
+static_assert(offsetof(ARCandidateImage_GetPhysicalWidth, ReturnValue) == 0x000000, "Member 'ARCandidateImage_GetPhysicalWidth::ReturnValue' has a wrong offset!");
+
 // Function AugmentedReality.ARSaveWorldAsyncTaskBlueprintProxy.ARSaveWorld
 // 0x0010 (0x0010 - 0x0000)
 struct ARSaveWorldAsyncTaskBlueprintProxy_ARSaveWorld final
@@ -1496,6 +1586,94 @@ static_assert(offsetof(ARGetCandidateObjectAsyncTaskBlueprintProxy_ARGetCandidat
 static_assert(offsetof(ARGetCandidateObjectAsyncTaskBlueprintProxy_ARGetCandidateObject, Location) == 0x000008, "Member 'ARGetCandidateObjectAsyncTaskBlueprintProxy_ARGetCandidateObject::Location' has a wrong offset!");
 static_assert(offsetof(ARGetCandidateObjectAsyncTaskBlueprintProxy_ARGetCandidateObject, Extent) == 0x000014, "Member 'ARGetCandidateObjectAsyncTaskBlueprintProxy_ARGetCandidateObject::Extent' has a wrong offset!");
 static_assert(offsetof(ARGetCandidateObjectAsyncTaskBlueprintProxy_ARGetCandidateObject, ReturnValue) == 0x000020, "Member 'ARGetCandidateObjectAsyncTaskBlueprintProxy_ARGetCandidateObject::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARComponent.GetMRMesh
+// 0x0008 (0x0008 - 0x0000)
+struct ARComponent_GetMRMesh final
+{
+public:
+	class UMRMeshComponent*                       ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARComponent_GetMRMesh) == 0x000008, "Wrong alignment on ARComponent_GetMRMesh");
+static_assert(sizeof(ARComponent_GetMRMesh) == 0x000008, "Wrong size on ARComponent_GetMRMesh");
+static_assert(offsetof(ARComponent_GetMRMesh, ReturnValue) == 0x000000, "Member 'ARComponent_GetMRMesh::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARComponent.SetNativeID
+// 0x0010 (0x0010 - 0x0000)
+struct ARComponent_SetNativeID final
+{
+public:
+	struct FGuid                                  NativeID_0;                                        // 0x0000(0x0010)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARComponent_SetNativeID) == 0x000004, "Wrong alignment on ARComponent_SetNativeID");
+static_assert(sizeof(ARComponent_SetNativeID) == 0x000010, "Wrong size on ARComponent_SetNativeID");
+static_assert(offsetof(ARComponent_SetNativeID, NativeID_0) == 0x000000, "Member 'ARComponent_SetNativeID::NativeID_0' has a wrong offset!");
+
+// Function AugmentedReality.ARPlaneComponent.GetObjectClassificationDebugColors
+// 0x0050 (0x0050 - 0x0000)
+struct ARPlaneComponent_GetObjectClassificationDebugColors final
+{
+public:
+	TMap<EARObjectClassification, struct FLinearColor> ReturnValue;                                       // 0x0000(0x0050)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARPlaneComponent_GetObjectClassificationDebugColors) == 0x000008, "Wrong alignment on ARPlaneComponent_GetObjectClassificationDebugColors");
+static_assert(sizeof(ARPlaneComponent_GetObjectClassificationDebugColors) == 0x000050, "Wrong size on ARPlaneComponent_GetObjectClassificationDebugColors");
+static_assert(offsetof(ARPlaneComponent_GetObjectClassificationDebugColors, ReturnValue) == 0x000000, "Member 'ARPlaneComponent_GetObjectClassificationDebugColors::ReturnValue' has a wrong offset!");
+
+// Function AugmentedReality.ARPlaneComponent.SetObjectClassificationDebugColors
+// 0x0050 (0x0050 - 0x0000)
+struct ARPlaneComponent_SetObjectClassificationDebugColors final
+{
+public:
+	TMap<EARObjectClassification, struct FLinearColor> InColors;                                          // 0x0000(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARPlaneComponent_SetObjectClassificationDebugColors) == 0x000008, "Wrong alignment on ARPlaneComponent_SetObjectClassificationDebugColors");
+static_assert(sizeof(ARPlaneComponent_SetObjectClassificationDebugColors) == 0x000050, "Wrong size on ARPlaneComponent_SetObjectClassificationDebugColors");
+static_assert(offsetof(ARPlaneComponent_SetObjectClassificationDebugColors, InColors) == 0x000000, "Member 'ARPlaneComponent_SetObjectClassificationDebugColors::InColors' has a wrong offset!");
+
+// Function AugmentedReality.ARPlaneComponent.SetPlaneComponentDebugMode
+// 0x0001 (0x0001 - 0x0000)
+struct ARPlaneComponent_SetPlaneComponentDebugMode final
+{
+public:
+	EPlaneComponentDebugMode                      NewDebugMode;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARPlaneComponent_SetPlaneComponentDebugMode) == 0x000001, "Wrong alignment on ARPlaneComponent_SetPlaneComponentDebugMode");
+static_assert(sizeof(ARPlaneComponent_SetPlaneComponentDebugMode) == 0x000001, "Wrong size on ARPlaneComponent_SetPlaneComponentDebugMode");
+static_assert(offsetof(ARPlaneComponent_SetPlaneComponentDebugMode, NewDebugMode) == 0x000000, "Member 'ARPlaneComponent_SetPlaneComponentDebugMode::NewDebugMode' has a wrong offset!");
+
+// Function AugmentedReality.ARPlaneComponent.ReceiveAdd
+// 0x0080 (0x0080 - 0x0000)
+struct ARPlaneComponent_ReceiveAdd final
+{
+public:
+	struct FARPlaneUpdatePayload                  Payload;                                           // 0x0000(0x0080)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARPlaneComponent_ReceiveAdd) == 0x000010, "Wrong alignment on ARPlaneComponent_ReceiveAdd");
+static_assert(sizeof(ARPlaneComponent_ReceiveAdd) == 0x000080, "Wrong size on ARPlaneComponent_ReceiveAdd");
+static_assert(offsetof(ARPlaneComponent_ReceiveAdd, Payload) == 0x000000, "Member 'ARPlaneComponent_ReceiveAdd::Payload' has a wrong offset!");
+
+// Function AugmentedReality.ARPlaneComponent.ReceiveUpdate
+// 0x0080 (0x0080 - 0x0000)
+struct ARPlaneComponent_ReceiveUpdate final
+{
+public:
+	struct FARPlaneUpdatePayload                  Payload;                                           // 0x0000(0x0080)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARPlaneComponent_ReceiveUpdate) == 0x000010, "Wrong alignment on ARPlaneComponent_ReceiveUpdate");
+static_assert(sizeof(ARPlaneComponent_ReceiveUpdate) == 0x000080, "Wrong size on ARPlaneComponent_ReceiveUpdate");
+static_assert(offsetof(ARPlaneComponent_ReceiveUpdate, Payload) == 0x000000, "Member 'ARPlaneComponent_ReceiveUpdate::Payload' has a wrong offset!");
+
+// Function AugmentedReality.ARPlaneComponent.ServerUpdatePayload
+// 0x0080 (0x0080 - 0x0000)
+struct ARPlaneComponent_ServerUpdatePayload final
+{
+public:
+	struct FARPlaneUpdatePayload                  NewPayload;                                        // 0x0000(0x0080)(ConstParm, Parm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARPlaneComponent_ServerUpdatePayload) == 0x000010, "Wrong alignment on ARPlaneComponent_ServerUpdatePayload");
+static_assert(sizeof(ARPlaneComponent_ServerUpdatePayload) == 0x000080, "Wrong size on ARPlaneComponent_ServerUpdatePayload");
+static_assert(offsetof(ARPlaneComponent_ServerUpdatePayload, NewPayload) == 0x000000, "Member 'ARPlaneComponent_ServerUpdatePayload::NewPayload' has a wrong offset!");
 
 // Function AugmentedReality.ARPointComponent.ReceiveAdd
 // 0x0001 (0x0001 - 0x0000)
@@ -1617,6 +1795,50 @@ public:
 static_assert(alignof(ARImageComponent_ServerUpdatePayload) == 0x000010, "Wrong alignment on ARImageComponent_ServerUpdatePayload");
 static_assert(sizeof(ARImageComponent_ServerUpdatePayload) == 0x000060, "Wrong size on ARImageComponent_ServerUpdatePayload");
 static_assert(offsetof(ARImageComponent_ServerUpdatePayload, NewPayload) == 0x000000, "Member 'ARImageComponent_ServerUpdatePayload::NewPayload' has a wrong offset!");
+
+// Function AugmentedReality.ARQRCodeComponent.SetQRCodeComponentDebugMode
+// 0x0001 (0x0001 - 0x0000)
+struct ARQRCodeComponent_SetQRCodeComponentDebugMode final
+{
+public:
+	EQRCodeComponentDebugMode                     NewDebugMode;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARQRCodeComponent_SetQRCodeComponentDebugMode) == 0x000001, "Wrong alignment on ARQRCodeComponent_SetQRCodeComponentDebugMode");
+static_assert(sizeof(ARQRCodeComponent_SetQRCodeComponentDebugMode) == 0x000001, "Wrong size on ARQRCodeComponent_SetQRCodeComponentDebugMode");
+static_assert(offsetof(ARQRCodeComponent_SetQRCodeComponentDebugMode, NewDebugMode) == 0x000000, "Member 'ARQRCodeComponent_SetQRCodeComponentDebugMode::NewDebugMode' has a wrong offset!");
+
+// Function AugmentedReality.ARQRCodeComponent.ReceiveAdd
+// 0x0070 (0x0070 - 0x0000)
+struct ARQRCodeComponent_ReceiveAdd final
+{
+public:
+	struct FARQRCodeUpdatePayload                 Payload;                                           // 0x0000(0x0070)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARQRCodeComponent_ReceiveAdd) == 0x000010, "Wrong alignment on ARQRCodeComponent_ReceiveAdd");
+static_assert(sizeof(ARQRCodeComponent_ReceiveAdd) == 0x000070, "Wrong size on ARQRCodeComponent_ReceiveAdd");
+static_assert(offsetof(ARQRCodeComponent_ReceiveAdd, Payload) == 0x000000, "Member 'ARQRCodeComponent_ReceiveAdd::Payload' has a wrong offset!");
+
+// Function AugmentedReality.ARQRCodeComponent.ReceiveUpdate
+// 0x0070 (0x0070 - 0x0000)
+struct ARQRCodeComponent_ReceiveUpdate final
+{
+public:
+	struct FARQRCodeUpdatePayload                 Payload;                                           // 0x0000(0x0070)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARQRCodeComponent_ReceiveUpdate) == 0x000010, "Wrong alignment on ARQRCodeComponent_ReceiveUpdate");
+static_assert(sizeof(ARQRCodeComponent_ReceiveUpdate) == 0x000070, "Wrong size on ARQRCodeComponent_ReceiveUpdate");
+static_assert(offsetof(ARQRCodeComponent_ReceiveUpdate, Payload) == 0x000000, "Member 'ARQRCodeComponent_ReceiveUpdate::Payload' has a wrong offset!");
+
+// Function AugmentedReality.ARQRCodeComponent.ServerUpdatePayload
+// 0x0070 (0x0070 - 0x0000)
+struct ARQRCodeComponent_ServerUpdatePayload final
+{
+public:
+	struct FARQRCodeUpdatePayload                 NewPayload;                                        // 0x0000(0x0070)(ConstParm, Parm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ARQRCodeComponent_ServerUpdatePayload) == 0x000010, "Wrong alignment on ARQRCodeComponent_ServerUpdatePayload");
+static_assert(sizeof(ARQRCodeComponent_ServerUpdatePayload) == 0x000070, "Wrong size on ARQRCodeComponent_ServerUpdatePayload");
+static_assert(offsetof(ARQRCodeComponent_ServerUpdatePayload, NewPayload) == 0x000000, "Member 'ARQRCodeComponent_ServerUpdatePayload::NewPayload' has a wrong offset!");
 
 // Function AugmentedReality.ARPoseComponent.SetPoseComponentDebugMode
 // 0x0001 (0x0001 - 0x0000)
@@ -2202,129 +2424,6 @@ static_assert(alignof(ARSkyLight_SetEnvironmentCaptureProbe) == 0x000008, "Wrong
 static_assert(sizeof(ARSkyLight_SetEnvironmentCaptureProbe) == 0x000008, "Wrong size on ARSkyLight_SetEnvironmentCaptureProbe");
 static_assert(offsetof(ARSkyLight_SetEnvironmentCaptureProbe, InCaptureProbe) == 0x000000, "Member 'ARSkyLight_SetEnvironmentCaptureProbe::InCaptureProbe' has a wrong offset!");
 
-// Function AugmentedReality.ARTrackedGeometry.GetUnderlyingMesh
-// 0x0008 (0x0008 - 0x0000)
-struct ARTrackedGeometry_GetUnderlyingMesh final
-{
-public:
-	class UMRMeshComponent*                       ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_GetUnderlyingMesh) == 0x000008, "Wrong alignment on ARTrackedGeometry_GetUnderlyingMesh");
-static_assert(sizeof(ARTrackedGeometry_GetUnderlyingMesh) == 0x000008, "Wrong size on ARTrackedGeometry_GetUnderlyingMesh");
-static_assert(offsetof(ARTrackedGeometry_GetUnderlyingMesh, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetUnderlyingMesh::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.GetDebugName
-// 0x0008 (0x0008 - 0x0000)
-struct ARTrackedGeometry_GetDebugName final
-{
-public:
-	class FName                                   ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_GetDebugName) == 0x000004, "Wrong alignment on ARTrackedGeometry_GetDebugName");
-static_assert(sizeof(ARTrackedGeometry_GetDebugName) == 0x000008, "Wrong size on ARTrackedGeometry_GetDebugName");
-static_assert(offsetof(ARTrackedGeometry_GetDebugName, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetDebugName::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.GetLastUpdateFrameNumber
-// 0x0004 (0x0004 - 0x0000)
-struct ARTrackedGeometry_GetLastUpdateFrameNumber final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_GetLastUpdateFrameNumber) == 0x000004, "Wrong alignment on ARTrackedGeometry_GetLastUpdateFrameNumber");
-static_assert(sizeof(ARTrackedGeometry_GetLastUpdateFrameNumber) == 0x000004, "Wrong size on ARTrackedGeometry_GetLastUpdateFrameNumber");
-static_assert(offsetof(ARTrackedGeometry_GetLastUpdateFrameNumber, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetLastUpdateFrameNumber::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.GetLastUpdateTimestamp
-// 0x0004 (0x0004 - 0x0000)
-struct ARTrackedGeometry_GetLastUpdateTimestamp final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_GetLastUpdateTimestamp) == 0x000004, "Wrong alignment on ARTrackedGeometry_GetLastUpdateTimestamp");
-static_assert(sizeof(ARTrackedGeometry_GetLastUpdateTimestamp) == 0x000004, "Wrong size on ARTrackedGeometry_GetLastUpdateTimestamp");
-static_assert(offsetof(ARTrackedGeometry_GetLastUpdateTimestamp, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetLastUpdateTimestamp::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.GetLocalToTrackingTransform
-// 0x0030 (0x0030 - 0x0000)
-struct ARTrackedGeometry_GetLocalToTrackingTransform final
-{
-public:
-	struct FTransform                             ReturnValue;                                       // 0x0000(0x0030)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_GetLocalToTrackingTransform) == 0x000010, "Wrong alignment on ARTrackedGeometry_GetLocalToTrackingTransform");
-static_assert(sizeof(ARTrackedGeometry_GetLocalToTrackingTransform) == 0x000030, "Wrong size on ARTrackedGeometry_GetLocalToTrackingTransform");
-static_assert(offsetof(ARTrackedGeometry_GetLocalToTrackingTransform, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetLocalToTrackingTransform::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.GetLocalToWorldTransform
-// 0x0030 (0x0030 - 0x0000)
-struct ARTrackedGeometry_GetLocalToWorldTransform final
-{
-public:
-	struct FTransform                             ReturnValue;                                       // 0x0000(0x0030)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_GetLocalToWorldTransform) == 0x000010, "Wrong alignment on ARTrackedGeometry_GetLocalToWorldTransform");
-static_assert(sizeof(ARTrackedGeometry_GetLocalToWorldTransform) == 0x000030, "Wrong size on ARTrackedGeometry_GetLocalToWorldTransform");
-static_assert(offsetof(ARTrackedGeometry_GetLocalToWorldTransform, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetLocalToWorldTransform::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.GetName
-// 0x0010 (0x0010 - 0x0000)
-struct ARTrackedGeometry_GetName final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_GetName) == 0x000008, "Wrong alignment on ARTrackedGeometry_GetName");
-static_assert(sizeof(ARTrackedGeometry_GetName) == 0x000010, "Wrong size on ARTrackedGeometry_GetName");
-static_assert(offsetof(ARTrackedGeometry_GetName, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetName::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.GetObjectClassification
-// 0x0001 (0x0001 - 0x0000)
-struct ARTrackedGeometry_GetObjectClassification final
-{
-public:
-	EARObjectClassification                       ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_GetObjectClassification) == 0x000001, "Wrong alignment on ARTrackedGeometry_GetObjectClassification");
-static_assert(sizeof(ARTrackedGeometry_GetObjectClassification) == 0x000001, "Wrong size on ARTrackedGeometry_GetObjectClassification");
-static_assert(offsetof(ARTrackedGeometry_GetObjectClassification, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetObjectClassification::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.GetTrackingState
-// 0x0001 (0x0001 - 0x0000)
-struct ARTrackedGeometry_GetTrackingState final
-{
-public:
-	EARTrackingState                              ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_GetTrackingState) == 0x000001, "Wrong alignment on ARTrackedGeometry_GetTrackingState");
-static_assert(sizeof(ARTrackedGeometry_GetTrackingState) == 0x000001, "Wrong size on ARTrackedGeometry_GetTrackingState");
-static_assert(offsetof(ARTrackedGeometry_GetTrackingState, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_GetTrackingState::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.HasSpatialMeshUsageFlag
-// 0x0002 (0x0002 - 0x0000)
-struct ARTrackedGeometry_HasSpatialMeshUsageFlag final
-{
-public:
-	EARSpatialMeshUsageFlags                      InFlag;                                            // 0x0000(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_HasSpatialMeshUsageFlag) == 0x000001, "Wrong alignment on ARTrackedGeometry_HasSpatialMeshUsageFlag");
-static_assert(sizeof(ARTrackedGeometry_HasSpatialMeshUsageFlag) == 0x000002, "Wrong size on ARTrackedGeometry_HasSpatialMeshUsageFlag");
-static_assert(offsetof(ARTrackedGeometry_HasSpatialMeshUsageFlag, InFlag) == 0x000000, "Member 'ARTrackedGeometry_HasSpatialMeshUsageFlag::InFlag' has a wrong offset!");
-static_assert(offsetof(ARTrackedGeometry_HasSpatialMeshUsageFlag, ReturnValue) == 0x000001, "Member 'ARTrackedGeometry_HasSpatialMeshUsageFlag::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedGeometry.IsTracked
-// 0x0001 (0x0001 - 0x0000)
-struct ARTrackedGeometry_IsTracked final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedGeometry_IsTracked) == 0x000001, "Wrong alignment on ARTrackedGeometry_IsTracked");
-static_assert(sizeof(ARTrackedGeometry_IsTracked) == 0x000001, "Wrong size on ARTrackedGeometry_IsTracked");
-static_assert(offsetof(ARTrackedGeometry_IsTracked, ReturnValue) == 0x000000, "Member 'ARTrackedGeometry_IsTracked::ReturnValue' has a wrong offset!");
-
 // Function AugmentedReality.ARPlaneGeometry.GetBoundaryPolygonInLocalSpace
 // 0x0010 (0x0010 - 0x0000)
 struct ARPlaneGeometry_GetBoundaryPolygonInLocalSpace final
@@ -2455,39 +2554,6 @@ static_assert(sizeof(ARFaceGeometry_GetWorldSpaceEyeTransform) == 0x000040, "Wro
 static_assert(offsetof(ARFaceGeometry_GetWorldSpaceEyeTransform, Eye) == 0x000000, "Member 'ARFaceGeometry_GetWorldSpaceEyeTransform::Eye' has a wrong offset!");
 static_assert(offsetof(ARFaceGeometry_GetWorldSpaceEyeTransform, ReturnValue) == 0x000010, "Member 'ARFaceGeometry_GetWorldSpaceEyeTransform::ReturnValue' has a wrong offset!");
 
-// Function AugmentedReality.AREnvironmentCaptureProbe.GetEnvironmentCaptureTexture
-// 0x0008 (0x0008 - 0x0000)
-struct AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture final
-{
-public:
-	class UAREnvironmentCaptureProbeTexture*      ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture) == 0x000008, "Wrong alignment on AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture");
-static_assert(sizeof(AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture) == 0x000008, "Wrong size on AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture");
-static_assert(offsetof(AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture, ReturnValue) == 0x000000, "Member 'AREnvironmentCaptureProbe_GetEnvironmentCaptureTexture::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.AREnvironmentCaptureProbe.GetExtent
-// 0x000C (0x000C - 0x0000)
-struct AREnvironmentCaptureProbe_GetExtent final
-{
-public:
-	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(AREnvironmentCaptureProbe_GetExtent) == 0x000004, "Wrong alignment on AREnvironmentCaptureProbe_GetExtent");
-static_assert(sizeof(AREnvironmentCaptureProbe_GetExtent) == 0x00000C, "Wrong size on AREnvironmentCaptureProbe_GetExtent");
-static_assert(offsetof(AREnvironmentCaptureProbe_GetExtent, ReturnValue) == 0x000000, "Member 'AREnvironmentCaptureProbe_GetExtent::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARTrackedObject.GetDetectedObject
-// 0x0008 (0x0008 - 0x0000)
-struct ARTrackedObject_GetDetectedObject final
-{
-public:
-	class UARCandidateObject*                     ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARTrackedObject_GetDetectedObject) == 0x000008, "Wrong alignment on ARTrackedObject_GetDetectedObject");
-static_assert(sizeof(ARTrackedObject_GetDetectedObject) == 0x000008, "Wrong size on ARTrackedObject_GetDetectedObject");
-static_assert(offsetof(ARTrackedObject_GetDetectedObject, ReturnValue) == 0x000000, "Member 'ARTrackedObject_GetDetectedObject::ReturnValue' has a wrong offset!");
-
 // Function AugmentedReality.ARTrackedPose.GetTrackedPoseData
 // 0x0050 (0x0050 - 0x0000)
 struct ARTrackedPose_GetTrackedPoseData final
@@ -2563,72 +2629,6 @@ public:
 static_assert(alignof(ARGeoAnchor_GetLongitude) == 0x000004, "Wrong alignment on ARGeoAnchor_GetLongitude");
 static_assert(sizeof(ARGeoAnchor_GetLongitude) == 0x000004, "Wrong size on ARGeoAnchor_GetLongitude");
 static_assert(offsetof(ARGeoAnchor_GetLongitude, ReturnValue) == 0x000000, "Member 'ARGeoAnchor_GetLongitude::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateObject.SetBoundingBox
-// 0x001C (0x001C - 0x0000)
-struct ARCandidateObject_SetBoundingBox final
-{
-public:
-	struct FBox                                   InBoundingBox;                                     // 0x0000(0x001C)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateObject_SetBoundingBox) == 0x000004, "Wrong alignment on ARCandidateObject_SetBoundingBox");
-static_assert(sizeof(ARCandidateObject_SetBoundingBox) == 0x00001C, "Wrong size on ARCandidateObject_SetBoundingBox");
-static_assert(offsetof(ARCandidateObject_SetBoundingBox, InBoundingBox) == 0x000000, "Member 'ARCandidateObject_SetBoundingBox::InBoundingBox' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateObject.SetCandidateObjectData
-// 0x0010 (0x0010 - 0x0000)
-struct ARCandidateObject_SetCandidateObjectData final
-{
-public:
-	TArray<uint8>                                 InCandidateObject;                                 // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateObject_SetCandidateObjectData) == 0x000008, "Wrong alignment on ARCandidateObject_SetCandidateObjectData");
-static_assert(sizeof(ARCandidateObject_SetCandidateObjectData) == 0x000010, "Wrong size on ARCandidateObject_SetCandidateObjectData");
-static_assert(offsetof(ARCandidateObject_SetCandidateObjectData, InCandidateObject) == 0x000000, "Member 'ARCandidateObject_SetCandidateObjectData::InCandidateObject' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateObject.SetFriendlyName
-// 0x0010 (0x0010 - 0x0000)
-struct ARCandidateObject_SetFriendlyName final
-{
-public:
-	class FString                                 NewName;                                           // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateObject_SetFriendlyName) == 0x000008, "Wrong alignment on ARCandidateObject_SetFriendlyName");
-static_assert(sizeof(ARCandidateObject_SetFriendlyName) == 0x000010, "Wrong size on ARCandidateObject_SetFriendlyName");
-static_assert(offsetof(ARCandidateObject_SetFriendlyName, NewName) == 0x000000, "Member 'ARCandidateObject_SetFriendlyName::NewName' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateObject.GetBoundingBox
-// 0x001C (0x001C - 0x0000)
-struct ARCandidateObject_GetBoundingBox final
-{
-public:
-	struct FBox                                   ReturnValue;                                       // 0x0000(0x001C)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateObject_GetBoundingBox) == 0x000004, "Wrong alignment on ARCandidateObject_GetBoundingBox");
-static_assert(sizeof(ARCandidateObject_GetBoundingBox) == 0x00001C, "Wrong size on ARCandidateObject_GetBoundingBox");
-static_assert(offsetof(ARCandidateObject_GetBoundingBox, ReturnValue) == 0x000000, "Member 'ARCandidateObject_GetBoundingBox::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateObject.GetCandidateObjectData
-// 0x0010 (0x0010 - 0x0000)
-struct ARCandidateObject_GetCandidateObjectData final
-{
-public:
-	TArray<uint8>                                 ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateObject_GetCandidateObjectData) == 0x000008, "Wrong alignment on ARCandidateObject_GetCandidateObjectData");
-static_assert(sizeof(ARCandidateObject_GetCandidateObjectData) == 0x000010, "Wrong size on ARCandidateObject_GetCandidateObjectData");
-static_assert(offsetof(ARCandidateObject_GetCandidateObjectData, ReturnValue) == 0x000000, "Member 'ARCandidateObject_GetCandidateObjectData::ReturnValue' has a wrong offset!");
-
-// Function AugmentedReality.ARCandidateObject.GetFriendlyName
-// 0x0010 (0x0010 - 0x0000)
-struct ARCandidateObject_GetFriendlyName final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ARCandidateObject_GetFriendlyName) == 0x000008, "Wrong alignment on ARCandidateObject_GetFriendlyName");
-static_assert(sizeof(ARCandidateObject_GetFriendlyName) == 0x000010, "Wrong size on ARCandidateObject_GetFriendlyName");
-static_assert(offsetof(ARCandidateObject_GetFriendlyName, ReturnValue) == 0x000000, "Member 'ARCandidateObject_GetFriendlyName::ReturnValue' has a wrong offset!");
 
 }
 

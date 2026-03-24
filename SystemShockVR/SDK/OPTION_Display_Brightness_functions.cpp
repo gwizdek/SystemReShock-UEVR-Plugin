@@ -17,6 +17,48 @@
 namespace SDK
 {
 
+// Function OPTION_Display_Brightness.OPTION_Display_Brightness_C.ExecuteUbergraph_OPTION_Display_Brightness
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UOPTION_Display_Brightness_C::ExecuteUbergraph_OPTION_Display_Brightness(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("OPTION_Display_Brightness_C", "ExecuteUbergraph_OPTION_Display_Brightness");
+
+	Params::OPTION_Display_Brightness_C_ExecuteUbergraph_OPTION_Display_Brightness Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function OPTION_Display_Brightness.OPTION_Display_Brightness_C.Tick
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Parameters:
+// struct FGeometry                        MyGeometry                                             (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+// float                                   InDeltaTime                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UOPTION_Display_Brightness_C::Tick(const struct FGeometry& MyGeometry, float InDeltaTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("OPTION_Display_Brightness_C", "Tick");
+
+	Params::OPTION_Display_Brightness_C_Tick Parms{};
+
+	Parms.MyGeometry = std::move(MyGeometry);
+	Parms.InDeltaTime = InDeltaTime;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function OPTION_Display_Brightness.OPTION_Display_Brightness_C.ApplyDirtyValue
 // (Public, BlueprintCallable, BlueprintEvent)
 

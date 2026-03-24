@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ENUM_ButtonColorType_structs.hpp"
+#include "Engine_structs.hpp"
 #include "INTERACT_Button_Base_classes.hpp"
 
 

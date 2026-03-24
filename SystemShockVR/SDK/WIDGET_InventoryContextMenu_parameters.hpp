@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "ENUM_MenuNavigationInput_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "SlateCore_structs.hpp"
 #include "Slate_structs.hpp"
+#include "SlateCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params
@@ -24,12 +24,12 @@ namespace SDK::Params
 struct WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu final
 {
 public:
-	class UWIDGET_PlayerHUD_C*                    HUDWidget_0;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    HudWidget_0;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_SetInventoryContextMenuEnabled_Result;    // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu) == 0x000008, "Wrong alignment on WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu");
 static_assert(sizeof(WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu) == 0x000010, "Wrong size on WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu");
-static_assert(offsetof(WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu, HUDWidget_0) == 0x000000, "Member 'WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu::HUDWidget_0' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu, HudWidget_0) == 0x000000, "Member 'WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu::HudWidget_0' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu, CallFunc_SetInventoryContextMenuEnabled_Result) == 0x000008, "Member 'WIDGET_InventoryContextMenu_C_InitializeInventoryContextMenu::CallFunc_SetInventoryContextMenuEnabled_Result' has a wrong offset!");
 
 // Function WIDGET_InventoryContextMenu.WIDGET_InventoryContextMenu_C.SetInventoryContextMenuEnabled

@@ -11,7 +11,10 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "ENUM_CyberTransitionState_structs.hpp"
+#include "SystemReShock_structs.hpp"
 #include "SystemReShock_classes.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 
@@ -20,38 +23,47 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass CON_Hacker.CON_Hacker_C
-// 0x0120 (0x06F8 - 0x05D8)
+// 0x0158 (0x0730 - 0x05D8)
 class ACON_Hacker_C final : public AShockPlayerController
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x05D8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	bool                                          WasUsingGamepad;                                   // 0x05E0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5E1[0x7];                                      // 0x05E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(bool IsUsingGamepad)> OnUsingGamepadChanged;                             // 0x05E8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
-	ENUM_CyberTransitionState                     CyberspaceTransitionState;                         // 0x05F8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_5F9[0x7];                                      // 0x05F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CachedCyberspaceTerminalName;                      // 0x0600(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, HasGetValueTypeHash)
-	struct FDataTableRowHandle                    CyberspaceLevelCollection;                         // 0x0610(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor)
-	struct FDataTableRowHandle                    RealspaceLevelCollection;                          // 0x0620(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor)
-	struct FTimerHandle                           CyberTransitionTimerHandle;                        // 0x0630(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	float                                         CyberTransitionStartTimestamp;                     // 0x0638(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CyberRiftTransitionDuration;                       // 0x063C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CyberRiftMinWormholeDuration;                      // 0x0640(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_644[0x4];                                      // 0x0644(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               CyberspaceRiftMaterial;                            // 0x0648(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Simple_C*                  CachedHackerPawn;                                  // 0x0650(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ULevelSequence*                         CachedLevelSequence;                               // 0x0658(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsGoingToCyberspace;                               // 0x0660(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          WasCyberTransitionPawnAlive;                       // 0x0661(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_662[0x6];                                      // 0x0662(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void()>              OnEnterCyberspaceWormhole;                         // 0x0668(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
-	class UClass*                                 CurrCyberspacePawnClass;                           // 0x0678(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TSoftClassPtr<class UClass>                   CurrSoftCyberspacePawnClass;                       // 0x0680(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
-	TSoftClassPtr<class UClass>                   CyberspacePawnClass;                               // 0x06A8(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
-	TSoftClassPtr<class UClass>                   PseudospacePawnClass;                              // 0x06D0(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
+	class UShockJCMSComponent*                    COMP_JCMS;                                         // 0x05E0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	bool                                          WasUsingGamepad;                                   // 0x05E8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5E9[0x3];                                      // 0x05E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              AccumulatedJoyConMouseDelta;                       // 0x05EC(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_5F4[0x4];                                      // 0x05F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(bool IsUsingGamepad)> OnUsingGamepadChanged;                             // 0x05F8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	ENUM_CyberTransitionState                     CyberspaceTransitionState;                         // 0x0608(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_609[0x7];                                      // 0x0609(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CachedCyberspaceTerminalName;                      // 0x0610(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, HasGetValueTypeHash)
+	struct FDataTableRowHandle                    CyberspaceLevelCollection;                         // 0x0620(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor)
+	struct FDataTableRowHandle                    RealspaceLevelCollection;                          // 0x0630(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor)
+	struct FTimerHandle                           CyberTransitionTimerHandle;                        // 0x0640(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	float                                         CyberTransitionStartTimestamp;                     // 0x0648(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CyberRiftTransitionDuration;                       // 0x064C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CyberRiftMinWormholeDuration;                      // 0x0650(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_654[0x4];                                      // 0x0654(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInstanceDynamic*               CyberspaceRiftMaterial;                            // 0x0658(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Simple_C*                  CachedHackerPawn;                                  // 0x0660(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ULevelSequence*                         CachedLevelSequence;                               // 0x0668(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsGoingToCyberspace;                               // 0x0670(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          WasCyberTransitionPawnAlive;                       // 0x0671(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_672[0x6];                                      // 0x0672(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void()>              OnEnterCyberspaceWormhole;                         // 0x0678(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	class UClass*                                 CurrCyberspacePawnClass;                           // 0x0688(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TSoftClassPtr<class UClass>                   CurrSoftCyberspacePawnClass;                       // 0x0690(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
+	TSoftClassPtr<class UClass>                   CyberspacePawnClass;                               // 0x06B8(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
+	TSoftClassPtr<class UClass>                   PseudospacePawnClass;                              // 0x06E0(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
+	TMulticastInlineDelegate<void(EJoyConMouseMode NewMode)> OnJoyConMouseModeChanged;                          // 0x0708(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	bool                                          WasJoyConMouseEnabled;                             // 0x0718(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           ActiveControllerType;                              // 0x0719(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_71A[0x6];                                      // 0x071A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(ENUM_ControllerType NewActiveControllerType)> OnActiveControllerTypeChanged;                     // 0x0720(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 
 public:
 	void ExecuteUbergraph_CON_Hacker(int32 EntryPoint);
+	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void AsyncLoadCyberspacePawnClass();
 	void OnFinishedLoadingLevelCollection();
 	void LoadMapByCollection(const struct FDataTableRowHandle& LevelCollection);
@@ -110,6 +122,10 @@ public:
 	void DestroyCyberRiftMaterialForCamera(class UCameraComponent* Camera_0);
 	void ActivateRespawnChamber();
 	void ActivateBreakerLevers();
+	void UpdateCursorPosition();
+	void InitializeJoyConMouseMode();
+	void EVENT_OnJoyConMouseStateChange(bool MouseEnabled);
+	void UpdateControllerMode();
 
 public:
 	static class UClass* StaticClass()
@@ -122,28 +138,34 @@ public:
 	}
 };
 static_assert(alignof(ACON_Hacker_C) == 0x000008, "Wrong alignment on ACON_Hacker_C");
-static_assert(sizeof(ACON_Hacker_C) == 0x0006F8, "Wrong size on ACON_Hacker_C");
+static_assert(sizeof(ACON_Hacker_C) == 0x000730, "Wrong size on ACON_Hacker_C");
 static_assert(offsetof(ACON_Hacker_C, UberGraphFrame) == 0x0005D8, "Member 'ACON_Hacker_C::UberGraphFrame' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, WasUsingGamepad) == 0x0005E0, "Member 'ACON_Hacker_C::WasUsingGamepad' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, OnUsingGamepadChanged) == 0x0005E8, "Member 'ACON_Hacker_C::OnUsingGamepadChanged' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CyberspaceTransitionState) == 0x0005F8, "Member 'ACON_Hacker_C::CyberspaceTransitionState' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CachedCyberspaceTerminalName) == 0x000600, "Member 'ACON_Hacker_C::CachedCyberspaceTerminalName' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CyberspaceLevelCollection) == 0x000610, "Member 'ACON_Hacker_C::CyberspaceLevelCollection' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, RealspaceLevelCollection) == 0x000620, "Member 'ACON_Hacker_C::RealspaceLevelCollection' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CyberTransitionTimerHandle) == 0x000630, "Member 'ACON_Hacker_C::CyberTransitionTimerHandle' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CyberTransitionStartTimestamp) == 0x000638, "Member 'ACON_Hacker_C::CyberTransitionStartTimestamp' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CyberRiftTransitionDuration) == 0x00063C, "Member 'ACON_Hacker_C::CyberRiftTransitionDuration' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CyberRiftMinWormholeDuration) == 0x000640, "Member 'ACON_Hacker_C::CyberRiftMinWormholeDuration' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CyberspaceRiftMaterial) == 0x000648, "Member 'ACON_Hacker_C::CyberspaceRiftMaterial' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CachedHackerPawn) == 0x000650, "Member 'ACON_Hacker_C::CachedHackerPawn' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CachedLevelSequence) == 0x000658, "Member 'ACON_Hacker_C::CachedLevelSequence' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, IsGoingToCyberspace) == 0x000660, "Member 'ACON_Hacker_C::IsGoingToCyberspace' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, WasCyberTransitionPawnAlive) == 0x000661, "Member 'ACON_Hacker_C::WasCyberTransitionPawnAlive' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, OnEnterCyberspaceWormhole) == 0x000668, "Member 'ACON_Hacker_C::OnEnterCyberspaceWormhole' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CurrCyberspacePawnClass) == 0x000678, "Member 'ACON_Hacker_C::CurrCyberspacePawnClass' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CurrSoftCyberspacePawnClass) == 0x000680, "Member 'ACON_Hacker_C::CurrSoftCyberspacePawnClass' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, CyberspacePawnClass) == 0x0006A8, "Member 'ACON_Hacker_C::CyberspacePawnClass' has a wrong offset!");
-static_assert(offsetof(ACON_Hacker_C, PseudospacePawnClass) == 0x0006D0, "Member 'ACON_Hacker_C::PseudospacePawnClass' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, COMP_JCMS) == 0x0005E0, "Member 'ACON_Hacker_C::COMP_JCMS' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, WasUsingGamepad) == 0x0005E8, "Member 'ACON_Hacker_C::WasUsingGamepad' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, AccumulatedJoyConMouseDelta) == 0x0005EC, "Member 'ACON_Hacker_C::AccumulatedJoyConMouseDelta' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, OnUsingGamepadChanged) == 0x0005F8, "Member 'ACON_Hacker_C::OnUsingGamepadChanged' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CyberspaceTransitionState) == 0x000608, "Member 'ACON_Hacker_C::CyberspaceTransitionState' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CachedCyberspaceTerminalName) == 0x000610, "Member 'ACON_Hacker_C::CachedCyberspaceTerminalName' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CyberspaceLevelCollection) == 0x000620, "Member 'ACON_Hacker_C::CyberspaceLevelCollection' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, RealspaceLevelCollection) == 0x000630, "Member 'ACON_Hacker_C::RealspaceLevelCollection' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CyberTransitionTimerHandle) == 0x000640, "Member 'ACON_Hacker_C::CyberTransitionTimerHandle' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CyberTransitionStartTimestamp) == 0x000648, "Member 'ACON_Hacker_C::CyberTransitionStartTimestamp' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CyberRiftTransitionDuration) == 0x00064C, "Member 'ACON_Hacker_C::CyberRiftTransitionDuration' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CyberRiftMinWormholeDuration) == 0x000650, "Member 'ACON_Hacker_C::CyberRiftMinWormholeDuration' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CyberspaceRiftMaterial) == 0x000658, "Member 'ACON_Hacker_C::CyberspaceRiftMaterial' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CachedHackerPawn) == 0x000660, "Member 'ACON_Hacker_C::CachedHackerPawn' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CachedLevelSequence) == 0x000668, "Member 'ACON_Hacker_C::CachedLevelSequence' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, IsGoingToCyberspace) == 0x000670, "Member 'ACON_Hacker_C::IsGoingToCyberspace' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, WasCyberTransitionPawnAlive) == 0x000671, "Member 'ACON_Hacker_C::WasCyberTransitionPawnAlive' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, OnEnterCyberspaceWormhole) == 0x000678, "Member 'ACON_Hacker_C::OnEnterCyberspaceWormhole' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CurrCyberspacePawnClass) == 0x000688, "Member 'ACON_Hacker_C::CurrCyberspacePawnClass' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CurrSoftCyberspacePawnClass) == 0x000690, "Member 'ACON_Hacker_C::CurrSoftCyberspacePawnClass' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, CyberspacePawnClass) == 0x0006B8, "Member 'ACON_Hacker_C::CyberspacePawnClass' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, PseudospacePawnClass) == 0x0006E0, "Member 'ACON_Hacker_C::PseudospacePawnClass' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, OnJoyConMouseModeChanged) == 0x000708, "Member 'ACON_Hacker_C::OnJoyConMouseModeChanged' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, WasJoyConMouseEnabled) == 0x000718, "Member 'ACON_Hacker_C::WasJoyConMouseEnabled' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, ActiveControllerType) == 0x000719, "Member 'ACON_Hacker_C::ActiveControllerType' has a wrong offset!");
+static_assert(offsetof(ACON_Hacker_C, OnActiveControllerTypeChanged) == 0x000720, "Member 'ACON_Hacker_C::OnActiveControllerTypeChanged' has a wrong offset!");
 
 }
 

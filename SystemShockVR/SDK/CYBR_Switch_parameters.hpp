@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "AttributeSystem_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 
 
 namespace SDK::Params
@@ -63,6 +63,64 @@ static_assert(sizeof(CYBR_Switch_C_BndEvt__CYBR_Switch_COMP_AttribManager_K2Node
 static_assert(offsetof(CYBR_Switch_C_BndEvt__CYBR_Switch_COMP_AttribManager_K2Node_ComponentBoundEvent_0_OnDamageSignature__DelegateSignature, OtherActor) == 0x000000, "Member 'CYBR_Switch_C_BndEvt__CYBR_Switch_COMP_AttribManager_K2Node_ComponentBoundEvent_0_OnDamageSignature__DelegateSignature::OtherActor' has a wrong offset!");
 static_assert(offsetof(CYBR_Switch_C_BndEvt__CYBR_Switch_COMP_AttribManager_K2Node_ComponentBoundEvent_0_OnDamageSignature__DelegateSignature, DamageInstance) == 0x000008, "Member 'CYBR_Switch_C_BndEvt__CYBR_Switch_COMP_AttribManager_K2Node_ComponentBoundEvent_0_OnDamageSignature__DelegateSignature::DamageInstance' has a wrong offset!");
 static_assert(offsetof(CYBR_Switch_C_BndEvt__CYBR_Switch_COMP_AttribManager_K2Node_ComponentBoundEvent_0_OnDamageSignature__DelegateSignature, UserParams) == 0x000030, "Member 'CYBR_Switch_C_BndEvt__CYBR_Switch_COMP_AttribManager_K2Node_ComponentBoundEvent_0_OnDamageSignature__DelegateSignature::UserParams' has a wrong offset!");
+
+// Function CYBR_Switch.CYBR_Switch_C.TryInteract
+// 0x0118 (0x0118 - 0x0000)
+struct CYBR_Switch_C_TryInteract final
+{
+public:
+	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InteractionType                          InteractionType;                                   // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                InteractResults;                                   // 0x0018(0x0020)(Parm, OutParm, HasGetValueTypeHash)
+	class APAWN_Avatar_C*                         Avatar;                                            // 0x0038(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Avatar_C*                         K2Node_DynamicCast_AsPAWN_Avatar;                  // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults;          // 0x0068(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_1;        // 0x0088(0x0020)(HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_2;        // 0x00A8(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_K2_IsCollisionEnabled_ReturnValue;        // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x00C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_CA[0x6];                                       // 0x00CA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_3;        // 0x00D0(0x0020)(HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x00F0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_FC[0x4];                                       // 0x00FC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0100(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UANIMBP_CyberSwitch_C*                  K2Node_DynamicCast_AsANIMBP_Cyber_Switch;          // 0x0108(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0110(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_1;    // 0x0111(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0112(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(CYBR_Switch_C_TryInteract) == 0x000008, "Wrong alignment on CYBR_Switch_C_TryInteract");
+static_assert(sizeof(CYBR_Switch_C_TryInteract) == 0x000118, "Wrong size on CYBR_Switch_C_TryInteract");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, SourceActor) == 0x000000, "Member 'CYBR_Switch_C_TryInteract::SourceActor' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, CursorPrimitive) == 0x000008, "Member 'CYBR_Switch_C_TryInteract::CursorPrimitive' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, InteractionType) == 0x000010, "Member 'CYBR_Switch_C_TryInteract::InteractionType' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, InteractResults) == 0x000018, "Member 'CYBR_Switch_C_TryInteract::InteractResults' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, Avatar) == 0x000038, "Member 'CYBR_Switch_C_TryInteract::Avatar' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_GetGameInstance_ReturnValue) == 0x000040, "Member 'CYBR_Switch_C_TryInteract::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_AsPAWN_Avatar) == 0x000048, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_AsPAWN_Avatar' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_bSuccess) == 0x000050, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_AsGI_Single_Player) == 0x000058, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_bSuccess_1) == 0x000060, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults) == 0x000068, "Member 'CYBR_Switch_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_1) == 0x000088, "Member 'CYBR_Switch_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_1' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_2) == 0x0000A8, "Member 'CYBR_Switch_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_2' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_K2_IsCollisionEnabled_ReturnValue) == 0x0000C8, "Member 'CYBR_Switch_C_TryInteract::CallFunc_K2_IsCollisionEnabled_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x0000C9, "Member 'CYBR_Switch_C_TryInteract::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_3) == 0x0000D0, "Member 'CYBR_Switch_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_3' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x0000F0, "Member 'CYBR_Switch_C_TryInteract::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_GetAnimInstance_ReturnValue) == 0x000100, "Member 'CYBR_Switch_C_TryInteract::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_AsANIMBP_Cyber_Switch) == 0x000108, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_AsANIMBP_Cyber_Switch' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_bSuccess_2) == 0x000110, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_EqualEqual_ObjectObject_ReturnValue_1) == 0x000111, "Member 'CYBR_Switch_C_TryInteract::CallFunc_EqualEqual_ObjectObject_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_BooleanOR_ReturnValue) == 0x000112, "Member 'CYBR_Switch_C_TryInteract::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 
 // Function CYBR_Switch.CYBR_Switch_C.TryInteractWithTarget
 // 0x0040 (0x0040 - 0x0000)
@@ -245,64 +303,6 @@ static_assert(sizeof(CYBR_Switch_C_EVENT_OnShieldValueChanged) == 0x00000C, "Wro
 static_assert(offsetof(CYBR_Switch_C_EVENT_OnShieldValueChanged, CurrValue) == 0x000000, "Member 'CYBR_Switch_C_EVENT_OnShieldValueChanged::CurrValue' has a wrong offset!");
 static_assert(offsetof(CYBR_Switch_C_EVENT_OnShieldValueChanged, LastValue) == 0x000004, "Member 'CYBR_Switch_C_EVENT_OnShieldValueChanged::LastValue' has a wrong offset!");
 static_assert(offsetof(CYBR_Switch_C_EVENT_OnShieldValueChanged, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000008, "Member 'CYBR_Switch_C_EVENT_OnShieldValueChanged::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-
-// Function CYBR_Switch.CYBR_Switch_C.TryInteract
-// 0x0118 (0x0118 - 0x0000)
-struct CYBR_Switch_C_TryInteract final
-{
-public:
-	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_InteractionType                          InteractionType;                                   // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                InteractResults;                                   // 0x0018(0x0020)(Parm, OutParm, HasGetValueTypeHash)
-	class APAWN_Avatar_C*                         Avatar;                                            // 0x0038(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Avatar_C*                         K2Node_DynamicCast_AsPAWN_Avatar;                  // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults;          // 0x0068(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_1;        // 0x0088(0x0020)(HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_2;        // 0x00A8(0x0020)(HasGetValueTypeHash)
-	bool                                          CallFunc_K2_IsCollisionEnabled_ReturnValue;        // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x00C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_CA[0x6];                                       // 0x00CA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                K2Node_MakeStruct_STRUCT_InteractResults_3;        // 0x00D0(0x0020)(HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x00F0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_FC[0x4];                                       // 0x00FC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0100(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UANIMBP_CyberSwitch_C*                  K2Node_DynamicCast_AsANIMBP_Cyber_Switch;          // 0x0108(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0110(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_1;    // 0x0111(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0112(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(CYBR_Switch_C_TryInteract) == 0x000008, "Wrong alignment on CYBR_Switch_C_TryInteract");
-static_assert(sizeof(CYBR_Switch_C_TryInteract) == 0x000118, "Wrong size on CYBR_Switch_C_TryInteract");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, SourceActor) == 0x000000, "Member 'CYBR_Switch_C_TryInteract::SourceActor' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, CursorPrimitive) == 0x000008, "Member 'CYBR_Switch_C_TryInteract::CursorPrimitive' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, InteractionType) == 0x000010, "Member 'CYBR_Switch_C_TryInteract::InteractionType' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, InteractResults) == 0x000018, "Member 'CYBR_Switch_C_TryInteract::InteractResults' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, Avatar) == 0x000038, "Member 'CYBR_Switch_C_TryInteract::Avatar' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_GetGameInstance_ReturnValue) == 0x000040, "Member 'CYBR_Switch_C_TryInteract::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_AsPAWN_Avatar) == 0x000048, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_AsPAWN_Avatar' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_bSuccess) == 0x000050, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_AsGI_Single_Player) == 0x000058, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_bSuccess_1) == 0x000060, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults) == 0x000068, "Member 'CYBR_Switch_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_1) == 0x000088, "Member 'CYBR_Switch_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_1' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_2) == 0x0000A8, "Member 'CYBR_Switch_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_2' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_K2_IsCollisionEnabled_ReturnValue) == 0x0000C8, "Member 'CYBR_Switch_C_TryInteract::CallFunc_K2_IsCollisionEnabled_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x0000C9, "Member 'CYBR_Switch_C_TryInteract::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_MakeStruct_STRUCT_InteractResults_3) == 0x0000D0, "Member 'CYBR_Switch_C_TryInteract::K2Node_MakeStruct_STRUCT_InteractResults_3' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x0000F0, "Member 'CYBR_Switch_C_TryInteract::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_GetAnimInstance_ReturnValue) == 0x000100, "Member 'CYBR_Switch_C_TryInteract::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_AsANIMBP_Cyber_Switch) == 0x000108, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_AsANIMBP_Cyber_Switch' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, K2Node_DynamicCast_bSuccess_2) == 0x000110, "Member 'CYBR_Switch_C_TryInteract::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_EqualEqual_ObjectObject_ReturnValue_1) == 0x000111, "Member 'CYBR_Switch_C_TryInteract::CallFunc_EqualEqual_ObjectObject_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(CYBR_Switch_C_TryInteract, CallFunc_BooleanOR_ReturnValue) == 0x000112, "Member 'CYBR_Switch_C_TryInteract::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 
 }
 

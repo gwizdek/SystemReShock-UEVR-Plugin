@@ -17,6 +17,34 @@
 namespace SDK
 {
 
+// Function HeadMountedDisplay.HandKeypointConversion.Conv_HandKeypointToInt32
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// EHandKeypoint                           Input                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UHandKeypointConversion::Conv_HandKeypointToInt32(EHandKeypoint Input)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("HandKeypointConversion", "Conv_HandKeypointToInt32");
+
+	Params::HandKeypointConversion_Conv_HandKeypointToInt32 Parms{};
+
+	Parms.Input = Input;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function HeadMountedDisplay.HeadMountedDisplayFunctionLibrary.BreakKey
 // (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
 // Parameters:
@@ -1430,34 +1458,6 @@ void UHeadMountedDisplayFunctionLibrary::UpdateExternalTrackingHMDPosition(const
 	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-}
-
-
-// Function HeadMountedDisplay.HandKeypointConversion.Conv_HandKeypointToInt32
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// EHandKeypoint                           Input                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UHandKeypointConversion::Conv_HandKeypointToInt32(EHandKeypoint Input)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("HandKeypointConversion", "Conv_HandKeypointToInt32");
-
-	Params::HandKeypointConversion_Conv_HandKeypointToInt32 Parms{};
-
-	Parms.Input = Input;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 

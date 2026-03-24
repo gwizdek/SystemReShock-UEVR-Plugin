@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_VRHand_structs.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "_ENUM_DebugWidgetEntryType_structs.hpp"
+#include "_ENUM_VRHand_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
 
 
 namespace SDK
@@ -26,11 +26,11 @@ class A_BP_VRBody_C final : public AActor
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0220(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UBoxComponent*                          ItemInteractCollision;                             // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UBoxComponent*                          HandheldConsumableCollision;                       // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UCapsuleComponent*                      LeftIndexFingerCollision;                          // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UCapsuleComponent*                      RightIndexFingerCollision;                         // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UWidgetComponent*                       VRMenu;                                            // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USphereComponent*                       ADSTrigger;                                        // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USphereComponent*                       ADSTriggerCollision;                               // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UCapsuleComponent*                      ADSZone;                                           // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UArrowComponent*                        TrailingRotationComponent;                         // 0x0258(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UWidgetComponent*                       TargetIDWidgetComponent;                           // 0x0260(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
@@ -92,27 +92,30 @@ public:
 	void TryGrabAction(E_ENUM_VRHand InHand, E_ENUM_VRHandPose InPose);
 	void TestFunction();
 	void AddDebugMessage(const class FString& NewMessage, E_ENUM_DebugWidgetEntryType InType);
+	void InitializeAccessCard();
 	void InitializeHackerHardware();
 	void InitializeLaserDot();
 	void InitializeItemSelectors();
 	void InitializeAnimations();
-	void ShowItemSelector(E_ENUM_VRHand InHand);
 	void ChangeEquippedWeapon(class UITEM_WeaponBase_C* InWeapon);
 	void GetWeaponAnimInstance(class UITEM_WeaponBase_C* InWeapon, class UAnimInstance** OutAnimInstance);
 	void GetNearestWeaponInteractionSource(class UMotionControllerComponent* MotionController, class U_BP_InteractionSourceComponent_C** OutInteractionSource, float* Distance);
 	void DestroyAllWeaponInteractionSources();
 	class UCOMP_HackerInventory_C* GetHackerInventory();
 	void GetHackerMoveControlManager(class UCOMP_MoveControlManager_C** COMP_MoveControlManager);
-	void AttachLaserPointer(E_ENUM_VRHand InHand, bool InAttachToCurrentWeapon, bool InEnabled);
+	void Attach_Laser_Pointer(E_ENUM_VRHand InHand, bool InEnabled, float InTimeout);
 	bool IsWeaponHolstered();
 	bool IsAimingDownSights();
 	void SetADSZoneOffset(float ForwardOffset, float UpOffset, float HalfSize);
-	void UpdatePickableSocketPos();
 	void TriggerWidgetInteractionAction(bool InPressLMB);
 	void OpenVRMenu();
 	void CloseVRMenu();
-	void SetHandItemCollision(class FName SocketName, const struct FTransform& RelativeTransform, ECollisionEnabled Collision);
-	void DisableHandItemCollisions();
+	void SetHandheldConsumableCollision(class FName SocketName, const struct FTransform& RelativeTransform, ECollisionEnabled Collision);
+	void GetCurrentEquippedWeapon(class UITEM_WeaponBase_C** OutWeapon);
+	void SetScannerEnabled(bool InEnabled, float InDistance);
+	void EnableRangedInteractions(bool InEnable);
+	bool IsHoldingHandheldConsumable();
+	bool IsEmptyHanded();
 
 public:
 	static class UClass* StaticClass()
@@ -127,11 +130,11 @@ public:
 static_assert(alignof(A_BP_VRBody_C) == 0x000008, "Wrong alignment on A_BP_VRBody_C");
 static_assert(sizeof(A_BP_VRBody_C) == 0x000390, "Wrong size on A_BP_VRBody_C");
 static_assert(offsetof(A_BP_VRBody_C, UberGraphFrame) == 0x000220, "Member 'A_BP_VRBody_C::UberGraphFrame' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, ItemInteractCollision) == 0x000228, "Member 'A_BP_VRBody_C::ItemInteractCollision' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, HandheldConsumableCollision) == 0x000228, "Member 'A_BP_VRBody_C::HandheldConsumableCollision' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, LeftIndexFingerCollision) == 0x000230, "Member 'A_BP_VRBody_C::LeftIndexFingerCollision' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, RightIndexFingerCollision) == 0x000238, "Member 'A_BP_VRBody_C::RightIndexFingerCollision' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, VRMenu) == 0x000240, "Member 'A_BP_VRBody_C::VRMenu' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, ADSTrigger) == 0x000248, "Member 'A_BP_VRBody_C::ADSTrigger' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, ADSTriggerCollision) == 0x000248, "Member 'A_BP_VRBody_C::ADSTriggerCollision' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, ADSZone) == 0x000250, "Member 'A_BP_VRBody_C::ADSZone' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, TrailingRotationComponent) == 0x000258, "Member 'A_BP_VRBody_C::TrailingRotationComponent' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, TargetIDWidgetComponent) == 0x000260, "Member 'A_BP_VRBody_C::TargetIDWidgetComponent' has a wrong offset!");

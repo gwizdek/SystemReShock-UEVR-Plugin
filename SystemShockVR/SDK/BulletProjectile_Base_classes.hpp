@@ -42,7 +42,7 @@ public:
 	bool                                          DestroyOnCollision;                                // 0x027D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          CollideWithInstigator;                             // 0x027E(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_27F[0x1];                                      // 0x027F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   DeathblowFXParamName;                              // 0x0280(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   DeathBlowFXParamName;                              // 0x0280(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	TArray<struct FAttribModApplyData>            ApplyMods;                                         // 0x0288(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, SaveGame)
 	ETraceTypeQuery                               CollisionTraceChannel;                             // 0x0298(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_299[0x7];                                      // 0x0299(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
@@ -115,7 +115,7 @@ static_assert(offsetof(ABulletProjectile_Base_C, BulletRadius) == 0x000278, "Mem
 static_assert(offsetof(ABulletProjectile_Base_C, TraceComplexCollision) == 0x00027C, "Member 'ABulletProjectile_Base_C::TraceComplexCollision' has a wrong offset!");
 static_assert(offsetof(ABulletProjectile_Base_C, DestroyOnCollision) == 0x00027D, "Member 'ABulletProjectile_Base_C::DestroyOnCollision' has a wrong offset!");
 static_assert(offsetof(ABulletProjectile_Base_C, CollideWithInstigator) == 0x00027E, "Member 'ABulletProjectile_Base_C::CollideWithInstigator' has a wrong offset!");
-static_assert(offsetof(ABulletProjectile_Base_C, DeathblowFXParamName) == 0x000280, "Member 'ABulletProjectile_Base_C::DeathblowFXParamName' has a wrong offset!");
+static_assert(offsetof(ABulletProjectile_Base_C, DeathBlowFXParamName) == 0x000280, "Member 'ABulletProjectile_Base_C::DeathBlowFXParamName' has a wrong offset!");
 static_assert(offsetof(ABulletProjectile_Base_C, ApplyMods) == 0x000288, "Member 'ABulletProjectile_Base_C::ApplyMods' has a wrong offset!");
 static_assert(offsetof(ABulletProjectile_Base_C, CollisionTraceChannel) == 0x000298, "Member 'ABulletProjectile_Base_C::CollisionTraceChannel' has a wrong offset!");
 static_assert(offsetof(ABulletProjectile_Base_C, CollidedShieldCharacters) == 0x0002A0, "Member 'ABulletProjectile_Base_C::CollidedShieldCharacters' has a wrong offset!");

@@ -118,31 +118,6 @@ static_assert(offsetof(UEditableGameplayTagQuery, UserDescription) == 0x000028, 
 static_assert(offsetof(UEditableGameplayTagQuery, RootExpression) == 0x000048, "Member 'UEditableGameplayTagQuery::RootExpression' has a wrong offset!");
 static_assert(offsetof(UEditableGameplayTagQuery, TagQueryExportText_Helper) == 0x000050, "Member 'UEditableGameplayTagQuery::TagQueryExportText_Helper' has a wrong offset!");
 
-// Class GameplayTags.GameplayTagsManager
-// 0x0218 (0x0240 - 0x0028)
-class UGameplayTagsManager final : public UObject
-{
-public:
-	uint8                                         Pad_28[0x138];                                     // 0x0028(0x0138)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FGameplayTagSource>  TagSources;                                        // 0x0160(0x0050)(NativeAccessSpecifierPrivate)
-	uint8                                         Pad_1B0[0x80];                                     // 0x01B0(0x0080)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UDataTable*>                     GameplayTagTables;                                 // 0x0230(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"GameplayTagsManager">();
-	}
-	static class UGameplayTagsManager* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGameplayTagsManager>();
-	}
-};
-static_assert(alignof(UGameplayTagsManager) == 0x000008, "Wrong alignment on UGameplayTagsManager");
-static_assert(sizeof(UGameplayTagsManager) == 0x000240, "Wrong size on UGameplayTagsManager");
-static_assert(offsetof(UGameplayTagsManager, TagSources) == 0x000160, "Member 'UGameplayTagsManager::TagSources' has a wrong offset!");
-static_assert(offsetof(UGameplayTagsManager, GameplayTagTables) == 0x000230, "Member 'UGameplayTagsManager::GameplayTagTables' has a wrong offset!");
-
 // Class GameplayTags.EditableGameplayTagQueryExpression
 // 0x0000 (0x0028 - 0x0028)
 class UEditableGameplayTagQueryExpression : public UObject
@@ -223,29 +198,6 @@ static_assert(alignof(UEditableGameplayTagQueryExpression_NoTagsMatch) == 0x0000
 static_assert(sizeof(UEditableGameplayTagQueryExpression_NoTagsMatch) == 0x000048, "Wrong size on UEditableGameplayTagQueryExpression_NoTagsMatch");
 static_assert(offsetof(UEditableGameplayTagQueryExpression_NoTagsMatch, Tags) == 0x000028, "Member 'UEditableGameplayTagQueryExpression_NoTagsMatch::Tags' has a wrong offset!");
 
-// Class GameplayTags.GameplayTagsDeveloperSettings
-// 0x0018 (0x0050 - 0x0038)
-class UGameplayTagsDeveloperSettings final : public UDeveloperSettings
-{
-public:
-	class FString                                 DeveloperConfigName;                               // 0x0038(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   FavoriteTagSource;                                 // 0x0048(0x0008)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"GameplayTagsDeveloperSettings">();
-	}
-	static class UGameplayTagsDeveloperSettings* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGameplayTagsDeveloperSettings>();
-	}
-};
-static_assert(alignof(UGameplayTagsDeveloperSettings) == 0x000008, "Wrong alignment on UGameplayTagsDeveloperSettings");
-static_assert(sizeof(UGameplayTagsDeveloperSettings) == 0x000050, "Wrong size on UGameplayTagsDeveloperSettings");
-static_assert(offsetof(UGameplayTagsDeveloperSettings, DeveloperConfigName) == 0x000038, "Member 'UGameplayTagsDeveloperSettings::DeveloperConfigName' has a wrong offset!");
-static_assert(offsetof(UGameplayTagsDeveloperSettings, FavoriteTagSource) == 0x000048, "Member 'UGameplayTagsDeveloperSettings::FavoriteTagSource' has a wrong offset!");
-
 // Class GameplayTags.EditableGameplayTagQueryExpression_AnyExprMatch
 // 0x0010 (0x0038 - 0x0028)
 class UEditableGameplayTagQueryExpression_AnyExprMatch final : public UEditableGameplayTagQueryExpression
@@ -308,6 +260,31 @@ public:
 static_assert(alignof(UEditableGameplayTagQueryExpression_NoExprMatch) == 0x000008, "Wrong alignment on UEditableGameplayTagQueryExpression_NoExprMatch");
 static_assert(sizeof(UEditableGameplayTagQueryExpression_NoExprMatch) == 0x000038, "Wrong size on UEditableGameplayTagQueryExpression_NoExprMatch");
 static_assert(offsetof(UEditableGameplayTagQueryExpression_NoExprMatch, Expressions) == 0x000028, "Member 'UEditableGameplayTagQueryExpression_NoExprMatch::Expressions' has a wrong offset!");
+
+// Class GameplayTags.GameplayTagsManager
+// 0x0218 (0x0240 - 0x0028)
+class UGameplayTagsManager final : public UObject
+{
+public:
+	uint8                                         Pad_28[0x138];                                     // 0x0028(0x0138)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FGameplayTagSource>  TagSources;                                        // 0x0160(0x0050)(NativeAccessSpecifierPrivate)
+	uint8                                         Pad_1B0[0x80];                                     // 0x01B0(0x0080)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UDataTable*>                     GameplayTagTables;                                 // 0x0230(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"GameplayTagsManager">();
+	}
+	static class UGameplayTagsManager* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGameplayTagsManager>();
+	}
+};
+static_assert(alignof(UGameplayTagsManager) == 0x000008, "Wrong alignment on UGameplayTagsManager");
+static_assert(sizeof(UGameplayTagsManager) == 0x000240, "Wrong size on UGameplayTagsManager");
+static_assert(offsetof(UGameplayTagsManager, TagSources) == 0x000160, "Member 'UGameplayTagsManager::TagSources' has a wrong offset!");
+static_assert(offsetof(UGameplayTagsManager, GameplayTagTables) == 0x000230, "Member 'UGameplayTagsManager::GameplayTagTables' has a wrong offset!");
 
 // Class GameplayTags.GameplayTagsList
 // 0x0020 (0x0048 - 0x0028)
@@ -398,6 +375,29 @@ static_assert(offsetof(UGameplayTagsSettings, CommonlyReplicatedTags) == 0x00009
 static_assert(offsetof(UGameplayTagsSettings, NumBitsForContainerSize) == 0x0000A0, "Member 'UGameplayTagsSettings::NumBitsForContainerSize' has a wrong offset!");
 static_assert(offsetof(UGameplayTagsSettings, NetIndexFirstBitSegment) == 0x0000A4, "Member 'UGameplayTagsSettings::NetIndexFirstBitSegment' has a wrong offset!");
 static_assert(offsetof(UGameplayTagsSettings, RestrictedConfigFiles) == 0x0000A8, "Member 'UGameplayTagsSettings::RestrictedConfigFiles' has a wrong offset!");
+
+// Class GameplayTags.GameplayTagsDeveloperSettings
+// 0x0018 (0x0050 - 0x0038)
+class UGameplayTagsDeveloperSettings final : public UDeveloperSettings
+{
+public:
+	class FString                                 DeveloperConfigName;                               // 0x0038(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   FavoriteTagSource;                                 // 0x0048(0x0008)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"GameplayTagsDeveloperSettings">();
+	}
+	static class UGameplayTagsDeveloperSettings* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGameplayTagsDeveloperSettings>();
+	}
+};
+static_assert(alignof(UGameplayTagsDeveloperSettings) == 0x000008, "Wrong alignment on UGameplayTagsDeveloperSettings");
+static_assert(sizeof(UGameplayTagsDeveloperSettings) == 0x000050, "Wrong size on UGameplayTagsDeveloperSettings");
+static_assert(offsetof(UGameplayTagsDeveloperSettings, DeveloperConfigName) == 0x000038, "Member 'UGameplayTagsDeveloperSettings::DeveloperConfigName' has a wrong offset!");
+static_assert(offsetof(UGameplayTagsDeveloperSettings, FavoriteTagSource) == 0x000048, "Member 'UGameplayTagsDeveloperSettings::FavoriteTagSource' has a wrong offset!");
 
 }
 

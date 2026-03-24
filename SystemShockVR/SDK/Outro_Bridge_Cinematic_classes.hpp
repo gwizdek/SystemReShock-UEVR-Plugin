@@ -28,6 +28,8 @@ public:
 	class USoundBase*                             SoundCue;                                          // 0x0048(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
+	void PlayAudio();
+	void ExecuteUbergraph_SequenceDirector(int32 EntryPoint);
 	void SequenceEvent__ENTRYPOINTSequenceDirector_7(class ASkeletalMeshActor* Hacker_Female);
 	void SequenceEvent__ENTRYPOINTSequenceDirector_6(class ASkeletalMeshActor* Hacker_Male);
 	void SequenceEvent__ENTRYPOINTSequenceDirector_5(class ABP_EndingLaptop_C* BP_Ending_Laptop);
@@ -43,8 +45,6 @@ public:
 	void ScrollEmail(class ABP_EndingLaptop_C* BP_Ending_Laptop);
 	void Hacker_Male_Event_0(class ASkeletalMeshActor* Hacker_Male);
 	void Hacker_Female_Event_0(class ASkeletalMeshActor* Hacker_Female);
-	void PlayAudio();
-	void ExecuteUbergraph_SequenceDirector(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()

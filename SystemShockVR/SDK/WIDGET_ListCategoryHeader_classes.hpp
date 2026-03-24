@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_ListCategoryHeader.WIDGET_ListCategoryHeader_C
-// 0x0030 (0x0290 - 0x0260)
+// 0x0088 (0x02E8 - 0x0260)
 class UWIDGET_ListCategoryHeader_C final : public UUserWidget
 {
 public:
@@ -26,10 +26,15 @@ public:
 	class UImage*                                 IMG_Underline;                                     // 0x0268(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UTextBlock*                             TEXT_InputCategory;                                // 0x0270(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class FText                                   HeaderText;                                        // 0x0278(0x0018)(Edit, BlueprintVisible)
+	TMap<class FString, bool>                     SupportedPlatforms;                                // 0x0290(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly)
+	bool                                          HideInShipping;                                    // 0x02E0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 
 public:
 	void ExecuteUbergraph_WIDGET_ListCategoryHeader(int32 EntryPoint);
+	void OnInitialized();
 	void PreConstruct(bool IsDesignTime);
+	void SetVisibilityBasedOnPlatform();
+	void SetVisibilityBasedOnBuildType(bool* Hidden);
 
 public:
 	static class UClass* StaticClass()
@@ -42,11 +47,13 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_ListCategoryHeader_C) == 0x000008, "Wrong alignment on UWIDGET_ListCategoryHeader_C");
-static_assert(sizeof(UWIDGET_ListCategoryHeader_C) == 0x000290, "Wrong size on UWIDGET_ListCategoryHeader_C");
+static_assert(sizeof(UWIDGET_ListCategoryHeader_C) == 0x0002E8, "Wrong size on UWIDGET_ListCategoryHeader_C");
 static_assert(offsetof(UWIDGET_ListCategoryHeader_C, UberGraphFrame) == 0x000260, "Member 'UWIDGET_ListCategoryHeader_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ListCategoryHeader_C, IMG_Underline) == 0x000268, "Member 'UWIDGET_ListCategoryHeader_C::IMG_Underline' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ListCategoryHeader_C, TEXT_InputCategory) == 0x000270, "Member 'UWIDGET_ListCategoryHeader_C::TEXT_InputCategory' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ListCategoryHeader_C, HeaderText) == 0x000278, "Member 'UWIDGET_ListCategoryHeader_C::HeaderText' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ListCategoryHeader_C, SupportedPlatforms) == 0x000290, "Member 'UWIDGET_ListCategoryHeader_C::SupportedPlatforms' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ListCategoryHeader_C, HideInShipping) == 0x0002E0, "Member 'UWIDGET_ListCategoryHeader_C::HideInShipping' has a wrong offset!");
 
 }
 

@@ -15,7 +15,7 @@ namespace SDK
 {
 
 // Enum DLSS.EDLSSPreset
-// NumValues: 0x0008
+// NumValues: 0x0009
 enum class EDLSSPreset : uint8
 {
 	Default                                  = 0,
@@ -25,7 +25,8 @@ enum class EDLSSPreset : uint8
 	D                                        = 4,
 	E                                        = 5,
 	F                                        = 6,
-	EDLSSPreset_MAX                          = 7,
+	G                                        = 7,
+	EDLSSPreset_MAX                          = 8,
 };
 
 // Enum DLSS.EDLSSSettingOverride

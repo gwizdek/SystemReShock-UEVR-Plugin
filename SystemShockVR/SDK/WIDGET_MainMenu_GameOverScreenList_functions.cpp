@@ -97,6 +97,26 @@ void UWIDGET_MainMenu_GameOverScreenList_C::BndEvt__WIDGET_MainMenu_GameOverScre
 }
 
 
+// Function WIDGET_MainMenu_GameOverScreenList.WIDGET_MainMenu_GameOverScreenList_C.InitializeList
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UWIDGET_MenuBase_C*               ParentScreen                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_MainMenu_GameOverScreenList_C::InitializeList(class UWIDGET_MenuBase_C* ParentScreen)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_MainMenu_GameOverScreenList_C", "InitializeList");
+
+	Params::WIDGET_MainMenu_GameOverScreenList_C_InitializeList Parms{};
+
+	Parms.ParentScreen = ParentScreen;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function WIDGET_MainMenu_GameOverScreenList.WIDGET_MainMenu_GameOverScreenList_C.InitializeItemArray
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -115,26 +135,6 @@ void UWIDGET_MainMenu_GameOverScreenList_C::InitializeItemArray(TArray<class UWI
 
 	if (MenuListItems != nullptr)
 		*MenuListItems = std::move(Parms.MenuListItems);
-}
-
-
-// Function WIDGET_MainMenu_GameOverScreenList.WIDGET_MainMenu_GameOverScreenList_C.InitializeList
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UWIDGET_MenuBase_C*               ParentScreen                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWIDGET_MainMenu_GameOverScreenList_C::InitializeList(class UWIDGET_MenuBase_C* ParentScreen)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_MainMenu_GameOverScreenList_C", "InitializeList");
-
-	Params::WIDGET_MainMenu_GameOverScreenList_C_InitializeList Parms{};
-
-	Parms.ParentScreen = ParentScreen;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

@@ -364,5 +364,39 @@ void UCOMP_Scanner_C::SetScannerEnabled(bool State)
 	UObject::ProcessEvent(Func, &Parms);
 }
 
+
+// Function COMP_Scanner.COMP_Scanner_C.EVENT_OnControllerTypeChange
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// ENUM_ControllerType                     NewActiveControllerType                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UCOMP_Scanner_C::EVENT_OnControllerTypeChange(ENUM_ControllerType NewActiveControllerType)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("COMP_Scanner_C", "EVENT_OnControllerTypeChange");
+
+	Params::COMP_Scanner_C_EVENT_OnControllerTypeChange Parms{};
+
+	Parms.NewActiveControllerType = NewActiveControllerType;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function COMP_Scanner.COMP_Scanner_C.IsUsingGamepad
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UCOMP_Scanner_C::IsUsingGamepad()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("COMP_Scanner_C", "IsUsingGamepad");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
 }
 

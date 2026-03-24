@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
+#include "ENUM_Emotions_structs.hpp"
 #include "PAWN_CyberEnemy_classes.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_Emotions_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK

@@ -583,6 +583,28 @@ void UBP_MusicCue_C::GetQuartzBeatType(EQuartzTimeSignatureQuantization* Quantiz
 }
 
 
+// Function BP_MusicCue.BP_MusicCue_C.EVENT_OnCueLoaded
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class USoundWave*                       LoadedSoundWave                                        (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    WasCancelled                                           (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UBP_MusicCue_C::EVENT_OnCueLoaded(const class USoundWave* LoadedSoundWave, const bool WasCancelled)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_MusicCue_C", "EVENT_OnCueLoaded");
+
+	Params::BP_MusicCue_C_EVENT_OnCueLoaded Parms{};
+
+	Parms.LoadedSoundWave = LoadedSoundWave;
+	Parms.WasCancelled = WasCancelled;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function BP_MusicCue.BP_MusicCue_C.EVENT_OnQuartzBar
 // (Private, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -643,6 +665,20 @@ void UBP_MusicCue_C::IsMusicDebugLoggingEnabled(bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
+}
+
+
+// Function BP_MusicCue.BP_MusicCue_C.PrimeMusicCue
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UBP_MusicCue_C::PrimeMusicCue()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_MusicCue_C", "PrimeMusicCue");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 

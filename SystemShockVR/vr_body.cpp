@@ -294,9 +294,9 @@ void VRBody::set_media_display_visibility(bool visible) {
 
 void VRBody::initialize_ads() {
     try {
-        g_vr_body->ADSTrigger->SetCollisionObjectType(ADS_TRACE_CHANNEL);
-        g_vr_body->ADSTrigger->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
-        g_vr_body->ADSTrigger->SetCollisionResponseToChannel(
+        g_vr_body->ADSTriggerCollision->SetCollisionObjectType(ADS_TRACE_CHANNEL);
+        g_vr_body->ADSTriggerCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+        g_vr_body->ADSTriggerCollision->SetCollisionResponseToChannel(
             ADS_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
         );
 
@@ -399,6 +399,9 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
             panel_slot->SetOffsets(canvas_panel_slots[i]->GetOffsets());
 
         }
+        //SDK::FLinearColor color{ 3.0f, 3.0f, 3.0f, 1.0f };
+        //g_vr_body->VitalBarsWidgetComponent->SetTintColorAndOpacity(color);
+
         API::get()->log_warn("[vr_body][initialize_hacker_hardware] Initialized");
     }
     catch (...) {
@@ -424,9 +427,9 @@ void VRBody::initialize_hand_item_collisions() {
     );
 
     // Hand Item Collision Boxes
-    g_vr_body->ItemInteractCollision->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
-    g_vr_body->ItemInteractCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
-    g_vr_body->ItemInteractCollision->SetCollisionResponseToChannel(
+    g_vr_body->HandheldConsumableCollision->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
+    g_vr_body->HandheldConsumableCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
+    g_vr_body->HandheldConsumableCollision->SetCollisionResponseToChannel(
         WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
     );
 }

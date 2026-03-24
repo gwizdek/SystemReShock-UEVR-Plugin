@@ -62,14 +62,14 @@ void VRMFD::show_mfd() {
         //g_vr_body->DebugWidgetComponent->SetRelativeScale3D({ 0.03f, 0.03f, 0.03f });
 
         g_vr_body->MFDMaskComponent->Show(1.0f, VRMFD::m_mfd_depth);
-        g_vr_body->AttachLaserPointer(E_ENUM_VRHand::NewEnumerator1, false, true);
+        g_vr_body->Attach_Laser_Pointer(E_ENUM_VRHand::NewEnumerator1, true, 0.f);
 
         if (!g_vr_body->IsWeaponHolstered()) {
             // use holster weapon button: holster weapon
             SDK::FKey h_key_name{
                 .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
             };
-            g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_24(h_key_name);
+            g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
         }
     }
     catch (...) {
@@ -95,7 +95,7 @@ void VRMFD::hide_mfd() {
             SDK::FKey h_key_name{
                 .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
             };
-            g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_24(h_key_name);
+            g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
         }
     }
     catch (...) {

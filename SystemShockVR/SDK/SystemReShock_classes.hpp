@@ -10,17 +10,304 @@
 
 #include "Basic.hpp"
 
+#include "Engine_classes.hpp"
 #include "UMG_structs.hpp"
 #include "UMG_classes.hpp"
 #include "SystemReShock_structs.hpp"
-#include "Engine_classes.hpp"
+#include "SlateCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
-#include "SlateCore_structs.hpp"
+#include "AIModule_classes.hpp"
 
 
 namespace SDK
 {
+
+// Class SystemReShock.BTD_Combat_CanMove
+// 0x0000 (0x0068 - 0x0068)
+class UBTD_Combat_CanMove final : public UBTDecorator
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"BTD_Combat_CanMove">();
+	}
+	static class UBTD_Combat_CanMove* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBTD_Combat_CanMove>();
+	}
+};
+static_assert(alignof(UBTD_Combat_CanMove) == 0x000008, "Wrong alignment on UBTD_Combat_CanMove");
+static_assert(sizeof(UBTD_Combat_CanMove) == 0x000068, "Wrong size on UBTD_Combat_CanMove");
+
+// Class SystemReShock.ActionManagerBase
+// 0x0000 (0x00B0 - 0x00B0)
+class UActionManagerBase : public UActorComponent
+{
+public:
+	bool CanAttackPriorityValueRaw(int32 rawPriorityValue);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ActionManagerBase">();
+	}
+	static class UActionManagerBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UActionManagerBase>();
+	}
+};
+static_assert(alignof(UActionManagerBase) == 0x000008, "Wrong alignment on UActionManagerBase");
+static_assert(sizeof(UActionManagerBase) == 0x0000B0, "Wrong size on UActionManagerBase");
+
+// Class SystemReShock.BTD_InPreferredRange
+// 0x0000 (0x0068 - 0x0068)
+class UBTD_InPreferredRange final : public UBTDecorator
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"BTD_InPreferredRange">();
+	}
+	static class UBTD_InPreferredRange* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBTD_InPreferredRange>();
+	}
+};
+static_assert(alignof(UBTD_InPreferredRange) == 0x000008, "Wrong alignment on UBTD_InPreferredRange");
+static_assert(sizeof(UBTD_InPreferredRange) == 0x000068, "Wrong size on UBTD_InPreferredRange");
+
+// Class SystemReShock.AnimNotify_ActorMessage
+// 0x0018 (0x0050 - 0x0038)
+class UAnimNotify_ActorMessage final : public UAnimNotify
+{
+public:
+	EActorMessagePriority                         Priority;                                          // 0x0038(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 Message;                                           // 0x0040(0x0010)(Edit, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"AnimNotify_ActorMessage">();
+	}
+	static class UAnimNotify_ActorMessage* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAnimNotify_ActorMessage>();
+	}
+};
+static_assert(alignof(UAnimNotify_ActorMessage) == 0x000008, "Wrong alignment on UAnimNotify_ActorMessage");
+static_assert(sizeof(UAnimNotify_ActorMessage) == 0x000050, "Wrong size on UAnimNotify_ActorMessage");
+static_assert(offsetof(UAnimNotify_ActorMessage, Priority) == 0x000038, "Member 'UAnimNotify_ActorMessage::Priority' has a wrong offset!");
+static_assert(offsetof(UAnimNotify_ActorMessage, Message) == 0x000040, "Member 'UAnimNotify_ActorMessage::Message' has a wrong offset!");
+
+// Class SystemReShock.BTD_WeightedRandom
+// 0x0008 (0x0070 - 0x0068)
+class UBTD_WeightedRandom final : public UBTDecorator
+{
+public:
+	float                                         InitialWeightedSuccessRate;                        // 0x0068(0x0004)(Edit, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_6C[0x4];                                       // 0x006C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"BTD_WeightedRandom">();
+	}
+	static class UBTD_WeightedRandom* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBTD_WeightedRandom>();
+	}
+};
+static_assert(alignof(UBTD_WeightedRandom) == 0x000008, "Wrong alignment on UBTD_WeightedRandom");
+static_assert(sizeof(UBTD_WeightedRandom) == 0x000070, "Wrong size on UBTD_WeightedRandom");
+static_assert(offsetof(UBTD_WeightedRandom, InitialWeightedSuccessRate) == 0x000068, "Member 'UBTD_WeightedRandom::InitialWeightedSuccessRate' has a wrong offset!");
+
+// Class SystemReShock.ActorAnimMessageInterface
+// 0x0000 (0x0028 - 0x0028)
+class IActorAnimMessageInterface final : public IInterface
+{
+public:
+	bool ReceiveAnimationMessage(const EActorMessagePriority& Priority, const class FString& Message);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ActorAnimMessageInterface">();
+	}
+	static class IActorAnimMessageInterface* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<IActorAnimMessageInterface>();
+	}
+};
+static_assert(alignof(IActorAnimMessageInterface) == 0x000008, "Wrong alignment on IActorAnimMessageInterface");
+static_assert(sizeof(IActorAnimMessageInterface) == 0x000028, "Wrong size on IActorAnimMessageInterface");
+
+// Class SystemReShock.BTD_CanBeginActionWithPriority
+// 0x0008 (0x0070 - 0x0068)
+class UBTD_CanBeginActionWithPriority final : public UBTDecorator
+{
+public:
+	int32                                         rawPriorityValue;                                  // 0x0068(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_6C[0x4];                                       // 0x006C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"BTD_CanBeginActionWithPriority">();
+	}
+	static class UBTD_CanBeginActionWithPriority* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBTD_CanBeginActionWithPriority>();
+	}
+};
+static_assert(alignof(UBTD_CanBeginActionWithPriority) == 0x000008, "Wrong alignment on UBTD_CanBeginActionWithPriority");
+static_assert(sizeof(UBTD_CanBeginActionWithPriority) == 0x000070, "Wrong size on UBTD_CanBeginActionWithPriority");
+static_assert(offsetof(UBTD_CanBeginActionWithPriority, rawPriorityValue) == 0x000068, "Member 'UBTD_CanBeginActionWithPriority::rawPriorityValue' has a wrong offset!");
+
+// Class SystemReShock.ButtonLegend
+// 0x0000 (0x0260 - 0x0260)
+class UButtonLegend : public UUserWidget
+{
+public:
+	void LoadAsset(TSoftObjectPtr<class UObject> Asset, TDelegate<void(class UObject* LoadedAsset)> Callback);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ButtonLegend">();
+	}
+	static class UButtonLegend* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UButtonLegend>();
+	}
+};
+static_assert(alignof(UButtonLegend) == 0x000008, "Wrong alignment on UButtonLegend");
+static_assert(sizeof(UButtonLegend) == 0x000260, "Wrong size on UButtonLegend");
+
+// Class SystemReShock.CameraPanelWidget
+// 0x00E0 (0x0210 - 0x0130)
+class UCameraPanelWidget final : public UCanvasPanel
+{
+public:
+	ECameraWidgetRenderMode                       RenderMode;                                        // 0x0130(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_131[0x3];                                      // 0x0131(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         HorizontalFOV;                                     // 0x0134(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         Distance;                                          // 0x0138(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector                                LookAtLocation;                                    // 0x013C(0x000C)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FRotator                               Rotation;                                          // 0x0148(0x000C)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	float                                         SurfaceCurvature;                                  // 0x0154(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         VerticalSurfaceCurvature;                          // 0x0158(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         SurfaceCurvePower;                                 // 0x015C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TDelegate<void(const struct FGeometry& MyGeometry, struct FPointerEvent& MouseEvent)> OnMouseButtonDownEvent;                            // 0x0160(0x0010)(Edit, ZeroConstructor, InstancedReference, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	TDelegate<void(const struct FGeometry& MyGeometry, struct FPointerEvent& MouseEvent)> OnMouseButtonUpEvent;                              // 0x0170(0x0010)(Edit, ZeroConstructor, InstancedReference, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	TDelegate<void(const struct FGeometry& MyGeometry, struct FPointerEvent& MouseEvent, bool bEventHandledByChild)> OnMouseMoveEvent;                                  // 0x0180(0x0010)(Edit, ZeroConstructor, InstancedReference, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	TDelegate<void(const struct FGeometry& MyGeometry, struct FPointerEvent& MouseEvent)> OnMouseDoubleClickEvent;                           // 0x0190(0x0010)(Edit, ZeroConstructor, InstancedReference, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	bool                                          bAutoComputeVerticalCurvature;                     // 0x01A0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1A1[0x17];                                     // 0x01A1(0x0017)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCameraPanelWidget*                     ParentCameraPanel;                                 // 0x01B8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TSet<class UPerspectiveMeshWidget*>           ChildPerspectiveMeshWidgets;                       // 0x01C0(0x0050)(ExportObject, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+
+public:
+	void ResetMouseStates();
+	void SetHorizontalSurfaceCurvature(float Ratio);
+	void SetVerticalSurfaceCurvature(float Ratio);
+	void SetVirtualMouseScreenLocation(const struct FVector2D& ScreenLocation);
+	void VirtualMouseButtonDown(const struct FKey& MouseButton);
+	void VirtualMouseButtonUp(const struct FKey& MouseButton);
+	void VirtualMouseDoubleClick(const struct FKey& MouseButton);
+
+	struct FVector2D GetVirtualMouseScreenLocation() const;
+	struct FVector2D GetVirtualMouseViewportLocation() const;
+	struct FVector2D ProjectScreenPoint(const struct FVector2D& ScreenPoint) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"CameraPanelWidget">();
+	}
+	static class UCameraPanelWidget* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCameraPanelWidget>();
+	}
+};
+static_assert(alignof(UCameraPanelWidget) == 0x000008, "Wrong alignment on UCameraPanelWidget");
+static_assert(sizeof(UCameraPanelWidget) == 0x000210, "Wrong size on UCameraPanelWidget");
+static_assert(offsetof(UCameraPanelWidget, RenderMode) == 0x000130, "Member 'UCameraPanelWidget::RenderMode' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, HorizontalFOV) == 0x000134, "Member 'UCameraPanelWidget::HorizontalFOV' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, Distance) == 0x000138, "Member 'UCameraPanelWidget::Distance' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, LookAtLocation) == 0x00013C, "Member 'UCameraPanelWidget::LookAtLocation' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, Rotation) == 0x000148, "Member 'UCameraPanelWidget::Rotation' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, SurfaceCurvature) == 0x000154, "Member 'UCameraPanelWidget::SurfaceCurvature' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, VerticalSurfaceCurvature) == 0x000158, "Member 'UCameraPanelWidget::VerticalSurfaceCurvature' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, SurfaceCurvePower) == 0x00015C, "Member 'UCameraPanelWidget::SurfaceCurvePower' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, OnMouseButtonDownEvent) == 0x000160, "Member 'UCameraPanelWidget::OnMouseButtonDownEvent' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, OnMouseButtonUpEvent) == 0x000170, "Member 'UCameraPanelWidget::OnMouseButtonUpEvent' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, OnMouseMoveEvent) == 0x000180, "Member 'UCameraPanelWidget::OnMouseMoveEvent' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, OnMouseDoubleClickEvent) == 0x000190, "Member 'UCameraPanelWidget::OnMouseDoubleClickEvent' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, bAutoComputeVerticalCurvature) == 0x0001A0, "Member 'UCameraPanelWidget::bAutoComputeVerticalCurvature' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, ParentCameraPanel) == 0x0001B8, "Member 'UCameraPanelWidget::ParentCameraPanel' has a wrong offset!");
+static_assert(offsetof(UCameraPanelWidget, ChildPerspectiveMeshWidgets) == 0x0001C0, "Member 'UCameraPanelWidget::ChildPerspectiveMeshWidgets' has a wrong offset!");
+
+// Class SystemReShock.CompassMeshWidget
+// 0x0050 (0x02B0 - 0x0260)
+class UCompassMeshWidget : public UUserWidget
+{
+public:
+	float                                         DemarcationDistance;                               // 0x0260(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         DemarcationVerticalOffset;                         // 0x0264(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         DemarcationAngleDelta;                             // 0x0268(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         CurrentYawAngle;                                   // 0x026C(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         DemarcationFontSize;                               // 0x0270(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_274[0x4];                                      // 0x0274(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UFont*                                  DemarcationFont;                                   // 0x0278(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UMaterialInterface*                     DemarcationMaterial;                               // 0x0280(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColor                                 DemarcationColor;                                  // 0x0288(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_28C[0x4];                                      // 0x028C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UTextMeshWidget*>                AngleDemarcationTextWidgets;                       // 0x0290(0x0010)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2A0[0x10];                                     // 0x02A0(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetCurrentYawAngle(float NewAngle);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"CompassMeshWidget">();
+	}
+	static class UCompassMeshWidget* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCompassMeshWidget>();
+	}
+};
+static_assert(alignof(UCompassMeshWidget) == 0x000008, "Wrong alignment on UCompassMeshWidget");
+static_assert(sizeof(UCompassMeshWidget) == 0x0002B0, "Wrong size on UCompassMeshWidget");
+static_assert(offsetof(UCompassMeshWidget, DemarcationDistance) == 0x000260, "Member 'UCompassMeshWidget::DemarcationDistance' has a wrong offset!");
+static_assert(offsetof(UCompassMeshWidget, DemarcationVerticalOffset) == 0x000264, "Member 'UCompassMeshWidget::DemarcationVerticalOffset' has a wrong offset!");
+static_assert(offsetof(UCompassMeshWidget, DemarcationAngleDelta) == 0x000268, "Member 'UCompassMeshWidget::DemarcationAngleDelta' has a wrong offset!");
+static_assert(offsetof(UCompassMeshWidget, CurrentYawAngle) == 0x00026C, "Member 'UCompassMeshWidget::CurrentYawAngle' has a wrong offset!");
+static_assert(offsetof(UCompassMeshWidget, DemarcationFontSize) == 0x000270, "Member 'UCompassMeshWidget::DemarcationFontSize' has a wrong offset!");
+static_assert(offsetof(UCompassMeshWidget, DemarcationFont) == 0x000278, "Member 'UCompassMeshWidget::DemarcationFont' has a wrong offset!");
+static_assert(offsetof(UCompassMeshWidget, DemarcationMaterial) == 0x000280, "Member 'UCompassMeshWidget::DemarcationMaterial' has a wrong offset!");
+static_assert(offsetof(UCompassMeshWidget, DemarcationColor) == 0x000288, "Member 'UCompassMeshWidget::DemarcationColor' has a wrong offset!");
+static_assert(offsetof(UCompassMeshWidget, AngleDemarcationTextWidgets) == 0x000290, "Member 'UCompassMeshWidget::AngleDemarcationTextWidgets' has a wrong offset!");
+
+// Class SystemReShock.Comp_EnemyMovementBase
+// 0x0000 (0x00B0 - 0x00B0)
+class UComp_EnemyMovementBase : public UActorComponent
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"Comp_EnemyMovementBase">();
+	}
+	static class UComp_EnemyMovementBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UComp_EnemyMovementBase>();
+	}
+};
+static_assert(alignof(UComp_EnemyMovementBase) == 0x000008, "Wrong alignment on UComp_EnemyMovementBase");
+static_assert(sizeof(UComp_EnemyMovementBase) == 0x0000B0, "Wrong size on UComp_EnemyMovementBase");
 
 // Class SystemReShock.PerspectiveMeshWidget
 // 0x0128 (0x0248 - 0x0120)
@@ -143,30 +430,6 @@ static_assert(offsetof(UGridMeshWidget, Color) == 0x000274, "Member 'UGridMeshWi
 static_assert(offsetof(UGridMeshWidget, FadeParams) == 0x000278, "Member 'UGridMeshWidget::FadeParams' has a wrong offset!");
 static_assert(offsetof(UGridMeshWidget, BorderParams) == 0x000288, "Member 'UGridMeshWidget::BorderParams' has a wrong offset!");
 
-// Class SystemReShock.AnimNotify_ActorMessage
-// 0x0018 (0x0050 - 0x0038)
-class UAnimNotify_ActorMessage final : public UAnimNotify
-{
-public:
-	EActorMessagePriority                         Priority;                                          // 0x0038(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 Message;                                           // 0x0040(0x0010)(Edit, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"AnimNotify_ActorMessage">();
-	}
-	static class UAnimNotify_ActorMessage* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAnimNotify_ActorMessage>();
-	}
-};
-static_assert(alignof(UAnimNotify_ActorMessage) == 0x000008, "Wrong alignment on UAnimNotify_ActorMessage");
-static_assert(sizeof(UAnimNotify_ActorMessage) == 0x000050, "Wrong size on UAnimNotify_ActorMessage");
-static_assert(offsetof(UAnimNotify_ActorMessage, Priority) == 0x000038, "Member 'UAnimNotify_ActorMessage::Priority' has a wrong offset!");
-static_assert(offsetof(UAnimNotify_ActorMessage, Message) == 0x000040, "Member 'UAnimNotify_ActorMessage::Message' has a wrong offset!");
-
 // Class SystemReShock.LifeSimulation
 // 0x01C8 (0x01F0 - 0x0028)
 class ULifeSimulation : public UObject
@@ -220,133 +483,6 @@ static_assert(offsetof(ULifeSimulation, MaxObservationDistance) == 0x000040, "Me
 static_assert(offsetof(ULifeSimulation, MaxSimulationDistance) == 0x000044, "Member 'ULifeSimulation::MaxSimulationDistance' has a wrong offset!");
 static_assert(offsetof(ULifeSimulation, InitialPatternDensityPercentage) == 0x000048, "Member 'ULifeSimulation::InitialPatternDensityPercentage' has a wrong offset!");
 static_assert(offsetof(ULifeSimulation, PatternDataTable) == 0x000050, "Member 'ULifeSimulation::PatternDataTable' has a wrong offset!");
-
-// Class SystemReShock.ActorAnimMessageInterface
-// 0x0000 (0x0028 - 0x0028)
-class IActorAnimMessageInterface final : public IInterface
-{
-public:
-	bool ReceiveAnimationMessage(const EActorMessagePriority& Priority, const class FString& Message);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"ActorAnimMessageInterface">();
-	}
-	static class IActorAnimMessageInterface* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<IActorAnimMessageInterface>();
-	}
-};
-static_assert(alignof(IActorAnimMessageInterface) == 0x000008, "Wrong alignment on IActorAnimMessageInterface");
-static_assert(sizeof(IActorAnimMessageInterface) == 0x000028, "Wrong size on IActorAnimMessageInterface");
-
-// Class SystemReShock.CameraPanelWidget
-// 0x00E0 (0x0210 - 0x0130)
-class UCameraPanelWidget final : public UCanvasPanel
-{
-public:
-	ECameraWidgetRenderMode                       RenderMode;                                        // 0x0130(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_131[0x3];                                      // 0x0131(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         HorizontalFOV;                                     // 0x0134(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         Distance;                                          // 0x0138(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector                                LookAtLocation;                                    // 0x013C(0x000C)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FRotator                               Rotation;                                          // 0x0148(0x000C)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	float                                         SurfaceCurvature;                                  // 0x0154(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         VerticalSurfaceCurvature;                          // 0x0158(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         SurfaceCurvePower;                                 // 0x015C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TDelegate<void(const struct FGeometry& MyGeometry, struct FPointerEvent& MouseEvent)> OnMouseButtonDownEvent;                            // 0x0160(0x0010)(Edit, ZeroConstructor, InstancedReference, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	TDelegate<void(const struct FGeometry& MyGeometry, struct FPointerEvent& MouseEvent)> OnMouseButtonUpEvent;                              // 0x0170(0x0010)(Edit, ZeroConstructor, InstancedReference, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	TDelegate<void(const struct FGeometry& MyGeometry, struct FPointerEvent& MouseEvent, bool bEventHandledByChild)> OnMouseMoveEvent;                                  // 0x0180(0x0010)(Edit, ZeroConstructor, InstancedReference, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	TDelegate<void(const struct FGeometry& MyGeometry, struct FPointerEvent& MouseEvent)> OnMouseDoubleClickEvent;                           // 0x0190(0x0010)(Edit, ZeroConstructor, InstancedReference, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	bool                                          bAutoComputeVerticalCurvature;                     // 0x01A0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1A1[0x17];                                     // 0x01A1(0x0017)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCameraPanelWidget*                     ParentCameraPanel;                                 // 0x01B8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	TSet<class UPerspectiveMeshWidget*>           ChildPerspectiveMeshWidgets;                       // 0x01C0(0x0050)(ExportObject, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-
-public:
-	void ResetMouseStates();
-	void SetHorizontalSurfaceCurvature(float Ratio);
-	void SetVerticalSurfaceCurvature(float Ratio);
-	void SetVirtualMouseScreenLocation(const struct FVector2D& ScreenLocation);
-	void VirtualMouseButtonDown(const struct FKey& MouseButton);
-	void VirtualMouseButtonUp(const struct FKey& MouseButton);
-	void VirtualMouseDoubleClick(const struct FKey& MouseButton);
-
-	struct FVector2D GetVirtualMouseScreenLocation() const;
-	struct FVector2D GetVirtualMouseViewportLocation() const;
-	struct FVector2D ProjectScreenPoint(const struct FVector2D& ScreenPoint) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"CameraPanelWidget">();
-	}
-	static class UCameraPanelWidget* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCameraPanelWidget>();
-	}
-};
-static_assert(alignof(UCameraPanelWidget) == 0x000008, "Wrong alignment on UCameraPanelWidget");
-static_assert(sizeof(UCameraPanelWidget) == 0x000210, "Wrong size on UCameraPanelWidget");
-static_assert(offsetof(UCameraPanelWidget, RenderMode) == 0x000130, "Member 'UCameraPanelWidget::RenderMode' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, HorizontalFOV) == 0x000134, "Member 'UCameraPanelWidget::HorizontalFOV' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, Distance) == 0x000138, "Member 'UCameraPanelWidget::Distance' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, LookAtLocation) == 0x00013C, "Member 'UCameraPanelWidget::LookAtLocation' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, Rotation) == 0x000148, "Member 'UCameraPanelWidget::Rotation' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, SurfaceCurvature) == 0x000154, "Member 'UCameraPanelWidget::SurfaceCurvature' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, VerticalSurfaceCurvature) == 0x000158, "Member 'UCameraPanelWidget::VerticalSurfaceCurvature' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, SurfaceCurvePower) == 0x00015C, "Member 'UCameraPanelWidget::SurfaceCurvePower' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, OnMouseButtonDownEvent) == 0x000160, "Member 'UCameraPanelWidget::OnMouseButtonDownEvent' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, OnMouseButtonUpEvent) == 0x000170, "Member 'UCameraPanelWidget::OnMouseButtonUpEvent' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, OnMouseMoveEvent) == 0x000180, "Member 'UCameraPanelWidget::OnMouseMoveEvent' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, OnMouseDoubleClickEvent) == 0x000190, "Member 'UCameraPanelWidget::OnMouseDoubleClickEvent' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, bAutoComputeVerticalCurvature) == 0x0001A0, "Member 'UCameraPanelWidget::bAutoComputeVerticalCurvature' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, ParentCameraPanel) == 0x0001B8, "Member 'UCameraPanelWidget::ParentCameraPanel' has a wrong offset!");
-static_assert(offsetof(UCameraPanelWidget, ChildPerspectiveMeshWidgets) == 0x0001C0, "Member 'UCameraPanelWidget::ChildPerspectiveMeshWidgets' has a wrong offset!");
-
-// Class SystemReShock.CompassMeshWidget
-// 0x0050 (0x02B0 - 0x0260)
-class UCompassMeshWidget : public UUserWidget
-{
-public:
-	float                                         DemarcationDistance;                               // 0x0260(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         DemarcationVerticalOffset;                         // 0x0264(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         DemarcationAngleDelta;                             // 0x0268(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         CurrentYawAngle;                                   // 0x026C(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         DemarcationFontSize;                               // 0x0270(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_274[0x4];                                      // 0x0274(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UFont*                                  DemarcationFont;                                   // 0x0278(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UMaterialInterface*                     DemarcationMaterial;                               // 0x0280(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColor                                 DemarcationColor;                                  // 0x0288(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_28C[0x4];                                      // 0x028C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UTextMeshWidget*>                AngleDemarcationTextWidgets;                       // 0x0290(0x0010)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2A0[0x10];                                     // 0x02A0(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetCurrentYawAngle(float NewAngle);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"CompassMeshWidget">();
-	}
-	static class UCompassMeshWidget* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCompassMeshWidget>();
-	}
-};
-static_assert(alignof(UCompassMeshWidget) == 0x000008, "Wrong alignment on UCompassMeshWidget");
-static_assert(sizeof(UCompassMeshWidget) == 0x0002B0, "Wrong size on UCompassMeshWidget");
-static_assert(offsetof(UCompassMeshWidget, DemarcationDistance) == 0x000260, "Member 'UCompassMeshWidget::DemarcationDistance' has a wrong offset!");
-static_assert(offsetof(UCompassMeshWidget, DemarcationVerticalOffset) == 0x000264, "Member 'UCompassMeshWidget::DemarcationVerticalOffset' has a wrong offset!");
-static_assert(offsetof(UCompassMeshWidget, DemarcationAngleDelta) == 0x000268, "Member 'UCompassMeshWidget::DemarcationAngleDelta' has a wrong offset!");
-static_assert(offsetof(UCompassMeshWidget, CurrentYawAngle) == 0x00026C, "Member 'UCompassMeshWidget::CurrentYawAngle' has a wrong offset!");
-static_assert(offsetof(UCompassMeshWidget, DemarcationFontSize) == 0x000270, "Member 'UCompassMeshWidget::DemarcationFontSize' has a wrong offset!");
-static_assert(offsetof(UCompassMeshWidget, DemarcationFont) == 0x000278, "Member 'UCompassMeshWidget::DemarcationFont' has a wrong offset!");
-static_assert(offsetof(UCompassMeshWidget, DemarcationMaterial) == 0x000280, "Member 'UCompassMeshWidget::DemarcationMaterial' has a wrong offset!");
-static_assert(offsetof(UCompassMeshWidget, DemarcationColor) == 0x000288, "Member 'UCompassMeshWidget::DemarcationColor' has a wrong offset!");
-static_assert(offsetof(UCompassMeshWidget, AngleDemarcationTextWidgets) == 0x000290, "Member 'UCompassMeshWidget::AngleDemarcationTextWidgets' has a wrong offset!");
 
 // Class SystemReShock.PerspectiveMeshSlot
 // 0x0018 (0x0050 - 0x0038)
@@ -475,6 +611,62 @@ static_assert(offsetof(UShockChess, Chessboard) == 0x000068, "Member 'UShockChes
 static_assert(offsetof(UShockChess, PlayerColor) == 0x0000E8, "Member 'UShockChess::PlayerColor' has a wrong offset!");
 static_assert(offsetof(UShockChess, TurnColor) == 0x0000E9, "Member 'UShockChess::TurnColor' has a wrong offset!");
 
+// Class SystemReShock.ShockJCMSComponent
+// 0x0050 (0x0100 - 0x00B0)
+class UShockJCMSComponent final : public UActorComponent
+{
+public:
+	float                                         AutomaticStateChangeDelay;                         // 0x00B0(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_B4[0x4];                                       // 0x00B4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(bool MouseEnabled)> OnJoyConMouseStateChange;                          // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_C8[0x38];                                      // 0x00C8(0x0038)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void AddInputClearDelegate(TDelegate<void()> Delegate);
+	bool RemoveInputClearDelegate(TDelegate<void()> Delegate);
+	void SetJoyConMouseMode(EJoyConMouseMode NewMode);
+
+	bool ShouldPreferJoyConMouseSensor() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ShockJCMSComponent">();
+	}
+	static class UShockJCMSComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShockJCMSComponent>();
+	}
+};
+static_assert(alignof(UShockJCMSComponent) == 0x000008, "Wrong alignment on UShockJCMSComponent");
+static_assert(sizeof(UShockJCMSComponent) == 0x000100, "Wrong size on UShockJCMSComponent");
+static_assert(offsetof(UShockJCMSComponent, AutomaticStateChangeDelay) == 0x0000B0, "Member 'UShockJCMSComponent::AutomaticStateChangeDelay' has a wrong offset!");
+static_assert(offsetof(UShockJCMSComponent, OnJoyConMouseStateChange) == 0x0000B8, "Member 'UShockJCMSComponent::OnJoyConMouseStateChange' has a wrong offset!");
+
+// Class SystemReShock.ShockPlatformSettingsComponent
+// 0x0050 (0x0100 - 0x00B0)
+class UShockPlatformSettingsComponent final : public UActorComponent
+{
+public:
+	TMap<class FString, bool>                     DynamicShadowsAllowed;                             // 0x00B0(0x0050)(Edit, Protected, NativeAccessSpecifierProtected)
+
+public:
+	bool PlatformShouldCastDynamicShadowsForLight(class ULightComponent* inLightComp);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ShockPlatformSettingsComponent">();
+	}
+	static class UShockPlatformSettingsComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShockPlatformSettingsComponent>();
+	}
+};
+static_assert(alignof(UShockPlatformSettingsComponent) == 0x000008, "Wrong alignment on UShockPlatformSettingsComponent");
+static_assert(sizeof(UShockPlatformSettingsComponent) == 0x000100, "Wrong size on UShockPlatformSettingsComponent");
+static_assert(offsetof(UShockPlatformSettingsComponent, DynamicShadowsAllowed) == 0x0000B0, "Member 'UShockPlatformSettingsComponent::DynamicShadowsAllowed' has a wrong offset!");
+
 // Class SystemReShock.ShockPlayerController
 // 0x0058 (0x05D8 - 0x0580)
 class AShockPlayerController : public APlayerController
@@ -494,6 +686,49 @@ public:
 };
 static_assert(alignof(AShockPlayerController) == 0x000008, "Wrong alignment on AShockPlayerController");
 static_assert(sizeof(AShockPlayerController) == 0x0005D8, "Wrong size on AShockPlayerController");
+
+// Class SystemReShock.ShockSpotlightComponent
+// 0x0000 (0x0360 - 0x0360)
+class UShockSpotlightComponent final : public USpotLightComponent
+{
+public:
+	bool AllowSwitchLightOptimizations();
+	bool IsSagePlatform();
+	bool IsSwitchPlatform();
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ShockSpotlightComponent">();
+	}
+	static class UShockSpotlightComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShockSpotlightComponent>();
+	}
+};
+static_assert(alignof(UShockSpotlightComponent) == 0x000010, "Wrong alignment on UShockSpotlightComponent");
+static_assert(sizeof(UShockSpotlightComponent) == 0x000360, "Wrong size on UShockSpotlightComponent");
+
+// Class SystemReShock.SkillManager_BaseComp
+// 0x0000 (0x00B0 - 0x00B0)
+class USkillManager_BaseComp : public UActorComponent
+{
+public:
+	struct FVector ReceiveGetPreferredMinMaxDistanceWithCurrentCombatContext();
+	bool ReceiveIsDistanceWithinPreferredRange(const float worldDistanceCm);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"SkillManager_BaseComp">();
+	}
+	static class USkillManager_BaseComp* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<USkillManager_BaseComp>();
+	}
+};
+static_assert(alignof(USkillManager_BaseComp) == 0x000008, "Wrong alignment on USkillManager_BaseComp");
+static_assert(sizeof(USkillManager_BaseComp) == 0x0000B0, "Wrong size on USkillManager_BaseComp");
 
 // Class SystemReShock.SplineMeshWidget
 // 0x0060 (0x02A8 - 0x0248)
@@ -562,8 +797,25 @@ public:
 	static class FName GetBestCultureFromRowNames(const class FString& CultureName, const TArray<class FName>& CultureRowNames);
 	static int32 GetBestCultureIndex(const class FString& CultureName, const TArray<class FString>& CandidateNames);
 	static int32 GetBestTicTacToeMove(const TArray<uint8>& CellStates, int32 LevelSize, uint8 PlayerId, uint8 OtherPlayerID, bool bFullDepth, bool bWrapLevel, const TArray<int32>& ScoreTable);
+	static struct FTransform GetIdendityTransform();
+	static float GetInfinity();
+	static struct FVector GetInvalidDirectionVector();
+	static struct FVector GetInvalidLocationVector();
+	static class UObject* GetInvalidObjectValue();
+	static struct FQuat GetInvalidOrientation();
+	static float GetInvalidRangeValue();
+	static struct FRotator GetInvalidRotator();
+	static ESystemShockPlatform GetPlatform();
+	static ESystemShockPlatformFamily GetPlatformFamily();
 	static bool GetStaticMeshTrackProperties(class UStaticMesh* StaticMesh, int32 UVChannel, float LongSideBias, const struct FBox2D& TexCoordBounds, float* OutTrackLength, struct FVector2D* OutUCoordInterval);
 	static int32 GetTicTacToeScoreForMove(const TArray<uint8>& CellStates, int32 LevelSize, int32 CellIndex, uint8 NewState, bool bWrapLevel, const TArray<int32>& ScoreTable);
+	static bool IsSageNintendoPlatform();
+	static bool IsSwitchNintendoPlatform();
+	static bool IsValidDirection(const struct FVector& inTestVector);
+	static bool IsValidLocation(const struct FVector& inTestLocation);
+	static bool IsValidOrientation(const struct FQuat& inTestOrientation);
+	static bool IsValidRotation(const struct FRotator& inTestRotation);
+	static bool IsWorldValid(const class UWorld* worldInstance);
 
 public:
 	static class UClass* StaticClass()
@@ -577,6 +829,51 @@ public:
 };
 static_assert(alignof(USystemShockFunctionLibrary) == 0x000008, "Wrong alignment on USystemShockFunctionLibrary");
 static_assert(sizeof(USystemShockFunctionLibrary) == 0x000028, "Wrong size on USystemShockFunctionLibrary");
+
+// Class SystemReShock.SystemShockNintendoLibrary
+// 0x0000 (0x0028 - 0x0028)
+class USystemShockNintendoLibrary final : public UBlueprintFunctionLibrary
+{
+public:
+	static bool ActiveControllerSupportsJoyConMouseLook();
+	static class FString GetActiveControllerTypes();
+	static struct FVector GetRightJoyConOrientation();
+	static void StartNintendoBoostCPUClock();
+	static void StopNintendoBoostCPUClock();
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"SystemShockNintendoLibrary">();
+	}
+	static class USystemShockNintendoLibrary* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<USystemShockNintendoLibrary>();
+	}
+};
+static_assert(alignof(USystemShockNintendoLibrary) == 0x000008, "Wrong alignment on USystemShockNintendoLibrary");
+static_assert(sizeof(USystemShockNintendoLibrary) == 0x000028, "Wrong size on USystemShockNintendoLibrary");
+
+// Class SystemReShock.SystemShock_CharacterBase
+// 0x0000 (0x04C0 - 0x04C0)
+class ASystemShock_CharacterBase : public ACharacter
+{
+public:
+	struct FVector ReceiveGetCurrentSkillPreferredMinMaxRange();
+	struct FVector ReceiveGetEnemyTargetLocation();
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"SystemShock_CharacterBase">();
+	}
+	static class ASystemShock_CharacterBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ASystemShock_CharacterBase>();
+	}
+};
+static_assert(alignof(ASystemShock_CharacterBase) == 0x000010, "Wrong alignment on ASystemShock_CharacterBase");
+static_assert(sizeof(ASystemShock_CharacterBase) == 0x0004C0, "Wrong size on ASystemShock_CharacterBase");
 
 // Class SystemReShock.TextMeshDecoratorInterface
 // 0x0000 (0x0028 - 0x0028)

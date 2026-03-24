@@ -11,6 +11,7 @@
 #include "Basic.hpp"
 
 #include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_VRHand_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 
@@ -50,7 +51,8 @@ public:
 	struct FTransform                             OutWeaponOffset;                                   // 0x0010(0x0030)(Parm, OutParm, IsPlainOldData, NoDestructor)
 	bool                                          OutUseHackerPawnWeaponAnims;                       // 0x0040(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          OutEnabledLaserPointer;                            // 0x0041(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          OutMainHand;                                       // 0x0042(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	E_ENUM_VRHand                                 OutHand;                                           // 0x0042(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          OutIsHandheldConsumable;                           // 0x0043(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BI_VRWeapon_C_GetDefaultParams) == 0x000010, "Wrong alignment on _BI_VRWeapon_C_GetDefaultParams");
 static_assert(sizeof(_BI_VRWeapon_C_GetDefaultParams) == 0x000050, "Wrong size on _BI_VRWeapon_C_GetDefaultParams");
@@ -59,7 +61,8 @@ static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutGripHandPose) == 0x00
 static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutWeaponOffset) == 0x000010, "Member '_BI_VRWeapon_C_GetDefaultParams::OutWeaponOffset' has a wrong offset!");
 static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutUseHackerPawnWeaponAnims) == 0x000040, "Member '_BI_VRWeapon_C_GetDefaultParams::OutUseHackerPawnWeaponAnims' has a wrong offset!");
 static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutEnabledLaserPointer) == 0x000041, "Member '_BI_VRWeapon_C_GetDefaultParams::OutEnabledLaserPointer' has a wrong offset!");
-static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutMainHand) == 0x000042, "Member '_BI_VRWeapon_C_GetDefaultParams::OutMainHand' has a wrong offset!");
+static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutHand) == 0x000042, "Member '_BI_VRWeapon_C_GetDefaultParams::OutHand' has a wrong offset!");
+static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutIsHandheldConsumable) == 0x000043, "Member '_BI_VRWeapon_C_GetDefaultParams::OutIsHandheldConsumable' has a wrong offset!");
 
 // Function _BI_VRWeapon._BI_VRWeapon_C.InitInteractionSources
 // 0x0008 (0x0008 - 0x0000)

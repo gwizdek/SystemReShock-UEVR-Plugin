@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_UpDown_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "AnimGraphRuntime_structs.hpp"
+#include "ENUM_UpDown_structs.hpp"
 
 
 namespace SDK

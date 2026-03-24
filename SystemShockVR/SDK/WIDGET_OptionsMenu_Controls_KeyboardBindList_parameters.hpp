@@ -10,12 +10,41 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
+#include "InputCore_structs.hpp"
 #include "SlateCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function WIDGET_OptionsMenu_Controls_KeyboardBindList.WIDGET_OptionsMenu_Controls_KeyboardBindList_C.InitializeList
+// 0x0008 (0x0008 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList final
+{
+public:
+	class UWIDGET_MenuBase_C*                     ParentScreen;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList) == 0x000008, "Wrong alignment on WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList) == 0x000008, "Wrong size on WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList, ParentScreen) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList::ParentScreen' has a wrong offset!");
+
+// Function WIDGET_OptionsMenu_Controls_KeyboardBindList.WIDGET_OptionsMenu_Controls_KeyboardBindList_C.IsBindKeyInScope
+// 0x0020 (0x0020 - 0x0000)
+struct WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope final
+{
+public:
+	struct FKey                                   Key;                                               // 0x0000(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+	bool                                          IsInScope;                                         // 0x0018(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Key_IsGamepadKey_ReturnValue;             // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope) == 0x000008, "Wrong alignment on WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope) == 0x000020, "Wrong size on WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope, Key) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope::Key' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope, IsInScope) == 0x000018, "Member 'WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope::IsInScope' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope, CallFunc_Key_IsGamepadKey_ReturnValue) == 0x000019, "Member 'WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope::CallFunc_Key_IsGamepadKey_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope, CallFunc_Not_PreBool_ReturnValue) == 0x00001A, "Member 'WIDGET_OptionsMenu_Controls_KeyboardBindList_C_IsBindKeyInScope::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_OptionsMenu_Controls_KeyboardBindList.WIDGET_OptionsMenu_Controls_KeyboardBindList_C.InitializeItemArray
 // 0x0070 (0x0070 - 0x0000)
@@ -54,17 +83,6 @@ static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_Initialize
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeItemArray, CallFunc_Less_IntInt_ReturnValue) == 0x000059, "Member 'WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeItemArray::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeItemArray, CallFunc_Array_Add_ReturnValue) == 0x00005C, "Member 'WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeItemArray::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeItemArray, CallFunc_InitializeItemArray_MenuListItems) == 0x000060, "Member 'WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeItemArray::CallFunc_InitializeItemArray_MenuListItems' has a wrong offset!");
-
-// Function WIDGET_OptionsMenu_Controls_KeyboardBindList.WIDGET_OptionsMenu_Controls_KeyboardBindList_C.InitializeList
-// 0x0008 (0x0008 - 0x0000)
-struct WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList final
-{
-public:
-	class UWIDGET_MenuBase_C*                     ParentScreen;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList) == 0x000008, "Wrong alignment on WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList");
-static_assert(sizeof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList) == 0x000008, "Wrong size on WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList, ParentScreen) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_KeyboardBindList_C_InitializeList::ParentScreen' has a wrong offset!");
 
 // Function WIDGET_OptionsMenu_Controls_KeyboardBindList.WIDGET_OptionsMenu_Controls_KeyboardBindList_C.OnListOpen
 // 0x00C0 (0x00C0 - 0x0000)

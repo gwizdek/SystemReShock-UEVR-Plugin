@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_Settings_Slider.WIDGET_Settings_Slider_C
-// 0x0060 (0x0398 - 0x0338)
+// 0x0070 (0x03A8 - 0x0338)
 class UWIDGET_Settings_Slider_C : public UOPTION_Base_C
 {
 public:
@@ -35,9 +35,16 @@ public:
 	class FText                                   SliderPostfix;                                     // 0x0378(0x0018)(Edit, BlueprintVisible)
 	int32                                         SliderFractionalDigits;                            // 0x0390(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         NavIncrementAmount;                                // 0x0394(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         HoldTimeIncrement;                                 // 0x0398(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          InputHeldLeft;                                     // 0x039C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          InputHeldRight;                                    // 0x039D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39E[0x2];                                      // 0x039E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         HoldTimer;                                         // 0x03A0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         HoldIncrementModifier_;                            // 0x03A4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_WIDGET_Settings_Slider(int32 EntryPoint);
+	void Tick(const struct FGeometry& MyGeometry, float InDeltaTime);
 	void BndEvt__WIDGET_Settings_Slider_WIDGET_Slider_K2Node_ComponentBoundEvent_0_OnValueChanged__DelegateSignature(float NewSliderValue, float NewAbsoluteValue);
 	void PreConstruct(bool IsDesignTime);
 	void EVENT_OnMouseEnter(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
@@ -46,9 +53,11 @@ public:
 	void SetIsHighlighted(bool NewHighlightedState, bool ForceInstant);
 	void GetSlider(class UWIDGET_Slider_C** Result);
 	void ReceiveNavLeft(bool InputState, bool* Result);
-	void ReceiveNavRight(bool InputState, bool* Result);
 	void InitializeMenuListItem(class UWIDGET_MenuListBase_C* ParentList, int32 Index_0);
 	void GetScaledCurrentSliderValue(float* Result);
+	void ReceiveNavRight(bool InputState, bool* Result);
+	void ReceiveNavRightRelease(bool InputState, bool* Result);
+	void ReceiveNavLeftRelease(bool InputState, bool* Result);
 
 public:
 	static class UClass* StaticClass()
@@ -61,7 +70,7 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_Settings_Slider_C) == 0x000008, "Wrong alignment on UWIDGET_Settings_Slider_C");
-static_assert(sizeof(UWIDGET_Settings_Slider_C) == 0x000398, "Wrong size on UWIDGET_Settings_Slider_C");
+static_assert(sizeof(UWIDGET_Settings_Slider_C) == 0x0003A8, "Wrong size on UWIDGET_Settings_Slider_C");
 static_assert(offsetof(UWIDGET_Settings_Slider_C, UberGraphFrame) == 0x000338, "Member 'UWIDGET_Settings_Slider_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_Settings_Slider_C, IMAGE_SelectedBackground) == 0x000340, "Member 'UWIDGET_Settings_Slider_C::IMAGE_SelectedBackground' has a wrong offset!");
 static_assert(offsetof(UWIDGET_Settings_Slider_C, MESH_Input) == 0x000348, "Member 'UWIDGET_Settings_Slider_C::MESH_Input' has a wrong offset!");
@@ -75,6 +84,11 @@ static_assert(offsetof(UWIDGET_Settings_Slider_C, SliderValueMax) == 0x000374, "
 static_assert(offsetof(UWIDGET_Settings_Slider_C, SliderPostfix) == 0x000378, "Member 'UWIDGET_Settings_Slider_C::SliderPostfix' has a wrong offset!");
 static_assert(offsetof(UWIDGET_Settings_Slider_C, SliderFractionalDigits) == 0x000390, "Member 'UWIDGET_Settings_Slider_C::SliderFractionalDigits' has a wrong offset!");
 static_assert(offsetof(UWIDGET_Settings_Slider_C, NavIncrementAmount) == 0x000394, "Member 'UWIDGET_Settings_Slider_C::NavIncrementAmount' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Settings_Slider_C, HoldTimeIncrement) == 0x000398, "Member 'UWIDGET_Settings_Slider_C::HoldTimeIncrement' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Settings_Slider_C, InputHeldLeft) == 0x00039C, "Member 'UWIDGET_Settings_Slider_C::InputHeldLeft' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Settings_Slider_C, InputHeldRight) == 0x00039D, "Member 'UWIDGET_Settings_Slider_C::InputHeldRight' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Settings_Slider_C, HoldTimer) == 0x0003A0, "Member 'UWIDGET_Settings_Slider_C::HoldTimer' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Settings_Slider_C, HoldIncrementModifier_) == 0x0003A4, "Member 'UWIDGET_Settings_Slider_C::HoldIncrementModifier_' has a wrong offset!");
 
 }
 

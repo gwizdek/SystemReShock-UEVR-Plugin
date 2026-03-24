@@ -11,14 +11,15 @@
 #include "Basic.hpp"
 
 #include "StreamingSaveGameSystem_structs.hpp"
-#include "Engine_structs.hpp"
-#include "ENUM_PlayerMoveSpeed_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "STRUCT_EffectParams_structs.hpp"
-#include "AttributeSystem_structs.hpp"
 #include "ENUM_HackerGender_structs.hpp"
-#include "STRUCT_ImpactEffectResults_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "AttributeSystem_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "ENUM_PlayerMoveSpeed_structs.hpp"
+#include "Engine_structs.hpp"
+#include "STRUCT_EffectParams_structs.hpp"
 #include "ENUM_CameraBobType_structs.hpp"
+#include "STRUCT_ImpactEffectResults_structs.hpp"
 #include "NamedInteger_structs.hpp"
 #include "ENUM_MoveInputActionType_structs.hpp"
 #include "ENUM_OffReducedNormal_structs.hpp"
@@ -69,256 +70,267 @@ static_assert(offsetof(COMP_MoveControlManager_C_InitializeMoveControls, CallFun
 static_assert(offsetof(COMP_MoveControlManager_C_InitializeMoveControls, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x000050, "Member 'COMP_MoveControlManager_C_InitializeMoveControls::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
 static_assert(offsetof(COMP_MoveControlManager_C_InitializeMoveControls, K2Node_DynamicCast_bSuccess) == 0x000058, "Member 'COMP_MoveControlManager_C_InitializeMoveControls::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
-// Function COMP_MoveControlManager.COMP_MoveControlManager_C.UpdateMoveControls
-// 0x04F8 (0x04F8 - 0x0000)
-struct COMP_MoveControlManager_C_UpdateMoveControls final
+// Function COMP_MoveControlManager.COMP_MoveControlManager_C.Update Move Controls
+// 0x0518 (0x0518 - 0x0000)
+struct COMP_MoveControlManager_C_Update_Move_Controls final
 {
 public:
 	float                                         DeltaTime;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector2D                              MoveInputAxes;                                     // 0x0004(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector2D                              LookInputAxes;                                     // 0x000C(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         DeltaCameraYaw;                                    // 0x0014(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         DesiredCameraYaw;                                  // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         DesiredCameraPitch;                                // 0x001C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         AdjustedLookSensitivity;                           // 0x0020(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMOVECONTROL_Base_C*                    ActiveMoveControl;                                 // 0x0028(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Temp_float_Variable;                               // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         Temp_float_Variable_1;                             // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_BreakRotator_Roll;                        // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Pitch;                       // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Yaw;                         // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                GyroAxis;                                          // 0x0014(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              GyroAdjuster;                                      // 0x0020(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         DeltaCameraYaw;                                    // 0x0028(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         DesiredCameraYaw;                                  // 0x002C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         DesiredCameraPitch;                                // 0x0030(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         AdjustedLookSensitivity;                           // 0x0034(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMOVECONTROL_Base_C*                    ActiveMoveControl;                                 // 0x0038(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_float_Variable;                               // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Temp_float_Variable_1;                             // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         CallFunc_BreakVector_X;                            // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         CallFunc_BreakVector_Y;                            // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         CallFunc_BreakVector_Z;                            // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FRotator                               CallFunc_MakeRotator_ReturnValue;                  // 0x0058(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	float                                         CallFunc_BreakVector_X_1;                          // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y_1;                          // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z_1;                          // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_K2_SetActorRotation_ReturnValue;          // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_71[0x3];                                       // 0x0071(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRotator                               CallFunc_MakeRotator_ReturnValue_1;                // 0x0074(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FHitResult                             CallFunc_K2_SetRelativeRotation_SweepHitResult;    // 0x0080(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	float                                         CallFunc_BreakRotator_Roll_1;                      // 0x0108(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Pitch_1;                     // 0x010C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Yaw_1;                       // 0x0110(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_X_2;                          // 0x0114(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y_2;                          // 0x0118(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z_2;                          // 0x011C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0120(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0124(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue;                 // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FInterpTo_ReturnValue;                    // 0x0130(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_ClampPointToLozenge2D_ReturnValue;        // 0x0134(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_ClampAxis_ReturnValue;                    // 0x013C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector2D_X;                          // 0x0140(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector2D_Y;                          // 0x0144(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_ClampAxis_ReturnValue_1;                  // 0x0148(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_ClampAxis_ReturnValue_2;                  // 0x014C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_MakeRotator_ReturnValue_2;                // 0x0150(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FHitResult                             CallFunc_K2_SetRelativeRotation_SweepHitResult_1;  // 0x015C(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	float                                         CallFunc_BreakRotator_Roll_2;                      // 0x01E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Pitch_2;                     // 0x01E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Yaw_2;                       // 0x01EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NearlyEqual_FloatFloat_ReturnValue;       // 0x01F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x01F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1F2[0x2];                                      // 0x01F2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_BreakVector_X_3;                          // 0x01F4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y_3;                          // 0x01F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z_3;                          // 0x01FC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_K2_GetActorRotation_ReturnValue;          // 0x0200(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	float                                         CallFunc_BreakRotator_Roll_3;                      // 0x020C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Pitch_3;                     // 0x0210(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Yaw_3;                       // 0x0214(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_2;             // 0x0218(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_MakeRotator_ReturnValue_3;                // 0x021C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_K2_SetActorRotation_ReturnValue_1;        // 0x0228(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_229[0x3];                                      // 0x0229(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_BreakVector_X_4;                          // 0x022C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y_4;                          // 0x0230(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z_4;                          // 0x0234(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_K2_GetActorRotation_ReturnValue_1;        // 0x0238(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	float                                         CallFunc_BreakRotator_Roll_4;                      // 0x0244(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Pitch_4;                     // 0x0248(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Yaw_4;                       // 0x024C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_3;             // 0x0250(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Roll_5;                      // 0x0254(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Pitch_5;                     // 0x0258(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Yaw_5;                       // 0x025C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_X_5;                          // 0x0260(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y_5;                          // 0x0264(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z_5;                          // 0x0268(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_4;             // 0x026C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_MakeRotator_ReturnValue_4;                // 0x0270(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FHitResult                             CallFunc_K2_SetRelativeRotation_SweepHitResult_2;  // 0x027C(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	float                                         CallFunc_ClampAngle_ReturnValue;                   // 0x0304(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_ClampAxis_ReturnValue_3;                  // 0x0308(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_MakeRotator_ReturnValue_5;                // 0x030C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_5;             // 0x0318(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_K2_SetRelativeRotation_SweepHitResult_3;  // 0x031C(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	struct FRotator                               CallFunc_MakeRotator_ReturnValue_6;                // 0x03A4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_K2_SetActorRotation_ReturnValue_2;        // 0x03B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3B1[0x3];                                      // 0x03B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_BreakRotator_Roll_6;                      // 0x03B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Pitch_6;                     // 0x03B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakRotator_Yaw_6;                       // 0x03BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x03C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetActorRightVector_ReturnValue;          // 0x03C4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetActorForwardVector_ReturnValue;        // 0x03D0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x03DC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3DD[0x3];                                      // 0x03DD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_BreakVector_X_6;                          // 0x03E0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y_6;                          // 0x03E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z_6;                          // 0x03E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x03EC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_K2_SetActorRelativeLocation_SweepHitResult; // 0x03F8(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue_1;       // 0x0480(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x048C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Normal_ReturnValue;                       // 0x0498(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetCharacterSurfaceMoveScale_Result;      // 0x04A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x04A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GetRealspaceInvertY_Result;               // 0x04AC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4AD[0x3];                                      // 0x04AD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetRealspaceLookSensitivity_Result;       // 0x04B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_Select_Default;                             // 0x04B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x04B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4BC[0x4];                                      // 0x04BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMOVECONTROL_Base_C*                    CallFunc_GetActiveMoveControl_ActiveMoveControl;   // 0x04C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x04C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4C9[0x3];                                      // 0x04C9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetValue_ReturnValue;                     // 0x04CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x04D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_2;        // 0x04D4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue_1;               // 0x04D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_Multiply_Vector2DVector2D_ReturnValue;    // 0x04E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x04E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FHitResult                             CallFunc_K2_SetRelativeRotation_SweepHitResult;    // 0x0064(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	float                                         CallFunc_BreakRotator_Roll;                        // 0x00EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Pitch;                       // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Yaw;                         // 0x00F4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X_1;                          // 0x00F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_1;                          // 0x00FC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_1;                          // 0x0100(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0104(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0108(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue;                 // 0x010C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_ClampPointToLozenge2D_ReturnValue;        // 0x0114(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_X;                          // 0x011C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_Y;                          // 0x0120(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_ClampAxis_ReturnValue;                    // 0x0124(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Roll_1;                      // 0x0128(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Pitch_1;                     // 0x012C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Yaw_1;                       // 0x0130(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_ClampAxis_ReturnValue_1;                  // 0x0134(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NearlyEqual_FloatFloat_ReturnValue;       // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_139[0x3];                                      // 0x0139(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRotator                               CallFunc_MakeRotator_ReturnValue_1;                // 0x013C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0148(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_149[0x3];                                      // 0x0149(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             CallFunc_K2_SetRelativeRotation_SweepHitResult_1;  // 0x014C(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	struct FRotator                               CallFunc_K2_GetActorRotation_ReturnValue;          // 0x01D4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_BreakVector_X_2;                          // 0x01E0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_2;                          // 0x01E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_2;                          // 0x01E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Roll_2;                      // 0x01EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Pitch_2;                     // 0x01F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Yaw_2;                       // 0x01F4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_2;             // 0x01F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_MakeRotator_ReturnValue_2;                // 0x01FC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_SetActorRotation_ReturnValue;          // 0x0208(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_209[0x3];                                      // 0x0209(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRotator                               CallFunc_K2_GetActorRotation_ReturnValue_1;        // 0x020C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_BreakVector_X_3;                          // 0x0218(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_3;                          // 0x021C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_3;                          // 0x0220(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Roll_3;                      // 0x0224(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Pitch_3;                     // 0x0228(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Yaw_3;                       // 0x022C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_3;             // 0x0230(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Roll_4;                      // 0x0234(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Pitch_4;                     // 0x0238(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Yaw_4;                       // 0x023C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X_4;                          // 0x0240(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_4;                          // 0x0244(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_4;                          // 0x0248(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_4;             // 0x024C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_MakeRotator_ReturnValue_3;                // 0x0250(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_ClampAngle_ReturnValue;                   // 0x025C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_K2_SetRelativeRotation_SweepHitResult_2;  // 0x0260(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	float                                         CallFunc_ClampAxis_ReturnValue_2;                  // 0x02E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_MakeRotator_ReturnValue_4;                // 0x02EC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_5;             // 0x02F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_MakeRotator_ReturnValue_5;                // 0x02FC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_SetActorRotation_ReturnValue_1;        // 0x0308(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_309[0x3];                                      // 0x0309(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_BreakRotator_Roll_5;                      // 0x030C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Pitch_5;                     // 0x0310(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Yaw_5;                       // 0x0314(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0318(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x031C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31D[0x3];                                      // 0x031D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_GetActorRightVector_ReturnValue;          // 0x0320(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetActorForwardVector_ReturnValue;        // 0x032C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x0338(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_339[0x3];                                      // 0x0339(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_BreakVector_X_5;                          // 0x033C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_5;                          // 0x0340(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_5;                          // 0x0344(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x0348(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue_1;       // 0x0354(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_K2_SetActorRelativeLocation_SweepHitResult; // 0x0360(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x03E8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Normal_ReturnValue;                       // 0x03F4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetCharacterSurfaceMoveScale_Result;      // 0x0400(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0404(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X_6;                          // 0x0408(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_6;                          // 0x040C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_6;                          // 0x0410(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_MakeRotator_ReturnValue_6;                // 0x0414(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_SetActorRotation_ReturnValue_2;        // 0x0420(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_421[0x3];                                      // 0x0421(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             CallFunc_K2_SetRelativeRotation_SweepHitResult_3;  // 0x0424(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	float                                         CallFunc_BreakRotator_Roll_6;                      // 0x04AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Pitch_6;                     // 0x04B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakRotator_Yaw_6;                       // 0x04B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FInterpTo_ReturnValue;                    // 0x04B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Add_Vector2DVector2D_ReturnValue;         // 0x04BC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_ClampAxis_ReturnValue_3;                  // 0x04C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_UpdateLookWithGyro_Result;                // 0x04C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GetGyroRealspace_Result;                  // 0x04D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x04D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetRealspaceInvertY_Result;               // 0x04D2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_4D3[0x1];                                      // 0x04D3(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetRealspaceLookSensitivity_Result;       // 0x04D4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x04D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_Select_Default;                             // 0x04DC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMOVECONTROL_Base_C*                    CallFunc_GetActiveMoveControl_ActiveMoveControl;   // 0x04E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x04E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_4E9[0x3];                                      // 0x04E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_LastIndex_ReturnValue;              // 0x04EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_2;        // 0x04F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x04F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_UpdateMoveControl_ShouldExpire;           // 0x04F2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_GetValue_ReturnValue;                     // 0x04EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x04F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_2;        // 0x04F4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue_1;               // 0x04F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Multiply_Vector2DVector2D_ReturnValue;    // 0x0500(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x0508(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_509[0x3];                                      // 0x0509(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_LastIndex_ReturnValue;              // 0x050C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_2;        // 0x0510(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0511(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_UpdateMoveControl_ShouldExpire;           // 0x0512(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(COMP_MoveControlManager_C_UpdateMoveControls) == 0x000008, "Wrong alignment on COMP_MoveControlManager_C_UpdateMoveControls");
-static_assert(sizeof(COMP_MoveControlManager_C_UpdateMoveControls) == 0x0004F8, "Wrong size on COMP_MoveControlManager_C_UpdateMoveControls");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, DeltaTime) == 0x000000, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::DeltaTime' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, MoveInputAxes) == 0x000004, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::MoveInputAxes' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, LookInputAxes) == 0x00000C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::LookInputAxes' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, DeltaCameraYaw) == 0x000014, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::DeltaCameraYaw' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, DesiredCameraYaw) == 0x000018, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::DesiredCameraYaw' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, DesiredCameraPitch) == 0x00001C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::DesiredCameraPitch' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, AdjustedLookSensitivity) == 0x000020, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::AdjustedLookSensitivity' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, ActiveMoveControl) == 0x000028, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::ActiveMoveControl' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, Temp_bool_Variable) == 0x000030, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, Temp_float_Variable) == 0x000034, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::Temp_float_Variable' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, Temp_float_Variable_1) == 0x000038, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::Temp_float_Variable_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, K2Node_SwitchEnum_CmpSuccess) == 0x00003C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Roll) == 0x000040, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Roll' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Pitch) == 0x000044, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Pitch' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Yaw) == 0x000048, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Yaw' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_X) == 0x00004C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_X' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Y) == 0x000050, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Y' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Z) == 0x000054, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Z' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_MakeRotator_ReturnValue) == 0x000058, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_MakeRotator_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_X_1) == 0x000064, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_X_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Y_1) == 0x000068, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Y_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Z_1) == 0x00006C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Z_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_SetActorRotation_ReturnValue) == 0x000070, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_SetActorRotation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_MakeRotator_ReturnValue_1) == 0x000074, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_MakeRotator_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_SetRelativeRotation_SweepHitResult) == 0x000080, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_SetRelativeRotation_SweepHitResult' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Roll_1) == 0x000108, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Roll_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Pitch_1) == 0x00010C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Pitch_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Yaw_1) == 0x000110, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Yaw_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_X_2) == 0x000114, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_X_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Y_2) == 0x000118, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Y_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Z_2) == 0x00011C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Z_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Add_FloatFloat_ReturnValue) == 0x000120, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000124, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_MakeVector2D_ReturnValue) == 0x000128, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_MakeVector2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_FInterpTo_ReturnValue) == 0x000130, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_FInterpTo_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_ClampPointToLozenge2D_ReturnValue) == 0x000134, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_ClampPointToLozenge2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_ClampAxis_ReturnValue) == 0x00013C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_ClampAxis_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector2D_X) == 0x000140, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector2D_X' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector2D_Y) == 0x000144, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector2D_Y' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_ClampAxis_ReturnValue_1) == 0x000148, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_ClampAxis_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_ClampAxis_ReturnValue_2) == 0x00014C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_ClampAxis_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_MakeRotator_ReturnValue_2) == 0x000150, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_MakeRotator_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_SetRelativeRotation_SweepHitResult_1) == 0x00015C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_SetRelativeRotation_SweepHitResult_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Roll_2) == 0x0001E4, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Roll_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Pitch_2) == 0x0001E8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Pitch_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Yaw_2) == 0x0001EC, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Yaw_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_NearlyEqual_FloatFloat_ReturnValue) == 0x0001F0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_NearlyEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Not_PreBool_ReturnValue) == 0x0001F1, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_X_3) == 0x0001F4, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_X_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Y_3) == 0x0001F8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Y_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Z_3) == 0x0001FC, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Z_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_GetActorRotation_ReturnValue) == 0x000200, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_GetActorRotation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Roll_3) == 0x00020C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Roll_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Pitch_3) == 0x000210, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Pitch_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Yaw_3) == 0x000214, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Yaw_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Add_FloatFloat_ReturnValue_2) == 0x000218, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Add_FloatFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_MakeRotator_ReturnValue_3) == 0x00021C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_MakeRotator_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_SetActorRotation_ReturnValue_1) == 0x000228, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_SetActorRotation_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_X_4) == 0x00022C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_X_4' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Y_4) == 0x000230, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Y_4' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Z_4) == 0x000234, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Z_4' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_GetActorRotation_ReturnValue_1) == 0x000238, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_GetActorRotation_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Roll_4) == 0x000244, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Roll_4' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Pitch_4) == 0x000248, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Pitch_4' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Yaw_4) == 0x00024C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Yaw_4' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Add_FloatFloat_ReturnValue_3) == 0x000250, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Add_FloatFloat_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Roll_5) == 0x000254, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Roll_5' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Pitch_5) == 0x000258, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Pitch_5' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Yaw_5) == 0x00025C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Yaw_5' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_X_5) == 0x000260, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_X_5' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Y_5) == 0x000264, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Y_5' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Z_5) == 0x000268, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Z_5' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Add_FloatFloat_ReturnValue_4) == 0x00026C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Add_FloatFloat_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_MakeRotator_ReturnValue_4) == 0x000270, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_MakeRotator_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_SetRelativeRotation_SweepHitResult_2) == 0x00027C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_SetRelativeRotation_SweepHitResult_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_ClampAngle_ReturnValue) == 0x000304, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_ClampAngle_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_ClampAxis_ReturnValue_3) == 0x000308, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_ClampAxis_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_MakeRotator_ReturnValue_5) == 0x00030C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_MakeRotator_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Add_FloatFloat_ReturnValue_5) == 0x000318, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Add_FloatFloat_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_SetRelativeRotation_SweepHitResult_3) == 0x00031C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_SetRelativeRotation_SweepHitResult_3' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_MakeRotator_ReturnValue_6) == 0x0003A4, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_MakeRotator_ReturnValue_6' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_SetActorRotation_ReturnValue_2) == 0x0003B0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_SetActorRotation_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Roll_6) == 0x0003B4, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Roll_6' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Pitch_6) == 0x0003B8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Pitch_6' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakRotator_Yaw_6) == 0x0003BC, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakRotator_Yaw_6' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x0003C0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_GetActorRightVector_ReturnValue) == 0x0003C4, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_GetActorRightVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_GetActorForwardVector_ReturnValue) == 0x0003D0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_GetActorForwardVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, K2Node_SwitchEnum_CmpSuccess_1) == 0x0003DC, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::K2Node_SwitchEnum_CmpSuccess_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_X_6) == 0x0003E0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_X_6' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Y_6) == 0x0003E4, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Y_6' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_BreakVector_Z_6) == 0x0003E8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_BreakVector_Z_6' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x0003EC, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_K2_SetActorRelativeLocation_SweepHitResult) == 0x0003F8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_K2_SetActorRelativeLocation_SweepHitResult' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Multiply_VectorFloat_ReturnValue_1) == 0x000480, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Multiply_VectorFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Add_VectorVector_ReturnValue) == 0x00048C, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Normal_ReturnValue) == 0x000498, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Normal_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_GetCharacterSurfaceMoveScale_Result) == 0x0004A4, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_GetCharacterSurfaceMoveScale_Result' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x0004A8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_GetRealspaceInvertY_Result) == 0x0004AC, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_GetRealspaceInvertY_Result' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_GetRealspaceLookSensitivity_Result) == 0x0004B0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_GetRealspaceLookSensitivity_Result' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, K2Node_Select_Default) == 0x0004B4, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Divide_FloatFloat_ReturnValue) == 0x0004B8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_GetActiveMoveControl_ActiveMoveControl) == 0x0004C0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_GetActiveMoveControl_ActiveMoveControl' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x0004C8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_GetValue_ReturnValue) == 0x0004CC, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_GetValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x0004D0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Multiply_FloatFloat_ReturnValue_2) == 0x0004D4, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Multiply_FloatFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_MakeVector2D_ReturnValue_1) == 0x0004D8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_MakeVector2D_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Multiply_Vector2DVector2D_ReturnValue) == 0x0004E0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Multiply_Vector2DVector2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x0004E8, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_Array_LastIndex_ReturnValue) == 0x0004EC, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_Array_LastIndex_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_EqualEqual_ByteByte_ReturnValue_2) == 0x0004F0, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_EqualEqual_ByteByte_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x0004F1, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_MoveControlManager_C_UpdateMoveControls, CallFunc_UpdateMoveControl_ShouldExpire) == 0x0004F2, "Member 'COMP_MoveControlManager_C_UpdateMoveControls::CallFunc_UpdateMoveControl_ShouldExpire' has a wrong offset!");
+static_assert(alignof(COMP_MoveControlManager_C_Update_Move_Controls) == 0x000008, "Wrong alignment on COMP_MoveControlManager_C_Update_Move_Controls");
+static_assert(sizeof(COMP_MoveControlManager_C_Update_Move_Controls) == 0x000518, "Wrong size on COMP_MoveControlManager_C_Update_Move_Controls");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, DeltaTime) == 0x000000, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::DeltaTime' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, MoveInputAxes) == 0x000004, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::MoveInputAxes' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, LookInputAxes) == 0x00000C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::LookInputAxes' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, GyroAxis) == 0x000014, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::GyroAxis' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, GyroAdjuster) == 0x000020, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::GyroAdjuster' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, DeltaCameraYaw) == 0x000028, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::DeltaCameraYaw' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, DesiredCameraYaw) == 0x00002C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::DesiredCameraYaw' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, DesiredCameraPitch) == 0x000030, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::DesiredCameraPitch' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, AdjustedLookSensitivity) == 0x000034, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::AdjustedLookSensitivity' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, ActiveMoveControl) == 0x000038, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::ActiveMoveControl' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, Temp_bool_Variable) == 0x000040, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, Temp_float_Variable) == 0x000044, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::Temp_float_Variable' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, Temp_float_Variable_1) == 0x000048, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::Temp_float_Variable_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_X) == 0x00004C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_X' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Y) == 0x000050, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Y' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Z) == 0x000054, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Z' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_MakeRotator_ReturnValue) == 0x000058, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_MakeRotator_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_SetRelativeRotation_SweepHitResult) == 0x000064, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_SetRelativeRotation_SweepHitResult' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Roll) == 0x0000EC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Roll' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Pitch) == 0x0000F0, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Pitch' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Yaw) == 0x0000F4, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Yaw' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_X_1) == 0x0000F8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_X_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Y_1) == 0x0000FC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Y_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Z_1) == 0x000100, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Z_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Add_FloatFloat_ReturnValue) == 0x000104, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000108, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_MakeVector2D_ReturnValue) == 0x00010C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_MakeVector2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_ClampPointToLozenge2D_ReturnValue) == 0x000114, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_ClampPointToLozenge2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector2D_X) == 0x00011C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector2D_X' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector2D_Y) == 0x000120, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector2D_Y' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_ClampAxis_ReturnValue) == 0x000124, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_ClampAxis_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Roll_1) == 0x000128, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Roll_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Pitch_1) == 0x00012C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Pitch_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Yaw_1) == 0x000130, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Yaw_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_ClampAxis_ReturnValue_1) == 0x000134, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_ClampAxis_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_NearlyEqual_FloatFloat_ReturnValue) == 0x000138, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_NearlyEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_MakeRotator_ReturnValue_1) == 0x00013C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_MakeRotator_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Not_PreBool_ReturnValue) == 0x000148, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_SetRelativeRotation_SweepHitResult_1) == 0x00014C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_SetRelativeRotation_SweepHitResult_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_GetActorRotation_ReturnValue) == 0x0001D4, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_GetActorRotation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_X_2) == 0x0001E0, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_X_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Y_2) == 0x0001E4, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Y_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Z_2) == 0x0001E8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Z_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Roll_2) == 0x0001EC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Roll_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Pitch_2) == 0x0001F0, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Pitch_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Yaw_2) == 0x0001F4, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Yaw_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Add_FloatFloat_ReturnValue_2) == 0x0001F8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Add_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_MakeRotator_ReturnValue_2) == 0x0001FC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_MakeRotator_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_SetActorRotation_ReturnValue) == 0x000208, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_SetActorRotation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_GetActorRotation_ReturnValue_1) == 0x00020C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_GetActorRotation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_X_3) == 0x000218, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_X_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Y_3) == 0x00021C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Y_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Z_3) == 0x000220, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Z_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Roll_3) == 0x000224, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Roll_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Pitch_3) == 0x000228, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Pitch_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Yaw_3) == 0x00022C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Yaw_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Add_FloatFloat_ReturnValue_3) == 0x000230, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Add_FloatFloat_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Roll_4) == 0x000234, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Roll_4' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Pitch_4) == 0x000238, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Pitch_4' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Yaw_4) == 0x00023C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Yaw_4' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_X_4) == 0x000240, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_X_4' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Y_4) == 0x000244, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Y_4' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Z_4) == 0x000248, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Z_4' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Add_FloatFloat_ReturnValue_4) == 0x00024C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Add_FloatFloat_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_MakeRotator_ReturnValue_3) == 0x000250, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_MakeRotator_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_ClampAngle_ReturnValue) == 0x00025C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_ClampAngle_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_SetRelativeRotation_SweepHitResult_2) == 0x000260, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_SetRelativeRotation_SweepHitResult_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_ClampAxis_ReturnValue_2) == 0x0002E8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_ClampAxis_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_MakeRotator_ReturnValue_4) == 0x0002EC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_MakeRotator_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Add_FloatFloat_ReturnValue_5) == 0x0002F8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Add_FloatFloat_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_MakeRotator_ReturnValue_5) == 0x0002FC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_MakeRotator_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_SetActorRotation_ReturnValue_1) == 0x000308, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_SetActorRotation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Roll_5) == 0x00030C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Roll_5' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Pitch_5) == 0x000310, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Pitch_5' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Yaw_5) == 0x000314, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Yaw_5' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000318, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, K2Node_SwitchEnum_CmpSuccess) == 0x00031C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_GetActorRightVector_ReturnValue) == 0x000320, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_GetActorRightVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_GetActorForwardVector_ReturnValue) == 0x00032C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_GetActorForwardVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, K2Node_SwitchEnum_CmpSuccess_1) == 0x000338, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::K2Node_SwitchEnum_CmpSuccess_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_X_5) == 0x00033C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_X_5' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Y_5) == 0x000340, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Y_5' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Z_5) == 0x000344, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Z_5' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x000348, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Multiply_VectorFloat_ReturnValue_1) == 0x000354, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Multiply_VectorFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_SetActorRelativeLocation_SweepHitResult) == 0x000360, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_SetActorRelativeLocation_SweepHitResult' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Add_VectorVector_ReturnValue) == 0x0003E8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Normal_ReturnValue) == 0x0003F4, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Normal_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_GetCharacterSurfaceMoveScale_Result) == 0x000400, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_GetCharacterSurfaceMoveScale_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000404, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_X_6) == 0x000408, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_X_6' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Y_6) == 0x00040C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Y_6' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakVector_Z_6) == 0x000410, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakVector_Z_6' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_MakeRotator_ReturnValue_6) == 0x000414, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_MakeRotator_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_SetActorRotation_ReturnValue_2) == 0x000420, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_SetActorRotation_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_K2_SetRelativeRotation_SweepHitResult_3) == 0x000424, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_K2_SetRelativeRotation_SweepHitResult_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Roll_6) == 0x0004AC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Roll_6' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Pitch_6) == 0x0004B0, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Pitch_6' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_BreakRotator_Yaw_6) == 0x0004B4, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_BreakRotator_Yaw_6' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_FInterpTo_ReturnValue) == 0x0004B8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_FInterpTo_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Add_Vector2DVector2D_ReturnValue) == 0x0004BC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Add_Vector2DVector2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_ClampAxis_ReturnValue_3) == 0x0004C4, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_ClampAxis_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_UpdateLookWithGyro_Result) == 0x0004C8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_UpdateLookWithGyro_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_GetGyroRealspace_Result) == 0x0004D0, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_GetGyroRealspace_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Not_PreBool_ReturnValue_1) == 0x0004D1, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_GetRealspaceInvertY_Result) == 0x0004D2, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_GetRealspaceInvertY_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_GetRealspaceLookSensitivity_Result) == 0x0004D4, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_GetRealspaceLookSensitivity_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Divide_FloatFloat_ReturnValue) == 0x0004D8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, K2Node_Select_Default) == 0x0004DC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_GetActiveMoveControl_ActiveMoveControl) == 0x0004E0, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_GetActiveMoveControl_ActiveMoveControl' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x0004E8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_GetValue_ReturnValue) == 0x0004EC, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_GetValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x0004F0, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Multiply_FloatFloat_ReturnValue_2) == 0x0004F4, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Multiply_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_MakeVector2D_ReturnValue_1) == 0x0004F8, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_MakeVector2D_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Multiply_Vector2DVector2D_ReturnValue) == 0x000500, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Multiply_Vector2DVector2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x000508, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_Array_LastIndex_ReturnValue) == 0x00050C, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_Array_LastIndex_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_EqualEqual_ByteByte_ReturnValue_2) == 0x000510, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_EqualEqual_ByteByte_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000511, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_Update_Move_Controls, CallFunc_UpdateMoveControl_ShouldExpire) == 0x000512, "Member 'COMP_MoveControlManager_C_Update_Move_Controls::CallFunc_UpdateMoveControl_ShouldExpire' has a wrong offset!");
 
 // Function COMP_MoveControlManager.COMP_MoveControlManager_C.RegisterMoveControl
 // 0x0028 (0x0028 - 0x0000)
@@ -3110,6 +3122,162 @@ static_assert(sizeof(COMP_MoveControlManager_C_ShouldSkateWhileSprinting) == 0x0
 static_assert(offsetof(COMP_MoveControlManager_C_ShouldSkateWhileSprinting, Result) == 0x000000, "Member 'COMP_MoveControlManager_C_ShouldSkateWhileSprinting::Result' has a wrong offset!");
 static_assert(offsetof(COMP_MoveControlManager_C_ShouldSkateWhileSprinting, CallFunc_CanActivateTurboMechanism_Result) == 0x000001, "Member 'COMP_MoveControlManager_C_ShouldSkateWhileSprinting::CallFunc_CanActivateTurboMechanism_Result' has a wrong offset!");
 static_assert(offsetof(COMP_MoveControlManager_C_ShouldSkateWhileSprinting, CallFunc_IsValid_ReturnValue) == 0x000002, "Member 'COMP_MoveControlManager_C_ShouldSkateWhileSprinting::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+
+// Function COMP_MoveControlManager.COMP_MoveControlManager_C.UpdateLookWithGyro
+// 0x0170 (0x0170 - 0x0000)
+struct COMP_MoveControlManager_C_UpdateLookWithGyro final
+{
+public:
+	float                                         DeltaTime;                                         // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              LookInputAxis;                                     // 0x0004(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                GyroTilt;                                          // 0x000C(0x000C)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              Result;                                            // 0x0018(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         SensitivityBoost;                                  // 0x0020(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                GyroWithSensitivity;                               // 0x0024(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          NewLocalVar_0;                                     // 0x0030(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                Sensitivity;                                       // 0x0034(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RawGyroVector;                                     // 0x0040(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              GyroVector;                                        // 0x004C(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x0054(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_55[0x3];                                       // 0x0055(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetGyroHackerADSSensitivityX_Result;      // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5D[0x3];                                       // 0x005D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetGyroHackerADSSensitivityY_Result;      // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_MakeVector_ReturnValue;                   // 0x0064(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Temp_float_Variable;                               // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Temp_float_Variable_1;                             // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_79[0x3];                                       // 0x0079(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetGyroHackerLookSensitivityX_Result;     // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetGyroHackerLookSensitivityY_Result;     // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue_1;          // 0x0084(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_85[0x3];                                       // 0x0085(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_MakeVector_ReturnValue_1;                 // 0x0088(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_95[0x3];                                       // 0x0095(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_Multiply_VectorVector_ReturnValue;        // 0x0098(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X;                            // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y;                            // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z;                            // 0x00AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X_1;                          // 0x00B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y_1;                          // 0x00B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z_1;                          // 0x00BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetGyroHackerADSSensitivityX_Result_1;    // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetGyroHackerADSSensitivityY_Result_1;    // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_MakeVector_ReturnValue_2;                 // 0x00C8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetGyroHackerLookSensitivityX_Result_1;   // 0x00D4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetGyroHackerLookSensitivityY_Result_1;   // 0x00D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable_1;                              // 0x00DC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_DD[0x3];                                       // 0x00DD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_MakeVector_ReturnValue_3;                 // 0x00E0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetMoveActionInputValue_Value;            // 0x00EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x00F0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Round_ReturnValue;                        // 0x00FC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x0100(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Conv_IntToBool_ReturnValue;               // 0x010C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x010D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_10E[0x2];                                      // 0x010E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0110(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0118(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_119[0x3];                                      // 0x0119(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_float_Variable_2;                             // 0x011C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    CallFunc_GetNeuralHUD_Result;                      // 0x0120(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0128(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetGyroHackerInvertY_Result;              // 0x0129(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue_2;          // 0x012A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_12B[0x1];                                      // 0x012B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_float_Variable_3;                             // 0x012C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_2;                    // 0x0130(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_131[0x3];                                      // 0x0131(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         K2Node_Select_Default;                             // 0x0134(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_1;        // 0x0138(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_2;        // 0x013C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue;                 // 0x0140(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_X;                          // 0x0148(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_Y;                          // 0x014C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_X_1;                        // 0x0150(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_Y_1;                        // 0x0154(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_InRange_FloatFloat_ReturnValue;           // 0x0158(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_InRange_FloatFloat_ReturnValue_1;         // 0x0159(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x015A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetGyroHackerInvertY_Result_1;            // 0x015B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         K2Node_Select_Default_1;                           // 0x015C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue_3;        // 0x0160(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue_1;               // 0x0164(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(COMP_MoveControlManager_C_UpdateLookWithGyro) == 0x000008, "Wrong alignment on COMP_MoveControlManager_C_UpdateLookWithGyro");
+static_assert(sizeof(COMP_MoveControlManager_C_UpdateLookWithGyro) == 0x000170, "Wrong size on COMP_MoveControlManager_C_UpdateLookWithGyro");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, DeltaTime) == 0x000000, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::DeltaTime' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, LookInputAxis) == 0x000004, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::LookInputAxis' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, GyroTilt) == 0x00000C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::GyroTilt' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, Result) == 0x000018, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, SensitivityBoost) == 0x000020, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::SensitivityBoost' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, GyroWithSensitivity) == 0x000024, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::GyroWithSensitivity' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, NewLocalVar_0) == 0x000030, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::NewLocalVar_0' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, Sensitivity) == 0x000034, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::Sensitivity' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, RawGyroVector) == 0x000040, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::RawGyroVector' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, GyroVector) == 0x00004C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::GyroVector' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetPlatformFamily_ReturnValue) == 0x000054, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerADSSensitivityX_Result) == 0x000058, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerADSSensitivityX_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, K2Node_SwitchEnum_CmpSuccess) == 0x00005C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerADSSensitivityY_Result) == 0x000060, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerADSSensitivityY_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_MakeVector_ReturnValue) == 0x000064, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_MakeVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, Temp_float_Variable) == 0x000070, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::Temp_float_Variable' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, Temp_float_Variable_1) == 0x000074, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::Temp_float_Variable_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, Temp_bool_Variable) == 0x000078, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerLookSensitivityX_Result) == 0x00007C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerLookSensitivityX_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerLookSensitivityY_Result) == 0x000080, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerLookSensitivityY_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetPlatformFamily_ReturnValue_1) == 0x000084, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetPlatformFamily_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_MakeVector_ReturnValue_1) == 0x000088, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_MakeVector_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, K2Node_SwitchEnum_CmpSuccess_1) == 0x000094, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::K2Node_SwitchEnum_CmpSuccess_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Multiply_VectorVector_ReturnValue) == 0x000098, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Multiply_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector_X) == 0x0000A4, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector_X' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector_Y) == 0x0000A8, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector_Y' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector_Z) == 0x0000AC, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector_Z' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x0000B0, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector_X_1) == 0x0000B4, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector_X_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector_Y_1) == 0x0000B8, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector_Y_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector_Z_1) == 0x0000BC, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector_Z_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerADSSensitivityX_Result_1) == 0x0000C0, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerADSSensitivityX_Result_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerADSSensitivityY_Result_1) == 0x0000C4, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerADSSensitivityY_Result_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_MakeVector_ReturnValue_2) == 0x0000C8, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_MakeVector_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerLookSensitivityX_Result_1) == 0x0000D4, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerLookSensitivityX_Result_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerLookSensitivityY_Result_1) == 0x0000D8, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerLookSensitivityY_Result_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, Temp_bool_Variable_1) == 0x0000DC, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_MakeVector_ReturnValue_3) == 0x0000E0, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_MakeVector_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetMoveActionInputValue_Value) == 0x0000EC, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetMoveActionInputValue_Value' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Subtract_VectorVector_ReturnValue) == 0x0000F0, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Round_ReturnValue) == 0x0000FC, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Round_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x000100, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Conv_IntToBool_ReturnValue) == 0x00010C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Conv_IntToBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Not_PreBool_ReturnValue) == 0x00010D, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000110, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, K2Node_DynamicCast_bSuccess) == 0x000118, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, Temp_float_Variable_2) == 0x00011C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::Temp_float_Variable_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetNeuralHUD_Result) == 0x000120, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetNeuralHUD_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Not_PreBool_ReturnValue_1) == 0x000128, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerInvertY_Result) == 0x000129, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerInvertY_Result' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetPlatformFamily_ReturnValue_2) == 0x00012A, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetPlatformFamily_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, Temp_float_Variable_3) == 0x00012C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::Temp_float_Variable_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, K2Node_SwitchEnum_CmpSuccess_2) == 0x000130, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::K2Node_SwitchEnum_CmpSuccess_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, K2Node_Select_Default) == 0x000134, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Multiply_FloatFloat_ReturnValue_1) == 0x000138, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Multiply_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Multiply_FloatFloat_ReturnValue_2) == 0x00013C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Multiply_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_MakeVector2D_ReturnValue) == 0x000140, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_MakeVector2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector2D_X) == 0x000148, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector2D_X' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector2D_Y) == 0x00014C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector2D_Y' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector2D_X_1) == 0x000150, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector2D_X_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BreakVector2D_Y_1) == 0x000154, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BreakVector2D_Y_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_InRange_FloatFloat_ReturnValue) == 0x000158, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_InRange_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_InRange_FloatFloat_ReturnValue_1) == 0x000159, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_InRange_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_BooleanAND_ReturnValue) == 0x00015A, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_GetGyroHackerInvertY_Result_1) == 0x00015B, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_GetGyroHackerInvertY_Result_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, K2Node_Select_Default_1) == 0x00015C, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_Multiply_FloatFloat_ReturnValue_3) == 0x000160, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_Multiply_FloatFloat_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(COMP_MoveControlManager_C_UpdateLookWithGyro, CallFunc_MakeVector2D_ReturnValue_1) == 0x000164, "Member 'COMP_MoveControlManager_C_UpdateLookWithGyro::CallFunc_MakeVector2D_ReturnValue_1' has a wrong offset!");
 
 // Function COMP_MoveControlManager.COMP_MoveControlManager_C.ClearMoveActionInputValues
 // 0x0014 (0x0014 - 0x0000)

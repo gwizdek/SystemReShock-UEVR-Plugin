@@ -10,25 +10,25 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_InteractResults_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
-#include "STRUCT_AnimatedLimb_structs.hpp"
-#include "STRUCT_EnemyStats_structs.hpp"
-#include "STRUCT_LocalBehaviorAnimations_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "STRUCT_HardItemParams_structs.hpp"
-#include "StreamingSaveGameSystem_structs.hpp"
-#include "Engine_structs.hpp"
-#include "ENUM_LocalBehaviorType_structs.hpp"
-#include "AttributeSystem_structs.hpp"
-#include "ENUM_EnemyType_structs.hpp"
+#include "ENUM_Emotions_structs.hpp"
 #include "STRUCT_EnemyTemplate_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
+#include "STRUCT_EnemyStats_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ENUM_LocalBehaviorType_structs.hpp"
+#include "Engine_structs.hpp"
+#include "STRUCT_LocalBehaviorAnimations_structs.hpp"
+#include "STRUCT_DeathBlowData_structs.hpp"
+#include "ENUM_EnemyType_structs.hpp"
+#include "AttributeSystem_structs.hpp"
+#include "StreamingSaveGameSystem_structs.hpp"
+#include "STRUCT_InventoryBagParams_structs.hpp"
 #include "STRUCT_CombatDifficultySettings_structs.hpp"
+#include "STRUCT_AnimatedLimb_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 #include "STRUCT_DismemberableLimb_structs.hpp"
-#include "ENUM_Emotions_structs.hpp"
-#include "STRUCT_DeathBlowData_structs.hpp"
-#include "STRUCT_InventoryBagParams_structs.hpp"
 #include "STRUCT_LootBonusData_structs.hpp"
 #include "SystemReShock_structs.hpp"
 #include "ENUM_TargetAssignmentType_structs.hpp"
@@ -3465,6 +3465,30 @@ static_assert(offsetof(PAWN_Enemy_C_IsRealspaceCharacter, Result) == 0x000000, "
 static_assert(offsetof(PAWN_Enemy_C_IsRealspaceCharacter, CallFunc_GetDataTableRowFromName_OutRow) == 0x000008, "Member 'PAWN_Enemy_C_IsRealspaceCharacter::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
 static_assert(offsetof(PAWN_Enemy_C_IsRealspaceCharacter, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000050, "Member 'PAWN_Enemy_C_IsRealspaceCharacter::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PAWN_Enemy_C_IsRealspaceCharacter, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000051, "Member 'PAWN_Enemy_C_IsRealspaceCharacter::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
+
+// Function PAWN_Enemy.PAWN_Enemy_C.ReceiveGetCurrentSkillPreferredMinMaxRange
+// 0x0038 (0x0038 - 0x0000)
+struct PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetInvalidLocationVector_ReturnValue;     // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              CallFunc_GetPreferredDistanceMinMax_PreferredDistance; // 0x001C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_X;                          // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_Y;                          // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_MakeVector_ReturnValue;                   // 0x002C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange) == 0x000004, "Wrong alignment on PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange");
+static_assert(sizeof(PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange) == 0x000038, "Wrong size on PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange");
+static_assert(offsetof(PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange, ReturnValue) == 0x000000, "Member 'PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange::ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange, CallFunc_GetInvalidLocationVector_ReturnValue) == 0x00000C, "Member 'PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange::CallFunc_GetInvalidLocationVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange, CallFunc_GetPreferredDistanceMinMax_PreferredDistance) == 0x00001C, "Member 'PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange::CallFunc_GetPreferredDistanceMinMax_PreferredDistance' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange, CallFunc_BreakVector2D_X) == 0x000024, "Member 'PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange::CallFunc_BreakVector2D_X' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange, CallFunc_BreakVector2D_Y) == 0x000028, "Member 'PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange::CallFunc_BreakVector2D_Y' has a wrong offset!");
+static_assert(offsetof(PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange, CallFunc_MakeVector_ReturnValue) == 0x00002C, "Member 'PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange::CallFunc_MakeVector_ReturnValue' has a wrong offset!");
 
 // Function PAWN_Enemy.PAWN_Enemy_C.GetInteractBroken
 // 0x0020 (0x0020 - 0x0000)

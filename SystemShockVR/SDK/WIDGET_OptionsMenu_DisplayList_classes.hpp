@@ -42,8 +42,8 @@ public:
 public:
 	void ExecuteUbergraph_WIDGET_OptionsMenu_DisplayList(int32 EntryPoint);
 	void BndEvt__WIDGET_OptionsMenu_DisplayList_OPTION_Display_WindowMode_K2Node_ComponentBoundEvent_0_OnWindowModeChanged__DelegateSignature();
-	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 	void InitializeList(class UWIDGET_MenuBase_C* ParentScreen);
+	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 
 public:
 	static class UClass* StaticClass()

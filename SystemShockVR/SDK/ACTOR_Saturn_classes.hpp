@@ -10,9 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "CoreUObject_structs.hpp"
+#include "SystemReShock_structs.hpp"
 
 
 namespace SDK
@@ -73,7 +74,6 @@ public:
 	void ReceiveTick(float DeltaSeconds);
 	void BndEvt__ACTOR_Saturn_COMP_ExteriorCullable_K2Node_ComponentBoundEvent_0_CullableVisibilitySignature__DelegateSignature(bool bVisibleState);
 	void ReceiveBeginPlay();
-	void UserConstructionScript();
 	void UpdateSunMaterialParameters(class UMaterialInstanceDynamic* Material);
 	void InitializeMeshMaterials();
 	void UpdateSunSettings();

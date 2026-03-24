@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "StreamingSaveGameSystem_classes.hpp"
 #include "STRUCT_DebrisFragmentInstance_structs.hpp"
 #include "Engine_structs.hpp"
-#include "AttributeSystem_structs.hpp"
 #include "ENUM_Axis_structs.hpp"
+#include "AttributeSystem_structs.hpp"
+#include "StreamingSaveGameSystem_classes.hpp"
 
 
 namespace SDK

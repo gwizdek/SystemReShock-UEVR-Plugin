@@ -12,6 +12,7 @@
 
 #include "Engine_structs.hpp"
 #include "UMG_classes.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 
 
 namespace SDK

@@ -10,17 +10,18 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "ENUM_MFDTabCategory_structs.hpp"
-#include "STRUCT_QueuedNotification_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_UpgradeResult_structs.hpp"
+#include "Engine_structs.hpp"
+#include "ENUM_InteractResultType_structs.hpp"
+#include "ENUM_MFDTabCategory_structs.hpp"
+#include "STRUCT_QueuedNotification_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "UMG_structs.hpp"
 #include "UMG_classes.hpp"
-#include "ENUM_InteractResultType_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "ENUM_CardinalDirection_structs.hpp"
 #include "ENUM_HotbarStyle_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 #include "ENUM_CursorMode_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 
@@ -373,11 +374,11 @@ public:
 	void EVENT_OnBootupFinished();
 	void EVENT_BeginCrashSequence();
 	void EVENT_OnCrashSequenceFinished();
-	void EVENT_OnUsingGamepadChanged(bool IsUsingGamepad);
 	void UpdateCountdownTimeRemaining();
 	void DisplayCountdownTimerShort();
 	void EVENT_OnPeriodicGameCountdownUpdate();
 	void MoveCursorToHotbarSlotIndex(int32 NewSlotIndex);
+	void EVENT_on_Active_Controller_Type_Changed(ENUM_ControllerType NewActiveControllerType);
 	void SetGameLockedForMenus(bool LockGame, bool* Result);
 	void OnCharacterDied(const struct FAttribDamageInstance& DamageInstance, bool* Result);
 	void OnCharacterRespawned(bool* Result);

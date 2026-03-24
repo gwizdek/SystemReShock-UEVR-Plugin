@@ -10,14 +10,16 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_QualitySetting_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
+#include "ENUM_HotbarStyle_structs.hpp"
 #include "ENUM_OffLowMediumHigh_structs.hpp"
-#include "DLSSBlueprint_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "ENUM_SmallMediumLarge_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "ENUM_SmallMediumLarge_structs.hpp"
+#include "DLSSBlueprint_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ENUM_QualitySetting_structs.hpp"
-#include "ENUM_HotbarStyle_structs.hpp"
 #include "STRUCT_BoundInputActionPair_structs.hpp"
 #include "ENUM_OffReducedNormal_structs.hpp"
 #include "ENUM_InputCategory_structs.hpp"
@@ -27,7 +29,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass SAVE_Settings.SAVE_Settings_C
-// 0x02B0 (0x02D8 - 0x0028)
+// 0x03D8 (0x0400 - 0x0028)
 class USAVE_Settings_C final : public USaveGame
 {
 public:
@@ -86,28 +88,49 @@ public:
 	bool                                          AimAssist;                                         // 0x00DB(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
 	bool                                          FocusAimToggle;                                    // 0x00DC(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
 	bool                                          SprintToggle;                                      // 0x00DD(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_DE[0x2];                                       // 0x00DE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> RealspaceKeyActionMap;                             // 0x00E0(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CyberspaceKeyActionMap;                            // 0x0130(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> MinigameKeyActionMap;                              // 0x0180(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
-	ENUM_QualitySetting                           FogQuality;                                        // 0x01D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_QualitySetting                           PostProccessingQuality;                            // 0x01D1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_QualitySetting                           TextureQuality;                                    // 0x01D2(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_QualitySetting                           ShaderQuality;                                     // 0x01D3(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_QualitySetting                           ShadowQuality;                                     // 0x01D4(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_QualitySetting                           EffectsQuality;                                    // 0x01D5(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_QualitySetting                           FoliageQuality;                                    // 0x01D6(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_OffReducedNormal                         HeadBobAmount;                                     // 0x01D7(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_OffReducedNormal                         GoreAmount;                                        // 0x01D8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          DismembermentEnabled;                              // 0x01D9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
-	bool                                          ControllerVibrationEnabled;                        // 0x01DA(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1DB[0x1];                                      // 0x01DB(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   HUDColorTheme;                                     // 0x01DC(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_SmallMediumLarge                         HUDTextSize;                                       // 0x01E4(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1E5[0x3];                                      // 0x01E5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> GamepadRealspaceKeyActionMap;                      // 0x01E8(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> GamepadCyberspaceKeyActionMap;                     // 0x0238(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> GamepadMinigameKeyActionMap;                       // 0x0288(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	bool                                          GyroRealspace;                                     // 0x00DE(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_DF[0x1];                                       // 0x00DF(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         GyroHackerLookSensitivity;                         // 0x00E0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GyroHackerLookSensitivityX;                        // 0x00E4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GyroHackerLookSensitivityY;                        // 0x00E8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GyroHackerADSSensitivity;                          // 0x00EC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GyroHackerADSSensitivityX;                         // 0x00F0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GyroHackerADSSensitivityY;                         // 0x00F4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          GyroHackerInvertY;                                 // 0x00F8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
+	bool                                          GyroCyberspace;                                    // 0x00F9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_FA[0x2];                                       // 0x00FA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         GyroAvatarLookSensitivity;                         // 0x00FC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GyroAvatarLookSensitivityX;                        // 0x0100(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         GyroAvatarLookSensitivityY;                        // 0x0104(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          GyroAvatarInvertY;                                 // 0x0108(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
+	EJoyConMouseMode                              JoyConMouseMode;                                   // 0x0109(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_10A[0x6];                                      // 0x010A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> RealspaceKeyActionMap;                             // 0x0110(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CyberspaceKeyActionMap;                            // 0x0160(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> MinigameKeyActionMap;                              // 0x01B0(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	ENUM_QualitySetting                           FogQuality;                                        // 0x0200(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_QualitySetting                           PostProccessingQuality;                            // 0x0201(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_QualitySetting                           TextureQuality;                                    // 0x0202(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_QualitySetting                           ShaderQuality;                                     // 0x0203(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_QualitySetting                           ShadowQuality;                                     // 0x0204(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_QualitySetting                           EffectsQuality;                                    // 0x0205(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_QualitySetting                           FoliageQuality;                                    // 0x0206(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_OffReducedNormal                         HeadBobAmount;                                     // 0x0207(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_OffReducedNormal                         GoreAmount;                                        // 0x0208(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          DismembermentEnabled;                              // 0x0209(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
+	bool                                          ControllerVibrationEnabled;                        // 0x020A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_20B[0x1];                                      // 0x020B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   HUDColorTheme;                                     // 0x020C(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_SmallMediumLarge                         HUDTextSize;                                       // 0x0214(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_215[0x3];                                      // 0x0215(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> GamepadRealspaceKeyActionMap;                      // 0x0218(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> GamepadCyberspaceKeyActionMap;                     // 0x0268(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> GamepadMinigameKeyActionMap;                       // 0x02B8(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	float                                         GamepadCursorSpeed;                                // 0x0308(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_30C[0x4];                                      // 0x030C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> JCMSRealspaceKeyActionMap;                         // 0x0310(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> JCMSCyberspaceKeyActionMap;                        // 0x0360(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> JCMSMinigameKeyActionMap;                          // 0x03B0(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
 
 public:
 	void AreAllSettingsSaved(bool* IsDefault);
@@ -143,11 +166,11 @@ public:
 	void SetSubtitlesEnabled(bool NewValue);
 	void GetSubtitlesEnabled(bool* Result);
 	void ApplySubtitlesEnabled(bool NewValue);
-	void SetBrightness(float NewValue, bool IsRealspace);
-	void GetBrightness(bool IsRealspace, float* Result);
+	void SetBrightness(float NewValue, bool isRealspace);
+	void GetBrightness(bool isRealspace, float* Result);
 	void GetGammaFromSpecificBrightness(class UCameraComponent* Camera, float Value, struct FVector4* Result);
 	void GetDefaultGammaFromCurrentBrightness(struct FVector4* Result);
-	void ApplyBrightness(float NewValue, bool IsRealspace);
+	void ApplyBrightness(float NewValue, bool isRealspace);
 	void SetWindowMode(EWindowMode NewValue);
 	void GetWindowMode(EWindowMode* Result);
 	void ApplyWindowMode(EWindowMode NewValue);
@@ -163,20 +186,20 @@ public:
 	void SetEnableMotionBlur(bool NewValue);
 	void GetEnableMotionBlur(bool* Result);
 	void ApplyEnableMotionBlur(bool NewValue);
-	void SetFOV(float NewValue, bool IsRealspace);
-	void GetFOV(bool IsRealspace, float* Result);
-	void ApplyFOV(float NewValue, bool IsRealspace);
+	void SetFOV(float NewValue, bool isRealspace);
+	void GetFOV(bool isRealspace, float* Result);
+	void ApplyFOV(float NewValue, bool isRealspace);
 	void SetEnableVSync(bool NewValue);
 	void GetEnableVSync(bool* Result);
 	void ApplyEnableVSync(bool NewValue);
-	void GetInputBindCountForCategory(ENUM_InputCategory InputCategory, bool IsGamepad, int32* Result);
-	void GetInputKeyMapForCategory(ENUM_InputCategory InputCategory, bool IsGamepad, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result);
-	void GetDefaultBindPairForCategory(class FName InputAction, ENUM_InputCategory InputCategory, bool IsGamepad, struct FSTRUCT_BoundInputActionPair* Result);
+	void GetInputBindCountForCategory(ENUM_InputCategory InputCategory, ENUM_ControllerType ControllerType, int32* Result);
+	void GetInputKeyMapForCategory(ENUM_InputCategory InputCategory, ENUM_ControllerType ControllerType, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result);
+	void GetDefaultBindPairForCategory(class FName InputAction, ENUM_InputCategory InputCategory, ENUM_ControllerType IsGamepad, struct FSTRUCT_BoundInputActionPair* Result);
 	void ValidateAndFixInputBinds(const class FString& RealspacePrefix, const class FString& CyberspacePrefix, const class FString& MinigamePrefix);
-	void BuildDefaultInputKeyMap(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, bool IsGamepad, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result);
-	void GetOrCreateInputKeyMapForCategory(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, bool IsGamepad, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result, bool* IsDefault);
-	void SetInputKeyMapForCategory(const TMap<class FName, struct FSTRUCT_BoundInputActionPair>& NewKeyMap, ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, bool IsGamepad);
-	void ApplySavedKeyActionsForCategory(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, bool IsGamepad);
+	void BuildDefaultInputKeyMap(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, ENUM_ControllerType ControllerType, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result);
+	void GetOrCreateInputKeyMapForCategory(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, ENUM_ControllerType ControllerType, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result, bool* IsDefault);
+	void SetInputKeyMapForCategory(const TMap<class FName, struct FSTRUCT_BoundInputActionPair>& NewKeyMap, ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, ENUM_ControllerType ControllerType);
+	void ApplySavedKeyActionsForCategory(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, ENUM_ControllerType ControllerType);
 	void SetAimAssist(bool NewValue);
 	void GetAimAssist(bool* Result);
 	void ApplyAimAssist(bool NewValue);
@@ -291,14 +314,14 @@ public:
 	void GetCyberspaceLookSensitivityProfileValue(const class FString& Culture, const class FString& Platform, float* Result);
 	void GetCyberspaceInvertYProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
 	void ApplyBrightnessForCharacter(float NewValue, class APAWN_SystemShockCharacter_C* Character);
-	void GetBrightnessProfileValue(const class FString& Culture, const class FString& Platform, bool IsRealspace, float* Result);
+	void GetBrightnessProfileValue(const class FString& Culture, const class FString& Platform, bool isRealspace, float* Result);
 	void GetWindowModeProfileValue(const class FString& Culture, const class FString& Platform, EWindowMode* Result);
 	void GetResolutionProfileValue(const class FString& Culture, const class FString& Platform, struct FIntPoint* Result);
 	void GetResolutionScaleProfileValue(const class FString& Culture, const class FString& Platform, float* Result);
 	void GetEnableHDRProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
 	void GetEnableMotionBlurProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
 	void ApplyFOVForCharacter(float NewValue, class APAWN_SystemShockCharacter_C* Character);
-	void GetFOVProfileValue(const class FString& Culture, const class FString& Platform, bool IsRealspace, float* Result);
+	void GetFOVProfileValue(const class FString& Culture, const class FString& Platform, bool isRealspace, float* Result);
 	void GetEnableVSyncProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
 	void GetDLSSProfileValue(const class FString& Culture, const class FString& Platform, EUDLSSMode* Result);
 	void GetAmbientOcclusionProfileValue(const class FString& Culture, const class FString& Platform, ENUM_OffLowMediumHigh* Result);
@@ -337,6 +360,60 @@ public:
 	void ApplySprintToggle(bool NewValue);
 	void GetSprintToggle(bool* Result);
 	void GetSprintToggleProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
+	void SetGamepadCursorSpeed(float NewValue);
+	void GetGamepadCursorSpeed(float* Result);
+	void ApplyGamepadCursorSpeed(float NewValue);
+	void GetGamepadCursorSpeedProfleValue(const class FString& Culture, const class FString& Platform, float* Result);
+	void SetGyroRealspace(bool NewValue);
+	void ApplyGyroRealspace(bool NewValue);
+	void GetGyroRealspace(bool* Result);
+	void GetGyroRealspaceProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
+	void SetGyroHackerLookSensitivity(float NewValue);
+	void ApplyGyroHackerLookSensitivity(float NewValue);
+	void GetGyroHackerLookSensitivity(float* Result);
+	void GetGyroHackerLookSensitivityProfileValue(const class FString& Culture, const class FString& Platform, float* Result);
+	void GetGyroHackerADSSensitivity(float* Result);
+	void GetGyroAvatarLookSensitivity(float* Result);
+	void SetGyroHackerInvertY(bool NewValue);
+	void ApplyGyroHackerInvertY(bool NewValue);
+	void GetGyroHackerInvertY(bool* Result);
+	void GetGyroHackerInvertYProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
+	void GetGyroCyberspace(bool* Result);
+	void GetGyroAvatarInvertY(bool* Result);
+	void SetJoyConMouseMode(EJoyConMouseMode NewValue);
+	void GetJoyConMouseMode(EJoyConMouseMode* JoyConMouseMode_0);
+	void ApplyJoyConMouseMode(EJoyConMouseMode NewValue);
+	void GetJoyConMouseModeProfileValue(EJoyConMouseMode* JoyConMouseMode_0);
+	void GetGyroAvatarLookSensitivityX(float* Result);
+	void GetGyroAvatarLookSensitivityY(float* Result);
+	void GetGyroHackerADSSensitivityX(float* Result);
+	void GetGyroHackerADSSensitivityY(float* Result);
+	void GetGyroHackerLookSensitivityX(float* Result);
+	void GetGyroHackerLookSensitivityY(float* Result);
+	void ApplyGyroHackerLookSensitivityX(float NewValue);
+	void ApplyGyroHackerLookSensitivityY(float NewValue);
+	void ApplyGyroAvatarLookSensitivityX(float NewValue);
+	void ApplyGyroAvatarLookSensitivityY(float NewValue);
+	void ApplyGyroHackerADSSensitivityX(float NewValue);
+	void ApplyGyroHackerADSSensitivityY(float NewValue);
+	void GetGyroHackerLookSensitivityXProfileValue(const class FString& Culture, const class FString& Platform, float* Result);
+	void GetGyroHackerLookSensitivityYProfileValue(const class FString& Culture, const class FString& Platform, float* Result);
+	void GetGyroHackerADSSensitivityXProfileValue(const class FString& Culture, const class FString& Platform, float* Result);
+	void GetGyroHackerADSSensitivityYProfileValue(const class FString& Culture, const class FString& Platform, float* Result);
+	void GetGyroAvatarLookSensitivityXProfileValue(const class FString& Culture, const class FString& Platform, float* Result);
+	void GetGyroAvatarLookSensitivityYProfileValue(const class FString& Culture, const class FString& Platform, float* Result);
+	void SetGyroHackerLookSensitivityX(float NewValue);
+	void SetGyroHackerLookSensitivityY(float NewValue);
+	void SetGyroHackerADSSensitivityX(float NewValue);
+	void SetGyroHackerADSSensitivityY(float NewValue);
+	void SetGyroAvatarLookSensitivityX(float NewValue);
+	void SetGyroAvatarLookSensitivityY(float NewValue);
+	void ApplyGyroAvatarInvertY(bool NewValue);
+	void GetGyroAvatarInvertYProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
+	void SetGyroAvatarInvertY(bool NewValue);
+	void ApplyGyroCyberspace(bool NewValue);
+	void GetGyroCyberspaceProfileValue(const class FString& Culture, const class FString& Platform, bool* Result);
+	void SetGyroCyberspace(bool NewValue);
 
 public:
 	static class UClass* StaticClass()
@@ -349,7 +426,7 @@ public:
 	}
 };
 static_assert(alignof(USAVE_Settings_C) == 0x000008, "Wrong alignment on USAVE_Settings_C");
-static_assert(sizeof(USAVE_Settings_C) == 0x0002D8, "Wrong size on USAVE_Settings_C");
+static_assert(sizeof(USAVE_Settings_C) == 0x000400, "Wrong size on USAVE_Settings_C");
 static_assert(offsetof(USAVE_Settings_C, AmbientOcclusion) == 0x000028, "Member 'USAVE_Settings_C::AmbientOcclusion' has a wrong offset!");
 static_assert(offsetof(USAVE_Settings_C, UserTint) == 0x00002C, "Member 'USAVE_Settings_C::UserTint' has a wrong offset!");
 static_assert(offsetof(USAVE_Settings_C, RealspaceFOV) == 0x000034, "Member 'USAVE_Settings_C::RealspaceFOV' has a wrong offset!");
@@ -400,25 +477,43 @@ static_assert(offsetof(USAVE_Settings_C, EnableVSync) == 0x0000DA, "Member 'USAV
 static_assert(offsetof(USAVE_Settings_C, AimAssist) == 0x0000DB, "Member 'USAVE_Settings_C::AimAssist' has a wrong offset!");
 static_assert(offsetof(USAVE_Settings_C, FocusAimToggle) == 0x0000DC, "Member 'USAVE_Settings_C::FocusAimToggle' has a wrong offset!");
 static_assert(offsetof(USAVE_Settings_C, SprintToggle) == 0x0000DD, "Member 'USAVE_Settings_C::SprintToggle' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, RealspaceKeyActionMap) == 0x0000E0, "Member 'USAVE_Settings_C::RealspaceKeyActionMap' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, CyberspaceKeyActionMap) == 0x000130, "Member 'USAVE_Settings_C::CyberspaceKeyActionMap' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, MinigameKeyActionMap) == 0x000180, "Member 'USAVE_Settings_C::MinigameKeyActionMap' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, FogQuality) == 0x0001D0, "Member 'USAVE_Settings_C::FogQuality' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, PostProccessingQuality) == 0x0001D1, "Member 'USAVE_Settings_C::PostProccessingQuality' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, TextureQuality) == 0x0001D2, "Member 'USAVE_Settings_C::TextureQuality' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, ShaderQuality) == 0x0001D3, "Member 'USAVE_Settings_C::ShaderQuality' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, ShadowQuality) == 0x0001D4, "Member 'USAVE_Settings_C::ShadowQuality' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, EffectsQuality) == 0x0001D5, "Member 'USAVE_Settings_C::EffectsQuality' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, FoliageQuality) == 0x0001D6, "Member 'USAVE_Settings_C::FoliageQuality' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, HeadBobAmount) == 0x0001D7, "Member 'USAVE_Settings_C::HeadBobAmount' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, GoreAmount) == 0x0001D8, "Member 'USAVE_Settings_C::GoreAmount' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, DismembermentEnabled) == 0x0001D9, "Member 'USAVE_Settings_C::DismembermentEnabled' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, ControllerVibrationEnabled) == 0x0001DA, "Member 'USAVE_Settings_C::ControllerVibrationEnabled' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, HUDColorTheme) == 0x0001DC, "Member 'USAVE_Settings_C::HUDColorTheme' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, HUDTextSize) == 0x0001E4, "Member 'USAVE_Settings_C::HUDTextSize' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, GamepadRealspaceKeyActionMap) == 0x0001E8, "Member 'USAVE_Settings_C::GamepadRealspaceKeyActionMap' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, GamepadCyberspaceKeyActionMap) == 0x000238, "Member 'USAVE_Settings_C::GamepadCyberspaceKeyActionMap' has a wrong offset!");
-static_assert(offsetof(USAVE_Settings_C, GamepadMinigameKeyActionMap) == 0x000288, "Member 'USAVE_Settings_C::GamepadMinigameKeyActionMap' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroRealspace) == 0x0000DE, "Member 'USAVE_Settings_C::GyroRealspace' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroHackerLookSensitivity) == 0x0000E0, "Member 'USAVE_Settings_C::GyroHackerLookSensitivity' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroHackerLookSensitivityX) == 0x0000E4, "Member 'USAVE_Settings_C::GyroHackerLookSensitivityX' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroHackerLookSensitivityY) == 0x0000E8, "Member 'USAVE_Settings_C::GyroHackerLookSensitivityY' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroHackerADSSensitivity) == 0x0000EC, "Member 'USAVE_Settings_C::GyroHackerADSSensitivity' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroHackerADSSensitivityX) == 0x0000F0, "Member 'USAVE_Settings_C::GyroHackerADSSensitivityX' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroHackerADSSensitivityY) == 0x0000F4, "Member 'USAVE_Settings_C::GyroHackerADSSensitivityY' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroHackerInvertY) == 0x0000F8, "Member 'USAVE_Settings_C::GyroHackerInvertY' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroCyberspace) == 0x0000F9, "Member 'USAVE_Settings_C::GyroCyberspace' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroAvatarLookSensitivity) == 0x0000FC, "Member 'USAVE_Settings_C::GyroAvatarLookSensitivity' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroAvatarLookSensitivityX) == 0x000100, "Member 'USAVE_Settings_C::GyroAvatarLookSensitivityX' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroAvatarLookSensitivityY) == 0x000104, "Member 'USAVE_Settings_C::GyroAvatarLookSensitivityY' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GyroAvatarInvertY) == 0x000108, "Member 'USAVE_Settings_C::GyroAvatarInvertY' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, JoyConMouseMode) == 0x000109, "Member 'USAVE_Settings_C::JoyConMouseMode' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, RealspaceKeyActionMap) == 0x000110, "Member 'USAVE_Settings_C::RealspaceKeyActionMap' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, CyberspaceKeyActionMap) == 0x000160, "Member 'USAVE_Settings_C::CyberspaceKeyActionMap' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, MinigameKeyActionMap) == 0x0001B0, "Member 'USAVE_Settings_C::MinigameKeyActionMap' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, FogQuality) == 0x000200, "Member 'USAVE_Settings_C::FogQuality' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, PostProccessingQuality) == 0x000201, "Member 'USAVE_Settings_C::PostProccessingQuality' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, TextureQuality) == 0x000202, "Member 'USAVE_Settings_C::TextureQuality' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, ShaderQuality) == 0x000203, "Member 'USAVE_Settings_C::ShaderQuality' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, ShadowQuality) == 0x000204, "Member 'USAVE_Settings_C::ShadowQuality' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, EffectsQuality) == 0x000205, "Member 'USAVE_Settings_C::EffectsQuality' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, FoliageQuality) == 0x000206, "Member 'USAVE_Settings_C::FoliageQuality' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, HeadBobAmount) == 0x000207, "Member 'USAVE_Settings_C::HeadBobAmount' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GoreAmount) == 0x000208, "Member 'USAVE_Settings_C::GoreAmount' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, DismembermentEnabled) == 0x000209, "Member 'USAVE_Settings_C::DismembermentEnabled' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, ControllerVibrationEnabled) == 0x00020A, "Member 'USAVE_Settings_C::ControllerVibrationEnabled' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, HUDColorTheme) == 0x00020C, "Member 'USAVE_Settings_C::HUDColorTheme' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, HUDTextSize) == 0x000214, "Member 'USAVE_Settings_C::HUDTextSize' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GamepadRealspaceKeyActionMap) == 0x000218, "Member 'USAVE_Settings_C::GamepadRealspaceKeyActionMap' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GamepadCyberspaceKeyActionMap) == 0x000268, "Member 'USAVE_Settings_C::GamepadCyberspaceKeyActionMap' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GamepadMinigameKeyActionMap) == 0x0002B8, "Member 'USAVE_Settings_C::GamepadMinigameKeyActionMap' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, GamepadCursorSpeed) == 0x000308, "Member 'USAVE_Settings_C::GamepadCursorSpeed' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, JCMSRealspaceKeyActionMap) == 0x000310, "Member 'USAVE_Settings_C::JCMSRealspaceKeyActionMap' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, JCMSCyberspaceKeyActionMap) == 0x000360, "Member 'USAVE_Settings_C::JCMSCyberspaceKeyActionMap' has a wrong offset!");
+static_assert(offsetof(USAVE_Settings_C, JCMSMinigameKeyActionMap) == 0x0003B0, "Member 'USAVE_Settings_C::JCMSMinigameKeyActionMap' has a wrong offset!");
 
 }
 

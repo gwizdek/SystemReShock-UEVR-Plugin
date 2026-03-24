@@ -347,6 +347,20 @@ void A_BP_VRBody_C::AddDebugMessage(const class FString& NewMessage, E_ENUM_Debu
 }
 
 
+// Function _BP_VRBody._BP_VRBody_C.InitializeAccessCard
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void A_BP_VRBody_C::InitializeAccessCard()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "InitializeAccessCard");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function _BP_VRBody._BP_VRBody_C.InitializeHackerHardware
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -400,26 +414,6 @@ void A_BP_VRBody_C::InitializeAnimations()
 		Func = Class->GetFunction("_BP_VRBody_C", "InitializeAnimations");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function _BP_VRBody._BP_VRBody_C.ShowItemSelector
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void A_BP_VRBody_C::ShowItemSelector(E_ENUM_VRHand InHand)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "ShowItemSelector");
-
-	Params::_BP_VRBody_C_ShowItemSelector Parms{};
-
-	Parms.InHand = InHand;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -550,25 +544,25 @@ void A_BP_VRBody_C::GetHackerMoveControlManager(class UCOMP_MoveControlManager_C
 }
 
 
-// Function _BP_VRBody._BP_VRBody_C.AttachLaserPointer
+// Function _BP_VRBody._BP_VRBody_C.Attach Laser Pointer
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    InAttachToCurrentWeapon                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    InEnabled                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// float                                   InTimeout                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_VRBody_C::AttachLaserPointer(E_ENUM_VRHand InHand, bool InAttachToCurrentWeapon, bool InEnabled)
+void A_BP_VRBody_C::Attach_Laser_Pointer(E_ENUM_VRHand InHand, bool InEnabled, float InTimeout)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "AttachLaserPointer");
+		Func = Class->GetFunction("_BP_VRBody_C", "Attach Laser Pointer");
 
-	Params::_BP_VRBody_C_AttachLaserPointer Parms{};
+	Params::_BP_VRBody_C_Attach_Laser_Pointer Parms{};
 
 	Parms.InHand = InHand;
-	Parms.InAttachToCurrentWeapon = InAttachToCurrentWeapon;
 	Parms.InEnabled = InEnabled;
+	Parms.InTimeout = InTimeout;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -638,20 +632,6 @@ void A_BP_VRBody_C::SetADSZoneOffset(float ForwardOffset, float UpOffset, float 
 }
 
 
-// Function _BP_VRBody._BP_VRBody_C.UpdatePickableSocketPos
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void A_BP_VRBody_C::UpdatePickableSocketPos()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "UpdatePickableSocketPos");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function _BP_VRBody._BP_VRBody_C.TriggerWidgetInteractionAction
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -700,21 +680,21 @@ void A_BP_VRBody_C::CloseVRMenu()
 }
 
 
-// Function _BP_VRBody._BP_VRBody_C.SetHandItemCollision
+// Function _BP_VRBody._BP_VRBody_C.SetHandheldConsumableCollision
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class FName                             SocketName                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // struct FTransform                       RelativeTransform                                      (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
 // ECollisionEnabled                       Collision                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_VRBody_C::SetHandItemCollision(class FName SocketName, const struct FTransform& RelativeTransform, ECollisionEnabled Collision)
+void A_BP_VRBody_C::SetHandheldConsumableCollision(class FName SocketName, const struct FTransform& RelativeTransform, ECollisionEnabled Collision)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "SetHandItemCollision");
+		Func = Class->GetFunction("_BP_VRBody_C", "SetHandheldConsumableCollision");
 
-	Params::_BP_VRBody_C_SetHandItemCollision Parms{};
+	Params::_BP_VRBody_C_SetHandheldConsumableCollision Parms{};
 
 	Parms.SocketName = SocketName;
 	Parms.RelativeTransform = std::move(RelativeTransform);
@@ -724,17 +704,106 @@ void A_BP_VRBody_C::SetHandItemCollision(class FName SocketName, const struct FT
 }
 
 
-// Function _BP_VRBody._BP_VRBody_C.DisableHandItemCollisions
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function _BP_VRBody._BP_VRBody_C.GetCurrentEquippedWeapon
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UITEM_WeaponBase_C*               OutWeapon                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_VRBody_C::DisableHandItemCollisions()
+void A_BP_VRBody_C::GetCurrentEquippedWeapon(class UITEM_WeaponBase_C** OutWeapon)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "DisableHandItemCollisions");
+		Func = Class->GetFunction("_BP_VRBody_C", "GetCurrentEquippedWeapon");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::_BP_VRBody_C_GetCurrentEquippedWeapon Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (OutWeapon != nullptr)
+		*OutWeapon = Parms.OutWeapon;
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.SetScannerEnabled
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InEnabled                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// float                                   InDistance                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_VRBody_C::SetScannerEnabled(bool InEnabled, float InDistance)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "SetScannerEnabled");
+
+	Params::_BP_VRBody_C_SetScannerEnabled Parms{};
+
+	Parms.InEnabled = InEnabled;
+	Parms.InDistance = InDistance;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.EnableRangedInteractions
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InEnable                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void A_BP_VRBody_C::EnableRangedInteractions(bool InEnable)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "EnableRangedInteractions");
+
+	Params::_BP_VRBody_C_EnableRangedInteractions Parms{};
+
+	Parms.InEnable = InEnable;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.IsHoldingHandheldConsumable
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool A_BP_VRBody_C::IsHoldingHandheldConsumable()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "IsHoldingHandheldConsumable");
+
+	Params::_BP_VRBody_C_IsHoldingHandheldConsumable Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.IsEmptyHanded
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool A_BP_VRBody_C::IsEmptyHanded()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "IsEmptyHanded");
+
+	Params::_BP_VRBody_C_IsEmptyHanded Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
 }
 
 }

@@ -108,6 +108,23 @@ static_assert(alignof(WIDGET_MainMenu_InGameList_C_BndEvt__WIDGET_MainMenu_InGam
 static_assert(sizeof(WIDGET_MainMenu_InGameList_C_BndEvt__WIDGET_MainMenu_InGameList_WIDGET_MainMenuButton_Resume_K2Node_ComponentBoundEvent_6_OnMainMenuButtonClicked__DelegateSignature) == 0x000070, "Wrong size on WIDGET_MainMenu_InGameList_C_BndEvt__WIDGET_MainMenu_InGameList_WIDGET_MainMenuButton_Resume_K2Node_ComponentBoundEvent_6_OnMainMenuButtonClicked__DelegateSignature");
 static_assert(offsetof(WIDGET_MainMenu_InGameList_C_BndEvt__WIDGET_MainMenu_InGameList_WIDGET_MainMenuButton_Resume_K2Node_ComponentBoundEvent_6_OnMainMenuButtonClicked__DelegateSignature, InputEvent) == 0x000000, "Member 'WIDGET_MainMenu_InGameList_C_BndEvt__WIDGET_MainMenu_InGameList_WIDGET_MainMenuButton_Resume_K2Node_ComponentBoundEvent_6_OnMainMenuButtonClicked__DelegateSignature::InputEvent' has a wrong offset!");
 
+// Function WIDGET_MainMenu_InGameList.WIDGET_MainMenu_InGameList_C.EVENT_MouseDown_MeshDebugTrigger
+// 0x0218 (0x0218 - 0x0000)
+struct WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger final
+{
+public:
+	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0070)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	struct FEventReply                            ReturnValue;                                       // 0x00A8(0x00B8)(Parm, OutParm, ReturnParm)
+	struct FEventReply                            CallFunc_Handled_ReturnValue;                      // 0x0160(0x00B8)()
+};
+static_assert(alignof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger) == 0x000008, "Wrong alignment on WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger");
+static_assert(sizeof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger) == 0x000218, "Wrong size on WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger");
+static_assert(offsetof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger, MyGeometry) == 0x000000, "Member 'WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger::MyGeometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger, MouseEvent) == 0x000038, "Member 'WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger::MouseEvent' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger, ReturnValue) == 0x0000A8, "Member 'WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger::ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger, CallFunc_Handled_ReturnValue) == 0x000160, "Member 'WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger::CallFunc_Handled_ReturnValue' has a wrong offset!");
+
 // Function WIDGET_MainMenu_InGameList.WIDGET_MainMenu_InGameList_C.InitializeItemArray
 // 0x0078 (0x0078 - 0x0000)
 struct WIDGET_MainMenu_InGameList_C_InitializeItemArray final
@@ -175,23 +192,6 @@ static_assert(offsetof(WIDGET_MainMenu_InGameList_C_OnListOpen, CallFunc_CanSave
 static_assert(offsetof(WIDGET_MainMenu_InGameList_C_OnListOpen, CallFunc_GetExistingSaveGameNames_ReturnValue) == 0x000018, "Member 'WIDGET_MainMenu_InGameList_C_OnListOpen::CallFunc_GetExistingSaveGameNames_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGameList_C_OnListOpen, CallFunc_Array_Length_ReturnValue) == 0x000028, "Member 'WIDGET_MainMenu_InGameList_C_OnListOpen::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_InGameList_C_OnListOpen, CallFunc_Greater_IntInt_ReturnValue) == 0x00002C, "Member 'WIDGET_MainMenu_InGameList_C_OnListOpen::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-
-// Function WIDGET_MainMenu_InGameList.WIDGET_MainMenu_InGameList_C.EVENT_MouseDown_MeshDebugTrigger
-// 0x0218 (0x0218 - 0x0000)
-struct WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger final
-{
-public:
-	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0070)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-	struct FEventReply                            ReturnValue;                                       // 0x00A8(0x00B8)(Parm, OutParm, ReturnParm)
-	struct FEventReply                            CallFunc_Handled_ReturnValue;                      // 0x0160(0x00B8)()
-};
-static_assert(alignof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger) == 0x000008, "Wrong alignment on WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger");
-static_assert(sizeof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger) == 0x000218, "Wrong size on WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger");
-static_assert(offsetof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger, MyGeometry) == 0x000000, "Member 'WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger::MyGeometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger, MouseEvent) == 0x000038, "Member 'WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger::MouseEvent' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger, ReturnValue) == 0x0000A8, "Member 'WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger::ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger, CallFunc_Handled_ReturnValue) == 0x000160, "Member 'WIDGET_MainMenu_InGameList_C_EVENT_MouseDown_MeshDebugTrigger::CallFunc_Handled_ReturnValue' has a wrong offset!");
 
 }
 

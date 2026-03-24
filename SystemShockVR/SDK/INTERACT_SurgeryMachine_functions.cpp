@@ -268,7 +268,7 @@ void AINTERACT_SurgeryMachine_C::SpawnDestroyedFX()
 
 
 // Function INTERACT_SurgeryMachine.INTERACT_SurgeryMachine_C.UpdateDeathSettings
-// (Protected, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // bool                                    DuringBeginPlay                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)

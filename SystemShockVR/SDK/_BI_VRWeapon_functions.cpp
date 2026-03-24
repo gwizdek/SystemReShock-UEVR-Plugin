@@ -65,9 +65,10 @@ void I_BI_VRWeapon_C::UseSourceMesh(bool Value)
 // struct FTransform                       OutWeaponOffset                                        (Parm, OutParm, IsPlainOldData, NoDestructor)
 // bool                                    OutUseHackerPawnWeaponAnims                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    OutEnabledLaserPointer                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    OutMainHand                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// E_ENUM_VRHand                           OutHand                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    OutIsHandheldConsumable                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void I_BI_VRWeapon_C::GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_VRHandPose* OutGripHandPose, struct FTransform* OutWeaponOffset, bool* OutUseHackerPawnWeaponAnims, bool* OutEnabledLaserPointer, bool* OutMainHand)
+void I_BI_VRWeapon_C::GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_VRHandPose* OutGripHandPose, struct FTransform* OutWeaponOffset, bool* OutUseHackerPawnWeaponAnims, bool* OutEnabledLaserPointer, E_ENUM_VRHand* OutHand, bool* OutIsHandheldConsumable)
 {
 	static class UFunction* Func = nullptr;
 
@@ -93,8 +94,11 @@ void I_BI_VRWeapon_C::GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_
 	if (OutEnabledLaserPointer != nullptr)
 		*OutEnabledLaserPointer = Parms.OutEnabledLaserPointer;
 
-	if (OutMainHand != nullptr)
-		*OutMainHand = Parms.OutMainHand;
+	if (OutHand != nullptr)
+		*OutHand = Parms.OutHand;
+
+	if (OutIsHandheldConsumable != nullptr)
+		*OutIsHandheldConsumable = Parms.OutIsHandheldConsumable;
 }
 
 

@@ -17,6 +17,36 @@
 namespace SDK
 {
 
+// Function FieldSystemEngine.UniformVector.SetUniformVector
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// float                                   Magnitude_0                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector                          Direction_0                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UUniformVector*                   ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UUniformVector* UUniformVector::SetUniformVector(float Magnitude_0, const struct FVector& Direction_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UniformVector", "SetUniformVector");
+
+	Params::UniformVector_SetUniformVector Parms{};
+
+	Parms.Magnitude_0 = Magnitude_0;
+	Parms.Direction_0 = std::move(Direction_0);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function FieldSystemEngine.FieldSystemComponent.AddFieldCommand
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -388,6 +418,34 @@ class UFieldSystemMetaDataProcessingResolution* UFieldSystemMetaDataProcessingRe
 }
 
 
+// Function FieldSystemEngine.ToIntegerField.SetToIntegerField
+// (Final, Native, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// class UFieldNodeFloat*                  FloatField_0                                           (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UToIntegerField*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UToIntegerField* UToIntegerField::SetToIntegerField(const class UFieldNodeFloat* FloatField_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ToIntegerField", "SetToIntegerField");
+
+	Params::ToIntegerField_SetToIntegerField Parms{};
+
+	Parms.FloatField_0 = FloatField_0;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function FieldSystemEngine.FieldSystemMetaDataFilter.SetMetaDataFilterType
 // (Final, Native, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
@@ -468,6 +526,34 @@ class URadialIntMask* URadialIntMask::SetRadialIntMask(float Radius_0, const str
 	Parms.InteriorValue_0 = InteriorValue_0;
 	Parms.ExteriorValue_0 = ExteriorValue_0;
 	Parms.SetMaskConditionIn = SetMaskConditionIn;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function FieldSystemEngine.ToFloatField.SetToFloatField
+// (Final, Native, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// class UFieldNodeInt*                    IntegerField                                           (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UToFloatField*                    ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UToFloatField* UToFloatField::SetToFloatField(const class UFieldNodeInt* IntegerField)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ToFloatField", "SetToFloatField");
+
+	Params::ToFloatField_SetToFloatField Parms{};
+
+	Parms.IntegerField = IntegerField;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -700,36 +786,6 @@ class UNoiseField* UNoiseField::SetNoiseField(float MinRange_0, float MaxRange_0
 }
 
 
-// Function FieldSystemEngine.UniformVector.SetUniformVector
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// float                                   Magnitude_0                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector                          Direction_0                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UUniformVector*                   ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UUniformVector* UUniformVector::SetUniformVector(float Magnitude_0, const struct FVector& Direction_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UniformVector", "SetUniformVector");
-
-	Params::UniformVector_SetUniformVector Parms{};
-
-	Parms.Magnitude_0 = Magnitude_0;
-	Parms.Direction_0 = std::move(Direction_0);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function FieldSystemEngine.RadialVector.SetRadialVector
 // (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure)
 // Parameters:
@@ -810,62 +866,6 @@ class UOperatorField* UOperatorField::SetOperatorField(float Magnitude_0, const 
 	Parms.LeftField_0 = LeftField_0;
 	Parms.RightField_0 = RightField_0;
 	Parms.Operation_0 = Operation_0;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function FieldSystemEngine.ToIntegerField.SetToIntegerField
-// (Final, Native, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// class UFieldNodeFloat*                  FloatField_0                                           (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UToIntegerField*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UToIntegerField* UToIntegerField::SetToIntegerField(const class UFieldNodeFloat* FloatField_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ToIntegerField", "SetToIntegerField");
-
-	Params::ToIntegerField_SetToIntegerField Parms{};
-
-	Parms.FloatField_0 = FloatField_0;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function FieldSystemEngine.ToFloatField.SetToFloatField
-// (Final, Native, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// class UFieldNodeInt*                    IntegerField                                           (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UToFloatField*                    ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UToFloatField* UToFloatField::SetToFloatField(const class UFieldNodeInt* IntegerField)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ToFloatField", "SetToFloatField");
-
-	Params::ToFloatField_SetToFloatField Parms{};
-
-	Parms.IntegerField = IntegerField;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

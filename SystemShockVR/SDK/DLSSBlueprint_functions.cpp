@@ -42,6 +42,56 @@ void UDLSSLibrary::EnableDLAA(bool bEnabled)
 }
 
 
+// Function DLSSBlueprint.DLSSLibrary.EnableDLSS
+// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bEnabled                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UDLSSLibrary::EnableDLSS(bool bEnabled)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("DLSSLibrary", "EnableDLSS");
+
+	Params::DLSSLibrary_EnableDLSS Parms{};
+
+	Parms.bEnabled = bEnabled;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function DLSSBlueprint.DLSSLibrary.EnableDLSSRR
+// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bEnabled                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UDLSSLibrary::EnableDLSSRR(bool bEnabled)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("DLSSLibrary", "EnableDLSSRR");
+
+	Params::DLSSLibrary_EnableDLSSRR Parms{};
+
+	Parms.bEnabled = bEnabled;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function DLSSBlueprint.DLSSLibrary.GetDefaultDLSSMode
 // (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
@@ -173,6 +223,36 @@ void UDLSSLibrary::GetDLSSModeInformation(EUDLSSMode DLSSMode, const struct FVec
 }
 
 
+// Function DLSSBlueprint.DLSSLibrary.GetDLSSRRMinimumDriverVersion
+// (Final, RequiredAPI, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// int32                                   MinDriverVersionMajor                                  (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   MinDriverVersionMinor                                  (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UDLSSLibrary::GetDLSSRRMinimumDriverVersion(int32* MinDriverVersionMajor, int32* MinDriverVersionMinor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("DLSSLibrary", "GetDLSSRRMinimumDriverVersion");
+
+	Params::DLSSLibrary_GetDLSSRRMinimumDriverVersion Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (MinDriverVersionMajor != nullptr)
+		*MinDriverVersionMajor = Parms.MinDriverVersionMajor;
+
+	if (MinDriverVersionMinor != nullptr)
+		*MinDriverVersionMinor = Parms.MinDriverVersionMinor;
+}
+
+
 // Function DLSSBlueprint.DLSSLibrary.GetDLSSScreenPercentageRange
 // (Final, RequiredAPI, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
 // Parameters:
@@ -278,6 +358,31 @@ bool UDLSSLibrary::IsDLAAEnabled()
 }
 
 
+// Function DLSSBlueprint.DLSSLibrary.IsDLSSEnabled
+// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UDLSSLibrary::IsDLSSEnabled()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("DLSSLibrary", "IsDLSSEnabled");
+
+	Params::DLSSLibrary_IsDLSSEnabled Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function DLSSBlueprint.DLSSLibrary.IsDLSSModeSupported
 // (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
@@ -306,6 +411,56 @@ bool UDLSSLibrary::IsDLSSModeSupported(EUDLSSMode DLSSMode)
 }
 
 
+// Function DLSSBlueprint.DLSSLibrary.IsDLSSRREnabled
+// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UDLSSLibrary::IsDLSSRREnabled()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("DLSSLibrary", "IsDLSSRREnabled");
+
+	Params::DLSSLibrary_IsDLSSRREnabled Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function DLSSBlueprint.DLSSLibrary.IsDLSSRRSupported
+// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UDLSSLibrary::IsDLSSRRSupported()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("DLSSLibrary", "IsDLSSRRSupported");
+
+	Params::DLSSLibrary_IsDLSSRRSupported Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function DLSSBlueprint.DLSSLibrary.IsDLSSSupported
 // (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
@@ -319,6 +474,31 @@ bool UDLSSLibrary::IsDLSSSupported()
 		Func = StaticClass()->GetFunction("DLSSLibrary", "IsDLSSSupported");
 
 	Params::DLSSLibrary_IsDLSSSupported Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function DLSSBlueprint.DLSSLibrary.QueryDLSSRRSupport
+// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// EUDLSSSupport                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EUDLSSSupport UDLSSLibrary::QueryDLSSRRSupport()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("DLSSLibrary", "QueryDLSSRRSupport");
+
+	Params::DLSSLibrary_QueryDLSSRRSupport Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

@@ -13,8 +13,10 @@
 #include "Engine_structs.hpp"
 #include "ENUM_TitleScreenSubScreens_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "UMG_classes.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
+#include "SystemReShock_structs.hpp"
+#include "UMG_classes.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 
 
 namespace SDK
@@ -102,8 +104,8 @@ public:
 	void SetPressKeyPromptText();
 	void RefreshContinueAutosave();
 	void ShowOptionsScreen();
-	void EVENT_OnUsingGamepadChanged(bool IsUsingGamepad);
 	void ShowPlayerUsername();
+	void EVENT_OnActiveControllerTypeChanged(ENUM_ControllerType NewActiveControllerType);
 	void GetFadeOutDuration(float* Duration);
 	void GetSplashDuration(float* Duration);
 	void GetFadeInDuration(float* Duration);

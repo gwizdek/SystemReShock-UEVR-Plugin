@@ -15,17 +15,15 @@ namespace SDK::Params
 {
 
 // Function WIDGET_DebugMenuListMain.WIDGET_DebugMenuListMain_C.InitializeList
-// 0x0010 (0x0010 - 0x0000)
+// 0x0008 (0x0008 - 0x0000)
 struct WIDGET_DebugMenuListMain_C_InitializeList final
 {
 public:
 	class UWIDGET_MenuBase_C*                     ParentScreen;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_DebugMenuListMain_C_InitializeList) == 0x000008, "Wrong alignment on WIDGET_DebugMenuListMain_C_InitializeList");
-static_assert(sizeof(WIDGET_DebugMenuListMain_C_InitializeList) == 0x000010, "Wrong size on WIDGET_DebugMenuListMain_C_InitializeList");
+static_assert(sizeof(WIDGET_DebugMenuListMain_C_InitializeList) == 0x000008, "Wrong size on WIDGET_DebugMenuListMain_C_InitializeList");
 static_assert(offsetof(WIDGET_DebugMenuListMain_C_InitializeList, ParentScreen) == 0x000000, "Member 'WIDGET_DebugMenuListMain_C_InitializeList::ParentScreen' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenuListMain_C_InitializeList, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x000008, "Member 'WIDGET_DebugMenuListMain_C_InitializeList::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_DebugMenuListMain.WIDGET_DebugMenuListMain_C.InitializeItemArray
 // 0x0070 (0x0070 - 0x0000)

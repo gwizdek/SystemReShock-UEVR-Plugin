@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "STRUCT_Interrogation_AnimationSegmentData_structs.hpp"
 #include "Slate_structs.hpp"
 #include "SlateCore_structs.hpp"
-#include "STRUCT_Interrogation_AnimationSegmentData_structs.hpp"
 
 
 namespace SDK::Params

@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "Engine_classes.hpp"
 #include "STRUCT_CharacterActionParams_structs.hpp"
+#include "SystemReShock_classes.hpp"
 #include "ENUM_ActionPriority_structs.hpp"
 
 
@@ -21,7 +21,7 @@ namespace SDK
 
 // BlueprintGeneratedClass COMP_ActionManager.COMP_ActionManager_C
 // 0x0090 (0x0140 - 0x00B0)
-class UCOMP_ActionManager_C final : public UActorComponent
+class UCOMP_ActionManager_C final : public UActionManagerBase
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x00B0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
@@ -63,6 +63,7 @@ public:
 	void SetActionTickEnabled(bool Enabled);
 	void GetQueuedActionMontage(class UAnimMontage** QueuedMontage);
 	void GetQueueTimeRemaining(float* Result);
+	bool CanAttackPriorityValueRaw(int32 rawPriorityValue);
 	bool ShouldSaveComponent(struct FStreamingSaveGameComponentParams* Params_0);
 
 public:

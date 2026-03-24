@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
+#include "ENUM_ShodanPulseType_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_InteractionType_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "INTERACT_Base_classes.hpp"
 #include "ENUM_PseudoShodanState_structs.hpp"
 #include "ENUM_ShodanTetherState_structs.hpp"
-#include "INTERACT_Base_classes.hpp"
-#include "ENUM_ShodanPulseType_structs.hpp"
+#include "ENUM_InteractionType_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 
 

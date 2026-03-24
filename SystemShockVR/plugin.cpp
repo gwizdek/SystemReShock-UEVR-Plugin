@@ -322,8 +322,8 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
         m_gamepad_left_shoulder.set_and_mute_state(state);
         m_gamepad_right_thumb.set_state(state);
         m_gamepad_left_thumb.set_state(state);
-        m_gamepad_trigger_right.set_state(state);
-        //m_gamepad_trigger_left.set_state(state);
+        m_gamepad_right_trigger.set_state(state);
+        m_gamepad_left_trigger.set_state(state);
         m_hotbar_selector_button.set_state(state);
         m_hardware_selector_button.set_state(state);
 
@@ -356,7 +356,7 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
 
             if (m_gamepad_right_shoulder.is_pressed()) {
                 if (g_vr_body->HandInteractionRight->IsReachingSocket(UKismetStringLibrary::Conv_StringToName(L"LeftInnerWristSocket"), 7.0f)) {
-                    static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38(FKey{});
+                    static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_43(FKey{});
                 }
             }
             handle_mfd_interactions(state, vr);
@@ -400,6 +400,27 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             //API::get()->log_warn("[plugin][handle_controller_input] X-button");
         }
 
+        // Right Trigger
+        if (m_gamepad_right_trigger.is_pressed()) {
+            if (g_vr_body->IsEmptyHanded()) {
+                g_vr_body->Attach_Laser_Pointer(E_ENUM_VRHand::NewEnumerator1, true, 10.f);
+            }
+        }
+
+        if (m_gamepad_right_trigger.is_pressed() || m_gamepad_right_trigger.is_held()) {
+            // don't use consumable on default action trigger
+            if (g_vr_body->IsHoldingHandheldConsumable()) {
+                m_gamepad_right_trigger.mute_state(state);
+            }
+        }
+
+        // Left Trigger
+        if (m_gamepad_left_trigger.is_pressed()) {
+            if (g_vr_body->IsEmptyHanded()) {
+                g_vr_body->Attach_Laser_Pointer(E_ENUM_VRHand::NewEnumerator0, true, 10.f);
+            }
+        }
+
         // Right Shoulder
         if (m_gamepad_right_shoulder.is_pressed()) {
             g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator2);
@@ -413,7 +434,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
                     m_neural_hud->WIDGET_HardwareButton_Sensaround->ToggleHardware();
                 }
                 else if (g_vr_body->HandInteractionRight->IsReachingSocket(UKismetStringLibrary::Conv_StringToName(L"LeftInnerWristSocket"), 7.0f)) {
-                    static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_38(FKey{});
+                    static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_43(FKey{});
                     m_gamepad_right_shoulder.mute_state(state);
                 }
             }
@@ -687,7 +708,7 @@ void UEVRPlugin::handle_ads() {
                     m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
                     ) {
                     SDK::FKey aim_key{};
-                    static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_83(aim_key);
+                    static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_42(aim_key);
                 }
             }
 
@@ -697,7 +718,7 @@ void UEVRPlugin::handle_ads() {
                     m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
                     ) {
                     SDK::FKey aim_key{};
-                    static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_84(aim_key);
+                    static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_43(aim_key);
                 }
 
             }
@@ -810,7 +831,7 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
             SDK::FKey lmb{
                 .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"LeftMouseButton")
             };
-            static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_54(lmb);
+            static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_98(lmb);
             //g_vr_body->WidgetInteractionRight->PressPointerKey(lmb);
         }
 
@@ -818,7 +839,7 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
             SDK::FKey lmb{
                 .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"LeftMouseButton")
             };
-            static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_54(lmb);
+            static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_98(lmb);
             //g_vr_body->WidgetInteractionRight->ReleasePointerKey(lmb);
         }
         if (m_gamepad_btn_a.has_changed()) {

@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_LevelInfo_structs.hpp"
-#include "SlateCore_structs.hpp"
-#include "UMG_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "SlateCore_structs.hpp"
+#include "STRUCT_LevelInfo_structs.hpp"
+#include "UMG_structs.hpp"
 
 
 namespace SDK::Params
@@ -51,17 +51,15 @@ static_assert(sizeof(WIDGET_StatusDeck_C_PreConstruct) == 0x000001, "Wrong size 
 static_assert(offsetof(WIDGET_StatusDeck_C_PreConstruct, IsDesignTime) == 0x000000, "Member 'WIDGET_StatusDeck_C_PreConstruct::IsDesignTime' has a wrong offset!");
 
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.GetDeckLevelName
-// 0x0018 (0x0018 - 0x0000)
+// 0x0008 (0x0008 - 0x0000)
 struct WIDGET_StatusDeck_C_GetDeckLevelName final
 {
 public:
-	class FName                                   LevelName;                                         // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class FName>                           CallFunc_GetDataTableRowNames_OutRowNames;         // 0x0008(0x0010)(ReferenceParm)
+	class FName                                   LevelName_0;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(WIDGET_StatusDeck_C_GetDeckLevelName) == 0x000008, "Wrong alignment on WIDGET_StatusDeck_C_GetDeckLevelName");
-static_assert(sizeof(WIDGET_StatusDeck_C_GetDeckLevelName) == 0x000018, "Wrong size on WIDGET_StatusDeck_C_GetDeckLevelName");
-static_assert(offsetof(WIDGET_StatusDeck_C_GetDeckLevelName, LevelName) == 0x000000, "Member 'WIDGET_StatusDeck_C_GetDeckLevelName::LevelName' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_GetDeckLevelName, CallFunc_GetDataTableRowNames_OutRowNames) == 0x000008, "Member 'WIDGET_StatusDeck_C_GetDeckLevelName::CallFunc_GetDataTableRowNames_OutRowNames' has a wrong offset!");
+static_assert(alignof(WIDGET_StatusDeck_C_GetDeckLevelName) == 0x000004, "Wrong alignment on WIDGET_StatusDeck_C_GetDeckLevelName");
+static_assert(sizeof(WIDGET_StatusDeck_C_GetDeckLevelName) == 0x000008, "Wrong size on WIDGET_StatusDeck_C_GetDeckLevelName");
+static_assert(offsetof(WIDGET_StatusDeck_C_GetDeckLevelName, LevelName_0) == 0x000000, "Member 'WIDGET_StatusDeck_C_GetDeckLevelName::LevelName_0' has a wrong offset!");
 
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.InitializeStatusDeck
 // 0x0038 (0x0038 - 0x0000)
@@ -89,7 +87,7 @@ static_assert(offsetof(WIDGET_StatusDeck_C_InitializeStatusDeck, K2Node_DynamicC
 struct WIDGET_StatusDeck_C_HasVisitedLevel final
 {
 public:
-	class FName                                   LevelName;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   LevelName_0;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          HasVisited;                                        // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class FName                                   CallFunc_GetDeckLevelName_LevelName;               // 0x000C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -101,7 +99,7 @@ public:
 };
 static_assert(alignof(WIDGET_StatusDeck_C_HasVisitedLevel) == 0x000008, "Wrong alignment on WIDGET_StatusDeck_C_HasVisitedLevel");
 static_assert(sizeof(WIDGET_StatusDeck_C_HasVisitedLevel) == 0x000030, "Wrong size on WIDGET_StatusDeck_C_HasVisitedLevel");
-static_assert(offsetof(WIDGET_StatusDeck_C_HasVisitedLevel, LevelName) == 0x000000, "Member 'WIDGET_StatusDeck_C_HasVisitedLevel::LevelName' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_HasVisitedLevel, LevelName_0) == 0x000000, "Member 'WIDGET_StatusDeck_C_HasVisitedLevel::LevelName_0' has a wrong offset!");
 static_assert(offsetof(WIDGET_StatusDeck_C_HasVisitedLevel, HasVisited) == 0x000008, "Member 'WIDGET_StatusDeck_C_HasVisitedLevel::HasVisited' has a wrong offset!");
 static_assert(offsetof(WIDGET_StatusDeck_C_HasVisitedLevel, CallFunc_GetDeckLevelName_LevelName) == 0x00000C, "Member 'WIDGET_StatusDeck_C_HasVisitedLevel::CallFunc_GetDeckLevelName_LevelName' has a wrong offset!");
 static_assert(offsetof(WIDGET_StatusDeck_C_HasVisitedLevel, CallFunc_GetGameInstance_ReturnValue) == 0x000018, "Member 'WIDGET_StatusDeck_C_HasVisitedLevel::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
@@ -110,113 +108,107 @@ static_assert(offsetof(WIDGET_StatusDeck_C_HasVisitedLevel, K2Node_DynamicCast_b
 static_assert(offsetof(WIDGET_StatusDeck_C_HasVisitedLevel, CallFunc_HasVisitedLevel_Result) == 0x000029, "Member 'WIDGET_StatusDeck_C_HasVisitedLevel::CallFunc_HasVisitedLevel_Result' has a wrong offset!");
 
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.UpdatePanelFont
-// 0x001C (0x001C - 0x0000)
+// 0x003C (0x003C - 0x0000)
 struct WIDGET_StatusDeck_C_UpdatePanelFont final
 {
 public:
-	bool                                          VisitedLevel;                                      // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_GetDeckLevelName_LevelName;               // 0x0004(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FColor                                 CallFunc_GetMeshUIColor_Color;                     // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasVisitedLevel_HasVisited;               // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FColor                                 TextColor;                                         // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          HasLevelBeenVisited;                               // 0x0004(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          VisitedLevel;                                      // 0x0005(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable_1;                              // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color;                     // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_1;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable_2;                              // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FColor                                 K2Node_MakeStruct_Color;                           // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FColor                                 CallFunc_GetMeshUIColor_Color_1;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_2;                   // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 K2Node_Select_Default;                             // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_3;                   // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 K2Node_Select_Default_1;                           // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_4;                   // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 CallFunc_GetMeshUIColor_Color_5;                   // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FColor                                 K2Node_Select_Default_2;                           // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_GetDeckLevelName_LevelName;               // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasVisitedLevel_HasVisited;               // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_StatusDeck_C_UpdatePanelFont) == 0x000004, "Wrong alignment on WIDGET_StatusDeck_C_UpdatePanelFont");
-static_assert(sizeof(WIDGET_StatusDeck_C_UpdatePanelFont) == 0x00001C, "Wrong size on WIDGET_StatusDeck_C_UpdatePanelFont");
-static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, VisitedLevel) == 0x000000, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::VisitedLevel' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetDeckLevelName_LevelName) == 0x000004, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetDeckLevelName_LevelName' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetMeshUIColor_Color) == 0x00000C, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetMeshUIColor_Color' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_HasVisitedLevel_HasVisited) == 0x000010, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_HasVisitedLevel_HasVisited' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, K2Node_MakeStruct_Color) == 0x000014, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::K2Node_MakeStruct_Color' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetMeshUIColor_Color_1) == 0x000018, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetMeshUIColor_Color_1' has a wrong offset!");
+static_assert(sizeof(WIDGET_StatusDeck_C_UpdatePanelFont) == 0x00003C, "Wrong size on WIDGET_StatusDeck_C_UpdatePanelFont");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, TextColor) == 0x000000, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::TextColor' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, HasLevelBeenVisited) == 0x000004, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::HasLevelBeenVisited' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, VisitedLevel) == 0x000005, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::VisitedLevel' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, Temp_bool_Variable) == 0x000006, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, Temp_bool_Variable_1) == 0x000007, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetMeshUIColor_Color) == 0x000008, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetMeshUIColor_Color' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetMeshUIColor_Color_1) == 0x00000C, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetMeshUIColor_Color_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, Temp_bool_Variable_2) == 0x000010, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::Temp_bool_Variable_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetMeshUIColor_Color_2) == 0x000014, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetMeshUIColor_Color_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, K2Node_Select_Default) == 0x000018, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetMeshUIColor_Color_3) == 0x00001C, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetMeshUIColor_Color_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, K2Node_Select_Default_1) == 0x000020, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetMeshUIColor_Color_4) == 0x000024, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetMeshUIColor_Color_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetMeshUIColor_Color_5) == 0x000028, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetMeshUIColor_Color_5' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, K2Node_Select_Default_2) == 0x00002C, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::K2Node_Select_Default_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_GetDeckLevelName_LevelName) == 0x000030, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_GetDeckLevelName_LevelName' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_UpdatePanelFont, CallFunc_HasVisitedLevel_HasVisited) == 0x000038, "Member 'WIDGET_StatusDeck_C_UpdatePanelFont::CallFunc_HasVisitedLevel_HasVisited' has a wrong offset!");
 
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.EVENT_OnMouseEnter
-// 0x00C8 (0x00C8 - 0x0000)
+// 0x00A8 (0x00A8 - 0x0000)
 struct WIDGET_StatusDeck_C_EVENT_OnMouseEnter final
 {
 public:
 	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor)
 	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0070)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_A9[0x3];                                       // 0x00A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_GetDeckLevelName_LevelName;               // 0x00AC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasVisitedLevel_HasVisited;               // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B5[0x3];                                       // 0x00B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue_1;              // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter) == 0x000008, "Wrong alignment on WIDGET_StatusDeck_C_EVENT_OnMouseEnter");
-static_assert(sizeof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter) == 0x0000C8, "Wrong size on WIDGET_StatusDeck_C_EVENT_OnMouseEnter");
+static_assert(sizeof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter) == 0x0000A8, "Wrong size on WIDGET_StatusDeck_C_EVENT_OnMouseEnter");
 static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter, MyGeometry) == 0x000000, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseEnter::MyGeometry' has a wrong offset!");
 static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter, MouseEvent) == 0x000038, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseEnter::MouseEvent' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter, CallFunc_Not_PreBool_ReturnValue) == 0x0000A8, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseEnter::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter, CallFunc_GetDeckLevelName_LevelName) == 0x0000AC, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseEnter::CallFunc_GetDeckLevelName_LevelName' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter, CallFunc_HasVisitedLevel_HasVisited) == 0x0000B4, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseEnter::CallFunc_HasVisitedLevel_HasVisited' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter, CallFunc_PlayAnimation_ReturnValue) == 0x0000B8, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseEnter::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseEnter, CallFunc_PlayAnimation_ReturnValue_1) == 0x0000C0, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseEnter::CallFunc_PlayAnimation_ReturnValue_1' has a wrong offset!");
 
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.EVENT_OnMouseLeave
-// 0x0078 (0x0078 - 0x0000)
+// 0x0070 (0x0070 - 0x0000)
 struct WIDGET_StatusDeck_C_EVENT_OnMouseLeave final
 {
 public:
 	struct FPointerEvent                          MouseEvent;                                        // 0x0000(0x0070)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_StatusDeck_C_EVENT_OnMouseLeave) == 0x000008, "Wrong alignment on WIDGET_StatusDeck_C_EVENT_OnMouseLeave");
-static_assert(sizeof(WIDGET_StatusDeck_C_EVENT_OnMouseLeave) == 0x000078, "Wrong size on WIDGET_StatusDeck_C_EVENT_OnMouseLeave");
+static_assert(sizeof(WIDGET_StatusDeck_C_EVENT_OnMouseLeave) == 0x000070, "Wrong size on WIDGET_StatusDeck_C_EVENT_OnMouseLeave");
 static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseLeave, MouseEvent) == 0x000000, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseLeave::MouseEvent' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseLeave, CallFunc_Not_PreBool_ReturnValue) == 0x000070, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseLeave::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.EVENT_OnMouseDown
-// 0x0468 (0x0468 - 0x0000)
+// 0x02E0 (0x02E0 - 0x0000)
 struct WIDGET_StatusDeck_C_EVENT_OnMouseDown final
 {
 public:
 	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
 	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0070)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 	struct FEventReply                            ReturnValue;                                       // 0x00A8(0x00B8)(Parm, OutParm, ReturnParm)
-	struct FEventReply                            CallFunc_Handled_ReturnValue;                      // 0x0160(0x00B8)()
-	bool                                          CallFunc_TryShowAutomapForSelectedDeck_Result;     // 0x0218(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_219[0x7];                                      // 0x0219(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FEventReply                            CallFunc_Handled_ReturnValue_1;                    // 0x0220(0x00B8)()
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x02D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FEventReply                            CallFunc_Handled_ReturnValue_2;                    // 0x02E0(0x00B8)()
-	struct FEventReply                            CallFunc_Handled_ReturnValue_3;                    // 0x0398(0x00B8)()
-	class FName                                   CallFunc_GetDeckLevelName_LevelName;               // 0x0450(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasVisitedLevel_HasVisited;               // 0x0458(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_459[0x7];                                      // 0x0459(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue_1;              // 0x0460(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_GetDeckLevelName_LevelName;               // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasVisitedLevel_HasVisited;               // 0x0168(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_169[0x7];                                      // 0x0169(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FEventReply                            CallFunc_Handled_ReturnValue;                      // 0x0170(0x00B8)()
+	struct FEventReply                            CallFunc_Handled_ReturnValue_1;                    // 0x0228(0x00B8)()
 };
 static_assert(alignof(WIDGET_StatusDeck_C_EVENT_OnMouseDown) == 0x000008, "Wrong alignment on WIDGET_StatusDeck_C_EVENT_OnMouseDown");
-static_assert(sizeof(WIDGET_StatusDeck_C_EVENT_OnMouseDown) == 0x000468, "Wrong size on WIDGET_StatusDeck_C_EVENT_OnMouseDown");
+static_assert(sizeof(WIDGET_StatusDeck_C_EVENT_OnMouseDown) == 0x0002E0, "Wrong size on WIDGET_StatusDeck_C_EVENT_OnMouseDown");
 static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, MyGeometry) == 0x000000, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::MyGeometry' has a wrong offset!");
 static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, MouseEvent) == 0x000038, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::MouseEvent' has a wrong offset!");
 static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, ReturnValue) == 0x0000A8, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_Handled_ReturnValue) == 0x000160, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_Handled_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_TryShowAutomapForSelectedDeck_Result) == 0x000218, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_TryShowAutomapForSelectedDeck_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_Handled_ReturnValue_1) == 0x000220, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_Handled_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_PlayAnimation_ReturnValue) == 0x0002D8, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_Handled_ReturnValue_2) == 0x0002E0, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_Handled_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_Handled_ReturnValue_3) == 0x000398, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_Handled_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_GetDeckLevelName_LevelName) == 0x000450, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_GetDeckLevelName_LevelName' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_HasVisitedLevel_HasVisited) == 0x000458, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_HasVisitedLevel_HasVisited' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_PlayAnimation_ReturnValue_1) == 0x000460, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_PlayAnimation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_GetDeckLevelName_LevelName) == 0x000160, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_GetDeckLevelName_LevelName' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_HasVisitedLevel_HasVisited) == 0x000168, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_HasVisitedLevel_HasVisited' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_Handled_ReturnValue) == 0x000170, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_Handled_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_StatusDeck_C_EVENT_OnMouseDown, CallFunc_Handled_ReturnValue_1) == 0x000228, "Member 'WIDGET_StatusDeck_C_EVENT_OnMouseDown::CallFunc_Handled_ReturnValue_1' has a wrong offset!");
 
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.SetSelected
-// 0x0002 (0x0002 - 0x0000)
+// 0x0001 (0x0001 - 0x0000)
 struct WIDGET_StatusDeck_C_SetSelected final
 {
 public:
 	bool                                          Selected;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_StatusDeck_C_SetSelected) == 0x000001, "Wrong alignment on WIDGET_StatusDeck_C_SetSelected");
-static_assert(sizeof(WIDGET_StatusDeck_C_SetSelected) == 0x000002, "Wrong size on WIDGET_StatusDeck_C_SetSelected");
+static_assert(sizeof(WIDGET_StatusDeck_C_SetSelected) == 0x000001, "Wrong size on WIDGET_StatusDeck_C_SetSelected");
 static_assert(offsetof(WIDGET_StatusDeck_C_SetSelected, Selected) == 0x000000, "Member 'WIDGET_StatusDeck_C_SetSelected::Selected' has a wrong offset!");
-static_assert(offsetof(WIDGET_StatusDeck_C_SetSelected, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member 'WIDGET_StatusDeck_C_SetSelected::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_StatusDeck.WIDGET_StatusDeck_C.EVENT_OnMouseDoubleClick
 // 0x02D8 (0x02D8 - 0x0000)

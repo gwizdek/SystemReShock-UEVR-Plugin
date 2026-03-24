@@ -17,6 +17,26 @@
 namespace SDK
 {
 
+// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ExecuteUbergraph_INTERACT_PseudoPlatformBase
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AINTERACT_PseudoPlatformBase_C::ExecuteUbergraph_INTERACT_PseudoPlatformBase(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ExecuteUbergraph_INTERACT_PseudoPlatformBase");
+
+	Params::INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.TryInteract
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -389,26 +409,6 @@ void AINTERACT_PseudoPlatformBase_C::ReceiveBeginPlay()
 		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ReceiveBeginPlay");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function INTERACT_PseudoPlatformBase.INTERACT_PseudoPlatformBase_C.ExecuteUbergraph_INTERACT_PseudoPlatformBase
-// (Final, UbergraphFunction, HasDefaults)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void AINTERACT_PseudoPlatformBase_C::ExecuteUbergraph_INTERACT_PseudoPlatformBase(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_PseudoPlatformBase_C", "ExecuteUbergraph_INTERACT_PseudoPlatformBase");
-
-	Params::INTERACT_PseudoPlatformBase_C_ExecuteUbergraph_INTERACT_PseudoPlatformBase Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

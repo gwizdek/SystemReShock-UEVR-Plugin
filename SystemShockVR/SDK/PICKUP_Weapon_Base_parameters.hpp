@@ -151,6 +151,32 @@ static_assert(offsetof(PICKUP_Weapon_Base_C_GetRenderIconClassCollection, CallFu
 static_assert(offsetof(PICKUP_Weapon_Base_C_GetRenderIconClassCollection, CallFunc_Greater_IntInt_ReturnValue) == 0x0000C8, "Member 'PICKUP_Weapon_Base_C_GetRenderIconClassCollection::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PICKUP_Weapon_Base_C_GetRenderIconClassCollection, CallFunc_GetRenderIconClassCollection_Result) == 0x0000D0, "Member 'PICKUP_Weapon_Base_C_GetRenderIconClassCollection::CallFunc_GetRenderIconClassCollection_Result' has a wrong offset!");
 
+// Function PICKUP_Weapon_Base.PICKUP_Weapon_Base_C.UpdateMeshEmissiveStrength
+// 0x0038 (0x0038 - 0x0000)
+struct PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength final
+{
+public:
+	float                                         Scale;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class UStaticMeshComponent*>           CallFunc_GetChildComponentsByClass_ReturnValue;    // 0x0010(0x0010)(ReferenceParm, ContainsInstancedReference)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength) == 0x000008, "Wrong alignment on PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength");
+static_assert(sizeof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength) == 0x000038, "Wrong size on PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength");
+static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, Scale) == 0x000000, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::Scale' has a wrong offset!");
+static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, Temp_int_Array_Index_Variable) == 0x000004, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_Add_IntInt_ReturnValue) == 0x00000C, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_GetChildComponentsByClass_ReturnValue) == 0x000010, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_GetChildComponentsByClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_Array_Length_ReturnValue) == 0x000020, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_Array_Get_Item) == 0x000028, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_Less_IntInt_ReturnValue) == 0x000030, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+
 // Function PICKUP_Weapon_Base.PICKUP_Weapon_Base_C.TryInitializeItemInstance
 // 0x0048 (0x0048 - 0x0000)
 struct PICKUP_Weapon_Base_C_TryInitializeItemInstance final
@@ -178,32 +204,6 @@ static_assert(offsetof(PICKUP_Weapon_Base_C_TryInitializeItemInstance, CallFunc_
 static_assert(offsetof(PICKUP_Weapon_Base_C_TryInitializeItemInstance, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000030, "Member 'PICKUP_Weapon_Base_C_TryInitializeItemInstance::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(PICKUP_Weapon_Base_C_TryInitializeItemInstance, K2Node_DynamicCast_AsITEM_Weapon_Base) == 0x000038, "Member 'PICKUP_Weapon_Base_C_TryInitializeItemInstance::K2Node_DynamicCast_AsITEM_Weapon_Base' has a wrong offset!");
 static_assert(offsetof(PICKUP_Weapon_Base_C_TryInitializeItemInstance, K2Node_DynamicCast_bSuccess) == 0x000040, "Member 'PICKUP_Weapon_Base_C_TryInitializeItemInstance::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-
-// Function PICKUP_Weapon_Base.PICKUP_Weapon_Base_C.UpdateMeshEmissiveStrength
-// 0x0038 (0x0038 - 0x0000)
-struct PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength final
-{
-public:
-	float                                         Scale;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class UStaticMeshComponent*>           CallFunc_GetChildComponentsByClass_ReturnValue;    // 0x0010(0x0010)(ReferenceParm, ContainsInstancedReference)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UStaticMeshComponent*                   CallFunc_Array_Get_Item;                           // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength) == 0x000008, "Wrong alignment on PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength");
-static_assert(sizeof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength) == 0x000038, "Wrong size on PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength");
-static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, Scale) == 0x000000, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::Scale' has a wrong offset!");
-static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, Temp_int_Array_Index_Variable) == 0x000004, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_Add_IntInt_ReturnValue) == 0x00000C, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_GetChildComponentsByClass_ReturnValue) == 0x000010, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_GetChildComponentsByClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_Array_Length_ReturnValue) == 0x000020, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_Array_Get_Item) == 0x000028, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength, CallFunc_Less_IntInt_ReturnValue) == 0x000030, "Member 'PICKUP_Weapon_Base_C_UpdateMeshEmissiveStrength::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 
 }
 

@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "UMG_structs.hpp"
 #include "STRUCT_ItemDetailsIconParams_structs.hpp"
-#include "SlateCore_structs.hpp"
+#include "UMG_structs.hpp"
 #include "ENUM_DoorState_structs.hpp"
 #include "Engine_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 
@@ -509,7 +509,7 @@ public:
 	class UClass*                                 Class_0;                                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWidget*                                Widget;                                            // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWidget*                                CurrentSubDetailsWidget;                           // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class UWidget*>                        ChildWidgets;                                      // 0x0018(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
+	TArray<class UWidget*>                        ChildWIdgets;                                      // 0x0018(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
 	int32                                         Temp_int_Array_Index_Variable;                     // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -527,7 +527,7 @@ static_assert(sizeof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass) == 0x
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, Class_0) == 0x000000, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::Class_0' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, Widget) == 0x000008, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::Widget' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, CurrentSubDetailsWidget) == 0x000010, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::CurrentSubDetailsWidget' has a wrong offset!");
-static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, ChildWidgets) == 0x000018, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::ChildWidgets' has a wrong offset!");
+static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, ChildWIdgets) == 0x000018, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::ChildWIdgets' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, Temp_int_Array_Index_Variable) == 0x000028, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::Temp_int_Array_Index_Variable' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, Temp_int_Loop_Counter_Variable) == 0x00002C, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::Temp_int_Loop_Counter_Variable' has a wrong offset!");
 static_assert(offsetof(WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass, CallFunc_Add_IntInt_ReturnValue) == 0x000030, "Member 'WIDGET_InventoryDetails_C_GetSubDetailsWidgetByClass::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");

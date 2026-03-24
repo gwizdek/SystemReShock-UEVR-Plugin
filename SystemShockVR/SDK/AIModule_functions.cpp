@@ -17,6 +17,31 @@
 namespace SDK
 {
 
+// Function AIModule.BlackboardAssetProvider.GetBlackboardAsset
+// (Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UBlackboardData*                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UBlackboardData* IBlackboardAssetProvider::GetBlackboardAsset() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BlackboardAssetProvider", "GetBlackboardAsset");
+
+	Params::BlackboardAssetProvider_GetBlackboardAsset Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function AIModule.AIAsyncTaskBlueprintProxy.OnMoveCompleted
 // (Final, Native, Public)
 // Parameters:
@@ -2165,31 +2190,6 @@ float UBehaviorTreeComponent::GetTagCooldownEndTime(const struct FGameplayTag& C
 	Params::BehaviorTreeComponent_GetTagCooldownEndTime Parms{};
 
 	Parms.CooldownTag = std::move(CooldownTag);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function AIModule.BlackboardAssetProvider.GetBlackboardAsset
-// (Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UBlackboardData*                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UBlackboardData* IBlackboardAssetProvider::GetBlackboardAsset() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BlackboardAssetProvider", "GetBlackboardAsset");
-
-	Params::BlackboardAssetProvider_GetBlackboardAsset Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

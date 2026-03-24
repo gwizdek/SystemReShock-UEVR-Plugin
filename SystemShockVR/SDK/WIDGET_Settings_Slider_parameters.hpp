@@ -17,21 +17,54 @@ namespace SDK::Params
 {
 
 // Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ExecuteUbergraph_WIDGET_Settings_Slider
-// 0x0010 (0x0010 - 0x0000)
+// 0x0054 (0x0054 - 0x0000)
 struct WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         K2Node_ComponentBoundEvent_NewSliderValue;         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         K2Node_ComponentBoundEvent_NewAbsoluteValue;       // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_Event_IsDesignTime;                         // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x000C(0x0038)(IsPlainOldData, NoDestructor)
+	float                                         K2Node_Event_InDeltaTime;                          // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x004C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_Event_IsDesignTime;                         // 0x004D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetIsHighlighted_Result;                  // 0x004E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x004F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavRight_Result;                   // 0x0052(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavLeft_Result;                    // 0x0053(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider) == 0x000004, "Wrong alignment on WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider");
-static_assert(sizeof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider) == 0x000010, "Wrong size on WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider");
+static_assert(sizeof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider) == 0x000054, "Wrong size on WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider");
 static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, EntryPoint) == 0x000000, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::EntryPoint' has a wrong offset!");
 static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, K2Node_ComponentBoundEvent_NewSliderValue) == 0x000004, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::K2Node_ComponentBoundEvent_NewSliderValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, K2Node_ComponentBoundEvent_NewAbsoluteValue) == 0x000008, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::K2Node_ComponentBoundEvent_NewAbsoluteValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, K2Node_Event_IsDesignTime) == 0x00000C, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::K2Node_Event_IsDesignTime' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, K2Node_Event_MyGeometry) == 0x00000C, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::K2Node_Event_MyGeometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, K2Node_Event_InDeltaTime) == 0x000044, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::K2Node_Event_InDeltaTime' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, CallFunc_Add_FloatFloat_ReturnValue) == 0x000048, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, CallFunc_BooleanOR_ReturnValue) == 0x00004C, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, K2Node_Event_IsDesignTime) == 0x00004D, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::K2Node_Event_IsDesignTime' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, CallFunc_GetIsHighlighted_Result) == 0x00004E, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::CallFunc_GetIsHighlighted_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, CallFunc_BooleanAND_ReturnValue) == 0x00004F, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, CallFunc_BooleanAND_ReturnValue_1) == 0x000050, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x000051, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, CallFunc_ReceiveNavRight_Result) == 0x000052, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::CallFunc_ReceiveNavRight_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider, CallFunc_ReceiveNavLeft_Result) == 0x000053, "Member 'WIDGET_Settings_Slider_C_ExecuteUbergraph_WIDGET_Settings_Slider::CallFunc_ReceiveNavLeft_Result' has a wrong offset!");
+
+// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.Tick
+// 0x003C (0x003C - 0x0000)
+struct WIDGET_Settings_Slider_C_Tick final
+{
+public:
+	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	float                                         InDeltaTime;                                       // 0x0038(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WIDGET_Settings_Slider_C_Tick) == 0x000004, "Wrong alignment on WIDGET_Settings_Slider_C_Tick");
+static_assert(sizeof(WIDGET_Settings_Slider_C_Tick) == 0x00003C, "Wrong size on WIDGET_Settings_Slider_C_Tick");
+static_assert(offsetof(WIDGET_Settings_Slider_C_Tick, MyGeometry) == 0x000000, "Member 'WIDGET_Settings_Slider_C_Tick::MyGeometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_Tick, InDeltaTime) == 0x000038, "Member 'WIDGET_Settings_Slider_C_Tick::InDeltaTime' has a wrong offset!");
 
 // Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.BndEvt__WIDGET_Settings_Slider_WIDGET_Slider_K2Node_ComponentBoundEvent_0_OnValueChanged__DelegateSignature
 // 0x0008 (0x0008 - 0x0000)
@@ -126,56 +159,34 @@ static_assert(sizeof(WIDGET_Settings_Slider_C_GetSlider) == 0x000008, "Wrong siz
 static_assert(offsetof(WIDGET_Settings_Slider_C_GetSlider, Result) == 0x000000, "Member 'WIDGET_Settings_Slider_C_GetSlider::Result' has a wrong offset!");
 
 // Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ReceiveNavLeft
-// 0x0020 (0x0020 - 0x0000)
+// 0x0028 (0x0028 - 0x0000)
 struct WIDGET_Settings_Slider_C_ReceiveNavLeft final
 {
 public:
 	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWIDGET_Slider_C*                       CallFunc_GetSlider_Result;                         // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetSliderValue_NormalizedValue;           // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_SetSliderValue_RealValue;                 // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         IncrementValue;                                    // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_Slider_C*                       CallFunc_GetSlider_Result;                         // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetSliderValue_NormalizedValue;           // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_SetSliderValue_RealValue;                 // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(WIDGET_Settings_Slider_C_ReceiveNavLeft) == 0x000008, "Wrong alignment on WIDGET_Settings_Slider_C_ReceiveNavLeft");
-static_assert(sizeof(WIDGET_Settings_Slider_C_ReceiveNavLeft) == 0x000020, "Wrong size on WIDGET_Settings_Slider_C_ReceiveNavLeft");
+static_assert(sizeof(WIDGET_Settings_Slider_C_ReceiveNavLeft) == 0x000028, "Wrong size on WIDGET_Settings_Slider_C_ReceiveNavLeft");
 static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, InputState) == 0x000000, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::InputState' has a wrong offset!");
 static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, Result) == 0x000001, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_GetSlider_Result) == 0x000008, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_GetSlider_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_GetSliderValue_NormalizedValue) == 0x000010, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_GetSliderValue_NormalizedValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_BooleanAND_ReturnValue) == 0x000014, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000018, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_SetSliderValue_RealValue) == 0x00001C, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_SetSliderValue_RealValue' has a wrong offset!");
-
-// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ReceiveNavRight
-// 0x0020 (0x0020 - 0x0000)
-struct WIDGET_Settings_Slider_C_ReceiveNavRight final
-{
-public:
-	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Increments;                                        // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_Slider_C*                       CallFunc_GetSlider_Result;                         // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetSliderValue_NormalizedValue;           // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_SetSliderValue_RealValue;                 // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WIDGET_Settings_Slider_C_ReceiveNavRight) == 0x000008, "Wrong alignment on WIDGET_Settings_Slider_C_ReceiveNavRight");
-static_assert(sizeof(WIDGET_Settings_Slider_C_ReceiveNavRight) == 0x000020, "Wrong size on WIDGET_Settings_Slider_C_ReceiveNavRight");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, InputState) == 0x000000, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::InputState' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, Result) == 0x000001, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, Increments) == 0x000004, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::Increments' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_GetSlider_Result) == 0x000008, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_GetSlider_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_GetSliderValue_NormalizedValue) == 0x000010, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_GetSliderValue_NormalizedValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_BooleanAND_ReturnValue) == 0x000014, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_Add_FloatFloat_ReturnValue) == 0x000018, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_SetSliderValue_RealValue) == 0x00001C, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_SetSliderValue_RealValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, IncrementValue) == 0x000004, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::IncrementValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000008, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_GetSlider_Result) == 0x000010, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_GetSlider_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_GetSliderValue_NormalizedValue) == 0x000018, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_GetSliderValue_NormalizedValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_BooleanAND_ReturnValue) == 0x00001C, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000020, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeft, CallFunc_SetSliderValue_RealValue) == 0x000024, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeft::CallFunc_SetSliderValue_RealValue' has a wrong offset!");
 
 // Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.InitializeMenuListItem
 // 0x0020 (0x0020 - 0x0000)
@@ -213,6 +224,63 @@ static_assert(sizeof(WIDGET_Settings_Slider_C_GetScaledCurrentSliderValue) == 0x
 static_assert(offsetof(WIDGET_Settings_Slider_C_GetScaledCurrentSliderValue, Result) == 0x000000, "Member 'WIDGET_Settings_Slider_C_GetScaledCurrentSliderValue::Result' has a wrong offset!");
 static_assert(offsetof(WIDGET_Settings_Slider_C_GetScaledCurrentSliderValue, CallFunc_GetSliderValue_NormalizedValue) == 0x000004, "Member 'WIDGET_Settings_Slider_C_GetScaledCurrentSliderValue::CallFunc_GetSliderValue_NormalizedValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_Settings_Slider_C_GetScaledCurrentSliderValue, CallFunc_MapRangeClamped_ReturnValue) == 0x000008, "Member 'WIDGET_Settings_Slider_C_GetScaledCurrentSliderValue::CallFunc_MapRangeClamped_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ReceiveNavRight
+// 0x0028 (0x0028 - 0x0000)
+struct WIDGET_Settings_Slider_C_ReceiveNavRight final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         IncrementValue;                                    // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Increments;                                        // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_Slider_C*                       CallFunc_GetSlider_Result;                         // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetSliderValue_NormalizedValue;           // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_SetSliderValue_RealValue;                 // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WIDGET_Settings_Slider_C_ReceiveNavRight) == 0x000008, "Wrong alignment on WIDGET_Settings_Slider_C_ReceiveNavRight");
+static_assert(sizeof(WIDGET_Settings_Slider_C_ReceiveNavRight) == 0x000028, "Wrong size on WIDGET_Settings_Slider_C_ReceiveNavRight");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, InputState) == 0x000000, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, Result) == 0x000001, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, IncrementValue) == 0x000004, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::IncrementValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, Increments) == 0x000008, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::Increments' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00000C, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_GetSlider_Result) == 0x000010, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_GetSlider_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_GetSliderValue_NormalizedValue) == 0x000018, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_GetSliderValue_NormalizedValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_BooleanAND_ReturnValue) == 0x00001C, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_Add_FloatFloat_ReturnValue) == 0x000020, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRight, CallFunc_SetSliderValue_RealValue) == 0x000024, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRight::CallFunc_SetSliderValue_RealValue' has a wrong offset!");
+
+// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ReceiveNavRightRelease
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_Settings_Slider_C_ReceiveNavRightRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_Settings_Slider_C_ReceiveNavRightRelease) == 0x000001, "Wrong alignment on WIDGET_Settings_Slider_C_ReceiveNavRightRelease");
+static_assert(sizeof(WIDGET_Settings_Slider_C_ReceiveNavRightRelease) == 0x000002, "Wrong size on WIDGET_Settings_Slider_C_ReceiveNavRightRelease");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRightRelease, InputState) == 0x000000, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRightRelease::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavRightRelease, Result) == 0x000001, "Member 'WIDGET_Settings_Slider_C_ReceiveNavRightRelease::Result' has a wrong offset!");
+
+// Function WIDGET_Settings_Slider.WIDGET_Settings_Slider_C.ReceiveNavLeftRelease
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_Settings_Slider_C_ReceiveNavLeftRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_Settings_Slider_C_ReceiveNavLeftRelease) == 0x000001, "Wrong alignment on WIDGET_Settings_Slider_C_ReceiveNavLeftRelease");
+static_assert(sizeof(WIDGET_Settings_Slider_C_ReceiveNavLeftRelease) == 0x000002, "Wrong size on WIDGET_Settings_Slider_C_ReceiveNavLeftRelease");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeftRelease, InputState) == 0x000000, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeftRelease::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_Settings_Slider_C_ReceiveNavLeftRelease, Result) == 0x000001, "Member 'WIDGET_Settings_Slider_C_ReceiveNavLeftRelease::Result' has a wrong offset!");
 
 }
 

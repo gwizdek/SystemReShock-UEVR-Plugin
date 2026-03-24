@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "AIModule_classes.hpp"
 #include "ENUM_PreferredCombatStyle_structs.hpp"
+#include "AIModule_classes.hpp"
 
 
 namespace SDK

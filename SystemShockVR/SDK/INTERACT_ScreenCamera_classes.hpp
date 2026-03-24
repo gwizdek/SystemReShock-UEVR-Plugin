@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "INTERACT_SentryTurret_Base_classes.hpp"
 #include "Engine_structs.hpp"
+#include "INTERACT_SentryTurret_Base_classes.hpp"
 #include "ENUM_DoorState_structs.hpp"
 
 

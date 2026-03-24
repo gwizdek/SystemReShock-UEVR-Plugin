@@ -18,11 +18,11 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass PAWN_Hacker_Pseudospace.PAWN_Hacker_Pseudospace_C
-// 0x0010 (0x0E60 - 0x0E50)
+// 0x0000 (0x0E70 - 0x0E70)
 class APAWN_Hacker_Pseudospace_C final : public APAWN_Hacker_Simple_C
 {
 public:
-	class UNiagaraComponent*                      CyberspaceLocalEffects;                            // 0x0E50(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UNiagaraComponent*                      CyberspaceLocalEffects;                            // 0x0E68(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void TryLeaveCurrentLevel(bool* Result);
@@ -42,8 +42,8 @@ public:
 	}
 };
 static_assert(alignof(APAWN_Hacker_Pseudospace_C) == 0x000010, "Wrong alignment on APAWN_Hacker_Pseudospace_C");
-static_assert(sizeof(APAWN_Hacker_Pseudospace_C) == 0x000E60, "Wrong size on APAWN_Hacker_Pseudospace_C");
-static_assert(offsetof(APAWN_Hacker_Pseudospace_C, CyberspaceLocalEffects) == 0x000E50, "Member 'APAWN_Hacker_Pseudospace_C::CyberspaceLocalEffects' has a wrong offset!");
+static_assert(sizeof(APAWN_Hacker_Pseudospace_C) == 0x000E70, "Wrong size on APAWN_Hacker_Pseudospace_C");
+static_assert(offsetof(APAWN_Hacker_Pseudospace_C, CyberspaceLocalEffects) == 0x000E68, "Member 'APAWN_Hacker_Pseudospace_C::CyberspaceLocalEffects' has a wrong offset!");
 
 }
 

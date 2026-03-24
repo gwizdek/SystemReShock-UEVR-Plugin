@@ -37,6 +37,28 @@ void UTASK_MobileLaser_Beam_Sweep_C::ExecuteUbergraph_TASK_MobileLaser_Beam_Swee
 }
 
 
+// Function TASK_MobileLaser_Beam_Sweep.TASK_MobileLaser_Beam_Sweep_C.ReceiveExecuteAI
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AAIController*                    OwnerController                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class APawn*                            ControlledPawn                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UTASK_MobileLaser_Beam_Sweep_C::ReceiveExecuteAI(class AAIController* OwnerController, class APawn* ControlledPawn)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TASK_MobileLaser_Beam_Sweep_C", "ReceiveExecuteAI");
+
+	Params::TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI Parms{};
+
+	Parms.OwnerController = OwnerController;
+	Parms.ControlledPawn = ControlledPawn;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function TASK_MobileLaser_Beam_Sweep.TASK_MobileLaser_Beam_Sweep_C.SetSweepStartLocalDirection
 // (Private, BlueprintCallable, BlueprintEvent)
 
@@ -62,28 +84,6 @@ void UTASK_MobileLaser_Beam_Sweep_C::SetSweepEndLocalDirection()
 		Func = Class->GetFunction("TASK_MobileLaser_Beam_Sweep_C", "SetSweepEndLocalDirection");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function TASK_MobileLaser_Beam_Sweep.TASK_MobileLaser_Beam_Sweep_C.ReceiveExecuteAI
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// class AAIController*                    OwnerController                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class APawn*                            ControlledPawn                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UTASK_MobileLaser_Beam_Sweep_C::ReceiveExecuteAI(class AAIController* OwnerController, class APawn* ControlledPawn)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TASK_MobileLaser_Beam_Sweep_C", "ReceiveExecuteAI");
-
-	Params::TASK_MobileLaser_Beam_Sweep_C_ReceiveExecuteAI Parms{};
-
-	Parms.OwnerController = OwnerController;
-	Parms.ControlledPawn = ControlledPawn;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 

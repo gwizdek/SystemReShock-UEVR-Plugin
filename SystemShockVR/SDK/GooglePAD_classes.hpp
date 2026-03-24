@@ -29,6 +29,7 @@ public:
 	static EGooglePADErrorCode GetDownloadState(const class FString& Name_0, int32* State);
 	static EGooglePADDownloadStatus GetDownloadStatus(const int32 State);
 	static EGooglePADErrorCode GetShowCellularDataConfirmationStatus(EGooglePADCellularDataConfirmStatus* Status);
+	static EGooglePADErrorCode GetShowConfirmationDialogStatus(EGooglePADConfirmationDialogStatus* Status);
 	static EGooglePADStorageMethod GetStorageMethod(const int32 Location);
 	static int32 GetTotalBytesToDownload(const int32 State);
 	static void ReleaseAssetPackLocation(const int32 Location);
@@ -37,6 +38,7 @@ public:
 	static EGooglePADErrorCode RequestInfo(const TArray<class FString>& AssetPacks);
 	static EGooglePADErrorCode RequestRemoval(const class FString& Name_0);
 	static EGooglePADErrorCode ShowCellularDataConfirmation();
+	static EGooglePADErrorCode ShowConfirmationDialog();
 
 public:
 	static class UClass* StaticClass()

@@ -18,22 +18,41 @@
 namespace SDK
 {
 
-// Class ClothingSystemRuntimeInterface.ClothSharedSimConfigBase
-// 0x0000 (0x0028 - 0x0028)
-class UClothSharedSimConfigBase final : public UObject
+// Class ClothingSystemRuntimeInterface.ClothPhysicalMeshDataBase_Legacy
+// 0x00B8 (0x00E0 - 0x0028)
+class UClothPhysicalMeshDataBase_Legacy : public UObject
 {
+public:
+	TArray<struct FVector>                        Vertices;                                          // 0x0028(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FVector>                        Normals;                                           // 0x0038(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<uint32>                                Indices;                                           // 0x0048(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<float>                                 InverseMasses;                                     // 0x0058(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FClothVertBoneData>             BoneData;                                          // 0x0068(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	int32                                         NumFixedVerts;                                     // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaxBoneWeights;                                    // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<uint32>                                SelfCollisionIndices;                              // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_90[0x50];                                      // 0x0090(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ClothSharedSimConfigBase">();
+		return StaticClassImpl<"ClothPhysicalMeshDataBase_Legacy">();
 	}
-	static class UClothSharedSimConfigBase* GetDefaultObj()
+	static class UClothPhysicalMeshDataBase_Legacy* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UClothSharedSimConfigBase>();
+		return GetDefaultObjImpl<UClothPhysicalMeshDataBase_Legacy>();
 	}
 };
-static_assert(alignof(UClothSharedSimConfigBase) == 0x000008, "Wrong alignment on UClothSharedSimConfigBase");
-static_assert(sizeof(UClothSharedSimConfigBase) == 0x000028, "Wrong size on UClothSharedSimConfigBase");
+static_assert(alignof(UClothPhysicalMeshDataBase_Legacy) == 0x000008, "Wrong alignment on UClothPhysicalMeshDataBase_Legacy");
+static_assert(sizeof(UClothPhysicalMeshDataBase_Legacy) == 0x0000E0, "Wrong size on UClothPhysicalMeshDataBase_Legacy");
+static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, Vertices) == 0x000028, "Member 'UClothPhysicalMeshDataBase_Legacy::Vertices' has a wrong offset!");
+static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, Normals) == 0x000038, "Member 'UClothPhysicalMeshDataBase_Legacy::Normals' has a wrong offset!");
+static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, Indices) == 0x000048, "Member 'UClothPhysicalMeshDataBase_Legacy::Indices' has a wrong offset!");
+static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, InverseMasses) == 0x000058, "Member 'UClothPhysicalMeshDataBase_Legacy::InverseMasses' has a wrong offset!");
+static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, BoneData) == 0x000068, "Member 'UClothPhysicalMeshDataBase_Legacy::BoneData' has a wrong offset!");
+static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, NumFixedVerts) == 0x000078, "Member 'UClothPhysicalMeshDataBase_Legacy::NumFixedVerts' has a wrong offset!");
+static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, MaxBoneWeights) == 0x00007C, "Member 'UClothPhysicalMeshDataBase_Legacy::MaxBoneWeights' has a wrong offset!");
+static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, SelfCollisionIndices) == 0x000080, "Member 'UClothPhysicalMeshDataBase_Legacy::SelfCollisionIndices' has a wrong offset!");
 
 // Class ClothingSystemRuntimeInterface.ClothConfigBase
 // 0x0000 (0x0028 - 0x0028)
@@ -51,23 +70,6 @@ public:
 };
 static_assert(alignof(UClothConfigBase) == 0x000008, "Wrong alignment on UClothConfigBase");
 static_assert(sizeof(UClothConfigBase) == 0x000028, "Wrong size on UClothConfigBase");
-
-// Class ClothingSystemRuntimeInterface.ClothingSimulationFactory
-// 0x0000 (0x0028 - 0x0028)
-class UClothingSimulationFactory : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"ClothingSimulationFactory">();
-	}
-	static class UClothingSimulationFactory* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UClothingSimulationFactory>();
-	}
-};
-static_assert(alignof(UClothingSimulationFactory) == 0x000008, "Wrong alignment on UClothingSimulationFactory");
-static_assert(sizeof(UClothingSimulationFactory) == 0x000028, "Wrong size on UClothingSimulationFactory");
 
 // Class ClothingSystemRuntimeInterface.ClothingAssetBase
 // 0x0020 (0x0048 - 0x0028)
@@ -91,6 +93,23 @@ static_assert(alignof(UClothingAssetBase) == 0x000008, "Wrong alignment on UClot
 static_assert(sizeof(UClothingAssetBase) == 0x000048, "Wrong size on UClothingAssetBase");
 static_assert(offsetof(UClothingAssetBase, ImportedFilePath) == 0x000028, "Member 'UClothingAssetBase::ImportedFilePath' has a wrong offset!");
 static_assert(offsetof(UClothingAssetBase, AssetGuid) == 0x000038, "Member 'UClothingAssetBase::AssetGuid' has a wrong offset!");
+
+// Class ClothingSystemRuntimeInterface.ClothingSimulationFactory
+// 0x0000 (0x0028 - 0x0028)
+class UClothingSimulationFactory : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ClothingSimulationFactory">();
+	}
+	static class UClothingSimulationFactory* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UClothingSimulationFactory>();
+	}
+};
+static_assert(alignof(UClothingSimulationFactory) == 0x000008, "Wrong alignment on UClothingSimulationFactory");
+static_assert(sizeof(UClothingSimulationFactory) == 0x000028, "Wrong size on UClothingSimulationFactory");
 
 // Class ClothingSystemRuntimeInterface.ClothingInteractor
 // 0x0008 (0x0030 - 0x0028)
@@ -151,41 +170,22 @@ static_assert(alignof(UClothingSimulationInteractor) == 0x000008, "Wrong alignme
 static_assert(sizeof(UClothingSimulationInteractor) == 0x000090, "Wrong size on UClothingSimulationInteractor");
 static_assert(offsetof(UClothingSimulationInteractor, ClothingInteractors) == 0x000028, "Member 'UClothingSimulationInteractor::ClothingInteractors' has a wrong offset!");
 
-// Class ClothingSystemRuntimeInterface.ClothPhysicalMeshDataBase_Legacy
-// 0x00B8 (0x00E0 - 0x0028)
-class UClothPhysicalMeshDataBase_Legacy : public UObject
+// Class ClothingSystemRuntimeInterface.ClothSharedSimConfigBase
+// 0x0000 (0x0028 - 0x0028)
+class UClothSharedSimConfigBase final : public UObject
 {
-public:
-	TArray<struct FVector>                        Vertices;                                          // 0x0028(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FVector>                        Normals;                                           // 0x0038(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<uint32>                                Indices;                                           // 0x0048(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<float>                                 InverseMasses;                                     // 0x0058(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FClothVertBoneData>             BoneData;                                          // 0x0068(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	int32                                         NumFixedVerts;                                     // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MaxBoneWeights;                                    // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<uint32>                                SelfCollisionIndices;                              // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_90[0x50];                                      // 0x0090(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ClothPhysicalMeshDataBase_Legacy">();
+		return StaticClassImpl<"ClothSharedSimConfigBase">();
 	}
-	static class UClothPhysicalMeshDataBase_Legacy* GetDefaultObj()
+	static class UClothSharedSimConfigBase* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UClothPhysicalMeshDataBase_Legacy>();
+		return GetDefaultObjImpl<UClothSharedSimConfigBase>();
 	}
 };
-static_assert(alignof(UClothPhysicalMeshDataBase_Legacy) == 0x000008, "Wrong alignment on UClothPhysicalMeshDataBase_Legacy");
-static_assert(sizeof(UClothPhysicalMeshDataBase_Legacy) == 0x0000E0, "Wrong size on UClothPhysicalMeshDataBase_Legacy");
-static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, Vertices) == 0x000028, "Member 'UClothPhysicalMeshDataBase_Legacy::Vertices' has a wrong offset!");
-static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, Normals) == 0x000038, "Member 'UClothPhysicalMeshDataBase_Legacy::Normals' has a wrong offset!");
-static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, Indices) == 0x000048, "Member 'UClothPhysicalMeshDataBase_Legacy::Indices' has a wrong offset!");
-static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, InverseMasses) == 0x000058, "Member 'UClothPhysicalMeshDataBase_Legacy::InverseMasses' has a wrong offset!");
-static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, BoneData) == 0x000068, "Member 'UClothPhysicalMeshDataBase_Legacy::BoneData' has a wrong offset!");
-static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, NumFixedVerts) == 0x000078, "Member 'UClothPhysicalMeshDataBase_Legacy::NumFixedVerts' has a wrong offset!");
-static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, MaxBoneWeights) == 0x00007C, "Member 'UClothPhysicalMeshDataBase_Legacy::MaxBoneWeights' has a wrong offset!");
-static_assert(offsetof(UClothPhysicalMeshDataBase_Legacy, SelfCollisionIndices) == 0x000080, "Member 'UClothPhysicalMeshDataBase_Legacy::SelfCollisionIndices' has a wrong offset!");
+static_assert(alignof(UClothSharedSimConfigBase) == 0x000008, "Wrong alignment on UClothSharedSimConfigBase");
+static_assert(sizeof(UClothSharedSimConfigBase) == 0x000028, "Wrong size on UClothSharedSimConfigBase");
 
 }
 

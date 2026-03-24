@@ -91,6 +91,20 @@ void UHARDWARE_DataReader_C::OnLoaded_65EE3A914F0C398482905DB02E5CDD54(class UOb
 }
 
 
+// Function HARDWARE_DataReader.HARDWARE_DataReader_C.OnIncomingTransmission
+// (Private, BlueprintCallable, BlueprintEvent)
+
+void UHARDWARE_DataReader_C::OnIncomingTransmission()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HARDWARE_DataReader_C", "OnIncomingTransmission");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function HARDWARE_DataReader.HARDWARE_DataReader_C.ReceiveAnimationMessage
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -112,20 +126,6 @@ void UHARDWARE_DataReader_C::ReceiveAnimationMessage(const class FString& Messag
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
-}
-
-
-// Function HARDWARE_DataReader.HARDWARE_DataReader_C.OnIncomingTransmission
-// (Private, BlueprintCallable, BlueprintEvent)
-
-void UHARDWARE_DataReader_C::OnIncomingTransmission()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HARDWARE_DataReader_C", "OnIncomingTransmission");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 

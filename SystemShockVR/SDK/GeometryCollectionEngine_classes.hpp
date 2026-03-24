@@ -10,48 +10,16 @@
 
 #include "Basic.hpp"
 
+#include "Chaos_structs.hpp"
 #include "GeometryCollectionEngine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "ChaosSolverEngine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
-#include "Chaos_structs.hpp"
+#include "ChaosSolverEngine_structs.hpp"
 
 
 namespace SDK
 {
-
-// Class GeometryCollectionEngine.GeometryCollectionRenderLevelSetActor
-// 0x00A0 (0x02C0 - 0x0220)
-class alignas(0x10) AGeometryCollectionRenderLevelSetActor final : public AActor
-{
-public:
-	class UVolumeTexture*                         TargetVolumeTexture;                               // 0x0220(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UMaterial*                              RayMarchMaterial;                                  // 0x0228(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         SurfaceTolerance;                                  // 0x0230(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Isovalue;                                          // 0x0234(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Enabled;                                           // 0x0238(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          RenderVolumeBoundingBox;                           // 0x0239(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_23A[0x86];                                     // 0x023A(0x0086)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"GeometryCollectionRenderLevelSetActor">();
-	}
-	static class AGeometryCollectionRenderLevelSetActor* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<AGeometryCollectionRenderLevelSetActor>();
-	}
-};
-static_assert(alignof(AGeometryCollectionRenderLevelSetActor) == 0x000010, "Wrong alignment on AGeometryCollectionRenderLevelSetActor");
-static_assert(sizeof(AGeometryCollectionRenderLevelSetActor) == 0x0002C0, "Wrong size on AGeometryCollectionRenderLevelSetActor");
-static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, TargetVolumeTexture) == 0x000220, "Member 'AGeometryCollectionRenderLevelSetActor::TargetVolumeTexture' has a wrong offset!");
-static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, RayMarchMaterial) == 0x000228, "Member 'AGeometryCollectionRenderLevelSetActor::RayMarchMaterial' has a wrong offset!");
-static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, SurfaceTolerance) == 0x000230, "Member 'AGeometryCollectionRenderLevelSetActor::SurfaceTolerance' has a wrong offset!");
-static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, Isovalue) == 0x000234, "Member 'AGeometryCollectionRenderLevelSetActor::Isovalue' has a wrong offset!");
-static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, Enabled) == 0x000238, "Member 'AGeometryCollectionRenderLevelSetActor::Enabled' has a wrong offset!");
-static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, RenderVolumeBoundingBox) == 0x000239, "Member 'AGeometryCollectionRenderLevelSetActor::RenderVolumeBoundingBox' has a wrong offset!");
 
 // Class GeometryCollectionEngine.ChaosDestructionListener
 // 0x0220 (0x0420 - 0x0200)
@@ -111,84 +79,6 @@ static_assert(offsetof(UChaosDestructionListener, OnCollisionEvents) == 0x0002E8
 static_assert(offsetof(UChaosDestructionListener, OnBreakingEvents) == 0x0002F8, "Member 'UChaosDestructionListener::OnBreakingEvents' has a wrong offset!");
 static_assert(offsetof(UChaosDestructionListener, OnTrailingEvents) == 0x000308, "Member 'UChaosDestructionListener::OnTrailingEvents' has a wrong offset!");
 
-// Class GeometryCollectionEngine.GeometryCollection
-// 0x00E0 (0x0108 - 0x0028)
-class UGeometryCollection final : public UObject
-{
-public:
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          EnableClustering;                                  // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         ClusterGroupIndex;                                 // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MaxClusterLevel;                                   // 0x0038(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<float>                                 DamageThreshold;                                   // 0x0040(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	EClusterConnectionTypeEnum                    ClusterConnectionType;                             // 0x0050(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FGeometryCollectionSource>      GeometrySource;                                    // 0x0058(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<class UMaterialInterface*>             Materials;                                         // 0x0068(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	ECollisionTypeEnum                            CollisionType;                                     // 0x0078(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EImplicitTypeEnum                             ImplicitType;                                      // 0x0079(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_7A[0x2];                                       // 0x007A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         MinLevelSetResolution;                             // 0x007C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MaxLevelSetResolution;                             // 0x0080(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MinClusterLevelSetResolution;                      // 0x0084(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MaxClusterLevelSetResolution;                      // 0x0088(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         CollisionObjectReductionPercentage;                // 0x008C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bMassAsDensity;                                    // 0x0090(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_91[0x3];                                       // 0x0091(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Mass;                                              // 0x0094(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MinimumMassClamp;                                  // 0x0098(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         CollisionParticlesFraction;                        // 0x009C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MaximumCollisionParticles;                         // 0x00A0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A4[0x4];                                       // 0x00A4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FGeometryCollectionSizeSpecificData> SizeSpecificData;                                  // 0x00A8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	bool                                          EnableRemovePiecesOnFracture;                      // 0x00B8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UMaterialInterface*>             RemoveOnFractureMaterials;                         // 0x00C0(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	struct FGuid                                  PersistentGuid;                                    // 0x00D0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FGuid                                  StateGuid;                                         // 0x00E0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int32                                         BoneSelectedMaterialIndex;                         // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_F4[0x14];                                      // 0x00F4(0x0014)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"GeometryCollection">();
-	}
-	static class UGeometryCollection* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGeometryCollection>();
-	}
-};
-static_assert(alignof(UGeometryCollection) == 0x000008, "Wrong alignment on UGeometryCollection");
-static_assert(sizeof(UGeometryCollection) == 0x000108, "Wrong size on UGeometryCollection");
-static_assert(offsetof(UGeometryCollection, EnableClustering) == 0x000030, "Member 'UGeometryCollection::EnableClustering' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, ClusterGroupIndex) == 0x000034, "Member 'UGeometryCollection::ClusterGroupIndex' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, MaxClusterLevel) == 0x000038, "Member 'UGeometryCollection::MaxClusterLevel' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, DamageThreshold) == 0x000040, "Member 'UGeometryCollection::DamageThreshold' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, ClusterConnectionType) == 0x000050, "Member 'UGeometryCollection::ClusterConnectionType' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, GeometrySource) == 0x000058, "Member 'UGeometryCollection::GeometrySource' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, Materials) == 0x000068, "Member 'UGeometryCollection::Materials' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, CollisionType) == 0x000078, "Member 'UGeometryCollection::CollisionType' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, ImplicitType) == 0x000079, "Member 'UGeometryCollection::ImplicitType' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, MinLevelSetResolution) == 0x00007C, "Member 'UGeometryCollection::MinLevelSetResolution' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, MaxLevelSetResolution) == 0x000080, "Member 'UGeometryCollection::MaxLevelSetResolution' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, MinClusterLevelSetResolution) == 0x000084, "Member 'UGeometryCollection::MinClusterLevelSetResolution' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, MaxClusterLevelSetResolution) == 0x000088, "Member 'UGeometryCollection::MaxClusterLevelSetResolution' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, CollisionObjectReductionPercentage) == 0x00008C, "Member 'UGeometryCollection::CollisionObjectReductionPercentage' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, bMassAsDensity) == 0x000090, "Member 'UGeometryCollection::bMassAsDensity' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, Mass) == 0x000094, "Member 'UGeometryCollection::Mass' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, MinimumMassClamp) == 0x000098, "Member 'UGeometryCollection::MinimumMassClamp' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, CollisionParticlesFraction) == 0x00009C, "Member 'UGeometryCollection::CollisionParticlesFraction' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, MaximumCollisionParticles) == 0x0000A0, "Member 'UGeometryCollection::MaximumCollisionParticles' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, SizeSpecificData) == 0x0000A8, "Member 'UGeometryCollection::SizeSpecificData' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, EnableRemovePiecesOnFracture) == 0x0000B8, "Member 'UGeometryCollection::EnableRemovePiecesOnFracture' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, RemoveOnFractureMaterials) == 0x0000C0, "Member 'UGeometryCollection::RemoveOnFractureMaterials' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, PersistentGuid) == 0x0000D0, "Member 'UGeometryCollection::PersistentGuid' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, StateGuid) == 0x0000E0, "Member 'UGeometryCollection::StateGuid' has a wrong offset!");
-static_assert(offsetof(UGeometryCollection, BoneSelectedMaterialIndex) == 0x0000F0, "Member 'UGeometryCollection::BoneSelectedMaterialIndex' has a wrong offset!");
-
 // Class GeometryCollectionEngine.GeometryCollectionActor
 // 0x0010 (0x0230 - 0x0220)
 class AGeometryCollectionActor final : public AActor
@@ -214,30 +104,6 @@ static_assert(alignof(AGeometryCollectionActor) == 0x000008, "Wrong alignment on
 static_assert(sizeof(AGeometryCollectionActor) == 0x000230, "Wrong size on AGeometryCollectionActor");
 static_assert(offsetof(AGeometryCollectionActor, GeometryCollectionComponent) == 0x000220, "Member 'AGeometryCollectionActor::GeometryCollectionComponent' has a wrong offset!");
 static_assert(offsetof(AGeometryCollectionActor, GeometryCollectionDebugDrawComponent) == 0x000228, "Member 'AGeometryCollectionActor::GeometryCollectionDebugDrawComponent' has a wrong offset!");
-
-// Class GeometryCollectionEngine.GeometryCollectionDebugDrawComponent
-// 0x0018 (0x00C8 - 0x00B0)
-class UGeometryCollectionDebugDrawComponent final : public UActorComponent
-{
-public:
-	class AGeometryCollectionDebugDrawActor*      GeometryCollectionDebugDrawActor;                  // 0x00B0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AGeometryCollectionRenderLevelSetActor* GeometryCollectionRenderLevelSetActor;             // 0x00B8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C0[0x8];                                       // 0x00C0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"GeometryCollectionDebugDrawComponent">();
-	}
-	static class UGeometryCollectionDebugDrawComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGeometryCollectionDebugDrawComponent>();
-	}
-};
-static_assert(alignof(UGeometryCollectionDebugDrawComponent) == 0x000008, "Wrong alignment on UGeometryCollectionDebugDrawComponent");
-static_assert(sizeof(UGeometryCollectionDebugDrawComponent) == 0x0000C8, "Wrong size on UGeometryCollectionDebugDrawComponent");
-static_assert(offsetof(UGeometryCollectionDebugDrawComponent, GeometryCollectionDebugDrawActor) == 0x0000B0, "Member 'UGeometryCollectionDebugDrawComponent::GeometryCollectionDebugDrawActor' has a wrong offset!");
-static_assert(offsetof(UGeometryCollectionDebugDrawComponent, GeometryCollectionRenderLevelSetActor) == 0x0000B8, "Member 'UGeometryCollectionDebugDrawComponent::GeometryCollectionRenderLevelSetActor' has a wrong offset!");
 
 // Class GeometryCollectionEngine.GeometryCollectionCache
 // 0x0028 (0x0050 - 0x0028)
@@ -514,6 +380,140 @@ static_assert(offsetof(AGeometryCollectionDebugDrawActor, VertexColor) == 0x0002
 static_assert(offsetof(AGeometryCollectionDebugDrawActor, VertexIndexColor) == 0x0002CC, "Member 'AGeometryCollectionDebugDrawActor::VertexIndexColor' has a wrong offset!");
 static_assert(offsetof(AGeometryCollectionDebugDrawActor, VertexNormalColor) == 0x0002D0, "Member 'AGeometryCollectionDebugDrawActor::VertexNormalColor' has a wrong offset!");
 static_assert(offsetof(AGeometryCollectionDebugDrawActor, SpriteComponent) == 0x0002D8, "Member 'AGeometryCollectionDebugDrawActor::SpriteComponent' has a wrong offset!");
+
+// Class GeometryCollectionEngine.GeometryCollectionDebugDrawComponent
+// 0x0018 (0x00C8 - 0x00B0)
+class UGeometryCollectionDebugDrawComponent final : public UActorComponent
+{
+public:
+	class AGeometryCollectionDebugDrawActor*      GeometryCollectionDebugDrawActor;                  // 0x00B0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AGeometryCollectionRenderLevelSetActor* GeometryCollectionRenderLevelSetActor;             // 0x00B8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C0[0x8];                                       // 0x00C0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"GeometryCollectionDebugDrawComponent">();
+	}
+	static class UGeometryCollectionDebugDrawComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGeometryCollectionDebugDrawComponent>();
+	}
+};
+static_assert(alignof(UGeometryCollectionDebugDrawComponent) == 0x000008, "Wrong alignment on UGeometryCollectionDebugDrawComponent");
+static_assert(sizeof(UGeometryCollectionDebugDrawComponent) == 0x0000C8, "Wrong size on UGeometryCollectionDebugDrawComponent");
+static_assert(offsetof(UGeometryCollectionDebugDrawComponent, GeometryCollectionDebugDrawActor) == 0x0000B0, "Member 'UGeometryCollectionDebugDrawComponent::GeometryCollectionDebugDrawActor' has a wrong offset!");
+static_assert(offsetof(UGeometryCollectionDebugDrawComponent, GeometryCollectionRenderLevelSetActor) == 0x0000B8, "Member 'UGeometryCollectionDebugDrawComponent::GeometryCollectionRenderLevelSetActor' has a wrong offset!");
+
+// Class GeometryCollectionEngine.GeometryCollection
+// 0x00E0 (0x0108 - 0x0028)
+class UGeometryCollection final : public UObject
+{
+public:
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          EnableClustering;                                  // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ClusterGroupIndex;                                 // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaxClusterLevel;                                   // 0x0038(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<float>                                 DamageThreshold;                                   // 0x0040(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	EClusterConnectionTypeEnum                    ClusterConnectionType;                             // 0x0050(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FGeometryCollectionSource>      GeometrySource;                                    // 0x0058(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<class UMaterialInterface*>             Materials;                                         // 0x0068(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	ECollisionTypeEnum                            CollisionType;                                     // 0x0078(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EImplicitTypeEnum                             ImplicitType;                                      // 0x0079(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_7A[0x2];                                       // 0x007A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         MinLevelSetResolution;                             // 0x007C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaxLevelSetResolution;                             // 0x0080(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MinClusterLevelSetResolution;                      // 0x0084(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaxClusterLevelSetResolution;                      // 0x0088(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         CollisionObjectReductionPercentage;                // 0x008C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bMassAsDensity;                                    // 0x0090(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_91[0x3];                                       // 0x0091(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Mass;                                              // 0x0094(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MinimumMassClamp;                                  // 0x0098(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         CollisionParticlesFraction;                        // 0x009C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaximumCollisionParticles;                         // 0x00A0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A4[0x4];                                       // 0x00A4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FGeometryCollectionSizeSpecificData> SizeSpecificData;                                  // 0x00A8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	bool                                          EnableRemovePiecesOnFracture;                      // 0x00B8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UMaterialInterface*>             RemoveOnFractureMaterials;                         // 0x00C0(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FGuid                                  PersistentGuid;                                    // 0x00D0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FGuid                                  StateGuid;                                         // 0x00E0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int32                                         BoneSelectedMaterialIndex;                         // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_F4[0x14];                                      // 0x00F4(0x0014)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"GeometryCollection">();
+	}
+	static class UGeometryCollection* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGeometryCollection>();
+	}
+};
+static_assert(alignof(UGeometryCollection) == 0x000008, "Wrong alignment on UGeometryCollection");
+static_assert(sizeof(UGeometryCollection) == 0x000108, "Wrong size on UGeometryCollection");
+static_assert(offsetof(UGeometryCollection, EnableClustering) == 0x000030, "Member 'UGeometryCollection::EnableClustering' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, ClusterGroupIndex) == 0x000034, "Member 'UGeometryCollection::ClusterGroupIndex' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, MaxClusterLevel) == 0x000038, "Member 'UGeometryCollection::MaxClusterLevel' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, DamageThreshold) == 0x000040, "Member 'UGeometryCollection::DamageThreshold' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, ClusterConnectionType) == 0x000050, "Member 'UGeometryCollection::ClusterConnectionType' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, GeometrySource) == 0x000058, "Member 'UGeometryCollection::GeometrySource' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, Materials) == 0x000068, "Member 'UGeometryCollection::Materials' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, CollisionType) == 0x000078, "Member 'UGeometryCollection::CollisionType' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, ImplicitType) == 0x000079, "Member 'UGeometryCollection::ImplicitType' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, MinLevelSetResolution) == 0x00007C, "Member 'UGeometryCollection::MinLevelSetResolution' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, MaxLevelSetResolution) == 0x000080, "Member 'UGeometryCollection::MaxLevelSetResolution' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, MinClusterLevelSetResolution) == 0x000084, "Member 'UGeometryCollection::MinClusterLevelSetResolution' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, MaxClusterLevelSetResolution) == 0x000088, "Member 'UGeometryCollection::MaxClusterLevelSetResolution' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, CollisionObjectReductionPercentage) == 0x00008C, "Member 'UGeometryCollection::CollisionObjectReductionPercentage' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, bMassAsDensity) == 0x000090, "Member 'UGeometryCollection::bMassAsDensity' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, Mass) == 0x000094, "Member 'UGeometryCollection::Mass' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, MinimumMassClamp) == 0x000098, "Member 'UGeometryCollection::MinimumMassClamp' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, CollisionParticlesFraction) == 0x00009C, "Member 'UGeometryCollection::CollisionParticlesFraction' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, MaximumCollisionParticles) == 0x0000A0, "Member 'UGeometryCollection::MaximumCollisionParticles' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, SizeSpecificData) == 0x0000A8, "Member 'UGeometryCollection::SizeSpecificData' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, EnableRemovePiecesOnFracture) == 0x0000B8, "Member 'UGeometryCollection::EnableRemovePiecesOnFracture' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, RemoveOnFractureMaterials) == 0x0000C0, "Member 'UGeometryCollection::RemoveOnFractureMaterials' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, PersistentGuid) == 0x0000D0, "Member 'UGeometryCollection::PersistentGuid' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, StateGuid) == 0x0000E0, "Member 'UGeometryCollection::StateGuid' has a wrong offset!");
+static_assert(offsetof(UGeometryCollection, BoneSelectedMaterialIndex) == 0x0000F0, "Member 'UGeometryCollection::BoneSelectedMaterialIndex' has a wrong offset!");
+
+// Class GeometryCollectionEngine.GeometryCollectionRenderLevelSetActor
+// 0x00A0 (0x02C0 - 0x0220)
+class alignas(0x10) AGeometryCollectionRenderLevelSetActor final : public AActor
+{
+public:
+	class UVolumeTexture*                         TargetVolumeTexture;                               // 0x0220(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UMaterial*                              RayMarchMaterial;                                  // 0x0228(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SurfaceTolerance;                                  // 0x0230(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Isovalue;                                          // 0x0234(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Enabled;                                           // 0x0238(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          RenderVolumeBoundingBox;                           // 0x0239(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_23A[0x86];                                     // 0x023A(0x0086)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"GeometryCollectionRenderLevelSetActor">();
+	}
+	static class AGeometryCollectionRenderLevelSetActor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AGeometryCollectionRenderLevelSetActor>();
+	}
+};
+static_assert(alignof(AGeometryCollectionRenderLevelSetActor) == 0x000010, "Wrong alignment on AGeometryCollectionRenderLevelSetActor");
+static_assert(sizeof(AGeometryCollectionRenderLevelSetActor) == 0x0002C0, "Wrong size on AGeometryCollectionRenderLevelSetActor");
+static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, TargetVolumeTexture) == 0x000220, "Member 'AGeometryCollectionRenderLevelSetActor::TargetVolumeTexture' has a wrong offset!");
+static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, RayMarchMaterial) == 0x000228, "Member 'AGeometryCollectionRenderLevelSetActor::RayMarchMaterial' has a wrong offset!");
+static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, SurfaceTolerance) == 0x000230, "Member 'AGeometryCollectionRenderLevelSetActor::SurfaceTolerance' has a wrong offset!");
+static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, Isovalue) == 0x000234, "Member 'AGeometryCollectionRenderLevelSetActor::Isovalue' has a wrong offset!");
+static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, Enabled) == 0x000238, "Member 'AGeometryCollectionRenderLevelSetActor::Enabled' has a wrong offset!");
+static_assert(offsetof(AGeometryCollectionRenderLevelSetActor, RenderVolumeBoundingBox) == 0x000239, "Member 'AGeometryCollectionRenderLevelSetActor::RenderVolumeBoundingBox' has a wrong offset!");
 
 // Class GeometryCollectionEngine.SkeletalMeshSimulationComponent
 // 0x0088 (0x0138 - 0x00B0)

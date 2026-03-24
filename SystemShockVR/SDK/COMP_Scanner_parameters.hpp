@@ -10,12 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
-#include "STRUCT_MeshDescriptor_structs.hpp"
-#include "ENUM_InteractResultType_structs.hpp"
 #include "STRUCT_InteractFlavorText_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "STRUCT_MeshDescriptor_structs.hpp"
+#include "Engine_structs.hpp"
+#include "ENUM_InteractResultType_structs.hpp"
 
 
 namespace SDK::Params
@@ -185,30 +186,39 @@ static_assert(offsetof(COMP_Scanner_C_InitializeScanner, Camera) == 0x000000, "M
 static_assert(offsetof(COMP_Scanner_C_InitializeScanner, CameraPanel) == 0x000008, "Member 'COMP_Scanner_C_InitializeScanner::CameraPanel' has a wrong offset!");
 
 // Function COMP_Scanner.COMP_Scanner_C.InitializeScannerAttributes
-// 0x0040 (0x0040 - 0x0000)
+// 0x0068 (0x0068 - 0x0000)
 struct COMP_Scanner_C_InitializeScannerAttributes final
 {
 public:
 	class UAttribInstance*                        ScanRangeInstance;                                 // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UAttribManagerComponent*                AttribManager;                                     // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAttribInstance*                        CallFunc_GetOrCreateAttribInstance_ReturnValue;    // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(float CurrValue, float LastValue)> K2Node_CreateDelegate_OutputDelegate;              // 0x001C(0x0010)(ZeroConstructor, NoDestructor)
-	float                                         CallFunc_GetValue_ReturnValue;                     // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAttribManagerComponent*                CallFunc_GetComponentByClass_ReturnValue;          // 0x0038(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(ENUM_ControllerType NewActiveControllerType)> K2Node_CreateDelegate_OutputDelegate;              // 0x0010(0x0010)(ZeroConstructor, NoDestructor)
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAttribInstance*                        CallFunc_GetOrCreateAttribInstance_ReturnValue;    // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(float CurrValue, float LastValue)> K2Node_CreateDelegate_OutputDelegate_1;            // 0x0044(0x0010)(ZeroConstructor, NoDestructor)
+	float                                         CallFunc_GetValue_ReturnValue;                     // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAttribManagerComponent*                CallFunc_GetComponentByClass_ReturnValue;          // 0x0060(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(COMP_Scanner_C_InitializeScannerAttributes) == 0x000008, "Wrong alignment on COMP_Scanner_C_InitializeScannerAttributes");
-static_assert(sizeof(COMP_Scanner_C_InitializeScannerAttributes) == 0x000040, "Wrong size on COMP_Scanner_C_InitializeScannerAttributes");
+static_assert(sizeof(COMP_Scanner_C_InitializeScannerAttributes) == 0x000068, "Wrong size on COMP_Scanner_C_InitializeScannerAttributes");
 static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, ScanRangeInstance) == 0x000000, "Member 'COMP_Scanner_C_InitializeScannerAttributes::ScanRangeInstance' has a wrong offset!");
 static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, AttribManager) == 0x000008, "Member 'COMP_Scanner_C_InitializeScannerAttributes::AttribManager' has a wrong offset!");
-static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_GetOrCreateAttribInstance_ReturnValue) == 0x000010, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_GetOrCreateAttribInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, K2Node_CreateDelegate_OutputDelegate) == 0x00001C, "Member 'COMP_Scanner_C_InitializeScannerAttributes::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_GetValue_ReturnValue) == 0x00002C, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_GetValue_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_GetOwner_ReturnValue) == 0x000030, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_GetComponentByClass_ReturnValue) == 0x000038, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_GetComponentByClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, K2Node_CreateDelegate_OutputDelegate) == 0x000010, "Member 'COMP_Scanner_C_InitializeScannerAttributes::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_GetPlayerController_ReturnValue) == 0x000020, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, K2Node_DynamicCast_AsCON_Hacker) == 0x000028, "Member 'COMP_Scanner_C_InitializeScannerAttributes::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'COMP_Scanner_C_InitializeScannerAttributes::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_GetOrCreateAttribInstance_ReturnValue) == 0x000038, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_GetOrCreateAttribInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_IsValid_ReturnValue) == 0x000040, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, K2Node_CreateDelegate_OutputDelegate_1) == 0x000044, "Member 'COMP_Scanner_C_InitializeScannerAttributes::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_GetValue_ReturnValue) == 0x000054, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_GetValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_GetOwner_ReturnValue) == 0x000058, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_InitializeScannerAttributes, CallFunc_GetComponentByClass_ReturnValue) == 0x000060, "Member 'COMP_Scanner_C_InitializeScannerAttributes::CallFunc_GetComponentByClass_ReturnValue' has a wrong offset!");
 
 // Function COMP_Scanner.COMP_Scanner_C.UpdateCursorInformation
 // 0x0168 (0x0168 - 0x0000)
@@ -762,6 +772,43 @@ public:
 static_assert(alignof(COMP_Scanner_C_SetScannerEnabled) == 0x000001, "Wrong alignment on COMP_Scanner_C_SetScannerEnabled");
 static_assert(sizeof(COMP_Scanner_C_SetScannerEnabled) == 0x000001, "Wrong size on COMP_Scanner_C_SetScannerEnabled");
 static_assert(offsetof(COMP_Scanner_C_SetScannerEnabled, State) == 0x000000, "Member 'COMP_Scanner_C_SetScannerEnabled::State' has a wrong offset!");
+
+// Function COMP_Scanner.COMP_Scanner_C.EVENT_OnControllerTypeChange
+// 0x0008 (0x0008 - 0x0000)
+struct COMP_Scanner_C_EVENT_OnControllerTypeChange final
+{
+public:
+	ENUM_ControllerType                           NewActiveControllerType;                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_ControllerType                           Temp_byte_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         K2Node_Select_Default;                             // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(COMP_Scanner_C_EVENT_OnControllerTypeChange) == 0x000004, "Wrong alignment on COMP_Scanner_C_EVENT_OnControllerTypeChange");
+static_assert(sizeof(COMP_Scanner_C_EVENT_OnControllerTypeChange) == 0x000008, "Wrong size on COMP_Scanner_C_EVENT_OnControllerTypeChange");
+static_assert(offsetof(COMP_Scanner_C_EVENT_OnControllerTypeChange, NewActiveControllerType) == 0x000000, "Member 'COMP_Scanner_C_EVENT_OnControllerTypeChange::NewActiveControllerType' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_EVENT_OnControllerTypeChange, Temp_byte_Variable) == 0x000001, "Member 'COMP_Scanner_C_EVENT_OnControllerTypeChange::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_EVENT_OnControllerTypeChange, K2Node_Select_Default) == 0x000004, "Member 'COMP_Scanner_C_EVENT_OnControllerTypeChange::K2Node_Select_Default' has a wrong offset!");
+
+// Function COMP_Scanner.COMP_Scanner_C.IsUsingGamepad
+// 0x0020 (0x0020 - 0x0000)
+struct COMP_Scanner_C_IsUsingGamepad final
+{
+public:
+	ENUM_ControllerType                           Temp_byte_Variable;                                // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         K2Node_Select_Default;                             // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(COMP_Scanner_C_IsUsingGamepad) == 0x000008, "Wrong alignment on COMP_Scanner_C_IsUsingGamepad");
+static_assert(sizeof(COMP_Scanner_C_IsUsingGamepad) == 0x000020, "Wrong size on COMP_Scanner_C_IsUsingGamepad");
+static_assert(offsetof(COMP_Scanner_C_IsUsingGamepad, Temp_byte_Variable) == 0x000000, "Member 'COMP_Scanner_C_IsUsingGamepad::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_IsUsingGamepad, CallFunc_GetPlayerController_ReturnValue) == 0x000008, "Member 'COMP_Scanner_C_IsUsingGamepad::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_IsUsingGamepad, K2Node_DynamicCast_AsCON_Hacker) == 0x000010, "Member 'COMP_Scanner_C_IsUsingGamepad::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_IsUsingGamepad, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'COMP_Scanner_C_IsUsingGamepad::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(COMP_Scanner_C_IsUsingGamepad, K2Node_Select_Default) == 0x00001C, "Member 'COMP_Scanner_C_IsUsingGamepad::K2Node_Select_Default' has a wrong offset!");
 
 }
 

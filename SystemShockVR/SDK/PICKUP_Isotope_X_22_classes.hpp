@@ -21,7 +21,6 @@ namespace SDK
 class APICKUP_Isotope_X_22_C final : public APICKUP_Base_C
 {
 public:
-	uint8                                         Pad_474[0x4];                                      // 0x0474(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UCOMP_VoxelAudio_C*                     LoopingAudio;                                      // 0x0478(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UPointLightComponent*                   X22Light;                                          // 0x0480(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 

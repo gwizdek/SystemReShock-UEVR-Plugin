@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "HARDWARE_VisionUnit_Base_classes.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
 
 

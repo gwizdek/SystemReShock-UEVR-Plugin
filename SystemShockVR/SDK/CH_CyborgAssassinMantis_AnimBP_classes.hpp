@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_DeathBlowType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "AnimGraphRuntime_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ENUM_DeathBlowType_structs.hpp"
 #include "ENUM_Emotions_structs.hpp"
 
 
@@ -73,7 +73,7 @@ public:
 	bool                                          IsAlive;                                           // 0x16C0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_16C1[0x3];                                     // 0x16C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         MovementSpeed;                                     // 0x16C4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         movementAngle;                                     // 0x16C8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MovementAngle;                                     // 0x16C8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                LookAtLocation;                                    // 0x16CC(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         LookAtAlpha;                                       // 0x16D8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	ENUM_DeathBlowType                            DeathBlow;                                         // 0x16DC(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -205,7 +205,7 @@ static_assert(offsetof(UCH_CyborgAssassinMantis_AnimBP_C, AnimGraphNode_Root) ==
 static_assert(offsetof(UCH_CyborgAssassinMantis_AnimBP_C, AnimGraphNode_PoseSnapshot) == 0x001630, "Member 'UCH_CyborgAssassinMantis_AnimBP_C::AnimGraphNode_PoseSnapshot' has a wrong offset!");
 static_assert(offsetof(UCH_CyborgAssassinMantis_AnimBP_C, IsAlive) == 0x0016C0, "Member 'UCH_CyborgAssassinMantis_AnimBP_C::IsAlive' has a wrong offset!");
 static_assert(offsetof(UCH_CyborgAssassinMantis_AnimBP_C, MovementSpeed) == 0x0016C4, "Member 'UCH_CyborgAssassinMantis_AnimBP_C::MovementSpeed' has a wrong offset!");
-static_assert(offsetof(UCH_CyborgAssassinMantis_AnimBP_C, movementAngle) == 0x0016C8, "Member 'UCH_CyborgAssassinMantis_AnimBP_C::movementAngle' has a wrong offset!");
+static_assert(offsetof(UCH_CyborgAssassinMantis_AnimBP_C, MovementAngle) == 0x0016C8, "Member 'UCH_CyborgAssassinMantis_AnimBP_C::MovementAngle' has a wrong offset!");
 static_assert(offsetof(UCH_CyborgAssassinMantis_AnimBP_C, LookAtLocation) == 0x0016CC, "Member 'UCH_CyborgAssassinMantis_AnimBP_C::LookAtLocation' has a wrong offset!");
 static_assert(offsetof(UCH_CyborgAssassinMantis_AnimBP_C, LookAtAlpha) == 0x0016D8, "Member 'UCH_CyborgAssassinMantis_AnimBP_C::LookAtAlpha' has a wrong offset!");
 static_assert(offsetof(UCH_CyborgAssassinMantis_AnimBP_C, DeathBlow) == 0x0016DC, "Member 'UCH_CyborgAssassinMantis_AnimBP_C::DeathBlow' has a wrong offset!");

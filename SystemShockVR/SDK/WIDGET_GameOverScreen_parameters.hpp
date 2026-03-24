@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_ControllerType_structs.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
 #include "SlateCore_structs.hpp"
 
@@ -23,27 +24,27 @@ struct WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 K2Node_ComponentBoundEvent_Message;                // 0x0030(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_1;            // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_1;           // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x005C(0x0038)(IsPlainOldData, NoDestructor)
-	float                                         K2Node_Event_InDeltaTime;                          // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(bool IsUsingGamepad)>          K2Node_CreateDelegate_OutputDelegate_1;            // 0x00A0(0x0010)(ZeroConstructor, NoDestructor)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x00B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(ENUM_ControllerType NewActiveControllerType)> K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x0014(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 K2Node_ComponentBoundEvent_Message;                // 0x0040(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue_1;            // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player_1;           // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x006C(0x0038)(IsPlainOldData, NoDestructor)
+	float                                         K2Node_Event_InDeltaTime;                          // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C1[0x7];                                       // 0x00C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class APAWN_PlayerGhost_C*                    K2Node_DynamicCast_AsPAWN_Player_Ghost;            // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_D1[0x3];                                       // 0x00D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
@@ -55,21 +56,21 @@ static_assert(alignof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverSc
 static_assert(sizeof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen) == 0x000108, "Wrong size on WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen");
 static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, EntryPoint) == 0x000000, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::EntryPoint' has a wrong offset!");
 static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_CreateDelegate_OutputDelegate) == 0x000004, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, CallFunc_GetGameInstance_ReturnValue) == 0x000018, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_AsGI_Single_Player) == 0x000020, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_ComponentBoundEvent_Message) == 0x000030, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_ComponentBoundEvent_Message' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_SwitchString_CmpSuccess) == 0x000040, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, CallFunc_GetGameInstance_ReturnValue_1) == 0x000048, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::CallFunc_GetGameInstance_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_AsGI_Single_Player_1) == 0x000050, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_AsGI_Single_Player_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_bSuccess_1) == 0x000058, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_Event_MyGeometry) == 0x00005C, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_Event_MyGeometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_Event_InDeltaTime) == 0x000094, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_Event_InDeltaTime' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, CallFunc_GetPlayerController_ReturnValue) == 0x000098, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_CreateDelegate_OutputDelegate_1) == 0x0000A0, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_AsCON_Hacker) == 0x0000B0, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_bSuccess_2) == 0x0000B8, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, CallFunc_GetPlayerPawn_ReturnValue) == 0x0000C0, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_CreateDelegate_OutputDelegate_1) == 0x000014, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, CallFunc_GetGameInstance_ReturnValue) == 0x000028, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_AsGI_Single_Player) == 0x000030, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_bSuccess) == 0x000038, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_ComponentBoundEvent_Message) == 0x000040, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_ComponentBoundEvent_Message' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_SwitchString_CmpSuccess) == 0x000050, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, CallFunc_GetGameInstance_ReturnValue_1) == 0x000058, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::CallFunc_GetGameInstance_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_AsGI_Single_Player_1) == 0x000060, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_AsGI_Single_Player_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_bSuccess_1) == 0x000068, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_Event_MyGeometry) == 0x00006C, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_Event_MyGeometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_Event_InDeltaTime) == 0x0000A4, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_Event_InDeltaTime' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, CallFunc_GetPlayerController_ReturnValue) == 0x0000A8, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, CallFunc_GetPlayerPawn_ReturnValue) == 0x0000B0, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_AsCON_Hacker) == 0x0000B8, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_bSuccess_2) == 0x0000C0, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
 static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_AsPAWN_Player_Ghost) == 0x0000C8, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_AsPAWN_Player_Ghost' has a wrong offset!");
 static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_DynamicCast_bSuccess_3) == 0x0000D0, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
 static_assert(offsetof(WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen, K2Node_CreateDelegate_OutputDelegate_2) == 0x0000D4, "Member 'WIDGET_GameOverScreen_C_ExecuteUbergraph_WIDGET_GameOverScreen::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
@@ -128,14 +129,14 @@ public:
 	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_GameOverScreen_C_OnGameOverRevealFinish) == 0x000008, "Wrong alignment on WIDGET_GameOverScreen_C_OnGameOverRevealFinish");
 static_assert(sizeof(WIDGET_GameOverScreen_C_OnGameOverRevealFinish) == 0x000018, "Wrong size on WIDGET_GameOverScreen_C_OnGameOverRevealFinish");
 static_assert(offsetof(WIDGET_GameOverScreen_C_OnGameOverRevealFinish, CallFunc_GetPlayerController_ReturnValue) == 0x000000, "Member 'WIDGET_GameOverScreen_C_OnGameOverRevealFinish::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_GameOverScreen_C_OnGameOverRevealFinish, K2Node_DynamicCast_AsCON_Hacker) == 0x000008, "Member 'WIDGET_GameOverScreen_C_OnGameOverRevealFinish::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
 static_assert(offsetof(WIDGET_GameOverScreen_C_OnGameOverRevealFinish, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'WIDGET_GameOverScreen_C_OnGameOverRevealFinish::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_GameOverScreen_C_OnGameOverRevealFinish, CallFunc_IsUsingGamepad_Result) == 0x000011, "Member 'WIDGET_GameOverScreen_C_OnGameOverRevealFinish::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_OnGameOverRevealFinish, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000011, "Member 'WIDGET_GameOverScreen_C_OnGameOverRevealFinish::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_GameOverScreen.WIDGET_GameOverScreen_C.ToggleCursor
 // 0x0050 (0x0050 - 0x0000)
@@ -223,17 +224,6 @@ static_assert(offsetof(WIDGET_GameOverScreen_C_InvokeNavManager, CallFunc_EqualE
 static_assert(offsetof(WIDGET_GameOverScreen_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue_6) == 0x000051, "Member 'WIDGET_GameOverScreen_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue_6' has a wrong offset!");
 static_assert(offsetof(WIDGET_GameOverScreen_C_InvokeNavManager, CallFunc_EqualEqual_ObjectObject_ReturnValue_7) == 0x000052, "Member 'WIDGET_GameOverScreen_C_InvokeNavManager::CallFunc_EqualEqual_ObjectObject_ReturnValue_7' has a wrong offset!");
 
-// Function WIDGET_GameOverScreen.WIDGET_GameOverScreen_C.EVENT_OnUsingGamepadChanged
-// 0x0001 (0x0001 - 0x0000)
-struct WIDGET_GameOverScreen_C_EVENT_OnUsingGamepadChanged final
-{
-public:
-	bool                                          IsUsingGamepad;                                    // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_GameOverScreen_C_EVENT_OnUsingGamepadChanged) == 0x000001, "Wrong alignment on WIDGET_GameOverScreen_C_EVENT_OnUsingGamepadChanged");
-static_assert(sizeof(WIDGET_GameOverScreen_C_EVENT_OnUsingGamepadChanged) == 0x000001, "Wrong size on WIDGET_GameOverScreen_C_EVENT_OnUsingGamepadChanged");
-static_assert(offsetof(WIDGET_GameOverScreen_C_EVENT_OnUsingGamepadChanged, IsUsingGamepad) == 0x000000, "Member 'WIDGET_GameOverScreen_C_EVENT_OnUsingGamepadChanged::IsUsingGamepad' has a wrong offset!");
-
 // Function WIDGET_GameOverScreen.WIDGET_GameOverScreen_C.RevealGameOver
 // 0x0008 (0x0008 - 0x0000)
 struct WIDGET_GameOverScreen_C_RevealGameOver final
@@ -257,6 +247,19 @@ static_assert(alignof(WIDGET_GameOverScreen_C_EVENT_TriggerSkipSequence) == 0x00
 static_assert(sizeof(WIDGET_GameOverScreen_C_EVENT_TriggerSkipSequence) == 0x000010, "Wrong size on WIDGET_GameOverScreen_C_EVENT_TriggerSkipSequence");
 static_assert(offsetof(WIDGET_GameOverScreen_C_EVENT_TriggerSkipSequence, CallFunc_PlayAnimationReverse_ReturnValue) == 0x000000, "Member 'WIDGET_GameOverScreen_C_EVENT_TriggerSkipSequence::CallFunc_PlayAnimationReverse_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_GameOverScreen_C_EVENT_TriggerSkipSequence, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'WIDGET_GameOverScreen_C_EVENT_TriggerSkipSequence::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_GameOverScreen.WIDGET_GameOverScreen_C.EVENT_OnActiveControllerTypeChanged
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged final
+{
+public:
+	ENUM_ControllerType                           NewActiveControllerType;                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged) == 0x000001, "Wrong alignment on WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged");
+static_assert(sizeof(WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged) == 0x000002, "Wrong size on WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged");
+static_assert(offsetof(WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged, NewActiveControllerType) == 0x000000, "Member 'WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged::NewActiveControllerType' has a wrong offset!");
+static_assert(offsetof(WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000001, "Member 'WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
 
 }
 

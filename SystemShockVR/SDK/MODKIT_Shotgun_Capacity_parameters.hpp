@@ -17,23 +17,6 @@
 namespace SDK::Params
 {
 
-// Function MODKIT_Shotgun_Capacity.MODKIT_Shotgun_Capacity_C.TryApplyWeaponModifications
-// 0x0010 (0x0010 - 0x0000)
-struct MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications final
-{
-public:
-	class UITEM_WeaponBase_C*                     Weapon;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          DuringInitialization;                              // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Result;                                            // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryApplyWeaponModifications_Result;       // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications) == 0x000008, "Wrong alignment on MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications");
-static_assert(sizeof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications) == 0x000010, "Wrong size on MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications");
-static_assert(offsetof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications, Weapon) == 0x000000, "Member 'MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications::Weapon' has a wrong offset!");
-static_assert(offsetof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications, DuringInitialization) == 0x000008, "Member 'MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications::DuringInitialization' has a wrong offset!");
-static_assert(offsetof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications, Result) == 0x000009, "Member 'MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications::Result' has a wrong offset!");
-static_assert(offsetof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications, CallFunc_TryApplyWeaponModifications_Result) == 0x00000A, "Member 'MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications::CallFunc_TryApplyWeaponModifications_Result' has a wrong offset!");
-
 // Function MODKIT_Shotgun_Capacity.MODKIT_Shotgun_Capacity_C.GetModifiedWeaponMode
 // 0x0320 (0x0320 - 0x0000)
 struct MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode final
@@ -55,6 +38,23 @@ static_assert(offsetof(MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode, WeaponPr
 static_assert(offsetof(MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode, CallFunc_GetWeaponPropertyIndexByType_ArrayIndex) == 0x000210, "Member 'MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode::CallFunc_GetWeaponPropertyIndexByType_ArrayIndex' has a wrong offset!");
 static_assert(offsetof(MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode, K2Node_SetFieldsInStruct_StructOut) == 0x000218, "Member 'MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode::K2Node_SetFieldsInStruct_StructOut' has a wrong offset!");
 static_assert(offsetof(MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode, K2Node_MakeStruct_STRUCT_WeaponPropertyValue) == 0x000318, "Member 'MODKIT_Shotgun_Capacity_C_GetModifiedWeaponMode::K2Node_MakeStruct_STRUCT_WeaponPropertyValue' has a wrong offset!");
+
+// Function MODKIT_Shotgun_Capacity.MODKIT_Shotgun_Capacity_C.TryApplyWeaponModifications
+// 0x0010 (0x0010 - 0x0000)
+struct MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications final
+{
+public:
+	class UITEM_WeaponBase_C*                     Weapon;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          DuringInitialization;                              // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryApplyWeaponModifications_Result;       // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications) == 0x000008, "Wrong alignment on MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications");
+static_assert(sizeof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications) == 0x000010, "Wrong size on MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications");
+static_assert(offsetof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications, Weapon) == 0x000000, "Member 'MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications::Weapon' has a wrong offset!");
+static_assert(offsetof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications, DuringInitialization) == 0x000008, "Member 'MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications::DuringInitialization' has a wrong offset!");
+static_assert(offsetof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications, Result) == 0x000009, "Member 'MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications::Result' has a wrong offset!");
+static_assert(offsetof(MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications, CallFunc_TryApplyWeaponModifications_Result) == 0x00000A, "Member 'MODKIT_Shotgun_Capacity_C_TryApplyWeaponModifications::CallFunc_TryApplyWeaponModifications_Result' has a wrong offset!");
 
 }
 

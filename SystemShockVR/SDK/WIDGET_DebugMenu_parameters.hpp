@@ -10,9 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_MenuNavigationInput_structs.hpp"
+#include "SystemReShock_structs.hpp"
 #include "UMG_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "SlateCore_structs.hpp"
 
 
@@ -211,37 +212,35 @@ static_assert(offsetof(WIDGET_DebugMenu_C_GetAchievementData, K2Node_MakeArray_A
 static_assert(offsetof(WIDGET_DebugMenu_C_GetAchievementData, CallFunc_Format_ReturnValue) == 0x000140, "Member 'WIDGET_DebugMenu_C_GetAchievementData::CallFunc_Format_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_DebugMenu.WIDGET_DebugMenu_C.SetAchievementGranting
-// 0x0038 (0x0038 - 0x0000)
+// 0x0020 (0x0020 - 0x0000)
 struct WIDGET_DebugMenu_C_SetAchievementGranting final
 {
 public:
 	bool                                          AchievementGranting;                               // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	ESlateVisibility                              Temp_byte_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x001B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_DebugMenu_C_SetAchievementGranting) == 0x000008, "Wrong alignment on WIDGET_DebugMenu_C_SetAchievementGranting");
-static_assert(sizeof(WIDGET_DebugMenu_C_SetAchievementGranting) == 0x000038, "Wrong size on WIDGET_DebugMenu_C_SetAchievementGranting");
+static_assert(sizeof(WIDGET_DebugMenu_C_SetAchievementGranting) == 0x000020, "Wrong size on WIDGET_DebugMenu_C_SetAchievementGranting");
 static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, AchievementGranting) == 0x000000, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::AchievementGranting' has a wrong offset!");
 static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, Temp_byte_Variable) == 0x000001, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, CallFunc_GetPlatformName_ReturnValue) == 0x000008, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, K2Node_SwitchString_CmpSuccess) == 0x000018, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, Temp_byte_Variable_1) == 0x000019, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, Temp_bool_Variable) == 0x00001A, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, K2Node_Select_Default) == 0x00001B, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x00001C, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, CallFunc_GetGameInstance_ReturnValue) == 0x000020, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, K2Node_DynamicCast_AsGI_Single_Player) == 0x000028, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, CallFunc_GetPlatformFamily_ReturnValue) == 0x000002, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, K2Node_SwitchEnum_CmpSuccess) == 0x000003, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, Temp_byte_Variable_1) == 0x000004, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, Temp_bool_Variable) == 0x000005, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, K2Node_Select_Default) == 0x000006, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x000007, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, CallFunc_GetGameInstance_ReturnValue) == 0x000008, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, K2Node_DynamicCast_AsGI_Single_Player) == 0x000010, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(WIDGET_DebugMenu_C_SetAchievementGranting, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'WIDGET_DebugMenu_C_SetAchievementGranting::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 }
 

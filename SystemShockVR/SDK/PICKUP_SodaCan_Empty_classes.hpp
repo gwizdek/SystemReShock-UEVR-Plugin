@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "PICKUP_Base_classes.hpp"
 #include "Engine_structs.hpp"
+#include "PICKUP_Base_classes.hpp"
 
 
 namespace SDK
@@ -22,7 +22,6 @@ namespace SDK
 class APICKUP_SodaCan_Empty_C final : public APICKUP_Base_C
 {
 public:
-	uint8                                         Pad_474[0x4];                                      // 0x0474(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FPointerToUberGraphFrame               UberGraphFrame_PICKUP_SodaCan_Empty_C;             // 0x0478(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 
 public:

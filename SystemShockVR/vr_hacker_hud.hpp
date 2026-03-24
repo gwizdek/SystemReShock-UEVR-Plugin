@@ -255,6 +255,10 @@ public:
         return m_mfd_depth;
     }
 
+    SDK::USceneComponent* get_hmd_component() {
+        return m_hmd_component;
+    }
+
     void set_mfd_mask_size(int size_x, int size_y) {
         m_ui_mask_widget_component->SetDrawSize({ static_cast<float>(size_x), static_cast<float>(size_y) });
     }
@@ -911,6 +915,7 @@ public:
 
             set_mfd_hotbar_visibility(false);
             set_primary_item_selector_visibility(false);
+            set_secondary_item_selector_visibility(false);
         }
         API::get()->log_info("VRHackerHUD :: Attached Primary Item selector");
 
@@ -1350,7 +1355,6 @@ public:
 
     void set_minimap_visibility(bool visible) {
         if (m_minimap_widget_component != nullptr) {
-            // bug?
             m_ui_mask_widget_component->SetVisibility(visible, visible);
             m_minimap_widget_component->SetHiddenInGame(!visible, true);
         }
@@ -1369,7 +1373,7 @@ public:
 
     // this function tries to find and destroy actors we created for attachments, even when we no longer have pointers to them
     // TODO add mfd mask cleanup
-    static int cleanup() {
+    static size_t cleanup() {
         API::get()->log_info("cleanup_widget_components :: Cleaning up stale Widget Components");
         std::vector<SDK::UObject*> actors{};
         std::vector<SDK::UObject*> components{};
@@ -1446,7 +1450,7 @@ public:
         API::get()->log_info("VRHackerHUD :: Testing result");
         API::get()->log_info("VRHackerHUD :: Overlapped obj no: %d", out_components.Num());
         if (result) {
-            for (size_t i = 0; i < out_components.Num(); i++) {
+            for (UC::int32 i = 0; i < out_components.Num(); i++) {
                 API::get()->log_info("VRHackerHUD :: Overlapped obj: %s", out_components[i]->GetFullName().c_str());
                 out_components[i]->SetCollisionResponseToChannel(item_selector_collision_channel, SDK::ECollisionResponse::ECR_Ignore);
             }
@@ -1507,25 +1511,42 @@ public:
         }
     }
 
-    void set_crosshair_cursor_scale(float *scale) {
+    void set_crosshair_cursor_scale(float *scale, bool use_auto_scale = false) {
         if (m_hud != nullptr && m_hud->WIDGET_CrosshairCursor != nullptr) {
-            m_hud->WIDGET_CrosshairCursor->MESH_CrosshairCursor->SetRenderScale({ *scale, *scale });
+            if (use_auto_scale) {
+                float auto_scale = get_auto_crosshair_size();
+                m_hud->WIDGET_CrosshairCursor->MESH_CrosshairCursor->SetRenderScale({ auto_scale, auto_scale });
+            }
+            else {
+                m_hud->WIDGET_CrosshairCursor->MESH_CrosshairCursor->SetRenderScale({ *scale, *scale });
+            }
         }
     }
 
-    void set_cursor_brackets_scale(float *scale) {
+    void set_cursor_brackets_scale(float *scale, bool use_auto_scale = false) {
         if (m_hud != nullptr && m_hud->WIDGET_CrosshairCursor != nullptr) {
-            m_hud->WIDGET_CrosshairCursor->MESH_CursorBrackets->SetRenderScale({ *scale, *scale });
+            if (use_auto_scale) {
+                m_hud->WIDGET_CrosshairCursor->MESH_CursorBrackets->SetRenderScale({ 0.f, 0.f });
+            }
+            else {
+                m_hud->WIDGET_CrosshairCursor->MESH_CursorBrackets->SetRenderScale({ *scale, *scale });
+            }
         }
     }
 
-    void set_target_id_reticle_scale(float* scale) {
+    void set_target_id_reticle_scale(float* scale, bool use_auto_scale = false) {
         if (
             m_hud != nullptr &&
             m_hud->WIDGET_TargetID_Display != nullptr &&
             m_hud->WIDGET_TargetID_Display->WIDGET_TargetID_TargetingReticle != nullptr
             ) {
-            m_hud->WIDGET_TargetID_Display->WIDGET_TargetID_TargetingReticle->SetRenderScale({ *scale, *scale });
+            if (use_auto_scale) {
+                float auto_scale = get_auto_crosshair_size();
+                m_hud->WIDGET_TargetID_Display->WIDGET_TargetID_TargetingReticle->SetRenderScale({ auto_scale, auto_scale });
+            }
+            else {
+                m_hud->WIDGET_TargetID_Display->WIDGET_TargetID_TargetingReticle->SetRenderScale({ *scale, *scale });
+            }
         }
     }
 
@@ -1538,5 +1559,30 @@ public:
         auto slot = (SDK::UCanvasPanelSlot*)m_hud->Panel_MultiFunctionDisplay->Slot;
         slot->SetAlignment({ 0.5f, 1.0f });
         slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.9f}, {0.5f, 0.9f} });
+    }
+
+    float get_auto_crosshair_size() {
+        // prepare correct ui distance and size
+        float scale{ 0.5f };
+        int size_x{ 1920 }, size_y{ 1080 };
+
+        SDK::APlayerController* controller = SDK::UGameplayStatics::GetPlayerController(m_world, 0);
+        controller->GetViewportSize(&size_x, &size_y);
+
+        if (size_y < 1080) {
+            return 0.55f;
+        }
+        else if (size_y >= 1080 && size_y < 1200) {
+            return .4f;
+        }
+        else if (size_y >= 1200 && size_y < 1440) {
+            return .37f;
+        }
+        else if (size_y >= 1440 && size_y < 2160) {
+            return .33f;
+        }
+        else {
+            return .3f;
+        }
     }
 };

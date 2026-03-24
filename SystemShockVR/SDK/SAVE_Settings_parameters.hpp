@@ -10,14 +10,16 @@
 
 #include "Basic.hpp"
 
+#include "SystemReShock_structs.hpp"
+#include "ENUM_OffLowMediumHigh_structs.hpp"
 #include "ENUM_SmallMediumLarge_structs.hpp"
+#include "ENUM_QualitySetting_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 #include "ENUM_HotbarStyle_structs.hpp"
 #include "ENUM_OffReducedNormal_structs.hpp"
-#include "ENUM_QualitySetting_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "ENUM_OffLowMediumHigh_structs.hpp"
-#include "Engine_structs.hpp"
 #include "DLSSBlueprint_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_InputCategory_structs.hpp"
 #include "STRUCT_BoundInputActionPair_structs.hpp"
 
@@ -449,7 +451,7 @@ struct SAVE_Settings_C_SetBrightness final
 {
 public:
 	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsRealspace;                                       // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         CallFunc_GetBrightness_Result;                     // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -457,7 +459,7 @@ public:
 static_assert(alignof(SAVE_Settings_C_SetBrightness) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetBrightness");
 static_assert(sizeof(SAVE_Settings_C_SetBrightness) == 0x000010, "Wrong size on SAVE_Settings_C_SetBrightness");
 static_assert(offsetof(SAVE_Settings_C_SetBrightness, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetBrightness::NewValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_SetBrightness, IsRealspace) == 0x000004, "Member 'SAVE_Settings_C_SetBrightness::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetBrightness, isRealspace) == 0x000004, "Member 'SAVE_Settings_C_SetBrightness::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_SetBrightness, CallFunc_GetBrightness_Result) == 0x000008, "Member 'SAVE_Settings_C_SetBrightness::CallFunc_GetBrightness_Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_SetBrightness, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x00000C, "Member 'SAVE_Settings_C_SetBrightness::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
 
@@ -466,7 +468,7 @@ static_assert(offsetof(SAVE_Settings_C_SetBrightness, CallFunc_NotEqual_FloatFlo
 struct SAVE_Settings_C_GetBrightness final
 {
 public:
-	bool                                          IsRealspace;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         Result;                                            // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -475,7 +477,7 @@ public:
 };
 static_assert(alignof(SAVE_Settings_C_GetBrightness) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetBrightness");
 static_assert(sizeof(SAVE_Settings_C_GetBrightness) == 0x000010, "Wrong size on SAVE_Settings_C_GetBrightness");
-static_assert(offsetof(SAVE_Settings_C_GetBrightness, IsRealspace) == 0x000000, "Member 'SAVE_Settings_C_GetBrightness::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetBrightness, isRealspace) == 0x000000, "Member 'SAVE_Settings_C_GetBrightness::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetBrightness, Result) == 0x000004, "Member 'SAVE_Settings_C_GetBrightness::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetBrightness, Temp_bool_Variable) == 0x000008, "Member 'SAVE_Settings_C_GetBrightness::Temp_bool_Variable' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetBrightness, K2Node_Select_Default) == 0x00000C, "Member 'SAVE_Settings_C_GetBrightness::K2Node_Select_Default' has a wrong offset!");
@@ -525,7 +527,7 @@ struct SAVE_Settings_C_ApplyBrightness final
 {
 public:
 	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsRealspace;                                       // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	class APawn*                                  CallFunc_K2_GetPawn_ReturnValue;                   // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -535,7 +537,7 @@ public:
 static_assert(alignof(SAVE_Settings_C_ApplyBrightness) == 0x000008, "Wrong alignment on SAVE_Settings_C_ApplyBrightness");
 static_assert(sizeof(SAVE_Settings_C_ApplyBrightness) == 0x000020, "Wrong size on SAVE_Settings_C_ApplyBrightness");
 static_assert(offsetof(SAVE_Settings_C_ApplyBrightness, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyBrightness::NewValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplyBrightness, IsRealspace) == 0x000004, "Member 'SAVE_Settings_C_ApplyBrightness::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplyBrightness, isRealspace) == 0x000004, "Member 'SAVE_Settings_C_ApplyBrightness::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ApplyBrightness, CallFunc_IsValid_ReturnValue) == 0x000005, "Member 'SAVE_Settings_C_ApplyBrightness::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ApplyBrightness, CallFunc_K2_GetPawn_ReturnValue) == 0x000008, "Member 'SAVE_Settings_C_ApplyBrightness::CallFunc_K2_GetPawn_ReturnValue' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ApplyBrightness, K2Node_DynamicCast_AsPAWN_System_Shock_Character) == 0x000010, "Member 'SAVE_Settings_C_ApplyBrightness::K2Node_DynamicCast_AsPAWN_System_Shock_Character' has a wrong offset!");
@@ -749,7 +751,7 @@ struct SAVE_Settings_C_SetFOV final
 {
 public:
 	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsRealspace;                                       // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         CallFunc_GetFOV_Result;                            // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -757,7 +759,7 @@ public:
 static_assert(alignof(SAVE_Settings_C_SetFOV) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetFOV");
 static_assert(sizeof(SAVE_Settings_C_SetFOV) == 0x000010, "Wrong size on SAVE_Settings_C_SetFOV");
 static_assert(offsetof(SAVE_Settings_C_SetFOV, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetFOV::NewValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_SetFOV, IsRealspace) == 0x000004, "Member 'SAVE_Settings_C_SetFOV::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetFOV, isRealspace) == 0x000004, "Member 'SAVE_Settings_C_SetFOV::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_SetFOV, CallFunc_GetFOV_Result) == 0x000008, "Member 'SAVE_Settings_C_SetFOV::CallFunc_GetFOV_Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_SetFOV, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x00000C, "Member 'SAVE_Settings_C_SetFOV::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
 
@@ -766,7 +768,7 @@ static_assert(offsetof(SAVE_Settings_C_SetFOV, CallFunc_NotEqual_FloatFloat_Retu
 struct SAVE_Settings_C_GetFOV final
 {
 public:
-	bool                                          IsRealspace;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         Result;                                            // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -775,7 +777,7 @@ public:
 };
 static_assert(alignof(SAVE_Settings_C_GetFOV) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetFOV");
 static_assert(sizeof(SAVE_Settings_C_GetFOV) == 0x000010, "Wrong size on SAVE_Settings_C_GetFOV");
-static_assert(offsetof(SAVE_Settings_C_GetFOV, IsRealspace) == 0x000000, "Member 'SAVE_Settings_C_GetFOV::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetFOV, isRealspace) == 0x000000, "Member 'SAVE_Settings_C_GetFOV::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetFOV, Result) == 0x000004, "Member 'SAVE_Settings_C_GetFOV::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetFOV, Temp_bool_Variable) == 0x000008, "Member 'SAVE_Settings_C_GetFOV::Temp_bool_Variable' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetFOV, K2Node_Select_Default) == 0x00000C, "Member 'SAVE_Settings_C_GetFOV::K2Node_Select_Default' has a wrong offset!");
@@ -786,7 +788,7 @@ struct SAVE_Settings_C_ApplyFOV final
 {
 public:
 	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsRealspace;                                       // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0004(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class APawn*                                  CallFunc_K2_GetPawn_ReturnValue;                   // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -798,7 +800,7 @@ public:
 static_assert(alignof(SAVE_Settings_C_ApplyFOV) == 0x000008, "Wrong alignment on SAVE_Settings_C_ApplyFOV");
 static_assert(sizeof(SAVE_Settings_C_ApplyFOV) == 0x000028, "Wrong size on SAVE_Settings_C_ApplyFOV");
 static_assert(offsetof(SAVE_Settings_C_ApplyFOV, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyFOV::NewValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplyFOV, IsRealspace) == 0x000004, "Member 'SAVE_Settings_C_ApplyFOV::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplyFOV, isRealspace) == 0x000004, "Member 'SAVE_Settings_C_ApplyFOV::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ApplyFOV, CallFunc_K2_GetPawn_ReturnValue) == 0x000008, "Member 'SAVE_Settings_C_ApplyFOV::CallFunc_K2_GetPawn_ReturnValue' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ApplyFOV, CallFunc_IsValid_ReturnValue) == 0x000010, "Member 'SAVE_Settings_C_ApplyFOV::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ApplyFOV, K2Node_DynamicCast_AsPAWN_System_Shock_Character) == 0x000018, "Member 'SAVE_Settings_C_ApplyFOV::K2Node_DynamicCast_AsPAWN_System_Shock_Character' has a wrong offset!");
@@ -848,111 +850,140 @@ static_assert(offsetof(SAVE_Settings_C_ApplyEnableVSync, CallFunc_IsVSyncEnabled
 static_assert(offsetof(SAVE_Settings_C_ApplyEnableVSync, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000011, "Member 'SAVE_Settings_C_ApplyEnableVSync::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.GetInputBindCountForCategory
-// 0x00C0 (0x00C0 - 0x0000)
+// 0x0118 (0x0118 - 0x0000)
 struct SAVE_Settings_C_GetInputBindCountForCategory final
 {
 public:
 	ENUM_InputCategory                            InputCategory;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsGamepad;                                         // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           ControllerType;                                    // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	int32                                         Result;                                            // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	ENUM_InputCategory                            Temp_byte_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_InputCategory                            Temp_byte_Variable_1;                              // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_InputCategory                            Temp_byte_Variable_1;                              // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InputCategory                            Temp_byte_Variable_2;                              // 0x000B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default;                             // 0x0010(0x0050)()
 	int32                                         CallFunc_Map_Length_ReturnValue;                   // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_1;                           // 0x0068(0x0050)()
 	int32                                         CallFunc_Map_Length_ReturnValue_1;                 // 0x00B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_BC[0x4];                                       // 0x00BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_2;                           // 0x00C0(0x0050)()
+	int32                                         CallFunc_Map_Length_ReturnValue_2;                 // 0x0110(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(SAVE_Settings_C_GetInputBindCountForCategory) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetInputBindCountForCategory");
-static_assert(sizeof(SAVE_Settings_C_GetInputBindCountForCategory) == 0x0000C0, "Wrong size on SAVE_Settings_C_GetInputBindCountForCategory");
+static_assert(sizeof(SAVE_Settings_C_GetInputBindCountForCategory) == 0x000118, "Wrong size on SAVE_Settings_C_GetInputBindCountForCategory");
 static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, InputCategory) == 0x000000, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::InputCategory' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, IsGamepad) == 0x000001, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::IsGamepad' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, ControllerType) == 0x000001, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::ControllerType' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, Result) == 0x000004, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, Temp_byte_Variable) == 0x000008, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, Temp_byte_Variable_1) == 0x000009, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, K2Node_SwitchEnum_CmpSuccess) == 0x000009, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, Temp_byte_Variable_1) == 0x00000A, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, Temp_byte_Variable_2) == 0x00000B, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::Temp_byte_Variable_2' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, K2Node_Select_Default) == 0x000010, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::K2Node_Select_Default' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, CallFunc_Map_Length_ReturnValue) == 0x000060, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::CallFunc_Map_Length_ReturnValue' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, K2Node_Select_Default_1) == 0x000068, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::K2Node_Select_Default_1' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, CallFunc_Map_Length_ReturnValue_1) == 0x0000B8, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::CallFunc_Map_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, K2Node_Select_Default_2) == 0x0000C0, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::K2Node_Select_Default_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputBindCountForCategory, CallFunc_Map_Length_ReturnValue_2) == 0x000110, "Member 'SAVE_Settings_C_GetInputBindCountForCategory::CallFunc_Map_Length_ReturnValue_2' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.GetInputKeyMapForCategory
-// 0x0100 (0x0100 - 0x0000)
+// 0x0150 (0x0150 - 0x0000)
 struct SAVE_Settings_C_GetInputKeyMapForCategory final
 {
 public:
 	ENUM_InputCategory                            InputCategory;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsGamepad;                                         // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           ControllerType;                                    // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> Result;                                            // 0x0008(0x0050)(Parm, OutParm)
 	ENUM_InputCategory                            Temp_byte_Variable;                                // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_InputCategory                            Temp_byte_Variable_1;                              // 0x0059(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_5A[0x6];                                       // 0x005A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0059(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_InputCategory                            Temp_byte_Variable_1;                              // 0x005A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InputCategory                            Temp_byte_Variable_2;                              // 0x005B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default;                             // 0x0060(0x0050)()
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_1;                           // 0x00B0(0x0050)()
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_2;                           // 0x0100(0x0050)()
 };
 static_assert(alignof(SAVE_Settings_C_GetInputKeyMapForCategory) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetInputKeyMapForCategory");
-static_assert(sizeof(SAVE_Settings_C_GetInputKeyMapForCategory) == 0x000100, "Wrong size on SAVE_Settings_C_GetInputKeyMapForCategory");
+static_assert(sizeof(SAVE_Settings_C_GetInputKeyMapForCategory) == 0x000150, "Wrong size on SAVE_Settings_C_GetInputKeyMapForCategory");
 static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, InputCategory) == 0x000000, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::InputCategory' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, IsGamepad) == 0x000001, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::IsGamepad' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, ControllerType) == 0x000001, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::ControllerType' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, Result) == 0x000008, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, Temp_byte_Variable) == 0x000058, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, Temp_byte_Variable_1) == 0x000059, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, K2Node_SwitchEnum_CmpSuccess) == 0x000059, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, Temp_byte_Variable_1) == 0x00005A, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, Temp_byte_Variable_2) == 0x00005B, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::Temp_byte_Variable_2' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, K2Node_Select_Default) == 0x000060, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::K2Node_Select_Default' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, K2Node_Select_Default_1) == 0x0000B0, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetInputKeyMapForCategory, K2Node_Select_Default_2) == 0x000100, "Member 'SAVE_Settings_C_GetInputKeyMapForCategory::K2Node_Select_Default_2' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.GetDefaultBindPairForCategory
-// 0x0100 (0x0100 - 0x0000)
+// 0x0130 (0x0130 - 0x0000)
 struct SAVE_Settings_C_GetDefaultBindPairForCategory final
 {
 public:
 	class FName                                   InputAction;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	ENUM_InputCategory                            InputCategory;                                     // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsGamepad;                                         // 0x0009(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           IsGamepad;                                         // 0x0009(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FSTRUCT_BoundInputActionPair           Result;                                            // 0x0010(0x0030)(Parm, OutParm, HasGetValueTypeHash)
 	class UDataTable*                             DataTable;                                         // 0x0040(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UDataTable*                             Temp_object_Variable;                              // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UDataTable*                             Temp_object_Variable_1;                            // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_InputCategory                            Temp_byte_Variable;                                // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UDataTable*                             Temp_object_Variable_2;                            // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UDataTable*                             Temp_object_Variable_3;                            // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UDataTable*                             Temp_object_Variable_4;                            // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UDataTable*                             Temp_object_Variable_5;                            // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UDataTable*                             Temp_object_Variable_1;                            // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InputCategory                            Temp_byte_Variable;                                // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UDataTable*                             Temp_object_Variable_2;                            // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_3;                            // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_4;                            // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	ENUM_InputCategory                            Temp_byte_Variable_1;                              // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_BoundInputActionPair           K2Node_MakeStruct_STRUCT_BoundInputActionPair;     // 0x0088(0x0030)(HasGetValueTypeHash)
-	class UDataTable*                             K2Node_Select_Default;                             // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FSTRUCT_BoundInputActionPair           CallFunc_GetDataTableRowFromName_OutRow;           // 0x00C0(0x0030)(HasGetValueTypeHash)
-	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_F1[0x7];                                       // 0x00F1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UDataTable*                             K2Node_Select_Default_1;                           // 0x00F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_5;                            // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_6;                            // 0x0090(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_7;                            // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_8;                            // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InputCategory                            Temp_byte_Variable_2;                              // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_A9[0x7];                                       // 0x00A9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UDataTable*                             K2Node_Select_Default;                             // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             K2Node_Select_Default_1;                           // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FSTRUCT_BoundInputActionPair           K2Node_MakeStruct_STRUCT_BoundInputActionPair;     // 0x00C0(0x0030)(HasGetValueTypeHash)
+	struct FSTRUCT_BoundInputActionPair           CallFunc_GetDataTableRowFromName_OutRow;           // 0x00F0(0x0030)(HasGetValueTypeHash)
+	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_121[0x7];                                      // 0x0121(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UDataTable*                             K2Node_Select_Default_2;                           // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(SAVE_Settings_C_GetDefaultBindPairForCategory) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetDefaultBindPairForCategory");
-static_assert(sizeof(SAVE_Settings_C_GetDefaultBindPairForCategory) == 0x000100, "Wrong size on SAVE_Settings_C_GetDefaultBindPairForCategory");
+static_assert(sizeof(SAVE_Settings_C_GetDefaultBindPairForCategory) == 0x000130, "Wrong size on SAVE_Settings_C_GetDefaultBindPairForCategory");
 static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, InputAction) == 0x000000, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::InputAction' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, InputCategory) == 0x000008, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::InputCategory' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, IsGamepad) == 0x000009, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::IsGamepad' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Result) == 0x000010, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, DataTable) == 0x000040, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::DataTable' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable) == 0x000048, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_1) == 0x000050, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_byte_Variable) == 0x000058, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_2) == 0x000060, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_3) == 0x000068, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_3' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_4) == 0x000070, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_4' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_5) == 0x000078, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_5' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, K2Node_SwitchEnum_CmpSuccess) == 0x000050, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_1) == 0x000058, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_byte_Variable) == 0x000060, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_2) == 0x000068, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_3) == 0x000070, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_4) == 0x000078, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_4' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_byte_Variable_1) == 0x000080, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, K2Node_MakeStruct_STRUCT_BoundInputActionPair) == 0x000088, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::K2Node_MakeStruct_STRUCT_BoundInputActionPair' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, K2Node_Select_Default) == 0x0000B8, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, CallFunc_GetDataTableRowFromName_OutRow) == 0x0000C0, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x0000F0, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, K2Node_Select_Default_1) == 0x0000F8, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_5) == 0x000088, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_5' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_6) == 0x000090, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_6' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_7) == 0x000098, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_7' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_object_Variable_8) == 0x0000A0, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_object_Variable_8' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, Temp_byte_Variable_2) == 0x0000A8, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::Temp_byte_Variable_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, K2Node_Select_Default) == 0x0000B0, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, K2Node_Select_Default_1) == 0x0000B8, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, K2Node_MakeStruct_STRUCT_BoundInputActionPair) == 0x0000C0, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::K2Node_MakeStruct_STRUCT_BoundInputActionPair' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, CallFunc_GetDataTableRowFromName_OutRow) == 0x0000F0, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000120, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetDefaultBindPairForCategory, K2Node_Select_Default_2) == 0x000128, "Member 'SAVE_Settings_C_GetDefaultBindPairForCategory::K2Node_Select_Default_2' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.ValidateAndFixInputBinds
-// 0x0240 (0x0240 - 0x0000)
+// 0x0348 (0x0348 - 0x0000)
 struct SAVE_Settings_C_ValidateAndFixInputBinds final
 {
 public:
@@ -963,27 +994,40 @@ public:
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_1;         // 0x0080(0x0050)()
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_2;         // 0x00D0(0x0050)()
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_3;         // 0x0120(0x0050)()
-	int32                                         CallFunc_Map_Length_ReturnValue;                   // 0x0170(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Map_Length_ReturnValue_1;                 // 0x0174(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0178(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue_1;             // 0x0179(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_17A[0x2];                                      // 0x017A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Map_Length_ReturnValue_2;                 // 0x017C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue_2;             // 0x0180(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_181[0x7];                                      // 0x0181(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_4;         // 0x0188(0x0050)()
-	int32                                         CallFunc_Map_Length_ReturnValue_3;                 // 0x01D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Map_Length_ReturnValue_4;                 // 0x01DC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue_3;             // 0x01E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue_4;             // 0x01E1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1E2[0x2];                                      // 0x01E2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Map_Length_ReturnValue_5;                 // 0x01E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue_5;             // 0x01E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1E9[0x7];                                      // 0x01E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_5;         // 0x01F0(0x0050)()
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_4;         // 0x0170(0x0050)()
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_5;         // 0x01C0(0x0050)()
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_6;         // 0x0210(0x0050)()
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_7;         // 0x0260(0x0050)()
+	int32                                         CallFunc_Map_Length_ReturnValue;                   // 0x02B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x02B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2B5[0x3];                                      // 0x02B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Map_Length_ReturnValue_1;                 // 0x02B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_1;             // 0x02BC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2BD[0x3];                                      // 0x02BD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Map_Length_ReturnValue_2;                 // 0x02C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2C4[0x4];                                      // 0x02C4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CallFunc_BuildDefaultInputKeyMap_Result_8;         // 0x02C8(0x0050)()
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_2;             // 0x0318(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_319[0x3];                                      // 0x0319(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Map_Length_ReturnValue_3;                 // 0x031C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_3;             // 0x0320(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_321[0x3];                                      // 0x0321(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Map_Length_ReturnValue_4;                 // 0x0324(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Map_Length_ReturnValue_5;                 // 0x0328(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_4;             // 0x032C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_5;             // 0x032D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_32E[0x2];                                      // 0x032E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Map_Length_ReturnValue_6;                 // 0x0330(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_6;             // 0x0334(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_335[0x3];                                      // 0x0335(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Map_Length_ReturnValue_7;                 // 0x0338(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_7;             // 0x033C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_33D[0x3];                                      // 0x033D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Map_Length_ReturnValue_8;                 // 0x0340(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_8;             // 0x0344(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(SAVE_Settings_C_ValidateAndFixInputBinds) == 0x000008, "Wrong alignment on SAVE_Settings_C_ValidateAndFixInputBinds");
-static_assert(sizeof(SAVE_Settings_C_ValidateAndFixInputBinds) == 0x000240, "Wrong size on SAVE_Settings_C_ValidateAndFixInputBinds");
+static_assert(sizeof(SAVE_Settings_C_ValidateAndFixInputBinds) == 0x000348, "Wrong size on SAVE_Settings_C_ValidateAndFixInputBinds");
 static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, RealspacePrefix) == 0x000000, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::RealspacePrefix' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CyberspacePrefix) == 0x000010, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CyberspacePrefix' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, MinigamePrefix) == 0x000020, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::MinigamePrefix' has a wrong offset!");
@@ -991,97 +1035,120 @@ static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildD
 static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_1) == 0x000080, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_1' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_2) == 0x0000D0, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_2' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_3) == 0x000120, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_3' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue) == 0x000170, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_1) == 0x000174, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue) == 0x000178, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_1) == 0x000179, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_2) == 0x00017C, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_2) == 0x000180, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_4) == 0x000188, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_4' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_3) == 0x0001D8, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_4) == 0x0001DC, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_3) == 0x0001E0, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_4) == 0x0001E1, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_5) == 0x0001E4, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_5) == 0x0001E8, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_5) == 0x0001F0, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_5' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_4) == 0x000170, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_4' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_5) == 0x0001C0, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_5' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_6) == 0x000210, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_6' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_7) == 0x000260, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_7' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue) == 0x0002B0, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue) == 0x0002B4, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_1) == 0x0002B8, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_1) == 0x0002BC, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_2) == 0x0002C0, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_BuildDefaultInputKeyMap_Result_8) == 0x0002C8, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_BuildDefaultInputKeyMap_Result_8' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_2) == 0x000318, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_3) == 0x00031C, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_3) == 0x000320, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_4) == 0x000324, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_5) == 0x000328, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_4) == 0x00032C, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_5) == 0x00032D, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_6) == 0x000330, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_6) == 0x000334, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_6' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_7) == 0x000338, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_7' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_7) == 0x00033C, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_7' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Map_Length_ReturnValue_8) == 0x000340, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Map_Length_ReturnValue_8' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ValidateAndFixInputBinds, CallFunc_Greater_IntInt_ReturnValue_8) == 0x000344, "Member 'SAVE_Settings_C_ValidateAndFixInputBinds::CallFunc_Greater_IntInt_ReturnValue_8' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.BuildDefaultInputKeyMap
-// 0x01B0 (0x01B0 - 0x0000)
+// 0x01D8 (0x01D8 - 0x0000)
 struct SAVE_Settings_C_BuildDefaultInputKeyMap final
 {
 public:
 	ENUM_InputCategory                            InputCategory;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class FString                                 InputActionPrefix;                                 // 0x0008(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          IsGamepad;                                         // 0x0018(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           ControllerType;                                    // 0x0018(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> Result;                                            // 0x0020(0x0050)(Parm, OutParm)
 	class FString                                 ActionString;                                      // 0x0070(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
 	class FName                                   ActionName;                                        // 0x0080(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UDataTable*                             DataTable;                                         // 0x0088(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> ResultMap;                                         // 0x0090(0x0050)(Edit, BlueprintVisible)
-	class UDataTable*                             Temp_object_Variable;                              // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_InputCategory                            Temp_byte_Variable;                                // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	ENUM_InputCategory                            Temp_byte_Variable;                                // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x00E1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_E2[0x6];                                       // 0x00E2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UDataTable*                             Temp_object_Variable;                              // 0x00E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UDataTable*                             Temp_object_Variable_1;                            // 0x00F0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UDataTable*                             Temp_object_Variable_2;                            // 0x00F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UDataTable*                             Temp_object_Variable_3;                            // 0x0100(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InputCategory                            Temp_byte_Variable_1;                              // 0x0100(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_101[0x7];                                      // 0x0101(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UDataTable*                             K2Node_Select_Default;                             // 0x0108(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Conv_NameToString_ReturnValue;            // 0x0110(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0120(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0124(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0128(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_12C[0x4];                                      // 0x012C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UDataTable*                             Temp_object_Variable_4;                            // 0x0130(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UDataTable*                             Temp_object_Variable_5;                            // 0x0138(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class FName>                           CallFunc_GetDataTableRowNames_OutRowNames;         // 0x0140(0x0010)(ReferenceParm)
-	ENUM_InputCategory                            Temp_byte_Variable_1;                              // 0x0150(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_151[0x3];                                      // 0x0151(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_Array_Get_Item;                           // 0x0154(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_15C[0x4];                                      // 0x015C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UDataTable*                             K2Node_Select_Default_1;                           // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0168(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x016C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_16D[0x3];                                      // 0x016D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_ReplaceInline_ReturnValue;                // 0x0170(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_174[0x4];                                      // 0x0174(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_BoundInputActionPair           CallFunc_GetDataTableRowFromName_OutRow;           // 0x0178(0x0030)(HasGetValueTypeHash)
-	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x01A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x01A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UDataTable*                             Temp_object_Variable_3;                            // 0x0110(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_4;                            // 0x0118(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_5;                            // 0x0120(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             K2Node_Select_Default_1;                           // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Conv_NameToString_ReturnValue;            // 0x0130(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0140(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0144(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0148(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_ReplaceInline_ReturnValue;                // 0x014C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_ReplaceInline_ReturnValue_1;              // 0x0150(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_154[0x4];                                      // 0x0154(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UDataTable*                             Temp_object_Variable_6;                            // 0x0158(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_7;                            // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UDataTable*                             Temp_object_Variable_8;                            // 0x0168(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class FName>                           CallFunc_GetDataTableRowNames_OutRowNames;         // 0x0170(0x0010)(ReferenceParm)
+	ENUM_InputCategory                            Temp_byte_Variable_2;                              // 0x0180(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_181[0x3];                                      // 0x0181(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_Array_Get_Item;                           // 0x0184(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_18C[0x4];                                      // 0x018C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UDataTable*                             K2Node_Select_Default_2;                           // 0x0190(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0198(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x019C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19D[0x3];                                      // 0x019D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_BoundInputActionPair           CallFunc_GetDataTableRowFromName_OutRow;           // 0x01A0(0x0030)(HasGetValueTypeHash)
+	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x01D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x01D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(SAVE_Settings_C_BuildDefaultInputKeyMap) == 0x000008, "Wrong alignment on SAVE_Settings_C_BuildDefaultInputKeyMap");
-static_assert(sizeof(SAVE_Settings_C_BuildDefaultInputKeyMap) == 0x0001B0, "Wrong size on SAVE_Settings_C_BuildDefaultInputKeyMap");
+static_assert(sizeof(SAVE_Settings_C_BuildDefaultInputKeyMap) == 0x0001D8, "Wrong size on SAVE_Settings_C_BuildDefaultInputKeyMap");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, InputCategory) == 0x000000, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::InputCategory' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, InputActionPrefix) == 0x000008, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::InputActionPrefix' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, IsGamepad) == 0x000018, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::IsGamepad' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, ControllerType) == 0x000018, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::ControllerType' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Result) == 0x000020, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, ActionString) == 0x000070, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::ActionString' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, ActionName) == 0x000080, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::ActionName' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, DataTable) == 0x000088, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::DataTable' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, ResultMap) == 0x000090, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::ResultMap' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable) == 0x0000E0, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_byte_Variable) == 0x0000E8, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_byte_Variable) == 0x0000E0, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, K2Node_SwitchEnum_CmpSuccess) == 0x0000E1, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable) == 0x0000E8, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_1) == 0x0000F0, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_1' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_2) == 0x0000F8, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_3) == 0x000100, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_byte_Variable_1) == 0x000100, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_byte_Variable_1' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, K2Node_Select_Default) == 0x000108, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Conv_NameToString_ReturnValue) == 0x000110, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Conv_NameToString_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_int_Array_Index_Variable) == 0x000120, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_int_Loop_Counter_Variable) == 0x000124, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Add_IntInt_ReturnValue) == 0x000128, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_4) == 0x000130, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_4' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_5) == 0x000138, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_5' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_GetDataTableRowNames_OutRowNames) == 0x000140, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_GetDataTableRowNames_OutRowNames' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_byte_Variable_1) == 0x000150, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Array_Get_Item) == 0x000154, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, K2Node_Select_Default_1) == 0x000160, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::K2Node_Select_Default_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Array_Length_ReturnValue) == 0x000168, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Less_IntInt_ReturnValue) == 0x00016C, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_ReplaceInline_ReturnValue) == 0x000170, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_ReplaceInline_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_GetDataTableRowFromName_OutRow) == 0x000178, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x0001A8, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_StartsWith_ReturnValue) == 0x0001A9, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_3) == 0x000110, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_4) == 0x000118, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_4' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_5) == 0x000120, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_5' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, K2Node_Select_Default_1) == 0x000128, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Conv_NameToString_ReturnValue) == 0x000130, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Conv_NameToString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_int_Array_Index_Variable) == 0x000140, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_int_Loop_Counter_Variable) == 0x000144, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Add_IntInt_ReturnValue) == 0x000148, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_ReplaceInline_ReturnValue) == 0x00014C, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_ReplaceInline_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_ReplaceInline_ReturnValue_1) == 0x000150, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_ReplaceInline_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_6) == 0x000158, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_6' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_7) == 0x000160, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_7' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_object_Variable_8) == 0x000168, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_object_Variable_8' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_GetDataTableRowNames_OutRowNames) == 0x000170, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_GetDataTableRowNames_OutRowNames' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, Temp_byte_Variable_2) == 0x000180, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::Temp_byte_Variable_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Array_Get_Item) == 0x000184, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, K2Node_Select_Default_2) == 0x000190, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::K2Node_Select_Default_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Array_Length_ReturnValue) == 0x000198, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_Less_IntInt_ReturnValue) == 0x00019C, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_GetDataTableRowFromName_OutRow) == 0x0001A0, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x0001D0, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_BuildDefaultInputKeyMap, CallFunc_StartsWith_ReturnValue) == 0x0001D1, "Member 'SAVE_Settings_C_BuildDefaultInputKeyMap::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.GetOrCreateInputKeyMapForCategory
 // 0x0120 (0x0120 - 0x0000)
@@ -1091,7 +1158,7 @@ public:
 	ENUM_InputCategory                            InputCategory;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class FString                                 InputActionPrefix;                                 // 0x0008(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          IsGamepad;                                         // 0x0018(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           ControllerType;                                    // 0x0018(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TMap<class FName, struct FSTRUCT_BoundInputActionPair> Result;                                            // 0x0020(0x0050)(Parm, OutParm)
 	bool                                          IsDefault;                                         // 0x0070(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -1106,7 +1173,7 @@ static_assert(alignof(SAVE_Settings_C_GetOrCreateInputKeyMapForCategory) == 0x00
 static_assert(sizeof(SAVE_Settings_C_GetOrCreateInputKeyMapForCategory) == 0x000120, "Wrong size on SAVE_Settings_C_GetOrCreateInputKeyMapForCategory");
 static_assert(offsetof(SAVE_Settings_C_GetOrCreateInputKeyMapForCategory, InputCategory) == 0x000000, "Member 'SAVE_Settings_C_GetOrCreateInputKeyMapForCategory::InputCategory' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetOrCreateInputKeyMapForCategory, InputActionPrefix) == 0x000008, "Member 'SAVE_Settings_C_GetOrCreateInputKeyMapForCategory::InputActionPrefix' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetOrCreateInputKeyMapForCategory, IsGamepad) == 0x000018, "Member 'SAVE_Settings_C_GetOrCreateInputKeyMapForCategory::IsGamepad' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetOrCreateInputKeyMapForCategory, ControllerType) == 0x000018, "Member 'SAVE_Settings_C_GetOrCreateInputKeyMapForCategory::ControllerType' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetOrCreateInputKeyMapForCategory, Result) == 0x000020, "Member 'SAVE_Settings_C_GetOrCreateInputKeyMapForCategory::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetOrCreateInputKeyMapForCategory, IsDefault) == 0x000070, "Member 'SAVE_Settings_C_GetOrCreateInputKeyMapForCategory::IsDefault' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetOrCreateInputKeyMapForCategory, CallFunc_GetInputBindCountForCategory_Result) == 0x000074, "Member 'SAVE_Settings_C_GetOrCreateInputKeyMapForCategory::CallFunc_GetInputBindCountForCategory_Result' has a wrong offset!");
@@ -1123,173 +1190,176 @@ public:
 	ENUM_InputCategory                            InputCategory;                                     // 0x0050(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class FString                                 InputActionPrefix;                                 // 0x0058(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          IsGamepad;                                         // 0x0068(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           ControllerType;                                    // 0x0068(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x006A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_2;                    // 0x006B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_3;                    // 0x006C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(SAVE_Settings_C_SetInputKeyMapForCategory) == 0x000008, "Wrong alignment on SAVE_Settings_C_SetInputKeyMapForCategory");
 static_assert(sizeof(SAVE_Settings_C_SetInputKeyMapForCategory) == 0x000070, "Wrong size on SAVE_Settings_C_SetInputKeyMapForCategory");
 static_assert(offsetof(SAVE_Settings_C_SetInputKeyMapForCategory, NewKeyMap) == 0x000000, "Member 'SAVE_Settings_C_SetInputKeyMapForCategory::NewKeyMap' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_SetInputKeyMapForCategory, InputCategory) == 0x000050, "Member 'SAVE_Settings_C_SetInputKeyMapForCategory::InputCategory' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_SetInputKeyMapForCategory, InputActionPrefix) == 0x000058, "Member 'SAVE_Settings_C_SetInputKeyMapForCategory::InputActionPrefix' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_SetInputKeyMapForCategory, IsGamepad) == 0x000068, "Member 'SAVE_Settings_C_SetInputKeyMapForCategory::IsGamepad' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetInputKeyMapForCategory, ControllerType) == 0x000068, "Member 'SAVE_Settings_C_SetInputKeyMapForCategory::ControllerType' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_SetInputKeyMapForCategory, K2Node_SwitchEnum_CmpSuccess) == 0x000069, "Member 'SAVE_Settings_C_SetInputKeyMapForCategory::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_SetInputKeyMapForCategory, K2Node_SwitchEnum_CmpSuccess_1) == 0x00006A, "Member 'SAVE_Settings_C_SetInputKeyMapForCategory::K2Node_SwitchEnum_CmpSuccess_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetInputKeyMapForCategory, K2Node_SwitchEnum_CmpSuccess_2) == 0x00006B, "Member 'SAVE_Settings_C_SetInputKeyMapForCategory::K2Node_SwitchEnum_CmpSuccess_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetInputKeyMapForCategory, K2Node_SwitchEnum_CmpSuccess_3) == 0x00006C, "Member 'SAVE_Settings_C_SetInputKeyMapForCategory::K2Node_SwitchEnum_CmpSuccess_3' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.ApplySavedKeyActionsForCategory
-// 0x0430 (0x0430 - 0x0000)
+// 0x03C8 (0x03C8 - 0x0000)
 struct SAVE_Settings_C_ApplySavedKeyActionsForCategory final
 {
 public:
 	ENUM_InputCategory                            InputCategory;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class FString                                 InputActionPrefix;                                 // 0x0008(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          IsGamepad;                                         // 0x0018(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           ControllerType;                                    // 0x0018(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_BoundInputActionPair           CurrentKeyActionPair;                              // 0x0020(0x0030)(Edit, BlueprintVisible, HasGetValueTypeHash)
-	bool                                          CurrentIsGamepad;                                  // 0x0050(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CurrentActionString;                               // 0x0058(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CurrentActionName;                                 // 0x0068(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FInputActionKeyMapping>         MappedKeys;                                        // 0x0070(0x0010)(Edit, BlueprintVisible)
-	TArray<class FName>                           BoundActionNames;                                  // 0x0080(0x0010)(Edit, BlueprintVisible)
-	bool                                          Temp_bool_Variable;                                // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_91[0x3];                                       // 0x0091(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_ReplaceInline_ReturnValue;                // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x009C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_InputCategory                            Temp_byte_Variable;                                // 0x009D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9E[0x2];                                       // 0x009E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Conv_NameToString_ReturnValue;            // 0x00A0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Conv_NameToString_ReturnValue_1;          // 0x00B0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C9[0x3];                                       // 0x00C9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x00CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x00D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_InputCategory                            Temp_byte_Variable_1;                              // 0x00D4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_D5[0x3];                                       // 0x00D5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FInputActionKeyMapping                 CallFunc_Array_Get_Item;                           // 0x00D8(0x0028)()
-	int32                                         Temp_int_Array_Index_Variable_1;                   // 0x0100(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable_1;                  // 0x0104(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_1;                // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_109[0x3];                                      // 0x0109(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x010C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable_2;                   // 0x0110(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Array_Get_Item_1;                         // 0x0114(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_11C[0x4];                                      // 0x011C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default;                             // 0x0120(0x0050)()
-	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x0170(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_StartsWith_ReturnValue_1;                 // 0x0171(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_172[0x2];                                      // 0x0172(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_ReplaceInline_ReturnValue_1;              // 0x0174(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_InputCategory                            Temp_byte_Variable_2;                              // 0x0178(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_BoolBool_ReturnValue;          // 0x0179(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_17A[0x6];                                      // 0x017A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_1;                           // 0x0180(0x0050)()
-	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue;             // 0x01D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_2;                           // 0x01D8(0x0050)()
-	bool                                          Temp_bool_Variable_1;                              // 0x0228(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_229[0x7];                                      // 0x0229(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_3;                           // 0x0230(0x0050)()
-	TArray<class FName>                           CallFunc_Map_Keys_Keys;                            // 0x0280(0x0010)(ReferenceParm)
-	class FName                                   CallFunc_Array_Get_Item_2;                         // 0x0290(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue_2;               // 0x0298(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_29C[0x4];                                      // 0x029C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_1;           // 0x02A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FInputActionKeyMapping                 K2Node_MakeStruct_InputActionKeyMapping;           // 0x02A8(0x0028)()
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue;            // 0x02D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2D1[0x7];                                      // 0x02D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FInputActionKeyMapping                 K2Node_MakeStruct_InputActionKeyMapping_1;         // 0x02D8(0x0028)()
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0300(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_1;          // 0x0301(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_302[0x6];                                      // 0x0302(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_2;           // 0x0308(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0310(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ENUM_InputCategory                            Temp_byte_Variable_3;                              // 0x0311(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_312[0x6];                                      // 0x0312(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_3;           // 0x0318(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_4;                           // 0x0320(0x0050)()
-	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_5;                           // 0x0370(0x0050)()
-	int32                                         Temp_int_Loop_Counter_Variable_2;                  // 0x03C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3C4[0x4];                                      // 0x03C4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_BoundInputActionPair           CallFunc_Map_Find_Value;                           // 0x03C8(0x0030)(HasGetValueTypeHash)
-	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x03F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_IntInt_ReturnValue_2;                // 0x03F9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3FA[0x2];                                      // 0x03FA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue_2;                 // 0x03FC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_4;           // 0x0400(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_5;           // 0x0408(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FInputActionKeyMapping>         CallFunc_GetActionMappingByName_OutMappings;       // 0x0410(0x0010)(ReferenceParm)
-	TArray<class FName>                           CallFunc_GetActionNames_ActionNames;               // 0x0420(0x0010)(ReferenceParm)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> CurrentMap;                                        // 0x0020(0x0050)(Edit, BlueprintVisible)
+	struct FSTRUCT_BoundInputActionPair           CurrentKeyActionPair;                              // 0x0070(0x0030)(Edit, BlueprintVisible, HasGetValueTypeHash)
+	class FString                                 CurrentActionString;                               // 0x00A0(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
+	class FName                                   CurrentActionName;                                 // 0x00B0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FInputActionKeyMapping>         MappedKeys;                                        // 0x00B8(0x0010)(Edit, BlueprintVisible)
+	TArray<class FName>                           BoundActionNames;                                  // 0x00C8(0x0010)(Edit, BlueprintVisible)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x00D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x00DC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x00E0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InputCategory                            Temp_byte_Variable;                                // 0x00E4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_E5[0x3];                                       // 0x00E5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Array_Index_Variable_1;                   // 0x00E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable_1;                  // 0x00EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable_2;                   // 0x00F4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_InputCategory                            Temp_byte_Variable_1;                              // 0x00F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x00F9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_FA[0x2];                                       // 0x00FA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_ReplaceInline_ReturnValue;                // 0x00FC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FInputActionKeyMapping                 K2Node_MakeStruct_InputActionKeyMapping;           // 0x0100(0x0028)()
+	struct FSTRUCT_BoundInputActionPair           CallFunc_Map_Find_Value;                           // 0x0128(0x0030)(HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x0158(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue;            // 0x0159(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x015A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_15B[0x5];                                      // 0x015B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FInputActionKeyMapping                 K2Node_MakeStruct_InputActionKeyMapping_1;         // 0x0160(0x0028)()
+	bool                                          CallFunc_EqualEqual_KeyKey_ReturnValue_1;          // 0x0188(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0189(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x018A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_StartsWith_ReturnValue_1;                 // 0x018B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_18C[0x4];                                      // 0x018C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FInputActionKeyMapping                 CallFunc_Array_Get_Item;                           // 0x0190(0x0028)()
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x01B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_StartsWith_ReturnValue_2;                 // 0x01BC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x01BD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanNOR_ReturnValue;                   // 0x01BE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1BF[0x1];                                      // 0x01BF(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_Array_Get_Item_1;                         // 0x01C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x01C8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_1;                // 0x01CC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_StartsWith_ReturnValue_3;                 // 0x01CD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1CE[0x2];                                      // 0x01CE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_ReplaceInline_ReturnValue_1;              // 0x01D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x01D4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D5[0x3];                                      // 0x01D5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_ReplaceInline_ReturnValue_2;              // 0x01D8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue_1;             // 0x01DC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1DD[0x3];                                      // 0x01DD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default;                             // 0x01E0(0x0050)()
+	class FString                                 CallFunc_Conv_NameToString_ReturnValue;            // 0x0230(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Conv_NameToString_ReturnValue_1;          // 0x0240(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	ENUM_ControllerType                           Temp_byte_Variable_2;                              // 0x0250(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_251[0x3];                                      // 0x0251(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_ReplaceInline_ReturnValue_3;              // 0x0254(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue;             // 0x0258(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_1;                           // 0x0260(0x0050)()
+	ENUM_InputCategory                            Temp_byte_Variable_3;                              // 0x02B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2B1[0x7];                                      // 0x02B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_1;           // 0x02B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_2;                           // 0x02C0(0x0050)()
+	TMap<class FName, struct FSTRUCT_BoundInputActionPair> K2Node_Select_Default_3;                           // 0x0310(0x0050)(ConstParm)
+	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_2;           // 0x0360(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_3;           // 0x0368(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class FName>                           CallFunc_Map_Keys_Keys;                            // 0x0370(0x0010)(ReferenceParm)
+	class FName                                   CallFunc_Array_Get_Item_2;                         // 0x0380(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_2;               // 0x0388(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable_2;                  // 0x038C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_4;           // 0x0390(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FInputActionKeyMapping>         CallFunc_GetActionMappingByName_OutMappings;       // 0x0398(0x0010)(ReferenceParm)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_2;                // 0x03A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A9[0x3];                                      // 0x03A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue_2;                 // 0x03AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UInputSettings*                         CallFunc_GetInputSettings_ReturnValue_5;           // 0x03B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class FName>                           CallFunc_GetActionNames_ActionNames;               // 0x03B8(0x0010)(ReferenceParm)
 };
 static_assert(alignof(SAVE_Settings_C_ApplySavedKeyActionsForCategory) == 0x000008, "Wrong alignment on SAVE_Settings_C_ApplySavedKeyActionsForCategory");
-static_assert(sizeof(SAVE_Settings_C_ApplySavedKeyActionsForCategory) == 0x000430, "Wrong size on SAVE_Settings_C_ApplySavedKeyActionsForCategory");
+static_assert(sizeof(SAVE_Settings_C_ApplySavedKeyActionsForCategory) == 0x0003C8, "Wrong size on SAVE_Settings_C_ApplySavedKeyActionsForCategory");
 static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, InputCategory) == 0x000000, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::InputCategory' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, InputActionPrefix) == 0x000008, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::InputActionPrefix' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, IsGamepad) == 0x000018, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::IsGamepad' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CurrentKeyActionPair) == 0x000020, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CurrentKeyActionPair' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CurrentIsGamepad) == 0x000050, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CurrentIsGamepad' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CurrentActionString) == 0x000058, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CurrentActionString' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CurrentActionName) == 0x000068, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CurrentActionName' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, MappedKeys) == 0x000070, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::MappedKeys' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, BoundActionNames) == 0x000080, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::BoundActionNames' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_bool_Variable) == 0x000090, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_ReplaceInline_ReturnValue) == 0x000094, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_ReplaceInline_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Length_ReturnValue) == 0x000098, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Greater_IntInt_ReturnValue) == 0x00009C, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_byte_Variable) == 0x00009D, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Conv_NameToString_ReturnValue) == 0x0000A0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Conv_NameToString_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Conv_NameToString_ReturnValue_1) == 0x0000B0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Conv_NameToString_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Length_ReturnValue_1) == 0x0000C0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Loop_Counter_Variable) == 0x0000C4, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Less_IntInt_ReturnValue) == 0x0000C8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Add_IntInt_ReturnValue) == 0x0000CC, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Array_Index_Variable) == 0x0000D0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_byte_Variable_1) == 0x0000D4, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Get_Item) == 0x0000D8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Array_Index_Variable_1) == 0x000100, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Array_Index_Variable_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Loop_Counter_Variable_1) == 0x000104, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Loop_Counter_Variable_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Less_IntInt_ReturnValue_1) == 0x000108, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Less_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Add_IntInt_ReturnValue_1) == 0x00010C, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Array_Index_Variable_2) == 0x000110, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Array_Index_Variable_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Get_Item_1) == 0x000114, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Get_Item_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default) == 0x000120, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_StartsWith_ReturnValue) == 0x000170, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_StartsWith_ReturnValue_1) == 0x000171, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_StartsWith_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_ReplaceInline_ReturnValue_1) == 0x000174, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_ReplaceInline_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_byte_Variable_2) == 0x000178, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_byte_Variable_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_EqualEqual_BoolBool_ReturnValue) == 0x000179, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_EqualEqual_BoolBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default_1) == 0x000180, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue) == 0x0001D0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default_2) == 0x0001D8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_bool_Variable_1) == 0x000228, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_bool_Variable_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default_3) == 0x000230, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default_3' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Map_Keys_Keys) == 0x000280, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Map_Keys_Keys' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Get_Item_2) == 0x000290, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Get_Item_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Length_ReturnValue_2) == 0x000298, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Length_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_1) == 0x0002A0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_MakeStruct_InputActionKeyMapping) == 0x0002A8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_MakeStruct_InputActionKeyMapping' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_EqualEqual_KeyKey_ReturnValue) == 0x0002D0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_EqualEqual_KeyKey_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_MakeStruct_InputActionKeyMapping_1) == 0x0002D8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_MakeStruct_InputActionKeyMapping_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Not_PreBool_ReturnValue) == 0x000300, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_EqualEqual_KeyKey_ReturnValue_1) == 0x000301, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_EqualEqual_KeyKey_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_2) == 0x000308, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Not_PreBool_ReturnValue_1) == 0x000310, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_byte_Variable_3) == 0x000311, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_byte_Variable_3' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_3) == 0x000318, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default_4) == 0x000320, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default_4' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default_5) == 0x000370, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default_5' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Loop_Counter_Variable_2) == 0x0003C0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Loop_Counter_Variable_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Map_Find_Value) == 0x0003C8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Map_Find_Value' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Map_Find_ReturnValue) == 0x0003F8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Map_Find_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Less_IntInt_ReturnValue_2) == 0x0003F9, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Less_IntInt_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Add_IntInt_ReturnValue_2) == 0x0003FC, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Add_IntInt_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_4) == 0x000400, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_5) == 0x000408, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetActionMappingByName_OutMappings) == 0x000410, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetActionMappingByName_OutMappings' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetActionNames_ActionNames) == 0x000420, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetActionNames_ActionNames' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, ControllerType) == 0x000018, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::ControllerType' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CurrentMap) == 0x000020, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CurrentMap' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CurrentKeyActionPair) == 0x000070, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CurrentKeyActionPair' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CurrentActionString) == 0x0000A0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CurrentActionString' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CurrentActionName) == 0x0000B0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CurrentActionName' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, MappedKeys) == 0x0000B8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::MappedKeys' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, BoundActionNames) == 0x0000C8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::BoundActionNames' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Loop_Counter_Variable) == 0x0000D8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Add_IntInt_ReturnValue) == 0x0000DC, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Array_Index_Variable) == 0x0000E0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_byte_Variable) == 0x0000E4, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Array_Index_Variable_1) == 0x0000E8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Array_Index_Variable_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Loop_Counter_Variable_1) == 0x0000EC, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Loop_Counter_Variable_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Add_IntInt_ReturnValue_1) == 0x0000F0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Array_Index_Variable_2) == 0x0000F4, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Array_Index_Variable_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_byte_Variable_1) == 0x0000F8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_SwitchEnum_CmpSuccess) == 0x0000F9, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_ReplaceInline_ReturnValue) == 0x0000FC, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_ReplaceInline_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_MakeStruct_InputActionKeyMapping) == 0x000100, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_MakeStruct_InputActionKeyMapping' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Map_Find_Value) == 0x000128, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Map_Find_Value' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Map_Find_ReturnValue) == 0x000158, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Map_Find_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_EqualEqual_KeyKey_ReturnValue) == 0x000159, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_EqualEqual_KeyKey_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Not_PreBool_ReturnValue) == 0x00015A, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_MakeStruct_InputActionKeyMapping_1) == 0x000160, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_MakeStruct_InputActionKeyMapping_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_EqualEqual_KeyKey_ReturnValue_1) == 0x000188, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_EqualEqual_KeyKey_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Not_PreBool_ReturnValue_1) == 0x000189, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_StartsWith_ReturnValue) == 0x00018A, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_StartsWith_ReturnValue_1) == 0x00018B, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_StartsWith_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Get_Item) == 0x000190, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Length_ReturnValue) == 0x0001B8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_StartsWith_ReturnValue_2) == 0x0001BC, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_StartsWith_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Less_IntInt_ReturnValue) == 0x0001BD, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_BooleanNOR_ReturnValue) == 0x0001BE, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_BooleanNOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Get_Item_1) == 0x0001C0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Get_Item_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Length_ReturnValue_1) == 0x0001C8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Less_IntInt_ReturnValue_1) == 0x0001CC, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Less_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_StartsWith_ReturnValue_3) == 0x0001CD, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_StartsWith_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_ReplaceInline_ReturnValue_1) == 0x0001D0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_ReplaceInline_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Greater_IntInt_ReturnValue) == 0x0001D4, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_ReplaceInline_ReturnValue_2) == 0x0001D8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_ReplaceInline_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Greater_IntInt_ReturnValue_1) == 0x0001DC, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Greater_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default) == 0x0001E0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Conv_NameToString_ReturnValue) == 0x000230, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Conv_NameToString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Conv_NameToString_ReturnValue_1) == 0x000240, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Conv_NameToString_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_byte_Variable_2) == 0x000250, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_byte_Variable_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_ReplaceInline_ReturnValue_3) == 0x000254, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_ReplaceInline_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue) == 0x000258, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default_1) == 0x000260, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_byte_Variable_3) == 0x0002B0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_byte_Variable_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_1) == 0x0002B8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default_2) == 0x0002C0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, K2Node_Select_Default_3) == 0x000310, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::K2Node_Select_Default_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_2) == 0x000360, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_3) == 0x000368, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Map_Keys_Keys) == 0x000370, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Map_Keys_Keys' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Get_Item_2) == 0x000380, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Get_Item_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Array_Length_ReturnValue_2) == 0x000388, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Array_Length_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, Temp_int_Loop_Counter_Variable_2) == 0x00038C, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::Temp_int_Loop_Counter_Variable_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_4) == 0x000390, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetActionMappingByName_OutMappings) == 0x000398, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetActionMappingByName_OutMappings' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Less_IntInt_ReturnValue_2) == 0x0003A8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Less_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_Add_IntInt_ReturnValue_2) == 0x0003AC, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_Add_IntInt_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetInputSettings_ReturnValue_5) == 0x0003B0, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetInputSettings_ReturnValue_5' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplySavedKeyActionsForCategory, CallFunc_GetActionNames_ActionNames) == 0x0003B8, "Member 'SAVE_Settings_C_ApplySavedKeyActionsForCategory::CallFunc_GetActionNames_ActionNames' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.SetAimAssist
 // 0x0002 (0x0002 - 0x0000)
@@ -2524,7 +2594,7 @@ struct SAVE_Settings_C_InitializeSettingsForHacker final
 {
 public:
 	class APAWN_Hacker_Simple_C*                  PlayerPawn;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsRealspace;                                       // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_IsRealspaceCharacter_Result;              // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         CallFunc_GetFOV_Result;                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -2533,7 +2603,7 @@ public:
 static_assert(alignof(SAVE_Settings_C_InitializeSettingsForHacker) == 0x000008, "Wrong alignment on SAVE_Settings_C_InitializeSettingsForHacker");
 static_assert(sizeof(SAVE_Settings_C_InitializeSettingsForHacker) == 0x000018, "Wrong size on SAVE_Settings_C_InitializeSettingsForHacker");
 static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForHacker, PlayerPawn) == 0x000000, "Member 'SAVE_Settings_C_InitializeSettingsForHacker::PlayerPawn' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForHacker, IsRealspace) == 0x000008, "Member 'SAVE_Settings_C_InitializeSettingsForHacker::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForHacker, isRealspace) == 0x000008, "Member 'SAVE_Settings_C_InitializeSettingsForHacker::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForHacker, CallFunc_IsRealspaceCharacter_Result) == 0x000009, "Member 'SAVE_Settings_C_InitializeSettingsForHacker::CallFunc_IsRealspaceCharacter_Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForHacker, CallFunc_GetFOV_Result) == 0x00000C, "Member 'SAVE_Settings_C_InitializeSettingsForHacker::CallFunc_GetFOV_Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForHacker, CallFunc_GetBrightness_Result) == 0x000010, "Member 'SAVE_Settings_C_InitializeSettingsForHacker::CallFunc_GetBrightness_Result' has a wrong offset!");
@@ -2899,7 +2969,7 @@ struct SAVE_Settings_C_GetBrightnessProfileValue final
 public:
 	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          IsRealspace;                                       // 0x0020(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0020(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         Result;                                            // 0x0024(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          Temp_bool_Variable;                                // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -2911,7 +2981,7 @@ static_assert(alignof(SAVE_Settings_C_GetBrightnessProfileValue) == 0x000008, "W
 static_assert(sizeof(SAVE_Settings_C_GetBrightnessProfileValue) == 0x000040, "Wrong size on SAVE_Settings_C_GetBrightnessProfileValue");
 static_assert(offsetof(SAVE_Settings_C_GetBrightnessProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetBrightnessProfileValue::Culture' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetBrightnessProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetBrightnessProfileValue::Platform' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetBrightnessProfileValue, IsRealspace) == 0x000020, "Member 'SAVE_Settings_C_GetBrightnessProfileValue::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetBrightnessProfileValue, isRealspace) == 0x000020, "Member 'SAVE_Settings_C_GetBrightnessProfileValue::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetBrightnessProfileValue, Result) == 0x000024, "Member 'SAVE_Settings_C_GetBrightnessProfileValue::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetBrightnessProfileValue, Temp_bool_Variable) == 0x000028, "Member 'SAVE_Settings_C_GetBrightnessProfileValue::Temp_bool_Variable' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetBrightnessProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000030, "Member 'SAVE_Settings_C_GetBrightnessProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
@@ -3034,7 +3104,7 @@ struct SAVE_Settings_C_GetFOVProfileValue final
 public:
 	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          IsRealspace;                                       // 0x0020(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0020(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         Result;                                            // 0x0024(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_GetPlatformType_IsConsole;                // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -3043,7 +3113,7 @@ static_assert(alignof(SAVE_Settings_C_GetFOVProfileValue) == 0x000008, "Wrong al
 static_assert(sizeof(SAVE_Settings_C_GetFOVProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetFOVProfileValue");
 static_assert(offsetof(SAVE_Settings_C_GetFOVProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetFOVProfileValue::Culture' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetFOVProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetFOVProfileValue::Platform' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetFOVProfileValue, IsRealspace) == 0x000020, "Member 'SAVE_Settings_C_GetFOVProfileValue::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetFOVProfileValue, isRealspace) == 0x000020, "Member 'SAVE_Settings_C_GetFOVProfileValue::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetFOVProfileValue, Result) == 0x000024, "Member 'SAVE_Settings_C_GetFOVProfileValue::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetFOVProfileValue, CallFunc_GetPlatformType_IsConsole) == 0x000028, "Member 'SAVE_Settings_C_GetFOVProfileValue::CallFunc_GetPlatformType_IsConsole' has a wrong offset!");
 
@@ -3472,20 +3542,19 @@ static_assert(offsetof(SAVE_Settings_C_GetHUDTextSizeProfleValue, Result) == 0x0
 static_assert(offsetof(SAVE_Settings_C_GetHUDTextSizeProfleValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetHUDTextSizeProfleValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.GetPlatformType
-// 0x0020 (0x0020 - 0x0000)
+// 0x0003 (0x0003 - 0x0000)
 struct SAVE_Settings_C_GetPlatformType final
 {
 public:
 	bool                                          IsConsole;                                         // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(SAVE_Settings_C_GetPlatformType) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetPlatformType");
-static_assert(sizeof(SAVE_Settings_C_GetPlatformType) == 0x000020, "Wrong size on SAVE_Settings_C_GetPlatformType");
+static_assert(alignof(SAVE_Settings_C_GetPlatformType) == 0x000001, "Wrong alignment on SAVE_Settings_C_GetPlatformType");
+static_assert(sizeof(SAVE_Settings_C_GetPlatformType) == 0x000003, "Wrong size on SAVE_Settings_C_GetPlatformType");
 static_assert(offsetof(SAVE_Settings_C_GetPlatformType, IsConsole) == 0x000000, "Member 'SAVE_Settings_C_GetPlatformType::IsConsole' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetPlatformType, CallFunc_GetPlatformName_ReturnValue) == 0x000008, "Member 'SAVE_Settings_C_GetPlatformType::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_GetPlatformType, K2Node_SwitchString_CmpSuccess) == 0x000018, "Member 'SAVE_Settings_C_GetPlatformType::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetPlatformType, CallFunc_GetPlatformFamily_ReturnValue) == 0x000001, "Member 'SAVE_Settings_C_GetPlatformType::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetPlatformType, K2Node_SwitchEnum_CmpSuccess) == 0x000002, "Member 'SAVE_Settings_C_GetPlatformType::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 
 // Function SAVE_Settings.SAVE_Settings_C.SetReloadCanUseBatteries
 // 0x0002 (0x0002 - 0x0000)
@@ -3546,7 +3615,7 @@ struct SAVE_Settings_C_InitializeSettingsForCurrentSpace final
 {
 public:
 	class APAWN_SystemShockCharacter_C*           ControlledCharacter;                               // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsRealspace;                                       // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          isRealspace;                                       // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_IsRealspaceCharacter_Result;              // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         CallFunc_GetBrightness_Result;                     // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -3555,7 +3624,7 @@ public:
 static_assert(alignof(SAVE_Settings_C_InitializeSettingsForCurrentSpace) == 0x000008, "Wrong alignment on SAVE_Settings_C_InitializeSettingsForCurrentSpace");
 static_assert(sizeof(SAVE_Settings_C_InitializeSettingsForCurrentSpace) == 0x000018, "Wrong size on SAVE_Settings_C_InitializeSettingsForCurrentSpace");
 static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForCurrentSpace, ControlledCharacter) == 0x000000, "Member 'SAVE_Settings_C_InitializeSettingsForCurrentSpace::ControlledCharacter' has a wrong offset!");
-static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForCurrentSpace, IsRealspace) == 0x000008, "Member 'SAVE_Settings_C_InitializeSettingsForCurrentSpace::IsRealspace' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForCurrentSpace, isRealspace) == 0x000008, "Member 'SAVE_Settings_C_InitializeSettingsForCurrentSpace::isRealspace' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForCurrentSpace, CallFunc_IsRealspaceCharacter_Result) == 0x000009, "Member 'SAVE_Settings_C_InitializeSettingsForCurrentSpace::CallFunc_IsRealspaceCharacter_Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForCurrentSpace, CallFunc_GetBrightness_Result) == 0x00000C, "Member 'SAVE_Settings_C_InitializeSettingsForCurrentSpace::CallFunc_GetBrightness_Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_InitializeSettingsForCurrentSpace, CallFunc_GetFOV_Result) == 0x000010, "Member 'SAVE_Settings_C_InitializeSettingsForCurrentSpace::CallFunc_GetFOV_Result' has a wrong offset!");
@@ -3664,6 +3733,722 @@ static_assert(offsetof(SAVE_Settings_C_GetSprintToggleProfileValue, Culture) == 
 static_assert(offsetof(SAVE_Settings_C_GetSprintToggleProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetSprintToggleProfileValue::Platform' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetSprintToggleProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetSprintToggleProfileValue::Result' has a wrong offset!");
 static_assert(offsetof(SAVE_Settings_C_GetSprintToggleProfileValue, CallFunc_GetPlatformType_IsConsole) == 0x000021, "Member 'SAVE_Settings_C_GetSprintToggleProfileValue::CallFunc_GetPlatformType_IsConsole' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGamepadCursorSpeed
+// 0x0008 (0x0008 - 0x0000)
+struct SAVE_Settings_C_SetGamepadCursorSpeed final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGamepadCursorSpeed) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetGamepadCursorSpeed");
+static_assert(sizeof(SAVE_Settings_C_SetGamepadCursorSpeed) == 0x000008, "Wrong size on SAVE_Settings_C_SetGamepadCursorSpeed");
+static_assert(offsetof(SAVE_Settings_C_SetGamepadCursorSpeed, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGamepadCursorSpeed::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGamepadCursorSpeed, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000004, "Member 'SAVE_Settings_C_SetGamepadCursorSpeed::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGamepadCursorSpeed
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGamepadCursorSpeed final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGamepadCursorSpeed) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGamepadCursorSpeed");
+static_assert(sizeof(SAVE_Settings_C_GetGamepadCursorSpeed) == 0x000004, "Wrong size on SAVE_Settings_C_GetGamepadCursorSpeed");
+static_assert(offsetof(SAVE_Settings_C_GetGamepadCursorSpeed, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGamepadCursorSpeed::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGamepadCursorSpeed
+// 0x0018 (0x0018 - 0x0000)
+struct SAVE_Settings_C_ApplyGamepadCursorSpeed final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCameraPanelWidget*                     CameraPanelWidget;                                 // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGamepadCursorSpeed) == 0x000008, "Wrong alignment on SAVE_Settings_C_ApplyGamepadCursorSpeed");
+static_assert(sizeof(SAVE_Settings_C_ApplyGamepadCursorSpeed) == 0x000018, "Wrong size on SAVE_Settings_C_ApplyGamepadCursorSpeed");
+static_assert(offsetof(SAVE_Settings_C_ApplyGamepadCursorSpeed, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGamepadCursorSpeed::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplyGamepadCursorSpeed, CameraPanelWidget) == 0x000008, "Member 'SAVE_Settings_C_ApplyGamepadCursorSpeed::CameraPanelWidget' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplyGamepadCursorSpeed, CallFunc_IsValid_ReturnValue) == 0x000010, "Member 'SAVE_Settings_C_ApplyGamepadCursorSpeed::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGamepadCursorSpeedProfleValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGamepadCursorSpeedProfleValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	float                                         Result;                                            // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGamepadCursorSpeedProfleValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGamepadCursorSpeedProfleValue");
+static_assert(sizeof(SAVE_Settings_C_GetGamepadCursorSpeedProfleValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGamepadCursorSpeedProfleValue");
+static_assert(offsetof(SAVE_Settings_C_GetGamepadCursorSpeedProfleValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGamepadCursorSpeedProfleValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGamepadCursorSpeedProfleValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGamepadCursorSpeedProfleValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGamepadCursorSpeedProfleValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGamepadCursorSpeedProfleValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGamepadCursorSpeedProfleValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGamepadCursorSpeedProfleValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroRealspace
+// 0x0002 (0x0002 - 0x0000)
+struct SAVE_Settings_C_SetGyroRealspace final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroRealspace) == 0x000001, "Wrong alignment on SAVE_Settings_C_SetGyroRealspace");
+static_assert(sizeof(SAVE_Settings_C_SetGyroRealspace) == 0x000002, "Wrong size on SAVE_Settings_C_SetGyroRealspace");
+static_assert(offsetof(SAVE_Settings_C_SetGyroRealspace, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroRealspace::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroRealspace, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000001, "Member 'SAVE_Settings_C_SetGyroRealspace::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroRealspace
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroRealspace final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroRealspace) == 0x000001, "Wrong alignment on SAVE_Settings_C_ApplyGyroRealspace");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroRealspace) == 0x000001, "Wrong size on SAVE_Settings_C_ApplyGyroRealspace");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroRealspace, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroRealspace::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroRealspace
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_GetGyroRealspace final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroRealspace) == 0x000001, "Wrong alignment on SAVE_Settings_C_GetGyroRealspace");
+static_assert(sizeof(SAVE_Settings_C_GetGyroRealspace) == 0x000001, "Wrong size on SAVE_Settings_C_GetGyroRealspace");
+static_assert(offsetof(SAVE_Settings_C_GetGyroRealspace, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroRealspace::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroRealspaceProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroRealspaceProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroRealspaceProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroRealspaceProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroRealspaceProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroRealspaceProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroRealspaceProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroRealspaceProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroRealspaceProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroRealspaceProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroRealspaceProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroRealspaceProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroRealspaceProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroRealspaceProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerLookSensitivity
+// 0x0008 (0x0008 - 0x0000)
+struct SAVE_Settings_C_SetGyroHackerLookSensitivity final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroHackerLookSensitivity) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetGyroHackerLookSensitivity");
+static_assert(sizeof(SAVE_Settings_C_SetGyroHackerLookSensitivity) == 0x000008, "Wrong size on SAVE_Settings_C_SetGyroHackerLookSensitivity");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerLookSensitivity, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroHackerLookSensitivity::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerLookSensitivity, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000004, "Member 'SAVE_Settings_C_SetGyroHackerLookSensitivity::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerLookSensitivity
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroHackerLookSensitivity final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroHackerLookSensitivity) == 0x000004, "Wrong alignment on SAVE_Settings_C_ApplyGyroHackerLookSensitivity");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroHackerLookSensitivity) == 0x000004, "Wrong size on SAVE_Settings_C_ApplyGyroHackerLookSensitivity");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroHackerLookSensitivity, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroHackerLookSensitivity::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivity
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerLookSensitivity final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerLookSensitivity) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGyroHackerLookSensitivity");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerLookSensitivity) == 0x000004, "Wrong size on SAVE_Settings_C_GetGyroHackerLookSensitivity");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivity, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivity::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	float                                         Result;                                            // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivity
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerADSSensitivity final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerADSSensitivity) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGyroHackerADSSensitivity");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerADSSensitivity) == 0x000004, "Wrong size on SAVE_Settings_C_GetGyroHackerADSSensitivity");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivity, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivity::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivity
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGyroAvatarLookSensitivity final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroAvatarLookSensitivity) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGyroAvatarLookSensitivity");
+static_assert(sizeof(SAVE_Settings_C_GetGyroAvatarLookSensitivity) == 0x000004, "Wrong size on SAVE_Settings_C_GetGyroAvatarLookSensitivity");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivity, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivity::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerInvertY
+// 0x0002 (0x0002 - 0x0000)
+struct SAVE_Settings_C_SetGyroHackerInvertY final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroHackerInvertY) == 0x000001, "Wrong alignment on SAVE_Settings_C_SetGyroHackerInvertY");
+static_assert(sizeof(SAVE_Settings_C_SetGyroHackerInvertY) == 0x000002, "Wrong size on SAVE_Settings_C_SetGyroHackerInvertY");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerInvertY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroHackerInvertY::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerInvertY, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000001, "Member 'SAVE_Settings_C_SetGyroHackerInvertY::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerInvertY
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroHackerInvertY final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroHackerInvertY) == 0x000001, "Wrong alignment on SAVE_Settings_C_ApplyGyroHackerInvertY");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroHackerInvertY) == 0x000001, "Wrong size on SAVE_Settings_C_ApplyGyroHackerInvertY");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroHackerInvertY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroHackerInvertY::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerInvertY
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerInvertY final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerInvertY) == 0x000001, "Wrong alignment on SAVE_Settings_C_GetGyroHackerInvertY");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerInvertY) == 0x000001, "Wrong size on SAVE_Settings_C_GetGyroHackerInvertY");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerInvertY, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerInvertY::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerInvertYProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerInvertYProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerInvertYProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroHackerInvertYProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerInvertYProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroHackerInvertYProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerInvertYProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerInvertYProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerInvertYProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroHackerInvertYProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerInvertYProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroHackerInvertYProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerInvertYProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroHackerInvertYProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroCyberspace
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_GetGyroCyberspace final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroCyberspace) == 0x000001, "Wrong alignment on SAVE_Settings_C_GetGyroCyberspace");
+static_assert(sizeof(SAVE_Settings_C_GetGyroCyberspace) == 0x000001, "Wrong size on SAVE_Settings_C_GetGyroCyberspace");
+static_assert(offsetof(SAVE_Settings_C_GetGyroCyberspace, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroCyberspace::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarInvertY
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_GetGyroAvatarInvertY final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroAvatarInvertY) == 0x000001, "Wrong alignment on SAVE_Settings_C_GetGyroAvatarInvertY");
+static_assert(sizeof(SAVE_Settings_C_GetGyroAvatarInvertY) == 0x000001, "Wrong size on SAVE_Settings_C_GetGyroAvatarInvertY");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarInvertY, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroAvatarInvertY::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetJoyConMouseMode
+// 0x0002 (0x0002 - 0x0000)
+struct SAVE_Settings_C_SetJoyConMouseMode final
+{
+public:
+	EJoyConMouseMode                              NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetJoyConMouseMode) == 0x000001, "Wrong alignment on SAVE_Settings_C_SetJoyConMouseMode");
+static_assert(sizeof(SAVE_Settings_C_SetJoyConMouseMode) == 0x000002, "Wrong size on SAVE_Settings_C_SetJoyConMouseMode");
+static_assert(offsetof(SAVE_Settings_C_SetJoyConMouseMode, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetJoyConMouseMode::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetJoyConMouseMode, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000001, "Member 'SAVE_Settings_C_SetJoyConMouseMode::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetJoyConMouseMode
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_GetJoyConMouseMode final
+{
+public:
+	EJoyConMouseMode                              JoyConMouseMode_0;                                 // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetJoyConMouseMode) == 0x000001, "Wrong alignment on SAVE_Settings_C_GetJoyConMouseMode");
+static_assert(sizeof(SAVE_Settings_C_GetJoyConMouseMode) == 0x000001, "Wrong size on SAVE_Settings_C_GetJoyConMouseMode");
+static_assert(offsetof(SAVE_Settings_C_GetJoyConMouseMode, JoyConMouseMode_0) == 0x000000, "Member 'SAVE_Settings_C_GetJoyConMouseMode::JoyConMouseMode_0' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyJoyConMouseMode
+// 0x0003 (0x0003 - 0x0000)
+struct SAVE_Settings_C_ApplyJoyConMouseMode final
+{
+public:
+	EJoyConMouseMode                              NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsSageNintendoPlatform_ReturnValue;       // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyJoyConMouseMode) == 0x000001, "Wrong alignment on SAVE_Settings_C_ApplyJoyConMouseMode");
+static_assert(sizeof(SAVE_Settings_C_ApplyJoyConMouseMode) == 0x000003, "Wrong size on SAVE_Settings_C_ApplyJoyConMouseMode");
+static_assert(offsetof(SAVE_Settings_C_ApplyJoyConMouseMode, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyJoyConMouseMode::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplyJoyConMouseMode, CallFunc_IsSageNintendoPlatform_ReturnValue) == 0x000001, "Member 'SAVE_Settings_C_ApplyJoyConMouseMode::CallFunc_IsSageNintendoPlatform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_ApplyJoyConMouseMode, K2Node_SwitchEnum_CmpSuccess) == 0x000002, "Member 'SAVE_Settings_C_ApplyJoyConMouseMode::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetJoyConMouseModeProfileValue
+// 0x0010 (0x0010 - 0x0000)
+struct SAVE_Settings_C_GetJoyConMouseModeProfileValue final
+{
+public:
+	EJoyConMouseMode                              JoyConMouseMode_0;                                 // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetJoyConMouseModeProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetJoyConMouseModeProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetJoyConMouseModeProfileValue) == 0x000010, "Wrong size on SAVE_Settings_C_GetJoyConMouseModeProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetJoyConMouseModeProfileValue, JoyConMouseMode_0) == 0x000000, "Member 'SAVE_Settings_C_GetJoyConMouseModeProfileValue::JoyConMouseMode_0' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetJoyConMouseModeProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000008, "Member 'SAVE_Settings_C_GetJoyConMouseModeProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivityX
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGyroAvatarLookSensitivityX final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroAvatarLookSensitivityX) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGyroAvatarLookSensitivityX");
+static_assert(sizeof(SAVE_Settings_C_GetGyroAvatarLookSensitivityX) == 0x000004, "Wrong size on SAVE_Settings_C_GetGyroAvatarLookSensitivityX");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityX, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityX::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivityY
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGyroAvatarLookSensitivityY final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroAvatarLookSensitivityY) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGyroAvatarLookSensitivityY");
+static_assert(sizeof(SAVE_Settings_C_GetGyroAvatarLookSensitivityY) == 0x000004, "Wrong size on SAVE_Settings_C_GetGyroAvatarLookSensitivityY");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityY, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityY::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivityX
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerADSSensitivityX final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerADSSensitivityX) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGyroHackerADSSensitivityX");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerADSSensitivityX) == 0x000004, "Wrong size on SAVE_Settings_C_GetGyroHackerADSSensitivityX");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityX, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityX::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivityY
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerADSSensitivityY final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerADSSensitivityY) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGyroHackerADSSensitivityY");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerADSSensitivityY) == 0x000004, "Wrong size on SAVE_Settings_C_GetGyroHackerADSSensitivityY");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityY, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityY::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityX
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerLookSensitivityX final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerLookSensitivityX) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGyroHackerLookSensitivityX");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerLookSensitivityX) == 0x000004, "Wrong size on SAVE_Settings_C_GetGyroHackerLookSensitivityX");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityX, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityX::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityY
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerLookSensitivityY final
+{
+public:
+	float                                         Result;                                            // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerLookSensitivityY) == 0x000004, "Wrong alignment on SAVE_Settings_C_GetGyroHackerLookSensitivityY");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerLookSensitivityY) == 0x000004, "Wrong size on SAVE_Settings_C_GetGyroHackerLookSensitivityY");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityY, Result) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityY::Result' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerLookSensitivityX
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroHackerLookSensitivityX final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroHackerLookSensitivityX) == 0x000004, "Wrong alignment on SAVE_Settings_C_ApplyGyroHackerLookSensitivityX");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroHackerLookSensitivityX) == 0x000004, "Wrong size on SAVE_Settings_C_ApplyGyroHackerLookSensitivityX");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroHackerLookSensitivityX, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroHackerLookSensitivityX::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerLookSensitivityY
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroHackerLookSensitivityY final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroHackerLookSensitivityY) == 0x000004, "Wrong alignment on SAVE_Settings_C_ApplyGyroHackerLookSensitivityY");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroHackerLookSensitivityY) == 0x000004, "Wrong size on SAVE_Settings_C_ApplyGyroHackerLookSensitivityY");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroHackerLookSensitivityY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroHackerLookSensitivityY::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroAvatarLookSensitivityX
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroAvatarLookSensitivityX final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroAvatarLookSensitivityX) == 0x000004, "Wrong alignment on SAVE_Settings_C_ApplyGyroAvatarLookSensitivityX");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroAvatarLookSensitivityX) == 0x000004, "Wrong size on SAVE_Settings_C_ApplyGyroAvatarLookSensitivityX");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroAvatarLookSensitivityX, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroAvatarLookSensitivityX::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroAvatarLookSensitivityY
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroAvatarLookSensitivityY final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroAvatarLookSensitivityY) == 0x000004, "Wrong alignment on SAVE_Settings_C_ApplyGyroAvatarLookSensitivityY");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroAvatarLookSensitivityY) == 0x000004, "Wrong size on SAVE_Settings_C_ApplyGyroAvatarLookSensitivityY");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroAvatarLookSensitivityY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroAvatarLookSensitivityY::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerADSSensitivityX
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroHackerADSSensitivityX final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroHackerADSSensitivityX) == 0x000004, "Wrong alignment on SAVE_Settings_C_ApplyGyroHackerADSSensitivityX");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroHackerADSSensitivityX) == 0x000004, "Wrong size on SAVE_Settings_C_ApplyGyroHackerADSSensitivityX");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroHackerADSSensitivityX, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroHackerADSSensitivityX::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerADSSensitivityY
+// 0x0004 (0x0004 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroHackerADSSensitivityY final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroHackerADSSensitivityY) == 0x000004, "Wrong alignment on SAVE_Settings_C_ApplyGyroHackerADSSensitivityY");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroHackerADSSensitivityY) == 0x000004, "Wrong size on SAVE_Settings_C_ApplyGyroHackerADSSensitivityY");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroHackerADSSensitivityY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroHackerADSSensitivityY::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityXProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	float                                         Result;                                            // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityYProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	float                                         Result;                                            // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivityXProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	float                                         Result;                                            // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivityYProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	float                                         Result;                                            // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivityXProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	float                                         Result;                                            // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivityYProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	float                                         Result;                                            // 0x0020(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerLookSensitivityX
+// 0x0008 (0x0008 - 0x0000)
+struct SAVE_Settings_C_SetGyroHackerLookSensitivityX final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroHackerLookSensitivityX) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetGyroHackerLookSensitivityX");
+static_assert(sizeof(SAVE_Settings_C_SetGyroHackerLookSensitivityX) == 0x000008, "Wrong size on SAVE_Settings_C_SetGyroHackerLookSensitivityX");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerLookSensitivityX, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroHackerLookSensitivityX::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerLookSensitivityX, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000004, "Member 'SAVE_Settings_C_SetGyroHackerLookSensitivityX::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerLookSensitivityY
+// 0x0008 (0x0008 - 0x0000)
+struct SAVE_Settings_C_SetGyroHackerLookSensitivityY final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroHackerLookSensitivityY) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetGyroHackerLookSensitivityY");
+static_assert(sizeof(SAVE_Settings_C_SetGyroHackerLookSensitivityY) == 0x000008, "Wrong size on SAVE_Settings_C_SetGyroHackerLookSensitivityY");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerLookSensitivityY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroHackerLookSensitivityY::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerLookSensitivityY, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000004, "Member 'SAVE_Settings_C_SetGyroHackerLookSensitivityY::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerADSSensitivityX
+// 0x0008 (0x0008 - 0x0000)
+struct SAVE_Settings_C_SetGyroHackerADSSensitivityX final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroHackerADSSensitivityX) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetGyroHackerADSSensitivityX");
+static_assert(sizeof(SAVE_Settings_C_SetGyroHackerADSSensitivityX) == 0x000008, "Wrong size on SAVE_Settings_C_SetGyroHackerADSSensitivityX");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerADSSensitivityX, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroHackerADSSensitivityX::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerADSSensitivityX, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000004, "Member 'SAVE_Settings_C_SetGyroHackerADSSensitivityX::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerADSSensitivityY
+// 0x0008 (0x0008 - 0x0000)
+struct SAVE_Settings_C_SetGyroHackerADSSensitivityY final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroHackerADSSensitivityY) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetGyroHackerADSSensitivityY");
+static_assert(sizeof(SAVE_Settings_C_SetGyroHackerADSSensitivityY) == 0x000008, "Wrong size on SAVE_Settings_C_SetGyroHackerADSSensitivityY");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerADSSensitivityY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroHackerADSSensitivityY::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroHackerADSSensitivityY, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000004, "Member 'SAVE_Settings_C_SetGyroHackerADSSensitivityY::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroAvatarLookSensitivityX
+// 0x0008 (0x0008 - 0x0000)
+struct SAVE_Settings_C_SetGyroAvatarLookSensitivityX final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroAvatarLookSensitivityX) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetGyroAvatarLookSensitivityX");
+static_assert(sizeof(SAVE_Settings_C_SetGyroAvatarLookSensitivityX) == 0x000008, "Wrong size on SAVE_Settings_C_SetGyroAvatarLookSensitivityX");
+static_assert(offsetof(SAVE_Settings_C_SetGyroAvatarLookSensitivityX, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroAvatarLookSensitivityX::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroAvatarLookSensitivityX, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000004, "Member 'SAVE_Settings_C_SetGyroAvatarLookSensitivityX::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroAvatarLookSensitivityY
+// 0x0008 (0x0008 - 0x0000)
+struct SAVE_Settings_C_SetGyroAvatarLookSensitivityY final
+{
+public:
+	float                                         NewValue;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroAvatarLookSensitivityY) == 0x000004, "Wrong alignment on SAVE_Settings_C_SetGyroAvatarLookSensitivityY");
+static_assert(sizeof(SAVE_Settings_C_SetGyroAvatarLookSensitivityY) == 0x000008, "Wrong size on SAVE_Settings_C_SetGyroAvatarLookSensitivityY");
+static_assert(offsetof(SAVE_Settings_C_SetGyroAvatarLookSensitivityY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroAvatarLookSensitivityY::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroAvatarLookSensitivityY, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000004, "Member 'SAVE_Settings_C_SetGyroAvatarLookSensitivityY::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroAvatarInvertY
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroAvatarInvertY final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroAvatarInvertY) == 0x000001, "Wrong alignment on SAVE_Settings_C_ApplyGyroAvatarInvertY");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroAvatarInvertY) == 0x000001, "Wrong size on SAVE_Settings_C_ApplyGyroAvatarInvertY");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroAvatarInvertY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroAvatarInvertY::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarInvertYProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroAvatarInvertYProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroAvatarInvertYProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroAvatarInvertYProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroAvatarInvertYProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroAvatarInvertYProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarInvertYProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroAvatarInvertYProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarInvertYProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroAvatarInvertYProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarInvertYProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroAvatarInvertYProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroAvatarInvertYProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroAvatarInvertYProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroAvatarInvertY
+// 0x0002 (0x0002 - 0x0000)
+struct SAVE_Settings_C_SetGyroAvatarInvertY final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroAvatarInvertY) == 0x000001, "Wrong alignment on SAVE_Settings_C_SetGyroAvatarInvertY");
+static_assert(sizeof(SAVE_Settings_C_SetGyroAvatarInvertY) == 0x000002, "Wrong size on SAVE_Settings_C_SetGyroAvatarInvertY");
+static_assert(offsetof(SAVE_Settings_C_SetGyroAvatarInvertY, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroAvatarInvertY::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroAvatarInvertY, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000001, "Member 'SAVE_Settings_C_SetGyroAvatarInvertY::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroCyberspace
+// 0x0001 (0x0001 - 0x0000)
+struct SAVE_Settings_C_ApplyGyroCyberspace final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_ApplyGyroCyberspace) == 0x000001, "Wrong alignment on SAVE_Settings_C_ApplyGyroCyberspace");
+static_assert(sizeof(SAVE_Settings_C_ApplyGyroCyberspace) == 0x000001, "Wrong size on SAVE_Settings_C_ApplyGyroCyberspace");
+static_assert(offsetof(SAVE_Settings_C_ApplyGyroCyberspace, NewValue) == 0x000000, "Member 'SAVE_Settings_C_ApplyGyroCyberspace::NewValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroCyberspaceProfileValue
+// 0x0030 (0x0030 - 0x0000)
+struct SAVE_Settings_C_GetGyroCyberspaceProfileValue final
+{
+public:
+	class FString                                 Culture;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 Platform;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(SAVE_Settings_C_GetGyroCyberspaceProfileValue) == 0x000008, "Wrong alignment on SAVE_Settings_C_GetGyroCyberspaceProfileValue");
+static_assert(sizeof(SAVE_Settings_C_GetGyroCyberspaceProfileValue) == 0x000030, "Wrong size on SAVE_Settings_C_GetGyroCyberspaceProfileValue");
+static_assert(offsetof(SAVE_Settings_C_GetGyroCyberspaceProfileValue, Culture) == 0x000000, "Member 'SAVE_Settings_C_GetGyroCyberspaceProfileValue::Culture' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroCyberspaceProfileValue, Platform) == 0x000010, "Member 'SAVE_Settings_C_GetGyroCyberspaceProfileValue::Platform' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroCyberspaceProfileValue, Result) == 0x000020, "Member 'SAVE_Settings_C_GetGyroCyberspaceProfileValue::Result' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_GetGyroCyberspaceProfileValue, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member 'SAVE_Settings_C_GetGyroCyberspaceProfileValue::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroCyberspace
+// 0x0002 (0x0002 - 0x0000)
+struct SAVE_Settings_C_SetGyroCyberspace final
+{
+public:
+	bool                                          NewValue;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(SAVE_Settings_C_SetGyroCyberspace) == 0x000001, "Wrong alignment on SAVE_Settings_C_SetGyroCyberspace");
+static_assert(sizeof(SAVE_Settings_C_SetGyroCyberspace) == 0x000002, "Wrong size on SAVE_Settings_C_SetGyroCyberspace");
+static_assert(offsetof(SAVE_Settings_C_SetGyroCyberspace, NewValue) == 0x000000, "Member 'SAVE_Settings_C_SetGyroCyberspace::NewValue' has a wrong offset!");
+static_assert(offsetof(SAVE_Settings_C_SetGyroCyberspace, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000001, "Member 'SAVE_Settings_C_SetGyroCyberspace::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
 
 }
 

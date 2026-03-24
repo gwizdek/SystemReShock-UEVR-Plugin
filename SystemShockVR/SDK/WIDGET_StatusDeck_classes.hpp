@@ -19,7 +19,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_StatusDeck.WIDGET_StatusDeck_C
-// 0x00A8 (0x0308 - 0x0260)
+// 0x00B8 (0x0318 - 0x0260)
 class UWIDGET_StatusDeck_C final : public UUserWidget
 {
 public:
@@ -31,26 +31,26 @@ public:
 	class UGridMeshWidget*                        MESH_BGInput;                                      // 0x0288(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UTextMeshWidget*                        TEXT_LevelName;                                    // 0x0290(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UTextMeshWidget*                        Text_LevelSymbol;                                  // 0x0298(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	int32                                         Deck;                                              // 0x02A0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2A4[0x4];                                      // 0x02A4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   DeckSymbol;                                        // 0x02A8(0x0018)(Edit, BlueprintVisible)
-	class FText                                   MouseOverText_NotVisited;                          // 0x02C0(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance)
-	bool                                          IsMouseOver;                                       // 0x02D8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsSelected;                                        // 0x02D9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2DA[0x2];                                      // 0x02DA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              FontSize_MouseOver_NotVisited;                     // 0x02DC(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              FontSize_MouseOver_Visited;                        // 0x02E4(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              FontSize_MouseNotOver;                             // 0x02EC(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2F4[0x4];                                      // 0x02F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWIDGET_Status_C*                       StatusUI;                                          // 0x02F8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class USplineMeshWidget*                      SplineMeshWidget;                                  // 0x0300(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FDataTableRowHandle                    Deck;                                              // 0x02A0(0x0010)(Edit, BlueprintVisible, NoDestructor)
+	class FName                                   LevelName;                                         // 0x02B0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FText                                   DeckSymbol;                                        // 0x02B8(0x0018)(Edit, BlueprintVisible)
+	class FText                                   MouseOverText_NotVisited;                          // 0x02D0(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance)
+	bool                                          IsMouseOver;                                       // 0x02E8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsSelected;                                        // 0x02E9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2EA[0x2];                                      // 0x02EA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              FontSize_MouseOver_NotVisited;                     // 0x02EC(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              FontSize_MouseOver_Visited;                        // 0x02F4(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              FontSize_MouseNotOver;                             // 0x02FC(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_304[0x4];                                      // 0x0304(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_Status_C*                       StatusUI;                                          // 0x0308(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USplineMeshWidget*                      SplineMeshWidget;                                  // 0x0310(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_WIDGET_StatusDeck(int32 EntryPoint);
 	void PreConstruct(bool IsDesignTime);
-	void GetDeckLevelName(class FName* LevelName);
+	void GetDeckLevelName(class FName* LevelName_0);
 	void InitializeStatusDeck(class UWIDGET_Status_C* Status);
-	void HasVisitedLevel(class FName LevelName, bool* HasVisited);
+	void HasVisitedLevel(class FName LevelName_0, bool* HasVisited);
 	void UpdatePanelFont();
 	void EVENT_OnMouseEnter(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
 	void EVENT_OnMouseLeave(const struct FPointerEvent& MouseEvent);
@@ -73,7 +73,7 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_StatusDeck_C) == 0x000008, "Wrong alignment on UWIDGET_StatusDeck_C");
-static_assert(sizeof(UWIDGET_StatusDeck_C) == 0x000308, "Wrong size on UWIDGET_StatusDeck_C");
+static_assert(sizeof(UWIDGET_StatusDeck_C) == 0x000318, "Wrong size on UWIDGET_StatusDeck_C");
 static_assert(offsetof(UWIDGET_StatusDeck_C, UberGraphFrame) == 0x000260, "Member 'UWIDGET_StatusDeck_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_StatusDeck_C, OnMouseDown_NotVisited) == 0x000268, "Member 'UWIDGET_StatusDeck_C::OnMouseDown_NotVisited' has a wrong offset!");
 static_assert(offsetof(UWIDGET_StatusDeck_C, OnMouseOver_NotVisited) == 0x000270, "Member 'UWIDGET_StatusDeck_C::OnMouseOver_NotVisited' has a wrong offset!");
@@ -83,15 +83,16 @@ static_assert(offsetof(UWIDGET_StatusDeck_C, MESH_BGInput) == 0x000288, "Member 
 static_assert(offsetof(UWIDGET_StatusDeck_C, TEXT_LevelName) == 0x000290, "Member 'UWIDGET_StatusDeck_C::TEXT_LevelName' has a wrong offset!");
 static_assert(offsetof(UWIDGET_StatusDeck_C, Text_LevelSymbol) == 0x000298, "Member 'UWIDGET_StatusDeck_C::Text_LevelSymbol' has a wrong offset!");
 static_assert(offsetof(UWIDGET_StatusDeck_C, Deck) == 0x0002A0, "Member 'UWIDGET_StatusDeck_C::Deck' has a wrong offset!");
-static_assert(offsetof(UWIDGET_StatusDeck_C, DeckSymbol) == 0x0002A8, "Member 'UWIDGET_StatusDeck_C::DeckSymbol' has a wrong offset!");
-static_assert(offsetof(UWIDGET_StatusDeck_C, MouseOverText_NotVisited) == 0x0002C0, "Member 'UWIDGET_StatusDeck_C::MouseOverText_NotVisited' has a wrong offset!");
-static_assert(offsetof(UWIDGET_StatusDeck_C, IsMouseOver) == 0x0002D8, "Member 'UWIDGET_StatusDeck_C::IsMouseOver' has a wrong offset!");
-static_assert(offsetof(UWIDGET_StatusDeck_C, IsSelected) == 0x0002D9, "Member 'UWIDGET_StatusDeck_C::IsSelected' has a wrong offset!");
-static_assert(offsetof(UWIDGET_StatusDeck_C, FontSize_MouseOver_NotVisited) == 0x0002DC, "Member 'UWIDGET_StatusDeck_C::FontSize_MouseOver_NotVisited' has a wrong offset!");
-static_assert(offsetof(UWIDGET_StatusDeck_C, FontSize_MouseOver_Visited) == 0x0002E4, "Member 'UWIDGET_StatusDeck_C::FontSize_MouseOver_Visited' has a wrong offset!");
-static_assert(offsetof(UWIDGET_StatusDeck_C, FontSize_MouseNotOver) == 0x0002EC, "Member 'UWIDGET_StatusDeck_C::FontSize_MouseNotOver' has a wrong offset!");
-static_assert(offsetof(UWIDGET_StatusDeck_C, StatusUI) == 0x0002F8, "Member 'UWIDGET_StatusDeck_C::StatusUI' has a wrong offset!");
-static_assert(offsetof(UWIDGET_StatusDeck_C, SplineMeshWidget) == 0x000300, "Member 'UWIDGET_StatusDeck_C::SplineMeshWidget' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, LevelName) == 0x0002B0, "Member 'UWIDGET_StatusDeck_C::LevelName' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, DeckSymbol) == 0x0002B8, "Member 'UWIDGET_StatusDeck_C::DeckSymbol' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, MouseOverText_NotVisited) == 0x0002D0, "Member 'UWIDGET_StatusDeck_C::MouseOverText_NotVisited' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, IsMouseOver) == 0x0002E8, "Member 'UWIDGET_StatusDeck_C::IsMouseOver' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, IsSelected) == 0x0002E9, "Member 'UWIDGET_StatusDeck_C::IsSelected' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, FontSize_MouseOver_NotVisited) == 0x0002EC, "Member 'UWIDGET_StatusDeck_C::FontSize_MouseOver_NotVisited' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, FontSize_MouseOver_Visited) == 0x0002F4, "Member 'UWIDGET_StatusDeck_C::FontSize_MouseOver_Visited' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, FontSize_MouseNotOver) == 0x0002FC, "Member 'UWIDGET_StatusDeck_C::FontSize_MouseNotOver' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, StatusUI) == 0x000308, "Member 'UWIDGET_StatusDeck_C::StatusUI' has a wrong offset!");
+static_assert(offsetof(UWIDGET_StatusDeck_C, SplineMeshWidget) == 0x000310, "Member 'UWIDGET_StatusDeck_C::SplineMeshWidget' has a wrong offset!");
 
 }
 

@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_MediaObject_structs.hpp"
+#include "SlateCore_structs.hpp"
+#include "STRUCT_NarrativeSpeakers_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "STRUCT_NarrativeSpeakers_structs.hpp"
-#include "SlateCore_structs.hpp"
+#include "STRUCT_MediaObject_structs.hpp"
 
 
 namespace SDK::Params
@@ -209,34 +209,35 @@ static_assert(offsetof(WIDGET_MediaPrompt_C_DisableMediaPrompt, Immediate) == 0x
 static_assert(offsetof(WIDGET_MediaPrompt_C_DisableMediaPrompt, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000004, "Member 'WIDGET_MediaPrompt_C_DisableMediaPrompt::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_MediaPrompt.WIDGET_MediaPrompt_C.ReceiveMediaKey
-// 0x0048 (0x0048 - 0x0000)
+// 0x0050 (0x0050 - 0x0000)
 struct WIDGET_MediaPrompt_C_ReceiveMediaKey final
 {
 public:
 	bool                                          Down;                                              // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_K2_GetTimerRemainingTimeHandle_ReturnValue; // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FMax_ReturnValue;                         // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x0020(0x0010)(ZeroConstructor, NoDestructor)
-	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0030(0x0008)(NoDestructor, HasGetValueTypeHash)
-	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue_1;        // 0x0038(0x0008)(NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0044(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_K2_GetTimerRemainingTimeHandle_ReturnValue; // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FMax_ReturnValue;                         // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x0024(0x0010)(ZeroConstructor, NoDestructor)
+	uint8                                         Pad_34[0x4];                                       // 0x0034(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0038(0x0008)(NoDestructor, HasGetValueTypeHash)
+	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue_1;        // 0x0040(0x0008)(NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_MediaPrompt_C_ReceiveMediaKey) == 0x000008, "Wrong alignment on WIDGET_MediaPrompt_C_ReceiveMediaKey");
-static_assert(sizeof(WIDGET_MediaPrompt_C_ReceiveMediaKey) == 0x000048, "Wrong size on WIDGET_MediaPrompt_C_ReceiveMediaKey");
+static_assert(sizeof(WIDGET_MediaPrompt_C_ReceiveMediaKey) == 0x000050, "Wrong size on WIDGET_MediaPrompt_C_ReceiveMediaKey");
 static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, Down) == 0x000000, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::Down' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, K2Node_CreateDelegate_OutputDelegate) == 0x000004, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_Add_FloatFloat_ReturnValue) == 0x000014, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_K2_GetTimerRemainingTimeHandle_ReturnValue) == 0x000018, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_K2_GetTimerRemainingTimeHandle_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_FMax_ReturnValue) == 0x00001C, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_FMax_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, K2Node_CreateDelegate_OutputDelegate_1) == 0x000020, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000030, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_K2_SetTimerDelegate_ReturnValue_1) == 0x000038, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_K2_SetTimerDelegate_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000040, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_IsValid_ReturnValue) == 0x000044, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000004, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, K2Node_CreateDelegate_OutputDelegate) == 0x000008, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_Add_FloatFloat_ReturnValue) == 0x000018, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_K2_GetTimerRemainingTimeHandle_ReturnValue) == 0x00001C, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_K2_GetTimerRemainingTimeHandle_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_FMax_ReturnValue) == 0x000020, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_FMax_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, K2Node_CreateDelegate_OutputDelegate_1) == 0x000024, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000038, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_K2_SetTimerDelegate_ReturnValue_1) == 0x000040, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_K2_SetTimerDelegate_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_ReceiveMediaKey, CallFunc_IsValid_ReturnValue) == 0x000048, "Member 'WIDGET_MediaPrompt_C_ReceiveMediaKey::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_MediaPrompt.WIDGET_MediaPrompt_C.EVENT_TryPromptQueuedMedia
 // 0x0010 (0x0010 - 0x0000)
@@ -359,15 +360,15 @@ struct WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog final
 {
 public:
 	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsVisible_ReturnValue;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsVisible_ReturnValue;                    // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog) == 0x000001, "Wrong alignment on WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog");
 static_assert(sizeof(WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog) == 0x000004, "Wrong size on WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog");
 static_assert(offsetof(WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog, Result) == 0x000000, "Member 'WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog::Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member 'WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog, CallFunc_IsVisible_ReturnValue) == 0x000002, "Member 'WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog::CallFunc_IsVisible_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog, CallFunc_IsVisible_ReturnValue) == 0x000001, "Member 'WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog::CallFunc_IsVisible_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog, CallFunc_Not_PreBool_ReturnValue) == 0x000002, "Member 'WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog, CallFunc_BooleanAND_ReturnValue) == 0x000003, "Member 'WIDGET_MediaPrompt_C_CanHoldKeyToPlayLog::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_MediaPrompt.WIDGET_MediaPrompt_C.GetPulsingColorValue

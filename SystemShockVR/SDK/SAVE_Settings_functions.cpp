@@ -694,9 +694,9 @@ void USAVE_Settings_C::ApplySubtitlesEnabled(bool NewValue)
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    isRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void USAVE_Settings_C::SetBrightness(float NewValue, bool IsRealspace)
+void USAVE_Settings_C::SetBrightness(float NewValue, bool isRealspace)
 {
 	static class UFunction* Func = nullptr;
 
@@ -706,7 +706,7 @@ void USAVE_Settings_C::SetBrightness(float NewValue, bool IsRealspace)
 	Params::SAVE_Settings_C_SetBrightness Parms{};
 
 	Parms.NewValue = NewValue;
-	Parms.IsRealspace = IsRealspace;
+	Parms.isRealspace = isRealspace;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -715,10 +715,10 @@ void USAVE_Settings_C::SetBrightness(float NewValue, bool IsRealspace)
 // Function SAVE_Settings.SAVE_Settings_C.GetBrightness
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
-// bool                                    IsRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    isRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void USAVE_Settings_C::GetBrightness(bool IsRealspace, float* Result)
+void USAVE_Settings_C::GetBrightness(bool isRealspace, float* Result)
 {
 	static class UFunction* Func = nullptr;
 
@@ -727,7 +727,7 @@ void USAVE_Settings_C::GetBrightness(bool IsRealspace, float* Result)
 
 	Params::SAVE_Settings_C_GetBrightness Parms{};
 
-	Parms.IsRealspace = IsRealspace;
+	Parms.isRealspace = isRealspace;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -787,9 +787,9 @@ void USAVE_Settings_C::GetDefaultGammaFromCurrentBrightness(struct FVector4* Res
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    isRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void USAVE_Settings_C::ApplyBrightness(float NewValue, bool IsRealspace)
+void USAVE_Settings_C::ApplyBrightness(float NewValue, bool isRealspace)
 {
 	static class UFunction* Func = nullptr;
 
@@ -799,7 +799,7 @@ void USAVE_Settings_C::ApplyBrightness(float NewValue, bool IsRealspace)
 	Params::SAVE_Settings_C_ApplyBrightness Parms{};
 
 	Parms.NewValue = NewValue;
-	Parms.IsRealspace = IsRealspace;
+	Parms.isRealspace = isRealspace;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -1114,9 +1114,9 @@ void USAVE_Settings_C::ApplyEnableMotionBlur(bool NewValue)
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    isRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void USAVE_Settings_C::SetFOV(float NewValue, bool IsRealspace)
+void USAVE_Settings_C::SetFOV(float NewValue, bool isRealspace)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1126,7 +1126,7 @@ void USAVE_Settings_C::SetFOV(float NewValue, bool IsRealspace)
 	Params::SAVE_Settings_C_SetFOV Parms{};
 
 	Parms.NewValue = NewValue;
-	Parms.IsRealspace = IsRealspace;
+	Parms.isRealspace = isRealspace;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -1135,10 +1135,10 @@ void USAVE_Settings_C::SetFOV(float NewValue, bool IsRealspace)
 // Function SAVE_Settings.SAVE_Settings_C.GetFOV
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
-// bool                                    IsRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    isRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void USAVE_Settings_C::GetFOV(bool IsRealspace, float* Result)
+void USAVE_Settings_C::GetFOV(bool isRealspace, float* Result)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1147,7 +1147,7 @@ void USAVE_Settings_C::GetFOV(bool IsRealspace, float* Result)
 
 	Params::SAVE_Settings_C_GetFOV Parms{};
 
-	Parms.IsRealspace = IsRealspace;
+	Parms.isRealspace = isRealspace;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -1160,9 +1160,9 @@ void USAVE_Settings_C::GetFOV(bool IsRealspace, float* Result)
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    isRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void USAVE_Settings_C::ApplyFOV(float NewValue, bool IsRealspace)
+void USAVE_Settings_C::ApplyFOV(float NewValue, bool isRealspace)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1172,7 +1172,7 @@ void USAVE_Settings_C::ApplyFOV(float NewValue, bool IsRealspace)
 	Params::SAVE_Settings_C_ApplyFOV Parms{};
 
 	Parms.NewValue = NewValue;
-	Parms.IsRealspace = IsRealspace;
+	Parms.isRealspace = isRealspace;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -1243,10 +1243,10 @@ void USAVE_Settings_C::ApplyEnableVSync(bool NewValue)
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
 // ENUM_InputCategory                      InputCategory                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsGamepad                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     ControllerType                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // int32                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void USAVE_Settings_C::GetInputBindCountForCategory(ENUM_InputCategory InputCategory, bool IsGamepad, int32* Result)
+void USAVE_Settings_C::GetInputBindCountForCategory(ENUM_InputCategory InputCategory, ENUM_ControllerType ControllerType, int32* Result)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1256,7 +1256,7 @@ void USAVE_Settings_C::GetInputBindCountForCategory(ENUM_InputCategory InputCate
 	Params::SAVE_Settings_C_GetInputBindCountForCategory Parms{};
 
 	Parms.InputCategory = InputCategory;
-	Parms.IsGamepad = IsGamepad;
+	Parms.ControllerType = ControllerType;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -1269,10 +1269,10 @@ void USAVE_Settings_C::GetInputBindCountForCategory(ENUM_InputCategory InputCate
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
 // ENUM_InputCategory                      InputCategory                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsGamepad                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     ControllerType                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // TMap<class FName, struct FSTRUCT_BoundInputActionPair>Result                                                 (Parm, OutParm)
 
-void USAVE_Settings_C::GetInputKeyMapForCategory(ENUM_InputCategory InputCategory, bool IsGamepad, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result)
+void USAVE_Settings_C::GetInputKeyMapForCategory(ENUM_InputCategory InputCategory, ENUM_ControllerType ControllerType, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1282,7 +1282,7 @@ void USAVE_Settings_C::GetInputKeyMapForCategory(ENUM_InputCategory InputCategor
 	Params::SAVE_Settings_C_GetInputKeyMapForCategory Parms{};
 
 	Parms.InputCategory = InputCategory;
-	Parms.IsGamepad = IsGamepad;
+	Parms.ControllerType = ControllerType;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -1296,10 +1296,10 @@ void USAVE_Settings_C::GetInputKeyMapForCategory(ENUM_InputCategory InputCategor
 // Parameters:
 // class FName                             InputAction                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // ENUM_InputCategory                      InputCategory                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsGamepad                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     IsGamepad                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // struct FSTRUCT_BoundInputActionPair     Result                                                 (Parm, OutParm, HasGetValueTypeHash)
 
-void USAVE_Settings_C::GetDefaultBindPairForCategory(class FName InputAction, ENUM_InputCategory InputCategory, bool IsGamepad, struct FSTRUCT_BoundInputActionPair* Result)
+void USAVE_Settings_C::GetDefaultBindPairForCategory(class FName InputAction, ENUM_InputCategory InputCategory, ENUM_ControllerType IsGamepad, struct FSTRUCT_BoundInputActionPair* Result)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1348,10 +1348,10 @@ void USAVE_Settings_C::ValidateAndFixInputBinds(const class FString& RealspacePr
 // Parameters:
 // ENUM_InputCategory                      InputCategory                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // class FString                           InputActionPrefix                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsGamepad                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     ControllerType                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // TMap<class FName, struct FSTRUCT_BoundInputActionPair>Result                                                 (Parm, OutParm)
 
-void USAVE_Settings_C::BuildDefaultInputKeyMap(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, bool IsGamepad, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result)
+void USAVE_Settings_C::BuildDefaultInputKeyMap(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, ENUM_ControllerType ControllerType, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1362,7 +1362,7 @@ void USAVE_Settings_C::BuildDefaultInputKeyMap(ENUM_InputCategory InputCategory,
 
 	Parms.InputCategory = InputCategory;
 	Parms.InputActionPrefix = std::move(InputActionPrefix);
-	Parms.IsGamepad = IsGamepad;
+	Parms.ControllerType = ControllerType;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -1376,11 +1376,11 @@ void USAVE_Settings_C::BuildDefaultInputKeyMap(ENUM_InputCategory InputCategory,
 // Parameters:
 // ENUM_InputCategory                      InputCategory                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // class FString                           InputActionPrefix                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsGamepad                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     ControllerType                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // TMap<class FName, struct FSTRUCT_BoundInputActionPair>Result                                                 (Parm, OutParm)
 // bool                                    IsDefault                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void USAVE_Settings_C::GetOrCreateInputKeyMapForCategory(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, bool IsGamepad, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result, bool* IsDefault)
+void USAVE_Settings_C::GetOrCreateInputKeyMapForCategory(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, ENUM_ControllerType ControllerType, TMap<class FName, struct FSTRUCT_BoundInputActionPair>* Result, bool* IsDefault)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1391,7 +1391,7 @@ void USAVE_Settings_C::GetOrCreateInputKeyMapForCategory(ENUM_InputCategory Inpu
 
 	Parms.InputCategory = InputCategory;
 	Parms.InputActionPrefix = std::move(InputActionPrefix);
-	Parms.IsGamepad = IsGamepad;
+	Parms.ControllerType = ControllerType;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -1409,9 +1409,9 @@ void USAVE_Settings_C::GetOrCreateInputKeyMapForCategory(ENUM_InputCategory Inpu
 // TMap<class FName, struct FSTRUCT_BoundInputActionPair>NewKeyMap                                              (BlueprintVisible, BlueprintReadOnly, Parm)
 // ENUM_InputCategory                      InputCategory                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // class FString                           InputActionPrefix                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsGamepad                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     ControllerType                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void USAVE_Settings_C::SetInputKeyMapForCategory(const TMap<class FName, struct FSTRUCT_BoundInputActionPair>& NewKeyMap, ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, bool IsGamepad)
+void USAVE_Settings_C::SetInputKeyMapForCategory(const TMap<class FName, struct FSTRUCT_BoundInputActionPair>& NewKeyMap, ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, ENUM_ControllerType ControllerType)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1423,7 +1423,7 @@ void USAVE_Settings_C::SetInputKeyMapForCategory(const TMap<class FName, struct 
 	Parms.NewKeyMap = std::move(NewKeyMap);
 	Parms.InputCategory = InputCategory;
 	Parms.InputActionPrefix = std::move(InputActionPrefix);
-	Parms.IsGamepad = IsGamepad;
+	Parms.ControllerType = ControllerType;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -1434,9 +1434,9 @@ void USAVE_Settings_C::SetInputKeyMapForCategory(const TMap<class FName, struct 
 // Parameters:
 // ENUM_InputCategory                      InputCategory                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // class FString                           InputActionPrefix                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsGamepad                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     ControllerType                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void USAVE_Settings_C::ApplySavedKeyActionsForCategory(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, bool IsGamepad)
+void USAVE_Settings_C::ApplySavedKeyActionsForCategory(ENUM_InputCategory InputCategory, const class FString& InputActionPrefix, ENUM_ControllerType ControllerType)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1447,7 +1447,7 @@ void USAVE_Settings_C::ApplySavedKeyActionsForCategory(ENUM_InputCategory InputC
 
 	Parms.InputCategory = InputCategory;
 	Parms.InputActionPrefix = std::move(InputActionPrefix);
-	Parms.IsGamepad = IsGamepad;
+	Parms.ControllerType = ControllerType;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -3879,10 +3879,10 @@ void USAVE_Settings_C::ApplyBrightnessForCharacter(float NewValue, class APAWN_S
 // Parameters:
 // class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    isRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void USAVE_Settings_C::GetBrightnessProfileValue(const class FString& Culture, const class FString& Platform, bool IsRealspace, float* Result)
+void USAVE_Settings_C::GetBrightnessProfileValue(const class FString& Culture, const class FString& Platform, bool isRealspace, float* Result)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3893,7 +3893,7 @@ void USAVE_Settings_C::GetBrightnessProfileValue(const class FString& Culture, c
 
 	Parms.Culture = std::move(Culture);
 	Parms.Platform = std::move(Platform);
-	Parms.IsRealspace = IsRealspace;
+	Parms.isRealspace = isRealspace;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -4059,10 +4059,10 @@ void USAVE_Settings_C::ApplyFOVForCharacter(float NewValue, class APAWN_SystemSh
 // Parameters:
 // class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// bool                                    isRealspace                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void USAVE_Settings_C::GetFOVProfileValue(const class FString& Culture, const class FString& Platform, bool IsRealspace, float* Result)
+void USAVE_Settings_C::GetFOVProfileValue(const class FString& Culture, const class FString& Platform, bool isRealspace, float* Result)
 {
 	static class UFunction* Func = nullptr;
 
@@ -4073,7 +4073,7 @@ void USAVE_Settings_C::GetFOVProfileValue(const class FString& Culture, const cl
 
 	Parms.Culture = std::move(Culture);
 	Parms.Platform = std::move(Platform);
-	Parms.IsRealspace = IsRealspace;
+	Parms.isRealspace = isRealspace;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -5005,6 +5005,1174 @@ void USAVE_Settings_C::GetSprintToggleProfileValue(const class FString& Culture,
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGamepadCursorSpeed
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::SetGamepadCursorSpeed(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGamepadCursorSpeed");
+
+	Params::SAVE_Settings_C_SetGamepadCursorSpeed Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGamepadCursorSpeed
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGamepadCursorSpeed(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGamepadCursorSpeed");
+
+	Params::SAVE_Settings_C_GetGamepadCursorSpeed Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGamepadCursorSpeed
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::ApplyGamepadCursorSpeed(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGamepadCursorSpeed");
+
+	Params::SAVE_Settings_C_ApplyGamepadCursorSpeed Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGamepadCursorSpeedProfleValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGamepadCursorSpeedProfleValue(const class FString& Culture, const class FString& Platform, float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGamepadCursorSpeedProfleValue");
+
+	Params::SAVE_Settings_C_GetGamepadCursorSpeedProfleValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroRealspace
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::SetGyroRealspace(bool NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroRealspace");
+
+	Params::SAVE_Settings_C_SetGyroRealspace Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroRealspace
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::ApplyGyroRealspace(bool NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroRealspace");
+
+	Params::SAVE_Settings_C_ApplyGyroRealspace Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroRealspace
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::GetGyroRealspace(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroRealspace");
+
+	Params::SAVE_Settings_C_GetGyroRealspace Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroRealspaceProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::GetGyroRealspaceProfileValue(const class FString& Culture, const class FString& Platform, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroRealspaceProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroRealspaceProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerLookSensitivity
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::SetGyroHackerLookSensitivity(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroHackerLookSensitivity");
+
+	Params::SAVE_Settings_C_SetGyroHackerLookSensitivity Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerLookSensitivity
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::ApplyGyroHackerLookSensitivity(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroHackerLookSensitivity");
+
+	Params::SAVE_Settings_C_ApplyGyroHackerLookSensitivity Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivity
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerLookSensitivity(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerLookSensitivity");
+
+	Params::SAVE_Settings_C_GetGyroHackerLookSensitivity Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerLookSensitivityProfileValue(const class FString& Culture, const class FString& Platform, float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerLookSensitivityProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroHackerLookSensitivityProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivity
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerADSSensitivity(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerADSSensitivity");
+
+	Params::SAVE_Settings_C_GetGyroHackerADSSensitivity Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivity
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroAvatarLookSensitivity(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroAvatarLookSensitivity");
+
+	Params::SAVE_Settings_C_GetGyroAvatarLookSensitivity Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerInvertY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::SetGyroHackerInvertY(bool NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroHackerInvertY");
+
+	Params::SAVE_Settings_C_SetGyroHackerInvertY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerInvertY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::ApplyGyroHackerInvertY(bool NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroHackerInvertY");
+
+	Params::SAVE_Settings_C_ApplyGyroHackerInvertY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerInvertY
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::GetGyroHackerInvertY(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerInvertY");
+
+	Params::SAVE_Settings_C_GetGyroHackerInvertY Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerInvertYProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::GetGyroHackerInvertYProfileValue(const class FString& Culture, const class FString& Platform, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerInvertYProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroHackerInvertYProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroCyberspace
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::GetGyroCyberspace(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroCyberspace");
+
+	Params::SAVE_Settings_C_GetGyroCyberspace Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarInvertY
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::GetGyroAvatarInvertY(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroAvatarInvertY");
+
+	Params::SAVE_Settings_C_GetGyroAvatarInvertY Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetJoyConMouseMode
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// EJoyConMouseMode                        NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::SetJoyConMouseMode(EJoyConMouseMode NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetJoyConMouseMode");
+
+	Params::SAVE_Settings_C_SetJoyConMouseMode Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetJoyConMouseMode
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// EJoyConMouseMode                        JoyConMouseMode_0                                      (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetJoyConMouseMode(EJoyConMouseMode* JoyConMouseMode_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetJoyConMouseMode");
+
+	Params::SAVE_Settings_C_GetJoyConMouseMode Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (JoyConMouseMode_0 != nullptr)
+		*JoyConMouseMode_0 = Parms.JoyConMouseMode_0;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyJoyConMouseMode
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// EJoyConMouseMode                        NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::ApplyJoyConMouseMode(EJoyConMouseMode NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyJoyConMouseMode");
+
+	Params::SAVE_Settings_C_ApplyJoyConMouseMode Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetJoyConMouseModeProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// EJoyConMouseMode                        JoyConMouseMode_0                                      (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetJoyConMouseModeProfileValue(EJoyConMouseMode* JoyConMouseMode_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetJoyConMouseModeProfileValue");
+
+	Params::SAVE_Settings_C_GetJoyConMouseModeProfileValue Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (JoyConMouseMode_0 != nullptr)
+		*JoyConMouseMode_0 = Parms.JoyConMouseMode_0;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivityX
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroAvatarLookSensitivityX(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroAvatarLookSensitivityX");
+
+	Params::SAVE_Settings_C_GetGyroAvatarLookSensitivityX Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivityY
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroAvatarLookSensitivityY(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroAvatarLookSensitivityY");
+
+	Params::SAVE_Settings_C_GetGyroAvatarLookSensitivityY Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivityX
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerADSSensitivityX(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerADSSensitivityX");
+
+	Params::SAVE_Settings_C_GetGyroHackerADSSensitivityX Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivityY
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerADSSensitivityY(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerADSSensitivityY");
+
+	Params::SAVE_Settings_C_GetGyroHackerADSSensitivityY Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityX
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerLookSensitivityX(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerLookSensitivityX");
+
+	Params::SAVE_Settings_C_GetGyroHackerLookSensitivityX Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityY
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerLookSensitivityY(float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerLookSensitivityY");
+
+	Params::SAVE_Settings_C_GetGyroHackerLookSensitivityY Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerLookSensitivityX
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::ApplyGyroHackerLookSensitivityX(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroHackerLookSensitivityX");
+
+	Params::SAVE_Settings_C_ApplyGyroHackerLookSensitivityX Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerLookSensitivityY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::ApplyGyroHackerLookSensitivityY(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroHackerLookSensitivityY");
+
+	Params::SAVE_Settings_C_ApplyGyroHackerLookSensitivityY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroAvatarLookSensitivityX
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::ApplyGyroAvatarLookSensitivityX(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroAvatarLookSensitivityX");
+
+	Params::SAVE_Settings_C_ApplyGyroAvatarLookSensitivityX Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroAvatarLookSensitivityY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::ApplyGyroAvatarLookSensitivityY(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroAvatarLookSensitivityY");
+
+	Params::SAVE_Settings_C_ApplyGyroAvatarLookSensitivityY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerADSSensitivityX
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::ApplyGyroHackerADSSensitivityX(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroHackerADSSensitivityX");
+
+	Params::SAVE_Settings_C_ApplyGyroHackerADSSensitivityX Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroHackerADSSensitivityY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::ApplyGyroHackerADSSensitivityY(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroHackerADSSensitivityY");
+
+	Params::SAVE_Settings_C_ApplyGyroHackerADSSensitivityY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityXProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerLookSensitivityXProfileValue(const class FString& Culture, const class FString& Platform, float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerLookSensitivityXProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroHackerLookSensitivityXProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerLookSensitivityYProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerLookSensitivityYProfileValue(const class FString& Culture, const class FString& Platform, float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerLookSensitivityYProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroHackerLookSensitivityYProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivityXProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerADSSensitivityXProfileValue(const class FString& Culture, const class FString& Platform, float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerADSSensitivityXProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroHackerADSSensitivityXProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroHackerADSSensitivityYProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroHackerADSSensitivityYProfileValue(const class FString& Culture, const class FString& Platform, float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroHackerADSSensitivityYProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroHackerADSSensitivityYProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivityXProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroAvatarLookSensitivityXProfileValue(const class FString& Culture, const class FString& Platform, float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroAvatarLookSensitivityXProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroAvatarLookSensitivityXProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarLookSensitivityYProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// float                                   Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::GetGyroAvatarLookSensitivityYProfileValue(const class FString& Culture, const class FString& Platform, float* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroAvatarLookSensitivityYProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroAvatarLookSensitivityYProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerLookSensitivityX
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::SetGyroHackerLookSensitivityX(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroHackerLookSensitivityX");
+
+	Params::SAVE_Settings_C_SetGyroHackerLookSensitivityX Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerLookSensitivityY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::SetGyroHackerLookSensitivityY(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroHackerLookSensitivityY");
+
+	Params::SAVE_Settings_C_SetGyroHackerLookSensitivityY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerADSSensitivityX
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::SetGyroHackerADSSensitivityX(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroHackerADSSensitivityX");
+
+	Params::SAVE_Settings_C_SetGyroHackerADSSensitivityX Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroHackerADSSensitivityY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::SetGyroHackerADSSensitivityY(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroHackerADSSensitivityY");
+
+	Params::SAVE_Settings_C_SetGyroHackerADSSensitivityY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroAvatarLookSensitivityX
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::SetGyroAvatarLookSensitivityX(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroAvatarLookSensitivityX");
+
+	Params::SAVE_Settings_C_SetGyroAvatarLookSensitivityX Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroAvatarLookSensitivityY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void USAVE_Settings_C::SetGyroAvatarLookSensitivityY(float NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroAvatarLookSensitivityY");
+
+	Params::SAVE_Settings_C_SetGyroAvatarLookSensitivityY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroAvatarInvertY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::ApplyGyroAvatarInvertY(bool NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroAvatarInvertY");
+
+	Params::SAVE_Settings_C_ApplyGyroAvatarInvertY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroAvatarInvertYProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::GetGyroAvatarInvertYProfileValue(const class FString& Culture, const class FString& Platform, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroAvatarInvertYProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroAvatarInvertYProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroAvatarInvertY
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::SetGyroAvatarInvertY(bool NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroAvatarInvertY");
+
+	Params::SAVE_Settings_C_SetGyroAvatarInvertY Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.ApplyGyroCyberspace
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::ApplyGyroCyberspace(bool NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "ApplyGyroCyberspace");
+
+	Params::SAVE_Settings_C_ApplyGyroCyberspace Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.GetGyroCyberspaceProfileValue
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FString                           Culture                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class FString                           Platform                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::GetGyroCyberspaceProfileValue(const class FString& Culture, const class FString& Platform, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "GetGyroCyberspaceProfileValue");
+
+	Params::SAVE_Settings_C_GetGyroCyberspaceProfileValue Parms{};
+
+	Parms.Culture = std::move(Culture);
+	Parms.Platform = std::move(Platform);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function SAVE_Settings.SAVE_Settings_C.SetGyroCyberspace
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    NewValue                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void USAVE_Settings_C::SetGyroCyberspace(bool NewValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SAVE_Settings_C", "SetGyroCyberspace");
+
+	Params::SAVE_Settings_C_SetGyroCyberspace Parms{};
+
+	Parms.NewValue = NewValue;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

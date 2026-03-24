@@ -10,15 +10,15 @@
 
 #include "Basic.hpp"
 
-#include "CoreGame_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
-#include "STRUCT_WeaponMode_structs.hpp"
 #include "ENUM_LeftRightCenter_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "STRUCT_WeaponMode_structs.hpp"
+#include "Engine_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "ENUM_Melee_AttackState_structs.hpp"
-#include "STRUCT_ImpactEffectResults_structs.hpp"
+#include "CoreGame_structs.hpp"
 #include "STRUCT_EffectParams_structs.hpp"
+#include "STRUCT_ImpactEffectResults_structs.hpp"
 #include "NamedInteger_structs.hpp"
 
 
@@ -2434,6 +2434,34 @@ static_assert(alignof(ITEM_MeleeWeapon_Base_C_GetTraceSocketName) == 0x000004, "
 static_assert(sizeof(ITEM_MeleeWeapon_Base_C_GetTraceSocketName) == 0x000008, "Wrong size on ITEM_MeleeWeapon_Base_C_GetTraceSocketName");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_GetTraceSocketName, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_GetTraceSocketName::Result' has a wrong offset!");
 
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnBecomeActivatable
+// 0x0003 (0x0003 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_OnBecomeActivatable final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasBerserkAttribute_Result;               // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnBecomeActivatable_Result;               // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_OnBecomeActivatable");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable) == 0x000003, "Wrong size on ITEM_MeleeWeapon_Base_C_OnBecomeActivatable");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, CallFunc_HasBerserkAttribute_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::CallFunc_HasBerserkAttribute_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, CallFunc_OnBecomeActivatable_Result) == 0x000002, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::CallFunc_OnBecomeActivatable_Result' has a wrong offset!");
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnBecomeUnactivatable
+// 0x0002 (0x0002 - 0x0000)
+struct ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable");
+static_assert(sizeof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable) == 0x000002, "Wrong size on ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
+
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.Activate
 // 0x00A0 (0x00A0 - 0x0000)
 struct ITEM_MeleeWeapon_Base_C_Activate final
@@ -2484,34 +2512,6 @@ static_assert(offsetof(ITEM_MeleeWeapon_Base_C_Activate, CallFunc_GetIdleToReady
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_Activate, CallFunc_ForceBeginAction_Action) == 0x000088, "Member 'ITEM_MeleeWeapon_Base_C_Activate::CallFunc_ForceBeginAction_Action' has a wrong offset!");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_Activate, CallFunc_GetOwnerCharacter_Character) == 0x000090, "Member 'ITEM_MeleeWeapon_Base_C_Activate::CallFunc_GetOwnerCharacter_Character' has a wrong offset!");
 static_assert(offsetof(ITEM_MeleeWeapon_Base_C_Activate, CallFunc_GetPowerSwingToReadyMontage_Montage) == 0x000098, "Member 'ITEM_MeleeWeapon_Base_C_Activate::CallFunc_GetPowerSwingToReadyMontage_Montage' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnBecomeActivatable
-// 0x0003 (0x0003 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_OnBecomeActivatable final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_HasBerserkAttribute_Result;               // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnBecomeActivatable_Result;               // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_OnBecomeActivatable");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable) == 0x000003, "Wrong size on ITEM_MeleeWeapon_Base_C_OnBecomeActivatable");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, CallFunc_HasBerserkAttribute_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::CallFunc_HasBerserkAttribute_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeActivatable, CallFunc_OnBecomeActivatable_Result) == 0x000002, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeActivatable::CallFunc_OnBecomeActivatable_Result' has a wrong offset!");
-
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnBecomeUnactivatable
-// 0x0002 (0x0002 - 0x0000)
-struct ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable");
-static_assert(sizeof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable) == 0x000002, "Wrong size on ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000001, "Member 'ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
 
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.Deactivate
 // 0x00B8 (0x00B8 - 0x0000)

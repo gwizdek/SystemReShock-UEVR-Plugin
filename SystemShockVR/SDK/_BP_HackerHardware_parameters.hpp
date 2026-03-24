@@ -86,7 +86,8 @@ public:
 	TArray<class UWidgetComponent*>               K2Node_MakeArray_Array;                            // 0x0350(0x0010)(ReferenceParm, ContainsInstancedReference)
 	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0360(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0361(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_362[0x6];                                      // 0x0362(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_EqualEqual_BoolBool_ReturnValue;          // 0x0362(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_363[0x5];                                      // 0x0363(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0368(0x0008)(NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0370(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x0371(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -144,6 +145,7 @@ static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware,
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, K2Node_MakeArray_Array) == 0x000350, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::K2Node_MakeArray_Array' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_BooleanAND_ReturnValue) == 0x000360, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_BooleanAND_ReturnValue_1) == 0x000361, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_EqualEqual_BoolBool_ReturnValue) == 0x000362, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_EqualEqual_BoolBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000368, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000370, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_BooleanAND_ReturnValue_2) == 0x000371, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
@@ -249,49 +251,52 @@ static_assert(sizeof(_BP_HackerHardware_C_ReceiveTick) == 0x000004, "Wrong size 
 static_assert(offsetof(_BP_HackerHardware_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member '_BP_HackerHardware_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
 
 // Function _BP_HackerHardware._BP_HackerHardware_C.Set Visibility
-// 0x0038 (0x0038 - 0x0000)
+// 0x0040 (0x0040 - 0x0000)
 struct _BP_HackerHardware_C_Set_Visibility final
 {
 public:
 	bool                                          InVisible;                                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	ECollisionEnabled                             Temp_byte_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	ECollisionEnabled                             Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Temp_bool_Variable;                                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	ESlateVisibility                              Temp_byte_Variable_2;                              // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_3;                              // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	int32                                         Temp_int_Array_Index_Variable;                     // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable_1;                              // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ECollisionEnabled                             Temp_byte_Variable_3;                              // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWidgetComponent*                       CallFunc_Array_Get_Item;                           // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ECollisionEnabled                             K2Node_Select_Default_1;                           // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUserWidget*                            CallFunc_GetWidget_ReturnValue;                    // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable_1;                              // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWidgetComponent*                       CallFunc_Array_Get_Item;                           // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ECollisionEnabled                             K2Node_Select_Default_1;                           // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUserWidget*                            CallFunc_GetWidget_ReturnValue;                    // 0x0030(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_HackerHardware_C_Set_Visibility) == 0x000008, "Wrong alignment on _BP_HackerHardware_C_Set_Visibility");
-static_assert(sizeof(_BP_HackerHardware_C_Set_Visibility) == 0x000038, "Wrong size on _BP_HackerHardware_C_Set_Visibility");
+static_assert(sizeof(_BP_HackerHardware_C_Set_Visibility) == 0x000040, "Wrong size on _BP_HackerHardware_C_Set_Visibility");
 static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, InVisible) == 0x000000, "Member '_BP_HackerHardware_C_Set_Visibility::InVisible' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_byte_Variable) == 0x000001, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_byte_Variable' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_Not_PreBool_ReturnValue) == 0x000002, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_byte_Variable_1) == 0x000003, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_bool_Variable) == 0x000004, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_bool_Variable) == 0x000003, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_byte_Variable_1) == 0x000004, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_byte_Variable_1' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_byte_Variable_2) == 0x000005, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_byte_Variable_2' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_byte_Variable_3) == 0x000006, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_byte_Variable_3' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, K2Node_Select_Default) == 0x000007, "Member '_BP_HackerHardware_C_Set_Visibility::K2Node_Select_Default' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_int_Array_Index_Variable) == 0x000008, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_int_Loop_Counter_Variable) == 0x00000C, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_Add_IntInt_ReturnValue) == 0x000010, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_bool_Variable_1) == 0x000014, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_bool_Variable_1' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_Array_Get_Item) == 0x000018, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, K2Node_Select_Default_1) == 0x000020, "Member '_BP_HackerHardware_C_Set_Visibility::K2Node_Select_Default_1' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_GetWidget_ReturnValue) == 0x000028, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_GetWidget_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_Array_Length_ReturnValue) == 0x000030, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_Less_IntInt_ReturnValue) == 0x000034, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, K2Node_Select_Default) == 0x00000C, "Member '_BP_HackerHardware_C_Set_Visibility::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_int_Loop_Counter_Variable) == 0x000010, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_byte_Variable_3) == 0x000014, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_byte_Variable_3' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_Add_IntInt_ReturnValue) == 0x000018, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, Temp_bool_Variable_1) == 0x00001C, "Member '_BP_HackerHardware_C_Set_Visibility::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_Array_Get_Item) == 0x000020, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, K2Node_Select_Default_1) == 0x000028, "Member '_BP_HackerHardware_C_Set_Visibility::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_GetWidget_ReturnValue) == 0x000030, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_GetWidget_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_Array_Length_ReturnValue) == 0x000038, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_Set_Visibility, CallFunc_Less_IntInt_ReturnValue) == 0x00003C, "Member '_BP_HackerHardware_C_Set_Visibility::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 
 }
 

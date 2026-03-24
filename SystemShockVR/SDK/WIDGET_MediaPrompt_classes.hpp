@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
 #include "STRUCT_MediaObject_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "UMG_classes.hpp"
 
 

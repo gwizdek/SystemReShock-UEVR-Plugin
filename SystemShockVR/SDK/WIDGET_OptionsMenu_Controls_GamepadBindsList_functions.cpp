@@ -17,6 +17,50 @@
 namespace SDK
 {
 
+// Function WIDGET_OptionsMenu_Controls_GamepadBindsList.WIDGET_OptionsMenu_Controls_GamepadBindsList_C.InitializeList
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UWIDGET_MenuBase_C*               ParentScreen                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_OptionsMenu_Controls_GamepadBindsList_C::InitializeList(class UWIDGET_MenuBase_C* ParentScreen)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_GamepadBindsList_C", "InitializeList");
+
+	Params::WIDGET_OptionsMenu_Controls_GamepadBindsList_C_InitializeList Parms{};
+
+	Parms.ParentScreen = ParentScreen;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_OptionsMenu_Controls_GamepadBindsList.WIDGET_OptionsMenu_Controls_GamepadBindsList_C.IsBindKeyInScope
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FKey                             Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+// bool                                    IsInScope                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UWIDGET_OptionsMenu_Controls_GamepadBindsList_C::IsBindKeyInScope(const struct FKey& Key, bool* IsInScope)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_GamepadBindsList_C", "IsBindKeyInScope");
+
+	Params::WIDGET_OptionsMenu_Controls_GamepadBindsList_C_IsBindKeyInScope Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsInScope != nullptr)
+		*IsInScope = Parms.IsInScope;
+}
+
+
 // Function WIDGET_OptionsMenu_Controls_GamepadBindsList.WIDGET_OptionsMenu_Controls_GamepadBindsList_C.InitializeItemArray
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -35,26 +79,6 @@ void UWIDGET_OptionsMenu_Controls_GamepadBindsList_C::InitializeItemArray(TArray
 
 	if (MenuListItems != nullptr)
 		*MenuListItems = std::move(Parms.MenuListItems);
-}
-
-
-// Function WIDGET_OptionsMenu_Controls_GamepadBindsList.WIDGET_OptionsMenu_Controls_GamepadBindsList_C.InitializeList
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UWIDGET_MenuBase_C*               ParentScreen                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWIDGET_OptionsMenu_Controls_GamepadBindsList_C::InitializeList(class UWIDGET_MenuBase_C* ParentScreen)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_OptionsMenu_Controls_GamepadBindsList_C", "InitializeList");
-
-	Params::WIDGET_OptionsMenu_Controls_GamepadBindsList_C_InitializeList Parms{};
-
-	Parms.ParentScreen = ParentScreen;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

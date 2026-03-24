@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "ENUM_GameDifficulty_structs.hpp"
-#include "SlateCore_structs.hpp"
 #include "STRUCT_LevelInfo_structs.hpp"
+#include "SlateCore_structs.hpp"
 
 
 namespace SDK::Params

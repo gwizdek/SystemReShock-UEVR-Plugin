@@ -12,9 +12,9 @@
 
 #include "Engine_structs.hpp"
 #include "ENUM_MainMenuSubScreens_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "UMG_classes.hpp"
 #include "ENUM_GameDifficulty_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
 
 
 namespace SDK

@@ -106,28 +106,6 @@ static_assert(alignof(WIDGET_MainMenu_SplashScreenList_C_BndEvt__WIDGET_MainMenu
 static_assert(sizeof(WIDGET_MainMenu_SplashScreenList_C_BndEvt__WIDGET_MainMenu_SplashScreenList_WIDGET_MainMenuButton_Continue_K2Node_ComponentBoundEvent_5_OnMainMenuButtonClicked__DelegateSignature) == 0x000070, "Wrong size on WIDGET_MainMenu_SplashScreenList_C_BndEvt__WIDGET_MainMenu_SplashScreenList_WIDGET_MainMenuButton_Continue_K2Node_ComponentBoundEvent_5_OnMainMenuButtonClicked__DelegateSignature");
 static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_BndEvt__WIDGET_MainMenu_SplashScreenList_WIDGET_MainMenuButton_Continue_K2Node_ComponentBoundEvent_5_OnMainMenuButtonClicked__DelegateSignature, InputEvent) == 0x000000, "Member 'WIDGET_MainMenu_SplashScreenList_C_BndEvt__WIDGET_MainMenu_SplashScreenList_WIDGET_MainMenuButton_Continue_K2Node_ComponentBoundEvent_5_OnMainMenuButtonClicked__DelegateSignature::InputEvent' has a wrong offset!");
 
-// Function WIDGET_MainMenu_SplashScreenList.WIDGET_MainMenu_SplashScreenList_C.InitializeItemArray
-// 0x0050 (0x0050 - 0x0000)
-struct WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray final
-{
-public:
-	TArray<class UWIDGET_MenuListItemBase_C*>     MenuListItems;                                     // 0x0000(0x0010)(Parm, OutParm, ContainsInstancedReference)
-	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings;  // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class UWIDGET_MenuListItemBase_C*>     K2Node_MakeArray_Array;                            // 0x0018(0x0010)(ReferenceParm, ContainsInstancedReference)
-	bool                                          CallFunc_GetPlatformType_IsConsole;                // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UWIDGET_MenuListItemBase_C*>     CallFunc_InitializeItemArray_MenuListItems;        // 0x0030(0x0010)(ReferenceParm, ContainsInstancedReference)
-	TArray<class UWIDGET_MenuListItemBase_C*>     K2Node_MakeArray_Array_1;                          // 0x0040(0x0010)(ReferenceParm, ContainsInstancedReference)
-};
-static_assert(alignof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray) == 0x000008, "Wrong alignment on WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray");
-static_assert(sizeof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray) == 0x000050, "Wrong size on WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray");
-static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, MenuListItems) == 0x000000, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::MenuListItems' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, CallFunc_GetShockSettingsForCurrentUser_Settings) == 0x000010, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::CallFunc_GetShockSettingsForCurrentUser_Settings' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, K2Node_MakeArray_Array) == 0x000018, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, CallFunc_GetPlatformType_IsConsole) == 0x000028, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::CallFunc_GetPlatformType_IsConsole' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, CallFunc_InitializeItemArray_MenuListItems) == 0x000030, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::CallFunc_InitializeItemArray_MenuListItems' has a wrong offset!");
-static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, K2Node_MakeArray_Array_1) == 0x000040, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::K2Node_MakeArray_Array_1' has a wrong offset!");
-
 // Function WIDGET_MainMenu_SplashScreenList.WIDGET_MainMenu_SplashScreenList_C.InitializeList
 // 0x0018 (0x0018 - 0x0000)
 struct WIDGET_MainMenu_SplashScreenList_C_InitializeList final
@@ -162,6 +140,28 @@ static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_UpdateContinueLoadButt
 static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_UpdateContinueLoadButtons, CallFunc_GetExistingSaveGameNames_ReturnValue) == 0x000008, "Member 'WIDGET_MainMenu_SplashScreenList_C_UpdateContinueLoadButtons::CallFunc_GetExistingSaveGameNames_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_UpdateContinueLoadButtons, CallFunc_Array_Length_ReturnValue) == 0x000018, "Member 'WIDGET_MainMenu_SplashScreenList_C_UpdateContinueLoadButtons::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_UpdateContinueLoadButtons, CallFunc_Greater_IntInt_ReturnValue) == 0x00001C, "Member 'WIDGET_MainMenu_SplashScreenList_C_UpdateContinueLoadButtons::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_MainMenu_SplashScreenList.WIDGET_MainMenu_SplashScreenList_C.InitializeItemArray
+// 0x0050 (0x0050 - 0x0000)
+struct WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray final
+{
+public:
+	TArray<class UWIDGET_MenuListItemBase_C*>     MenuListItems;                                     // 0x0000(0x0010)(Parm, OutParm, ContainsInstancedReference)
+	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings;  // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class UWIDGET_MenuListItemBase_C*>     K2Node_MakeArray_Array;                            // 0x0018(0x0010)(ReferenceParm, ContainsInstancedReference)
+	bool                                          CallFunc_GetPlatformType_IsConsole;                // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWIDGET_MenuListItemBase_C*>     CallFunc_InitializeItemArray_MenuListItems;        // 0x0030(0x0010)(ReferenceParm, ContainsInstancedReference)
+	TArray<class UWIDGET_MenuListItemBase_C*>     K2Node_MakeArray_Array_1;                          // 0x0040(0x0010)(ReferenceParm, ContainsInstancedReference)
+};
+static_assert(alignof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray) == 0x000008, "Wrong alignment on WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray");
+static_assert(sizeof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray) == 0x000050, "Wrong size on WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray");
+static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, MenuListItems) == 0x000000, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::MenuListItems' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, CallFunc_GetShockSettingsForCurrentUser_Settings) == 0x000010, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::CallFunc_GetShockSettingsForCurrentUser_Settings' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, K2Node_MakeArray_Array) == 0x000018, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, CallFunc_GetPlatformType_IsConsole) == 0x000028, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::CallFunc_GetPlatformType_IsConsole' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, CallFunc_InitializeItemArray_MenuListItems) == 0x000030, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::CallFunc_InitializeItemArray_MenuListItems' has a wrong offset!");
+static_assert(offsetof(WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray, K2Node_MakeArray_Array_1) == 0x000040, "Member 'WIDGET_MainMenu_SplashScreenList_C_InitializeItemArray::K2Node_MakeArray_Array_1' has a wrong offset!");
 
 }
 

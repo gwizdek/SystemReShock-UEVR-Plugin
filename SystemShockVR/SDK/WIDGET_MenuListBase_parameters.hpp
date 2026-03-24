@@ -725,5 +725,71 @@ static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavUp, CallFunc_BooleanAND_R
 static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavUp, CallFunc_Add_IntInt_ReturnValue) == 0x00004C, "Member 'WIDGET_MenuListBase_C_ReceiveNavUp::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavUp, CallFunc_Subtract_IntInt_ReturnValue) == 0x000050, "Member 'WIDGET_MenuListBase_C_ReceiveNavUp::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
 
+// Function WIDGET_MenuListBase.WIDGET_MenuListBase_C.ReceiveNavLeftRelease
+// 0x0060 (0x0060 - 0x0000)
+struct WIDGET_MenuListBase_C_ReceiveNavLeftRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWIDGET_MenuListItemBase_C*>     MenuListItems;                                     // 0x0008(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_MenuListItemBase_C*             CallFunc_Array_Get_Item;                           // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Array_IsValidIndex_ReturnValue;           // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> CallFunc_ReceiveNavLeftRelease_self_CastInput;     // 0x0030(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavLeftRelease_Result;             // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWIDGET_MenuListItemBase_C*>     CallFunc_GetAllMenuListItems_Options;              // 0x0048(0x0010)(ReferenceParm, ContainsInstancedReference)
+	bool                                          CallFunc_EqualEqual_BoolBool_ReturnValue;          // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease) == 0x000008, "Wrong alignment on WIDGET_MenuListBase_C_ReceiveNavLeftRelease");
+static_assert(sizeof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease) == 0x000060, "Wrong size on WIDGET_MenuListBase_C_ReceiveNavLeftRelease");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, InputState) == 0x000000, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, Result) == 0x000001, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, MenuListItems) == 0x000008, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::MenuListItems' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, CallFunc_Not_PreBool_ReturnValue) == 0x000018, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, CallFunc_Array_Get_Item) == 0x000020, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, CallFunc_Array_IsValidIndex_ReturnValue) == 0x000028, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::CallFunc_Array_IsValidIndex_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, CallFunc_ReceiveNavLeftRelease_self_CastInput) == 0x000030, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::CallFunc_ReceiveNavLeftRelease_self_CastInput' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, CallFunc_ReceiveNavLeftRelease_Result) == 0x000040, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::CallFunc_ReceiveNavLeftRelease_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, CallFunc_GetAllMenuListItems_Options) == 0x000048, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::CallFunc_GetAllMenuListItems_Options' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavLeftRelease, CallFunc_EqualEqual_BoolBool_ReturnValue) == 0x000058, "Member 'WIDGET_MenuListBase_C_ReceiveNavLeftRelease::CallFunc_EqualEqual_BoolBool_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_MenuListBase.WIDGET_MenuListBase_C.ReceiveNavRightRelease
+// 0x0060 (0x0060 - 0x0000)
+struct WIDGET_MenuListBase_C_ReceiveNavRightRelease final
+{
+public:
+	bool                                          InputState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Result;                                            // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWIDGET_MenuListItemBase_C*>     MenuListItems;                                     // 0x0008(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_MenuListItemBase_C*             CallFunc_Array_Get_Item;                           // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Array_IsValidIndex_ReturnValue;           // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> CallFunc_ReceiveNavRightRelease_self_CastInput;    // 0x0030(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavRightRelease_Result;            // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWIDGET_MenuListItemBase_C*>     CallFunc_GetAllMenuListItems_Options;              // 0x0048(0x0010)(ReferenceParm, ContainsInstancedReference)
+	bool                                          CallFunc_EqualEqual_BoolBool_ReturnValue;          // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_MenuListBase_C_ReceiveNavRightRelease) == 0x000008, "Wrong alignment on WIDGET_MenuListBase_C_ReceiveNavRightRelease");
+static_assert(sizeof(WIDGET_MenuListBase_C_ReceiveNavRightRelease) == 0x000060, "Wrong size on WIDGET_MenuListBase_C_ReceiveNavRightRelease");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, InputState) == 0x000000, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::InputState' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, Result) == 0x000001, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, MenuListItems) == 0x000008, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::MenuListItems' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, CallFunc_Not_PreBool_ReturnValue) == 0x000018, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, CallFunc_Array_Get_Item) == 0x000020, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, CallFunc_Array_IsValidIndex_ReturnValue) == 0x000028, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::CallFunc_Array_IsValidIndex_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, CallFunc_ReceiveNavRightRelease_self_CastInput) == 0x000030, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::CallFunc_ReceiveNavRightRelease_self_CastInput' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, CallFunc_ReceiveNavRightRelease_Result) == 0x000040, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::CallFunc_ReceiveNavRightRelease_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, CallFunc_GetAllMenuListItems_Options) == 0x000048, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::CallFunc_GetAllMenuListItems_Options' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuListBase_C_ReceiveNavRightRelease, CallFunc_EqualEqual_BoolBool_ReturnValue) == 0x000058, "Member 'WIDGET_MenuListBase_C_ReceiveNavRightRelease::CallFunc_EqualEqual_BoolBool_ReturnValue' has a wrong offset!");
+
 }
 

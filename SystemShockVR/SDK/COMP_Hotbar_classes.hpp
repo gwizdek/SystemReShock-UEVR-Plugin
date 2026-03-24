@@ -69,6 +69,8 @@ public:
 	void SetEnableHotbarCategories(bool Enable);
 	void GetFirstOccupiedSlotIndex(int32* SlotIndex);
 	void GetFirstFreeSlotIndexWithPreference(class UClass* SlottableClass, int32* Result);
+	void GetFirstSlotWithParentClass(class UClass* SlotParentClass, int32* SlotIndex);
+	void TryUseFirstConsumableWithParentClass(class UClass* SlotParentClass);
 	bool ShouldSaveComponent(struct FStreamingSaveGameComponentParams* Params_0);
 
 public:

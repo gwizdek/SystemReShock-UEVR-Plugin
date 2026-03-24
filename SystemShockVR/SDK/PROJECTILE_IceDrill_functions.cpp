@@ -17,26 +17,6 @@
 namespace SDK
 {
 
-// Function PROJECTILE_IceDrill.PROJECTILE_IceDrill_C.DestroyProjectile
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// struct FVector                          ImpactNormal                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void APROJECTILE_IceDrill_C::DestroyProjectile(const struct FVector& ImpactNormal)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PROJECTILE_IceDrill_C", "DestroyProjectile");
-
-	Params::PROJECTILE_IceDrill_C_DestroyProjectile Parms{};
-
-	Parms.ImpactNormal = std::move(ImpactNormal);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function PROJECTILE_IceDrill.PROJECTILE_IceDrill_C.SetLockOnActor
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -130,6 +110,26 @@ void APROJECTILE_IceDrill_C::ApplyDamageMod(class UAttribManagerComponent* Attri
 
 	if (DamageMod != nullptr)
 		*DamageMod = Parms.DamageMod;
+}
+
+
+// Function PROJECTILE_IceDrill.PROJECTILE_IceDrill_C.DestroyProjectile
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FVector                          ImpactNormal                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void APROJECTILE_IceDrill_C::DestroyProjectile(const struct FVector& ImpactNormal)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PROJECTILE_IceDrill_C", "DestroyProjectile");
+
+	Params::PROJECTILE_IceDrill_C_DestroyProjectile Parms{};
+
+	Parms.ImpactNormal = std::move(ImpactNormal);
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

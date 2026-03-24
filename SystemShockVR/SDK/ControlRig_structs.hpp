@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "AnimGraphRuntime_structs.hpp"
-#include "AnimationCore_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "AnimationCore_structs.hpp"
 #include "RigVM_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "AnimGraphRuntime_structs.hpp"
 #include "MovieSceneTracks_structs.hpp"
 #include "MovieScene_structs.hpp"
 
@@ -427,222 +427,6 @@ enum class EControlRigState : uint8
 	EControlRigState_MAX                     = 3,
 };
 
-// ScriptStruct ControlRig.RigUnit
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit : public FRigVMStruct
-{
-};
-static_assert(alignof(FRigUnit) == 0x000008, "Wrong alignment on FRigUnit");
-static_assert(sizeof(FRigUnit) == 0x000008, "Wrong size on FRigUnit");
-
-// ScriptStruct ControlRig.RigUnit_AnimBase
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit_AnimBase : public FRigUnit
-{
-};
-static_assert(alignof(FRigUnit_AnimBase) == 0x000008, "Wrong alignment on FRigUnit_AnimBase");
-static_assert(sizeof(FRigUnit_AnimBase) == 0x000008, "Wrong size on FRigUnit_AnimBase");
-
-// ScriptStruct ControlRig.RigUnit_AnimEvalRichCurve
-// 0x00A8 (0x00B0 - 0x0008)
-struct FRigUnit_AnimEvalRichCurve final : public FRigUnit_AnimBase
-{
-public:
-	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeFloatCurve                     Curve;                                             // 0x0010(0x0088)(NativeAccessSpecifierPublic)
-	float                                         SourceMinimum;                                     // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         SourceMaximum;                                     // 0x009C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TargetMinimum;                                     // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TargetMaximum;                                     // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_AC[0x4];                                       // 0x00AC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_AnimEvalRichCurve) == 0x000008, "Wrong alignment on FRigUnit_AnimEvalRichCurve");
-static_assert(sizeof(FRigUnit_AnimEvalRichCurve) == 0x0000B0, "Wrong size on FRigUnit_AnimEvalRichCurve");
-static_assert(offsetof(FRigUnit_AnimEvalRichCurve, Value) == 0x000008, "Member 'FRigUnit_AnimEvalRichCurve::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_AnimEvalRichCurve, Curve) == 0x000010, "Member 'FRigUnit_AnimEvalRichCurve::Curve' has a wrong offset!");
-static_assert(offsetof(FRigUnit_AnimEvalRichCurve, SourceMinimum) == 0x000098, "Member 'FRigUnit_AnimEvalRichCurve::SourceMinimum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_AnimEvalRichCurve, SourceMaximum) == 0x00009C, "Member 'FRigUnit_AnimEvalRichCurve::SourceMaximum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_AnimEvalRichCurve, TargetMinimum) == 0x0000A0, "Member 'FRigUnit_AnimEvalRichCurve::TargetMinimum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_AnimEvalRichCurve, TargetMaximum) == 0x0000A4, "Member 'FRigUnit_AnimEvalRichCurve::TargetMaximum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_AnimEvalRichCurve, Result) == 0x0000A8, "Member 'FRigUnit_AnimEvalRichCurve::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.ControlRigIOSettings
-// 0x0002 (0x0002 - 0x0000)
-struct FControlRigIOSettings final
-{
-public:
-	bool                                          bUpdatePose;                                       // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bUpdateCurves;                                     // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FControlRigIOSettings) == 0x000001, "Wrong alignment on FControlRigIOSettings");
-static_assert(sizeof(FControlRigIOSettings) == 0x000002, "Wrong size on FControlRigIOSettings");
-static_assert(offsetof(FControlRigIOSettings, bUpdatePose) == 0x000000, "Member 'FControlRigIOSettings::bUpdatePose' has a wrong offset!");
-static_assert(offsetof(FControlRigIOSettings, bUpdateCurves) == 0x000001, "Member 'FControlRigIOSettings::bUpdateCurves' has a wrong offset!");
-
-// ScriptStruct ControlRig.AnimNode_ControlRigBase
-// 0x0118 (0x0170 - 0x0058)
-struct FAnimNode_ControlRigBase : public FAnimNode_CustomProperty
-{
-public:
-	struct FPoseLink                              Source;                                            // 0x0058(0x0010)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	TMap<class FName, uint16>                     ControlRigBoneMapping;                             // 0x0068(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
-	TMap<class FName, uint16>                     ControlRigCurveMapping;                            // 0x00B8(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
-	TMap<class FName, uint16>                     InputToCurveMappingUIDs;                           // 0x0108(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class UNodeMappingContainer>   NodeMappingContainer;                              // 0x0158(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FControlRigIOSettings                  InputSettings;                                     // 0x0160(0x0002)(Transient, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	struct FControlRigIOSettings                  OutputSettings;                                    // 0x0162(0x0002)(Transient, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	bool                                          bExecute;                                          // 0x0164(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_165[0xB];                                      // 0x0165(0x000B)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FAnimNode_ControlRigBase) == 0x000008, "Wrong alignment on FAnimNode_ControlRigBase");
-static_assert(sizeof(FAnimNode_ControlRigBase) == 0x000170, "Wrong size on FAnimNode_ControlRigBase");
-static_assert(offsetof(FAnimNode_ControlRigBase, Source) == 0x000058, "Member 'FAnimNode_ControlRigBase::Source' has a wrong offset!");
-static_assert(offsetof(FAnimNode_ControlRigBase, ControlRigBoneMapping) == 0x000068, "Member 'FAnimNode_ControlRigBase::ControlRigBoneMapping' has a wrong offset!");
-static_assert(offsetof(FAnimNode_ControlRigBase, ControlRigCurveMapping) == 0x0000B8, "Member 'FAnimNode_ControlRigBase::ControlRigCurveMapping' has a wrong offset!");
-static_assert(offsetof(FAnimNode_ControlRigBase, InputToCurveMappingUIDs) == 0x000108, "Member 'FAnimNode_ControlRigBase::InputToCurveMappingUIDs' has a wrong offset!");
-static_assert(offsetof(FAnimNode_ControlRigBase, NodeMappingContainer) == 0x000158, "Member 'FAnimNode_ControlRigBase::NodeMappingContainer' has a wrong offset!");
-static_assert(offsetof(FAnimNode_ControlRigBase, InputSettings) == 0x000160, "Member 'FAnimNode_ControlRigBase::InputSettings' has a wrong offset!");
-static_assert(offsetof(FAnimNode_ControlRigBase, OutputSettings) == 0x000162, "Member 'FAnimNode_ControlRigBase::OutputSettings' has a wrong offset!");
-static_assert(offsetof(FAnimNode_ControlRigBase, bExecute) == 0x000164, "Member 'FAnimNode_ControlRigBase::bExecute' has a wrong offset!");
-
-// ScriptStruct ControlRig.IntegerParameterNameAndCurve
-// 0x0098 (0x0098 - 0x0000)
-struct FIntegerParameterNameAndCurve final
-{
-public:
-	class FName                                   ParameterName;                                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FMovieSceneIntegerChannel              ParameterCurve;                                    // 0x0008(0x0090)(NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FIntegerParameterNameAndCurve) == 0x000008, "Wrong alignment on FIntegerParameterNameAndCurve");
-static_assert(sizeof(FIntegerParameterNameAndCurve) == 0x000098, "Wrong size on FIntegerParameterNameAndCurve");
-static_assert(offsetof(FIntegerParameterNameAndCurve, ParameterName) == 0x000000, "Member 'FIntegerParameterNameAndCurve::ParameterName' has a wrong offset!");
-static_assert(offsetof(FIntegerParameterNameAndCurve, ParameterCurve) == 0x000008, "Member 'FIntegerParameterNameAndCurve::ParameterCurve' has a wrong offset!");
-
-// ScriptStruct ControlRig.ConstraintNodeData
-// 0x00B0 (0x00B0 - 0x0000)
-struct FConstraintNodeData final
-{
-public:
-	struct FTransform                             RelativeParent;                                    // 0x0000(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FConstraintOffset                      ConstraintOffset;                                  // 0x0030(0x0060)(NoDestructor, NativeAccessSpecifierPublic)
-	class FName                                   LinkedNode;                                        // 0x0090(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<struct FTransformConstraint>           Constraints;                                       // 0x0098(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_A8[0x8];                                       // 0x00A8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FConstraintNodeData) == 0x000010, "Wrong alignment on FConstraintNodeData");
-static_assert(sizeof(FConstraintNodeData) == 0x0000B0, "Wrong size on FConstraintNodeData");
-static_assert(offsetof(FConstraintNodeData, RelativeParent) == 0x000000, "Member 'FConstraintNodeData::RelativeParent' has a wrong offset!");
-static_assert(offsetof(FConstraintNodeData, ConstraintOffset) == 0x000030, "Member 'FConstraintNodeData::ConstraintOffset' has a wrong offset!");
-static_assert(offsetof(FConstraintNodeData, LinkedNode) == 0x000090, "Member 'FConstraintNodeData::LinkedNode' has a wrong offset!");
-static_assert(offsetof(FConstraintNodeData, Constraints) == 0x000098, "Member 'FConstraintNodeData::Constraints' has a wrong offset!");
-
-// ScriptStruct ControlRig.AnimationHierarchy
-// 0x0010 (0x0088 - 0x0078)
-struct FAnimationHierarchy final : public FNodeHierarchyWithUserData
-{
-public:
-	TArray<struct FConstraintNodeData>            UserData;                                          // 0x0078(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FAnimationHierarchy) == 0x000008, "Wrong alignment on FAnimationHierarchy");
-static_assert(sizeof(FAnimationHierarchy) == 0x000088, "Wrong size on FAnimationHierarchy");
-static_assert(offsetof(FAnimationHierarchy, UserData) == 0x000078, "Member 'FAnimationHierarchy::UserData' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigElement
-// 0x0018 (0x0018 - 0x0000)
-struct alignas(0x08) FRigElement
-{
-public:
-	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   Name;                                              // 0x0008(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Index;                                             // 0x0010(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigElement) == 0x000008, "Wrong alignment on FRigElement");
-static_assert(sizeof(FRigElement) == 0x000018, "Wrong size on FRigElement");
-static_assert(offsetof(FRigElement, Name) == 0x000008, "Member 'FRigElement::Name' has a wrong offset!");
-static_assert(offsetof(FRigElement, Index) == 0x000010, "Member 'FRigElement::Index' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigBone
-// 0x00C8 (0x00E0 - 0x0018)
-struct FRigBone final : public FRigElement
-{
-public:
-	class FName                                   ParentName;                                        // 0x0018(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParentIndex;                                       // 0x0020(0x0004)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0xC];                                       // 0x0024(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             InitialTransform;                                  // 0x0030(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             GlobalTransform;                                   // 0x0060(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, Transient, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             LocalTransform;                                    // 0x0090(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, Transient, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	TArray<int32>                                 Dependents;                                        // 0x00C0(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPublic)
-	ERigBoneType                                  Type;                                              // 0x00D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D1[0xF];                                       // 0x00D1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigBone) == 0x000010, "Wrong alignment on FRigBone");
-static_assert(sizeof(FRigBone) == 0x0000E0, "Wrong size on FRigBone");
-static_assert(offsetof(FRigBone, ParentName) == 0x000018, "Member 'FRigBone::ParentName' has a wrong offset!");
-static_assert(offsetof(FRigBone, ParentIndex) == 0x000020, "Member 'FRigBone::ParentIndex' has a wrong offset!");
-static_assert(offsetof(FRigBone, InitialTransform) == 0x000030, "Member 'FRigBone::InitialTransform' has a wrong offset!");
-static_assert(offsetof(FRigBone, GlobalTransform) == 0x000060, "Member 'FRigBone::GlobalTransform' has a wrong offset!");
-static_assert(offsetof(FRigBone, LocalTransform) == 0x000090, "Member 'FRigBone::LocalTransform' has a wrong offset!");
-static_assert(offsetof(FRigBone, Dependents) == 0x0000C0, "Member 'FRigBone::Dependents' has a wrong offset!");
-static_assert(offsetof(FRigBone, Type) == 0x0000D0, "Member 'FRigBone::Type' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigBoneHierarchy
-// 0x0098 (0x0098 - 0x0000)
-struct FRigBoneHierarchy final
-{
-public:
-	uint8                                         Pad_0[0x20];                                       // 0x0000(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FRigBone>                       Bones;                                             // 0x0020(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
-	TMap<class FName, int32>                      NameToIndexMapping;                                // 0x0030(0x0050)(NativeAccessSpecifierPrivate)
-	TArray<class FName>                           Selection;                                         // 0x0080(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_90[0x8];                                       // 0x0090(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigBoneHierarchy) == 0x000008, "Wrong alignment on FRigBoneHierarchy");
-static_assert(sizeof(FRigBoneHierarchy) == 0x000098, "Wrong size on FRigBoneHierarchy");
-static_assert(offsetof(FRigBoneHierarchy, Bones) == 0x000020, "Member 'FRigBoneHierarchy::Bones' has a wrong offset!");
-static_assert(offsetof(FRigBoneHierarchy, NameToIndexMapping) == 0x000030, "Member 'FRigBoneHierarchy::NameToIndexMapping' has a wrong offset!");
-static_assert(offsetof(FRigBoneHierarchy, Selection) == 0x000080, "Member 'FRigBoneHierarchy::Selection' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigSpace
-// 0x0078 (0x0090 - 0x0018)
-struct FRigSpace final : public FRigElement
-{
-public:
-	ERigSpaceType                                 SpaceType;                                         // 0x0018(0x0001)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   ParentName;                                        // 0x001C(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParentIndex;                                       // 0x0024(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             InitialTransform;                                  // 0x0030(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             LocalTransform;                                    // 0x0060(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, Transient, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigSpace) == 0x000010, "Wrong alignment on FRigSpace");
-static_assert(sizeof(FRigSpace) == 0x000090, "Wrong size on FRigSpace");
-static_assert(offsetof(FRigSpace, SpaceType) == 0x000018, "Member 'FRigSpace::SpaceType' has a wrong offset!");
-static_assert(offsetof(FRigSpace, ParentName) == 0x00001C, "Member 'FRigSpace::ParentName' has a wrong offset!");
-static_assert(offsetof(FRigSpace, ParentIndex) == 0x000024, "Member 'FRigSpace::ParentIndex' has a wrong offset!");
-static_assert(offsetof(FRigSpace, InitialTransform) == 0x000030, "Member 'FRigSpace::InitialTransform' has a wrong offset!");
-static_assert(offsetof(FRigSpace, LocalTransform) == 0x000060, "Member 'FRigSpace::LocalTransform' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigSpaceHierarchy
-// 0x0090 (0x0090 - 0x0000)
-struct FRigSpaceHierarchy final
-{
-public:
-	uint8                                         Pad_0[0x20];                                       // 0x0000(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FRigSpace>                      Spaces;                                            // 0x0020(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
-	TMap<class FName, int32>                      NameToIndexMapping;                                // 0x0030(0x0050)(NativeAccessSpecifierPrivate)
-	TArray<class FName>                           Selection;                                         // 0x0080(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-};
-static_assert(alignof(FRigSpaceHierarchy) == 0x000008, "Wrong alignment on FRigSpaceHierarchy");
-static_assert(sizeof(FRigSpaceHierarchy) == 0x000090, "Wrong size on FRigSpaceHierarchy");
-static_assert(offsetof(FRigSpaceHierarchy, Spaces) == 0x000020, "Member 'FRigSpaceHierarchy::Spaces' has a wrong offset!");
-static_assert(offsetof(FRigSpaceHierarchy, NameToIndexMapping) == 0x000030, "Member 'FRigSpaceHierarchy::NameToIndexMapping' has a wrong offset!");
-static_assert(offsetof(FRigSpaceHierarchy, Selection) == 0x000080, "Member 'FRigSpaceHierarchy::Selection' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigControlValueStorage
 // 0x0044 (0x0044 - 0x0000)
 struct FRigControlValueStorage final
@@ -700,6 +484,21 @@ static_assert(alignof(FRigControlValue) == 0x000010, "Wrong alignment on FRigCon
 static_assert(sizeof(FRigControlValue) == 0x000080, "Wrong size on FRigControlValue");
 static_assert(offsetof(FRigControlValue, FloatStorage) == 0x000000, "Member 'FRigControlValue::FloatStorage' has a wrong offset!");
 static_assert(offsetof(FRigControlValue, Storage) == 0x000050, "Member 'FRigControlValue::Storage' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigElement
+// 0x0018 (0x0018 - 0x0000)
+struct alignas(0x08) FRigElement
+{
+public:
+	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   Name;                                              // 0x0008(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Index;                                             // 0x0010(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigElement) == 0x000008, "Wrong alignment on FRigElement");
+static_assert(sizeof(FRigElement) == 0x000018, "Wrong size on FRigElement");
+static_assert(offsetof(FRigElement, Name) == 0x000008, "Member 'FRigElement::Name' has a wrong offset!");
+static_assert(offsetof(FRigElement, Index) == 0x000010, "Member 'FRigElement::Index' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigControl
 // 0x02D8 (0x02F0 - 0x0018)
@@ -768,70 +567,119 @@ static_assert(offsetof(FRigControl, Dependents) == 0x0002D0, "Member 'FRigContro
 static_assert(offsetof(FRigControl, bIsTransientControl) == 0x0002E0, "Member 'FRigControl::bIsTransientControl' has a wrong offset!");
 static_assert(offsetof(FRigControl, ControlEnum) == 0x0002E8, "Member 'FRigControl::ControlEnum' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigControlHierarchy
-// 0x0108 (0x0108 - 0x0000)
-struct FRigControlHierarchy final
+// ScriptStruct ControlRig.RigElementKey
+// 0x000C (0x000C - 0x0000)
+struct FRigElementKey final
 {
 public:
-	uint8                                         Pad_0[0x98];                                       // 0x0000(0x0098)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FRigControl>                    Controls;                                          // 0x0098(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
-	TMap<class FName, int32>                      NameToIndexMapping;                                // 0x00A8(0x0050)(NativeAccessSpecifierPrivate)
-	TArray<class FName>                           Selection;                                         // 0x00F8(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	ERigElementType                               Type;                                              // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   Name;                                              // 0x0004(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigControlHierarchy) == 0x000008, "Wrong alignment on FRigControlHierarchy");
-static_assert(sizeof(FRigControlHierarchy) == 0x000108, "Wrong size on FRigControlHierarchy");
-static_assert(offsetof(FRigControlHierarchy, Controls) == 0x000098, "Member 'FRigControlHierarchy::Controls' has a wrong offset!");
-static_assert(offsetof(FRigControlHierarchy, NameToIndexMapping) == 0x0000A8, "Member 'FRigControlHierarchy::NameToIndexMapping' has a wrong offset!");
-static_assert(offsetof(FRigControlHierarchy, Selection) == 0x0000F8, "Member 'FRigControlHierarchy::Selection' has a wrong offset!");
+static_assert(alignof(FRigElementKey) == 0x000004, "Wrong alignment on FRigElementKey");
+static_assert(sizeof(FRigElementKey) == 0x00000C, "Wrong size on FRigElementKey");
+static_assert(offsetof(FRigElementKey, Type) == 0x000000, "Member 'FRigElementKey::Type' has a wrong offset!");
+static_assert(offsetof(FRigElementKey, Name) == 0x000004, "Member 'FRigElementKey::Name' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigCurve
-// 0x0008 (0x0020 - 0x0018)
-struct FRigCurve final : public FRigElement
+// ScriptStruct ControlRig.CachedRigElement
+// 0x0014 (0x0014 - 0x0000)
+struct FCachedRigElement final
 {
 public:
-	float                                         Value;                                             // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FRigElementKey                         Key;                                               // 0x0000(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint16                                        Index;                                             // 0x000C(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_E[0x2];                                        // 0x000E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ContainerVersion;                                  // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 };
-static_assert(alignof(FRigCurve) == 0x000008, "Wrong alignment on FRigCurve");
-static_assert(sizeof(FRigCurve) == 0x000020, "Wrong size on FRigCurve");
-static_assert(offsetof(FRigCurve, Value) == 0x000018, "Member 'FRigCurve::Value' has a wrong offset!");
+static_assert(alignof(FCachedRigElement) == 0x000004, "Wrong alignment on FCachedRigElement");
+static_assert(sizeof(FCachedRigElement) == 0x000014, "Wrong size on FCachedRigElement");
+static_assert(offsetof(FCachedRigElement, Key) == 0x000000, "Member 'FCachedRigElement::Key' has a wrong offset!");
+static_assert(offsetof(FCachedRigElement, Index) == 0x00000C, "Member 'FCachedRigElement::Index' has a wrong offset!");
+static_assert(offsetof(FCachedRigElement, ContainerVersion) == 0x000010, "Member 'FCachedRigElement::ContainerVersion' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigCurveContainer
-// 0x0098 (0x0098 - 0x0000)
-struct FRigCurveContainer final
+// ScriptStruct ControlRig.ControlRigExecuteContext
+// 0x0008 (0x0060 - 0x0058)
+struct FControlRigExecuteContext final : public FRigVMExecuteContext
 {
 public:
-	uint8                                         Pad_0[0x20];                                       // 0x0000(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FRigCurve>                      Curves;                                            // 0x0020(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
-	TMap<class FName, int32>                      NameToIndexMapping;                                // 0x0030(0x0050)(NativeAccessSpecifierPrivate)
-	TArray<class FName>                           Selection;                                         // 0x0080(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_90[0x8];                                       // 0x0090(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_58[0x8];                                       // 0x0058(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigCurveContainer) == 0x000008, "Wrong alignment on FRigCurveContainer");
-static_assert(sizeof(FRigCurveContainer) == 0x000098, "Wrong size on FRigCurveContainer");
-static_assert(offsetof(FRigCurveContainer, Curves) == 0x000020, "Member 'FRigCurveContainer::Curves' has a wrong offset!");
-static_assert(offsetof(FRigCurveContainer, NameToIndexMapping) == 0x000030, "Member 'FRigCurveContainer::NameToIndexMapping' has a wrong offset!");
-static_assert(offsetof(FRigCurveContainer, Selection) == 0x000080, "Member 'FRigCurveContainer::Selection' has a wrong offset!");
+static_assert(alignof(FControlRigExecuteContext) == 0x000008, "Wrong alignment on FControlRigExecuteContext");
+static_assert(sizeof(FControlRigExecuteContext) == 0x000060, "Wrong size on FControlRigExecuteContext");
 
-// ScriptStruct ControlRig.RigHierarchyContainer
-// 0x0368 (0x0368 - 0x0000)
-struct FRigHierarchyContainer final
+// ScriptStruct ControlRig.RigUnit
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit : public FRigVMStruct
+{
+};
+static_assert(alignof(FRigUnit) == 0x000008, "Wrong alignment on FRigUnit");
+static_assert(sizeof(FRigUnit) == 0x000008, "Wrong size on FRigUnit");
+
+// ScriptStruct ControlRig.RigUnitMutable
+// 0x0060 (0x0068 - 0x0008)
+struct FRigUnitMutable : public FRigUnit
 {
 public:
-	struct FRigBoneHierarchy                      BoneHierarchy;                                     // 0x0000(0x0098)(NativeAccessSpecifierPublic)
-	struct FRigSpaceHierarchy                     SpaceHierarchy;                                    // 0x0098(0x0090)(NativeAccessSpecifierPublic)
-	struct FRigControlHierarchy                   ControlHierarchy;                                  // 0x0128(0x0108)(NativeAccessSpecifierPublic)
-	struct FRigCurveContainer                     CurveContainer;                                    // 0x0230(0x0098)(NativeAccessSpecifierPublic)
-	int32                                         Version;                                           // 0x02C8(0x0004)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2CC[0x9C];                                     // 0x02CC(0x009C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FControlRigExecuteContext              ExecuteContext;                                    // 0x0008(0x0060)(Transient, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigHierarchyContainer) == 0x000008, "Wrong alignment on FRigHierarchyContainer");
-static_assert(sizeof(FRigHierarchyContainer) == 0x000368, "Wrong size on FRigHierarchyContainer");
-static_assert(offsetof(FRigHierarchyContainer, BoneHierarchy) == 0x000000, "Member 'FRigHierarchyContainer::BoneHierarchy' has a wrong offset!");
-static_assert(offsetof(FRigHierarchyContainer, SpaceHierarchy) == 0x000098, "Member 'FRigHierarchyContainer::SpaceHierarchy' has a wrong offset!");
-static_assert(offsetof(FRigHierarchyContainer, ControlHierarchy) == 0x000128, "Member 'FRigHierarchyContainer::ControlHierarchy' has a wrong offset!");
-static_assert(offsetof(FRigHierarchyContainer, CurveContainer) == 0x000230, "Member 'FRigHierarchyContainer::CurveContainer' has a wrong offset!");
-static_assert(offsetof(FRigHierarchyContainer, Version) == 0x0002C8, "Member 'FRigHierarchyContainer::Version' has a wrong offset!");
+static_assert(alignof(FRigUnitMutable) == 0x000008, "Wrong alignment on FRigUnitMutable");
+static_assert(sizeof(FRigUnitMutable) == 0x000068, "Wrong size on FRigUnitMutable");
+static_assert(offsetof(FRigUnitMutable, ExecuteContext) == 0x000008, "Member 'FRigUnitMutable::ExecuteContext' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_SetControlColor
+// 0x0030 (0x0098 - 0x0068)
+struct FRigUnit_SetControlColor final : public FRigUnitMutable
+{
+public:
+	class FName                                   Control;                                           // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           Color;                                             // 0x0070(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FCachedRigElement                      CachedControlIndex;                                // 0x0080(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_94[0x4];                                       // 0x0094(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_SetControlColor) == 0x000008, "Wrong alignment on FRigUnit_SetControlColor");
+static_assert(sizeof(FRigUnit_SetControlColor) == 0x000098, "Wrong size on FRigUnit_SetControlColor");
+static_assert(offsetof(FRigUnit_SetControlColor, Control) == 0x000068, "Member 'FRigUnit_SetControlColor::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlColor, Color) == 0x000070, "Member 'FRigUnit_SetControlColor::Color' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlColor, CachedControlIndex) == 0x000080, "Member 'FRigUnit_SetControlColor::CachedControlIndex' has a wrong offset!");
+
+// ScriptStruct ControlRig.ControlRigIOSettings
+// 0x0002 (0x0002 - 0x0000)
+struct FControlRigIOSettings final
+{
+public:
+	bool                                          bUpdatePose;                                       // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bUpdateCurves;                                     // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FControlRigIOSettings) == 0x000001, "Wrong alignment on FControlRigIOSettings");
+static_assert(sizeof(FControlRigIOSettings) == 0x000002, "Wrong size on FControlRigIOSettings");
+static_assert(offsetof(FControlRigIOSettings, bUpdatePose) == 0x000000, "Member 'FControlRigIOSettings::bUpdatePose' has a wrong offset!");
+static_assert(offsetof(FControlRigIOSettings, bUpdateCurves) == 0x000001, "Member 'FControlRigIOSettings::bUpdateCurves' has a wrong offset!");
+
+// ScriptStruct ControlRig.AnimNode_ControlRigBase
+// 0x0118 (0x0170 - 0x0058)
+struct FAnimNode_ControlRigBase : public FAnimNode_CustomProperty
+{
+public:
+	struct FPoseLink                              Source;                                            // 0x0058(0x0010)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	TMap<class FName, uint16>                     ControlRigBoneMapping;                             // 0x0068(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
+	TMap<class FName, uint16>                     ControlRigCurveMapping;                            // 0x00B8(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
+	TMap<class FName, uint16>                     InputToCurveMappingUIDs;                           // 0x0108(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UNodeMappingContainer>   NodeMappingContainer;                              // 0x0158(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FControlRigIOSettings                  InputSettings;                                     // 0x0160(0x0002)(Transient, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	struct FControlRigIOSettings                  OutputSettings;                                    // 0x0162(0x0002)(Transient, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	bool                                          bExecute;                                          // 0x0164(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_165[0xB];                                      // 0x0165(0x000B)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FAnimNode_ControlRigBase) == 0x000008, "Wrong alignment on FAnimNode_ControlRigBase");
+static_assert(sizeof(FAnimNode_ControlRigBase) == 0x000170, "Wrong size on FAnimNode_ControlRigBase");
+static_assert(offsetof(FAnimNode_ControlRigBase, Source) == 0x000058, "Member 'FAnimNode_ControlRigBase::Source' has a wrong offset!");
+static_assert(offsetof(FAnimNode_ControlRigBase, ControlRigBoneMapping) == 0x000068, "Member 'FAnimNode_ControlRigBase::ControlRigBoneMapping' has a wrong offset!");
+static_assert(offsetof(FAnimNode_ControlRigBase, ControlRigCurveMapping) == 0x0000B8, "Member 'FAnimNode_ControlRigBase::ControlRigCurveMapping' has a wrong offset!");
+static_assert(offsetof(FAnimNode_ControlRigBase, InputToCurveMappingUIDs) == 0x000108, "Member 'FAnimNode_ControlRigBase::InputToCurveMappingUIDs' has a wrong offset!");
+static_assert(offsetof(FAnimNode_ControlRigBase, NodeMappingContainer) == 0x000158, "Member 'FAnimNode_ControlRigBase::NodeMappingContainer' has a wrong offset!");
+static_assert(offsetof(FAnimNode_ControlRigBase, InputSettings) == 0x000160, "Member 'FAnimNode_ControlRigBase::InputSettings' has a wrong offset!");
+static_assert(offsetof(FAnimNode_ControlRigBase, OutputSettings) == 0x000162, "Member 'FAnimNode_ControlRigBase::OutputSettings' has a wrong offset!");
+static_assert(offsetof(FAnimNode_ControlRigBase, bExecute) == 0x000164, "Member 'FAnimNode_ControlRigBase::bExecute' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathBase
 // 0x0000 (0x0008 - 0x0008)
@@ -849,27 +697,6 @@ struct FRigUnit_MathVectorBase : public FRigUnit_MathBase
 static_assert(alignof(FRigUnit_MathVectorBase) == 0x000008, "Wrong alignment on FRigUnit_MathVectorBase");
 static_assert(sizeof(FRigUnit_MathVectorBase) == 0x000008, "Wrong size on FRigUnit_MathVectorBase");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorUnaryOp
-// 0x0018 (0x0020 - 0x0008)
-struct FRigUnit_MathVectorUnaryOp : public FRigUnit_MathVectorBase
-{
-public:
-	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathVectorUnaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathVectorUnaryOp");
-static_assert(sizeof(FRigUnit_MathVectorUnaryOp) == 0x000020, "Wrong size on FRigUnit_MathVectorUnaryOp");
-static_assert(offsetof(FRigUnit_MathVectorUnaryOp, Value) == 0x000008, "Member 'FRigUnit_MathVectorUnaryOp::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorUnaryOp, Result) == 0x000014, "Member 'FRigUnit_MathVectorUnaryOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorAbs
-// 0x0000 (0x0020 - 0x0020)
-struct FRigUnit_MathVectorAbs final : public FRigUnit_MathVectorUnaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathVectorAbs) == 0x000008, "Wrong alignment on FRigUnit_MathVectorAbs");
-static_assert(sizeof(FRigUnit_MathVectorAbs) == 0x000020, "Wrong size on FRigUnit_MathVectorAbs");
-
 // ScriptStruct ControlRig.RigUnit_MathVectorEquals
 // 0x0020 (0x0028 - 0x0008)
 struct FRigUnit_MathVectorEquals final : public FRigUnit_MathVectorBase
@@ -886,49 +713,171 @@ static_assert(offsetof(FRigUnit_MathVectorEquals, A) == 0x000008, "Member 'FRigU
 static_assert(offsetof(FRigUnit_MathVectorEquals, B) == 0x000014, "Member 'FRigUnit_MathVectorEquals::B' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathVectorEquals, Result) == 0x000020, "Member 'FRigUnit_MathVectorEquals::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigEventContext
-// 0x0028 (0x0028 - 0x0000)
-struct alignas(0x08) FRigEventContext final
+// ScriptStruct ControlRig.ConstraintNodeData
+// 0x00B0 (0x00B0 - 0x0000)
+struct FConstraintNodeData final
 {
 public:
-	uint8                                         Pad_0[0x28];                                       // 0x0000(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RelativeParent;                                    // 0x0000(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FConstraintOffset                      ConstraintOffset;                                  // 0x0030(0x0060)(NoDestructor, NativeAccessSpecifierPublic)
+	class FName                                   LinkedNode;                                        // 0x0090(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FTransformConstraint>           Constraints;                                       // 0x0098(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_A8[0x8];                                       // 0x00A8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigEventContext) == 0x000008, "Wrong alignment on FRigEventContext");
-static_assert(sizeof(FRigEventContext) == 0x000028, "Wrong size on FRigEventContext");
+static_assert(alignof(FConstraintNodeData) == 0x000010, "Wrong alignment on FConstraintNodeData");
+static_assert(sizeof(FConstraintNodeData) == 0x0000B0, "Wrong size on FConstraintNodeData");
+static_assert(offsetof(FConstraintNodeData, RelativeParent) == 0x000000, "Member 'FConstraintNodeData::RelativeParent' has a wrong offset!");
+static_assert(offsetof(FConstraintNodeData, ConstraintOffset) == 0x000030, "Member 'FConstraintNodeData::ConstraintOffset' has a wrong offset!");
+static_assert(offsetof(FConstraintNodeData, LinkedNode) == 0x000090, "Member 'FConstraintNodeData::LinkedNode' has a wrong offset!");
+static_assert(offsetof(FConstraintNodeData, Constraints) == 0x000098, "Member 'FConstraintNodeData::Constraints' has a wrong offset!");
 
-// ScriptStruct ControlRig.ControlRigComponentMappedCurve
-// 0x0010 (0x0010 - 0x0000)
-struct FControlRigComponentMappedCurve final
+// ScriptStruct ControlRig.AnimationHierarchy
+// 0x0010 (0x0088 - 0x0078)
+struct FAnimationHierarchy final : public FNodeHierarchyWithUserData
 {
 public:
-	class FName                                   Source;                                            // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   Target;                                            // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FConstraintNodeData>            UserData;                                          // 0x0078(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FControlRigComponentMappedCurve) == 0x000004, "Wrong alignment on FControlRigComponentMappedCurve");
-static_assert(sizeof(FControlRigComponentMappedCurve) == 0x000010, "Wrong size on FControlRigComponentMappedCurve");
-static_assert(offsetof(FControlRigComponentMappedCurve, Source) == 0x000000, "Member 'FControlRigComponentMappedCurve::Source' has a wrong offset!");
-static_assert(offsetof(FControlRigComponentMappedCurve, Target) == 0x000008, "Member 'FControlRigComponentMappedCurve::Target' has a wrong offset!");
+static_assert(alignof(FAnimationHierarchy) == 0x000008, "Wrong alignment on FAnimationHierarchy");
+static_assert(sizeof(FAnimationHierarchy) == 0x000088, "Wrong size on FAnimationHierarchy");
+static_assert(offsetof(FAnimationHierarchy, UserData) == 0x000078, "Member 'FAnimationHierarchy::UserData' has a wrong offset!");
 
-// ScriptStruct ControlRig.ControlRigExecuteContext
-// 0x0008 (0x0060 - 0x0058)
-struct FControlRigExecuteContext final : public FRigVMExecuteContext
+// ScriptStruct ControlRig.RigUnit_MathVectorLength
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathVectorLength final : public FRigUnit_MathVectorBase
 {
 public:
-	uint8                                         Pad_58[0x8];                                       // 0x0058(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FControlRigExecuteContext) == 0x000008, "Wrong alignment on FControlRigExecuteContext");
-static_assert(sizeof(FControlRigExecuteContext) == 0x000060, "Wrong size on FControlRigExecuteContext");
+static_assert(alignof(FRigUnit_MathVectorLength) == 0x000008, "Wrong alignment on FRigUnit_MathVectorLength");
+static_assert(sizeof(FRigUnit_MathVectorLength) == 0x000018, "Wrong size on FRigUnit_MathVectorLength");
+static_assert(offsetof(FRigUnit_MathVectorLength, Value) == 0x000008, "Member 'FRigUnit_MathVectorLength::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorLength, Result) == 0x000014, "Member 'FRigUnit_MathVectorLength::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_BeginExecution
-// 0x0060 (0x0068 - 0x0008)
-struct FRigUnit_BeginExecution final : public FRigUnit
+// ScriptStruct ControlRig.RigHierarchyCopyPasteContent
+// 0x0040 (0x0040 - 0x0000)
+struct FRigHierarchyCopyPasteContent final
 {
 public:
-	struct FControlRigExecuteContext              ExecuteContext;                                    // 0x0008(0x0060)(Edit, Transient, NativeAccessSpecifierPublic)
+	TArray<ERigElementType>                       Types;                                             // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<class FString>                         Contents;                                          // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FTransform>                     LocalTransforms;                                   // 0x0020(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FTransform>                     GlobalTransforms;                                  // 0x0030(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_BeginExecution) == 0x000008, "Wrong alignment on FRigUnit_BeginExecution");
-static_assert(sizeof(FRigUnit_BeginExecution) == 0x000068, "Wrong size on FRigUnit_BeginExecution");
-static_assert(offsetof(FRigUnit_BeginExecution, ExecuteContext) == 0x000008, "Member 'FRigUnit_BeginExecution::ExecuteContext' has a wrong offset!");
+static_assert(alignof(FRigHierarchyCopyPasteContent) == 0x000008, "Wrong alignment on FRigHierarchyCopyPasteContent");
+static_assert(sizeof(FRigHierarchyCopyPasteContent) == 0x000040, "Wrong size on FRigHierarchyCopyPasteContent");
+static_assert(offsetof(FRigHierarchyCopyPasteContent, Types) == 0x000000, "Member 'FRigHierarchyCopyPasteContent::Types' has a wrong offset!");
+static_assert(offsetof(FRigHierarchyCopyPasteContent, Contents) == 0x000010, "Member 'FRigHierarchyCopyPasteContent::Contents' has a wrong offset!");
+static_assert(offsetof(FRigHierarchyCopyPasteContent, LocalTransforms) == 0x000020, "Member 'FRigHierarchyCopyPasteContent::LocalTransforms' has a wrong offset!");
+static_assert(offsetof(FRigHierarchyCopyPasteContent, GlobalTransforms) == 0x000030, "Member 'FRigHierarchyCopyPasteContent::GlobalTransforms' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorBinaryOp
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_MathVectorBinaryOp : public FRigUnit_MathVectorBase
+{
+public:
+	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathVectorBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathVectorBinaryOp");
+static_assert(sizeof(FRigUnit_MathVectorBinaryOp) == 0x000030, "Wrong size on FRigUnit_MathVectorBinaryOp");
+static_assert(offsetof(FRigUnit_MathVectorBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathVectorBinaryOp::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorBinaryOp, B) == 0x000014, "Member 'FRigUnit_MathVectorBinaryOp::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorBinaryOp, Result) == 0x000020, "Member 'FRigUnit_MathVectorBinaryOp::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorMod
+// 0x0000 (0x0030 - 0x0030)
+struct FRigUnit_MathVectorMod final : public FRigUnit_MathVectorBinaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathVectorMod) == 0x000008, "Wrong alignment on FRigUnit_MathVectorMod");
+static_assert(sizeof(FRigUnit_MathVectorMod) == 0x000030, "Wrong size on FRigUnit_MathVectorMod");
+
+// ScriptStruct ControlRig.ControlRigAnimInstanceProxy
+// 0x00A0 (0x0810 - 0x0770)
+struct FControlRigAnimInstanceProxy final : public FAnimInstanceProxy
+{
+public:
+	uint8                                         Pad_770[0xA0];                                     // 0x0770(0x00A0)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FControlRigAnimInstanceProxy) == 0x000010, "Wrong alignment on FControlRigAnimInstanceProxy");
+static_assert(sizeof(FControlRigAnimInstanceProxy) == 0x000810, "Wrong size on FControlRigAnimInstanceProxy");
+
+// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatWorkData
+// 0x0090 (0x0090 - 0x0000)
+struct alignas(0x10) FRigUnit_MathRBFInterpolateQuatWorkData final
+{
+public:
+	uint8                                         Pad_0[0x90];                                       // 0x0000(0x0090)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathRBFInterpolateQuatWorkData) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatWorkData");
+static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatWorkData) == 0x000090, "Wrong size on FRigUnit_MathRBFInterpolateQuatWorkData");
+
+// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateBase
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit_MathRBFInterpolateBase : public FRigUnit_MathBase
+{
+};
+static_assert(alignof(FRigUnit_MathRBFInterpolateBase) == 0x000008, "Wrong alignment on FRigUnit_MathRBFInterpolateBase");
+static_assert(sizeof(FRigUnit_MathRBFInterpolateBase) == 0x000008, "Wrong size on FRigUnit_MathRBFInterpolateBase");
+
+// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatBase
+// 0x00C8 (0x00D0 - 0x0008)
+struct FRigUnit_MathRBFInterpolateQuatBase : public FRigUnit_MathRBFInterpolateBase
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Input;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	ERBFQuatDistanceType                          DistanceFunction;                                  // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ERBFKernelType                                SmoothingFunction;                                 // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_22[0x2];                                       // 0x0022(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         SmoothingAngle;                                    // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bNormalizeOutput;                                  // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                TwistAxis;                                         // 0x002C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_38[0x8];                                       // 0x0038(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigUnit_MathRBFInterpolateQuatWorkData WorkData;                                          // 0x0040(0x0090)(Transient, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathRBFInterpolateQuatBase) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatBase");
+static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatBase) == 0x0000D0, "Wrong size on FRigUnit_MathRBFInterpolateQuatBase");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, Input) == 0x000010, "Member 'FRigUnit_MathRBFInterpolateQuatBase::Input' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, DistanceFunction) == 0x000020, "Member 'FRigUnit_MathRBFInterpolateQuatBase::DistanceFunction' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, SmoothingFunction) == 0x000021, "Member 'FRigUnit_MathRBFInterpolateQuatBase::SmoothingFunction' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, SmoothingAngle) == 0x000024, "Member 'FRigUnit_MathRBFInterpolateQuatBase::SmoothingAngle' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, bNormalizeOutput) == 0x000028, "Member 'FRigUnit_MathRBFInterpolateQuatBase::bNormalizeOutput' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, TwistAxis) == 0x00002C, "Member 'FRigUnit_MathRBFInterpolateQuatBase::TwistAxis' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, WorkData) == 0x000040, "Member 'FRigUnit_MathRBFInterpolateQuatBase::WorkData' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigCurve
+// 0x0008 (0x0020 - 0x0018)
+struct FRigCurve final : public FRigElement
+{
+public:
+	float                                         Value;                                             // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigCurve) == 0x000008, "Wrong alignment on FRigCurve");
+static_assert(sizeof(FRigCurve) == 0x000020, "Wrong size on FRigCurve");
+static_assert(offsetof(FRigCurve, Value) == 0x000018, "Member 'FRigCurve::Value' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_SetMultiControlRotator_Entry
+// 0x0018 (0x0018 - 0x0000)
+struct FRigUnit_SetMultiControlRotator_Entry final
+{
+public:
+	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               Rotator;                                           // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	EBoneGetterSetterMode                         Space;                                             // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_SetMultiControlRotator_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlRotator_Entry");
+static_assert(sizeof(FRigUnit_SetMultiControlRotator_Entry) == 0x000018, "Wrong size on FRigUnit_SetMultiControlRotator_Entry");
+static_assert(offsetof(FRigUnit_SetMultiControlRotator_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlRotator_Entry::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetMultiControlRotator_Entry, Rotator) == 0x000008, "Member 'FRigUnit_SetMultiControlRotator_Entry::Rotator' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetMultiControlRotator_Entry, Space) == 0x000014, "Member 'FRigUnit_SetMultiControlRotator_Entry::Space' has a wrong offset!");
 
 // ScriptStruct ControlRig.AnimNode_ControlRig
 // 0x01F8 (0x0368 - 0x0170)
@@ -966,67 +915,112 @@ static_assert(offsetof(FAnimNode_ControlRig, InputMapping) == 0x000210, "Member 
 static_assert(offsetof(FAnimNode_ControlRig, OutputMapping) == 0x000260, "Member 'FAnimNode_ControlRig::OutputMapping' has a wrong offset!");
 static_assert(offsetof(FAnimNode_ControlRig, LODThreshold) == 0x000360, "Member 'FAnimNode_ControlRig::LODThreshold' has a wrong offset!");
 
-// ScriptStruct ControlRig.EnumParameterNameAndCurve
-// 0x00A0 (0x00A0 - 0x0000)
-struct FEnumParameterNameAndCurve final
+// ScriptStruct ControlRig.RigUnit_MathVectorUnaryOp
+// 0x0018 (0x0020 - 0x0008)
+struct FRigUnit_MathVectorUnaryOp : public FRigUnit_MathVectorBase
 {
 public:
-	class FName                                   ParameterName;                                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FMovieSceneByteChannel                 ParameterCurve;                                    // 0x0008(0x0098)(NativeAccessSpecifierPublic)
+	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FEnumParameterNameAndCurve) == 0x000008, "Wrong alignment on FEnumParameterNameAndCurve");
-static_assert(sizeof(FEnumParameterNameAndCurve) == 0x0000A0, "Wrong size on FEnumParameterNameAndCurve");
-static_assert(offsetof(FEnumParameterNameAndCurve, ParameterName) == 0x000000, "Member 'FEnumParameterNameAndCurve::ParameterName' has a wrong offset!");
-static_assert(offsetof(FEnumParameterNameAndCurve, ParameterCurve) == 0x000008, "Member 'FEnumParameterNameAndCurve::ParameterCurve' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathVectorUnaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathVectorUnaryOp");
+static_assert(sizeof(FRigUnit_MathVectorUnaryOp) == 0x000020, "Wrong size on FRigUnit_MathVectorUnaryOp");
+static_assert(offsetof(FRigUnit_MathVectorUnaryOp, Value) == 0x000008, "Member 'FRigUnit_MathVectorUnaryOp::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorUnaryOp, Result) == 0x000014, "Member 'FRigUnit_MathVectorUnaryOp::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.MovieSceneControlRigParameterTemplate
-// 0x0020 (0x00A0 - 0x0080)
-struct FMovieSceneControlRigParameterTemplate final : public FMovieSceneParameterSectionTemplate
+// ScriptStruct ControlRig.RigUnit_MathVectorSign
+// 0x0000 (0x0020 - 0x0020)
+struct FRigUnit_MathVectorSign final : public FRigUnit_MathVectorUnaryOp
 {
-public:
-	TArray<struct FEnumParameterNameAndCurve>     Enums;                                             // 0x0080(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	TArray<struct FIntegerParameterNameAndCurve>  Integers;                                          // 0x0090(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
 };
-static_assert(alignof(FMovieSceneControlRigParameterTemplate) == 0x000008, "Wrong alignment on FMovieSceneControlRigParameterTemplate");
-static_assert(sizeof(FMovieSceneControlRigParameterTemplate) == 0x0000A0, "Wrong size on FMovieSceneControlRigParameterTemplate");
-static_assert(offsetof(FMovieSceneControlRigParameterTemplate, Enums) == 0x000080, "Member 'FMovieSceneControlRigParameterTemplate::Enums' has a wrong offset!");
-static_assert(offsetof(FMovieSceneControlRigParameterTemplate, Integers) == 0x000090, "Member 'FMovieSceneControlRigParameterTemplate::Integers' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathVectorSign) == 0x000008, "Wrong alignment on FRigUnit_MathVectorSign");
+static_assert(sizeof(FRigUnit_MathVectorSign) == 0x000020, "Wrong size on FRigUnit_MathVectorSign");
 
-// ScriptStruct ControlRig.RigUnitMutable
-// 0x0060 (0x0068 - 0x0008)
-struct FRigUnitMutable : public FRigUnit
+// ScriptStruct ControlRig.RigElementKeyCollection
+// 0x0010 (0x0010 - 0x0000)
+struct alignas(0x08) FRigElementKeyCollection final
 {
 public:
-	struct FControlRigExecuteContext              ExecuteContext;                                    // 0x0008(0x0060)(Transient, NativeAccessSpecifierPublic)
+	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnitMutable) == 0x000008, "Wrong alignment on FRigUnitMutable");
-static_assert(sizeof(FRigUnitMutable) == 0x000068, "Wrong size on FRigUnitMutable");
-static_assert(offsetof(FRigUnitMutable, ExecuteContext) == 0x000008, "Member 'FRigUnitMutable::ExecuteContext' has a wrong offset!");
+static_assert(alignof(FRigElementKeyCollection) == 0x000008, "Wrong alignment on FRigElementKeyCollection");
+static_assert(sizeof(FRigElementKeyCollection) == 0x000010, "Wrong size on FRigElementKeyCollection");
 
-// ScriptStruct ControlRig.RigUnit_ApplyFK
-// 0x0088 (0x00F0 - 0x0068)
-struct FRigUnit_ApplyFK final : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_ParentSwitchConstraint
+// 0x00F8 (0x0160 - 0x0068)
+struct FRigUnit_ParentSwitchConstraint final : public FRigUnitMutable
 {
 public:
-	class FName                                   Joint;                                             // 0x0068(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FTransform                             Transform;                                         // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransformFilter                       Filter;                                            // 0x00A0(0x0009)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	EApplyTransformMode                           ApplyTransformMode;                                // 0x00A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ETransformSpaceMode                           ApplyTransformSpace;                               // 0x00AA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_AB[0x5];                                       // 0x00AB(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             BaseTransform;                                     // 0x00B0(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	class FName                                   BaseJoint;                                         // 0x00E0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E8[0x8];                                       // 0x00E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FRigElementKey                         Subject;                                           // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParentIndex;                                       // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRigElementKeyCollection               Parents;                                           // 0x0078(0x0010)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_88[0x8];                                       // 0x0088(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             InitialGlobalTransform;                            // 0x0090(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         Weight;                                            // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C4[0xC];                                       // 0x00C4(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Transform;                                         // 0x00D0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          Switched;                                          // 0x0100(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_101[0x3];                                      // 0x0101(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedSubject;                                     // 0x0104(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FCachedRigElement                      CachedParent;                                      // 0x0118(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_12C[0x4];                                      // 0x012C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RelativeOffset;                                    // 0x0130(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_ApplyFK) == 0x000010, "Wrong alignment on FRigUnit_ApplyFK");
-static_assert(sizeof(FRigUnit_ApplyFK) == 0x0000F0, "Wrong size on FRigUnit_ApplyFK");
-static_assert(offsetof(FRigUnit_ApplyFK, Joint) == 0x000068, "Member 'FRigUnit_ApplyFK::Joint' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ApplyFK, Transform) == 0x000070, "Member 'FRigUnit_ApplyFK::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ApplyFK, Filter) == 0x0000A0, "Member 'FRigUnit_ApplyFK::Filter' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ApplyFK, ApplyTransformMode) == 0x0000A9, "Member 'FRigUnit_ApplyFK::ApplyTransformMode' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ApplyFK, ApplyTransformSpace) == 0x0000AA, "Member 'FRigUnit_ApplyFK::ApplyTransformSpace' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ApplyFK, BaseTransform) == 0x0000B0, "Member 'FRigUnit_ApplyFK::BaseTransform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ApplyFK, BaseJoint) == 0x0000E0, "Member 'FRigUnit_ApplyFK::BaseJoint' has a wrong offset!");
+static_assert(alignof(FRigUnit_ParentSwitchConstraint) == 0x000010, "Wrong alignment on FRigUnit_ParentSwitchConstraint");
+static_assert(sizeof(FRigUnit_ParentSwitchConstraint) == 0x000160, "Wrong size on FRigUnit_ParentSwitchConstraint");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Subject) == 0x000068, "Member 'FRigUnit_ParentSwitchConstraint::Subject' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, ParentIndex) == 0x000074, "Member 'FRigUnit_ParentSwitchConstraint::ParentIndex' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Parents) == 0x000078, "Member 'FRigUnit_ParentSwitchConstraint::Parents' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, InitialGlobalTransform) == 0x000090, "Member 'FRigUnit_ParentSwitchConstraint::InitialGlobalTransform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Weight) == 0x0000C0, "Member 'FRigUnit_ParentSwitchConstraint::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Transform) == 0x0000D0, "Member 'FRigUnit_ParentSwitchConstraint::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Switched) == 0x000100, "Member 'FRigUnit_ParentSwitchConstraint::Switched' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, CachedSubject) == 0x000104, "Member 'FRigUnit_ParentSwitchConstraint::CachedSubject' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, CachedParent) == 0x000118, "Member 'FRigUnit_ParentSwitchConstraint::CachedParent' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ParentSwitchConstraint, RelativeOffset) == 0x000130, "Member 'FRigUnit_ParentSwitchConstraint::RelativeOffset' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigSpace
+// 0x0078 (0x0090 - 0x0018)
+struct FRigSpace final : public FRigElement
+{
+public:
+	ERigSpaceType                                 SpaceType;                                         // 0x0018(0x0001)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   ParentName;                                        // 0x001C(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParentIndex;                                       // 0x0024(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             InitialTransform;                                  // 0x0030(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             LocalTransform;                                    // 0x0060(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, Transient, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigSpace) == 0x000010, "Wrong alignment on FRigSpace");
+static_assert(sizeof(FRigSpace) == 0x000090, "Wrong size on FRigSpace");
+static_assert(offsetof(FRigSpace, SpaceType) == 0x000018, "Member 'FRigSpace::SpaceType' has a wrong offset!");
+static_assert(offsetof(FRigSpace, ParentName) == 0x00001C, "Member 'FRigSpace::ParentName' has a wrong offset!");
+static_assert(offsetof(FRigSpace, ParentIndex) == 0x000024, "Member 'FRigSpace::ParentIndex' has a wrong offset!");
+static_assert(offsetof(FRigSpace, InitialTransform) == 0x000030, "Member 'FRigSpace::InitialTransform' has a wrong offset!");
+static_assert(offsetof(FRigSpace, LocalTransform) == 0x000060, "Member 'FRigSpace::LocalTransform' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathTransformBase
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit_MathTransformBase : public FRigUnit_MathBase
+{
+};
+static_assert(alignof(FRigUnit_MathTransformBase) == 0x000008, "Wrong alignment on FRigUnit_MathTransformBase");
+static_assert(sizeof(FRigUnit_MathTransformBase) == 0x000008, "Wrong size on FRigUnit_MathTransformBase");
+
+// ScriptStruct ControlRig.RigUnit_MathTransformFromEulerTransform
+// 0x0058 (0x0060 - 0x0008)
+struct FRigUnit_MathTransformFromEulerTransform final : public FRigUnit_MathTransformBase
+{
+public:
+	struct FEulerTransform                        EulerTransform;                                    // 0x0008(0x0024)(NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Result;                                            // 0x0030(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathTransformFromEulerTransform) == 0x000010, "Wrong alignment on FRigUnit_MathTransformFromEulerTransform");
+static_assert(sizeof(FRigUnit_MathTransformFromEulerTransform) == 0x000060, "Wrong size on FRigUnit_MathTransformFromEulerTransform");
+static_assert(offsetof(FRigUnit_MathTransformFromEulerTransform, EulerTransform) == 0x000008, "Member 'FRigUnit_MathTransformFromEulerTransform::EulerTransform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformFromEulerTransform, Result) == 0x000030, "Member 'FRigUnit_MathTransformFromEulerTransform::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.AnimNode_ControlRig_ExternalSource
 // 0x0008 (0x0178 - 0x0170)
@@ -1039,165 +1033,61 @@ static_assert(alignof(FAnimNode_ControlRig_ExternalSource) == 0x000008, "Wrong a
 static_assert(sizeof(FAnimNode_ControlRig_ExternalSource) == 0x000178, "Wrong size on FAnimNode_ControlRig_ExternalSource");
 static_assert(offsetof(FAnimNode_ControlRig_ExternalSource, ControlRig) == 0x000170, "Member 'FAnimNode_ControlRig_ExternalSource::ControlRig' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigHierarchyCopyPasteContent
-// 0x0040 (0x0040 - 0x0000)
-struct FRigHierarchyCopyPasteContent final
+// ScriptStruct ControlRig.RigEventContext
+// 0x0028 (0x0028 - 0x0000)
+struct alignas(0x08) FRigEventContext final
 {
 public:
-	TArray<ERigElementType>                       Types;                                             // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<class FString>                         Contents;                                          // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FTransform>                     LocalTransforms;                                   // 0x0020(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FTransform>                     GlobalTransforms;                                  // 0x0030(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_0[0x28];                                       // 0x0000(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigHierarchyCopyPasteContent) == 0x000008, "Wrong alignment on FRigHierarchyCopyPasteContent");
-static_assert(sizeof(FRigHierarchyCopyPasteContent) == 0x000040, "Wrong size on FRigHierarchyCopyPasteContent");
-static_assert(offsetof(FRigHierarchyCopyPasteContent, Types) == 0x000000, "Member 'FRigHierarchyCopyPasteContent::Types' has a wrong offset!");
-static_assert(offsetof(FRigHierarchyCopyPasteContent, Contents) == 0x000010, "Member 'FRigHierarchyCopyPasteContent::Contents' has a wrong offset!");
-static_assert(offsetof(FRigHierarchyCopyPasteContent, LocalTransforms) == 0x000020, "Member 'FRigHierarchyCopyPasteContent::LocalTransforms' has a wrong offset!");
-static_assert(offsetof(FRigHierarchyCopyPasteContent, GlobalTransforms) == 0x000030, "Member 'FRigHierarchyCopyPasteContent::GlobalTransforms' has a wrong offset!");
+static_assert(alignof(FRigEventContext) == 0x000008, "Wrong alignment on FRigEventContext");
+static_assert(sizeof(FRigEventContext) == 0x000028, "Wrong size on FRigEventContext");
 
-// ScriptStruct ControlRig.RigElementKey
-// 0x000C (0x000C - 0x0000)
-struct FRigElementKey final
-{
-public:
-	ERigElementType                               Type;                                              // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   Name;                                              // 0x0004(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigElementKey) == 0x000004, "Wrong alignment on FRigElementKey");
-static_assert(sizeof(FRigElementKey) == 0x00000C, "Wrong size on FRigElementKey");
-static_assert(offsetof(FRigElementKey, Type) == 0x000000, "Member 'FRigElementKey::Type' has a wrong offset!");
-static_assert(offsetof(FRigElementKey, Name) == 0x000004, "Member 'FRigElementKey::Name' has a wrong offset!");
-
-// ScriptStruct ControlRig.CachedRigElement
-// 0x0014 (0x0014 - 0x0000)
-struct FCachedRigElement final
-{
-public:
-	struct FRigElementKey                         Key;                                               // 0x0000(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint16                                        Index;                                             // 0x000C(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_E[0x2];                                        // 0x000E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         ContainerVersion;                                  // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-};
-static_assert(alignof(FCachedRigElement) == 0x000004, "Wrong alignment on FCachedRigElement");
-static_assert(sizeof(FCachedRigElement) == 0x000014, "Wrong size on FCachedRigElement");
-static_assert(offsetof(FCachedRigElement, Key) == 0x000000, "Member 'FCachedRigElement::Key' has a wrong offset!");
-static_assert(offsetof(FCachedRigElement, Index) == 0x00000C, "Member 'FCachedRigElement::Index' has a wrong offset!");
-static_assert(offsetof(FCachedRigElement, ContainerVersion) == 0x000010, "Member 'FCachedRigElement::ContainerVersion' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_SetControlInteger
-// 0x0028 (0x0090 - 0x0068)
-struct FRigUnit_SetControlInteger final : public FRigUnitMutable
-{
-public:
-	class FName                                   Control;                                           // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Weight;                                            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         IntegerValue;                                      // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FCachedRigElement                      CachedControlIndex;                                // 0x0078(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_8C[0x4];                                       // 0x008C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_SetControlInteger) == 0x000008, "Wrong alignment on FRigUnit_SetControlInteger");
-static_assert(sizeof(FRigUnit_SetControlInteger) == 0x000090, "Wrong size on FRigUnit_SetControlInteger");
-static_assert(offsetof(FRigUnit_SetControlInteger, Control) == 0x000068, "Member 'FRigUnit_SetControlInteger::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlInteger, Weight) == 0x000070, "Member 'FRigUnit_SetControlInteger::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlInteger, IntegerValue) == 0x000074, "Member 'FRigUnit_SetControlInteger::IntegerValue' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlInteger, CachedControlIndex) == 0x000078, "Member 'FRigUnit_SetControlInteger::CachedControlIndex' has a wrong offset!");
-
-// ScriptStruct ControlRig.ControlRigAnimInstanceProxy
-// 0x00A0 (0x0810 - 0x0770)
-struct FControlRigAnimInstanceProxy final : public FAnimInstanceProxy
-{
-public:
-	uint8                                         Pad_770[0xA0];                                     // 0x0770(0x00A0)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FControlRigAnimInstanceProxy) == 0x000010, "Wrong alignment on FControlRigAnimInstanceProxy");
-static_assert(sizeof(FControlRigAnimInstanceProxy) == 0x000810, "Wrong size on FControlRigAnimInstanceProxy");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorBinaryOp
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_MathVectorBinaryOp : public FRigUnit_MathVectorBase
-{
-public:
-	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathVectorBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathVectorBinaryOp");
-static_assert(sizeof(FRigUnit_MathVectorBinaryOp) == 0x000030, "Wrong size on FRigUnit_MathVectorBinaryOp");
-static_assert(offsetof(FRigUnit_MathVectorBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathVectorBinaryOp::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorBinaryOp, B) == 0x000014, "Member 'FRigUnit_MathVectorBinaryOp::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorBinaryOp, Result) == 0x000020, "Member 'FRigUnit_MathVectorBinaryOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorMod
-// 0x0000 (0x0030 - 0x0030)
-struct FRigUnit_MathVectorMod final : public FRigUnit_MathVectorBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathVectorMod) == 0x000008, "Wrong alignment on FRigUnit_MathVectorMod");
-static_assert(sizeof(FRigUnit_MathVectorMod) == 0x000030, "Wrong size on FRigUnit_MathVectorMod");
-
-// ScriptStruct ControlRig.RigUnit_PointSimulation_DebugSettings
-// 0x0050 (0x0050 - 0x0000)
-struct FRigUnit_PointSimulation_DebugSettings final
-{
-public:
-	bool                                          bEnabled;                                          // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Scale;                                             // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         CollisionScale;                                    // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bDrawPointsAsSpheres;                              // 0x000C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLinearColor                           Color;                                             // 0x0010(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FTransform                             WorldOffset;                                       // 0x0020(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_PointSimulation_DebugSettings) == 0x000010, "Wrong alignment on FRigUnit_PointSimulation_DebugSettings");
-static_assert(sizeof(FRigUnit_PointSimulation_DebugSettings) == 0x000050, "Wrong size on FRigUnit_PointSimulation_DebugSettings");
-static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, bEnabled) == 0x000000, "Member 'FRigUnit_PointSimulation_DebugSettings::bEnabled' has a wrong offset!");
-static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, Scale) == 0x000004, "Member 'FRigUnit_PointSimulation_DebugSettings::Scale' has a wrong offset!");
-static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, CollisionScale) == 0x000008, "Member 'FRigUnit_PointSimulation_DebugSettings::CollisionScale' has a wrong offset!");
-static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, bDrawPointsAsSpheres) == 0x00000C, "Member 'FRigUnit_PointSimulation_DebugSettings::bDrawPointsAsSpheres' has a wrong offset!");
-static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, Color) == 0x000010, "Member 'FRigUnit_PointSimulation_DebugSettings::Color' has a wrong offset!");
-static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, WorldOffset) == 0x000020, "Member 'FRigUnit_PointSimulation_DebugSettings::WorldOffset' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigElementKeyCollection
+// ScriptStruct ControlRig.ControlRigComponentMappedCurve
 // 0x0010 (0x0010 - 0x0000)
-struct alignas(0x08) FRigElementKeyCollection final
+struct FControlRigComponentMappedCurve final
 {
 public:
-	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   Source;                                            // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   Target;                                            // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigElementKeyCollection) == 0x000008, "Wrong alignment on FRigElementKeyCollection");
-static_assert(sizeof(FRigElementKeyCollection) == 0x000010, "Wrong size on FRigElementKeyCollection");
+static_assert(alignof(FControlRigComponentMappedCurve) == 0x000004, "Wrong alignment on FControlRigComponentMappedCurve");
+static_assert(sizeof(FControlRigComponentMappedCurve) == 0x000010, "Wrong size on FControlRigComponentMappedCurve");
+static_assert(offsetof(FControlRigComponentMappedCurve, Source) == 0x000000, "Member 'FControlRigComponentMappedCurve::Source' has a wrong offset!");
+static_assert(offsetof(FControlRigComponentMappedCurve, Target) == 0x000008, "Member 'FControlRigComponentMappedCurve::Target' has a wrong offset!");
 
-// ScriptStruct ControlRig.CRFourPointBezier
-// 0x0030 (0x0030 - 0x0000)
-struct FCRFourPointBezier final
+// ScriptStruct ControlRig.RigUnit_MultiFABRIK_WorkData
+// 0x0060 (0x0060 - 0x0000)
+struct alignas(0x08) FRigUnit_MultiFABRIK_WorkData final
 {
 public:
-	struct FVector                                A;                                                 // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                B;                                                 // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                C;                                                 // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                D;                                                 // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_0[0x60];                                       // 0x0000(0x0060)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FCRFourPointBezier) == 0x000004, "Wrong alignment on FCRFourPointBezier");
-static_assert(sizeof(FCRFourPointBezier) == 0x000030, "Wrong size on FCRFourPointBezier");
-static_assert(offsetof(FCRFourPointBezier, A) == 0x000000, "Member 'FCRFourPointBezier::A' has a wrong offset!");
-static_assert(offsetof(FCRFourPointBezier, B) == 0x00000C, "Member 'FCRFourPointBezier::B' has a wrong offset!");
-static_assert(offsetof(FCRFourPointBezier, C) == 0x000018, "Member 'FCRFourPointBezier::C' has a wrong offset!");
-static_assert(offsetof(FCRFourPointBezier, D) == 0x000024, "Member 'FCRFourPointBezier::D' has a wrong offset!");
+static_assert(alignof(FRigUnit_MultiFABRIK_WorkData) == 0x000008, "Wrong alignment on FRigUnit_MultiFABRIK_WorkData");
+static_assert(sizeof(FRigUnit_MultiFABRIK_WorkData) == 0x000060, "Wrong size on FRigUnit_MultiFABRIK_WorkData");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorMakeBezierFourPoint
-// 0x0030 (0x0038 - 0x0008)
-struct FRigUnit_MathVectorMakeBezierFourPoint final : public FRigUnit_MathVectorBase
+// ScriptStruct ControlRig.RigUnit_MathTransformFromSRT
+// 0x0088 (0x0090 - 0x0008)
+struct FRigUnit_MathTransformFromSRT final : public FRigUnit_MathTransformBase
 {
 public:
-	struct FCRFourPointBezier                     Bezier;                                            // 0x0008(0x0030)(NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                Location;                                          // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Rotation;                                          // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EControlRigRotationOrder                      RotationOrder;                                     // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                Scale;                                             // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FTransform                             Transform;                                         // 0x0030(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FEulerTransform                        EulerTransform;                                    // 0x0060(0x0024)(NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_84[0xC];                                       // 0x0084(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathVectorMakeBezierFourPoint) == 0x000008, "Wrong alignment on FRigUnit_MathVectorMakeBezierFourPoint");
-static_assert(sizeof(FRigUnit_MathVectorMakeBezierFourPoint) == 0x000038, "Wrong size on FRigUnit_MathVectorMakeBezierFourPoint");
-static_assert(offsetof(FRigUnit_MathVectorMakeBezierFourPoint, Bezier) == 0x000008, "Member 'FRigUnit_MathVectorMakeBezierFourPoint::Bezier' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathTransformFromSRT) == 0x000010, "Wrong alignment on FRigUnit_MathTransformFromSRT");
+static_assert(sizeof(FRigUnit_MathTransformFromSRT) == 0x000090, "Wrong size on FRigUnit_MathTransformFromSRT");
+static_assert(offsetof(FRigUnit_MathTransformFromSRT, Location) == 0x000008, "Member 'FRigUnit_MathTransformFromSRT::Location' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformFromSRT, Rotation) == 0x000014, "Member 'FRigUnit_MathTransformFromSRT::Rotation' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformFromSRT, RotationOrder) == 0x000020, "Member 'FRigUnit_MathTransformFromSRT::RotationOrder' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformFromSRT, Scale) == 0x000024, "Member 'FRigUnit_MathTransformFromSRT::Scale' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformFromSRT, Transform) == 0x000030, "Member 'FRigUnit_MathTransformFromSRT::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformFromSRT, EulerTransform) == 0x000060, "Member 'FRigUnit_MathTransformFromSRT::EulerTransform' has a wrong offset!");
 
 // ScriptStruct ControlRig.ControlRigComponentMappedBone
 // 0x0010 (0x0010 - 0x0000)
@@ -1221,6 +1111,32 @@ public:
 };
 static_assert(alignof(FRigControlModifiedContext) == 0x000004, "Wrong alignment on FRigControlModifiedContext");
 static_assert(sizeof(FRigControlModifiedContext) == 0x000010, "Wrong size on FRigControlModifiedContext");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatBase
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit_MathFloatBase : public FRigUnit_MathBase
+{
+};
+static_assert(alignof(FRigUnit_MathFloatBase) == 0x000008, "Wrong alignment on FRigUnit_MathFloatBase");
+static_assert(sizeof(FRigUnit_MathFloatBase) == 0x000008, "Wrong size on FRigUnit_MathFloatBase");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatSelectBool
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathFloatSelectBool final : public FRigUnit_MathFloatBase
+{
+public:
+	bool                                          Condition;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         IfTrue;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         IfFalse;                                           // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathFloatSelectBool) == 0x000008, "Wrong alignment on FRigUnit_MathFloatSelectBool");
+static_assert(sizeof(FRigUnit_MathFloatSelectBool) == 0x000018, "Wrong size on FRigUnit_MathFloatSelectBool");
+static_assert(offsetof(FRigUnit_MathFloatSelectBool, Condition) == 0x000008, "Member 'FRigUnit_MathFloatSelectBool::Condition' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatSelectBool, IfTrue) == 0x00000C, "Member 'FRigUnit_MathFloatSelectBool::IfTrue' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatSelectBool, IfFalse) == 0x000010, "Member 'FRigUnit_MathFloatSelectBool::IfFalse' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatSelectBool, Result) == 0x000014, "Member 'FRigUnit_MathFloatSelectBool::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.ControlRigComponentMappedComponent
 // 0x0018 (0x0018 - 0x0000)
@@ -1270,32 +1186,13 @@ static_assert(alignof(FRigPose) == 0x000008, "Wrong alignment on FRigPose");
 static_assert(sizeof(FRigPose) == 0x000010, "Wrong size on FRigPose");
 static_assert(offsetof(FRigPose, Elements) == 0x000000, "Member 'FRigPose::Elements' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SetMultiControlBool_Entry
-// 0x000C (0x000C - 0x0000)
-struct FRigUnit_SetMultiControlBool_Entry final
+// ScriptStruct ControlRig.RigUnit_MathVectorSub
+// 0x0000 (0x0030 - 0x0030)
+struct FRigUnit_MathVectorSub final : public FRigUnit_MathVectorBinaryOp
 {
-public:
-	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          BoolValue;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SetMultiControlBool_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlBool_Entry");
-static_assert(sizeof(FRigUnit_SetMultiControlBool_Entry) == 0x00000C, "Wrong size on FRigUnit_SetMultiControlBool_Entry");
-static_assert(offsetof(FRigUnit_SetMultiControlBool_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlBool_Entry::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetMultiControlBool_Entry, BoolValue) == 0x000008, "Member 'FRigUnit_SetMultiControlBool_Entry::BoolValue' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_SetMultiControlBool
-// 0x0020 (0x0088 - 0x0068)
-struct FRigUnit_SetMultiControlBool final : public FRigUnitMutable
-{
-public:
-	TArray<struct FRigUnit_SetMultiControlBool_Entry> Entries;                                           // 0x0068(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FCachedRigElement>              CachedControlIndices;                              // 0x0078(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_SetMultiControlBool) == 0x000008, "Wrong alignment on FRigUnit_SetMultiControlBool");
-static_assert(sizeof(FRigUnit_SetMultiControlBool) == 0x000088, "Wrong size on FRigUnit_SetMultiControlBool");
-static_assert(offsetof(FRigUnit_SetMultiControlBool, Entries) == 0x000068, "Member 'FRigUnit_SetMultiControlBool::Entries' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetMultiControlBool, CachedControlIndices) == 0x000078, "Member 'FRigUnit_SetMultiControlBool::CachedControlIndices' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathVectorSub) == 0x000008, "Wrong alignment on FRigUnit_MathVectorSub");
+static_assert(sizeof(FRigUnit_MathVectorSub) == 0x000030, "Wrong size on FRigUnit_MathVectorSub");
 
 // ScriptStruct ControlRig.ControlRigComponentMappedElement
 // 0x00A0 (0x00A0 - 0x0000)
@@ -1334,13 +1231,31 @@ static_assert(offsetof(FControlRigComponentMappedElement, SceneComponent) == 0x0
 static_assert(offsetof(FControlRigComponentMappedElement, ElementIndex) == 0x000090, "Member 'FControlRigComponentMappedElement::ElementIndex' has a wrong offset!");
 static_assert(offsetof(FControlRigComponentMappedElement, SubIndex) == 0x000094, "Member 'FControlRigComponentMappedElement::SubIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorSub
-// 0x0000 (0x0030 - 0x0030)
-struct FRigUnit_MathVectorSub final : public FRigUnit_MathVectorBinaryOp
+// ScriptStruct ControlRig.MathRBFInterpolateQuatQuat_Target
+// 0x0020 (0x0020 - 0x0000)
+struct FMathRBFInterpolateQuatQuat_Target final
 {
+public:
+	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Value;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathVectorSub) == 0x000008, "Wrong alignment on FRigUnit_MathVectorSub");
-static_assert(sizeof(FRigUnit_MathVectorSub) == 0x000030, "Wrong size on FRigUnit_MathVectorSub");
+static_assert(alignof(FMathRBFInterpolateQuatQuat_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatQuat_Target");
+static_assert(sizeof(FMathRBFInterpolateQuatQuat_Target) == 0x000020, "Wrong size on FMathRBFInterpolateQuatQuat_Target");
+static_assert(offsetof(FMathRBFInterpolateQuatQuat_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatQuat_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateQuatQuat_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatQuat_Target::Value' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatQuat
+// 0x0020 (0x00F0 - 0x00D0)
+struct FRigUnit_MathRBFInterpolateQuatQuat final : public FRigUnit_MathRBFInterpolateQuatBase
+{
+public:
+	TArray<struct FMathRBFInterpolateQuatQuat_Target> Targets;                                           // 0x00D0(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Output;                                            // 0x00E0(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathRBFInterpolateQuatQuat) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatQuat");
+static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatQuat) == 0x0000F0, "Wrong size on FRigUnit_MathRBFInterpolateQuatQuat");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatQuat, Targets) == 0x0000D0, "Member 'FRigUnit_MathRBFInterpolateQuatQuat::Targets' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatQuat, Output) == 0x0000E0, "Member 'FRigUnit_MathRBFInterpolateQuatQuat::Output' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigInfluenceEntry
 // 0x0020 (0x0020 - 0x0000)
@@ -1371,20 +1286,32 @@ static_assert(offsetof(FRigInfluenceMap, EventName) == 0x000000, "Member 'FRigIn
 static_assert(offsetof(FRigInfluenceMap, Entries) == 0x000008, "Member 'FRigInfluenceMap::Entries' has a wrong offset!");
 static_assert(offsetof(FRigInfluenceMap, KeyToIndex) == 0x000018, "Member 'FRigInfluenceMap::KeyToIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SetCurveValue
-// 0x0020 (0x0088 - 0x0068)
-struct FRigUnit_SetCurveValue final : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_MathFloatGreaterEqual
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathFloatGreaterEqual final : public FRigUnit_MathFloatBase
 {
 public:
-	class FName                                   Curve;                                             // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Value;                                             // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FCachedRigElement                      CachedCurveIndex;                                  // 0x0074(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SetCurveValue) == 0x000008, "Wrong alignment on FRigUnit_SetCurveValue");
-static_assert(sizeof(FRigUnit_SetCurveValue) == 0x000088, "Wrong size on FRigUnit_SetCurveValue");
-static_assert(offsetof(FRigUnit_SetCurveValue, Curve) == 0x000068, "Member 'FRigUnit_SetCurveValue::Curve' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetCurveValue, Value) == 0x000070, "Member 'FRigUnit_SetCurveValue::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetCurveValue, CachedCurveIndex) == 0x000074, "Member 'FRigUnit_SetCurveValue::CachedCurveIndex' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathFloatGreaterEqual) == 0x000008, "Wrong alignment on FRigUnit_MathFloatGreaterEqual");
+static_assert(sizeof(FRigUnit_MathFloatGreaterEqual) == 0x000018, "Wrong size on FRigUnit_MathFloatGreaterEqual");
+static_assert(offsetof(FRigUnit_MathFloatGreaterEqual, A) == 0x000008, "Member 'FRigUnit_MathFloatGreaterEqual::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatGreaterEqual, B) == 0x00000C, "Member 'FRigUnit_MathFloatGreaterEqual::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatGreaterEqual, Result) == 0x000010, "Member 'FRigUnit_MathFloatGreaterEqual::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_ModifyTransforms_WorkData
+// 0x0010 (0x0010 - 0x0000)
+struct FRigUnit_ModifyTransforms_WorkData
+{
+public:
+	TArray<struct FCachedRigElement>              CachedItems;                                       // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_ModifyTransforms_WorkData) == 0x000008, "Wrong alignment on FRigUnit_ModifyTransforms_WorkData");
+static_assert(sizeof(FRigUnit_ModifyTransforms_WorkData) == 0x000010, "Wrong size on FRigUnit_ModifyTransforms_WorkData");
+static_assert(offsetof(FRigUnit_ModifyTransforms_WorkData, CachedItems) == 0x000000, "Member 'FRigUnit_ModifyTransforms_WorkData::CachedItems' has a wrong offset!");
 
 // ScriptStruct ControlRig.ControlRigDrawInstruction
 // 0x00A0 (0x00A0 - 0x0000)
@@ -1422,16 +1349,33 @@ static_assert(alignof(FControlRigDrawContainer) == 0x000008, "Wrong alignment on
 static_assert(sizeof(FControlRigDrawContainer) == 0x000018, "Wrong size on FControlRigDrawContainer");
 static_assert(offsetof(FControlRigDrawContainer, Instructions) == 0x000008, "Member 'FControlRigDrawContainer::Instructions' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_ModifyTransforms_WorkData
-// 0x0010 (0x0010 - 0x0000)
-struct FRigUnit_ModifyTransforms_WorkData
+// ScriptStruct ControlRig.MathRBFInterpolateQuatVector_Target
+// 0x0020 (0x0020 - 0x0000)
+struct FMathRBFInterpolateQuatVector_Target final
 {
 public:
-	TArray<struct FCachedRigElement>              CachedItems;                                       // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                Value;                                             // 0x0010(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_ModifyTransforms_WorkData) == 0x000008, "Wrong alignment on FRigUnit_ModifyTransforms_WorkData");
-static_assert(sizeof(FRigUnit_ModifyTransforms_WorkData) == 0x000010, "Wrong size on FRigUnit_ModifyTransforms_WorkData");
-static_assert(offsetof(FRigUnit_ModifyTransforms_WorkData, CachedItems) == 0x000000, "Member 'FRigUnit_ModifyTransforms_WorkData::CachedItems' has a wrong offset!");
+static_assert(alignof(FMathRBFInterpolateQuatVector_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatVector_Target");
+static_assert(sizeof(FMathRBFInterpolateQuatVector_Target) == 0x000020, "Wrong size on FMathRBFInterpolateQuatVector_Target");
+static_assert(offsetof(FMathRBFInterpolateQuatVector_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatVector_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateQuatVector_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatVector_Target::Value' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatVector
+// 0x0020 (0x00F0 - 0x00D0)
+struct FRigUnit_MathRBFInterpolateQuatVector final : public FRigUnit_MathRBFInterpolateQuatBase
+{
+public:
+	TArray<struct FMathRBFInterpolateQuatVector_Target> Targets;                                           // 0x00D0(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FVector                                Output;                                            // 0x00E0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathRBFInterpolateQuatVector) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatVector");
+static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatVector) == 0x0000F0, "Wrong size on FRigUnit_MathRBFInterpolateQuatVector");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatVector, Targets) == 0x0000D0, "Member 'FRigUnit_MathRBFInterpolateQuatVector::Targets' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatVector, Output) == 0x0000E0, "Member 'FRigUnit_MathRBFInterpolateQuatVector::Output' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigInfluenceEntryModifier
 // 0x0010 (0x0010 - 0x0000)
@@ -1443,6 +1387,22 @@ public:
 static_assert(alignof(FRigInfluenceEntryModifier) == 0x000008, "Wrong alignment on FRigInfluenceEntryModifier");
 static_assert(sizeof(FRigInfluenceEntryModifier) == 0x000010, "Wrong size on FRigInfluenceEntryModifier");
 static_assert(offsetof(FRigInfluenceEntryModifier, AffectedList) == 0x000000, "Member 'FRigInfluenceEntryModifier::AffectedList' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathTransformMakeRelative
+// 0x0098 (0x00A0 - 0x0008)
+struct FRigUnit_MathTransformMakeRelative final : public FRigUnit_MathTransformBase
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Global;                                            // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Parent;                                            // 0x0040(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Local;                                             // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathTransformMakeRelative) == 0x000010, "Wrong alignment on FRigUnit_MathTransformMakeRelative");
+static_assert(sizeof(FRigUnit_MathTransformMakeRelative) == 0x0000A0, "Wrong size on FRigUnit_MathTransformMakeRelative");
+static_assert(offsetof(FRigUnit_MathTransformMakeRelative, Global) == 0x000010, "Member 'FRigUnit_MathTransformMakeRelative::Global' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformMakeRelative, Parent) == 0x000040, "Member 'FRigUnit_MathTransformMakeRelative::Parent' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformMakeRelative, Local) == 0x000070, "Member 'FRigUnit_MathTransformMakeRelative::Local' has a wrong offset!");
 
 // ScriptStruct ControlRig.ControlRigDrawInterface
 // 0x0000 (0x0018 - 0x0018)
@@ -1477,19 +1437,29 @@ static_assert(offsetof(FControlRigGizmoDefinition, GizmoName) == 0x000000, "Memb
 static_assert(offsetof(FControlRigGizmoDefinition, StaticMesh) == 0x000008, "Member 'FControlRigGizmoDefinition::StaticMesh' has a wrong offset!");
 static_assert(offsetof(FControlRigGizmoDefinition, Transform) == 0x000030, "Member 'FControlRigGizmoDefinition::Transform' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_ModifyTransforms_PerItem
-// 0x0040 (0x0040 - 0x0000)
-struct FRigUnit_ModifyTransforms_PerItem final
+// ScriptStruct ControlRig.RigUnit_MathIntBase
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit_MathIntBase : public FRigUnit_MathBase
+{
+};
+static_assert(alignof(FRigUnit_MathIntBase) == 0x000008, "Wrong alignment on FRigUnit_MathIntBase");
+static_assert(sizeof(FRigUnit_MathIntBase) == 0x000008, "Wrong size on FRigUnit_MathIntBase");
+
+// ScriptStruct ControlRig.RigUnit_MathIntEquals
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathIntEquals final : public FRigUnit_MathIntBase
 {
 public:
-	struct FRigElementKey                         Item;                                              // 0x0000(0x000C)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Transform;                                         // 0x0010(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_ModifyTransforms_PerItem) == 0x000010, "Wrong alignment on FRigUnit_ModifyTransforms_PerItem");
-static_assert(sizeof(FRigUnit_ModifyTransforms_PerItem) == 0x000040, "Wrong size on FRigUnit_ModifyTransforms_PerItem");
-static_assert(offsetof(FRigUnit_ModifyTransforms_PerItem, Item) == 0x000000, "Member 'FRigUnit_ModifyTransforms_PerItem::Item' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ModifyTransforms_PerItem, Transform) == 0x000010, "Member 'FRigUnit_ModifyTransforms_PerItem::Transform' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathIntEquals) == 0x000008, "Wrong alignment on FRigUnit_MathIntEquals");
+static_assert(sizeof(FRigUnit_MathIntEquals) == 0x000018, "Wrong size on FRigUnit_MathIntEquals");
+static_assert(offsetof(FRigUnit_MathIntEquals, A) == 0x000008, "Member 'FRigUnit_MathIntEquals::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntEquals, B) == 0x00000C, "Member 'FRigUnit_MathIntEquals::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntEquals, Result) == 0x000010, "Member 'FRigUnit_MathIntEquals::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.ControlRigLayerInstanceProxy
 // 0x00A0 (0x0810 - 0x0770)
@@ -1501,27 +1471,13 @@ public:
 static_assert(alignof(FControlRigLayerInstanceProxy) == 0x000010, "Wrong alignment on FControlRigLayerInstanceProxy");
 static_assert(sizeof(FControlRigLayerInstanceProxy) == 0x000810, "Wrong size on FControlRigLayerInstanceProxy");
 
-// ScriptStruct ControlRig.RigUnit_MathTransformBase
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit_MathTransformBase : public FRigUnit_MathBase
+// ScriptStruct ControlRig.RigUnit_MathVectorCross
+// 0x0000 (0x0030 - 0x0030)
+struct FRigUnit_MathVectorCross final : public FRigUnit_MathVectorBinaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathTransformBase) == 0x000008, "Wrong alignment on FRigUnit_MathTransformBase");
-static_assert(sizeof(FRigUnit_MathTransformBase) == 0x000008, "Wrong size on FRigUnit_MathTransformBase");
-
-// ScriptStruct ControlRig.RigUnit_MathTransformFromEulerTransform
-// 0x0058 (0x0060 - 0x0008)
-struct FRigUnit_MathTransformFromEulerTransform final : public FRigUnit_MathTransformBase
-{
-public:
-	struct FEulerTransform                        EulerTransform;                                    // 0x0008(0x0024)(NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Result;                                            // 0x0030(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathTransformFromEulerTransform) == 0x000010, "Wrong alignment on FRigUnit_MathTransformFromEulerTransform");
-static_assert(sizeof(FRigUnit_MathTransformFromEulerTransform) == 0x000060, "Wrong size on FRigUnit_MathTransformFromEulerTransform");
-static_assert(offsetof(FRigUnit_MathTransformFromEulerTransform, EulerTransform) == 0x000008, "Member 'FRigUnit_MathTransformFromEulerTransform::EulerTransform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformFromEulerTransform, Result) == 0x000030, "Member 'FRigUnit_MathTransformFromEulerTransform::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathVectorCross) == 0x000008, "Wrong alignment on FRigUnit_MathVectorCross");
+static_assert(sizeof(FRigUnit_MathVectorCross) == 0x000030, "Wrong size on FRigUnit_MathVectorCross");
 
 // ScriptStruct ControlRig.AnimNode_ControlRigInputPose
 // 0x0020 (0x0030 - 0x0010)
@@ -1534,6 +1490,23 @@ public:
 static_assert(alignof(FAnimNode_ControlRigInputPose) == 0x000008, "Wrong alignment on FAnimNode_ControlRigInputPose");
 static_assert(sizeof(FAnimNode_ControlRigInputPose) == 0x000030, "Wrong size on FAnimNode_ControlRigInputPose");
 static_assert(offsetof(FAnimNode_ControlRigInputPose, InputPose) == 0x000010, "Member 'FAnimNode_ControlRigInputPose::InputPose' has a wrong offset!");
+
+// ScriptStruct ControlRig.CRFourPointBezier
+// 0x0030 (0x0030 - 0x0000)
+struct FCRFourPointBezier final
+{
+public:
+	struct FVector                                A;                                                 // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                B;                                                 // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                C;                                                 // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                D;                                                 // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FCRFourPointBezier) == 0x000004, "Wrong alignment on FCRFourPointBezier");
+static_assert(sizeof(FCRFourPointBezier) == 0x000030, "Wrong size on FCRFourPointBezier");
+static_assert(offsetof(FCRFourPointBezier, A) == 0x000000, "Member 'FCRFourPointBezier::A' has a wrong offset!");
+static_assert(offsetof(FCRFourPointBezier, B) == 0x00000C, "Member 'FCRFourPointBezier::B' has a wrong offset!");
+static_assert(offsetof(FCRFourPointBezier, C) == 0x000018, "Member 'FCRFourPointBezier::C' has a wrong offset!");
+static_assert(offsetof(FCRFourPointBezier, D) == 0x000024, "Member 'FCRFourPointBezier::D' has a wrong offset!");
 
 // ScriptStruct ControlRig.ControlRigSequenceObjectReference
 // 0x0008 (0x0008 - 0x0000)
@@ -1570,30 +1543,29 @@ static_assert(sizeof(FControlRigSequenceObjectReferenceMap) == 0x000020, "Wrong 
 static_assert(offsetof(FControlRigSequenceObjectReferenceMap, BindingIds) == 0x000000, "Member 'FControlRigSequenceObjectReferenceMap::BindingIds' has a wrong offset!");
 static_assert(offsetof(FControlRigSequenceObjectReferenceMap, References) == 0x000010, "Member 'FControlRigSequenceObjectReferenceMap::References' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathTransformRotateVector
-// 0x0058 (0x0060 - 0x0008)
-struct FRigUnit_MathTransformRotateVector final : public FRigUnit_MathTransformBase
+// ScriptStruct ControlRig.RigUnit_MathIntToFloat
+// 0x0008 (0x0010 - 0x0008)
+struct FRigUnit_MathIntToFloat final : public FRigUnit_MathIntBase
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Transform;                                         // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FVector                                Direction;                                         // 0x0040(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x004C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_58[0x8];                                       // 0x0058(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathTransformRotateVector) == 0x000010, "Wrong alignment on FRigUnit_MathTransformRotateVector");
-static_assert(sizeof(FRigUnit_MathTransformRotateVector) == 0x000060, "Wrong size on FRigUnit_MathTransformRotateVector");
-static_assert(offsetof(FRigUnit_MathTransformRotateVector, Transform) == 0x000010, "Member 'FRigUnit_MathTransformRotateVector::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformRotateVector, Direction) == 0x000040, "Member 'FRigUnit_MathTransformRotateVector::Direction' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformRotateVector, Result) == 0x00004C, "Member 'FRigUnit_MathTransformRotateVector::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathIntToFloat) == 0x000008, "Wrong alignment on FRigUnit_MathIntToFloat");
+static_assert(sizeof(FRigUnit_MathIntToFloat) == 0x000010, "Wrong size on FRigUnit_MathIntToFloat");
+static_assert(offsetof(FRigUnit_MathIntToFloat, Value) == 0x000008, "Member 'FRigUnit_MathIntToFloat::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntToFloat, Result) == 0x00000C, "Member 'FRigUnit_MathIntToFloat::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorRad
-// 0x0000 (0x0020 - 0x0020)
-struct FRigUnit_MathVectorRad final : public FRigUnit_MathVectorUnaryOp
+// ScriptStruct ControlRig.RigUnit_MathVectorMakeBezierFourPoint
+// 0x0030 (0x0038 - 0x0008)
+struct FRigUnit_MathVectorMakeBezierFourPoint final : public FRigUnit_MathVectorBase
 {
+public:
+	struct FCRFourPointBezier                     Bezier;                                            // 0x0008(0x0030)(NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathVectorRad) == 0x000008, "Wrong alignment on FRigUnit_MathVectorRad");
-static_assert(sizeof(FRigUnit_MathVectorRad) == 0x000020, "Wrong size on FRigUnit_MathVectorRad");
+static_assert(alignof(FRigUnit_MathVectorMakeBezierFourPoint) == 0x000008, "Wrong alignment on FRigUnit_MathVectorMakeBezierFourPoint");
+static_assert(sizeof(FRigUnit_MathVectorMakeBezierFourPoint) == 0x000038, "Wrong size on FRigUnit_MathVectorMakeBezierFourPoint");
+static_assert(offsetof(FRigUnit_MathVectorMakeBezierFourPoint, Bezier) == 0x000008, "Member 'FRigUnit_MathVectorMakeBezierFourPoint::Bezier' has a wrong offset!");
 
 // ScriptStruct ControlRig.ControlRigSequencerAnimInstanceProxy
 // 0x02B0 (0x0CC0 - 0x0A10)
@@ -1605,27 +1577,29 @@ public:
 static_assert(alignof(FControlRigSequencerAnimInstanceProxy) == 0x000010, "Wrong alignment on FControlRigSequencerAnimInstanceProxy");
 static_assert(sizeof(FControlRigSequencerAnimInstanceProxy) == 0x000CC0, "Wrong size on FControlRigSequencerAnimInstanceProxy");
 
-// ScriptStruct ControlRig.RigUnit_MathTransformUnaryOp
-// 0x0068 (0x0070 - 0x0008)
-struct FRigUnit_MathTransformUnaryOp : public FRigUnit_MathTransformBase
+// ScriptStruct ControlRig.RigUnit_MathIntBinaryOp
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathIntBinaryOp : public FRigUnit_MathIntBase
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Result;                                            // 0x0040(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Result;                                            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathTransformUnaryOp) == 0x000010, "Wrong alignment on FRigUnit_MathTransformUnaryOp");
-static_assert(sizeof(FRigUnit_MathTransformUnaryOp) == 0x000070, "Wrong size on FRigUnit_MathTransformUnaryOp");
-static_assert(offsetof(FRigUnit_MathTransformUnaryOp, Value) == 0x000010, "Member 'FRigUnit_MathTransformUnaryOp::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformUnaryOp, Result) == 0x000040, "Member 'FRigUnit_MathTransformUnaryOp::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathIntBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathIntBinaryOp");
+static_assert(sizeof(FRigUnit_MathIntBinaryOp) == 0x000018, "Wrong size on FRigUnit_MathIntBinaryOp");
+static_assert(offsetof(FRigUnit_MathIntBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathIntBinaryOp::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntBinaryOp, B) == 0x00000C, "Member 'FRigUnit_MathIntBinaryOp::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntBinaryOp, Result) == 0x000010, "Member 'FRigUnit_MathIntBinaryOp::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathTransformInverse
-// 0x0000 (0x0070 - 0x0070)
-struct FRigUnit_MathTransformInverse final : public FRigUnit_MathTransformUnaryOp
+// ScriptStruct ControlRig.RigUnit_MathIntPow
+// 0x0000 (0x0018 - 0x0018)
+struct FRigUnit_MathIntPow final : public FRigUnit_MathIntBinaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathTransformInverse) == 0x000010, "Wrong alignment on FRigUnit_MathTransformInverse");
-static_assert(sizeof(FRigUnit_MathTransformInverse) == 0x000070, "Wrong size on FRigUnit_MathTransformInverse");
+static_assert(alignof(FRigUnit_MathIntPow) == 0x000008, "Wrong alignment on FRigUnit_MathIntPow");
+static_assert(sizeof(FRigUnit_MathIntPow) == 0x000018, "Wrong size on FRigUnit_MathIntPow");
 
 // ScriptStruct ControlRig.ControlRigSettingsPerPinBool
 // 0x0050 (0x0050 - 0x0000)
@@ -1638,21 +1612,21 @@ static_assert(alignof(FControlRigSettingsPerPinBool) == 0x000008, "Wrong alignme
 static_assert(sizeof(FControlRigSettingsPerPinBool) == 0x000050, "Wrong size on FControlRigSettingsPerPinBool");
 static_assert(offsetof(FControlRigSettingsPerPinBool, Values) == 0x000000, "Member 'FControlRigSettingsPerPinBool::Values' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorAngle
-// 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_MathVectorAngle final : public FRigUnit_MathVectorBase
+// ScriptStruct ControlRig.RigUnit_MathVectorIsNearlyZero
+// 0x0018 (0x0020 - 0x0008)
+struct FRigUnit_MathVectorIsNearlyZero final : public FRigUnit_MathVectorBase
 {
 public:
-	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Tolerance;                                         // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathVectorAngle) == 0x000008, "Wrong alignment on FRigUnit_MathVectorAngle");
-static_assert(sizeof(FRigUnit_MathVectorAngle) == 0x000028, "Wrong size on FRigUnit_MathVectorAngle");
-static_assert(offsetof(FRigUnit_MathVectorAngle, A) == 0x000008, "Member 'FRigUnit_MathVectorAngle::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorAngle, B) == 0x000014, "Member 'FRigUnit_MathVectorAngle::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorAngle, Result) == 0x000020, "Member 'FRigUnit_MathVectorAngle::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathVectorIsNearlyZero) == 0x000008, "Wrong alignment on FRigUnit_MathVectorIsNearlyZero");
+static_assert(sizeof(FRigUnit_MathVectorIsNearlyZero) == 0x000020, "Wrong size on FRigUnit_MathVectorIsNearlyZero");
+static_assert(offsetof(FRigUnit_MathVectorIsNearlyZero, Value) == 0x000008, "Member 'FRigUnit_MathVectorIsNearlyZero::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorIsNearlyZero, Tolerance) == 0x000014, "Member 'FRigUnit_MathVectorIsNearlyZero::Tolerance' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorIsNearlyZero, Result) == 0x000018, "Member 'FRigUnit_MathVectorIsNearlyZero::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.ControlRigValidationContext
 // 0x0028 (0x0028 - 0x0000)
@@ -1698,29 +1672,13 @@ static_assert(offsetof(FCRSimLinearSpring, SubjectB) == 0x000004, "Member 'FCRSi
 static_assert(offsetof(FCRSimLinearSpring, Coefficient) == 0x000008, "Member 'FCRSimLinearSpring::Coefficient' has a wrong offset!");
 static_assert(offsetof(FCRSimLinearSpring, Equilibrium) == 0x00000C, "Member 'FCRSimLinearSpring::Equilibrium' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathTransformBinaryOp
-// 0x0098 (0x00A0 - 0x0008)
-struct FRigUnit_MathTransformBinaryOp : public FRigUnit_MathTransformBase
-{
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             A;                                                 // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             B;                                                 // 0x0040(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Result;                                            // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathTransformBinaryOp) == 0x000010, "Wrong alignment on FRigUnit_MathTransformBinaryOp");
-static_assert(sizeof(FRigUnit_MathTransformBinaryOp) == 0x0000A0, "Wrong size on FRigUnit_MathTransformBinaryOp");
-static_assert(offsetof(FRigUnit_MathTransformBinaryOp, A) == 0x000010, "Member 'FRigUnit_MathTransformBinaryOp::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformBinaryOp, B) == 0x000040, "Member 'FRigUnit_MathTransformBinaryOp::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformBinaryOp, Result) == 0x000070, "Member 'FRigUnit_MathTransformBinaryOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathTransformMul
-// 0x0000 (0x00A0 - 0x00A0)
-struct FRigUnit_MathTransformMul final : public FRigUnit_MathTransformBinaryOp
+// ScriptStruct ControlRig.RigUnit_MathIntDiv
+// 0x0000 (0x0018 - 0x0018)
+struct FRigUnit_MathIntDiv final : public FRigUnit_MathIntBinaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathTransformMul) == 0x000010, "Wrong alignment on FRigUnit_MathTransformMul");
-static_assert(sizeof(FRigUnit_MathTransformMul) == 0x0000A0, "Wrong size on FRigUnit_MathTransformMul");
+static_assert(alignof(FRigUnit_MathIntDiv) == 0x000008, "Wrong alignment on FRigUnit_MathIntDiv");
+static_assert(sizeof(FRigUnit_MathIntDiv) == 0x000018, "Wrong size on FRigUnit_MathIntDiv");
 
 // ScriptStruct ControlRig.CRSimPoint
 // 0x0028 (0x0028 - 0x0000)
@@ -1742,28 +1700,6 @@ static_assert(offsetof(FCRSimPoint, LinearDamping) == 0x000008, "Member 'FCRSimP
 static_assert(offsetof(FCRSimPoint, InheritMotion) == 0x00000C, "Member 'FCRSimPoint::InheritMotion' has a wrong offset!");
 static_assert(offsetof(FCRSimPoint, position) == 0x000010, "Member 'FCRSimPoint::position' has a wrong offset!");
 static_assert(offsetof(FCRSimPoint, LinearVelocity) == 0x00001C, "Member 'FCRSimPoint::LinearVelocity' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_SetControlTransform
-// 0x0068 (0x00D0 - 0x0068)
-struct FRigUnit_SetControlTransform final : public FRigUnitMutable
-{
-public:
-	class FName                                   Control;                                           // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Weight;                                            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_74[0xC];                                       // 0x0074(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Transform;                                         // 0x0080(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	EBoneGetterSetterMode                         Space;                                             // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B1[0x3];                                       // 0x00B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedControlIndex;                                // 0x00B4(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C8[0x8];                                       // 0x00C8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_SetControlTransform) == 0x000010, "Wrong alignment on FRigUnit_SetControlTransform");
-static_assert(sizeof(FRigUnit_SetControlTransform) == 0x0000D0, "Wrong size on FRigUnit_SetControlTransform");
-static_assert(offsetof(FRigUnit_SetControlTransform, Control) == 0x000068, "Member 'FRigUnit_SetControlTransform::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlTransform, Weight) == 0x000070, "Member 'FRigUnit_SetControlTransform::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlTransform, Transform) == 0x000080, "Member 'FRigUnit_SetControlTransform::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlTransform, Space) == 0x0000B0, "Member 'FRigUnit_SetControlTransform::Space' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlTransform, CachedControlIndex) == 0x0000B4, "Member 'FRigUnit_SetControlTransform::CachedControlIndex' has a wrong offset!");
 
 // ScriptStruct ControlRig.CRSimPointConstraint
 // 0x0024 (0x0024 - 0x0000)
@@ -1912,157 +1848,176 @@ static_assert(offsetof(FChannelMapInfo, ChannelIndex) == 0x000008, "Member 'FCha
 static_assert(offsetof(FChannelMapInfo, ParentControlIndex) == 0x00000C, "Member 'FChannelMapInfo::ParentControlIndex' has a wrong offset!");
 static_assert(offsetof(FChannelMapInfo, ChannelTypeName) == 0x000010, "Member 'FChannelMapInfo::ChannelTypeName' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathQuaternionBase
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit_MathQuaternionBase : public FRigUnit_MathBase
-{
-};
-static_assert(alignof(FRigUnit_MathQuaternionBase) == 0x000008, "Wrong alignment on FRigUnit_MathQuaternionBase");
-static_assert(sizeof(FRigUnit_MathQuaternionBase) == 0x000008, "Wrong size on FRigUnit_MathQuaternionBase");
-
-// ScriptStruct ControlRig.RigUnit_MathQuaternionSelectBool
-// 0x0038 (0x0040 - 0x0008)
-struct FRigUnit_MathQuaternionSelectBool final : public FRigUnit_MathQuaternionBase
-{
-public:
-	bool                                          Condition;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  IfTrue;                                            // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  IfFalse;                                           // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  Result;                                            // 0x0030(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathQuaternionSelectBool) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionSelectBool");
-static_assert(sizeof(FRigUnit_MathQuaternionSelectBool) == 0x000040, "Wrong size on FRigUnit_MathQuaternionSelectBool");
-static_assert(offsetof(FRigUnit_MathQuaternionSelectBool, Condition) == 0x000008, "Member 'FRigUnit_MathQuaternionSelectBool::Condition' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionSelectBool, IfTrue) == 0x000010, "Member 'FRigUnit_MathQuaternionSelectBool::IfTrue' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionSelectBool, IfFalse) == 0x000020, "Member 'FRigUnit_MathQuaternionSelectBool::IfFalse' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionSelectBool, Result) == 0x000030, "Member 'FRigUnit_MathQuaternionSelectBool::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorIsNearlyZero
-// 0x0018 (0x0020 - 0x0008)
-struct FRigUnit_MathVectorIsNearlyZero final : public FRigUnit_MathVectorBase
-{
-public:
-	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Tolerance;                                         // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathVectorIsNearlyZero) == 0x000008, "Wrong alignment on FRigUnit_MathVectorIsNearlyZero");
-static_assert(sizeof(FRigUnit_MathVectorIsNearlyZero) == 0x000020, "Wrong size on FRigUnit_MathVectorIsNearlyZero");
-static_assert(offsetof(FRigUnit_MathVectorIsNearlyZero, Value) == 0x000008, "Member 'FRigUnit_MathVectorIsNearlyZero::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorIsNearlyZero, Tolerance) == 0x000014, "Member 'FRigUnit_MathVectorIsNearlyZero::Tolerance' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorIsNearlyZero, Result) == 0x000018, "Member 'FRigUnit_MathVectorIsNearlyZero::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorSelectBool
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_MathVectorSelectBool final : public FRigUnit_MathVectorBase
-{
-public:
-	bool                                          Condition;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                IfTrue;                                            // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                IfFalse;                                           // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathVectorSelectBool) == 0x000008, "Wrong alignment on FRigUnit_MathVectorSelectBool");
-static_assert(sizeof(FRigUnit_MathVectorSelectBool) == 0x000030, "Wrong size on FRigUnit_MathVectorSelectBool");
-static_assert(offsetof(FRigUnit_MathVectorSelectBool, Condition) == 0x000008, "Member 'FRigUnit_MathVectorSelectBool::Condition' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorSelectBool, IfTrue) == 0x00000C, "Member 'FRigUnit_MathVectorSelectBool::IfTrue' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorSelectBool, IfFalse) == 0x000018, "Member 'FRigUnit_MathVectorSelectBool::IfFalse' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorSelectBool, Result) == 0x000024, "Member 'FRigUnit_MathVectorSelectBool::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MultiFABRIK_WorkData
-// 0x0060 (0x0060 - 0x0000)
-struct alignas(0x08) FRigUnit_MultiFABRIK_WorkData final
-{
-public:
-	uint8                                         Pad_0[0x60];                                       // 0x0000(0x0060)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MultiFABRIK_WorkData) == 0x000008, "Wrong alignment on FRigUnit_MultiFABRIK_WorkData");
-static_assert(sizeof(FRigUnit_MultiFABRIK_WorkData) == 0x000060, "Wrong size on FRigUnit_MultiFABRIK_WorkData");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorScale
+// ScriptStruct ControlRig.RigUnit_MathVectorClampLength
 // 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_MathVectorScale final : public FRigUnit_MathVectorBase
+struct FRigUnit_MathVectorClampLength final : public FRigUnit_MathVectorBase
 {
 public:
 	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Factor;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         MinimumLength;                                     // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MaximumLength;                                     // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x001C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathVectorScale) == 0x000008, "Wrong alignment on FRigUnit_MathVectorScale");
-static_assert(sizeof(FRigUnit_MathVectorScale) == 0x000028, "Wrong size on FRigUnit_MathVectorScale");
-static_assert(offsetof(FRigUnit_MathVectorScale, Value) == 0x000008, "Member 'FRigUnit_MathVectorScale::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorScale, Factor) == 0x000014, "Member 'FRigUnit_MathVectorScale::Factor' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorScale, Result) == 0x000018, "Member 'FRigUnit_MathVectorScale::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathVectorClampLength) == 0x000008, "Wrong alignment on FRigUnit_MathVectorClampLength");
+static_assert(sizeof(FRigUnit_MathVectorClampLength) == 0x000028, "Wrong size on FRigUnit_MathVectorClampLength");
+static_assert(offsetof(FRigUnit_MathVectorClampLength, Value) == 0x000008, "Member 'FRigUnit_MathVectorClampLength::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampLength, MinimumLength) == 0x000014, "Member 'FRigUnit_MathVectorClampLength::MinimumLength' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampLength, MaximumLength) == 0x000018, "Member 'FRigUnit_MathVectorClampLength::MaximumLength' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampLength, Result) == 0x00001C, "Member 'FRigUnit_MathVectorClampLength::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorSign
-// 0x0000 (0x0020 - 0x0020)
-struct FRigUnit_MathVectorSign final : public FRigUnit_MathVectorUnaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathVectorSign) == 0x000008, "Wrong alignment on FRigUnit_MathVectorSign");
-static_assert(sizeof(FRigUnit_MathVectorSign) == 0x000020, "Wrong size on FRigUnit_MathVectorSign");
-
-// ScriptStruct ControlRig.RigUnit_MathTransformMakeRelative
-// 0x0098 (0x00A0 - 0x0008)
-struct FRigUnit_MathTransformMakeRelative final : public FRigUnit_MathTransformBase
+// ScriptStruct ControlRig.IntegerParameterNameAndCurve
+// 0x0098 (0x0098 - 0x0000)
+struct FIntegerParameterNameAndCurve final
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Global;                                            // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Parent;                                            // 0x0040(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Local;                                             // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	class FName                                   ParameterName;                                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FMovieSceneIntegerChannel              ParameterCurve;                                    // 0x0008(0x0090)(NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathTransformMakeRelative) == 0x000010, "Wrong alignment on FRigUnit_MathTransformMakeRelative");
-static_assert(sizeof(FRigUnit_MathTransformMakeRelative) == 0x0000A0, "Wrong size on FRigUnit_MathTransformMakeRelative");
-static_assert(offsetof(FRigUnit_MathTransformMakeRelative, Global) == 0x000010, "Member 'FRigUnit_MathTransformMakeRelative::Global' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformMakeRelative, Parent) == 0x000040, "Member 'FRigUnit_MathTransformMakeRelative::Parent' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformMakeRelative, Local) == 0x000070, "Member 'FRigUnit_MathTransformMakeRelative::Local' has a wrong offset!");
+static_assert(alignof(FIntegerParameterNameAndCurve) == 0x000008, "Wrong alignment on FIntegerParameterNameAndCurve");
+static_assert(sizeof(FIntegerParameterNameAndCurve) == 0x000098, "Wrong size on FIntegerParameterNameAndCurve");
+static_assert(offsetof(FIntegerParameterNameAndCurve, ParameterName) == 0x000000, "Member 'FIntegerParameterNameAndCurve::ParameterName' has a wrong offset!");
+static_assert(offsetof(FIntegerParameterNameAndCurve, ParameterCurve) == 0x000008, "Member 'FIntegerParameterNameAndCurve::ParameterCurve' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigHierarchyRef
-// 0x0001 (0x0001 - 0x0000)
-struct FRigHierarchyRef final
-{
-public:
-	uint8                                         Pad_0[0x1];                                        // 0x0000(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigHierarchyRef) == 0x000001, "Wrong alignment on FRigHierarchyRef");
-static_assert(sizeof(FRigHierarchyRef) == 0x000001, "Wrong size on FRigHierarchyRef");
-
-// ScriptStruct ControlRig.RigUnit_ModifyBoneTransforms_PerBone
+// ScriptStruct ControlRig.MathRBFInterpolateQuatXform_Target
 // 0x0040 (0x0040 - 0x0000)
-struct FRigUnit_ModifyBoneTransforms_PerBone final
+struct FMathRBFInterpolateQuatXform_Target final
 {
 public:
-	class FName                                   Bone;                                              // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Transform;                                         // 0x0010(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_ModifyBoneTransforms_PerBone) == 0x000010, "Wrong alignment on FRigUnit_ModifyBoneTransforms_PerBone");
-static_assert(sizeof(FRigUnit_ModifyBoneTransforms_PerBone) == 0x000040, "Wrong size on FRigUnit_ModifyBoneTransforms_PerBone");
-static_assert(offsetof(FRigUnit_ModifyBoneTransforms_PerBone, Bone) == 0x000000, "Member 'FRigUnit_ModifyBoneTransforms_PerBone::Bone' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ModifyBoneTransforms_PerBone, Transform) == 0x000010, "Member 'FRigUnit_ModifyBoneTransforms_PerBone::Transform' has a wrong offset!");
+static_assert(alignof(FMathRBFInterpolateQuatXform_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatXform_Target");
+static_assert(sizeof(FMathRBFInterpolateQuatXform_Target) == 0x000040, "Wrong size on FMathRBFInterpolateQuatXform_Target");
+static_assert(offsetof(FMathRBFInterpolateQuatXform_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatXform_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateQuatXform_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatXform_Target::Value' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigMirrorSettings
-// 0x0028 (0x0028 - 0x0000)
-struct FRigMirrorSettings final
+// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatXform
+// 0x0040 (0x0110 - 0x00D0)
+struct FRigUnit_MathRBFInterpolateQuatXform final : public FRigUnit_MathRBFInterpolateQuatBase
 {
 public:
-	EAxis                                         MirrorAxis;                                        // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAxis                                         AxisToFlip;                                        // 0x0001(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 OldName;                                           // 0x0008(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 NewName;                                           // 0x0018(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FMathRBFInterpolateQuatXform_Target> Targets;                                           // 0x00D0(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Output;                                            // 0x00E0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigMirrorSettings) == 0x000008, "Wrong alignment on FRigMirrorSettings");
-static_assert(sizeof(FRigMirrorSettings) == 0x000028, "Wrong size on FRigMirrorSettings");
-static_assert(offsetof(FRigMirrorSettings, MirrorAxis) == 0x000000, "Member 'FRigMirrorSettings::MirrorAxis' has a wrong offset!");
-static_assert(offsetof(FRigMirrorSettings, AxisToFlip) == 0x000001, "Member 'FRigMirrorSettings::AxisToFlip' has a wrong offset!");
-static_assert(offsetof(FRigMirrorSettings, OldName) == 0x000008, "Member 'FRigMirrorSettings::OldName' has a wrong offset!");
-static_assert(offsetof(FRigMirrorSettings, NewName) == 0x000018, "Member 'FRigMirrorSettings::NewName' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathRBFInterpolateQuatXform) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatXform");
+static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatXform) == 0x000110, "Wrong size on FRigUnit_MathRBFInterpolateQuatXform");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatXform, Targets) == 0x0000D0, "Member 'FRigUnit_MathRBFInterpolateQuatXform::Targets' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatXform, Output) == 0x0000E0, "Member 'FRigUnit_MathRBFInterpolateQuatXform::Output' has a wrong offset!");
+
+// ScriptStruct ControlRig.EnumParameterNameAndCurve
+// 0x00A0 (0x00A0 - 0x0000)
+struct FEnumParameterNameAndCurve final
+{
+public:
+	class FName                                   ParameterName;                                     // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FMovieSceneByteChannel                 ParameterCurve;                                    // 0x0008(0x0098)(NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FEnumParameterNameAndCurve) == 0x000008, "Wrong alignment on FEnumParameterNameAndCurve");
+static_assert(sizeof(FEnumParameterNameAndCurve) == 0x0000A0, "Wrong size on FEnumParameterNameAndCurve");
+static_assert(offsetof(FEnumParameterNameAndCurve, ParameterName) == 0x000000, "Member 'FEnumParameterNameAndCurve::ParameterName' has a wrong offset!");
+static_assert(offsetof(FEnumParameterNameAndCurve, ParameterCurve) == 0x000008, "Member 'FEnumParameterNameAndCurve::ParameterCurve' has a wrong offset!");
+
+// ScriptStruct ControlRig.MovieSceneControlRigParameterTemplate
+// 0x0020 (0x00A0 - 0x0080)
+struct FMovieSceneControlRigParameterTemplate final : public FMovieSceneParameterSectionTemplate
+{
+public:
+	TArray<struct FEnumParameterNameAndCurve>     Enums;                                             // 0x0080(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	TArray<struct FIntegerParameterNameAndCurve>  Integers;                                          // 0x0090(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+};
+static_assert(alignof(FMovieSceneControlRigParameterTemplate) == 0x000008, "Wrong alignment on FMovieSceneControlRigParameterTemplate");
+static_assert(sizeof(FMovieSceneControlRigParameterTemplate) == 0x0000A0, "Wrong size on FMovieSceneControlRigParameterTemplate");
+static_assert(offsetof(FMovieSceneControlRigParameterTemplate, Enums) == 0x000080, "Member 'FMovieSceneControlRigParameterTemplate::Enums' has a wrong offset!");
+static_assert(offsetof(FMovieSceneControlRigParameterTemplate, Integers) == 0x000090, "Member 'FMovieSceneControlRigParameterTemplate::Integers' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigBone
+// 0x00C8 (0x00E0 - 0x0018)
+struct FRigBone final : public FRigElement
+{
+public:
+	class FName                                   ParentName;                                        // 0x0018(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParentIndex;                                       // 0x0020(0x0004)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0xC];                                       // 0x0024(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             InitialTransform;                                  // 0x0030(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             GlobalTransform;                                   // 0x0060(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, Transient, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             LocalTransform;                                    // 0x0090(0x0030)(Edit, BlueprintVisible, BlueprintReadOnly, Transient, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	TArray<int32>                                 Dependents;                                        // 0x00C0(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPublic)
+	ERigBoneType                                  Type;                                              // 0x00D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D1[0xF];                                       // 0x00D1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigBone) == 0x000010, "Wrong alignment on FRigBone");
+static_assert(sizeof(FRigBone) == 0x0000E0, "Wrong size on FRigBone");
+static_assert(offsetof(FRigBone, ParentName) == 0x000018, "Member 'FRigBone::ParentName' has a wrong offset!");
+static_assert(offsetof(FRigBone, ParentIndex) == 0x000020, "Member 'FRigBone::ParentIndex' has a wrong offset!");
+static_assert(offsetof(FRigBone, InitialTransform) == 0x000030, "Member 'FRigBone::InitialTransform' has a wrong offset!");
+static_assert(offsetof(FRigBone, GlobalTransform) == 0x000060, "Member 'FRigBone::GlobalTransform' has a wrong offset!");
+static_assert(offsetof(FRigBone, LocalTransform) == 0x000090, "Member 'FRigBone::LocalTransform' has a wrong offset!");
+static_assert(offsetof(FRigBone, Dependents) == 0x0000C0, "Member 'FRigBone::Dependents' has a wrong offset!");
+static_assert(offsetof(FRigBone, Type) == 0x0000D0, "Member 'FRigBone::Type' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigBoneHierarchy
+// 0x0098 (0x0098 - 0x0000)
+struct FRigBoneHierarchy final
+{
+public:
+	uint8                                         Pad_0[0x20];                                       // 0x0000(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FRigBone>                       Bones;                                             // 0x0020(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
+	TMap<class FName, int32>                      NameToIndexMapping;                                // 0x0030(0x0050)(NativeAccessSpecifierPrivate)
+	TArray<class FName>                           Selection;                                         // 0x0080(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_90[0x8];                                       // 0x0090(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigBoneHierarchy) == 0x000008, "Wrong alignment on FRigBoneHierarchy");
+static_assert(sizeof(FRigBoneHierarchy) == 0x000098, "Wrong size on FRigBoneHierarchy");
+static_assert(offsetof(FRigBoneHierarchy, Bones) == 0x000020, "Member 'FRigBoneHierarchy::Bones' has a wrong offset!");
+static_assert(offsetof(FRigBoneHierarchy, NameToIndexMapping) == 0x000030, "Member 'FRigBoneHierarchy::NameToIndexMapping' has a wrong offset!");
+static_assert(offsetof(FRigBoneHierarchy, Selection) == 0x000080, "Member 'FRigBoneHierarchy::Selection' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_SetBoneInitialTransform
+// 0x0088 (0x00F0 - 0x0068)
+struct FRigUnit_SetBoneInitialTransform final : public FRigUnitMutable
+{
+public:
+	class FName                                   Bone;                                              // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FTransform                             Transform;                                         // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Result;                                            // 0x00A0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	EBoneGetterSetterMode                         Space;                                             // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bPropagateToChildren;                              // 0x00D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D2[0x2];                                       // 0x00D2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedBone;                                        // 0x00D4(0x0014)(Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E8[0x8];                                       // 0x00E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_SetBoneInitialTransform) == 0x000010, "Wrong alignment on FRigUnit_SetBoneInitialTransform");
+static_assert(sizeof(FRigUnit_SetBoneInitialTransform) == 0x0000F0, "Wrong size on FRigUnit_SetBoneInitialTransform");
+static_assert(offsetof(FRigUnit_SetBoneInitialTransform, Bone) == 0x000068, "Member 'FRigUnit_SetBoneInitialTransform::Bone' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneInitialTransform, Transform) == 0x000070, "Member 'FRigUnit_SetBoneInitialTransform::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneInitialTransform, Result) == 0x0000A0, "Member 'FRigUnit_SetBoneInitialTransform::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneInitialTransform, Space) == 0x0000D0, "Member 'FRigUnit_SetBoneInitialTransform::Space' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneInitialTransform, bPropagateToChildren) == 0x0000D1, "Member 'FRigUnit_SetBoneInitialTransform::bPropagateToChildren' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneInitialTransform, CachedBone) == 0x0000D4, "Member 'FRigUnit_SetBoneInitialTransform::CachedBone' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorMax
+// 0x0000 (0x0030 - 0x0030)
+struct FRigUnit_MathVectorMax final : public FRigUnit_MathVectorBinaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathVectorMax) == 0x000008, "Wrong alignment on FRigUnit_MathVectorMax");
+static_assert(sizeof(FRigUnit_MathVectorMax) == 0x000030, "Wrong size on FRigUnit_MathVectorMax");
+
+// ScriptStruct ControlRig.RigControlHierarchy
+// 0x0108 (0x0108 - 0x0000)
+struct FRigControlHierarchy final
+{
+public:
+	uint8                                         Pad_0[0x98];                                       // 0x0000(0x0098)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FRigControl>                    Controls;                                          // 0x0098(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
+	TMap<class FName, int32>                      NameToIndexMapping;                                // 0x00A8(0x0050)(NativeAccessSpecifierPrivate)
+	TArray<class FName>                           Selection;                                         // 0x00F8(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+};
+static_assert(alignof(FRigControlHierarchy) == 0x000008, "Wrong alignment on FRigControlHierarchy");
+static_assert(sizeof(FRigControlHierarchy) == 0x000108, "Wrong size on FRigControlHierarchy");
+static_assert(offsetof(FRigControlHierarchy, Controls) == 0x000098, "Member 'FRigControlHierarchy::Controls' has a wrong offset!");
+static_assert(offsetof(FRigControlHierarchy, NameToIndexMapping) == 0x0000A8, "Member 'FRigControlHierarchy::NameToIndexMapping' has a wrong offset!");
+static_assert(offsetof(FRigControlHierarchy, Selection) == 0x0000F8, "Member 'FRigControlHierarchy::Selection' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_NameBase
 // 0x0000 (0x0008 - 0x0008)
@@ -2088,6 +2043,137 @@ static_assert(offsetof(FRigUnit_StartsWith, Name) == 0x000008, "Member 'FRigUnit
 static_assert(offsetof(FRigUnit_StartsWith, Start) == 0x000010, "Member 'FRigUnit_StartsWith::Start' has a wrong offset!");
 static_assert(offsetof(FRigUnit_StartsWith, Result) == 0x000018, "Member 'FRigUnit_StartsWith::Result' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigCurveContainer
+// 0x0098 (0x0098 - 0x0000)
+struct FRigCurveContainer final
+{
+public:
+	uint8                                         Pad_0[0x20];                                       // 0x0000(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FRigCurve>                      Curves;                                            // 0x0020(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
+	TMap<class FName, int32>                      NameToIndexMapping;                                // 0x0030(0x0050)(NativeAccessSpecifierPrivate)
+	TArray<class FName>                           Selection;                                         // 0x0080(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_90[0x8];                                       // 0x0090(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigCurveContainer) == 0x000008, "Wrong alignment on FRigCurveContainer");
+static_assert(sizeof(FRigCurveContainer) == 0x000098, "Wrong size on FRigCurveContainer");
+static_assert(offsetof(FRigCurveContainer, Curves) == 0x000020, "Member 'FRigCurveContainer::Curves' has a wrong offset!");
+static_assert(offsetof(FRigCurveContainer, NameToIndexMapping) == 0x000030, "Member 'FRigCurveContainer::NameToIndexMapping' has a wrong offset!");
+static_assert(offsetof(FRigCurveContainer, Selection) == 0x000080, "Member 'FRigCurveContainer::Selection' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorFromFloat
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathVectorFromFloat final : public FRigUnit_MathVectorBase
+{
+public:
+	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathVectorFromFloat) == 0x000008, "Wrong alignment on FRigUnit_MathVectorFromFloat");
+static_assert(sizeof(FRigUnit_MathVectorFromFloat) == 0x000018, "Wrong size on FRigUnit_MathVectorFromFloat");
+static_assert(offsetof(FRigUnit_MathVectorFromFloat, Value) == 0x000008, "Member 'FRigUnit_MathVectorFromFloat::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorFromFloat, Result) == 0x00000C, "Member 'FRigUnit_MathVectorFromFloat::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigHierarchyRef
+// 0x0001 (0x0001 - 0x0000)
+struct FRigHierarchyRef final
+{
+public:
+	uint8                                         Pad_0[0x1];                                        // 0x0000(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigHierarchyRef) == 0x000001, "Wrong alignment on FRigHierarchyRef");
+static_assert(sizeof(FRigHierarchyRef) == 0x000001, "Wrong size on FRigHierarchyRef");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatUnaryOp
+// 0x0008 (0x0010 - 0x0008)
+struct FRigUnit_MathFloatUnaryOp : public FRigUnit_MathFloatBase
+{
+public:
+	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathFloatUnaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathFloatUnaryOp");
+static_assert(sizeof(FRigUnit_MathFloatUnaryOp) == 0x000010, "Wrong size on FRigUnit_MathFloatUnaryOp");
+static_assert(offsetof(FRigUnit_MathFloatUnaryOp, Value) == 0x000008, "Member 'FRigUnit_MathFloatUnaryOp::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatUnaryOp, Result) == 0x00000C, "Member 'FRigUnit_MathFloatUnaryOp::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatAtan
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathFloatAtan final : public FRigUnit_MathFloatUnaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathFloatAtan) == 0x000008, "Wrong alignment on FRigUnit_MathFloatAtan");
+static_assert(sizeof(FRigUnit_MathFloatAtan) == 0x000010, "Wrong size on FRigUnit_MathFloatAtan");
+
+// ScriptStruct ControlRig.RigSpaceHierarchy
+// 0x0090 (0x0090 - 0x0000)
+struct FRigSpaceHierarchy final
+{
+public:
+	uint8                                         Pad_0[0x20];                                       // 0x0000(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FRigSpace>                      Spaces;                                            // 0x0020(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
+	TMap<class FName, int32>                      NameToIndexMapping;                                // 0x0030(0x0050)(NativeAccessSpecifierPrivate)
+	TArray<class FName>                           Selection;                                         // 0x0080(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+};
+static_assert(alignof(FRigSpaceHierarchy) == 0x000008, "Wrong alignment on FRigSpaceHierarchy");
+static_assert(sizeof(FRigSpaceHierarchy) == 0x000090, "Wrong size on FRigSpaceHierarchy");
+static_assert(offsetof(FRigSpaceHierarchy, Spaces) == 0x000020, "Member 'FRigSpaceHierarchy::Spaces' has a wrong offset!");
+static_assert(offsetof(FRigSpaceHierarchy, NameToIndexMapping) == 0x000030, "Member 'FRigSpaceHierarchy::NameToIndexMapping' has a wrong offset!");
+static_assert(offsetof(FRigSpaceHierarchy, Selection) == 0x000080, "Member 'FRigSpaceHierarchy::Selection' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigHierarchyContainer
+// 0x0368 (0x0368 - 0x0000)
+struct FRigHierarchyContainer final
+{
+public:
+	struct FRigBoneHierarchy                      BoneHierarchy;                                     // 0x0000(0x0098)(NativeAccessSpecifierPublic)
+	struct FRigSpaceHierarchy                     SpaceHierarchy;                                    // 0x0098(0x0090)(NativeAccessSpecifierPublic)
+	struct FRigControlHierarchy                   ControlHierarchy;                                  // 0x0128(0x0108)(NativeAccessSpecifierPublic)
+	struct FRigCurveContainer                     CurveContainer;                                    // 0x0230(0x0098)(NativeAccessSpecifierPublic)
+	int32                                         Version;                                           // 0x02C8(0x0004)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2CC[0x9C];                                     // 0x02CC(0x009C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigHierarchyContainer) == 0x000008, "Wrong alignment on FRigHierarchyContainer");
+static_assert(sizeof(FRigHierarchyContainer) == 0x000368, "Wrong size on FRigHierarchyContainer");
+static_assert(offsetof(FRigHierarchyContainer, BoneHierarchy) == 0x000000, "Member 'FRigHierarchyContainer::BoneHierarchy' has a wrong offset!");
+static_assert(offsetof(FRigHierarchyContainer, SpaceHierarchy) == 0x000098, "Member 'FRigHierarchyContainer::SpaceHierarchy' has a wrong offset!");
+static_assert(offsetof(FRigHierarchyContainer, ControlHierarchy) == 0x000128, "Member 'FRigHierarchyContainer::ControlHierarchy' has a wrong offset!");
+static_assert(offsetof(FRigHierarchyContainer, CurveContainer) == 0x000230, "Member 'FRigHierarchyContainer::CurveContainer' has a wrong offset!");
+static_assert(offsetof(FRigHierarchyContainer, Version) == 0x0002C8, "Member 'FRigHierarchyContainer::Version' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorAbs
+// 0x0000 (0x0020 - 0x0020)
+struct FRigUnit_MathVectorAbs final : public FRigUnit_MathVectorUnaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathVectorAbs) == 0x000008, "Wrong alignment on FRigUnit_MathVectorAbs");
+static_assert(sizeof(FRigUnit_MathVectorAbs) == 0x000020, "Wrong size on FRigUnit_MathVectorAbs");
+
+// ScriptStruct ControlRig.RigMirrorSettings
+// 0x0028 (0x0028 - 0x0000)
+struct FRigMirrorSettings final
+{
+public:
+	EAxis                                         MirrorAxis;                                        // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAxis                                         AxisToFlip;                                        // 0x0001(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 OldName;                                           // 0x0008(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 NewName;                                           // 0x0018(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigMirrorSettings) == 0x000008, "Wrong alignment on FRigMirrorSettings");
+static_assert(sizeof(FRigMirrorSettings) == 0x000028, "Wrong size on FRigMirrorSettings");
+static_assert(offsetof(FRigMirrorSettings, MirrorAxis) == 0x000000, "Member 'FRigMirrorSettings::MirrorAxis' has a wrong offset!");
+static_assert(offsetof(FRigMirrorSettings, AxisToFlip) == 0x000001, "Member 'FRigMirrorSettings::AxisToFlip' has a wrong offset!");
+static_assert(offsetof(FRigMirrorSettings, OldName) == 0x000008, "Member 'FRigMirrorSettings::OldName' has a wrong offset!");
+static_assert(offsetof(FRigMirrorSettings, NewName) == 0x000018, "Member 'FRigMirrorSettings::NewName' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatCos
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathFloatCos final : public FRigUnit_MathFloatUnaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathFloatCos) == 0x000008, "Wrong alignment on FRigUnit_MathFloatCos");
+static_assert(sizeof(FRigUnit_MathFloatCos) == 0x000010, "Wrong size on FRigUnit_MathFloatCos");
+
 // ScriptStruct ControlRig.RigInfluenceMapPerEvent
 // 0x0060 (0x0060 - 0x0000)
 struct FRigInfluenceMapPerEvent final
@@ -2101,28 +2187,6 @@ static_assert(sizeof(FRigInfluenceMapPerEvent) == 0x000060, "Wrong size on FRigI
 static_assert(offsetof(FRigInfluenceMapPerEvent, Maps) == 0x000000, "Member 'FRigInfluenceMapPerEvent::Maps' has a wrong offset!");
 static_assert(offsetof(FRigInfluenceMapPerEvent, EventToIndex) == 0x000010, "Member 'FRigInfluenceMapPerEvent::EventToIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SetSpaceTransform
-// 0x0068 (0x00D0 - 0x0068)
-struct FRigUnit_SetSpaceTransform final : public FRigUnitMutable
-{
-public:
-	class FName                                   Space;                                             // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Weight;                                            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_74[0xC];                                       // 0x0074(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Transform;                                         // 0x0080(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	EBoneGetterSetterMode                         SpaceType;                                         // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B1[0x3];                                       // 0x00B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedSpaceIndex;                                  // 0x00B4(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C8[0x8];                                       // 0x00C8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_SetSpaceTransform) == 0x000010, "Wrong alignment on FRigUnit_SetSpaceTransform");
-static_assert(sizeof(FRigUnit_SetSpaceTransform) == 0x0000D0, "Wrong size on FRigUnit_SetSpaceTransform");
-static_assert(offsetof(FRigUnit_SetSpaceTransform, Space) == 0x000068, "Member 'FRigUnit_SetSpaceTransform::Space' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetSpaceTransform, Weight) == 0x000070, "Member 'FRigUnit_SetSpaceTransform::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetSpaceTransform, Transform) == 0x000080, "Member 'FRigUnit_SetSpaceTransform::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetSpaceTransform, SpaceType) == 0x0000B0, "Member 'FRigUnit_SetSpaceTransform::SpaceType' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetSpaceTransform, CachedSpaceIndex) == 0x0000B4, "Member 'FRigUnit_SetSpaceTransform::CachedSpaceIndex' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigUnit_SimBase
 // 0x0000 (0x0008 - 0x0008)
 struct FRigUnit_SimBase : public FRigUnit
@@ -2131,38 +2195,21 @@ struct FRigUnit_SimBase : public FRigUnit
 static_assert(alignof(FRigUnit_SimBase) == 0x000008, "Wrong alignment on FRigUnit_SimBase");
 static_assert(sizeof(FRigUnit_SimBase) == 0x000008, "Wrong size on FRigUnit_SimBase");
 
-// ScriptStruct ControlRig.RigUnit_ParentSwitchConstraint
-// 0x00F8 (0x0160 - 0x0068)
-struct FRigUnit_ParentSwitchConstraint final : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_BinaryQuaternionOp
+// 0x0038 (0x0040 - 0x0008)
+struct FRigUnit_BinaryQuaternionOp : public FRigUnit
 {
 public:
-	struct FRigElementKey                         Subject;                                           // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParentIndex;                                       // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRigElementKeyCollection               Parents;                                           // 0x0078(0x0010)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_88[0x8];                                       // 0x0088(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             InitialGlobalTransform;                            // 0x0090(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         Weight;                                            // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C4[0xC];                                       // 0x00C4(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Transform;                                         // 0x00D0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          Switched;                                          // 0x0100(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_101[0x3];                                      // 0x0101(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedSubject;                                     // 0x0104(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FCachedRigElement                      CachedParent;                                      // 0x0118(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_12C[0x4];                                      // 0x012C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RelativeOffset;                                    // 0x0130(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Argument0;                                         // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Argument1;                                         // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Result;                                            // 0x0030(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_ParentSwitchConstraint) == 0x000010, "Wrong alignment on FRigUnit_ParentSwitchConstraint");
-static_assert(sizeof(FRigUnit_ParentSwitchConstraint) == 0x000160, "Wrong size on FRigUnit_ParentSwitchConstraint");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Subject) == 0x000068, "Member 'FRigUnit_ParentSwitchConstraint::Subject' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, ParentIndex) == 0x000074, "Member 'FRigUnit_ParentSwitchConstraint::ParentIndex' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Parents) == 0x000078, "Member 'FRigUnit_ParentSwitchConstraint::Parents' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, InitialGlobalTransform) == 0x000090, "Member 'FRigUnit_ParentSwitchConstraint::InitialGlobalTransform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Weight) == 0x0000C0, "Member 'FRigUnit_ParentSwitchConstraint::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Transform) == 0x0000D0, "Member 'FRigUnit_ParentSwitchConstraint::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, Switched) == 0x000100, "Member 'FRigUnit_ParentSwitchConstraint::Switched' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, CachedSubject) == 0x000104, "Member 'FRigUnit_ParentSwitchConstraint::CachedSubject' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, CachedParent) == 0x000118, "Member 'FRigUnit_ParentSwitchConstraint::CachedParent' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ParentSwitchConstraint, RelativeOffset) == 0x000130, "Member 'FRigUnit_ParentSwitchConstraint::RelativeOffset' has a wrong offset!");
+static_assert(alignof(FRigUnit_BinaryQuaternionOp) == 0x000010, "Wrong alignment on FRigUnit_BinaryQuaternionOp");
+static_assert(sizeof(FRigUnit_BinaryQuaternionOp) == 0x000040, "Wrong size on FRigUnit_BinaryQuaternionOp");
+static_assert(offsetof(FRigUnit_BinaryQuaternionOp, Argument0) == 0x000010, "Member 'FRigUnit_BinaryQuaternionOp::Argument0' has a wrong offset!");
+static_assert(offsetof(FRigUnit_BinaryQuaternionOp, Argument1) == 0x000020, "Member 'FRigUnit_BinaryQuaternionOp::Argument1' has a wrong offset!");
+static_assert(offsetof(FRigUnit_BinaryQuaternionOp, Result) == 0x000030, "Member 'FRigUnit_BinaryQuaternionOp::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AccumulateVectorRange
 // 0x0040 (0x0048 - 0x0008)
@@ -2204,35 +2251,6 @@ static_assert(offsetof(FRigUnit_AccumulateFloatRange, Maximum) == 0x000010, "Mem
 static_assert(offsetof(FRigUnit_AccumulateFloatRange, AccumulatedMinimum) == 0x000014, "Member 'FRigUnit_AccumulateFloatRange::AccumulatedMinimum' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateFloatRange, AccumulatedMaximum) == 0x000018, "Member 'FRigUnit_AccumulateFloatRange::AccumulatedMaximum' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatBase
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit_MathFloatBase : public FRigUnit_MathBase
-{
-};
-static_assert(alignof(FRigUnit_MathFloatBase) == 0x000008, "Wrong alignment on FRigUnit_MathFloatBase");
-static_assert(sizeof(FRigUnit_MathFloatBase) == 0x000008, "Wrong size on FRigUnit_MathFloatBase");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatUnaryOp
-// 0x0008 (0x0010 - 0x0008)
-struct FRigUnit_MathFloatUnaryOp : public FRigUnit_MathFloatBase
-{
-public:
-	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathFloatUnaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathFloatUnaryOp");
-static_assert(sizeof(FRigUnit_MathFloatUnaryOp) == 0x000010, "Wrong size on FRigUnit_MathFloatUnaryOp");
-static_assert(offsetof(FRigUnit_MathFloatUnaryOp, Value) == 0x000008, "Member 'FRigUnit_MathFloatUnaryOp::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatUnaryOp, Result) == 0x00000C, "Member 'FRigUnit_MathFloatUnaryOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatSign
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathFloatSign final : public FRigUnit_MathFloatUnaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathFloatSign) == 0x000008, "Wrong alignment on FRigUnit_MathFloatSign");
-static_assert(sizeof(FRigUnit_MathFloatSign) == 0x000010, "Wrong size on FRigUnit_MathFloatSign");
-
 // ScriptStruct ControlRig.RigUnit_AccumulateTransformLerp
 // 0x00D8 (0x00E0 - 0x0008)
 struct FRigUnit_AccumulateTransformLerp final : public FRigUnit_SimBase
@@ -2255,6 +2273,23 @@ static_assert(offsetof(FRigUnit_AccumulateTransformLerp, Blend) == 0x000070, "Me
 static_assert(offsetof(FRigUnit_AccumulateTransformLerp, bIntegrateDeltaTime) == 0x000074, "Member 'FRigUnit_AccumulateTransformLerp::bIntegrateDeltaTime' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateTransformLerp, Result) == 0x000080, "Member 'FRigUnit_AccumulateTransformLerp::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateTransformLerp, AccumulatedValue) == 0x0000B0, "Member 'FRigUnit_AccumulateTransformLerp::AccumulatedValue' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathTransformRotateVector
+// 0x0058 (0x0060 - 0x0008)
+struct FRigUnit_MathTransformRotateVector final : public FRigUnit_MathTransformBase
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Transform;                                         // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                Direction;                                         // 0x0040(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x004C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_58[0x8];                                       // 0x0058(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathTransformRotateVector) == 0x000010, "Wrong alignment on FRigUnit_MathTransformRotateVector");
+static_assert(sizeof(FRigUnit_MathTransformRotateVector) == 0x000060, "Wrong size on FRigUnit_MathTransformRotateVector");
+static_assert(offsetof(FRigUnit_MathTransformRotateVector, Transform) == 0x000010, "Member 'FRigUnit_MathTransformRotateVector::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformRotateVector, Direction) == 0x000040, "Member 'FRigUnit_MathTransformRotateVector::Direction' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformRotateVector, Result) == 0x00004C, "Member 'FRigUnit_MathTransformRotateVector::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AccumulateQuatLerp
 // 0x0058 (0x0060 - 0x0008)
@@ -2279,26 +2314,28 @@ static_assert(offsetof(FRigUnit_AccumulateQuatLerp, bIntegrateDeltaTime) == 0x00
 static_assert(offsetof(FRigUnit_AccumulateQuatLerp, Result) == 0x000040, "Member 'FRigUnit_AccumulateQuatLerp::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateQuatLerp, AccumulatedValue) == 0x000050, "Member 'FRigUnit_AccumulateQuatLerp::AccumulatedValue' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SendEvent
-// 0x0018 (0x0080 - 0x0068)
-struct FRigUnit_SendEvent final : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_PointSimulation_DebugSettings
+// 0x0050 (0x0050 - 0x0000)
+struct FRigUnit_PointSimulation_DebugSettings final
 {
 public:
-	ERigEvent                                     Event;                                             // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigElementKey                         Item;                                              // 0x006C(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         OffsetInSeconds;                                   // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bEnable;                                           // 0x007C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bOnlyDuringInteraction;                            // 0x007D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_7E[0x2];                                       // 0x007E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bEnabled;                                          // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Scale;                                             // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         CollisionScale;                                    // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bDrawPointsAsSpheres;                              // 0x000C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLinearColor                           Color;                                             // 0x0010(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FTransform                             WorldOffset;                                       // 0x0020(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_SendEvent) == 0x000008, "Wrong alignment on FRigUnit_SendEvent");
-static_assert(sizeof(FRigUnit_SendEvent) == 0x000080, "Wrong size on FRigUnit_SendEvent");
-static_assert(offsetof(FRigUnit_SendEvent, Event) == 0x000068, "Member 'FRigUnit_SendEvent::Event' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SendEvent, Item) == 0x00006C, "Member 'FRigUnit_SendEvent::Item' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SendEvent, OffsetInSeconds) == 0x000078, "Member 'FRigUnit_SendEvent::OffsetInSeconds' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SendEvent, bEnable) == 0x00007C, "Member 'FRigUnit_SendEvent::bEnable' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SendEvent, bOnlyDuringInteraction) == 0x00007D, "Member 'FRigUnit_SendEvent::bOnlyDuringInteraction' has a wrong offset!");
+static_assert(alignof(FRigUnit_PointSimulation_DebugSettings) == 0x000010, "Wrong alignment on FRigUnit_PointSimulation_DebugSettings");
+static_assert(sizeof(FRigUnit_PointSimulation_DebugSettings) == 0x000050, "Wrong size on FRigUnit_PointSimulation_DebugSettings");
+static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, bEnabled) == 0x000000, "Member 'FRigUnit_PointSimulation_DebugSettings::bEnabled' has a wrong offset!");
+static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, Scale) == 0x000004, "Member 'FRigUnit_PointSimulation_DebugSettings::Scale' has a wrong offset!");
+static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, CollisionScale) == 0x000008, "Member 'FRigUnit_PointSimulation_DebugSettings::CollisionScale' has a wrong offset!");
+static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, bDrawPointsAsSpheres) == 0x00000C, "Member 'FRigUnit_PointSimulation_DebugSettings::bDrawPointsAsSpheres' has a wrong offset!");
+static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, Color) == 0x000010, "Member 'FRigUnit_PointSimulation_DebugSettings::Color' has a wrong offset!");
+static_assert(offsetof(FRigUnit_PointSimulation_DebugSettings, WorldOffset) == 0x000020, "Member 'FRigUnit_PointSimulation_DebugSettings::WorldOffset' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AccumulateVectorLerp
 // 0x0038 (0x0040 - 0x0008)
@@ -2344,22 +2381,6 @@ static_assert(offsetof(FRigUnit_AccumulateFloatLerp, bIntegrateDeltaTime) == 0x0
 static_assert(offsetof(FRigUnit_AccumulateFloatLerp, Result) == 0x000018, "Member 'FRigUnit_AccumulateFloatLerp::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateFloatLerp, AccumulatedValue) == 0x00001C, "Member 'FRigUnit_AccumulateFloatLerp::AccumulatedValue' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatFloor
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathFloatFloor final : public FRigUnit_MathFloatBase
-{
-public:
-	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Int;                                               // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathFloatFloor) == 0x000008, "Wrong alignment on FRigUnit_MathFloatFloor");
-static_assert(sizeof(FRigUnit_MathFloatFloor) == 0x000018, "Wrong size on FRigUnit_MathFloatFloor");
-static_assert(offsetof(FRigUnit_MathFloatFloor, Value) == 0x000008, "Member 'FRigUnit_MathFloatFloor::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatFloor, Result) == 0x00000C, "Member 'FRigUnit_MathFloatFloor::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatFloor, Int) == 0x000010, "Member 'FRigUnit_MathFloatFloor::Int' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigUnit_AccumulateTransformMul
 // 0x00D8 (0x00E0 - 0x0008)
 struct FRigUnit_AccumulateTransformMul final : public FRigUnit_SimBase
@@ -2383,22 +2404,27 @@ static_assert(offsetof(FRigUnit_AccumulateTransformMul, bIntegrateDeltaTime) == 
 static_assert(offsetof(FRigUnit_AccumulateTransformMul, Result) == 0x000080, "Member 'FRigUnit_AccumulateTransformMul::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateTransformMul, AccumulatedValue) == 0x0000B0, "Member 'FRigUnit_AccumulateTransformMul::AccumulatedValue' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_NameReplace
-// 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_NameReplace final : public FRigUnit_NameBase
+// ScriptStruct ControlRig.RigUnit_MathTransformUnaryOp
+// 0x0068 (0x0070 - 0x0008)
+struct FRigUnit_MathTransformUnaryOp : public FRigUnit_MathTransformBase
 {
 public:
-	class FName                                   Name;                                              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   Old;                                               // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   New;                                               // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   Result;                                            // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Result;                                            // 0x0040(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_NameReplace) == 0x000008, "Wrong alignment on FRigUnit_NameReplace");
-static_assert(sizeof(FRigUnit_NameReplace) == 0x000028, "Wrong size on FRigUnit_NameReplace");
-static_assert(offsetof(FRigUnit_NameReplace, Name) == 0x000008, "Member 'FRigUnit_NameReplace::Name' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NameReplace, Old) == 0x000010, "Member 'FRigUnit_NameReplace::Old' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NameReplace, New) == 0x000018, "Member 'FRigUnit_NameReplace::New' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NameReplace, Result) == 0x000020, "Member 'FRigUnit_NameReplace::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathTransformUnaryOp) == 0x000010, "Wrong alignment on FRigUnit_MathTransformUnaryOp");
+static_assert(sizeof(FRigUnit_MathTransformUnaryOp) == 0x000070, "Wrong size on FRigUnit_MathTransformUnaryOp");
+static_assert(offsetof(FRigUnit_MathTransformUnaryOp, Value) == 0x000010, "Member 'FRigUnit_MathTransformUnaryOp::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformUnaryOp, Result) == 0x000040, "Member 'FRigUnit_MathTransformUnaryOp::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathTransformInverse
+// 0x0000 (0x0070 - 0x0070)
+struct FRigUnit_MathTransformInverse final : public FRigUnit_MathTransformUnaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathTransformInverse) == 0x000010, "Wrong alignment on FRigUnit_MathTransformInverse");
+static_assert(sizeof(FRigUnit_MathTransformInverse) == 0x000070, "Wrong size on FRigUnit_MathTransformInverse");
 
 // ScriptStruct ControlRig.RigUnit_AccumulateQuatMul
 // 0x0058 (0x0060 - 0x0008)
@@ -2423,21 +2449,30 @@ static_assert(offsetof(FRigUnit_AccumulateQuatMul, bIntegrateDeltaTime) == 0x000
 static_assert(offsetof(FRigUnit_AccumulateQuatMul, Result) == 0x000040, "Member 'FRigUnit_AccumulateQuatMul::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateQuatMul, AccumulatedValue) == 0x000050, "Member 'FRigUnit_AccumulateQuatMul::AccumulatedValue' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_DebugBaseMutable
-// 0x0000 (0x0068 - 0x0068)
-struct FRigUnit_DebugBaseMutable : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_SetBoneTransform
+// 0x0088 (0x00F0 - 0x0068)
+struct FRigUnit_SetBoneTransform final : public FRigUnitMutable
 {
+public:
+	class FName                                   Bone;                                              // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FTransform                             Transform;                                         // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Result;                                            // 0x00A0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	EBoneGetterSetterMode                         Space;                                             // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D1[0x3];                                       // 0x00D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Weight;                                            // 0x00D4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bPropagateToChildren;                              // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D9[0x3];                                       // 0x00D9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedBone;                                        // 0x00DC(0x0014)(Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_DebugBaseMutable) == 0x000008, "Wrong alignment on FRigUnit_DebugBaseMutable");
-static_assert(sizeof(FRigUnit_DebugBaseMutable) == 0x000068, "Wrong size on FRigUnit_DebugBaseMutable");
-
-// ScriptStruct ControlRig.RigUnit_StartProfilingTimer
-// 0x0000 (0x0068 - 0x0068)
-struct FRigUnit_StartProfilingTimer final : public FRigUnit_DebugBaseMutable
-{
-};
-static_assert(alignof(FRigUnit_StartProfilingTimer) == 0x000008, "Wrong alignment on FRigUnit_StartProfilingTimer");
-static_assert(sizeof(FRigUnit_StartProfilingTimer) == 0x000068, "Wrong size on FRigUnit_StartProfilingTimer");
+static_assert(alignof(FRigUnit_SetBoneTransform) == 0x000010, "Wrong alignment on FRigUnit_SetBoneTransform");
+static_assert(sizeof(FRigUnit_SetBoneTransform) == 0x0000F0, "Wrong size on FRigUnit_SetBoneTransform");
+static_assert(offsetof(FRigUnit_SetBoneTransform, Bone) == 0x000068, "Member 'FRigUnit_SetBoneTransform::Bone' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneTransform, Transform) == 0x000070, "Member 'FRigUnit_SetBoneTransform::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneTransform, Result) == 0x0000A0, "Member 'FRigUnit_SetBoneTransform::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneTransform, Space) == 0x0000D0, "Member 'FRigUnit_SetBoneTransform::Space' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneTransform, Weight) == 0x0000D4, "Member 'FRigUnit_SetBoneTransform::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneTransform, bPropagateToChildren) == 0x0000D8, "Member 'FRigUnit_SetBoneTransform::bPropagateToChildren' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetBoneTransform, CachedBone) == 0x0000DC, "Member 'FRigUnit_SetBoneTransform::CachedBone' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AccumulateVectorMul
 // 0x0038 (0x0040 - 0x0008)
@@ -2481,22 +2516,6 @@ static_assert(offsetof(FRigUnit_AccumulateFloatMul, bIntegrateDeltaTime) == 0x00
 static_assert(offsetof(FRigUnit_AccumulateFloatMul, Result) == 0x000014, "Member 'FRigUnit_AccumulateFloatMul::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateFloatMul, AccumulatedValue) == 0x000018, "Member 'FRigUnit_AccumulateFloatMul::AccumulatedValue' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatBinaryOp
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathFloatBinaryOp : public FRigUnit_MathFloatBase
-{
-public:
-	float                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathFloatBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathFloatBinaryOp");
-static_assert(sizeof(FRigUnit_MathFloatBinaryOp) == 0x000018, "Wrong size on FRigUnit_MathFloatBinaryOp");
-static_assert(offsetof(FRigUnit_MathFloatBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathFloatBinaryOp::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatBinaryOp, B) == 0x00000C, "Member 'FRigUnit_MathFloatBinaryOp::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatBinaryOp, Result) == 0x000010, "Member 'FRigUnit_MathFloatBinaryOp::Result' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigUnit_AccumulateVectorAdd
 // 0x0038 (0x0040 - 0x0008)
 struct FRigUnit_AccumulateVectorAdd final : public FRigUnit_SimBase
@@ -2518,29 +2537,29 @@ static_assert(offsetof(FRigUnit_AccumulateVectorAdd, bIntegrateDeltaTime) == 0x0
 static_assert(offsetof(FRigUnit_AccumulateVectorAdd, Result) == 0x000024, "Member 'FRigUnit_AccumulateVectorAdd::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateVectorAdd, AccumulatedValue) == 0x000030, "Member 'FRigUnit_AccumulateVectorAdd::AccumulatedValue' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_NoiseFloat
-// 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_NoiseFloat final : public FRigUnit_MathBase
+// ScriptStruct ControlRig.RigUnit_MathTransformBinaryOp
+// 0x0098 (0x00A0 - 0x0008)
+struct FRigUnit_MathTransformBinaryOp : public FRigUnit_MathTransformBase
 {
 public:
-	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Speed;                                             // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Frequency;                                         // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Minimum;                                           // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Maximum;                                           // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Time;                                              // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             A;                                                 // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             B;                                                 // 0x0040(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Result;                                            // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_NoiseFloat) == 0x000008, "Wrong alignment on FRigUnit_NoiseFloat");
-static_assert(sizeof(FRigUnit_NoiseFloat) == 0x000028, "Wrong size on FRigUnit_NoiseFloat");
-static_assert(offsetof(FRigUnit_NoiseFloat, Value) == 0x000008, "Member 'FRigUnit_NoiseFloat::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NoiseFloat, Speed) == 0x00000C, "Member 'FRigUnit_NoiseFloat::Speed' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NoiseFloat, Frequency) == 0x000010, "Member 'FRigUnit_NoiseFloat::Frequency' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NoiseFloat, Minimum) == 0x000014, "Member 'FRigUnit_NoiseFloat::Minimum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NoiseFloat, Maximum) == 0x000018, "Member 'FRigUnit_NoiseFloat::Maximum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NoiseFloat, Result) == 0x00001C, "Member 'FRigUnit_NoiseFloat::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NoiseFloat, Time) == 0x000020, "Member 'FRigUnit_NoiseFloat::Time' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathTransformBinaryOp) == 0x000010, "Wrong alignment on FRigUnit_MathTransformBinaryOp");
+static_assert(sizeof(FRigUnit_MathTransformBinaryOp) == 0x0000A0, "Wrong size on FRigUnit_MathTransformBinaryOp");
+static_assert(offsetof(FRigUnit_MathTransformBinaryOp, A) == 0x000010, "Member 'FRigUnit_MathTransformBinaryOp::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformBinaryOp, B) == 0x000040, "Member 'FRigUnit_MathTransformBinaryOp::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformBinaryOp, Result) == 0x000070, "Member 'FRigUnit_MathTransformBinaryOp::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathTransformMul
+// 0x0000 (0x00A0 - 0x00A0)
+struct FRigUnit_MathTransformMul final : public FRigUnit_MathTransformBinaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathTransformMul) == 0x000010, "Wrong alignment on FRigUnit_MathTransformMul");
+static_assert(sizeof(FRigUnit_MathTransformMul) == 0x0000A0, "Wrong size on FRigUnit_MathTransformMul");
 
 // ScriptStruct ControlRig.RigUnit_AccumulateFloatAdd
 // 0x0018 (0x0020 - 0x0008)
@@ -2562,6 +2581,22 @@ static_assert(offsetof(FRigUnit_AccumulateFloatAdd, InitialValue) == 0x00000C, "
 static_assert(offsetof(FRigUnit_AccumulateFloatAdd, bIntegrateDeltaTime) == 0x000010, "Member 'FRigUnit_AccumulateFloatAdd::bIntegrateDeltaTime' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateFloatAdd, Result) == 0x000014, "Member 'FRigUnit_AccumulateFloatAdd::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AccumulateFloatAdd, AccumulatedValue) == 0x000018, "Member 'FRigUnit_AccumulateFloatAdd::AccumulatedValue' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_QuaternionFromAxisAndAngle
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_QuaternionFromAxisAndAngle final : public FRigUnit
+{
+public:
+	struct FVector                                Axis;                                              // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Angle;                                             // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_18[0x8];                                       // 0x0018(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_QuaternionFromAxisAndAngle) == 0x000010, "Wrong alignment on FRigUnit_QuaternionFromAxisAndAngle");
+static_assert(sizeof(FRigUnit_QuaternionFromAxisAndAngle) == 0x000030, "Wrong size on FRigUnit_QuaternionFromAxisAndAngle");
+static_assert(offsetof(FRigUnit_QuaternionFromAxisAndAngle, Axis) == 0x000008, "Member 'FRigUnit_QuaternionFromAxisAndAngle::Axis' has a wrong offset!");
+static_assert(offsetof(FRigUnit_QuaternionFromAxisAndAngle, Angle) == 0x000014, "Member 'FRigUnit_QuaternionFromAxisAndAngle::Angle' has a wrong offset!");
+static_assert(offsetof(FRigUnit_QuaternionFromAxisAndAngle, Result) == 0x000020, "Member 'FRigUnit_QuaternionFromAxisAndAngle::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AddBoneTransform
 // 0x0058 (0x00C0 - 0x0068)
@@ -2593,14 +2628,6 @@ struct FRigUnit_HighlevelBaseMutable : public FRigUnitMutable
 };
 static_assert(alignof(FRigUnit_HighlevelBaseMutable) == 0x000008, "Wrong alignment on FRigUnit_HighlevelBaseMutable");
 static_assert(sizeof(FRigUnit_HighlevelBaseMutable) == 0x000068, "Wrong size on FRigUnit_HighlevelBaseMutable");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatMod
-// 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathFloatMod final : public FRigUnit_MathFloatBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathFloatMod) == 0x000008, "Wrong alignment on FRigUnit_MathFloatMod");
-static_assert(sizeof(FRigUnit_MathFloatMod) == 0x000018, "Wrong size on FRigUnit_MathFloatMod");
 
 // ScriptStruct ControlRig.RigUnit_AimItem_Target
 // 0x002C (0x002C - 0x0000)
@@ -2747,21 +2774,25 @@ static_assert(offsetof(FRigUnit_PointSimulation, DebugSettings) == 0x0000F0, "Me
 static_assert(offsetof(FRigUnit_PointSimulation, Bezier) == 0x000140, "Member 'FRigUnit_PointSimulation::Bezier' has a wrong offset!");
 static_assert(offsetof(FRigUnit_PointSimulation, WorkData) == 0x000170, "Member 'FRigUnit_PointSimulation::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_BinaryQuaternionOp
-// 0x0038 (0x0040 - 0x0008)
-struct FRigUnit_BinaryQuaternionOp : public FRigUnit
+// ScriptStruct ControlRig.RigUnit_SetControlVector
+// 0x0030 (0x0098 - 0x0068)
+struct FRigUnit_SetControlVector final : public FRigUnitMutable
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Argument0;                                         // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  Argument1;                                         // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  Result;                                            // 0x0030(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	class FName                                   Control;                                           // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Weight;                                            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Vector;                                            // 0x0074(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EBoneGetterSetterMode                         Space;                                             // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_81[0x3];                                       // 0x0081(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedControlIndex;                                // 0x0084(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_BinaryQuaternionOp) == 0x000010, "Wrong alignment on FRigUnit_BinaryQuaternionOp");
-static_assert(sizeof(FRigUnit_BinaryQuaternionOp) == 0x000040, "Wrong size on FRigUnit_BinaryQuaternionOp");
-static_assert(offsetof(FRigUnit_BinaryQuaternionOp, Argument0) == 0x000010, "Member 'FRigUnit_BinaryQuaternionOp::Argument0' has a wrong offset!");
-static_assert(offsetof(FRigUnit_BinaryQuaternionOp, Argument1) == 0x000020, "Member 'FRigUnit_BinaryQuaternionOp::Argument1' has a wrong offset!");
-static_assert(offsetof(FRigUnit_BinaryQuaternionOp, Result) == 0x000030, "Member 'FRigUnit_BinaryQuaternionOp::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetControlVector) == 0x000008, "Wrong alignment on FRigUnit_SetControlVector");
+static_assert(sizeof(FRigUnit_SetControlVector) == 0x000098, "Wrong size on FRigUnit_SetControlVector");
+static_assert(offsetof(FRigUnit_SetControlVector, Control) == 0x000068, "Member 'FRigUnit_SetControlVector::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlVector, Weight) == 0x000070, "Member 'FRigUnit_SetControlVector::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlVector, Vector) == 0x000074, "Member 'FRigUnit_SetControlVector::Vector' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlVector, Space) == 0x000080, "Member 'FRigUnit_SetControlVector::Space' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlVector, CachedControlIndex) == 0x000084, "Member 'FRigUnit_SetControlVector::CachedControlIndex' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AimBone_Target
 // 0x0028 (0x0028 - 0x0000)
@@ -2812,21 +2843,16 @@ static_assert(offsetof(FRigUnit_AimBone, CachedBoneIndex) == 0x000110, "Member '
 static_assert(offsetof(FRigUnit_AimBone, PrimaryCachedSpace) == 0x000124, "Member 'FRigUnit_AimBone::PrimaryCachedSpace' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AimBone, SecondaryCachedSpace) == 0x000138, "Member 'FRigUnit_AimBone::SecondaryCachedSpace' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorOrthogonal
-// 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_MathVectorOrthogonal final : public FRigUnit_MathVectorBase
+// ScriptStruct ControlRig.RigUnit_PrepareForExecution
+// 0x0060 (0x0068 - 0x0008)
+struct FRigUnit_PrepareForExecution final : public FRigUnit
 {
 public:
-	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FControlRigExecuteContext              ExecuteContext;                                    // 0x0008(0x0060)(Edit, Transient, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathVectorOrthogonal) == 0x000008, "Wrong alignment on FRigUnit_MathVectorOrthogonal");
-static_assert(sizeof(FRigUnit_MathVectorOrthogonal) == 0x000028, "Wrong size on FRigUnit_MathVectorOrthogonal");
-static_assert(offsetof(FRigUnit_MathVectorOrthogonal, A) == 0x000008, "Member 'FRigUnit_MathVectorOrthogonal::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorOrthogonal, B) == 0x000014, "Member 'FRigUnit_MathVectorOrthogonal::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorOrthogonal, Result) == 0x000020, "Member 'FRigUnit_MathVectorOrthogonal::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_PrepareForExecution) == 0x000008, "Wrong alignment on FRigUnit_PrepareForExecution");
+static_assert(sizeof(FRigUnit_PrepareForExecution) == 0x000068, "Wrong size on FRigUnit_PrepareForExecution");
+static_assert(offsetof(FRigUnit_PrepareForExecution, ExecuteContext) == 0x000008, "Member 'FRigUnit_PrepareForExecution::ExecuteContext' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_HighlevelBase
 // 0x0000 (0x0008 - 0x0008)
@@ -2836,34 +2862,26 @@ struct FRigUnit_HighlevelBase : public FRigUnit
 static_assert(alignof(FRigUnit_HighlevelBase) == 0x000008, "Wrong alignment on FRigUnit_HighlevelBase");
 static_assert(sizeof(FRigUnit_HighlevelBase) == 0x000008, "Wrong size on FRigUnit_HighlevelBase");
 
-// ScriptStruct ControlRig.RigUnit_SetMultiControlInteger_Entry
-// 0x000C (0x000C - 0x0000)
-struct FRigUnit_SetMultiControlInteger_Entry final
+// ScriptStruct ControlRig.RigUnit_SendEvent
+// 0x0018 (0x0080 - 0x0068)
+struct FRigUnit_SendEvent final : public FRigUnitMutable
 {
 public:
-	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         IntegerValue;                                      // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ERigEvent                                     Event;                                             // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigElementKey                         Item;                                              // 0x006C(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         OffsetInSeconds;                                   // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bEnable;                                           // 0x007C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bOnlyDuringInteraction;                            // 0x007D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_7E[0x2];                                       // 0x007E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SetMultiControlInteger_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlInteger_Entry");
-static_assert(sizeof(FRigUnit_SetMultiControlInteger_Entry) == 0x00000C, "Wrong size on FRigUnit_SetMultiControlInteger_Entry");
-static_assert(offsetof(FRigUnit_SetMultiControlInteger_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlInteger_Entry::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetMultiControlInteger_Entry, IntegerValue) == 0x000008, "Member 'FRigUnit_SetMultiControlInteger_Entry::IntegerValue' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_SetMultiControlInteger
-// 0x0028 (0x0090 - 0x0068)
-struct FRigUnit_SetMultiControlInteger final : public FRigUnitMutable
-{
-public:
-	TArray<struct FRigUnit_SetMultiControlInteger_Entry> Entries;                                           // 0x0068(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	float                                         Weight;                                            // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_7C[0x4];                                       // 0x007C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              CachedControlIndices;                              // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_SetMultiControlInteger) == 0x000008, "Wrong alignment on FRigUnit_SetMultiControlInteger");
-static_assert(sizeof(FRigUnit_SetMultiControlInteger) == 0x000090, "Wrong size on FRigUnit_SetMultiControlInteger");
-static_assert(offsetof(FRigUnit_SetMultiControlInteger, Entries) == 0x000068, "Member 'FRigUnit_SetMultiControlInteger::Entries' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetMultiControlInteger, Weight) == 0x000078, "Member 'FRigUnit_SetMultiControlInteger::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetMultiControlInteger, CachedControlIndices) == 0x000080, "Member 'FRigUnit_SetMultiControlInteger::CachedControlIndices' has a wrong offset!");
+static_assert(alignof(FRigUnit_SendEvent) == 0x000008, "Wrong alignment on FRigUnit_SendEvent");
+static_assert(sizeof(FRigUnit_SendEvent) == 0x000080, "Wrong size on FRigUnit_SendEvent");
+static_assert(offsetof(FRigUnit_SendEvent, Event) == 0x000068, "Member 'FRigUnit_SendEvent::Event' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SendEvent, Item) == 0x00006C, "Member 'FRigUnit_SendEvent::Item' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SendEvent, OffsetInSeconds) == 0x000078, "Member 'FRigUnit_SendEvent::OffsetInSeconds' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SendEvent, bEnable) == 0x00007C, "Member 'FRigUnit_SendEvent::bEnable' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SendEvent, bOnlyDuringInteraction) == 0x00007D, "Member 'FRigUnit_SendEvent::bOnlyDuringInteraction' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AimBoneMath
 // 0x0138 (0x0140 - 0x0008)
@@ -2893,17 +2911,6 @@ static_assert(offsetof(FRigUnit_AimBoneMath, DebugSettings) == 0x0000D0, "Member
 static_assert(offsetof(FRigUnit_AimBoneMath, PrimaryCachedSpace) == 0x000110, "Member 'FRigUnit_AimBoneMath::PrimaryCachedSpace' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AimBoneMath, SecondaryCachedSpace) == 0x000124, "Member 'FRigUnit_AimBoneMath::SecondaryCachedSpace' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_AimConstraint_WorkData
-// 0x0010 (0x0010 - 0x0000)
-struct FRigUnit_AimConstraint_WorkData final
-{
-public:
-	TArray<struct FConstraintData>                ConstraintData;                                    // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_AimConstraint_WorkData) == 0x000008, "Wrong alignment on FRigUnit_AimConstraint_WorkData");
-static_assert(sizeof(FRigUnit_AimConstraint_WorkData) == 0x000010, "Wrong size on FRigUnit_AimConstraint_WorkData");
-static_assert(offsetof(FRigUnit_AimConstraint_WorkData, ConstraintData) == 0x000000, "Member 'FRigUnit_AimConstraint_WorkData::ConstraintData' has a wrong offset!");
-
 // ScriptStruct ControlRig.AimTarget
 // 0x0050 (0x0050 - 0x0000)
 struct FAimTarget final
@@ -2920,6 +2927,17 @@ static_assert(sizeof(FAimTarget) == 0x000050, "Wrong size on FAimTarget");
 static_assert(offsetof(FAimTarget, Weight) == 0x000000, "Member 'FAimTarget::Weight' has a wrong offset!");
 static_assert(offsetof(FAimTarget, Transform) == 0x000010, "Member 'FAimTarget::Transform' has a wrong offset!");
 static_assert(offsetof(FAimTarget, AlignVector) == 0x000040, "Member 'FAimTarget::AlignVector' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_AimConstraint_WorkData
+// 0x0010 (0x0010 - 0x0000)
+struct FRigUnit_AimConstraint_WorkData final
+{
+public:
+	TArray<struct FConstraintData>                ConstraintData;                                    // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_AimConstraint_WorkData) == 0x000008, "Wrong alignment on FRigUnit_AimConstraint_WorkData");
+static_assert(sizeof(FRigUnit_AimConstraint_WorkData) == 0x000010, "Wrong size on FRigUnit_AimConstraint_WorkData");
+static_assert(offsetof(FRigUnit_AimConstraint_WorkData, ConstraintData) == 0x000000, "Member 'FRigUnit_AimConstraint_WorkData::ConstraintData' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AimConstraint
 // 0x0058 (0x00C0 - 0x0068)
@@ -2948,22 +2966,26 @@ static_assert(offsetof(FRigUnit_AimConstraint, AimTargets) == 0x000090, "Member 
 static_assert(offsetof(FRigUnit_AimConstraint, UpTargets) == 0x0000A0, "Member 'FRigUnit_AimConstraint::UpTargets' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AimConstraint, WorkData) == 0x0000B0, "Member 'FRigUnit_AimConstraint::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorClampLength
-// 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_MathVectorClampLength final : public FRigUnit_MathVectorBase
+// ScriptStruct ControlRig.RigUnit_PropagateTransform
+// 0x0028 (0x0090 - 0x0068)
+struct FRigUnit_PropagateTransform final : public FRigUnitMutable
 {
 public:
-	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MinimumLength;                                     // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MaximumLength;                                     // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x001C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRigElementKey                         Item;                                              // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bRecomputeGlobal;                                  // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bApplyToChildren;                                  // 0x0075(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bRecursive;                                        // 0x0076(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_77[0x1];                                       // 0x0077(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedIndex;                                       // 0x0078(0x0014)(Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8C[0x4];                                       // 0x008C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathVectorClampLength) == 0x000008, "Wrong alignment on FRigUnit_MathVectorClampLength");
-static_assert(sizeof(FRigUnit_MathVectorClampLength) == 0x000028, "Wrong size on FRigUnit_MathVectorClampLength");
-static_assert(offsetof(FRigUnit_MathVectorClampLength, Value) == 0x000008, "Member 'FRigUnit_MathVectorClampLength::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampLength, MinimumLength) == 0x000014, "Member 'FRigUnit_MathVectorClampLength::MinimumLength' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampLength, MaximumLength) == 0x000018, "Member 'FRigUnit_MathVectorClampLength::MaximumLength' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampLength, Result) == 0x00001C, "Member 'FRigUnit_MathVectorClampLength::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_PropagateTransform) == 0x000008, "Wrong alignment on FRigUnit_PropagateTransform");
+static_assert(sizeof(FRigUnit_PropagateTransform) == 0x000090, "Wrong size on FRigUnit_PropagateTransform");
+static_assert(offsetof(FRigUnit_PropagateTransform, Item) == 0x000068, "Member 'FRigUnit_PropagateTransform::Item' has a wrong offset!");
+static_assert(offsetof(FRigUnit_PropagateTransform, bRecomputeGlobal) == 0x000074, "Member 'FRigUnit_PropagateTransform::bRecomputeGlobal' has a wrong offset!");
+static_assert(offsetof(FRigUnit_PropagateTransform, bApplyToChildren) == 0x000075, "Member 'FRigUnit_PropagateTransform::bApplyToChildren' has a wrong offset!");
+static_assert(offsetof(FRigUnit_PropagateTransform, bRecursive) == 0x000076, "Member 'FRigUnit_PropagateTransform::bRecursive' has a wrong offset!");
+static_assert(offsetof(FRigUnit_PropagateTransform, CachedIndex) == 0x000078, "Member 'FRigUnit_PropagateTransform::CachedIndex' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AlphaInterpVector
 // 0x0080 (0x0088 - 0x0008)
@@ -3006,21 +3028,19 @@ static_assert(offsetof(FRigUnit_AlphaInterpVector, InterpSpeedDecreasing) == 0x0
 static_assert(offsetof(FRigUnit_AlphaInterpVector, Result) == 0x000048, "Member 'FRigUnit_AlphaInterpVector::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AlphaInterpVector, ScaleBiasClamp) == 0x000054, "Member 'FRigUnit_AlphaInterpVector::ScaleBiasClamp' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorDot
-// 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_MathVectorDot final : public FRigUnit_MathVectorBase
+// ScriptStruct ControlRig.RigUnit_UnaryQuaternionOp
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_UnaryQuaternionOp : public FRigUnit
 {
 public:
-	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Argument;                                          // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathVectorDot) == 0x000008, "Wrong alignment on FRigUnit_MathVectorDot");
-static_assert(sizeof(FRigUnit_MathVectorDot) == 0x000028, "Wrong size on FRigUnit_MathVectorDot");
-static_assert(offsetof(FRigUnit_MathVectorDot, A) == 0x000008, "Member 'FRigUnit_MathVectorDot::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorDot, B) == 0x000014, "Member 'FRigUnit_MathVectorDot::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorDot, Result) == 0x000020, "Member 'FRigUnit_MathVectorDot::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_UnaryQuaternionOp) == 0x000010, "Wrong alignment on FRigUnit_UnaryQuaternionOp");
+static_assert(sizeof(FRigUnit_UnaryQuaternionOp) == 0x000030, "Wrong size on FRigUnit_UnaryQuaternionOp");
+static_assert(offsetof(FRigUnit_UnaryQuaternionOp, Argument) == 0x000010, "Member 'FRigUnit_UnaryQuaternionOp::Argument' has a wrong offset!");
+static_assert(offsetof(FRigUnit_UnaryQuaternionOp, Result) == 0x000020, "Member 'FRigUnit_UnaryQuaternionOp::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AlphaInterp
 // 0x0070 (0x0078 - 0x0008)
@@ -3063,21 +3083,35 @@ static_assert(offsetof(FRigUnit_AlphaInterp, InterpSpeedDecreasing) == 0x00003C,
 static_assert(offsetof(FRigUnit_AlphaInterp, Result) == 0x000040, "Member 'FRigUnit_AlphaInterp::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AlphaInterp, ScaleBiasClamp) == 0x000044, "Member 'FRigUnit_AlphaInterp::ScaleBiasClamp' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SetControlBool
-// 0x0020 (0x0088 - 0x0068)
-struct FRigUnit_SetControlBool final : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_SetControlTransform
+// 0x0068 (0x00D0 - 0x0068)
+struct FRigUnit_SetControlTransform final : public FRigUnitMutable
 {
 public:
 	class FName                                   Control;                                           // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          BoolValue;                                         // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_71[0x3];                                       // 0x0071(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedControlIndex;                                // 0x0074(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Weight;                                            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_74[0xC];                                       // 0x0074(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Transform;                                         // 0x0080(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	EBoneGetterSetterMode                         Space;                                             // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B1[0x3];                                       // 0x00B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedControlIndex;                                // 0x00B4(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C8[0x8];                                       // 0x00C8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SetControlBool) == 0x000008, "Wrong alignment on FRigUnit_SetControlBool");
-static_assert(sizeof(FRigUnit_SetControlBool) == 0x000088, "Wrong size on FRigUnit_SetControlBool");
-static_assert(offsetof(FRigUnit_SetControlBool, Control) == 0x000068, "Member 'FRigUnit_SetControlBool::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlBool, BoolValue) == 0x000070, "Member 'FRigUnit_SetControlBool::BoolValue' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlBool, CachedControlIndex) == 0x000074, "Member 'FRigUnit_SetControlBool::CachedControlIndex' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetControlTransform) == 0x000010, "Wrong alignment on FRigUnit_SetControlTransform");
+static_assert(sizeof(FRigUnit_SetControlTransform) == 0x0000D0, "Wrong size on FRigUnit_SetControlTransform");
+static_assert(offsetof(FRigUnit_SetControlTransform, Control) == 0x000068, "Member 'FRigUnit_SetControlTransform::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlTransform, Weight) == 0x000070, "Member 'FRigUnit_SetControlTransform::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlTransform, Transform) == 0x000080, "Member 'FRigUnit_SetControlTransform::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlTransform, Space) == 0x0000B0, "Member 'FRigUnit_SetControlTransform::Space' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlTransform, CachedControlIndex) == 0x0000B4, "Member 'FRigUnit_SetControlTransform::CachedControlIndex' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_AnimBase
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit_AnimBase : public FRigUnit
+{
+};
+static_assert(alignof(FRigUnit_AnimBase) == 0x000008, "Wrong alignment on FRigUnit_AnimBase");
+static_assert(sizeof(FRigUnit_AnimBase) == 0x000008, "Wrong size on FRigUnit_AnimBase");
 
 // ScriptStruct ControlRig.RigUnit_AnimEasing
 // 0x0020 (0x0028 - 0x0008)
@@ -3104,6 +3138,38 @@ static_assert(offsetof(FRigUnit_AnimEasing, TargetMinimum) == 0x000018, "Member 
 static_assert(offsetof(FRigUnit_AnimEasing, TargetMaximum) == 0x00001C, "Member 'FRigUnit_AnimEasing::TargetMaximum' has a wrong offset!");
 static_assert(offsetof(FRigUnit_AnimEasing, Result) == 0x000020, "Member 'FRigUnit_AnimEasing::Result' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_MathBoolBase
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit_MathBoolBase : public FRigUnit_MathBase
+{
+};
+static_assert(alignof(FRigUnit_MathBoolBase) == 0x000008, "Wrong alignment on FRigUnit_MathBoolBase");
+static_assert(sizeof(FRigUnit_MathBoolBase) == 0x000008, "Wrong size on FRigUnit_MathBoolBase");
+
+// ScriptStruct ControlRig.RigUnit_MathBoolBinaryOp
+// 0x0008 (0x0010 - 0x0008)
+struct FRigUnit_MathBoolBinaryOp : public FRigUnit_MathBoolBase
+{
+public:
+	bool                                          A;                                                 // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          B;                                                 // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathBoolBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathBoolBinaryOp");
+static_assert(sizeof(FRigUnit_MathBoolBinaryOp) == 0x000010, "Wrong size on FRigUnit_MathBoolBinaryOp");
+static_assert(offsetof(FRigUnit_MathBoolBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathBoolBinaryOp::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathBoolBinaryOp, B) == 0x000009, "Member 'FRigUnit_MathBoolBinaryOp::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathBoolBinaryOp, Result) == 0x00000A, "Member 'FRigUnit_MathBoolBinaryOp::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathBoolAnd
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathBoolAnd final : public FRigUnit_MathBoolBinaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathBoolAnd) == 0x000008, "Wrong alignment on FRigUnit_MathBoolAnd");
+static_assert(sizeof(FRigUnit_MathBoolAnd) == 0x000010, "Wrong size on FRigUnit_MathBoolAnd");
+
 // ScriptStruct ControlRig.RigUnit_AnimEasingType
 // 0x0008 (0x0010 - 0x0008)
 struct FRigUnit_AnimEasingType final : public FRigUnit_AnimBase
@@ -3116,38 +3182,52 @@ static_assert(alignof(FRigUnit_AnimEasingType) == 0x000008, "Wrong alignment on 
 static_assert(sizeof(FRigUnit_AnimEasingType) == 0x000010, "Wrong size on FRigUnit_AnimEasingType");
 static_assert(offsetof(FRigUnit_AnimEasingType, Type) == 0x000008, "Member 'FRigUnit_AnimEasingType::Type' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorLength
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathVectorLength final : public FRigUnit_MathVectorBase
+// ScriptStruct ControlRig.RigUnit_KalmanTransform
+// 0x0098 (0x00A0 - 0x0008)
+struct FRigUnit_KalmanTransform final : public FRigUnit_SimBase
 {
 public:
-	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         BufferSize;                                        // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_44[0xC];                                       // 0x0044(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Result;                                            // 0x0050(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	TArray<struct FTransform>                     Buffer;                                            // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	int32                                         LastInsertIndex;                                   // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_94[0xC];                                       // 0x0094(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathVectorLength) == 0x000008, "Wrong alignment on FRigUnit_MathVectorLength");
-static_assert(sizeof(FRigUnit_MathVectorLength) == 0x000018, "Wrong size on FRigUnit_MathVectorLength");
-static_assert(offsetof(FRigUnit_MathVectorLength, Value) == 0x000008, "Member 'FRigUnit_MathVectorLength::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorLength, Result) == 0x000014, "Member 'FRigUnit_MathVectorLength::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_KalmanTransform) == 0x000010, "Wrong alignment on FRigUnit_KalmanTransform");
+static_assert(sizeof(FRigUnit_KalmanTransform) == 0x0000A0, "Wrong size on FRigUnit_KalmanTransform");
+static_assert(offsetof(FRigUnit_KalmanTransform, Value) == 0x000010, "Member 'FRigUnit_KalmanTransform::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_KalmanTransform, BufferSize) == 0x000040, "Member 'FRigUnit_KalmanTransform::BufferSize' has a wrong offset!");
+static_assert(offsetof(FRigUnit_KalmanTransform, Result) == 0x000050, "Member 'FRigUnit_KalmanTransform::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_KalmanTransform, Buffer) == 0x000080, "Member 'FRigUnit_KalmanTransform::Buffer' has a wrong offset!");
+static_assert(offsetof(FRigUnit_KalmanTransform, LastInsertIndex) == 0x000090, "Member 'FRigUnit_KalmanTransform::LastInsertIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SetControlVector
-// 0x0030 (0x0098 - 0x0068)
-struct FRigUnit_SetControlVector final : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_AnimEvalRichCurve
+// 0x00A8 (0x00B0 - 0x0008)
+struct FRigUnit_AnimEvalRichCurve final : public FRigUnit_AnimBase
 {
 public:
-	class FName                                   Control;                                           // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Weight;                                            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Vector;                                            // 0x0074(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EBoneGetterSetterMode                         Space;                                             // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_81[0x3];                                       // 0x0081(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedControlIndex;                                // 0x0084(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRuntimeFloatCurve                     Curve;                                             // 0x0010(0x0088)(NativeAccessSpecifierPublic)
+	float                                         SourceMinimum;                                     // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SourceMaximum;                                     // 0x009C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TargetMinimum;                                     // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TargetMaximum;                                     // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_AC[0x4];                                       // 0x00AC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SetControlVector) == 0x000008, "Wrong alignment on FRigUnit_SetControlVector");
-static_assert(sizeof(FRigUnit_SetControlVector) == 0x000098, "Wrong size on FRigUnit_SetControlVector");
-static_assert(offsetof(FRigUnit_SetControlVector, Control) == 0x000068, "Member 'FRigUnit_SetControlVector::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlVector, Weight) == 0x000070, "Member 'FRigUnit_SetControlVector::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlVector, Vector) == 0x000074, "Member 'FRigUnit_SetControlVector::Vector' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlVector, Space) == 0x000080, "Member 'FRigUnit_SetControlVector::Space' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlVector, CachedControlIndex) == 0x000084, "Member 'FRigUnit_SetControlVector::CachedControlIndex' has a wrong offset!");
+static_assert(alignof(FRigUnit_AnimEvalRichCurve) == 0x000008, "Wrong alignment on FRigUnit_AnimEvalRichCurve");
+static_assert(sizeof(FRigUnit_AnimEvalRichCurve) == 0x0000B0, "Wrong size on FRigUnit_AnimEvalRichCurve");
+static_assert(offsetof(FRigUnit_AnimEvalRichCurve, Value) == 0x000008, "Member 'FRigUnit_AnimEvalRichCurve::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_AnimEvalRichCurve, Curve) == 0x000010, "Member 'FRigUnit_AnimEvalRichCurve::Curve' has a wrong offset!");
+static_assert(offsetof(FRigUnit_AnimEvalRichCurve, SourceMinimum) == 0x000098, "Member 'FRigUnit_AnimEvalRichCurve::SourceMinimum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_AnimEvalRichCurve, SourceMaximum) == 0x00009C, "Member 'FRigUnit_AnimEvalRichCurve::SourceMaximum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_AnimEvalRichCurve, TargetMinimum) == 0x0000A0, "Member 'FRigUnit_AnimEvalRichCurve::TargetMinimum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_AnimEvalRichCurve, TargetMaximum) == 0x0000A4, "Member 'FRigUnit_AnimEvalRichCurve::TargetMaximum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_AnimEvalRichCurve, Result) == 0x0000A8, "Member 'FRigUnit_AnimEvalRichCurve::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_AnimRichCurve
 // 0x0088 (0x0090 - 0x0008)
@@ -3160,29 +3240,69 @@ static_assert(alignof(FRigUnit_AnimRichCurve) == 0x000008, "Wrong alignment on F
 static_assert(sizeof(FRigUnit_AnimRichCurve) == 0x000090, "Wrong size on FRigUnit_AnimRichCurve");
 static_assert(offsetof(FRigUnit_AnimRichCurve, Curve) == 0x000008, "Member 'FRigUnit_AnimRichCurve::Curve' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SetRotation
-// 0x0048 (0x00B0 - 0x0068)
-struct FRigUnit_SetRotation final : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_ApplyFK
+// 0x0088 (0x00F0 - 0x0068)
+struct FRigUnit_ApplyFK final : public FRigUnitMutable
 {
 public:
-	struct FRigElementKey                         Item;                                              // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EBoneGetterSetterMode                         Space;                                             // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_75[0xB];                                       // 0x0075(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Rotation;                                          // 0x0080(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         Weight;                                            // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bPropagateToChildren;                              // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_95[0x3];                                       // 0x0095(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedIndex;                                       // 0x0098(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_AC[0x4];                                       // 0x00AC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   Joint;                                             // 0x0068(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FTransform                             Transform;                                         // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransformFilter                       Filter;                                            // 0x00A0(0x0009)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	EApplyTransformMode                           ApplyTransformMode;                                // 0x00A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ETransformSpaceMode                           ApplyTransformSpace;                               // 0x00AA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_AB[0x5];                                       // 0x00AB(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             BaseTransform;                                     // 0x00B0(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	class FName                                   BaseJoint;                                         // 0x00E0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E8[0x8];                                       // 0x00E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SetRotation) == 0x000010, "Wrong alignment on FRigUnit_SetRotation");
-static_assert(sizeof(FRigUnit_SetRotation) == 0x0000B0, "Wrong size on FRigUnit_SetRotation");
-static_assert(offsetof(FRigUnit_SetRotation, Item) == 0x000068, "Member 'FRigUnit_SetRotation::Item' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRotation, Space) == 0x000074, "Member 'FRigUnit_SetRotation::Space' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRotation, Rotation) == 0x000080, "Member 'FRigUnit_SetRotation::Rotation' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRotation, Weight) == 0x000090, "Member 'FRigUnit_SetRotation::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRotation, bPropagateToChildren) == 0x000094, "Member 'FRigUnit_SetRotation::bPropagateToChildren' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRotation, CachedIndex) == 0x000098, "Member 'FRigUnit_SetRotation::CachedIndex' has a wrong offset!");
+static_assert(alignof(FRigUnit_ApplyFK) == 0x000010, "Wrong alignment on FRigUnit_ApplyFK");
+static_assert(sizeof(FRigUnit_ApplyFK) == 0x0000F0, "Wrong size on FRigUnit_ApplyFK");
+static_assert(offsetof(FRigUnit_ApplyFK, Joint) == 0x000068, "Member 'FRigUnit_ApplyFK::Joint' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ApplyFK, Transform) == 0x000070, "Member 'FRigUnit_ApplyFK::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ApplyFK, Filter) == 0x0000A0, "Member 'FRigUnit_ApplyFK::Filter' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ApplyFK, ApplyTransformMode) == 0x0000A9, "Member 'FRigUnit_ApplyFK::ApplyTransformMode' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ApplyFK, ApplyTransformSpace) == 0x0000AA, "Member 'FRigUnit_ApplyFK::ApplyTransformSpace' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ApplyFK, BaseTransform) == 0x0000B0, "Member 'FRigUnit_ApplyFK::BaseTransform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ApplyFK, BaseJoint) == 0x0000E0, "Member 'FRigUnit_ApplyFK::BaseJoint' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathBoolConstant
+// 0x0008 (0x0010 - 0x0008)
+struct FRigUnit_MathBoolConstant : public FRigUnit_MathBoolBase
+{
+public:
+	bool                                          Value;                                             // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathBoolConstant) == 0x000008, "Wrong alignment on FRigUnit_MathBoolConstant");
+static_assert(sizeof(FRigUnit_MathBoolConstant) == 0x000010, "Wrong size on FRigUnit_MathBoolConstant");
+static_assert(offsetof(FRigUnit_MathBoolConstant, Value) == 0x000008, "Member 'FRigUnit_MathBoolConstant::Value' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathBoolConstFalse
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathBoolConstFalse final : public FRigUnit_MathBoolConstant
+{
+};
+static_assert(alignof(FRigUnit_MathBoolConstFalse) == 0x000008, "Wrong alignment on FRigUnit_MathBoolConstFalse");
+static_assert(sizeof(FRigUnit_MathBoolConstFalse) == 0x000010, "Wrong size on FRigUnit_MathBoolConstFalse");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatNegate
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathFloatNegate final : public FRigUnit_MathFloatUnaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathFloatNegate) == 0x000008, "Wrong alignment on FRigUnit_MathFloatNegate");
+static_assert(sizeof(FRigUnit_MathFloatNegate) == 0x000010, "Wrong size on FRigUnit_MathFloatNegate");
+
+// ScriptStruct ControlRig.RigUnit_BeginExecution
+// 0x0060 (0x0068 - 0x0008)
+struct FRigUnit_BeginExecution final : public FRigUnit
+{
+public:
+	struct FControlRigExecuteContext              ExecuteContext;                                    // 0x0008(0x0060)(Edit, Transient, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_BeginExecution) == 0x000008, "Wrong alignment on FRigUnit_BeginExecution");
+static_assert(sizeof(FRigUnit_BeginExecution) == 0x000068, "Wrong size on FRigUnit_BeginExecution");
+static_assert(offsetof(FRigUnit_BeginExecution, ExecuteContext) == 0x000008, "Member 'FRigUnit_BeginExecution::ExecuteContext' has a wrong offset!");
 
 // ScriptStruct ControlRig.BlendTarget
 // 0x0040 (0x0040 - 0x0000)
@@ -3213,6 +3333,29 @@ static_assert(sizeof(FRigUnit_BlendTransform) == 0x000080, "Wrong size on FRigUn
 static_assert(offsetof(FRigUnit_BlendTransform, Source) == 0x000010, "Member 'FRigUnit_BlendTransform::Source' has a wrong offset!");
 static_assert(offsetof(FRigUnit_BlendTransform, Targets) == 0x000040, "Member 'FRigUnit_BlendTransform::Targets' has a wrong offset!");
 static_assert(offsetof(FRigUnit_BlendTransform, Result) == 0x000050, "Member 'FRigUnit_BlendTransform::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathColorBase
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit_MathColorBase : public FRigUnit_MathBase
+{
+};
+static_assert(alignof(FRigUnit_MathColorBase) == 0x000008, "Wrong alignment on FRigUnit_MathColorBase");
+static_assert(sizeof(FRigUnit_MathColorBase) == 0x000008, "Wrong size on FRigUnit_MathColorBase");
+
+// ScriptStruct ControlRig.RigUnit_MathColorBinaryOp
+// 0x0030 (0x0038 - 0x0008)
+struct FRigUnit_MathColorBinaryOp : public FRigUnit_MathColorBase
+{
+public:
+	struct FLinearColor                           A;                                                 // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           B;                                                 // 0x0018(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           Result;                                            // 0x0028(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathColorBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathColorBinaryOp");
+static_assert(sizeof(FRigUnit_MathColorBinaryOp) == 0x000038, "Wrong size on FRigUnit_MathColorBinaryOp");
+static_assert(offsetof(FRigUnit_MathColorBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathColorBinaryOp::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathColorBinaryOp, B) == 0x000018, "Member 'FRigUnit_MathColorBinaryOp::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathColorBinaryOp, Result) == 0x000028, "Member 'FRigUnit_MathColorBinaryOp::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_Harmonics_TargetItem
 // 0x0010 (0x0010 - 0x0000)
@@ -3274,34 +3417,13 @@ static_assert(offsetof(FRigUnit_ItemHarmonics, WaveMaximum) == 0x0000BC, "Member
 static_assert(offsetof(FRigUnit_ItemHarmonics, RotationOrder) == 0x0000C0, "Member 'FRigUnit_ItemHarmonics::RotationOrder' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ItemHarmonics, WorkData) == 0x0000C8, "Member 'FRigUnit_ItemHarmonics::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SetControlColor
-// 0x0030 (0x0098 - 0x0068)
-struct FRigUnit_SetControlColor final : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_MathBoolOr
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathBoolOr final : public FRigUnit_MathBoolBinaryOp
 {
-public:
-	class FName                                   Control;                                           // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           Color;                                             // 0x0070(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FCachedRigElement                      CachedControlIndex;                                // 0x0080(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_94[0x4];                                       // 0x0094(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SetControlColor) == 0x000008, "Wrong alignment on FRigUnit_SetControlColor");
-static_assert(sizeof(FRigUnit_SetControlColor) == 0x000098, "Wrong size on FRigUnit_SetControlColor");
-static_assert(offsetof(FRigUnit_SetControlColor, Control) == 0x000068, "Member 'FRigUnit_SetControlColor::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlColor, Color) == 0x000070, "Member 'FRigUnit_SetControlColor::Color' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetControlColor, CachedControlIndex) == 0x000080, "Member 'FRigUnit_SetControlColor::CachedControlIndex' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_SetMultiControlFloat_Entry
-// 0x000C (0x000C - 0x0000)
-struct FRigUnit_SetMultiControlFloat_Entry final
-{
-public:
-	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         FloatValue;                                        // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_SetMultiControlFloat_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlFloat_Entry");
-static_assert(sizeof(FRigUnit_SetMultiControlFloat_Entry) == 0x00000C, "Wrong size on FRigUnit_SetMultiControlFloat_Entry");
-static_assert(offsetof(FRigUnit_SetMultiControlFloat_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlFloat_Entry::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetMultiControlFloat_Entry, FloatValue) == 0x000008, "Member 'FRigUnit_SetMultiControlFloat_Entry::FloatValue' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathBoolOr) == 0x000008, "Wrong alignment on FRigUnit_MathBoolOr");
+static_assert(sizeof(FRigUnit_MathBoolOr) == 0x000010, "Wrong size on FRigUnit_MathBoolOr");
 
 // ScriptStruct ControlRig.RigUnit_BoneHarmonics_BoneTarget
 // 0x000C (0x000C - 0x0000)
@@ -3351,21 +3473,27 @@ static_assert(offsetof(FRigUnit_BoneHarmonics, RotationOrder) == 0x0000C0, "Memb
 static_assert(offsetof(FRigUnit_BoneHarmonics, bPropagateToChildren) == 0x0000C1, "Member 'FRigUnit_BoneHarmonics::bPropagateToChildren' has a wrong offset!");
 static_assert(offsetof(FRigUnit_BoneHarmonics, WorkData) == 0x0000C8, "Member 'FRigUnit_BoneHarmonics::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SetMultiControlRotator_Entry
-// 0x0018 (0x0018 - 0x0000)
-struct FRigUnit_SetMultiControlRotator_Entry final
+// ScriptStruct ControlRig.RigUnit_MathColorFromFloat
+// 0x0018 (0x0020 - 0x0008)
+struct FRigUnit_MathColorFromFloat final : public FRigUnit_MathColorBase
 {
 public:
-	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               Rotator;                                           // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	EBoneGetterSetterMode                         Space;                                             // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           Result;                                            // 0x000C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SetMultiControlRotator_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlRotator_Entry");
-static_assert(sizeof(FRigUnit_SetMultiControlRotator_Entry) == 0x000018, "Wrong size on FRigUnit_SetMultiControlRotator_Entry");
-static_assert(offsetof(FRigUnit_SetMultiControlRotator_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlRotator_Entry::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetMultiControlRotator_Entry, Rotator) == 0x000008, "Member 'FRigUnit_SetMultiControlRotator_Entry::Rotator' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetMultiControlRotator_Entry, Space) == 0x000014, "Member 'FRigUnit_SetMultiControlRotator_Entry::Space' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathColorFromFloat) == 0x000008, "Wrong alignment on FRigUnit_MathColorFromFloat");
+static_assert(sizeof(FRigUnit_MathColorFromFloat) == 0x000020, "Wrong size on FRigUnit_MathColorFromFloat");
+static_assert(offsetof(FRigUnit_MathColorFromFloat, Value) == 0x000008, "Member 'FRigUnit_MathColorFromFloat::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathColorFromFloat, Result) == 0x00000C, "Member 'FRigUnit_MathColorFromFloat::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_ItemBase
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit_ItemBase : public FRigUnit
+{
+};
+static_assert(alignof(FRigUnit_ItemBase) == 0x000008, "Wrong alignment on FRigUnit_ItemBase");
+static_assert(sizeof(FRigUnit_ItemBase) == 0x000008, "Wrong size on FRigUnit_ItemBase");
 
 // ScriptStruct ControlRig.RigUnit_ControlName
 // 0x0008 (0x0010 - 0x0008)
@@ -3377,21 +3505,6 @@ public:
 static_assert(alignof(FRigUnit_ControlName) == 0x000008, "Wrong alignment on FRigUnit_ControlName");
 static_assert(sizeof(FRigUnit_ControlName) == 0x000010, "Wrong size on FRigUnit_ControlName");
 static_assert(offsetof(FRigUnit_ControlName, Control) == 0x000008, "Member 'FRigUnit_ControlName::Control' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_NameConcat
-// 0x0018 (0x0020 - 0x0008)
-struct FRigUnit_NameConcat final : public FRigUnit_NameBase
-{
-public:
-	class FName                                   A;                                                 // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   B;                                                 // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   Result;                                            // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_NameConcat) == 0x000008, "Wrong alignment on FRigUnit_NameConcat");
-static_assert(sizeof(FRigUnit_NameConcat) == 0x000020, "Wrong size on FRigUnit_NameConcat");
-static_assert(offsetof(FRigUnit_NameConcat, A) == 0x000008, "Member 'FRigUnit_NameConcat::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NameConcat, B) == 0x000010, "Member 'FRigUnit_NameConcat::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_NameConcat, Result) == 0x000018, "Member 'FRigUnit_NameConcat::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_SpaceName
 // 0x0008 (0x0010 - 0x0008)
@@ -3415,6 +3528,14 @@ static_assert(alignof(FRigUnit_BoneName) == 0x000008, "Wrong alignment on FRigUn
 static_assert(sizeof(FRigUnit_BoneName) == 0x000010, "Wrong size on FRigUnit_BoneName");
 static_assert(offsetof(FRigUnit_BoneName, Bone) == 0x000008, "Member 'FRigUnit_BoneName::Bone' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_MathQuaternionBase
+// 0x0000 (0x0008 - 0x0008)
+struct FRigUnit_MathQuaternionBase : public FRigUnit_MathBase
+{
+};
+static_assert(alignof(FRigUnit_MathQuaternionBase) == 0x000008, "Wrong alignment on FRigUnit_MathQuaternionBase");
+static_assert(sizeof(FRigUnit_MathQuaternionBase) == 0x000008, "Wrong size on FRigUnit_MathQuaternionBase");
+
 // ScriptStruct ControlRig.RigUnit_Item
 // 0x0010 (0x0018 - 0x0008)
 struct FRigUnit_Item final : public FRigUnit
@@ -3426,19 +3547,6 @@ public:
 static_assert(alignof(FRigUnit_Item) == 0x000008, "Wrong alignment on FRigUnit_Item");
 static_assert(sizeof(FRigUnit_Item) == 0x000018, "Wrong size on FRigUnit_Item");
 static_assert(offsetof(FRigUnit_Item, Item) == 0x000008, "Member 'FRigUnit_Item::Item' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_SetMultiControlVector2D_Entry
-// 0x0010 (0x0010 - 0x0000)
-struct FRigUnit_SetMultiControlVector2D_Entry final
-{
-public:
-	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector2D                              Vector;                                            // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_SetMultiControlVector2D_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlVector2D_Entry");
-static_assert(sizeof(FRigUnit_SetMultiControlVector2D_Entry) == 0x000010, "Wrong size on FRigUnit_SetMultiControlVector2D_Entry");
-static_assert(offsetof(FRigUnit_SetMultiControlVector2D_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlVector2D_Entry::Control' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetMultiControlVector2D_Entry, Vector) == 0x000008, "Member 'FRigUnit_SetMultiControlVector2D_Entry::Vector' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_CCDIK_RotationLimitPerItem
 // 0x0010 (0x0010 - 0x0000)
@@ -3506,64 +3614,6 @@ static_assert(offsetof(FRigUnit_CCDIKPerItem, BaseRotationLimit) == 0x0000C0, "M
 static_assert(offsetof(FRigUnit_CCDIKPerItem, RotationLimits) == 0x0000C8, "Member 'FRigUnit_CCDIKPerItem::RotationLimits' has a wrong offset!");
 static_assert(offsetof(FRigUnit_CCDIKPerItem, bPropagateToChildren) == 0x0000D8, "Member 'FRigUnit_CCDIKPerItem::bPropagateToChildren' has a wrong offset!");
 static_assert(offsetof(FRigUnit_CCDIKPerItem, WorkData) == 0x0000E0, "Member 'FRigUnit_CCDIKPerItem::WorkData' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_SetRelativeTransformForItem
-// 0x0088 (0x00F0 - 0x0068)
-struct FRigUnit_SetRelativeTransformForItem final : public FRigUnitMutable
-{
-public:
-	struct FRigElementKey                         Child;                                             // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRigElementKey                         Parent;                                            // 0x0074(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bParentInitial;                                    // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_81[0xF];                                       // 0x0081(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RelativeTransform;                                 // 0x0090(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         Weight;                                            // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bPropagateToChildren;                              // 0x00C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C5[0x3];                                       // 0x00C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedChild;                                       // 0x00C8(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FCachedRigElement                      CachedParent;                                      // 0x00DC(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_SetRelativeTransformForItem) == 0x000010, "Wrong alignment on FRigUnit_SetRelativeTransformForItem");
-static_assert(sizeof(FRigUnit_SetRelativeTransformForItem) == 0x0000F0, "Wrong size on FRigUnit_SetRelativeTransformForItem");
-static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, Child) == 0x000068, "Member 'FRigUnit_SetRelativeTransformForItem::Child' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, Parent) == 0x000074, "Member 'FRigUnit_SetRelativeTransformForItem::Parent' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, bParentInitial) == 0x000080, "Member 'FRigUnit_SetRelativeTransformForItem::bParentInitial' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, RelativeTransform) == 0x000090, "Member 'FRigUnit_SetRelativeTransformForItem::RelativeTransform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, Weight) == 0x0000C0, "Member 'FRigUnit_SetRelativeTransformForItem::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, bPropagateToChildren) == 0x0000C4, "Member 'FRigUnit_SetRelativeTransformForItem::bPropagateToChildren' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, CachedChild) == 0x0000C8, "Member 'FRigUnit_SetRelativeTransformForItem::CachedChild' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, CachedParent) == 0x0000DC, "Member 'FRigUnit_SetRelativeTransformForItem::CachedParent' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathColorBase
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit_MathColorBase : public FRigUnit_MathBase
-{
-};
-static_assert(alignof(FRigUnit_MathColorBase) == 0x000008, "Wrong alignment on FRigUnit_MathColorBase");
-static_assert(sizeof(FRigUnit_MathColorBase) == 0x000008, "Wrong size on FRigUnit_MathColorBase");
-
-// ScriptStruct ControlRig.RigUnit_MathColorBinaryOp
-// 0x0030 (0x0038 - 0x0008)
-struct FRigUnit_MathColorBinaryOp : public FRigUnit_MathColorBase
-{
-public:
-	struct FLinearColor                           A;                                                 // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           B;                                                 // 0x0018(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           Result;                                            // 0x0028(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathColorBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathColorBinaryOp");
-static_assert(sizeof(FRigUnit_MathColorBinaryOp) == 0x000038, "Wrong size on FRigUnit_MathColorBinaryOp");
-static_assert(offsetof(FRigUnit_MathColorBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathColorBinaryOp::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathColorBinaryOp, B) == 0x000018, "Member 'FRigUnit_MathColorBinaryOp::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathColorBinaryOp, Result) == 0x000028, "Member 'FRigUnit_MathColorBinaryOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathColorSub
-// 0x0000 (0x0038 - 0x0038)
-struct FRigUnit_MathColorSub final : public FRigUnit_MathColorBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathColorSub) == 0x000008, "Wrong alignment on FRigUnit_MathColorSub");
-static_assert(sizeof(FRigUnit_MathColorSub) == 0x000038, "Wrong size on FRigUnit_MathColorSub");
 
 // ScriptStruct ControlRig.RigUnit_CCDIK_RotationLimit
 // 0x000C (0x000C - 0x0000)
@@ -3753,63 +3803,62 @@ static_assert(offsetof(FRigUnit_ChainHarmonicsPerItem, bDrawDebug) == 0x0001AC, 
 static_assert(offsetof(FRigUnit_ChainHarmonicsPerItem, DrawWorldOffset) == 0x0001B0, "Member 'FRigUnit_ChainHarmonicsPerItem::DrawWorldOffset' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ChainHarmonicsPerItem, WorkData) == 0x0001E0, "Member 'FRigUnit_ChainHarmonicsPerItem::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatSelectBool
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathFloatSelectBool final : public FRigUnit_MathFloatBase
+// ScriptStruct ControlRig.RigUnit_MathQuaternionNotEquals
+// 0x0038 (0x0040 - 0x0008)
+struct FRigUnit_MathQuaternionNotEquals final : public FRigUnit_MathQuaternionBase
 {
 public:
-	bool                                          Condition;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         IfTrue;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         IfFalse;                                           // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  A;                                                 // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  B;                                                 // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0xF];                                       // 0x0031(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathFloatSelectBool) == 0x000008, "Wrong alignment on FRigUnit_MathFloatSelectBool");
-static_assert(sizeof(FRigUnit_MathFloatSelectBool) == 0x000018, "Wrong size on FRigUnit_MathFloatSelectBool");
-static_assert(offsetof(FRigUnit_MathFloatSelectBool, Condition) == 0x000008, "Member 'FRigUnit_MathFloatSelectBool::Condition' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatSelectBool, IfTrue) == 0x00000C, "Member 'FRigUnit_MathFloatSelectBool::IfTrue' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatSelectBool, IfFalse) == 0x000010, "Member 'FRigUnit_MathFloatSelectBool::IfFalse' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatSelectBool, Result) == 0x000014, "Member 'FRigUnit_MathFloatSelectBool::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathQuaternionNotEquals) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionNotEquals");
+static_assert(sizeof(FRigUnit_MathQuaternionNotEquals) == 0x000040, "Wrong size on FRigUnit_MathQuaternionNotEquals");
+static_assert(offsetof(FRigUnit_MathQuaternionNotEquals, A) == 0x000010, "Member 'FRigUnit_MathQuaternionNotEquals::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionNotEquals, B) == 0x000020, "Member 'FRigUnit_MathQuaternionNotEquals::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionNotEquals, Result) == 0x000030, "Member 'FRigUnit_MathQuaternionNotEquals::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntBase
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit_MathIntBase : public FRigUnit_MathBase
-{
-};
-static_assert(alignof(FRigUnit_MathIntBase) == 0x000008, "Wrong alignment on FRigUnit_MathIntBase");
-static_assert(sizeof(FRigUnit_MathIntBase) == 0x000008, "Wrong size on FRigUnit_MathIntBase");
-
-// ScriptStruct ControlRig.RigUnit_MathIntNotEquals
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathIntNotEquals final : public FRigUnit_MathIntBase
-{
-public:
-	int32                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathIntNotEquals) == 0x000008, "Wrong alignment on FRigUnit_MathIntNotEquals");
-static_assert(sizeof(FRigUnit_MathIntNotEquals) == 0x000018, "Wrong size on FRigUnit_MathIntNotEquals");
-static_assert(offsetof(FRigUnit_MathIntNotEquals, A) == 0x000008, "Member 'FRigUnit_MathIntNotEquals::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntNotEquals, B) == 0x00000C, "Member 'FRigUnit_MathIntNotEquals::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntNotEquals, Result) == 0x000010, "Member 'FRigUnit_MathIntNotEquals::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatGreaterEqual
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathFloatGreaterEqual final : public FRigUnit_MathFloatBase
+// ScriptStruct ControlRig.RigUnit_MathFloatLawOfCosine
+// 0x0020 (0x0028 - 0x0008)
+struct FRigUnit_MathFloatLawOfCosine final : public FRigUnit_MathFloatBase
 {
 public:
 	float                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         C;                                                 // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         AlphaAngle;                                        // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         BetaAngle;                                         // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         GammaAngle;                                        // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bValid;                                            // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathFloatGreaterEqual) == 0x000008, "Wrong alignment on FRigUnit_MathFloatGreaterEqual");
-static_assert(sizeof(FRigUnit_MathFloatGreaterEqual) == 0x000018, "Wrong size on FRigUnit_MathFloatGreaterEqual");
-static_assert(offsetof(FRigUnit_MathFloatGreaterEqual, A) == 0x000008, "Member 'FRigUnit_MathFloatGreaterEqual::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatGreaterEqual, B) == 0x00000C, "Member 'FRigUnit_MathFloatGreaterEqual::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatGreaterEqual, Result) == 0x000010, "Member 'FRigUnit_MathFloatGreaterEqual::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathFloatLawOfCosine) == 0x000008, "Wrong alignment on FRigUnit_MathFloatLawOfCosine");
+static_assert(sizeof(FRigUnit_MathFloatLawOfCosine) == 0x000028, "Wrong size on FRigUnit_MathFloatLawOfCosine");
+static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, A) == 0x000008, "Member 'FRigUnit_MathFloatLawOfCosine::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, B) == 0x00000C, "Member 'FRigUnit_MathFloatLawOfCosine::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, C) == 0x000010, "Member 'FRigUnit_MathFloatLawOfCosine::C' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, AlphaAngle) == 0x000014, "Member 'FRigUnit_MathFloatLawOfCosine::AlphaAngle' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, BetaAngle) == 0x000018, "Member 'FRigUnit_MathFloatLawOfCosine::BetaAngle' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, GammaAngle) == 0x00001C, "Member 'FRigUnit_MathFloatLawOfCosine::GammaAngle' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, bValid) == 0x000020, "Member 'FRigUnit_MathFloatLawOfCosine::bValid' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathQuaternionBinaryOp
+// 0x0038 (0x0040 - 0x0008)
+struct FRigUnit_MathQuaternionBinaryOp : public FRigUnit_MathQuaternionBase
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  A;                                                 // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  B;                                                 // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Result;                                            // 0x0030(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathQuaternionBinaryOp) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionBinaryOp");
+static_assert(sizeof(FRigUnit_MathQuaternionBinaryOp) == 0x000040, "Wrong size on FRigUnit_MathQuaternionBinaryOp");
+static_assert(offsetof(FRigUnit_MathQuaternionBinaryOp, A) == 0x000010, "Member 'FRigUnit_MathQuaternionBinaryOp::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionBinaryOp, B) == 0x000020, "Member 'FRigUnit_MathQuaternionBinaryOp::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionBinaryOp, Result) == 0x000030, "Member 'FRigUnit_MathQuaternionBinaryOp::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_ChainHarmonics
 // 0x0208 (0x0270 - 0x0068)
@@ -3840,13 +3889,27 @@ static_assert(offsetof(FRigUnit_ChainHarmonics, bDrawDebug) == 0x0001AC, "Member
 static_assert(offsetof(FRigUnit_ChainHarmonics, DrawWorldOffset) == 0x0001B0, "Member 'FRigUnit_ChainHarmonics::DrawWorldOffset' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ChainHarmonics, WorkData) == 0x0001E0, "Member 'FRigUnit_ChainHarmonics::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatAsin
+// ScriptStruct ControlRig.RigUnit_MathBoolUnaryOp
+// 0x0008 (0x0010 - 0x0008)
+struct FRigUnit_MathBoolUnaryOp : public FRigUnit_MathBoolBase
+{
+public:
+	bool                                          Value;                                             // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathBoolUnaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathBoolUnaryOp");
+static_assert(sizeof(FRigUnit_MathBoolUnaryOp) == 0x000010, "Wrong size on FRigUnit_MathBoolUnaryOp");
+static_assert(offsetof(FRigUnit_MathBoolUnaryOp, Value) == 0x000008, "Member 'FRigUnit_MathBoolUnaryOp::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathBoolUnaryOp, Result) == 0x000009, "Member 'FRigUnit_MathBoolUnaryOp::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathBoolNot
 // 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathFloatAsin final : public FRigUnit_MathFloatUnaryOp
+struct FRigUnit_MathBoolNot final : public FRigUnit_MathBoolUnaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathFloatAsin) == 0x000008, "Wrong alignment on FRigUnit_MathFloatAsin");
-static_assert(sizeof(FRigUnit_MathFloatAsin) == 0x000010, "Wrong size on FRigUnit_MathFloatAsin");
+static_assert(alignof(FRigUnit_MathBoolNot) == 0x000008, "Wrong alignment on FRigUnit_MathBoolNot");
+static_assert(sizeof(FRigUnit_MathBoolNot) == 0x000010, "Wrong size on FRigUnit_MathBoolNot");
 
 // ScriptStruct ControlRig.RigUnit_CollectionBaseMutable
 // 0x0000 (0x0068 - 0x0068)
@@ -3919,6 +3982,28 @@ static_assert(offsetof(FRigUnit_CollectionItemAtIndex, Collection) == 0x000008, 
 static_assert(offsetof(FRigUnit_CollectionItemAtIndex, Index) == 0x000018, "Member 'FRigUnit_CollectionItemAtIndex::Index' has a wrong offset!");
 static_assert(offsetof(FRigUnit_CollectionItemAtIndex, Item) == 0x00001C, "Member 'FRigUnit_CollectionItemAtIndex::Item' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_ModifyTransforms_PerItem
+// 0x0040 (0x0040 - 0x0000)
+struct FRigUnit_ModifyTransforms_PerItem final
+{
+public:
+	struct FRigElementKey                         Item;                                              // 0x0000(0x000C)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Transform;                                         // 0x0010(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_ModifyTransforms_PerItem) == 0x000010, "Wrong alignment on FRigUnit_ModifyTransforms_PerItem");
+static_assert(sizeof(FRigUnit_ModifyTransforms_PerItem) == 0x000040, "Wrong size on FRigUnit_ModifyTransforms_PerItem");
+static_assert(offsetof(FRigUnit_ModifyTransforms_PerItem, Item) == 0x000000, "Member 'FRigUnit_ModifyTransforms_PerItem::Item' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ModifyTransforms_PerItem, Transform) == 0x000010, "Member 'FRigUnit_ModifyTransforms_PerItem::Transform' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatRad
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathFloatRad final : public FRigUnit_MathFloatUnaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathFloatRad) == 0x000008, "Wrong alignment on FRigUnit_MathFloatRad");
+static_assert(sizeof(FRigUnit_MathFloatRad) == 0x000010, "Wrong size on FRigUnit_MathFloatRad");
+
 // ScriptStruct ControlRig.RigUnit_CollectionCount
 // 0x0018 (0x0020 - 0x0008)
 struct FRigUnit_CollectionCount final : public FRigUnit_CollectionBase
@@ -3961,21 +4046,13 @@ static_assert(offsetof(FRigUnit_CollectionDifference, A) == 0x000008, "Member 'F
 static_assert(offsetof(FRigUnit_CollectionDifference, B) == 0x000018, "Member 'FRigUnit_CollectionDifference::B' has a wrong offset!");
 static_assert(offsetof(FRigUnit_CollectionDifference, Collection) == 0x000028, "Member 'FRigUnit_CollectionDifference::Collection' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathQuaternionFromEuler
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_MathQuaternionFromEuler final : public FRigUnit_MathQuaternionBase
+// ScriptStruct ControlRig.RigUnit_MathFloatSign
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathFloatSign final : public FRigUnit_MathFloatUnaryOp
 {
-public:
-	struct FVector                                Euler;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EControlRigRotationOrder                      RotationOrder;                                     // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15[0xB];                                       // 0x0015(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathQuaternionFromEuler) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionFromEuler");
-static_assert(sizeof(FRigUnit_MathQuaternionFromEuler) == 0x000030, "Wrong size on FRigUnit_MathQuaternionFromEuler");
-static_assert(offsetof(FRigUnit_MathQuaternionFromEuler, Euler) == 0x000008, "Member 'FRigUnit_MathQuaternionFromEuler::Euler' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionFromEuler, RotationOrder) == 0x000014, "Member 'FRigUnit_MathQuaternionFromEuler::RotationOrder' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionFromEuler, Result) == 0x000020, "Member 'FRigUnit_MathQuaternionFromEuler::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathFloatSign) == 0x000008, "Wrong alignment on FRigUnit_MathFloatSign");
+static_assert(sizeof(FRigUnit_MathFloatSign) == 0x000010, "Wrong size on FRigUnit_MathFloatSign");
 
 // ScriptStruct ControlRig.RigUnit_CollectionIntersection
 // 0x0030 (0x0038 - 0x0008)
@@ -3991,22 +4068,6 @@ static_assert(sizeof(FRigUnit_CollectionIntersection) == 0x000038, "Wrong size o
 static_assert(offsetof(FRigUnit_CollectionIntersection, A) == 0x000008, "Member 'FRigUnit_CollectionIntersection::A' has a wrong offset!");
 static_assert(offsetof(FRigUnit_CollectionIntersection, B) == 0x000018, "Member 'FRigUnit_CollectionIntersection::B' has a wrong offset!");
 static_assert(offsetof(FRigUnit_CollectionIntersection, Collection) == 0x000028, "Member 'FRigUnit_CollectionIntersection::Collection' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatIsNearlyZero
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathFloatIsNearlyZero final : public FRigUnit_MathFloatBase
-{
-public:
-	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Tolerance;                                         // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathFloatIsNearlyZero) == 0x000008, "Wrong alignment on FRigUnit_MathFloatIsNearlyZero");
-static_assert(sizeof(FRigUnit_MathFloatIsNearlyZero) == 0x000018, "Wrong size on FRigUnit_MathFloatIsNearlyZero");
-static_assert(offsetof(FRigUnit_MathFloatIsNearlyZero, Value) == 0x000008, "Member 'FRigUnit_MathFloatIsNearlyZero::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatIsNearlyZero, Tolerance) == 0x00000C, "Member 'FRigUnit_MathFloatIsNearlyZero::Tolerance' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatIsNearlyZero, Result) == 0x000010, "Member 'FRigUnit_MathFloatIsNearlyZero::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_CollectionUnion
 // 0x0030 (0x0038 - 0x0008)
@@ -4061,15 +4122,21 @@ static_assert(offsetof(FRigUnit_CollectionReplaceItems, Collection) == 0x000030,
 static_assert(offsetof(FRigUnit_CollectionReplaceItems, CachedCollection) == 0x000040, "Member 'FRigUnit_CollectionReplaceItems::CachedCollection' has a wrong offset!");
 static_assert(offsetof(FRigUnit_CollectionReplaceItems, CachedHierarchyHash) == 0x000050, "Member 'FRigUnit_CollectionReplaceItems::CachedHierarchyHash' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateVectorWorkData
-// 0x0090 (0x0090 - 0x0000)
-struct alignas(0x10) FRigUnit_MathRBFInterpolateVectorWorkData final
+// ScriptStruct ControlRig.RigUnit_MathFloatFloor
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathFloatFloor final : public FRigUnit_MathFloatBase
 {
 public:
-	uint8                                         Pad_0[0x90];                                       // 0x0000(0x0090)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Int;                                               // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathRBFInterpolateVectorWorkData) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateVectorWorkData");
-static_assert(sizeof(FRigUnit_MathRBFInterpolateVectorWorkData) == 0x000090, "Wrong size on FRigUnit_MathRBFInterpolateVectorWorkData");
+static_assert(alignof(FRigUnit_MathFloatFloor) == 0x000008, "Wrong alignment on FRigUnit_MathFloatFloor");
+static_assert(sizeof(FRigUnit_MathFloatFloor) == 0x000018, "Wrong size on FRigUnit_MathFloatFloor");
+static_assert(offsetof(FRigUnit_MathFloatFloor, Value) == 0x000008, "Member 'FRigUnit_MathFloatFloor::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatFloor, Result) == 0x00000C, "Member 'FRigUnit_MathFloatFloor::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatFloor, Int) == 0x000010, "Member 'FRigUnit_MathFloatFloor::Int' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_CollectionChildren
 // 0x0038 (0x0040 - 0x0008)
@@ -4096,29 +4163,38 @@ static_assert(offsetof(FRigUnit_CollectionChildren, Collection) == 0x000018, "Me
 static_assert(offsetof(FRigUnit_CollectionChildren, CachedCollection) == 0x000028, "Member 'FRigUnit_CollectionChildren::CachedCollection' has a wrong offset!");
 static_assert(offsetof(FRigUnit_CollectionChildren, CachedHierarchyHash) == 0x000038, "Member 'FRigUnit_CollectionChildren::CachedHierarchyHash' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatLawOfCosine
+// ScriptStruct ControlRig.RigUnit_NameReplace
 // 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_MathFloatLawOfCosine final : public FRigUnit_MathFloatBase
+struct FRigUnit_NameReplace final : public FRigUnit_NameBase
+{
+public:
+	class FName                                   Name;                                              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   Old;                                               // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   New;                                               // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   Result;                                            // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_NameReplace) == 0x000008, "Wrong alignment on FRigUnit_NameReplace");
+static_assert(sizeof(FRigUnit_NameReplace) == 0x000028, "Wrong size on FRigUnit_NameReplace");
+static_assert(offsetof(FRigUnit_NameReplace, Name) == 0x000008, "Member 'FRigUnit_NameReplace::Name' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NameReplace, Old) == 0x000010, "Member 'FRigUnit_NameReplace::Old' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NameReplace, New) == 0x000018, "Member 'FRigUnit_NameReplace::New' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NameReplace, Result) == 0x000020, "Member 'FRigUnit_NameReplace::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatGreater
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathFloatGreater final : public FRigUnit_MathFloatBase
 {
 public:
 	float                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         C;                                                 // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         AlphaAngle;                                        // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         BetaAngle;                                         // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         GammaAngle;                                        // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bValid;                                            // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathFloatLawOfCosine) == 0x000008, "Wrong alignment on FRigUnit_MathFloatLawOfCosine");
-static_assert(sizeof(FRigUnit_MathFloatLawOfCosine) == 0x000028, "Wrong size on FRigUnit_MathFloatLawOfCosine");
-static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, A) == 0x000008, "Member 'FRigUnit_MathFloatLawOfCosine::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, B) == 0x00000C, "Member 'FRigUnit_MathFloatLawOfCosine::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, C) == 0x000010, "Member 'FRigUnit_MathFloatLawOfCosine::C' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, AlphaAngle) == 0x000014, "Member 'FRigUnit_MathFloatLawOfCosine::AlphaAngle' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, BetaAngle) == 0x000018, "Member 'FRigUnit_MathFloatLawOfCosine::BetaAngle' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, GammaAngle) == 0x00001C, "Member 'FRigUnit_MathFloatLawOfCosine::GammaAngle' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatLawOfCosine, bValid) == 0x000020, "Member 'FRigUnit_MathFloatLawOfCosine::bValid' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathFloatGreater) == 0x000008, "Wrong alignment on FRigUnit_MathFloatGreater");
+static_assert(sizeof(FRigUnit_MathFloatGreater) == 0x000018, "Wrong size on FRigUnit_MathFloatGreater");
+static_assert(offsetof(FRigUnit_MathFloatGreater, A) == 0x000008, "Member 'FRigUnit_MathFloatGreater::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatGreater, B) == 0x00000C, "Member 'FRigUnit_MathFloatGreater::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatGreater, Result) == 0x000010, "Member 'FRigUnit_MathFloatGreater::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_CollectionNameSearch
 // 0x0038 (0x0040 - 0x0008)
@@ -4185,36 +4261,29 @@ static_assert(offsetof(FRigUnit_Control, InitTransform) == 0x000060, "Member 'FR
 static_assert(offsetof(FRigUnit_Control, Result) == 0x000090, "Member 'FRigUnit_Control::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_Control, Filter) == 0x0000C0, "Member 'FRigUnit_Control::Filter' has a wrong offset!");
 
-// ScriptStruct ControlRig.MathRBFInterpolateVectorQuat_Target
-// 0x0020 (0x0020 - 0x0000)
-struct FMathRBFInterpolateVectorQuat_Target final
-{
-public:
-	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Value;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FMathRBFInterpolateVectorQuat_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateVectorQuat_Target");
-static_assert(sizeof(FMathRBFInterpolateVectorQuat_Target) == 0x000020, "Wrong size on FMathRBFInterpolateVectorQuat_Target");
-static_assert(offsetof(FMathRBFInterpolateVectorQuat_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorQuat_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateVectorQuat_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateVectorQuat_Target::Value' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatLerp
+// ScriptStruct ControlRig.RigUnit_MathFloatBinaryOp
 // 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathFloatLerp final : public FRigUnit_MathFloatBase
+struct FRigUnit_MathFloatBinaryOp : public FRigUnit_MathFloatBase
 {
 public:
 	float                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         T;                                                 // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathFloatLerp) == 0x000008, "Wrong alignment on FRigUnit_MathFloatLerp");
-static_assert(sizeof(FRigUnit_MathFloatLerp) == 0x000018, "Wrong size on FRigUnit_MathFloatLerp");
-static_assert(offsetof(FRigUnit_MathFloatLerp, A) == 0x000008, "Member 'FRigUnit_MathFloatLerp::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatLerp, B) == 0x00000C, "Member 'FRigUnit_MathFloatLerp::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatLerp, T) == 0x000010, "Member 'FRigUnit_MathFloatLerp::T' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatLerp, Result) == 0x000014, "Member 'FRigUnit_MathFloatLerp::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathFloatBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathFloatBinaryOp");
+static_assert(sizeof(FRigUnit_MathFloatBinaryOp) == 0x000018, "Wrong size on FRigUnit_MathFloatBinaryOp");
+static_assert(offsetof(FRigUnit_MathFloatBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathFloatBinaryOp::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatBinaryOp, B) == 0x00000C, "Member 'FRigUnit_MathFloatBinaryOp::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatBinaryOp, Result) == 0x000010, "Member 'FRigUnit_MathFloatBinaryOp::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatAsin
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathFloatAsin final : public FRigUnit_MathFloatUnaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathFloatAsin) == 0x000008, "Wrong alignment on FRigUnit_MathFloatAsin");
+static_assert(sizeof(FRigUnit_MathFloatAsin) == 0x000010, "Wrong size on FRigUnit_MathFloatAsin");
 
 // ScriptStruct ControlRig.RigUnit_Control_StaticMesh
 // 0x0030 (0x0100 - 0x00D0)
@@ -4261,18 +4330,16 @@ static_assert(sizeof(FRigUnit_ConvertQuaternionToVector) == 0x000030, "Wrong siz
 static_assert(offsetof(FRigUnit_ConvertQuaternionToVector, Input) == 0x000010, "Member 'FRigUnit_ConvertQuaternionToVector::Input' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ConvertQuaternionToVector, Result) == 0x000020, "Member 'FRigUnit_ConvertQuaternionToVector::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.MathRBFInterpolateVectorVector_Target
-// 0x0018 (0x0018 - 0x0000)
-struct FMathRBFInterpolateVectorVector_Target final
+// ScriptStruct ControlRig.RigUnit_InverseExecution
+// 0x0060 (0x0068 - 0x0008)
+struct FRigUnit_InverseExecution final : public FRigUnit
 {
 public:
-	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Value;                                             // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FControlRigExecuteContext              ExecuteContext;                                    // 0x0008(0x0060)(Edit, Transient, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FMathRBFInterpolateVectorVector_Target) == 0x000004, "Wrong alignment on FMathRBFInterpolateVectorVector_Target");
-static_assert(sizeof(FMathRBFInterpolateVectorVector_Target) == 0x000018, "Wrong size on FMathRBFInterpolateVectorVector_Target");
-static_assert(offsetof(FMathRBFInterpolateVectorVector_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorVector_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateVectorVector_Target, Value) == 0x00000C, "Member 'FMathRBFInterpolateVectorVector_Target::Value' has a wrong offset!");
+static_assert(alignof(FRigUnit_InverseExecution) == 0x000008, "Wrong alignment on FRigUnit_InverseExecution");
+static_assert(sizeof(FRigUnit_InverseExecution) == 0x000068, "Wrong size on FRigUnit_InverseExecution");
+static_assert(offsetof(FRigUnit_InverseExecution, ExecuteContext) == 0x000008, "Member 'FRigUnit_InverseExecution::ExecuteContext' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_ConvertRotationToVector
 // 0x0018 (0x0020 - 0x0008)
@@ -4287,13 +4354,21 @@ static_assert(sizeof(FRigUnit_ConvertRotationToVector) == 0x000020, "Wrong size 
 static_assert(offsetof(FRigUnit_ConvertRotationToVector, Input) == 0x000008, "Member 'FRigUnit_ConvertRotationToVector::Input' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ConvertRotationToVector, Result) == 0x000014, "Member 'FRigUnit_ConvertRotationToVector::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatRad
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathFloatRad final : public FRigUnit_MathFloatUnaryOp
+// ScriptStruct ControlRig.RigUnit_MathFloatRound
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathFloatRound final : public FRigUnit_MathFloatBase
 {
+public:
+	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Int;                                               // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathFloatRad) == 0x000008, "Wrong alignment on FRigUnit_MathFloatRad");
-static_assert(sizeof(FRigUnit_MathFloatRad) == 0x000010, "Wrong size on FRigUnit_MathFloatRad");
+static_assert(alignof(FRigUnit_MathFloatRound) == 0x000008, "Wrong alignment on FRigUnit_MathFloatRound");
+static_assert(sizeof(FRigUnit_MathFloatRound) == 0x000018, "Wrong size on FRigUnit_MathFloatRound");
+static_assert(offsetof(FRigUnit_MathFloatRound, Value) == 0x000008, "Member 'FRigUnit_MathFloatRound::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatRound, Result) == 0x00000C, "Member 'FRigUnit_MathFloatRound::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatRound, Int) == 0x000010, "Member 'FRigUnit_MathFloatRound::Int' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_ConvertVectorToQuaternion
 // 0x0028 (0x0030 - 0x0008)
@@ -4337,13 +4412,22 @@ static_assert(sizeof(FRigUnit_ConvertQuaternion) == 0x000030, "Wrong size on FRi
 static_assert(offsetof(FRigUnit_ConvertQuaternion, Input) == 0x000010, "Member 'FRigUnit_ConvertQuaternion::Input' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ConvertQuaternion, Result) == 0x000020, "Member 'FRigUnit_ConvertQuaternion::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatAdd
-// 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathFloatAdd final : public FRigUnit_MathFloatBinaryOp
+// ScriptStruct ControlRig.RigUnit_ItemExists
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_ItemExists final : public FRigUnit_ItemBase
 {
+public:
+	struct FRigElementKey                         Item;                                              // 0x0008(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Exists;                                            // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedIndex;                                       // 0x0018(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathFloatAdd) == 0x000008, "Wrong alignment on FRigUnit_MathFloatAdd");
-static_assert(sizeof(FRigUnit_MathFloatAdd) == 0x000018, "Wrong size on FRigUnit_MathFloatAdd");
+static_assert(alignof(FRigUnit_ItemExists) == 0x000008, "Wrong alignment on FRigUnit_ItemExists");
+static_assert(sizeof(FRigUnit_ItemExists) == 0x000030, "Wrong size on FRigUnit_ItemExists");
+static_assert(offsetof(FRigUnit_ItemExists, Item) == 0x000008, "Member 'FRigUnit_ItemExists::Item' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ItemExists, Exists) == 0x000014, "Member 'FRigUnit_ItemExists::Exists' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ItemExists, CachedIndex) == 0x000018, "Member 'FRigUnit_ItemExists::CachedIndex' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_ConvertRotation
 // 0x0028 (0x0030 - 0x0008)
@@ -4359,24 +4443,21 @@ static_assert(sizeof(FRigUnit_ConvertRotation) == 0x000030, "Wrong size on FRigU
 static_assert(offsetof(FRigUnit_ConvertRotation, Input) == 0x000008, "Member 'FRigUnit_ConvertRotation::Input' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ConvertRotation, Result) == 0x000020, "Member 'FRigUnit_ConvertRotation::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_PrepareForExecution
-// 0x0060 (0x0068 - 0x0008)
-struct FRigUnit_PrepareForExecution final : public FRigUnit
+// ScriptStruct ControlRig.RigUnit_MathFloatIsNearlyZero
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathFloatIsNearlyZero final : public FRigUnit_MathFloatBase
 {
 public:
-	struct FControlRigExecuteContext              ExecuteContext;                                    // 0x0008(0x0060)(Edit, Transient, NativeAccessSpecifierPublic)
+	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Tolerance;                                         // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_PrepareForExecution) == 0x000008, "Wrong alignment on FRigUnit_PrepareForExecution");
-static_assert(sizeof(FRigUnit_PrepareForExecution) == 0x000068, "Wrong size on FRigUnit_PrepareForExecution");
-static_assert(offsetof(FRigUnit_PrepareForExecution, ExecuteContext) == 0x000008, "Member 'FRigUnit_PrepareForExecution::ExecuteContext' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatNegate
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathFloatNegate final : public FRigUnit_MathFloatUnaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathFloatNegate) == 0x000008, "Wrong alignment on FRigUnit_MathFloatNegate");
-static_assert(sizeof(FRigUnit_MathFloatNegate) == 0x000010, "Wrong size on FRigUnit_MathFloatNegate");
+static_assert(alignof(FRigUnit_MathFloatIsNearlyZero) == 0x000008, "Wrong alignment on FRigUnit_MathFloatIsNearlyZero");
+static_assert(sizeof(FRigUnit_MathFloatIsNearlyZero) == 0x000018, "Wrong size on FRigUnit_MathFloatIsNearlyZero");
+static_assert(offsetof(FRigUnit_MathFloatIsNearlyZero, Value) == 0x000008, "Member 'FRigUnit_MathFloatIsNearlyZero::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatIsNearlyZero, Tolerance) == 0x00000C, "Member 'FRigUnit_MathFloatIsNearlyZero::Tolerance' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatIsNearlyZero, Result) == 0x000010, "Member 'FRigUnit_MathFloatIsNearlyZero::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_ConvertVectorRotation
 // 0x0000 (0x0030 - 0x0030)
@@ -4415,46 +4496,42 @@ static_assert(sizeof(FRigUnit_ConvertTransform) == 0x000070, "Wrong size on FRig
 static_assert(offsetof(FRigUnit_ConvertTransform, Input) == 0x000010, "Member 'FRigUnit_ConvertTransform::Input' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ConvertTransform, Result) == 0x000040, "Member 'FRigUnit_ConvertTransform::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatConstant
-// 0x0008 (0x0010 - 0x0008)
-struct FRigUnit_MathFloatConstant : public FRigUnit_MathFloatBase
+// ScriptStruct ControlRig.RigUnit_KalmanFloat
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_KalmanFloat final : public FRigUnit_SimBase
 {
 public:
 	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         BufferSize;                                        // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<float>                                 Buffer;                                            // 0x0018(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	int32                                         LastInsertIndex;                                   // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathFloatConstant) == 0x000008, "Wrong alignment on FRigUnit_MathFloatConstant");
-static_assert(sizeof(FRigUnit_MathFloatConstant) == 0x000010, "Wrong size on FRigUnit_MathFloatConstant");
-static_assert(offsetof(FRigUnit_MathFloatConstant, Value) == 0x000008, "Member 'FRigUnit_MathFloatConstant::Value' has a wrong offset!");
+static_assert(alignof(FRigUnit_KalmanFloat) == 0x000008, "Wrong alignment on FRigUnit_KalmanFloat");
+static_assert(sizeof(FRigUnit_KalmanFloat) == 0x000030, "Wrong size on FRigUnit_KalmanFloat");
+static_assert(offsetof(FRigUnit_KalmanFloat, Value) == 0x000008, "Member 'FRigUnit_KalmanFloat::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_KalmanFloat, BufferSize) == 0x00000C, "Member 'FRigUnit_KalmanFloat::BufferSize' has a wrong offset!");
+static_assert(offsetof(FRigUnit_KalmanFloat, Result) == 0x000010, "Member 'FRigUnit_KalmanFloat::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_KalmanFloat, Buffer) == 0x000018, "Member 'FRigUnit_KalmanFloat::Buffer' has a wrong offset!");
+static_assert(offsetof(FRigUnit_KalmanFloat, LastInsertIndex) == 0x000028, "Member 'FRigUnit_KalmanFloat::LastInsertIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatConstPi
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathFloatConstPi final : public FRigUnit_MathFloatConstant
+// ScriptStruct ControlRig.RigUnit_DebugBaseMutable
+// 0x0000 (0x0068 - 0x0068)
+struct FRigUnit_DebugBaseMutable : public FRigUnitMutable
 {
 };
-static_assert(alignof(FRigUnit_MathFloatConstPi) == 0x000008, "Wrong alignment on FRigUnit_MathFloatConstPi");
-static_assert(sizeof(FRigUnit_MathFloatConstPi) == 0x000010, "Wrong size on FRigUnit_MathFloatConstPi");
+static_assert(alignof(FRigUnit_DebugBaseMutable) == 0x000008, "Wrong alignment on FRigUnit_DebugBaseMutable");
+static_assert(sizeof(FRigUnit_DebugBaseMutable) == 0x000068, "Wrong size on FRigUnit_DebugBaseMutable");
 
-// ScriptStruct ControlRig.RigUnit_PropagateTransform
-// 0x0028 (0x0090 - 0x0068)
-struct FRigUnit_PropagateTransform final : public FRigUnitMutable
+// ScriptStruct ControlRig.RigUnit_MathFloatMax
+// 0x0000 (0x0018 - 0x0018)
+struct FRigUnit_MathFloatMax final : public FRigUnit_MathFloatBinaryOp
 {
-public:
-	struct FRigElementKey                         Item;                                              // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bRecomputeGlobal;                                  // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bApplyToChildren;                                  // 0x0075(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bRecursive;                                        // 0x0076(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_77[0x1];                                       // 0x0077(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedIndex;                                       // 0x0078(0x0014)(Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_8C[0x4];                                       // 0x008C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_PropagateTransform) == 0x000008, "Wrong alignment on FRigUnit_PropagateTransform");
-static_assert(sizeof(FRigUnit_PropagateTransform) == 0x000090, "Wrong size on FRigUnit_PropagateTransform");
-static_assert(offsetof(FRigUnit_PropagateTransform, Item) == 0x000068, "Member 'FRigUnit_PropagateTransform::Item' has a wrong offset!");
-static_assert(offsetof(FRigUnit_PropagateTransform, bRecomputeGlobal) == 0x000074, "Member 'FRigUnit_PropagateTransform::bRecomputeGlobal' has a wrong offset!");
-static_assert(offsetof(FRigUnit_PropagateTransform, bApplyToChildren) == 0x000075, "Member 'FRigUnit_PropagateTransform::bApplyToChildren' has a wrong offset!");
-static_assert(offsetof(FRigUnit_PropagateTransform, bRecursive) == 0x000076, "Member 'FRigUnit_PropagateTransform::bRecursive' has a wrong offset!");
-static_assert(offsetof(FRigUnit_PropagateTransform, CachedIndex) == 0x000078, "Member 'FRigUnit_PropagateTransform::CachedIndex' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathFloatMax) == 0x000008, "Wrong alignment on FRigUnit_MathFloatMax");
+static_assert(sizeof(FRigUnit_MathFloatMax) == 0x000018, "Wrong size on FRigUnit_MathFloatMax");
 
 // ScriptStruct ControlRig.RigUnit_DebugBase
 // 0x0000 (0x0008 - 0x0008)
@@ -4521,21 +4598,21 @@ static_assert(offsetof(FRigUnit_DebugBezier, Space) == 0x0000B8, "Member 'FRigUn
 static_assert(offsetof(FRigUnit_DebugBezier, WorldOffset) == 0x0000C0, "Member 'FRigUnit_DebugBezier::WorldOffset' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DebugBezier, bEnabled) == 0x0000F0, "Member 'FRigUnit_DebugBezier::bEnabled' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntLess
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathIntLess final : public FRigUnit_MathIntBase
+// ScriptStruct ControlRig.RigUnit_MathBoolEquals
+// 0x0008 (0x0010 - 0x0008)
+struct FRigUnit_MathBoolEquals final : public FRigUnit_MathBoolBase
 {
 public:
-	int32                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          A;                                                 // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          B;                                                 // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathIntLess) == 0x000008, "Wrong alignment on FRigUnit_MathIntLess");
-static_assert(sizeof(FRigUnit_MathIntLess) == 0x000018, "Wrong size on FRigUnit_MathIntLess");
-static_assert(offsetof(FRigUnit_MathIntLess, A) == 0x000008, "Member 'FRigUnit_MathIntLess::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntLess, B) == 0x00000C, "Member 'FRigUnit_MathIntLess::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntLess, Result) == 0x000010, "Member 'FRigUnit_MathIntLess::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathBoolEquals) == 0x000008, "Wrong alignment on FRigUnit_MathBoolEquals");
+static_assert(sizeof(FRigUnit_MathBoolEquals) == 0x000010, "Wrong size on FRigUnit_MathBoolEquals");
+static_assert(offsetof(FRigUnit_MathBoolEquals, A) == 0x000008, "Member 'FRigUnit_MathBoolEquals::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathBoolEquals, B) == 0x000009, "Member 'FRigUnit_MathBoolEquals::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathBoolEquals, Result) == 0x00000A, "Member 'FRigUnit_MathBoolEquals::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_DebugHierarchy
 // 0x0058 (0x00C0 - 0x0068)
@@ -4557,27 +4634,22 @@ static_assert(offsetof(FRigUnit_DebugHierarchy, Thickness) == 0x00007C, "Member 
 static_assert(offsetof(FRigUnit_DebugHierarchy, WorldOffset) == 0x000080, "Member 'FRigUnit_DebugHierarchy::WorldOffset' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DebugHierarchy, bEnabled) == 0x0000B0, "Member 'FRigUnit_DebugHierarchy::bEnabled' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_UnaryQuaternionOp
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_UnaryQuaternionOp : public FRigUnit
+// ScriptStruct ControlRig.RigUnit_MathFloatLerp
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathFloatLerp final : public FRigUnit_MathFloatBase
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Argument;                                          // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         T;                                                 // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_UnaryQuaternionOp) == 0x000010, "Wrong alignment on FRigUnit_UnaryQuaternionOp");
-static_assert(sizeof(FRigUnit_UnaryQuaternionOp) == 0x000030, "Wrong size on FRigUnit_UnaryQuaternionOp");
-static_assert(offsetof(FRigUnit_UnaryQuaternionOp, Argument) == 0x000010, "Member 'FRigUnit_UnaryQuaternionOp::Argument' has a wrong offset!");
-static_assert(offsetof(FRigUnit_UnaryQuaternionOp, Result) == 0x000020, "Member 'FRigUnit_UnaryQuaternionOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatMul
-// 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathFloatMul final : public FRigUnit_MathFloatBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathFloatMul) == 0x000008, "Wrong alignment on FRigUnit_MathFloatMul");
-static_assert(sizeof(FRigUnit_MathFloatMul) == 0x000018, "Wrong size on FRigUnit_MathFloatMul");
+static_assert(alignof(FRigUnit_MathFloatLerp) == 0x000008, "Wrong alignment on FRigUnit_MathFloatLerp");
+static_assert(sizeof(FRigUnit_MathFloatLerp) == 0x000018, "Wrong size on FRigUnit_MathFloatLerp");
+static_assert(offsetof(FRigUnit_MathFloatLerp, A) == 0x000008, "Member 'FRigUnit_MathFloatLerp::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatLerp, B) == 0x00000C, "Member 'FRigUnit_MathFloatLerp::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatLerp, T) == 0x000010, "Member 'FRigUnit_MathFloatLerp::T' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathFloatLerp, Result) == 0x000014, "Member 'FRigUnit_MathFloatLerp::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_DebugLineItemSpace
 // 0x0078 (0x00E0 - 0x0068)
@@ -4691,46 +4763,25 @@ static_assert(offsetof(FRigUnit_DebugLineStrip, Space) == 0x00008C, "Member 'FRi
 static_assert(offsetof(FRigUnit_DebugLineStrip, WorldOffset) == 0x0000A0, "Member 'FRigUnit_DebugLineStrip::WorldOffset' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DebugLineStrip, bEnabled) == 0x0000D0, "Member 'FRigUnit_DebugLineStrip::bEnabled' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_RandomVector
-// 0x0030 (0x0038 - 0x0008)
-struct FRigUnit_RandomVector final : public FRigUnit_MathBase
-{
-public:
-	int32                                         Seed;                                              // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Minimum;                                           // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Maximum;                                           // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Duration;                                          // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                LastResult;                                        // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         LastSeed;                                          // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TimeLeft;                                          // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_RandomVector) == 0x000008, "Wrong alignment on FRigUnit_RandomVector");
-static_assert(sizeof(FRigUnit_RandomVector) == 0x000038, "Wrong size on FRigUnit_RandomVector");
-static_assert(offsetof(FRigUnit_RandomVector, Seed) == 0x000008, "Member 'FRigUnit_RandomVector::Seed' has a wrong offset!");
-static_assert(offsetof(FRigUnit_RandomVector, Minimum) == 0x00000C, "Member 'FRigUnit_RandomVector::Minimum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_RandomVector, Maximum) == 0x000010, "Member 'FRigUnit_RandomVector::Maximum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_RandomVector, Duration) == 0x000014, "Member 'FRigUnit_RandomVector::Duration' has a wrong offset!");
-static_assert(offsetof(FRigUnit_RandomVector, Result) == 0x000018, "Member 'FRigUnit_RandomVector::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_RandomVector, LastResult) == 0x000024, "Member 'FRigUnit_RandomVector::LastResult' has a wrong offset!");
-static_assert(offsetof(FRigUnit_RandomVector, LastSeed) == 0x000030, "Member 'FRigUnit_RandomVector::LastSeed' has a wrong offset!");
-static_assert(offsetof(FRigUnit_RandomVector, TimeLeft) == 0x000034, "Member 'FRigUnit_RandomVector::TimeLeft' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatRound
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathFloatRound final : public FRigUnit_MathFloatBase
+// ScriptStruct ControlRig.RigUnit_MathFloatConstant
+// 0x0008 (0x0010 - 0x0008)
+struct FRigUnit_MathFloatConstant : public FRigUnit_MathFloatBase
 {
 public:
 	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Int;                                               // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathFloatRound) == 0x000008, "Wrong alignment on FRigUnit_MathFloatRound");
-static_assert(sizeof(FRigUnit_MathFloatRound) == 0x000018, "Wrong size on FRigUnit_MathFloatRound");
-static_assert(offsetof(FRigUnit_MathFloatRound, Value) == 0x000008, "Member 'FRigUnit_MathFloatRound::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatRound, Result) == 0x00000C, "Member 'FRigUnit_MathFloatRound::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatRound, Int) == 0x000010, "Member 'FRigUnit_MathFloatRound::Int' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathFloatConstant) == 0x000008, "Wrong alignment on FRigUnit_MathFloatConstant");
+static_assert(sizeof(FRigUnit_MathFloatConstant) == 0x000010, "Wrong size on FRigUnit_MathFloatConstant");
+static_assert(offsetof(FRigUnit_MathFloatConstant, Value) == 0x000008, "Member 'FRigUnit_MathFloatConstant::Value' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathFloatConstTwoPi
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathFloatConstTwoPi final : public FRigUnit_MathFloatConstant
+{
+};
+static_assert(alignof(FRigUnit_MathFloatConstTwoPi) == 0x000008, "Wrong alignment on FRigUnit_MathFloatConstTwoPi");
+static_assert(sizeof(FRigUnit_MathFloatConstTwoPi) == 0x000010, "Wrong size on FRigUnit_MathFloatConstTwoPi");
 
 // ScriptStruct ControlRig.RigUnit_DebugPointMutable
 // 0x0078 (0x00E0 - 0x0068)
@@ -4819,33 +4870,26 @@ static_assert(offsetof(FRigUnit_DebugArcItemSpace, Space) == 0x0000C4, "Member '
 static_assert(offsetof(FRigUnit_DebugArcItemSpace, WorldOffset) == 0x0000D0, "Member 'FRigUnit_DebugArcItemSpace::WorldOffset' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DebugArcItemSpace, bEnabled) == 0x000100, "Member 'FRigUnit_DebugArcItemSpace::bEnabled' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathBoolBase
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit_MathBoolBase : public FRigUnit_MathBase
-{
-};
-static_assert(alignof(FRigUnit_MathBoolBase) == 0x000008, "Wrong alignment on FRigUnit_MathBoolBase");
-static_assert(sizeof(FRigUnit_MathBoolBase) == 0x000008, "Wrong size on FRigUnit_MathBoolBase");
-
-// ScriptStruct ControlRig.RigUnit_MathBoolConstant
+// ScriptStruct ControlRig.RigUnit_MathIntUnaryOp
 // 0x0008 (0x0010 - 0x0008)
-struct FRigUnit_MathBoolConstant : public FRigUnit_MathBoolBase
+struct FRigUnit_MathIntUnaryOp : public FRigUnit_MathIntBase
 {
 public:
-	bool                                          Value;                                             // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathBoolConstant) == 0x000008, "Wrong alignment on FRigUnit_MathBoolConstant");
-static_assert(sizeof(FRigUnit_MathBoolConstant) == 0x000010, "Wrong size on FRigUnit_MathBoolConstant");
-static_assert(offsetof(FRigUnit_MathBoolConstant, Value) == 0x000008, "Member 'FRigUnit_MathBoolConstant::Value' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathIntUnaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathIntUnaryOp");
+static_assert(sizeof(FRigUnit_MathIntUnaryOp) == 0x000010, "Wrong size on FRigUnit_MathIntUnaryOp");
+static_assert(offsetof(FRigUnit_MathIntUnaryOp, Value) == 0x000008, "Member 'FRigUnit_MathIntUnaryOp::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntUnaryOp, Result) == 0x00000C, "Member 'FRigUnit_MathIntUnaryOp::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathBoolConstFalse
+// ScriptStruct ControlRig.RigUnit_MathIntAbs
 // 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathBoolConstFalse final : public FRigUnit_MathBoolConstant
+struct FRigUnit_MathIntAbs final : public FRigUnit_MathIntUnaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathBoolConstFalse) == 0x000008, "Wrong alignment on FRigUnit_MathBoolConstFalse");
-static_assert(sizeof(FRigUnit_MathBoolConstFalse) == 0x000010, "Wrong size on FRigUnit_MathBoolConstFalse");
+static_assert(alignof(FRigUnit_MathIntAbs) == 0x000008, "Wrong alignment on FRigUnit_MathIntAbs");
+static_assert(sizeof(FRigUnit_MathIntAbs) == 0x000010, "Wrong size on FRigUnit_MathIntAbs");
 
 // ScriptStruct ControlRig.RigUnit_DebugArc
 // 0x00A8 (0x0110 - 0x0068)
@@ -4879,21 +4923,19 @@ static_assert(offsetof(FRigUnit_DebugArc, Space) == 0x0000C4, "Member 'FRigUnit_
 static_assert(offsetof(FRigUnit_DebugArc, WorldOffset) == 0x0000D0, "Member 'FRigUnit_DebugArc::WorldOffset' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DebugArc, bEnabled) == 0x000100, "Member 'FRigUnit_DebugArc::bEnabled' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntLessEqual
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathIntLessEqual final : public FRigUnit_MathIntBase
+// ScriptStruct ControlRig.MathRBFInterpolateVectorXform_Target
+// 0x0040 (0x0040 - 0x0000)
+struct FMathRBFInterpolateVectorXform_Target final
 {
 public:
-	int32                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathIntLessEqual) == 0x000008, "Wrong alignment on FRigUnit_MathIntLessEqual");
-static_assert(sizeof(FRigUnit_MathIntLessEqual) == 0x000018, "Wrong size on FRigUnit_MathIntLessEqual");
-static_assert(offsetof(FRigUnit_MathIntLessEqual, A) == 0x000008, "Member 'FRigUnit_MathIntLessEqual::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntLessEqual, B) == 0x00000C, "Member 'FRigUnit_MathIntLessEqual::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntLessEqual, Result) == 0x000010, "Member 'FRigUnit_MathIntLessEqual::Result' has a wrong offset!");
+static_assert(alignof(FMathRBFInterpolateVectorXform_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateVectorXform_Target");
+static_assert(sizeof(FMathRBFInterpolateVectorXform_Target) == 0x000040, "Wrong size on FMathRBFInterpolateVectorXform_Target");
+static_assert(offsetof(FMathRBFInterpolateVectorXform_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorXform_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateVectorXform_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateVectorXform_Target::Value' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_DebugRectangleItemSpace
 // 0x00A8 (0x0110 - 0x0068)
@@ -4988,13 +5030,29 @@ static_assert(offsetof(FRigUnit_DebugTransformArrayMutable, WorldOffset) == 0x00
 static_assert(offsetof(FRigUnit_DebugTransformArrayMutable, bEnabled) == 0x0000D0, "Member 'FRigUnit_DebugTransformArrayMutable::bEnabled' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DebugTransformArrayMutable, WorkData) == 0x0000D8, "Member 'FRigUnit_DebugTransformArrayMutable::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatMax
+// ScriptStruct ControlRig.RigUnit_MathIntMax
 // 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathFloatMax final : public FRigUnit_MathFloatBinaryOp
+struct FRigUnit_MathIntMax final : public FRigUnit_MathIntBinaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathFloatMax) == 0x000008, "Wrong alignment on FRigUnit_MathFloatMax");
-static_assert(sizeof(FRigUnit_MathFloatMax) == 0x000018, "Wrong size on FRigUnit_MathFloatMax");
+static_assert(alignof(FRigUnit_MathIntMax) == 0x000008, "Wrong alignment on FRigUnit_MathIntMax");
+static_assert(sizeof(FRigUnit_MathIntMax) == 0x000018, "Wrong size on FRigUnit_MathIntMax");
+
+// ScriptStruct ControlRig.RigUnit_MathIntNotEquals
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathIntNotEquals final : public FRigUnit_MathIntBase
+{
+public:
+	int32                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathIntNotEquals) == 0x000008, "Wrong alignment on FRigUnit_MathIntNotEquals");
+static_assert(sizeof(FRigUnit_MathIntNotEquals) == 0x000018, "Wrong size on FRigUnit_MathIntNotEquals");
+static_assert(offsetof(FRigUnit_MathIntNotEquals, A) == 0x000008, "Member 'FRigUnit_MathIntNotEquals::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntNotEquals, B) == 0x00000C, "Member 'FRigUnit_MathIntNotEquals::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntNotEquals, Result) == 0x000010, "Member 'FRigUnit_MathIntNotEquals::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_DebugTransformMutableItemSpace
 // 0x00A8 (0x0110 - 0x0068)
@@ -5083,19 +5141,13 @@ static_assert(offsetof(FRigUnit_DebugTransform, Space) == 0x00005C, "Member 'FRi
 static_assert(offsetof(FRigUnit_DebugTransform, WorldOffset) == 0x000070, "Member 'FRigUnit_DebugTransform::WorldOffset' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DebugTransform, bEnabled) == 0x0000A0, "Member 'FRigUnit_DebugTransform::bEnabled' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathColorFromFloat
-// 0x0018 (0x0020 - 0x0008)
-struct FRigUnit_MathColorFromFloat final : public FRigUnit_MathColorBase
+// ScriptStruct ControlRig.RigUnit_MathIntMul
+// 0x0000 (0x0018 - 0x0018)
+struct FRigUnit_MathIntMul final : public FRigUnit_MathIntBinaryOp
 {
-public:
-	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           Result;                                            // 0x000C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathColorFromFloat) == 0x000008, "Wrong alignment on FRigUnit_MathColorFromFloat");
-static_assert(sizeof(FRigUnit_MathColorFromFloat) == 0x000020, "Wrong size on FRigUnit_MathColorFromFloat");
-static_assert(offsetof(FRigUnit_MathColorFromFloat, Value) == 0x000008, "Member 'FRigUnit_MathColorFromFloat::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathColorFromFloat, Result) == 0x00000C, "Member 'FRigUnit_MathColorFromFloat::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathIntMul) == 0x000008, "Wrong alignment on FRigUnit_MathIntMul");
+static_assert(sizeof(FRigUnit_MathIntMul) == 0x000018, "Wrong size on FRigUnit_MathIntMul");
 
 // ScriptStruct ControlRig.RigUnit_DeltaFromPreviousTransform
 // 0x00C8 (0x00D0 - 0x0008)
@@ -5115,26 +5167,13 @@ static_assert(offsetof(FRigUnit_DeltaFromPreviousTransform, Delta) == 0x000040, 
 static_assert(offsetof(FRigUnit_DeltaFromPreviousTransform, PreviousValue) == 0x000070, "Member 'FRigUnit_DeltaFromPreviousTransform::PreviousValue' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DeltaFromPreviousTransform, Cache) == 0x0000A0, "Member 'FRigUnit_DeltaFromPreviousTransform::Cache' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntUnaryOp
-// 0x0008 (0x0010 - 0x0008)
-struct FRigUnit_MathIntUnaryOp : public FRigUnit_MathIntBase
-{
-public:
-	int32                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathIntUnaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathIntUnaryOp");
-static_assert(sizeof(FRigUnit_MathIntUnaryOp) == 0x000010, "Wrong size on FRigUnit_MathIntUnaryOp");
-static_assert(offsetof(FRigUnit_MathIntUnaryOp, Value) == 0x000008, "Member 'FRigUnit_MathIntUnaryOp::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntUnaryOp, Result) == 0x00000C, "Member 'FRigUnit_MathIntUnaryOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathIntSign
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathIntSign final : public FRigUnit_MathIntUnaryOp
+// ScriptStruct ControlRig.RigUnit_MathFloatMul
+// 0x0000 (0x0018 - 0x0018)
+struct FRigUnit_MathFloatMul final : public FRigUnit_MathFloatBinaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathIntSign) == 0x000008, "Wrong alignment on FRigUnit_MathIntSign");
-static_assert(sizeof(FRigUnit_MathIntSign) == 0x000010, "Wrong size on FRigUnit_MathIntSign");
+static_assert(alignof(FRigUnit_MathFloatMul) == 0x000008, "Wrong alignment on FRigUnit_MathFloatMul");
+static_assert(sizeof(FRigUnit_MathFloatMul) == 0x000018, "Wrong size on FRigUnit_MathFloatMul");
 
 // ScriptStruct ControlRig.RigUnit_DeltaFromPreviousQuat
 // 0x0048 (0x0050 - 0x0008)
@@ -5188,13 +5227,37 @@ static_assert(offsetof(FRigUnit_DeltaFromPreviousFloat, Delta) == 0x00000C, "Mem
 static_assert(offsetof(FRigUnit_DeltaFromPreviousFloat, PreviousValue) == 0x000010, "Member 'FRigUnit_DeltaFromPreviousFloat::PreviousValue' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DeltaFromPreviousFloat, Cache) == 0x000014, "Member 'FRigUnit_DeltaFromPreviousFloat::Cache' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatAtan
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathFloatAtan final : public FRigUnit_MathFloatUnaryOp
+// ScriptStruct ControlRig.RigUnit_MathVectorClampSpatially
+// 0x0078 (0x0080 - 0x0008)
+struct FRigUnit_MathVectorClampSpatially final : public FRigUnit_MathVectorBase
 {
+public:
+	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAxis                                         Axis;                                              // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EControlRigClampSpatialMode                   Type;                                              // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_16[0x2];                                       // 0x0016(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Minimum;                                           // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Maximum;                                           // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FTransform                             Space;                                             // 0x0020(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          bDrawDebug;                                        // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLinearColor                           DebugColor;                                        // 0x0054(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DebugThickness;                                    // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x0068(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_74[0xC];                                       // 0x0074(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathFloatAtan) == 0x000008, "Wrong alignment on FRigUnit_MathFloatAtan");
-static_assert(sizeof(FRigUnit_MathFloatAtan) == 0x000010, "Wrong size on FRigUnit_MathFloatAtan");
+static_assert(alignof(FRigUnit_MathVectorClampSpatially) == 0x000010, "Wrong alignment on FRigUnit_MathVectorClampSpatially");
+static_assert(sizeof(FRigUnit_MathVectorClampSpatially) == 0x000080, "Wrong size on FRigUnit_MathVectorClampSpatially");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Value) == 0x000008, "Member 'FRigUnit_MathVectorClampSpatially::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Axis) == 0x000014, "Member 'FRigUnit_MathVectorClampSpatially::Axis' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Type) == 0x000015, "Member 'FRigUnit_MathVectorClampSpatially::Type' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Minimum) == 0x000018, "Member 'FRigUnit_MathVectorClampSpatially::Minimum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Maximum) == 0x00001C, "Member 'FRigUnit_MathVectorClampSpatially::Maximum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Space) == 0x000020, "Member 'FRigUnit_MathVectorClampSpatially::Space' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, bDrawDebug) == 0x000050, "Member 'FRigUnit_MathVectorClampSpatially::bDrawDebug' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, DebugColor) == 0x000054, "Member 'FRigUnit_MathVectorClampSpatially::DebugColor' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, DebugThickness) == 0x000064, "Member 'FRigUnit_MathVectorClampSpatially::DebugThickness' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Result) == 0x000068, "Member 'FRigUnit_MathVectorClampSpatially::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_DistributeRotation_Rotation
 // 0x0020 (0x0020 - 0x0000)
@@ -5249,13 +5312,18 @@ static_assert(offsetof(FRigUnit_DistributeRotationForCollection, RotationEaseTyp
 static_assert(offsetof(FRigUnit_DistributeRotationForCollection, Weight) == 0x00008C, "Member 'FRigUnit_DistributeRotationForCollection::Weight' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DistributeRotationForCollection, WorkData) == 0x000090, "Member 'FRigUnit_DistributeRotationForCollection::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatConstTwoPi
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathFloatConstTwoPi final : public FRigUnit_MathFloatConstant
+// ScriptStruct ControlRig.RigUnit_TransformConstraint_WorkData
+// 0x0060 (0x0060 - 0x0000)
+struct FRigUnit_TransformConstraint_WorkData final
 {
+public:
+	TArray<struct FConstraintData>                ConstraintData;                                    // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TMap<int32, int32>                            ConstraintDataToTargets;                           // 0x0010(0x0050)(NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathFloatConstTwoPi) == 0x000008, "Wrong alignment on FRigUnit_MathFloatConstTwoPi");
-static_assert(sizeof(FRigUnit_MathFloatConstTwoPi) == 0x000010, "Wrong size on FRigUnit_MathFloatConstTwoPi");
+static_assert(alignof(FRigUnit_TransformConstraint_WorkData) == 0x000008, "Wrong alignment on FRigUnit_TransformConstraint_WorkData");
+static_assert(sizeof(FRigUnit_TransformConstraint_WorkData) == 0x000060, "Wrong size on FRigUnit_TransformConstraint_WorkData");
+static_assert(offsetof(FRigUnit_TransformConstraint_WorkData, ConstraintData) == 0x000000, "Member 'FRigUnit_TransformConstraint_WorkData::ConstraintData' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TransformConstraint_WorkData, ConstraintDataToTargets) == 0x000010, "Member 'FRigUnit_TransformConstraint_WorkData::ConstraintDataToTargets' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_DistributeRotation
 // 0x0080 (0x00E8 - 0x0068)
@@ -5282,19 +5350,21 @@ static_assert(offsetof(FRigUnit_DistributeRotation, Weight) == 0x00008C, "Member
 static_assert(offsetof(FRigUnit_DistributeRotation, bPropagateToChildren) == 0x000090, "Member 'FRigUnit_DistributeRotation::bPropagateToChildren' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DistributeRotation, WorkData) == 0x000098, "Member 'FRigUnit_DistributeRotation::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathQuaternionUnaryOp
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_MathQuaternionUnaryOp : public FRigUnit_MathQuaternionBase
+// ScriptStruct ControlRig.RigUnit_MathVectorParallel
+// 0x0020 (0x0028 - 0x0008)
+struct FRigUnit_MathVectorParallel final : public FRigUnit_MathVectorBase
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Value;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathQuaternionUnaryOp) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionUnaryOp");
-static_assert(sizeof(FRigUnit_MathQuaternionUnaryOp) == 0x000030, "Wrong size on FRigUnit_MathQuaternionUnaryOp");
-static_assert(offsetof(FRigUnit_MathQuaternionUnaryOp, Value) == 0x000010, "Member 'FRigUnit_MathQuaternionUnaryOp::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionUnaryOp, Result) == 0x000020, "Member 'FRigUnit_MathQuaternionUnaryOp::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathVectorParallel) == 0x000008, "Wrong alignment on FRigUnit_MathVectorParallel");
+static_assert(sizeof(FRigUnit_MathVectorParallel) == 0x000028, "Wrong size on FRigUnit_MathVectorParallel");
+static_assert(offsetof(FRigUnit_MathVectorParallel, A) == 0x000008, "Member 'FRigUnit_MathVectorParallel::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorParallel, B) == 0x000014, "Member 'FRigUnit_MathVectorParallel::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorParallel, Result) == 0x000020, "Member 'FRigUnit_MathVectorParallel::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_DrawContainerSetTransform
 // 0x0038 (0x00A0 - 0x0068)
@@ -5309,29 +5379,21 @@ static_assert(sizeof(FRigUnit_DrawContainerSetTransform) == 0x0000A0, "Wrong siz
 static_assert(offsetof(FRigUnit_DrawContainerSetTransform, InstructionName) == 0x000068, "Member 'FRigUnit_DrawContainerSetTransform::InstructionName' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DrawContainerSetTransform, Transform) == 0x000070, "Member 'FRigUnit_DrawContainerSetTransform::Transform' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntBinaryOp
+// ScriptStruct ControlRig.RigUnit_MathIntLessEqual
 // 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathIntBinaryOp : public FRigUnit_MathIntBase
+struct FRigUnit_MathIntLessEqual final : public FRigUnit_MathIntBase
 {
 public:
 	int32                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Result;                                            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathIntBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathIntBinaryOp");
-static_assert(sizeof(FRigUnit_MathIntBinaryOp) == 0x000018, "Wrong size on FRigUnit_MathIntBinaryOp");
-static_assert(offsetof(FRigUnit_MathIntBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathIntBinaryOp::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntBinaryOp, B) == 0x00000C, "Member 'FRigUnit_MathIntBinaryOp::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntBinaryOp, Result) == 0x000010, "Member 'FRigUnit_MathIntBinaryOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathIntMod
-// 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathIntMod final : public FRigUnit_MathIntBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathIntMod) == 0x000008, "Wrong alignment on FRigUnit_MathIntMod");
-static_assert(sizeof(FRigUnit_MathIntMod) == 0x000018, "Wrong size on FRigUnit_MathIntMod");
+static_assert(alignof(FRigUnit_MathIntLessEqual) == 0x000008, "Wrong alignment on FRigUnit_MathIntLessEqual");
+static_assert(sizeof(FRigUnit_MathIntLessEqual) == 0x000018, "Wrong size on FRigUnit_MathIntLessEqual");
+static_assert(offsetof(FRigUnit_MathIntLessEqual, A) == 0x000008, "Member 'FRigUnit_MathIntLessEqual::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntLessEqual, B) == 0x00000C, "Member 'FRigUnit_MathIntLessEqual::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntLessEqual, Result) == 0x000010, "Member 'FRigUnit_MathIntLessEqual::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_DrawContainerSetThickness
 // 0x0010 (0x0078 - 0x0068)
@@ -5360,6 +5422,30 @@ static_assert(sizeof(FRigUnit_DrawContainerSetColor) == 0x000080, "Wrong size on
 static_assert(offsetof(FRigUnit_DrawContainerSetColor, InstructionName) == 0x000068, "Member 'FRigUnit_DrawContainerSetColor::InstructionName' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DrawContainerSetColor, Color) == 0x000070, "Member 'FRigUnit_DrawContainerSetColor::Color' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_BinaryTransformOp
+// 0x0098 (0x00A0 - 0x0008)
+struct FRigUnit_BinaryTransformOp : public FRigUnit
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Argument0;                                         // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Argument1;                                         // 0x0040(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FTransform                             Result;                                            // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_BinaryTransformOp) == 0x000010, "Wrong alignment on FRigUnit_BinaryTransformOp");
+static_assert(sizeof(FRigUnit_BinaryTransformOp) == 0x0000A0, "Wrong size on FRigUnit_BinaryTransformOp");
+static_assert(offsetof(FRigUnit_BinaryTransformOp, Argument0) == 0x000010, "Member 'FRigUnit_BinaryTransformOp::Argument0' has a wrong offset!");
+static_assert(offsetof(FRigUnit_BinaryTransformOp, Argument1) == 0x000040, "Member 'FRigUnit_BinaryTransformOp::Argument1' has a wrong offset!");
+static_assert(offsetof(FRigUnit_BinaryTransformOp, Result) == 0x000070, "Member 'FRigUnit_BinaryTransformOp::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_GetRelativeTransform
+// 0x0000 (0x00A0 - 0x00A0)
+struct FRigUnit_GetRelativeTransform final : public FRigUnit_BinaryTransformOp
+{
+};
+static_assert(alignof(FRigUnit_GetRelativeTransform) == 0x000010, "Wrong alignment on FRigUnit_GetRelativeTransform");
+static_assert(sizeof(FRigUnit_GetRelativeTransform) == 0x0000A0, "Wrong size on FRigUnit_GetRelativeTransform");
+
 // ScriptStruct ControlRig.RigUnit_DrawContainerGetInstruction
 // 0x0048 (0x0050 - 0x0008)
 struct FRigUnit_DrawContainerGetInstruction final : public FRigUnit
@@ -5375,22 +5461,21 @@ static_assert(offsetof(FRigUnit_DrawContainerGetInstruction, InstructionName) ==
 static_assert(offsetof(FRigUnit_DrawContainerGetInstruction, Color) == 0x000010, "Member 'FRigUnit_DrawContainerGetInstruction::Color' has a wrong offset!");
 static_assert(offsetof(FRigUnit_DrawContainerGetInstruction, Transform) == 0x000020, "Member 'FRigUnit_DrawContainerGetInstruction::Transform' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathQuaternionNotEquals
-// 0x0038 (0x0040 - 0x0008)
-struct FRigUnit_MathQuaternionNotEquals final : public FRigUnit_MathQuaternionBase
+// ScriptStruct ControlRig.RigUnit_MathVectorSetLength
+// 0x0020 (0x0028 - 0x0008)
+struct FRigUnit_MathVectorSetLength final : public FRigUnit_MathVectorBase
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  A;                                                 // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  B;                                                 // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_31[0xF];                                       // 0x0031(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Length;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathQuaternionNotEquals) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionNotEquals");
-static_assert(sizeof(FRigUnit_MathQuaternionNotEquals) == 0x000040, "Wrong size on FRigUnit_MathQuaternionNotEquals");
-static_assert(offsetof(FRigUnit_MathQuaternionNotEquals, A) == 0x000010, "Member 'FRigUnit_MathQuaternionNotEquals::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionNotEquals, B) == 0x000020, "Member 'FRigUnit_MathQuaternionNotEquals::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionNotEquals, Result) == 0x000030, "Member 'FRigUnit_MathQuaternionNotEquals::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathVectorSetLength) == 0x000008, "Wrong alignment on FRigUnit_MathVectorSetLength");
+static_assert(sizeof(FRigUnit_MathVectorSetLength) == 0x000028, "Wrong size on FRigUnit_MathVectorSetLength");
+static_assert(offsetof(FRigUnit_MathVectorSetLength, Value) == 0x000008, "Member 'FRigUnit_MathVectorSetLength::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorSetLength, Length) == 0x000014, "Member 'FRigUnit_MathVectorSetLength::Length' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorSetLength, Result) == 0x000018, "Member 'FRigUnit_MathVectorSetLength::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_FABRIK_WorkData
 // 0x0038 (0x0038 - 0x0000)
@@ -5434,19 +5519,13 @@ static_assert(offsetof(FRigUnit_FABRIKPerItem, bPropagateToChildren) == 0x0000B8
 static_assert(offsetof(FRigUnit_FABRIKPerItem, MaxIterations) == 0x0000BC, "Member 'FRigUnit_FABRIKPerItem::MaxIterations' has a wrong offset!");
 static_assert(offsetof(FRigUnit_FABRIKPerItem, WorkData) == 0x0000C0, "Member 'FRigUnit_FABRIKPerItem::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.MathRBFInterpolateQuatFloat_Target
-// 0x0020 (0x0020 - 0x0000)
-struct FMathRBFInterpolateQuatFloat_Target final
+// ScriptStruct ControlRig.RigUnit_MathIntAdd
+// 0x0000 (0x0018 - 0x0018)
+struct FRigUnit_MathIntAdd final : public FRigUnit_MathIntBinaryOp
 {
-public:
-	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         Value;                                             // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0xC];                                       // 0x0014(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FMathRBFInterpolateQuatFloat_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatFloat_Target");
-static_assert(sizeof(FMathRBFInterpolateQuatFloat_Target) == 0x000020, "Wrong size on FMathRBFInterpolateQuatFloat_Target");
-static_assert(offsetof(FMathRBFInterpolateQuatFloat_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatFloat_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateQuatFloat_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatFloat_Target::Value' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathIntAdd) == 0x000008, "Wrong alignment on FRigUnit_MathIntAdd");
+static_assert(sizeof(FRigUnit_MathIntAdd) == 0x000018, "Wrong size on FRigUnit_MathIntAdd");
 
 // ScriptStruct ControlRig.RigUnit_FABRIK
 // 0x0098 (0x0100 - 0x0068)
@@ -5476,22 +5555,6 @@ static_assert(offsetof(FRigUnit_FABRIK, bPropagateToChildren) == 0x0000B8, "Memb
 static_assert(offsetof(FRigUnit_FABRIK, MaxIterations) == 0x0000BC, "Member 'FRigUnit_FABRIK::MaxIterations' has a wrong offset!");
 static_assert(offsetof(FRigUnit_FABRIK, WorkData) == 0x0000C0, "Member 'FRigUnit_FABRIK::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathQuaternionBinaryOp
-// 0x0038 (0x0040 - 0x0008)
-struct FRigUnit_MathQuaternionBinaryOp : public FRigUnit_MathQuaternionBase
-{
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  A;                                                 // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  B;                                                 // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  Result;                                            // 0x0030(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathQuaternionBinaryOp) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionBinaryOp");
-static_assert(sizeof(FRigUnit_MathQuaternionBinaryOp) == 0x000040, "Wrong size on FRigUnit_MathQuaternionBinaryOp");
-static_assert(offsetof(FRigUnit_MathQuaternionBinaryOp, A) == 0x000010, "Member 'FRigUnit_MathQuaternionBinaryOp::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionBinaryOp, B) == 0x000020, "Member 'FRigUnit_MathQuaternionBinaryOp::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionBinaryOp, Result) == 0x000030, "Member 'FRigUnit_MathQuaternionBinaryOp::Result' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigUnit_FitChainToCurve_DebugSettings
 // 0x0060 (0x0060 - 0x0000)
 struct FRigUnit_FitChainToCurve_DebugSettings final
@@ -5512,20 +5575,6 @@ static_assert(offsetof(FRigUnit_FitChainToCurve_DebugSettings, Scale) == 0x00000
 static_assert(offsetof(FRigUnit_FitChainToCurve_DebugSettings, CurveColor) == 0x000008, "Member 'FRigUnit_FitChainToCurve_DebugSettings::CurveColor' has a wrong offset!");
 static_assert(offsetof(FRigUnit_FitChainToCurve_DebugSettings, SegmentsColor) == 0x000018, "Member 'FRigUnit_FitChainToCurve_DebugSettings::SegmentsColor' has a wrong offset!");
 static_assert(offsetof(FRigUnit_FitChainToCurve_DebugSettings, WorldOffset) == 0x000030, "Member 'FRigUnit_FitChainToCurve_DebugSettings::WorldOffset' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_FitChainToCurve_Rotation
-// 0x0020 (0x0020 - 0x0000)
-struct FRigUnit_FitChainToCurve_Rotation final
-{
-public:
-	struct FQuat                                  Rotation;                                          // 0x0000(0x0010)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         Ratio;                                             // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0xC];                                       // 0x0014(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_FitChainToCurve_Rotation) == 0x000010, "Wrong alignment on FRigUnit_FitChainToCurve_Rotation");
-static_assert(sizeof(FRigUnit_FitChainToCurve_Rotation) == 0x000020, "Wrong size on FRigUnit_FitChainToCurve_Rotation");
-static_assert(offsetof(FRigUnit_FitChainToCurve_Rotation, Rotation) == 0x000000, "Member 'FRigUnit_FitChainToCurve_Rotation::Rotation' has a wrong offset!");
-static_assert(offsetof(FRigUnit_FitChainToCurve_Rotation, Ratio) == 0x000010, "Member 'FRigUnit_FitChainToCurve_Rotation::Ratio' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_FitChainToCurve_WorkData
 // 0x0098 (0x0098 - 0x0000)
@@ -5556,6 +5605,20 @@ static_assert(offsetof(FRigUnit_FitChainToCurve_WorkData, ItemRotationA) == 0x00
 static_assert(offsetof(FRigUnit_FitChainToCurve_WorkData, ItemRotationB) == 0x000068, "Member 'FRigUnit_FitChainToCurve_WorkData::ItemRotationB' has a wrong offset!");
 static_assert(offsetof(FRigUnit_FitChainToCurve_WorkData, ItemRotationT) == 0x000078, "Member 'FRigUnit_FitChainToCurve_WorkData::ItemRotationT' has a wrong offset!");
 static_assert(offsetof(FRigUnit_FitChainToCurve_WorkData, ItemLocalTransforms) == 0x000088, "Member 'FRigUnit_FitChainToCurve_WorkData::ItemLocalTransforms' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_FitChainToCurve_Rotation
+// 0x0020 (0x0020 - 0x0000)
+struct FRigUnit_FitChainToCurve_Rotation final
+{
+public:
+	struct FQuat                                  Rotation;                                          // 0x0000(0x0010)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         Ratio;                                             // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0xC];                                       // 0x0014(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_FitChainToCurve_Rotation) == 0x000010, "Wrong alignment on FRigUnit_FitChainToCurve_Rotation");
+static_assert(sizeof(FRigUnit_FitChainToCurve_Rotation) == 0x000020, "Wrong size on FRigUnit_FitChainToCurve_Rotation");
+static_assert(offsetof(FRigUnit_FitChainToCurve_Rotation, Rotation) == 0x000000, "Member 'FRigUnit_FitChainToCurve_Rotation::Rotation' has a wrong offset!");
+static_assert(offsetof(FRigUnit_FitChainToCurve_Rotation, Ratio) == 0x000010, "Member 'FRigUnit_FitChainToCurve_Rotation::Ratio' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_FitChainToCurvePerItem
 // 0x0198 (0x0200 - 0x0068)
@@ -5601,22 +5664,13 @@ static_assert(offsetof(FRigUnit_FitChainToCurvePerItem, bPropagateToChildren) ==
 static_assert(offsetof(FRigUnit_FitChainToCurvePerItem, DebugSettings) == 0x000100, "Member 'FRigUnit_FitChainToCurvePerItem::DebugSettings' has a wrong offset!");
 static_assert(offsetof(FRigUnit_FitChainToCurvePerItem, WorkData) == 0x000160, "Member 'FRigUnit_FitChainToCurvePerItem::WorkData' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathQuaternionGetAxis
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_MathQuaternionGetAxis final : public FRigUnit_MathQuaternionBase
+// ScriptStruct ControlRig.RigUnit_MathIntSign
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathIntSign final : public FRigUnit_MathIntUnaryOp
 {
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Quaternion;                                        // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	EAxis                                         Axis;                                              // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                Result;                                            // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathQuaternionGetAxis) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionGetAxis");
-static_assert(sizeof(FRigUnit_MathQuaternionGetAxis) == 0x000030, "Wrong size on FRigUnit_MathQuaternionGetAxis");
-static_assert(offsetof(FRigUnit_MathQuaternionGetAxis, Quaternion) == 0x000010, "Member 'FRigUnit_MathQuaternionGetAxis::Quaternion' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionGetAxis, Axis) == 0x000020, "Member 'FRigUnit_MathQuaternionGetAxis::Axis' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionGetAxis, Result) == 0x000024, "Member 'FRigUnit_MathQuaternionGetAxis::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathIntSign) == 0x000008, "Wrong alignment on FRigUnit_MathIntSign");
+static_assert(sizeof(FRigUnit_MathIntSign) == 0x000010, "Wrong size on FRigUnit_MathIntSign");
 
 // ScriptStruct ControlRig.RigUnit_MathQuaternionScale
 // 0x0028 (0x0030 - 0x0008)
@@ -5679,6 +5733,23 @@ static_assert(offsetof(FRigUnit_FitChainToCurve, bPropagateToChildren) == 0x0000
 static_assert(offsetof(FRigUnit_FitChainToCurve, DebugSettings) == 0x000100, "Member 'FRigUnit_FitChainToCurve::DebugSettings' has a wrong offset!");
 static_assert(offsetof(FRigUnit_FitChainToCurve, WorkData) == 0x000160, "Member 'FRigUnit_FitChainToCurve::WorkData' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_MathQuaternionDot
+// 0x0038 (0x0040 - 0x0008)
+struct FRigUnit_MathQuaternionDot final : public FRigUnit_MathQuaternionBase
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  A;                                                 // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  B;                                                 // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_34[0xC];                                       // 0x0034(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathQuaternionDot) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionDot");
+static_assert(sizeof(FRigUnit_MathQuaternionDot) == 0x000040, "Wrong size on FRigUnit_MathQuaternionDot");
+static_assert(offsetof(FRigUnit_MathQuaternionDot, A) == 0x000010, "Member 'FRigUnit_MathQuaternionDot::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionDot, B) == 0x000020, "Member 'FRigUnit_MathQuaternionDot::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionDot, Result) == 0x000030, "Member 'FRigUnit_MathQuaternionDot::Result' has a wrong offset!");
+
 // ScriptStruct ControlRig.RigUnit_MapRange_Float
 // 0x0018 (0x0020 - 0x0008)
 struct FRigUnit_MapRange_Float final : public FRigUnit
@@ -5733,23 +5804,21 @@ static_assert(offsetof(FRigUnit_BinaryFloatOp, Argument0) == 0x000008, "Member '
 static_assert(offsetof(FRigUnit_BinaryFloatOp, Argument1) == 0x00000C, "Member 'FRigUnit_BinaryFloatOp::Argument1' has a wrong offset!");
 static_assert(offsetof(FRigUnit_BinaryFloatOp, Result) == 0x000010, "Member 'FRigUnit_BinaryFloatOp::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorIsNearlyEqual
-// 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_MathVectorIsNearlyEqual final : public FRigUnit_MathVectorBase
+// ScriptStruct ControlRig.RigUnit_MathQuaternionFromEuler
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_MathQuaternionFromEuler final : public FRigUnit_MathQuaternionBase
 {
 public:
-	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Tolerance;                                         // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                Euler;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EControlRigRotationOrder                      RotationOrder;                                     // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_15[0xB];                                       // 0x0015(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathVectorIsNearlyEqual) == 0x000008, "Wrong alignment on FRigUnit_MathVectorIsNearlyEqual");
-static_assert(sizeof(FRigUnit_MathVectorIsNearlyEqual) == 0x000028, "Wrong size on FRigUnit_MathVectorIsNearlyEqual");
-static_assert(offsetof(FRigUnit_MathVectorIsNearlyEqual, A) == 0x000008, "Member 'FRigUnit_MathVectorIsNearlyEqual::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorIsNearlyEqual, B) == 0x000014, "Member 'FRigUnit_MathVectorIsNearlyEqual::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorIsNearlyEqual, Tolerance) == 0x000020, "Member 'FRigUnit_MathVectorIsNearlyEqual::Tolerance' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorIsNearlyEqual, Result) == 0x000024, "Member 'FRigUnit_MathVectorIsNearlyEqual::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathQuaternionFromEuler) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionFromEuler");
+static_assert(sizeof(FRigUnit_MathQuaternionFromEuler) == 0x000030, "Wrong size on FRigUnit_MathQuaternionFromEuler");
+static_assert(offsetof(FRigUnit_MathQuaternionFromEuler, Euler) == 0x000008, "Member 'FRigUnit_MathQuaternionFromEuler::Euler' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionFromEuler, RotationOrder) == 0x000014, "Member 'FRigUnit_MathQuaternionFromEuler::RotationOrder' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionFromEuler, Result) == 0x000020, "Member 'FRigUnit_MathQuaternionFromEuler::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_Divide_FloatFloat
 // 0x0000 (0x0018 - 0x0018)
@@ -5759,24 +5828,13 @@ struct FRigUnit_Divide_FloatFloat final : public FRigUnit_BinaryFloatOp
 static_assert(alignof(FRigUnit_Divide_FloatFloat) == 0x000008, "Wrong alignment on FRigUnit_Divide_FloatFloat");
 static_assert(sizeof(FRigUnit_Divide_FloatFloat) == 0x000018, "Wrong size on FRigUnit_Divide_FloatFloat");
 
-// ScriptStruct ControlRig.RigUnit_MathQuaternionSlerp
-// 0x0048 (0x0050 - 0x0008)
-struct FRigUnit_MathQuaternionSlerp final : public FRigUnit_MathQuaternionBase
+// ScriptStruct ControlRig.RigUnit_MathColorSub
+// 0x0000 (0x0038 - 0x0038)
+struct FRigUnit_MathColorSub final : public FRigUnit_MathColorBinaryOp
 {
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  A;                                                 // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  B;                                                 // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         T;                                                 // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_34[0xC];                                       // 0x0034(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Result;                                            // 0x0040(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathQuaternionSlerp) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionSlerp");
-static_assert(sizeof(FRigUnit_MathQuaternionSlerp) == 0x000050, "Wrong size on FRigUnit_MathQuaternionSlerp");
-static_assert(offsetof(FRigUnit_MathQuaternionSlerp, A) == 0x000010, "Member 'FRigUnit_MathQuaternionSlerp::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionSlerp, B) == 0x000020, "Member 'FRigUnit_MathQuaternionSlerp::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionSlerp, T) == 0x000030, "Member 'FRigUnit_MathQuaternionSlerp::T' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionSlerp, Result) == 0x000040, "Member 'FRigUnit_MathQuaternionSlerp::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathColorSub) == 0x000008, "Wrong alignment on FRigUnit_MathColorSub");
+static_assert(sizeof(FRigUnit_MathColorSub) == 0x000038, "Wrong size on FRigUnit_MathColorSub");
 
 // ScriptStruct ControlRig.RigUnit_Subtract_FloatFloat
 // 0x0000 (0x0018 - 0x0018)
@@ -5802,30 +5860,15 @@ struct FRigUnit_Multiply_FloatFloat final : public FRigUnit_BinaryFloatOp
 static_assert(alignof(FRigUnit_Multiply_FloatFloat) == 0x000008, "Wrong alignment on FRigUnit_Multiply_FloatFloat");
 static_assert(sizeof(FRigUnit_Multiply_FloatFloat) == 0x000018, "Wrong size on FRigUnit_Multiply_FloatFloat");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorRemap
-// 0x0050 (0x0058 - 0x0008)
-struct FRigUnit_MathVectorRemap final : public FRigUnit_MathVectorBase
+// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateVectorWorkData
+// 0x0090 (0x0090 - 0x0000)
+struct alignas(0x10) FRigUnit_MathRBFInterpolateVectorWorkData final
 {
 public:
-	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                SourceMinimum;                                     // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                SourceMaximum;                                     // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                TargetMinimum;                                     // 0x002C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                TargetMaximum;                                     // 0x0038(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bClamp;                                            // 0x0044(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_45[0x3];                                       // 0x0045(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                Result;                                            // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_0[0x90];                                       // 0x0000(0x0090)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathVectorRemap) == 0x000008, "Wrong alignment on FRigUnit_MathVectorRemap");
-static_assert(sizeof(FRigUnit_MathVectorRemap) == 0x000058, "Wrong size on FRigUnit_MathVectorRemap");
-static_assert(offsetof(FRigUnit_MathVectorRemap, Value) == 0x000008, "Member 'FRigUnit_MathVectorRemap::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorRemap, SourceMinimum) == 0x000014, "Member 'FRigUnit_MathVectorRemap::SourceMinimum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorRemap, SourceMaximum) == 0x000020, "Member 'FRigUnit_MathVectorRemap::SourceMaximum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorRemap, TargetMinimum) == 0x00002C, "Member 'FRigUnit_MathVectorRemap::TargetMinimum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorRemap, TargetMaximum) == 0x000038, "Member 'FRigUnit_MathVectorRemap::TargetMaximum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorRemap, bClamp) == 0x000044, "Member 'FRigUnit_MathVectorRemap::bClamp' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorRemap, Result) == 0x000048, "Member 'FRigUnit_MathVectorRemap::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathRBFInterpolateVectorWorkData) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateVectorWorkData");
+static_assert(sizeof(FRigUnit_MathRBFInterpolateVectorWorkData) == 0x000090, "Wrong size on FRigUnit_MathRBFInterpolateVectorWorkData");
 
 // ScriptStruct ControlRig.RigUnit_ForLoopCount
 // 0x0070 (0x00D8 - 0x0068)
@@ -5847,13 +5890,20 @@ static_assert(offsetof(FRigUnit_ForLoopCount, Ratio) == 0x000070, "Member 'FRigU
 static_assert(offsetof(FRigUnit_ForLoopCount, Continue) == 0x000074, "Member 'FRigUnit_ForLoopCount::Continue' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ForLoopCount, Completed) == 0x000078, "Member 'FRigUnit_ForLoopCount::Completed' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntAdd
-// 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathIntAdd final : public FRigUnit_MathIntBinaryOp
+// ScriptStruct ControlRig.RigUnit_MathQuaternionToRotator
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_MathQuaternionToRotator final : public FRigUnit_MathQuaternionBase
 {
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Value;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FRotator                               Result;                                            // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathIntAdd) == 0x000008, "Wrong alignment on FRigUnit_MathIntAdd");
-static_assert(sizeof(FRigUnit_MathIntAdd) == 0x000018, "Wrong size on FRigUnit_MathIntAdd");
+static_assert(alignof(FRigUnit_MathQuaternionToRotator) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionToRotator");
+static_assert(sizeof(FRigUnit_MathQuaternionToRotator) == 0x000030, "Wrong size on FRigUnit_MathQuaternionToRotator");
+static_assert(offsetof(FRigUnit_MathQuaternionToRotator, Value) == 0x000010, "Member 'FRigUnit_MathQuaternionToRotator::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionToRotator, Result) == 0x000020, "Member 'FRigUnit_MathQuaternionToRotator::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_GetBoneTransform
 // 0x0068 (0x0070 - 0x0008)
@@ -5916,13 +5966,19 @@ static_assert(offsetof(FRigUnit_GetControlTransform, Minimum) == 0x000050, "Memb
 static_assert(offsetof(FRigUnit_GetControlTransform, Maximum) == 0x000080, "Member 'FRigUnit_GetControlTransform::Maximum' has a wrong offset!");
 static_assert(offsetof(FRigUnit_GetControlTransform, CachedControlIndex) == 0x0000B0, "Member 'FRigUnit_GetControlTransform::CachedControlIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorRound
-// 0x0000 (0x0020 - 0x0020)
-struct FRigUnit_MathVectorRound final : public FRigUnit_MathVectorUnaryOp
+// ScriptStruct ControlRig.MathRBFInterpolateVectorQuat_Target
+// 0x0020 (0x0020 - 0x0000)
+struct FMathRBFInterpolateVectorQuat_Target final
 {
+public:
+	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Value;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathVectorRound) == 0x000008, "Wrong alignment on FRigUnit_MathVectorRound");
-static_assert(sizeof(FRigUnit_MathVectorRound) == 0x000020, "Wrong size on FRigUnit_MathVectorRound");
+static_assert(alignof(FMathRBFInterpolateVectorQuat_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateVectorQuat_Target");
+static_assert(sizeof(FMathRBFInterpolateVectorQuat_Target) == 0x000020, "Wrong size on FMathRBFInterpolateVectorQuat_Target");
+static_assert(offsetof(FMathRBFInterpolateVectorQuat_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorQuat_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateVectorQuat_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateVectorQuat_Target::Value' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_GetControlRotator
 // 0x0048 (0x0050 - 0x0008)
@@ -5947,20 +6003,22 @@ static_assert(offsetof(FRigUnit_GetControlRotator, Minimum) == 0x000020, "Member
 static_assert(offsetof(FRigUnit_GetControlRotator, Maximum) == 0x00002C, "Member 'FRigUnit_GetControlRotator::Maximum' has a wrong offset!");
 static_assert(offsetof(FRigUnit_GetControlRotator, CachedControlIndex) == 0x000038, "Member 'FRigUnit_GetControlRotator::CachedControlIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathQuaternionFromTwoVectors
+// ScriptStruct ControlRig.RigUnit_MathQuaternionGetAxis
 // 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_MathQuaternionFromTwoVectors final : public FRigUnit_MathQuaternionBase
+struct FRigUnit_MathQuaternionGetAxis final : public FRigUnit_MathQuaternionBase
 {
 public:
-	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Quaternion;                                        // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	EAxis                                         Axis;                                              // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                Result;                                            // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathQuaternionFromTwoVectors) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionFromTwoVectors");
-static_assert(sizeof(FRigUnit_MathQuaternionFromTwoVectors) == 0x000030, "Wrong size on FRigUnit_MathQuaternionFromTwoVectors");
-static_assert(offsetof(FRigUnit_MathQuaternionFromTwoVectors, A) == 0x000008, "Member 'FRigUnit_MathQuaternionFromTwoVectors::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionFromTwoVectors, B) == 0x000014, "Member 'FRigUnit_MathQuaternionFromTwoVectors::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionFromTwoVectors, Result) == 0x000020, "Member 'FRigUnit_MathQuaternionFromTwoVectors::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathQuaternionGetAxis) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionGetAxis");
+static_assert(sizeof(FRigUnit_MathQuaternionGetAxis) == 0x000030, "Wrong size on FRigUnit_MathQuaternionGetAxis");
+static_assert(offsetof(FRigUnit_MathQuaternionGetAxis, Quaternion) == 0x000010, "Member 'FRigUnit_MathQuaternionGetAxis::Quaternion' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionGetAxis, Axis) == 0x000020, "Member 'FRigUnit_MathQuaternionGetAxis::Axis' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionGetAxis, Result) == 0x000024, "Member 'FRigUnit_MathQuaternionGetAxis::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_GetControlVector
 // 0x0048 (0x0050 - 0x0008)
@@ -6024,13 +6082,13 @@ static_assert(offsetof(FRigUnit_GetControlInteger, Minimum) == 0x000014, "Member
 static_assert(offsetof(FRigUnit_GetControlInteger, Maximum) == 0x000018, "Member 'FRigUnit_GetControlInteger::Maximum' has a wrong offset!");
 static_assert(offsetof(FRigUnit_GetControlInteger, CachedControlIndex) == 0x00001C, "Member 'FRigUnit_GetControlInteger::CachedControlIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorNegate
-// 0x0000 (0x0020 - 0x0020)
-struct FRigUnit_MathVectorNegate final : public FRigUnit_MathVectorUnaryOp
+// ScriptStruct ControlRig.RigUnit_MathFloatMod
+// 0x0000 (0x0018 - 0x0018)
+struct FRigUnit_MathFloatMod final : public FRigUnit_MathFloatBinaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathVectorNegate) == 0x000008, "Wrong alignment on FRigUnit_MathVectorNegate");
-static_assert(sizeof(FRigUnit_MathVectorNegate) == 0x000020, "Wrong size on FRigUnit_MathVectorNegate");
+static_assert(alignof(FRigUnit_MathFloatMod) == 0x000008, "Wrong alignment on FRigUnit_MathFloatMod");
+static_assert(sizeof(FRigUnit_MathFloatMod) == 0x000018, "Wrong size on FRigUnit_MathFloatMod");
 
 // ScriptStruct ControlRig.RigUnit_GetControlFloat
 // 0x0028 (0x0030 - 0x0008)
@@ -6050,23 +6108,6 @@ static_assert(offsetof(FRigUnit_GetControlFloat, FloatValue) == 0x000010, "Membe
 static_assert(offsetof(FRigUnit_GetControlFloat, Minimum) == 0x000014, "Member 'FRigUnit_GetControlFloat::Minimum' has a wrong offset!");
 static_assert(offsetof(FRigUnit_GetControlFloat, Maximum) == 0x000018, "Member 'FRigUnit_GetControlFloat::Maximum' has a wrong offset!");
 static_assert(offsetof(FRigUnit_GetControlFloat, CachedControlIndex) == 0x00001C, "Member 'FRigUnit_GetControlFloat::CachedControlIndex' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathQuaternionDot
-// 0x0038 (0x0040 - 0x0008)
-struct FRigUnit_MathQuaternionDot final : public FRigUnit_MathQuaternionBase
-{
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  A;                                                 // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  B;                                                 // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_34[0xC];                                       // 0x0034(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathQuaternionDot) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionDot");
-static_assert(sizeof(FRigUnit_MathQuaternionDot) == 0x000040, "Wrong size on FRigUnit_MathQuaternionDot");
-static_assert(offsetof(FRigUnit_MathQuaternionDot, A) == 0x000010, "Member 'FRigUnit_MathQuaternionDot::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionDot, B) == 0x000020, "Member 'FRigUnit_MathQuaternionDot::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionDot, Result) == 0x000030, "Member 'FRigUnit_MathQuaternionDot::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_GetControlBool
 // 0x0020 (0x0028 - 0x0008)
@@ -6111,15 +6152,13 @@ static_assert(alignof(FRigUnit_GetDeltaTime) == 0x000008, "Wrong alignment on FR
 static_assert(sizeof(FRigUnit_GetDeltaTime) == 0x000010, "Wrong size on FRigUnit_GetDeltaTime");
 static_assert(offsetof(FRigUnit_GetDeltaTime, Result) == 0x000008, "Member 'FRigUnit_GetDeltaTime::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatWorkData
-// 0x0090 (0x0090 - 0x0000)
-struct alignas(0x10) FRigUnit_MathRBFInterpolateQuatWorkData final
+// ScriptStruct ControlRig.RigUnit_MathFloatAdd
+// 0x0000 (0x0018 - 0x0018)
+struct FRigUnit_MathFloatAdd final : public FRigUnit_MathFloatBinaryOp
 {
-public:
-	uint8                                         Pad_0[0x90];                                       // 0x0000(0x0090)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathRBFInterpolateQuatWorkData) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatWorkData");
-static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatWorkData) == 0x000090, "Wrong size on FRigUnit_MathRBFInterpolateQuatWorkData");
+static_assert(alignof(FRigUnit_MathFloatAdd) == 0x000008, "Wrong alignment on FRigUnit_MathFloatAdd");
+static_assert(sizeof(FRigUnit_MathFloatAdd) == 0x000018, "Wrong size on FRigUnit_MathFloatAdd");
 
 // ScriptStruct ControlRig.RigUnit_GetInitialBoneTransform
 // 0x0068 (0x0070 - 0x0008)
@@ -6140,19 +6179,24 @@ static_assert(offsetof(FRigUnit_GetInitialBoneTransform, Space) == 0x000010, "Me
 static_assert(offsetof(FRigUnit_GetInitialBoneTransform, Transform) == 0x000020, "Member 'FRigUnit_GetInitialBoneTransform::Transform' has a wrong offset!");
 static_assert(offsetof(FRigUnit_GetInitialBoneTransform, CachedBone) == 0x000050, "Member 'FRigUnit_GetInitialBoneTransform::CachedBone' has a wrong offset!");
 
-// ScriptStruct ControlRig.MathRBFInterpolateVectorXform_Target
-// 0x0040 (0x0040 - 0x0000)
-struct FMathRBFInterpolateVectorXform_Target final
+// ScriptStruct ControlRig.RigUnit_MathQuaternionSlerp
+// 0x0048 (0x0050 - 0x0008)
+struct FRigUnit_MathQuaternionSlerp final : public FRigUnit_MathQuaternionBase
 {
 public:
-	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  A;                                                 // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  B;                                                 // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         T;                                                 // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_34[0xC];                                       // 0x0034(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Result;                                            // 0x0040(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FMathRBFInterpolateVectorXform_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateVectorXform_Target");
-static_assert(sizeof(FMathRBFInterpolateVectorXform_Target) == 0x000040, "Wrong size on FMathRBFInterpolateVectorXform_Target");
-static_assert(offsetof(FMathRBFInterpolateVectorXform_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorXform_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateVectorXform_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateVectorXform_Target::Value' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathQuaternionSlerp) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionSlerp");
+static_assert(sizeof(FRigUnit_MathQuaternionSlerp) == 0x000050, "Wrong size on FRigUnit_MathQuaternionSlerp");
+static_assert(offsetof(FRigUnit_MathQuaternionSlerp, A) == 0x000010, "Member 'FRigUnit_MathQuaternionSlerp::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionSlerp, B) == 0x000020, "Member 'FRigUnit_MathQuaternionSlerp::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionSlerp, T) == 0x000030, "Member 'FRigUnit_MathQuaternionSlerp::T' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionSlerp, Result) == 0x000040, "Member 'FRigUnit_MathQuaternionSlerp::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_GetJointTransform
 // 0x0088 (0x00F0 - 0x0068)
@@ -6224,18 +6268,13 @@ static_assert(offsetof(FRigUnit_GetRelativeTransformForItem, RelativeTransform) 
 static_assert(offsetof(FRigUnit_GetRelativeTransformForItem, CachedChild) == 0x000060, "Member 'FRigUnit_GetRelativeTransformForItem::CachedChild' has a wrong offset!");
 static_assert(offsetof(FRigUnit_GetRelativeTransformForItem, CachedParent) == 0x000074, "Member 'FRigUnit_GetRelativeTransformForItem::CachedParent' has a wrong offset!");
 
-// ScriptStruct ControlRig.MathRBFInterpolateQuatQuat_Target
-// 0x0020 (0x0020 - 0x0000)
-struct FMathRBFInterpolateQuatQuat_Target final
+// ScriptStruct ControlRig.RigUnit_MathFloatConstPi
+// 0x0000 (0x0010 - 0x0010)
+struct FRigUnit_MathFloatConstPi final : public FRigUnit_MathFloatConstant
 {
-public:
-	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  Value;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FMathRBFInterpolateQuatQuat_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatQuat_Target");
-static_assert(sizeof(FMathRBFInterpolateQuatQuat_Target) == 0x000020, "Wrong size on FMathRBFInterpolateQuatQuat_Target");
-static_assert(offsetof(FMathRBFInterpolateQuatQuat_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatQuat_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateQuatQuat_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatQuat_Target::Value' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathFloatConstPi) == 0x000008, "Wrong alignment on FRigUnit_MathFloatConstPi");
+static_assert(sizeof(FRigUnit_MathFloatConstPi) == 0x000010, "Wrong size on FRigUnit_MathFloatConstPi");
 
 // ScriptStruct ControlRig.RigUnit_GetSpaceTransform
 // 0x0068 (0x0070 - 0x0008)
@@ -6256,21 +6295,18 @@ static_assert(offsetof(FRigUnit_GetSpaceTransform, SpaceType) == 0x000010, "Memb
 static_assert(offsetof(FRigUnit_GetSpaceTransform, Transform) == 0x000020, "Member 'FRigUnit_GetSpaceTransform::Transform' has a wrong offset!");
 static_assert(offsetof(FRigUnit_GetSpaceTransform, CachedSpaceIndex) == 0x000050, "Member 'FRigUnit_GetSpaceTransform::CachedSpaceIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathFloatGreater
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathFloatGreater final : public FRigUnit_MathFloatBase
+// ScriptStruct ControlRig.MathRBFInterpolateVectorColor_Target
+// 0x001C (0x001C - 0x0000)
+struct FMathRBFInterpolateVectorColor_Target final
 {
 public:
-	float                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           Value;                                             // 0x000C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathFloatGreater) == 0x000008, "Wrong alignment on FRigUnit_MathFloatGreater");
-static_assert(sizeof(FRigUnit_MathFloatGreater) == 0x000018, "Wrong size on FRigUnit_MathFloatGreater");
-static_assert(offsetof(FRigUnit_MathFloatGreater, A) == 0x000008, "Member 'FRigUnit_MathFloatGreater::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatGreater, B) == 0x00000C, "Member 'FRigUnit_MathFloatGreater::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathFloatGreater, Result) == 0x000010, "Member 'FRigUnit_MathFloatGreater::Result' has a wrong offset!");
+static_assert(alignof(FMathRBFInterpolateVectorColor_Target) == 0x000004, "Wrong alignment on FMathRBFInterpolateVectorColor_Target");
+static_assert(sizeof(FMathRBFInterpolateVectorColor_Target) == 0x00001C, "Wrong size on FMathRBFInterpolateVectorColor_Target");
+static_assert(offsetof(FMathRBFInterpolateVectorColor_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorColor_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateVectorColor_Target, Value) == 0x00000C, "Member 'FMathRBFInterpolateVectorColor_Target::Value' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_GetTransform
 // 0x0068 (0x0070 - 0x0008)
@@ -6326,19 +6362,21 @@ struct FRigUnit_HierarchyBase : public FRigUnit
 static_assert(alignof(FRigUnit_HierarchyBase) == 0x000008, "Wrong alignment on FRigUnit_HierarchyBase");
 static_assert(sizeof(FRigUnit_HierarchyBase) == 0x000008, "Wrong size on FRigUnit_HierarchyBase");
 
-// ScriptStruct ControlRig.MathRBFInterpolateQuatVector_Target
-// 0x0020 (0x0020 - 0x0000)
-struct FMathRBFInterpolateQuatVector_Target final
+// ScriptStruct ControlRig.RigUnit_MathIntLess
+// 0x0010 (0x0018 - 0x0008)
+struct FRigUnit_MathIntLess final : public FRigUnit_MathIntBase
 {
 public:
-	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FVector                                Value;                                             // 0x0010(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FMathRBFInterpolateQuatVector_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatVector_Target");
-static_assert(sizeof(FMathRBFInterpolateQuatVector_Target) == 0x000020, "Wrong size on FMathRBFInterpolateQuatVector_Target");
-static_assert(offsetof(FMathRBFInterpolateQuatVector_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatVector_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateQuatVector_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatVector_Target::Value' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathIntLess) == 0x000008, "Wrong alignment on FRigUnit_MathIntLess");
+static_assert(sizeof(FRigUnit_MathIntLess) == 0x000018, "Wrong size on FRigUnit_MathIntLess");
+static_assert(offsetof(FRigUnit_MathIntLess, A) == 0x000008, "Member 'FRigUnit_MathIntLess::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntLess, B) == 0x00000C, "Member 'FRigUnit_MathIntLess::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathIntLess, Result) == 0x000010, "Member 'FRigUnit_MathIntLess::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_HierarchyGetSiblings
 // 0x0048 (0x0050 - 0x0008)
@@ -6361,18 +6399,20 @@ static_assert(offsetof(FRigUnit_HierarchyGetSiblings, Siblings) == 0x000018, "Me
 static_assert(offsetof(FRigUnit_HierarchyGetSiblings, CachedItem) == 0x000028, "Member 'FRigUnit_HierarchyGetSiblings::CachedItem' has a wrong offset!");
 static_assert(offsetof(FRigUnit_HierarchyGetSiblings, CachedSiblings) == 0x000040, "Member 'FRigUnit_HierarchyGetSiblings::CachedSiblings' has a wrong offset!");
 
-// ScriptStruct ControlRig.MathRBFInterpolateVectorFloat_Target
-// 0x0010 (0x0010 - 0x0000)
-struct FMathRBFInterpolateVectorFloat_Target final
+// ScriptStruct ControlRig.RigUnit_MathQuaternionFromTwoVectors
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_MathQuaternionFromTwoVectors final : public FRigUnit_MathQuaternionBase
 {
 public:
-	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Value;                                             // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FMathRBFInterpolateVectorFloat_Target) == 0x000004, "Wrong alignment on FMathRBFInterpolateVectorFloat_Target");
-static_assert(sizeof(FMathRBFInterpolateVectorFloat_Target) == 0x000010, "Wrong size on FMathRBFInterpolateVectorFloat_Target");
-static_assert(offsetof(FMathRBFInterpolateVectorFloat_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorFloat_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateVectorFloat_Target, Value) == 0x00000C, "Member 'FMathRBFInterpolateVectorFloat_Target::Value' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathQuaternionFromTwoVectors) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionFromTwoVectors");
+static_assert(sizeof(FRigUnit_MathQuaternionFromTwoVectors) == 0x000030, "Wrong size on FRigUnit_MathQuaternionFromTwoVectors");
+static_assert(offsetof(FRigUnit_MathQuaternionFromTwoVectors, A) == 0x000008, "Member 'FRigUnit_MathQuaternionFromTwoVectors::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionFromTwoVectors, B) == 0x000014, "Member 'FRigUnit_MathQuaternionFromTwoVectors::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionFromTwoVectors, Result) == 0x000020, "Member 'FRigUnit_MathQuaternionFromTwoVectors::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_HierarchyGetChildren
 // 0x0048 (0x0050 - 0x0008)
@@ -6437,59 +6477,6 @@ static_assert(offsetof(FRigUnit_HierarchyGetParent, Parent) == 0x000014, "Member
 static_assert(offsetof(FRigUnit_HierarchyGetParent, CachedChild) == 0x000020, "Member 'FRigUnit_HierarchyGetParent::CachedChild' has a wrong offset!");
 static_assert(offsetof(FRigUnit_HierarchyGetParent, CachedParent) == 0x000034, "Member 'FRigUnit_HierarchyGetParent::CachedParent' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathTransformClampSpatially
-// 0x00C8 (0x00D0 - 0x0008)
-struct FRigUnit_MathTransformClampSpatially final : public FRigUnit_MathTransformBase
-{
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	EAxis                                         Axis;                                              // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EControlRigClampSpatialMode                   Type;                                              // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_42[0x2];                                       // 0x0042(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Minimum;                                           // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Maximum;                                           // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4C[0x4];                                       // 0x004C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Space;                                             // 0x0050(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          bDrawDebug;                                        // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_81[0x3];                                       // 0x0081(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLinearColor                           DebugColor;                                        // 0x0084(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DebugThickness;                                    // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Result;                                            // 0x00A0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathTransformClampSpatially) == 0x000010, "Wrong alignment on FRigUnit_MathTransformClampSpatially");
-static_assert(sizeof(FRigUnit_MathTransformClampSpatially) == 0x0000D0, "Wrong size on FRigUnit_MathTransformClampSpatially");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Value) == 0x000010, "Member 'FRigUnit_MathTransformClampSpatially::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Axis) == 0x000040, "Member 'FRigUnit_MathTransformClampSpatially::Axis' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Type) == 0x000041, "Member 'FRigUnit_MathTransformClampSpatially::Type' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Minimum) == 0x000044, "Member 'FRigUnit_MathTransformClampSpatially::Minimum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Maximum) == 0x000048, "Member 'FRigUnit_MathTransformClampSpatially::Maximum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Space) == 0x000050, "Member 'FRigUnit_MathTransformClampSpatially::Space' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, bDrawDebug) == 0x000080, "Member 'FRigUnit_MathTransformClampSpatially::bDrawDebug' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, DebugColor) == 0x000084, "Member 'FRigUnit_MathTransformClampSpatially::DebugColor' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, DebugThickness) == 0x000094, "Member 'FRigUnit_MathTransformClampSpatially::DebugThickness' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Result) == 0x0000A0, "Member 'FRigUnit_MathTransformClampSpatially::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_InverseExecution
-// 0x0060 (0x0068 - 0x0008)
-struct FRigUnit_InverseExecution final : public FRigUnit
-{
-public:
-	struct FControlRigExecuteContext              ExecuteContext;                                    // 0x0008(0x0060)(Edit, Transient, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_InverseExecution) == 0x000008, "Wrong alignment on FRigUnit_InverseExecution");
-static_assert(sizeof(FRigUnit_InverseExecution) == 0x000068, "Wrong size on FRigUnit_InverseExecution");
-static_assert(offsetof(FRigUnit_InverseExecution, ExecuteContext) == 0x000008, "Member 'FRigUnit_InverseExecution::ExecuteContext' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateBase
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit_MathRBFInterpolateBase : public FRigUnit_MathBase
-{
-};
-static_assert(alignof(FRigUnit_MathRBFInterpolateBase) == 0x000008, "Wrong alignment on FRigUnit_MathRBFInterpolateBase");
-static_assert(sizeof(FRigUnit_MathRBFInterpolateBase) == 0x000008, "Wrong size on FRigUnit_MathRBFInterpolateBase");
-
 // ScriptStruct ControlRig.RigUnit_IsInteracting
 // 0x0008 (0x0010 - 0x0008)
 struct FRigUnit_IsInteracting final : public FRigUnit
@@ -6501,14 +6488,6 @@ public:
 static_assert(alignof(FRigUnit_IsInteracting) == 0x000008, "Wrong alignment on FRigUnit_IsInteracting");
 static_assert(sizeof(FRigUnit_IsInteracting) == 0x000010, "Wrong size on FRigUnit_IsInteracting");
 static_assert(offsetof(FRigUnit_IsInteracting, bIsInteracting) == 0x000008, "Member 'FRigUnit_IsInteracting::bIsInteracting' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_ItemBase
-// 0x0000 (0x0008 - 0x0008)
-struct FRigUnit_ItemBase : public FRigUnit
-{
-};
-static_assert(alignof(FRigUnit_ItemBase) == 0x000008, "Wrong alignment on FRigUnit_ItemBase");
-static_assert(sizeof(FRigUnit_ItemBase) == 0x000008, "Wrong size on FRigUnit_ItemBase");
 
 // ScriptStruct ControlRig.RigUnit_ItemReplace
 // 0x0028 (0x0030 - 0x0008)
@@ -6527,44 +6506,6 @@ static_assert(offsetof(FRigUnit_ItemReplace, Old) == 0x000014, "Member 'FRigUnit
 static_assert(offsetof(FRigUnit_ItemReplace, New) == 0x00001C, "Member 'FRigUnit_ItemReplace::New' has a wrong offset!");
 static_assert(offsetof(FRigUnit_ItemReplace, Result) == 0x000024, "Member 'FRigUnit_ItemReplace::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntAbs
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathIntAbs final : public FRigUnit_MathIntUnaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathIntAbs) == 0x000008, "Wrong alignment on FRigUnit_MathIntAbs");
-static_assert(sizeof(FRigUnit_MathIntAbs) == 0x000010, "Wrong size on FRigUnit_MathIntAbs");
-
-// ScriptStruct ControlRig.RigUnit_ItemExists
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_ItemExists final : public FRigUnit_ItemBase
-{
-public:
-	struct FRigElementKey                         Item;                                              // 0x0008(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Exists;                                            // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedIndex;                                       // 0x0018(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_ItemExists) == 0x000008, "Wrong alignment on FRigUnit_ItemExists");
-static_assert(sizeof(FRigUnit_ItemExists) == 0x000030, "Wrong size on FRigUnit_ItemExists");
-static_assert(offsetof(FRigUnit_ItemExists, Item) == 0x000008, "Member 'FRigUnit_ItemExists::Item' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ItemExists, Exists) == 0x000014, "Member 'FRigUnit_ItemExists::Exists' has a wrong offset!");
-static_assert(offsetof(FRigUnit_ItemExists, CachedIndex) == 0x000018, "Member 'FRigUnit_ItemExists::CachedIndex' has a wrong offset!");
-
-// ScriptStruct ControlRig.MathRBFInterpolateQuatColor_Target
-// 0x0020 (0x0020 - 0x0000)
-struct FMathRBFInterpolateQuatColor_Target final
-{
-public:
-	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FLinearColor                           Value;                                             // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FMathRBFInterpolateQuatColor_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatColor_Target");
-static_assert(sizeof(FMathRBFInterpolateQuatColor_Target) == 0x000020, "Wrong size on FMathRBFInterpolateQuatColor_Target");
-static_assert(offsetof(FMathRBFInterpolateQuatColor_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatColor_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateQuatColor_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatColor_Target::Value' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigUnit_ItemBaseMutable
 // 0x0000 (0x0068 - 0x0068)
 struct FRigUnit_ItemBaseMutable final : public FRigUnitMutable
@@ -6572,28 +6513,6 @@ struct FRigUnit_ItemBaseMutable final : public FRigUnitMutable
 };
 static_assert(alignof(FRigUnit_ItemBaseMutable) == 0x000008, "Wrong alignment on FRigUnit_ItemBaseMutable");
 static_assert(sizeof(FRigUnit_ItemBaseMutable) == 0x000068, "Wrong size on FRigUnit_ItemBaseMutable");
-
-// ScriptStruct ControlRig.RigUnit_KalmanTransform
-// 0x0098 (0x00A0 - 0x0008)
-struct FRigUnit_KalmanTransform final : public FRigUnit_SimBase
-{
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         BufferSize;                                        // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_44[0xC];                                       // 0x0044(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Result;                                            // 0x0050(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	TArray<struct FTransform>                     Buffer;                                            // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	int32                                         LastInsertIndex;                                   // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_94[0xC];                                       // 0x0094(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_KalmanTransform) == 0x000010, "Wrong alignment on FRigUnit_KalmanTransform");
-static_assert(sizeof(FRigUnit_KalmanTransform) == 0x0000A0, "Wrong size on FRigUnit_KalmanTransform");
-static_assert(offsetof(FRigUnit_KalmanTransform, Value) == 0x000010, "Member 'FRigUnit_KalmanTransform::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_KalmanTransform, BufferSize) == 0x000040, "Member 'FRigUnit_KalmanTransform::BufferSize' has a wrong offset!");
-static_assert(offsetof(FRigUnit_KalmanTransform, Result) == 0x000050, "Member 'FRigUnit_KalmanTransform::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_KalmanTransform, Buffer) == 0x000080, "Member 'FRigUnit_KalmanTransform::Buffer' has a wrong offset!");
-static_assert(offsetof(FRigUnit_KalmanTransform, LastInsertIndex) == 0x000090, "Member 'FRigUnit_KalmanTransform::LastInsertIndex' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_KalmanVector
 // 0x0038 (0x0040 - 0x0008)
@@ -6616,48 +6535,6 @@ static_assert(offsetof(FRigUnit_KalmanVector, Result) == 0x000018, "Member 'FRig
 static_assert(offsetof(FRigUnit_KalmanVector, Buffer) == 0x000028, "Member 'FRigUnit_KalmanVector::Buffer' has a wrong offset!");
 static_assert(offsetof(FRigUnit_KalmanVector, LastInsertIndex) == 0x000038, "Member 'FRigUnit_KalmanVector::LastInsertIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntMax
-// 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathIntMax final : public FRigUnit_MathIntBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathIntMax) == 0x000008, "Wrong alignment on FRigUnit_MathIntMax");
-static_assert(sizeof(FRigUnit_MathIntMax) == 0x000018, "Wrong size on FRigUnit_MathIntMax");
-
-// ScriptStruct ControlRig.RigUnit_KalmanFloat
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_KalmanFloat final : public FRigUnit_SimBase
-{
-public:
-	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         BufferSize;                                        // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<float>                                 Buffer;                                            // 0x0018(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	int32                                         LastInsertIndex;                                   // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_KalmanFloat) == 0x000008, "Wrong alignment on FRigUnit_KalmanFloat");
-static_assert(sizeof(FRigUnit_KalmanFloat) == 0x000030, "Wrong size on FRigUnit_KalmanFloat");
-static_assert(offsetof(FRigUnit_KalmanFloat, Value) == 0x000008, "Member 'FRigUnit_KalmanFloat::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_KalmanFloat, BufferSize) == 0x00000C, "Member 'FRigUnit_KalmanFloat::BufferSize' has a wrong offset!");
-static_assert(offsetof(FRigUnit_KalmanFloat, Result) == 0x000010, "Member 'FRigUnit_KalmanFloat::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_KalmanFloat, Buffer) == 0x000018, "Member 'FRigUnit_KalmanFloat::Buffer' has a wrong offset!");
-static_assert(offsetof(FRigUnit_KalmanFloat, LastInsertIndex) == 0x000028, "Member 'FRigUnit_KalmanFloat::LastInsertIndex' has a wrong offset!");
-
-// ScriptStruct ControlRig.MathRBFInterpolateVectorColor_Target
-// 0x001C (0x001C - 0x0000)
-struct FMathRBFInterpolateVectorColor_Target final
-{
-public:
-	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           Value;                                             // 0x000C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FMathRBFInterpolateVectorColor_Target) == 0x000004, "Wrong alignment on FMathRBFInterpolateVectorColor_Target");
-static_assert(sizeof(FMathRBFInterpolateVectorColor_Target) == 0x00001C, "Wrong size on FMathRBFInterpolateVectorColor_Target");
-static_assert(offsetof(FMathRBFInterpolateVectorColor_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorColor_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateVectorColor_Target, Value) == 0x00000C, "Member 'FMathRBFInterpolateVectorColor_Target::Value' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigUnit_MathBoolNotEquals
 // 0x0008 (0x0010 - 0x0008)
 struct FRigUnit_MathBoolNotEquals final : public FRigUnit_MathBoolBase
@@ -6674,71 +6551,6 @@ static_assert(offsetof(FRigUnit_MathBoolNotEquals, A) == 0x000008, "Member 'FRig
 static_assert(offsetof(FRigUnit_MathBoolNotEquals, B) == 0x000009, "Member 'FRigUnit_MathBoolNotEquals::B' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathBoolNotEquals, Result) == 0x00000A, "Member 'FRigUnit_MathBoolNotEquals::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntMul
-// 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathIntMul final : public FRigUnit_MathIntBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathIntMul) == 0x000008, "Wrong alignment on FRigUnit_MathIntMul");
-static_assert(sizeof(FRigUnit_MathIntMul) == 0x000018, "Wrong size on FRigUnit_MathIntMul");
-
-// ScriptStruct ControlRig.RigUnit_MathBoolEquals
-// 0x0008 (0x0010 - 0x0008)
-struct FRigUnit_MathBoolEquals final : public FRigUnit_MathBoolBase
-{
-public:
-	bool                                          A;                                                 // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          B;                                                 // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathBoolEquals) == 0x000008, "Wrong alignment on FRigUnit_MathBoolEquals");
-static_assert(sizeof(FRigUnit_MathBoolEquals) == 0x000010, "Wrong size on FRigUnit_MathBoolEquals");
-static_assert(offsetof(FRigUnit_MathBoolEquals, A) == 0x000008, "Member 'FRigUnit_MathBoolEquals::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathBoolEquals, B) == 0x000009, "Member 'FRigUnit_MathBoolEquals::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathBoolEquals, Result) == 0x00000A, "Member 'FRigUnit_MathBoolEquals::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathTransformTransformVector
-// 0x0058 (0x0060 - 0x0008)
-struct FRigUnit_MathTransformTransformVector final : public FRigUnit_MathTransformBase
-{
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Transform;                                         // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FVector                                Location;                                          // 0x0040(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x004C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_58[0x8];                                       // 0x0058(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathTransformTransformVector) == 0x000010, "Wrong alignment on FRigUnit_MathTransformTransformVector");
-static_assert(sizeof(FRigUnit_MathTransformTransformVector) == 0x000060, "Wrong size on FRigUnit_MathTransformTransformVector");
-static_assert(offsetof(FRigUnit_MathTransformTransformVector, Transform) == 0x000010, "Member 'FRigUnit_MathTransformTransformVector::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformTransformVector, Location) == 0x000040, "Member 'FRigUnit_MathTransformTransformVector::Location' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformTransformVector, Result) == 0x00004C, "Member 'FRigUnit_MathTransformTransformVector::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathBoolBinaryOp
-// 0x0008 (0x0010 - 0x0008)
-struct FRigUnit_MathBoolBinaryOp : public FRigUnit_MathBoolBase
-{
-public:
-	bool                                          A;                                                 // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          B;                                                 // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathBoolBinaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathBoolBinaryOp");
-static_assert(sizeof(FRigUnit_MathBoolBinaryOp) == 0x000010, "Wrong size on FRigUnit_MathBoolBinaryOp");
-static_assert(offsetof(FRigUnit_MathBoolBinaryOp, A) == 0x000008, "Member 'FRigUnit_MathBoolBinaryOp::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathBoolBinaryOp, B) == 0x000009, "Member 'FRigUnit_MathBoolBinaryOp::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathBoolBinaryOp, Result) == 0x00000A, "Member 'FRigUnit_MathBoolBinaryOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathBoolOr
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathBoolOr final : public FRigUnit_MathBoolBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathBoolOr) == 0x000008, "Wrong alignment on FRigUnit_MathBoolOr");
-static_assert(sizeof(FRigUnit_MathBoolOr) == 0x000010, "Wrong size on FRigUnit_MathBoolOr");
-
 // ScriptStruct ControlRig.RigUnit_MathBoolNand
 // 0x0000 (0x0010 - 0x0010)
 struct FRigUnit_MathBoolNand final : public FRigUnit_MathBoolBinaryOp
@@ -6746,49 +6558,6 @@ struct FRigUnit_MathBoolNand final : public FRigUnit_MathBoolBinaryOp
 };
 static_assert(alignof(FRigUnit_MathBoolNand) == 0x000008, "Wrong alignment on FRigUnit_MathBoolNand");
 static_assert(sizeof(FRigUnit_MathBoolNand) == 0x000010, "Wrong size on FRigUnit_MathBoolNand");
-
-// ScriptStruct ControlRig.RigUnit_MathBoolAnd
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathBoolAnd final : public FRigUnit_MathBoolBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathBoolAnd) == 0x000008, "Wrong alignment on FRigUnit_MathBoolAnd");
-static_assert(sizeof(FRigUnit_MathBoolAnd) == 0x000010, "Wrong size on FRigUnit_MathBoolAnd");
-
-// ScriptStruct ControlRig.MathRBFInterpolateQuatXform_Target
-// 0x0040 (0x0040 - 0x0000)
-struct FMathRBFInterpolateQuatXform_Target final
-{
-public:
-	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FMathRBFInterpolateQuatXform_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatXform_Target");
-static_assert(sizeof(FMathRBFInterpolateQuatXform_Target) == 0x000040, "Wrong size on FMathRBFInterpolateQuatXform_Target");
-static_assert(offsetof(FMathRBFInterpolateQuatXform_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatXform_Target::Target' has a wrong offset!");
-static_assert(offsetof(FMathRBFInterpolateQuatXform_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatXform_Target::Value' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathBoolUnaryOp
-// 0x0008 (0x0010 - 0x0008)
-struct FRigUnit_MathBoolUnaryOp : public FRigUnit_MathBoolBase
-{
-public:
-	bool                                          Value;                                             // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathBoolUnaryOp) == 0x000008, "Wrong alignment on FRigUnit_MathBoolUnaryOp");
-static_assert(sizeof(FRigUnit_MathBoolUnaryOp) == 0x000010, "Wrong size on FRigUnit_MathBoolUnaryOp");
-static_assert(offsetof(FRigUnit_MathBoolUnaryOp, Value) == 0x000008, "Member 'FRigUnit_MathBoolUnaryOp::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathBoolUnaryOp, Result) == 0x000009, "Member 'FRigUnit_MathBoolUnaryOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathBoolNot
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathBoolNot final : public FRigUnit_MathBoolUnaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathBoolNot) == 0x000008, "Wrong alignment on FRigUnit_MathBoolNot");
-static_assert(sizeof(FRigUnit_MathBoolNot) == 0x000010, "Wrong size on FRigUnit_MathBoolNot");
 
 // ScriptStruct ControlRig.RigUnit_MathBoolConstTrue
 // 0x0000 (0x0010 - 0x0010)
@@ -6847,14 +6616,6 @@ struct FRigUnit_MathFloatTan final : public FRigUnit_MathFloatUnaryOp
 };
 static_assert(alignof(FRigUnit_MathFloatTan) == 0x000008, "Wrong alignment on FRigUnit_MathFloatTan");
 static_assert(sizeof(FRigUnit_MathFloatTan) == 0x000010, "Wrong size on FRigUnit_MathFloatTan");
-
-// ScriptStruct ControlRig.RigUnit_MathFloatCos
-// 0x0000 (0x0010 - 0x0010)
-struct FRigUnit_MathFloatCos final : public FRigUnit_MathFloatUnaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathFloatCos) == 0x000008, "Wrong alignment on FRigUnit_MathFloatCos");
-static_assert(sizeof(FRigUnit_MathFloatCos) == 0x000010, "Wrong size on FRigUnit_MathFloatCos");
 
 // ScriptStruct ControlRig.RigUnit_MathFloatSin
 // 0x0000 (0x0010 - 0x0010)
@@ -7097,35 +6858,6 @@ static_assert(offsetof(FRigUnit_MathIntGreater, A) == 0x000008, "Member 'FRigUni
 static_assert(offsetof(FRigUnit_MathIntGreater, B) == 0x00000C, "Member 'FRigUnit_MathIntGreater::B' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathIntGreater, Result) == 0x000010, "Member 'FRigUnit_MathIntGreater::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathIntEquals
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathIntEquals final : public FRigUnit_MathIntBase
-{
-public:
-	int32                                         A;                                                 // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         B;                                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathIntEquals) == 0x000008, "Wrong alignment on FRigUnit_MathIntEquals");
-static_assert(sizeof(FRigUnit_MathIntEquals) == 0x000018, "Wrong size on FRigUnit_MathIntEquals");
-static_assert(offsetof(FRigUnit_MathIntEquals, A) == 0x000008, "Member 'FRigUnit_MathIntEquals::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntEquals, B) == 0x00000C, "Member 'FRigUnit_MathIntEquals::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntEquals, Result) == 0x000010, "Member 'FRigUnit_MathIntEquals::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathIntToFloat
-// 0x0008 (0x0010 - 0x0008)
-struct FRigUnit_MathIntToFloat final : public FRigUnit_MathIntBase
-{
-public:
-	int32                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Result;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_MathIntToFloat) == 0x000008, "Wrong alignment on FRigUnit_MathIntToFloat");
-static_assert(sizeof(FRigUnit_MathIntToFloat) == 0x000010, "Wrong size on FRigUnit_MathIntToFloat");
-static_assert(offsetof(FRigUnit_MathIntToFloat, Value) == 0x000008, "Member 'FRigUnit_MathIntToFloat::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathIntToFloat, Result) == 0x00000C, "Member 'FRigUnit_MathIntToFloat::Result' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigUnit_MathIntNegate
 // 0x0000 (0x0010 - 0x0010)
 struct FRigUnit_MathIntNegate final : public FRigUnit_MathIntUnaryOp
@@ -7133,14 +6865,6 @@ struct FRigUnit_MathIntNegate final : public FRigUnit_MathIntUnaryOp
 };
 static_assert(alignof(FRigUnit_MathIntNegate) == 0x000008, "Wrong alignment on FRigUnit_MathIntNegate");
 static_assert(sizeof(FRigUnit_MathIntNegate) == 0x000010, "Wrong size on FRigUnit_MathIntNegate");
-
-// ScriptStruct ControlRig.RigUnit_MathIntPow
-// 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathIntPow final : public FRigUnit_MathIntBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathIntPow) == 0x000008, "Wrong alignment on FRigUnit_MathIntPow");
-static_assert(sizeof(FRigUnit_MathIntPow) == 0x000018, "Wrong size on FRigUnit_MathIntPow");
 
 // ScriptStruct ControlRig.RigUnit_MathIntMin
 // 0x0000 (0x0018 - 0x0018)
@@ -7150,13 +6874,13 @@ struct FRigUnit_MathIntMin final : public FRigUnit_MathIntBinaryOp
 static_assert(alignof(FRigUnit_MathIntMin) == 0x000008, "Wrong alignment on FRigUnit_MathIntMin");
 static_assert(sizeof(FRigUnit_MathIntMin) == 0x000018, "Wrong size on FRigUnit_MathIntMin");
 
-// ScriptStruct ControlRig.RigUnit_MathIntDiv
+// ScriptStruct ControlRig.RigUnit_MathIntMod
 // 0x0000 (0x0018 - 0x0018)
-struct FRigUnit_MathIntDiv final : public FRigUnit_MathIntBinaryOp
+struct FRigUnit_MathIntMod final : public FRigUnit_MathIntBinaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathIntDiv) == 0x000008, "Wrong alignment on FRigUnit_MathIntDiv");
-static_assert(sizeof(FRigUnit_MathIntDiv) == 0x000018, "Wrong size on FRigUnit_MathIntDiv");
+static_assert(alignof(FRigUnit_MathIntMod) == 0x000008, "Wrong alignment on FRigUnit_MathIntMod");
+static_assert(sizeof(FRigUnit_MathIntMod) == 0x000018, "Wrong size on FRigUnit_MathIntMod");
 
 // ScriptStruct ControlRig.RigUnit_MathIntSub
 // 0x0000 (0x0018 - 0x0018)
@@ -7214,6 +6938,20 @@ static_assert(offsetof(FRigUnit_MathQuaternionRotateVector, Quaternion) == 0x000
 static_assert(offsetof(FRigUnit_MathQuaternionRotateVector, Vector) == 0x000020, "Member 'FRigUnit_MathQuaternionRotateVector::Vector' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathQuaternionRotateVector, Result) == 0x00002C, "Member 'FRigUnit_MathQuaternionRotateVector::Result' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_MathQuaternionUnaryOp
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_MathQuaternionUnaryOp : public FRigUnit_MathQuaternionBase
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Value;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathQuaternionUnaryOp) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionUnaryOp");
+static_assert(sizeof(FRigUnit_MathQuaternionUnaryOp) == 0x000030, "Wrong size on FRigUnit_MathQuaternionUnaryOp");
+static_assert(offsetof(FRigUnit_MathQuaternionUnaryOp, Value) == 0x000010, "Member 'FRigUnit_MathQuaternionUnaryOp::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionUnaryOp, Result) == 0x000020, "Member 'FRigUnit_MathQuaternionUnaryOp::Result' has a wrong offset!");
+
 // ScriptStruct ControlRig.RigUnit_MathQuaternionUnit
 // 0x0000 (0x0030 - 0x0030)
 struct FRigUnit_MathQuaternionUnit final : public FRigUnit_MathQuaternionUnaryOp
@@ -7221,6 +6959,24 @@ struct FRigUnit_MathQuaternionUnit final : public FRigUnit_MathQuaternionUnaryOp
 };
 static_assert(alignof(FRigUnit_MathQuaternionUnit) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionUnit");
 static_assert(sizeof(FRigUnit_MathQuaternionUnit) == 0x000030, "Wrong size on FRigUnit_MathQuaternionUnit");
+
+// ScriptStruct ControlRig.RigUnit_MathQuaternionSelectBool
+// 0x0038 (0x0040 - 0x0008)
+struct FRigUnit_MathQuaternionSelectBool final : public FRigUnit_MathQuaternionBase
+{
+public:
+	bool                                          Condition;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  IfTrue;                                            // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  IfFalse;                                           // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FQuat                                  Result;                                            // 0x0030(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathQuaternionSelectBool) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionSelectBool");
+static_assert(sizeof(FRigUnit_MathQuaternionSelectBool) == 0x000040, "Wrong size on FRigUnit_MathQuaternionSelectBool");
+static_assert(offsetof(FRigUnit_MathQuaternionSelectBool, Condition) == 0x000008, "Member 'FRigUnit_MathQuaternionSelectBool::Condition' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionSelectBool, IfTrue) == 0x000010, "Member 'FRigUnit_MathQuaternionSelectBool::IfTrue' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionSelectBool, IfFalse) == 0x000020, "Member 'FRigUnit_MathQuaternionSelectBool::IfFalse' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathQuaternionSelectBool, Result) == 0x000030, "Member 'FRigUnit_MathQuaternionSelectBool::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathQuaternionEquals
 // 0x0038 (0x0040 - 0x0008)
@@ -7254,21 +7010,6 @@ struct FRigUnit_MathQuaternionMul final : public FRigUnit_MathQuaternionBinaryOp
 };
 static_assert(alignof(FRigUnit_MathQuaternionMul) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionMul");
 static_assert(sizeof(FRigUnit_MathQuaternionMul) == 0x000040, "Wrong size on FRigUnit_MathQuaternionMul");
-
-// ScriptStruct ControlRig.RigUnit_MathQuaternionToRotator
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_MathQuaternionToRotator final : public FRigUnit_MathQuaternionBase
-{
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Value;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FRotator                               Result;                                            // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathQuaternionToRotator) == 0x000010, "Wrong alignment on FRigUnit_MathQuaternionToRotator");
-static_assert(sizeof(FRigUnit_MathQuaternionToRotator) == 0x000030, "Wrong size on FRigUnit_MathQuaternionToRotator");
-static_assert(offsetof(FRigUnit_MathQuaternionToRotator, Value) == 0x000010, "Member 'FRigUnit_MathQuaternionToRotator::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathQuaternionToRotator, Result) == 0x000020, "Member 'FRigUnit_MathQuaternionToRotator::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathQuaternionToEuler
 // 0x0028 (0x0030 - 0x0008)
@@ -7395,6 +7136,19 @@ static_assert(sizeof(FRigUnit_MathRBFInterpolateVectorColor) == 0x0000D0, "Wrong
 static_assert(offsetof(FRigUnit_MathRBFInterpolateVectorColor, Targets) == 0x0000B0, "Member 'FRigUnit_MathRBFInterpolateVectorColor::Targets' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathRBFInterpolateVectorColor, Output) == 0x0000C0, "Member 'FRigUnit_MathRBFInterpolateVectorColor::Output' has a wrong offset!");
 
+// ScriptStruct ControlRig.MathRBFInterpolateVectorVector_Target
+// 0x0018 (0x0018 - 0x0000)
+struct FMathRBFInterpolateVectorVector_Target final
+{
+public:
+	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Value;                                             // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FMathRBFInterpolateVectorVector_Target) == 0x000004, "Wrong alignment on FMathRBFInterpolateVectorVector_Target");
+static_assert(sizeof(FMathRBFInterpolateVectorVector_Target) == 0x000018, "Wrong size on FMathRBFInterpolateVectorVector_Target");
+static_assert(offsetof(FMathRBFInterpolateVectorVector_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorVector_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateVectorVector_Target, Value) == 0x00000C, "Member 'FMathRBFInterpolateVectorVector_Target::Value' has a wrong offset!");
+
 // ScriptStruct ControlRig.RigUnit_MathRBFInterpolateVectorVector
 // 0x0020 (0x00D0 - 0x00B0)
 struct FRigUnit_MathRBFInterpolateVectorVector final : public FRigUnit_MathRBFInterpolateVectorBase
@@ -7408,6 +7162,19 @@ static_assert(alignof(FRigUnit_MathRBFInterpolateVectorVector) == 0x000010, "Wro
 static_assert(sizeof(FRigUnit_MathRBFInterpolateVectorVector) == 0x0000D0, "Wrong size on FRigUnit_MathRBFInterpolateVectorVector");
 static_assert(offsetof(FRigUnit_MathRBFInterpolateVectorVector, Targets) == 0x0000B0, "Member 'FRigUnit_MathRBFInterpolateVectorVector::Targets' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathRBFInterpolateVectorVector, Output) == 0x0000C0, "Member 'FRigUnit_MathRBFInterpolateVectorVector::Output' has a wrong offset!");
+
+// ScriptStruct ControlRig.MathRBFInterpolateVectorFloat_Target
+// 0x0010 (0x0010 - 0x0000)
+struct FMathRBFInterpolateVectorFloat_Target final
+{
+public:
+	struct FVector                                Target;                                            // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Value;                                             // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FMathRBFInterpolateVectorFloat_Target) == 0x000004, "Wrong alignment on FMathRBFInterpolateVectorFloat_Target");
+static_assert(sizeof(FMathRBFInterpolateVectorFloat_Target) == 0x000010, "Wrong size on FMathRBFInterpolateVectorFloat_Target");
+static_assert(offsetof(FMathRBFInterpolateVectorFloat_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateVectorFloat_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateVectorFloat_Target, Value) == 0x00000C, "Member 'FMathRBFInterpolateVectorFloat_Target::Value' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathRBFInterpolateVectorFloat
 // 0x0020 (0x00D0 - 0x00B0)
@@ -7423,58 +7190,65 @@ static_assert(sizeof(FRigUnit_MathRBFInterpolateVectorFloat) == 0x0000D0, "Wrong
 static_assert(offsetof(FRigUnit_MathRBFInterpolateVectorFloat, Targets) == 0x0000B0, "Member 'FRigUnit_MathRBFInterpolateVectorFloat::Targets' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathRBFInterpolateVectorFloat, Output) == 0x0000C0, "Member 'FRigUnit_MathRBFInterpolateVectorFloat::Output' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatBase
-// 0x00C8 (0x00D0 - 0x0008)
-struct FRigUnit_MathRBFInterpolateQuatBase : public FRigUnit_MathRBFInterpolateBase
+// ScriptStruct ControlRig.RigUnit_SetControlInteger
+// 0x0028 (0x0090 - 0x0068)
+struct FRigUnit_SetControlInteger final : public FRigUnitMutable
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Input;                                             // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	ERBFQuatDistanceType                          DistanceFunction;                                  // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ERBFKernelType                                SmoothingFunction;                                 // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_22[0x2];                                       // 0x0022(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         SmoothingAngle;                                    // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bNormalizeOutput;                                  // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                TwistAxis;                                         // 0x002C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_38[0x8];                                       // 0x0038(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigUnit_MathRBFInterpolateQuatWorkData WorkData;                                          // 0x0040(0x0090)(Transient, NativeAccessSpecifierPublic)
+	class FName                                   Control;                                           // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Weight;                                            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         IntegerValue;                                      // 0x0074(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FCachedRigElement                      CachedControlIndex;                                // 0x0078(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8C[0x4];                                       // 0x008C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_MathRBFInterpolateQuatBase) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatBase");
-static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatBase) == 0x0000D0, "Wrong size on FRigUnit_MathRBFInterpolateQuatBase");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, Input) == 0x000010, "Member 'FRigUnit_MathRBFInterpolateQuatBase::Input' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, DistanceFunction) == 0x000020, "Member 'FRigUnit_MathRBFInterpolateQuatBase::DistanceFunction' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, SmoothingFunction) == 0x000021, "Member 'FRigUnit_MathRBFInterpolateQuatBase::SmoothingFunction' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, SmoothingAngle) == 0x000024, "Member 'FRigUnit_MathRBFInterpolateQuatBase::SmoothingAngle' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, bNormalizeOutput) == 0x000028, "Member 'FRigUnit_MathRBFInterpolateQuatBase::bNormalizeOutput' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, TwistAxis) == 0x00002C, "Member 'FRigUnit_MathRBFInterpolateQuatBase::TwistAxis' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatBase, WorkData) == 0x000040, "Member 'FRigUnit_MathRBFInterpolateQuatBase::WorkData' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetControlInteger) == 0x000008, "Wrong alignment on FRigUnit_SetControlInteger");
+static_assert(sizeof(FRigUnit_SetControlInteger) == 0x000090, "Wrong size on FRigUnit_SetControlInteger");
+static_assert(offsetof(FRigUnit_SetControlInteger, Control) == 0x000068, "Member 'FRigUnit_SetControlInteger::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlInteger, Weight) == 0x000070, "Member 'FRigUnit_SetControlInteger::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlInteger, IntegerValue) == 0x000074, "Member 'FRigUnit_SetControlInteger::IntegerValue' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlInteger, CachedControlIndex) == 0x000078, "Member 'FRigUnit_SetControlInteger::CachedControlIndex' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatXform
-// 0x0040 (0x0110 - 0x00D0)
-struct FRigUnit_MathRBFInterpolateQuatXform final : public FRigUnit_MathRBFInterpolateQuatBase
+// ScriptStruct ControlRig.RigUnit_SetMultiControlInteger_Entry
+// 0x000C (0x000C - 0x0000)
+struct FRigUnit_SetMultiControlInteger_Entry final
 {
 public:
-	TArray<struct FMathRBFInterpolateQuatXform_Target> Targets;                                           // 0x00D0(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Output;                                            // 0x00E0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         IntegerValue;                                      // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathRBFInterpolateQuatXform) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatXform");
-static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatXform) == 0x000110, "Wrong size on FRigUnit_MathRBFInterpolateQuatXform");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatXform, Targets) == 0x0000D0, "Member 'FRigUnit_MathRBFInterpolateQuatXform::Targets' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatXform, Output) == 0x0000E0, "Member 'FRigUnit_MathRBFInterpolateQuatXform::Output' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetMultiControlInteger_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlInteger_Entry");
+static_assert(sizeof(FRigUnit_SetMultiControlInteger_Entry) == 0x00000C, "Wrong size on FRigUnit_SetMultiControlInteger_Entry");
+static_assert(offsetof(FRigUnit_SetMultiControlInteger_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlInteger_Entry::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetMultiControlInteger_Entry, IntegerValue) == 0x000008, "Member 'FRigUnit_SetMultiControlInteger_Entry::IntegerValue' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatQuat
-// 0x0020 (0x00F0 - 0x00D0)
-struct FRigUnit_MathRBFInterpolateQuatQuat final : public FRigUnit_MathRBFInterpolateQuatBase
+// ScriptStruct ControlRig.RigUnit_SetMultiControlInteger
+// 0x0028 (0x0090 - 0x0068)
+struct FRigUnit_SetMultiControlInteger final : public FRigUnitMutable
 {
 public:
-	TArray<struct FMathRBFInterpolateQuatQuat_Target> Targets;                                           // 0x00D0(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	struct FQuat                                  Output;                                            // 0x00E0(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	TArray<struct FRigUnit_SetMultiControlInteger_Entry> Entries;                                           // 0x0068(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	float                                         Weight;                                            // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_7C[0x4];                                       // 0x007C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              CachedControlIndices;                              // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathRBFInterpolateQuatQuat) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatQuat");
-static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatQuat) == 0x0000F0, "Wrong size on FRigUnit_MathRBFInterpolateQuatQuat");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatQuat, Targets) == 0x0000D0, "Member 'FRigUnit_MathRBFInterpolateQuatQuat::Targets' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatQuat, Output) == 0x0000E0, "Member 'FRigUnit_MathRBFInterpolateQuatQuat::Output' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetMultiControlInteger) == 0x000008, "Wrong alignment on FRigUnit_SetMultiControlInteger");
+static_assert(sizeof(FRigUnit_SetMultiControlInteger) == 0x000090, "Wrong size on FRigUnit_SetMultiControlInteger");
+static_assert(offsetof(FRigUnit_SetMultiControlInteger, Entries) == 0x000068, "Member 'FRigUnit_SetMultiControlInteger::Entries' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetMultiControlInteger, Weight) == 0x000078, "Member 'FRigUnit_SetMultiControlInteger::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetMultiControlInteger, CachedControlIndices) == 0x000080, "Member 'FRigUnit_SetMultiControlInteger::CachedControlIndices' has a wrong offset!");
+
+// ScriptStruct ControlRig.MathRBFInterpolateQuatColor_Target
+// 0x0020 (0x0020 - 0x0000)
+struct FMathRBFInterpolateQuatColor_Target final
+{
+public:
+	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FLinearColor                           Value;                                             // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FMathRBFInterpolateQuatColor_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatColor_Target");
+static_assert(sizeof(FMathRBFInterpolateQuatColor_Target) == 0x000020, "Wrong size on FMathRBFInterpolateQuatColor_Target");
+static_assert(offsetof(FMathRBFInterpolateQuatColor_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatColor_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateQuatColor_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatColor_Target::Value' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatColor
 // 0x0020 (0x00F0 - 0x00D0)
@@ -7489,19 +7263,47 @@ static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatColor) == 0x0000F0, "Wrong s
 static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatColor, Targets) == 0x0000D0, "Member 'FRigUnit_MathRBFInterpolateQuatColor::Targets' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatColor, Output) == 0x0000E0, "Member 'FRigUnit_MathRBFInterpolateQuatColor::Output' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatVector
-// 0x0020 (0x00F0 - 0x00D0)
-struct FRigUnit_MathRBFInterpolateQuatVector final : public FRigUnit_MathRBFInterpolateQuatBase
+// ScriptStruct ControlRig.RigUnit_SetCurveValue
+// 0x0020 (0x0088 - 0x0068)
+struct FRigUnit_SetCurveValue final : public FRigUnitMutable
 {
 public:
-	TArray<struct FMathRBFInterpolateQuatVector_Target> Targets;                                           // 0x00D0(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	struct FVector                                Output;                                            // 0x00E0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   Curve;                                             // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Value;                                             // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FCachedRigElement                      CachedCurveIndex;                                  // 0x0074(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 };
-static_assert(alignof(FRigUnit_MathRBFInterpolateQuatVector) == 0x000010, "Wrong alignment on FRigUnit_MathRBFInterpolateQuatVector");
-static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatVector) == 0x0000F0, "Wrong size on FRigUnit_MathRBFInterpolateQuatVector");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatVector, Targets) == 0x0000D0, "Member 'FRigUnit_MathRBFInterpolateQuatVector::Targets' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatVector, Output) == 0x0000E0, "Member 'FRigUnit_MathRBFInterpolateQuatVector::Output' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetCurveValue) == 0x000008, "Wrong alignment on FRigUnit_SetCurveValue");
+static_assert(sizeof(FRigUnit_SetCurveValue) == 0x000088, "Wrong size on FRigUnit_SetCurveValue");
+static_assert(offsetof(FRigUnit_SetCurveValue, Curve) == 0x000068, "Member 'FRigUnit_SetCurveValue::Curve' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetCurveValue, Value) == 0x000070, "Member 'FRigUnit_SetCurveValue::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetCurveValue, CachedCurveIndex) == 0x000074, "Member 'FRigUnit_SetCurveValue::CachedCurveIndex' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_SetMultiControlFloat_Entry
+// 0x000C (0x000C - 0x0000)
+struct FRigUnit_SetMultiControlFloat_Entry final
+{
+public:
+	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         FloatValue;                                        // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_SetMultiControlFloat_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlFloat_Entry");
+static_assert(sizeof(FRigUnit_SetMultiControlFloat_Entry) == 0x00000C, "Wrong size on FRigUnit_SetMultiControlFloat_Entry");
+static_assert(offsetof(FRigUnit_SetMultiControlFloat_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlFloat_Entry::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetMultiControlFloat_Entry, FloatValue) == 0x000008, "Member 'FRigUnit_SetMultiControlFloat_Entry::FloatValue' has a wrong offset!");
+
+// ScriptStruct ControlRig.MathRBFInterpolateQuatFloat_Target
+// 0x0020 (0x0020 - 0x0000)
+struct FMathRBFInterpolateQuatFloat_Target final
+{
+public:
+	struct FQuat                                  Target;                                            // 0x0000(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         Value;                                             // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0xC];                                       // 0x0014(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FMathRBFInterpolateQuatFloat_Target) == 0x000010, "Wrong alignment on FMathRBFInterpolateQuatFloat_Target");
+static_assert(sizeof(FMathRBFInterpolateQuatFloat_Target) == 0x000020, "Wrong size on FMathRBFInterpolateQuatFloat_Target");
+static_assert(offsetof(FMathRBFInterpolateQuatFloat_Target, Target) == 0x000000, "Member 'FMathRBFInterpolateQuatFloat_Target::Target' has a wrong offset!");
+static_assert(offsetof(FMathRBFInterpolateQuatFloat_Target, Value) == 0x000010, "Member 'FMathRBFInterpolateQuatFloat_Target::Value' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathRBFInterpolateQuatFloat
 // 0x0020 (0x00F0 - 0x00D0)
@@ -7517,28 +7319,138 @@ static_assert(sizeof(FRigUnit_MathRBFInterpolateQuatFloat) == 0x0000F0, "Wrong s
 static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatFloat, Targets) == 0x0000D0, "Member 'FRigUnit_MathRBFInterpolateQuatFloat::Targets' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathRBFInterpolateQuatFloat, Output) == 0x0000E0, "Member 'FRigUnit_MathRBFInterpolateQuatFloat::Output' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_MathTransformFromSRT
-// 0x0088 (0x0090 - 0x0008)
-struct FRigUnit_MathTransformFromSRT final : public FRigUnit_MathTransformBase
+// ScriptStruct ControlRig.RigUnit_SetMultiControlVector2D_Entry
+// 0x0010 (0x0010 - 0x0000)
+struct FRigUnit_SetMultiControlVector2D_Entry final
 {
 public:
-	struct FVector                                Location;                                          // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Rotation;                                          // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EControlRigRotationOrder                      RotationOrder;                                     // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                Scale;                                             // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FTransform                             Transform;                                         // 0x0030(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FEulerTransform                        EulerTransform;                                    // 0x0060(0x0024)(NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_84[0xC];                                       // 0x0084(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector2D                              Vector;                                            // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathTransformFromSRT) == 0x000010, "Wrong alignment on FRigUnit_MathTransformFromSRT");
-static_assert(sizeof(FRigUnit_MathTransformFromSRT) == 0x000090, "Wrong size on FRigUnit_MathTransformFromSRT");
-static_assert(offsetof(FRigUnit_MathTransformFromSRT, Location) == 0x000008, "Member 'FRigUnit_MathTransformFromSRT::Location' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformFromSRT, Rotation) == 0x000014, "Member 'FRigUnit_MathTransformFromSRT::Rotation' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformFromSRT, RotationOrder) == 0x000020, "Member 'FRigUnit_MathTransformFromSRT::RotationOrder' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformFromSRT, Scale) == 0x000024, "Member 'FRigUnit_MathTransformFromSRT::Scale' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformFromSRT, Transform) == 0x000030, "Member 'FRigUnit_MathTransformFromSRT::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathTransformFromSRT, EulerTransform) == 0x000060, "Member 'FRigUnit_MathTransformFromSRT::EulerTransform' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetMultiControlVector2D_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlVector2D_Entry");
+static_assert(sizeof(FRigUnit_SetMultiControlVector2D_Entry) == 0x000010, "Wrong size on FRigUnit_SetMultiControlVector2D_Entry");
+static_assert(offsetof(FRigUnit_SetMultiControlVector2D_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlVector2D_Entry::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetMultiControlVector2D_Entry, Vector) == 0x000008, "Member 'FRigUnit_SetMultiControlVector2D_Entry::Vector' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_SetControlBool
+// 0x0020 (0x0088 - 0x0068)
+struct FRigUnit_SetControlBool final : public FRigUnitMutable
+{
+public:
+	class FName                                   Control;                                           // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          BoolValue;                                         // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_71[0x3];                                       // 0x0071(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedControlIndex;                                // 0x0074(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_SetControlBool) == 0x000008, "Wrong alignment on FRigUnit_SetControlBool");
+static_assert(sizeof(FRigUnit_SetControlBool) == 0x000088, "Wrong size on FRigUnit_SetControlBool");
+static_assert(offsetof(FRigUnit_SetControlBool, Control) == 0x000068, "Member 'FRigUnit_SetControlBool::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlBool, BoolValue) == 0x000070, "Member 'FRigUnit_SetControlBool::BoolValue' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetControlBool, CachedControlIndex) == 0x000074, "Member 'FRigUnit_SetControlBool::CachedControlIndex' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathTransformClampSpatially
+// 0x00C8 (0x00D0 - 0x0008)
+struct FRigUnit_MathTransformClampSpatially final : public FRigUnit_MathTransformBase
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	EAxis                                         Axis;                                              // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EControlRigClampSpatialMode                   Type;                                              // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_42[0x2];                                       // 0x0042(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Minimum;                                           // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Maximum;                                           // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4C[0x4];                                       // 0x004C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Space;                                             // 0x0050(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          bDrawDebug;                                        // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_81[0x3];                                       // 0x0081(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLinearColor                           DebugColor;                                        // 0x0084(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DebugThickness;                                    // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Result;                                            // 0x00A0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathTransformClampSpatially) == 0x000010, "Wrong alignment on FRigUnit_MathTransformClampSpatially");
+static_assert(sizeof(FRigUnit_MathTransformClampSpatially) == 0x0000D0, "Wrong size on FRigUnit_MathTransformClampSpatially");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Value) == 0x000010, "Member 'FRigUnit_MathTransformClampSpatially::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Axis) == 0x000040, "Member 'FRigUnit_MathTransformClampSpatially::Axis' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Type) == 0x000041, "Member 'FRigUnit_MathTransformClampSpatially::Type' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Minimum) == 0x000044, "Member 'FRigUnit_MathTransformClampSpatially::Minimum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Maximum) == 0x000048, "Member 'FRigUnit_MathTransformClampSpatially::Maximum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Space) == 0x000050, "Member 'FRigUnit_MathTransformClampSpatially::Space' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, bDrawDebug) == 0x000080, "Member 'FRigUnit_MathTransformClampSpatially::bDrawDebug' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, DebugColor) == 0x000084, "Member 'FRigUnit_MathTransformClampSpatially::DebugColor' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, DebugThickness) == 0x000094, "Member 'FRigUnit_MathTransformClampSpatially::DebugThickness' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformClampSpatially, Result) == 0x0000A0, "Member 'FRigUnit_MathTransformClampSpatially::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_SetTransform
+// 0x0068 (0x00D0 - 0x0068)
+struct FRigUnit_SetTransform final : public FRigUnitMutable
+{
+public:
+	struct FRigElementKey                         Item;                                              // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EBoneGetterSetterMode                         Space;                                             // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bInitial;                                          // 0x0075(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_76[0xA];                                       // 0x0076(0x000A)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Transform;                                         // 0x0080(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         Weight;                                            // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bPropagateToChildren;                              // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B5[0x3];                                       // 0x00B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedIndex;                                       // 0x00B8(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_CC[0x4];                                       // 0x00CC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_SetTransform) == 0x000010, "Wrong alignment on FRigUnit_SetTransform");
+static_assert(sizeof(FRigUnit_SetTransform) == 0x0000D0, "Wrong size on FRigUnit_SetTransform");
+static_assert(offsetof(FRigUnit_SetTransform, Item) == 0x000068, "Member 'FRigUnit_SetTransform::Item' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetTransform, Space) == 0x000074, "Member 'FRigUnit_SetTransform::Space' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetTransform, bInitial) == 0x000075, "Member 'FRigUnit_SetTransform::bInitial' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetTransform, Transform) == 0x000080, "Member 'FRigUnit_SetTransform::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetTransform, Weight) == 0x0000B0, "Member 'FRigUnit_SetTransform::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetTransform, bPropagateToChildren) == 0x0000B4, "Member 'FRigUnit_SetTransform::bPropagateToChildren' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetTransform, CachedIndex) == 0x0000B8, "Member 'FRigUnit_SetTransform::CachedIndex' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathTransformTransformVector
+// 0x0058 (0x0060 - 0x0008)
+struct FRigUnit_MathTransformTransformVector final : public FRigUnit_MathTransformBase
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Transform;                                         // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                Location;                                          // 0x0040(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x004C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_58[0x8];                                       // 0x0058(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathTransformTransformVector) == 0x000010, "Wrong alignment on FRigUnit_MathTransformTransformVector");
+static_assert(sizeof(FRigUnit_MathTransformTransformVector) == 0x000060, "Wrong size on FRigUnit_MathTransformTransformVector");
+static_assert(offsetof(FRigUnit_MathTransformTransformVector, Transform) == 0x000010, "Member 'FRigUnit_MathTransformTransformVector::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformTransformVector, Location) == 0x000040, "Member 'FRigUnit_MathTransformTransformVector::Location' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathTransformTransformVector, Result) == 0x00004C, "Member 'FRigUnit_MathTransformTransformVector::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_SetRelativeTransformForItem
+// 0x0088 (0x00F0 - 0x0068)
+struct FRigUnit_SetRelativeTransformForItem final : public FRigUnitMutable
+{
+public:
+	struct FRigElementKey                         Child;                                             // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRigElementKey                         Parent;                                            // 0x0074(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bParentInitial;                                    // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_81[0xF];                                       // 0x0081(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RelativeTransform;                                 // 0x0090(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         Weight;                                            // 0x00C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bPropagateToChildren;                              // 0x00C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C5[0x3];                                       // 0x00C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedChild;                                       // 0x00C8(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FCachedRigElement                      CachedParent;                                      // 0x00DC(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_SetRelativeTransformForItem) == 0x000010, "Wrong alignment on FRigUnit_SetRelativeTransformForItem");
+static_assert(sizeof(FRigUnit_SetRelativeTransformForItem) == 0x0000F0, "Wrong size on FRigUnit_SetRelativeTransformForItem");
+static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, Child) == 0x000068, "Member 'FRigUnit_SetRelativeTransformForItem::Child' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, Parent) == 0x000074, "Member 'FRigUnit_SetRelativeTransformForItem::Parent' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, bParentInitial) == 0x000080, "Member 'FRigUnit_SetRelativeTransformForItem::bParentInitial' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, RelativeTransform) == 0x000090, "Member 'FRigUnit_SetRelativeTransformForItem::RelativeTransform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, Weight) == 0x0000C0, "Member 'FRigUnit_SetRelativeTransformForItem::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, bPropagateToChildren) == 0x0000C4, "Member 'FRigUnit_SetRelativeTransformForItem::bPropagateToChildren' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, CachedChild) == 0x0000C8, "Member 'FRigUnit_SetRelativeTransformForItem::CachedChild' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRelativeTransformForItem, CachedParent) == 0x0000DC, "Member 'FRigUnit_SetRelativeTransformForItem::CachedParent' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathTransformSelectBool
 // 0x0098 (0x00A0 - 0x0008)
@@ -7577,94 +7489,56 @@ static_assert(offsetof(FRigUnit_MathTransformLerp, B) == 0x000040, "Member 'FRig
 static_assert(offsetof(FRigUnit_MathTransformLerp, T) == 0x000070, "Member 'FRigUnit_MathTransformLerp::T' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathTransformLerp, Result) == 0x000080, "Member 'FRigUnit_MathTransformLerp::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SpringIK_WorkData
-// 0x00B0 (0x00B0 - 0x0000)
-struct FRigUnit_SpringIK_WorkData final
+// ScriptStruct ControlRig.RigUnit_SetMultiControlBool_Entry
+// 0x000C (0x000C - 0x0000)
+struct FRigUnit_SetMultiControlBool_Entry final
 {
 public:
-	TArray<struct FCachedRigElement>              CachedBones;                                       // 0x0000(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPublic)
-	struct FCachedRigElement                      CachedPoleVector;                                  // 0x0010(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FTransform>                     Transforms;                                        // 0x0028(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	struct FCRSimPointContainer                   Simulation;                                        // 0x0038(0x0078)(NativeAccessSpecifierPublic)
+	class FName                                   Control;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          BoolValue;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SpringIK_WorkData) == 0x000008, "Wrong alignment on FRigUnit_SpringIK_WorkData");
-static_assert(sizeof(FRigUnit_SpringIK_WorkData) == 0x0000B0, "Wrong size on FRigUnit_SpringIK_WorkData");
-static_assert(offsetof(FRigUnit_SpringIK_WorkData, CachedBones) == 0x000000, "Member 'FRigUnit_SpringIK_WorkData::CachedBones' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK_WorkData, CachedPoleVector) == 0x000010, "Member 'FRigUnit_SpringIK_WorkData::CachedPoleVector' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK_WorkData, Transforms) == 0x000028, "Member 'FRigUnit_SpringIK_WorkData::Transforms' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK_WorkData, Simulation) == 0x000038, "Member 'FRigUnit_SpringIK_WorkData::Simulation' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetMultiControlBool_Entry) == 0x000004, "Wrong alignment on FRigUnit_SetMultiControlBool_Entry");
+static_assert(sizeof(FRigUnit_SetMultiControlBool_Entry) == 0x00000C, "Wrong size on FRigUnit_SetMultiControlBool_Entry");
+static_assert(offsetof(FRigUnit_SetMultiControlBool_Entry, Control) == 0x000000, "Member 'FRigUnit_SetMultiControlBool_Entry::Control' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetMultiControlBool_Entry, BoolValue) == 0x000008, "Member 'FRigUnit_SetMultiControlBool_Entry::BoolValue' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SpringIK_DebugSettings
-// 0x0050 (0x0050 - 0x0000)
-struct FRigUnit_SpringIK_DebugSettings final
+// ScriptStruct ControlRig.RigUnit_SetMultiControlBool
+// 0x0020 (0x0088 - 0x0068)
+struct FRigUnit_SetMultiControlBool final : public FRigUnitMutable
 {
 public:
-	bool                                          bEnabled;                                          // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Scale;                                             // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           Color;                                             // 0x0008(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_18[0x8];                                       // 0x0018(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             WorldOffset;                                       // 0x0020(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	TArray<struct FRigUnit_SetMultiControlBool_Entry> Entries;                                           // 0x0068(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FCachedRigElement>              CachedControlIndices;                              // 0x0078(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_SpringIK_DebugSettings) == 0x000010, "Wrong alignment on FRigUnit_SpringIK_DebugSettings");
-static_assert(sizeof(FRigUnit_SpringIK_DebugSettings) == 0x000050, "Wrong size on FRigUnit_SpringIK_DebugSettings");
-static_assert(offsetof(FRigUnit_SpringIK_DebugSettings, bEnabled) == 0x000000, "Member 'FRigUnit_SpringIK_DebugSettings::bEnabled' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK_DebugSettings, Scale) == 0x000004, "Member 'FRigUnit_SpringIK_DebugSettings::Scale' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK_DebugSettings, Color) == 0x000008, "Member 'FRigUnit_SpringIK_DebugSettings::Color' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK_DebugSettings, WorldOffset) == 0x000020, "Member 'FRigUnit_SpringIK_DebugSettings::WorldOffset' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetMultiControlBool) == 0x000008, "Wrong alignment on FRigUnit_SetMultiControlBool");
+static_assert(sizeof(FRigUnit_SetMultiControlBool) == 0x000088, "Wrong size on FRigUnit_SetMultiControlBool");
+static_assert(offsetof(FRigUnit_SetMultiControlBool, Entries) == 0x000068, "Member 'FRigUnit_SetMultiControlBool::Entries' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetMultiControlBool, CachedControlIndices) == 0x000078, "Member 'FRigUnit_SetMultiControlBool::CachedControlIndices' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SpringIK
-// 0x0168 (0x01D0 - 0x0068)
-struct FRigUnit_SpringIK final : public FRigUnit_HighlevelBaseMutable
+// ScriptStruct ControlRig.RigUnit_SetRotation
+// 0x0048 (0x00B0 - 0x0068)
+struct FRigUnit_SetRotation final : public FRigUnitMutable
 {
 public:
-	class FName                                   StartBone;                                         // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   EndBone;                                           // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         HierarchyStrength;                                 // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         EffectorStrength;                                  // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         EffectorRatio;                                     // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         RootStrength;                                      // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         RootRatio;                                         // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Damping;                                           // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                PoleVector;                                        // 0x0090(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bFlipPolePlane;                                    // 0x009C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EControlRigVectorKind                         PoleVectorKind;                                    // 0x009D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9E[0x2];                                       // 0x009E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   PoleVectorSpace;                                   // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                PrimaryAxis;                                       // 0x00A8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                SecondaryAxis;                                     // 0x00B4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bLiveSimulation;                                   // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C1[0x3];                                       // 0x00C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Iterations;                                        // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bLimitLocalPosition;                               // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bPropagateToChildren;                              // 0x00C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_CA[0x6];                                       // 0x00CA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigUnit_SpringIK_DebugSettings        DebugSettings;                                     // 0x00D0(0x0050)(NoDestructor, NativeAccessSpecifierPublic)
-	struct FRigUnit_SpringIK_WorkData             WorkData;                                          // 0x0120(0x00B0)(Transient, NativeAccessSpecifierPublic)
+	struct FRigElementKey                         Item;                                              // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EBoneGetterSetterMode                         Space;                                             // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_75[0xB];                                       // 0x0075(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  Rotation;                                          // 0x0080(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         Weight;                                            // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bPropagateToChildren;                              // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_95[0x3];                                       // 0x0095(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedIndex;                                       // 0x0098(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_AC[0x4];                                       // 0x00AC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRigUnit_SpringIK) == 0x000010, "Wrong alignment on FRigUnit_SpringIK");
-static_assert(sizeof(FRigUnit_SpringIK) == 0x0001D0, "Wrong size on FRigUnit_SpringIK");
-static_assert(offsetof(FRigUnit_SpringIK, StartBone) == 0x000068, "Member 'FRigUnit_SpringIK::StartBone' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, EndBone) == 0x000070, "Member 'FRigUnit_SpringIK::EndBone' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, HierarchyStrength) == 0x000078, "Member 'FRigUnit_SpringIK::HierarchyStrength' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, EffectorStrength) == 0x00007C, "Member 'FRigUnit_SpringIK::EffectorStrength' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, EffectorRatio) == 0x000080, "Member 'FRigUnit_SpringIK::EffectorRatio' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, RootStrength) == 0x000084, "Member 'FRigUnit_SpringIK::RootStrength' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, RootRatio) == 0x000088, "Member 'FRigUnit_SpringIK::RootRatio' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, Damping) == 0x00008C, "Member 'FRigUnit_SpringIK::Damping' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, PoleVector) == 0x000090, "Member 'FRigUnit_SpringIK::PoleVector' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, bFlipPolePlane) == 0x00009C, "Member 'FRigUnit_SpringIK::bFlipPolePlane' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, PoleVectorKind) == 0x00009D, "Member 'FRigUnit_SpringIK::PoleVectorKind' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, PoleVectorSpace) == 0x0000A0, "Member 'FRigUnit_SpringIK::PoleVectorSpace' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, PrimaryAxis) == 0x0000A8, "Member 'FRigUnit_SpringIK::PrimaryAxis' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, SecondaryAxis) == 0x0000B4, "Member 'FRigUnit_SpringIK::SecondaryAxis' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, bLiveSimulation) == 0x0000C0, "Member 'FRigUnit_SpringIK::bLiveSimulation' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, Iterations) == 0x0000C4, "Member 'FRigUnit_SpringIK::Iterations' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, bLimitLocalPosition) == 0x0000C8, "Member 'FRigUnit_SpringIK::bLimitLocalPosition' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, bPropagateToChildren) == 0x0000C9, "Member 'FRigUnit_SpringIK::bPropagateToChildren' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, DebugSettings) == 0x0000D0, "Member 'FRigUnit_SpringIK::DebugSettings' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SpringIK, WorkData) == 0x000120, "Member 'FRigUnit_SpringIK::WorkData' has a wrong offset!");
+static_assert(alignof(FRigUnit_SetRotation) == 0x000010, "Wrong alignment on FRigUnit_SetRotation");
+static_assert(sizeof(FRigUnit_SetRotation) == 0x0000B0, "Wrong size on FRigUnit_SetRotation");
+static_assert(offsetof(FRigUnit_SetRotation, Item) == 0x000068, "Member 'FRigUnit_SetRotation::Item' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRotation, Space) == 0x000074, "Member 'FRigUnit_SetRotation::Space' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRotation, Rotation) == 0x000080, "Member 'FRigUnit_SetRotation::Rotation' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRotation, Weight) == 0x000090, "Member 'FRigUnit_SetRotation::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRotation, bPropagateToChildren) == 0x000094, "Member 'FRigUnit_SetRotation::bPropagateToChildren' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetRotation, CachedIndex) == 0x000098, "Member 'FRigUnit_SetRotation::CachedIndex' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathTransformMakeAbsolute
 // 0x0098 (0x00A0 - 0x0008)
@@ -7681,6 +7555,19 @@ static_assert(sizeof(FRigUnit_MathTransformMakeAbsolute) == 0x0000A0, "Wrong siz
 static_assert(offsetof(FRigUnit_MathTransformMakeAbsolute, Local) == 0x000010, "Member 'FRigUnit_MathTransformMakeAbsolute::Local' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathTransformMakeAbsolute, Parent) == 0x000040, "Member 'FRigUnit_MathTransformMakeAbsolute::Parent' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathTransformMakeAbsolute, Global) == 0x000070, "Member 'FRigUnit_MathTransformMakeAbsolute::Global' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_FramesToSeconds
+// 0x0008 (0x0010 - 0x0008)
+struct FRigUnit_FramesToSeconds final : public FRigUnit_AnimBase
+{
+public:
+	float                                         Frames;                                            // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Seconds;                                           // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_FramesToSeconds) == 0x000008, "Wrong alignment on FRigUnit_FramesToSeconds");
+static_assert(sizeof(FRigUnit_FramesToSeconds) == 0x000010, "Wrong size on FRigUnit_FramesToSeconds");
+static_assert(offsetof(FRigUnit_FramesToSeconds, Frames) == 0x000008, "Member 'FRigUnit_FramesToSeconds::Frames' has a wrong offset!");
+static_assert(offsetof(FRigUnit_FramesToSeconds, Seconds) == 0x00000C, "Member 'FRigUnit_FramesToSeconds::Seconds' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_SlideChain_WorkData
 // 0x0048 (0x0048 - 0x0000)
@@ -7717,6 +7604,163 @@ static_assert(sizeof(FRigUnit_MathTransformToEulerTransform) == 0x000070, "Wrong
 static_assert(offsetof(FRigUnit_MathTransformToEulerTransform, Value) == 0x000010, "Member 'FRigUnit_MathTransformToEulerTransform::Value' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathTransformToEulerTransform, Result) == 0x000040, "Member 'FRigUnit_MathTransformToEulerTransform::Result' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_SetSpaceTransform
+// 0x0068 (0x00D0 - 0x0068)
+struct FRigUnit_SetSpaceTransform final : public FRigUnitMutable
+{
+public:
+	class FName                                   Space;                                             // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Weight;                                            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_74[0xC];                                       // 0x0074(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Transform;                                         // 0x0080(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	EBoneGetterSetterMode                         SpaceType;                                         // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B1[0x3];                                       // 0x00B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCachedRigElement                      CachedSpaceIndex;                                  // 0x00B4(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C8[0x8];                                       // 0x00C8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_SetSpaceTransform) == 0x000010, "Wrong alignment on FRigUnit_SetSpaceTransform");
+static_assert(sizeof(FRigUnit_SetSpaceTransform) == 0x0000D0, "Wrong size on FRigUnit_SetSpaceTransform");
+static_assert(offsetof(FRigUnit_SetSpaceTransform, Space) == 0x000068, "Member 'FRigUnit_SetSpaceTransform::Space' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetSpaceTransform, Weight) == 0x000070, "Member 'FRigUnit_SetSpaceTransform::Weight' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetSpaceTransform, Transform) == 0x000080, "Member 'FRigUnit_SetSpaceTransform::Transform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetSpaceTransform, SpaceType) == 0x0000B0, "Member 'FRigUnit_SetSpaceTransform::SpaceType' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SetSpaceTransform, CachedSpaceIndex) == 0x0000B4, "Member 'FRigUnit_SetSpaceTransform::CachedSpaceIndex' has a wrong offset!");
+
+// ScriptStruct ControlRig.ConstraintTarget
+// 0x0040 (0x0040 - 0x0000)
+struct FConstraintTarget final
+{
+public:
+	struct FTransform                             Transform;                                         // 0x0000(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         Weight;                                            // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bMaintainOffset;                                   // 0x0034(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FTransformFilter                       Filter;                                            // 0x0035(0x0009)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3E[0x2];                                       // 0x003E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FConstraintTarget) == 0x000010, "Wrong alignment on FConstraintTarget");
+static_assert(sizeof(FConstraintTarget) == 0x000040, "Wrong size on FConstraintTarget");
+static_assert(offsetof(FConstraintTarget, Transform) == 0x000000, "Member 'FConstraintTarget::Transform' has a wrong offset!");
+static_assert(offsetof(FConstraintTarget, Weight) == 0x000030, "Member 'FConstraintTarget::Weight' has a wrong offset!");
+static_assert(offsetof(FConstraintTarget, bMaintainOffset) == 0x000034, "Member 'FConstraintTarget::bMaintainOffset' has a wrong offset!");
+static_assert(offsetof(FConstraintTarget, Filter) == 0x000035, "Member 'FConstraintTarget::Filter' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_TransformConstraintPerItem
+// 0x00D8 (0x0140 - 0x0068)
+struct FRigUnit_TransformConstraintPerItem final : public FRigUnit_HighlevelBaseMutable
+{
+public:
+	struct FRigElementKey                         Item;                                              // 0x0068(0x000C)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ETransformSpaceMode                           BaseTransformSpace;                                // 0x0074(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_75[0xB];                                       // 0x0075(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             BaseTransform;                                     // 0x0080(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FRigElementKey                         BaseItem;                                          // 0x00B0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_BC[0x4];                                       // 0x00BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FConstraintTarget>              Targets;                                           // 0x00C0(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	bool                                          bUseInitialTransforms;                             // 0x00D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D1[0x7];                                       // 0x00D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigUnit_TransformConstraint_WorkData  WorkData;                                          // 0x00D8(0x0060)(Transient, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_138[0x8];                                      // 0x0138(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_TransformConstraintPerItem) == 0x000010, "Wrong alignment on FRigUnit_TransformConstraintPerItem");
+static_assert(sizeof(FRigUnit_TransformConstraintPerItem) == 0x000140, "Wrong size on FRigUnit_TransformConstraintPerItem");
+static_assert(offsetof(FRigUnit_TransformConstraintPerItem, Item) == 0x000068, "Member 'FRigUnit_TransformConstraintPerItem::Item' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TransformConstraintPerItem, BaseTransformSpace) == 0x000074, "Member 'FRigUnit_TransformConstraintPerItem::BaseTransformSpace' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TransformConstraintPerItem, BaseTransform) == 0x000080, "Member 'FRigUnit_TransformConstraintPerItem::BaseTransform' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TransformConstraintPerItem, BaseItem) == 0x0000B0, "Member 'FRigUnit_TransformConstraintPerItem::BaseItem' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TransformConstraintPerItem, Targets) == 0x0000C0, "Member 'FRigUnit_TransformConstraintPerItem::Targets' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TransformConstraintPerItem, bUseInitialTransforms) == 0x0000D0, "Member 'FRigUnit_TransformConstraintPerItem::bUseInitialTransforms' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TransformConstraintPerItem, WorkData) == 0x0000D8, "Member 'FRigUnit_TransformConstraintPerItem::WorkData' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorBezierFourPoint
+// 0x0050 (0x0058 - 0x0008)
+struct FRigUnit_MathVectorBezierFourPoint final : public FRigUnit_MathVectorBase
+{
+public:
+	struct FCRFourPointBezier                     Bezier;                                            // 0x0008(0x0030)(NoDestructor, NativeAccessSpecifierPublic)
+	float                                         T;                                                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x003C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Tangent;                                           // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathVectorBezierFourPoint) == 0x000008, "Wrong alignment on FRigUnit_MathVectorBezierFourPoint");
+static_assert(sizeof(FRigUnit_MathVectorBezierFourPoint) == 0x000058, "Wrong size on FRigUnit_MathVectorBezierFourPoint");
+static_assert(offsetof(FRigUnit_MathVectorBezierFourPoint, Bezier) == 0x000008, "Member 'FRigUnit_MathVectorBezierFourPoint::Bezier' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorBezierFourPoint, T) == 0x000038, "Member 'FRigUnit_MathVectorBezierFourPoint::T' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorBezierFourPoint, Result) == 0x00003C, "Member 'FRigUnit_MathVectorBezierFourPoint::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorBezierFourPoint, Tangent) == 0x000048, "Member 'FRigUnit_MathVectorBezierFourPoint::Tangent' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorOrthogonal
+// 0x0020 (0x0028 - 0x0008)
+struct FRigUnit_MathVectorOrthogonal final : public FRigUnit_MathVectorBase
+{
+public:
+	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathVectorOrthogonal) == 0x000008, "Wrong alignment on FRigUnit_MathVectorOrthogonal");
+static_assert(sizeof(FRigUnit_MathVectorOrthogonal) == 0x000028, "Wrong size on FRigUnit_MathVectorOrthogonal");
+static_assert(offsetof(FRigUnit_MathVectorOrthogonal, A) == 0x000008, "Member 'FRigUnit_MathVectorOrthogonal::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorOrthogonal, B) == 0x000014, "Member 'FRigUnit_MathVectorOrthogonal::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorOrthogonal, Result) == 0x000020, "Member 'FRigUnit_MathVectorOrthogonal::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorAngle
+// 0x0020 (0x0028 - 0x0008)
+struct FRigUnit_MathVectorAngle final : public FRigUnit_MathVectorBase
+{
+public:
+	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathVectorAngle) == 0x000008, "Wrong alignment on FRigUnit_MathVectorAngle");
+static_assert(sizeof(FRigUnit_MathVectorAngle) == 0x000028, "Wrong size on FRigUnit_MathVectorAngle");
+static_assert(offsetof(FRigUnit_MathVectorAngle, A) == 0x000008, "Member 'FRigUnit_MathVectorAngle::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorAngle, B) == 0x000014, "Member 'FRigUnit_MathVectorAngle::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorAngle, Result) == 0x000020, "Member 'FRigUnit_MathVectorAngle::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorMirror
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_MathVectorMirror final : public FRigUnit_MathVectorBase
+{
+public:
+	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Normal;                                            // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathVectorMirror) == 0x000008, "Wrong alignment on FRigUnit_MathVectorMirror");
+static_assert(sizeof(FRigUnit_MathVectorMirror) == 0x000030, "Wrong size on FRigUnit_MathVectorMirror");
+static_assert(offsetof(FRigUnit_MathVectorMirror, Value) == 0x000008, "Member 'FRigUnit_MathVectorMirror::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorMirror, Normal) == 0x000014, "Member 'FRigUnit_MathVectorMirror::Normal' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorMirror, Result) == 0x000020, "Member 'FRigUnit_MathVectorMirror::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorUnit
+// 0x0000 (0x0020 - 0x0020)
+struct FRigUnit_MathVectorUnit final : public FRigUnit_MathVectorUnaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathVectorUnit) == 0x000008, "Wrong alignment on FRigUnit_MathVectorUnit");
+static_assert(sizeof(FRigUnit_MathVectorUnit) == 0x000020, "Wrong size on FRigUnit_MathVectorUnit");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorDot
+// 0x0020 (0x0028 - 0x0008)
+struct FRigUnit_MathVectorDot final : public FRigUnit_MathVectorBase
+{
+public:
+	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathVectorDot) == 0x000008, "Wrong alignment on FRigUnit_MathVectorDot");
+static_assert(sizeof(FRigUnit_MathVectorDot) == 0x000028, "Wrong size on FRigUnit_MathVectorDot");
+static_assert(offsetof(FRigUnit_MathVectorDot, A) == 0x000008, "Member 'FRigUnit_MathVectorDot::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorDot, B) == 0x000014, "Member 'FRigUnit_MathVectorDot::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorDot, Result) == 0x000020, "Member 'FRigUnit_MathVectorDot::Result' has a wrong offset!");
+
 // ScriptStruct ControlRig.RigUnit_TimeOffsetFloat
 // 0x0040 (0x0048 - 0x0008)
 struct FRigUnit_TimeOffsetFloat final : public FRigUnit_SimBase
@@ -7744,213 +7788,6 @@ static_assert(offsetof(FRigUnit_TimeOffsetFloat, Buffer) == 0x000020, "Member 'F
 static_assert(offsetof(FRigUnit_TimeOffsetFloat, DeltaTimes) == 0x000030, "Member 'FRigUnit_TimeOffsetFloat::DeltaTimes' has a wrong offset!");
 static_assert(offsetof(FRigUnit_TimeOffsetFloat, LastInsertIndex) == 0x000040, "Member 'FRigUnit_TimeOffsetFloat::LastInsertIndex' has a wrong offset!");
 static_assert(offsetof(FRigUnit_TimeOffsetFloat, UpperBound) == 0x000044, "Member 'FRigUnit_TimeOffsetFloat::UpperBound' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorClampSpatially
-// 0x0078 (0x0080 - 0x0008)
-struct FRigUnit_MathVectorClampSpatially final : public FRigUnit_MathVectorBase
-{
-public:
-	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAxis                                         Axis;                                              // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EControlRigClampSpatialMode                   Type;                                              // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_16[0x2];                                       // 0x0016(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Minimum;                                           // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Maximum;                                           // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FTransform                             Space;                                             // 0x0020(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          bDrawDebug;                                        // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLinearColor                           DebugColor;                                        // 0x0054(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DebugThickness;                                    // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x0068(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_74[0xC];                                       // 0x0074(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathVectorClampSpatially) == 0x000010, "Wrong alignment on FRigUnit_MathVectorClampSpatially");
-static_assert(sizeof(FRigUnit_MathVectorClampSpatially) == 0x000080, "Wrong size on FRigUnit_MathVectorClampSpatially");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Value) == 0x000008, "Member 'FRigUnit_MathVectorClampSpatially::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Axis) == 0x000014, "Member 'FRigUnit_MathVectorClampSpatially::Axis' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Type) == 0x000015, "Member 'FRigUnit_MathVectorClampSpatially::Type' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Minimum) == 0x000018, "Member 'FRigUnit_MathVectorClampSpatially::Minimum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Maximum) == 0x00001C, "Member 'FRigUnit_MathVectorClampSpatially::Maximum' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Space) == 0x000020, "Member 'FRigUnit_MathVectorClampSpatially::Space' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, bDrawDebug) == 0x000050, "Member 'FRigUnit_MathVectorClampSpatially::bDrawDebug' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, DebugColor) == 0x000054, "Member 'FRigUnit_MathVectorClampSpatially::DebugColor' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, DebugThickness) == 0x000064, "Member 'FRigUnit_MathVectorClampSpatially::DebugThickness' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorClampSpatially, Result) == 0x000068, "Member 'FRigUnit_MathVectorClampSpatially::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_SetTransform
-// 0x0068 (0x00D0 - 0x0068)
-struct FRigUnit_SetTransform final : public FRigUnitMutable
-{
-public:
-	struct FRigElementKey                         Item;                                              // 0x0068(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EBoneGetterSetterMode                         Space;                                             // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bInitial;                                          // 0x0075(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_76[0xA];                                       // 0x0076(0x000A)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Transform;                                         // 0x0080(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         Weight;                                            // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bPropagateToChildren;                              // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B5[0x3];                                       // 0x00B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedIndex;                                       // 0x00B8(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_CC[0x4];                                       // 0x00CC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_SetTransform) == 0x000010, "Wrong alignment on FRigUnit_SetTransform");
-static_assert(sizeof(FRigUnit_SetTransform) == 0x0000D0, "Wrong size on FRigUnit_SetTransform");
-static_assert(offsetof(FRigUnit_SetTransform, Item) == 0x000068, "Member 'FRigUnit_SetTransform::Item' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetTransform, Space) == 0x000074, "Member 'FRigUnit_SetTransform::Space' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetTransform, bInitial) == 0x000075, "Member 'FRigUnit_SetTransform::bInitial' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetTransform, Transform) == 0x000080, "Member 'FRigUnit_SetTransform::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetTransform, Weight) == 0x0000B0, "Member 'FRigUnit_SetTransform::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetTransform, bPropagateToChildren) == 0x0000B4, "Member 'FRigUnit_SetTransform::bPropagateToChildren' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetTransform, CachedIndex) == 0x0000B8, "Member 'FRigUnit_SetTransform::CachedIndex' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorBezierFourPoint
-// 0x0050 (0x0058 - 0x0008)
-struct FRigUnit_MathVectorBezierFourPoint final : public FRigUnit_MathVectorBase
-{
-public:
-	struct FCRFourPointBezier                     Bezier;                                            // 0x0008(0x0030)(NoDestructor, NativeAccessSpecifierPublic)
-	float                                         T;                                                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x003C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Tangent;                                           // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathVectorBezierFourPoint) == 0x000008, "Wrong alignment on FRigUnit_MathVectorBezierFourPoint");
-static_assert(sizeof(FRigUnit_MathVectorBezierFourPoint) == 0x000058, "Wrong size on FRigUnit_MathVectorBezierFourPoint");
-static_assert(offsetof(FRigUnit_MathVectorBezierFourPoint, Bezier) == 0x000008, "Member 'FRigUnit_MathVectorBezierFourPoint::Bezier' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorBezierFourPoint, T) == 0x000038, "Member 'FRigUnit_MathVectorBezierFourPoint::T' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorBezierFourPoint, Result) == 0x00003C, "Member 'FRigUnit_MathVectorBezierFourPoint::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorBezierFourPoint, Tangent) == 0x000048, "Member 'FRigUnit_MathVectorBezierFourPoint::Tangent' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_TimeOffsetTransform
-// 0x00A8 (0x00B0 - 0x0008)
-struct FRigUnit_TimeOffsetTransform final : public FRigUnit_SimBase
-{
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         SecondsAgo;                                        // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         BufferSize;                                        // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TimeRange;                                         // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4C[0x4];                                       // 0x004C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Result;                                            // 0x0050(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	TArray<struct FTransform>                     Buffer;                                            // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<float>                                 DeltaTimes;                                        // 0x0090(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	int32                                         LastInsertIndex;                                   // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         UpperBound;                                        // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A8[0x8];                                       // 0x00A8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_TimeOffsetTransform) == 0x000010, "Wrong alignment on FRigUnit_TimeOffsetTransform");
-static_assert(sizeof(FRigUnit_TimeOffsetTransform) == 0x0000B0, "Wrong size on FRigUnit_TimeOffsetTransform");
-static_assert(offsetof(FRigUnit_TimeOffsetTransform, Value) == 0x000010, "Member 'FRigUnit_TimeOffsetTransform::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TimeOffsetTransform, SecondsAgo) == 0x000040, "Member 'FRigUnit_TimeOffsetTransform::SecondsAgo' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TimeOffsetTransform, BufferSize) == 0x000044, "Member 'FRigUnit_TimeOffsetTransform::BufferSize' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TimeOffsetTransform, TimeRange) == 0x000048, "Member 'FRigUnit_TimeOffsetTransform::TimeRange' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TimeOffsetTransform, Result) == 0x000050, "Member 'FRigUnit_TimeOffsetTransform::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TimeOffsetTransform, Buffer) == 0x000080, "Member 'FRigUnit_TimeOffsetTransform::Buffer' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TimeOffsetTransform, DeltaTimes) == 0x000090, "Member 'FRigUnit_TimeOffsetTransform::DeltaTimes' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TimeOffsetTransform, LastInsertIndex) == 0x0000A0, "Member 'FRigUnit_TimeOffsetTransform::LastInsertIndex' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TimeOffsetTransform, UpperBound) == 0x0000A4, "Member 'FRigUnit_TimeOffsetTransform::UpperBound' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorParallel
-// 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_MathVectorParallel final : public FRigUnit_MathVectorBase
-{
-public:
-	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Result;                                            // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathVectorParallel) == 0x000008, "Wrong alignment on FRigUnit_MathVectorParallel");
-static_assert(sizeof(FRigUnit_MathVectorParallel) == 0x000028, "Wrong size on FRigUnit_MathVectorParallel");
-static_assert(offsetof(FRigUnit_MathVectorParallel, A) == 0x000008, "Member 'FRigUnit_MathVectorParallel::A' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorParallel, B) == 0x000014, "Member 'FRigUnit_MathVectorParallel::B' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorParallel, Result) == 0x000020, "Member 'FRigUnit_MathVectorParallel::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorMirror
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_MathVectorMirror final : public FRigUnit_MathVectorBase
-{
-public:
-	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Normal;                                            // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathVectorMirror) == 0x000008, "Wrong alignment on FRigUnit_MathVectorMirror");
-static_assert(sizeof(FRigUnit_MathVectorMirror) == 0x000030, "Wrong size on FRigUnit_MathVectorMirror");
-static_assert(offsetof(FRigUnit_MathVectorMirror, Value) == 0x000008, "Member 'FRigUnit_MathVectorMirror::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorMirror, Normal) == 0x000014, "Member 'FRigUnit_MathVectorMirror::Normal' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorMirror, Result) == 0x000020, "Member 'FRigUnit_MathVectorMirror::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_BinaryTransformOp
-// 0x0098 (0x00A0 - 0x0008)
-struct FRigUnit_BinaryTransformOp : public FRigUnit
-{
-public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Argument0;                                         // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Argument1;                                         // 0x0040(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Result;                                            // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_BinaryTransformOp) == 0x000010, "Wrong alignment on FRigUnit_BinaryTransformOp");
-static_assert(sizeof(FRigUnit_BinaryTransformOp) == 0x0000A0, "Wrong size on FRigUnit_BinaryTransformOp");
-static_assert(offsetof(FRigUnit_BinaryTransformOp, Argument0) == 0x000010, "Member 'FRigUnit_BinaryTransformOp::Argument0' has a wrong offset!");
-static_assert(offsetof(FRigUnit_BinaryTransformOp, Argument1) == 0x000040, "Member 'FRigUnit_BinaryTransformOp::Argument1' has a wrong offset!");
-static_assert(offsetof(FRigUnit_BinaryTransformOp, Result) == 0x000070, "Member 'FRigUnit_BinaryTransformOp::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_GetRelativeTransform
-// 0x0000 (0x00A0 - 0x00A0)
-struct FRigUnit_GetRelativeTransform final : public FRigUnit_BinaryTransformOp
-{
-};
-static_assert(alignof(FRigUnit_GetRelativeTransform) == 0x000010, "Wrong alignment on FRigUnit_GetRelativeTransform");
-static_assert(sizeof(FRigUnit_GetRelativeTransform) == 0x0000A0, "Wrong size on FRigUnit_GetRelativeTransform");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorSetLength
-// 0x0020 (0x0028 - 0x0008)
-struct FRigUnit_MathVectorSetLength final : public FRigUnit_MathVectorBase
-{
-public:
-	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Length;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_MathVectorSetLength) == 0x000008, "Wrong alignment on FRigUnit_MathVectorSetLength");
-static_assert(sizeof(FRigUnit_MathVectorSetLength) == 0x000028, "Wrong size on FRigUnit_MathVectorSetLength");
-static_assert(offsetof(FRigUnit_MathVectorSetLength, Value) == 0x000008, "Member 'FRigUnit_MathVectorSetLength::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorSetLength, Length) == 0x000014, "Member 'FRigUnit_MathVectorSetLength::Length' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorSetLength, Result) == 0x000018, "Member 'FRigUnit_MathVectorSetLength::Result' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_FramesToSeconds
-// 0x0008 (0x0010 - 0x0008)
-struct FRigUnit_FramesToSeconds final : public FRigUnit_AnimBase
-{
-public:
-	float                                         Frames;                                            // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Seconds;                                           // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_FramesToSeconds) == 0x000008, "Wrong alignment on FRigUnit_FramesToSeconds");
-static_assert(sizeof(FRigUnit_FramesToSeconds) == 0x000010, "Wrong size on FRigUnit_FramesToSeconds");
-static_assert(offsetof(FRigUnit_FramesToSeconds, Frames) == 0x000008, "Member 'FRigUnit_FramesToSeconds::Frames' has a wrong offset!");
-static_assert(offsetof(FRigUnit_FramesToSeconds, Seconds) == 0x00000C, "Member 'FRigUnit_FramesToSeconds::Seconds' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorUnit
-// 0x0000 (0x0020 - 0x0020)
-struct FRigUnit_MathVectorUnit final : public FRigUnit_MathVectorUnaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathVectorUnit) == 0x000008, "Wrong alignment on FRigUnit_MathVectorUnit");
-static_assert(sizeof(FRigUnit_MathVectorUnit) == 0x000020, "Wrong size on FRigUnit_MathVectorUnit");
-
-// ScriptStruct ControlRig.RigUnit_MathVectorCross
-// 0x0000 (0x0030 - 0x0030)
-struct FRigUnit_MathVectorCross final : public FRigUnit_MathVectorBinaryOp
-{
-};
-static_assert(alignof(FRigUnit_MathVectorCross) == 0x000008, "Wrong alignment on FRigUnit_MathVectorCross");
-static_assert(sizeof(FRigUnit_MathVectorCross) == 0x000030, "Wrong size on FRigUnit_MathVectorCross");
 
 // ScriptStruct ControlRig.RigUnit_MathVectorDistance
 // 0x0020 (0x0028 - 0x0008)
@@ -7981,63 +7818,13 @@ static_assert(sizeof(FRigUnit_MathVectorLengthSquared) == 0x000018, "Wrong size 
 static_assert(offsetof(FRigUnit_MathVectorLengthSquared, Value) == 0x000008, "Member 'FRigUnit_MathVectorLengthSquared::Value' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathVectorLengthSquared, Result) == 0x000014, "Member 'FRigUnit_MathVectorLengthSquared::Result' has a wrong offset!");
 
-// ScriptStruct ControlRig.ConstraintTarget
-// 0x0040 (0x0040 - 0x0000)
-struct FConstraintTarget final
+// ScriptStruct ControlRig.RigUnit_MathVectorRad
+// 0x0000 (0x0020 - 0x0020)
+struct FRigUnit_MathVectorRad final : public FRigUnit_MathVectorUnaryOp
 {
-public:
-	struct FTransform                             Transform;                                         // 0x0000(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         Weight;                                            // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bMaintainOffset;                                   // 0x0034(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FTransformFilter                       Filter;                                            // 0x0035(0x0009)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3E[0x2];                                       // 0x003E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FConstraintTarget) == 0x000010, "Wrong alignment on FConstraintTarget");
-static_assert(sizeof(FConstraintTarget) == 0x000040, "Wrong size on FConstraintTarget");
-static_assert(offsetof(FConstraintTarget, Transform) == 0x000000, "Member 'FConstraintTarget::Transform' has a wrong offset!");
-static_assert(offsetof(FConstraintTarget, Weight) == 0x000030, "Member 'FConstraintTarget::Weight' has a wrong offset!");
-static_assert(offsetof(FConstraintTarget, bMaintainOffset) == 0x000034, "Member 'FConstraintTarget::bMaintainOffset' has a wrong offset!");
-static_assert(offsetof(FConstraintTarget, Filter) == 0x000035, "Member 'FConstraintTarget::Filter' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_TransformConstraint_WorkData
-// 0x0060 (0x0060 - 0x0000)
-struct FRigUnit_TransformConstraint_WorkData final
-{
-public:
-	TArray<struct FConstraintData>                ConstraintData;                                    // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TMap<int32, int32>                            ConstraintDataToTargets;                           // 0x0010(0x0050)(NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_TransformConstraint_WorkData) == 0x000008, "Wrong alignment on FRigUnit_TransformConstraint_WorkData");
-static_assert(sizeof(FRigUnit_TransformConstraint_WorkData) == 0x000060, "Wrong size on FRigUnit_TransformConstraint_WorkData");
-static_assert(offsetof(FRigUnit_TransformConstraint_WorkData, ConstraintData) == 0x000000, "Member 'FRigUnit_TransformConstraint_WorkData::ConstraintData' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TransformConstraint_WorkData, ConstraintDataToTargets) == 0x000010, "Member 'FRigUnit_TransformConstraint_WorkData::ConstraintDataToTargets' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_TransformConstraintPerItem
-// 0x00D8 (0x0140 - 0x0068)
-struct FRigUnit_TransformConstraintPerItem final : public FRigUnit_HighlevelBaseMutable
-{
-public:
-	struct FRigElementKey                         Item;                                              // 0x0068(0x000C)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ETransformSpaceMode                           BaseTransformSpace;                                // 0x0074(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_75[0xB];                                       // 0x0075(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             BaseTransform;                                     // 0x0080(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FRigElementKey                         BaseItem;                                          // 0x00B0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_BC[0x4];                                       // 0x00BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FConstraintTarget>              Targets;                                           // 0x00C0(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	bool                                          bUseInitialTransforms;                             // 0x00D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D1[0x7];                                       // 0x00D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigUnit_TransformConstraint_WorkData  WorkData;                                          // 0x00D8(0x0060)(Transient, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_138[0x8];                                      // 0x0138(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_TransformConstraintPerItem) == 0x000010, "Wrong alignment on FRigUnit_TransformConstraintPerItem");
-static_assert(sizeof(FRigUnit_TransformConstraintPerItem) == 0x000140, "Wrong size on FRigUnit_TransformConstraintPerItem");
-static_assert(offsetof(FRigUnit_TransformConstraintPerItem, Item) == 0x000068, "Member 'FRigUnit_TransformConstraintPerItem::Item' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TransformConstraintPerItem, BaseTransformSpace) == 0x000074, "Member 'FRigUnit_TransformConstraintPerItem::BaseTransformSpace' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TransformConstraintPerItem, BaseTransform) == 0x000080, "Member 'FRigUnit_TransformConstraintPerItem::BaseTransform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TransformConstraintPerItem, BaseItem) == 0x0000B0, "Member 'FRigUnit_TransformConstraintPerItem::BaseItem' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TransformConstraintPerItem, Targets) == 0x0000C0, "Member 'FRigUnit_TransformConstraintPerItem::Targets' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TransformConstraintPerItem, bUseInitialTransforms) == 0x0000D0, "Member 'FRigUnit_TransformConstraintPerItem::bUseInitialTransforms' has a wrong offset!");
-static_assert(offsetof(FRigUnit_TransformConstraintPerItem, WorkData) == 0x0000D8, "Member 'FRigUnit_TransformConstraintPerItem::WorkData' has a wrong offset!");
+static_assert(alignof(FRigUnit_MathVectorRad) == 0x000008, "Wrong alignment on FRigUnit_MathVectorRad");
+static_assert(sizeof(FRigUnit_MathVectorRad) == 0x000020, "Wrong size on FRigUnit_MathVectorRad");
 
 // ScriptStruct ControlRig.RigUnit_MathVectorDeg
 // 0x0000 (0x0020 - 0x0020)
@@ -8046,6 +7833,42 @@ struct FRigUnit_MathVectorDeg final : public FRigUnit_MathVectorUnaryOp
 };
 static_assert(alignof(FRigUnit_MathVectorDeg) == 0x000008, "Wrong alignment on FRigUnit_MathVectorDeg");
 static_assert(sizeof(FRigUnit_MathVectorDeg) == 0x000020, "Wrong size on FRigUnit_MathVectorDeg");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorSelectBool
+// 0x0028 (0x0030 - 0x0008)
+struct FRigUnit_MathVectorSelectBool final : public FRigUnit_MathVectorBase
+{
+public:
+	bool                                          Condition;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                IfTrue;                                            // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                IfFalse;                                           // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_MathVectorSelectBool) == 0x000008, "Wrong alignment on FRigUnit_MathVectorSelectBool");
+static_assert(sizeof(FRigUnit_MathVectorSelectBool) == 0x000030, "Wrong size on FRigUnit_MathVectorSelectBool");
+static_assert(offsetof(FRigUnit_MathVectorSelectBool, Condition) == 0x000008, "Member 'FRigUnit_MathVectorSelectBool::Condition' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorSelectBool, IfTrue) == 0x00000C, "Member 'FRigUnit_MathVectorSelectBool::IfTrue' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorSelectBool, IfFalse) == 0x000018, "Member 'FRigUnit_MathVectorSelectBool::IfFalse' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorSelectBool, Result) == 0x000024, "Member 'FRigUnit_MathVectorSelectBool::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorIsNearlyEqual
+// 0x0020 (0x0028 - 0x0008)
+struct FRigUnit_MathVectorIsNearlyEqual final : public FRigUnit_MathVectorBase
+{
+public:
+	struct FVector                                A;                                                 // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                B;                                                 // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Tolerance;                                         // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Result;                                            // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathVectorIsNearlyEqual) == 0x000008, "Wrong alignment on FRigUnit_MathVectorIsNearlyEqual");
+static_assert(sizeof(FRigUnit_MathVectorIsNearlyEqual) == 0x000028, "Wrong size on FRigUnit_MathVectorIsNearlyEqual");
+static_assert(offsetof(FRigUnit_MathVectorIsNearlyEqual, A) == 0x000008, "Member 'FRigUnit_MathVectorIsNearlyEqual::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorIsNearlyEqual, B) == 0x000014, "Member 'FRigUnit_MathVectorIsNearlyEqual::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorIsNearlyEqual, Tolerance) == 0x000020, "Member 'FRigUnit_MathVectorIsNearlyEqual::Tolerance' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorIsNearlyEqual, Result) == 0x000024, "Member 'FRigUnit_MathVectorIsNearlyEqual::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathVectorNotEquals
 // 0x0020 (0x0028 - 0x0008)
@@ -8062,6 +7885,31 @@ static_assert(sizeof(FRigUnit_MathVectorNotEquals) == 0x000028, "Wrong size on F
 static_assert(offsetof(FRigUnit_MathVectorNotEquals, A) == 0x000008, "Member 'FRigUnit_MathVectorNotEquals::A' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathVectorNotEquals, B) == 0x000014, "Member 'FRigUnit_MathVectorNotEquals::B' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathVectorNotEquals, Result) == 0x000020, "Member 'FRigUnit_MathVectorNotEquals::Result' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_MathVectorRemap
+// 0x0050 (0x0058 - 0x0008)
+struct FRigUnit_MathVectorRemap final : public FRigUnit_MathVectorBase
+{
+public:
+	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                SourceMinimum;                                     // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                SourceMaximum;                                     // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                TargetMinimum;                                     // 0x002C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                TargetMaximum;                                     // 0x0038(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bClamp;                                            // 0x0044(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_45[0x3];                                       // 0x0045(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                Result;                                            // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathVectorRemap) == 0x000008, "Wrong alignment on FRigUnit_MathVectorRemap");
+static_assert(sizeof(FRigUnit_MathVectorRemap) == 0x000058, "Wrong size on FRigUnit_MathVectorRemap");
+static_assert(offsetof(FRigUnit_MathVectorRemap, Value) == 0x000008, "Member 'FRigUnit_MathVectorRemap::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorRemap, SourceMinimum) == 0x000014, "Member 'FRigUnit_MathVectorRemap::SourceMinimum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorRemap, SourceMaximum) == 0x000020, "Member 'FRigUnit_MathVectorRemap::SourceMaximum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorRemap, TargetMinimum) == 0x00002C, "Member 'FRigUnit_MathVectorRemap::TargetMinimum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorRemap, TargetMaximum) == 0x000038, "Member 'FRigUnit_MathVectorRemap::TargetMaximum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorRemap, bClamp) == 0x000044, "Member 'FRigUnit_MathVectorRemap::bClamp' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorRemap, Result) == 0x000048, "Member 'FRigUnit_MathVectorRemap::Result' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_MathVectorLerp
 // 0x0028 (0x0030 - 0x0008)
@@ -8097,6 +7945,14 @@ static_assert(offsetof(FRigUnit_MathVectorClamp, Minimum) == 0x000014, "Member '
 static_assert(offsetof(FRigUnit_MathVectorClamp, Maximum) == 0x000020, "Member 'FRigUnit_MathVectorClamp::Maximum' has a wrong offset!");
 static_assert(offsetof(FRigUnit_MathVectorClamp, Result) == 0x00002C, "Member 'FRigUnit_MathVectorClamp::Result' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_MathVectorRound
+// 0x0000 (0x0020 - 0x0020)
+struct FRigUnit_MathVectorRound final : public FRigUnit_MathVectorUnaryOp
+{
+};
+static_assert(alignof(FRigUnit_MathVectorRound) == 0x000008, "Wrong alignment on FRigUnit_MathVectorRound");
+static_assert(sizeof(FRigUnit_MathVectorRound) == 0x000020, "Wrong size on FRigUnit_MathVectorRound");
+
 // ScriptStruct ControlRig.RigUnit_MathVectorCeil
 // 0x0000 (0x0020 - 0x0020)
 struct FRigUnit_MathVectorCeil final : public FRigUnit_MathVectorUnaryOp
@@ -8113,13 +7969,13 @@ struct FRigUnit_MathVectorFloor final : public FRigUnit_MathVectorUnaryOp
 static_assert(alignof(FRigUnit_MathVectorFloor) == 0x000008, "Wrong alignment on FRigUnit_MathVectorFloor");
 static_assert(sizeof(FRigUnit_MathVectorFloor) == 0x000020, "Wrong size on FRigUnit_MathVectorFloor");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorMax
-// 0x0000 (0x0030 - 0x0030)
-struct FRigUnit_MathVectorMax final : public FRigUnit_MathVectorBinaryOp
+// ScriptStruct ControlRig.RigUnit_MathVectorNegate
+// 0x0000 (0x0020 - 0x0020)
+struct FRigUnit_MathVectorNegate final : public FRigUnit_MathVectorUnaryOp
 {
 };
-static_assert(alignof(FRigUnit_MathVectorMax) == 0x000008, "Wrong alignment on FRigUnit_MathVectorMax");
-static_assert(sizeof(FRigUnit_MathVectorMax) == 0x000030, "Wrong size on FRigUnit_MathVectorMax");
+static_assert(alignof(FRigUnit_MathVectorNegate) == 0x000008, "Wrong alignment on FRigUnit_MathVectorNegate");
+static_assert(sizeof(FRigUnit_MathVectorNegate) == 0x000020, "Wrong size on FRigUnit_MathVectorNegate");
 
 // ScriptStruct ControlRig.RigUnit_MathVectorMin
 // 0x0000 (0x0030 - 0x0030)
@@ -8137,6 +7993,22 @@ struct FRigUnit_MathVectorDiv final : public FRigUnit_MathVectorBinaryOp
 static_assert(alignof(FRigUnit_MathVectorDiv) == 0x000008, "Wrong alignment on FRigUnit_MathVectorDiv");
 static_assert(sizeof(FRigUnit_MathVectorDiv) == 0x000030, "Wrong size on FRigUnit_MathVectorDiv");
 
+// ScriptStruct ControlRig.RigUnit_MathVectorScale
+// 0x0020 (0x0028 - 0x0008)
+struct FRigUnit_MathVectorScale final : public FRigUnit_MathVectorBase
+{
+public:
+	struct FVector                                Value;                                             // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Factor;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_MathVectorScale) == 0x000008, "Wrong alignment on FRigUnit_MathVectorScale");
+static_assert(sizeof(FRigUnit_MathVectorScale) == 0x000028, "Wrong size on FRigUnit_MathVectorScale");
+static_assert(offsetof(FRigUnit_MathVectorScale, Value) == 0x000008, "Member 'FRigUnit_MathVectorScale::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorScale, Factor) == 0x000014, "Member 'FRigUnit_MathVectorScale::Factor' has a wrong offset!");
+static_assert(offsetof(FRigUnit_MathVectorScale, Result) == 0x000018, "Member 'FRigUnit_MathVectorScale::Result' has a wrong offset!");
+
 // ScriptStruct ControlRig.RigUnit_MathVectorMul
 // 0x0000 (0x0030 - 0x0030)
 struct FRigUnit_MathVectorMul final : public FRigUnit_MathVectorBinaryOp
@@ -8153,18 +8025,19 @@ struct FRigUnit_MathVectorAdd final : public FRigUnit_MathVectorBinaryOp
 static_assert(alignof(FRigUnit_MathVectorAdd) == 0x000008, "Wrong alignment on FRigUnit_MathVectorAdd");
 static_assert(sizeof(FRigUnit_MathVectorAdd) == 0x000030, "Wrong size on FRigUnit_MathVectorAdd");
 
-// ScriptStruct ControlRig.RigUnit_MathVectorFromFloat
-// 0x0010 (0x0018 - 0x0008)
-struct FRigUnit_MathVectorFromFloat final : public FRigUnit_MathVectorBase
+// ScriptStruct ControlRig.RigUnit_ModifyBoneTransforms_PerBone
+// 0x0040 (0x0040 - 0x0000)
+struct FRigUnit_ModifyBoneTransforms_PerBone final
 {
 public:
-	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Result;                                            // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   Bone;                                              // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Transform;                                         // 0x0010(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRigUnit_MathVectorFromFloat) == 0x000008, "Wrong alignment on FRigUnit_MathVectorFromFloat");
-static_assert(sizeof(FRigUnit_MathVectorFromFloat) == 0x000018, "Wrong size on FRigUnit_MathVectorFromFloat");
-static_assert(offsetof(FRigUnit_MathVectorFromFloat, Value) == 0x000008, "Member 'FRigUnit_MathVectorFromFloat::Value' has a wrong offset!");
-static_assert(offsetof(FRigUnit_MathVectorFromFloat, Result) == 0x00000C, "Member 'FRigUnit_MathVectorFromFloat::Result' has a wrong offset!");
+static_assert(alignof(FRigUnit_ModifyBoneTransforms_PerBone) == 0x000010, "Wrong alignment on FRigUnit_ModifyBoneTransforms_PerBone");
+static_assert(sizeof(FRigUnit_ModifyBoneTransforms_PerBone) == 0x000040, "Wrong size on FRigUnit_ModifyBoneTransforms_PerBone");
+static_assert(offsetof(FRigUnit_ModifyBoneTransforms_PerBone, Bone) == 0x000000, "Member 'FRigUnit_ModifyBoneTransforms_PerBone::Bone' has a wrong offset!");
+static_assert(offsetof(FRigUnit_ModifyBoneTransforms_PerBone, Transform) == 0x000010, "Member 'FRigUnit_ModifyBoneTransforms_PerBone::Transform' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_ModifyBoneTransforms_WorkData
 // 0x0000 (0x0010 - 0x0010)
@@ -8306,6 +8179,21 @@ static_assert(offsetof(FRigUnit_NameTruncate, FromEnd) == 0x000014, "Member 'FRi
 static_assert(offsetof(FRigUnit_NameTruncate, Remainder) == 0x000018, "Member 'FRigUnit_NameTruncate::Remainder' has a wrong offset!");
 static_assert(offsetof(FRigUnit_NameTruncate, Chopped) == 0x000020, "Member 'FRigUnit_NameTruncate::Chopped' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_NameConcat
+// 0x0018 (0x0020 - 0x0008)
+struct FRigUnit_NameConcat final : public FRigUnit_NameBase
+{
+public:
+	class FName                                   A;                                                 // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   B;                                                 // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   Result;                                            // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_NameConcat) == 0x000008, "Wrong alignment on FRigUnit_NameConcat");
+static_assert(sizeof(FRigUnit_NameConcat) == 0x000020, "Wrong size on FRigUnit_NameConcat");
+static_assert(offsetof(FRigUnit_NameConcat, A) == 0x000008, "Member 'FRigUnit_NameConcat::A' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NameConcat, B) == 0x000010, "Member 'FRigUnit_NameConcat::B' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NameConcat, Result) == 0x000018, "Member 'FRigUnit_NameConcat::Result' has a wrong offset!");
+
 // ScriptStruct ControlRig.RigUnit_NoiseVector
 // 0x0048 (0x0050 - 0x0008)
 struct FRigUnit_NoiseVector final : public FRigUnit_MathBase
@@ -8330,6 +8218,30 @@ static_assert(offsetof(FRigUnit_NoiseVector, Maximum) == 0x000030, "Member 'FRig
 static_assert(offsetof(FRigUnit_NoiseVector, Result) == 0x000034, "Member 'FRigUnit_NoiseVector::Result' has a wrong offset!");
 static_assert(offsetof(FRigUnit_NoiseVector, Time) == 0x000040, "Member 'FRigUnit_NoiseVector::Time' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_NoiseFloat
+// 0x0020 (0x0028 - 0x0008)
+struct FRigUnit_NoiseFloat final : public FRigUnit_MathBase
+{
+public:
+	float                                         Value;                                             // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Speed;                                             // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Frequency;                                         // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Minimum;                                           // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Maximum;                                           // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Result;                                            // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Time;                                              // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_NoiseFloat) == 0x000008, "Wrong alignment on FRigUnit_NoiseFloat");
+static_assert(sizeof(FRigUnit_NoiseFloat) == 0x000028, "Wrong size on FRigUnit_NoiseFloat");
+static_assert(offsetof(FRigUnit_NoiseFloat, Value) == 0x000008, "Member 'FRigUnit_NoiseFloat::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NoiseFloat, Speed) == 0x00000C, "Member 'FRigUnit_NoiseFloat::Speed' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NoiseFloat, Frequency) == 0x000010, "Member 'FRigUnit_NoiseFloat::Frequency' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NoiseFloat, Minimum) == 0x000014, "Member 'FRigUnit_NoiseFloat::Minimum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NoiseFloat, Maximum) == 0x000018, "Member 'FRigUnit_NoiseFloat::Maximum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NoiseFloat, Result) == 0x00001C, "Member 'FRigUnit_NoiseFloat::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_NoiseFloat, Time) == 0x000020, "Member 'FRigUnit_NoiseFloat::Time' has a wrong offset!");
+
 // ScriptStruct ControlRig.RigUnit_OffsetTransformForItem
 // 0x0068 (0x00D0 - 0x0068)
 struct FRigUnit_OffsetTransformForItem final : public FRigUnitMutable
@@ -8352,6 +8264,55 @@ static_assert(offsetof(FRigUnit_OffsetTransformForItem, Weight) == 0x0000B0, "Me
 static_assert(offsetof(FRigUnit_OffsetTransformForItem, bPropagateToChildren) == 0x0000B4, "Member 'FRigUnit_OffsetTransformForItem::bPropagateToChildren' has a wrong offset!");
 static_assert(offsetof(FRigUnit_OffsetTransformForItem, CachedIndex) == 0x0000B8, "Member 'FRigUnit_OffsetTransformForItem::CachedIndex' has a wrong offset!");
 
+// ScriptStruct ControlRig.RigUnit_SpringIK_DebugSettings
+// 0x0050 (0x0050 - 0x0000)
+struct FRigUnit_SpringIK_DebugSettings final
+{
+public:
+	bool                                          bEnabled;                                          // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Scale;                                             // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           Color;                                             // 0x0008(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_18[0x8];                                       // 0x0018(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             WorldOffset;                                       // 0x0020(0x0030)(Edit, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_SpringIK_DebugSettings) == 0x000010, "Wrong alignment on FRigUnit_SpringIK_DebugSettings");
+static_assert(sizeof(FRigUnit_SpringIK_DebugSettings) == 0x000050, "Wrong size on FRigUnit_SpringIK_DebugSettings");
+static_assert(offsetof(FRigUnit_SpringIK_DebugSettings, bEnabled) == 0x000000, "Member 'FRigUnit_SpringIK_DebugSettings::bEnabled' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK_DebugSettings, Scale) == 0x000004, "Member 'FRigUnit_SpringIK_DebugSettings::Scale' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK_DebugSettings, Color) == 0x000008, "Member 'FRigUnit_SpringIK_DebugSettings::Color' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK_DebugSettings, WorldOffset) == 0x000020, "Member 'FRigUnit_SpringIK_DebugSettings::WorldOffset' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_TimeOffsetTransform
+// 0x00A8 (0x00B0 - 0x0008)
+struct FRigUnit_TimeOffsetTransform final : public FRigUnit_SimBase
+{
+public:
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Value;                                             // 0x0010(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         SecondsAgo;                                        // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         BufferSize;                                        // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TimeRange;                                         // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4C[0x4];                                       // 0x004C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Result;                                            // 0x0050(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	TArray<struct FTransform>                     Buffer;                                            // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<float>                                 DeltaTimes;                                        // 0x0090(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	int32                                         LastInsertIndex;                                   // 0x00A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         UpperBound;                                        // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A8[0x8];                                       // 0x00A8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FRigUnit_TimeOffsetTransform) == 0x000010, "Wrong alignment on FRigUnit_TimeOffsetTransform");
+static_assert(sizeof(FRigUnit_TimeOffsetTransform) == 0x0000B0, "Wrong size on FRigUnit_TimeOffsetTransform");
+static_assert(offsetof(FRigUnit_TimeOffsetTransform, Value) == 0x000010, "Member 'FRigUnit_TimeOffsetTransform::Value' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TimeOffsetTransform, SecondsAgo) == 0x000040, "Member 'FRigUnit_TimeOffsetTransform::SecondsAgo' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TimeOffsetTransform, BufferSize) == 0x000044, "Member 'FRigUnit_TimeOffsetTransform::BufferSize' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TimeOffsetTransform, TimeRange) == 0x000048, "Member 'FRigUnit_TimeOffsetTransform::TimeRange' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TimeOffsetTransform, Result) == 0x000050, "Member 'FRigUnit_TimeOffsetTransform::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TimeOffsetTransform, Buffer) == 0x000080, "Member 'FRigUnit_TimeOffsetTransform::Buffer' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TimeOffsetTransform, DeltaTimes) == 0x000090, "Member 'FRigUnit_TimeOffsetTransform::DeltaTimes' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TimeOffsetTransform, LastInsertIndex) == 0x0000A0, "Member 'FRigUnit_TimeOffsetTransform::LastInsertIndex' has a wrong offset!");
+static_assert(offsetof(FRigUnit_TimeOffsetTransform, UpperBound) == 0x0000A4, "Member 'FRigUnit_TimeOffsetTransform::UpperBound' has a wrong offset!");
+
 // ScriptStruct ControlRig.RigUnit_EndProfilingTimer
 // 0x0020 (0x0088 - 0x0068)
 struct FRigUnit_EndProfilingTimer final : public FRigUnit_DebugBaseMutable
@@ -8369,6 +8330,84 @@ static_assert(offsetof(FRigUnit_EndProfilingTimer, NumberOfMeasurements) == 0x00
 static_assert(offsetof(FRigUnit_EndProfilingTimer, Prefix) == 0x000070, "Member 'FRigUnit_EndProfilingTimer::Prefix' has a wrong offset!");
 static_assert(offsetof(FRigUnit_EndProfilingTimer, AccumulatedTime) == 0x000080, "Member 'FRigUnit_EndProfilingTimer::AccumulatedTime' has a wrong offset!");
 static_assert(offsetof(FRigUnit_EndProfilingTimer, MeasurementsLeft) == 0x000084, "Member 'FRigUnit_EndProfilingTimer::MeasurementsLeft' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_StartProfilingTimer
+// 0x0000 (0x0068 - 0x0068)
+struct FRigUnit_StartProfilingTimer final : public FRigUnit_DebugBaseMutable
+{
+};
+static_assert(alignof(FRigUnit_StartProfilingTimer) == 0x000008, "Wrong alignment on FRigUnit_StartProfilingTimer");
+static_assert(sizeof(FRigUnit_StartProfilingTimer) == 0x000068, "Wrong size on FRigUnit_StartProfilingTimer");
+
+// ScriptStruct ControlRig.RigUnit_SpringIK_WorkData
+// 0x00B0 (0x00B0 - 0x0000)
+struct FRigUnit_SpringIK_WorkData final
+{
+public:
+	TArray<struct FCachedRigElement>              CachedBones;                                       // 0x0000(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPublic)
+	struct FCachedRigElement                      CachedPoleVector;                                  // 0x0010(0x0014)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FTransform>                     Transforms;                                        // 0x0028(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FCRSimPointContainer                   Simulation;                                        // 0x0038(0x0078)(NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_SpringIK_WorkData) == 0x000008, "Wrong alignment on FRigUnit_SpringIK_WorkData");
+static_assert(sizeof(FRigUnit_SpringIK_WorkData) == 0x0000B0, "Wrong size on FRigUnit_SpringIK_WorkData");
+static_assert(offsetof(FRigUnit_SpringIK_WorkData, CachedBones) == 0x000000, "Member 'FRigUnit_SpringIK_WorkData::CachedBones' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK_WorkData, CachedPoleVector) == 0x000010, "Member 'FRigUnit_SpringIK_WorkData::CachedPoleVector' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK_WorkData, Transforms) == 0x000028, "Member 'FRigUnit_SpringIK_WorkData::Transforms' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK_WorkData, Simulation) == 0x000038, "Member 'FRigUnit_SpringIK_WorkData::Simulation' has a wrong offset!");
+
+// ScriptStruct ControlRig.RigUnit_SpringIK
+// 0x0168 (0x01D0 - 0x0068)
+struct FRigUnit_SpringIK final : public FRigUnit_HighlevelBaseMutable
+{
+public:
+	class FName                                   StartBone;                                         // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   EndBone;                                           // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         HierarchyStrength;                                 // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         EffectorStrength;                                  // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         EffectorRatio;                                     // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         RootStrength;                                      // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         RootRatio;                                         // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Damping;                                           // 0x008C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                PoleVector;                                        // 0x0090(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bFlipPolePlane;                                    // 0x009C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EControlRigVectorKind                         PoleVectorKind;                                    // 0x009D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9E[0x2];                                       // 0x009E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   PoleVectorSpace;                                   // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                PrimaryAxis;                                       // 0x00A8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                SecondaryAxis;                                     // 0x00B4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bLiveSimulation;                                   // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C1[0x3];                                       // 0x00C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Iterations;                                        // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bLimitLocalPosition;                               // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bPropagateToChildren;                              // 0x00C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_CA[0x6];                                       // 0x00CA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigUnit_SpringIK_DebugSettings        DebugSettings;                                     // 0x00D0(0x0050)(NoDestructor, NativeAccessSpecifierPublic)
+	struct FRigUnit_SpringIK_WorkData             WorkData;                                          // 0x0120(0x00B0)(Transient, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_SpringIK) == 0x000010, "Wrong alignment on FRigUnit_SpringIK");
+static_assert(sizeof(FRigUnit_SpringIK) == 0x0001D0, "Wrong size on FRigUnit_SpringIK");
+static_assert(offsetof(FRigUnit_SpringIK, StartBone) == 0x000068, "Member 'FRigUnit_SpringIK::StartBone' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, EndBone) == 0x000070, "Member 'FRigUnit_SpringIK::EndBone' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, HierarchyStrength) == 0x000078, "Member 'FRigUnit_SpringIK::HierarchyStrength' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, EffectorStrength) == 0x00007C, "Member 'FRigUnit_SpringIK::EffectorStrength' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, EffectorRatio) == 0x000080, "Member 'FRigUnit_SpringIK::EffectorRatio' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, RootStrength) == 0x000084, "Member 'FRigUnit_SpringIK::RootStrength' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, RootRatio) == 0x000088, "Member 'FRigUnit_SpringIK::RootRatio' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, Damping) == 0x00008C, "Member 'FRigUnit_SpringIK::Damping' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, PoleVector) == 0x000090, "Member 'FRigUnit_SpringIK::PoleVector' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, bFlipPolePlane) == 0x00009C, "Member 'FRigUnit_SpringIK::bFlipPolePlane' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, PoleVectorKind) == 0x00009D, "Member 'FRigUnit_SpringIK::PoleVectorKind' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, PoleVectorSpace) == 0x0000A0, "Member 'FRigUnit_SpringIK::PoleVectorSpace' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, PrimaryAxis) == 0x0000A8, "Member 'FRigUnit_SpringIK::PrimaryAxis' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, SecondaryAxis) == 0x0000B4, "Member 'FRigUnit_SpringIK::SecondaryAxis' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, bLiveSimulation) == 0x0000C0, "Member 'FRigUnit_SpringIK::bLiveSimulation' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, Iterations) == 0x0000C4, "Member 'FRigUnit_SpringIK::Iterations' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, bLimitLocalPosition) == 0x0000C8, "Member 'FRigUnit_SpringIK::bLimitLocalPosition' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, bPropagateToChildren) == 0x0000C9, "Member 'FRigUnit_SpringIK::bPropagateToChildren' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, DebugSettings) == 0x0000D0, "Member 'FRigUnit_SpringIK::DebugSettings' has a wrong offset!");
+static_assert(offsetof(FRigUnit_SpringIK, WorkData) == 0x000120, "Member 'FRigUnit_SpringIK::WorkData' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_ProjectTransformToNewParent
 // 0x00A8 (0x00B0 - 0x0008)
@@ -8420,22 +8459,6 @@ static_assert(offsetof(FRigUnit_QuaternionToAngle, Axis) == 0x000008, "Member 'F
 static_assert(offsetof(FRigUnit_QuaternionToAngle, Argument) == 0x000020, "Member 'FRigUnit_QuaternionToAngle::Argument' has a wrong offset!");
 static_assert(offsetof(FRigUnit_QuaternionToAngle, Angle) == 0x000030, "Member 'FRigUnit_QuaternionToAngle::Angle' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_QuaternionFromAxisAndAngle
-// 0x0028 (0x0030 - 0x0008)
-struct FRigUnit_QuaternionFromAxisAndAngle final : public FRigUnit
-{
-public:
-	struct FVector                                Axis;                                              // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Angle;                                             // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_18[0x8];                                       // 0x0018(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  Result;                                            // 0x0020(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_QuaternionFromAxisAndAngle) == 0x000010, "Wrong alignment on FRigUnit_QuaternionFromAxisAndAngle");
-static_assert(sizeof(FRigUnit_QuaternionFromAxisAndAngle) == 0x000030, "Wrong size on FRigUnit_QuaternionFromAxisAndAngle");
-static_assert(offsetof(FRigUnit_QuaternionFromAxisAndAngle, Axis) == 0x000008, "Member 'FRigUnit_QuaternionFromAxisAndAngle::Axis' has a wrong offset!");
-static_assert(offsetof(FRigUnit_QuaternionFromAxisAndAngle, Angle) == 0x000014, "Member 'FRigUnit_QuaternionFromAxisAndAngle::Angle' has a wrong offset!");
-static_assert(offsetof(FRigUnit_QuaternionFromAxisAndAngle, Result) == 0x000020, "Member 'FRigUnit_QuaternionFromAxisAndAngle::Result' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigUnit_QuaternionToAxisAndAngle
 // 0x0028 (0x0030 - 0x0008)
 struct FRigUnit_QuaternionToAxisAndAngle final : public FRigUnit
@@ -8467,6 +8490,31 @@ struct FRigUnit_MultiplyQuaternion final : public FRigUnit_BinaryQuaternionOp
 };
 static_assert(alignof(FRigUnit_MultiplyQuaternion) == 0x000010, "Wrong alignment on FRigUnit_MultiplyQuaternion");
 static_assert(sizeof(FRigUnit_MultiplyQuaternion) == 0x000040, "Wrong size on FRigUnit_MultiplyQuaternion");
+
+// ScriptStruct ControlRig.RigUnit_RandomVector
+// 0x0030 (0x0038 - 0x0008)
+struct FRigUnit_RandomVector final : public FRigUnit_MathBase
+{
+public:
+	int32                                         Seed;                                              // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Minimum;                                           // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Maximum;                                           // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Duration;                                          // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Result;                                            // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                LastResult;                                        // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         LastSeed;                                          // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TimeLeft;                                          // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FRigUnit_RandomVector) == 0x000008, "Wrong alignment on FRigUnit_RandomVector");
+static_assert(sizeof(FRigUnit_RandomVector) == 0x000038, "Wrong size on FRigUnit_RandomVector");
+static_assert(offsetof(FRigUnit_RandomVector, Seed) == 0x000008, "Member 'FRigUnit_RandomVector::Seed' has a wrong offset!");
+static_assert(offsetof(FRigUnit_RandomVector, Minimum) == 0x00000C, "Member 'FRigUnit_RandomVector::Minimum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_RandomVector, Maximum) == 0x000010, "Member 'FRigUnit_RandomVector::Maximum' has a wrong offset!");
+static_assert(offsetof(FRigUnit_RandomVector, Duration) == 0x000014, "Member 'FRigUnit_RandomVector::Duration' has a wrong offset!");
+static_assert(offsetof(FRigUnit_RandomVector, Result) == 0x000018, "Member 'FRigUnit_RandomVector::Result' has a wrong offset!");
+static_assert(offsetof(FRigUnit_RandomVector, LastResult) == 0x000024, "Member 'FRigUnit_RandomVector::LastResult' has a wrong offset!");
+static_assert(offsetof(FRigUnit_RandomVector, LastSeed) == 0x000030, "Member 'FRigUnit_RandomVector::LastSeed' has a wrong offset!");
+static_assert(offsetof(FRigUnit_RandomVector, TimeLeft) == 0x000034, "Member 'FRigUnit_RandomVector::TimeLeft' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_RandomFloat
 // 0x0020 (0x0028 - 0x0008)
@@ -8512,29 +8560,6 @@ static_assert(offsetof(FRigUnit_SequenceExecution, B) == 0x0000C8, "Member 'FRig
 static_assert(offsetof(FRigUnit_SequenceExecution, C) == 0x000128, "Member 'FRigUnit_SequenceExecution::C' has a wrong offset!");
 static_assert(offsetof(FRigUnit_SequenceExecution, D) == 0x000188, "Member 'FRigUnit_SequenceExecution::D' has a wrong offset!");
 
-// ScriptStruct ControlRig.RigUnit_SetBoneInitialTransform
-// 0x0088 (0x00F0 - 0x0068)
-struct FRigUnit_SetBoneInitialTransform final : public FRigUnitMutable
-{
-public:
-	class FName                                   Bone;                                              // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FTransform                             Transform;                                         // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Result;                                            // 0x00A0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	EBoneGetterSetterMode                         Space;                                             // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bPropagateToChildren;                              // 0x00D1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D2[0x2];                                       // 0x00D2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedBone;                                        // 0x00D4(0x0014)(Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E8[0x8];                                       // 0x00E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FRigUnit_SetBoneInitialTransform) == 0x000010, "Wrong alignment on FRigUnit_SetBoneInitialTransform");
-static_assert(sizeof(FRigUnit_SetBoneInitialTransform) == 0x0000F0, "Wrong size on FRigUnit_SetBoneInitialTransform");
-static_assert(offsetof(FRigUnit_SetBoneInitialTransform, Bone) == 0x000068, "Member 'FRigUnit_SetBoneInitialTransform::Bone' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneInitialTransform, Transform) == 0x000070, "Member 'FRigUnit_SetBoneInitialTransform::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneInitialTransform, Result) == 0x0000A0, "Member 'FRigUnit_SetBoneInitialTransform::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneInitialTransform, Space) == 0x0000D0, "Member 'FRigUnit_SetBoneInitialTransform::Space' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneInitialTransform, bPropagateToChildren) == 0x0000D1, "Member 'FRigUnit_SetBoneInitialTransform::bPropagateToChildren' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneInitialTransform, CachedBone) == 0x0000D4, "Member 'FRigUnit_SetBoneInitialTransform::CachedBone' has a wrong offset!");
-
 // ScriptStruct ControlRig.RigUnit_SetBoneRotation
 // 0x0038 (0x00A0 - 0x0068)
 struct FRigUnit_SetBoneRotation final : public FRigUnitMutable
@@ -8557,31 +8582,6 @@ static_assert(offsetof(FRigUnit_SetBoneRotation, Space) == 0x000080, "Member 'FR
 static_assert(offsetof(FRigUnit_SetBoneRotation, Weight) == 0x000084, "Member 'FRigUnit_SetBoneRotation::Weight' has a wrong offset!");
 static_assert(offsetof(FRigUnit_SetBoneRotation, bPropagateToChildren) == 0x000088, "Member 'FRigUnit_SetBoneRotation::bPropagateToChildren' has a wrong offset!");
 static_assert(offsetof(FRigUnit_SetBoneRotation, CachedBone) == 0x00008C, "Member 'FRigUnit_SetBoneRotation::CachedBone' has a wrong offset!");
-
-// ScriptStruct ControlRig.RigUnit_SetBoneTransform
-// 0x0088 (0x00F0 - 0x0068)
-struct FRigUnit_SetBoneTransform final : public FRigUnitMutable
-{
-public:
-	class FName                                   Bone;                                              // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FTransform                             Transform;                                         // 0x0070(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FTransform                             Result;                                            // 0x00A0(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	EBoneGetterSetterMode                         Space;                                             // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D1[0x3];                                       // 0x00D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Weight;                                            // 0x00D4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bPropagateToChildren;                              // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D9[0x3];                                       // 0x00D9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCachedRigElement                      CachedBone;                                        // 0x00DC(0x0014)(Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FRigUnit_SetBoneTransform) == 0x000010, "Wrong alignment on FRigUnit_SetBoneTransform");
-static_assert(sizeof(FRigUnit_SetBoneTransform) == 0x0000F0, "Wrong size on FRigUnit_SetBoneTransform");
-static_assert(offsetof(FRigUnit_SetBoneTransform, Bone) == 0x000068, "Member 'FRigUnit_SetBoneTransform::Bone' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneTransform, Transform) == 0x000070, "Member 'FRigUnit_SetBoneTransform::Transform' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneTransform, Result) == 0x0000A0, "Member 'FRigUnit_SetBoneTransform::Result' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneTransform, Space) == 0x0000D0, "Member 'FRigUnit_SetBoneTransform::Space' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneTransform, Weight) == 0x0000D4, "Member 'FRigUnit_SetBoneTransform::Weight' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneTransform, bPropagateToChildren) == 0x0000D8, "Member 'FRigUnit_SetBoneTransform::bPropagateToChildren' has a wrong offset!");
-static_assert(offsetof(FRigUnit_SetBoneTransform, CachedBone) == 0x0000DC, "Member 'FRigUnit_SetBoneTransform::CachedBone' has a wrong offset!");
 
 // ScriptStruct ControlRig.RigUnit_SetBoneTranslation
 // 0x0038 (0x00A0 - 0x0068)

@@ -39,95 +39,111 @@ static_assert(sizeof(WIDGET_MenuBase_C_OnMenuOpen) == 0x000001, "Wrong size on W
 static_assert(offsetof(WIDGET_MenuBase_C_OnMenuOpen, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'WIDGET_MenuBase_C_OnMenuOpen::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_MenuBase.WIDGET_MenuBase_C.InvokeNavManager
-// 0x00F8 (0x00F8 - 0x0000)
+// 0x0128 (0x0128 - 0x0000)
 struct WIDGET_MenuBase_C_InvokeNavManager final
 {
 public:
 	ENUM_MenuNavigationInput                      InputType;                                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          InputState;                                        // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient; // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavBack_Result;                    // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1B[0x5];                                       // 0x001B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_1; // 0x0020(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavTabRight_Result;                // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_32[0x6];                                       // 0x0032(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_2; // 0x0038(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavTabLeft_Result;                 // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4A[0x6];                                       // 0x004A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_3; // 0x0050(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavAlt2_Result;                    // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> CallFunc_ReceiveNavRightRelease_self_CastInput;    // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavRightRelease_Result;            // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> CallFunc_ReceiveNavLeftRelease_self_CastInput;     // 0x0020(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavLeftRelease_Result;             // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0032(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0033(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0034(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x0035(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_36[0x2];                                       // 0x0036(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient; // 0x0038(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavBack_Result;                    // 0x004A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_4B[0x5];                                       // 0x004B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_1; // 0x0050(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavTabRight_Result;                // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_62[0x6];                                       // 0x0062(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_4; // 0x0068(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavAlt1_Result;                    // 0x0079(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_2; // 0x0068(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavTabLeft_Result;                 // 0x0079(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_7A[0x6];                                       // 0x007A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_5; // 0x0080(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_5;                     // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavAccept_Result;                  // 0x0091(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_3; // 0x0080(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavAlt2_Result;                    // 0x0091(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_92[0x6];                                       // 0x0092(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_6; // 0x0098(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_6;                     // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavRight_Result;                   // 0x00A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_4; // 0x0098(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavAlt1_Result;                    // 0x00A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_AA[0x6];                                       // 0x00AA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_7; // 0x00B0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_7;                     // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavLeft_Result;                    // 0x00C1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_5; // 0x00B0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_5;                     // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavAccept_Result;                  // 0x00C1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_C2[0x6];                                       // 0x00C2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_8; // 0x00C8(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_8;                     // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavDown_Result;                    // 0x00D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_6; // 0x00C8(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_6;                     // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavRight_Result;                   // 0x00D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_DA[0x6];                                       // 0x00DA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_9; // 0x00E0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_9;                     // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ReceiveNavUp_Result;                      // 0x00F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x00F2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_7; // 0x00E0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_7;                     // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavLeft_Result;                    // 0x00F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_F2[0x6];                                       // 0x00F2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_8; // 0x00F8(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_8;                     // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavDown_Result;                    // 0x0109(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_10A[0x6];                                      // 0x010A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IBPI_MenuNavigationRecipient_C> K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_9; // 0x0110(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_9;                     // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ReceiveNavUp_Result;                      // 0x0121(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_4;                    // 0x0122(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_MenuBase_C_InvokeNavManager) == 0x000008, "Wrong alignment on WIDGET_MenuBase_C_InvokeNavManager");
-static_assert(sizeof(WIDGET_MenuBase_C_InvokeNavManager) == 0x0000F8, "Wrong size on WIDGET_MenuBase_C_InvokeNavManager");
+static_assert(sizeof(WIDGET_MenuBase_C_InvokeNavManager) == 0x000128, "Wrong size on WIDGET_MenuBase_C_InvokeNavManager");
 static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, InputType) == 0x000000, "Member 'WIDGET_MenuBase_C_InvokeNavManager::InputType' has a wrong offset!");
 static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, InputState) == 0x000001, "Member 'WIDGET_MenuBase_C_InvokeNavManager::InputState' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_IsValid_ReturnValue) == 0x000002, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess) == 0x000003, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient) == 0x000008, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess) == 0x000018, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_1) == 0x000019, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavBack_Result) == 0x00001A, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavBack_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_1) == 0x000020, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_1) == 0x000030, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavTabRight_Result) == 0x000031, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavTabRight_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_2) == 0x000038, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_2) == 0x000048, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavTabLeft_Result) == 0x000049, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavTabLeft_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_3) == 0x000050, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_3) == 0x000060, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavAlt2_Result) == 0x000061, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavAlt2_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_4) == 0x000068, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_4) == 0x000078, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavAlt1_Result) == 0x000079, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavAlt1_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_5) == 0x000080, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_5' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_5) == 0x000090, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_5' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavAccept_Result) == 0x000091, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavAccept_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_6) == 0x000098, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_6' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_6) == 0x0000A8, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_6' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavRight_Result) == 0x0000A9, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavRight_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_7) == 0x0000B0, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_7' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_7) == 0x0000C0, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_7' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavLeft_Result) == 0x0000C1, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavLeft_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_8) == 0x0000C8, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_8' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_8) == 0x0000D8, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_8' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavDown_Result) == 0x0000D9, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavDown_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_9) == 0x0000E0, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_9' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_9) == 0x0000F0, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_9' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavUp_Result) == 0x0000F1, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavUp_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_2) == 0x0000F2, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavRightRelease_self_CastInput) == 0x000008, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavRightRelease_self_CastInput' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavRightRelease_Result) == 0x000018, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavRightRelease_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavLeftRelease_self_CastInput) == 0x000020, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavLeftRelease_self_CastInput' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavLeftRelease_Result) == 0x000030, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavLeftRelease_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_IsValid_ReturnValue) == 0x000031, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_1) == 0x000032, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess) == 0x000033, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_2) == 0x000034, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_SwitchEnum_CmpSuccess_1) == 0x000035, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_SwitchEnum_CmpSuccess_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient) == 0x000038, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess) == 0x000048, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_3) == 0x000049, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavBack_Result) == 0x00004A, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavBack_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_1) == 0x000050, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_1) == 0x000060, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavTabRight_Result) == 0x000061, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavTabRight_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_2) == 0x000068, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_2) == 0x000078, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavTabLeft_Result) == 0x000079, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavTabLeft_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_3) == 0x000080, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_3) == 0x000090, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavAlt2_Result) == 0x000091, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavAlt2_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_4) == 0x000098, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_4) == 0x0000A8, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavAlt1_Result) == 0x0000A9, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavAlt1_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_5) == 0x0000B0, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_5' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_5) == 0x0000C0, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_5' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavAccept_Result) == 0x0000C1, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavAccept_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_6) == 0x0000C8, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_6' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_6) == 0x0000D8, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_6' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavRight_Result) == 0x0000D9, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavRight_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_7) == 0x0000E0, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_7' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_7) == 0x0000F0, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_7' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavLeft_Result) == 0x0000F1, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavLeft_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_8) == 0x0000F8, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_8' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_8) == 0x000108, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_8' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavDown_Result) == 0x000109, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavDown_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_9) == 0x000110, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_AsBPI_Menu_Navigation_Recipient_9' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, K2Node_DynamicCast_bSuccess_9) == 0x000120, "Member 'WIDGET_MenuBase_C_InvokeNavManager::K2Node_DynamicCast_bSuccess_9' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_ReceiveNavUp_Result) == 0x000121, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_ReceiveNavUp_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_MenuBase_C_InvokeNavManager, CallFunc_IsValid_ReturnValue_4) == 0x000122, "Member 'WIDGET_MenuBase_C_InvokeNavManager::CallFunc_IsValid_ReturnValue_4' has a wrong offset!");
 
 // Function WIDGET_MenuBase.WIDGET_MenuBase_C.TryOpenSubMenu
 // 0x0010 (0x0010 - 0x0000)

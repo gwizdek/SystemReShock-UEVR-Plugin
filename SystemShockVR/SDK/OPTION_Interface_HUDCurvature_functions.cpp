@@ -17,6 +17,48 @@
 namespace SDK
 {
 
+// Function OPTION_Interface_HUDCurvature.OPTION_Interface_HUDCurvature_C.ExecuteUbergraph_OPTION_Interface_HUDCurvature
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UOPTION_Interface_HUDCurvature_C::ExecuteUbergraph_OPTION_Interface_HUDCurvature(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("OPTION_Interface_HUDCurvature_C", "ExecuteUbergraph_OPTION_Interface_HUDCurvature");
+
+	Params::OPTION_Interface_HUDCurvature_C_ExecuteUbergraph_OPTION_Interface_HUDCurvature Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function OPTION_Interface_HUDCurvature.OPTION_Interface_HUDCurvature_C.Tick
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Parameters:
+// struct FGeometry                        MyGeometry                                             (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+// float                                   InDeltaTime                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UOPTION_Interface_HUDCurvature_C::Tick(const struct FGeometry& MyGeometry, float InDeltaTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("OPTION_Interface_HUDCurvature_C", "Tick");
+
+	Params::OPTION_Interface_HUDCurvature_C_Tick Parms{};
+
+	Parms.MyGeometry = std::move(MyGeometry);
+	Parms.InDeltaTime = InDeltaTime;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function OPTION_Interface_HUDCurvature.OPTION_Interface_HUDCurvature_C.AcceptCurrentValue
 // (Public, BlueprintCallable, BlueprintEvent)
 

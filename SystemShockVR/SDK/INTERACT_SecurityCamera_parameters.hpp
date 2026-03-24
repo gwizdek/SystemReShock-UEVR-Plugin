@@ -11,12 +11,12 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "STRUCT_EffectParams_structs.hpp"
-#include "ENUM_DetectionState_structs.hpp"
-#include "STRUCT_CombatDifficultySettings_structs.hpp"
 #include "NamedInteger_structs.hpp"
-#include "CoreUObject_structs.hpp"
+#include "STRUCT_CombatDifficultySettings_structs.hpp"
 #include "CoreGame_structs.hpp"
+#include "STRUCT_EffectParams_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ENUM_DetectionState_structs.hpp"
 
 
 namespace SDK::Params

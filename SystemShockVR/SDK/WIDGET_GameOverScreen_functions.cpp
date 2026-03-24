@@ -205,26 +205,6 @@ void UWIDGET_GameOverScreen_C::ReturnFromSubScreen()
 }
 
 
-// Function WIDGET_GameOverScreen.WIDGET_GameOverScreen_C.EVENT_OnUsingGamepadChanged
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UWIDGET_GameOverScreen_C::EVENT_OnUsingGamepadChanged(bool IsUsingGamepad)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_GameOverScreen_C", "EVENT_OnUsingGamepadChanged");
-
-	Params::WIDGET_GameOverScreen_C_EVENT_OnUsingGamepadChanged Parms{};
-
-	Parms.IsUsingGamepad = IsUsingGamepad;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function WIDGET_GameOverScreen.WIDGET_GameOverScreen_C.EVENT_TrySkipSequence
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -278,6 +258,26 @@ void UWIDGET_GameOverScreen_C::EVENT_TriggerSkipSequence()
 		Func = Class->GetFunction("WIDGET_GameOverScreen_C", "EVENT_TriggerSkipSequence");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WIDGET_GameOverScreen.WIDGET_GameOverScreen_C.EVENT_OnActiveControllerTypeChanged
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// ENUM_ControllerType                     NewActiveControllerType                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_GameOverScreen_C::EVENT_OnActiveControllerTypeChanged(ENUM_ControllerType NewActiveControllerType)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_GameOverScreen_C", "EVENT_OnActiveControllerTypeChanged");
+
+	Params::WIDGET_GameOverScreen_C_EVENT_OnActiveControllerTypeChanged Parms{};
+
+	Parms.NewActiveControllerType = NewActiveControllerType;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

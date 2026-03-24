@@ -165,10 +165,10 @@
     <ClInclude Include="rendering\d3d12.hpp" />
     <ClInclude Include="rendering\shared.hpp" />
     <ClInclude Include="vr_mfd.hpp" />
-    <ClInclude Include="vr_plugin_shared.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="vr_item_selector.hpp" />
+    <ClInclude Include="vr_plugin_shared.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp" />
@@ -235,7 +235,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
-    <None Include="old_dllmain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

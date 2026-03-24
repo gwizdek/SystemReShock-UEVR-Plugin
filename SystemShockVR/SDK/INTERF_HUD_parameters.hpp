@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "ENUM_MFDTabCategory_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 
 
 namespace SDK::Params

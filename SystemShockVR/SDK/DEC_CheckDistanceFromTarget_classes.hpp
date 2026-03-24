@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_TargetAssignmentType_structs.hpp"
-#include "AIModule_classes.hpp"
-#include "ENUM_GreaterEqualLess_structs.hpp"
 #include "ENUM_NormalHorizontalVertical_structs.hpp"
+#include "ENUM_TargetAssignmentType_structs.hpp"
+#include "ENUM_GreaterEqualLess_structs.hpp"
+#include "AIModule_classes.hpp"
 
 
 namespace SDK

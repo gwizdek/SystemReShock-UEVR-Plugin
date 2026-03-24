@@ -20,12 +20,14 @@ struct WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader fi
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_SetVisibilityBasedOnBuildType_Hidden;     // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_Event_IsDesignTime;                         // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader) == 0x000004, "Wrong alignment on WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader");
 static_assert(sizeof(WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader) == 0x000008, "Wrong size on WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader");
 static_assert(offsetof(WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader, EntryPoint) == 0x000000, "Member 'WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader::EntryPoint' has a wrong offset!");
-static_assert(offsetof(WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader, K2Node_Event_IsDesignTime) == 0x000004, "Member 'WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader::K2Node_Event_IsDesignTime' has a wrong offset!");
+static_assert(offsetof(WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader, CallFunc_SetVisibilityBasedOnBuildType_Hidden) == 0x000004, "Member 'WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader::CallFunc_SetVisibilityBasedOnBuildType_Hidden' has a wrong offset!");
+static_assert(offsetof(WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader, K2Node_Event_IsDesignTime) == 0x000005, "Member 'WIDGET_ListCategoryHeader_C_ExecuteUbergraph_WIDGET_ListCategoryHeader::K2Node_Event_IsDesignTime' has a wrong offset!");
 
 // Function WIDGET_ListCategoryHeader.WIDGET_ListCategoryHeader_C.PreConstruct
 // 0x0001 (0x0001 - 0x0000)
@@ -37,6 +39,34 @@ public:
 static_assert(alignof(WIDGET_ListCategoryHeader_C_PreConstruct) == 0x000001, "Wrong alignment on WIDGET_ListCategoryHeader_C_PreConstruct");
 static_assert(sizeof(WIDGET_ListCategoryHeader_C_PreConstruct) == 0x000001, "Wrong size on WIDGET_ListCategoryHeader_C_PreConstruct");
 static_assert(offsetof(WIDGET_ListCategoryHeader_C_PreConstruct, IsDesignTime) == 0x000000, "Member 'WIDGET_ListCategoryHeader_C_PreConstruct::IsDesignTime' has a wrong offset!");
+
+// Function WIDGET_ListCategoryHeader.WIDGET_ListCategoryHeader_C.SetVisibilityBasedOnPlatform
+// 0x0018 (0x0018 - 0x0000)
+struct WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform final
+{
+public:
+	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0000(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_Value;                           // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform) == 0x000008, "Wrong alignment on WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform");
+static_assert(sizeof(WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform) == 0x000018, "Wrong size on WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform");
+static_assert(offsetof(WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform, CallFunc_GetPlatformName_ReturnValue) == 0x000000, "Member 'WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform, CallFunc_Map_Find_Value) == 0x000010, "Member 'WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform::CallFunc_Map_Find_Value' has a wrong offset!");
+static_assert(offsetof(WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform, CallFunc_Map_Find_ReturnValue) == 0x000011, "Member 'WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnPlatform::CallFunc_Map_Find_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_ListCategoryHeader.WIDGET_ListCategoryHeader_C.SetVisibilityBasedOnBuildType
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType final
+{
+public:
+	bool                                          Hidden;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsPackagedForDistribution_ReturnValue;    // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType) == 0x000001, "Wrong alignment on WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType");
+static_assert(sizeof(WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType) == 0x000002, "Wrong size on WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType");
+static_assert(offsetof(WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType, Hidden) == 0x000000, "Member 'WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType::Hidden' has a wrong offset!");
+static_assert(offsetof(WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType, CallFunc_IsPackagedForDistribution_ReturnValue) == 0x000001, "Member 'WIDGET_ListCategoryHeader_C_SetVisibilityBasedOnBuildType::CallFunc_IsPackagedForDistribution_ReturnValue' has a wrong offset!");
 
 }
 

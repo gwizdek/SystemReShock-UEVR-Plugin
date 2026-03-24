@@ -12,9 +12,9 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "NavigationSystem_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
-#include "NavigationSystem_structs.hpp"
 
 
 namespace SDK
@@ -62,6 +62,40 @@ static_assert(offsetof(ANavigationData, ObservedPathsTickInterval) == 0x0002B0, 
 static_assert(offsetof(ANavigationData, DataVersion) == 0x0002B4, "Member 'ANavigationData::DataVersion' has a wrong offset!");
 static_assert(offsetof(ANavigationData, SupportedAreas) == 0x0003C0, "Member 'ANavigationData::SupportedAreas' has a wrong offset!");
 
+// Class NavigationSystem.AbstractNavData
+// 0x0000 (0x0428 - 0x0428)
+class AAbstractNavData final : public ANavigationData
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"AbstractNavData">();
+	}
+	static class AAbstractNavData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AAbstractNavData>();
+	}
+};
+static_assert(alignof(AAbstractNavData) == 0x000008, "Wrong alignment on AAbstractNavData");
+static_assert(sizeof(AAbstractNavData) == 0x000428, "Wrong size on AAbstractNavData");
+
+// Class NavigationSystem.CrowdManagerBase
+// 0x0000 (0x0028 - 0x0028)
+class UCrowdManagerBase : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"CrowdManagerBase">();
+	}
+	static class UCrowdManagerBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCrowdManagerBase>();
+	}
+};
+static_assert(alignof(UCrowdManagerBase) == 0x000008, "Wrong alignment on UCrowdManagerBase");
+static_assert(sizeof(UCrowdManagerBase) == 0x000028, "Wrong size on UCrowdManagerBase");
+
 // Class NavigationSystem.NavArea
 // 0x0018 (0x0048 - 0x0030)
 class UNavArea : public UNavAreaBase
@@ -106,57 +140,6 @@ static_assert(offsetof(UNavArea, FixedAreaEnteringCost) == 0x000034, "Member 'UN
 static_assert(offsetof(UNavArea, DrawColor) == 0x000038, "Member 'UNavArea::DrawColor' has a wrong offset!");
 static_assert(offsetof(UNavArea, SupportedAgents) == 0x00003C, "Member 'UNavArea::SupportedAgents' has a wrong offset!");
 
-// Class NavigationSystem.NavAreaMeta
-// 0x0000 (0x0048 - 0x0048)
-class UNavAreaMeta : public UNavArea
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"NavAreaMeta">();
-	}
-	static class UNavAreaMeta* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UNavAreaMeta>();
-	}
-};
-static_assert(alignof(UNavAreaMeta) == 0x000008, "Wrong alignment on UNavAreaMeta");
-static_assert(sizeof(UNavAreaMeta) == 0x000048, "Wrong size on UNavAreaMeta");
-
-// Class NavigationSystem.AbstractNavData
-// 0x0000 (0x0428 - 0x0428)
-class AAbstractNavData final : public ANavigationData
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"AbstractNavData">();
-	}
-	static class AAbstractNavData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<AAbstractNavData>();
-	}
-};
-static_assert(alignof(AAbstractNavData) == 0x000008, "Wrong alignment on AAbstractNavData");
-static_assert(sizeof(AAbstractNavData) == 0x000428, "Wrong size on AAbstractNavData");
-
-// Class NavigationSystem.CrowdManagerBase
-// 0x0000 (0x0028 - 0x0028)
-class UCrowdManagerBase : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"CrowdManagerBase">();
-	}
-	static class UCrowdManagerBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCrowdManagerBase>();
-	}
-};
-static_assert(alignof(UCrowdManagerBase) == 0x000008, "Wrong alignment on UCrowdManagerBase");
-static_assert(sizeof(UCrowdManagerBase) == 0x000028, "Wrong size on UCrowdManagerBase");
-
 // Class NavigationSystem.NavArea_Default
 // 0x0000 (0x0048 - 0x0048)
 class UNavArea_Default final : public UNavArea
@@ -173,23 +156,6 @@ public:
 };
 static_assert(alignof(UNavArea_Default) == 0x000008, "Wrong alignment on UNavArea_Default");
 static_assert(sizeof(UNavArea_Default) == 0x000048, "Wrong size on UNavArea_Default");
-
-// Class NavigationSystem.NavigationGraphNode
-// 0x0000 (0x0220 - 0x0220)
-class ANavigationGraphNode final : public AActor
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"NavigationGraphNode">();
-	}
-	static class ANavigationGraphNode* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ANavigationGraphNode>();
-	}
-};
-static_assert(alignof(ANavigationGraphNode) == 0x000008, "Wrong alignment on ANavigationGraphNode");
-static_assert(sizeof(ANavigationGraphNode) == 0x000220, "Wrong size on ANavigationGraphNode");
 
 // Class NavigationSystem.NavArea_LowHeight
 // 0x0000 (0x0048 - 0x0048)
@@ -208,6 +174,23 @@ public:
 static_assert(alignof(UNavArea_LowHeight) == 0x000008, "Wrong alignment on UNavArea_LowHeight");
 static_assert(sizeof(UNavArea_LowHeight) == 0x000048, "Wrong size on UNavArea_LowHeight");
 
+// Class NavigationSystem.NavArea_Null
+// 0x0000 (0x0048 - 0x0048)
+class UNavArea_Null final : public UNavArea
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"NavArea_Null">();
+	}
+	static class UNavArea_Null* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UNavArea_Null>();
+	}
+};
+static_assert(alignof(UNavArea_Null) == 0x000008, "Wrong alignment on UNavArea_Null");
+static_assert(sizeof(UNavArea_Null) == 0x000048, "Wrong size on UNavArea_Null");
+
 // Class NavigationSystem.NavArea_Obstacle
 // 0x0000 (0x0048 - 0x0048)
 class UNavArea_Obstacle final : public UNavArea
@@ -225,22 +208,22 @@ public:
 static_assert(alignof(UNavArea_Obstacle) == 0x000008, "Wrong alignment on UNavArea_Obstacle");
 static_assert(sizeof(UNavArea_Obstacle) == 0x000048, "Wrong size on UNavArea_Obstacle");
 
-// Class NavigationSystem.NavArea_Null
+// Class NavigationSystem.NavAreaMeta
 // 0x0000 (0x0048 - 0x0048)
-class UNavArea_Null final : public UNavArea
+class UNavAreaMeta : public UNavArea
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"NavArea_Null">();
+		return StaticClassImpl<"NavAreaMeta">();
 	}
-	static class UNavArea_Null* GetDefaultObj()
+	static class UNavAreaMeta* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UNavArea_Null>();
+		return GetDefaultObjImpl<UNavAreaMeta>();
 	}
 };
-static_assert(alignof(UNavArea_Null) == 0x000008, "Wrong alignment on UNavArea_Null");
-static_assert(sizeof(UNavArea_Null) == 0x000048, "Wrong size on UNavArea_Null");
+static_assert(alignof(UNavAreaMeta) == 0x000008, "Wrong alignment on UNavAreaMeta");
+static_assert(sizeof(UNavAreaMeta) == 0x000048, "Wrong size on UNavAreaMeta");
 
 // Class NavigationSystem.NavAreaMeta_SwitchByAgent
 // 0x0080 (0x00C8 - 0x0048)
@@ -338,6 +321,23 @@ public:
 };
 static_assert(alignof(ANavigationGraph) == 0x000008, "Wrong alignment on ANavigationGraph");
 static_assert(sizeof(ANavigationGraph) == 0x000428, "Wrong size on ANavigationGraph");
+
+// Class NavigationSystem.NavigationGraphNode
+// 0x0000 (0x0220 - 0x0220)
+class ANavigationGraphNode final : public AActor
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"NavigationGraphNode">();
+	}
+	static class ANavigationGraphNode* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ANavigationGraphNode>();
+	}
+};
+static_assert(alignof(ANavigationGraphNode) == 0x000008, "Wrong alignment on ANavigationGraphNode");
+static_assert(sizeof(ANavigationGraphNode) == 0x000220, "Wrong size on ANavigationGraphNode");
 
 // Class NavigationSystem.NavigationGraphNodeComponent
 // 0x0020 (0x0220 - 0x0200)

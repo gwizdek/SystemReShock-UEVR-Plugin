@@ -15,14 +15,15 @@ namespace SDK
 {
 
 // UserDefinedEnum ENUM_Options_ControlsTabs.ENUM_Options_ControlsTabs
-// NumValues: 0x0005
+// NumValues: 0x0006
 enum class ENUM_Options_ControlsTabs : uint8
 {
 	NewEnumerator0                           = 0,
 	NewEnumerator1                           = 1,
 	NewEnumerator2                           = 2,
 	NewEnumerator3                           = 3,
-	ENUM_Options_MAX                         = 4,
+	NewEnumerator5                           = 4,
+	ENUM_Options_MAX                         = 5,
 };
 
 }

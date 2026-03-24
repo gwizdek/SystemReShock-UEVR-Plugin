@@ -47,6 +47,7 @@ public:
 
 public:
 	void ExecuteUbergraph_PAWN_CyberEnemy(int32 EntryPoint);
+	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void ReceiveBeginPlay();
 	void ReceiveTick(float DeltaSeconds);
 	void UpdateRotation();
@@ -60,7 +61,6 @@ public:
 	void EVENT_OnShieldValueChanged(float CurrValue, float LastValue);
 	void UpdateIceShieldMeshes(bool State);
 	void GetIceShieldSize(float* Result);
-	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void OnCharacterDied(class UOBJ_ImpactData_C* ImpactData, const struct FAttribDamageInstance& DamageInstance, class AActor* OtherActor, bool* Result);
 	void InitializeCharacter(bool* Result);
 

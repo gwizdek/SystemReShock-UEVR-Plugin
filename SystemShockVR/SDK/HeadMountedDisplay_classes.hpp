@@ -18,6 +18,26 @@
 namespace SDK
 {
 
+// Class HeadMountedDisplay.HandKeypointConversion
+// 0x0000 (0x0028 - 0x0028)
+class UHandKeypointConversion final : public UBlueprintFunctionLibrary
+{
+public:
+	static int32 Conv_HandKeypointToInt32(EHandKeypoint Input);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"HandKeypointConversion">();
+	}
+	static class UHandKeypointConversion* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UHandKeypointConversion>();
+	}
+};
+static_assert(alignof(UHandKeypointConversion) == 0x000008, "Wrong alignment on UHandKeypointConversion");
+static_assert(sizeof(UHandKeypointConversion) == 0x000028, "Wrong size on UHandKeypointConversion");
+
 // Class HeadMountedDisplay.VRNotificationsComponent
 // 0x00B0 (0x0160 - 0x00B0)
 class UVRNotificationsComponent : public UActorComponent
@@ -124,26 +144,6 @@ public:
 };
 static_assert(alignof(UHeadMountedDisplayFunctionLibrary) == 0x000008, "Wrong alignment on UHeadMountedDisplayFunctionLibrary");
 static_assert(sizeof(UHeadMountedDisplayFunctionLibrary) == 0x000028, "Wrong size on UHeadMountedDisplayFunctionLibrary");
-
-// Class HeadMountedDisplay.HandKeypointConversion
-// 0x0000 (0x0028 - 0x0028)
-class UHandKeypointConversion final : public UBlueprintFunctionLibrary
-{
-public:
-	static int32 Conv_HandKeypointToInt32(EHandKeypoint Input);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"HandKeypointConversion">();
-	}
-	static class UHandKeypointConversion* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UHandKeypointConversion>();
-	}
-};
-static_assert(alignof(UHandKeypointConversion) == 0x000008, "Wrong alignment on UHandKeypointConversion");
-static_assert(sizeof(UHandKeypointConversion) == 0x000028, "Wrong size on UHandKeypointConversion");
 
 // Class HeadMountedDisplay.MotionControllerComponent
 // 0x00C0 (0x0510 - 0x0450)

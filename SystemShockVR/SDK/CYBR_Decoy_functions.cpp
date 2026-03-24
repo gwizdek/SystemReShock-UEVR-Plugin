@@ -57,20 +57,6 @@ void ACYBR_Decoy_C::ReceiveTick(float DeltaSeconds)
 }
 
 
-// Function CYBR_Decoy.CYBR_Decoy_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ACYBR_Decoy_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("CYBR_Decoy_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function CYBR_Decoy.CYBR_Decoy_C.EVENT_DeployDecoy
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -136,6 +122,20 @@ void ACYBR_Decoy_C::EVENT_DelayedDestroyDecoy()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("CYBR_Decoy_C", "EVENT_DelayedDestroyDecoy");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function CYBR_Decoy.CYBR_Decoy_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void ACYBR_Decoy_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("CYBR_Decoy_C", "ReceiveBeginPlay");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

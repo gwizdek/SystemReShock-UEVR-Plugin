@@ -1521,30 +1521,6 @@ void UITEM_MeleeWeapon_Base_C::GetTraceSocketName(class FName* Result)
 }
 
 
-// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.Activate
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UITEM_MeleeWeapon_Base_C::Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "Activate");
-
-	Params::ITEM_MeleeWeapon_Base_C_Activate Parms{};
-
-	Parms.Character = Character;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.OnBecomeActivatable
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -1579,6 +1555,30 @@ void UITEM_MeleeWeapon_Base_C::OnBecomeUnactivatable(bool* Result)
 		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "OnBecomeUnactivatable");
 
 	Params::ITEM_MeleeWeapon_Base_C_OnBecomeUnactivatable Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function ITEM_MeleeWeapon_Base.ITEM_MeleeWeapon_Base_C.Activate
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APAWN_SystemShockCharacter_C*     Character                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UITEM_MeleeWeapon_Base_C::Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ITEM_MeleeWeapon_Base_C", "Activate");
+
+	Params::ITEM_MeleeWeapon_Base_C_Activate Parms{};
+
+	Parms.Character = Character;
 
 	UObject::ProcessEvent(Func, &Parms);
 

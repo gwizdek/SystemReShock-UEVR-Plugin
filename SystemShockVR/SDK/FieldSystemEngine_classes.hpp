@@ -61,6 +61,66 @@ public:
 static_assert(alignof(UFieldSystem) == 0x000008, "Wrong alignment on UFieldSystem");
 static_assert(sizeof(UFieldSystem) == 0x000038, "Wrong size on UFieldSystem");
 
+// Class FieldSystemEngine.FieldNodeBase
+// 0x0000 (0x00B0 - 0x00B0)
+class UFieldNodeBase : public UActorComponent
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"FieldNodeBase">();
+	}
+	static class UFieldNodeBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UFieldNodeBase>();
+	}
+};
+static_assert(alignof(UFieldNodeBase) == 0x000008, "Wrong alignment on UFieldNodeBase");
+static_assert(sizeof(UFieldNodeBase) == 0x0000B0, "Wrong size on UFieldNodeBase");
+
+// Class FieldSystemEngine.FieldNodeVector
+// 0x0000 (0x00B0 - 0x00B0)
+class UFieldNodeVector : public UFieldNodeBase
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"FieldNodeVector">();
+	}
+	static class UFieldNodeVector* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UFieldNodeVector>();
+	}
+};
+static_assert(alignof(UFieldNodeVector) == 0x000008, "Wrong alignment on UFieldNodeVector");
+static_assert(sizeof(UFieldNodeVector) == 0x0000B0, "Wrong size on UFieldNodeVector");
+
+// Class FieldSystemEngine.UniformVector
+// 0x0010 (0x00C0 - 0x00B0)
+class UUniformVector final : public UFieldNodeVector
+{
+public:
+	float                                         Magnitude;                                         // 0x00B0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Direction;                                         // 0x00B4(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	class UUniformVector* SetUniformVector(float Magnitude_0, const struct FVector& Direction_0);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"UniformVector">();
+	}
+	static class UUniformVector* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUniformVector>();
+	}
+};
+static_assert(alignof(UUniformVector) == 0x000008, "Wrong alignment on UUniformVector");
+static_assert(sizeof(UUniformVector) == 0x0000C0, "Wrong size on UUniformVector");
+static_assert(offsetof(UUniformVector, Magnitude) == 0x0000B0, "Member 'UUniformVector::Magnitude' has a wrong offset!");
+static_assert(offsetof(UUniformVector, Direction) == 0x0000B4, "Member 'UUniformVector::Direction' has a wrong offset!");
+
 // Class FieldSystemEngine.FieldSystemComponent
 // 0x00D0 (0x0520 - 0x0450)
 class UFieldSystemComponent final : public UPrimitiveComponent
@@ -174,6 +234,47 @@ static_assert(alignof(UFieldSystemMetaDataProcessingResolution) == 0x000008, "Wr
 static_assert(sizeof(UFieldSystemMetaDataProcessingResolution) == 0x0000B8, "Wrong size on UFieldSystemMetaDataProcessingResolution");
 static_assert(offsetof(UFieldSystemMetaDataProcessingResolution, ResolutionType) == 0x0000B0, "Member 'UFieldSystemMetaDataProcessingResolution::ResolutionType' has a wrong offset!");
 
+// Class FieldSystemEngine.FieldNodeInt
+// 0x0000 (0x00B0 - 0x00B0)
+class UFieldNodeInt : public UFieldNodeBase
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"FieldNodeInt">();
+	}
+	static class UFieldNodeInt* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UFieldNodeInt>();
+	}
+};
+static_assert(alignof(UFieldNodeInt) == 0x000008, "Wrong alignment on UFieldNodeInt");
+static_assert(sizeof(UFieldNodeInt) == 0x0000B0, "Wrong size on UFieldNodeInt");
+
+// Class FieldSystemEngine.ToIntegerField
+// 0x0008 (0x00B8 - 0x00B0)
+class UToIntegerField final : public UFieldNodeInt
+{
+public:
+	class UFieldNodeFloat*                        FloatField;                                        // 0x00B0(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	class UToIntegerField* SetToIntegerField(const class UFieldNodeFloat* FloatField_0);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ToIntegerField">();
+	}
+	static class UToIntegerField* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UToIntegerField>();
+	}
+};
+static_assert(alignof(UToIntegerField) == 0x000008, "Wrong alignment on UToIntegerField");
+static_assert(sizeof(UToIntegerField) == 0x0000B8, "Wrong size on UToIntegerField");
+static_assert(offsetof(UToIntegerField, FloatField) == 0x0000B0, "Member 'UToIntegerField::FloatField' has a wrong offset!");
+
 // Class FieldSystemEngine.FieldSystemMetaDataFilter
 // 0x0008 (0x00B8 - 0x00B0)
 class UFieldSystemMetaDataFilter final : public UFieldSystemMetaData
@@ -199,40 +300,6 @@ static_assert(alignof(UFieldSystemMetaDataFilter) == 0x000008, "Wrong alignment 
 static_assert(sizeof(UFieldSystemMetaDataFilter) == 0x0000B8, "Wrong size on UFieldSystemMetaDataFilter");
 static_assert(offsetof(UFieldSystemMetaDataFilter, FilterType) == 0x0000B0, "Member 'UFieldSystemMetaDataFilter::FilterType' has a wrong offset!");
 
-// Class FieldSystemEngine.FieldNodeBase
-// 0x0000 (0x00B0 - 0x00B0)
-class UFieldNodeBase : public UActorComponent
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"FieldNodeBase">();
-	}
-	static class UFieldNodeBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UFieldNodeBase>();
-	}
-};
-static_assert(alignof(UFieldNodeBase) == 0x000008, "Wrong alignment on UFieldNodeBase");
-static_assert(sizeof(UFieldNodeBase) == 0x0000B0, "Wrong size on UFieldNodeBase");
-
-// Class FieldSystemEngine.FieldNodeInt
-// 0x0000 (0x00B0 - 0x00B0)
-class UFieldNodeInt : public UFieldNodeBase
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"FieldNodeInt">();
-	}
-	static class UFieldNodeInt* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UFieldNodeInt>();
-	}
-};
-static_assert(alignof(UFieldNodeInt) == 0x000008, "Wrong alignment on UFieldNodeInt");
-static_assert(sizeof(UFieldNodeInt) == 0x0000B0, "Wrong size on UFieldNodeInt");
-
 // Class FieldSystemEngine.FieldNodeFloat
 // 0x0000 (0x00B0 - 0x00B0)
 class UFieldNodeFloat : public UFieldNodeBase
@@ -249,23 +316,6 @@ public:
 };
 static_assert(alignof(UFieldNodeFloat) == 0x000008, "Wrong alignment on UFieldNodeFloat");
 static_assert(sizeof(UFieldNodeFloat) == 0x0000B0, "Wrong size on UFieldNodeFloat");
-
-// Class FieldSystemEngine.FieldNodeVector
-// 0x0000 (0x00B0 - 0x00B0)
-class UFieldNodeVector : public UFieldNodeBase
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"FieldNodeVector">();
-	}
-	static class UFieldNodeVector* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UFieldNodeVector>();
-	}
-};
-static_assert(alignof(UFieldNodeVector) == 0x000008, "Wrong alignment on UFieldNodeVector");
-static_assert(sizeof(UFieldNodeVector) == 0x0000B0, "Wrong size on UFieldNodeVector");
 
 // Class FieldSystemEngine.UniformInteger
 // 0x0008 (0x00B8 - 0x00B0)
@@ -324,6 +374,30 @@ static_assert(offsetof(URadialIntMask, position) == 0x0000B4, "Member 'URadialIn
 static_assert(offsetof(URadialIntMask, InteriorValue) == 0x0000C0, "Member 'URadialIntMask::InteriorValue' has a wrong offset!");
 static_assert(offsetof(URadialIntMask, ExteriorValue) == 0x0000C4, "Member 'URadialIntMask::ExteriorValue' has a wrong offset!");
 static_assert(offsetof(URadialIntMask, SetMaskCondition) == 0x0000C8, "Member 'URadialIntMask::SetMaskCondition' has a wrong offset!");
+
+// Class FieldSystemEngine.ToFloatField
+// 0x0008 (0x00B8 - 0x00B0)
+class UToFloatField final : public UFieldNodeFloat
+{
+public:
+	class UFieldNodeInt*                          IntField;                                          // 0x00B0(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	class UToFloatField* SetToFloatField(const class UFieldNodeInt* IntegerField);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ToFloatField">();
+	}
+	static class UToFloatField* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UToFloatField>();
+	}
+};
+static_assert(alignof(UToFloatField) == 0x000008, "Wrong alignment on UToFloatField");
+static_assert(sizeof(UToFloatField) == 0x0000B8, "Wrong size on UToFloatField");
+static_assert(offsetof(UToFloatField, IntField) == 0x0000B0, "Member 'UToFloatField::IntField' has a wrong offset!");
 
 // Class FieldSystemEngine.UniformScalar
 // 0x0008 (0x00B8 - 0x00B0)
@@ -525,32 +599,6 @@ static_assert(offsetof(UNoiseField, MinRange) == 0x0000B0, "Member 'UNoiseField:
 static_assert(offsetof(UNoiseField, MaxRange) == 0x0000B4, "Member 'UNoiseField::MaxRange' has a wrong offset!");
 static_assert(offsetof(UNoiseField, Transform) == 0x0000C0, "Member 'UNoiseField::Transform' has a wrong offset!");
 
-// Class FieldSystemEngine.UniformVector
-// 0x0010 (0x00C0 - 0x00B0)
-class UUniformVector final : public UFieldNodeVector
-{
-public:
-	float                                         Magnitude;                                         // 0x00B0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Direction;                                         // 0x00B4(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	class UUniformVector* SetUniformVector(float Magnitude_0, const struct FVector& Direction_0);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"UniformVector">();
-	}
-	static class UUniformVector* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUniformVector>();
-	}
-};
-static_assert(alignof(UUniformVector) == 0x000008, "Wrong alignment on UUniformVector");
-static_assert(sizeof(UUniformVector) == 0x0000C0, "Wrong size on UUniformVector");
-static_assert(offsetof(UUniformVector, Magnitude) == 0x0000B0, "Member 'UUniformVector::Magnitude' has a wrong offset!");
-static_assert(offsetof(UUniformVector, Direction) == 0x0000B4, "Member 'UUniformVector::Direction' has a wrong offset!");
-
 // Class FieldSystemEngine.RadialVector
 // 0x0010 (0x00C0 - 0x00B0)
 class URadialVector final : public UFieldNodeVector
@@ -633,54 +681,6 @@ static_assert(offsetof(UOperatorField, Magnitude) == 0x0000B0, "Member 'UOperato
 static_assert(offsetof(UOperatorField, RightField) == 0x0000B8, "Member 'UOperatorField::RightField' has a wrong offset!");
 static_assert(offsetof(UOperatorField, LeftField) == 0x0000C0, "Member 'UOperatorField::LeftField' has a wrong offset!");
 static_assert(offsetof(UOperatorField, Operation) == 0x0000C8, "Member 'UOperatorField::Operation' has a wrong offset!");
-
-// Class FieldSystemEngine.ToIntegerField
-// 0x0008 (0x00B8 - 0x00B0)
-class UToIntegerField final : public UFieldNodeInt
-{
-public:
-	class UFieldNodeFloat*                        FloatField;                                        // 0x00B0(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	class UToIntegerField* SetToIntegerField(const class UFieldNodeFloat* FloatField_0);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"ToIntegerField">();
-	}
-	static class UToIntegerField* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UToIntegerField>();
-	}
-};
-static_assert(alignof(UToIntegerField) == 0x000008, "Wrong alignment on UToIntegerField");
-static_assert(sizeof(UToIntegerField) == 0x0000B8, "Wrong size on UToIntegerField");
-static_assert(offsetof(UToIntegerField, FloatField) == 0x0000B0, "Member 'UToIntegerField::FloatField' has a wrong offset!");
-
-// Class FieldSystemEngine.ToFloatField
-// 0x0008 (0x00B8 - 0x00B0)
-class UToFloatField final : public UFieldNodeFloat
-{
-public:
-	class UFieldNodeInt*                          IntField;                                          // 0x00B0(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	class UToFloatField* SetToFloatField(const class UFieldNodeInt* IntegerField);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"ToFloatField">();
-	}
-	static class UToFloatField* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UToFloatField>();
-	}
-};
-static_assert(alignof(UToFloatField) == 0x000008, "Wrong alignment on UToFloatField");
-static_assert(sizeof(UToFloatField) == 0x0000B8, "Wrong size on UToFloatField");
-static_assert(offsetof(UToFloatField, IntField) == 0x0000B0, "Member 'UToFloatField::IntField' has a wrong offset!");
 
 // Class FieldSystemEngine.CullingField
 // 0x0018 (0x00C8 - 0x00B0)

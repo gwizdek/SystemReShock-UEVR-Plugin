@@ -19,6 +19,35 @@
 namespace SDK
 {
 
+// Class AnimGraphRuntime.KismetAnimationLibrary
+// 0x0000 (0x0028 - 0x0028)
+class UKismetAnimationLibrary final : public UBlueprintFunctionLibrary
+{
+public:
+	static float K2_CalculateVelocityFromPositionHistory(float DeltaSeconds, const struct FVector& position, struct FPositionHistory& History, int32 NumberOfSamples, float VelocityMin, float VelocityMax);
+	static float K2_CalculateVelocityFromSockets(float DeltaSeconds, class USkeletalMeshComponent* Component, const class FName SocketOrBoneName, const class FName ReferenceSocketOrBone, ERelativeTransformSpace SocketSpace, const struct FVector& OffsetInBoneSpace, struct FPositionHistory& History, int32 NumberOfSamples, float VelocityMin, float VelocityMax, EEasingFuncType EasingType, const struct FRuntimeFloatCurve& CustomCurve);
+	static struct FVector K2_DirectionBetweenSockets(const class USkeletalMeshComponent* Component, const class FName SocketOrBoneNameFrom, const class FName SocketOrBoneNameTo);
+	static float K2_DistanceBetweenTwoSocketsAndMapRange(const class USkeletalMeshComponent* Component, const class FName SocketOrBoneNameA, ERelativeTransformSpace SocketSpaceA, const class FName SocketOrBoneNameB, ERelativeTransformSpace SocketSpaceB, bool bRemapRange, float InRangeMin, float InRangeMax, float OutRangeMin, float OutRangeMax);
+	static float K2_EndProfilingTimer(bool bLog, const class FString& LogPrefix);
+	static struct FTransform K2_LookAt(const struct FTransform& CurrentTransform, const struct FVector& TargetPosition, const struct FVector& LookAtVector, bool bUseUpVector, const struct FVector& UpVector, float ClampConeInDegree);
+	static float K2_MakePerlinNoiseAndRemap(float Value, float RangeOutMin, float RangeOutMax);
+	static struct FVector K2_MakePerlinNoiseVectorAndRemap(float X, float Y, float Z, float RangeOutMinX, float RangeOutMaxX, float RangeOutMinY, float RangeOutMaxY, float RangeOutMinZ, float RangeOutMaxZ);
+	static void K2_StartProfilingTimer();
+	static void K2_TwoBoneIK(const struct FVector& RootPos, const struct FVector& JointPos, const struct FVector& EndPos, const struct FVector& JointTarget, const struct FVector& Effector, struct FVector* OutJointPos, struct FVector* OutEndPos, bool bAllowStretching, float StartStretchRatio, float MaxStretchScale);
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"KismetAnimationLibrary">();
+	}
+	static class UKismetAnimationLibrary* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UKismetAnimationLibrary>();
+	}
+};
+static_assert(alignof(UKismetAnimationLibrary) == 0x000008, "Wrong alignment on UKismetAnimationLibrary");
+static_assert(sizeof(UKismetAnimationLibrary) == 0x000028, "Wrong size on UKismetAnimationLibrary");
+
 // Class AnimGraphRuntime.AnimSequencerInstance
 // 0x0000 (0x02C0 - 0x02C0)
 class UAnimSequencerInstance : public UAnimInstance
@@ -57,23 +86,6 @@ static_assert(alignof(UAnimNotify_PlayMontageNotify) == 0x000008, "Wrong alignme
 static_assert(sizeof(UAnimNotify_PlayMontageNotify) == 0x000040, "Wrong size on UAnimNotify_PlayMontageNotify");
 static_assert(offsetof(UAnimNotify_PlayMontageNotify, NotifyName) == 0x000038, "Member 'UAnimNotify_PlayMontageNotify::NotifyName' has a wrong offset!");
 
-// Class AnimGraphRuntime.SequencerAnimationSupport
-// 0x0000 (0x0028 - 0x0028)
-class ISequencerAnimationSupport final : public IInterface
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"SequencerAnimationSupport">();
-	}
-	static class ISequencerAnimationSupport* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ISequencerAnimationSupport>();
-	}
-};
-static_assert(alignof(ISequencerAnimationSupport) == 0x000008, "Wrong alignment on ISequencerAnimationSupport");
-static_assert(sizeof(ISequencerAnimationSupport) == 0x000028, "Wrong size on ISequencerAnimationSupport");
-
 // Class AnimGraphRuntime.AnimNotify_PlayMontageNotifyWindow
 // 0x0008 (0x0038 - 0x0030)
 class UAnimNotify_PlayMontageNotifyWindow final : public UAnimNotifyState
@@ -94,35 +106,6 @@ public:
 static_assert(alignof(UAnimNotify_PlayMontageNotifyWindow) == 0x000008, "Wrong alignment on UAnimNotify_PlayMontageNotifyWindow");
 static_assert(sizeof(UAnimNotify_PlayMontageNotifyWindow) == 0x000038, "Wrong size on UAnimNotify_PlayMontageNotifyWindow");
 static_assert(offsetof(UAnimNotify_PlayMontageNotifyWindow, NotifyName) == 0x000030, "Member 'UAnimNotify_PlayMontageNotifyWindow::NotifyName' has a wrong offset!");
-
-// Class AnimGraphRuntime.KismetAnimationLibrary
-// 0x0000 (0x0028 - 0x0028)
-class UKismetAnimationLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static float K2_CalculateVelocityFromPositionHistory(float DeltaSeconds, const struct FVector& position, struct FPositionHistory& History, int32 NumberOfSamples, float VelocityMin, float VelocityMax);
-	static float K2_CalculateVelocityFromSockets(float DeltaSeconds, class USkeletalMeshComponent* Component, const class FName SocketOrBoneName, const class FName ReferenceSocketOrBone, ERelativeTransformSpace SocketSpace, const struct FVector& OffsetInBoneSpace, struct FPositionHistory& History, int32 NumberOfSamples, float VelocityMin, float VelocityMax, EEasingFuncType EasingType, const struct FRuntimeFloatCurve& CustomCurve);
-	static struct FVector K2_DirectionBetweenSockets(const class USkeletalMeshComponent* Component, const class FName SocketOrBoneNameFrom, const class FName SocketOrBoneNameTo);
-	static float K2_DistanceBetweenTwoSocketsAndMapRange(const class USkeletalMeshComponent* Component, const class FName SocketOrBoneNameA, ERelativeTransformSpace SocketSpaceA, const class FName SocketOrBoneNameB, ERelativeTransformSpace SocketSpaceB, bool bRemapRange, float InRangeMin, float InRangeMax, float OutRangeMin, float OutRangeMax);
-	static float K2_EndProfilingTimer(bool bLog, const class FString& LogPrefix);
-	static struct FTransform K2_LookAt(const struct FTransform& CurrentTransform, const struct FVector& TargetPosition, const struct FVector& LookAtVector, bool bUseUpVector, const struct FVector& UpVector, float ClampConeInDegree);
-	static float K2_MakePerlinNoiseAndRemap(float Value, float RangeOutMin, float RangeOutMax);
-	static struct FVector K2_MakePerlinNoiseVectorAndRemap(float X, float Y, float Z, float RangeOutMinX, float RangeOutMaxX, float RangeOutMinY, float RangeOutMaxY, float RangeOutMinZ, float RangeOutMaxZ);
-	static void K2_StartProfilingTimer();
-	static void K2_TwoBoneIK(const struct FVector& RootPos, const struct FVector& JointPos, const struct FVector& EndPos, const struct FVector& JointTarget, const struct FVector& Effector, struct FVector* OutJointPos, struct FVector* OutEndPos, bool bAllowStretching, float StartStretchRatio, float MaxStretchScale);
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"KismetAnimationLibrary">();
-	}
-	static class UKismetAnimationLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UKismetAnimationLibrary>();
-	}
-};
-static_assert(alignof(UKismetAnimationLibrary) == 0x000008, "Wrong alignment on UKismetAnimationLibrary");
-static_assert(sizeof(UKismetAnimationLibrary) == 0x000028, "Wrong size on UKismetAnimationLibrary");
 
 // Class AnimGraphRuntime.PlayMontageCallbackProxy
 // 0x0080 (0x00A8 - 0x0028)
@@ -161,6 +144,23 @@ static_assert(offsetof(UPlayMontageCallbackProxy, OnBlendOut) == 0x000038, "Memb
 static_assert(offsetof(UPlayMontageCallbackProxy, OnInterrupted) == 0x000048, "Member 'UPlayMontageCallbackProxy::OnInterrupted' has a wrong offset!");
 static_assert(offsetof(UPlayMontageCallbackProxy, OnNotifyBegin) == 0x000058, "Member 'UPlayMontageCallbackProxy::OnNotifyBegin' has a wrong offset!");
 static_assert(offsetof(UPlayMontageCallbackProxy, OnNotifyEnd) == 0x000068, "Member 'UPlayMontageCallbackProxy::OnNotifyEnd' has a wrong offset!");
+
+// Class AnimGraphRuntime.SequencerAnimationSupport
+// 0x0000 (0x0028 - 0x0028)
+class ISequencerAnimationSupport final : public IInterface
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"SequencerAnimationSupport">();
+	}
+	static class ISequencerAnimationSupport* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ISequencerAnimationSupport>();
+	}
+};
+static_assert(alignof(ISequencerAnimationSupport) == 0x000008, "Wrong alignment on ISequencerAnimationSupport");
+static_assert(sizeof(ISequencerAnimationSupport) == 0x000028, "Wrong size on ISequencerAnimationSupport");
 
 }
 

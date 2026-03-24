@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "CoreGame_structs.hpp"
+#include "STRUCT_WeaponMode_structs.hpp"
 #include "ENUM_ActionPriority_structs.hpp"
 #include "Engine_structs.hpp"
-#include "STRUCT_WeaponMode_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "CoreGame_structs.hpp"
 
 
 namespace SDK::Params
@@ -712,6 +712,19 @@ static_assert(offsetof(ITEM_EnergyWeapon_Base_C_TryBeginReloading, CallFunc_Arra
 static_assert(offsetof(ITEM_EnergyWeapon_Base_C_TryBeginReloading, CallFunc_FindItemBySoftClass_FoundItem) == 0x0000E8, "Member 'ITEM_EnergyWeapon_Base_C_TryBeginReloading::CallFunc_FindItemBySoftClass_FoundItem' has a wrong offset!");
 static_assert(offsetof(ITEM_EnergyWeapon_Base_C_TryBeginReloading, CallFunc_Less_IntInt_ReturnValue) == 0x0000F0, "Member 'ITEM_EnergyWeapon_Base_C_TryBeginReloading::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 
+// Function ITEM_EnergyWeapon_Base.ITEM_EnergyWeapon_Base_C.OnBecomeUnactivatable
+// 0x0002 (0x0002 - 0x0000)
+struct ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable");
+static_assert(sizeof(ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable) == 0x000002, "Wrong size on ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable");
+static_assert(offsetof(ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000001, "Member 'ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
+
 // Function ITEM_EnergyWeapon_Base.ITEM_EnergyWeapon_Base_C.Activate
 // 0x0020 (0x0020 - 0x0000)
 struct ITEM_EnergyWeapon_Base_C_Activate final
@@ -731,19 +744,6 @@ static_assert(offsetof(ITEM_EnergyWeapon_Base_C_Activate, Result) == 0x000008, "
 static_assert(offsetof(ITEM_EnergyWeapon_Base_C_Activate, ActionManager) == 0x000010, "Member 'ITEM_EnergyWeapon_Base_C_Activate::ActionManager' has a wrong offset!");
 static_assert(offsetof(ITEM_EnergyWeapon_Base_C_Activate, CallFunc_Activate_Result) == 0x000018, "Member 'ITEM_EnergyWeapon_Base_C_Activate::CallFunc_Activate_Result' has a wrong offset!");
 static_assert(offsetof(ITEM_EnergyWeapon_Base_C_Activate, CallFunc_TryActivateWithPriority_Result) == 0x000019, "Member 'ITEM_EnergyWeapon_Base_C_Activate::CallFunc_TryActivateWithPriority_Result' has a wrong offset!");
-
-// Function ITEM_EnergyWeapon_Base.ITEM_EnergyWeapon_Base_C.OnBecomeUnactivatable
-// 0x0002 (0x0002 - 0x0000)
-struct ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable final
-{
-public:
-	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_OnBecomeUnactivatable_Result;             // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable) == 0x000001, "Wrong alignment on ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable");
-static_assert(sizeof(ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable) == 0x000002, "Wrong size on ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable");
-static_assert(offsetof(ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable, Result) == 0x000000, "Member 'ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable, CallFunc_OnBecomeUnactivatable_Result) == 0x000001, "Member 'ITEM_EnergyWeapon_Base_C_OnBecomeUnactivatable::CallFunc_OnBecomeUnactivatable_Result' has a wrong offset!");
 
 // Function ITEM_EnergyWeapon_Base.ITEM_EnergyWeapon_Base_C.Deactivate
 // 0x0002 (0x0002 - 0x0000)

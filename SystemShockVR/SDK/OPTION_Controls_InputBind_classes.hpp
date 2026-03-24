@@ -11,17 +11,19 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "ENUM_PrimarySecondary_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 #include "ENUM_InputCategory_structs.hpp"
-#include "UMG_structs.hpp"
 #include "OPTION_Base_classes.hpp"
+#include "SystemReShock_structs.hpp"
+#include "UMG_structs.hpp"
+#include "ENUM_PrimarySecondary_structs.hpp"
 
 
 namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass OPTION_Controls_InputBind.OPTION_Controls_InputBind_C
-// 0x00D8 (0x0410 - 0x0338)
+// 0x00E0 (0x0418 - 0x0338)
 class UOPTION_Controls_InputBind_C final : public UOPTION_Base_C
 {
 public:
@@ -41,15 +43,13 @@ public:
 	class FString                                 InputAction;                                       // 0x03A0(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
 	class FText                                   Label;                                             // 0x03B0(0x0018)(Edit, BlueprintVisible)
 	ENUM_InputCategory                            InputCategory;                                     // 0x03C8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Primary_Highlighted;                               // 0x03C9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          Secondary_Highlighted;                             // 0x03CA(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          Background_Highlighted;                            // 0x03CB(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          Primary_Previewing;                                // 0x03CC(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          Secondary_Previewing;                              // 0x03CD(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3CE[0x2];                                      // 0x03CE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          Primary_Previewing;                                // 0x03C9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          Secondary_Previewing;                              // 0x03CA(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3CB[0x5];                                      // 0x03CB(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	TMulticastInlineDelegate<void()>              OnInputBindChanged;                                // 0x03D0(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 	class FText                                   PressKeyText_Gamepad;                              // 0x03E0(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance)
 	class FText                                   PressKeyText_Default;                              // 0x03F8(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance)
+	class UWIDGET_OptionsMenu_Controls_BindsList_C* ParentBindListWidget;                              // 0x0410(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_OPTION_Controls_InputBind(int32 EntryPoint);
@@ -65,14 +65,11 @@ public:
 	void EVENT_OnMouseEnter_Background(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
 	void EVENT_OnMouseExit_Background(const struct FPointerEvent& MouseEvent);
 	void SetOptionListeningForInput(bool IsListening);
-	void CycleButtonHighlightLeft();
-	void CycleButtonHighlightRight();
 	void TryStopListeningForInput();
 	void IsKeyInCorrectBindScope(const struct FKey& Key, bool* Result);
 	void UpdateVisuals();
 	void SelectDefaultValue();
 	void ReceiveNavLeft(bool InputState, bool* Result);
-	void ReceiveNavRight(bool InputState, bool* Result);
 	void ApplyCleanValue();
 	void UpdateCurrentVisuals();
 	void TryUnhighlightOption();
@@ -82,6 +79,8 @@ public:
 	void StashInputBind(const struct FKey& Key);
 	void GetMouseButtonFromPointerEvent(const struct FPointerEvent& PointerEvent, struct FKey* Result);
 	void IsAnythingHovered(bool* Result);
+	void InitializeMenuListItem(class UWIDGET_MenuListBase_C* ParentList, int32 Index_0);
+	void ReceiveNavRight(bool InputState, bool* Result);
 	void ReceiveNavAccept(bool InputState, bool* Result);
 
 public:
@@ -95,7 +94,7 @@ public:
 	}
 };
 static_assert(alignof(UOPTION_Controls_InputBind_C) == 0x000008, "Wrong alignment on UOPTION_Controls_InputBind_C");
-static_assert(sizeof(UOPTION_Controls_InputBind_C) == 0x000410, "Wrong size on UOPTION_Controls_InputBind_C");
+static_assert(sizeof(UOPTION_Controls_InputBind_C) == 0x000418, "Wrong size on UOPTION_Controls_InputBind_C");
 static_assert(offsetof(UOPTION_Controls_InputBind_C, UberGraphFrame) == 0x000338, "Member 'UOPTION_Controls_InputBind_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UOPTION_Controls_InputBind_C, HBOX_InputBind) == 0x000340, "Member 'UOPTION_Controls_InputBind_C::HBOX_InputBind' has a wrong offset!");
 static_assert(offsetof(UOPTION_Controls_InputBind_C, IMAGE_HighlightedBackground) == 0x000348, "Member 'UOPTION_Controls_InputBind_C::IMAGE_HighlightedBackground' has a wrong offset!");
@@ -112,14 +111,12 @@ static_assert(offsetof(UOPTION_Controls_InputBind_C, WIDGET_ButtonLegend_Key_Bin
 static_assert(offsetof(UOPTION_Controls_InputBind_C, InputAction) == 0x0003A0, "Member 'UOPTION_Controls_InputBind_C::InputAction' has a wrong offset!");
 static_assert(offsetof(UOPTION_Controls_InputBind_C, Label) == 0x0003B0, "Member 'UOPTION_Controls_InputBind_C::Label' has a wrong offset!");
 static_assert(offsetof(UOPTION_Controls_InputBind_C, InputCategory) == 0x0003C8, "Member 'UOPTION_Controls_InputBind_C::InputCategory' has a wrong offset!");
-static_assert(offsetof(UOPTION_Controls_InputBind_C, Primary_Highlighted) == 0x0003C9, "Member 'UOPTION_Controls_InputBind_C::Primary_Highlighted' has a wrong offset!");
-static_assert(offsetof(UOPTION_Controls_InputBind_C, Secondary_Highlighted) == 0x0003CA, "Member 'UOPTION_Controls_InputBind_C::Secondary_Highlighted' has a wrong offset!");
-static_assert(offsetof(UOPTION_Controls_InputBind_C, Background_Highlighted) == 0x0003CB, "Member 'UOPTION_Controls_InputBind_C::Background_Highlighted' has a wrong offset!");
-static_assert(offsetof(UOPTION_Controls_InputBind_C, Primary_Previewing) == 0x0003CC, "Member 'UOPTION_Controls_InputBind_C::Primary_Previewing' has a wrong offset!");
-static_assert(offsetof(UOPTION_Controls_InputBind_C, Secondary_Previewing) == 0x0003CD, "Member 'UOPTION_Controls_InputBind_C::Secondary_Previewing' has a wrong offset!");
+static_assert(offsetof(UOPTION_Controls_InputBind_C, Primary_Previewing) == 0x0003C9, "Member 'UOPTION_Controls_InputBind_C::Primary_Previewing' has a wrong offset!");
+static_assert(offsetof(UOPTION_Controls_InputBind_C, Secondary_Previewing) == 0x0003CA, "Member 'UOPTION_Controls_InputBind_C::Secondary_Previewing' has a wrong offset!");
 static_assert(offsetof(UOPTION_Controls_InputBind_C, OnInputBindChanged) == 0x0003D0, "Member 'UOPTION_Controls_InputBind_C::OnInputBindChanged' has a wrong offset!");
 static_assert(offsetof(UOPTION_Controls_InputBind_C, PressKeyText_Gamepad) == 0x0003E0, "Member 'UOPTION_Controls_InputBind_C::PressKeyText_Gamepad' has a wrong offset!");
 static_assert(offsetof(UOPTION_Controls_InputBind_C, PressKeyText_Default) == 0x0003F8, "Member 'UOPTION_Controls_InputBind_C::PressKeyText_Default' has a wrong offset!");
+static_assert(offsetof(UOPTION_Controls_InputBind_C, ParentBindListWidget) == 0x000410, "Member 'UOPTION_Controls_InputBind_C::ParentBindListWidget' has a wrong offset!");
 
 }
 

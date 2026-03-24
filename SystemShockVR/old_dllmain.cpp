@@ -2,14 +2,6 @@
 #define  _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING 1
 #define _DEBUG_DURATIONS 0
 
-#include <windows.h>
-#include <stdio.h>
-#include <string.h>
-#include <memory>
-#include <mutex>
-#include <iostream>
-#include <codecvt>
-#include <chrono>
 #include <map>
 #include <set>
 
@@ -54,16 +46,16 @@
 #include "SDK/INTERACT_Laptop_classes.hpp"
 #include "SDK/CinematicCamera_classes.hpp"
 #include "SDK/HARDWARE_HeadLamp_classes.hpp"
-#include "SDK/MOVECONTROL_FocusableInteract_classes.hpp"
+#include "SDK/AssetRegistry_classes.hpp"
 
 #include "mINI/ini.h"
 #include "uevr/Plugin.hpp"
 #include "pch.h"
 
 #include "SceneComponent.hpp"
+#include "MOVECONTROL_FocusableInteract_C.hpp"
 #include "vr_plugin_shared.hpp"
 #include "vr_hacker_hud.hpp"
-#include "plugin_utils.hpp"
 
 
 #define PLUGIN_LOG_ONCE(...) {\
@@ -97,7 +89,7 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 
 using namespace uevr;
 
-const char* MOD_VERSION = "1.3.0";
+const char* MOD_VERSION = "1.5.0 (Game 2.1)";
 const int CB_DURATION_SAMPLE_RATE = 100;
 
 typedef struct _TIMER_STRUCT
@@ -225,12 +217,10 @@ const std::map<HackerWeapon, WeaponMeta> weapons_map {
     { PROXIMITY_MINE_MANAGER,   { "ProximityMineManager",   { 0.0f, -6.0f, -7.0f },     0.0f    } },    // ok
 };
 
-class OldSystemShockPlugin {
-
-//}; : public uevr::Plugin {
+class SystemShockPlugin : public uevr::Plugin {
 public:
-    OldSystemShockPlugin() = default;
-    virtual ~OldSystemShockPlugin() {
+    SystemShockPlugin() = default;
+    virtual ~SystemShockPlugin() {
         API::get()->log_info("UEVR Plugin Closing...");
         
         // cleanup
@@ -249,10 +239,8 @@ public:
     SDK::FHitResult m_hit_result{};
     int m_viewport_size_x{ 1920 }, m_viewport_size_y{ 1080 };
     float m_mouse_wheel_debounce_timer{ 0.f };
-    SDK::UObject* m_loaded_asset{ nullptr };
-    SDK::ABP_SSRModActor_C* m_mod_actor{ nullptr };
+    bool m_try_override_audio_listener{ true };
 
-    SDK::ABP_VRBody_C* m_vr_body{ nullptr };
     // this set keeps events to be handled
     // if an event is successfully handled, it's removed form this set
     // usefull if you want to handle something in next engine ticks
@@ -304,7 +292,7 @@ public:
     MemoInput m_gamepad_right_shoulder{ XINPUT_GAMEPAD_RIGHT_SHOULDER, "RIGHT_SHOULDER" };
     MemoInput m_gamepad_left_shoulder{ XINPUT_GAMEPAD_LEFT_SHOULDER, "LEFT_SHOULDER" };
     MemoInput m_gamepad_right_thumb{ XINPUT_GAMEPAD_RIGHT_THUMB, "RIGHT_THUMB" };
-    MemoInput m_gamepad_left_thumb{ XINPUT_GAMEPAD_LEFT_THUMB, "LEFT_THUMB" };
+    MemoDualInput m_gamepad_left_thumb{ XINPUT_GAMEPAD_LEFT_THUMB, "LEFT_THUMB" };
     MemoInput m_gamepad_btn_a{ XINPUT_GAMEPAD_A, "BTN_A" };
     MemoDualInput m_gamepad_btn_b{ XINPUT_GAMEPAD_B, "BTN_B" };
     MemoInput m_gamepad_btn_x{ XINPUT_GAMEPAD_X, "BTN_X" };
@@ -332,6 +320,8 @@ public:
     int m_ui_option_head_lamp_mode{ HEAD_LAMP_NORMAL };
     int m_ui_option_head_lamp_attachment_point{ HEAD_LAMP_ATTACHMENT_RH };
     int m_ui_option_head_lamp_energy_consumption{ HEAD_LAMP_ENERGY_INFINITE };
+    bool m_ui_option_alternative_menu_btn_mapping{ false };
+    bool m_ui_option_auto_crosshair_scale{ true };
 
     // unused
     int m_ui_option_hotbar_selector_button{ 0 };
@@ -345,39 +335,31 @@ public:
     int m_ui_xinput_duration{ 0 }; // [microseconds]
     int m_ui_pre_engine_tick_duration{ 0 }; // [microseconds]
 
-    //void on_dllmain() override {}
+    void on_dllmain() override {}
 
-    //void on_initialize() override {
-    //    try {
-    //        // Logs to the appdata UnrealVRMod log.txt file
-    //        API::get()->log_info("UEVR Initializing...");
+    void on_initialize() override {
+        try {
+            // Logs to the appdata UnrealVRMod log.txt file
+            API::get()->log_info("UEVR Initializing...");
 
-    //        // load stored configuration from config file
-    //        load_plugin_config();
+            // load stored configuration from config file
+            load_plugin_config();
 
-    //        ImGui::CreateContext();
+            ImGui::CreateContext();
 
-    //        auto world = SDK::UWorld::GetWorld();
-    //        if (!SDK::UKismetSystemLibrary::IsValid(world)) {
-    //            API::get()->log_error("[flicker_fixer][cleanup_actors] World invalid");
-    //            return;
-    //        }
+            // remove stale VR HUD actors (when re-enabling the plugin)
+            VRHackerHUD::cleanup();
+            m_vr_hud = new VRHackerHUD();
 
-    //        PluginUtils::destroy_actors_by_tag(world, L"VRBodyActor");
+            m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
 
-    //        // remove stale VR HUD actors (when re-enabling the plugin)
-    //        VRHackerHUD::cleanup();
-    //        m_vr_hud = new VRHackerHUD();
-
-    //        m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
-    //    
-    //        // disable player focus (camera pull) on interactable objects like vending machines
-    //        MOVECONTROL_FocusableInteract_C::disable_character_focusable_interactions();
-    //    }
-    //    catch (...) {
-    //        API::get()->log_error("[main][on_initialize] Exception");
-    //    }
-    //}
+            // disable player focus (camera pull) on interactable objects like vending machines
+            MOVECONTROL_FocusableInteract_C::disable_character_focusable_interactions();
+        }
+        catch (...) {
+            API::get()->log_error("[main][on_initialize] Exception");
+        }
+    }
 
     void on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) {
         PLUGIN_LOG_ONCE("XInput Get State");
@@ -422,100 +404,101 @@ public:
         }
     }
 
-    //void on_pre_engine_tick(API::UGameEngine * engine, float delta) override {
-    //    try {
-    //        PLUGIN_LOG_ONCE("Pre Engine Tick: %f", delta);
+    void on_pre_engine_tick(API::UGameEngine * engine, float delta) override {
+        try {
+            PLUGIN_LOG_ONCE("Pre Engine Tick: %f", delta);
 
-    //        m_cb_calls_count = m_cb_calls_count < CB_DURATION_SAMPLE_RATE ? ++m_cb_calls_count : 0;
-    //        // start cb timer
-    //        std::chrono::steady_clock::time_point begin_time;
-    //        if (m_ui_option_show_debug_view && m_cb_calls_count == 0) {
-    //            begin_time = std::chrono::steady_clock::now();
-    //        }
+            m_cb_calls_count = m_cb_calls_count < CB_DURATION_SAMPLE_RATE ? ++m_cb_calls_count : 0;
+            // start cb timer
+            std::chrono::steady_clock::time_point begin_time;
+            if (m_ui_option_show_debug_view && m_cb_calls_count == 0) {
+                begin_time = std::chrono::steady_clock::now();
+            }
 
-    //        const UEVR_VRData* vr = API::get()->param()->vr;
+            const UEVR_VRData* vr = API::get()->param()->vr;
 
-    //        m_mouse_wheel_debounce_timer += delta;
+            m_mouse_wheel_debounce_timer += delta;
 
-    //        // if the controllers are not active, the xinput cb is not triggered.
-    //        // normally we want the xinput cb to prepare vars as it's the first cb to be called
-    //        // but if it wasn't called, we prepare them here
-    //        if (!m_xinput_cb_processed) {
-    //            if (!vr->is_runtime_ready())
-    //                return;
+            // if the controllers are not active, the xinput cb is not triggered.
+            // normally we want the xinput cb to prepare vars as it's the first cb to be called
+            // but if it wasn't called, we prepare them here
+            if (!m_xinput_cb_processed) {
+                if (!vr->is_runtime_ready())
+                    return;
 
-    //            if (!prepare_state(vr)) {
-    //                API::get()->log_info("State not prepared");
-    //                return;
-    //            }
+                if (!prepare_state(vr)) {
+                    API::get()->log_info("State not prepared");
+                    return;
+                }
 
-    //            handle_pawn_changes(vr);
-    //        }
-    //        else {
-    //            // reset for next cb iteration
-    //            m_xinput_cb_processed = false;
-    //        }
+                handle_pawn_changes(vr);
+            }
+            else {
+                // reset for next cb iteration
+                m_xinput_cb_processed = false;
+            }
 
-    //        // add delta time to dual buttons
-    //        //m_gamepad_btn_b.add_delta(delta);
-    //        m_gamepad_btn_y.add_delta(delta);
-    //    
-    //        handle_level_change(vr);
+            // add delta time to dual buttons
+            //m_gamepad_btn_b.add_delta(delta);
+            m_gamepad_btn_y.add_delta(delta);
+            m_gamepad_left_thumb.add_delta(delta);
+        
+            handle_level_change(vr);
 
-    //        try {
-    //            if (m_vr_hud != nullptr) {
-    //                m_vr_hud->handle_mod_events(&m_mod_events);
+            try {
+                if (m_vr_hud != nullptr) {
+                    m_vr_hud->handle_mod_events(&m_mod_events);
 
-    //                if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
-    //                    if (!m_mfd_visible.value && m_hotbar_selector_button.is_held()) {
-    //                        m_vr_hud->update_primary_item_selector_location(delta);
-    //                    }
-    //                    if (!m_mfd_visible.value && m_hardware_selector_button.is_held()) {
-    //                        m_vr_hud->update_secondary_item_selector_location(delta);
-    //                    }
-    //                    if (m_mfd_visible.value && !m_mod_events.contains(MOD_EVENT_SHOW_MFD)) {
-    //                        m_vr_hud->update_mfd_mask_location(delta);
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        catch (...) {
-    //            API::get()->log_error("[main][on_pre_engine_tick][vr_hud] Exception");
-    //        }
+                    if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
+                        if (!m_mfd_visible.value && m_hotbar_selector_button.is_held()) {
+                            m_vr_hud->update_primary_item_selector_location(delta);
+                        }
+                        if (!m_mfd_visible.value && m_hardware_selector_button.is_held()) {
+                            m_vr_hud->update_secondary_item_selector_location(delta);
+                        }
+                        if (m_mfd_visible.value && !m_mod_events.contains(MOD_EVENT_SHOW_MFD)) {
+                            m_vr_hud->update_mfd_mask_location(delta);
+                        }
+                    }
+                }
+            }
+            catch (...) {
+                API::get()->log_error("[main][on_pre_engine_tick][vr_hud] Exception");
+            }
 
-    //        try {
-    //            handle_cine_camera_changes(vr);
-    //            handle_look_pivot();
-    //            handle_camera_lock(vr);
-    //            handle_cyberspace_look_pivot(vr);
-    //            handle_hud_depth(vr);
-    //            handle_interactives_cursor_size();
-    //            handle_animations(vr);
-    //            handle_intro_laptop(vr);
-    //            //handle_player_death(vr);
-    //            handle_weapon_change();
-    //            handle_weapon_changes();
-    //            //handle_arms_mesh_visibility();
-    //            handle_media_display();
-    //            //handle_player_height(vr);
-    //            handle_in_game_menu(vr);
-    //            handle_compass();
-    //            handle_head_lamp();
-    //        }
-    //        catch (...) {
-    //            API::get()->log_error("[main][on_pre_engine_tick][handlers] Exception");
-    //        }
+            try {
+                handle_cine_camera_changes(vr);
+                handle_look_pivot();
+                handle_camera_lock(vr);
+                handle_cyberspace_look_pivot(vr);
+                handle_hud_depth(vr);
+                handle_interactives_cursor_size();
+                handle_animations(vr);
+                handle_intro_laptop(vr);
+                //handle_player_death(vr);
+                handle_weapon_changes();
+                handle_arms_mesh_visibility();
+                handle_media_display();
+                handle_player_height(vr);
+                handle_in_game_menu(vr);
+                handle_compass();
+                handle_head_lamp();
+                handle_audio_listener_override();
+            }
+            catch (...) {
+                API::get()->log_error("[main][on_pre_engine_tick][handlers] Exception");
+            }
 
-    //        // calculate cb duration
-    //        if (m_ui_option_show_debug_view && m_cb_calls_count == 0) {
-    //            std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
-    //            m_ui_pre_engine_tick_duration = static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count());
-    //        }
-    //    }
-    //    catch (...) {
-    //        API::get()->log_error("[main][on_pre_engine_tick] Exception");
-    //    }
-    //}
+            // calculate cb duration
+            if (m_ui_option_show_debug_view && m_cb_calls_count == 0) {
+                std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
+                m_ui_pre_engine_tick_duration = static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count());
+            }
+        }
+        catch (...) {
+            API::get()->log_error("[main][on_pre_engine_tick] Exception");
+        }
+    }
 
     // -------------------------------------------------------------------------------------
     // state setters
@@ -609,16 +592,6 @@ public:
 
                 m_inventory = static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->COMP_HackerInventory;
 
-                m_inventory->FindItem(SDK::UHARDWARE_HeadLamp_C::StaticClass(), false, false, &m_inventory_item);
-                if (SDK::UKismetSystemLibrary::IsValid(m_inventory_item) && m_inventory_item->IsA(SDK::UHARDWARE_HeadLamp_C::StaticClass())) {
-                    m_head_lamp = (SDK::UHARDWARE_HeadLamp_C*)m_inventory_item;
-                    m_is_head_lamp_active.set_value(m_head_lamp->IsActivated);
-                    //API::get()->log_warn("[prepare_state] Headlight found");
-                }
-                else {
-                    m_head_lamp = nullptr;
-                    m_is_head_lamp_active.set_value(false);
-                }
 
                 m_current_weapon = m_inventory->CurrentEquippedWeapon;
                 m_player_alive.set_value(static_cast<SDK::APAWN_SystemShockCharacter_C*>(m_sdk_pawn)->IsAlive);
@@ -650,6 +623,11 @@ public:
                 m_channeling_interactable_name.set_value("");
                 m_current_montage.set_value(nullptr);
                 m_current_action = nullptr;
+            }
+
+            // headlamp
+            if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass()) && m_inventory != nullptr) {
+                m_is_head_lamp_active.set_value(static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->HeadlampLight->Intensity != 0.0f);
             }
 
             // ingame menu
@@ -776,12 +754,41 @@ public:
             m_gamepad_right_shoulder.set_state(state);
             m_gamepad_left_shoulder.set_state(state);
             m_gamepad_right_thumb.set_state(state);
-            m_gamepad_left_thumb.set_state(state);
+            m_gamepad_left_thumb.set_dual_state(state);
             m_gamepad_trigger_right.set_state(state);
             m_gamepad_trigger_left.set_state(state);
 
             m_hotbar_selector_button.set_state(state);
             m_hardware_selector_button.set_state(state);
+
+            if (
+                m_ui_option_alternative_menu_btn_mapping && (
+                    m_pawn_state.value == PAWN_HACKERIMPLANT ||
+                    m_pawn_state.value == PAWN_HACKERSIMPLE ||
+                    m_pawn_state.value == PAWN_AVATAR ||
+                    m_pawn_state.value == PAWN_PSEUDOSPACE
+                    )
+                ) {
+                if (m_gamepad_left_thumb.is_long_pressed(1000)) {
+                    API::get()->log_warn("[main][handle_controller_input] m_gamepad_left_thumb LONG pressed");
+                    SDK::FKey key_name{
+                        .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Escape")
+                    };
+                    // TODO
+                    if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_118(key_name);
+                    }
+                    else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Simple_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_118(key_name);
+                    }
+                    else if (m_sdk_pawn->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_96(key_name);
+                    }
+                    else if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Pseudospace_C::StaticClass())) {
+                        static_cast<SDK::APAWN_Hacker_Pseudospace_C*>(m_sdk_pawn)->InpActEvt_Locked_Escape_K2Node_InputActionEvent_118(key_name);
+                    }
+                }
+            }
 
             if (m_main_menu_in_game_visible.value) {
                 // increase stick deadzone for better navigation in the menu
@@ -803,22 +810,20 @@ public:
 
             // normal level
             if (m_pawn_state.value == PAWN_HACKERIMPLANT) {
-                if (m_vr_body != nullptr) {
-                    if (m_gamepad_left_shoulder.is_held()) {
-                        m_vr_body->Set_Hand_Pose(SDK::E_VRHandState::NewEnumerator1, false);
-                    }
-                    if (m_gamepad_left_shoulder.is_released()) {
-                        m_vr_body->Set_Hand_Pose(SDK::E_VRHandState::NewEnumerator0, false);
-                    }
-                    if (m_gamepad_btn_a.is_pressed()) {
-                        m_gamepad_btn_a.mute_state(state);
-                        fire_minipistol();
-                        return;
-                    }
-                }
 
                 // MFD on
                 if (m_mfd_visible.value) {
+                    if (m_ui_option_alternative_menu_btn_mapping && m_gamepad_left_thumb.is_short_pressed()) {
+                        SDK::FKey tab_key{
+                            .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
+                        };
+
+                        // TODO
+                        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_43(tab_key);
+                        }
+                    }
+
                     handle_mfd_interactions(state, vr);
                     set_head_lamp_brightness(0.f);
                 }
@@ -844,11 +849,24 @@ public:
                 }
                 // normal gameplay
                 else {
+                    if (m_ui_option_alternative_menu_btn_mapping && m_gamepad_left_thumb.is_short_pressed()) {
+                        SDK::FKey tab_key{
+                            .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Tab")
+                        };
+
+                        // TODO
+                        if (m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+                            static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_43(tab_key);
+                        }
+                    }
+
                     if (m_hotbar_selector_button.is_held() || m_hardware_selector_button.is_held()) {
                         set_head_lamp_brightness(0.f);
                     }
                     else {
-                        set_head_lamp_brightness(3000.f);
+                        if (m_is_head_lamp_active.value) {
+                            set_head_lamp_brightness(3000.f);
+                        }
                     }
                     // mute right stick Y axis
                     state->Gamepad.sThumbRY = 0;
@@ -1011,9 +1029,9 @@ public:
 
     // lock camera offsets
     void handle_camera_lock(const UEVR_VRData* vr) {
-        //vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
-        //vr->set_mod_value("VR_CameraRightOffset", "0.000000");
-        //vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+        vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+        vr->set_mod_value("VR_CameraRightOffset", "0.000000");
+        vr->set_mod_value("VR_CameraUpOffset", "0.000000");
     }
 
     float get_current_weapon_distance_offset() {
@@ -1135,12 +1153,33 @@ public:
         }
     }
 
+    void handle_audio_listener_override() {
+        if (m_try_override_audio_listener && m_vr_hud != nullptr && m_vr_hud->get_hmd_component() != nullptr) {
+            if (m_pawn_state.matches_any({ PAWN_HACKERIMPLANT, PAWN_HACKERSIMPLE, PAWN_PSEUDOSPACE })) {
+                API::get()->log_warn("[main][handle_audio_listener_override] Try Override Audio Listener #1");
+                SDK::APlayerController* controller = (SDK::APlayerController*)static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->GetController();
+                controller->SetAudioListenerOverride(m_vr_hud->get_hmd_component(), { 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f });
+                m_try_override_audio_listener = false;
+                API::get()->log_warn("[main][handle_audio_listener_override] Overrided Audio Listener");
+            }
+        }
+
+        if (m_try_override_audio_listener && m_pawn_state.matches_any({ PAWN_AVATAR })) {
+            API::get()->log_warn("[main][handle_audio_listener_override] Try Override Audio Listener #2");
+            SDK::APlayerController* controller = (SDK::APlayerController*)static_cast<SDK::APAWN_Avatar_C*>(m_sdk_pawn)->GetController();
+            controller->ClearAudioListenerOverride();
+            m_try_override_audio_listener = false;
+            API::get()->log_warn("[main][handle_audio_listener_override] Overrided Audio Listener");
+        }
+    }
+
     void handle_level_change(const UEVR_VRData* vr) {
         try {
             if (m_level.has_changed()) {
                 if (m_level.value == nullptr) {
                     return;
                 }
+                m_try_override_audio_listener = true;
 
                 const UEVR_SDKData* sdk = API::get()->sdk();
                 auto level_name = m_level.value->GetFullName();
@@ -1171,100 +1210,6 @@ public:
                 else if (level_name.ends_with("CitadelStation.PersistentLevel")) {
                     sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
 
-                    API::get()->log_warn("[main][handle_level_change] Initialize components");
-                    // reinitialize
-                    //PluginUtils::load_asset(
-                    //    L"Class /Script/Engine.ParticleSystem",
-                    //    L"/Game/Art/VFX/ParticleSystems/Weapons/Projectiles/Plasma/PS_Plasma_Ball.PS_Plasma_Ball"
-                    //);
-
-
-                    //SDK::FAssetData vr_asset_data{
-                    //    .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/VRBody.VRBody_C"),
-                    //    .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/VRBody"),
-                    //    .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody"),
-                    //    .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"VRBody"),
-                    //    .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L""),
-                    //};
-
-                    SDK::FAssetData vr_asset_data{
-                        .ObjectPath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/BP_SSRModActor.BP_SSRModActor_C"),
-                        .PackageName = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/VRBody/BP_SSRModActor"),
-                        .PackagePath = SDK::UKismetStringLibrary::Conv_StringToName(L"/Game/Mods/BP_SSRModActor"),
-                        .AssetName = SDK::UKismetStringLibrary::Conv_StringToName(L"BP_SSRModActor"),
-                        .AssetClass = SDK::UKismetStringLibrary::Conv_StringToName(L""),
-                    };
-
-                    API::get()->log_warn("[main][handle_level_change] Loading Asset");
-                    // keep the pointer until vr weapon init is done
-                    m_loaded_asset = PluginUtils::load_asset(vr_asset_data);
-                    if (m_loaded_asset != nullptr) {
-                        API::get()->log_warn("[main][handle_level_change] Loaded Asset");
-
-                        const SDK::FVector pawn_location = m_sdk_pawn->K2_GetActorLocation();
-                        SDK::FTransform pawn_transform{};
-                        pawn_transform.Rotation = { 0.f, 0.f, 0.f, 1.f };
-                        pawn_transform.Translation = { pawn_location.X, pawn_location.Y, pawn_location.Z };
-                        pawn_transform.Scale3D = { 1.f, 1.f, 1.f };
-
-                        SDK::FTransform zero_transform{
-                            .Rotation = { 0.f, 0.f, 0.f, 1.f },
-                            .Translation = { 0.f, 0.f, 0.f },
-                            .Scale3D = { 1.f, 1.f, 1.f }
-                        };
-
-                        try {
-                            m_vr_body = (SDK::ABP_VRBody_C*)SDK::UGameplayStatics::BeginDeferredActorSpawnFromClass(
-                                m_sdk_world, SDK::ABP_VRBody_C::StaticClass(), pawn_transform, SDK::ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr
-                            );
-                            if (m_vr_body == nullptr) {
-                                API::get()->log_error("[main][handle_level_change] Error spawning VRBody actor");
-                                return;
-                            }
-
-                            SDK::UGameplayStatics::FinishSpawningActor(m_vr_body, pawn_transform);
-                            API::get()->log_warn("[main][handle_level_change] Finishied spawning VRBody actor");
-
-                            SDK::TArray<SDK::FName> actor_tags{};
-                            actor_tags.Data = (SDK::FName*)API::FMalloc::get()->malloc(1 * sizeof(SDK::FName));
-                            actor_tags.NumElements = 1;
-                            actor_tags.MaxElements = 1;
-                            actor_tags.Data[0] = SDK::UKismetStringLibrary::Conv_StringToName(L"VRBodyActor");
-
-                            m_vr_body->Tags = actor_tags;
-                            API::get()->log_warn("[main][handle_level_change] Added VRBody tag");
-
-                            m_vr_body->K2_AttachRootComponentTo(
-                                m_sdk_pawn->K2_GetRootComponent(),
-                                SDK::UKismetStringLibrary::Conv_StringToName(L"None"),
-                                SDK::EAttachLocation::SnapToTarget,
-                                true
-                            );
-
-
-                            //m_mod_actor = (SDK::ABP_SSRModActor_C*)SDK::UGameplayStatics::BeginDeferredActorSpawnFromClass(
-                            //    m_sdk_world, SDK::ABP_SSRModActor_C::StaticClass(), pawn_transform, SDK::ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr
-                            //);
-                            //if (m_mod_actor == nullptr) {
-                            //    API::get()->log_error("[main][handle_level_change] Error spawning mod actor");
-                            //    return;
-                            //}
-
-                            //SDK::UGameplayStatics::FinishSpawningActor(m_mod_actor, pawn_transform);
-                            //API::get()->log_warn("[main][handle_level_change] Finishied spawning mod actor");
-
-                            //m_mod_actor->PostBeginPlay();
-
-                            //API::get()->log_warn("[main][handle_level_change] Executed mod actor PostBeginPlay");
-                        }
-                        catch (...) {
-                            API::get()->log_error("[main][handle_level_change] Error spawning ABP_SSRModActor_C");
-                        }
-                    }
-                    else {
-                        API::get()->log_warn("[main][handle_level_change] Failed to Load Asset");
-                    }
-
                     // initialize hud
                     m_mod_events.insert(MOD_EVENT_VR_HUD_INITIALIZE);
 
@@ -1284,8 +1229,8 @@ public:
                         m_vr_hud->clear_pointers();
                     }
 
-                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
-                    m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale);
+                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale, m_ui_option_auto_crosshair_scale);
+                    m_vr_hud->set_cursor_brackets_scale(&m_ui_option_crosshair_brackets_scale, m_ui_option_auto_crosshair_scale);
 
                     set_enegry_shield_overlay_params();
 
@@ -1334,58 +1279,6 @@ public:
     }
 
     // it sets the offset each tick - maybe can be improved but there's not much overhead
-    void handle_weapon_change2() {
-        try {
-            if (m_pawn_state.value != PAWN_HACKERIMPLANT && m_pawn_state.value != PAWN_PSEUDOSPACE)
-                return;
-
-            if (m_weapon_state.has_changed()) {
-                API::get()->log_info("[main][handle_weapon_change] Weapon Changed");
-                if (SDK::UKismetSystemLibrary::IsValid(m_vr_body)) {
-                    if (m_weapon_state.value == WEAPON_MINI_PISTOL) {
-                        API::get()->log_info("[main][handle_weapon_change] Minipistol selected");
-                        
-                        if (m_sdk_pawn != nullptr && static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->WeaponMesh != nullptr) {
-                            static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->WeaponMesh->AnimScriptInstance = nullptr;
-
-                            static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->WeaponMesh->DetachFromParent(true, false);
-                            static_cast<SDK::APAWN_Hacker_Simple_C*>(m_sdk_pawn)->WeaponMesh->K2_AttachToComponent(
-                                m_vr_body->VRBodyMesh,
-                                SDK::UKismetStringLibrary::Conv_StringToName(L"RightHandGunSocket"),
-                                SDK::EAttachmentRule::SnapToTarget,
-                                SDK::EAttachmentRule::KeepRelative,
-                                SDK::EAttachmentRule::KeepRelative,
-                                false
-                            );
-                        }
-
-
-                        //if (m_current_weapon->WeaponMeshComponent != nullptr) {
-                        //    m_current_weapon->WeaponMeshComponent->DetachFromParent(true, false);
-                        //    m_current_weapon->WeaponMeshComponent-
-                        //    m_current_weapon->WeaponMeshComponent->K2_AttachToComponent(
-                        //        m_vr_body->VRBodyMesh,
-                        //        SDK::UKismetStringLibrary::Conv_StringToName(L"RightHandGunSocket"),
-                        //        SDK::EAttachmentRule::SnapToTarget,
-                        //        SDK::EAttachmentRule::KeepRelative,
-                        //        SDK::EAttachmentRule::KeepRelative,
-                        //        false
-                        //    );
-                        //}
-                        m_vr_body->Set_Hand_Pose(SDK::E_VRHandState::NewEnumerator5, true);
-                    }
-                    else {
-                        API::get()->log_info("[main][handle_weapon_change] Other weapon selected");
-                        m_vr_body->Set_Hand_Pose(SDK::E_VRHandState::NewEnumerator0, true);
-                    }
-                }
-            }
-        }
-        catch (...) {
-            API::get()->log_error("[main][handle_weapon_change] Exception");
-        }
-    }
-
     void handle_weapon_changes() {
         try {
             if (m_pawn_state.value != PAWN_HACKERIMPLANT && m_pawn_state.value != PAWN_PSEUDOSPACE)
@@ -1591,7 +1484,7 @@ public:
                 m_vr_hud->set_crosshair_cursor_scale(&scale);
             }
             else {
-                m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
+                m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale, m_ui_option_auto_crosshair_scale);
             }
         }
     }
@@ -1670,11 +1563,19 @@ public:
 
                 // scroll up
                 if (state->Gamepad.sThumbRY > INPUT_DEADZONE_HI && m_mouse_wheel_debounce_timer > MOUSE_WHEEL_DEBOUNCE_TIME) {
+                    //SDK::FKey key{
+                    //    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"MouseScrollUp")
+                    //};
+                    //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_AnyKey_K2Node_InputKeyEvent_28(key);
                     send_mouse(0x0A, false);
                     m_mouse_wheel_debounce_timer = 0.f;
                 }
                 // scroll down
                 if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_HI && m_mouse_wheel_debounce_timer > MOUSE_WHEEL_DEBOUNCE_TIME) {
+                    //SDK::FKey key{
+                    //    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"MouseScrollDown")
+                    //};
+                    //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_AnyKey_K2Node_InputKeyEvent_28(key);
                     send_mouse(0x0B, false);
                     m_mouse_wheel_debounce_timer = 0.f;
                 }
@@ -1683,17 +1584,25 @@ public:
                 state->Gamepad.sThumbRY = 0;
 
                 if (m_gamepad_btn_a.has_changed()) {
+                    //SDK::FKey lmb{
+                    //    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"LeftMouseButton")
+                    //};
+                    //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_99(lmb);
                     send_mouse(VK_LBUTTON, !m_gamepad_btn_a.value);
                 }
 
                 if (m_gamepad_btn_y.has_changed()) {
+                    //SDK::FKey rmb{
+                    //    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"RightMouseButton")
+                    //};
+                    //static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->InpActEvt_Real_Interact_K2Node_InputActionEvent_101(rmb);
                     send_mouse(VK_RBUTTON, !m_gamepad_btn_y.value);
                 }
                 ctrl->SetIsUsingGamepad(false);
 
                 auto pos = m_vr_hud->get_2D_hit_position();
                 if (pos.X != 0 && pos.Y != 0) {
-                    ctrl->SetMouseLocation(pos.X, pos.Y);
+                    ctrl->SetMouseLocation((UC::int32)pos.X, (UC::int32)pos.Y);
                 }
 
                 m_vr_hud->update_laser_pointer_length(100.f);
@@ -1717,15 +1626,7 @@ public:
                 ctrl->GetViewportSize(&m_viewport_size_x, &m_viewport_size_y);
 
                 // get uevr world scale
-                char world_scale_option[16] = { 1.0 };
-                vr->get_mod_value("VR_WorldScale", world_scale_option, sizeof(world_scale_option));
-                float world_scale{ 1.f };
-                try {
-                    size_t read = 0;
-                    world_scale = std::stof(world_scale_option, &read);
-                } catch (std::invalid_argument) {
-                    API::get()->log_info("Handle MFD Changes :: Error converting UEVR world scale value to float");
-                }
+                float world_scale = uevr_param_to_float(vr, "VR_WorldScale");
 
                 char ui_distance[32];
                 char ui_size[32];
@@ -1785,7 +1686,7 @@ public:
                     m_vr_hud->set_player_response_to_collision_channel(
                         item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
                     );
-                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale);
+                    m_vr_hud->set_crosshair_cursor_scale(&m_ui_option_crosshair_cursor_scale, m_ui_option_auto_crosshair_scale);
                 }
             }
         }
@@ -1989,6 +1890,8 @@ public:
 
                     case PAWN_HACKERIMPLANT:
                         API::get()->log_warn("Changed Pawn to: PAWN_HACKERIMPLANT");
+                        m_try_override_audio_listener = true;
+
                         if (m_pawn != nullptr) {
                             m_pawn->set_bool_property(L"bUseControllerRotationPitch", false);
                             m_pawn->set_bool_property(L"bUseControllerRotationRoll", false);
@@ -2014,6 +1917,7 @@ public:
                     // cyberspace
                     case PAWN_AVATAR:
                         API::get()->log_warn("Changed Pawn to: PAWN_AVATAR");
+                        m_try_override_audio_listener = true;
 
                         if (m_pawn != nullptr) {
                             m_pawn->set_bool_property(L"bUseControllerRotationPitch", true);
@@ -2137,6 +2041,16 @@ public:
 
     void apply_head_lamp_settings() {
         if (SDK::UKismetSystemLibrary::IsValid(m_sdk_pawn) && m_sdk_pawn->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+
+            m_inventory->FindItem(SDK::UHARDWARE_HeadLamp_C::StaticClass(), false, false, &m_inventory_item);
+            if (SDK::UKismetSystemLibrary::IsValid(m_inventory_item) && m_inventory_item->IsA(SDK::UHARDWARE_HeadLamp_C::StaticClass())) {
+                m_head_lamp = (SDK::UHARDWARE_HeadLamp_C*)m_inventory_item;
+                API::get()->log_warn("[prepare_state] Headlight found");
+            }
+            else {
+                m_head_lamp = nullptr;
+            }
+
             SDK::USpotLightComponent* head_lamp_light = static_cast<SDK::APAWN_Hacker_Implant_C*>(m_sdk_pawn)->HeadlampLight;
             if (!SDK::UKismetSystemLibrary::IsValid(head_lamp_light)) {
                 API::get()->log_error("[main][set_head_lamp_light_params] Invalid Headlight object");
@@ -2342,7 +2256,8 @@ public:
                 ImGui::Checkbox("Force hide compass", &m_ui_option_force_hide_compass);
                 ImGui::Checkbox("Toggle run with left grip", &m_ui_option_toggle_run_with_left_grip);
                 ImGui::Checkbox("Disable roomscale when aiming", &m_ui_option_disable_roomscale_when_aiming);
-            
+                ImGui::Checkbox("Alternative Menu/MFD button mapping", &m_ui_option_alternative_menu_btn_mapping);
+
                 ImGui::Combo("HMD", &m_ui_option_openxr_runtime, "Meta Quest\0HP Reverb G2\0");
             
                 //ImGui::SeparatorText("Button mappings");
@@ -2360,6 +2275,10 @@ public:
                 //}
 
                 ImGui::SeparatorText("Crosshair options");
+                ImGui::Checkbox("Auto Crosshair Scale", &m_ui_option_auto_crosshair_scale);
+                if (m_ui_option_auto_crosshair_scale) {
+                    ImGui::BeginDisabled();
+                }
                 ImGui::SliderInt("Crosshair Depth", &m_ui_option_crosshair_depth, 0, 10);
                 ImGui::SliderFloat("Crosshair Cursor Scale", &m_ui_option_crosshair_cursor_scale, 0.f, 1.f );
                 ImGui::SliderFloat("Crosshair Brackets Scale", &m_ui_option_crosshair_brackets_scale, 0.f, 1.f);
@@ -2367,6 +2286,9 @@ public:
                 if (ImGui::Button("Apply Crosshair Options")) {
                     apply_selected_crosshair_options();
                 };
+                if (m_ui_option_auto_crosshair_scale) {
+                    ImGui::EndDisabled();
+                }
 
                 ImGui::SeparatorText("Flashlight options");
                 if (ImGui::Combo("Mode", &m_ui_option_head_lamp_mode, "Narrow\0Normal\0Wide\0")) {
@@ -2465,160 +2387,160 @@ public:
         }
     }
 
-    //bool on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) override {
-    //    ImGui_ImplWin32_WndProcHandler(hwnd, msg, wparam, lparam);
+    bool on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) override {
+        ImGui_ImplWin32_WndProcHandler(hwnd, msg, wparam, lparam);
 
-    //    return !ImGui::GetIO().WantCaptureMouse && !ImGui::GetIO().WantCaptureKeyboard;
-    //}
+        return !ImGui::GetIO().WantCaptureMouse && !ImGui::GetIO().WantCaptureKeyboard;
+    }
 
-    //void on_device_reset() override {
-    //    PLUGIN_LOG_ONCE("Device Reset");
+    void on_device_reset() override {
+        PLUGIN_LOG_ONCE("Device Reset");
 
-    //    //std::scoped_lock _{ m_imgui_mutex };
+        //std::scoped_lock _{ m_imgui_mutex };
 
-    //    const auto renderer_data = API::get()->param()->renderer;
+        const auto renderer_data = API::get()->param()->renderer;
 
-    //    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
-    //        ImGui_ImplDX11_Shutdown();
-    //        g_d3d11 = {};
-    //    }
+        if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
+            ImGui_ImplDX11_Shutdown();
+            g_d3d11 = {};
+        }
 
-    //    if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
-    //        ImGui_ImplDX12_Shutdown();
-    //        g_d3d12 = {};
-    //    }
+        if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
+            ImGui_ImplDX12_Shutdown();
+            g_d3d12 = {};
+        }
 
-    //    m_imgui_initialized = false;
-    //}
+        m_imgui_initialized = false;
+    }
 
-    //void on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) override {
-    //    PLUGIN_LOG_ONCE("Post Render VR Framework DX11");
+    void on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) override {
+        PLUGIN_LOG_ONCE("Post Render VR Framework DX11");
 
-    //    const auto vr_active = API::get()->param()->vr->is_hmd_active();
+        const auto vr_active = API::get()->param()->vr->is_hmd_active();
 
-    //    if (!m_imgui_initialized || !vr_active) {
-    //        return;
-    //    }
+        if (!m_imgui_initialized || !vr_active) {
+            return;
+        }
 
-    //    if (m_was_rendering_desktop) {
-    //        m_was_rendering_desktop = false;
-    //        on_device_reset();
-    //        return;
-    //    }
+        if (m_was_rendering_desktop) {
+            m_was_rendering_desktop = false;
+            on_device_reset();
+            return;
+        }
 
-    //    //std::scoped_lock _{ m_imgui_mutex };
+        //std::scoped_lock _{ m_imgui_mutex };
 
-    //    ImGui_ImplDX11_NewFrame();
-    //    g_d3d11.render_imgui_vr(context, rtv);
-    //}
+        ImGui_ImplDX11_NewFrame();
+        g_d3d11.render_imgui_vr(context, rtv);
+    }
 
-    //void on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) override {
-    //    PLUGIN_LOG_ONCE("Post Render VR Framework DX12");
+    void on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) override {
+        PLUGIN_LOG_ONCE("Post Render VR Framework DX12");
 
-    //    const auto vr_active = API::get()->param()->vr->is_hmd_active();
+        const auto vr_active = API::get()->param()->vr->is_hmd_active();
 
-    //    if (!m_imgui_initialized || !vr_active) {
-    //        return;
-    //    }
+        if (!m_imgui_initialized || !vr_active) {
+            return;
+        }
 
-    //    if (m_was_rendering_desktop) {
-    //        m_was_rendering_desktop = false;
-    //        on_device_reset();
-    //        return;
-    //    }
+        if (m_was_rendering_desktop) {
+            m_was_rendering_desktop = false;
+            on_device_reset();
+            return;
+        }
 
-    //    //std::scoped_lock _{ m_imgui_mutex };
+        //std::scoped_lock _{ m_imgui_mutex };
 
-    //    ImGui_ImplDX12_NewFrame();
-    //    g_d3d12.render_imgui_vr(command_list, rtv);
-    //}
+        ImGui_ImplDX12_NewFrame();
+        g_d3d12.render_imgui_vr(command_list, rtv);
+    }
 
-    //bool initialize_imgui() {
-    //    if (m_imgui_initialized) {
-    //        return true;
-    //    }
+    bool initialize_imgui() {
+        if (m_imgui_initialized) {
+            return true;
+        }
 
-    //    IMGUI_CHECKVERSION();
-    //    ImGui::CreateContext();
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
 
-    //    static const auto imgui_ini = API::get()->get_persistent_dir(L"system_reshock_vr_imgui.ini").string();
-    //    ImGui::GetIO().IniFilename = imgui_ini.c_str();
-    //    ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
+        static const auto imgui_ini = API::get()->get_persistent_dir(L"system_reshock_vr_imgui.ini").string();
+        ImGui::GetIO().IniFilename = imgui_ini.c_str();
+        ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
 
-    //    const auto renderer_data = API::get()->param()->renderer;
+        const auto renderer_data = API::get()->param()->renderer;
 
-    //    DXGI_SWAP_CHAIN_DESC swap_desc{};
-    //    auto swapchain = (IDXGISwapChain*)renderer_data->swapchain;
-    //    swapchain->GetDesc(&swap_desc);
+        DXGI_SWAP_CHAIN_DESC swap_desc{};
+        auto swapchain = (IDXGISwapChain*)renderer_data->swapchain;
+        swapchain->GetDesc(&swap_desc);
 
-    //    m_wnd = swap_desc.OutputWindow;
+        m_wnd = swap_desc.OutputWindow;
 
-    //    if (!ImGui_ImplWin32_Init(m_wnd)) {
-    //        return false;
-    //    }
+        if (!ImGui_ImplWin32_Init(m_wnd)) {
+            return false;
+        }
 
-    //    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
-    //        if (!g_d3d11.initialize()) {
-    //            return false;
-    //        }
-    //    }
-    //    else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
-    //        if (!g_d3d12.initialize()) {
-    //            return false;
-    //        }
-    //    }
+        if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
+            if (!g_d3d11.initialize()) {
+                return false;
+            }
+        }
+        else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
+            if (!g_d3d12.initialize()) {
+                return false;
+            }
+        }
 
-    //    m_imgui_initialized = true;
-    //    return true;
-    //}
+        m_imgui_initialized = true;
+        return true;
+    }
 
-    //void on_present() override {
-    //    //std::scoped_lock _{ m_imgui_mutex };
+    void on_present() override {
+        //std::scoped_lock _{ m_imgui_mutex };
 
-    //    if (!m_imgui_initialized) {
-    //        API::get()->log_info("imgui not initialized");
-    //        if (!initialize_imgui()) {
-    //            API::get()->log_info("Failed to initialize imgui");
-    //            return;
-    //        }
-    //        else {
-    //            API::get()->log_info("Initialized imgui");
-    //        }
-    //    }
+        if (!m_imgui_initialized) {
+            API::get()->log_info("imgui not initialized");
+            if (!initialize_imgui()) {
+                API::get()->log_info("Failed to initialize imgui");
+                return;
+            }
+            else {
+                API::get()->log_info("Initialized imgui");
+            }
+        }
 
-    //    const auto renderer_data = API::get()->param()->renderer;
+        const auto renderer_data = API::get()->param()->renderer;
 
-    //    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
-    //        ImGui_ImplDX11_NewFrame();
-    //        ImGui_ImplWin32_NewFrame();
-    //        ImGui::NewFrame();
+        if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
+            ImGui_ImplDX11_NewFrame();
+            ImGui_ImplWin32_NewFrame();
+            ImGui::NewFrame();
 
-    //        internal_frame();
+            internal_frame();
 
-    //        ImGui::EndFrame();
-    //        ImGui::Render();
+            ImGui::EndFrame();
+            ImGui::Render();
 
-    //        g_d3d11.render_imgui();
-    //    }
-    //    else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
-    //        auto command_queue = (ID3D12CommandQueue*)renderer_data->command_queue;
+            g_d3d11.render_imgui();
+        }
+        else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
+            auto command_queue = (ID3D12CommandQueue*)renderer_data->command_queue;
 
-    //        if (command_queue == nullptr) {
-    //            return;
-    //        }
+            if (command_queue == nullptr) {
+                return;
+            }
 
-    //        ImGui_ImplDX12_NewFrame();
-    //        ImGui_ImplWin32_NewFrame();
-    //        ImGui::NewFrame();
+            ImGui_ImplDX12_NewFrame();
+            ImGui_ImplWin32_NewFrame();
+            ImGui::NewFrame();
 
-    //        internal_frame();
+            internal_frame();
 
-    //        ImGui::EndFrame();
-    //        ImGui::Render();
+            ImGui::EndFrame();
+            ImGui::Render();
 
-    //        g_d3d12.render_imgui();
-    //    }
-    //}
+            g_d3d12.render_imgui();
+        }
+    }
 
     // sends mouse inputs to OS (thanks markmon)
     void send_mouse(WORD key, bool key_up) {
@@ -2776,10 +2698,39 @@ public:
             else {
                 API::get()->log_error("[Mod Config] Missing general > shield_vignette_opacity value.");
             }
+
+            // alternative_menu_btn_mapping
+            if (mod_config["general"].has("alternative_menu_btn_mapping")) {
+                std::string& alternative_menu_btn_mapping = mod_config["general"]["alternative_menu_btn_mapping"];
+                try {
+                    m_ui_option_alternative_menu_btn_mapping = std::stoi(alternative_menu_btn_mapping) == 1;
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid general > alternative_menu_btn_mapping value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing general > alternative_menu_btn_mapping value.");
+            }
         }
 
         // section validation
         if (mod_config.has("crosshair")) {
+
+            // crosshair_depth
+            if (mod_config["crosshair"].has("auto")) {
+                std::string& crosshair_auto = mod_config["crosshair"]["auto"];
+                try {
+                    m_ui_option_auto_crosshair_scale = std::stoi(crosshair_auto) == 1;
+                }
+                catch (...) {
+                    API::get()->log_error("[Mod Config] Invalid crosshair > auto value.");
+                }
+            }
+            else {
+                API::get()->log_error("[Mod Config] Missing crosshair > auto value.");
+            }
+
 
             // crosshair_depth
             if (mod_config["crosshair"].has("depth")) {
@@ -2885,7 +2836,9 @@ public:
         mod_config["general"]["disable_roomscale_when_aiming"] = std::to_string(m_ui_option_disable_roomscale_when_aiming).c_str();
         mod_config["general"]["openxr_runtime"] = std::to_string(m_ui_option_openxr_runtime).c_str();
         mod_config["general"]["shield_vignette_opacity"] = std::to_string(m_ui_option_shield_vignette_opacity).c_str();
+        mod_config["general"]["alternative_menu_btn_mapping"] = std::to_string(m_ui_option_alternative_menu_btn_mapping).c_str();
 
+        mod_config["crosshair"]["auto"] = std::to_string(m_ui_option_auto_crosshair_scale).c_str();
         mod_config["crosshair"]["depth"] = std::to_string(m_ui_option_crosshair_depth).c_str();
         mod_config["crosshair"]["cursor_scale"] = std::to_string(m_ui_option_crosshair_cursor_scale).c_str();
         mod_config["crosshair"]["brackets_scale"] = std::to_string(m_ui_option_crosshair_brackets_scale).c_str();
@@ -2896,8 +2849,23 @@ public:
 
         return mod_config_file.generate(mod_config, true);
     }
+
+    SDK::UObject* load_asset(SDK::FAssetData asset_data) {
+        try {
+            API::get()->log_warn("[plugin_utils][load_asset] Loading Asset %s", asset_data.ObjectPath.GetRawString().c_str());
+            SDK::FSoftObjectPath path = SDK::UAssetRegistryHelpers::ToSoftObjectPath(asset_data);
+            auto obj_ref = SDK::UKismetSystemLibrary::Conv_SoftObjPathToSoftObjRef(path);
+            SDK::UObject* asset = SDK::UKismetSystemLibrary::LoadAsset_Blocking(obj_ref);
+            API::get()->log_warn("[plugin_utils][load_asset] Successfully Loaded Asset");
+            return asset;
+        }
+        catch (...) {
+            API::get()->log_error("[plugin_utils][load_asset] Exception");
+            return nullptr;
+        }
+    }
 };
 
 // Actually creates the plugin. Very important that this global is created.
 // The fact that it's using std::unique_ptr is not important, as long as the constructor is called in some way.
-//std::unique_ptr<SystemShockPlugin> g_plugin{ new SystemShockPlugin() };
+std::unique_ptr<SystemShockPlugin> g_plugin{ new SystemShockPlugin() };

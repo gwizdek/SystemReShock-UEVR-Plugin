@@ -91,69 +91,12 @@ void UWIDGET_ButtonLegend_KeyComposite_C::SetDecoratorColor(const struct FColor&
 }
 
 
-// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.GetInputActionFromGenericToken
-// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class FString                           InputString                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// class FName                             Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWIDGET_ButtonLegend_KeyComposite_C::GetInputActionFromGenericToken(const class FString& InputString, bool IsUsingGamepad, class FName* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_ButtonLegend_KeyComposite_C", "GetInputActionFromGenericToken");
-
-	Params::WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken Parms{};
-
-	Parms.InputString = std::move(InputString);
-	Parms.IsUsingGamepad = IsUsingGamepad;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
-// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.GetInputActionFromTokenPair
-// (Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class FString                           InputStringA                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// class FString                           InputStringB                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// class FName                             Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWIDGET_ButtonLegend_KeyComposite_C::GetInputActionFromTokenPair(const class FString& InputStringA, const class FString& InputStringB, bool IsUsingGamepad, class FName* Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_ButtonLegend_KeyComposite_C", "GetInputActionFromTokenPair");
-
-	Params::WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair Parms{};
-
-	Parms.InputStringA = std::move(InputStringA);
-	Parms.InputStringB = std::move(InputStringB);
-	Parms.IsUsingGamepad = IsUsingGamepad;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Result != nullptr)
-		*Result = Parms.Result;
-}
-
-
 // Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.ParseInputActionsFromString
-// (Private, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class FString                           InputString                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// class FName                             InputNameA                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class FName                             InputNameB                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWIDGET_ButtonLegend_KeyComposite_C::ParseInputActionsFromString(const class FString& InputString, bool IsUsingGamepad, class FName* InputNameA, class FName* InputNameB)
+void UWIDGET_ButtonLegend_KeyComposite_C::ParseInputActionsFromString(const class FString& InputString)
 {
 	static class UFunction* Func = nullptr;
 
@@ -163,15 +106,8 @@ void UWIDGET_ButtonLegend_KeyComposite_C::ParseInputActionsFromString(const clas
 	Params::WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString Parms{};
 
 	Parms.InputString = std::move(InputString);
-	Parms.IsUsingGamepad = IsUsingGamepad;
 
 	UObject::ProcessEvent(Func, &Parms);
-
-	if (InputNameA != nullptr)
-		*InputNameA = Parms.InputNameA;
-
-	if (InputNameB != nullptr)
-		*InputNameB = Parms.InputNameB;
 }
 
 
@@ -203,41 +139,35 @@ void UWIDGET_ButtonLegend_KeyComposite_C::InitializeLegendKeyComposite()
 }
 
 
-// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.EVENT_OnUsingGamepadChanged
-// (Private, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.UpdateMapping
+// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void UWIDGET_ButtonLegend_KeyComposite_C::EVENT_OnUsingGamepadChanged(bool IsUsingGamepad)
+void UWIDGET_ButtonLegend_KeyComposite_C::UpdateMapping()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_ButtonLegend_KeyComposite_C", "EVENT_OnUsingGamepadChanged");
+		Func = Class->GetFunction("WIDGET_ButtonLegend_KeyComposite_C", "UpdateMapping");
 
-	Params::WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged Parms{};
-
-	Parms.IsUsingGamepad = IsUsingGamepad;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.UpdateInputActions
-// (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.EVENT_OnActiveControllerTypeChanged
+// (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// ENUM_ControllerType                     NewActiveControllerType                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWIDGET_ButtonLegend_KeyComposite_C::UpdateInputActions(bool IsUsingGamepad)
+void UWIDGET_ButtonLegend_KeyComposite_C::EVENT_OnActiveControllerTypeChanged(ENUM_ControllerType NewActiveControllerType)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_ButtonLegend_KeyComposite_C", "UpdateInputActions");
+		Func = Class->GetFunction("WIDGET_ButtonLegend_KeyComposite_C", "EVENT_OnActiveControllerTypeChanged");
 
-	Params::WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions Parms{};
+	Params::WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged Parms{};
 
-	Parms.IsUsingGamepad = IsUsingGamepad;
+	Parms.NewActiveControllerType = NewActiveControllerType;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

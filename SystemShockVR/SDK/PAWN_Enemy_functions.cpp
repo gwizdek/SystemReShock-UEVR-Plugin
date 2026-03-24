@@ -2929,6 +2929,26 @@ void APAWN_Enemy_C::IsRealspaceCharacter(bool* Result)
 }
 
 
+// Function PAWN_Enemy.PAWN_Enemy_C.ReceiveGetCurrentSkillPreferredMinMaxRange
+// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+struct FVector APAWN_Enemy_C::ReceiveGetCurrentSkillPreferredMinMaxRange()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PAWN_Enemy_C", "ReceiveGetCurrentSkillPreferredMinMaxRange");
+
+	Params::PAWN_Enemy_C_ReceiveGetCurrentSkillPreferredMinMaxRange Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
 // Function PAWN_Enemy.PAWN_Enemy_C.GetInteractBroken
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:

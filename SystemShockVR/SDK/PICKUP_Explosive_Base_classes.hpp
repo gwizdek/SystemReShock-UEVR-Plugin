@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "PICKUP_Base_classes.hpp"
 #include "Engine_structs.hpp"
+#include "PICKUP_Base_classes.hpp"
 
 
 namespace SDK
@@ -22,7 +22,6 @@ namespace SDK
 class APICKUP_Explosive_Base_C : public APICKUP_Base_C
 {
 public:
-	uint8                                         Pad_474[0x4];                                      // 0x0474(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FPointerToUberGraphFrame               UberGraphFrame_PICKUP_Explosive_Base_C;            // 0x0478(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	class UNiagaraComponent*                      FlashingLight;                                     // 0x0480(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	struct FTimerHandle                           DetonationTimerHandle;                             // 0x0488(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)

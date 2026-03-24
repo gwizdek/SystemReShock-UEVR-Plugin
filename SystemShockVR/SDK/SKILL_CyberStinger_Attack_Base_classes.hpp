@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "SKILL_ShootBullet_classes.hpp"
 #include "Engine_structs.hpp"
+#include "SKILL_ShootBullet_classes.hpp"
 
 
 namespace SDK

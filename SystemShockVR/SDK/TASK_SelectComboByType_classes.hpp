@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_SkillType_structs.hpp"
 #include "Engine_structs.hpp"
+#include "ENUM_SkillType_structs.hpp"
 #include "ENUM_TargetAssignmentType_structs.hpp"
 #include "AIModule_classes.hpp"
 

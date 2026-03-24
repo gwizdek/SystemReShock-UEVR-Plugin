@@ -33,15 +33,15 @@ public:
 	void OnLoaded_C7864A054553FC5E3414D4B3DBBBFB08(class UObject* Loaded);
 	void IsUsingDevice(bool* Result);
 	void EVENT_OnStartedUsingDevice();
-	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
 	void TryResumeHandheldDeviceAction();
 	void ConsumeDevice();
 	void EVENT_OnFinishingUsingDevice();
+	void ReceiveAnimationMessage(const class FString& Message, bool* Result);
 	void SetupMaterial();
 	void TryBecomeActivatableImmediately(bool ShowImmediately, bool* Result);
 	void ResumeWaitingToHolster(class UCOMP_Inventory_C* FromInventory);
-	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void OnBecomeUnactivatable(bool* Result);
+	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void Deactivate(bool* Result);
 
 public:

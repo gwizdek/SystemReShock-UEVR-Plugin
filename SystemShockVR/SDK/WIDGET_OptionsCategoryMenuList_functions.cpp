@@ -181,27 +181,6 @@ void UWIDGET_OptionsCategoryMenuList_C::GetListItemByCategory(ENUM_OptionCategor
 }
 
 
-// Function WIDGET_OptionsCategoryMenuList.WIDGET_OptionsCategoryMenuList_C.InitializeItemArray
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// TArray<class UWIDGET_MenuListItemBase_C*>MenuListItems                                          (Parm, OutParm, ContainsInstancedReference)
-
-void UWIDGET_OptionsCategoryMenuList_C::InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_OptionsCategoryMenuList_C", "InitializeItemArray");
-
-	Params::WIDGET_OptionsCategoryMenuList_C_InitializeItemArray Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (MenuListItems != nullptr)
-		*MenuListItems = std::move(Parms.MenuListItems);
-}
-
-
 // Function WIDGET_OptionsCategoryMenuList.WIDGET_OptionsCategoryMenuList_C.SetSelectedItem
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -223,6 +202,27 @@ void UWIDGET_OptionsCategoryMenuList_C::SetSelectedItem(int32 ItemIndex, class F
 
 	if (CategoryText != nullptr)
 		*CategoryText = std::move(Parms.CategoryText);
+}
+
+
+// Function WIDGET_OptionsCategoryMenuList.WIDGET_OptionsCategoryMenuList_C.InitializeItemArray
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// TArray<class UWIDGET_MenuListItemBase_C*>MenuListItems                                          (Parm, OutParm, ContainsInstancedReference)
+
+void UWIDGET_OptionsCategoryMenuList_C::InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_OptionsCategoryMenuList_C", "InitializeItemArray");
+
+	Params::WIDGET_OptionsCategoryMenuList_C_InitializeItemArray Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (MenuListItems != nullptr)
+		*MenuListItems = std::move(Parms.MenuListItems);
 }
 
 }

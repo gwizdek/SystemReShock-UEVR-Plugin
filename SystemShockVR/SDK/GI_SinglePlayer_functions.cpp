@@ -5979,6 +5979,62 @@ void UGI_SinglePlayer_C::SetHackerGenderValue(ENUM_HackerGender NewGender)
 }
 
 
+// Function GI_SinglePlayer.GI_SinglePlayer_C.UpdatePlayerMoveDistance
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UGI_SinglePlayer_C::UpdatePlayerMoveDistance()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GI_SinglePlayer_C", "UpdatePlayerMoveDistance");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function GI_SinglePlayer.GI_SinglePlayer_C.IsUsingAudioCaching
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    IsUsingAudioCache                                      (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void UGI_SinglePlayer_C::IsUsingAudioCaching(bool* IsUsingAudioCache)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GI_SinglePlayer_C", "IsUsingAudioCaching");
+
+	Params::GI_SinglePlayer_C_IsUsingAudioCaching Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsUsingAudioCache != nullptr)
+		*IsUsingAudioCache = Parms.IsUsingAudioCache;
+}
+
+
+// Function GI_SinglePlayer.GI_SinglePlayer_C.GetAudioCacheSize
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                                   AudioCacheSizeMegaBytes                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UGI_SinglePlayer_C::GetAudioCacheSize(float* AudioCacheSizeMegaBytes)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GI_SinglePlayer_C", "GetAudioCacheSize");
+
+	Params::GI_SinglePlayer_C_GetAudioCacheSize Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (AudioCacheSizeMegaBytes != nullptr)
+		*AudioCacheSizeMegaBytes = Parms.AudioCacheSizeMegaBytes;
+}
+
+
 // Function GI_SinglePlayer.GI_SinglePlayer_C.IsInGame
 // (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent, Const)
 // Parameters:

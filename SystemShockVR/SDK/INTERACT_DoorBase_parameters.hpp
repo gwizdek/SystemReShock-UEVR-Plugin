@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ButtonColorType_structs.hpp"
-#include "NamedInteger_structs.hpp"
-#include "STRUCT_EffectParams_structs.hpp"
-#include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "ENUM_DoorIcons_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
+#include "NamedInteger_structs.hpp"
+#include "ENUM_ButtonColorType_structs.hpp"
+#include "Engine_structs.hpp"
+#include "STRUCT_EffectParams_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
+#include "ENUM_DoorIcons_structs.hpp"
 #include "ENUM_DoorState_structs.hpp"
 
 
@@ -2006,19 +2006,6 @@ static_assert(offsetof(INTERACT_DoorBase_C_TryFixOverlappingActorPhysics, K2Node
 static_assert(offsetof(INTERACT_DoorBase_C_TryFixOverlappingActorPhysics, K2Node_DynamicCast_bSuccess_1) == 0x000050, "Member 'INTERACT_DoorBase_C_TryFixOverlappingActorPhysics::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_TryFixOverlappingActorPhysics, CallFunc_GetOverlappingActors_OverlappingActors) == 0x000058, "Member 'INTERACT_DoorBase_C_TryFixOverlappingActorPhysics::CallFunc_GetOverlappingActors_OverlappingActors' has a wrong offset!");
 
-// Function INTERACT_DoorBase.INTERACT_DoorBase_C.OnRestoreInventoryAfterSequence
-// 0x0010 (0x0010 - 0x0000)
-struct INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence final
-{
-public:
-	class APAWN_Hacker_Simple_C*                  HackerPawn;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetDisplayMesh_Result;                    // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence");
-static_assert(sizeof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence) == 0x000010, "Wrong size on INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence");
-static_assert(offsetof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence, HackerPawn) == 0x000000, "Member 'INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence::HackerPawn' has a wrong offset!");
-static_assert(offsetof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence, CallFunc_SetDisplayMesh_Result) == 0x000008, "Member 'INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence::CallFunc_SetDisplayMesh_Result' has a wrong offset!");
-
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.GetTargetShape
 // 0x0018 (0x0018 - 0x0000)
 struct INTERACT_DoorBase_C_GetTargetShape final
@@ -2170,6 +2157,19 @@ static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, BusyMessage_0) == 0x
 static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, CallFunc_IsSafeToClose_Result) == 0x000020, "Member 'INTERACT_DoorBase_C_GetInteractBusy::CallFunc_IsSafeToClose_Result' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, CallFunc_Not_PreBool_ReturnValue) == 0x000021, "Member 'INTERACT_DoorBase_C_GetInteractBusy::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(INTERACT_DoorBase_C_GetInteractBusy, K2Node_SwitchEnum_CmpSuccess) == 0x000022, "Member 'INTERACT_DoorBase_C_GetInteractBusy::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+
+// Function INTERACT_DoorBase.INTERACT_DoorBase_C.OnRestoreInventoryAfterSequence
+// 0x0010 (0x0010 - 0x0000)
+struct INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence final
+{
+public:
+	class APAWN_Hacker_Simple_C*                  HackerPawn;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetDisplayMesh_Result;                    // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence) == 0x000008, "Wrong alignment on INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence");
+static_assert(sizeof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence) == 0x000010, "Wrong size on INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence");
+static_assert(offsetof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence, HackerPawn) == 0x000000, "Member 'INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence::HackerPawn' has a wrong offset!");
+static_assert(offsetof(INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence, CallFunc_SetDisplayMesh_Result) == 0x000008, "Member 'INTERACT_DoorBase_C_OnRestoreInventoryAfterSequence::CallFunc_SetDisplayMesh_Result' has a wrong offset!");
 
 // Function INTERACT_DoorBase.INTERACT_DoorBase_C.SetInteractPowered
 // 0x0014 (0x0014 - 0x0000)

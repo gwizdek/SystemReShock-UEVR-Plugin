@@ -10,7 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_ControllerType_structs.hpp"
 #include "ENUM_MenuNavigationInput_structs.hpp"
+#include "SystemReShock_structs.hpp"
 #include "SlateCore_structs.hpp"
 
 
@@ -18,12 +20,13 @@ namespace SDK::Params
 {
 
 // Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.ExecuteUbergraph_WIDGET_SplashScreen_Title
-// 0x01D0 (0x01D0 - 0x0000)
+// 0x01D8 (0x01D8 - 0x0000)
 struct WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class FString                                 K2Node_ComponentBoundEvent_Message;                // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
@@ -44,26 +47,29 @@ public:
 	class UWIDGET_MenuBase_C*                     K2Node_ComponentBoundEvent_Menu;                   // 0x0100(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FText                                   CallFunc_GetMenuLabel_Page_3;                      // 0x0108(0x0018)()
 	class FText                                   CallFunc_GetEmptyText_ReturnValue_4;               // 0x0120(0x0018)()
-	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x0138(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x0140(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0148(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0149(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x014A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsMedicalDemo_Result;                     // 0x014B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x014C(0x0038)(IsPlainOldData, NoDestructor)
-	float                                         K2Node_Event_InDeltaTime;                          // 0x0184(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0188(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(bool IsUsingGamepad)>          K2Node_CreateDelegate_OutputDelegate;              // 0x0190(0x0010)(ZeroConstructor, NoDestructor)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x01A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x01A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1A9[0x7];                                      // 0x01A9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x01B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x01B8(0x0010)(ZeroConstructor, NoDestructor)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x01C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0139(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsMedicalDemo_Result;                     // 0x013A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_13B[0x1];                                      // 0x013B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x013C(0x0038)(IsPlainOldData, NoDestructor)
+	float                                         K2Node_Event_InDeltaTime;                          // 0x0174(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0178(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0180(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0188(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_189[0x7];                                      // 0x0189(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x0190(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0198(0x0010)(ZeroConstructor, NoDestructor)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x01A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x01B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x01B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1B9[0x7];                                      // 0x01B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x01C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(ENUM_ControllerType NewActiveControllerType)> K2Node_CreateDelegate_OutputDelegate_1;            // 0x01C8(0x0010)(ZeroConstructor, NoDestructor)
 };
 static_assert(alignof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title) == 0x000008, "Wrong alignment on WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title");
-static_assert(sizeof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title) == 0x0001D0, "Wrong size on WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title");
+static_assert(sizeof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title) == 0x0001D8, "Wrong size on WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, EntryPoint) == 0x000000, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::EntryPoint' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000004, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_ComponentBoundEvent_Message) == 0x000008, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_ComponentBoundEvent_Message' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_SwitchString_CmpSuccess) == 0x000018, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_GetEmptyText_ReturnValue) == 0x000020, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_GetEmptyText_ReturnValue' has a wrong offset!");
@@ -83,21 +89,21 @@ static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_Splas
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_ComponentBoundEvent_Menu) == 0x000100, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_ComponentBoundEvent_Menu' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_GetMenuLabel_Page_3) == 0x000108, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_GetMenuLabel_Page_3' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_GetEmptyText_ReturnValue_4) == 0x000120, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_GetEmptyText_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_GetGameInstance_ReturnValue) == 0x000138, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_DynamicCast_AsGI_Single_Player) == 0x000140, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_DynamicCast_bSuccess) == 0x000148, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_IsValid_ReturnValue) == 0x000149, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_Not_PreBool_ReturnValue) == 0x00014A, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_IsMedicalDemo_Result) == 0x00014B, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_IsMedicalDemo_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_Event_MyGeometry) == 0x00014C, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_Event_MyGeometry' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_Event_InDeltaTime) == 0x000184, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_Event_InDeltaTime' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_GetPlayerController_ReturnValue) == 0x000188, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_CreateDelegate_OutputDelegate) == 0x000190, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_DynamicCast_AsCON_Hacker) == 0x0001A0, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_DynamicCast_bSuccess_1) == 0x0001A8, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_PlayAnimation_ReturnValue) == 0x0001B0, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_CreateDelegate_OutputDelegate_1) == 0x0001B8, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_GetPlayerController_ReturnValue_1) == 0x0001C8, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_IsValid_ReturnValue) == 0x000138, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_Not_PreBool_ReturnValue) == 0x000139, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_IsMedicalDemo_Result) == 0x00013A, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_IsMedicalDemo_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_Event_MyGeometry) == 0x00013C, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_Event_MyGeometry' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_Event_InDeltaTime) == 0x000174, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_Event_InDeltaTime' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_GetPlayerController_ReturnValue) == 0x000178, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_DynamicCast_AsCON_Hacker) == 0x000180, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_DynamicCast_bSuccess) == 0x000188, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_PlayAnimation_ReturnValue) == 0x000190, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_CreateDelegate_OutputDelegate) == 0x000198, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_GetGameInstance_ReturnValue) == 0x0001A8, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_DynamicCast_AsGI_Single_Player) == 0x0001B0, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_DynamicCast_bSuccess_1) == 0x0001B8, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, CallFunc_GetPlayerController_ReturnValue_1) == 0x0001C0, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title, K2Node_CreateDelegate_OutputDelegate_1) == 0x0001C8, "Member 'WIDGET_SplashScreen_Title_C_ExecuteUbergraph_WIDGET_SplashScreen_Title::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
 
 // Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.Tick
 // 0x003C (0x003C - 0x0000)
@@ -320,37 +326,51 @@ static_assert(offsetof(WIDGET_SplashScreen_Title_C_PlayPressAnyKeyAnimation, Cal
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_PlayPressAnyKeyAnimation, CallFunc_Not_PreBool_ReturnValue) == 0x000010, "Member 'WIDGET_SplashScreen_Title_C_PlayPressAnyKeyAnimation::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.ShowMainMenu
-// 0x0040 (0x0040 - 0x0000)
+// 0x0050 (0x0050 - 0x0000)
 struct WIDGET_SplashScreen_Title_C_ShowMainMenu final
 {
 public:
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0012(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_13[0x5];                                       // 0x0013(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker_1;                 // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result_1;                  // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2A[0x6];                                       // 0x002A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class USAVE_Settings_C*                       CallFunc_GetShockSettingsForCurrentUser_Settings;  // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsSageNintendoPlatform_ReturnValue;       // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	EJoyConMouseMode                              CallFunc_GetJoyConMouseMode_JoyConMouseMode;       // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x000B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_23[0x5];                                       // 0x0023(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue_1;        // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker_1;                 // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsUsingGamepad_Result_1;                  // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_43[0x5];                                       // 0x0043(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(WIDGET_SplashScreen_Title_C_ShowMainMenu) == 0x000008, "Wrong alignment on WIDGET_SplashScreen_Title_C_ShowMainMenu");
-static_assert(sizeof(WIDGET_SplashScreen_Title_C_ShowMainMenu) == 0x000040, "Wrong size on WIDGET_SplashScreen_Title_C_ShowMainMenu");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_GetPlayerController_ReturnValue) == 0x000000, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, K2Node_DynamicCast_AsCON_Hacker) == 0x000008, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_IsUsingGamepad_Result) == 0x000011, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_Not_PreBool_ReturnValue) == 0x000012, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_GetPlayerController_ReturnValue_1) == 0x000018, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, K2Node_DynamicCast_AsCON_Hacker_1) == 0x000020, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::K2Node_DynamicCast_AsCON_Hacker_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, K2Node_DynamicCast_bSuccess_1) == 0x000028, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_IsUsingGamepad_Result_1) == 0x000029, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_IsUsingGamepad_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_PlayAnimation_ReturnValue) == 0x000030, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_Not_PreBool_ReturnValue_1) == 0x000038, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(sizeof(WIDGET_SplashScreen_Title_C_ShowMainMenu) == 0x000050, "Wrong size on WIDGET_SplashScreen_Title_C_ShowMainMenu");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_GetShockSettingsForCurrentUser_Settings) == 0x000000, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_GetShockSettingsForCurrentUser_Settings' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_IsSageNintendoPlatform_ReturnValue) == 0x000008, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_IsSageNintendoPlatform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_GetJoyConMouseMode_JoyConMouseMode) == 0x000009, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_GetJoyConMouseMode_JoyConMouseMode' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x00000A, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_BooleanAND_ReturnValue) == 0x00000B, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_GetPlayerController_ReturnValue) == 0x000010, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, K2Node_DynamicCast_AsCON_Hacker) == 0x000018, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, K2Node_DynamicCast_bSuccess) == 0x000020, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_IsUsingGamepad_Result) == 0x000021, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_Not_PreBool_ReturnValue) == 0x000022, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_GetPlayerController_ReturnValue_1) == 0x000028, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_GetPlayerController_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_BooleanOR_ReturnValue) == 0x000030, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, K2Node_DynamicCast_AsCON_Hacker_1) == 0x000038, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::K2Node_DynamicCast_AsCON_Hacker_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, K2Node_DynamicCast_bSuccess_1) == 0x000040, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_IsUsingGamepad_Result_1) == 0x000041, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_IsUsingGamepad_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_Not_PreBool_ReturnValue_1) == 0x000042, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowMainMenu, CallFunc_PlayAnimation_ReturnValue) == 0x000048, "Member 'WIDGET_SplashScreen_Title_C_ShowMainMenu::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.TryAnyKey
 // 0x0020 (0x0020 - 0x0000)
@@ -446,7 +466,7 @@ static_assert(offsetof(WIDGET_SplashScreen_Title_C_ReturnFromSubScreen, K2Node_D
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_ReturnFromSubScreen, K2Node_DynamicCast_bSuccess_1) == 0x000040, "Member 'WIDGET_SplashScreen_Title_C_ReturnFromSubScreen::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
 
 // Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.SetPressKeyPromptText
-// 0x00A8 (0x00A8 - 0x0000)
+// 0x0098 (0x0098 - 0x0000)
 struct WIDGET_SplashScreen_Title_C_SetPressKeyPromptText final
 {
 public:
@@ -455,27 +475,27 @@ public:
 	class FText                                   ButtonPrompt_Xbox;                                 // 0x0030(0x0018)(Edit, BlueprintVisible)
 	class FText                                   ButtonPrompt_PC_Gamepad;                           // 0x0048(0x0018)(Edit, BlueprintVisible)
 	class FText                                   ButtonPrompt_PC_MK;                                // 0x0060(0x0018)(Edit, BlueprintVisible)
-	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0078(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0088(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_89[0x7];                                       // 0x0089(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0090(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x00A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x0078(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0079(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_7A[0x6];                                       // 0x007A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0091(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText) == 0x000008, "Wrong alignment on WIDGET_SplashScreen_Title_C_SetPressKeyPromptText");
-static_assert(sizeof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText) == 0x0000A8, "Wrong size on WIDGET_SplashScreen_Title_C_SetPressKeyPromptText");
+static_assert(sizeof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText) == 0x000098, "Wrong size on WIDGET_SplashScreen_Title_C_SetPressKeyPromptText");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, ButtonPrompt_Switch) == 0x000000, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::ButtonPrompt_Switch' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, ButtonPrompt_PlayStation) == 0x000018, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::ButtonPrompt_PlayStation' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, ButtonPrompt_Xbox) == 0x000030, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::ButtonPrompt_Xbox' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, ButtonPrompt_PC_Gamepad) == 0x000048, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::ButtonPrompt_PC_Gamepad' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, ButtonPrompt_PC_MK) == 0x000060, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::ButtonPrompt_PC_MK' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, CallFunc_GetPlatformName_ReturnValue) == 0x000078, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, K2Node_SwitchString_CmpSuccess) == 0x000088, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, CallFunc_GetPlayerController_ReturnValue) == 0x000090, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, K2Node_DynamicCast_AsCON_Hacker) == 0x000098, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, K2Node_DynamicCast_bSuccess) == 0x0000A0, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, CallFunc_IsUsingGamepad_Result) == 0x0000A1, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, CallFunc_GetPlatformFamily_ReturnValue) == 0x000078, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, K2Node_SwitchEnum_CmpSuccess) == 0x000079, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, CallFunc_GetPlayerController_ReturnValue) == 0x000080, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, K2Node_DynamicCast_AsCON_Hacker) == 0x000088, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, K2Node_DynamicCast_bSuccess) == 0x000090, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_SetPressKeyPromptText, CallFunc_IsUsingGamepad_Result) == 0x000091, "Member 'WIDGET_SplashScreen_Title_C_SetPressKeyPromptText::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
 
 // Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.RefreshContinueAutosave
 // 0x0038 (0x0038 - 0x0000)
@@ -497,36 +517,39 @@ static_assert(offsetof(WIDGET_SplashScreen_Title_C_RefreshContinueAutosave, Call
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_RefreshContinueAutosave, CallFunc_LoadGameProfile_ReturnValue) == 0x000028, "Member 'WIDGET_SplashScreen_Title_C_RefreshContinueAutosave::CallFunc_LoadGameProfile_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_Title_C_RefreshContinueAutosave, CallFunc_IsValid_ReturnValue) == 0x000030, "Member 'WIDGET_SplashScreen_Title_C_RefreshContinueAutosave::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
-// Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.EVENT_OnUsingGamepadChanged
-// 0x0001 (0x0001 - 0x0000)
-struct WIDGET_SplashScreen_Title_C_EVENT_OnUsingGamepadChanged final
-{
-public:
-	bool                                          IsUsingGamepad;                                    // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_SplashScreen_Title_C_EVENT_OnUsingGamepadChanged) == 0x000001, "Wrong alignment on WIDGET_SplashScreen_Title_C_EVENT_OnUsingGamepadChanged");
-static_assert(sizeof(WIDGET_SplashScreen_Title_C_EVENT_OnUsingGamepadChanged) == 0x000001, "Wrong size on WIDGET_SplashScreen_Title_C_EVENT_OnUsingGamepadChanged");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_EVENT_OnUsingGamepadChanged, IsUsingGamepad) == 0x000000, "Member 'WIDGET_SplashScreen_Title_C_EVENT_OnUsingGamepadChanged::IsUsingGamepad' has a wrong offset!");
-
 // Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.ShowPlayerUsername
-// 0x0048 (0x0048 - 0x0000)
+// 0x0040 (0x0040 - 0x0000)
 struct WIDGET_SplashScreen_Title_C_ShowPlayerUsername final
 {
 public:
-	class FString                                 CallFunc_GetPlatformName_ReturnValue;              // 0x0000(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchString_CmpSuccess;                    // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetPlayerName_ReturnValue;                // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FText                                   CallFunc_Conv_StringToText_ReturnValue;            // 0x0030(0x0018)()
+	ESystemShockPlatformFamily                    CallFunc_GetPlatformFamily_ReturnValue;            // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetPlayerName_ReturnValue;                // 0x0018(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FText                                   CallFunc_Conv_StringToText_ReturnValue;            // 0x0028(0x0018)()
 };
 static_assert(alignof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername) == 0x000008, "Wrong alignment on WIDGET_SplashScreen_Title_C_ShowPlayerUsername");
-static_assert(sizeof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername) == 0x000048, "Wrong size on WIDGET_SplashScreen_Title_C_ShowPlayerUsername");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, CallFunc_GetPlatformName_ReturnValue) == 0x000000, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::CallFunc_GetPlatformName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, CallFunc_GetPlayerController_ReturnValue) == 0x000010, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, K2Node_SwitchString_CmpSuccess) == 0x000018, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::K2Node_SwitchString_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, CallFunc_GetPlayerName_ReturnValue) == 0x000020, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::CallFunc_GetPlayerName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, CallFunc_Conv_StringToText_ReturnValue) == 0x000030, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::CallFunc_Conv_StringToText_ReturnValue' has a wrong offset!");
+static_assert(sizeof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername) == 0x000040, "Wrong size on WIDGET_SplashScreen_Title_C_ShowPlayerUsername");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, CallFunc_GetPlatformFamily_ReturnValue) == 0x000000, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::CallFunc_GetPlatformFamily_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, CallFunc_GetPlayerController_ReturnValue) == 0x000008, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, K2Node_SwitchEnum_CmpSuccess) == 0x000010, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, CallFunc_GetPlayerName_ReturnValue) == 0x000018, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::CallFunc_GetPlayerName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_ShowPlayerUsername, CallFunc_Conv_StringToText_ReturnValue) == 0x000028, "Member 'WIDGET_SplashScreen_Title_C_ShowPlayerUsername::CallFunc_Conv_StringToText_ReturnValue' has a wrong offset!");
+
+// Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.EVENT_OnActiveControllerTypeChanged
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged final
+{
+public:
+	ENUM_ControllerType                           NewActiveControllerType;                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged) == 0x000001, "Wrong alignment on WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged");
+static_assert(sizeof(WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged) == 0x000002, "Wrong size on WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged, NewActiveControllerType) == 0x000000, "Member 'WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged::NewActiveControllerType' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged, CallFunc_NotEqual_ByteByte_ReturnValue) == 0x000001, "Member 'WIDGET_SplashScreen_Title_C_EVENT_OnActiveControllerTypeChanged::CallFunc_NotEqual_ByteByte_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_SplashScreen_Title.WIDGET_SplashScreen_Title_C.GetFadeOutDuration
 // 0x0004 (0x0004 - 0x0000)

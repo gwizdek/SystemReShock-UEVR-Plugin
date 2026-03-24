@@ -17,6 +17,26 @@
 namespace SDK
 {
 
+// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.ExecuteUbergraph_ANIMBP_LaserRapier
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UANIMBP_LaserRapier_C::ExecuteUbergraph_ANIMBP_LaserRapier(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ANIMBP_LaserRapier_C", "ExecuteUbergraph_ANIMBP_LaserRapier");
+
+	Params::ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.AnimGraph
 // (HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -35,86 +55,6 @@ void UANIMBP_LaserRapier_C::AnimGraph(struct FPoseLink* AnimGraph_0)
 
 	if (AnimGraph_0 != nullptr)
 		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
-}
-
-
-// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.BlueprintUpdateAnimation
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// float                                   DeltaTimeX                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UANIMBP_LaserRapier_C::BlueprintUpdateAnimation(float DeltaTimeX)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ANIMBP_LaserRapier_C", "BlueprintUpdateAnimation");
-
-	Params::ANIMBP_LaserRapier_C_BlueprintUpdateAnimation Parms{};
-
-	Parms.DeltaTimeX = DeltaTimeX;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.UseSourceMesh
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UANIMBP_LaserRapier_C::UseSourceMesh(bool Value)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ANIMBP_LaserRapier_C", "UseSourceMesh");
-
-	Params::ANIMBP_LaserRapier_C_UseSourceMesh Parms{};
-
-	Parms.Value = Value;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.SetSourceMesh
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class USkeletalMeshComponent*           SourceMesh                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UANIMBP_LaserRapier_C::SetSourceMesh(class USkeletalMeshComponent* SourceMesh)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ANIMBP_LaserRapier_C", "SetSourceMesh");
-
-	Params::ANIMBP_LaserRapier_C_SetSourceMesh Parms{};
-
-	Parms.SourceMesh = SourceMesh;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function ANIMBP_LaserRapier.ANIMBP_LaserRapier_C.ExecuteUbergraph_ANIMBP_LaserRapier
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UANIMBP_LaserRapier_C::ExecuteUbergraph_ANIMBP_LaserRapier(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ANIMBP_LaserRapier_C", "ExecuteUbergraph_ANIMBP_LaserRapier");
-
-	Params::ANIMBP_LaserRapier_C_ExecuteUbergraph_ANIMBP_LaserRapier Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

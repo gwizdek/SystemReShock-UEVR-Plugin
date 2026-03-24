@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_DoorState_structs.hpp"
 #include "ELEVATOR_Base_classes.hpp"
 #include "ENUM_InnerOuter_structs.hpp"
+#include "ENUM_DoorState_structs.hpp"
 
 
 namespace SDK

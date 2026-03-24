@@ -11,13 +11,13 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
+#include "ENUM_VisionTraceType_structs.hpp"
 #include "Engine_structs.hpp"
-#include "AttributeSystem_structs.hpp"
+#include "ENUM_DoorState_structs.hpp"
+#include "NamedInteger_structs.hpp"
 #include "STRUCT_EffectParams_structs.hpp"
 #include "ENUM_DetectionState_structs.hpp"
-#include "NamedInteger_structs.hpp"
-#include "ENUM_DoorState_structs.hpp"
-#include "ENUM_VisionTraceType_structs.hpp"
+#include "AttributeSystem_structs.hpp"
 
 
 namespace SDK::Params
@@ -779,30 +779,6 @@ static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_TryDeploySentryTurret
 static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_TryDeploySentryTurret, K2Node_DynamicCast_AsPAWN_System_Shock_Character) == 0x000050, "Member 'INTERACT_SentryTurret_HostileBase_C_TryDeploySentryTurret::K2Node_DynamicCast_AsPAWN_System_Shock_Character' has a wrong offset!");
 static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_TryDeploySentryTurret, K2Node_DynamicCast_bSuccess) == 0x000058, "Member 'INTERACT_SentryTurret_HostileBase_C_TryDeploySentryTurret::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
-// Function INTERACT_SentryTurret_HostileBase.INTERACT_SentryTurret_HostileBase_C.GetThreatLevel
-// 0x0004 (0x0004 - 0x0000)
-struct INTERACT_SentryTurret_HostileBase_C_GetThreatLevel final
-{
-public:
-	int32                                         ThreatLevel;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(INTERACT_SentryTurret_HostileBase_C_GetThreatLevel) == 0x000004, "Wrong alignment on INTERACT_SentryTurret_HostileBase_C_GetThreatLevel");
-static_assert(sizeof(INTERACT_SentryTurret_HostileBase_C_GetThreatLevel) == 0x000004, "Wrong size on INTERACT_SentryTurret_HostileBase_C_GetThreatLevel");
-static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_GetThreatLevel, ThreatLevel) == 0x000000, "Member 'INTERACT_SentryTurret_HostileBase_C_GetThreatLevel::ThreatLevel' has a wrong offset!");
-
-// Function INTERACT_SentryTurret_HostileBase.INTERACT_SentryTurret_HostileBase_C.CanHackDestructible
-// 0x0010 (0x0010 - 0x0000)
-struct INTERACT_SentryTurret_HostileBase_C_CanHackDestructible final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           SourceCharacter;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(INTERACT_SentryTurret_HostileBase_C_CanHackDestructible) == 0x000008, "Wrong alignment on INTERACT_SentryTurret_HostileBase_C_CanHackDestructible");
-static_assert(sizeof(INTERACT_SentryTurret_HostileBase_C_CanHackDestructible) == 0x000010, "Wrong size on INTERACT_SentryTurret_HostileBase_C_CanHackDestructible");
-static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_CanHackDestructible, SourceCharacter) == 0x000000, "Member 'INTERACT_SentryTurret_HostileBase_C_CanHackDestructible::SourceCharacter' has a wrong offset!");
-static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_CanHackDestructible, Result) == 0x000008, "Member 'INTERACT_SentryTurret_HostileBase_C_CanHackDestructible::Result' has a wrong offset!");
-
 // Function INTERACT_SentryTurret_HostileBase.INTERACT_SentryTurret_HostileBase_C.InitializeDestructible
 // 0x0020 (0x0020 - 0x0000)
 struct INTERACT_SentryTurret_HostileBase_C_InitializeDestructible final
@@ -888,6 +864,30 @@ static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_UpdateDeathSettings, 
 static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_UpdateDeathSettings, Result) == 0x000001, "Member 'INTERACT_SentryTurret_HostileBase_C_UpdateDeathSettings::Result' has a wrong offset!");
 static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_UpdateDeathSettings, CallFunc_TrySetSentryTurretIsAware_Result) == 0x000002, "Member 'INTERACT_SentryTurret_HostileBase_C_UpdateDeathSettings::CallFunc_TrySetSentryTurretIsAware_Result' has a wrong offset!");
 static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_UpdateDeathSettings, CallFunc_UpdateDeathSettings_Result) == 0x000003, "Member 'INTERACT_SentryTurret_HostileBase_C_UpdateDeathSettings::CallFunc_UpdateDeathSettings_Result' has a wrong offset!");
+
+// Function INTERACT_SentryTurret_HostileBase.INTERACT_SentryTurret_HostileBase_C.GetThreatLevel
+// 0x0004 (0x0004 - 0x0000)
+struct INTERACT_SentryTurret_HostileBase_C_GetThreatLevel final
+{
+public:
+	int32                                         ThreatLevel;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(INTERACT_SentryTurret_HostileBase_C_GetThreatLevel) == 0x000004, "Wrong alignment on INTERACT_SentryTurret_HostileBase_C_GetThreatLevel");
+static_assert(sizeof(INTERACT_SentryTurret_HostileBase_C_GetThreatLevel) == 0x000004, "Wrong size on INTERACT_SentryTurret_HostileBase_C_GetThreatLevel");
+static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_GetThreatLevel, ThreatLevel) == 0x000000, "Member 'INTERACT_SentryTurret_HostileBase_C_GetThreatLevel::ThreatLevel' has a wrong offset!");
+
+// Function INTERACT_SentryTurret_HostileBase.INTERACT_SentryTurret_HostileBase_C.CanHackDestructible
+// 0x0010 (0x0010 - 0x0000)
+struct INTERACT_SentryTurret_HostileBase_C_CanHackDestructible final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           SourceCharacter;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(INTERACT_SentryTurret_HostileBase_C_CanHackDestructible) == 0x000008, "Wrong alignment on INTERACT_SentryTurret_HostileBase_C_CanHackDestructible");
+static_assert(sizeof(INTERACT_SentryTurret_HostileBase_C_CanHackDestructible) == 0x000010, "Wrong size on INTERACT_SentryTurret_HostileBase_C_CanHackDestructible");
+static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_CanHackDestructible, SourceCharacter) == 0x000000, "Member 'INTERACT_SentryTurret_HostileBase_C_CanHackDestructible::SourceCharacter' has a wrong offset!");
+static_assert(offsetof(INTERACT_SentryTurret_HostileBase_C_CanHackDestructible, Result) == 0x000008, "Member 'INTERACT_SentryTurret_HostileBase_C_CanHackDestructible::Result' has a wrong offset!");
 
 // Function INTERACT_SentryTurret_HostileBase.INTERACT_SentryTurret_HostileBase_C.GetDetectionComponent
 // 0x0008 (0x0008 - 0x0000)

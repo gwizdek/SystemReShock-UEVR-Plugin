@@ -10,12 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_EffectParams_structs.hpp"
 #include "AttributeSystem_structs.hpp"
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "CoreGame_structs.hpp"
 #include "NamedInteger_structs.hpp"
+#include "STRUCT_EffectParams_structs.hpp"
+#include "SlateCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params
@@ -59,17 +60,53 @@ static_assert(sizeof(INTERACT_StationMonitor_C_ReceiveTick) == 0x000004, "Wrong 
 static_assert(offsetof(INTERACT_StationMonitor_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member 'INTERACT_StationMonitor_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
 
 // Function INTERACT_StationMonitor.INTERACT_StationMonitor_C.InitializeStationMonitor
-// 0x0002 (0x0002 - 0x0000)
+// 0x00F8 (0x00F8 - 0x0000)
 struct INTERACT_StationMonitor_C_InitializeStationMonitor final
 {
 public:
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsVisible_ReturnValue;                    // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FSlateBrush                            CitadelStationStatusImage;                         // 0x0000(0x0088)(Edit, BlueprintVisible)
+	bool                                          HasTwoGroves;                                      // 0x0088(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_89[0x7];                                       // 0x0089(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGI_SinglePlayer_C*                     GameInstance;                                      // 0x0090(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0098(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTexture*                               Temp_object_Variable;                              // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UTexture*                               Temp_object_Variable_1;                            // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable_1;                              // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B1[0x7];                                       // 0x00B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTexture*                               Temp_object_Variable_2;                            // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstanceDynamic*               CallFunc_CreateDynamicMaterialInstance_ReturnValue; // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasCompletedStoryQuest_Completed;         // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_HasCompletedStoryQuest_Completed_1;       // 0x00C9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_CA[0x6];                                       // 0x00CA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTexture*                               K2Node_Select_Default;                             // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UTexture*                               K2Node_Select_Default_1;                           // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGameInstance*                          CallFunc_GetGameInstance_ReturnValue;              // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UGI_SinglePlayer_C*                     K2Node_DynamicCast_AsGI_Single_Player;             // 0x00E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x00F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsVisible_ReturnValue;                    // 0x00F2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(INTERACT_StationMonitor_C_InitializeStationMonitor) == 0x000001, "Wrong alignment on INTERACT_StationMonitor_C_InitializeStationMonitor");
-static_assert(sizeof(INTERACT_StationMonitor_C_InitializeStationMonitor) == 0x000002, "Wrong size on INTERACT_StationMonitor_C_InitializeStationMonitor");
-static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, CallFunc_IsVisible_ReturnValue) == 0x000001, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::CallFunc_IsVisible_ReturnValue' has a wrong offset!");
+static_assert(alignof(INTERACT_StationMonitor_C_InitializeStationMonitor) == 0x000008, "Wrong alignment on INTERACT_StationMonitor_C_InitializeStationMonitor");
+static_assert(sizeof(INTERACT_StationMonitor_C_InitializeStationMonitor) == 0x0000F8, "Wrong size on INTERACT_StationMonitor_C_InitializeStationMonitor");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, CitadelStationStatusImage) == 0x000000, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::CitadelStationStatusImage' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, HasTwoGroves) == 0x000088, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::HasTwoGroves' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, GameInstance) == 0x000090, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::GameInstance' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, Temp_bool_Variable) == 0x000098, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, Temp_object_Variable) == 0x0000A0, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::Temp_object_Variable' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, Temp_object_Variable_1) == 0x0000A8, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::Temp_object_Variable_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, Temp_bool_Variable_1) == 0x0000B0, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, Temp_object_Variable_2) == 0x0000B8, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::Temp_object_Variable_2' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x0000C0, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, CallFunc_HasCompletedStoryQuest_Completed) == 0x0000C8, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::CallFunc_HasCompletedStoryQuest_Completed' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, CallFunc_HasCompletedStoryQuest_Completed_1) == 0x0000C9, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::CallFunc_HasCompletedStoryQuest_Completed_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, K2Node_Select_Default) == 0x0000D0, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, K2Node_Select_Default_1) == 0x0000D8, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, CallFunc_GetGameInstance_ReturnValue) == 0x0000E0, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::CallFunc_GetGameInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, K2Node_DynamicCast_AsGI_Single_Player) == 0x0000E8, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::K2Node_DynamicCast_AsGI_Single_Player' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, K2Node_DynamicCast_bSuccess) == 0x0000F0, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, CallFunc_IsValid_ReturnValue) == 0x0000F1, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(INTERACT_StationMonitor_C_InitializeStationMonitor, CallFunc_IsVisible_ReturnValue) == 0x0000F2, "Member 'INTERACT_StationMonitor_C_InitializeStationMonitor::CallFunc_IsVisible_ReturnValue' has a wrong offset!");
 
 // Function INTERACT_StationMonitor.INTERACT_StationMonitor_C.UpdateMonitorRotation
 // 0x0068 (0x0068 - 0x0000)

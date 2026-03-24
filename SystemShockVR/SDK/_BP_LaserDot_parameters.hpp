@@ -18,7 +18,7 @@ namespace SDK::Params
 {
 
 // Function _BP_LaserDot._BP_LaserDot_C.ExecuteUbergraph__BP_LaserDot
-// 0x0290 (0x0290 - 0x0000)
+// 0x0288 (0x0288 - 0x0000)
 struct _BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot final
 {
 public:
@@ -56,9 +56,9 @@ public:
 	struct FVector                                CallFunc_Add_VectorVector_ReturnValue_2;           // 0x00B0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FHitResult                             CallFunc_LineTraceSingle_OutHit;                   // 0x00BC(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
 	bool                                          CallFunc_LineTraceSingle_ReturnValue;              // 0x0144(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BreakHitResult_bBlockingHit;              // 0x0145(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BreakHitResult_bInitialOverlap;           // 0x0146(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_147[0x1];                                      // 0x0147(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0145(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bBlockingHit;              // 0x0146(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bInitialOverlap;           // 0x0147(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	float                                         CallFunc_BreakHitResult_Time;                      // 0x0148(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         CallFunc_BreakHitResult_Distance;                  // 0x014C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                CallFunc_BreakHitResult_Location;                  // 0x0150(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -74,17 +74,15 @@ public:
 	int32                                         CallFunc_BreakHitResult_FaceIndex;                 // 0x01A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                CallFunc_BreakHitResult_TraceStart;                // 0x01AC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                CallFunc_BreakHitResult_TraceEnd;                  // 0x01B8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x01C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1C5[0x3];                                      // 0x01C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x01C8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Normal_ReturnValue;                       // 0x01D4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue_3;       // 0x01E0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_Conv_VectorToRotator_ReturnValue;         // 0x01EC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue_1;      // 0x01F8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_K2_SetWorldLocationAndRotation_SweepHitResult; // 0x0204(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x01C4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Normal_ReturnValue;                       // 0x01D0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_Conv_VectorToRotator_ReturnValue;         // 0x01DC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue_3;       // 0x01E8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_K2_SetWorldLocationAndRotation_SweepHitResult; // 0x01F4(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue_1;      // 0x027C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot) == 0x000008, "Wrong alignment on _BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot");
-static_assert(sizeof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot) == 0x000290, "Wrong size on _BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot");
+static_assert(sizeof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot) == 0x000288, "Wrong size on _BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, EntryPoint) == 0x000000, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::EntryPoint' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, K2Node_DynamicCast_AsPAWN_Enemy) == 0x000008, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::K2Node_DynamicCast_AsPAWN_Enemy' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, K2Node_DynamicCast_bSuccess) == 0x000010, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::K2Node_DynamicCast_bSuccess' has a wrong offset!");
@@ -115,8 +113,9 @@ static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Mu
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Add_VectorVector_ReturnValue_2) == 0x0000B0, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Add_VectorVector_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_LineTraceSingle_OutHit) == 0x0000BC, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_LineTraceSingle_OutHit' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_LineTraceSingle_ReturnValue) == 0x000144, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_LineTraceSingle_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_bBlockingHit) == 0x000145, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_bBlockingHit' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_bInitialOverlap) == 0x000146, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_bInitialOverlap' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BooleanAND_ReturnValue_1) == 0x000145, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_bBlockingHit) == 0x000146, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_bBlockingHit' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_bInitialOverlap) == 0x000147, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_bInitialOverlap' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_Time) == 0x000148, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_Time' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_Distance) == 0x00014C, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_Distance' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_Location) == 0x000150, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_Location' has a wrong offset!");
@@ -132,13 +131,12 @@ static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Br
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_FaceIndex) == 0x0001A8, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_FaceIndex' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_TraceStart) == 0x0001AC, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_TraceStart' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BreakHitResult_TraceEnd) == 0x0001B8, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BreakHitResult_TraceEnd' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_BooleanAND_ReturnValue_1) == 0x0001C4, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Subtract_VectorVector_ReturnValue) == 0x0001C8, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Normal_ReturnValue) == 0x0001D4, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Normal_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Multiply_VectorFloat_ReturnValue_3) == 0x0001E0, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Multiply_VectorFloat_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Conv_VectorToRotator_ReturnValue) == 0x0001EC, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Conv_VectorToRotator_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Subtract_VectorVector_ReturnValue_1) == 0x0001F8, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Subtract_VectorVector_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_K2_SetWorldLocationAndRotation_SweepHitResult) == 0x000204, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_K2_SetWorldLocationAndRotation_SweepHitResult' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Subtract_VectorVector_ReturnValue) == 0x0001C4, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Normal_ReturnValue) == 0x0001D0, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Normal_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Conv_VectorToRotator_ReturnValue) == 0x0001DC, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Conv_VectorToRotator_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Multiply_VectorFloat_ReturnValue_3) == 0x0001E8, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Multiply_VectorFloat_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_K2_SetWorldLocationAndRotation_SweepHitResult) == 0x0001F4, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_K2_SetWorldLocationAndRotation_SweepHitResult' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot, CallFunc_Subtract_VectorVector_ReturnValue_1) == 0x00027C, "Member '_BP_LaserDot_C_ExecuteUbergraph__BP_LaserDot::CallFunc_Subtract_VectorVector_ReturnValue_1' has a wrong offset!");
 
 // Function _BP_LaserDot._BP_LaserDot_C.ReceiveTick
 // 0x0004 (0x0004 - 0x0000)
@@ -206,7 +204,7 @@ static_assert(offsetof(_BP_LaserDot_C_AttachTo, InSocketName) == 0x000008, "Memb
 static_assert(offsetof(_BP_LaserDot_C_AttachTo, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000010, "Member '_BP_LaserDot_C_AttachTo::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
 
 // Function _BP_LaserDot._BP_LaserDot_C.SetVisibility
-// 0x0018 (0x0018 - 0x0000)
+// 0x0020 (0x0020 - 0x0000)
 struct _BP_LaserDot_C_SetVisibility final
 {
 public:
@@ -215,20 +213,20 @@ public:
 	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         DisableAfter;                                      // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_K2_TimerExistsHandle_ReturnValue;         // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FTimerHandle                           CallFunc_K2_SetTimer_ReturnValue;                  // 0x0010(0x0008)(NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_K2_TimerExistsHandle_ReturnValue;         // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_LaserDot_C_SetVisibility) == 0x000008, "Wrong alignment on _BP_LaserDot_C_SetVisibility");
-static_assert(sizeof(_BP_LaserDot_C_SetVisibility) == 0x000018, "Wrong size on _BP_LaserDot_C_SetVisibility");
+static_assert(sizeof(_BP_LaserDot_C_SetVisibility) == 0x000020, "Wrong size on _BP_LaserDot_C_SetVisibility");
 static_assert(offsetof(_BP_LaserDot_C_SetVisibility, Dot) == 0x000000, "Member '_BP_LaserDot_C_SetVisibility::Dot' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_SetVisibility, beam) == 0x000001, "Member '_BP_LaserDot_C_SetVisibility::beam' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_SetVisibility, DisableAfter) == 0x000004, "Member '_BP_LaserDot_C_SetVisibility::DisableAfter' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000008, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_K2_TimerExistsHandle_ReturnValue) == 0x000009, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_K2_TimerExistsHandle_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_BooleanOR_ReturnValue) == 0x00000A, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_BooleanOR_ReturnValue) == 0x000009, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_K2_SetTimer_ReturnValue) == 0x000010, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_K2_SetTimer_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_SetVisibility, CallFunc_K2_TimerExistsHandle_ReturnValue) == 0x000018, "Member '_BP_LaserDot_C_SetVisibility::CallFunc_K2_TimerExistsHandle_ReturnValue' has a wrong offset!");
 
 // Function _BP_LaserDot._BP_LaserDot_C.Set Laser Beam Params
 // 0x0018 (0x0018 - 0x0000)

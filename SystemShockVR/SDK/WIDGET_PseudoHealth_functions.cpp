@@ -17,6 +17,26 @@
 namespace SDK
 {
 
+// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.ExecuteUbergraph_WIDGET_PseudoHealth
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_PseudoHealth_C::ExecuteUbergraph_WIDGET_PseudoHealth(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "ExecuteUbergraph_WIDGET_PseudoHealth");
+
+	Params::WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.InitializeHealth
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -88,26 +108,6 @@ void UWIDGET_PseudoHealth_C::Construct()
 		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "Construct");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.ExecuteUbergraph_WIDGET_PseudoHealth
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWIDGET_PseudoHealth_C::ExecuteUbergraph_WIDGET_PseudoHealth(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_PseudoHealth_C", "ExecuteUbergraph_WIDGET_PseudoHealth");
-
-	Params::WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

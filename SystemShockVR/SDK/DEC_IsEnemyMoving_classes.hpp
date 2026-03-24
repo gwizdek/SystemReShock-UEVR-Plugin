@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_SpeedType_structs.hpp"
-#include "AIModule_classes.hpp"
 #include "ENUM_MoveSpeed_structs.hpp"
+#include "AIModule_classes.hpp"
+#include "ENUM_SpeedType_structs.hpp"
 
 
 namespace SDK

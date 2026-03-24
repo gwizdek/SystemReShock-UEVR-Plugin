@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_TriggerCondition_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ENUM_InteractionType_structs.hpp"
-#include "ENUM_TriggerCondition_structs.hpp"
 #include "INTERACT_Base_classes.hpp"
 
 

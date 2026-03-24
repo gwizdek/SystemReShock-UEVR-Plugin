@@ -16,6 +16,19 @@
 namespace SDK::Params
 {
 
+// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.ExecuteUbergraph_WIDGET_PseudoHealth
+// 0x0008 (0x0008 - 0x0000)
+struct WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth) == 0x000004, "Wrong alignment on WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth");
+static_assert(sizeof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth) == 0x000008, "Wrong size on WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth");
+static_assert(offsetof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth, EntryPoint) == 0x000000, "Member 'WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth::EntryPoint' has a wrong offset!");
+static_assert(offsetof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth, K2Node_Event_IsDesignTime) == 0x000004, "Member 'WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth::K2Node_Event_IsDesignTime' has a wrong offset!");
+
 // Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.InitializeHealth
 // 0x0048 (0x0048 - 0x0000)
 struct WIDGET_PseudoHealth_C_InitializeHealth final
@@ -77,19 +90,6 @@ public:
 static_assert(alignof(WIDGET_PseudoHealth_C_PreConstruct) == 0x000001, "Wrong alignment on WIDGET_PseudoHealth_C_PreConstruct");
 static_assert(sizeof(WIDGET_PseudoHealth_C_PreConstruct) == 0x000001, "Wrong size on WIDGET_PseudoHealth_C_PreConstruct");
 static_assert(offsetof(WIDGET_PseudoHealth_C_PreConstruct, IsDesignTime) == 0x000000, "Member 'WIDGET_PseudoHealth_C_PreConstruct::IsDesignTime' has a wrong offset!");
-
-// Function WIDGET_PseudoHealth.WIDGET_PseudoHealth_C.ExecuteUbergraph_WIDGET_PseudoHealth
-// 0x0008 (0x0008 - 0x0000)
-struct WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth) == 0x000004, "Wrong alignment on WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth");
-static_assert(sizeof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth) == 0x000008, "Wrong size on WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth");
-static_assert(offsetof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth, EntryPoint) == 0x000000, "Member 'WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth::EntryPoint' has a wrong offset!");
-static_assert(offsetof(WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth, K2Node_Event_IsDesignTime) == 0x000004, "Member 'WIDGET_PseudoHealth_C_ExecuteUbergraph_WIDGET_PseudoHealth::K2Node_Event_IsDesignTime' has a wrong offset!");
 
 }
 

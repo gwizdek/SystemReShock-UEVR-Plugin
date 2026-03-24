@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
 #include "STRUCT_WeaponMode_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK::Params
@@ -224,7 +224,7 @@ static_assert(offsetof(ITEM_ExplosiveBase_C_SpawnExplosive, CallFunc_SpawnActorI
 static_assert(offsetof(ITEM_ExplosiveBase_C_SpawnExplosive, CallFunc_GetPrimaryStreamingLevel_Level) == 0x000098, "Member 'ITEM_ExplosiveBase_C_SpawnExplosive::CallFunc_GetPrimaryStreamingLevel_Level' has a wrong offset!");
 
 // Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.UseConsumable
-// 0x03C0 (0x03C0 - 0x0000)
+// 0x0400 (0x0400 - 0x0000)
 struct ITEM_ExplosiveBase_C_UseConsumable final
 {
 public:
@@ -238,69 +238,79 @@ public:
 	class AExplosiveProjectile_Base_C*            SpawnedExplosive;                                  // 0x0038(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FTransform                             SpawnTransform;                                    // 0x0040(0x0030)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor)
 	struct FTransform                             CallFunc_GetIdealSpawnTransform_Transform;         // 0x0070(0x0030)(IsPlainOldData, NoDestructor)
-	struct FTransform                             CallFunc_GetHeadTransform_Transform;               // 0x00A0(0x0030)(IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x00D0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x00DC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x00E8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetForwardVector_ReturnValue;             // 0x00F4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetContactDamageFromSpeed_ContactDamage;  // 0x0100(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_GetWeaponModeNameByIndex_ModeName;        // 0x0104(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_10C[0x4];                                      // 0x010C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_WeaponMode                     CallFunc_GetDataTableRowFromName_OutRow;           // 0x0110(0x0100)(HasGetValueTypeHash)
-	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x0210(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_211[0x3];                                      // 0x0211(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetWeaponPropertyValueByType_Value;       // 0x0214(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetWeaponPropertyValueByType_Value_1;     // 0x0218(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakTransform_Location_1;                // 0x021C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation_1;                // 0x0228(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale_1;                   // 0x0234(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0240(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0244(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Normal_ReturnValue;                       // 0x0250(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x025C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakTransform_Location_2;                // 0x0268(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation_2;                // 0x0274(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale_2;                   // 0x0280(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakTransform_Location_3;                // 0x028C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation_3;                // 0x0298(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale_3;                   // 0x02A4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Vector_Up_ReturnValue;                    // 0x02B0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue_1;      // 0x02BC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_VSize_ReturnValue;                        // 0x02C8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_SignOfFloat_ReturnValue;                  // 0x02CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x02D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Abs_ReturnValue;                          // 0x02D4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_RotateAngleAxis_ReturnValue;              // 0x02D8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x02E4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2E5[0x3];                                      // 0x02E5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue_1;       // 0x02E8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x02F4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Vector_Up_ReturnValue_1;                  // 0x0300(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakTransform_Location_4;                // 0x030C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation_4;                // 0x0318(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale_4;                   // 0x0324(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue_2;      // 0x0330(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_SignedAngleBetweenOnPlane_ReturnValue;    // 0x033C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakTransform_Location_5;                // 0x0340(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation_5;                // 0x034C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale_5;                   // 0x0358(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BlueprintSuggestProjectileVelocity_TossVelocity; // 0x0364(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BlueprintSuggestProjectileVelocity_ReturnValue; // 0x0370(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_371[0x7];                                      // 0x0371(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPrimitiveComponent*                    CallFunc_GetExplosivePhysicsComponent_PhysicsComponent; // 0x0378(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue_1;       // 0x0380(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x0384(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AProximityMineProjectile_C*             K2Node_DynamicCast_AsProximity_Mine_Projectile;    // 0x0388(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0390(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_391[0x7];                                      // 0x0391(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AGrenadeProjectile_Base_C*              K2Node_DynamicCast_AsGrenade_Projectile_Base;      // 0x0398(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x03A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3A1[0x7];                                      // 0x03A1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AExplosiveProjectile_Base_C*            CallFunc_SpawnExplosive_Result;                    // 0x03A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UITEM_ConsumableBase_C*                 CallFunc_UseConsumable_ConsumedItem;               // 0x03B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Simple_C*                  K2Node_DynamicCast_AsPAWN_Hacker_Simple;           // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A9[0x3];                                       // 0x00A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x00AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetForwardVector_ReturnValue;             // 0x00B0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_BC[0x4];                                       // 0x00BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_GetHeadTransform_Transform;               // 0x00C0(0x0030)(IsPlainOldData, NoDestructor)
+	int32                                         CallFunc_GetContactDamageFromSpeed_ContactDamage;  // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x00F4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x0100(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x010C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetForwardVector_ReturnValue_1;           // 0x0118(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_MakeVector_ReturnValue;                   // 0x0124(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_GetWeaponModeNameByIndex_ModeName;        // 0x0130(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FSTRUCT_WeaponMode                     CallFunc_GetDataTableRowFromName_OutRow;           // 0x0138(0x0100)(HasGetValueTypeHash)
+	bool                                          CallFunc_GetDataTableRowFromName_ReturnValue;      // 0x0238(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_239[0x7];                                      // 0x0239(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPrimitiveComponent*                    CallFunc_GetExplosivePhysicsComponent_PhysicsComponent; // 0x0240(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetWeaponPropertyValueByType_Value;       // 0x0248(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetWeaponPropertyValueByType_Value_1;     // 0x024C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AProximityMineProjectile_C*             K2Node_DynamicCast_AsProximity_Mine_Projectile;    // 0x0250(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0258(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_259[0x3];                                      // 0x0259(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_BreakTransform_Location_1;                // 0x025C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation_1;                // 0x0268(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale_1;                   // 0x0274(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0280(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x028C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Normal_ReturnValue;                       // 0x0298(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue_1;       // 0x02A4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakTransform_Location_2;                // 0x02B0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation_2;                // 0x02BC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale_2;                   // 0x02C8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakTransform_Location_3;                // 0x02D4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation_3;                // 0x02E0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale_3;                   // 0x02EC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Vector_Up_ReturnValue;                    // 0x02F8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue_1;      // 0x0304(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_VSize_ReturnValue;                        // 0x0310(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_SignOfFloat_ReturnValue;                  // 0x0314(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0318(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Abs_ReturnValue;                          // 0x031C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_RotateAngleAxis_ReturnValue;              // 0x0320(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x032C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_32D[0x3];                                      // 0x032D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue_2;       // 0x0330(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x033C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Vector_Up_ReturnValue_1;                  // 0x0348(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakTransform_Location_4;                // 0x0354(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation_4;                // 0x0360(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale_4;                   // 0x036C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue_2;      // 0x0378(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_SignedAngleBetweenOnPlane_ReturnValue;    // 0x0384(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakTransform_Location_5;                // 0x0388(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation_5;                // 0x0394(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale_5;                   // 0x03A0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BlueprintSuggestProjectileVelocity_TossVelocity; // 0x03AC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BlueprintSuggestProjectileVelocity_ReturnValue; // 0x03B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3B9[0x7];                                      // 0x03B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPrimitiveComponent*                    CallFunc_GetExplosivePhysicsComponent_PhysicsComponent_1; // 0x03C0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue_1;       // 0x03C8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x03CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AProximityMineProjectile_C*             K2Node_DynamicCast_AsProximity_Mine_Projectile_1;  // 0x03D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x03D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3D9[0x7];                                      // 0x03D9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AGrenadeProjectile_Base_C*              K2Node_DynamicCast_AsGrenade_Projectile_Base;      // 0x03E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x03E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3E9[0x7];                                      // 0x03E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AExplosiveProjectile_Base_C*            CallFunc_SpawnExplosive_Result;                    // 0x03F0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UITEM_ConsumableBase_C*                 CallFunc_UseConsumable_ConsumedItem;               // 0x03F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(ITEM_ExplosiveBase_C_UseConsumable) == 0x000010, "Wrong alignment on ITEM_ExplosiveBase_C_UseConsumable");
-static_assert(sizeof(ITEM_ExplosiveBase_C_UseConsumable) == 0x0003C0, "Wrong size on ITEM_ExplosiveBase_C_UseConsumable");
+static_assert(sizeof(ITEM_ExplosiveBase_C_UseConsumable) == 0x000400, "Wrong size on ITEM_ExplosiveBase_C_UseConsumable");
 static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, Character) == 0x000000, "Member 'ITEM_ExplosiveBase_C_UseConsumable::Character' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, ConsumedItem) == 0x000008, "Member 'ITEM_ExplosiveBase_C_UseConsumable::ConsumedItem' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, ThrowVelocity) == 0x000010, "Member 'ITEM_ExplosiveBase_C_UseConsumable::ThrowVelocity' has a wrong offset!");
@@ -310,60 +320,68 @@ static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, ExplosiveWeaponDataTa
 static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, SpawnedExplosive) == 0x000038, "Member 'ITEM_ExplosiveBase_C_UseConsumable::SpawnedExplosive' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, SpawnTransform) == 0x000040, "Member 'ITEM_ExplosiveBase_C_UseConsumable::SpawnTransform' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetIdealSpawnTransform_Transform) == 0x000070, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetIdealSpawnTransform_Transform' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetHeadTransform_Transform) == 0x0000A0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetHeadTransform_Transform' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location) == 0x0000D0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation) == 0x0000DC, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale) == 0x0000E8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetForwardVector_ReturnValue) == 0x0000F4, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetForwardVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetContactDamageFromSpeed_ContactDamage) == 0x000100, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetContactDamageFromSpeed_ContactDamage' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetWeaponModeNameByIndex_ModeName) == 0x000104, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetWeaponModeNameByIndex_ModeName' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetDataTableRowFromName_OutRow) == 0x000110, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000210, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetWeaponPropertyValueByType_Value) == 0x000214, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetWeaponPropertyValueByType_Value' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetWeaponPropertyValueByType_Value_1) == 0x000218, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetWeaponPropertyValueByType_Value_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_1) == 0x00021C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_1) == 0x000228, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_1) == 0x000234, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000240, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Subtract_VectorVector_ReturnValue) == 0x000244, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Normal_ReturnValue) == 0x000250, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Normal_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x00025C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_2) == 0x000268, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_2' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_2) == 0x000274, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_2' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_2) == 0x000280, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_2' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_3) == 0x00028C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_3' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_3) == 0x000298, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_3' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_3) == 0x0002A4, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_3' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Vector_Up_ReturnValue) == 0x0002B0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Vector_Up_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Subtract_VectorVector_ReturnValue_1) == 0x0002BC, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Subtract_VectorVector_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_VSize_ReturnValue) == 0x0002C8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_VSize_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_SignOfFloat_ReturnValue) == 0x0002CC, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_SignOfFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x0002D0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Abs_ReturnValue) == 0x0002D4, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Abs_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_RotateAngleAxis_ReturnValue) == 0x0002D8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_RotateAngleAxis_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Less_FloatFloat_ReturnValue) == 0x0002E4, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Multiply_VectorFloat_ReturnValue_1) == 0x0002E8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Multiply_VectorFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Add_VectorVector_ReturnValue) == 0x0002F4, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Vector_Up_ReturnValue_1) == 0x000300, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Vector_Up_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_4) == 0x00030C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_4' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_4) == 0x000318, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_4' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_4) == 0x000324, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_4' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Subtract_VectorVector_ReturnValue_2) == 0x000330, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Subtract_VectorVector_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_SignedAngleBetweenOnPlane_ReturnValue) == 0x00033C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_SignedAngleBetweenOnPlane_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_5) == 0x000340, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_5' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_5) == 0x00034C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_5' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_5) == 0x000358, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_5' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BlueprintSuggestProjectileVelocity_TossVelocity) == 0x000364, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BlueprintSuggestProjectileVelocity_TossVelocity' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BlueprintSuggestProjectileVelocity_ReturnValue) == 0x000370, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BlueprintSuggestProjectileVelocity_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetExplosivePhysicsComponent_PhysicsComponent) == 0x000378, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetExplosivePhysicsComponent_PhysicsComponent' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetPlayTimeInSeconds_ReturnValue_1) == 0x000380, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetPlayTimeInSeconds_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x000384, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_AsProximity_Mine_Projectile) == 0x000388, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_AsProximity_Mine_Projectile' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_bSuccess) == 0x000390, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_AsGrenade_Projectile_Base) == 0x000398, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_AsGrenade_Projectile_Base' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_bSuccess_1) == 0x0003A0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_SpawnExplosive_Result) == 0x0003A8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_SpawnExplosive_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_UseConsumable_ConsumedItem) == 0x0003B0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_UseConsumable_ConsumedItem' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_AsPAWN_Hacker_Simple) == 0x0000A0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_AsPAWN_Hacker_Simple' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_bSuccess) == 0x0000A8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x0000AC, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetForwardVector_ReturnValue) == 0x0000B0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetForwardVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetHeadTransform_Transform) == 0x0000C0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetHeadTransform_Transform' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetContactDamageFromSpeed_ContactDamage) == 0x0000F0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetContactDamageFromSpeed_ContactDamage' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location) == 0x0000F4, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation) == 0x000100, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale) == 0x00010C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetForwardVector_ReturnValue_1) == 0x000118, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetForwardVector_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_MakeVector_ReturnValue) == 0x000124, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_MakeVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetWeaponModeNameByIndex_ModeName) == 0x000130, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetWeaponModeNameByIndex_ModeName' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetDataTableRowFromName_OutRow) == 0x000138, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetDataTableRowFromName_OutRow' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetDataTableRowFromName_ReturnValue) == 0x000238, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetDataTableRowFromName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetExplosivePhysicsComponent_PhysicsComponent) == 0x000240, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetExplosivePhysicsComponent_PhysicsComponent' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetWeaponPropertyValueByType_Value) == 0x000248, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetWeaponPropertyValueByType_Value' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetWeaponPropertyValueByType_Value_1) == 0x00024C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetWeaponPropertyValueByType_Value_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_AsProximity_Mine_Projectile) == 0x000250, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_AsProximity_Mine_Projectile' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_bSuccess_1) == 0x000258, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_1) == 0x00025C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_1) == 0x000268, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_1) == 0x000274, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Subtract_VectorVector_ReturnValue) == 0x000280, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x00028C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Normal_ReturnValue) == 0x000298, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Normal_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Multiply_VectorFloat_ReturnValue_1) == 0x0002A4, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Multiply_VectorFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_2) == 0x0002B0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_2' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_2) == 0x0002BC, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_2' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_2) == 0x0002C8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_2' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_3) == 0x0002D4, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_3' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_3) == 0x0002E0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_3' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_3) == 0x0002EC, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_3' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Vector_Up_ReturnValue) == 0x0002F8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Vector_Up_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Subtract_VectorVector_ReturnValue_1) == 0x000304, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Subtract_VectorVector_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_VSize_ReturnValue) == 0x000310, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_VSize_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_SignOfFloat_ReturnValue) == 0x000314, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_SignOfFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000318, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Abs_ReturnValue) == 0x00031C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Abs_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_RotateAngleAxis_ReturnValue) == 0x000320, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_RotateAngleAxis_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Less_FloatFloat_ReturnValue) == 0x00032C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Multiply_VectorFloat_ReturnValue_2) == 0x000330, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Multiply_VectorFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Add_VectorVector_ReturnValue) == 0x00033C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Vector_Up_ReturnValue_1) == 0x000348, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Vector_Up_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_4) == 0x000354, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_4' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_4) == 0x000360, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_4' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_4) == 0x00036C, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_4' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Subtract_VectorVector_ReturnValue_2) == 0x000378, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Subtract_VectorVector_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_SignedAngleBetweenOnPlane_ReturnValue) == 0x000384, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_SignedAngleBetweenOnPlane_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Location_5) == 0x000388, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Location_5' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Rotation_5) == 0x000394, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Rotation_5' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BreakTransform_Scale_5) == 0x0003A0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BreakTransform_Scale_5' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BlueprintSuggestProjectileVelocity_TossVelocity) == 0x0003AC, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BlueprintSuggestProjectileVelocity_TossVelocity' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_BlueprintSuggestProjectileVelocity_ReturnValue) == 0x0003B8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_BlueprintSuggestProjectileVelocity_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetExplosivePhysicsComponent_PhysicsComponent_1) == 0x0003C0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetExplosivePhysicsComponent_PhysicsComponent_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_GetPlayTimeInSeconds_ReturnValue_1) == 0x0003C8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_GetPlayTimeInSeconds_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x0003CC, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_AsProximity_Mine_Projectile_1) == 0x0003D0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_AsProximity_Mine_Projectile_1' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_bSuccess_2) == 0x0003D8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_AsGrenade_Projectile_Base) == 0x0003E0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_AsGrenade_Projectile_Base' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, K2Node_DynamicCast_bSuccess_3) == 0x0003E8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_SpawnExplosive_Result) == 0x0003F0, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_SpawnExplosive_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_UseConsumable, CallFunc_UseConsumable_ConsumedItem) == 0x0003F8, "Member 'ITEM_ExplosiveBase_C_UseConsumable::CallFunc_UseConsumable_ConsumedItem' has a wrong offset!");
 
 // Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.GetContactDamageFromSpeed
 // 0x0010 (0x0010 - 0x0000)
@@ -412,6 +430,38 @@ static_assert(offsetof(ITEM_ExplosiveBase_C_GetActivateMontage, CallFunc_IsValid
 static_assert(offsetof(ITEM_ExplosiveBase_C_GetActivateMontage, CallFunc_IsValidSoftObjectReference_ReturnValue) == 0x000022, "Member 'ITEM_ExplosiveBase_C_GetActivateMontage::CallFunc_IsValidSoftObjectReference_ReturnValue' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_GetActivateMontage, CallFunc_GetActivateMontage_Montage) == 0x000028, "Member 'ITEM_ExplosiveBase_C_GetActivateMontage::CallFunc_GetActivateMontage_Montage' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_GetActivateMontage, CallFunc_BooleanAND_ReturnValue) == 0x000030, "Member 'ITEM_ExplosiveBase_C_GetActivateMontage::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
+// Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.CanActivate
+// 0x0030 (0x0030 - 0x0000)
+struct ITEM_ExplosiveBase_C_CanActivate final
+{
+public:
+	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsExplosiveArmed_Result;                  // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_CanActivate_Result;                       // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x000B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCOMP_Inventory_C*                      CallFunc_GetInventory_Inventory;                   // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UITEM_HandheldConsumable_Base_C*        CallFunc_GetHandheldItem_HandheldItem;             // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UITEM_HandheldExplosive_Base_C*         K2Node_DynamicCast_AsITEM_Handheld_Explosive_Base; // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsEquipped_Result;                        // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(ITEM_ExplosiveBase_C_CanActivate) == 0x000008, "Wrong alignment on ITEM_ExplosiveBase_C_CanActivate");
+static_assert(sizeof(ITEM_ExplosiveBase_C_CanActivate) == 0x000030, "Wrong size on ITEM_ExplosiveBase_C_CanActivate");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, Character) == 0x000000, "Member 'ITEM_ExplosiveBase_C_CanActivate::Character' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, Result) == 0x000008, "Member 'ITEM_ExplosiveBase_C_CanActivate::Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_IsExplosiveArmed_Result) == 0x000009, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_IsExplosiveArmed_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_CanActivate_Result) == 0x00000A, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_CanActivate_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_Not_PreBool_ReturnValue) == 0x00000B, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_GetInventory_Inventory) == 0x000010, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_GetInventory_Inventory' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_GetHandheldItem_HandheldItem) == 0x000018, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_GetHandheldItem_HandheldItem' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, K2Node_DynamicCast_AsITEM_Handheld_Explosive_Base) == 0x000020, "Member 'ITEM_ExplosiveBase_C_CanActivate::K2Node_DynamicCast_AsITEM_Handheld_Explosive_Base' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'ITEM_ExplosiveBase_C_CanActivate::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_IsEquipped_Result) == 0x000029, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_IsEquipped_Result' has a wrong offset!");
+static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_Not_PreBool_ReturnValue_1) == 0x00002A, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
 
 // Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.Activate
 // 0x0230 (0x0230 - 0x0000)
@@ -560,38 +610,6 @@ static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_El
 static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_FaceIndex) == 0x000210, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_FaceIndex' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_TraceStart) == 0x000214, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_TraceStart' has a wrong offset!");
 static_assert(offsetof(ITEM_ExplosiveBase_C_Activate, CallFunc_BreakHitResult_TraceEnd) == 0x000220, "Member 'ITEM_ExplosiveBase_C_Activate::CallFunc_BreakHitResult_TraceEnd' has a wrong offset!");
-
-// Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.CanActivate
-// 0x0030 (0x0030 - 0x0000)
-struct ITEM_ExplosiveBase_C_CanActivate final
-{
-public:
-	class APAWN_SystemShockCharacter_C*           Character;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsExplosiveArmed_Result;                  // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_CanActivate_Result;                       // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x000B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCOMP_Inventory_C*                      CallFunc_GetInventory_Inventory;                   // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UITEM_HandheldConsumable_Base_C*        CallFunc_GetHandheldItem_HandheldItem;             // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UITEM_HandheldExplosive_Base_C*         K2Node_DynamicCast_AsITEM_Handheld_Explosive_Base; // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsEquipped_Result;                        // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue_1;                // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(ITEM_ExplosiveBase_C_CanActivate) == 0x000008, "Wrong alignment on ITEM_ExplosiveBase_C_CanActivate");
-static_assert(sizeof(ITEM_ExplosiveBase_C_CanActivate) == 0x000030, "Wrong size on ITEM_ExplosiveBase_C_CanActivate");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, Character) == 0x000000, "Member 'ITEM_ExplosiveBase_C_CanActivate::Character' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, Result) == 0x000008, "Member 'ITEM_ExplosiveBase_C_CanActivate::Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_IsExplosiveArmed_Result) == 0x000009, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_IsExplosiveArmed_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_CanActivate_Result) == 0x00000A, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_CanActivate_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_Not_PreBool_ReturnValue) == 0x00000B, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_GetInventory_Inventory) == 0x000010, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_GetInventory_Inventory' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_GetHandheldItem_HandheldItem) == 0x000018, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_GetHandheldItem_HandheldItem' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, K2Node_DynamicCast_AsITEM_Handheld_Explosive_Base) == 0x000020, "Member 'ITEM_ExplosiveBase_C_CanActivate::K2Node_DynamicCast_AsITEM_Handheld_Explosive_Base' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'ITEM_ExplosiveBase_C_CanActivate::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_IsEquipped_Result) == 0x000029, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_IsEquipped_Result' has a wrong offset!");
-static_assert(offsetof(ITEM_ExplosiveBase_C_CanActivate, CallFunc_Not_PreBool_ReturnValue_1) == 0x00002A, "Member 'ITEM_ExplosiveBase_C_CanActivate::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
 
 // Function ITEM_ExplosiveBase.ITEM_ExplosiveBase_C.GetInventoryItemDetailsClass
 // 0x0008 (0x0008 - 0x0000)

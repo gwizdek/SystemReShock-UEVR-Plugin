@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_ItemInsertionRules_structs.hpp"
-#include "STRUCT_HardItemParams_structs.hpp"
+#include "STRUCT_SoftItemParams_structs.hpp"
 #include "ENUM_CardinalDirection_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_InventorySlotType_structs.hpp"
+#include "STRUCT_HardItemParams_structs.hpp"
 #include "ENUM_UpgradeResult_structs.hpp"
 #include "ENUM_ItemType_structs.hpp"
-#include "STRUCT_SoftItemParams_structs.hpp"
-#include "ENUM_InventorySlotType_structs.hpp"
+#include "STRUCT_ItemInsertionRules_structs.hpp"
 #include "STRUCT_InventoryBagParams_structs.hpp"
 
 

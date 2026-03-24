@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_MusicParams_structs.hpp"
 #include "Engine_structs.hpp"
+#include "STRUCT_MusicParams_structs.hpp"
 
 
 namespace SDK::Params

@@ -47,7 +47,7 @@ static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_BndEvt__WIDGET_OptionsMenu_
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_BndEvt__WIDGET_OptionsMenu_Controls_WIDGET_SubMenu_ListPanel_K2Node_ComponentBoundEvent_0_OnTabSelected__DelegateSignature, TabEnum) == 0x000010, "Member 'WIDGET_OptionsMenu_Controls_C_BndEvt__WIDGET_OptionsMenu_Controls_WIDGET_SubMenu_ListPanel_K2Node_ComponentBoundEvent_0_OnTabSelected__DelegateSignature::TabEnum' has a wrong offset!");
 
 // Function WIDGET_OptionsMenu_Controls.WIDGET_OptionsMenu_Controls_C.OnTabSelected
-// 0x0050 (0x0050 - 0x0000)
+// 0x0058 (0x0058 - 0x0000)
 struct WIDGET_OptionsMenu_Controls_C_OnTabSelected final
 {
 public:
@@ -57,29 +57,30 @@ public:
 	class UWIDGET_MenuListBase_C*                 DesiredList;                                       // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWIDGET_MenuListBase_C*                 CurrentList;                                       // 0x0020(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UWIDGET_MenuListBase_C*                 CallFunc_GetActiveMenuList_Result;                 // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWIDGET_MenuListBase_C*                 CallFunc_GetActiveMenuList_Result_1;               // 0x0030(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x003A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3B[0x5];                                       // 0x003B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWIDGET_MenuListBase_C*                 CallFunc_GetActiveMenuList_Result_2;               // 0x0040(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_32[0x6];                                       // 0x0032(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_MenuListBase_C*                 CallFunc_GetActiveMenuList_Result_1;               // 0x0038(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWIDGET_MenuListBase_C*                 CallFunc_GetActiveMenuList_Result_2;               // 0x0048(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_OptionsMenu_Controls_C_OnTabSelected) == 0x000008, "Wrong alignment on WIDGET_OptionsMenu_Controls_C_OnTabSelected");
-static_assert(sizeof(WIDGET_OptionsMenu_Controls_C_OnTabSelected) == 0x000050, "Wrong size on WIDGET_OptionsMenu_Controls_C_OnTabSelected");
+static_assert(sizeof(WIDGET_OptionsMenu_Controls_C_OnTabSelected) == 0x000058, "Wrong size on WIDGET_OptionsMenu_Controls_C_OnTabSelected");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, ListLabel) == 0x000000, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::ListLabel' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, ListEnum) == 0x000010, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::ListEnum' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, DesiredList) == 0x000018, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::DesiredList' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CurrentList) == 0x000020, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CurrentList' has a wrong offset!");
 static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_GetActiveMenuList_Result) == 0x000028, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_GetActiveMenuList_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_GetActiveMenuList_Result_1) == 0x000030, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_GetActiveMenuList_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_IsValid_ReturnValue) == 0x000038, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_IsValid_ReturnValue_1) == 0x000039, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, K2Node_SwitchEnum_CmpSuccess) == 0x00003A, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_GetActiveMenuList_Result_2) == 0x000040, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_GetActiveMenuList_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000048, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_IsValid_ReturnValue_2) == 0x000049, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, K2Node_SwitchEnum_CmpSuccess) == 0x000030, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_IsValid_ReturnValue) == 0x000031, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_GetActiveMenuList_Result_1) == 0x000038, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_GetActiveMenuList_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_IsValid_ReturnValue_1) == 0x000040, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_GetActiveMenuList_Result_2) == 0x000048, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_GetActiveMenuList_Result_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000050, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_OptionsMenu_Controls_C_OnTabSelected, CallFunc_IsValid_ReturnValue_2) == 0x000051, "Member 'WIDGET_OptionsMenu_Controls_C_OnTabSelected::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
 
 // Function WIDGET_OptionsMenu_Controls.WIDGET_OptionsMenu_Controls_C.GetListByIndex
 // 0x0028 (0x0028 - 0x0000)

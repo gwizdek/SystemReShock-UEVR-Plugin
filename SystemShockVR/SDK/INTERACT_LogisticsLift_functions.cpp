@@ -592,6 +592,30 @@ void AINTERACT_LogisticsLift_C::TryInteract(class AActor* SourceActor, class UPr
 }
 
 
+// Function INTERACT_LogisticsLift.INTERACT_LogisticsLift_C.ShouldSaveActor
+// (Event, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FStreamingSaveGameActorParams    Params_0                                               (Parm, OutParm)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool AINTERACT_LogisticsLift_C::ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("INTERACT_LogisticsLift_C", "ShouldSaveActor");
+
+	Params::INTERACT_LogisticsLift_C_ShouldSaveActor Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Params_0 != nullptr)
+		*Params_0 = std::move(Parms.Params_0);
+
+	return Parms.ReturnValue;
+}
+
+
 // Function INTERACT_LogisticsLift.INTERACT_LogisticsLift_C.CanModifyInteractPower
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -634,30 +658,6 @@ void AINTERACT_LogisticsLift_C::SetInteractPowered(bool State, bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
-}
-
-
-// Function INTERACT_LogisticsLift.INTERACT_LogisticsLift_C.ShouldSaveActor
-// (Event, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// struct FStreamingSaveGameActorParams    Params_0                                               (Parm, OutParm)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
-
-bool AINTERACT_LogisticsLift_C::ShouldSaveActor(struct FStreamingSaveGameActorParams* Params_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("INTERACT_LogisticsLift_C", "ShouldSaveActor");
-
-	Params::INTERACT_LogisticsLift_C_ShouldSaveActor Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Params_0 != nullptr)
-		*Params_0 = std::move(Parms.Params_0);
-
-	return Parms.ReturnValue;
 }
 
 }

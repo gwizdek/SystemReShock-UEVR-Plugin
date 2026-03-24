@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "ENUM_MenuNavigationInput_structs.hpp"
 #include "UMG_classes.hpp"
 #include "ENUM_MFDTabCategory_structs.hpp"
-#include "ENUM_MenuNavigationInput_structs.hpp"
 
 
 namespace SDK

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "AttributeSystem_structs.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_ShodanPulseType_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "ENUM_ShodanTetherState_structs.hpp"
@@ -528,7 +528,7 @@ static_assert(offsetof(ShodanTether_C_UpdateOrbiting, CallFunc_Subtract_FloatFlo
 static_assert(offsetof(ShodanTether_C_UpdateOrbiting, CallFunc_Add_FloatFloat_ReturnValue) == 0x000198, "Member 'ShodanTether_C_UpdateOrbiting::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
 
 // Function ShodanTether.ShodanTether_C.UpdateFlying
-// 0x0104 (0x0104 - 0x0000)
+// 0x0108 (0x0108 - 0x0000)
 struct ShodanTether_C_UpdateFlying final
 {
 public:
@@ -538,50 +538,52 @@ public:
 	float                                         BlendStartTime;                                    // 0x0014(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         FlyProgress;                                       // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         ElapsedTime;                                       // 0x001C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_VEase_ReturnValue;                        // 0x002C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_K2_SetActorLocation_SweepHitResult;       // 0x0038(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	bool                                          CallFunc_K2_SetActorLocation_ReturnValue;          // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C1[0x3];                                       // 0x00C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_GetOrbitLocationAtTime_Result;            // 0x00C4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_VEase_ReturnValue_1;                      // 0x00D0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x00DC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x00E0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x00E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Lerp_ReturnValue;                         // 0x00EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue_1;          // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FClamp_ReturnValue;                       // 0x00F4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x00F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_F9[0x3];                                       // 0x00F9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x00FC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_2;        // 0x0100(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FClamp_ReturnValue;                       // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_VEase_ReturnValue;                        // 0x0030(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_K2_SetActorLocation_SweepHitResult;       // 0x003C(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_K2_SetActorLocation_ReturnValue;          // 0x00C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_C5[0x3];                                       // 0x00C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_GetOrbitLocationAtTime_Result;            // 0x00C8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x00D4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_VEase_ReturnValue_1;                      // 0x00D8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x00E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x00E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x00EC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_ED[0x3];                                       // 0x00ED(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Lerp_ReturnValue;                         // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue_1;          // 0x00F4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FClamp_ReturnValue_1;                     // 0x00F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_FloatFloat_ReturnValue;      // 0x00FC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_FD[0x3];                                       // 0x00FD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetPlayTimeInSeconds_ReturnValue;         // 0x0100(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_2;        // 0x0104(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(ShodanTether_C_UpdateFlying) == 0x000004, "Wrong alignment on ShodanTether_C_UpdateFlying");
-static_assert(sizeof(ShodanTether_C_UpdateFlying) == 0x000104, "Wrong size on ShodanTether_C_UpdateFlying");
+static_assert(sizeof(ShodanTether_C_UpdateFlying) == 0x000108, "Wrong size on ShodanTether_C_UpdateFlying");
 static_assert(offsetof(ShodanTether_C_UpdateFlying, DesiredFlyLocation) == 0x000000, "Member 'ShodanTether_C_UpdateFlying::DesiredFlyLocation' has a wrong offset!");
 static_assert(offsetof(ShodanTether_C_UpdateFlying, BlendProgress) == 0x00000C, "Member 'ShodanTether_C_UpdateFlying::BlendProgress' has a wrong offset!");
 static_assert(offsetof(ShodanTether_C_UpdateFlying, BlendElapsedTime) == 0x000010, "Member 'ShodanTether_C_UpdateFlying::BlendElapsedTime' has a wrong offset!");
 static_assert(offsetof(ShodanTether_C_UpdateFlying, BlendStartTime) == 0x000014, "Member 'ShodanTether_C_UpdateFlying::BlendStartTime' has a wrong offset!");
 static_assert(offsetof(ShodanTether_C_UpdateFlying, FlyProgress) == 0x000018, "Member 'ShodanTether_C_UpdateFlying::FlyProgress' has a wrong offset!");
 static_assert(offsetof(ShodanTether_C_UpdateFlying, ElapsedTime) == 0x00001C, "Member 'ShodanTether_C_UpdateFlying::ElapsedTime' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000020, "Member 'ShodanTether_C_UpdateFlying::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_VEase_ReturnValue) == 0x00002C, "Member 'ShodanTether_C_UpdateFlying::CallFunc_VEase_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_K2_SetActorLocation_SweepHitResult) == 0x000038, "Member 'ShodanTether_C_UpdateFlying::CallFunc_K2_SetActorLocation_SweepHitResult' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_K2_SetActorLocation_ReturnValue) == 0x0000C0, "Member 'ShodanTether_C_UpdateFlying::CallFunc_K2_SetActorLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_GetOrbitLocationAtTime_Result) == 0x0000C4, "Member 'ShodanTether_C_UpdateFlying::CallFunc_GetOrbitLocationAtTime_Result' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_VEase_ReturnValue_1) == 0x0000D0, "Member 'ShodanTether_C_UpdateFlying::CallFunc_VEase_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Divide_FloatFloat_ReturnValue) == 0x0000DC, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x0000E0, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x0000E4, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x0000E8, "Member 'ShodanTether_C_UpdateFlying::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Lerp_ReturnValue) == 0x0000EC, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Lerp_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Divide_FloatFloat_ReturnValue_1) == 0x0000F0, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Divide_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_FClamp_ReturnValue) == 0x0000F4, "Member 'ShodanTether_C_UpdateFlying::CallFunc_FClamp_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x0000F8, "Member 'ShodanTether_C_UpdateFlying::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x0000FC, "Member 'ShodanTether_C_UpdateFlying::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
-static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Subtract_FloatFloat_ReturnValue_2) == 0x000100, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Subtract_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_FClamp_ReturnValue) == 0x000020, "Member 'ShodanTether_C_UpdateFlying::CallFunc_FClamp_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000024, "Member 'ShodanTether_C_UpdateFlying::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_VEase_ReturnValue) == 0x000030, "Member 'ShodanTether_C_UpdateFlying::CallFunc_VEase_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_K2_SetActorLocation_SweepHitResult) == 0x00003C, "Member 'ShodanTether_C_UpdateFlying::CallFunc_K2_SetActorLocation_SweepHitResult' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_K2_SetActorLocation_ReturnValue) == 0x0000C4, "Member 'ShodanTether_C_UpdateFlying::CallFunc_K2_SetActorLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_GetOrbitLocationAtTime_Result) == 0x0000C8, "Member 'ShodanTether_C_UpdateFlying::CallFunc_GetOrbitLocationAtTime_Result' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Divide_FloatFloat_ReturnValue) == 0x0000D4, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_VEase_ReturnValue_1) == 0x0000D8, "Member 'ShodanTether_C_UpdateFlying::CallFunc_VEase_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x0000E4, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x0000E8, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x0000EC, "Member 'ShodanTether_C_UpdateFlying::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Lerp_ReturnValue) == 0x0000F0, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Lerp_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Divide_FloatFloat_ReturnValue_1) == 0x0000F4, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Divide_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_FClamp_ReturnValue_1) == 0x0000F8, "Member 'ShodanTether_C_UpdateFlying::CallFunc_FClamp_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_GreaterEqual_FloatFloat_ReturnValue) == 0x0000FC, "Member 'ShodanTether_C_UpdateFlying::CallFunc_GreaterEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_GetPlayTimeInSeconds_ReturnValue) == 0x000100, "Member 'ShodanTether_C_UpdateFlying::CallFunc_GetPlayTimeInSeconds_ReturnValue' has a wrong offset!");
+static_assert(offsetof(ShodanTether_C_UpdateFlying, CallFunc_Subtract_FloatFloat_ReturnValue_2) == 0x000104, "Member 'ShodanTether_C_UpdateFlying::CallFunc_Subtract_FloatFloat_ReturnValue_2' has a wrong offset!");
 
 // Function ShodanTether.ShodanTether_C.UpdateFullyCocked
 // 0x00BC (0x00BC - 0x0000)

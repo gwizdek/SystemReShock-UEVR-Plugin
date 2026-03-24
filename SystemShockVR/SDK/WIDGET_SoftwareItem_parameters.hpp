@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_ControllerType_structs.hpp"
 #include "SlateCore_structs.hpp"
 
 
@@ -67,26 +68,28 @@ static_assert(offsetof(WIDGET_SoftwareItem_C_Tick, MyGeometry) == 0x000000, "Mem
 static_assert(offsetof(WIDGET_SoftwareItem_C_Tick, InDeltaTime) == 0x000038, "Member 'WIDGET_SoftwareItem_C_Tick::InDeltaTime' has a wrong offset!");
 
 // Function WIDGET_SoftwareItem.WIDGET_SoftwareItem_C.PopulateSoftwareSlot
-// 0x0040 (0x0040 - 0x0000)
+// 0x0090 (0x0090 - 0x0000)
 struct WIDGET_SoftwareItem_C_PopulateSoftwareSlot final
 {
 public:
 	class UITEM_Software_Base_C*                  Item;                                              // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UInventoryBag_C*                        CallFunc_GetBag_Result;                            // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetSlotIndex_Result;                      // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(int32 SlotIndex)>              K2Node_CreateDelegate_OutputDelegate;              // 0x0014(0x0010)(ZeroConstructor, NoDestructor)
-	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   CallFunc_TextToUpper_ReturnValue;                  // 0x0028(0x0018)()
+	TSet<ENUM_ControllerType>                     K2Node_MakeSet_Set;                                // 0x0008(0x0050)()
+	class UInventoryBag_C*                        CallFunc_GetBag_Result;                            // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(int32 SlotIndex)>              K2Node_CreateDelegate_OutputDelegate;              // 0x0060(0x0010)(ZeroConstructor, NoDestructor)
+	int32                                         CallFunc_GetSlotIndex_Result;                      // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_75[0x3];                                       // 0x0075(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   CallFunc_TextToUpper_ReturnValue;                  // 0x0078(0x0018)()
 };
 static_assert(alignof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot) == 0x000008, "Wrong alignment on WIDGET_SoftwareItem_C_PopulateSoftwareSlot");
-static_assert(sizeof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot) == 0x000040, "Wrong size on WIDGET_SoftwareItem_C_PopulateSoftwareSlot");
+static_assert(sizeof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot) == 0x000090, "Wrong size on WIDGET_SoftwareItem_C_PopulateSoftwareSlot");
 static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, Item) == 0x000000, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::Item' has a wrong offset!");
-static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, CallFunc_GetBag_Result) == 0x000008, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::CallFunc_GetBag_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, CallFunc_GetSlotIndex_Result) == 0x000010, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::CallFunc_GetSlotIndex_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, K2Node_CreateDelegate_OutputDelegate) == 0x000014, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000024, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, CallFunc_TextToUpper_ReturnValue) == 0x000028, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::CallFunc_TextToUpper_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, K2Node_MakeSet_Set) == 0x000008, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::K2Node_MakeSet_Set' has a wrong offset!");
+static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, CallFunc_GetBag_Result) == 0x000058, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::CallFunc_GetBag_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, K2Node_CreateDelegate_OutputDelegate) == 0x000060, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, CallFunc_GetSlotIndex_Result) == 0x000070, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::CallFunc_GetSlotIndex_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000074, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_SoftwareItem_C_PopulateSoftwareSlot, CallFunc_TextToUpper_ReturnValue) == 0x000078, "Member 'WIDGET_SoftwareItem_C_PopulateSoftwareSlot::CallFunc_TextToUpper_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_SoftwareItem.WIDGET_SoftwareItem_C.EVENT_OnBagChanged
 // 0x0068 (0x0068 - 0x0000)

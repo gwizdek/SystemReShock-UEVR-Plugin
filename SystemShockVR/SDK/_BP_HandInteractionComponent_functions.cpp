@@ -37,20 +37,6 @@ void U_BP_HandInteractionComponent_C::ExecuteUbergraph__BP_HandInteractionCompon
 }
 
 
-// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ReceiveBeginPlay
-// (Event, Public, BlueprintEvent)
-
-void U_BP_HandInteractionComponent_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.CustomEvent_WeaponHolstered
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -122,6 +108,20 @@ void U_BP_HandInteractionComponent_C::ReceiveTick(float DeltaSeconds)
 	Parms.DeltaSeconds = DeltaSeconds;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ReceiveBeginPlay
+// (Event, Public, BlueprintEvent)
+
+void U_BP_HandInteractionComponent_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -237,6 +237,26 @@ void U_BP_HandInteractionComponent_C::HandleEventWeaponDrawn(class UITEM_WeaponB
 }
 
 
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.HandleEventWeaponHolstered
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UITEM_WeaponBase_C*               WeaponRef_0                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void U_BP_HandInteractionComponent_C::HandleEventWeaponHolstered(class UITEM_WeaponBase_C* WeaponRef_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "HandleEventWeaponHolstered");
+
+	Params::_BP_HandInteractionComponent_C_HandleEventWeaponHolstered Parms{};
+
+	Parms.WeaponRef_0 = WeaponRef_0;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.TryPuzzleInteract
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -314,26 +334,6 @@ void U_BP_HandInteractionComponent_C::GetGrabComponentNearMotionController(class
 }
 
 
-// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ComputeIsHoldingWeapon
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
-
-bool U_BP_HandInteractionComponent_C::ComputeIsHoldingWeapon()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ComputeIsHoldingWeapon");
-
-	Params::_BP_HandInteractionComponent_C_ComputeIsHoldingWeapon Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.HandleWeaponInteractionSources
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -391,6 +391,46 @@ void U_BP_HandInteractionComponent_C::IsManuallyPointing(bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
+}
+
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.IsMainHand
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool U_BP_HandInteractionComponent_C::IsMainHand()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "IsMainHand");
+
+	Params::_BP_HandInteractionComponent_C_IsMainHand Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.IsItemSelectorActive
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool U_BP_HandInteractionComponent_C::IsItemSelectorActive()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "IsItemSelectorActive");
+
+	Params::_BP_HandInteractionComponent_C_IsItemSelectorActive Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
 }
 
 }

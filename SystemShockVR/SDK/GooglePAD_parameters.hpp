@@ -116,6 +116,19 @@ static_assert(sizeof(GooglePADFunctionLibrary_GetShowCellularDataConfirmationSta
 static_assert(offsetof(GooglePADFunctionLibrary_GetShowCellularDataConfirmationStatus, Status) == 0x000000, "Member 'GooglePADFunctionLibrary_GetShowCellularDataConfirmationStatus::Status' has a wrong offset!");
 static_assert(offsetof(GooglePADFunctionLibrary_GetShowCellularDataConfirmationStatus, ReturnValue) == 0x000001, "Member 'GooglePADFunctionLibrary_GetShowCellularDataConfirmationStatus::ReturnValue' has a wrong offset!");
 
+// Function GooglePAD.GooglePADFunctionLibrary.GetShowConfirmationDialogStatus
+// 0x0002 (0x0002 - 0x0000)
+struct GooglePADFunctionLibrary_GetShowConfirmationDialogStatus final
+{
+public:
+	EGooglePADConfirmationDialogStatus            Status;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EGooglePADErrorCode                           ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GooglePADFunctionLibrary_GetShowConfirmationDialogStatus) == 0x000001, "Wrong alignment on GooglePADFunctionLibrary_GetShowConfirmationDialogStatus");
+static_assert(sizeof(GooglePADFunctionLibrary_GetShowConfirmationDialogStatus) == 0x000002, "Wrong size on GooglePADFunctionLibrary_GetShowConfirmationDialogStatus");
+static_assert(offsetof(GooglePADFunctionLibrary_GetShowConfirmationDialogStatus, Status) == 0x000000, "Member 'GooglePADFunctionLibrary_GetShowConfirmationDialogStatus::Status' has a wrong offset!");
+static_assert(offsetof(GooglePADFunctionLibrary_GetShowConfirmationDialogStatus, ReturnValue) == 0x000001, "Member 'GooglePADFunctionLibrary_GetShowConfirmationDialogStatus::ReturnValue' has a wrong offset!");
+
 // Function GooglePAD.GooglePADFunctionLibrary.GetStorageMethod
 // 0x0008 (0x0008 - 0x0000)
 struct GooglePADFunctionLibrary_GetStorageMethod final
@@ -217,6 +230,17 @@ public:
 static_assert(alignof(GooglePADFunctionLibrary_ShowCellularDataConfirmation) == 0x000001, "Wrong alignment on GooglePADFunctionLibrary_ShowCellularDataConfirmation");
 static_assert(sizeof(GooglePADFunctionLibrary_ShowCellularDataConfirmation) == 0x000001, "Wrong size on GooglePADFunctionLibrary_ShowCellularDataConfirmation");
 static_assert(offsetof(GooglePADFunctionLibrary_ShowCellularDataConfirmation, ReturnValue) == 0x000000, "Member 'GooglePADFunctionLibrary_ShowCellularDataConfirmation::ReturnValue' has a wrong offset!");
+
+// Function GooglePAD.GooglePADFunctionLibrary.ShowConfirmationDialog
+// 0x0001 (0x0001 - 0x0000)
+struct GooglePADFunctionLibrary_ShowConfirmationDialog final
+{
+public:
+	EGooglePADErrorCode                           ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GooglePADFunctionLibrary_ShowConfirmationDialog) == 0x000001, "Wrong alignment on GooglePADFunctionLibrary_ShowConfirmationDialog");
+static_assert(sizeof(GooglePADFunctionLibrary_ShowConfirmationDialog) == 0x000001, "Wrong size on GooglePADFunctionLibrary_ShowConfirmationDialog");
+static_assert(offsetof(GooglePADFunctionLibrary_ShowConfirmationDialog, ReturnValue) == 0x000000, "Member 'GooglePADFunctionLibrary_ShowConfirmationDialog::ReturnValue' has a wrong offset!");
 
 }
 

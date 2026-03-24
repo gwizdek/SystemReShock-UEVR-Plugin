@@ -21,7 +21,6 @@ namespace SDK
 class APICKUP_Weapon_Base_C : public APICKUP_Base_C
 {
 public:
-	uint8                                         Pad_474[0x4];                                      // 0x0474(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<class UITEM_WeaponModKit_Base_C*>      AppearanceModifiers;                               // 0x0478(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
 
 public:
@@ -29,8 +28,8 @@ public:
 	void SetIconClassCollection(const struct FObjectClassCollection& ClassCollection);
 	void UpdateWeaponPickupAppearance();
 	void GetRenderIconClassCollection(struct FObjectClassCollection* Result);
-	void TryInitializeItemInstance();
 	void UpdateMeshEmissiveStrength(float Scale);
+	void TryInitializeItemInstance();
 
 public:
 	static class UClass* StaticClass()

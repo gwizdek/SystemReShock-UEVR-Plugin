@@ -14,6 +14,31 @@
 namespace SDK::Params
 {
 
+// Function WIDGET_SplashScreen_NightDive.WIDGET_SplashScreen_NightDive_C.ExecuteUbergraph_WIDGET_SplashScreen_NightDive
+// 0x0018 (0x0018 - 0x0000)
+struct WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 K2Node_CustomEvent_OpenedUrl;                      // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive) == 0x000008, "Wrong alignment on WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive");
+static_assert(sizeof(WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive) == 0x000018, "Wrong size on WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive");
+static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive, EntryPoint) == 0x000000, "Member 'WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive::EntryPoint' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive, K2Node_CustomEvent_OpenedUrl) == 0x000008, "Member 'WIDGET_SplashScreen_NightDive_C_ExecuteUbergraph_WIDGET_SplashScreen_NightDive::K2Node_CustomEvent_OpenedUrl' has a wrong offset!");
+
+// Function WIDGET_SplashScreen_NightDive.WIDGET_SplashScreen_NightDive_C.Play
+// 0x0010 (0x0010 - 0x0000)
+struct WIDGET_SplashScreen_NightDive_C_Play final
+{
+public:
+	class FString                                 OpenedUrl;                                         // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WIDGET_SplashScreen_NightDive_C_Play) == 0x000008, "Wrong alignment on WIDGET_SplashScreen_NightDive_C_Play");
+static_assert(sizeof(WIDGET_SplashScreen_NightDive_C_Play) == 0x000010, "Wrong size on WIDGET_SplashScreen_NightDive_C_Play");
+static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_Play, OpenedUrl) == 0x000000, "Member 'WIDGET_SplashScreen_NightDive_C_Play::OpenedUrl' has a wrong offset!");
+
 // Function WIDGET_SplashScreen_NightDive.WIDGET_SplashScreen_NightDive_C.GetFadeOutDuration
 // 0x0004 (0x0004 - 0x0000)
 struct WIDGET_SplashScreen_NightDive_C_GetFadeOutDuration final
@@ -132,22 +157,22 @@ static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_SetPreGameScreen, PreGame
 static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_SetPreGameScreen, Result) == 0x000008, "Member 'WIDGET_SplashScreen_NightDive_C_SetPreGameScreen::Result' has a wrong offset!");
 
 // Function WIDGET_SplashScreen_NightDive.WIDGET_SplashScreen_NightDive_C.OnSplashVisible
-// 0x0020 (0x0020 - 0x0000)
+// 0x0018 (0x0018 - 0x0000)
 struct WIDGET_SplashScreen_NightDive_C_OnSplashVisible final
 {
 public:
 	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_OpenSource_ReturnValue;                   // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	class APawn*                                  CallFunc_GetPlayerPawn_ReturnValue;                // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UMediaSoundComponent*                   CallFunc_GetComponentByClass_ReturnValue;          // 0x0010(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_OpenSource_ReturnValue;                   // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_SplashScreen_NightDive_C_OnSplashVisible) == 0x000008, "Wrong alignment on WIDGET_SplashScreen_NightDive_C_OnSplashVisible");
-static_assert(sizeof(WIDGET_SplashScreen_NightDive_C_OnSplashVisible) == 0x000020, "Wrong size on WIDGET_SplashScreen_NightDive_C_OnSplashVisible");
+static_assert(sizeof(WIDGET_SplashScreen_NightDive_C_OnSplashVisible) == 0x000018, "Wrong size on WIDGET_SplashScreen_NightDive_C_OnSplashVisible");
 static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_OnSplashVisible, Result) == 0x000000, "Member 'WIDGET_SplashScreen_NightDive_C_OnSplashVisible::Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_OnSplashVisible, CallFunc_OpenSource_ReturnValue) == 0x000001, "Member 'WIDGET_SplashScreen_NightDive_C_OnSplashVisible::CallFunc_OpenSource_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_OnSplashVisible, CallFunc_GetPlayerPawn_ReturnValue) == 0x000008, "Member 'WIDGET_SplashScreen_NightDive_C_OnSplashVisible::CallFunc_GetPlayerPawn_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_OnSplashVisible, CallFunc_GetComponentByClass_ReturnValue) == 0x000010, "Member 'WIDGET_SplashScreen_NightDive_C_OnSplashVisible::CallFunc_GetComponentByClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_SplashScreen_NightDive_C_OnSplashVisible, CallFunc_OpenSource_ReturnValue) == 0x000018, "Member 'WIDGET_SplashScreen_NightDive_C_OnSplashVisible::CallFunc_OpenSource_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_SplashScreen_NightDive.WIDGET_SplashScreen_NightDive_C.OnSplashHidden
 // 0x0002 (0x0002 - 0x0000)

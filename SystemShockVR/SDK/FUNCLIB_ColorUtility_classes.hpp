@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ENUM_ButtonColorType_structs.hpp"
 #include "Engine_classes.hpp"
 #include "ENUM_MeshColor_structs.hpp"
-#include "ENUM_ButtonColorType_structs.hpp"
 
 
 namespace SDK
@@ -31,7 +31,7 @@ public:
 	static void GetTriadicColors(int32 InputColor, class UObject* __WorldContext, TArray<int32>* TriadicColors);
 	static void GetCombinedPrimaries(TArray<int32>& PrimaryColors, class UObject* __WorldContext, int32* Secondary);
 	static void GetCombinedSecondary(TArray<int32>& Secondaries, class UObject* __WorldContext, int32* Primary);
-	static void GetMeshUIColor(ENUM_MeshColor TargetColor, class UObject* __WorldContext, struct FColor* Color);
+	static void GetMeshUIColor(ENUM_MeshColor TargetColor, uint8 ColorAlpha, class UObject* __WorldContext, struct FColor* Color);
 	static void GetButtonColor(ENUM_ButtonColorType ButtonColorType, class UObject* __WorldContext, struct FLinearColor* ButtonColor);
 	static void GetButtonColorWhilePulsing(float Progress, ENUM_ButtonColorType ButtonColorType, class UObject* __WorldContext, struct FLinearColor* PulseValue);
 

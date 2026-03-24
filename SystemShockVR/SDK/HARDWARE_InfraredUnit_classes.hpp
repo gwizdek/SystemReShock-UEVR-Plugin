@@ -21,8 +21,8 @@ namespace SDK
 class UHARDWARE_InfraredUnit_C final : public UHARDWARE_VisionUnit_Base_C
 {
 public:
-	void OnVisionUnitActivated(class APAWN_SystemShockCharacter_C* Character);
 	void OnVisionUnitDeactivated(class APAWN_SystemShockCharacter_C* Character);
+	void OnVisionUnitActivated(class APAWN_SystemShockCharacter_C* Character);
 
 public:
 	static class UClass* StaticClass()

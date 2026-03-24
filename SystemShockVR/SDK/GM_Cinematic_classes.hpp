@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 
 
@@ -17,11 +18,16 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass GM_Cinematic.GM_Cinematic_C
-// 0x0008 (0x02C8 - 0x02C0)
+// 0x0010 (0x02D0 - 0x02C0)
 class AGM_Cinematic_C final : public AGameModeBase
 {
 public:
-	class USceneComponent*                        DefaultSceneRoot;                                  // 0x02C0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x02C0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class USceneComponent*                        DefaultSceneRoot;                                  // 0x02C8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+
+public:
+	void ReceiveBeginPlay();
+	void ExecuteUbergraph_GM_Cinematic(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()
@@ -34,8 +40,9 @@ public:
 	}
 };
 static_assert(alignof(AGM_Cinematic_C) == 0x000008, "Wrong alignment on AGM_Cinematic_C");
-static_assert(sizeof(AGM_Cinematic_C) == 0x0002C8, "Wrong size on AGM_Cinematic_C");
-static_assert(offsetof(AGM_Cinematic_C, DefaultSceneRoot) == 0x0002C0, "Member 'AGM_Cinematic_C::DefaultSceneRoot' has a wrong offset!");
+static_assert(sizeof(AGM_Cinematic_C) == 0x0002D0, "Wrong size on AGM_Cinematic_C");
+static_assert(offsetof(AGM_Cinematic_C, UberGraphFrame) == 0x0002C0, "Member 'AGM_Cinematic_C::UberGraphFrame' has a wrong offset!");
+static_assert(offsetof(AGM_Cinematic_C, DefaultSceneRoot) == 0x0002C8, "Member 'AGM_Cinematic_C::DefaultSceneRoot' has a wrong offset!");
 
 }
 

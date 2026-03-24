@@ -28,6 +28,28 @@ static_assert(alignof(DLSSLibrary_EnableDLAA) == 0x000001, "Wrong alignment on D
 static_assert(sizeof(DLSSLibrary_EnableDLAA) == 0x000001, "Wrong size on DLSSLibrary_EnableDLAA");
 static_assert(offsetof(DLSSLibrary_EnableDLAA, bEnabled) == 0x000000, "Member 'DLSSLibrary_EnableDLAA::bEnabled' has a wrong offset!");
 
+// Function DLSSBlueprint.DLSSLibrary.EnableDLSS
+// 0x0001 (0x0001 - 0x0000)
+struct DLSSLibrary_EnableDLSS final
+{
+public:
+	bool                                          bEnabled;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(DLSSLibrary_EnableDLSS) == 0x000001, "Wrong alignment on DLSSLibrary_EnableDLSS");
+static_assert(sizeof(DLSSLibrary_EnableDLSS) == 0x000001, "Wrong size on DLSSLibrary_EnableDLSS");
+static_assert(offsetof(DLSSLibrary_EnableDLSS, bEnabled) == 0x000000, "Member 'DLSSLibrary_EnableDLSS::bEnabled' has a wrong offset!");
+
+// Function DLSSBlueprint.DLSSLibrary.EnableDLSSRR
+// 0x0001 (0x0001 - 0x0000)
+struct DLSSLibrary_EnableDLSSRR final
+{
+public:
+	bool                                          bEnabled;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(DLSSLibrary_EnableDLSSRR) == 0x000001, "Wrong alignment on DLSSLibrary_EnableDLSSRR");
+static_assert(sizeof(DLSSLibrary_EnableDLSSRR) == 0x000001, "Wrong size on DLSSLibrary_EnableDLSSRR");
+static_assert(offsetof(DLSSLibrary_EnableDLSSRR, bEnabled) == 0x000000, "Member 'DLSSLibrary_EnableDLSSRR::bEnabled' has a wrong offset!");
+
 // Function DLSSBlueprint.DLSSLibrary.GetDefaultDLSSMode
 // 0x0001 (0x0001 - 0x0000)
 struct DLSSLibrary_GetDefaultDLSSMode final
@@ -91,6 +113,19 @@ static_assert(offsetof(DLSSLibrary_GetDLSSModeInformation, MinScreenPercentage) 
 static_assert(offsetof(DLSSLibrary_GetDLSSModeInformation, MaxScreenPercentage) == 0x00001C, "Member 'DLSSLibrary_GetDLSSModeInformation::MaxScreenPercentage' has a wrong offset!");
 static_assert(offsetof(DLSSLibrary_GetDLSSModeInformation, OptimalSharpness) == 0x000020, "Member 'DLSSLibrary_GetDLSSModeInformation::OptimalSharpness' has a wrong offset!");
 
+// Function DLSSBlueprint.DLSSLibrary.GetDLSSRRMinimumDriverVersion
+// 0x0008 (0x0008 - 0x0000)
+struct DLSSLibrary_GetDLSSRRMinimumDriverVersion final
+{
+public:
+	int32                                         MinDriverVersionMajor;                             // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MinDriverVersionMinor;                             // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(DLSSLibrary_GetDLSSRRMinimumDriverVersion) == 0x000004, "Wrong alignment on DLSSLibrary_GetDLSSRRMinimumDriverVersion");
+static_assert(sizeof(DLSSLibrary_GetDLSSRRMinimumDriverVersion) == 0x000008, "Wrong size on DLSSLibrary_GetDLSSRRMinimumDriverVersion");
+static_assert(offsetof(DLSSLibrary_GetDLSSRRMinimumDriverVersion, MinDriverVersionMajor) == 0x000000, "Member 'DLSSLibrary_GetDLSSRRMinimumDriverVersion::MinDriverVersionMajor' has a wrong offset!");
+static_assert(offsetof(DLSSLibrary_GetDLSSRRMinimumDriverVersion, MinDriverVersionMinor) == 0x000004, "Member 'DLSSLibrary_GetDLSSRRMinimumDriverVersion::MinDriverVersionMinor' has a wrong offset!");
+
 // Function DLSSBlueprint.DLSSLibrary.GetDLSSScreenPercentageRange
 // 0x0008 (0x0008 - 0x0000)
 struct DLSSLibrary_GetDLSSScreenPercentageRange final
@@ -137,6 +172,17 @@ static_assert(alignof(DLSSLibrary_IsDLAAEnabled) == 0x000001, "Wrong alignment o
 static_assert(sizeof(DLSSLibrary_IsDLAAEnabled) == 0x000001, "Wrong size on DLSSLibrary_IsDLAAEnabled");
 static_assert(offsetof(DLSSLibrary_IsDLAAEnabled, ReturnValue) == 0x000000, "Member 'DLSSLibrary_IsDLAAEnabled::ReturnValue' has a wrong offset!");
 
+// Function DLSSBlueprint.DLSSLibrary.IsDLSSEnabled
+// 0x0001 (0x0001 - 0x0000)
+struct DLSSLibrary_IsDLSSEnabled final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(DLSSLibrary_IsDLSSEnabled) == 0x000001, "Wrong alignment on DLSSLibrary_IsDLSSEnabled");
+static_assert(sizeof(DLSSLibrary_IsDLSSEnabled) == 0x000001, "Wrong size on DLSSLibrary_IsDLSSEnabled");
+static_assert(offsetof(DLSSLibrary_IsDLSSEnabled, ReturnValue) == 0x000000, "Member 'DLSSLibrary_IsDLSSEnabled::ReturnValue' has a wrong offset!");
+
 // Function DLSSBlueprint.DLSSLibrary.IsDLSSModeSupported
 // 0x0002 (0x0002 - 0x0000)
 struct DLSSLibrary_IsDLSSModeSupported final
@@ -150,6 +196,28 @@ static_assert(sizeof(DLSSLibrary_IsDLSSModeSupported) == 0x000002, "Wrong size o
 static_assert(offsetof(DLSSLibrary_IsDLSSModeSupported, DLSSMode) == 0x000000, "Member 'DLSSLibrary_IsDLSSModeSupported::DLSSMode' has a wrong offset!");
 static_assert(offsetof(DLSSLibrary_IsDLSSModeSupported, ReturnValue) == 0x000001, "Member 'DLSSLibrary_IsDLSSModeSupported::ReturnValue' has a wrong offset!");
 
+// Function DLSSBlueprint.DLSSLibrary.IsDLSSRREnabled
+// 0x0001 (0x0001 - 0x0000)
+struct DLSSLibrary_IsDLSSRREnabled final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(DLSSLibrary_IsDLSSRREnabled) == 0x000001, "Wrong alignment on DLSSLibrary_IsDLSSRREnabled");
+static_assert(sizeof(DLSSLibrary_IsDLSSRREnabled) == 0x000001, "Wrong size on DLSSLibrary_IsDLSSRREnabled");
+static_assert(offsetof(DLSSLibrary_IsDLSSRREnabled, ReturnValue) == 0x000000, "Member 'DLSSLibrary_IsDLSSRREnabled::ReturnValue' has a wrong offset!");
+
+// Function DLSSBlueprint.DLSSLibrary.IsDLSSRRSupported
+// 0x0001 (0x0001 - 0x0000)
+struct DLSSLibrary_IsDLSSRRSupported final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(DLSSLibrary_IsDLSSRRSupported) == 0x000001, "Wrong alignment on DLSSLibrary_IsDLSSRRSupported");
+static_assert(sizeof(DLSSLibrary_IsDLSSRRSupported) == 0x000001, "Wrong size on DLSSLibrary_IsDLSSRRSupported");
+static_assert(offsetof(DLSSLibrary_IsDLSSRRSupported, ReturnValue) == 0x000000, "Member 'DLSSLibrary_IsDLSSRRSupported::ReturnValue' has a wrong offset!");
+
 // Function DLSSBlueprint.DLSSLibrary.IsDLSSSupported
 // 0x0001 (0x0001 - 0x0000)
 struct DLSSLibrary_IsDLSSSupported final
@@ -160,6 +228,17 @@ public:
 static_assert(alignof(DLSSLibrary_IsDLSSSupported) == 0x000001, "Wrong alignment on DLSSLibrary_IsDLSSSupported");
 static_assert(sizeof(DLSSLibrary_IsDLSSSupported) == 0x000001, "Wrong size on DLSSLibrary_IsDLSSSupported");
 static_assert(offsetof(DLSSLibrary_IsDLSSSupported, ReturnValue) == 0x000000, "Member 'DLSSLibrary_IsDLSSSupported::ReturnValue' has a wrong offset!");
+
+// Function DLSSBlueprint.DLSSLibrary.QueryDLSSRRSupport
+// 0x0001 (0x0001 - 0x0000)
+struct DLSSLibrary_QueryDLSSRRSupport final
+{
+public:
+	EUDLSSSupport                                 ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(DLSSLibrary_QueryDLSSRRSupport) == 0x000001, "Wrong alignment on DLSSLibrary_QueryDLSSRRSupport");
+static_assert(sizeof(DLSSLibrary_QueryDLSSRRSupport) == 0x000001, "Wrong size on DLSSLibrary_QueryDLSSRRSupport");
+static_assert(offsetof(DLSSLibrary_QueryDLSSRRSupport, ReturnValue) == 0x000000, "Member 'DLSSLibrary_QueryDLSSRRSupport::ReturnValue' has a wrong offset!");
 
 // Function DLSSBlueprint.DLSSLibrary.QueryDLSSSupport
 // 0x0001 (0x0001 - 0x0000)

@@ -2678,26 +2678,6 @@ void UWIDGET_PlayerHUD_C::EVENT_OnCrashSequenceFinished()
 }
 
 
-// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.EVENT_OnUsingGamepadChanged
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsUsingGamepad                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-
-void UWIDGET_PlayerHUD_C::EVENT_OnUsingGamepadChanged(bool IsUsingGamepad)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WIDGET_PlayerHUD_C", "EVENT_OnUsingGamepadChanged");
-
-	Params::WIDGET_PlayerHUD_C_EVENT_OnUsingGamepadChanged Parms{};
-
-	Parms.IsUsingGamepad = IsUsingGamepad;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.UpdateCountdownTimeRemaining
 // (Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -2755,6 +2735,26 @@ void UWIDGET_PlayerHUD_C::MoveCursorToHotbarSlotIndex(int32 NewSlotIndex)
 	Params::WIDGET_PlayerHUD_C_MoveCursorToHotbarSlotIndex Parms{};
 
 	Parms.NewSlotIndex = NewSlotIndex;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WIDGET_PlayerHUD.WIDGET_PlayerHUD_C.EVENT on Active Controller Type Changed
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// ENUM_ControllerType                     NewActiveControllerType                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWIDGET_PlayerHUD_C::EVENT_on_Active_Controller_Type_Changed(ENUM_ControllerType NewActiveControllerType)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WIDGET_PlayerHUD_C", "EVENT on Active Controller Type Changed");
+
+	Params::WIDGET_PlayerHUD_C_EVENT_on_Active_Controller_Type_Changed Parms{};
+
+	Parms.NewActiveControllerType = NewActiveControllerType;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

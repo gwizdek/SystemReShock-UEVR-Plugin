@@ -36,7 +36,7 @@ public:
 	class UStaticMeshComponent*                   IceShield_MediumChunk4;                            // 0x0B40(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   IceShield_MediumChunk3;                            // 0x0B48(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   IceShield_MediumChunk2;                            // 0x0B50(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UAudioComponent*                        Audio_loop;                                        // 0x0B58(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        Audio_Loop;                                        // 0x0B58(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	int32                                         ShotsUntilReposition;                              // 0x0B60(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
@@ -75,7 +75,7 @@ static_assert(offsetof(APAWN_CyberStinger_C, IceShield_SmallChunk) == 0x000B38, 
 static_assert(offsetof(APAWN_CyberStinger_C, IceShield_MediumChunk4) == 0x000B40, "Member 'APAWN_CyberStinger_C::IceShield_MediumChunk4' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberStinger_C, IceShield_MediumChunk3) == 0x000B48, "Member 'APAWN_CyberStinger_C::IceShield_MediumChunk3' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberStinger_C, IceShield_MediumChunk2) == 0x000B50, "Member 'APAWN_CyberStinger_C::IceShield_MediumChunk2' has a wrong offset!");
-static_assert(offsetof(APAWN_CyberStinger_C, Audio_loop) == 0x000B58, "Member 'APAWN_CyberStinger_C::Audio_loop' has a wrong offset!");
+static_assert(offsetof(APAWN_CyberStinger_C, Audio_Loop) == 0x000B58, "Member 'APAWN_CyberStinger_C::Audio_Loop' has a wrong offset!");
 static_assert(offsetof(APAWN_CyberStinger_C, ShotsUntilReposition) == 0x000B60, "Member 'APAWN_CyberStinger_C::ShotsUntilReposition' has a wrong offset!");
 
 }

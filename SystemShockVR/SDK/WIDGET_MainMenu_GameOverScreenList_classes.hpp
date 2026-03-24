@@ -34,8 +34,8 @@ public:
 	void BndEvt__WIDGET_MainMenu_GameOverScreenList_WIDGET_Button_QuitToTitle_K2Node_ComponentBoundEvent_2_OnMainMenuButtonClicked__DelegateSignature(const struct FPointerEvent& InputEvent);
 	void BndEvt__WIDGET_MainMenu_GameOverScreenList_WIDGET_Button_LoadSave_K2Node_ComponentBoundEvent_1_OnMainMenuButtonClicked__DelegateSignature(const struct FPointerEvent& InputEvent);
 	void BndEvt__WIDGET_MainMenu_GameOverScreenList_WIDGET_Button_Continue_K2Node_ComponentBoundEvent_0_OnMainMenuButtonClicked__DelegateSignature(const struct FPointerEvent& InputEvent);
-	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 	void InitializeList(class UWIDGET_MenuBase_C* ParentScreen);
+	void InitializeItemArray(TArray<class UWIDGET_MenuListItemBase_C*>* MenuListItems);
 
 public:
 	static class UClass* StaticClass()

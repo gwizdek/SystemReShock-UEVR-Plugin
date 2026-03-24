@@ -129,8 +129,8 @@ private:
 // Controller State
 // -----------------------------------------------------------------------------
 private:
-    MemoTriggerInput m_gamepad_trigger_right{ true, 200, 100 };
-    MemoTriggerInput m_gamepad_trigger_left{ false, 200, 100 };
+    MemoTriggerInput m_gamepad_right_trigger{ true, 200, 100 };
+    MemoTriggerInput m_gamepad_left_trigger{ false, 200, 100 };
     MemoInput m_gamepad_right_shoulder{ XINPUT_GAMEPAD_RIGHT_SHOULDER, "RIGHT_SHOULDER" };
     MemoInput m_gamepad_left_shoulder{ XINPUT_GAMEPAD_LEFT_SHOULDER, "LEFT_SHOULDER" };
     MemoInput m_gamepad_right_thumb{ XINPUT_GAMEPAD_RIGHT_THUMB, "RIGHT_THUMB" };

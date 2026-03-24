@@ -11,6 +11,7 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "UMG_classes.hpp"
 
@@ -19,7 +20,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C
-// 0x0040 (0x02A0 - 0x0260)
+// 0x00D8 (0x0338 - 0x0260)
 class UWIDGET_ButtonLegend_KeyComposite_C final : public UUserWidget
 {
 public:
@@ -28,21 +29,21 @@ public:
 	class UWIDGET_ButtonLegend_Key_C*             KeyB;                                              // 0x0270(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UTextMeshWidget*                        KeySeparator;                                      // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	struct FVector2D                              CompositePanelSize;                                // 0x0280(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CompositeInputActionString;                        // 0x0288(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, HasGetValueTypeHash)
-	class UTextMeshWidget*                        SourceTextMeshWidget;                              // 0x0298(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UTextMeshWidget*                        SourceTextMeshWidget;                              // 0x0288(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMap<ENUM_ControllerType, class FName>        FirstInputMapping;                                 // 0x0290(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMap<ENUM_ControllerType, class FName>        SecondInputMapping;                                // 0x02E0(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	ENUM_ControllerType                           ControllerMode;                                    // 0x0330(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_WIDGET_ButtonLegend_KeyComposite(int32 EntryPoint);
 	void PreConstruct(bool IsDesignTime);
 	void Construct();
 	void SetDecoratorColor(const struct FColor& Color);
-	void GetInputActionFromGenericToken(const class FString& InputString, bool IsUsingGamepad, class FName* Result);
-	void GetInputActionFromTokenPair(const class FString& InputStringA, const class FString& InputStringB, bool IsUsingGamepad, class FName* Result);
-	void ParseInputActionsFromString(const class FString& InputString, bool IsUsingGamepad, class FName* InputNameA, class FName* InputNameB);
+	void ParseInputActionsFromString(const class FString& InputString);
 	void InitializeLegendKeys();
 	void InitializeLegendKeyComposite();
-	void EVENT_OnUsingGamepadChanged(bool IsUsingGamepad);
-	void UpdateInputActions(bool IsUsingGamepad);
+	void UpdateMapping();
+	void EVENT_OnActiveControllerTypeChanged(ENUM_ControllerType NewActiveControllerType);
 	bool InitializeDecorator(class UTextMeshWidget* TextMeshWidget, const struct FColor& Color);
 	struct FVector2D GetDecoratorSizeFromPayload(const class FString& Payload);
 
@@ -57,14 +58,16 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_ButtonLegend_KeyComposite_C) == 0x000008, "Wrong alignment on UWIDGET_ButtonLegend_KeyComposite_C");
-static_assert(sizeof(UWIDGET_ButtonLegend_KeyComposite_C) == 0x0002A0, "Wrong size on UWIDGET_ButtonLegend_KeyComposite_C");
+static_assert(sizeof(UWIDGET_ButtonLegend_KeyComposite_C) == 0x000338, "Wrong size on UWIDGET_ButtonLegend_KeyComposite_C");
 static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, UberGraphFrame) == 0x000260, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, KeyA) == 0x000268, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::KeyA' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, KeyB) == 0x000270, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::KeyB' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, KeySeparator) == 0x000278, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::KeySeparator' has a wrong offset!");
 static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, CompositePanelSize) == 0x000280, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::CompositePanelSize' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, CompositeInputActionString) == 0x000288, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::CompositeInputActionString' has a wrong offset!");
-static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, SourceTextMeshWidget) == 0x000298, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::SourceTextMeshWidget' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, SourceTextMeshWidget) == 0x000288, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::SourceTextMeshWidget' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, FirstInputMapping) == 0x000290, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::FirstInputMapping' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, SecondInputMapping) == 0x0002E0, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::SecondInputMapping' has a wrong offset!");
+static_assert(offsetof(UWIDGET_ButtonLegend_KeyComposite_C, ControllerMode) == 0x000330, "Member 'UWIDGET_ButtonLegend_KeyComposite_C::ControllerMode' has a wrong offset!");
 
 }
 

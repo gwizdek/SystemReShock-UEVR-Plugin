@@ -10,8 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "InputCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "ENUM_ControllerType_structs.hpp"
+#include "InputCore_structs.hpp"
 
 
 namespace SDK::Params
@@ -54,280 +55,248 @@ static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_SetDecoratorColor) == 0
 static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_SetDecoratorColor) == 0x000004, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_SetDecoratorColor");
 static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_SetDecoratorColor, Color) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_SetDecoratorColor::Color' has a wrong offset!");
 
-// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.GetInputActionFromGenericToken
-// 0x0058 (0x0058 - 0x0000)
-struct WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken final
-{
-public:
-	class FString                                 InputString;                                       // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          IsUsingGamepad;                                    // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   Result;                                            // 0x0014(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x001C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetGamepadInputActionPrefix_Result;       // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0030(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 K2Node_Select_Default;                             // 0x0040(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue;            // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken) == 0x000008, "Wrong alignment on WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken");
-static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken) == 0x000058, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken, InputString) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken::InputString' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken, IsUsingGamepad) == 0x000010, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken::IsUsingGamepad' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken, Result) == 0x000014, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken::Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken, Temp_bool_Variable) == 0x00001C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken, CallFunc_GetGamepadInputActionPrefix_Result) == 0x000020, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken::CallFunc_GetGamepadInputActionPrefix_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken, CallFunc_Concat_StrStr_ReturnValue) == 0x000030, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken, K2Node_Select_Default) == 0x000040, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken, CallFunc_Conv_StringToName_ReturnValue) == 0x000050, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromGenericToken::CallFunc_Conv_StringToName_ReturnValue' has a wrong offset!");
-
-// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.GetInputActionFromTokenPair
-// 0x0048 (0x0048 - 0x0000)
-struct WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair final
-{
-public:
-	class FString                                 InputStringA;                                      // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 InputStringB;                                      // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          IsUsingGamepad;                                    // 0x0020(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   Result;                                            // 0x0024(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2D[0x3];                                       // 0x002D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 K2Node_Select_Default;                             // 0x0030(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue;            // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair) == 0x000008, "Wrong alignment on WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair");
-static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair) == 0x000048, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair, InputStringA) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair::InputStringA' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair, InputStringB) == 0x000010, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair::InputStringB' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair, IsUsingGamepad) == 0x000020, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair::IsUsingGamepad' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair, Result) == 0x000024, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair::Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair, Temp_bool_Variable) == 0x00002C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair, K2Node_Select_Default) == 0x000030, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair, CallFunc_Conv_StringToName_ReturnValue) == 0x000040, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetInputActionFromTokenPair::CallFunc_Conv_StringToName_ReturnValue' has a wrong offset!");
-
 // Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.ParseInputActionsFromString
-// 0x01F0 (0x01F0 - 0x0000)
+// 0x0178 (0x0178 - 0x0000)
 struct WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString final
 {
 public:
 	class FString                                 InputString;                                       // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	bool                                          IsUsingGamepad;                                    // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   InputNameA;                                        // 0x0014(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   InputNameB;                                        // 0x001C(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FString>                         InputTokens;                                       // 0x0028(0x0010)(Edit, BlueprintVisible)
-	TArray<class FString>                         CallFunc_ParseIntoArray_ReturnValue;               // 0x0038(0x0010)(ReferenceParm)
-	class FString                                 CallFunc_Array_Get_Item;                           // 0x0048(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue;            // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_1;                         // 0x0060(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue_1;          // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_2;                         // 0x0078(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue_2;          // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_3;                         // 0x0090(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue_3;          // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchInteger_CmpSuccess;                   // 0x00AC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_AD[0x3];                                       // 0x00AD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Array_Get_Item_4;                         // 0x00B0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue_4;          // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_5;                         // 0x00C8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_Conv_StringToName_ReturnValue_5;          // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetGamepadInputActionPrefix_Result;       // 0x00E0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_6;                         // 0x00F0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_StartsWith_ReturnValue;                   // 0x0100(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_101[0x7];                                      // 0x0101(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Array_Get_Item_7;                         // 0x0108(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_8;                         // 0x0118(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_GetInputActionFromTokenPair_Result;       // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_9;                         // 0x0130(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_10;                        // 0x0140(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_GetInputActionFromTokenPair_Result_1;     // 0x0150(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_11;                        // 0x0158(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_GetInputActionFromGenericToken_Result;    // 0x0168(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_12;                        // 0x0170(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_13;                        // 0x0180(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_GetInputActionFromGenericToken_Result_1;  // 0x0190(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetGamepadInputActionPrefix_Result_1;     // 0x0198(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_14;                        // 0x01A8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_GetInputActionFromTokenPair_Result_2;     // 0x01B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Array_Get_Item_15;                        // 0x01C0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_StartsWith_ReturnValue_1;                 // 0x01D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1D1[0x7];                                      // 0x01D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Array_Get_Item_16;                        // 0x01D8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_GetInputActionFromGenericToken_Result_2;  // 0x01E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CurrentIndex;                                      // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FString>                         InputTokens;                                       // 0x0018(0x0010)(Edit, BlueprintVisible)
+	TArray<class FString>                         CallFunc_ParseIntoArray_ReturnValue;               // 0x0028(0x0010)(ReferenceParm)
+	int32                                         Temp_int_Variable;                                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Variable_1;                               // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetJCMSInputActionPrefix_Result;          // 0x0050(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetGamepadInputActionPrefix_Result;       // 0x0068(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0078(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_1;              // 0x0088(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_Conv_StringToName_ReturnValue;            // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_Conv_StringToName_ReturnValue_1;          // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_Conv_StringToName_ReturnValue_2;          // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue_1;          // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B5[0x3];                                       // 0x00B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Conv_IntToString_ReturnValue;             // 0x00B8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_2;              // 0x00C8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_3;              // 0x00D8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue_2;               // 0x00E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_ControllerType                           Temp_byte_Variable;                                // 0x00EC(0x0001)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_ED[0x3];                                       // 0x00ED(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x00F0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x00F4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           Temp_byte_Variable_1;                              // 0x00F5(0x0001)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_F6[0x2];                                       // 0x00F6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         K2Node_Select_Default;                             // 0x00F8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_LessEqual_IntInt_ReturnValue;             // 0x00FC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	ENUM_ControllerType                           Temp_byte_Variable_2;                              // 0x00FD(0x0001)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_Conv_IntToByte_ReturnValue;               // 0x00FE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_GetValidValue_ReturnValue;                // 0x00FF(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_Conv_IntToByte_ReturnValue_1;             // 0x0100(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_GetValidValue_ReturnValue_1;              // 0x0101(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_102[0x6];                                      // 0x0102(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Split_LeftS;                              // 0x0108(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Split_RightS;                             // 0x0118(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Split_ReturnValue;                        // 0x0128(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_129[0x7];                                      // 0x0129(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetPathName_ReturnValue;                  // 0x0130(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_Conv_StringToName_ReturnValue_3;          // 0x0140(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_4;              // 0x0148(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable_1;                              // 0x0158(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_159[0x7];                                      // 0x0159(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 K2Node_Select_Default_1;                           // 0x0160(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_Conv_StringToName_ReturnValue_4;          // 0x0170(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString) == 0x000008, "Wrong alignment on WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString");
-static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString) == 0x0001F0, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString");
+static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString) == 0x000178, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString");
 static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, InputString) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::InputString' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, IsUsingGamepad) == 0x000010, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::IsUsingGamepad' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, InputNameA) == 0x000014, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::InputNameA' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, InputNameB) == 0x00001C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::InputNameB' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, InputTokens) == 0x000028, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::InputTokens' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_ParseIntoArray_ReturnValue) == 0x000038, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_ParseIntoArray_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item) == 0x000048, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue) == 0x000058, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_1) == 0x000060, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue_1) == 0x000070, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_2) == 0x000078, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue_2) == 0x000088, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_3) == 0x000090, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue_3) == 0x0000A0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Length_ReturnValue) == 0x0000A8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, K2Node_SwitchInteger_CmpSuccess) == 0x0000AC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::K2Node_SwitchInteger_CmpSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_4) == 0x0000B0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue_4) == 0x0000C0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_5) == 0x0000C8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_5' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue_5) == 0x0000D8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue_5' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetGamepadInputActionPrefix_Result) == 0x0000E0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetGamepadInputActionPrefix_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_6) == 0x0000F0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_6' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_StartsWith_ReturnValue) == 0x000100, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_StartsWith_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_7) == 0x000108, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_7' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_8) == 0x000118, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_8' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetInputActionFromTokenPair_Result) == 0x000128, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetInputActionFromTokenPair_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_9) == 0x000130, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_9' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_10) == 0x000140, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_10' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetInputActionFromTokenPair_Result_1) == 0x000150, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetInputActionFromTokenPair_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_11) == 0x000158, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_11' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetInputActionFromGenericToken_Result) == 0x000168, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetInputActionFromGenericToken_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_12) == 0x000170, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_12' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_13) == 0x000180, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_13' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetInputActionFromGenericToken_Result_1) == 0x000190, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetInputActionFromGenericToken_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetGamepadInputActionPrefix_Result_1) == 0x000198, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetGamepadInputActionPrefix_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_14) == 0x0001A8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_14' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetInputActionFromTokenPair_Result_2) == 0x0001B8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetInputActionFromTokenPair_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_15) == 0x0001C0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_15' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_StartsWith_ReturnValue_1) == 0x0001D0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_StartsWith_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Get_Item_16) == 0x0001D8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Get_Item_16' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetInputActionFromGenericToken_Result_2) == 0x0001E8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetInputActionFromGenericToken_Result_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CurrentIndex) == 0x000010, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CurrentIndex' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, InputTokens) == 0x000018, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::InputTokens' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_ParseIntoArray_ReturnValue) == 0x000028, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_ParseIntoArray_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, Temp_int_Variable) == 0x000038, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::Temp_int_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Add_IntInt_ReturnValue) == 0x00003C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Length_ReturnValue) == 0x000040, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, Temp_int_Variable_1) == 0x000044, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::Temp_int_Variable_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000048, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetJCMSInputActionPrefix_Result) == 0x000050, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetJCMSInputActionPrefix_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, Temp_bool_Variable) == 0x000060, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetGamepadInputActionPrefix_Result) == 0x000068, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetGamepadInputActionPrefix_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Concat_StrStr_ReturnValue) == 0x000078, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Concat_StrStr_ReturnValue_1) == 0x000088, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Concat_StrStr_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue) == 0x000098, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue_1) == 0x0000A0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue_2) == 0x0000A8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Length_ReturnValue_1) == 0x0000B0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_EqualEqual_IntInt_ReturnValue_1) == 0x0000B4, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_EqualEqual_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_IntToString_ReturnValue) == 0x0000B8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_IntToString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Concat_StrStr_ReturnValue_2) == 0x0000C8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Concat_StrStr_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Concat_StrStr_ReturnValue_3) == 0x0000D8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Concat_StrStr_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Array_Length_ReturnValue_2) == 0x0000E8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Array_Length_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, Temp_byte_Variable) == 0x0000EC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Subtract_IntInt_ReturnValue) == 0x0000F0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Subtract_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Less_IntInt_ReturnValue) == 0x0000F4, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, Temp_byte_Variable_1) == 0x0000F5, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, K2Node_Select_Default) == 0x0000F8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_LessEqual_IntInt_ReturnValue) == 0x0000FC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_LessEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, Temp_byte_Variable_2) == 0x0000FD, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::Temp_byte_Variable_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_IntToByte_ReturnValue) == 0x0000FE, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_IntToByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetValidValue_ReturnValue) == 0x0000FF, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetValidValue_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_IntToByte_ReturnValue_1) == 0x000100, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_IntToByte_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetValidValue_ReturnValue_1) == 0x000101, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetValidValue_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Split_LeftS) == 0x000108, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Split_LeftS' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Split_RightS) == 0x000118, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Split_RightS' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Split_ReturnValue) == 0x000128, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Split_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_GetPathName_ReturnValue) == 0x000130, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_GetPathName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue_3) == 0x000140, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Concat_StrStr_ReturnValue_4) == 0x000148, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Concat_StrStr_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, Temp_bool_Variable_1) == 0x000158, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::Temp_bool_Variable_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, K2Node_Select_Default_1) == 0x000160, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::K2Node_Select_Default_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString, CallFunc_Conv_StringToName_ReturnValue_4) == 0x000170, "Member 'WIDGET_ButtonLegend_KeyComposite_C_ParseInputActionsFromString::CallFunc_Conv_StringToName_ReturnValue_4' has a wrong offset!");
 
 // Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.InitializeLegendKeyComposite
-// 0x0030 (0x0030 - 0x0000)
+// 0x0038 (0x0038 - 0x0000)
 struct WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite final
 {
 public:
 	class ACON_Hacker_C*                          HackerController;                                  // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(bool IsUsingGamepad)>          K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	TDelegate<void(ENUM_ControllerType NewActiveControllerType)> K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite) == 0x000008, "Wrong alignment on WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite");
-static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite) == 0x000030, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite");
+static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite) == 0x000038, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite");
 static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, HackerController) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::HackerController' has a wrong offset!");
 static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, K2Node_CreateDelegate_OutputDelegate) == 0x000008, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, CallFunc_GetPlayerController_ReturnValue) == 0x000018, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, K2Node_DynamicCast_AsCON_Hacker) == 0x000020, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, CallFunc_IsUsingGamepad_Result) == 0x000029, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, CallFunc_IsValid_ReturnValue) == 0x000018, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, CallFunc_GetPlayerController_ReturnValue) == 0x000020, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, K2Node_DynamicCast_AsCON_Hacker) == 0x000028, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeLegendKeyComposite::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
-// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.EVENT_OnUsingGamepadChanged
-// 0x0003 (0x0003 - 0x0000)
-struct WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged final
+// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.UpdateMapping
+// 0x01F0 (0x01F0 - 0x0000)
+struct WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping final
 {
 public:
-	bool                                          IsUsingGamepad;                                    // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsEmpty_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         KeyOffset;                                         // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_X;                          // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_Y;                          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSet<ENUM_ControllerType>                     K2Node_MakeSet_Set;                                // 0x0010(0x0050)()
+	class FName                                   CallFunc_Map_Find_Value;                           // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_69[0x7];                                       // 0x0069(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   CallFunc_GetBoundKeyForCurrentUser_BoundKey;       // 0x0070(0x0018)(HasGetValueTypeHash)
+	TSet<ENUM_ControllerType>                     K2Node_MakeSet_Set_1;                              // 0x0088(0x0050)()
+	class FName                                   CallFunc_Map_Find_Value_1;                         // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_ReturnValue_1;                   // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   CallFunc_GetBoundKeyForCurrentUser_BoundKey_1;     // 0x00E8(0x0018)(HasGetValueTypeHash)
+	class UPerspectiveMeshSlot*                   K2Node_DynamicCast_AsPerspective_Mesh_Slot;        // 0x0100(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_109[0x7];                                      // 0x0109(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue;             // 0x0110(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FKey                                   Temp_struct_Variable;                              // 0x0118(0x0018)(HasGetValueTypeHash)
+	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue_1;           // 0x0130(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_139[0x3];                                      // 0x0139(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue;                 // 0x013C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Multiply_Vector2DVector2D_ReturnValue;    // 0x0144(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x014C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue_1;               // 0x0150(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue_2;           // 0x0158(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_Multiply_Vector2DVector2D_ReturnValue_1;  // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue_3;           // 0x0168(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue_4;           // 0x0170(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0178(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_179[0x3];                                      // 0x0179(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              CallFunc_GetKeyPanelSize_Result;                   // 0x017C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_184[0x4];                                      // 0x0184(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   K2Node_Select_Default;                             // 0x0188(0x0018)(HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_X_1;                        // 0x01A0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_Y_1;                        // 0x01A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_GetKeyPanelSize_Result_1;                 // 0x01A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_GetKeyPanelSize_Result_2;                 // 0x01B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_X_2;                        // 0x01B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector2D_Y_2;                        // 0x01BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FMax_ReturnValue;                         // 0x01C0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x01C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x01C8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_2;             // 0x01CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x01D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue_2;               // 0x01D4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x01DC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_3;             // 0x01E0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x01E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Divide_FloatFloat_ReturnValue_1;          // 0x01E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged) == 0x000001, "Wrong alignment on WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged");
-static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged) == 0x000003, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged, IsUsingGamepad) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged::IsUsingGamepad' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged, CallFunc_IsEmpty_ReturnValue) == 0x000001, "Member 'WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged::CallFunc_IsEmpty_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged, CallFunc_IsValid_ReturnValue) == 0x000002, "Member 'WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnUsingGamepadChanged::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping) == 0x000008, "Wrong alignment on WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping");
+static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping) == 0x0001F0, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, KeyOffset) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::KeyOffset' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_BreakVector2D_X) == 0x000004, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_BreakVector2D_X' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_BreakVector2D_Y) == 0x000008, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_BreakVector2D_Y' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, K2Node_MakeSet_Set) == 0x000010, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::K2Node_MakeSet_Set' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Map_Find_Value) == 0x000060, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Map_Find_Value' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Map_Find_ReturnValue) == 0x000068, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Map_Find_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_GetBoundKeyForCurrentUser_BoundKey) == 0x000070, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_GetBoundKeyForCurrentUser_BoundKey' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, K2Node_MakeSet_Set_1) == 0x000088, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::K2Node_MakeSet_Set_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Map_Find_Value_1) == 0x0000D8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Map_Find_Value_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Map_Find_ReturnValue_1) == 0x0000E0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Map_Find_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_GetBoundKeyForCurrentUser_BoundKey_1) == 0x0000E8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_GetBoundKeyForCurrentUser_BoundKey_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, K2Node_DynamicCast_AsPerspective_Mesh_Slot) == 0x000100, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::K2Node_DynamicCast_AsPerspective_Mesh_Slot' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, K2Node_DynamicCast_bSuccess) == 0x000108, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_SlotAsCanvasSlot_ReturnValue) == 0x000110, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_SlotAsCanvasSlot_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, Temp_struct_Variable) == 0x000118, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::Temp_struct_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_SlotAsCanvasSlot_ReturnValue_1) == 0x000130, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_SlotAsCanvasSlot_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_IsValid_ReturnValue) == 0x000138, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_MakeVector2D_ReturnValue) == 0x00013C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_MakeVector2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Multiply_Vector2DVector2D_ReturnValue) == 0x000144, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Multiply_Vector2DVector2D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00014C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_MakeVector2D_ReturnValue_1) == 0x000150, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_MakeVector2D_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_SlotAsCanvasSlot_ReturnValue_2) == 0x000158, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_SlotAsCanvasSlot_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Multiply_Vector2DVector2D_ReturnValue_1) == 0x000160, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Multiply_Vector2DVector2D_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_SlotAsCanvasSlot_ReturnValue_3) == 0x000168, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_SlotAsCanvasSlot_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_SlotAsCanvasSlot_ReturnValue_4) == 0x000170, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_SlotAsCanvasSlot_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, Temp_bool_Variable) == 0x000178, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_GetKeyPanelSize_Result) == 0x00017C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_GetKeyPanelSize_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, K2Node_Select_Default) == 0x000188, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_BreakVector2D_X_1) == 0x0001A0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_BreakVector2D_X_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_BreakVector2D_Y_1) == 0x0001A4, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_BreakVector2D_Y_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_GetKeyPanelSize_Result_1) == 0x0001A8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_GetKeyPanelSize_Result_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_GetKeyPanelSize_Result_2) == 0x0001B0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_GetKeyPanelSize_Result_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_BreakVector2D_X_2) == 0x0001B8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_BreakVector2D_X_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_BreakVector2D_Y_2) == 0x0001BC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_BreakVector2D_Y_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_FMax_ReturnValue) == 0x0001C0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_FMax_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Add_FloatFloat_ReturnValue) == 0x0001C4, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x0001C8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Add_FloatFloat_ReturnValue_2) == 0x0001CC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Add_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Divide_FloatFloat_ReturnValue) == 0x0001D0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_MakeVector2D_ReturnValue_2) == 0x0001D4, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_MakeVector2D_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x0001DC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Add_FloatFloat_ReturnValue_3) == 0x0001E0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Add_FloatFloat_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x0001E4, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping, CallFunc_Divide_FloatFloat_ReturnValue_1) == 0x0001E8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateMapping::CallFunc_Divide_FloatFloat_ReturnValue_1' has a wrong offset!");
 
-// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.UpdateInputActions
-// 0x0108 (0x0108 - 0x0000)
-struct WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions final
+// Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.EVENT_OnActiveControllerTypeChanged
+// 0x0002 (0x0002 - 0x0000)
+struct WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged final
 {
 public:
-	bool                                          IsUsingGamepad;                                    // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         KeyOffset;                                         // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPerspectiveMeshSlot*                   K2Node_DynamicCast_AsPerspective_Mesh_Slot;        // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue;             // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue_1;           // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue;                 // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              CallFunc_Multiply_Vector2DVector2D_ReturnValue;    // 0x0034(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue_2;           // 0x0040(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue_1;               // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_Multiply_Vector2DVector2D_ReturnValue_1;  // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue_3;           // 0x0058(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UCanvasPanelSlot*                       CallFunc_SlotAsCanvasSlot_ReturnValue_4;           // 0x0060(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_GetKeyPanelSize_Result;                   // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_GetKeyPanelSize_Result_1;                 // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector2D_X;                          // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector2D_Y;                          // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector2D_X_1;                        // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector2D_Y_1;                        // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FMax_ReturnValue;                         // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_GetKeyPanelSize_Result_2;                 // 0x008C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_2;             // 0x009C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector2D                              CallFunc_MakeVector2D_ReturnValue_2;               // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue;            // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue;          // 0x00AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_3;             // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector2D_X_2;                        // 0x00B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector2D_Y_2;                        // 0x00B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_ParseInputActionsFromString_InputNameA;   // 0x00BC(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_ParseInputActionsFromString_InputNameB;   // 0x00C4(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Subtract_FloatFloat_ReturnValue_1;        // 0x00CC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FKey                                   CallFunc_GetBoundKeyForCurrentUser_BoundKey;       // 0x00D0(0x0018)(HasGetValueTypeHash)
-	float                                         CallFunc_Divide_FloatFloat_ReturnValue_1;          // 0x00E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NotEqual_NameName_ReturnValue;            // 0x00EC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_ED[0x3];                                       // 0x00ED(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   CallFunc_GetBoundKeyForCurrentUser_BoundKey_1;     // 0x00F0(0x0018)(HasGetValueTypeHash)
+	ENUM_ControllerType                           NewActiveControllerType;                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions) == 0x000008, "Wrong alignment on WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions");
-static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions) == 0x000108, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, IsUsingGamepad) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::IsUsingGamepad' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, KeyOffset) == 0x000004, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::KeyOffset' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, K2Node_DynamicCast_AsPerspective_Mesh_Slot) == 0x000008, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::K2Node_DynamicCast_AsPerspective_Mesh_Slot' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, K2Node_DynamicCast_bSuccess) == 0x000010, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_SlotAsCanvasSlot_ReturnValue) == 0x000018, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_SlotAsCanvasSlot_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_SlotAsCanvasSlot_ReturnValue_1) == 0x000020, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_SlotAsCanvasSlot_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_MakeVector2D_ReturnValue) == 0x000028, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_MakeVector2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_IsValid_ReturnValue) == 0x000030, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Multiply_Vector2DVector2D_ReturnValue) == 0x000034, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Multiply_Vector2DVector2D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00003C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_SlotAsCanvasSlot_ReturnValue_2) == 0x000040, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_SlotAsCanvasSlot_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_MakeVector2D_ReturnValue_1) == 0x000048, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_MakeVector2D_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Multiply_Vector2DVector2D_ReturnValue_1) == 0x000050, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Multiply_Vector2DVector2D_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_SlotAsCanvasSlot_ReturnValue_3) == 0x000058, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_SlotAsCanvasSlot_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_SlotAsCanvasSlot_ReturnValue_4) == 0x000060, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_SlotAsCanvasSlot_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_GetKeyPanelSize_Result) == 0x000068, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_GetKeyPanelSize_Result' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_GetKeyPanelSize_Result_1) == 0x000070, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_GetKeyPanelSize_Result_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_BreakVector2D_X) == 0x000078, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_BreakVector2D_X' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_BreakVector2D_Y) == 0x00007C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_BreakVector2D_Y' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_BreakVector2D_X_1) == 0x000080, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_BreakVector2D_X_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_BreakVector2D_Y_1) == 0x000084, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_BreakVector2D_Y_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_FMax_ReturnValue) == 0x000088, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_FMax_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_GetKeyPanelSize_Result_2) == 0x00008C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_GetKeyPanelSize_Result_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Add_FloatFloat_ReturnValue) == 0x000094, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000098, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Add_FloatFloat_ReturnValue_2) == 0x00009C, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Add_FloatFloat_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_MakeVector2D_ReturnValue_2) == 0x0000A0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_MakeVector2D_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Divide_FloatFloat_ReturnValue) == 0x0000A8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Divide_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Subtract_FloatFloat_ReturnValue) == 0x0000AC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Subtract_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Add_FloatFloat_ReturnValue_3) == 0x0000B0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Add_FloatFloat_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_BreakVector2D_X_2) == 0x0000B4, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_BreakVector2D_X_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_BreakVector2D_Y_2) == 0x0000B8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_BreakVector2D_Y_2' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_ParseInputActionsFromString_InputNameA) == 0x0000BC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_ParseInputActionsFromString_InputNameA' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_ParseInputActionsFromString_InputNameB) == 0x0000C4, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_ParseInputActionsFromString_InputNameB' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Subtract_FloatFloat_ReturnValue_1) == 0x0000CC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Subtract_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_GetBoundKeyForCurrentUser_BoundKey) == 0x0000D0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_GetBoundKeyForCurrentUser_BoundKey' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_Divide_FloatFloat_ReturnValue_1) == 0x0000E8, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_Divide_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_NotEqual_NameName_ReturnValue) == 0x0000EC, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_NotEqual_NameName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions, CallFunc_GetBoundKeyForCurrentUser_BoundKey_1) == 0x0000F0, "Member 'WIDGET_ButtonLegend_KeyComposite_C_UpdateInputActions::CallFunc_GetBoundKeyForCurrentUser_BoundKey_1' has a wrong offset!");
+static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged) == 0x000001, "Wrong alignment on WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged");
+static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged) == 0x000002, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged, NewActiveControllerType) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged::NewActiveControllerType' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged, CallFunc_IsValid_ReturnValue) == 0x000001, "Member 'WIDGET_ButtonLegend_KeyComposite_C_EVENT_OnActiveControllerTypeChanged::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 // Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.InitializeDecorator
 // 0x0048 (0x0048 - 0x0000)
@@ -358,28 +327,25 @@ static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeDecorator, C
 static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_InitializeDecorator, CallFunc_InitializeDecorator_ReturnValue_1) == 0x000040, "Member 'WIDGET_ButtonLegend_KeyComposite_C_InitializeDecorator::CallFunc_InitializeDecorator_ReturnValue_1' has a wrong offset!");
 
 // Function WIDGET_ButtonLegend_KeyComposite.WIDGET_ButtonLegend_KeyComposite_C.GetDecoratorSizeFromPayload
-// 0x0038 (0x0038 - 0x0000)
+// 0x0030 (0x0030 - 0x0000)
 struct WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload final
 {
 public:
 	class FString                                 Payload;                                           // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 	struct FVector2D                              ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsUsingGamepad;                                    // 0x0018(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsUsingGamepad_Result;                    // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class APlayerController*                      CallFunc_GetPlayerController_ReturnValue;          // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ACON_Hacker_C*                          K2Node_DynamicCast_AsCON_Hacker;                   // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload) == 0x000008, "Wrong alignment on WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload");
-static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload) == 0x000038, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload");
+static_assert(sizeof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload) == 0x000030, "Wrong size on WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload");
 static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, Payload) == 0x000000, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::Payload' has a wrong offset!");
 static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, ReturnValue) == 0x000010, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, IsUsingGamepad) == 0x000018, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::IsUsingGamepad' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, CallFunc_GetPlayerController_ReturnValue) == 0x000020, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, K2Node_DynamicCast_AsCON_Hacker) == 0x000028, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, K2Node_DynamicCast_bSuccess) == 0x000030, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, CallFunc_IsUsingGamepad_Result) == 0x000031, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::CallFunc_IsUsingGamepad_Result' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, CallFunc_GetPlayerController_ReturnValue) == 0x000018, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::CallFunc_GetPlayerController_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, K2Node_DynamicCast_AsCON_Hacker) == 0x000020, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::K2Node_DynamicCast_AsCON_Hacker' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, K2Node_DynamicCast_bSuccess) == 0x000028, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload, CallFunc_IsValid_ReturnValue) == 0x000029, "Member 'WIDGET_ButtonLegend_KeyComposite_C_GetDecoratorSizeFromPayload::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 }
 

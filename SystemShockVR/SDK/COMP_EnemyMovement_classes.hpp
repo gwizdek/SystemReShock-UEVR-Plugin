@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_BodyRotationType_structs.hpp"
 #include "Engine_structs.hpp"
-#include "Engine_classes.hpp"
-#include "CoreUObject_structs.hpp"
-#include "ENUM_TargetType_structs.hpp"
-#include "ENUM_SpeedType_structs.hpp"
-#include "ENUM_TargetAssignmentType_structs.hpp"
 #include "ENUM_MoveSpeed_structs.hpp"
+#include "ENUM_BodyRotationType_structs.hpp"
+#include "ENUM_SpeedType_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ENUM_TargetAssignmentType_structs.hpp"
+#include "ENUM_TargetType_structs.hpp"
+#include "SystemReShock_classes.hpp"
 
 
 namespace SDK
@@ -25,7 +25,7 @@ namespace SDK
 
 // BlueprintGeneratedClass COMP_EnemyMovement.COMP_EnemyMovement_C
 // 0x0140 (0x01F0 - 0x00B0)
-class UCOMP_EnemyMovement_C final : public UActorComponent
+class UCOMP_EnemyMovement_C final : public UComp_EnemyMovementBase
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x00B0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)

@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "_ENUM_VRHand_structs.hpp"
 #include "CoreUObject_classes.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
 
@@ -24,7 +25,7 @@ class I_BI_VRWeapon_C final : public IInterface
 public:
 	void SetSourceMesh(class USkeletalMeshComponent* SourceMesh);
 	void UseSourceMesh(bool Value);
-	void GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_VRHandPose* OutGripHandPose, struct FTransform* OutWeaponOffset, bool* OutUseHackerPawnWeaponAnims, bool* OutEnabledLaserPointer, bool* OutMainHand);
+	void GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_VRHandPose* OutGripHandPose, struct FTransform* OutWeaponOffset, bool* OutUseHackerPawnWeaponAnims, bool* OutEnabledLaserPointer, E_ENUM_VRHand* OutHand, bool* OutIsHandheldConsumable);
 	void InitInteractionSources(class A_BP_VRBody_C* InVRBody);
 	void LoadWeapon();
 	void UnloadWeapon();

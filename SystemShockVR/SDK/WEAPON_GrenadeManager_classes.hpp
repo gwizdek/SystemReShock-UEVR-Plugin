@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "ITEM_HandheldExplosive_Base_classes.hpp"
 #include "Engine_structs.hpp"
+#include "ITEM_HandheldExplosive_Base_classes.hpp"
 
 
 namespace SDK

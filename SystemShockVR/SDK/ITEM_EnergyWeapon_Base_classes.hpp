@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "ITEM_WeaponBase_classes.hpp"
+#include "Engine_structs.hpp"
 #include "ENUM_ActionPriority_structs.hpp"
 
 
@@ -75,8 +75,8 @@ public:
 	void GetWeaponModeDisplayName(int32 ModeIndex, bool ShortName, class FText* Result);
 	void SetCurrentMode(int32 Mode, bool* Result);
 	void TryBeginReloading(bool* Result);
-	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void OnBecomeUnactivatable(bool* Result);
+	void Activate(class APAWN_SystemShockCharacter_C* Character, bool* Result);
 	void Deactivate(bool* Result);
 
 public:

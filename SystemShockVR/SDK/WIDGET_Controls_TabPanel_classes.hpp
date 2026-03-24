@@ -12,6 +12,7 @@
 
 #include "Engine_structs.hpp"
 #include "ENUM_Options_ControlsTabs_structs.hpp"
+#include "SystemReShock_structs.hpp"
 #include "UMG_classes.hpp"
 
 
@@ -19,7 +20,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_Controls_TabPanel.WIDGET_Controls_TabPanel_C
-// 0x0058 (0x02B8 - 0x0260)
+// 0x0060 (0x02C0 - 0x0260)
 class UWIDGET_Controls_TabPanel_C final : public UUserWidget
 {
 public:
@@ -28,14 +29,16 @@ public:
 	class UWIDGET_SubMenu_Tab_C*                  WIDGET_SubMenu_Gamepad;                            // 0x0270(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UWIDGET_SubMenu_Tab_C*                  WIDGET_SubMenu_GamepadBinds;                       // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UWIDGET_SubMenu_Tab_C*                  WIDGET_SubMenu_General;                            // 0x0280(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWIDGET_SubMenu_Tab_C*                  WIDGET_SubMenu_KeyBinds;                           // 0x0288(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	TMulticastInlineDelegate<void(const class FString& Message, ENUM_Options_ControlsTabs TabEnum)> OnTabSelected;                                     // 0x0290(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
-	int32                                         SelectedTab;                                       // 0x02A0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2A4[0x4];                                      // 0x02A4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UWIDGET_SubMenu_Tab_C*>          VisibleTabs;                                       // 0x02A8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
+	class UWIDGET_SubMenu_Tab_C*                  WIDGET_SubMenu_JoyConMouseBinds;                   // 0x0288(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWIDGET_SubMenu_Tab_C*                  WIDGET_SubMenu_KeyBinds;                           // 0x0290(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	TMulticastInlineDelegate<void(const class FString& Message, ENUM_Options_ControlsTabs TabEnum)> OnTabSelected;                                     // 0x0298(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	int32                                         SelectedTab;                                       // 0x02A8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2AC[0x4];                                      // 0x02AC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWIDGET_SubMenu_Tab_C*>          VisibleTabs;                                       // 0x02B0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
 
 public:
 	void ExecuteUbergraph_WIDGET_Controls_TabPanel(int32 EntryPoint);
+	void BndEvt__WIDGET_Controls_TabPanel_WIDGET_SubMenu_JoyConMouseBinds_K2Node_ComponentBoundEvent_5_TabClicked__DelegateSignature();
 	void Construct();
 	void BndEvt__WIDGET_Controls_TabPanel_WIDGET_SubMenu_GamepadBinds_K2Node_ComponentBoundEvent_2_TabClicked__DelegateSignature();
 	void BndEvt__WIDGET_SubMenu_ListPanel_WIDGET_SubMenu_Tab_K2Node_ComponentBoundEvent_3_TabClicked__DelegateSignature();
@@ -54,6 +57,8 @@ public:
 	void ReceiveNavLeft(bool InputState, bool* Result);
 	void ReceiveNavDown(bool InputState, bool* Result);
 	void ReceiveNavUp(bool InputState, bool* Result);
+	void ReceiveNavLeftRelease(bool InputState, bool* Result);
+	void ReceiveNavRightRelease(bool InputState, bool* Result);
 
 public:
 	static class UClass* StaticClass()
@@ -66,16 +71,17 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_Controls_TabPanel_C) == 0x000008, "Wrong alignment on UWIDGET_Controls_TabPanel_C");
-static_assert(sizeof(UWIDGET_Controls_TabPanel_C) == 0x0002B8, "Wrong size on UWIDGET_Controls_TabPanel_C");
+static_assert(sizeof(UWIDGET_Controls_TabPanel_C) == 0x0002C0, "Wrong size on UWIDGET_Controls_TabPanel_C");
 static_assert(offsetof(UWIDGET_Controls_TabPanel_C, UberGraphFrame) == 0x000260, "Member 'UWIDGET_Controls_TabPanel_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UWIDGET_Controls_TabPanel_C, PANEL_Tabs) == 0x000268, "Member 'UWIDGET_Controls_TabPanel_C::PANEL_Tabs' has a wrong offset!");
 static_assert(offsetof(UWIDGET_Controls_TabPanel_C, WIDGET_SubMenu_Gamepad) == 0x000270, "Member 'UWIDGET_Controls_TabPanel_C::WIDGET_SubMenu_Gamepad' has a wrong offset!");
 static_assert(offsetof(UWIDGET_Controls_TabPanel_C, WIDGET_SubMenu_GamepadBinds) == 0x000278, "Member 'UWIDGET_Controls_TabPanel_C::WIDGET_SubMenu_GamepadBinds' has a wrong offset!");
 static_assert(offsetof(UWIDGET_Controls_TabPanel_C, WIDGET_SubMenu_General) == 0x000280, "Member 'UWIDGET_Controls_TabPanel_C::WIDGET_SubMenu_General' has a wrong offset!");
-static_assert(offsetof(UWIDGET_Controls_TabPanel_C, WIDGET_SubMenu_KeyBinds) == 0x000288, "Member 'UWIDGET_Controls_TabPanel_C::WIDGET_SubMenu_KeyBinds' has a wrong offset!");
-static_assert(offsetof(UWIDGET_Controls_TabPanel_C, OnTabSelected) == 0x000290, "Member 'UWIDGET_Controls_TabPanel_C::OnTabSelected' has a wrong offset!");
-static_assert(offsetof(UWIDGET_Controls_TabPanel_C, SelectedTab) == 0x0002A0, "Member 'UWIDGET_Controls_TabPanel_C::SelectedTab' has a wrong offset!");
-static_assert(offsetof(UWIDGET_Controls_TabPanel_C, VisibleTabs) == 0x0002A8, "Member 'UWIDGET_Controls_TabPanel_C::VisibleTabs' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Controls_TabPanel_C, WIDGET_SubMenu_JoyConMouseBinds) == 0x000288, "Member 'UWIDGET_Controls_TabPanel_C::WIDGET_SubMenu_JoyConMouseBinds' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Controls_TabPanel_C, WIDGET_SubMenu_KeyBinds) == 0x000290, "Member 'UWIDGET_Controls_TabPanel_C::WIDGET_SubMenu_KeyBinds' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Controls_TabPanel_C, OnTabSelected) == 0x000298, "Member 'UWIDGET_Controls_TabPanel_C::OnTabSelected' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Controls_TabPanel_C, SelectedTab) == 0x0002A8, "Member 'UWIDGET_Controls_TabPanel_C::SelectedTab' has a wrong offset!");
+static_assert(offsetof(UWIDGET_Controls_TabPanel_C, VisibleTabs) == 0x0002B0, "Member 'UWIDGET_Controls_TabPanel_C::VisibleTabs' has a wrong offset!");
 
 }
 

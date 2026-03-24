@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "AttributeSystem_structs.hpp"
 #include "Skill_classes.hpp"
+#include "AttributeSystem_structs.hpp"
 
 
 namespace SDK

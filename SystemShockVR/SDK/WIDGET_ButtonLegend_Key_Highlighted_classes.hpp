@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WIDGET_ButtonLegend_Key_Highlighted.WIDGET_ButtonLegend_Key_Highlighted_C
-// 0x0000 (0x0300 - 0x0300)
+// 0x0000 (0x03D0 - 0x03D0)
 class UWIDGET_ButtonLegend_Key_Highlighted_C final : public UWIDGET_ButtonLegend_Key_C
 {
 public:
@@ -31,7 +31,7 @@ public:
 	}
 };
 static_assert(alignof(UWIDGET_ButtonLegend_Key_Highlighted_C) == 0x000008, "Wrong alignment on UWIDGET_ButtonLegend_Key_Highlighted_C");
-static_assert(sizeof(UWIDGET_ButtonLegend_Key_Highlighted_C) == 0x000300, "Wrong size on UWIDGET_ButtonLegend_Key_Highlighted_C");
+static_assert(sizeof(UWIDGET_ButtonLegend_Key_Highlighted_C) == 0x0003D0, "Wrong size on UWIDGET_ButtonLegend_Key_Highlighted_C");
 
 }
 

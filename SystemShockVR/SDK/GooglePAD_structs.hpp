@@ -14,6 +14,17 @@
 namespace SDK
 {
 
+// Enum GooglePAD.EGooglePADConfirmationDialogStatus
+// NumValues: 0x0005
+enum class EGooglePADConfirmationDialogStatus : uint8
+{
+	AssetPack_CONFIRMATION_DIALOG_UNKNOWN    = 0,
+	AssetPack_CONFIRMATION_DIALOG_PENDING    = 1,
+	AssetPack_CONFIRMATION_DIALOG_APPROVED   = 2,
+	AssetPack_CONFIRMATION_DIALOG_CANCELED   = 3,
+	AssetPack_CONFIRMATION_DIALOG_MAX        = 4,
+};
+
 // Enum GooglePAD.EGooglePADCellularDataConfirmStatus
 // NumValues: 0x0005
 enum class EGooglePADCellularDataConfirmStatus : uint8
@@ -37,7 +48,7 @@ enum class EGooglePADStorageMethod : uint8
 };
 
 // Enum GooglePAD.EGooglePADDownloadStatus
-// NumValues: 0x000E
+// NumValues: 0x000F
 enum class EGooglePADDownloadStatus : uint8
 {
 	AssetPack_UNKNOWN                        = 0,
@@ -53,11 +64,12 @@ enum class EGooglePADDownloadStatus : uint8
 	AssetPack_INFO_FAILED                    = 10,
 	AssetPack_REMOVAL_PENDING                = 11,
 	AssetPack_REMOVAL_FAILED                 = 12,
-	AssetPack_MAX                            = 13,
+	AssetPack_REQUIRES_USER_CONFIRMATION     = 13,
+	AssetPack_MAX                            = 14,
 };
 
 // Enum GooglePAD.EGooglePADErrorCode
-// NumValues: 0x000F
+// NumValues: 0x0012
 enum class EGooglePADErrorCode : uint8
 {
 	AssetPack_NO_ERROR                       = 0,
@@ -74,7 +86,10 @@ enum class EGooglePADErrorCode : uint8
 	AssetPack_INTERNAL_ERROR                 = 11,
 	AssetPack_INITIALIZATION_NEEDED          = 12,
 	AssetPack_INITIALIZATION_FAILED          = 13,
-	AssetPack_MAX                            = 14,
+	AssetPack_APP_NOT_OWNED                  = 14,
+	AssetPack_CONFIRMATION_NOT_REQUIRED      = 15,
+	AssetPack_UNRECOGNIZED_INSTALLATION      = 16,
+	AssetPack_MAX                            = 17,
 };
 
 }

@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "ENUM_EnemyType_structs.hpp"
-#include "AttributeSystem_structs.hpp"
 #include "ITEM_HardwareBase_classes.hpp"
+#include "Engine_structs.hpp"
+#include "AttributeSystem_structs.hpp"
+#include "ENUM_EnemyType_structs.hpp"
 
 
 namespace SDK
