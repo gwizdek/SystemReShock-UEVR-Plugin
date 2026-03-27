@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // Function _BP_AccessCard._BP_AccessCard_C.ExecuteUbergraph__BP_AccessCard
-// (Final, UbergraphFunction)
+// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
 // int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
@@ -34,6 +34,20 @@ void A_BP_AccessCard_C::ExecuteUbergraph__BP_AccessCard(int32 EntryPoint)
 	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_AccessCard._BP_AccessCard_C.CustomEvent_ActivateCard
+// (BlueprintCallable, BlueprintEvent)
+
+void A_BP_AccessCard_C::CustomEvent_ActivateCard()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_AccessCard_C", "CustomEvent_ActivateCard");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -62,6 +76,26 @@ void A_BP_AccessCard_C::BndEvt___BP_AccessCard_GrabComponent_K2Node_ComponentBou
 		Func = Class->GetFunction("_BP_AccessCard_C", "BndEvt___BP_AccessCard_GrabComponent_K2Node_ComponentBoundEvent_0_OnGrabbed__DelegateSignature");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_AccessCard._BP_AccessCard_C.ReceiveTick
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_AccessCard_C::ReceiveTick(float DeltaSeconds)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_AccessCard_C", "ReceiveTick");
+
+	Params::_BP_AccessCard_C_ReceiveTick Parms{};
+
+	Parms.DeltaSeconds = DeltaSeconds;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 

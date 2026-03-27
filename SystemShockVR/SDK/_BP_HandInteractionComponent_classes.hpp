@@ -21,7 +21,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_HandInteractionComponent._BP_HandInteractionComponent_C
-// 0x0120 (0x0320 - 0x0200)
+// 0x0130 (0x0330 - 0x0200)
 class U_BP_HandInteractionComponent_C final : public USceneComponent
 {
 public:
@@ -46,7 +46,7 @@ public:
 	E_ENUM_VRHandPose                             SelectedPose;                                      // 0x0291(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_292[0x6];                                      // 0x0292(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FDebugFloatHistory                     FloatHistory;                                      // 0x0298(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class UActorComponent*                        IndexFingerOverlappedComponent;                    // 0x02B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    IndexFingerOverlappedComponent;                    // 0x02B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class AINTERACT_Base_C*                       IndexFingerOverlappedActor;                        // 0x02C0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         IndexFingerOverlapInnerRange;                      // 0x02C8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         IndexFingerOverlapOuterRange;                      // 0x02CC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -69,6 +69,8 @@ public:
 	class U_BP_InteractionSourceComponent_C*      ActiveWeaponInteractionSource;                     // 0x0310(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsChannelingWeaponSource;                          // 0x0318(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	E_ENUM_VRHand                                 Hand;                                              // 0x0319(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_31A[0x2];                                      // 0x031A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                SnapStartLocation;                                 // 0x031C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_HandInteractionComponent(int32 EntryPoint);
@@ -107,7 +109,7 @@ public:
 	}
 };
 static_assert(alignof(U_BP_HandInteractionComponent_C) == 0x000010, "Wrong alignment on U_BP_HandInteractionComponent_C");
-static_assert(sizeof(U_BP_HandInteractionComponent_C) == 0x000320, "Wrong size on U_BP_HandInteractionComponent_C");
+static_assert(sizeof(U_BP_HandInteractionComponent_C) == 0x000330, "Wrong size on U_BP_HandInteractionComponent_C");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, UberGraphFrame) == 0x000200, "Member 'U_BP_HandInteractionComponent_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, VRBodyRef) == 0x000208, "Member 'U_BP_HandInteractionComponent_C::VRBodyRef' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, MotionControllerRef) == 0x000210, "Member 'U_BP_HandInteractionComponent_C::MotionControllerRef' has a wrong offset!");
@@ -145,6 +147,7 @@ static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToWeaponSource)
 static_assert(offsetof(U_BP_HandInteractionComponent_C, ActiveWeaponInteractionSource) == 0x000310, "Member 'U_BP_HandInteractionComponent_C::ActiveWeaponInteractionSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsChannelingWeaponSource) == 0x000318, "Member 'U_BP_HandInteractionComponent_C::IsChannelingWeaponSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, Hand) == 0x000319, "Member 'U_BP_HandInteractionComponent_C::Hand' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, SnapStartLocation) == 0x00031C, "Member 'U_BP_HandInteractionComponent_C::SnapStartLocation' has a wrong offset!");
 
 }
 

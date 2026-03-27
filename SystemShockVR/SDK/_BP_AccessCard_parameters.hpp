@@ -10,20 +10,127 @@
 
 #include "Basic.hpp"
 
+#include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
+
 
 namespace SDK::Params
 {
 
 // Function _BP_AccessCard._BP_AccessCard_C.ExecuteUbergraph__BP_AccessCard
-// 0x0004 (0x0004 - 0x0000)
+// 0x01E8 (0x01E8 - 0x0000)
 struct _BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor)
+	float                                         K2Node_Event_DeltaSeconds;                         // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0018(0x0008)(NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_X;                            // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y;                            // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z;                            // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_MakeVector_ReturnValue;                   // 0x0038(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_MakeVector_ReturnValue_1;                 // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0054(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_55[0x3];                                       // 0x0055(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             CallFunc_SphereTraceSingle_OutHit;                 // 0x0058(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_SphereTraceSingle_ReturnValue;            // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bBlockingHit;              // 0x00E1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bInitialOverlap;           // 0x00E2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_E3[0x1];                                       // 0x00E3(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_BreakHitResult_Time;                      // 0x00E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakHitResult_Distance;                  // 0x00E8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Location;                  // 0x00EC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactPoint;               // 0x00F8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Normal;                    // 0x0104(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactNormal;              // 0x0110(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_11C[0x4];                                      // 0x011C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPhysicalMaterial*                      CallFunc_BreakHitResult_PhysMat;                   // 0x0120(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 CallFunc_BreakHitResult_HitActor;                  // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    CallFunc_BreakHitResult_HitComponent;              // 0x0130(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_BreakHitResult_HitBoneName;               // 0x0138(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_HitItem;                   // 0x0140(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_ElementIndex;              // 0x0144(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_FaceIndex;                 // 0x0148(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceStart;                // 0x014C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceEnd;                  // 0x0158(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_164[0x4];                                      // 0x0164(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0168(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TScriptInterface<class IINTERF_Interactable_C> K2Node_DynamicCast_AsINTERF_Interactable;          // 0x0170(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0180(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue;        // 0x0181(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_182[0x6];                                      // 0x0182(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0188(0x0020)(HasGetValueTypeHash)
+	class FString                                 CallFunc_GetDisplayName_ReturnValue;               // 0x01A8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x01B8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class AINTERACT_DoorBase_C*                   K2Node_DynamicCast_AsINTERACT_Door_Base;           // 0x01C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x01D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D1[0x7];                                      // 0x01D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_1;             // 0x01D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x01E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x01E1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x01E2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard) == 0x000004, "Wrong alignment on _BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard");
-static_assert(sizeof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard) == 0x000004, "Wrong size on _BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard");
+static_assert(alignof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard) == 0x000008, "Wrong alignment on _BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard");
+static_assert(sizeof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard) == 0x0001E8, "Wrong size on _BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard");
 static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, EntryPoint) == 0x000000, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::EntryPoint' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_CreateDelegate_OutputDelegate) == 0x000004, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_Event_DeltaSeconds) == 0x000014, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_Event_DeltaSeconds' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000018, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000020, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakVector_X) == 0x00002C, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakVector_X' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakVector_Y) == 0x000030, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakVector_Y' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakVector_Z) == 0x000034, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakVector_Z' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_MakeVector_ReturnValue) == 0x000038, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_MakeVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_Add_FloatFloat_ReturnValue) == 0x000044, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_MakeVector_ReturnValue_1) == 0x000048, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_MakeVector_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BooleanAND_ReturnValue) == 0x000054, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_SphereTraceSingle_OutHit) == 0x000058, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_SphereTraceSingle_OutHit' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_SphereTraceSingle_ReturnValue) == 0x0000E0, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_SphereTraceSingle_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_bBlockingHit) == 0x0000E1, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_bBlockingHit' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_bInitialOverlap) == 0x0000E2, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_bInitialOverlap' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_Time) == 0x0000E4, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_Time' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_Distance) == 0x0000E8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_Distance' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_Location) == 0x0000EC, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_Location' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_ImpactPoint) == 0x0000F8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_ImpactPoint' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_Normal) == 0x000104, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_Normal' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_ImpactNormal) == 0x000110, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_ImpactNormal' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_PhysMat) == 0x000120, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_PhysMat' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_HitActor) == 0x000128, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_HitActor' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_HitComponent) == 0x000130, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_HitComponent' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_HitBoneName) == 0x000138, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_HitBoneName' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_HitItem) == 0x000140, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_HitItem' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_ElementIndex) == 0x000144, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_ElementIndex' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_FaceIndex) == 0x000148, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_FaceIndex' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_TraceStart) == 0x00014C, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_TraceStart' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BreakHitResult_TraceEnd) == 0x000158, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BreakHitResult_TraceEnd' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_GetObjectClass_ReturnValue) == 0x000168, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_DynamicCast_AsINTERF_Interactable) == 0x000170, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_DynamicCast_AsINTERF_Interactable' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_DynamicCast_bSuccess) == 0x000180, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_EqualEqual_ClassClass_ReturnValue) == 0x000181, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_EqualEqual_ClassClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_TryInteract_InteractResults) == 0x000188, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_TryInteract_InteractResults' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_GetDisplayName_ReturnValue) == 0x0001A8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_GetDisplayName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_Concat_StrStr_ReturnValue) == 0x0001B8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_DynamicCast_AsINTERACT_Door_Base) == 0x0001C8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_DynamicCast_AsINTERACT_Door_Base' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_DynamicCast_bSuccess_1) == 0x0001D0, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_GetObjectClass_ReturnValue_1) == 0x0001D8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_GetObjectClass_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_ClassIsChildOf_ReturnValue) == 0x0001E0, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BooleanAND_ReturnValue_1) == 0x0001E1, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BooleanAND_ReturnValue_2) == 0x0001E2, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
+
+// Function _BP_AccessCard._BP_AccessCard_C.ReceiveTick
+// 0x0004 (0x0004 - 0x0000)
+struct _BP_AccessCard_C_ReceiveTick final
+{
+public:
+	float                                         DeltaSeconds;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(_BP_AccessCard_C_ReceiveTick) == 0x000004, "Wrong alignment on _BP_AccessCard_C_ReceiveTick");
+static_assert(sizeof(_BP_AccessCard_C_ReceiveTick) == 0x000004, "Wrong size on _BP_AccessCard_C_ReceiveTick");
+static_assert(offsetof(_BP_AccessCard_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member '_BP_AccessCard_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
 
 // Function _BP_AccessCard._BP_AccessCard_C.Initialize
 // 0x0008 (0x0008 - 0x0000)

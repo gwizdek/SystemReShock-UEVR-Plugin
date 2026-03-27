@@ -10,18 +10,18 @@
 
 #include "Basic.hpp"
 
+#include "_ENUM_InteractionSourceType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "CoreUObject_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
-#include "_ENUM_InteractionSourceType_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C
-// 0x00A0 (0x02A0 - 0x0200)
+// 0x00B0 (0x02B0 - 0x0200)
 class U_BP_InteractionSourceComponent_C final : public USceneComponent
 {
 public:
@@ -42,6 +42,8 @@ public:
 	bool                                          IsEnabled;                                         // 0x029A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          IsSnapping;                                        // 0x029B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	E_ENUM_InteractionSourceType                  Type;                                              // 0x029C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_29D[0x3];                                      // 0x029D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x02A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_InteractionSourceComponent(int32 EntryPoint);
@@ -63,7 +65,7 @@ public:
 	}
 };
 static_assert(alignof(U_BP_InteractionSourceComponent_C) == 0x000010, "Wrong alignment on U_BP_InteractionSourceComponent_C");
-static_assert(sizeof(U_BP_InteractionSourceComponent_C) == 0x0002A0, "Wrong size on U_BP_InteractionSourceComponent_C");
+static_assert(sizeof(U_BP_InteractionSourceComponent_C) == 0x0002B0, "Wrong size on U_BP_InteractionSourceComponent_C");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, UberGraphFrame) == 0x000200, "Member 'U_BP_InteractionSourceComponent_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, InteractionSourceTransform) == 0x000210, "Member 'U_BP_InteractionSourceComponent_C::InteractionSourceTransform' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, WristCollisionSphere) == 0x000240, "Member 'U_BP_InteractionSourceComponent_C::WristCollisionSphere' has a wrong offset!");
@@ -78,6 +80,7 @@ static_assert(offsetof(U_BP_InteractionSourceComponent_C, IsInteracting) == 0x00
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, IsEnabled) == 0x00029A, "Member 'U_BP_InteractionSourceComponent_C::IsEnabled' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, IsSnapping) == 0x00029B, "Member 'U_BP_InteractionSourceComponent_C::IsSnapping' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, Type) == 0x00029C, "Member 'U_BP_InteractionSourceComponent_C::Type' has a wrong offset!");
+static_assert(offsetof(U_BP_InteractionSourceComponent_C, CursorPrimitive) == 0x0002A0, "Member 'U_BP_InteractionSourceComponent_C::CursorPrimitive' has a wrong offset!");
 
 }
 

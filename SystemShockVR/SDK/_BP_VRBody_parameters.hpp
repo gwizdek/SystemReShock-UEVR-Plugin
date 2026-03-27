@@ -322,7 +322,7 @@ static_assert(offsetof(_BP_VRBody_C_PlayUnloadWeaponAnim, CallFunc_DoesImplement
 struct _BP_VRBody_C_TryGrabAction final
 {
 public:
-	E_ENUM_VRHand                                 InHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 inHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_VRHandPose                             InPose;                                            // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          TryGrabSuccess;                                    // 0x0002(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -330,7 +330,7 @@ public:
 };
 static_assert(alignof(_BP_VRBody_C_TryGrabAction) == 0x000001, "Wrong alignment on _BP_VRBody_C_TryGrabAction");
 static_assert(sizeof(_BP_VRBody_C_TryGrabAction) == 0x000005, "Wrong size on _BP_VRBody_C_TryGrabAction");
-static_assert(offsetof(_BP_VRBody_C_TryGrabAction, InHand) == 0x000000, "Member '_BP_VRBody_C_TryGrabAction::InHand' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_TryGrabAction, inHand) == 0x000000, "Member '_BP_VRBody_C_TryGrabAction::inHand' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_TryGrabAction, InPose) == 0x000001, "Member '_BP_VRBody_C_TryGrabAction::InPose' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_TryGrabAction, TryGrabSuccess) == 0x000002, "Member '_BP_VRBody_C_TryGrabAction::TryGrabSuccess' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_TryGrabAction, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000003, "Member '_BP_VRBody_C_TryGrabAction::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
@@ -544,7 +544,7 @@ static_assert(offsetof(_BP_VRBody_C_GetWeaponAnimInstance, CallFunc_GetAnimInsta
 static_assert(offsetof(_BP_VRBody_C_GetWeaponAnimInstance, CallFunc_DoesImplementInterface_ReturnValue) == 0x000028, "Member '_BP_VRBody_C_GetWeaponAnimInstance::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.GetNearestWeaponInteractionSource
-// 0x0068 (0x0068 - 0x0000)
+// 0x00B0 (0x00B0 - 0x0000)
 struct _BP_VRBody_C_GetNearestWeaponInteractionSource final
 {
 public:
@@ -554,42 +554,74 @@ public:
 	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class U_BP_InteractionSourceComponent_C*      InteractionSource;                                 // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         MinInteractableDistance;                           // 0x0020(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0028(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class U_BP_InteractionSourceComponent_C*      CallFunc_Array_Get_Item;                           // 0x0040(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x004C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4D[0x3];                                       // 0x004D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue_1;    // 0x0050(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Vector_Distance_ReturnValue;              // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue_1;            // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0062(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0063(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue_1;    // 0x0038(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable_1;                  // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue_1;                 // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0054(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_55[0x3];                                       // 0x0055(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Array_Index_Variable_1;                   // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class U_BP_InteractionSourceComponent_C*      CallFunc_Array_Get_Item;                           // 0x0060(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class U_BP_InteractionSourceComponent_C*      CallFunc_Array_Get_Item_1;                         // 0x0068(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_71[0x3];                                       // 0x0071(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue_2;    // 0x0074(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Vector_Distance_ReturnValue;              // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0084(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue_1;            // 0x0085(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_86[0x2];                                       // 0x0086(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue_3;    // 0x0088(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_95[0x3];                                       // 0x0095(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_Vector_Distance_ReturnValue_1;            // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x009C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue_2;            // 0x009D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Less_FloatFloat_ReturnValue_3;            // 0x009E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x009F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_3;                 // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A1[0x3];                                       // 0x00A1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue_1;               // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue_1;                // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_VRBody_C_GetNearestWeaponInteractionSource) == 0x000008, "Wrong alignment on _BP_VRBody_C_GetNearestWeaponInteractionSource");
-static_assert(sizeof(_BP_VRBody_C_GetNearestWeaponInteractionSource) == 0x000068, "Wrong size on _BP_VRBody_C_GetNearestWeaponInteractionSource");
+static_assert(sizeof(_BP_VRBody_C_GetNearestWeaponInteractionSource) == 0x0000B0, "Wrong size on _BP_VRBody_C_GetNearestWeaponInteractionSource");
 static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, MotionController) == 0x000000, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::MotionController' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, OutInteractionSource) == 0x000008, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::OutInteractionSource' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, Distance) == 0x000010, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::Distance' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, InteractionSource) == 0x000018, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::InteractionSource' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, MinInteractableDistance) == 0x000020, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::MinInteractableDistance' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, Temp_int_Array_Index_Variable) == 0x000024, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, Temp_int_Loop_Counter_Variable) == 0x000024, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::Temp_int_Loop_Counter_Variable' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000028, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, Temp_int_Loop_Counter_Variable) == 0x000034, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Add_IntInt_ReturnValue) == 0x000038, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Array_Get_Item) == 0x000040, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Array_Length_ReturnValue) == 0x000048, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Less_IntInt_ReturnValue) == 0x00004C, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_K2_GetComponentLocation_ReturnValue_1) == 0x000050, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_K2_GetComponentLocation_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Vector_Distance_ReturnValue) == 0x00005C, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Vector_Distance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Less_FloatFloat_ReturnValue) == 0x000060, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Less_FloatFloat_ReturnValue_1) == 0x000061, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Less_FloatFloat_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_BooleanAND_ReturnValue) == 0x000062, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_BooleanAND_ReturnValue_1) == 0x000063, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Add_IntInt_ReturnValue) == 0x000034, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_K2_GetComponentLocation_ReturnValue_1) == 0x000038, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_K2_GetComponentLocation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, Temp_int_Array_Index_Variable) == 0x000044, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, Temp_int_Loop_Counter_Variable_1) == 0x000048, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::Temp_int_Loop_Counter_Variable_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Add_IntInt_ReturnValue_1) == 0x00004C, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Add_IntInt_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Array_Length_ReturnValue) == 0x000050, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Less_IntInt_ReturnValue) == 0x000054, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, Temp_int_Array_Index_Variable_1) == 0x000058, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::Temp_int_Array_Index_Variable_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Array_Get_Item) == 0x000060, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Array_Get_Item_1) == 0x000068, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Array_Get_Item_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_IsValid_ReturnValue) == 0x000070, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_K2_GetComponentLocation_ReturnValue_2) == 0x000074, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_K2_GetComponentLocation_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Vector_Distance_ReturnValue) == 0x000080, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Vector_Distance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Less_FloatFloat_ReturnValue) == 0x000084, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Less_FloatFloat_ReturnValue_1) == 0x000085, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Less_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_K2_GetComponentLocation_ReturnValue_3) == 0x000088, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_K2_GetComponentLocation_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_BooleanAND_ReturnValue) == 0x000094, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Vector_Distance_ReturnValue_1) == 0x000098, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Vector_Distance_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_BooleanAND_ReturnValue_1) == 0x00009C, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Less_FloatFloat_ReturnValue_2) == 0x00009D, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Less_FloatFloat_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Less_FloatFloat_ReturnValue_3) == 0x00009E, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Less_FloatFloat_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_BooleanAND_ReturnValue_2) == 0x00009F, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_BooleanAND_ReturnValue_3) == 0x0000A0, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_BooleanAND_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Array_Length_ReturnValue_1) == 0x0000A4, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Array_Length_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_GetNearestWeaponInteractionSource, CallFunc_Less_IntInt_ReturnValue_1) == 0x0000A8, "Member '_BP_VRBody_C_GetNearestWeaponInteractionSource::CallFunc_Less_IntInt_ReturnValue_1' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.DestroyAllWeaponInteractionSources
 // 0x0020 (0x0020 - 0x0000)
@@ -644,7 +676,7 @@ static_assert(offsetof(_BP_VRBody_C_GetHackerMoveControlManager, CallFunc_IsVali
 struct _BP_VRBody_C_Attach_Laser_Pointer final
 {
 public:
-	E_ENUM_VRHand                                 InHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 inHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          InEnabled;                                         // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         InTimeout;                                         // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -667,7 +699,7 @@ public:
 };
 static_assert(alignof(_BP_VRBody_C_Attach_Laser_Pointer) == 0x000008, "Wrong alignment on _BP_VRBody_C_Attach_Laser_Pointer");
 static_assert(sizeof(_BP_VRBody_C_Attach_Laser_Pointer) == 0x000060, "Wrong size on _BP_VRBody_C_Attach_Laser_Pointer");
-static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, InHand) == 0x000000, "Member '_BP_VRBody_C_Attach_Laser_Pointer::InHand' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, inHand) == 0x000000, "Member '_BP_VRBody_C_Attach_Laser_Pointer::inHand' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, InEnabled) == 0x000001, "Member '_BP_VRBody_C_Attach_Laser_Pointer::InEnabled' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, InTimeout) == 0x000004, "Member '_BP_VRBody_C_Attach_Laser_Pointer::InTimeout' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, LocalAttachSocketName) == 0x000008, "Member '_BP_VRBody_C_Attach_Laser_Pointer::LocalAttachSocketName' has a wrong offset!");

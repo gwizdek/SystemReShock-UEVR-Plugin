@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_AccessCard._BP_AccessCard_C
-// 0x0028 (0x0248 - 0x0220)
+// 0x0048 (0x0268 - 0x0220)
 class A_BP_AccessCard_C final : public AActor
 {
 public:
@@ -27,11 +27,18 @@ public:
 	class UStaticMeshComponent*                   Mesh;                                              // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class A_BP_VRBody_C*                          VRBodyRef;                                         // 0x0240(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          isGrabbed;                                         // 0x0248(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          isAccessCardActive;                                // 0x0249(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_24A[0x6];                                      // 0x024A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTimerHandle                           debounceTimer;                                     // 0x0250(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	TArray<class AActor*>                         IgnoredActors;                                     // 0x0258(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate)
 
 public:
 	void ExecuteUbergraph__BP_AccessCard(int32 EntryPoint);
+	void CustomEvent_ActivateCard();
 	void BndEvt___BP_AccessCard_GrabComponent_K2Node_ComponentBoundEvent_1_OnDropped__DelegateSignature();
 	void BndEvt___BP_AccessCard_GrabComponent_K2Node_ComponentBoundEvent_0_OnGrabbed__DelegateSignature();
+	void ReceiveTick(float DeltaSeconds);
 	void ReceiveBeginPlay();
 	void Initialize(class A_BP_VRBody_C* InVRBodyRef);
 
@@ -46,12 +53,16 @@ public:
 	}
 };
 static_assert(alignof(A_BP_AccessCard_C) == 0x000008, "Wrong alignment on A_BP_AccessCard_C");
-static_assert(sizeof(A_BP_AccessCard_C) == 0x000248, "Wrong size on A_BP_AccessCard_C");
+static_assert(sizeof(A_BP_AccessCard_C) == 0x000268, "Wrong size on A_BP_AccessCard_C");
 static_assert(offsetof(A_BP_AccessCard_C, UberGraphFrame) == 0x000220, "Member 'A_BP_AccessCard_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(A_BP_AccessCard_C, GrabComponent) == 0x000228, "Member 'A_BP_AccessCard_C::GrabComponent' has a wrong offset!");
 static_assert(offsetof(A_BP_AccessCard_C, Mesh) == 0x000230, "Member 'A_BP_AccessCard_C::Mesh' has a wrong offset!");
 static_assert(offsetof(A_BP_AccessCard_C, DefaultSceneRoot) == 0x000238, "Member 'A_BP_AccessCard_C::DefaultSceneRoot' has a wrong offset!");
 static_assert(offsetof(A_BP_AccessCard_C, VRBodyRef) == 0x000240, "Member 'A_BP_AccessCard_C::VRBodyRef' has a wrong offset!");
+static_assert(offsetof(A_BP_AccessCard_C, isGrabbed) == 0x000248, "Member 'A_BP_AccessCard_C::isGrabbed' has a wrong offset!");
+static_assert(offsetof(A_BP_AccessCard_C, isAccessCardActive) == 0x000249, "Member 'A_BP_AccessCard_C::isAccessCardActive' has a wrong offset!");
+static_assert(offsetof(A_BP_AccessCard_C, debounceTimer) == 0x000250, "Member 'A_BP_AccessCard_C::debounceTimer' has a wrong offset!");
+static_assert(offsetof(A_BP_AccessCard_C, IgnoredActors) == 0x000258, "Member 'A_BP_AccessCard_C::IgnoredActors' has a wrong offset!");
 
 }
 

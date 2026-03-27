@@ -21,7 +21,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_VRBody._BP_VRBody_C
-// 0x0170 (0x0390 - 0x0220)
+// 0x0188 (0x03A8 - 0x0220)
 class A_BP_VRBody_C final : public AActor
 {
 public:
@@ -74,6 +74,9 @@ public:
 	ECollisionChannel                             WidgetInteractionChannel;                          // 0x0388(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsVRMenuVisible;                                   // 0x0389(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	E_ENUM_VRHand                                 MainHand;                                          // 0x038A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_38B[0x5];                                      // 0x038B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class A_BP_AccessCard_C*                      AccessCard;                                        // 0x0390(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class U_BP_InteractionSourceComponent_C*> WorldInteractionSources;                           // 0x0398(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
 
 public:
 	void ExecuteUbergraph__BP_VRBody(int32 EntryPoint);
@@ -89,7 +92,7 @@ public:
 	void PlayLoadWeaponAnim();
 	void PlayUnloadWeaponAnim();
 	void HolsterWeapon();
-	void TryGrabAction(E_ENUM_VRHand InHand, E_ENUM_VRHandPose InPose);
+	void TryGrabAction(E_ENUM_VRHand inHand, E_ENUM_VRHandPose InPose);
 	void TestFunction();
 	void AddDebugMessage(const class FString& NewMessage, E_ENUM_DebugWidgetEntryType InType);
 	void InitializeAccessCard();
@@ -103,7 +106,7 @@ public:
 	void DestroyAllWeaponInteractionSources();
 	class UCOMP_HackerInventory_C* GetHackerInventory();
 	void GetHackerMoveControlManager(class UCOMP_MoveControlManager_C** COMP_MoveControlManager);
-	void Attach_Laser_Pointer(E_ENUM_VRHand InHand, bool InEnabled, float InTimeout);
+	void Attach_Laser_Pointer(E_ENUM_VRHand inHand, bool InEnabled, float InTimeout);
 	bool IsWeaponHolstered();
 	bool IsAimingDownSights();
 	void SetADSZoneOffset(float ForwardOffset, float UpOffset, float HalfSize);
@@ -128,7 +131,7 @@ public:
 	}
 };
 static_assert(alignof(A_BP_VRBody_C) == 0x000008, "Wrong alignment on A_BP_VRBody_C");
-static_assert(sizeof(A_BP_VRBody_C) == 0x000390, "Wrong size on A_BP_VRBody_C");
+static_assert(sizeof(A_BP_VRBody_C) == 0x0003A8, "Wrong size on A_BP_VRBody_C");
 static_assert(offsetof(A_BP_VRBody_C, UberGraphFrame) == 0x000220, "Member 'A_BP_VRBody_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, HandheldConsumableCollision) == 0x000228, "Member 'A_BP_VRBody_C::HandheldConsumableCollision' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, LeftIndexFingerCollision) == 0x000230, "Member 'A_BP_VRBody_C::LeftIndexFingerCollision' has a wrong offset!");
@@ -177,6 +180,8 @@ static_assert(offsetof(A_BP_VRBody_C, ADSAngle) == 0x000384, "Member 'A_BP_VRBod
 static_assert(offsetof(A_BP_VRBody_C, WidgetInteractionChannel) == 0x000388, "Member 'A_BP_VRBody_C::WidgetInteractionChannel' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, IsVRMenuVisible) == 0x000389, "Member 'A_BP_VRBody_C::IsVRMenuVisible' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, MainHand) == 0x00038A, "Member 'A_BP_VRBody_C::MainHand' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, AccessCard) == 0x000390, "Member 'A_BP_VRBody_C::AccessCard' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, WorldInteractionSources) == 0x000398, "Member 'A_BP_VRBody_C::WorldInteractionSources' has a wrong offset!");
 
 }
 

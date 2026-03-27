@@ -388,7 +388,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             m_gamepad_btn_a.mute_state(state);
         }
 
-        if (m_gamepad_btn_y.is_pressed()) {
+        if (m_gamepad_left_trigger.is_held() && m_gamepad_left_thumb.is_pressed()) {
             if (!g_vr_body->IsVRMenuVisible) {
                 g_vr_body->OpenVRMenu();
             }
@@ -449,10 +449,13 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
 
         // Left Shoulder
         if (m_gamepad_left_shoulder.is_pressed()) {
+            // pickup world objects
             g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator2);
 
+            // set pointing hand pose
             g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator3;
 
+            // toggle energy shield
             if (
                 g_vr_body->HandInteractionLeft->HeldGrabComponent == nullptr &&
                 g_vr_body->HandInteractionLeft->IsReachingSocket(UKismetStringLibrary::Conv_StringToName(L"RightInnerWristSocket"), 5.0f)
@@ -461,7 +464,10 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             }
         }
         if (m_gamepad_left_shoulder.is_released()) {
+            // set undefined hand pose
             g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
+
+            // try releasing world object
             g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator0);
         }
 

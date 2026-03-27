@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.ExecuteUbergraph__BP_GrabEnablingComponent
-// (Final, UbergraphFunction)
+// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
 // int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
@@ -57,6 +57,20 @@ void U_BP_GrabEnablingComponent_C::ReceiveTick(float DeltaSeconds)
 }
 
 
+// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.ReceiveBeginPlay
+// (Event, Public, BlueprintEvent)
+
+void U_BP_GrabEnablingComponent_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_GrabEnablingComponent_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.TryEnableGrabOnPickupObject
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -66,6 +80,20 @@ void U_BP_GrabEnablingComponent_C::TryEnableGrabOnPickupObject()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("_BP_GrabEnablingComponent_C", "TryEnableGrabOnPickupObject");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.TryEnableInteractionsOnObjects
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void U_BP_GrabEnablingComponent_C::TryEnableInteractionsOnObjects()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_GrabEnablingComponent_C", "TryEnableInteractionsOnObjects");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

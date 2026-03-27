@@ -18,18 +18,24 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C
-// 0x0010 (0x0210 - 0x0200)
+// 0x0040 (0x0240 - 0x0200)
 class U_BP_GrabEnablingComponent_C final : public USceneComponent
 {
 public:
 	uint8                                         Pad_1F8[0x8];                                      // 0x01F8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0200(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	float                                         GrabSphereEnablerRadius;                           // 0x0208(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_20C[0x4];                                      // 0x020C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<EObjectTypeQuery>                      FilterObjectArray;                                 // 0x0210(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TArray<class AActor*>                         IgnoredActors;                                     // 0x0220(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
+	class A_BP_VRBody_C*                          VRBodyRef;                                         // 0x0230(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_GrabEnablingComponent(int32 EntryPoint);
 	void ReceiveTick(float DeltaSeconds);
+	void ReceiveBeginPlay();
 	void TryEnableGrabOnPickupObject();
+	void TryEnableInteractionsOnObjects();
 
 public:
 	static class UClass* StaticClass()
@@ -42,9 +48,12 @@ public:
 	}
 };
 static_assert(alignof(U_BP_GrabEnablingComponent_C) == 0x000010, "Wrong alignment on U_BP_GrabEnablingComponent_C");
-static_assert(sizeof(U_BP_GrabEnablingComponent_C) == 0x000210, "Wrong size on U_BP_GrabEnablingComponent_C");
+static_assert(sizeof(U_BP_GrabEnablingComponent_C) == 0x000240, "Wrong size on U_BP_GrabEnablingComponent_C");
 static_assert(offsetof(U_BP_GrabEnablingComponent_C, UberGraphFrame) == 0x000200, "Member 'U_BP_GrabEnablingComponent_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(U_BP_GrabEnablingComponent_C, GrabSphereEnablerRadius) == 0x000208, "Member 'U_BP_GrabEnablingComponent_C::GrabSphereEnablerRadius' has a wrong offset!");
+static_assert(offsetof(U_BP_GrabEnablingComponent_C, FilterObjectArray) == 0x000210, "Member 'U_BP_GrabEnablingComponent_C::FilterObjectArray' has a wrong offset!");
+static_assert(offsetof(U_BP_GrabEnablingComponent_C, IgnoredActors) == 0x000220, "Member 'U_BP_GrabEnablingComponent_C::IgnoredActors' has a wrong offset!");
+static_assert(offsetof(U_BP_GrabEnablingComponent_C, VRBodyRef) == 0x000230, "Member 'U_BP_GrabEnablingComponent_C::VRBodyRef' has a wrong offset!");
 
 }
 
