@@ -12,6 +12,7 @@ public:
     static void reset_height(float offset_y);
     static SDK::AActor* spawn_actor(SDK::UWorld* world, SDK::FTransform transform, std::wstring actor_tag);
     static void destroy_actors_by_tag(SDK::UWorld* world, SDK::FName actor_tag);
+    static void destroy_actors_by_class(SDK::UWorld* world, SDK::UClass* actor_class);
     static int32_t hook_vtable_fn(std::wstring_view class_name, std::wstring_view fn_name, void* destination, void** original);
 
     // this is the new way that uses AssetRegistry and UKismetSystemLibrary

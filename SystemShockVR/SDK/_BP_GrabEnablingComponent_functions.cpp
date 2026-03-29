@@ -85,17 +85,37 @@ void U_BP_GrabEnablingComponent_C::TryEnableGrabOnPickupObject()
 }
 
 
-// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.TryEnableInteractionsOnObjects
+// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.TryEnableInteractionsOnWorldObjects
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void U_BP_GrabEnablingComponent_C::TryEnableInteractionsOnObjects()
+void U_BP_GrabEnablingComponent_C::TryEnableInteractionsOnWorldObjects()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_GrabEnablingComponent_C", "TryEnableInteractionsOnObjects");
+		Func = Class->GetFunction("_BP_GrabEnablingComponent_C", "TryEnableInteractionsOnWorldObjects");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.CreateLeverInteractionSource
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           InActor                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void U_BP_GrabEnablingComponent_C::CreateLeverInteractionSource(class AActor* InActor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_GrabEnablingComponent_C", "CreateLeverInteractionSource");
+
+	Params::_BP_GrabEnablingComponent_C_CreateLeverInteractionSource Parms{};
+
+	Parms.InActor = InActor;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

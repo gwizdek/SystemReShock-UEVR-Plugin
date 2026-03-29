@@ -113,6 +113,105 @@ void U_BP_InteractionSourceComponent_C::InitGripSource()
 }
 
 
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.GetWristWorldTransform
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FTransform                       OutTransform                                           (Parm, OutParm, IsPlainOldData, NoDestructor)
+
+void U_BP_InteractionSourceComponent_C::GetWristWorldTransform(struct FTransform* OutTransform)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "GetWristWorldTransform");
+
+	Params::_BP_InteractionSourceComponent_C_GetWristWorldTransform Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (OutTransform != nullptr)
+		*OutTransform = std::move(Parms.OutTransform);
+}
+
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.ShowCollisionSpheres
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Visible                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void U_BP_InteractionSourceComponent_C::ShowCollisionSpheres(bool Visible)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "ShowCollisionSpheres");
+
+	Params::_BP_InteractionSourceComponent_C_ShowCollisionSpheres Parms{};
+
+	Parms.Visible = Visible;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.TryRelease
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void U_BP_InteractionSourceComponent_C::TryRelease()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "TryRelease");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.TrySnap
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class U_BP_HandInteractionComponent_C*  InHandInteraction                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void U_BP_InteractionSourceComponent_C::TrySnap(class U_BP_HandInteractionComponent_C* InHandInteraction, bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "TrySnap");
+
+	Params::_BP_InteractionSourceComponent_C_TrySnap Parms{};
+
+	Parms.InHandInteraction = InHandInteraction;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.TryInteract
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void U_BP_InteractionSourceComponent_C::TryInteract(class AActor* SourceActor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "TryInteract");
+
+	Params::_BP_InteractionSourceComponent_C_TryInteract Parms{};
+
+	Parms.SourceActor = SourceActor;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.GetInteractionSourceParams
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:

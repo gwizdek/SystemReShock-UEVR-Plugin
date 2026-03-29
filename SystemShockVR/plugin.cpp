@@ -26,6 +26,7 @@
 #include "vr_body.hpp"
 #include "vr_item_selector.hpp"
 #include "vr_mfd.hpp"
+#include "vr_avatar.hpp"
 
 using namespace uevr;
 using namespace SDK;
@@ -38,8 +39,8 @@ std::unique_ptr<UEVRPlugin> g_plugin = std::make_unique<UEVRPlugin>();
 void UEVRPlugin::on_initialize() {
     PLUGIN_LOG_ONCE("Plugin Initializing...");
 
-    API::get()->log_warn("[plugin][cleanup] Starting Actors Cleanup");
-    cleanup_actors();
+    //API::get()->log_warn("[plugin][cleanup] Starting Actors Cleanup");
+    //cleanup_actors();
 
     // disable player focus (camera pull) on interactable objects like vending machines / keyboards
     auto move_control = SDK::UMOVECONTROL_FocusableInteract_C::GetDefaultObj();
@@ -507,7 +508,7 @@ void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state) {
 
 void UEVRPlugin::update_trailing_rotation(float delta) {
     try {
-        if (m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass()))
+        if (g_vr_body == nullptr || m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass()))
             return;
 
         auto pawn_controller = m_pawn.get()->Controller;
@@ -576,22 +577,23 @@ void UEVRPlugin::handle_game_state_change() {
                 break;
 
             case GAME_STATE_CITADEL_STATION:
-                g_vr_body->VRBodyMesh->SetVisibility(true, false);
-
-                API::UObjectHook::set_disabled(false);
-                vr->set_aim_method(m_default_aim_method);
-                vr->set_decoupled_pitch_enabled(true);
-                vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
-                vr->set_mod_value("VR_CameraUpOffset", "0.000000");
-                vr->set_mod_value("UI_Distance", "2.000000");
-                vr->set_mod_value("UI_Size", "0.000000");
-                vr->set_mod_value("UI_Y_Offset", "0.00000");
-                vr->set_mod_value("VR_RoomscaleMovement", "true");
-                vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                //PluginUtils::reset_height(0.f);
-                vr->recenter_view();
-
                 if (is_valid_vr_body_hacker_implant_pawn()) {
+                    g_vr_body->VRBodyMesh->SetVisibility(true, false);
+                    static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->bUseControllerRotationYaw = true;
+
+                    API::UObjectHook::set_disabled(false);
+                    vr->set_aim_method(m_default_aim_method);
+                    vr->set_decoupled_pitch_enabled(true);
+                    vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+                    vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+                    vr->set_mod_value("UI_Distance", "2.000000");
+                    vr->set_mod_value("UI_Size", "0.000000");
+                    vr->set_mod_value("UI_Y_Offset", "0.00000");
+                    vr->set_mod_value("VR_RoomscaleMovement", "true");
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                    //PluginUtils::reset_height(0.f);
+                    vr->recenter_view();
+
                     VRMFD::hide_mfd();
                 }
                 break;
@@ -638,6 +640,29 @@ void UEVRPlugin::handle_game_state_change() {
                     }
                 }
                 break;
+
+            case GAME_STATE_CYBERSPACE:
+                if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
+                    APAWN_Avatar_C* pawn = static_cast<APAWN_Avatar_C*>(m_pawn.get());
+                    VRAvatar::initialize_vr_avatar(pawn);
+                    //g_vr_body->VRBodyMesh->SetVisibility(true, false);
+
+                    //API::UObjectHook::set_disabled(true);
+                    API::UObjectHook::set_disabled(false);
+                    vr->set_aim_method(0);                      // Game mode
+                    vr->set_decoupled_pitch_enabled(false);
+                    vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+                    vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+                    vr->set_mod_value("UI_Distance", "4.000000");
+                    vr->set_mod_value("UI_Size", "2.000000");
+                    vr->set_mod_value("UI_Y_Offset", "0.00000");
+                    vr->set_mod_value("VR_RoomscaleMovement", "true");
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                    vr->set_mod_value("VR_DecoupledPitch", "false");
+                    PluginUtils::reset_height(0.f);
+                    vr->recenter_view();
+                }
+                break;
             }
         }
     }
@@ -679,11 +704,11 @@ void UEVRPlugin::handle_level_change() {
                 }
                 //load_mod_config();
             }
-            else {
-                API::get()->log_warn("[plugin][handle_level_change] Components cleanup");
-                cleanup_actors();
-                cleanup_pointers();
-            }
+            //else {
+            //    API::get()->log_warn("[plugin][handle_level_change] Components cleanup");
+            //    cleanup_actors();
+            //    cleanup_pointers();
+            //}
         }
     }
     catch (...) {
@@ -758,7 +783,7 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
                 // show VR item selector
                 //g_vr_body->set_laser_pointer_visibility(true);
                 g_vr_body->ItemSelectorRight->Show(20.f);
-                g_vr_body->ItemSelectorLeft->Hide();
+                //g_vr_body->ItemSelectorLeft->Hide();
 
                 // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
                 // for the time the selector is active
@@ -896,6 +921,7 @@ void UEVRPlugin::cleanup_actors() {
         }
 
         PluginUtils::destroy_actors_by_tag(world, UKismetStringLibrary::Conv_StringToName(L"VRModActor"));
+        PluginUtils::destroy_actors_by_class(world, A_BP_VRAvatar_C::StaticClass());
 
         g_vr_body = nullptr;
     }

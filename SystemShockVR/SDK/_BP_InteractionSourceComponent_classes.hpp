@@ -10,19 +10,19 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_InteractionSourceType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "CoreUObject_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "_ENUM_InteractionSourceType_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C
-// 0x00B0 (0x02B0 - 0x0200)
-class U_BP_InteractionSourceComponent_C final : public USceneComponent
+// 0x00C0 (0x02C0 - 0x0200)
+class U_BP_InteractionSourceComponent_C : public USceneComponent
 {
 public:
 	uint8                                         Pad_1F8[0x8];                                      // 0x01F8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
@@ -43,7 +43,9 @@ public:
 	bool                                          IsSnapping;                                        // 0x029B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	E_ENUM_InteractionSourceType                  Type;                                              // 0x029C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_29D[0x3];                                      // 0x029D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPrimitiveComponent*                    CursorPrimitive;                                   // 0x02A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    InteractTriggerPrimitive;                          // 0x02A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class U_BP_HandInteractionComponent_C*        HandInteractionRef;                                // 0x02A8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                SnapStartLocation;                                 // 0x02B0(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_InteractionSourceComponent(int32 EntryPoint);
@@ -51,6 +53,11 @@ public:
 	void InitInteractionSource(E_ENUM_InteractionSourceType Type_0, const struct FTransform& InInteractionSourceTransform, const struct FTransform& InWristTransform, float InOuterInteractionDistance, float InInnerInteractionDistance, E_ENUM_VRHandPose InInteractionPose, bool InIsSnappable, bool InIsEnabled);
 	void InitTriggerSource();
 	void InitGripSource();
+	void GetWristWorldTransform(struct FTransform* OutTransform);
+	void ShowCollisionSpheres(bool Visible);
+	void TryRelease();
+	void TrySnap(class U_BP_HandInteractionComponent_C* InHandInteraction, bool* Result);
+	void TryInteract(class AActor* SourceActor);
 	void GetInteractionSourceParams(struct FTransform* InteractionSourceTransform_0, struct FTransform* WristTransform_0, bool* SnapHandToSource, float* InnerInteractionDistance_0, float* OuterInteractionDistance_0, class UStaticMeshComponent** TargetMesh_0, E_ENUM_VRHandPose* InteractionPose_0, bool* IsEnabled_0, E_ENUM_InteractionSourceType* Type_0);
 	void GetState(bool* IsEnabled_0, bool* IsInteracting_0, bool* IsSnapping_0);
 
@@ -65,7 +72,7 @@ public:
 	}
 };
 static_assert(alignof(U_BP_InteractionSourceComponent_C) == 0x000010, "Wrong alignment on U_BP_InteractionSourceComponent_C");
-static_assert(sizeof(U_BP_InteractionSourceComponent_C) == 0x0002B0, "Wrong size on U_BP_InteractionSourceComponent_C");
+static_assert(sizeof(U_BP_InteractionSourceComponent_C) == 0x0002C0, "Wrong size on U_BP_InteractionSourceComponent_C");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, UberGraphFrame) == 0x000200, "Member 'U_BP_InteractionSourceComponent_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, InteractionSourceTransform) == 0x000210, "Member 'U_BP_InteractionSourceComponent_C::InteractionSourceTransform' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, WristCollisionSphere) == 0x000240, "Member 'U_BP_InteractionSourceComponent_C::WristCollisionSphere' has a wrong offset!");
@@ -80,7 +87,9 @@ static_assert(offsetof(U_BP_InteractionSourceComponent_C, IsInteracting) == 0x00
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, IsEnabled) == 0x00029A, "Member 'U_BP_InteractionSourceComponent_C::IsEnabled' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, IsSnapping) == 0x00029B, "Member 'U_BP_InteractionSourceComponent_C::IsSnapping' has a wrong offset!");
 static_assert(offsetof(U_BP_InteractionSourceComponent_C, Type) == 0x00029C, "Member 'U_BP_InteractionSourceComponent_C::Type' has a wrong offset!");
-static_assert(offsetof(U_BP_InteractionSourceComponent_C, CursorPrimitive) == 0x0002A0, "Member 'U_BP_InteractionSourceComponent_C::CursorPrimitive' has a wrong offset!");
+static_assert(offsetof(U_BP_InteractionSourceComponent_C, InteractTriggerPrimitive) == 0x0002A0, "Member 'U_BP_InteractionSourceComponent_C::InteractTriggerPrimitive' has a wrong offset!");
+static_assert(offsetof(U_BP_InteractionSourceComponent_C, HandInteractionRef) == 0x0002A8, "Member 'U_BP_InteractionSourceComponent_C::HandInteractionRef' has a wrong offset!");
+static_assert(offsetof(U_BP_InteractionSourceComponent_C, SnapStartLocation) == 0x0002B0, "Member 'U_BP_InteractionSourceComponent_C::SnapStartLocation' has a wrong offset!");
 
 }
 

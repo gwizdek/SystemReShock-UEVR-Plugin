@@ -98,7 +98,7 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         actor_tags.Data[0] = UKismetStringLibrary::Conv_StringToName(L"VRModActor");
 
         vr_body->Tags = actor_tags;
-        API::get()->log_warn("[vr_body][initialize_vr_body] Added 'VRBodyActor' Tag");
+        API::get()->log_warn("[vr_body][initialize_vr_body] Added 'VRModActor' Tag");
 
         vr_body->K2_AttachRootComponentTo(
             pawn->K2_GetRootComponent(),
@@ -294,6 +294,7 @@ void VRBody::set_media_display_visibility(bool visible) {
 
 void VRBody::initialize_ads() {
     try {
+        API::get()->log_warn("[vr_body][initialize_ads] Initializing");
         g_vr_body->ADSTriggerCollision->SetCollisionObjectType(ADS_TRACE_CHANNEL);
         g_vr_body->ADSTriggerCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
         g_vr_body->ADSTriggerCollision->SetCollisionResponseToChannel(

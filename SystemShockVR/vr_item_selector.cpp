@@ -53,7 +53,6 @@ void VRItemSelector::initialize(SDK::UWIDGET_PlayerHUD_C* neural_hud) {
 
         // this will disable collisions
         g_vr_body->ItemSelectorRight->Hide();
-        g_vr_body->ItemSelectorLeft->Hide();
 
         API::get()->log_warn("[item_selector][initialize] Initialized HotbarSlots");
     }

@@ -106,71 +106,62 @@ static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableGrabOnPickupObject, 
 static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableGrabOnPickupObject, CallFunc_Concat_StrStr_ReturnValue) == 0x0000B0, "Member '_BP_GrabEnablingComponent_C_TryEnableGrabOnPickupObject::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableGrabOnPickupObject, CallFunc_Array_Add_ReturnValue) == 0x0000C0, "Member '_BP_GrabEnablingComponent_C_TryEnableGrabOnPickupObject::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
 
-// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.TryEnableInteractionsOnObjects
-// 0x01C0 (0x01C0 - 0x0000)
-struct _BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects final
+// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.TryEnableInteractionsOnWorldObjects
+// 0x0060 (0x0060 - 0x0000)
+struct _BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects final
 {
 public:
 	int32                                         Temp_int_Array_Index_Variable;                     // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   Temp_name_Variable;                                // 0x000C(0x0008)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_14[0xC];                                       // 0x0014(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CallFunc_MakeTransform_ReturnValue;                // 0x0020(0x0030)(IsPlainOldData, NoDestructor)
-	struct FTransform                             CallFunc_MakeTransform_ReturnValue_1;              // 0x0050(0x0030)(IsPlainOldData, NoDestructor)
-	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<EObjectTypeQuery>                      K2Node_MakeArray_Array;                            // 0x0088(0x0010)(ConstParm, ReferenceParm)
-	class A_BP_VRBody_C*                          K2Node_DynamicCast_As_BP_VRBody;                   // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_A1[0x3];                                       // 0x00A1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x00A4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class AActor*>                         CallFunc_SphereOverlapActors_OutActors;            // 0x00B0(0x0010)(ReferenceParm)
-	bool                                          CallFunc_SphereOverlapActors_ReturnValue;          // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C1[0x3];                                       // 0x00C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x00C4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 CallFunc_Array_Get_Item;                           // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AINTERACT_Lever_C*                      K2Node_DynamicCast_AsINTERACT_Lever;               // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ActorHasTag_ReturnValue;                  // 0x00E1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E2[0xE];                                       // 0x00E2(0x000E)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CallFunc_GetRelativeTransform_ReturnValue;         // 0x00F0(0x0030)(IsPlainOldData, NoDestructor)
-	int32                                         CallFunc_Array_Add_ReturnValue;                    // 0x0120(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_124[0x4];                                      // 0x0124(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class U_BP_InteractionSourceComponent_C*      CallFunc_AddComponentByClass_ReturnValue;          // 0x0128(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0130(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_131[0x3];                                      // 0x0131(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_AddUnique_ReturnValue;              // 0x0134(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_K2_SetRelativeLocation_SweepHitResult;    // 0x0138(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<EObjectTypeQuery>                      K2Node_MakeArray_Array;                            // 0x0010(0x0010)(ConstParm, ReferenceParm)
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class AActor*>                         CallFunc_SphereOverlapActors_OutActors;            // 0x0030(0x0010)(ReferenceParm)
+	bool                                          CallFunc_SphereOverlapActors_ReturnValue;          // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AActor*                                 CallFunc_Array_Get_Item;                           // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ActorHasTag_ReturnValue;                  // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects) == 0x000010, "Wrong alignment on _BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects");
-static_assert(sizeof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects) == 0x0001C0, "Wrong size on _BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, Temp_int_Array_Index_Variable) == 0x000000, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, Temp_int_Loop_Counter_Variable) == 0x000004, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_Add_IntInt_ReturnValue) == 0x000008, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, Temp_name_Variable) == 0x00000C, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::Temp_name_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_MakeTransform_ReturnValue) == 0x000020, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_MakeTransform_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_MakeTransform_ReturnValue_1) == 0x000050, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_MakeTransform_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_GetOwner_ReturnValue) == 0x000080, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, K2Node_MakeArray_Array) == 0x000088, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, K2Node_DynamicCast_As_BP_VRBody) == 0x000098, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::K2Node_DynamicCast_As_BP_VRBody' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, K2Node_DynamicCast_bSuccess) == 0x0000A0, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x0000A4, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_SphereOverlapActors_OutActors) == 0x0000B0, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_SphereOverlapActors_OutActors' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_SphereOverlapActors_ReturnValue) == 0x0000C0, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_SphereOverlapActors_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_Array_Length_ReturnValue) == 0x0000C4, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_Less_IntInt_ReturnValue) == 0x0000C8, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_Array_Get_Item) == 0x0000D0, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, K2Node_DynamicCast_AsINTERACT_Lever) == 0x0000D8, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::K2Node_DynamicCast_AsINTERACT_Lever' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, K2Node_DynamicCast_bSuccess_1) == 0x0000E0, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_ActorHasTag_ReturnValue) == 0x0000E1, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_ActorHasTag_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_GetRelativeTransform_ReturnValue) == 0x0000F0, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_GetRelativeTransform_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_Array_Add_ReturnValue) == 0x000120, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_AddComponentByClass_ReturnValue) == 0x000128, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_AddComponentByClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000130, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_Array_AddUnique_ReturnValue) == 0x000134, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_Array_AddUnique_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects, CallFunc_K2_SetRelativeLocation_SweepHitResult) == 0x000138, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnObjects::CallFunc_K2_SetRelativeLocation_SweepHitResult' has a wrong offset!");
+static_assert(alignof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects) == 0x000008, "Wrong alignment on _BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects");
+static_assert(sizeof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects) == 0x000060, "Wrong size on _BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, Temp_int_Array_Index_Variable) == 0x000000, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, Temp_int_Loop_Counter_Variable) == 0x000004, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_Add_IntInt_ReturnValue) == 0x000008, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, K2Node_MakeArray_Array) == 0x000010, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000020, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_SphereOverlapActors_OutActors) == 0x000030, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_SphereOverlapActors_OutActors' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_SphereOverlapActors_ReturnValue) == 0x000040, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_SphereOverlapActors_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_Array_Length_ReturnValue) == 0x000044, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_Less_IntInt_ReturnValue) == 0x000048, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_Array_Get_Item) == 0x000050, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_ActorHasTag_ReturnValue) == 0x000058, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_ActorHasTag_ReturnValue' has a wrong offset!");
+
+// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.CreateLeverInteractionSource
+// 0x0060 (0x0060 - 0x0000)
+struct _BP_GrabEnablingComponent_C_CreateLeverInteractionSource final
+{
+public:
+	class AActor*                                 InActor;                                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AINTERACT_Lever_C*                      K2Node_DynamicCast_AsINTERACT_Lever;               // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0xF];                                       // 0x0011(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_GetRelativeTransform_ReturnValue;         // 0x0020(0x0030)(IsPlainOldData, NoDestructor)
+	class U_BP_LeverInteractionSourceComponent_C* CallFunc_AddComponentByClass_ReturnValue;          // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_AddUnique_ReturnValue;              // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource) == 0x000010, "Wrong alignment on _BP_GrabEnablingComponent_C_CreateLeverInteractionSource");
+static_assert(sizeof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource) == 0x000060, "Wrong size on _BP_GrabEnablingComponent_C_CreateLeverInteractionSource");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource, InActor) == 0x000000, "Member '_BP_GrabEnablingComponent_C_CreateLeverInteractionSource::InActor' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource, K2Node_DynamicCast_AsINTERACT_Lever) == 0x000008, "Member '_BP_GrabEnablingComponent_C_CreateLeverInteractionSource::K2Node_DynamicCast_AsINTERACT_Lever' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource, K2Node_DynamicCast_bSuccess) == 0x000010, "Member '_BP_GrabEnablingComponent_C_CreateLeverInteractionSource::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource, CallFunc_GetRelativeTransform_ReturnValue) == 0x000020, "Member '_BP_GrabEnablingComponent_C_CreateLeverInteractionSource::CallFunc_GetRelativeTransform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource, CallFunc_AddComponentByClass_ReturnValue) == 0x000050, "Member '_BP_GrabEnablingComponent_C_CreateLeverInteractionSource::CallFunc_AddComponentByClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource, CallFunc_Array_AddUnique_ReturnValue) == 0x000058, "Member '_BP_GrabEnablingComponent_C_CreateLeverInteractionSource::CallFunc_Array_AddUnique_ReturnValue' has a wrong offset!");
 
 }
 

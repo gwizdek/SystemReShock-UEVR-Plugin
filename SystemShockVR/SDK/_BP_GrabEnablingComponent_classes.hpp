@@ -35,7 +35,8 @@ public:
 	void ReceiveTick(float DeltaSeconds);
 	void ReceiveBeginPlay();
 	void TryEnableGrabOnPickupObject();
-	void TryEnableInteractionsOnObjects();
+	void TryEnableInteractionsOnWorldObjects();
+	void CreateLeverInteractionSource(class AActor* InActor);
 
 public:
 	static class UClass* StaticClass()

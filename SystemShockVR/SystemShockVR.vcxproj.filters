@@ -96,6 +96,12 @@
     <ClInclude Include="vr_mfd.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="SDK\PAWN_Avatar_classes.hpp">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_avatar.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -266,11 +272,11 @@
     <ClCompile Include="SDK\_BP_HackerHardware_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="vr_avatar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
-    <None Include="old_dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
 </Project>

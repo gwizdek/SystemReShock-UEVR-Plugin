@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "_ENUM_VRHand_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 
 
 namespace SDK
@@ -57,25 +57,25 @@ public:
 	class UWidgetInteractionComponent*            WidgetInteractionRight;                            // 0x0308(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USkeletalMeshComponent*                 VRBodyMesh;                                        // 0x0310(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0318(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C* AnimBP;                                            // 0x0320(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Implant_C*                 HackerPawn;                                        // 0x0328(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class A_BP_LaserDot_C*                        LaserDot;                                          // 0x0330(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class A_BP_ItemSelector_C*                    ItemSelectorLeft;                                  // 0x0338(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class A_BP_ItemSelector_C*                    ItemSelectorRight;                                 // 0x0340(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class A_BP_HackerHardware_C*                  HackerHardware;                                    // 0x0348(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMulticastInlineDelegate<void()>              VRBodyInitialized;                                 // 0x0350(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
-	TArray<class U_BP_InteractionSourceComponent_C*> WeaponInteractionSources;                          // 0x0360(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
-	TArray<class AActor*>                         IgnoredActors;                                     // 0x0370(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
-	bool                                          ShowTick;                                          // 0x0380(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsInADSZone;                                       // 0x0381(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsDominantEyeRight;                                // 0x0382(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_383[0x1];                                      // 0x0383(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ADSAngle;                                          // 0x0384(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ECollisionChannel                             WidgetInteractionChannel;                          // 0x0388(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsVRMenuVisible;                                   // 0x0389(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	E_ENUM_VRHand                                 MainHand;                                          // 0x038A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_38B[0x5];                                      // 0x038B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class A_BP_AccessCard_C*                      AccessCard;                                        // 0x0390(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class A_BP_AccessCard_C*                      AccessCard;                                        // 0x0320(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C* AnimBP;                                            // 0x0328(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Implant_C*                 HackerPawn;                                        // 0x0330(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class A_BP_LaserDot_C*                        LaserDot;                                          // 0x0338(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class A_BP_ItemSelector_C*                    ItemSelectorLeft;                                  // 0x0340(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class A_BP_ItemSelector_C*                    ItemSelectorRight;                                 // 0x0348(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class A_BP_HackerHardware_C*                  HackerHardware;                                    // 0x0350(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMulticastInlineDelegate<void()>              VRBodyInitialized;                                 // 0x0358(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	TArray<class U_BP_InteractionSourceComponent_C*> WeaponInteractionSources;                          // 0x0368(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
+	TArray<class AActor*>                         IgnoredActors;                                     // 0x0378(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
+	bool                                          ShowTick;                                          // 0x0388(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsInADSZone;                                       // 0x0389(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsDominantEyeRight;                                // 0x038A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_38B[0x1];                                      // 0x038B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ADSAngle;                                          // 0x038C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ECollisionChannel                             WidgetInteractionChannel;                          // 0x0390(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsVRMenuVisible;                                   // 0x0391(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	E_ENUM_VRHand                                 MainHand;                                          // 0x0392(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_393[0x5];                                      // 0x0393(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<class U_BP_InteractionSourceComponent_C*> WorldInteractionSources;                           // 0x0398(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
 
 public:
@@ -164,23 +164,23 @@ static_assert(offsetof(A_BP_VRBody_C, WristOffsetLeft) == 0x000300, "Member 'A_B
 static_assert(offsetof(A_BP_VRBody_C, WidgetInteractionRight) == 0x000308, "Member 'A_BP_VRBody_C::WidgetInteractionRight' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, VRBodyMesh) == 0x000310, "Member 'A_BP_VRBody_C::VRBodyMesh' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, DefaultSceneRoot) == 0x000318, "Member 'A_BP_VRBody_C::DefaultSceneRoot' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, AnimBP) == 0x000320, "Member 'A_BP_VRBody_C::AnimBP' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, HackerPawn) == 0x000328, "Member 'A_BP_VRBody_C::HackerPawn' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, LaserDot) == 0x000330, "Member 'A_BP_VRBody_C::LaserDot' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, ItemSelectorLeft) == 0x000338, "Member 'A_BP_VRBody_C::ItemSelectorLeft' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, ItemSelectorRight) == 0x000340, "Member 'A_BP_VRBody_C::ItemSelectorRight' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, HackerHardware) == 0x000348, "Member 'A_BP_VRBody_C::HackerHardware' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, VRBodyInitialized) == 0x000350, "Member 'A_BP_VRBody_C::VRBodyInitialized' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, WeaponInteractionSources) == 0x000360, "Member 'A_BP_VRBody_C::WeaponInteractionSources' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, IgnoredActors) == 0x000370, "Member 'A_BP_VRBody_C::IgnoredActors' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, ShowTick) == 0x000380, "Member 'A_BP_VRBody_C::ShowTick' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, IsInADSZone) == 0x000381, "Member 'A_BP_VRBody_C::IsInADSZone' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, IsDominantEyeRight) == 0x000382, "Member 'A_BP_VRBody_C::IsDominantEyeRight' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, ADSAngle) == 0x000384, "Member 'A_BP_VRBody_C::ADSAngle' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, WidgetInteractionChannel) == 0x000388, "Member 'A_BP_VRBody_C::WidgetInteractionChannel' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, IsVRMenuVisible) == 0x000389, "Member 'A_BP_VRBody_C::IsVRMenuVisible' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, MainHand) == 0x00038A, "Member 'A_BP_VRBody_C::MainHand' has a wrong offset!");
-static_assert(offsetof(A_BP_VRBody_C, AccessCard) == 0x000390, "Member 'A_BP_VRBody_C::AccessCard' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, AccessCard) == 0x000320, "Member 'A_BP_VRBody_C::AccessCard' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, AnimBP) == 0x000328, "Member 'A_BP_VRBody_C::AnimBP' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, HackerPawn) == 0x000330, "Member 'A_BP_VRBody_C::HackerPawn' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, LaserDot) == 0x000338, "Member 'A_BP_VRBody_C::LaserDot' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, ItemSelectorLeft) == 0x000340, "Member 'A_BP_VRBody_C::ItemSelectorLeft' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, ItemSelectorRight) == 0x000348, "Member 'A_BP_VRBody_C::ItemSelectorRight' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, HackerHardware) == 0x000350, "Member 'A_BP_VRBody_C::HackerHardware' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, VRBodyInitialized) == 0x000358, "Member 'A_BP_VRBody_C::VRBodyInitialized' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, WeaponInteractionSources) == 0x000368, "Member 'A_BP_VRBody_C::WeaponInteractionSources' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, IgnoredActors) == 0x000378, "Member 'A_BP_VRBody_C::IgnoredActors' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, ShowTick) == 0x000388, "Member 'A_BP_VRBody_C::ShowTick' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, IsInADSZone) == 0x000389, "Member 'A_BP_VRBody_C::IsInADSZone' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, IsDominantEyeRight) == 0x00038A, "Member 'A_BP_VRBody_C::IsDominantEyeRight' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, ADSAngle) == 0x00038C, "Member 'A_BP_VRBody_C::ADSAngle' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, WidgetInteractionChannel) == 0x000390, "Member 'A_BP_VRBody_C::WidgetInteractionChannel' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, IsVRMenuVisible) == 0x000391, "Member 'A_BP_VRBody_C::IsVRMenuVisible' has a wrong offset!");
+static_assert(offsetof(A_BP_VRBody_C, MainHand) == 0x000392, "Member 'A_BP_VRBody_C::MainHand' has a wrong offset!");
 static_assert(offsetof(A_BP_VRBody_C, WorldInteractionSources) == 0x000398, "Member 'A_BP_VRBody_C::WorldInteractionSources' has a wrong offset!");
 
 }

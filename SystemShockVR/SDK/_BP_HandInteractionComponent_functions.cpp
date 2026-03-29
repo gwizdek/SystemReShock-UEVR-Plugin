@@ -433,5 +433,26 @@ bool U_BP_HandInteractionComponent_C::IsItemSelectorActive()
 	return Parms.ReturnValue;
 }
 
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.IsEmptyHand
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void U_BP_HandInteractionComponent_C::IsEmptyHand(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "IsEmptyHand");
+
+	Params::_BP_HandInteractionComponent_C_IsEmptyHand Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
 }
 

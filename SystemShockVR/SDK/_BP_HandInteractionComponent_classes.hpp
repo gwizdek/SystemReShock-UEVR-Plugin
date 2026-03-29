@@ -12,9 +12,9 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "CoreUObject_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
-#include "CoreUObject_structs.hpp"
 
 
 namespace SDK
@@ -64,7 +64,7 @@ public:
 	bool                                          IsHoldingWeapon;                                   // 0x0307(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          bIsMainHand;                                       // 0x0308(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          IsGrabbingItem;                                    // 0x0309(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsSnappedToWeaponSource;                           // 0x030A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsSnappedToInteractionSource;                      // 0x030A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_30B[0x5];                                      // 0x030B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	class U_BP_InteractionSourceComponent_C*      ActiveWeaponInteractionSource;                     // 0x0310(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsChannelingWeaponSource;                          // 0x0318(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
@@ -97,6 +97,7 @@ public:
 	void IsManuallyPointing(bool* Result);
 	bool IsMainHand();
 	bool IsItemSelectorActive();
+	void IsEmptyHand(bool* Result);
 
 public:
 	static class UClass* StaticClass()
@@ -143,7 +144,7 @@ static_assert(offsetof(U_BP_HandInteractionComponent_C, IsHoldingHandheldConsuma
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsHoldingWeapon) == 0x000307, "Member 'U_BP_HandInteractionComponent_C::IsHoldingWeapon' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, bIsMainHand) == 0x000308, "Member 'U_BP_HandInteractionComponent_C::bIsMainHand' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsGrabbingItem) == 0x000309, "Member 'U_BP_HandInteractionComponent_C::IsGrabbingItem' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToWeaponSource) == 0x00030A, "Member 'U_BP_HandInteractionComponent_C::IsSnappedToWeaponSource' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToInteractionSource) == 0x00030A, "Member 'U_BP_HandInteractionComponent_C::IsSnappedToInteractionSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, ActiveWeaponInteractionSource) == 0x000310, "Member 'U_BP_HandInteractionComponent_C::ActiveWeaponInteractionSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsChannelingWeaponSource) == 0x000318, "Member 'U_BP_HandInteractionComponent_C::IsChannelingWeaponSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, Hand) == 0x000319, "Member 'U_BP_HandInteractionComponent_C::Hand' has a wrong offset!");

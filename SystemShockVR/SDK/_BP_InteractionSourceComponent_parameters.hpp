@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "_ENUM_InteractionSourceType_structs.hpp"
 
 
@@ -43,7 +43,6 @@ public:
 	E_ENUM_VRHandPose                             InInteractionPose;                                 // 0x0078(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          InIsSnappable;                                     // 0x0079(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          InIsEnabled;                                       // 0x007A(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x007B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_InteractionSourceComponent_C_InitInteractionSource) == 0x000010, "Wrong alignment on _BP_InteractionSourceComponent_C_InitInteractionSource");
 static_assert(sizeof(_BP_InteractionSourceComponent_C_InitInteractionSource) == 0x000080, "Wrong size on _BP_InteractionSourceComponent_C_InitInteractionSource");
@@ -55,7 +54,6 @@ static_assert(offsetof(_BP_InteractionSourceComponent_C_InitInteractionSource, I
 static_assert(offsetof(_BP_InteractionSourceComponent_C_InitInteractionSource, InInteractionPose) == 0x000078, "Member '_BP_InteractionSourceComponent_C_InitInteractionSource::InInteractionPose' has a wrong offset!");
 static_assert(offsetof(_BP_InteractionSourceComponent_C_InitInteractionSource, InIsSnappable) == 0x000079, "Member '_BP_InteractionSourceComponent_C_InitInteractionSource::InIsSnappable' has a wrong offset!");
 static_assert(offsetof(_BP_InteractionSourceComponent_C_InitInteractionSource, InIsEnabled) == 0x00007A, "Member '_BP_InteractionSourceComponent_C_InitInteractionSource::InIsEnabled' has a wrong offset!");
-static_assert(offsetof(_BP_InteractionSourceComponent_C_InitInteractionSource, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x00007B, "Member '_BP_InteractionSourceComponent_C_InitInteractionSource::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 
 // Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.InitGripSource
 // 0x0048 (0x0048 - 0x0000)
@@ -81,6 +79,63 @@ static_assert(offsetof(_BP_InteractionSourceComponent_C_InitGripSource, CallFunc
 static_assert(offsetof(_BP_InteractionSourceComponent_C_InitGripSource, CallFunc_AddComponentByClass_ReturnValue_1) == 0x000038, "Member '_BP_InteractionSourceComponent_C_InitGripSource::CallFunc_AddComponentByClass_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_InteractionSourceComponent_C_InitGripSource, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000040, "Member '_BP_InteractionSourceComponent_C_InitGripSource::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_InteractionSourceComponent_C_InitGripSource, CallFunc_K2_AttachToComponent_ReturnValue_1) == 0x000041, "Member '_BP_InteractionSourceComponent_C_InitGripSource::CallFunc_K2_AttachToComponent_ReturnValue_1' has a wrong offset!");
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.GetWristWorldTransform
+// 0x0060 (0x0060 - 0x0000)
+struct _BP_InteractionSourceComponent_C_GetWristWorldTransform final
+{
+public:
+	struct FTransform                             OutTransform;                                      // 0x0000(0x0030)(Parm, OutParm, IsPlainOldData, NoDestructor)
+	struct FTransform                             CallFunc_K2_GetComponentToWorld_ReturnValue;       // 0x0030(0x0030)(IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_InteractionSourceComponent_C_GetWristWorldTransform) == 0x000010, "Wrong alignment on _BP_InteractionSourceComponent_C_GetWristWorldTransform");
+static_assert(sizeof(_BP_InteractionSourceComponent_C_GetWristWorldTransform) == 0x000060, "Wrong size on _BP_InteractionSourceComponent_C_GetWristWorldTransform");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_GetWristWorldTransform, OutTransform) == 0x000000, "Member '_BP_InteractionSourceComponent_C_GetWristWorldTransform::OutTransform' has a wrong offset!");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_GetWristWorldTransform, CallFunc_K2_GetComponentToWorld_ReturnValue) == 0x000030, "Member '_BP_InteractionSourceComponent_C_GetWristWorldTransform::CallFunc_K2_GetComponentToWorld_ReturnValue' has a wrong offset!");
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.ShowCollisionSpheres
+// 0x0002 (0x0002 - 0x0000)
+struct _BP_InteractionSourceComponent_C_ShowCollisionSpheres final
+{
+public:
+	bool                                          Visible;                                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_InteractionSourceComponent_C_ShowCollisionSpheres) == 0x000001, "Wrong alignment on _BP_InteractionSourceComponent_C_ShowCollisionSpheres");
+static_assert(sizeof(_BP_InteractionSourceComponent_C_ShowCollisionSpheres) == 0x000002, "Wrong size on _BP_InteractionSourceComponent_C_ShowCollisionSpheres");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_ShowCollisionSpheres, Visible) == 0x000000, "Member '_BP_InteractionSourceComponent_C_ShowCollisionSpheres::Visible' has a wrong offset!");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_ShowCollisionSpheres, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member '_BP_InteractionSourceComponent_C_ShowCollisionSpheres::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.TrySnap
+// 0x0020 (0x0020 - 0x0000)
+struct _BP_InteractionSourceComponent_C_TrySnap final
+{
+public:
+	class U_BP_HandInteractionComponent_C*        InHandInteraction;                                 // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Result;                                            // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_InteractionSourceComponent_C_TrySnap) == 0x000008, "Wrong alignment on _BP_InteractionSourceComponent_C_TrySnap");
+static_assert(sizeof(_BP_InteractionSourceComponent_C_TrySnap) == 0x000020, "Wrong size on _BP_InteractionSourceComponent_C_TrySnap");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_TrySnap, InHandInteraction) == 0x000000, "Member '_BP_InteractionSourceComponent_C_TrySnap::InHandInteraction' has a wrong offset!");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_TrySnap, Result) == 0x000008, "Member '_BP_InteractionSourceComponent_C_TrySnap::Result' has a wrong offset!");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_TrySnap, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x00000C, "Member '_BP_InteractionSourceComponent_C_TrySnap::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_TrySnap, CallFunc_Not_PreBool_ReturnValue) == 0x000018, "Member '_BP_InteractionSourceComponent_C_TrySnap::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_TrySnap, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member '_BP_InteractionSourceComponent_C_TrySnap::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.TryInteract
+// 0x0008 (0x0008 - 0x0000)
+struct _BP_InteractionSourceComponent_C_TryInteract final
+{
+public:
+	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(_BP_InteractionSourceComponent_C_TryInteract) == 0x000008, "Wrong alignment on _BP_InteractionSourceComponent_C_TryInteract");
+static_assert(sizeof(_BP_InteractionSourceComponent_C_TryInteract) == 0x000008, "Wrong size on _BP_InteractionSourceComponent_C_TryInteract");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_TryInteract, SourceActor) == 0x000000, "Member '_BP_InteractionSourceComponent_C_TryInteract::SourceActor' has a wrong offset!");
 
 // Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.GetInteractionSourceParams
 // 0x0080 (0x0080 - 0x0000)

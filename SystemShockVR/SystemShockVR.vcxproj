@@ -160,6 +160,8 @@
     <ClInclude Include="plugin_utils.hpp" />
     <ClInclude Include="SDK\CoreUObject_structs.hpp" />
     <ClInclude Include="SDK\Engine_classes.hpp" />
+    <ClInclude Include="SDK\PAWN_Avatar_classes.hpp" />
+    <ClInclude Include="vr_avatar.hpp" />
     <ClInclude Include="vr_body.hpp" />
     <ClInclude Include="rendering\d3d11.hpp" />
     <ClInclude Include="rendering\d3d12.hpp" />
@@ -229,6 +231,7 @@
     <ClCompile Include="SDK\_BP_VRBody_functions.cpp" />
     <ClCompile Include="SDK\_BP_VRMovementComponent_functions.cpp" />
     <ClCompile Include="SDK\_CH_Hacker_Rig_Skeleton_AnimBlueprint_functions.cpp" />
+    <ClCompile Include="vr_avatar.cpp" />
     <ClCompile Include="vr_body.cpp" />
     <ClCompile Include="vr_item_selector.cpp" />
     <ClCompile Include="vr_mfd.cpp" />

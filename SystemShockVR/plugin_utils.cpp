@@ -87,6 +87,41 @@ void PluginUtils::destroy_actors_by_tag(SDK::UWorld* world, SDK::FName actor_tag
     }
 }
 
+// this function tries to find and destroy class actors we created for attachments, even when we no longer have pointers to them
+void PluginUtils::destroy_actors_by_class(SDK::UWorld* world, SDK::UClass* actor_class) {
+    try {
+        API::get()->log_warn("[plugin_utils][destroy_actors_by_class] Cleaning up stale %s Class Actors", actor_class->GetName().c_str());
+
+        if (world == nullptr || !SDK::UKismetSystemLibrary::IsValid(world)) {
+            API::get()->log_warn("[plugin_utils][destroy_actors_by_class] Invalid World object");
+            return;
+        }
+
+        SDK::TArray<SDK::AActor*> actors_to_destroy{};
+        actors_to_destroy.Data = (SDK::AActor**)API::FMalloc::get()->malloc(16 * sizeof(SDK::AActor*));
+        actors_to_destroy.NumElements = 0;
+        actors_to_destroy.MaxElements = 16;
+
+        SDK::UGameplayStatics::GetAllActorsOfClass(world, actor_class, &actors_to_destroy);
+
+        API::get()->log_warn("[plugin_utils][destroy_actors_by_class] Found %d Actors to Destroy", actors_to_destroy.Num());
+
+        // destroying actors
+        for (UC::int32 i = 0; i < actors_to_destroy.Num(); i++) {
+            if (actors_to_destroy[i] != nullptr && SDK::UKismetSystemLibrary::IsValid(actors_to_destroy[i]) && actors_to_destroy[i]->IsA(SDK::AActor::StaticClass())) {
+                static_cast<SDK::AActor*>(actors_to_destroy[i])->K2_DestroyActor();
+                API::get()->log_warn("[plugin_utils][destroy_actors_by_class] Destroyed Class Actor %s", actor_class->GetName().c_str());
+            }
+        }
+
+        return;
+    }
+    catch (...) {
+        API::get()->log_error("[plugin_utils][destroy_actors_by_class] Exception");
+        return;
+    }
+}
+
 SDK::UObject* PluginUtils::load_asset(SDK::FAssetData asset_data) {
     try {
         API::get()->log_warn("[plugin_utils][load_asset] Loading Asset %s", asset_data.ObjectPath.GetRawString().c_str());
