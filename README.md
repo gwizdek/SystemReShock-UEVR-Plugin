@@ -10,7 +10,7 @@
 > Double check, that the `SystemReShockVR.dll` file is inside the profile folder before playing the game.
   
 > [!NOTE]
-> The 1.5.0 version is also available through Unreal Easy Injector https://uevrdeluxe.org
+> The 1.5.0 version is also available through Unreal Easy Injector https://uevrdeluxe.org  
 > https://uevr-profiles.com is still on version 1.4.0
 
 > [!NOTE]
