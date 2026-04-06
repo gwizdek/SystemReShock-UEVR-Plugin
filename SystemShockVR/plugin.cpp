@@ -2,6 +2,9 @@
 #include "SDK/PAWN_PlayerGhost_classes.hpp"
 #include "SDK/PAWN_Avatar_classes.hpp"
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
+#include "SDK/PAWN_Enemy_classes.hpp"
+#include "SDK/PAWN_SystemShockCharacter_classes.hpp"
+#include "SDK/CORPSE_SkeletalBase_classes.hpp"
 #include "SDK/WIDGET_SimpleHUD_classes.hpp"
 #include "SDK/WIDGET_CyberspaceHUD_classes.hpp"
 #include "SDK/WIDGET_MainMenu_InGame_classes.hpp"
@@ -11,8 +14,18 @@
 #include "SDK/MOVECONTROL_FocusableInteract_classes.hpp"
 #include "SDK/MOVECONTROL_StationMove_classes.hpp"
 #include "SDK/COMP_MoveControlManager_classes.hpp"
+#include "SDK/COMP_LimbManager_classes.hpp"
+#include "SDK/COMP_ActionManager_classes.hpp"
+#include "SDK/COMP_AttribManager_classes.hpp"
 #include "SDK/HeadMountedDisplay_structs.hpp"
 #include "SDK/HeadMountedDisplay_classes.hpp"
+#include "SDK/ITEM_MeleeWeapon_Base_classes.hpp"
+#include "SDK/ITEM_WeaponBase_classes.hpp"
+#include "SDK/INTERACT_DestructibleBase_classes.hpp"
+#include "SDK/CharacterAction_classes.hpp"
+#include "SDK/AttributeSystem_classes.hpp"
+#include "SDK/WIDGET_TargetID_Display_classes.hpp"
+
 
 #include "SDK/_BP_LaserDot_classes.hpp"
 #include "SDK/_BP_ItemSelector_classes.hpp"
@@ -20,6 +33,7 @@
 #include "SDK/_BP_HandInteractionComponent_classes.hpp"
 #include "SDK/_BP_VRMovementComponent_classes.hpp"
 #include "SDK/_CH_Hacker_Rig_Skeleton_AnimBlueprint_classes.hpp"
+#include "SDK/_BP_MeleeWeaponHandler_classes.hpp"
 
 #include "plugin.hpp"
 #include "plugin_utils.hpp"
@@ -122,6 +136,8 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_media_display();
         update_trailing_rotation(delta);
         handle_ads();
+
+        m_melee_cooldown += delta;
         
         //if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
         //    try_running_test_1();
@@ -372,6 +388,8 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
 
 void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
     try {
+        try_melee();
+
         auto player_controller = UGameplayStatics::GetPlayerController(m_world, 0);
         if (player_controller->IsA(ACON_Hacker_C::StaticClass())) {
             static_cast<ACON_Hacker_C*>(player_controller)->SetIsUsingGamepad(false);
@@ -390,12 +408,32 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
         }
 
         if (m_gamepad_left_trigger.is_held() && m_gamepad_left_thumb.is_pressed()) {
-            if (!g_vr_body->IsVRMenuVisible) {
-                g_vr_body->OpenVRMenu();
-            }
-            else {
-                g_vr_body->CloseVRMenu();
-            }
+
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->K2_AttachToComponent(
+            //    g_vr_body->VRBodyMesh,
+            //    UKismetStringLibrary::Conv_StringToName(L"RightHandPipeSocket"),
+            //    EAttachmentRule::SnapToTarget,
+            //    EAttachmentRule::SnapToTarget,
+            //    EAttachmentRule::KeepWorld,
+            //    true
+            //);
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel10);
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetCollisionProfileName(UKismetStringLibrary::Conv_StringToName(L"PickupPhysicsActor"), false);
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel4);
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel4, ECollisionResponse::ECR_Block);
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Block);
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetEnableGravity(false);
+            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetSimulatePhysics(true);
+
+
+            //if (!g_vr_body->IsVRMenuVisible) {
+            //    g_vr_body->OpenVRMenu();
+            //}
+            //else {
+            //    g_vr_body->CloseVRMenu();
+            //}
             //toggle_gui();
             PluginUtils::reset_height(0.f);
             //API::get()->log_warn("[plugin][handle_controller_input] X-button");
@@ -403,6 +441,17 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
 
         // Right Trigger
         if (m_gamepad_right_trigger.is_pressed()) {
+            //if (g_vr_body->LaserDot->LastLaserTargetComponent->IsA(UCapsuleComponent::StaticClass())) {
+            //if (g_vr_body->LaserDot->LastLaserTargetActor->IsA(APAWN_Enemy_C::StaticClass())) {
+            //    APAWN_Enemy_C* enemy = static_cast<APAWN_Enemy_C*>(g_vr_body->LaserDot->LastLaserTargetActor);
+            //    enemy->COMP_LimbManager->SetRagdollEnabled();
+            //    
+            //    //static_cast<APAWN_Enemy_C*>(g_vr_body->LaserDot->LastLaserTargetComponent)->SetSimulatePhysics(true);
+            //    //static_cast<APAWN_Enemy_C*>(g_vr_body->LaserDot->LastLaserTargetComponent)->SetEnableGravity(true);
+            //    API::get()->log_error("[plugin][handle_citadel_station_xinput] Test physics");
+            //}
+
+
             if (g_vr_body->IsEmptyHanded()) {
                 g_vr_body->Attach_Laser_Pointer(E_ENUM_VRHand::NewEnumerator1, true, 10.f);
             }
@@ -703,6 +752,12 @@ void UEVRPlugin::handle_level_change() {
                     API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
                 }
                 //load_mod_config();
+            }
+
+
+            auto player_controller = UGameplayStatics::GetPlayerController(m_world, 0);
+            if (player_controller->IsA(ACON_Hacker_C::StaticClass())) {
+                static_cast<ACON_Hacker_C*>(player_controller)->EnableDamageLog(true);
             }
             //else {
             //    API::get()->log_warn("[plugin][handle_level_change] Components cleanup");
@@ -1446,4 +1501,191 @@ void UEVRPlugin::toggle_gui() {
     if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
         m_neural_hud->SetVisibility(m_gui_visible ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
     }
+}
+
+void UEVRPlugin::try_melee() {
+    try {
+        static FName trace_socket_name{};
+        static SDK::FVector trace_start{ 0.f, 0.f, 0.f };
+        static SDK::FVector trace_end{ 0.f, 0.f, 0.f };
+        static bool prev_is_beserk{ false };
+        static float pre_health{ 0.f };
+        static float post_health{ 0.f };
+        //static ENUM_Melee_AttackState melee_attack_state{ ENUM_Melee_AttackState::NewEnumerator0 };
+
+        if (m_melee_cooldown < 0.5f) {
+            return;
+        }
+
+        if (g_vr_body != nullptr && m_inventory != nullptr && m_inventory->CurrentEquippedWeapon != nullptr && m_inventory->CurrentEquippedWeapon->IsA(UITEM_MeleeWeapon_Base_C::StaticClass())
+            && g_vr_body->MeleeWeaponHandler->IsHot()
+            ) {
+
+            UITEM_MeleeWeapon_Base_C* melee_weapon = static_cast<UITEM_MeleeWeapon_Base_C*>(m_inventory->CurrentEquippedWeapon);
+            if (melee_weapon == nullptr) {
+                return;
+            }
+            //g_vr_body->MeleeWeaponHandler->GetHitTraceStartEndLocations(trace_start, trace_end);
+
+            SDK::TArray<SDK::EObjectTypeQuery> traceObjectTypes;
+            traceObjectTypes.Data = (EObjectTypeQuery*)API::FMalloc::get()->malloc(3 * sizeof(EObjectTypeQuery));
+            traceObjectTypes.NumElements = 3;
+            traceObjectTypes.MaxElements = 3;
+
+            traceObjectTypes.Data[0] = EObjectTypeQuery::ObjectTypeQuery3;
+            traceObjectTypes.Data[1] = EObjectTypeQuery::ObjectTypeQuery4;
+            traceObjectTypes.Data[2] = EObjectTypeQuery::ObjectTypeQuery6;
+            //traceObjectTypes.Data[3] = EObjectTypeQuery::ObjectTypeQuery2;
+
+            // Weapon tip trace
+            UKismetSystemLibrary::LineTraceSingleForObjects( m_world, g_vr_body->MeleeWeaponHandler->TipPrevWorldLocation, g_vr_body->MeleeWeaponHandler->TipWorldLocation,
+                traceObjectTypes, true, g_vr_body->IgnoredActors, EDrawDebugTrace::None, &m_reusable_hit_result, true, { 0.f, 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f, 0.f }, 0.f
+            );
+
+            if (!m_reusable_hit_result.bBlockingHit) {
+                // Weapon inter A trace
+                UKismetSystemLibrary::LineTraceSingleForObjects(m_world, g_vr_body->MeleeWeaponHandler->IntermAPrevWorldLocation, g_vr_body->MeleeWeaponHandler->IntermAWorldLocation,
+                    traceObjectTypes, true, g_vr_body->IgnoredActors, EDrawDebugTrace::None, &m_reusable_hit_result, true, { 0.f, 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f, 0.f }, 0.f
+                );
+            }
+
+            if (!m_reusable_hit_result.bBlockingHit) {
+                // Weapon inter B trace
+                UKismetSystemLibrary::LineTraceSingleForObjects(m_world, g_vr_body->MeleeWeaponHandler->IntermBPrevWorldLocation, g_vr_body->MeleeWeaponHandler->IntermBWorldLocation,
+                    traceObjectTypes, true, g_vr_body->IgnoredActors, EDrawDebugTrace::None, &m_reusable_hit_result, true, { 0.f, 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f, 0.f }, 0.f
+                );
+            }
+
+            //API::get()->log_warn("[plugin][try_melee] HIT RESULT %s", m_reusable_hit_result.Component.Get()->Name.GetRawString().c_str());
+            //API::get()->log_warn("[plugin][try_melee] HIT RESULT X: %f, Y: %f, Z: %f", m_reusable_hit_result.ImpactPoint.X, m_reusable_hit_result.ImpactPoint.Y, m_reusable_hit_result.ImpactPoint.Z);
+
+            bool hit{ true };
+            bool result{ true };
+            bool is_finished{ false };
+
+            if (m_reusable_hit_result.bBlockingHit) {
+                if (
+                    m_reusable_hit_result.Actor.Get()->IsA(APAWN_Enemy_C::StaticClass()) ||
+                    m_reusable_hit_result.Actor.Get()->IsA(ACORPSE_SkeletalBase_C::StaticClass()) ||
+                    m_reusable_hit_result.Actor.Get()->IsA(AINTERACT_DestructibleBase_C::StaticClass())
+                   ) {
+
+
+                    try {
+                        // debug enemy health
+                        if (m_reusable_hit_result.Actor.Get()->IsA(APAWN_Enemy_C::StaticClass())) {
+                            m_neural_hud->WIDGET_TargetID_Display->SetTargetActor(m_reusable_hit_result.Actor.Get());
+                            m_neural_hud->WIDGET_TargetID_Display->SetTargetIDHardwareEventBindings();
+                            m_neural_hud->WIDGET_TargetID_Display->UpdateTargetEventBindings();
+                            //auto health_attrib = static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->COMP_AttribManager->HealthAttrib;
+                            //auto health_attrib_value = static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->COMP_AttribManager->AttribHandler->GetAttribValue(health_attrib.Get());
+                            pre_health = m_neural_hud->WIDGET_TargetID_Display->TargetHealth;
+                            auto s_pre_health = UKismetStringLibrary::Conv_FloatToString(m_neural_hud->WIDGET_TargetID_Display->TargetHealth);
+                            //API::get()->log_warn("[plugin][try_melee] HIT_PRE %s, HEALTH: %f", m_reusable_hit_result.Actor.Get()->GetFullName().c_str(), m_neural_hud->WIDGET_TargetID_Display->TargetHealth);
+                        }
+                    }
+                    catch (...) {
+                        API::get()->log_error("[plugin][try_melee] Debug enemy health #1 Exception");
+                    }
+                    
+
+                    m_melee_cooldown = 0.f;
+                    //API::get()->log_warn("[plugin][try_melee] HIT RESULT %s", m_reusable_hit_result.Component.Get()->GetFullName().c_str());
+                    //API::get()->log_warn("[plugin][try_melee] HIT RESULT %s", m_reusable_hit_result.Actor.Get()->GetFullName().c_str());
+                    
+                    try {
+                        UAnimMontage* montage{};
+
+                        if (g_vr_body->IsTwoHandingWeapon()) {
+                            API::get()->log_warn("[plugin][try_melee] Two handed swing");
+                            melee_weapon->GetPowerSwingToIdleMontage(ENUM_LeftRightCenter::NewEnumerator0, &montage);
+                        }
+                        else {
+                            melee_weapon->GetRandomFastAttack(&montage);
+                        }
+
+                        if (UKismetSystemLibrary::IsValid(montage)) {
+                            API::get()->log_warn("[plugin][try_melee] Valid Montage");
+                        }
+                        else {
+                            API::get()->log_warn("[plugin][try_melee] Invalid Montage");
+                            return;
+                        }
+
+                        SDK::UCharacterAction_C* action{};
+                        auto action_manager = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->COMP_ActionManager;
+                        melee_weapon->EnableDamage(&result);
+                        // force action, high priority
+                        action_manager->ForceBeginAction(montage, ENUM_ActionPriority::NewEnumerator2, &action);
+                        action->SetElapsedTime(0.5f, &is_finished);
+                        // drains player stamina
+                        melee_weapon->OnStartedMeleeAttack(false);
+                        // applies damage
+                        // this call can also apply stamina drain mod (test it)
+
+                        // force power swing by setting IsBeserk to true, then reset it to prev value
+                        //prev_is_beserk = melee_weapon->IsBerserk;
+
+                        melee_weapon->TryDealDamageFromHitResult(m_reusable_hit_result, &hit);
+                        //melee_weapon->IsBerserk = prev_is_beserk;
+
+                        action->StopMontage(0.2f);
+                        //action_manager->UpdateActiveAction(1.f);
+
+                        melee_weapon->DisableDamage(&result);
+                        melee_weapon->HitActors.Clear();
+                        bool end_action_result{ false };
+
+                        action_manager->ForceEndCurrentAction(nullptr, 0.2f);
+                        melee_weapon->DisableDamage(&result);
+                    }
+                    catch (...) {
+                        API::get()->log_error("[plugin][try_melee] Damage sequence Exception");
+                    }
+
+                    try {
+                        // debug enemy health
+                        if (m_reusable_hit_result.Actor.Get()->IsA(APAWN_Enemy_C::StaticClass())) {
+                            //auto health_attrib = static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->COMP_AttribManager->HealthAttrib;
+                            //auto health_attrib_value = static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->COMP_AttribManager->AttribHandler->GetAttribValue(health_attrib.Get());
+                            //API::get()->log_warn("[plugin][try_melee] HIT_AFTER %s, HEALTH: %f", m_reusable_hit_result.Actor.Get()->GetFullName().c_str(), health_attrib_value);
+                            post_health = m_neural_hud->WIDGET_TargetID_Display->TargetHealth;
+                            //API::get()->log_warn("[plugin][try_melee] HIT_AFTER %s, HEALTH: %f", m_reusable_hit_result.Actor.Get()->GetFullName().c_str(), m_neural_hud->WIDGET_TargetID_Display->TargetHealth);
+                            auto damage = UKismetStringLibrary::Conv_FloatToString(pre_health - post_health);
+                            g_vr_body->AddDebugMessage(UKismetStringLibrary::Concat_StrStr(L"Damage: ", damage), E_ENUM_DebugWidgetEntryType::NewEnumerator1);
+                        }
+                    }
+                    catch (...) {
+                        API::get()->log_error("[plugin][try_melee] Debug enemy health #2 Exception");
+                    }
+                    //action_manager->TryEndCurrentAction(ENUM_ActionPriority::NewEnumerator2, 0.1f, &end_action_result);
+                    //API::get()->log_warn("[plugin][try_melee] End Action Result: %s", end_action_result ? "OK" : "BAD");
+                    //melee_weapon->CreateMeleeImpactForceFeedback(m_reusable_hit_result, true);
+                    //FVector knockback_direction = {
+                    //    m_reusable_hit_result.ImpactNormal.X * 1000.f,
+                    //    m_reusable_hit_result.ImpactNormal.Y * 1000.f,
+                    //    m_reusable_hit_result.ImpactNormal.Z * 1000.f
+                    //};
+                    //UKismetMathLibrary::Multiply_VectorFloat(knockback_direction, 20.f);
+                    //static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->ApplyKnockback(knockback_direction, m_reusable_hit_result.ImpactPoint);
+                    ////API::get()->log_warn("[plugin][try_melee] Knockback X: %f, Y: %f, Z: %f", knockback_direction.X, knockback_direction.Y, knockback_direction.Z);
+                }
+            }
+
+
+            //melee_weapon->DamageTraceWithOffsetFromSocket(offset, &hit);
+            //if (hit) {
+            //    API::get()->log_warn("[plugin][try_melee] HIT");
+            //}
+            //else {
+            //    API::get()->log_warn("[plugin][try_melee] NO HIT");
+            //}
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][try_melee] Exception");
+    }
+}
+
+void UEVRPlugin::apply_damage() {
 }

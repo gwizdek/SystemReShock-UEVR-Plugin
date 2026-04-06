@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_VRHand_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
-#include "_ENUM_VRHand_structs.hpp"
 
 
 namespace SDK::Params
@@ -504,8 +504,7 @@ public:
 	class UAnimInstance*                          CallFunc_GetWeaponAnimInstance_OutAnimInstance;    // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	TScriptInterface<class I_BI_VRWeapon_C>       K2Node_DynamicCast_As_BI_VRWeapon;                 // 0x0040(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_52[0x2];                                       // 0x0052(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	class FName                                   CallFunc_GetDefaultParams_OutAttachSocketName;     // 0x0054(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_VRHandPose                             CallFunc_GetDefaultParams_OutGripHandPose;         // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_5D[0x3];                                       // 0x005D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
@@ -527,7 +526,6 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, Ca
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, CallFunc_GetWeaponAnimInstance_OutAnimInstance) == 0x000038, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponDrawn::CallFunc_GetWeaponAnimInstance_OutAnimInstance' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, K2Node_DynamicCast_As_BI_VRWeapon) == 0x000040, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponDrawn::K2Node_DynamicCast_As_BI_VRWeapon' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, K2Node_DynamicCast_bSuccess) == 0x000050, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponDrawn::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, CallFunc_Not_PreBool_ReturnValue) == 0x000051, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponDrawn::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, CallFunc_GetDefaultParams_OutAttachSocketName) == 0x000054, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponDrawn::CallFunc_GetDefaultParams_OutAttachSocketName' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, CallFunc_GetDefaultParams_OutGripHandPose) == 0x00005C, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponDrawn::CallFunc_GetDefaultParams_OutGripHandPose' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, CallFunc_GetDefaultParams_OutWeaponOffset) == 0x000060, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponDrawn::CallFunc_GetDefaultParams_OutWeaponOffset' has a wrong offset!");

@@ -292,10 +292,10 @@ void A_BP_VRBody_C::HolsterWeapon()
 // Function _BP_VRBody._BP_VRBody_C.TryGrabAction
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// E_ENUM_VRHand                           inHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // E_ENUM_VRHandPose                       InPose                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand inHand, E_ENUM_VRHandPose InPose)
+void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand InHand, E_ENUM_VRHandPose InPose)
 {
 	static class UFunction* Func = nullptr;
 
@@ -304,7 +304,7 @@ void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand inHand, E_ENUM_VRHandPose InPose
 
 	Params::_BP_VRBody_C_TryGrabAction Parms{};
 
-	Parms.inHand = inHand;
+	Parms.InHand = InHand;
 	Parms.InPose = InPose;
 
 	UObject::ProcessEvent(Func, &Parms);
@@ -398,6 +398,20 @@ void A_BP_VRBody_C::InitializeItemSelectors()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("_BP_VRBody_C", "InitializeItemSelectors");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.InitializeMeleeWeaponHandler
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void A_BP_VRBody_C::InitializeMeleeWeaponHandler()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "InitializeMeleeWeaponHandler");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -547,11 +561,11 @@ void A_BP_VRBody_C::GetHackerMoveControlManager(class UCOMP_MoveControlManager_C
 // Function _BP_VRBody._BP_VRBody_C.Attach Laser Pointer
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// E_ENUM_VRHand                           inHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    InEnabled                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // float                                   InTimeout                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_VRBody_C::Attach_Laser_Pointer(E_ENUM_VRHand inHand, bool InEnabled, float InTimeout)
+void A_BP_VRBody_C::Attach_Laser_Pointer(E_ENUM_VRHand InHand, bool InEnabled, float InTimeout)
 {
 	static class UFunction* Func = nullptr;
 
@@ -560,7 +574,7 @@ void A_BP_VRBody_C::Attach_Laser_Pointer(E_ENUM_VRHand inHand, bool InEnabled, f
 
 	Params::_BP_VRBody_C_Attach_Laser_Pointer Parms{};
 
-	Parms.inHand = inHand;
+	Parms.InHand = InHand;
 	Parms.InEnabled = InEnabled;
 	Parms.InTimeout = InTimeout;
 
@@ -800,6 +814,26 @@ bool A_BP_VRBody_C::IsEmptyHanded()
 		Func = Class->GetFunction("_BP_VRBody_C", "IsEmptyHanded");
 
 	Params::_BP_VRBody_C_IsEmptyHanded Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function _BP_VRBody._BP_VRBody_C.IsTwoHandingWeapon
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
+
+bool A_BP_VRBody_C::IsTwoHandingWeapon()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "IsTwoHandingWeapon");
+
+	Params::_BP_VRBody_C_IsTwoHandingWeapon Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 

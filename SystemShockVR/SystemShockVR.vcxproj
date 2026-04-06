@@ -193,9 +193,13 @@
     <ClCompile Include="rendering\d3d12.cpp" />
     <ClCompile Include="SDK\ANIMBP_Magnum_functions.cpp" />
     <ClCompile Include="SDK\AssetRegistry_functions.cpp" />
+    <ClCompile Include="SDK\AttributeSystem_functions.cpp" />
     <ClCompile Include="SDK\Basic.cpp" />
+    <ClCompile Include="SDK\CharacterAction_functions.cpp" />
     <ClCompile Include="SDK\COMP_ActionManager_functions.cpp" />
+    <ClCompile Include="SDK\COMP_AttribManager_functions.cpp" />
     <ClCompile Include="SDK\COMP_Inventory_functions.cpp" />
+    <ClCompile Include="SDK\COMP_LimbManager_functions.cpp" />
     <ClCompile Include="SDK\CON_Hacker_functions.cpp" />
     <ClCompile Include="SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="SDK\Engine_functions.cpp" />
@@ -205,6 +209,7 @@
     <ClCompile Include="SDK\INTERACT_Channeling_Base_functions.cpp" />
     <ClCompile Include="SDK\INTERACT_Focusable_Base_functions.cpp" />
     <ClCompile Include="SDK\INTERACT_Keypad_functions.cpp" />
+    <ClCompile Include="SDK\ITEM_MeleeWeapon_Base_functions.cpp" />
     <ClCompile Include="SDK\ITEM_WeaponBase_functions.cpp" />
     <ClCompile Include="SDK\Niagara_functions.cpp" />
     <ClCompile Include="SDK\PAWN_Hacker_Implant_functions.cpp" />
@@ -221,12 +226,14 @@
     <ClCompile Include="SDK\WIDGET_Minimap_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_PlayerHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_SimpleHUD_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_TargetID_Display_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
     <ClCompile Include="SDK\_BP_DebugWidgetComponent_functions.cpp" />
     <ClCompile Include="SDK\_BP_HackerHardware_functions.cpp" />
     <ClCompile Include="SDK\_BP_HandInteractionComponent_functions.cpp" />
     <ClCompile Include="SDK\_BP_ItemSelector_functions.cpp" />
     <ClCompile Include="SDK\_BP_LaserDot_functions.cpp" />
+    <ClCompile Include="SDK\_BP_MeleeWeaponHandler_functions.cpp" />
     <ClCompile Include="SDK\_BP_MFDMaskComponent_functions.cpp" />
     <ClCompile Include="SDK\_BP_VRBody_functions.cpp" />
     <ClCompile Include="SDK\_BP_VRMovementComponent_functions.cpp" />

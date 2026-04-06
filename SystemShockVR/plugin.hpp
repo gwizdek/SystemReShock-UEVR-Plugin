@@ -150,6 +150,7 @@ private:
     bool m_gui_visible{ true };
     bool m_trigger_test_1{ false };
     bool m_trigger_test_2{ false };
+    float m_melee_cooldown{ 0.f };
 
 // -----------------------------------------------------------------------------
 // Plugin
@@ -173,6 +174,8 @@ public:
     static void cleanup_actors();
     void SpawnCustom2DScreen();
     void toggle_gui();
+    void try_melee();
+    void apply_damage();
     
     // Input handlers
     void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);

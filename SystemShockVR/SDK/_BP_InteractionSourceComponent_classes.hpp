@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_InteractionSourceType_structs.hpp"
 
 
@@ -51,7 +51,6 @@ public:
 	void ExecuteUbergraph__BP_InteractionSourceComponent(int32 EntryPoint);
 	void ReceiveBeginPlay();
 	void InitInteractionSource(E_ENUM_InteractionSourceType Type_0, const struct FTransform& InInteractionSourceTransform, const struct FTransform& InWristTransform, float InOuterInteractionDistance, float InInnerInteractionDistance, E_ENUM_VRHandPose InInteractionPose, bool InIsSnappable, bool InIsEnabled);
-	void InitTriggerSource();
 	void InitGripSource();
 	void GetWristWorldTransform(struct FTransform* OutTransform);
 	void ShowCollisionSpheres(bool Visible);

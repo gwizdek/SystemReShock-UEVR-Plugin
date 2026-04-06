@@ -85,20 +85,6 @@ void U_BP_InteractionSourceComponent_C::InitInteractionSource(E_ENUM_Interaction
 }
 
 
-// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.InitTriggerSource
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void U_BP_InteractionSourceComponent_C::InitTriggerSource()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "InitTriggerSource");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.InitGripSource
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
