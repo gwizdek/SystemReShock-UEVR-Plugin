@@ -218,6 +218,7 @@
     <ClCompile Include="SDK\SAVE_Settings_functions.cpp" />
     <ClCompile Include="SDK\SystemReShock_functions.cpp" />
     <ClCompile Include="SDK\UMG_functions.cpp" />
+    <ClCompile Include="SDK\WEAPON_LaserRapier_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Biometer_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Compass_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_CyberspaceHUD_functions.cpp" />

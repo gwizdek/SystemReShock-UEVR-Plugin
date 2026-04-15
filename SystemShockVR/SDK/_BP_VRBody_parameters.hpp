@@ -10,12 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
-#include "Engine_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
-#include "_ENUM_DebugWidgetEntryType_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "Engine_structs.hpp"
 #include "InputCore_structs.hpp"
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
+#include "_ENUM_ItemCategory_structs.hpp"
 
 
 namespace SDK::Params
@@ -422,21 +423,19 @@ static_assert(offsetof(_BP_VRBody_C_InitializeItemSelectors, CallFunc_BeginDefer
 static_assert(offsetof(_BP_VRBody_C_InitializeItemSelectors, CallFunc_FinishSpawningActor_ReturnValue) == 0x000058, "Member '_BP_VRBody_C_InitializeItemSelectors::CallFunc_FinishSpawningActor_ReturnValue' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.InitializeMeleeWeaponHandler
-// 0x0050 (0x0050 - 0x0000)
+// 0x0040 (0x0040 - 0x0000)
 struct _BP_VRBody_C_InitializeMeleeWeaponHandler final
 {
 public:
 	struct FTransform                             CallFunc_GetSocketTransform_ReturnValue;           // 0x0000(0x0030)(IsPlainOldData, NoDestructor)
 	class AActor*                                 CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue; // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class A_BP_MeleeWeaponHandler_C*              CallFunc_FinishSpawningActor_ReturnValue;          // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class USceneComponent*                        CallFunc_K2_GetRootComponent_ReturnValue;          // 0x0040(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BP_VRBody_C_InitializeMeleeWeaponHandler) == 0x000010, "Wrong alignment on _BP_VRBody_C_InitializeMeleeWeaponHandler");
-static_assert(sizeof(_BP_VRBody_C_InitializeMeleeWeaponHandler) == 0x000050, "Wrong size on _BP_VRBody_C_InitializeMeleeWeaponHandler");
+static_assert(sizeof(_BP_VRBody_C_InitializeMeleeWeaponHandler) == 0x000040, "Wrong size on _BP_VRBody_C_InitializeMeleeWeaponHandler");
 static_assert(offsetof(_BP_VRBody_C_InitializeMeleeWeaponHandler, CallFunc_GetSocketTransform_ReturnValue) == 0x000000, "Member '_BP_VRBody_C_InitializeMeleeWeaponHandler::CallFunc_GetSocketTransform_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_InitializeMeleeWeaponHandler, CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue) == 0x000030, "Member '_BP_VRBody_C_InitializeMeleeWeaponHandler::CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_InitializeMeleeWeaponHandler, CallFunc_FinishSpawningActor_ReturnValue) == 0x000038, "Member '_BP_VRBody_C_InitializeMeleeWeaponHandler::CallFunc_FinishSpawningActor_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_InitializeMeleeWeaponHandler, CallFunc_K2_GetRootComponent_ReturnValue) == 0x000040, "Member '_BP_VRBody_C_InitializeMeleeWeaponHandler::CallFunc_K2_GetRootComponent_ReturnValue' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.InitializeAnimations
 // 0x0030 (0x0030 - 0x0000)
@@ -492,13 +491,16 @@ public:
 	bool                                          CallFunc_GetDefaultParams_OutEnabledLaserPointer;  // 0x0101(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	E_ENUM_VRHand                                 CallFunc_GetDefaultParams_OutHand;                 // 0x0102(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_GetDefaultParams_OutIsHandheldConsumable; // 0x0103(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x0104(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x0110(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x011C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0128(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_129[0x3];                                      // 0x0129(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult; // 0x012C(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	uint8                                         Pad_1B4[0x4];                                      // 0x01B4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_GetDefaultParams_OutIsMeleeWeapon;        // 0x0104(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetDefaultParams_OutIsHandheldExplosive;  // 0x0105(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	E_ENUM_ItemCategory                           CallFunc_GetDefaultParams_OutItemCategory;         // 0x0106(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_107[0x1];                                      // 0x0107(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x0108(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x0114(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x0120(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x012C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_12D[0x3];                                      // 0x012D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult; // 0x0130(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
 	class FString                                 CallFunc_GetDisplayName_ReturnValue_1;             // 0x01B8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 	class FString                                 CallFunc_Concat_StrStr_ReturnValue_1;              // 0x01C8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x01D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
@@ -527,11 +529,14 @@ static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultPar
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutEnabledLaserPointer) == 0x000101, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutEnabledLaserPointer' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutHand) == 0x000102, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutHand' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutIsHandheldConsumable) == 0x000103, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutIsHandheldConsumable' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Location) == 0x000104, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Location' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Rotation) == 0x000110, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Rotation' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Scale) == 0x00011C, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Scale' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_IsValid_ReturnValue_1) == 0x000128, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult) == 0x00012C, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutIsMeleeWeapon) == 0x000104, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutIsMeleeWeapon' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutIsHandheldExplosive) == 0x000105, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutIsHandheldExplosive' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDefaultParams_OutItemCategory) == 0x000106, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDefaultParams_OutItemCategory' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Location) == 0x000108, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Location' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Rotation) == 0x000114, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Rotation' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_BreakTransform_Scale) == 0x000120, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_BreakTransform_Scale' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_IsValid_ReturnValue_1) == 0x00012C, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult) == 0x000130, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_K2_SetRelativeLocationAndRotation_SweepHitResult' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_GetDisplayName_ReturnValue_1) == 0x0001B8, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_GetDisplayName_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_Concat_StrStr_ReturnValue_1) == 0x0001C8, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_Concat_StrStr_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_ChangeEquippedWeapon, CallFunc_K2_AttachToComponent_ReturnValue) == 0x0001D8, "Member '_BP_VRBody_C_ChangeEquippedWeapon::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
@@ -707,14 +712,15 @@ public:
 	class UCameraComponent*                       LocalPlayerCamera;                                 // 0x0020(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class USkeletalMeshComponent*                 LocalWeaponMesh;                                   // 0x0028(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_VRHand                                 Temp_byte_Variable;                                // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UITEM_WeaponBase_C*                     CallFunc_GetCurrentEquippedWeapon_OutWeapon;       // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class U_BP_HandInteractionComponent_C*        K2Node_Select_Default;                             // 0x0040(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	E_ENUM_VRHand                                 Temp_byte_Variable_1;                              // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4A[0x6];                                       // 0x004A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMotionControllerComponent*             K2Node_Select_Default_1;                           // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 Temp_byte_Variable_1;                              // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_32[0x6];                                       // 0x0032(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMotionControllerComponent*             K2Node_Select_Default;                             // 0x0038(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UITEM_WeaponBase_C*                     CallFunc_GetCurrentEquippedWeapon_OutWeapon;       // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class U_BP_HandInteractionComponent_C*        K2Node_Select_Default_1;                           // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_K2_AttachToComponent_ReturnValue_1;       // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0059(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_VRBody_C_Attach_Laser_Pointer) == 0x000008, "Wrong alignment on _BP_VRBody_C_Attach_Laser_Pointer");
 static_assert(sizeof(_BP_VRBody_C_Attach_Laser_Pointer) == 0x000060, "Wrong size on _BP_VRBody_C_Attach_Laser_Pointer");
@@ -728,12 +734,13 @@ static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, LocalSelectedMC) == 0x
 static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, LocalPlayerCamera) == 0x000020, "Member '_BP_VRBody_C_Attach_Laser_Pointer::LocalPlayerCamera' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, LocalWeaponMesh) == 0x000028, "Member '_BP_VRBody_C_Attach_Laser_Pointer::LocalWeaponMesh' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, Temp_byte_Variable) == 0x000030, "Member '_BP_VRBody_C_Attach_Laser_Pointer::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, CallFunc_GetCurrentEquippedWeapon_OutWeapon) == 0x000038, "Member '_BP_VRBody_C_Attach_Laser_Pointer::CallFunc_GetCurrentEquippedWeapon_OutWeapon' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, K2Node_Select_Default) == 0x000040, "Member '_BP_VRBody_C_Attach_Laser_Pointer::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, Temp_byte_Variable_1) == 0x000048, "Member '_BP_VRBody_C_Attach_Laser_Pointer::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000049, "Member '_BP_VRBody_C_Attach_Laser_Pointer::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, Temp_byte_Variable_1) == 0x000031, "Member '_BP_VRBody_C_Attach_Laser_Pointer::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, K2Node_Select_Default) == 0x000038, "Member '_BP_VRBody_C_Attach_Laser_Pointer::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000040, "Member '_BP_VRBody_C_Attach_Laser_Pointer::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, CallFunc_GetCurrentEquippedWeapon_OutWeapon) == 0x000048, "Member '_BP_VRBody_C_Attach_Laser_Pointer::CallFunc_GetCurrentEquippedWeapon_OutWeapon' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, K2Node_Select_Default_1) == 0x000050, "Member '_BP_VRBody_C_Attach_Laser_Pointer::K2Node_Select_Default_1' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, CallFunc_K2_AttachToComponent_ReturnValue_1) == 0x000058, "Member '_BP_VRBody_C_Attach_Laser_Pointer::CallFunc_K2_AttachToComponent_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_VRBody_C_Attach_Laser_Pointer, CallFunc_BooleanOR_ReturnValue) == 0x000059, "Member '_BP_VRBody_C_Attach_Laser_Pointer::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 
 // Function _BP_VRBody._BP_VRBody_C.IsWeaponHolstered
 // 0x0018 (0x0018 - 0x0000)

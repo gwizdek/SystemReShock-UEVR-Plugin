@@ -124,6 +124,7 @@ private:
     MemoProperty<bool> m_mfd_visible{ false, false };
     MemoProperty<bool> m_is_media_display_visible{ false, false };
     MemoBoolean m_is_ads_active{ false };
+    MemoBoolean m_is_melee_weapon_hot{ false };
 
 // -----------------------------------------------------------------------------
 // Controller State

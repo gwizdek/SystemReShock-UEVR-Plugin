@@ -147,21 +147,21 @@ void A_BP_MeleeWeaponHandler_C::UpdateVisualizer(class UArrowComponent* InVisual
 }
 
 
-// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.SetVisualizerVisiblity
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.SetVisualizersVisiblity
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UArrowComponent*                  InVisualizer                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    InVisibility                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void A_BP_MeleeWeaponHandler_C::SetVisualizerVisiblity(class UArrowComponent* InVisualizer)
+void A_BP_MeleeWeaponHandler_C::SetVisualizersVisiblity(bool InVisibility)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_MeleeWeaponHandler_C", "SetVisualizerVisiblity");
+		Func = Class->GetFunction("_BP_MeleeWeaponHandler_C", "SetVisualizersVisiblity");
 
-	Params::_BP_MeleeWeaponHandler_C_SetVisualizerVisiblity Parms{};
+	Params::_BP_MeleeWeaponHandler_C_SetVisualizersVisiblity Parms{};
 
-	Parms.InVisualizer = InVisualizer;
+	Parms.InVisibility = InVisibility;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

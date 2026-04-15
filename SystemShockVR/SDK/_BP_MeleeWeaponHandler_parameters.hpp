@@ -104,7 +104,7 @@ static_assert(offsetof(_BP_MeleeWeaponHandler_C_ComputeWeaponMovement, InDelta) 
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_ComputeWeaponMovement, LocalDelta) == 0x000004, "Member '_BP_MeleeWeaponHandler_C_ComputeWeaponMovement::LocalDelta' has a wrong offset!");
 
 // Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.UpdateVisualizer
-// 0x0110 (0x0110 - 0x0000)
+// 0x0120 (0x0120 - 0x0000)
 struct _BP_MeleeWeaponHandler_C_UpdateVisualizer final
 {
 public:
@@ -114,48 +114,52 @@ public:
 	float                                         InMinHotVelocity;                                  // 0x0024(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        InTracePoint;                                      // 0x0028(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         LengthMultiplier;                                  // 0x0030(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FLinearColor                           Temp_struct_Variable;                              // 0x0034(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_MakeRotFromX_ReturnValue;                 // 0x0044(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	float                                         CallFunc_VSize_ReturnValue;                        // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0054(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_55[0x3];                                       // 0x0055(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_K2_GetComponentRotation_ReturnValue;      // 0x005C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FRotator                               CallFunc_ComposeRotators_ReturnValue;              // 0x0068(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          Temp_bool_Variable;                                // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_75[0x3];                                       // 0x0075(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             CallFunc_K2_SetWorldRotation_SweepHitResult;       // 0x0078(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	struct FLinearColor                           K2Node_Select_Default;                             // 0x0100(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_MakeRotFromX_ReturnValue;                 // 0x0034(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_VSize_ReturnValue;                        // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_MakeRotator_ReturnValue;                  // 0x0044(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLinearColor                           Temp_struct_Variable;                              // 0x0054(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_ComposeRotators_ReturnValue;              // 0x0064(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FRotator                               CallFunc_ComposeRotators_ReturnValue_1;            // 0x0070(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_Multiply_FloatFloat_ReturnValue;          // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_K2_SetRelativeRotation_SweepHitResult;    // 0x0080(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          Temp_bool_Variable;                                // 0x0108(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_109[0x3];                                      // 0x0109(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLinearColor                           K2Node_Select_Default;                             // 0x010C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BP_MeleeWeaponHandler_C_UpdateVisualizer) == 0x000008, "Wrong alignment on _BP_MeleeWeaponHandler_C_UpdateVisualizer");
-static_assert(sizeof(_BP_MeleeWeaponHandler_C_UpdateVisualizer) == 0x000110, "Wrong size on _BP_MeleeWeaponHandler_C_UpdateVisualizer");
+static_assert(sizeof(_BP_MeleeWeaponHandler_C_UpdateVisualizer) == 0x000120, "Wrong size on _BP_MeleeWeaponHandler_C_UpdateVisualizer");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, InVisualizer) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::InVisualizer' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, InVelocityVector) == 0x000008, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::InVelocityVector' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, InColor) == 0x000014, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::InColor' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, InMinHotVelocity) == 0x000024, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::InMinHotVelocity' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, InTracePoint) == 0x000028, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::InTracePoint' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, LengthMultiplier) == 0x000030, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::LengthMultiplier' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, Temp_struct_Variable) == 0x000034, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::Temp_struct_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_MakeRotFromX_ReturnValue) == 0x000044, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_MakeRotFromX_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_VSize_ReturnValue) == 0x000050, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_VSize_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000054, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x000058, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_K2_GetComponentRotation_ReturnValue) == 0x00005C, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_K2_GetComponentRotation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_ComposeRotators_ReturnValue) == 0x000068, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_ComposeRotators_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, Temp_bool_Variable) == 0x000074, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_K2_SetWorldRotation_SweepHitResult) == 0x000078, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_K2_SetWorldRotation_SweepHitResult' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, K2Node_Select_Default) == 0x000100, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_MakeRotFromX_ReturnValue) == 0x000034, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_MakeRotFromX_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_VSize_ReturnValue) == 0x000040, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_VSize_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_MakeRotator_ReturnValue) == 0x000044, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_MakeRotator_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000050, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, Temp_struct_Variable) == 0x000054, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::Temp_struct_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_ComposeRotators_ReturnValue) == 0x000064, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_ComposeRotators_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_ComposeRotators_ReturnValue_1) == 0x000070, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_ComposeRotators_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_Multiply_FloatFloat_ReturnValue) == 0x00007C, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_Multiply_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, CallFunc_K2_SetRelativeRotation_SweepHitResult) == 0x000080, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::CallFunc_K2_SetRelativeRotation_SweepHitResult' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, Temp_bool_Variable) == 0x000108, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateVisualizer, K2Node_Select_Default) == 0x00010C, "Member '_BP_MeleeWeaponHandler_C_UpdateVisualizer::K2Node_Select_Default' has a wrong offset!");
 
-// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.SetVisualizerVisiblity
-// 0x0008 (0x0008 - 0x0000)
-struct _BP_MeleeWeaponHandler_C_SetVisualizerVisiblity final
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.SetVisualizersVisiblity
+// 0x0002 (0x0002 - 0x0000)
+struct _BP_MeleeWeaponHandler_C_SetVisualizersVisiblity final
 {
 public:
-	class UArrowComponent*                        InVisualizer;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          InVisibility;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
-static_assert(alignof(_BP_MeleeWeaponHandler_C_SetVisualizerVisiblity) == 0x000008, "Wrong alignment on _BP_MeleeWeaponHandler_C_SetVisualizerVisiblity");
-static_assert(sizeof(_BP_MeleeWeaponHandler_C_SetVisualizerVisiblity) == 0x000008, "Wrong size on _BP_MeleeWeaponHandler_C_SetVisualizerVisiblity");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_SetVisualizerVisiblity, InVisualizer) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_SetVisualizerVisiblity::InVisualizer' has a wrong offset!");
+static_assert(alignof(_BP_MeleeWeaponHandler_C_SetVisualizersVisiblity) == 0x000001, "Wrong alignment on _BP_MeleeWeaponHandler_C_SetVisualizersVisiblity");
+static_assert(sizeof(_BP_MeleeWeaponHandler_C_SetVisualizersVisiblity) == 0x000002, "Wrong size on _BP_MeleeWeaponHandler_C_SetVisualizersVisiblity");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_SetVisualizersVisiblity, InVisibility) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_SetVisualizersVisiblity::InVisibility' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_SetVisualizersVisiblity, CallFunc_Not_PreBool_ReturnValue) == 0x000001, "Member '_BP_MeleeWeaponHandler_C_SetVisualizersVisiblity::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 
 // Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.UpdateMotionVector
 // 0x0090 (0x0090 - 0x0000)

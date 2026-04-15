@@ -10,9 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_VRHand_structs.hpp"
-#include "CoreUObject_classes.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
+#include "CoreUObject_classes.hpp"
+#include "_ENUM_VRHand_structs.hpp"
+#include "_ENUM_ItemCategory_structs.hpp"
 
 
 namespace SDK
@@ -25,7 +26,7 @@ class I_BI_VRWeapon_C final : public IInterface
 public:
 	void SetSourceMesh(class USkeletalMeshComponent* SourceMesh);
 	void UseSourceMesh(bool Value);
-	void GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_VRHandPose* OutGripHandPose, struct FTransform* OutWeaponOffset, bool* OutUseHackerPawnWeaponAnims, bool* OutEnabledLaserPointer, E_ENUM_VRHand* OutHand, bool* OutIsHandheldConsumable);
+	void GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_VRHandPose* OutGripHandPose, struct FTransform* OutWeaponOffset, bool* OutUseHackerPawnWeaponAnims, bool* OutEnabledLaserPointer, E_ENUM_VRHand* OutHand, bool* OutIsHandheldConsumable, bool* OutIsMeleeWeapon, bool* OutIsHandheldExplosive, E_ENUM_ItemCategory* OutItemCategory);
 	void InitInteractionSources(class A_BP_VRBody_C* InVRBody);
 	void LoadWeapon();
 	void UnloadWeapon();

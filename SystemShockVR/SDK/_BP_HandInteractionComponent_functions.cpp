@@ -37,6 +37,40 @@ void U_BP_HandInteractionComponent_C::ExecuteUbergraph__BP_HandInteractionCompon
 }
 
 
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ReceiveBeginPlay
+// (Event, Public, BlueprintEvent)
+
+void U_BP_HandInteractionComponent_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ReceiveTick
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void U_BP_HandInteractionComponent_C::ReceiveTick(float DeltaSeconds)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ReceiveTick");
+
+	Params::_BP_HandInteractionComponent_C_ReceiveTick Parms{};
+
+	Parms.DeltaSeconds = DeltaSeconds;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.CustomEvent_WeaponHolstered
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -88,40 +122,6 @@ void U_BP_HandInteractionComponent_C::CustomEvent_WeaponDrawn(class UITEM_Weapon
 	Parms.Weapon = Weapon;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ReceiveTick
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void U_BP_HandInteractionComponent_C::ReceiveTick(float DeltaSeconds)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ReceiveTick");
-
-	Params::_BP_HandInteractionComponent_C_ReceiveTick Parms{};
-
-	Parms.DeltaSeconds = DeltaSeconds;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ReceiveBeginPlay
-// (Event, Public, BlueprintEvent)
-
-void U_BP_HandInteractionComponent_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -452,6 +452,28 @@ void U_BP_HandInteractionComponent_C::IsEmptyHand(bool* Result)
 
 	if (Result != nullptr)
 		*Result = Parms.Result;
+}
+
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.AttachLaserPointer
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InEnabled                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// float                                   InTimeout                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void U_BP_HandInteractionComponent_C::AttachLaserPointer(bool InEnabled, float InTimeout)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "AttachLaserPointer");
+
+	Params::_BP_HandInteractionComponent_C_AttachLaserPointer Parms{};
+
+	Parms.InEnabled = InEnabled;
+	Parms.InTimeout = InTimeout;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

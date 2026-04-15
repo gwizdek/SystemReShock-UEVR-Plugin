@@ -15,6 +15,7 @@
 #include "SDK/_BP_LaserDot_classes.hpp"
 #include "SDK/_BP_MFDMaskComponent_classes.hpp"
 #include "SDK/_BP_HackerHardware_classes.hpp"
+#include "SDK/_BP_DebugWidgetComponent_classes.hpp"
 
 #include "vr_body.hpp"
 #include "vr_plugin_shared.hpp"
@@ -435,4 +436,8 @@ void VRBody::initialize_hand_item_collisions() {
     );
 }
 
-
+void VRBody::set_debug_widget_visibility(bool visible) {
+    if (g_vr_body != nullptr) {
+        g_vr_body->DebugWidgetComponent->SetVisibility(visible, true);
+    }
+}

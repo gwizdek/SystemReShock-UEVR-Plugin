@@ -32,8 +32,9 @@ public:
 	class USceneComponent*                        IntermATrace;                                      // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0258(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	bool                                          WeaponHit;                                         // 0x0260(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsActive;                                          // 0x0261(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_262[0x6];                                      // 0x0262(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bShowVisualizers;                                  // 0x0261(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsActive;                                          // 0x0262(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_263[0x5];                                      // 0x0263(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	class UITEM_MeleeWeapon_Base_C*               WeaponItemRef;                                     // 0x0268(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class A_BP_VRBody_C*                          VRBodyRef;                                         // 0x0270(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         InterpSpeed;                                       // 0x0278(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -60,7 +61,7 @@ public:
 	void AttachToWeapon(class USkeletalMeshComponent* InWeaponMesh, class UITEM_WeaponBase_C* InWeaponItem);
 	void ComputeWeaponMovement(float InDelta);
 	void UpdateVisualizer(class UArrowComponent* InVisualizer, const struct FVector& InVelocityVector, const struct FLinearColor& InColor, float InMinHotVelocity, class USceneComponent* InTracePoint);
-	void SetVisualizerVisiblity(class UArrowComponent* InVisualizer);
+	void SetVisualizersVisiblity(bool InVisibility);
 	void UpdateMotionVector(class USceneComponent* InTracePoint, struct FVector& InVelocityVector, struct FVector& InLocation, float InDelta);
 	bool IsHot();
 	void Deactivate();
@@ -89,7 +90,8 @@ static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IntermBTrace) == 0x000248, "Me
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IntermATrace) == 0x000250, "Member 'A_BP_MeleeWeaponHandler_C::IntermATrace' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, DefaultSceneRoot) == 0x000258, "Member 'A_BP_MeleeWeaponHandler_C::DefaultSceneRoot' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, WeaponHit) == 0x000260, "Member 'A_BP_MeleeWeaponHandler_C::WeaponHit' has a wrong offset!");
-static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IsActive) == 0x000261, "Member 'A_BP_MeleeWeaponHandler_C::IsActive' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, bShowVisualizers) == 0x000261, "Member 'A_BP_MeleeWeaponHandler_C::bShowVisualizers' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IsActive) == 0x000262, "Member 'A_BP_MeleeWeaponHandler_C::IsActive' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, WeaponItemRef) == 0x000268, "Member 'A_BP_MeleeWeaponHandler_C::WeaponItemRef' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, VRBodyRef) == 0x000270, "Member 'A_BP_MeleeWeaponHandler_C::VRBodyRef' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, InterpSpeed) == 0x000278, "Member 'A_BP_MeleeWeaponHandler_C::InterpSpeed' has a wrong offset!");
