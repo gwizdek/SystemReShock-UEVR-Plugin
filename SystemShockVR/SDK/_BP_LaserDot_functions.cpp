@@ -51,6 +51,20 @@ void A_BP_LaserDot_C::EventDisableLaserDot()
 }
 
 
+// Function _BP_LaserDot._BP_LaserDot_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void A_BP_LaserDot_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_LaserDot_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function _BP_LaserDot._BP_LaserDot_C.ReceiveTick
 // (Event, Public, BlueprintEvent)
 // Parameters:
@@ -68,20 +82,6 @@ void A_BP_LaserDot_C::ReceiveTick(float DeltaSeconds)
 	Parms.DeltaSeconds = DeltaSeconds;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function _BP_LaserDot._BP_LaserDot_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void A_BP_LaserDot_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_LaserDot_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 

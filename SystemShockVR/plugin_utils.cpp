@@ -223,3 +223,19 @@ float PluginUtils::uevr_param_to_float(const UEVR_VRData* vr, const char* key) {
     }
     return 0;
 }
+
+void PluginUtils::handle_native_stereo_fix_cycler(const UEVR_VRData* vr) {
+    if (PluginUtils::m_native_fix_tick_counter >= 0) {
+        PluginUtils::m_native_fix_tick_counter--;
+        if (PluginUtils::m_native_fix_tick_counter == 0) {
+            API::get()->log_warn("[plugin_utils][handle_native_stereo_fix_cycler] Native Stereo Fix: ON");
+            vr->set_mod_value("VR_NativeStereoFix", "true");
+        }
+    }
+}
+
+void PluginUtils::cycle_native_stereo_fix(const UEVR_VRData* vr) {
+    PluginUtils::m_native_fix_tick_counter = 200;
+    vr->set_mod_value("VR_NativeStereoFix", "false");
+    API::get()->log_warn("[plugin_utils][handle_native_stereo_fix_cycler] Native Stereo Fix: OFF");
+}

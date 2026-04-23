@@ -101,6 +101,7 @@ private:
     UCOMP_HackerInventory_C* m_inventory{ nullptr };
     UWIDGET_PlayerHUD_C* m_neural_hud{ nullptr };
     //A_BP_VRBody_C* m_vr_body{ nullptr };
+    AINTERACT_Laptop_C* m_intro_laptop{ nullptr };
 
 
     // motion controllers
@@ -117,6 +118,7 @@ private:
 private:
     MemoProperty<APawn*> m_pawn{ nullptr, nullptr };
     MemoProperty<EGameState> m_game_state{ GAME_STATE_UNDEFINED, GAME_STATE_UNDEFINED };
+    MemoProperty<EPawnState> m_pawn_state{ PAWN_UNKNOWN, PAWN_UNKNOWN };
     MemoProperty<ULevel*> m_level{ nullptr, nullptr };
     MemoBoolean m_is_game_paused{ false };
     MemoBoolean m_is_crouching{ false };
@@ -124,7 +126,8 @@ private:
     MemoProperty<bool> m_mfd_visible{ false, false };
     MemoProperty<bool> m_is_media_display_visible{ false, false };
     MemoBoolean m_is_ads_active{ false };
-    MemoBoolean m_is_melee_weapon_hot{ false };
+    MemoBoolean m_UEVR_process_damage{ false };
+    MemoBoolean m_is_using_laptop{ false };
 
 // -----------------------------------------------------------------------------
 // Controller State
@@ -151,7 +154,7 @@ private:
     bool m_gui_visible{ true };
     bool m_trigger_test_1{ false };
     bool m_trigger_test_2{ false };
-    float m_melee_cooldown{ 0.f };
+    //int32 m_native_fix_tick_counter{ -1 };
 
 // -----------------------------------------------------------------------------
 // Plugin
@@ -169,6 +172,7 @@ public:
     void cleanup_pointers();
     void send_mouse(WORD key, bool key_up);
     bool is_valid_vr_body_hacker_implant_pawn();
+    bool is_valid_vr_body_hacker_simple_pawn();
     void update_trailing_rotation(float delta);
     // Motion Controllers
     void initialize_mcs(SDK::APAWN_Hacker_Implant_C* pawn);
@@ -176,11 +180,13 @@ public:
     void SpawnCustom2DScreen();
     void toggle_gui();
     void try_melee();
-    void apply_damage();
-    
+    void apply_vr_game_options();
+    void try_set_intro_laptop_pointer();
+ 
     // Input handlers
     void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
+    void handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
 
     SDK::AActor* Custom2DScreen{ nullptr };
 };

@@ -10,6 +10,7 @@
 #include "SDK/WIDGET_MediaDisplay_classes.hpp"
 #include "SDK/WIDGET_Minimap_classes.hpp"
 #include "SDK/WIDGET_HardwareButton_classes.hpp"
+#include "SDK/_BP_AccessCard_classes.hpp"
 
 #include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/_BP_LaserDot_classes.hpp"
@@ -69,7 +70,8 @@ void VRBody::set_player_response_to_collision_channel(ECollisionChannel channel,
 //}
 
 // A_BP_VRBody_C class is loaded into memory by hard-referencing it in the modified ArmsMesh AnimBP
-A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
+//A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
+A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
     try {
         API::get()->log_warn("[vr_body][initialize_vr_body] Begin");
         auto world = UWorld::GetWorld();
@@ -125,6 +127,12 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         hmd_state->set_permanent(true);
         API::get()->log_warn("[vr_body][initialize_vr_body] Hooked HMD motion controller component");
 
+        vr_body->CloseVRMenu();
+
+        if (!pawn->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+            API::get()->log_warn("[vr_body][initialize_vr_body] Not a APAWN_Hacker_Implant. Returning.");
+            return vr_body;
+        }
 
         // Re-Attach Hacker Hardware
         static_cast<APAWN_Hacker_Implant_C*>(pawn)->MediaReaderMesh->K2_AttachToComponent(
@@ -159,7 +167,7 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
         vr_body->CloseVRMenu();
 
         UWIDGET_PlayerHUD_C* neural_hud{ nullptr };
-        pawn->GetNeuralHUD(&neural_hud);
+        static_cast<APAWN_Hacker_Implant_C*>(pawn)->GetNeuralHUD(&neural_hud);
         if (neural_hud != nullptr) {
             vr_body->MinimapWidgetComponent->SetWidget(neural_hud->WIDGET_Minimap);
             neural_hud->WIDGET_Minimap->RemoveFromViewport();
@@ -241,12 +249,20 @@ void VRBody::reset_player_camera() {
 }
 
 void VRBody::show_vr_body() {
-
+    g_vr_body->VRBodyMesh->SetVisibility(true, true);
+    if (g_vr_body->AccessCard != nullptr) {
+        g_vr_body->AccessCard->SetActorHiddenInGame(false);
+    }
+    g_vr_body->HackerPawn->WeaponMesh->SetVisibility(true, true);
 }
 
 
 void VRBody::hide_vr_body() {
-
+    g_vr_body->VRBodyMesh->SetVisibility(false, true);
+    if (g_vr_body->AccessCard != nullptr) {
+        g_vr_body->AccessCard->SetActorHiddenInGame(true);
+    }
+    g_vr_body->HackerPawn->WeaponMesh->SetVisibility(false, true);
 }
 
 

@@ -12,9 +12,9 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
-#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 #include "_ENUM_ItemCategory_structs.hpp"
 
 
@@ -60,7 +60,7 @@ public:
 	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0318(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class A_BP_AccessCard_C*                      AccessCard;                                        // 0x0320(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C* AnimBP;                                            // 0x0328(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class APAWN_Hacker_Implant_C*                 HackerPawn;                                        // 0x0330(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Simple_C*                  HackerPawn;                                        // 0x0330(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class A_BP_LaserDot_C*                        LaserDot;                                          // 0x0338(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class A_BP_ItemSelector_C*                    ItemSelectorLeft;                                  // 0x0340(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class A_BP_ItemSelector_C*                    ItemSelectorRight;                                 // 0x0348(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -81,9 +81,9 @@ public:
 
 public:
 	void ExecuteUbergraph__BP_VRBody(int32 EntryPoint);
+	void ReceiveBeginPlay();
 	void BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
 	void BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
-	void ReceiveBeginPlay();
 	void BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 	void BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
 	void ReceiveTick(float DeltaSeconds);
@@ -93,7 +93,7 @@ public:
 	void PlayLoadWeaponAnim();
 	void PlayUnloadWeaponAnim();
 	void HolsterWeapon();
-	void TryGrabAction(E_ENUM_VRHand InHand, E_ENUM_VRHandPose InPose);
+	void TryGrabAction(E_ENUM_VRHand inHand, E_ENUM_VRHandPose InPose);
 	void TestFunction();
 	void AddDebugMessage(const class FString& NewMessage, E_ENUM_DebugWidgetEntryType InType);
 	void InitializeAccessCard();
@@ -108,7 +108,7 @@ public:
 	void DestroyAllWeaponInteractionSources();
 	class UCOMP_HackerInventory_C* GetHackerInventory();
 	void GetHackerMoveControlManager(class UCOMP_MoveControlManager_C** COMP_MoveControlManager);
-	void Attach_Laser_Pointer(E_ENUM_VRHand InHand, bool InEnabled, float InTimeout);
+	void Attach_Laser_Pointer(E_ENUM_VRHand inHand, bool InEnabled, float InTimeout);
 	bool IsWeaponHolstered();
 	bool IsAimingDownSights();
 	void SetADSZoneOffset(float ForwardOffset, float UpOffset, float HalfSize);

@@ -37,6 +37,20 @@ void A_BP_VRBody_C::ExecuteUbergraph__BP_VRBody(int32 EntryPoint)
 }
 
 
+// Function _BP_VRBody._BP_VRBody_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void A_BP_VRBody_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRBody_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function _BP_VRBody._BP_VRBody_C.BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature
 // (HasOutParams, BlueprintEvent)
 // Parameters:
@@ -94,20 +108,6 @@ void A_BP_VRBody_C::BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBo
 	Parms.SweepResult = std::move(SweepResult);
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function _BP_VRBody._BP_VRBody_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void A_BP_VRBody_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -292,10 +292,10 @@ void A_BP_VRBody_C::HolsterWeapon()
 // Function _BP_VRBody._BP_VRBody_C.TryGrabAction
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// E_ENUM_VRHand                           inHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // E_ENUM_VRHandPose                       InPose                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand InHand, E_ENUM_VRHandPose InPose)
+void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand inHand, E_ENUM_VRHandPose InPose)
 {
 	static class UFunction* Func = nullptr;
 
@@ -304,7 +304,7 @@ void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand InHand, E_ENUM_VRHandPose InPose
 
 	Params::_BP_VRBody_C_TryGrabAction Parms{};
 
-	Parms.InHand = InHand;
+	Parms.inHand = inHand;
 	Parms.InPose = InPose;
 
 	UObject::ProcessEvent(Func, &Parms);
@@ -561,11 +561,11 @@ void A_BP_VRBody_C::GetHackerMoveControlManager(class UCOMP_MoveControlManager_C
 // Function _BP_VRBody._BP_VRBody_C.Attach Laser Pointer
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// E_ENUM_VRHand                           inHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    InEnabled                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // float                                   InTimeout                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_VRBody_C::Attach_Laser_Pointer(E_ENUM_VRHand InHand, bool InEnabled, float InTimeout)
+void A_BP_VRBody_C::Attach_Laser_Pointer(E_ENUM_VRHand inHand, bool InEnabled, float InTimeout)
 {
 	static class UFunction* Func = nullptr;
 
@@ -574,7 +574,7 @@ void A_BP_VRBody_C::Attach_Laser_Pointer(E_ENUM_VRHand InHand, bool InEnabled, f
 
 	Params::_BP_VRBody_C_Attach_Laser_Pointer Parms{};
 
-	Parms.InHand = InHand;
+	Parms.inHand = inHand;
 	Parms.InEnabled = InEnabled;
 	Parms.InTimeout = InTimeout;
 

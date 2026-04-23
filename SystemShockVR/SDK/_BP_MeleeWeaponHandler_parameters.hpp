@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params
@@ -53,42 +53,51 @@ static_assert(sizeof(_BP_MeleeWeaponHandler_C_Initialize) == 0x000008, "Wrong si
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_Initialize, InVRBody) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_Initialize::InVRBody' has a wrong offset!");
 
 // Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.AttachToWeapon
-// 0x00A0 (0x00A0 - 0x0000)
+// 0x00C0 (0x00C0 - 0x0000)
 struct _BP_MeleeWeaponHandler_C_AttachToWeapon final
 {
 public:
 	class USkeletalMeshComponent*                 InWeaponMesh;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UITEM_WeaponBase_C*                     InWeaponItem;                                      // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TScriptInterface<class I_BP_VRMeleeWeapon_C>  K2Node_DynamicCast_As_BP_VRMelee_Weapon;           // 0x0018(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_DoesImplementInterface_ReturnValue;       // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2A[0x2];                                       // 0x002A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_GetTraceOffsets_Tip;                      // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetTraceOffsets_Middle;                   // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetTraceOffsets_Low;                      // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0038(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue_1;    // 0x0044(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             CallFunc_GetSocketTransform_ReturnValue;           // 0x0050(0x0030)(IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_InverseTransformLocation_ReturnValue;     // 0x0080(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_InverseTransformLocation_ReturnValue_1;   // 0x008C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UITEM_MeleeWeapon_Base_C*               K2Node_DynamicCast_AsITEM_Melee_Weapon_Base;       // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimInstance*                          CallFunc_GetAnimInstance_ReturnValue;              // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TScriptInterface<class I_BP_VRMeleeWeapon_C>  K2Node_DynamicCast_As_BP_VRMelee_Weapon;           // 0x0028(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_DoesImplementInterface_ReturnValue;       // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A[0x2];                                       // 0x003A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_GetTraceOffsets_Tip;                      // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetTraceOffsets_Middle;                   // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetTraceOffsets_Low;                      // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue_1;    // 0x0054(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             CallFunc_GetSocketTransform_ReturnValue;           // 0x0060(0x0030)(IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_InverseTransformLocation_ReturnValue;     // 0x0090(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_InverseTransformLocation_ReturnValue_1;   // 0x009C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue;        // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_MeleeWeaponHandler_C_AttachToWeapon) == 0x000010, "Wrong alignment on _BP_MeleeWeaponHandler_C_AttachToWeapon");
-static_assert(sizeof(_BP_MeleeWeaponHandler_C_AttachToWeapon) == 0x0000A0, "Wrong size on _BP_MeleeWeaponHandler_C_AttachToWeapon");
+static_assert(sizeof(_BP_MeleeWeaponHandler_C_AttachToWeapon) == 0x0000C0, "Wrong size on _BP_MeleeWeaponHandler_C_AttachToWeapon");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, InWeaponMesh) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::InWeaponMesh' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, InWeaponItem) == 0x000008, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::InWeaponItem' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetAnimInstance_ReturnValue) == 0x000010, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, K2Node_DynamicCast_As_BP_VRMelee_Weapon) == 0x000018, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::K2Node_DynamicCast_As_BP_VRMelee_Weapon' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, K2Node_DynamicCast_bSuccess) == 0x000028, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_DoesImplementInterface_ReturnValue) == 0x000029, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetTraceOffsets_Tip) == 0x00002C, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetTraceOffsets_Tip' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetTraceOffsets_Middle) == 0x000030, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetTraceOffsets_Middle' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetTraceOffsets_Low) == 0x000034, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetTraceOffsets_Low' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000038, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_K2_GetComponentLocation_ReturnValue_1) == 0x000044, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_K2_GetComponentLocation_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetSocketTransform_ReturnValue) == 0x000050, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetSocketTransform_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_InverseTransformLocation_ReturnValue) == 0x000080, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_InverseTransformLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_InverseTransformLocation_ReturnValue_1) == 0x00008C, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_InverseTransformLocation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, K2Node_DynamicCast_AsITEM_Melee_Weapon_Base) == 0x000010, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::K2Node_DynamicCast_AsITEM_Melee_Weapon_Base' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, K2Node_DynamicCast_bSuccess) == 0x000018, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetAnimInstance_ReturnValue) == 0x000020, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetAnimInstance_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, K2Node_DynamicCast_As_BP_VRMelee_Weapon) == 0x000028, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::K2Node_DynamicCast_As_BP_VRMelee_Weapon' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, K2Node_DynamicCast_bSuccess_1) == 0x000038, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_DoesImplementInterface_ReturnValue) == 0x000039, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetTraceOffsets_Tip) == 0x00003C, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetTraceOffsets_Tip' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetTraceOffsets_Middle) == 0x000040, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetTraceOffsets_Middle' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetTraceOffsets_Low) == 0x000044, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetTraceOffsets_Low' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000048, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_K2_GetComponentLocation_ReturnValue_1) == 0x000054, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_K2_GetComponentLocation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetSocketTransform_ReturnValue) == 0x000060, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetSocketTransform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_InverseTransformLocation_ReturnValue) == 0x000090, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_InverseTransformLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_InverseTransformLocation_ReturnValue_1) == 0x00009C, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_InverseTransformLocation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_GetObjectClass_ReturnValue) == 0x0000A8, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_AttachToWeapon, CallFunc_EqualEqual_ClassClass_ReturnValue) == 0x0000B0, "Member '_BP_MeleeWeaponHandler_C_AttachToWeapon::CallFunc_EqualEqual_ClassClass_ReturnValue' has a wrong offset!");
 
 // Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.ComputeWeaponMovement
 // 0x0008 (0x0008 - 0x0000)
@@ -189,7 +198,7 @@ static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateMotionVector, CallFunc_Sub
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateMotionVector, CallFunc_VInterpTo_ReturnValue) == 0x000078, "Member '_BP_MeleeWeaponHandler_C_UpdateMotionVector::CallFunc_VInterpTo_ReturnValue' has a wrong offset!");
 
 // Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.IsHot
-// 0x0010 (0x0010 - 0x0000)
+// 0x0014 (0x0014 - 0x0000)
 struct _BP_MeleeWeaponHandler_C_IsHot final
 {
 public:
@@ -201,9 +210,10 @@ public:
 	bool                                          CallFunc_Greater_FloatFloat_ReturnValue_1;         // 0x000D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x000E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x000F(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_MeleeWeaponHandler_C_IsHot) == 0x000004, "Wrong alignment on _BP_MeleeWeaponHandler_C_IsHot");
-static_assert(sizeof(_BP_MeleeWeaponHandler_C_IsHot) == 0x000010, "Wrong size on _BP_MeleeWeaponHandler_C_IsHot");
+static_assert(sizeof(_BP_MeleeWeaponHandler_C_IsHot) == 0x000014, "Wrong size on _BP_MeleeWeaponHandler_C_IsHot");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_IsHot, ReturnValue) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_IsHot::ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_IsHot, CallFunc_VSize_ReturnValue) == 0x000004, "Member '_BP_MeleeWeaponHandler_C_IsHot::CallFunc_VSize_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_IsHot, CallFunc_VSize_ReturnValue_1) == 0x000008, "Member '_BP_MeleeWeaponHandler_C_IsHot::CallFunc_VSize_ReturnValue_1' has a wrong offset!");
@@ -211,6 +221,7 @@ static_assert(offsetof(_BP_MeleeWeaponHandler_C_IsHot, CallFunc_Greater_FloatFlo
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_IsHot, CallFunc_Greater_FloatFloat_ReturnValue_1) == 0x00000D, "Member '_BP_MeleeWeaponHandler_C_IsHot::CallFunc_Greater_FloatFloat_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_IsHot, CallFunc_BooleanAND_ReturnValue) == 0x00000E, "Member '_BP_MeleeWeaponHandler_C_IsHot::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_IsHot, CallFunc_BooleanAND_ReturnValue_1) == 0x00000F, "Member '_BP_MeleeWeaponHandler_C_IsHot::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_IsHot, CallFunc_BooleanAND_ReturnValue_2) == 0x000010, "Member '_BP_MeleeWeaponHandler_C_IsHot::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
 
 // Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.GetHitTraceStartEndLocations
 // 0x0070 (0x0070 - 0x0000)
@@ -266,6 +277,155 @@ static_assert(sizeof(_BP_MeleeWeaponHandler_C_UpdateTracePointPos) == 0x000024, 
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateTracePointPos, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_UpdateTracePointPos::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateTracePointPos, CallFunc_K2_GetComponentLocation_ReturnValue_1) == 0x00000C, "Member '_BP_MeleeWeaponHandler_C_UpdateTracePointPos::CallFunc_K2_GetComponentLocation_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_UpdateTracePointPos, CallFunc_K2_GetComponentLocation_ReturnValue_2) == 0x000018, "Member '_BP_MeleeWeaponHandler_C_UpdateTracePointPos::CallFunc_K2_GetComponentLocation_ReturnValue_2' has a wrong offset!");
+
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.TryMeleeHit
+// 0x0258 (0x0258 - 0x0000)
+struct _BP_MeleeWeaponHandler_C_TryMeleeHit final
+{
+public:
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0000(0x0010)(ZeroConstructor, NoDestructor)
+	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0010(0x0008)(NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BreakHitResult_bBlockingHit;              // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bInitialOverlap;           // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1A[0x2];                                       // 0x001A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_BreakHitResult_Time;                      // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakHitResult_Distance;                  // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Location;                  // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactPoint;               // 0x0030(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Normal;                    // 0x003C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactNormal;              // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPhysicalMaterial*                      CallFunc_BreakHitResult_PhysMat;                   // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 CallFunc_BreakHitResult_HitActor;                  // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    CallFunc_BreakHitResult_HitComponent;              // 0x0068(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_BreakHitResult_HitBoneName;               // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_HitItem;                   // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_ElementIndex;              // 0x007C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_FaceIndex;                 // 0x0080(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceStart;                // 0x0084(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceEnd;                  // 0x0090(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_9C[0x4];                                       // 0x009C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue_1;             // 0x00A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue_2;             // 0x00AA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x00AB(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x00AC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_AD[0x3];                                       // 0x00AD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             CallFunc_LineTraceSingleForObjects_OutHit;         // 0x00B0(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_LineTraceSingleForObjects_ReturnValue;    // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0139(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_13A[0x2];                                      // 0x013A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             CallFunc_LineTraceSingleForObjects_OutHit_1;       // 0x013C(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_LineTraceSingleForObjects_ReturnValue_1;  // 0x01C4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsHot_ReturnValue;                        // 0x01C5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1C6[0x2];                                      // 0x01C6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             CallFunc_LineTraceSingleForObjects_OutHit_2;       // 0x01C8(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_LineTraceSingleForObjects_ReturnValue_2;  // 0x0250(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0251(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_MeleeWeaponHandler_C_TryMeleeHit) == 0x000008, "Wrong alignment on _BP_MeleeWeaponHandler_C_TryMeleeHit");
+static_assert(sizeof(_BP_MeleeWeaponHandler_C_TryMeleeHit) == 0x000258, "Wrong size on _BP_MeleeWeaponHandler_C_TryMeleeHit");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, K2Node_CreateDelegate_OutputDelegate) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000010, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_bBlockingHit) == 0x000018, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_bBlockingHit' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_bInitialOverlap) == 0x000019, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_bInitialOverlap' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_Time) == 0x00001C, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_Time' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_Distance) == 0x000020, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_Distance' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_Location) == 0x000024, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_Location' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_ImpactPoint) == 0x000030, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_ImpactPoint' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_Normal) == 0x00003C, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_Normal' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_ImpactNormal) == 0x000048, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_ImpactNormal' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_PhysMat) == 0x000058, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_PhysMat' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_HitActor) == 0x000060, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_HitActor' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_HitComponent) == 0x000068, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_HitComponent' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_HitBoneName) == 0x000070, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_HitBoneName' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_HitItem) == 0x000078, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_HitItem' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_ElementIndex) == 0x00007C, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_ElementIndex' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_FaceIndex) == 0x000080, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_FaceIndex' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_TraceStart) == 0x000084, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_TraceStart' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BreakHitResult_TraceEnd) == 0x000090, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BreakHitResult_TraceEnd' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_GetObjectClass_ReturnValue) == 0x0000A0, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_ClassIsChildOf_ReturnValue) == 0x0000A8, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_ClassIsChildOf_ReturnValue_1) == 0x0000A9, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_ClassIsChildOf_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_ClassIsChildOf_ReturnValue_2) == 0x0000AA, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_ClassIsChildOf_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BooleanOR_ReturnValue) == 0x0000AB, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BooleanOR_ReturnValue_1) == 0x0000AC, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_LineTraceSingleForObjects_OutHit) == 0x0000B0, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_LineTraceSingleForObjects_OutHit' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_LineTraceSingleForObjects_ReturnValue) == 0x000138, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_LineTraceSingleForObjects_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BooleanAND_ReturnValue) == 0x000139, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_LineTraceSingleForObjects_OutHit_1) == 0x00013C, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_LineTraceSingleForObjects_OutHit_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_LineTraceSingleForObjects_ReturnValue_1) == 0x0001C4, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_LineTraceSingleForObjects_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_IsHot_ReturnValue) == 0x0001C5, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_IsHot_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_LineTraceSingleForObjects_OutHit_2) == 0x0001C8, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_LineTraceSingleForObjects_OutHit_2' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_LineTraceSingleForObjects_ReturnValue_2) == 0x000250, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_LineTraceSingleForObjects_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BooleanAND_ReturnValue_1) == 0x000251, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.TryHandleColdHotTransition
+// 0x0030 (0x0030 - 0x0000)
+struct _BP_MeleeWeaponHandler_C_TryHandleColdHotTransition final
+{
+public:
+	bool                                          Temp_bool_Variable;                                // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class USoundCue*                              Temp_object_Variable;                              // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USoundCue*                              Temp_object_Variable_1;                            // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class USoundCue*                              K2Node_Select_Default;                             // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsHot_ReturnValue;                        // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_NotEqual_BoolBool_ReturnValue;            // 0x0029(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition) == 0x000008, "Wrong alignment on _BP_MeleeWeaponHandler_C_TryHandleColdHotTransition");
+static_assert(sizeof(_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition) == 0x000030, "Wrong size on _BP_MeleeWeaponHandler_C_TryHandleColdHotTransition");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition, Temp_bool_Variable) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition, Temp_object_Variable) == 0x000008, "Member '_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition::Temp_object_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition, Temp_object_Variable_1) == 0x000010, "Member '_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition::Temp_object_Variable_1' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition, CallFunc_BooleanAND_ReturnValue) == 0x000018, "Member '_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition, K2Node_Select_Default) == 0x000020, "Member '_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition, CallFunc_IsHot_ReturnValue) == 0x000028, "Member '_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition::CallFunc_IsHot_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition, CallFunc_NotEqual_BoolBool_ReturnValue) == 0x000029, "Member '_BP_MeleeWeaponHandler_C_TryHandleColdHotTransition::CallFunc_NotEqual_BoolBool_ReturnValue' has a wrong offset!");
+
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.TryUpdateLaserPowerLevel
+// 0x0018 (0x0018 - 0x0000)
+struct _BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel final
+{
+public:
+	float                                         Power;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          HasEnoughEnergyResult;                             // 0x0004(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWEAPON_LaserRapier_C*                  K2Node_DynamicCast_AsWEAPON_Laser_Rapier;          // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel) == 0x000008, "Wrong alignment on _BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel");
+static_assert(sizeof(_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel) == 0x000018, "Wrong size on _BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel, Power) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel::Power' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel, HasEnoughEnergyResult) == 0x000004, "Member '_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel::HasEnoughEnergyResult' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel, K2Node_DynamicCast_AsWEAPON_Laser_Rapier) == 0x000008, "Member '_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel::K2Node_DynamicCast_AsWEAPON_Laser_Rapier' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel, K2Node_DynamicCast_bSuccess) == 0x000010, "Member '_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.SetLaserRapierChargedMode
+// 0x0028 (0x0028 - 0x0000)
+struct _BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode final
+{
+public:
+	bool                                          Charged;                                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWEAPON_LaserRapier_C*                  LaserRapierRef;                                    // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          SetModeResult;                                     // 0x0010(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          HasEnoughEnergyResult;                             // 0x0011(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_12[0x6];                                       // 0x0012(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWEAPON_LaserRapier_C*                  K2Node_DynamicCast_AsWEAPON_Laser_Rapier;          // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode) == 0x000008, "Wrong alignment on _BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode");
+static_assert(sizeof(_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode) == 0x000028, "Wrong size on _BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode, Charged) == 0x000000, "Member '_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode::Charged' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode, LaserRapierRef) == 0x000008, "Member '_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode::LaserRapierRef' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode, SetModeResult) == 0x000010, "Member '_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode::SetModeResult' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode, HasEnoughEnergyResult) == 0x000011, "Member '_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode::HasEnoughEnergyResult' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode, K2Node_DynamicCast_AsWEAPON_Laser_Rapier) == 0x000018, "Member '_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode::K2Node_DynamicCast_AsWEAPON_Laser_Rapier' has a wrong offset!");
+static_assert(offsetof(_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode, K2Node_DynamicCast_bSuccess) == 0x000020, "Member '_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 }
 

@@ -290,5 +290,87 @@ void A_BP_MeleeWeaponHandler_C::UpdateTracePointPos()
 	UObject::ProcessEvent(Func, nullptr);
 }
 
+
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.TryMeleeHit
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void A_BP_MeleeWeaponHandler_C::TryMeleeHit()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_MeleeWeaponHandler_C", "TryMeleeHit");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.TryHandleColdHotTransition
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void A_BP_MeleeWeaponHandler_C::TryHandleColdHotTransition()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_MeleeWeaponHandler_C", "TryHandleColdHotTransition");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.TryUpdateLaserPowerLevel
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   Power                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_MeleeWeaponHandler_C::TryUpdateLaserPowerLevel(float Power)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_MeleeWeaponHandler_C", "TryUpdateLaserPowerLevel");
+
+	Params::_BP_MeleeWeaponHandler_C_TryUpdateLaserPowerLevel Parms{};
+
+	Parms.Power = Power;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.FinishWeaponCooldown
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void A_BP_MeleeWeaponHandler_C::FinishWeaponCooldown()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_MeleeWeaponHandler_C", "FinishWeaponCooldown");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.SetLaserRapierChargedMode
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Charged                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void A_BP_MeleeWeaponHandler_C::SetLaserRapierChargedMode(bool Charged)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_MeleeWeaponHandler_C", "SetLaserRapierChargedMode");
+
+	Params::_BP_MeleeWeaponHandler_C_SetLaserRapierChargedMode Parms{};
+
+	Parms.Charged = Charged;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
 }
 

@@ -60,8 +60,8 @@ public:
 public:
 	void ExecuteUbergraph__BP_LaserDot(int32 EntryPoint);
 	void EventDisableLaserDot();
-	void ReceiveTick(float DeltaSeconds);
 	void ReceiveBeginPlay();
+	void ReceiveTick(float DeltaSeconds);
 	void SetPowerAndSize(float InPower, float InSize);
 	void EnableTrace();
 	void DisableTrace();

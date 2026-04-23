@@ -8,6 +8,8 @@ typedef SDK::UObject* (*StaticLoadObject_t)(uevr::API::UClass* ObjectClass, uevr
 
 class PluginUtils
 {
+    inline static int32_t m_native_fix_tick_counter{ -1 };
+
 public:
     static void reset_height(float offset_y);
     static SDK::AActor* spawn_actor(SDK::UWorld* world, SDK::FTransform transform, std::wstring actor_tag);
@@ -21,6 +23,8 @@ public:
     static void print_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data);
     static float get_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data);
     static float uevr_param_to_float(const UEVR_VRData* vr, const char* key);
+    static void handle_native_stereo_fix_cycler(const UEVR_VRData* vr);
+    static void cycle_native_stereo_fix(const UEVR_VRData* vr);
 
     PluginUtils() = delete;
 };

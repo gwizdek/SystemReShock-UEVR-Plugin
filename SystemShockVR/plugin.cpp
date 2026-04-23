@@ -22,12 +22,19 @@
 #include "SDK/ITEM_MeleeWeapon_Base_classes.hpp"
 #include "SDK/ITEM_WeaponBase_classes.hpp"
 #include "SDK/INTERACT_DestructibleBase_classes.hpp"
+#include "SDK/INTERACT_SurgeryMachine_classes.hpp"
+#include "SDK/INTERACT_RespawnChamber_classes.hpp"
 #include "SDK/CharacterAction_classes.hpp"
 #include "SDK/AttributeSystem_classes.hpp"
 #include "SDK/WIDGET_TargetID_Display_classes.hpp"
 #include "SDK/WEAPON_LaserRapier_classes.hpp"
 #include "SDK/WEAPON_LeadPipe_classes.hpp"
-
+#include "SDK/SAVE_Settings_classes.hpp"
+#include "SDK/BP_IntroDrone_classes.hpp"
+#include "SDK/INTERACT_Laptop_classes.hpp"
+#include "SDK/ENUM_BootupState_structs.hpp"
+#include "SDK/WIDGET_BootupScreen_classes.hpp"
+#include "SDK/WIDGET_CrashScreen_classes.hpp"
 
 #include "SDK/_BP_LaserDot_classes.hpp"
 #include "SDK/_BP_ItemSelector_classes.hpp"
@@ -141,8 +148,8 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         update_trailing_rotation(delta);
         handle_ads();
 
-        m_melee_cooldown += delta;
-        
+        PluginUtils::handle_native_stereo_fix_cycler(vr);
+
         //if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
         //    try_running_test_1();
         //    try_running_test_2();
@@ -223,18 +230,31 @@ void UEVRPlugin::prepare_game_state() {
     try {
         if (m_world == nullptr) {
             m_game_state.set_value(GAME_STATE_UNDEFINED);
+            m_pawn_state.set_value(PAWN_UNKNOWN);
             return;
         }
 
         if (!UKismetSystemLibrary::IsValid(m_pawn.get())) {
             m_game_state.set_value(GAME_STATE_UNDEFINED);
+            m_pawn_state.set_value(PAWN_UNKNOWN);
             return;
         }
 
-        // TODO: here we should detect Intro Drone flight (uses APAWN_PlayerGhost_C)
+        player_camera_manager = UGameplayStatics::GetPlayerCameraManager(m_world, 0);
 
         // GAME_STATE_MAIN_MENU,
         if (m_pawn.get()->IsA(APAWN_PlayerGhost_C::StaticClass())) {
+            m_pawn_state.set_value(PAWN_PLAYERGHOST);
+            if (player_camera_manager != nullptr) {
+                if (
+                    UKismetSystemLibrary::IsValid(player_camera_manager->ViewTarget.Target) &&
+                    player_camera_manager->ViewTarget.Target->IsA(ABP_IntroDrone_C::StaticClass())
+                    ) {
+                    m_game_state.set_value(GAME_STATE_INTRO_DRONE);
+                    return;
+                }
+            }
+
             m_game_state.set_value(GAME_STATE_MAIN_MENU);
             return;
         }
@@ -264,7 +284,6 @@ void UEVRPlugin::prepare_game_state() {
         // TODO: add pseudospace pause menu
 
         // GAME_STATE_CINEMATIC
-        player_camera_manager = UGameplayStatics::GetPlayerCameraManager(m_world, 0);
         if (player_camera_manager != nullptr) {
             if (
                 UKismetSystemLibrary::IsValid(player_camera_manager->ViewTarget.Target) &&
@@ -286,6 +305,28 @@ void UEVRPlugin::prepare_game_state() {
             return;
         }
 
+        // BOOTING_UP
+        if (m_neural_hud != nullptr) {
+            if (
+                m_neural_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator7 &&
+                m_neural_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator0
+                ) {
+                m_game_state.set_value(GAME_STATE_BOOTING_UP);
+                return;
+            }
+        }
+
+        // CRASHING
+        if (m_neural_hud != nullptr) {
+            if (
+                m_neural_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator2 &&
+                m_neural_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator3
+                ) {
+                m_game_state.set_value(GAME_STATE_CRASHING);
+                return;
+            }
+        }
+
         // GAME_STATE_INTERACTABLE
         if (
             m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass()) ||
@@ -300,18 +341,41 @@ void UEVRPlugin::prepare_game_state() {
         // GAME_STATE_CITADEL_STATION
         if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
             m_game_state.set_value(GAME_STATE_CITADEL_STATION);
+            m_pawn_state.set_value(PAWN_HACKERIMPLANT);
             return;
         }
 
         // GAME_STATE_CYBERSPACE
         if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
             m_game_state.set_value(GAME_STATE_CYBERSPACE);
+            m_pawn_state.set_value(PAWN_AVATAR);
             return;
         }
 
         // GAME_STATE_APPARTMENT
         if (m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
+            m_pawn_state.set_value(PAWN_HACKERSIMPLE);
             m_game_state.set_value(GAME_STATE_APPARTMENT);
+            try_set_intro_laptop_pointer();
+
+            // handle intro laptop
+            if (m_intro_laptop != nullptr) {
+                m_is_using_laptop.set_value(m_intro_laptop->IsInteracting);
+            }
+
+            if (m_is_using_laptop.enabled()) {
+                API::get()->log_warn("Started using intro laptop");
+                const UEVR_VRData* vr = API::get()->param()->vr;
+                vr->set_aim_method(0);
+                vr->set_mod_value("VR_RoomscaleMovement", "false");
+
+                if (g_vr_body != nullptr) {
+                    VRBody::hide_vr_body();
+                    VRBody::reset_player_camera();
+                }
+                PluginUtils::reset_height(0.0f);
+                API::UObjectHook::set_disabled(true);
+            }
             return;
         }
 
@@ -321,6 +385,7 @@ void UEVRPlugin::prepare_game_state() {
 
         // all previous checks are false
         m_game_state.set_value(GAME_STATE_UNDEFINED);
+        m_pawn_state.set_value(PAWN_UNKNOWN);
         API::get()->log_error("[plugin][prepare_game_state] Undefined game state");
     }
     catch (...) {
@@ -361,6 +426,12 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
             m_gamepad_btn_x.mute_state(state);
         }
 
+        // Apartment movement gameplay
+        if (m_game_state.get() == GAME_STATE_APPARTMENT) {
+            handle_appartment_xinput(state, vr);
+            handle_smooth_turning(state);
+        }
+
         // Citadel Station Normal movement gameplay
         if (m_game_state.get() == GAME_STATE_CITADEL_STATION) {
             if (g_vr_body == nullptr) {
@@ -368,6 +439,7 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
             }
 
             handle_citadel_station_xinput(state, vr);
+            handle_smooth_turning(state);
         }
 
         // MFD Visible
@@ -384,12 +456,64 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
             handle_mfd_interactions(state, vr);
         }
 
-        handle_smooth_turning(state);
+        
     }
     catch (...) {
         API::get()->log_error("[plugin][handle_xinput] Exception");
     }
 }
+
+void UEVRPlugin::handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
+    try {
+
+        // Right Trigger
+        if (m_gamepad_right_trigger.is_pressed()) {
+            if (g_vr_body->IsEmptyHanded()) {
+                g_vr_body->HandInteractionRight->AttachLaserPointer(true, 10.f);
+            }
+        }
+
+        // Left Trigger
+        if (m_gamepad_left_trigger.is_pressed()) {
+            if (g_vr_body->IsEmptyHanded()) {
+                g_vr_body->HandInteractionLeft->AttachLaserPointer(true, 10.f);
+            }
+        }
+
+        // Right Shoulder
+        if (m_gamepad_right_shoulder.is_pressed()) {
+            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator2);
+
+            if (!g_vr_body->HandInteractionRight->IsHoldingWeapon) {
+                g_vr_body->HandInteractionRight->SelectedPose = E_ENUM_VRHandPose::NewEnumerator3;
+            }
+        }
+        if (m_gamepad_right_shoulder.is_released()) {
+            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator0);
+
+            if (!g_vr_body->HandInteractionRight->IsHoldingWeapon) {
+                g_vr_body->HandInteractionRight->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
+            }
+        }
+
+        // Left Shoulder
+        if (m_gamepad_left_shoulder.is_pressed()) {
+            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator2);
+            // set pointing hand pose
+            g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator3;
+        }
+        if (m_gamepad_left_shoulder.is_released()) {
+            // set undefined hand pose
+            g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
+            // try releasing world object
+            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator0);
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][handle_appartment_xinput] Exception");
+    }
+}
+
 
 void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
     try {
@@ -439,8 +563,8 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             //else {
             //    g_vr_body->CloseVRMenu();
             //}
-            toggle_gui();
-            PluginUtils::reset_height(0.f);
+            //toggle_gui();
+            //PluginUtils::reset_height(0.f);
             //API::get()->log_warn("[plugin][handle_controller_input] X-button");
         }
 
@@ -459,6 +583,25 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
 
             if (g_vr_body->IsEmptyHanded()) {
                 g_vr_body->HandInteractionRight->AttachLaserPointer(true, 10.f);
+            }
+            
+            // Set Laser Rapier charged mode
+            if (g_vr_body->MeleeWeaponHandler->IsActive && g_vr_body->MeleeWeaponHandler->IsLaserRapier) {
+                m_gamepad_right_trigger.mute_state(state);
+            }
+        }
+
+        if (m_gamepad_right_trigger.is_held()) {
+            if (g_vr_body->MeleeWeaponHandler->IsActive && g_vr_body->MeleeWeaponHandler->IsLaserRapier) {
+                m_gamepad_right_trigger.mute_state(state);
+            }
+        }
+
+        if (m_gamepad_right_trigger.is_released()) {
+
+            // Set Laser Rapier normal mode
+            if (g_vr_body->MeleeWeaponHandler->IsActive && g_vr_body->MeleeWeaponHandler->IsLaserRapier) {
+                m_gamepad_right_trigger.mute_state(state);
             }
         }
 
@@ -541,6 +684,10 @@ void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state) {
             return;
         }
 
+        if (g_vr_body == nullptr) {
+            return;
+        }
+
         pawn_controller = m_pawn.get()->Controller;
         if (!UKismetSystemLibrary::IsValid(pawn_controller)) {
             return;
@@ -597,137 +744,215 @@ void UEVRPlugin::handle_game_state_change() {
         if (m_game_state.has_changed()) {
             API::get()->log_warn("[plugin][handle_game_state_change] New Game State: %s", GameStateName[m_game_state.get()]);
             const UEVR_VRData* vr = API::get()->param()->vr;
+            const UEVR_SDKData* sdk = API::get()->sdk();
             API::UObjectHook::MotionControllerState* mc_state{ nullptr };
 
             switch (m_game_state.get()) {
-            case GAME_STATE_MAIN_MENU:
-                vr->set_aim_method(0);
-                vr->set_decoupled_pitch_enabled(false);
-                vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
-                vr->set_mod_value("VR_CameraUpOffset", "0.000000");
-                vr->set_mod_value("UI_Distance", "2.000000");
-                vr->set_mod_value("UI_Size", "1.400000");
-                vr->set_mod_value("UI_Y_Offset", "0.00000");
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
-                vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
-                PluginUtils::reset_height(0.f);
-                vr->recenter_view();
-                API::UObjectHook::set_disabled(true);
-                break;
-
-            case GAME_STATE_PAUSE_MENU:
-                if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-                    m_neural_hud->SetVisibility(ESlateVisibility::Visible);
-                }
-                API::UObjectHook::set_disabled(false);
-                vr->set_aim_method(0);
-                vr->set_decoupled_pitch_enabled(true);
-                vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
-                vr->set_mod_value("VR_CameraUpOffset", "0.000000");
-                vr->set_mod_value("UI_Distance", "2.000000");
-                vr->set_mod_value("UI_Size", "1.400000");
-                vr->set_mod_value("UI_Y_Offset", "-0.30000");
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
-                vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
-                //PluginUtils::reset_height(0.f);
-                vr->recenter_view();
-                break;
-
-            case GAME_STATE_CITADEL_STATION:
-                if (is_valid_vr_body_hacker_implant_pawn()) {
-                    if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-                        m_neural_hud->SetVisibility(ESlateVisibility::Hidden);
-                    }
-                    g_vr_body->VRBodyMesh->SetVisibility(true, false);
-                    static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->bUseControllerRotationYaw = true;
-
+                case GAME_STATE_INTRO_DRONE:
+                    sdk->functions->execute_command(L"r.postprocessing.disablematerials 1");
+                    vr->set_decoupled_pitch_enabled(true);
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
                     API::UObjectHook::set_disabled(false);
-                    vr->set_aim_method(m_default_aim_method);
+                    PluginUtils::reset_height(0.f);
+                    PluginUtils::cycle_native_stereo_fix(vr);
+                    break;
+
+                case GAME_STATE_MAIN_MENU:
+                    vr->set_aim_method(0);
+                    vr->set_decoupled_pitch_enabled(false);
+                    vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+                    vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+                    vr->set_mod_value("UI_Distance", "2.000000");
+                    vr->set_mod_value("UI_Size", "1.400000");
+                    vr->set_mod_value("UI_Y_Offset", "0.00000");
+                    vr->set_mod_value("VR_RoomscaleMovement", "false");
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
+                    PluginUtils::reset_height(0.f);
+                    vr->recenter_view();
+                    API::UObjectHook::set_disabled(true);
+                    apply_vr_game_options();
+                    PluginUtils::cycle_native_stereo_fix(vr);
+                    break;
+
+                case GAME_STATE_PAUSE_MENU:
+                    if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
+                        m_neural_hud->SetVisibility(ESlateVisibility::Visible);
+                    }
+                    API::UObjectHook::set_disabled(false);
+                    vr->set_aim_method(0);
                     vr->set_decoupled_pitch_enabled(true);
                     vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
                     vr->set_mod_value("VR_CameraUpOffset", "0.000000");
                     vr->set_mod_value("UI_Distance", "2.000000");
-                    vr->set_mod_value("UI_Size", "0.000000");
-                    vr->set_mod_value("UI_Y_Offset", "0.00000");
-                    vr->set_mod_value("VR_RoomscaleMovement", "true");
-                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                    vr->set_mod_value("UI_Size", "1.400000");
+                    vr->set_mod_value("UI_Y_Offset", "-0.30000");
+                    vr->set_mod_value("VR_RoomscaleMovement", "false");
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
                     //PluginUtils::reset_height(0.f);
                     vr->recenter_view();
+                    break;
 
-                    VRMFD::hide_mfd();
-                }
-                break;
+                case GAME_STATE_CITADEL_STATION:
+                    sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
+                    if (is_valid_vr_body_hacker_implant_pawn()) {
+                        if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
+                            m_neural_hud->SetVisibility(ESlateVisibility::Visible);
+                        }
+                        VRBody::show_vr_body();
+                        //g_vr_body->VRBodyMesh->SetVisibility(true, false);
+                        static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->bUseControllerRotationYaw = true;
 
-            case GAME_STATE_MFD_PRE:
-                vr->set_aim_method(1);
-                // Setting VR_DecoupledPitchUIAdjust causes error if AimMethod 1 wasn't previously used for a couple of ticks
-                // using set_aim_method(1) just before this line is not enough to mitigate this problem.
-                vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
-                break;
+                        API::UObjectHook::set_disabled(false);
+                        vr->set_aim_method(m_default_aim_method);
+                        vr->set_decoupled_pitch_enabled(true);
+                        vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+                        vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+                        vr->set_mod_value("UI_Distance", "2.000000");
+                        vr->set_mod_value("UI_Size", "0.000000");
+                        vr->set_mod_value("UI_Y_Offset", "0.00000");
+                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                        //PluginUtils::reset_height(0.f);
+                        vr->recenter_view();
 
-            case GAME_STATE_MFD:
-                char ui_distance[32], ui_size[32];
-                VRMFD::calculate_uevr_ui_params(vr, m_world, ui_distance, ui_size);
+                        VRMFD::hide_mfd();
+                    }
+                    break;
 
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
-                vr->set_mod_value("UI_Distance", ui_distance);
-                vr->set_mod_value("UI_Size", ui_size);
-                vr->set_mod_value("UI_Y_Offset", "0.000000");
-                vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                vr->set_aim_method(0);
+                case GAME_STATE_MFD_PRE:
+                    vr->set_aim_method(1);
+                    // Setting VR_DecoupledPitchUIAdjust causes error if AimMethod 1 wasn't previously used for a couple of ticks
+                    // using set_aim_method(1) just before this line is not enough to mitigate this problem.
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
+                    vr->set_mod_value("VR_RoomscaleMovement", "false");
+                    break;
 
-                if (is_valid_vr_body_hacker_implant_pawn()) {
+                case GAME_STATE_MFD:
+                    char ui_distance[32], ui_size[32];
+                    VRMFD::calculate_uevr_ui_params(vr, m_world, ui_distance, ui_size);
+
+                    vr->set_mod_value("VR_RoomscaleMovement", "false");
+                    vr->set_mod_value("UI_Distance", ui_distance);
+                    vr->set_mod_value("UI_Size", ui_size);
+                    vr->set_mod_value("UI_Y_Offset", "0.000000");
+                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                    vr->set_aim_method(0);
+
+                    if (is_valid_vr_body_hacker_implant_pawn()) {
+                        if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
+                            m_neural_hud->SetVisibility(ESlateVisibility::Visible);
+                        }
+                        VRMFD::show_mfd();
+                    }
+
+                    break;
+
+                case GAME_STATE_INTERACTABLE:
+                    if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+                        APAWN_Hacker_Implant_C* pawn = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get());
+                        API::get()->log_warn("[plugin][handle_game_state_change] Interactable: %s", pawn->ChannelingInteractableName.GetRawString().c_str());
+                        if (
+                            pawn->ChannelingInteractable != nullptr && (
+                                pawn->ChannelingInteractable->IsA(AINTERACT_SurgeryMachine_C::StaticClass()) ||
+                                pawn->ChannelingInteractable->IsA(AINTERACT_RespawnChamber_C::StaticClass())
+                                )
+                           ) {
+                            VRBody::reset_player_camera();
+                            VRBody::set_weapon_mesh_visibility(false);
+                            vr->set_aim_method(0);                      // Game mode
+                            vr->set_mod_value("VR_RoomscaleMovement", "false");
+
+                            // TODO - not working?
+                            static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->ArmsMesh->SetVisibility(false, false);
+                            VRBody::hide_vr_body();
+                            // g_vr_body->VRBodyMesh->SetVisibility(false, false);
+
+                            API::UObjectHook::set_disabled(true);
+                        }
+                    }
+                    break;
+
+                case GAME_STATE_CYBERSPACE:
+                    if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
+                        APAWN_Avatar_C* pawn = static_cast<APAWN_Avatar_C*>(m_pawn.get());
+                        VRAvatar::initialize_vr_avatar(pawn);
+                        //g_vr_body->VRBodyMesh->SetVisibility(true, false);
+
+                        //API::UObjectHook::set_disabled(true);
+                        API::UObjectHook::set_disabled(false);
+                        vr->set_aim_method(0);                      // Game mode
+                        vr->set_decoupled_pitch_enabled(false);
+                        vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+                        vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+                        vr->set_mod_value("UI_Distance", "4.000000");
+                        vr->set_mod_value("UI_Size", "2.000000");
+                        vr->set_mod_value("UI_Y_Offset", "0.00000");
+                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                        vr->set_mod_value("VR_DecoupledPitch", "false");
+                        PluginUtils::reset_height(0.f);
+                        vr->recenter_view();
+                    }
+                    break;
+
+                case GAME_STATE_APPARTMENT:
+                    sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
+                    m_intro_laptop = nullptr;
+                    if (is_valid_vr_body_hacker_simple_pawn()) {
+                        if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
+                            m_neural_hud->SetVisibility(ESlateVisibility::Hidden);
+                        }
+                        g_vr_body->VRBodyMesh->SetVisibility(true, false);
+                        static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->bUseControllerRotationYaw = true;
+
+                        API::UObjectHook::set_disabled(false);
+                        vr->set_aim_method(m_default_aim_method);
+                        vr->set_decoupled_pitch_enabled(true);
+                        vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+                        vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+                        vr->set_mod_value("UI_Distance", "2.000000");
+                        vr->set_mod_value("UI_Size", "0.000000");
+                        vr->set_mod_value("UI_Y_Offset", "0.00000");
+                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                        PluginUtils::reset_height(0.f);
+                        vr->recenter_view();
+
+                        //VRMFD::hide_mfd();
+                    }
+                    
+                    PluginUtils::cycle_native_stereo_fix(vr);
+                    break;
+
+                case GAME_STATE_BOOTING_UP:
                     if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
                         m_neural_hud->SetVisibility(ESlateVisibility::Visible);
                     }
-                    VRMFD::show_mfd();
-                }
-
-                break;
-
-            case GAME_STATE_INTERACTABLE:
-                if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
-                    APAWN_Hacker_Implant_C* pawn = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get());
-                    if (pawn->ChannelingInteractableName == UKismetStringLibrary::Conv_StringToName(L"INTERACT_SurgeryMachine")) {
-                        API::get()->log_warn("[plugin][handle_game_state_change] Surgery Machine");
-
-                        VRBody::reset_player_camera();
-                        VRBody::set_weapon_mesh_visibility(false);
-                        vr->set_aim_method(0);                      // Game mode
-                        vr->set_mod_value("VR_RoomscaleMovement", "false");
-
-                        // TODO - not working?
-                        static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->ArmsMesh->SetVisibility(false, false);
-                        g_vr_body->VRBodyMesh->SetVisibility(false, false);
-
-                        API::UObjectHook::set_disabled(true);
-                    }
-                }
-                break;
-
-            case GAME_STATE_CYBERSPACE:
-                if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
-                    APAWN_Avatar_C* pawn = static_cast<APAWN_Avatar_C*>(m_pawn.get());
-                    VRAvatar::initialize_vr_avatar(pawn);
-                    //g_vr_body->VRBodyMesh->SetVisibility(true, false);
-
-                    //API::UObjectHook::set_disabled(true);
-                    API::UObjectHook::set_disabled(false);
-                    vr->set_aim_method(0);                      // Game mode
-                    vr->set_decoupled_pitch_enabled(false);
-                    vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
-                    vr->set_mod_value("VR_CameraUpOffset", "0.000000");
-                    vr->set_mod_value("UI_Distance", "4.000000");
-                    vr->set_mod_value("UI_Size", "2.000000");
-                    vr->set_mod_value("UI_Y_Offset", "0.00000");
-                    vr->set_mod_value("VR_RoomscaleMovement", "true");
-                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                    vr->set_mod_value("VR_DecoupledPitch", "false");
-                    PluginUtils::reset_height(0.f);
+                    vr->set_aim_method(0);
                     vr->recenter_view();
-                }
-                break;
+                    vr->set_mod_value("UI_Distance", "2.000000");
+                    vr->set_mod_value("UI_Size", "2.000000");
+                    API::UObjectHook::set_disabled(true);
+                    VRBody::hide_vr_body();
+                    break;
+
+                case GAME_STATE_CRASHING:
+                    if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
+                        m_neural_hud->SetVisibility(ESlateVisibility::Visible);
+                    }
+                    vr->set_aim_method(0);
+                    vr->recenter_view();
+                    vr->set_mod_value("UI_Distance", "2.000000");
+                    vr->set_mod_value("UI_Size", "2.000000");
+                    API::UObjectHook::set_disabled(true);
+                    VRBody::hide_vr_body();
+                    break;
+
+                case GAME_STATE_CINEMATIC:
+                    vr->set_aim_method(0);
+                    vr->recenter_view();
+                    API::UObjectHook::set_disabled(true);
+                    break;
             }
         }
     }
@@ -738,8 +963,12 @@ void UEVRPlugin::handle_game_state_change() {
 
 void UEVRPlugin::handle_level_change() {
     try {
-        if (m_level.has_changed() && UKismetSystemLibrary::IsValid(m_level.get())) {
+        if (
+            (m_level.has_changed() && UKismetSystemLibrary::IsValid(m_level.get())) ||
+            (m_pawn_state.has_changed())
+        ) {
             API::get()->log_warn("[plugin][handle_level_change] New Level: %s", m_level.get()->GetFullName().c_str());
+            API::get()->log_warn("[plugin][handle_level_change] New Pawn State: %s", PawnStateName[m_pawn_state.get()]);
 
             // reset pointers invalidating vr_body
             API::get()->log_warn("[plugin][handle_level_change] Actors / Pointers cleanup");
@@ -768,7 +997,31 @@ void UEVRPlugin::handle_level_change() {
                 else {
                     API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
                 }
+                return;
             }
+
+            if (
+                SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
+                m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
+                ) {
+                APAWN_Hacker_Simple_C* pawn = static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get());
+                g_vr_body = VRBody::initialize_vr_body(pawn);
+
+                if (g_vr_body != nullptr) {
+                    VRBody::initialize_laser_dot();
+                    VRBody::overwrite_hacker_crouch_animations();
+                    VRBody::initialize_hand_item_collisions();
+                    PluginUtils::reset_height(0.f);
+                    //VRBody::set_debug_widget_visibility(false);
+                }
+                else {
+                    API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
+                }
+                return;
+            }
+
+            const UEVR_VRData* vr = API::get()->param()->vr;
+            PluginUtils::cycle_native_stereo_fix(vr);
         }
     }
     catch (...) {
@@ -778,7 +1031,10 @@ void UEVRPlugin::handle_level_change() {
 
 void UEVRPlugin::handle_media_display() {
     try {
-        if (m_game_state.get() == GAME_STATE_CITADEL_STATION && m_is_media_display_visible.has_changed()) {
+        if (
+            ( m_game_state.get() == GAME_STATE_CITADEL_STATION || m_game_state.get() == GAME_STATE_MFD ) &&
+            m_is_media_display_visible.has_changed()
+            ) {
             VRBody::set_media_display_visibility(m_is_media_display_visible.get());
         }
     }
@@ -1262,12 +1518,22 @@ bool UEVRPlugin::is_valid_vr_body_hacker_implant_pawn() {
         return false;
     }
 
+    if (m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+        API::get()->log_error("[plugin][is_valid_hacker_pawn] Invalid pawn");
+        return false;
+    }
+
+    return true;
+}
+
+
+bool UEVRPlugin::is_valid_vr_body_hacker_simple_pawn() {
     if (g_vr_body == nullptr) {
         API::get()->log_error("[plugin][is_valid_hacker_pawn] Invalid g_vr_body");
         return false;
     }
 
-    if (m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+    if (m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
         API::get()->log_error("[plugin][is_valid_hacker_pawn] Invalid pawn");
         return false;
     }
@@ -1509,259 +1775,155 @@ void UEVRPlugin::toggle_gui() {
 }
 
 void UEVRPlugin::try_melee() {
+    static UAnimMontage* montage{ nullptr };
     try {
-        static FName trace_socket_name{};
-        static SDK::FVector trace_start{ 0.f, 0.f, 0.f };
-        static SDK::FVector trace_end{ 0.f, 0.f, 0.f };
-        static bool prev_is_beserk{ false };
-        static float pre_health{ 0.f };
-        static float post_health{ 0.f };
-        //static ENUM_Melee_AttackState melee_attack_state{ ENUM_Melee_AttackState::NewEnumerator0 };
+        if (g_vr_body != nullptr && g_vr_body->MeleeWeaponHandler != nullptr) {
+            m_UEVR_process_damage.set_value(g_vr_body->MeleeWeaponHandler->UEVRProcessDamage);
 
-        if (m_melee_cooldown < 0.5f) {
-            return;
-        }
+            if (m_UEVR_process_damage.enabled()) {
 
-        if (g_vr_body != nullptr && m_inventory != nullptr && m_inventory->CurrentEquippedWeapon != nullptr && m_inventory->CurrentEquippedWeapon->IsA(UITEM_MeleeWeapon_Base_C::StaticClass())) {
-            m_is_melee_weapon_hot.set_value(g_vr_body->MeleeWeaponHandler->IsHot());
-            UITEM_MeleeWeapon_Base_C* melee_weapon{ nullptr };
-            if (g_vr_body->MeleeWeaponHandler->IsHot()) {
-                melee_weapon = static_cast<UITEM_MeleeWeapon_Base_C*>(m_inventory->CurrentEquippedWeapon);
-                if (melee_weapon == nullptr) {
+                if (g_vr_body->IsTwoHandingWeapon()) {
+                    //API::get()->log_warn("[plugin][try_melee] Two handed swing");
+                    g_vr_body->MeleeWeaponHandler->WeaponItemRef->GetPowerSwingToIdleMontage(ENUM_LeftRightCenter::NewEnumerator0, &montage);
+                }
+                else {
+                    g_vr_body->MeleeWeaponHandler->WeaponItemRef->GetRandomFastAttack(&montage);
+                }
+
+                if (!UKismetSystemLibrary::IsValid(montage)) {
+                    API::get()->log_error("[plugin][try_melee] Invalid Montage");
                     return;
                 }
-
-                try {
-                    if (m_inventory->CurrentEquippedWeapon->IsA(UWEAPON_LaserRapier_C::StaticClass())) {
-                        static_cast<UWEAPON_LaserRapier_C*>(m_inventory->CurrentEquippedWeapon)->UpdatePowerLevel(0.5f, false);
-                        //static_cast<UWEAPON_LaserRapier_C*>(m_inventory->CurrentEquippedWeapon)->TryUpdateIdleSound(1.f, false);
-                        if (m_is_melee_weapon_hot.enabled()) {
-                            API::get()->log_warn("[plugin][try_melee] Play Swing Sound");
-
-
-                            //UAudioMixerBlueprintLibrary::PrimeSoundCueForPlayback(class USoundCue* SoundCue);
-                            API::UObject* sound_cue_ptr = API::get()->find_uobject<API::UObject>(L"SoundCue /Game/Sound/Weapon/Laser_Rapier/Weapon_LaserRapier_Swing_Cue.Weapon_LaserRapier_Swing_Cue");
-                            if (sound_cue_ptr != nullptr) {
-                                UAudioComponent* audio_comp{ nullptr };
-                                float pitch_overhead = UKismetMathLibrary::VSize(g_vr_body->MeleeWeaponHandler->GripVelocityVector) + UKismetMathLibrary::VSize(g_vr_body->MeleeWeaponHandler->TipVelocityVector) - g_vr_body->MeleeWeaponHandler->MinGripHotVelocity - g_vr_body->MeleeWeaponHandler->MinTipHotVelocity;
-                                API::get()->log_warn("[plugin][try_melee] Pitch: %f", pitch_overhead);
-
-                                static_cast<UWEAPON_LaserRapier_C*>(m_inventory->CurrentEquippedWeapon)->PlayDischargeSoundCue((USoundCue*)sound_cue_ptr, 1.f, 1.f + pitch_overhead * 1.5f, &audio_comp);
-
-                                //audio_comp->K2_AttachToComponent(g_vr_body->MeleeWeaponHandler->TipTrace, UKismetStringLibrary::Conv_StringToName(L"None"), EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, EAttachmentRule::KeepWorld, true);
-                                //static_cast<UWEAPON_LaserRapier_C*>(m_inventory->CurrentEquippedWeapon)->PlayDischargeSoundFX(5.f, 1.f);
-                            }
-                            else {
-                                API::get()->log_warn("[plugin][try_melee] SoundCue Object not found");
-                            }
-                        }
-                    }
-                    else {
-                        if (m_is_melee_weapon_hot.enabled()) {
-                            API::UObject* sound_cue_ptr = API::get()->find_uobject<API::UObject>(L"SoundCue /Game/Sound/Weapon/Pipe/Weapon_Pipe_Swing_Cue.Weapon_Pipe_Swing_Cue");
-                            if (sound_cue_ptr != nullptr) {
-                                UAudioComponent* audio_comp{ nullptr };
-                                melee_weapon->PlayDischargeSoundCue((USoundCue*)sound_cue_ptr, 1.f, 1.f, &audio_comp);
-                                audio_comp->K2_AttachToComponent(g_vr_body->MeleeWeaponHandler->TipTrace, UKismetStringLibrary::Conv_StringToName(L"None"), EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, EAttachmentRule::KeepWorld, true);
-                            }
-                        }
-                    }
-
-                    //g_vr_body->MeleeWeaponHandler->GetHitTraceStartEndLocations(trace_start, trace_end);
-
-                }
-                catch (...) {
-                    API::get()->log_error("[plugin][try_melee] Debug enemy health #3 Exception");
-                }
-
-                try {
-                    SDK::TArray<SDK::EObjectTypeQuery> traceObjectTypes;
-                    traceObjectTypes.Data = (EObjectTypeQuery*)API::FMalloc::get()->malloc(3 * sizeof(EObjectTypeQuery));
-                    traceObjectTypes.NumElements = 3;
-                    traceObjectTypes.MaxElements = 3;
-
-                    traceObjectTypes.Data[0] = EObjectTypeQuery::ObjectTypeQuery3;
-                    traceObjectTypes.Data[1] = EObjectTypeQuery::ObjectTypeQuery4;
-                    traceObjectTypes.Data[2] = EObjectTypeQuery::ObjectTypeQuery6;
-                    //traceObjectTypes.Data[3] = EObjectTypeQuery::ObjectTypeQuery2;
-
-                    // Weapon tip trace
-                    //UKismetSystemLibrary::SphereTraceSingleForObjects(m_world, g_vr_body->MeleeWeaponHandler->TipPrevWorldLocation, g_vr_body->MeleeWeaponHandler->TipWorldLocation, 1.f,
-                    UKismetSystemLibrary::LineTraceSingleForObjects(m_world, g_vr_body->MeleeWeaponHandler->TipPrevWorldLocation, g_vr_body->MeleeWeaponHandler->TipWorldLocation,
-                        traceObjectTypes, true, g_vr_body->IgnoredActors, EDrawDebugTrace::None, &m_reusable_hit_result, true, { 0.f, 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f, 0.f }, 0.f
-                    );
-
-                    if (!m_reusable_hit_result.bBlockingHit) {
-                        // Weapon inter A trace
-                        //UKismetSystemLibrary::SphereTraceSingleForObjects(m_world, g_vr_body->MeleeWeaponHandler->IntermAPrevWorldLocation, g_vr_body->MeleeWeaponHandler->IntermAWorldLocation, 1.f,
-                        UKismetSystemLibrary::LineTraceSingleForObjects(m_world, g_vr_body->MeleeWeaponHandler->IntermAPrevWorldLocation, g_vr_body->MeleeWeaponHandler->IntermAWorldLocation,
-                            traceObjectTypes, true, g_vr_body->IgnoredActors, EDrawDebugTrace::None, &m_reusable_hit_result, true, { 0.f, 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f, 0.f }, 0.f
-                        );
-                    }
-
-                    if (!m_reusable_hit_result.bBlockingHit) {
-                        // Weapon inter B trace
-                        //UKismetSystemLibrary::SphereTraceSingleForObjects(m_world, g_vr_body->MeleeWeaponHandler->IntermBPrevWorldLocation, g_vr_body->MeleeWeaponHandler->IntermBWorldLocation, 1.f,
-                        UKismetSystemLibrary::LineTraceSingleForObjects(m_world, g_vr_body->MeleeWeaponHandler->IntermBPrevWorldLocation, g_vr_body->MeleeWeaponHandler->IntermBWorldLocation,
-                            traceObjectTypes, true, g_vr_body->IgnoredActors, EDrawDebugTrace::None, &m_reusable_hit_result, true, { 0.f, 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f, 0.f }, 0.f
-                        );
-                    }
-                }
-                catch (...) {
-                    API::get()->log_error("[plugin][try_melee] Debug enemy health #4 Exception");
-                }
-
-                //API::get()->log_warn("[plugin][try_melee] HIT RESULT %s", m_reusable_hit_result.Component.Get()->Name.GetRawString().c_str());
-                //API::get()->log_warn("[plugin][try_melee] HIT RESULT X: %f, Y: %f, Z: %f", m_reusable_hit_result.ImpactPoint.X, m_reusable_hit_result.ImpactPoint.Y, m_reusable_hit_result.ImpactPoint.Z);
 
                 bool hit{ true };
                 bool result{ true };
                 bool is_finished{ false };
 
-                if (m_reusable_hit_result.bBlockingHit) {
-                    if (
-                        m_reusable_hit_result.Actor.Get()->IsA(APAWN_Enemy_C::StaticClass()) ||
-                        m_reusable_hit_result.Actor.Get()->IsA(ACORPSE_SkeletalBase_C::StaticClass()) ||
-                        m_reusable_hit_result.Actor.Get()->IsA(AINTERACT_DestructibleBase_C::StaticClass())
-                        ) {
-
-                        // haptics
-                        const UEVR_PluginInitializeParam* param = API::get()->param();
-                        const UEVR_VRData* VR = param->vr;
-                        UEVR_InputSourceHandle RightController = VR->get_right_joystick_source();
-                        VR->trigger_haptic_vibration(0.0f, 0.05f, 1.0f, 1.0f, RightController);
-
-                        try {
-                            // debug enemy health
-                            if (m_reusable_hit_result.Actor.Get()->IsA(APAWN_Enemy_C::StaticClass())) {
-                                m_neural_hud->WIDGET_TargetID_Display->SetTargetActor(m_reusable_hit_result.Actor.Get());
-                                m_neural_hud->WIDGET_TargetID_Display->SetTargetIDHardwareEventBindings();
-                                m_neural_hud->WIDGET_TargetID_Display->UpdateTargetEventBindings();
-                                //auto health_attrib = static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->COMP_AttribManager->HealthAttrib;
-                                //auto health_attrib_value = static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->COMP_AttribManager->AttribHandler->GetAttribValue(health_attrib.Get());
-                                pre_health = m_neural_hud->WIDGET_TargetID_Display->TargetHealth;
-                                auto s_pre_health = UKismetStringLibrary::Conv_FloatToString(m_neural_hud->WIDGET_TargetID_Display->TargetHealth);
-                                //API::get()->log_warn("[plugin][try_melee] HIT_PRE %s, HEALTH: %f", m_reusable_hit_result.Actor.Get()->GetFullName().c_str(), m_neural_hud->WIDGET_TargetID_Display->TargetHealth);
-                            }
-                        }
-                        catch (...) {
-                            API::get()->log_error("[plugin][try_melee] Debug enemy health #1 Exception");
-                        }
+                // haptics
+                const UEVR_PluginInitializeParam* param = API::get()->param();
+                const UEVR_VRData* VR = param->vr;
+                UEVR_InputSourceHandle RightController = VR->get_right_joystick_source();
+                VR->trigger_haptic_vibration(0.0f, 0.1f, 1.0f, 1.0f, RightController);
 
 
-                        m_melee_cooldown = 0.f;
-                        //API::get()->log_warn("[plugin][try_melee] HIT RESULT %s", m_reusable_hit_result.Component.Get()->GetFullName().c_str());
-                        //API::get()->log_warn("[plugin][try_melee] HIT RESULT %s", m_reusable_hit_result.Actor.Get()->GetFullName().c_str());
+                SDK::UCharacterAction_C* action{};
+                auto action_manager = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->COMP_ActionManager;
+                //melee_weapon->EnableDamage(&result);
+                // force action, high priority
+                action_manager->ForceBeginAction(montage, ENUM_ActionPriority::NewEnumerator2, &action);
+                action->SetElapsedTime(0.5f, &is_finished);
+                // drains player stamina
+                g_vr_body->MeleeWeaponHandler->WeaponItemRef->OnStartedMeleeAttack(false);
 
-                        try {
-                            UAnimMontage* montage{};
+                // applies damage
+                // this call can also apply stamina drain mod (test it)
 
-                            if (g_vr_body->IsTwoHandingWeapon()) {
-                                API::get()->log_warn("[plugin][try_melee] Two handed swing");
-                                melee_weapon->GetPowerSwingToIdleMontage(ENUM_LeftRightCenter::NewEnumerator0, &montage);
-                            }
-                            else {
-                                melee_weapon->GetRandomFastAttack(&montage);
-                            }
+                // force power swing by setting IsBeserk to true, then reset it to prev value
+                //prev_is_beserk = melee_weapon->IsBerserk;
 
-                            if (UKismetSystemLibrary::IsValid(montage)) {
-                                API::get()->log_warn("[plugin][try_melee] Valid Montage");
-                            }
-                            else {
-                                API::get()->log_warn("[plugin][try_melee] Invalid Montage");
-                                return;
-                            }
+                g_vr_body->MeleeWeaponHandler->WeaponItemRef->TryDealDamageFromHitResult(g_vr_body->MeleeWeaponHandler->ReusableOutHit, &hit);
+                //melee_weapon->IsBerserk = prev_is_beserk;
 
-                            SDK::UCharacterAction_C* action{};
-                            auto action_manager = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->COMP_ActionManager;
-                            //melee_weapon->EnableDamage(&result);
-                            // force action, high priority
-                            action_manager->ForceBeginAction(montage, ENUM_ActionPriority::NewEnumerator2, &action);
-                            action->SetElapsedTime(0.5f, &is_finished);
-                            // drains player stamina
-                            melee_weapon->OnStartedMeleeAttack(false);
+                action->StopMontage(0.2f);
+                //action_manager->UpdateActiveAction(1.f);
 
-                            // applies damage
-                            // this call can also apply stamina drain mod (test it)
+                g_vr_body->MeleeWeaponHandler->WeaponItemRef->DisableDamage(&result);
+                g_vr_body->MeleeWeaponHandler->WeaponItemRef->HitActors.Clear();
+                bool end_action_result{ false };
 
-                            // force power swing by setting IsBeserk to true, then reset it to prev value
-                            //prev_is_beserk = melee_weapon->IsBerserk;
+                action_manager->ForceEndCurrentAction(nullptr, 0.2f);
+                g_vr_body->MeleeWeaponHandler->WeaponItemRef->DisableDamage(&result);
 
-                            melee_weapon->TryDealDamageFromHitResult(m_reusable_hit_result, &hit);
-                            //melee_weapon->IsBerserk = prev_is_beserk;
-
-                            action->StopMontage(0.2f);
-                            //action_manager->UpdateActiveAction(1.f);
-
-                            melee_weapon->DisableDamage(&result);
-                            melee_weapon->HitActors.Clear();
-                            bool end_action_result{ false };
-
-                            action_manager->ForceEndCurrentAction(nullptr, 0.2f);
-                            melee_weapon->DisableDamage(&result);
-
-                        }
-                        catch (...) {
-                            API::get()->log_error("[plugin][try_melee] Damage sequence Exception");
-                        }
-
-
-                        try {
-                            // debug enemy health
-                            if (m_reusable_hit_result.Actor.Get()->IsA(APAWN_Enemy_C::StaticClass())) {
-                                //auto health_attrib = static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->COMP_AttribManager->HealthAttrib;
-                                //auto health_attrib_value = static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->COMP_AttribManager->AttribHandler->GetAttribValue(health_attrib.Get());
-                                //API::get()->log_warn("[plugin][try_melee] HIT_AFTER %s, HEALTH: %f", m_reusable_hit_result.Actor.Get()->GetFullName().c_str(), health_attrib_value);
-                                post_health = m_neural_hud->WIDGET_TargetID_Display->TargetHealth;
-                                //API::get()->log_warn("[plugin][try_melee] HIT_AFTER %s, HEALTH: %f", m_reusable_hit_result.Actor.Get()->GetFullName().c_str(), m_neural_hud->WIDGET_TargetID_Display->TargetHealth);
-                                auto damage = UKismetStringLibrary::Conv_FloatToString(pre_health - post_health);
-                                g_vr_body->AddDebugMessage(UKismetStringLibrary::Concat_StrStr(L"Damage: ", damage), E_ENUM_DebugWidgetEntryType::NewEnumerator1);
-                            }
-                        }
-                        catch (...) {
-                            API::get()->log_error("[plugin][try_melee] Debug enemy health #2 Exception");
-                        }
-
-
-                        //action_manager->TryEndCurrentAction(ENUM_ActionPriority::NewEnumerator2, 0.1f, &end_action_result);
-                        //API::get()->log_warn("[plugin][try_melee] End Action Result: %s", end_action_result ? "OK" : "BAD");
-                        //melee_weapon->CreateMeleeImpactForceFeedback(m_reusable_hit_result, true);
-                        //FVector knockback_direction = {
-                        //    m_reusable_hit_result.ImpactNormal.X * 1000.f,
-                        //    m_reusable_hit_result.ImpactNormal.Y * 1000.f,
-                        //    m_reusable_hit_result.ImpactNormal.Z * 1000.f
-                        //};
-                        ////UKismetMathLibrary::Multiply_VectorFloat(knockback_direction, 20.f);
-                        //static_cast<APAWN_Enemy_C*>(m_reusable_hit_result.Actor.Get())->ApplyKnockback(knockback_direction, m_reusable_hit_result.ImpactPoint);
-                        ////API::get()->log_warn("[plugin][try_melee] Knockback X: %f, Y: %f, Z: %f", knockback_direction.X, knockback_direction.Y, knockback_direction.Z);
-                    }
-                }
-
-
-                //melee_weapon->DamageTraceWithOffsetFromSocket(offset, &hit);
-                //if (hit) {
-                //    API::get()->log_warn("[plugin][try_melee] HIT");
-                //}
-                //else {
-                //    API::get()->log_warn("[plugin][try_melee] NO HIT");
-                //}
-            }
-            else {
-                if (m_inventory->CurrentEquippedWeapon->IsA(UWEAPON_LaserRapier_C::StaticClass())) {
-                    static_cast<UWEAPON_LaserRapier_C*>(m_inventory->CurrentEquippedWeapon)->UpdatePowerLevel(static_cast<UWEAPON_LaserRapier_C*>(m_inventory->CurrentEquippedWeapon)->DefaultPowerLevel, false);
-                    //static_cast<UWEAPON_LaserRapier_C*>(m_inventory->CurrentEquippedWeapon)->TryFadeOutIdleSound();
+                if (g_vr_body->MeleeWeaponHandler->IsLaserRapier) {
+                    g_vr_body->MeleeWeaponHandler->TryUpdateLaserPowerLevel(0.2f);
                 }
             }
         }
-        else {
-            m_is_melee_weapon_hot.set_value(false);
-        }
-
     }
     catch (...) {
         API::get()->log_error("[plugin][try_melee] Exception");
     }
 }
 
-void UEVRPlugin::apply_damage() {
+void UEVRPlugin::apply_vr_game_options() {
+    auto class_ptr = API::get()->find_uobject<API::UClass>(L"BlueprintGeneratedClass /Game/Blueprints/UI/HUD/Widgets/Settings/SAVE_Settings.SAVE_Settings_C");
+    if (class_ptr != nullptr) {
+        SDK::USAVE_Settings_C* settings = class_ptr->get_first_object_matching<SDK::USAVE_Settings_C>();
+
+        if (settings != nullptr && settings->IsA(SDK::USAVE_Settings_C::StaticClass())) {
+            // Accessibility: Headbob Amount: OFF
+            settings->SetHeadbobAmount(SDK::ENUM_OffReducedNormal::NewEnumerator0);
+            settings->ApplyHeadbobAmount(SDK::ENUM_OffReducedNormal::NewEnumerator0);
+
+            // Accessibility: Hotbar Style: NORMAL
+            settings->SetHotbarStyle(SDK::ENUM_HotbarStyle::NewEnumerator0);
+            settings->ApplyHotbarStyle(SDK::ENUM_HotbarStyle::NewEnumerator0);
+
+            // Accessibility: HUD Curve Amount: 0.0
+            // This is important for the HotbarSlots to be properly placed on the MFD after creating VR HUD
+            settings->SetHUDCurvature(0.0f);
+            settings->ApplyHUDCurvature(0.0f);
+
+            // Controls: Toggle Crouch: ON
+            settings->SetCrouchToggle(true);
+            settings->ApplyCrouchToggle(true);
+
+            // Controls: Toggle Aim Down Sights: OFF
+            settings->SetFocusAimToggle(false);
+            settings->ApplyFocusAimToggle(false);
+
+            // Gameplay: Focus Camera On Puzzles: OFF
+            settings->SetFocusOnPuzzles(false);
+            settings->ApplyFocusOnPuzzles(false);
+
+            // Gameplay: Reload Can Use Batteries: OFF
+            settings->SetReloadCanUseBatteries(false);
+            settings->ApplyReloadCanUseBatteries(false);
+
+            // Display: Motion Blur: OFF
+            settings->SetEnableMotionBlur(false);
+            settings->ApplyEnableMotionBlur(false);
+
+            // Display: V-Sync: OFF
+            settings->SetEnableVSync(false);
+            settings->ApplyEnableVSync(false);
+
+            // Display: FOV (real/cyberspace)
+            settings->SetFOV(120.f, true);
+            settings->ApplyFOV(120.f, true);
+            settings->SetFOV(120.f, false);
+            settings->ApplyFOV(120.f, false);
+
+            API::get()->log_warn("[plugin][apply_vr_game_options] Applied VR specific game options");
+        }
+        else {
+            API::get()->log_error("[plugin][apply_vr_game_options] Could not apply VR specific game options");
+        }
+    }
+    else {
+        API::get()->log_error("[plugin][apply_vr_game_options] Could not apply VR specific game options : missing class");
+    }
+}
+
+void UEVRPlugin::try_set_intro_laptop_pointer() {
+    try {
+        if (m_intro_laptop != nullptr)
+            return;
+
+        API::UClass* laptop_c = API::get()->find_uobject<API::UClass>(L"BlueprintGeneratedClass /Game/Art/Props/Hacker_Apartment/Laptop/INTERACT_Laptop.INTERACT_Laptop_C");
+        if (laptop_c != nullptr) {
+            std::vector<SDK::AINTERACT_Laptop_C*> matching_objects = laptop_c->get_objects_matching<SDK::AINTERACT_Laptop_C>();
+            //API::get()->log_info("AINTERACT_Laptop_C object count: %d", matching_objects.size());
+
+            for (size_t i = 0; i < matching_objects.size(); i++) {
+                if (matching_objects[i]->GetFullName().find(".INTERACT_Laptop") != std::wstring::npos) {
+                    API::get()->log_warn("AINTERACT_Laptop_C found");
+                    m_intro_laptop = matching_objects[i];
+                }
+            }
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[main][set_intro_laptop_pointer] Exception");
+    }
 }

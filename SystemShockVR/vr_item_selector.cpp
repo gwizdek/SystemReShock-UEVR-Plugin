@@ -99,7 +99,7 @@ void VRItemSelector::activate_current_quick_slot() {
             SDK::int32 slot_index;
             static_cast<SDK::UWIDGET_HotbarSlot_C*>(widget)->GetSlotIndex(&slot_index);
 
-            g_vr_body->HackerPawn->ReceiveInputForHotbarSlotByIndex(
+            static_cast<SDK::APAWN_Hacker_Implant_C*>(g_vr_body->HackerPawn)->ReceiveInputForHotbarSlotByIndex(
                 slot_index + 1, true
             );
         }

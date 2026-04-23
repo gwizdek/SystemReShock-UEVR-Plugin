@@ -12,7 +12,8 @@ private:
     static inline float m_mfd_depth{ 150.f };
 
 public:
-    static SDK::A_BP_VRBody_C* initialize_vr_body(SDK::APAWN_Hacker_Implant_C* pawn);
+    static SDK::A_BP_VRBody_C* initialize_vr_body(SDK::APAWN_Hacker_Simple_C* pawn);
+    //static SDK::A_BP_VRBody_C* initialize_vr_body(SDK::APAWN_Hacker_Implant_C* pawn);
     static void initialize_laser_dot();
     static void overwrite_hacker_crouch_animations();
     static void set_weapon_mesh_visibility(bool visible);

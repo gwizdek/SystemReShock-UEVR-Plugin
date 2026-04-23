@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_ItemCategory_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "_ENUM_VRHand_structs.hpp"
 #include "STRUCT_InteractResults_structs.hpp"
-#include "_ENUM_ItemCategory_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_VRHand_structs.hpp"
 
 
 namespace SDK::Params
@@ -27,11 +27,12 @@ struct _BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionCompon
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(class UITEM_WeaponBase_C* Weapon)> K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x0014(0x0010)(ZeroConstructor, NoDestructor)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(class UITEM_WeaponBase_C* Weapon)> K2Node_CreateDelegate_OutputDelegate_2;            // 0x0030(0x0010)(ZeroConstructor, NoDestructor)
+	bool                                          CallFunc_IsMainHand_ReturnValue;                   // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class UITEM_WeaponBase_C* Weapon)> K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x0018(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void(class UITEM_WeaponBase_C* Weapon)> K2Node_CreateDelegate_OutputDelegate_2;            // 0x0028(0x0010)(ZeroConstructor, NoDestructor)
+	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class A_BP_VRBody_C*                          K2Node_DynamicCast_As_BP_VRBody;                   // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
@@ -43,17 +44,17 @@ public:
 	class UITEM_WeaponBase_C*                     K2Node_CustomEvent_Weapon_1;                       // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UITEM_WeaponBase_C*                     K2Node_CustomEvent_Weapon;                         // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         K2Node_Event_DeltaSeconds;                         // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsMainHand_ReturnValue;                   // 0x007C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsItemSelectorActive_ReturnValue;         // 0x007D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x007E(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsItemSelectorActive_ReturnValue;         // 0x007C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x007D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent) == 0x000008, "Wrong alignment on _BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent");
 static_assert(sizeof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent) == 0x000080, "Wrong size on _BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent");
 static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, EntryPoint) == 0x000000, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::EntryPoint' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_CreateDelegate_OutputDelegate) == 0x000004, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_CreateDelegate_OutputDelegate_1) == 0x000014, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, CallFunc_GetOwner_ReturnValue) == 0x000028, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_CreateDelegate_OutputDelegate_2) == 0x000030, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, CallFunc_IsMainHand_ReturnValue) == 0x000004, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::CallFunc_IsMainHand_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_CreateDelegate_OutputDelegate) == 0x000008, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_CreateDelegate_OutputDelegate_1) == 0x000018, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_CreateDelegate_OutputDelegate_2) == 0x000028, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, CallFunc_GetOwner_ReturnValue) == 0x000038, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_DynamicCast_As_BP_VRBody) == 0x000040, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_DynamicCast_As_BP_VRBody' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_DynamicCast_bSuccess) == 0x000048, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, CallFunc_GetAttachParent_ReturnValue) == 0x000050, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::CallFunc_GetAttachParent_ReturnValue' has a wrong offset!");
@@ -63,9 +64,8 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandI
 static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_CustomEvent_Weapon_1) == 0x000068, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_CustomEvent_Weapon_1' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_CustomEvent_Weapon) == 0x000070, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_CustomEvent_Weapon' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, K2Node_Event_DeltaSeconds) == 0x000078, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::K2Node_Event_DeltaSeconds' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, CallFunc_IsMainHand_ReturnValue) == 0x00007C, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::CallFunc_IsMainHand_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, CallFunc_IsItemSelectorActive_ReturnValue) == 0x00007D, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::CallFunc_IsItemSelectorActive_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, CallFunc_BooleanOR_ReturnValue) == 0x00007E, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, CallFunc_IsItemSelectorActive_ReturnValue) == 0x00007C, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::CallFunc_IsItemSelectorActive_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent, CallFunc_BooleanOR_ReturnValue) == 0x00007D, "Member '_BP_HandInteractionComponent_C_ExecuteUbergraph__BP_HandInteractionComponent::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.ReceiveTick
 // 0x0004 (0x0004 - 0x0000)

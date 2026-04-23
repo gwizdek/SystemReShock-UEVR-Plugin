@@ -19,7 +19,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C
-// 0x00F8 (0x0318 - 0x0220)
+// 0x01B0 (0x03D0 - 0x0220)
 class A_BP_MeleeWeaponHandler_C final : public AActor
 {
 public:
@@ -31,10 +31,14 @@ public:
 	class USceneComponent*                        IntermBTrace;                                      // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        IntermATrace;                                      // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0258(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	bool                                          WeaponHit;                                         // 0x0260(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          bShowVisualizers;                                  // 0x0261(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsActive;                                          // 0x0262(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_263[0x5];                                      // 0x0263(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          IsActive;                                          // 0x0260(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsCooledDown;                                      // 0x0261(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          bPrevHot;                                          // 0x0262(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsLaserRapier;                                     // 0x0263(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsLaserRapierChargedMode;                          // 0x0264(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          bShowVisualizers;                                  // 0x0265(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          UEVRProcessDamage;                                 // 0x0266(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_267[0x1];                                      // 0x0267(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
 	class UITEM_MeleeWeapon_Base_C*               WeaponItemRef;                                     // 0x0268(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class A_BP_VRBody_C*                          VRBodyRef;                                         // 0x0270(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         InterpSpeed;                                       // 0x0278(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -53,6 +57,12 @@ public:
 	struct FVector                                IntermBPrevWorldLocation;                          // 0x02F0(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                TipWorldLocation;                                  // 0x02FC(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                TipPrevWorldLocation;                              // 0x0308(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CoolDownTime;                                      // 0x0314(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTimerHandle                           CooldownTimer;                                     // 0x0318(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class UAudioComponent*                        ReusableAudioComponent;                            // 0x0320(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<EObjectTypeQuery>                      TraceObjectTypes;                                  // 0x0328(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FHitResult                             ReusableOutHit;                                    // 0x0338(0x0088)(Edit, BlueprintVisible, DisableEditOnInstance, IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	TArray<class UClass*>                         HitActorClassFilter;                               // 0x03C0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
 
 public:
 	void ExecuteUbergraph__BP_MeleeWeaponHandler(int32 EntryPoint);
@@ -68,6 +78,11 @@ public:
 	void GetHitTraceStartEndLocations(struct FVector& StartPoint, struct FVector& EndPoint);
 	void AttachTracePoint(class USceneComponent* InTraceComponent, float InOffset);
 	void UpdateTracePointPos();
+	void TryMeleeHit();
+	void TryHandleColdHotTransition();
+	void TryUpdateLaserPowerLevel(float Power);
+	void FinishWeaponCooldown();
+	void SetLaserRapierChargedMode(bool Charged);
 
 public:
 	static class UClass* StaticClass()
@@ -80,7 +95,7 @@ public:
 	}
 };
 static_assert(alignof(A_BP_MeleeWeaponHandler_C) == 0x000008, "Wrong alignment on A_BP_MeleeWeaponHandler_C");
-static_assert(sizeof(A_BP_MeleeWeaponHandler_C) == 0x000318, "Wrong size on A_BP_MeleeWeaponHandler_C");
+static_assert(sizeof(A_BP_MeleeWeaponHandler_C) == 0x0003D0, "Wrong size on A_BP_MeleeWeaponHandler_C");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, UberGraphFrame) == 0x000220, "Member 'A_BP_MeleeWeaponHandler_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, TipMotionVisualizer) == 0x000228, "Member 'A_BP_MeleeWeaponHandler_C::TipMotionVisualizer' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, GripMotionVisualizer) == 0x000230, "Member 'A_BP_MeleeWeaponHandler_C::GripMotionVisualizer' has a wrong offset!");
@@ -89,9 +104,13 @@ static_assert(offsetof(A_BP_MeleeWeaponHandler_C, TipTrace) == 0x000240, "Member
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IntermBTrace) == 0x000248, "Member 'A_BP_MeleeWeaponHandler_C::IntermBTrace' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IntermATrace) == 0x000250, "Member 'A_BP_MeleeWeaponHandler_C::IntermATrace' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, DefaultSceneRoot) == 0x000258, "Member 'A_BP_MeleeWeaponHandler_C::DefaultSceneRoot' has a wrong offset!");
-static_assert(offsetof(A_BP_MeleeWeaponHandler_C, WeaponHit) == 0x000260, "Member 'A_BP_MeleeWeaponHandler_C::WeaponHit' has a wrong offset!");
-static_assert(offsetof(A_BP_MeleeWeaponHandler_C, bShowVisualizers) == 0x000261, "Member 'A_BP_MeleeWeaponHandler_C::bShowVisualizers' has a wrong offset!");
-static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IsActive) == 0x000262, "Member 'A_BP_MeleeWeaponHandler_C::IsActive' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IsActive) == 0x000260, "Member 'A_BP_MeleeWeaponHandler_C::IsActive' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IsCooledDown) == 0x000261, "Member 'A_BP_MeleeWeaponHandler_C::IsCooledDown' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, bPrevHot) == 0x000262, "Member 'A_BP_MeleeWeaponHandler_C::bPrevHot' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IsLaserRapier) == 0x000263, "Member 'A_BP_MeleeWeaponHandler_C::IsLaserRapier' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IsLaserRapierChargedMode) == 0x000264, "Member 'A_BP_MeleeWeaponHandler_C::IsLaserRapierChargedMode' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, bShowVisualizers) == 0x000265, "Member 'A_BP_MeleeWeaponHandler_C::bShowVisualizers' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, UEVRProcessDamage) == 0x000266, "Member 'A_BP_MeleeWeaponHandler_C::UEVRProcessDamage' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, WeaponItemRef) == 0x000268, "Member 'A_BP_MeleeWeaponHandler_C::WeaponItemRef' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, VRBodyRef) == 0x000270, "Member 'A_BP_MeleeWeaponHandler_C::VRBodyRef' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, InterpSpeed) == 0x000278, "Member 'A_BP_MeleeWeaponHandler_C::InterpSpeed' has a wrong offset!");
@@ -109,6 +128,12 @@ static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IntermBWorldLocation) == 0x000
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, IntermBPrevWorldLocation) == 0x0002F0, "Member 'A_BP_MeleeWeaponHandler_C::IntermBPrevWorldLocation' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, TipWorldLocation) == 0x0002FC, "Member 'A_BP_MeleeWeaponHandler_C::TipWorldLocation' has a wrong offset!");
 static_assert(offsetof(A_BP_MeleeWeaponHandler_C, TipPrevWorldLocation) == 0x000308, "Member 'A_BP_MeleeWeaponHandler_C::TipPrevWorldLocation' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, CoolDownTime) == 0x000314, "Member 'A_BP_MeleeWeaponHandler_C::CoolDownTime' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, CooldownTimer) == 0x000318, "Member 'A_BP_MeleeWeaponHandler_C::CooldownTimer' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, ReusableAudioComponent) == 0x000320, "Member 'A_BP_MeleeWeaponHandler_C::ReusableAudioComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, TraceObjectTypes) == 0x000328, "Member 'A_BP_MeleeWeaponHandler_C::TraceObjectTypes' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, ReusableOutHit) == 0x000338, "Member 'A_BP_MeleeWeaponHandler_C::ReusableOutHit' has a wrong offset!");
+static_assert(offsetof(A_BP_MeleeWeaponHandler_C, HitActorClassFilter) == 0x0003C0, "Member 'A_BP_MeleeWeaponHandler_C::HitActorClassFilter' has a wrong offset!");
 
 }
 

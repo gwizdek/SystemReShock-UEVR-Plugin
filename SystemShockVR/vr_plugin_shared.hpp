@@ -32,7 +32,10 @@ enum EGameState : uint8_t {
     GAME_STATE_PSEUDOSPACE = 7,
     GAME_STATE_MFD_PRE = 8, // one tick state when MFD is drawn based on HMD rotation
     GAME_STATE_MFD = 9,
-    GAME_STATE_INTERACTABLE = 10
+    GAME_STATE_INTERACTABLE = 10,
+    GAME_STATE_INTRO_DRONE = 11,
+    GAME_STATE_BOOTING_UP = 12,
+    GAME_STATE_CRASHING = 13
 };
 
 static std::map<EGameState, const char*> GameStateName = {
@@ -46,5 +49,28 @@ static std::map<EGameState, const char*> GameStateName = {
     { GAME_STATE_PSEUDOSPACE, "Pseudeospace" },
     { GAME_STATE_MFD_PRE, "MFD Pre" },
     { GAME_STATE_MFD, "MFD" },
-    { GAME_STATE_INTERACTABLE, "Interactable" }
+    { GAME_STATE_INTERACTABLE, "Interactable" },
+    { GAME_STATE_INTRO_DRONE, "Intro Drone" },
+    { GAME_STATE_BOOTING_UP, "Booting Up" },
+    { GAME_STATE_CRASHING, "Crashing" }
+};
+
+
+// Pawn states
+enum EPawnState : uint8_t {
+    PAWN_UNKNOWN = 0,
+    PAWN_PLAYERGHOST = 1,
+    PAWN_HACKERSIMPLE = 2,
+    PAWN_HACKERIMPLANT = 3,
+    PAWN_AVATAR = 4,
+    PAWN_PSEUDOSPACE = 5
+};
+
+static std::map<EPawnState, const char*> PawnStateName = {
+    { PAWN_UNKNOWN, "Unknown" },
+    { PAWN_PLAYERGHOST, "Player Ghost" },
+    { PAWN_HACKERSIMPLE, "Hacker Simple" },
+    { PAWN_HACKERIMPLANT, "Hacker Implant" },
+    { PAWN_AVATAR, "Avatar" },
+    { PAWN_PSEUDOSPACE, "Pseudospace" }
 };
