@@ -67,11 +67,10 @@ void I_BI_VRWeapon_C::UseSourceMesh(bool Value)
 // bool                                    OutEnabledLaserPointer                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // E_ENUM_VRHand                           OutHand                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    OutIsHandheldConsumable                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// bool                                    OutIsMeleeWeapon                                       (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    OutIsHandheldExplosive                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // E_ENUM_ItemCategory                     OutItemCategory                                        (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void I_BI_VRWeapon_C::GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_VRHandPose* OutGripHandPose, struct FTransform* OutWeaponOffset, bool* OutUseHackerPawnWeaponAnims, bool* OutEnabledLaserPointer, E_ENUM_VRHand* OutHand, bool* OutIsHandheldConsumable, bool* OutIsMeleeWeapon, bool* OutIsHandheldExplosive, E_ENUM_ItemCategory* OutItemCategory)
+void I_BI_VRWeapon_C::GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_VRHandPose* OutGripHandPose, struct FTransform* OutWeaponOffset, bool* OutUseHackerPawnWeaponAnims, bool* OutEnabledLaserPointer, E_ENUM_VRHand* OutHand, bool* OutIsHandheldConsumable, bool* OutIsHandheldExplosive, E_ENUM_ItemCategory* OutItemCategory)
 {
 	static class UFunction* Func = nullptr;
 
@@ -102,9 +101,6 @@ void I_BI_VRWeapon_C::GetDefaultParams(class FName* OutAttachSocketName, E_ENUM_
 
 	if (OutIsHandheldConsumable != nullptr)
 		*OutIsHandheldConsumable = Parms.OutIsHandheldConsumable;
-
-	if (OutIsMeleeWeapon != nullptr)
-		*OutIsMeleeWeapon = Parms.OutIsMeleeWeapon;
 
 	if (OutIsHandheldExplosive != nullptr)
 		*OutIsHandheldExplosive = Parms.OutIsHandheldExplosive;

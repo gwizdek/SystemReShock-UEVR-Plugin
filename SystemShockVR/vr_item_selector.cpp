@@ -104,14 +104,14 @@ void VRItemSelector::activate_current_quick_slot() {
             );
         }
     }
-    else {
-        SDK::FKey h_key_name{
-            .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
-        };
+    //else {
+    //    SDK::FKey h_key_name{
+    //        .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
+    //    };
 
-        // holster weapon
-        g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
-    }
+    //    // holster weapon
+    //    g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+    //}
 }
 
 void VRItemSelector::set_visibility(bool visible) {

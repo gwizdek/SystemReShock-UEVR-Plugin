@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "_ENUM_VRHandPose_structs.hpp"
-#include "_ENUM_ItemCategory_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
+#include "_ENUM_ItemCategory_structs.hpp"
 
 
 namespace SDK::Params
@@ -54,9 +54,8 @@ public:
 	bool                                          OutEnabledLaserPointer;                            // 0x0041(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 	E_ENUM_VRHand                                 OutHand;                                           // 0x0042(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          OutIsHandheldConsumable;                           // 0x0043(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          OutIsMeleeWeapon;                                  // 0x0044(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          OutIsHandheldExplosive;                            // 0x0045(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	E_ENUM_ItemCategory                           OutItemCategory;                                   // 0x0046(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          OutIsHandheldExplosive;                            // 0x0044(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	E_ENUM_ItemCategory                           OutItemCategory;                                   // 0x0045(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BI_VRWeapon_C_GetDefaultParams) == 0x000010, "Wrong alignment on _BI_VRWeapon_C_GetDefaultParams");
 static_assert(sizeof(_BI_VRWeapon_C_GetDefaultParams) == 0x000050, "Wrong size on _BI_VRWeapon_C_GetDefaultParams");
@@ -67,9 +66,8 @@ static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutUseHackerPawnWeaponAn
 static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutEnabledLaserPointer) == 0x000041, "Member '_BI_VRWeapon_C_GetDefaultParams::OutEnabledLaserPointer' has a wrong offset!");
 static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutHand) == 0x000042, "Member '_BI_VRWeapon_C_GetDefaultParams::OutHand' has a wrong offset!");
 static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutIsHandheldConsumable) == 0x000043, "Member '_BI_VRWeapon_C_GetDefaultParams::OutIsHandheldConsumable' has a wrong offset!");
-static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutIsMeleeWeapon) == 0x000044, "Member '_BI_VRWeapon_C_GetDefaultParams::OutIsMeleeWeapon' has a wrong offset!");
-static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutIsHandheldExplosive) == 0x000045, "Member '_BI_VRWeapon_C_GetDefaultParams::OutIsHandheldExplosive' has a wrong offset!");
-static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutItemCategory) == 0x000046, "Member '_BI_VRWeapon_C_GetDefaultParams::OutItemCategory' has a wrong offset!");
+static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutIsHandheldExplosive) == 0x000044, "Member '_BI_VRWeapon_C_GetDefaultParams::OutIsHandheldExplosive' has a wrong offset!");
+static_assert(offsetof(_BI_VRWeapon_C_GetDefaultParams, OutItemCategory) == 0x000045, "Member '_BI_VRWeapon_C_GetDefaultParams::OutItemCategory' has a wrong offset!");
 
 // Function _BI_VRWeapon._BI_VRWeapon_C.InitInteractionSources
 // 0x0008 (0x0008 - 0x0000)

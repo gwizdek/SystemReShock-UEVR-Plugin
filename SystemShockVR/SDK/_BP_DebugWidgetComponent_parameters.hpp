@@ -17,26 +17,29 @@ namespace SDK::Params
 {
 
 // Function _BP_DebugWidgetComponent._BP_DebugWidgetComponent_C.AddDebugMessage
-// 0x0038 (0x0038 - 0x0000)
+// 0x0040 (0x0040 - 0x0000)
 struct _BP_DebugWidgetComponent_C_AddDebugMessage final
 {
 public:
 	class FString                                 NewMessage;                                        // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 	E_ENUM_DebugWidgetEntryType                   InType;                                            // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUserWidget*                            CallFunc_GetWidget_ReturnValue;                    // 0x0018(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class U_BP_DebugWidgetEntryData_C*            CallFunc_SpawnObject_ReturnValue;                  // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class U_WIDGET_DebugWidget_C*                 K2Node_DynamicCast_As_WIDGET_Debug_Widget;         // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class U_BP_DebugWidgetEntryData_C*            CallFunc_SpawnObject_ReturnValue;                  // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_ByteByte_ReturnValue;        // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUserWidget*                            CallFunc_GetWidget_ReturnValue;                    // 0x0028(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class U_WIDGET_DebugWidget_C*                 K2Node_DynamicCast_As_WIDGET_Debug_Widget;         // 0x0030(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_DebugWidgetComponent_C_AddDebugMessage) == 0x000008, "Wrong alignment on _BP_DebugWidgetComponent_C_AddDebugMessage");
-static_assert(sizeof(_BP_DebugWidgetComponent_C_AddDebugMessage) == 0x000038, "Wrong size on _BP_DebugWidgetComponent_C_AddDebugMessage");
+static_assert(sizeof(_BP_DebugWidgetComponent_C_AddDebugMessage) == 0x000040, "Wrong size on _BP_DebugWidgetComponent_C_AddDebugMessage");
 static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, NewMessage) == 0x000000, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::NewMessage' has a wrong offset!");
 static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, InType) == 0x000010, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::InType' has a wrong offset!");
-static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, CallFunc_GetWidget_ReturnValue) == 0x000018, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::CallFunc_GetWidget_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, CallFunc_SpawnObject_ReturnValue) == 0x000020, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::CallFunc_SpawnObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, K2Node_DynamicCast_As_WIDGET_Debug_Widget) == 0x000028, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::K2Node_DynamicCast_As_WIDGET_Debug_Widget' has a wrong offset!");
-static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, K2Node_DynamicCast_bSuccess) == 0x000030, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, CallFunc_SpawnObject_ReturnValue) == 0x000018, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::CallFunc_SpawnObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, CallFunc_GreaterEqual_ByteByte_ReturnValue) == 0x000020, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::CallFunc_GreaterEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, CallFunc_GetWidget_ReturnValue) == 0x000028, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::CallFunc_GetWidget_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, K2Node_DynamicCast_As_WIDGET_Debug_Widget) == 0x000030, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::K2Node_DynamicCast_As_WIDGET_Debug_Widget' has a wrong offset!");
+static_assert(offsetof(_BP_DebugWidgetComponent_C_AddDebugMessage, K2Node_DynamicCast_bSuccess) == 0x000038, "Member '_BP_DebugWidgetComponent_C_AddDebugMessage::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 }
 

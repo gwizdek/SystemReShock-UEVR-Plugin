@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "_ENUM_ItemCategory_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
-#include "_ENUM_ItemCategory_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
 
@@ -63,11 +63,10 @@ public:
 	bool                                          IsReachingBackpack;                                // 0x0305(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          IsHoldingHandheldConsumable;                       // 0x0306(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	bool                                          IsHoldingWeapon;                                   // 0x0307(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsMeleeWeapon;                                     // 0x0308(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          bIsMainHand;                                       // 0x0309(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          IsGrabbingItem;                                    // 0x030A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          IsSnappedToInteractionSource;                      // 0x030B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_30C[0x4];                                      // 0x030C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bIsMainHand;                                       // 0x0308(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          IsGrabbingItem;                                    // 0x0309(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsSnappedToInteractionSource;                      // 0x030A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_30B[0x5];                                      // 0x030B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	class U_BP_InteractionSourceComponent_C*      ActiveWeaponInteractionSource;                     // 0x0310(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsChannelingWeaponSource;                          // 0x0318(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	E_ENUM_VRHand                                 Hand;                                              // 0x0319(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -146,10 +145,9 @@ static_assert(offsetof(U_BP_HandInteractionComponent_C, IsIndexFingerActive) == 
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsReachingBackpack) == 0x000305, "Member 'U_BP_HandInteractionComponent_C::IsReachingBackpack' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsHoldingHandheldConsumable) == 0x000306, "Member 'U_BP_HandInteractionComponent_C::IsHoldingHandheldConsumable' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsHoldingWeapon) == 0x000307, "Member 'U_BP_HandInteractionComponent_C::IsHoldingWeapon' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsMeleeWeapon) == 0x000308, "Member 'U_BP_HandInteractionComponent_C::IsMeleeWeapon' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, bIsMainHand) == 0x000309, "Member 'U_BP_HandInteractionComponent_C::bIsMainHand' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsGrabbingItem) == 0x00030A, "Member 'U_BP_HandInteractionComponent_C::IsGrabbingItem' has a wrong offset!");
-static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToInteractionSource) == 0x00030B, "Member 'U_BP_HandInteractionComponent_C::IsSnappedToInteractionSource' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, bIsMainHand) == 0x000308, "Member 'U_BP_HandInteractionComponent_C::bIsMainHand' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsGrabbingItem) == 0x000309, "Member 'U_BP_HandInteractionComponent_C::IsGrabbingItem' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsSnappedToInteractionSource) == 0x00030A, "Member 'U_BP_HandInteractionComponent_C::IsSnappedToInteractionSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, ActiveWeaponInteractionSource) == 0x000310, "Member 'U_BP_HandInteractionComponent_C::ActiveWeaponInteractionSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsChannelingWeaponSource) == 0x000318, "Member 'U_BP_HandInteractionComponent_C::IsChannelingWeaponSource' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, Hand) == 0x000319, "Member 'U_BP_HandInteractionComponent_C::Hand' has a wrong offset!");

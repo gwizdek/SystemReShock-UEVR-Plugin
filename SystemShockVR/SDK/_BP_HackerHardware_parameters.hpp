@@ -85,13 +85,12 @@ public:
 	uint8                                         Pad_34D[0x3];                                      // 0x034D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<class UWidgetComponent*>               K2Node_MakeArray_Array;                            // 0x0350(0x0010)(ReferenceParm, ContainsInstancedReference)
 	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0360(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0361(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_362[0x6];                                      // 0x0362(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_361[0x7];                                      // 0x0361(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FTimerHandle                           CallFunc_K2_SetTimerDelegate_ReturnValue;          // 0x0368(0x0008)(NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0370(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_BoolBool_ReturnValue;          // 0x0371(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x0372(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_3;                 // 0x0373(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0371(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_BoolBool_ReturnValue;          // 0x0372(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x0373(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware) == 0x000008, "Wrong alignment on _BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware");
 static_assert(sizeof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware) == 0x000378, "Wrong size on _BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware");
@@ -144,12 +143,11 @@ static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware,
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_Greater_FloatFloat_ReturnValue) == 0x00034C, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, K2Node_MakeArray_Array) == 0x000350, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::K2Node_MakeArray_Array' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_BooleanAND_ReturnValue) == 0x000360, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_BooleanAND_ReturnValue_1) == 0x000361, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_K2_SetTimerDelegate_ReturnValue) == 0x000368, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_K2_SetTimerDelegate_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000370, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_EqualEqual_BoolBool_ReturnValue) == 0x000371, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_EqualEqual_BoolBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_BooleanAND_ReturnValue_2) == 0x000372, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_BooleanAND_ReturnValue_3) == 0x000373, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_BooleanAND_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_BooleanAND_ReturnValue_1) == 0x000371, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_EqualEqual_BoolBool_ReturnValue) == 0x000372, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_EqualEqual_BoolBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware, CallFunc_BooleanAND_ReturnValue_2) == 0x000373, "Member '_BP_HackerHardware_C_ExecuteUbergraph__BP_HackerHardware::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
 
 // Function _BP_HackerHardware._BP_HackerHardware_C.BndEvt___BP_HackerHardware_EnergyShieldWidgetComponent_K2Node_ComponentBoundEvent_3_ComponentBeginOverlapSignature__DelegateSignature
 // 0x00A8 (0x00A8 - 0x0000)

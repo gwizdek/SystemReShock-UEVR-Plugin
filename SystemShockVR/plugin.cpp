@@ -638,6 +638,16 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             }
         }
         if (m_gamepad_right_shoulder.is_released()) {
+            if (g_vr_body->HandInteractionRight->IsReachingBackpack) {
+                if (g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr) {
+                    // use holster weapon button: holster weapon
+                    SDK::FKey h_key_name{
+                        .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
+                    };
+                    g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+                }
+            }
+
             g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator0);
 
             if (!g_vr_body->HandInteractionRight->IsHoldingWeapon) {
@@ -665,8 +675,24 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             // set undefined hand pose
             g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
 
+            if (
+                g_vr_body->HandInteractionLeft->IsReachingBackpack &&
+                g_vr_body->HandInteractionLeft->HeldItemCategory == E_ENUM_ItemCategory::NewEnumerator4 // None
+                ) {
+                API::get()->log_warn("[plugin][handle_citadel_station_xinput] Toggle VisionUnit");
+                m_neural_hud->WIDGET_HardwareButton_VisionUnit->ToggleHardware();
+            }
+
             // try releasing world object
             g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator0);
+        }
+
+        // Left Thumb
+        if (m_gamepad_left_thumb.is_released()) {
+            if (g_vr_body->HandInteractionLeft->IsReachingBackpack) {
+                PluginUtils::reset_height(0.f);
+                vr->recenter_view();
+            }
         }
 
         handle_primary_item_selector(state, vr);
@@ -858,14 +884,12 @@ void UEVRPlugin::handle_game_state_change() {
                                 )
                            ) {
                             VRBody::reset_player_camera();
-                            VRBody::set_weapon_mesh_visibility(false);
                             vr->set_aim_method(0);                      // Game mode
                             vr->set_mod_value("VR_RoomscaleMovement", "false");
 
                             // TODO - not working?
-                            static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->ArmsMesh->SetVisibility(false, false);
+                            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->ArmsMesh->SetVisibility(false, false);
                             VRBody::hide_vr_body();
-                            // g_vr_body->VRBodyMesh->SetVisibility(false, false);
 
                             API::UObjectHook::set_disabled(true);
                         }
@@ -1156,9 +1180,12 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         auto ctrl = (SDK::ACON_Hacker_C*)m_pawn.get()->Controller;
         ctrl->SetIsUsingGamepad(false);
 
-        // mute controller A, Y buttons, we'll use them for LMB, RMB
+        // mute controller A, Y buttons
         m_gamepad_btn_a.mute_state(state);
         m_gamepad_btn_y.mute_state(state);
+
+        m_gamepad_right_trigger.mute_state(state);
+        m_gamepad_right_shoulder.mute_state(state);
 
         // scroll up
         if (state->Gamepad.sThumbRY > INPUT_DEADZONE_HI && m_mouse_wheel_debounce_timer > MOUSE_WHEEL_DEBOUNCE_TIME) {
@@ -1174,27 +1201,20 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         state->Gamepad.sThumbRX = 0;
         state->Gamepad.sThumbRY = 0;
 
-        if (m_gamepad_btn_a.is_pressed()) {
-            SDK::FKey lmb{
-                .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"LeftMouseButton")
-            };
-            static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_98(lmb);
-            //g_vr_body->WidgetInteractionRight->PressPointerKey(lmb);
+        if (m_gamepad_right_trigger.is_pressed()) {
+            send_mouse(VK_LBUTTON, false);
         }
 
-        if (m_gamepad_btn_a.is_released()) {
-            SDK::FKey lmb{
-                .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"LeftMouseButton")
-            };
-            static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Real_PrimaryAttack_K2Node_InputActionEvent_98(lmb);
-            //g_vr_body->WidgetInteractionRight->ReleasePointerKey(lmb);
-        }
-        if (m_gamepad_btn_a.has_changed()) {
-            send_mouse(VK_LBUTTON, !m_gamepad_btn_a.value);
+        if (m_gamepad_right_trigger.is_released()) {
+            send_mouse(VK_LBUTTON, true);
         }
 
-        if (m_gamepad_btn_y.has_changed()) {
-            send_mouse(VK_RBUTTON, !m_gamepad_btn_y.value);
+        if (m_gamepad_right_shoulder.is_pressed()) {
+            send_mouse(VK_RBUTTON, false);
+        }
+
+        if (m_gamepad_right_shoulder.is_released()) {
+            send_mouse(VK_RBUTTON, true);
         }
         ctrl->SetIsUsingGamepad(false);
 
@@ -1781,6 +1801,7 @@ void UEVRPlugin::try_melee() {
             m_UEVR_process_damage.set_value(g_vr_body->MeleeWeaponHandler->UEVRProcessDamage);
 
             if (m_UEVR_process_damage.enabled()) {
+                API::get()->log_warn("[plugin][try_melee] Process Montage");
 
                 if (g_vr_body->IsTwoHandingWeapon()) {
                     //API::get()->log_warn("[plugin][try_melee] Two handed swing");

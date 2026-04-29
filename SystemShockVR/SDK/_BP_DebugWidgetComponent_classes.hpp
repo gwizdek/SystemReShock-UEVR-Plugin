@@ -10,17 +10,20 @@
 
 #include "Basic.hpp"
 
-#include "UMG_classes.hpp"
 #include "_ENUM_DebugWidgetEntryType_structs.hpp"
+#include "UMG_classes.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_DebugWidgetComponent._BP_DebugWidgetComponent_C
-// 0x0000 (0x05A0 - 0x05A0)
+// 0x0010 (0x05B0 - 0x05A0)
 class U_BP_DebugWidgetComponent_C final : public UWidgetComponent
 {
+public:
+	E_ENUM_DebugWidgetEntryType                   LogLevel;                                          // 0x05A0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
 public:
 	void AddDebugMessage(const class FString& NewMessage, E_ENUM_DebugWidgetEntryType InType);
 
@@ -35,7 +38,8 @@ public:
 	}
 };
 static_assert(alignof(U_BP_DebugWidgetComponent_C) == 0x000010, "Wrong alignment on U_BP_DebugWidgetComponent_C");
-static_assert(sizeof(U_BP_DebugWidgetComponent_C) == 0x0005A0, "Wrong size on U_BP_DebugWidgetComponent_C");
+static_assert(sizeof(U_BP_DebugWidgetComponent_C) == 0x0005B0, "Wrong size on U_BP_DebugWidgetComponent_C");
+static_assert(offsetof(U_BP_DebugWidgetComponent_C, LogLevel) == 0x0005A0, "Member 'U_BP_DebugWidgetComponent_C::LogLevel' has a wrong offset!");
 
 }
 

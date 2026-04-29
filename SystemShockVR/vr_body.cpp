@@ -164,7 +164,6 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         );
 
         vr_body->WidgetInteractionChannel = WIDGET_INTERACTION_TRACE_CHANNEL;
-        vr_body->CloseVRMenu();
 
         UWIDGET_PlayerHUD_C* neural_hud{ nullptr };
         static_cast<APAWN_Hacker_Implant_C*>(pawn)->GetNeuralHUD(&neural_hud);

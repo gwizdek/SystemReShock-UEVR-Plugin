@@ -14,6 +14,7 @@
 #include "SDK/_BP_DebugWidgetComponent_classes.hpp"
 #include "SDK/_BP_MFDMaskComponent_classes.hpp"
 #include "SDK/_BP_VRBody_classes.hpp"
+#include "SDK/_BP_HandInteractionComponent_classes.hpp"
 
 #include "vr_mfd.hpp"
 #include "vr_plugin_shared.hpp"
@@ -62,7 +63,7 @@ void VRMFD::show_mfd() {
         //g_vr_body->DebugWidgetComponent->SetRelativeScale3D({ 0.03f, 0.03f, 0.03f });
 
         g_vr_body->MFDMaskComponent->Show(1.0f, VRMFD::m_mfd_depth);
-        g_vr_body->Attach_Laser_Pointer(E_ENUM_VRHand::NewEnumerator1, true, 0.f);
+        g_vr_body->HandInteractionRight->AttachLaserPointer(true, 0.f);
 
         if (!g_vr_body->IsWeaponHolstered()) {
             // use holster weapon button: holster weapon
@@ -90,13 +91,13 @@ void VRMFD::hide_mfd() {
         g_vr_body->MFDMaskComponent->Hide();
         
 
-        if (g_vr_body->IsWeaponHolstered()) {
-            // use holster weapon button: show weapon
-            SDK::FKey h_key_name{
-                .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
-            };
-            g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
-        }
+        //if (g_vr_body->IsWeaponHolstered()) {
+        //    // use holster weapon button: show weapon
+        //    SDK::FKey h_key_name{
+        //        .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
+        //    };
+        //    g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+        //}
     }
     catch (...) {
         API::get()->log_error("[plugin][hide_mfd] Exception");

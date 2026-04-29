@@ -322,7 +322,6 @@ public:
 	uint8                                         Pad_1C6[0x2];                                      // 0x01C6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FHitResult                             CallFunc_LineTraceSingleForObjects_OutHit_2;       // 0x01C8(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
 	bool                                          CallFunc_LineTraceSingleForObjects_ReturnValue_2;  // 0x0250(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0251(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_MeleeWeaponHandler_C_TryMeleeHit) == 0x000008, "Wrong alignment on _BP_MeleeWeaponHandler_C_TryMeleeHit");
 static_assert(sizeof(_BP_MeleeWeaponHandler_C_TryMeleeHit) == 0x000258, "Wrong size on _BP_MeleeWeaponHandler_C_TryMeleeHit");
@@ -359,7 +358,6 @@ static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_LineTraceS
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_IsHot_ReturnValue) == 0x0001C5, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_IsHot_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_LineTraceSingleForObjects_OutHit_2) == 0x0001C8, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_LineTraceSingleForObjects_OutHit_2' has a wrong offset!");
 static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_LineTraceSingleForObjects_ReturnValue_2) == 0x000250, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_LineTraceSingleForObjects_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_MeleeWeaponHandler_C_TryMeleeHit, CallFunc_BooleanAND_ReturnValue_1) == 0x000251, "Member '_BP_MeleeWeaponHandler_C_TryMeleeHit::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
 
 // Function _BP_MeleeWeaponHandler._BP_MeleeWeaponHandler_C.TryHandleColdHotTransition
 // 0x0030 (0x0030 - 0x0000)
