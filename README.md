@@ -5,8 +5,8 @@
 
 > [!WARNING]
 > Windows Defender doesn't like the `SystemReShockVR.dll` file included inside the profile v1.4.0.
-> It will try to remove it from `\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\plugins` folder when importing the profile.  
-> Add a exception rule to `\Users\{username}\AppData\Roaming\UnrealVRMod` folder before importing the profile.  
+> It will try to remove it from `C:\Users\%username%\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\plugins` folder when importing the profile.  
+> Add a exception rule to `C:\Users\%username%\AppData\Roaming\UnrealVRMod` folder before importing the profile.  
 > Double check, that the `SystemReShockVR.dll` file is inside the profile folder before playing the game.
   
 > [!NOTE]
@@ -39,7 +39,7 @@ Of course, let's not forget, that it wouldn't be possible without Praydog, the a
 
 ## Installation
 1) Install latest UEVR Nightly version from [**HERE**](https://github.com/praydog/UEVR-nightly/releases).
-2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
+2) Remove your current System Shock profile folder if exists `C:\Users\%username%\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
 3) Download the latest release of the SystemReShock UEVR plugin from Releases page. Click "Import Config" in the UEVR UI and navigate to "SystemReShock-Win64-Shipping.zip" and click on it and accept the DLL warning.
 4) Add optional mod files (Index controllers support, Player Arms mod, Melee Gesture mod) - described below
 5) Launch System Shock and inject UEVR at the main menu
@@ -108,13 +108,13 @@ Select flashlight's brightness
 Select flashlight energy consumption (game's default, 1/10 consumption or no consumption).
 
 ## Optional Mods by Ashok
-There are two additional files prepared by Ashok (included in the v1.2.0 release). You can choose to add them if you want to further enhance your gameplay.   
+There are two additional files prepared by Ashok (included in the [v1.2.0 release](https://github.com/gwizdek/SystemReShock-UEVR-Plugin/releases/tag/1.2.0)). You can choose to add them if you want to further enhance your gameplay.   
 ### Player character's arms mod
 This `pak` mod makes player arms disappear. To install it, download `SystemShock-VRFixes_p.pak` file and place it inside `\Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.  
 ![hands_mod_resized](https://github.com/user-attachments/assets/d72b8c90-38f2-4f52-bfe1-e1139c68053f)  
 
 ### Physical Melee mod
-This is a `lua` script that brings back physical melee (swing gesture) from the original Ashok's mod. To install it, download `SSR_PhysicalMelee.lua` file and place it into `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\scripts` folder.  
+This is a `lua` script that brings back physical melee (swing gesture) from the original Ashok's mod. To install it, download `SSR_PhysicalMelee.lua` file and place it into `C:\Users\%username%\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\scripts` folder.  
 
 ## Visual Improvements
 Using Native Stereo Fix and High/Ultra graphics settings makes this game look top class. 
