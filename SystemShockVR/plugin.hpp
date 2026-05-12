@@ -129,6 +129,11 @@ private:
     MemoBoolean m_UEVR_process_damage{ false };
     MemoBoolean m_is_using_laptop{ false };
 
+    // pull gun mechanics
+    MemoBoolean m_is_right_hand_reaching_backpack{ false };
+    bool m_is_pulling_out_gun{ false };
+    //bool m_had_equipped_weapon{ false };
+
 // -----------------------------------------------------------------------------
 // Controller State
 // -----------------------------------------------------------------------------
@@ -138,7 +143,7 @@ private:
     MemoInput m_gamepad_right_shoulder{ XINPUT_GAMEPAD_RIGHT_SHOULDER, "RIGHT_SHOULDER" };
     MemoInput m_gamepad_left_shoulder{ XINPUT_GAMEPAD_LEFT_SHOULDER, "LEFT_SHOULDER" };
     MemoInput m_gamepad_right_thumb{ XINPUT_GAMEPAD_RIGHT_THUMB, "RIGHT_THUMB" };
-    MemoInput m_gamepad_left_thumb{ XINPUT_GAMEPAD_LEFT_THUMB, "LEFT_THUMB" };
+    MemoDualInput m_gamepad_left_thumb{ XINPUT_GAMEPAD_LEFT_THUMB, "LEFT_THUMB" };
     MemoInput m_gamepad_btn_a{ XINPUT_GAMEPAD_A, "BTN_A" };
     MemoDualInput m_gamepad_btn_b{ XINPUT_GAMEPAD_B, "BTN_B" };
     MemoInput m_gamepad_btn_x{ XINPUT_GAMEPAD_X, "BTN_X" };
@@ -169,6 +174,7 @@ public:
     void handle_media_display();
     void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_ads();
+    void handle_lean();
     void cleanup_pointers();
     void send_mouse(WORD key, bool key_up);
     bool is_valid_vr_body_hacker_implant_pawn();
@@ -177,8 +183,7 @@ public:
     // Motion Controllers
     void initialize_mcs(SDK::APAWN_Hacker_Implant_C* pawn);
     static void cleanup_actors();
-    void SpawnCustom2DScreen();
-    void toggle_gui();
+    void set_game_ui_visibility(bool visible);
     void try_melee();
     void apply_vr_game_options();
     void try_set_intro_laptop_pointer();
@@ -187,6 +192,7 @@ public:
     void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
+    void handle_vr_menu_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
 
     SDK::AActor* Custom2DScreen{ nullptr };
 };

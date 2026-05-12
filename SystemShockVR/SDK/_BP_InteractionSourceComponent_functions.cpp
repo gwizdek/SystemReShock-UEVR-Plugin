@@ -182,8 +182,9 @@ void U_BP_InteractionSourceComponent_C::TrySnap(class U_BP_HandInteractionCompon
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class U_BP_HandInteractionComponent_C*  HandInteraction                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void U_BP_InteractionSourceComponent_C::TryInteract(class AActor* SourceActor)
+void U_BP_InteractionSourceComponent_C::TryInteract(class AActor* SourceActor, class U_BP_HandInteractionComponent_C* HandInteraction)
 {
 	static class UFunction* Func = nullptr;
 
@@ -193,8 +194,37 @@ void U_BP_InteractionSourceComponent_C::TryInteract(class AActor* SourceActor)
 	Params::_BP_InteractionSourceComponent_C_TryInteract Parms{};
 
 	Parms.SourceActor = SourceActor;
+	Parms.HandInteraction = HandInteraction;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.StartCooldown
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void U_BP_InteractionSourceComponent_C::StartCooldown()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "StartCooldown");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.StopCooldown
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void U_BP_InteractionSourceComponent_C::StopCooldown()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractionSourceComponent_C", "StopCooldown");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 

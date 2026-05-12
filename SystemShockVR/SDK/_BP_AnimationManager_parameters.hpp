@@ -83,39 +83,50 @@ static_assert(sizeof(_BP_AnimationManager_C_OnActionStarted) == 0x000008, "Wrong
 static_assert(offsetof(_BP_AnimationManager_C_OnActionStarted, Action) == 0x000000, "Member '_BP_AnimationManager_C_OnActionStarted::Action' has a wrong offset!");
 
 // Function _BP_AnimationManager._BP_AnimationManager_C.HandleOnActionStarted
-// 0x0050 (0x0050 - 0x0000)
+// 0x0058 (0x0058 - 0x0000)
 struct _BP_AnimationManager_C_HandleOnActionStarted final
 {
 public:
 	class UCharacterAction_C*                     Action;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UAnimMontage*                           LocalMontage;                                      // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FString                                 CallFunc_GetDisplayName_ReturnValue;               // 0x0010(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	struct F_STRUCT_MontageMeta                   CallFunc_Map_Find_Value;                           // 0x0020(0x0018)(HasGetValueTypeHash)
-	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0040(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	struct F_STRUCT_MontageMeta                   CallFunc_Map_Find_Value;                           // 0x0030(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_FloatFloat_ReturnValue;        // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_FloatFloat_ReturnValue_1;      // 0x0052(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_AnimationManager_C_HandleOnActionStarted) == 0x000008, "Wrong alignment on _BP_AnimationManager_C_HandleOnActionStarted");
-static_assert(sizeof(_BP_AnimationManager_C_HandleOnActionStarted) == 0x000050, "Wrong size on _BP_AnimationManager_C_HandleOnActionStarted");
+static_assert(sizeof(_BP_AnimationManager_C_HandleOnActionStarted) == 0x000058, "Wrong size on _BP_AnimationManager_C_HandleOnActionStarted");
 static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, Action) == 0x000000, "Member '_BP_AnimationManager_C_HandleOnActionStarted::Action' has a wrong offset!");
 static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, LocalMontage) == 0x000008, "Member '_BP_AnimationManager_C_HandleOnActionStarted::LocalMontage' has a wrong offset!");
 static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, CallFunc_GetDisplayName_ReturnValue) == 0x000010, "Member '_BP_AnimationManager_C_HandleOnActionStarted::CallFunc_GetDisplayName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, CallFunc_Map_Find_Value) == 0x000020, "Member '_BP_AnimationManager_C_HandleOnActionStarted::CallFunc_Map_Find_Value' has a wrong offset!");
-static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, CallFunc_Map_Find_ReturnValue) == 0x000038, "Member '_BP_AnimationManager_C_HandleOnActionStarted::CallFunc_Map_Find_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, CallFunc_Concat_StrStr_ReturnValue) == 0x000040, "Member '_BP_AnimationManager_C_HandleOnActionStarted::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, CallFunc_Concat_StrStr_ReturnValue) == 0x000020, "Member '_BP_AnimationManager_C_HandleOnActionStarted::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, CallFunc_Map_Find_Value) == 0x000030, "Member '_BP_AnimationManager_C_HandleOnActionStarted::CallFunc_Map_Find_Value' has a wrong offset!");
+static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, CallFunc_Map_Find_ReturnValue) == 0x000050, "Member '_BP_AnimationManager_C_HandleOnActionStarted::CallFunc_Map_Find_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, CallFunc_EqualEqual_FloatFloat_ReturnValue) == 0x000051, "Member '_BP_AnimationManager_C_HandleOnActionStarted::CallFunc_EqualEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionStarted, CallFunc_EqualEqual_FloatFloat_ReturnValue_1) == 0x000052, "Member '_BP_AnimationManager_C_HandleOnActionStarted::CallFunc_EqualEqual_FloatFloat_ReturnValue_1' has a wrong offset!");
 
 // Function _BP_AnimationManager._BP_AnimationManager_C.HandleOnActionEnded
-// 0x0010 (0x0010 - 0x0000)
+// 0x0058 (0x0058 - 0x0000)
 struct _BP_AnimationManager_C_HandleOnActionEnded final
 {
 public:
 	class UCharacterAction_C*                     Action;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UAnimMontage*                           LocalMontage;                                      // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_GetDisplayName_ReturnValue;               // 0x0010(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	struct F_STRUCT_MontageMeta                   CallFunc_Map_Find_Value;                           // 0x0030(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_AnimationManager_C_HandleOnActionEnded) == 0x000008, "Wrong alignment on _BP_AnimationManager_C_HandleOnActionEnded");
-static_assert(sizeof(_BP_AnimationManager_C_HandleOnActionEnded) == 0x000010, "Wrong size on _BP_AnimationManager_C_HandleOnActionEnded");
+static_assert(sizeof(_BP_AnimationManager_C_HandleOnActionEnded) == 0x000058, "Wrong size on _BP_AnimationManager_C_HandleOnActionEnded");
 static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionEnded, Action) == 0x000000, "Member '_BP_AnimationManager_C_HandleOnActionEnded::Action' has a wrong offset!");
 static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionEnded, LocalMontage) == 0x000008, "Member '_BP_AnimationManager_C_HandleOnActionEnded::LocalMontage' has a wrong offset!");
+static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionEnded, CallFunc_GetDisplayName_ReturnValue) == 0x000010, "Member '_BP_AnimationManager_C_HandleOnActionEnded::CallFunc_GetDisplayName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionEnded, CallFunc_Concat_StrStr_ReturnValue) == 0x000020, "Member '_BP_AnimationManager_C_HandleOnActionEnded::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionEnded, CallFunc_Map_Find_Value) == 0x000030, "Member '_BP_AnimationManager_C_HandleOnActionEnded::CallFunc_Map_Find_Value' has a wrong offset!");
+static_assert(offsetof(_BP_AnimationManager_C_HandleOnActionEnded, CallFunc_Map_Find_ReturnValue) == 0x000050, "Member '_BP_AnimationManager_C_HandleOnActionEnded::CallFunc_Map_Find_ReturnValue' has a wrong offset!");
 
 }
 

@@ -146,7 +146,7 @@ void U_BP_AnimationManager_C::HandleOnActionStarted(class UCharacterAction_C* Ac
 
 
 // Function _BP_AnimationManager._BP_AnimationManager_C.HandleOnActionEnded
-// (Public, BlueprintCallable, BlueprintEvent)
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class UCharacterAction_C*               Action                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 

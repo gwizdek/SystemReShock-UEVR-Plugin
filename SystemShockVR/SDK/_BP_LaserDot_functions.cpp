@@ -107,34 +107,6 @@ void A_BP_LaserDot_C::SetPowerAndSize(float InPower, float InSize)
 }
 
 
-// Function _BP_LaserDot._BP_LaserDot_C.EnableTrace
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void A_BP_LaserDot_C::EnableTrace()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_LaserDot_C", "EnableTrace");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function _BP_LaserDot._BP_LaserDot_C.DisableTrace
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void A_BP_LaserDot_C::DisableTrace()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_LaserDot_C", "DisableTrace");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function _BP_LaserDot._BP_LaserDot_C.SetColor
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -201,21 +173,21 @@ void A_BP_LaserDot_C::AttachTo(class USceneComponent* InParent, class FName InSo
 }
 
 
-// Function _BP_LaserDot._BP_LaserDot_C.SetVisibility
+// Function _BP_LaserDot._BP_LaserDot_C.SetLaserVisibility
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // bool                                    Dot                                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    beam                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // float                                   DisableAfter                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void A_BP_LaserDot_C::SetVisibility(bool Dot, bool beam, float DisableAfter)
+void A_BP_LaserDot_C::SetLaserVisibility(bool Dot, bool beam, float DisableAfter)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_LaserDot_C", "SetVisibility");
+		Func = Class->GetFunction("_BP_LaserDot_C", "SetLaserVisibility");
 
-	Params::_BP_LaserDot_C_SetVisibility Parms{};
+	Params::_BP_LaserDot_C_SetLaserVisibility Parms{};
 
 	Parms.Dot = Dot;
 	Parms.beam = beam;
@@ -244,6 +216,50 @@ void A_BP_LaserDot_C::Set_Laser_Beam_Params(float InAlpha, const struct FLinearC
 	Parms.InAlpha = InAlpha;
 	Parms.InLaserColour = std::move(InLaserColour);
 	Parms.InLaserPower = InLaserPower;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_LaserDot._BP_LaserDot_C.OnScanDataChanged
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UObject*                          Interactable                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              Primitive                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FText                             Description                                            (BlueprintVisible, BlueprintReadOnly, Parm)
+
+void A_BP_LaserDot_C::OnScanDataChanged(class UObject* Interactable, class UPrimitiveComponent* Primitive, const class FText& Description)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_LaserDot_C", "OnScanDataChanged");
+
+	Params::_BP_LaserDot_C_OnScanDataChanged Parms{};
+
+	Parms.Interactable = Interactable;
+	Parms.Primitive = Primitive;
+	Parms.Description = std::move(Description);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_LaserDot._BP_LaserDot_C.EmulateScanner
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           NewActor                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void A_BP_LaserDot_C::EmulateScanner(class AActor* NewActor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_LaserDot_C", "EmulateScanner");
+
+	Params::_BP_LaserDot_C_EmulateScanner Parms{};
+
+	Parms.NewActor = NewActor;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

@@ -107,7 +107,7 @@ static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableGrabOnPickupObject, 
 static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableGrabOnPickupObject, CallFunc_Array_Add_ReturnValue) == 0x0000C0, "Member '_BP_GrabEnablingComponent_C_TryEnableGrabOnPickupObject::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
 
 // Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.TryEnableInteractionsOnWorldObjects
-// 0x0060 (0x0060 - 0x0000)
+// 0x0070 (0x0070 - 0x0000)
 struct _BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects final
 {
 public:
@@ -125,10 +125,14 @@ public:
 	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class AActor*                                 CallFunc_Array_Get_Item;                           // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_ActorHasTag_ReturnValue;                  // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_1;             // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue;        // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue_1;      // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ActorHasTag_ReturnValue;                  // 0x006A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects) == 0x000008, "Wrong alignment on _BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects");
-static_assert(sizeof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects) == 0x000060, "Wrong size on _BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects");
+static_assert(sizeof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects) == 0x000070, "Wrong size on _BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects");
 static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, Temp_int_Array_Index_Variable) == 0x000000, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::Temp_int_Array_Index_Variable' has a wrong offset!");
 static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, Temp_int_Loop_Counter_Variable) == 0x000004, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::Temp_int_Loop_Counter_Variable' has a wrong offset!");
 static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_Add_IntInt_ReturnValue) == 0x000008, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
@@ -139,7 +143,11 @@ static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldO
 static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_Array_Length_ReturnValue) == 0x000044, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_Less_IntInt_ReturnValue) == 0x000048, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_Array_Get_Item) == 0x000050, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_ActorHasTag_ReturnValue) == 0x000058, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_ActorHasTag_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_GetObjectClass_ReturnValue) == 0x000058, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_GetObjectClass_ReturnValue_1) == 0x000060, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_GetObjectClass_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_EqualEqual_ClassClass_ReturnValue) == 0x000068, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_EqualEqual_ClassClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_EqualEqual_ClassClass_ReturnValue_1) == 0x000069, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_EqualEqual_ClassClass_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects, CallFunc_ActorHasTag_ReturnValue) == 0x00006A, "Member '_BP_GrabEnablingComponent_C_TryEnableInteractionsOnWorldObjects::CallFunc_ActorHasTag_ReturnValue' has a wrong offset!");
 
 // Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.CreateLeverInteractionSource
 // 0x0060 (0x0060 - 0x0000)
@@ -162,6 +170,29 @@ static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource,
 static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource, CallFunc_GetRelativeTransform_ReturnValue) == 0x000020, "Member '_BP_GrabEnablingComponent_C_CreateLeverInteractionSource::CallFunc_GetRelativeTransform_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource, CallFunc_AddComponentByClass_ReturnValue) == 0x000050, "Member '_BP_GrabEnablingComponent_C_CreateLeverInteractionSource::CallFunc_AddComponentByClass_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_GrabEnablingComponent_C_CreateLeverInteractionSource, CallFunc_Array_AddUnique_ReturnValue) == 0x000058, "Member '_BP_GrabEnablingComponent_C_CreateLeverInteractionSource::CallFunc_Array_AddUnique_ReturnValue' has a wrong offset!");
+
+// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.CreatePowerStationInteractionSource
+// 0x0060 (0x0060 - 0x0000)
+struct _BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource final
+{
+public:
+	class AActor*                                 InActor;                                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_MakeTransform_ReturnValue;                // 0x0010(0x0030)(IsPlainOldData, NoDestructor)
+	class AINTERACT_PowerStation_C*               K2Node_DynamicCast_AsINTERACT_Power_Station;       // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class U_BP_PowerStationInteractionSourceComponent_C* CallFunc_AddComponentByClass_ReturnValue;          // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_AddUnique_ReturnValue;              // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource) == 0x000010, "Wrong alignment on _BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource");
+static_assert(sizeof(_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource) == 0x000060, "Wrong size on _BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource, InActor) == 0x000000, "Member '_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource::InActor' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource, CallFunc_MakeTransform_ReturnValue) == 0x000010, "Member '_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource::CallFunc_MakeTransform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource, K2Node_DynamicCast_AsINTERACT_Power_Station) == 0x000040, "Member '_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource::K2Node_DynamicCast_AsINTERACT_Power_Station' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource, K2Node_DynamicCast_bSuccess) == 0x000048, "Member '_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource, CallFunc_AddComponentByClass_ReturnValue) == 0x000050, "Member '_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource::CallFunc_AddComponentByClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource, CallFunc_Array_AddUnique_ReturnValue) == 0x000058, "Member '_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource::CallFunc_Array_AddUnique_ReturnValue' has a wrong offset!");
 
 }
 

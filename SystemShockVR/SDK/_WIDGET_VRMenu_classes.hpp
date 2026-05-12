@@ -18,21 +18,26 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass _WIDGET_VRMenu._WIDGET_VRMenu_C
-// 0x0028 (0x0288 - 0x0260)
+// 0x0048 (0x02A8 - 0x0260)
 class U_WIDGET_VRMenu_C final : public UUserWidget
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0260(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UButton*                                Button_Player_Height_Dec;                          // 0x0268(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UButton*                                Button_Player_Height_Inc;                          // 0x0270(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UTextBlock*                             Text_Player_Current_Height;                        // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class A_BP_VRBody_C*                          VRBodyRef;                                         // 0x0280(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UButton*                                Button_CloseMenu;                                  // 0x0268(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UButton*                                Button_Player_Height_Dec;                          // 0x0270(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UButton*                                Button_Player_Height_Inc;                          // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UTextBlock*                             Text_Player_Current_Height;                        // 0x0280(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class A_BP_VRBody_C*                          VRBodyRef;                                         // 0x0288(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TMulticastInlineDelegate<void(float NewHeight)> PlayerHeightChangedEvent;                          // 0x0290(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	float                                         PlayerHeight;                                      // 0x02A0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__WIDGET_VRMenu(int32 EntryPoint);
+	void BndEvt___WIDGET_VRMenu_Button_CloseMenu_K2Node_ComponentBoundEvent_2_OnButtonReleasedEvent__DelegateSignature();
 	void BndEvt___WIDGET_VRMenu_Button_Player_Height_Inc_K2Node_ComponentBoundEvent_1_OnButtonReleasedEvent__DelegateSignature();
 	void BndEvt___WIDGET_VRMenu_Button_Player_Height_Dec_K2Node_ComponentBoundEvent_0_OnButtonReleasedEvent__DelegateSignature();
 	void Initialize(class A_BP_VRBody_C* VRBodyRef_0);
+	void SetOptions();
 
 public:
 	static class UClass* StaticClass()
@@ -45,12 +50,15 @@ public:
 	}
 };
 static_assert(alignof(U_WIDGET_VRMenu_C) == 0x000008, "Wrong alignment on U_WIDGET_VRMenu_C");
-static_assert(sizeof(U_WIDGET_VRMenu_C) == 0x000288, "Wrong size on U_WIDGET_VRMenu_C");
+static_assert(sizeof(U_WIDGET_VRMenu_C) == 0x0002A8, "Wrong size on U_WIDGET_VRMenu_C");
 static_assert(offsetof(U_WIDGET_VRMenu_C, UberGraphFrame) == 0x000260, "Member 'U_WIDGET_VRMenu_C::UberGraphFrame' has a wrong offset!");
-static_assert(offsetof(U_WIDGET_VRMenu_C, Button_Player_Height_Dec) == 0x000268, "Member 'U_WIDGET_VRMenu_C::Button_Player_Height_Dec' has a wrong offset!");
-static_assert(offsetof(U_WIDGET_VRMenu_C, Button_Player_Height_Inc) == 0x000270, "Member 'U_WIDGET_VRMenu_C::Button_Player_Height_Inc' has a wrong offset!");
-static_assert(offsetof(U_WIDGET_VRMenu_C, Text_Player_Current_Height) == 0x000278, "Member 'U_WIDGET_VRMenu_C::Text_Player_Current_Height' has a wrong offset!");
-static_assert(offsetof(U_WIDGET_VRMenu_C, VRBodyRef) == 0x000280, "Member 'U_WIDGET_VRMenu_C::VRBodyRef' has a wrong offset!");
+static_assert(offsetof(U_WIDGET_VRMenu_C, Button_CloseMenu) == 0x000268, "Member 'U_WIDGET_VRMenu_C::Button_CloseMenu' has a wrong offset!");
+static_assert(offsetof(U_WIDGET_VRMenu_C, Button_Player_Height_Dec) == 0x000270, "Member 'U_WIDGET_VRMenu_C::Button_Player_Height_Dec' has a wrong offset!");
+static_assert(offsetof(U_WIDGET_VRMenu_C, Button_Player_Height_Inc) == 0x000278, "Member 'U_WIDGET_VRMenu_C::Button_Player_Height_Inc' has a wrong offset!");
+static_assert(offsetof(U_WIDGET_VRMenu_C, Text_Player_Current_Height) == 0x000280, "Member 'U_WIDGET_VRMenu_C::Text_Player_Current_Height' has a wrong offset!");
+static_assert(offsetof(U_WIDGET_VRMenu_C, VRBodyRef) == 0x000288, "Member 'U_WIDGET_VRMenu_C::VRBodyRef' has a wrong offset!");
+static_assert(offsetof(U_WIDGET_VRMenu_C, PlayerHeightChangedEvent) == 0x000290, "Member 'U_WIDGET_VRMenu_C::PlayerHeightChangedEvent' has a wrong offset!");
+static_assert(offsetof(U_WIDGET_VRMenu_C, PlayerHeight) == 0x0002A0, "Member 'U_WIDGET_VRMenu_C::PlayerHeight' has a wrong offset!");
 
 }
 

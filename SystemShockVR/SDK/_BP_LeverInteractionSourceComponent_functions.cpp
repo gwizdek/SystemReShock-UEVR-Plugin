@@ -37,20 +37,6 @@ void U_BP_LeverInteractionSourceComponent_C::ExecuteUbergraph__BP_LeverInteracti
 }
 
 
-// Function _BP_LeverInteractionSourceComponent._BP_LeverInteractionSourceComponent_C.ReceiveBeginPlay
-// (Event, Public, BlueprintEvent)
-
-void U_BP_LeverInteractionSourceComponent_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_LeverInteractionSourceComponent_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function _BP_LeverInteractionSourceComponent._BP_LeverInteractionSourceComponent_C.Initialize
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
@@ -65,12 +51,27 @@ void U_BP_LeverInteractionSourceComponent_C::Initialize()
 }
 
 
+// Function _BP_LeverInteractionSourceComponent._BP_LeverInteractionSourceComponent_C.ReceiveBeginPlay
+// (Event, Public, BlueprintEvent)
+
+void U_BP_LeverInteractionSourceComponent_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_LeverInteractionSourceComponent_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function _BP_LeverInteractionSourceComponent._BP_LeverInteractionSourceComponent_C.TryInteract
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class U_BP_HandInteractionComponent_C*  HandInteraction                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void U_BP_LeverInteractionSourceComponent_C::TryInteract(class AActor* SourceActor)
+void U_BP_LeverInteractionSourceComponent_C::TryInteract(class AActor* SourceActor, class U_BP_HandInteractionComponent_C* HandInteraction)
 {
 	static class UFunction* Func = nullptr;
 
@@ -80,6 +81,7 @@ void U_BP_LeverInteractionSourceComponent_C::TryInteract(class AActor* SourceAct
 	Params::_BP_LeverInteractionSourceComponent_C_TryInteract Parms{};
 
 	Parms.SourceActor = SourceActor;
+	Parms.HandInteraction = HandInteraction;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

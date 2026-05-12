@@ -35,6 +35,9 @@
 #include "SDK/ENUM_BootupState_structs.hpp"
 #include "SDK/WIDGET_BootupScreen_classes.hpp"
 #include "SDK/WIDGET_CrashScreen_classes.hpp"
+#include "SDK/COMP_Scanner_classes.hpp"
+#include "SDK/PICKUP_Base_classes.hpp"
+#include "SDK/STRUCT_InteractResults_structs.hpp"
 
 #include "SDK/_BP_LaserDot_classes.hpp"
 #include "SDK/_BP_ItemSelector_classes.hpp"
@@ -43,6 +46,7 @@
 #include "SDK/_BP_VRMovementComponent_classes.hpp"
 #include "SDK/_CH_Hacker_Rig_Skeleton_AnimBlueprint_classes.hpp"
 #include "SDK/_BP_MeleeWeaponHandler_classes.hpp"
+#include "SDK/_BP_VRMenu_classes.hpp"
 
 #include "plugin.hpp"
 #include "plugin_utils.hpp"
@@ -50,6 +54,10 @@
 #include "vr_item_selector.hpp"
 #include "vr_mfd.hpp"
 #include "vr_avatar.hpp"
+
+#define INPUT_DEADZONE_LO  ( 0.01f * FLOAT(0x7FFF) )  // Default to 01% of the +/- 32767 range.
+#define INPUT_DEADZONE_MED ( 0.45f * FLOAT(0x7FFF) )  // Default to 45% of the +/- 32767 range.
+#define INPUT_DEADZONE_HI  ( 0.80f * FLOAT(0x7FFF) )  // Default to 80% of the +/- 32767 range.
 
 using namespace uevr;
 using namespace SDK;
@@ -61,9 +69,6 @@ std::unique_ptr<UEVRPlugin> g_plugin = std::make_unique<UEVRPlugin>();
 // -------------------------------------------------------------------------------------
 void UEVRPlugin::on_initialize() {
     PLUGIN_LOG_ONCE("Plugin Initializing...");
-
-    //API::get()->log_warn("[plugin][cleanup] Starting Actors Cleanup");
-    //cleanup_actors();
 
     // disable player focus (camera pull) on interactable objects like vending machines / keyboards
     auto move_control = SDK::UMOVECONTROL_FocusableInteract_C::GetDefaultObj();
@@ -100,6 +105,7 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
         // handle level change before xinput
         handle_level_change();
         handle_xinput(state, vr);
+        handle_lean();
 
         // set it to true, so we won't process pawn again in pre_engine_tick cb
         m_xinput_cb_processed = true;
@@ -143,6 +149,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
             m_xinput_cb_processed = false;
         }
 
+        m_gamepad_left_thumb.add_delta(delta);
         handle_game_state_change();
         handle_media_display();
         update_trailing_rotation(delta);
@@ -150,6 +157,8 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
 
         PluginUtils::handle_native_stereo_fix_cycler(vr);
 
+        // Test function calls used for testing different things.
+        // These are called from ImGui and we want them to run on main game thread (deactivated rn)
         //if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
         //    try_running_test_1();
         //    try_running_test_2();
@@ -209,11 +218,6 @@ bool UEVRPlugin::prepare_pointers() {
 
         // level
         m_level.set_value(m_world != nullptr ? m_world->PersistentLevel : nullptr);
-
-        //if (!SDK::UKismetSystemLibrary::IsValid(g_vr_body)) {
-        //    API::get()->log_error("[plugin][prepare_pointers] VR_Body pointer error");
-        //    return false;
-        //}
     }
     catch (...) {
         API::get()->log_error("[plugin][prepare_pointers] Exception");
@@ -405,8 +409,8 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
         m_gamepad_btn_x.set_state(state);
         m_gamepad_btn_b.set_state(state);
         m_gamepad_btn_y.set_state(state);
-        m_gamepad_right_shoulder.set_and_mute_state(state);
-        m_gamepad_left_shoulder.set_and_mute_state(state);
+        m_gamepad_right_shoulder.set_state(state);
+        m_gamepad_left_shoulder.set_state(state);
         m_gamepad_right_thumb.set_state(state);
         m_gamepad_left_thumb.set_state(state);
         m_gamepad_right_trigger.set_state(state);
@@ -414,6 +418,18 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
         m_hotbar_selector_button.set_state(state);
         m_hardware_selector_button.set_state(state);
 
+        // Citadel Station normal movement gameplay
+        if (m_game_state.get() == GAME_STATE_CITADEL_STATION) {
+            if (g_vr_body == nullptr) {
+                return;
+            }
+            m_is_right_hand_reaching_backpack.set_value(g_vr_body->HandInteractionRight->IsReachingBackpack);
+
+            handle_vr_menu_xinput(state, vr);
+            handle_citadel_station_xinput(state, vr);
+            handle_smooth_turning(state);
+            return;
+        }
 
         // Focusable interaction
         if (m_game_state.get() == GAME_STATE_INTERACTABLE) {
@@ -424,22 +440,23 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
             if (m_gamepad_btn_x.is_pressed()) {}
 
             m_gamepad_btn_x.mute_state(state);
+            return;
         }
 
         // Apartment movement gameplay
         if (m_game_state.get() == GAME_STATE_APPARTMENT) {
+            handle_vr_menu_xinput(state, vr);
             handle_appartment_xinput(state, vr);
             handle_smooth_turning(state);
+            return;
         }
 
-        // Citadel Station Normal movement gameplay
-        if (m_game_state.get() == GAME_STATE_CITADEL_STATION) {
-            if (g_vr_body == nullptr) {
-                return;
-            }
-
-            handle_citadel_station_xinput(state, vr);
-            handle_smooth_turning(state);
+        // Pre MFD Visible
+        if (m_game_state.get() == GAME_STATE_MFD_PRE) {
+            // mute shoulders, otherwise it will auto change MFD tab
+            m_gamepad_right_shoulder.mute_state(state);
+            m_gamepad_left_shoulder.mute_state(state);
+            return;
         }
 
         // MFD Visible
@@ -454,18 +471,51 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
                 }
             }
             handle_mfd_interactions(state, vr);
+            m_gamepad_right_shoulder.mute_state(state);
+            m_gamepad_left_shoulder.mute_state(state);
+            return;
         }
 
-        
+        if (m_game_state.get() == GAME_STATE_MAIN_MENU) {
+            // increase stick deadzone for better navigation in the menu
+            if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
+                state->Gamepad.sThumbLX = 0;
+            }
+            if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
+                state->Gamepad.sThumbLY = 0;
+            }
+
+            // don't remap other buttons in in-game menu
+            return;
+        }
     }
     catch (...) {
         API::get()->log_error("[plugin][handle_xinput] Exception");
     }
 }
 
+void UEVRPlugin::handle_vr_menu_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
+    if (g_vr_body->VRMenu->bIsOpened) {
+        // mute sticks
+        state->Gamepad.sThumbRX = 0;
+        state->Gamepad.sThumbRY = 0;
+        state->Gamepad.sThumbLX = 0;
+        state->Gamepad.sThumbLY = 0;
+
+        if (m_gamepad_right_trigger.is_pressed()) {
+            g_vr_body->TriggerWidgetInteractionAction(true);
+        }
+
+        if (m_gamepad_right_trigger.is_released()) {
+            g_vr_body->TriggerWidgetInteractionAction(false);
+        }
+
+        m_gamepad_right_trigger.mute_state(state);
+    }
+}
+
 void UEVRPlugin::handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
     try {
-
         // Right Trigger
         if (m_gamepad_right_trigger.is_pressed()) {
             if (g_vr_body->IsEmptyHanded()) {
@@ -517,27 +567,40 @@ void UEVRPlugin::handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData
 
 void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
     try {
+        // TODO: move it to BPs
         try_melee();
+
+        m_gamepad_right_shoulder.mute_state(state);
+        m_gamepad_left_shoulder.mute_state(state);
 
         auto player_controller = UGameplayStatics::GetPlayerController(m_world, 0);
         if (player_controller->IsA(ACON_Hacker_C::StaticClass())) {
             static_cast<ACON_Hacker_C*>(player_controller)->SetIsUsingGamepad(false);
         }
 
-        if (g_vr_body->IsVRMenuVisible) {
-            if (m_gamepad_btn_a.is_pressed()) {
-                g_vr_body->TriggerWidgetInteractionAction(true);
-            }
+        // map jump to right thumb up
+        if (state->Gamepad.sThumbRY > INPUT_DEADZONE_HI) {
+            state->Gamepad.wButtons |= XINPUT_GAMEPAD_A;
+        }
 
-            if (m_gamepad_btn_a.is_released()) {
-                g_vr_body->TriggerWidgetInteractionAction(false);
+        // pull out a gun when right hand is leaving backpack collision sphere
+        if (m_is_pulling_out_gun && m_is_right_hand_reaching_backpack.disabled()) {
+            if (
+                !g_vr_body->HandInteractionRight->IsHoldingWeapon &&
+                g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr
+                ) {
+                SDK::FKey h_key_name{
+                    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
+                };
+                g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+                m_is_pulling_out_gun = false;
             }
-
-            m_gamepad_btn_a.mute_state(state);
         }
 
         if (m_gamepad_left_trigger.is_held() && m_gamepad_left_thumb.is_pressed()) {
-
+            
+            // testing weapon physical collisions (currently held weapons)
+            // normally, held weapons have disabled collisions
             //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->K2_AttachToComponent(
             //    g_vr_body->VRBodyMesh,
             //    UKismetStringLibrary::Conv_StringToName(L"RightHandPipeSocket"),
@@ -556,21 +619,12 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetEnableGravity(false);
             //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->WeaponMesh->SetSimulatePhysics(true);
 
-
-            //if (!g_vr_body->IsVRMenuVisible) {
-            //    g_vr_body->OpenVRMenu();
-            //}
-            //else {
-            //    g_vr_body->CloseVRMenu();
-            //}
-            //toggle_gui();
-            //PluginUtils::reset_height(0.f);
-            //API::get()->log_warn("[plugin][handle_controller_input] X-button");
         }
 
         // Right Trigger
         if (m_gamepad_right_trigger.is_pressed()) {
-            //if (g_vr_body->LaserDot->LastLaserTargetComponent->IsA(UCapsuleComponent::StaticClass())) {
+
+            // test making enemies simulate physics
             //if (g_vr_body->LaserDot->LastLaserTargetActor->IsA(APAWN_Enemy_C::StaticClass())) {
             //    APAWN_Enemy_C* enemy = static_cast<APAWN_Enemy_C*>(g_vr_body->LaserDot->LastLaserTargetActor);
             //    enemy->COMP_LimbManager->SetRagdollEnabled();
@@ -580,25 +634,28 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             //    API::get()->log_error("[plugin][handle_citadel_station_xinput] Test physics");
             //}
 
-
+            // attach laser pointer to an empty hand (only if both hands are empty)
             if (g_vr_body->IsEmptyHanded()) {
                 g_vr_body->HandInteractionRight->AttachLaserPointer(true, 10.f);
             }
             
+            // TODO
             // Set Laser Rapier charged mode
             if (g_vr_body->MeleeWeaponHandler->IsActive && g_vr_body->MeleeWeaponHandler->IsLaserRapier) {
                 m_gamepad_right_trigger.mute_state(state);
             }
         }
 
+        // TODO
         if (m_gamepad_right_trigger.is_held()) {
+            // Set Laser Rapier charged mode
             if (g_vr_body->MeleeWeaponHandler->IsActive && g_vr_body->MeleeWeaponHandler->IsLaserRapier) {
                 m_gamepad_right_trigger.mute_state(state);
             }
         }
 
+        // TODO
         if (m_gamepad_right_trigger.is_released()) {
-
             // Set Laser Rapier normal mode
             if (g_vr_body->MeleeWeaponHandler->IsActive && g_vr_body->MeleeWeaponHandler->IsLaserRapier) {
                 m_gamepad_right_trigger.mute_state(state);
@@ -614,6 +671,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
 
         // Left Trigger
         if (m_gamepad_left_trigger.is_pressed()) {
+            // attach laser pointer to an empty hand (only if both hands are empty)
             if (g_vr_body->IsEmptyHanded()) {
                 g_vr_body->HandInteractionLeft->AttachLaserPointer(true, 10.f);
             }
@@ -621,16 +679,24 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
 
         // Right Shoulder
         if (m_gamepad_right_shoulder.is_pressed()) {
-            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator2);
+            // try pickup world object
+            g_vr_body->HandInteractionRight->TryGrab();
 
+            // set hand pose: pointing
             if (!g_vr_body->HandInteractionRight->IsHoldingWeapon) {
                 g_vr_body->HandInteractionRight->SelectedPose = E_ENUM_VRHandPose::NewEnumerator3;
+
+                if (g_vr_body->HandInteractionRight->IsReachingBackpack) {
+                    m_is_pulling_out_gun = true;
+                }
             }
 
             if (g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr) {
+                // toggle Sensaround gesture
                 if (g_vr_body->HandInteractionRight->IsReachingSocket(UKismetStringLibrary::Conv_StringToName(L"MinimapSocket"), 5.0f)) {
                     m_neural_hud->WIDGET_HardwareButton_Sensaround->ToggleHardware();
                 }
+                // toggle MFD gesture
                 else if (g_vr_body->HandInteractionRight->IsReachingSocket(UKismetStringLibrary::Conv_StringToName(L"LeftInnerWristSocket"), 7.0f)) {
                     static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_43(FKey{});
                     m_gamepad_right_shoulder.mute_state(state);
@@ -638,18 +704,25 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             }
         }
         if (m_gamepad_right_shoulder.is_released()) {
-            if (g_vr_body->HandInteractionRight->IsReachingBackpack) {
-                if (g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr) {
-                    // use holster weapon button: holster weapon
-                    SDK::FKey h_key_name{
-                        .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
-                    };
-                    g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
-                }
+            m_is_pulling_out_gun = false;
+
+            // toggle holster gesture
+            if (
+                g_vr_body->HandInteractionRight->IsReachingBackpack &&
+                g_vr_body->HandInteractionRight->IsHoldingWeapon &&
+                g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr
+                ) {
+                // use holster weapon button: holster weapon
+                SDK::FKey h_key_name{
+                    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
+                };
+                g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
             }
 
-            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator0);
+            // try releasing world object
+            g_vr_body->HandInteractionRight->TryRelease();
 
+            // set undefined hand pose if not holding a weapon
             if (!g_vr_body->HandInteractionRight->IsHoldingWeapon) {
                 g_vr_body->HandInteractionRight->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
             }
@@ -657,13 +730,13 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
 
         // Left Shoulder
         if (m_gamepad_left_shoulder.is_pressed()) {
-            // pickup world objects
-            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator2);
+            // try pickup world object
+            g_vr_body->HandInteractionLeft->TryGrab();
 
-            // set pointing hand pose
+            // set hand pose: pointing
             g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator3;
 
-            // toggle energy shield
+            // toggle energy shield gesture
             if (
                 g_vr_body->HandInteractionLeft->HeldGrabComponent == nullptr &&
                 g_vr_body->HandInteractionLeft->IsReachingSocket(UKismetStringLibrary::Conv_StringToName(L"RightInnerWristSocket"), 5.0f)
@@ -675,6 +748,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             // set undefined hand pose
             g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
 
+            // toggle VisionUnit gesture
             if (
                 g_vr_body->HandInteractionLeft->IsReachingBackpack &&
                 g_vr_body->HandInteractionLeft->HeldItemCategory == E_ENUM_ItemCategory::NewEnumerator4 // None
@@ -684,14 +758,41 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             }
 
             // try releasing world object
-            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator0);
+            g_vr_body->HandInteractionLeft->TryRelease();
         }
 
         // Left Thumb
-        if (m_gamepad_left_thumb.is_released()) {
+        if (m_gamepad_left_thumb.is_pressed()) {
+            // Reset height and recenter gesture
             if (g_vr_body->HandInteractionLeft->IsReachingBackpack) {
                 PluginUtils::reset_height(0.f);
                 vr->recenter_view();
+                if (g_vr_body->VRMenu->bIsOpened) {
+                    g_vr_body->VRMenu->Close();
+                    if (VRMFD::m_had_equipped_weapon && g_vr_body->IsWeaponHolstered()) {
+                        VRMFD::m_had_equipped_weapon = false;
+                        // use holster weapon button: take out weapon
+                        SDK::FKey h_key_name{
+                            .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
+                        };
+                        g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+                    }
+                }
+            }
+        }
+        if (m_gamepad_left_thumb.is_long_pressed(1.f) && g_vr_body->HandInteractionLeft->IsReachingBackpack) {
+            // Open / Close VR Menu
+            API::get()->log_warn("[plugin][handle_citadel_station_xinput] Left thumb long press");
+            if (!g_vr_body->VRMenu->bIsOpened) {
+                if (!g_vr_body->IsWeaponHolstered()) {
+                    // use holster weapon button: holster weapon
+                    SDK::FKey h_key_name{
+                        .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
+                    };
+                    g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+                    VRMFD::m_had_equipped_weapon = true;
+                }
+                g_vr_body->VRMenu->Open();
             }
         }
 
@@ -733,6 +834,15 @@ void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state) {
     }
 }
 
+// with this, we don't need to manipulate game controller bindings to mute lean button
+void UEVRPlugin::handle_lean() {
+    if (m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
+        // prevent player leaning
+        static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->IsTryingToLean = false;
+    }
+}
+
+// try moving to BP
 void UEVRPlugin::update_trailing_rotation(float delta) {
     try {
         if (g_vr_body == nullptr || m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass()))
@@ -771,7 +881,18 @@ void UEVRPlugin::handle_game_state_change() {
             API::get()->log_warn("[plugin][handle_game_state_change] New Game State: %s", GameStateName[m_game_state.get()]);
             const UEVR_VRData* vr = API::get()->param()->vr;
             const UEVR_SDKData* sdk = API::get()->sdk();
-            API::UObjectHook::MotionControllerState* mc_state{ nullptr };
+
+            // hides UI on the monitor for selected states: it's for recording videos without UI being visible
+            if (
+                m_game_state.get() == GAME_STATE_CITADEL_STATION ||
+                m_game_state.get() == GAME_STATE_APPARTMENT ||
+                m_game_state.get() == GAME_STATE_CYBERSPACE
+                ) {
+                set_game_ui_visibility(false);
+            }
+            else {
+                set_game_ui_visibility(true);
+            }
 
             switch (m_game_state.get()) {
                 case GAME_STATE_INTRO_DRONE:
@@ -780,7 +901,7 @@ void UEVRPlugin::handle_game_state_change() {
                     vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
                     API::UObjectHook::set_disabled(false);
                     PluginUtils::reset_height(0.f);
-                    PluginUtils::cycle_native_stereo_fix(vr);
+                    PluginUtils::cycle_native_stereo_fix();
                     break;
 
                 case GAME_STATE_MAIN_MENU:
@@ -796,14 +917,12 @@ void UEVRPlugin::handle_game_state_change() {
                     PluginUtils::reset_height(0.f);
                     vr->recenter_view();
                     API::UObjectHook::set_disabled(true);
+                    // changes to game options can be applied in the main menu
                     apply_vr_game_options();
-                    PluginUtils::cycle_native_stereo_fix(vr);
+                    PluginUtils::cycle_native_stereo_fix();
                     break;
 
                 case GAME_STATE_PAUSE_MENU:
-                    if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-                        m_neural_hud->SetVisibility(ESlateVisibility::Visible);
-                    }
                     API::UObjectHook::set_disabled(false);
                     vr->set_aim_method(0);
                     vr->set_decoupled_pitch_enabled(true);
@@ -814,18 +933,14 @@ void UEVRPlugin::handle_game_state_change() {
                     vr->set_mod_value("UI_Y_Offset", "-0.30000");
                     vr->set_mod_value("VR_RoomscaleMovement", "false");
                     vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
-                    //PluginUtils::reset_height(0.f);
                     vr->recenter_view();
                     break;
 
                 case GAME_STATE_CITADEL_STATION:
                     sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
                     if (is_valid_vr_body_hacker_implant_pawn()) {
-                        if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-                            m_neural_hud->SetVisibility(ESlateVisibility::Visible);
-                        }
+                        m_is_pulling_out_gun = false;
                         VRBody::show_vr_body();
-                        //g_vr_body->VRBodyMesh->SetVisibility(true, false);
                         static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->bUseControllerRotationYaw = true;
 
                         API::UObjectHook::set_disabled(false);
@@ -838,7 +953,6 @@ void UEVRPlugin::handle_game_state_change() {
                         vr->set_mod_value("UI_Y_Offset", "0.00000");
                         vr->set_mod_value("VR_RoomscaleMovement", "true");
                         vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                        //PluginUtils::reset_height(0.f);
                         vr->recenter_view();
 
                         VRMFD::hide_mfd();
@@ -883,12 +997,9 @@ void UEVRPlugin::handle_game_state_change() {
                                 pawn->ChannelingInteractable->IsA(AINTERACT_RespawnChamber_C::StaticClass())
                                 )
                            ) {
-                            VRBody::reset_player_camera();
                             vr->set_aim_method(0);                      // Game mode
                             vr->set_mod_value("VR_RoomscaleMovement", "false");
-
-                            // TODO - not working?
-                            //static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->ArmsMesh->SetVisibility(false, false);
+                            VRBody::reset_player_camera();
                             VRBody::hide_vr_body();
 
                             API::UObjectHook::set_disabled(true);
@@ -901,8 +1012,6 @@ void UEVRPlugin::handle_game_state_change() {
                         APAWN_Avatar_C* pawn = static_cast<APAWN_Avatar_C*>(m_pawn.get());
                         VRAvatar::initialize_vr_avatar(pawn);
                         //g_vr_body->VRBodyMesh->SetVisibility(true, false);
-
-                        //API::UObjectHook::set_disabled(true);
                         API::UObjectHook::set_disabled(false);
                         vr->set_aim_method(0);                      // Game mode
                         vr->set_decoupled_pitch_enabled(false);
@@ -923,9 +1032,6 @@ void UEVRPlugin::handle_game_state_change() {
                     sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
                     m_intro_laptop = nullptr;
                     if (is_valid_vr_body_hacker_simple_pawn()) {
-                        if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-                            m_neural_hud->SetVisibility(ESlateVisibility::Hidden);
-                        }
                         g_vr_body->VRBodyMesh->SetVisibility(true, false);
                         static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->bUseControllerRotationYaw = true;
 
@@ -941,11 +1047,7 @@ void UEVRPlugin::handle_game_state_change() {
                         vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
                         PluginUtils::reset_height(0.f);
                         vr->recenter_view();
-
-                        //VRMFD::hide_mfd();
                     }
-                    
-                    PluginUtils::cycle_native_stereo_fix(vr);
                     break;
 
                 case GAME_STATE_BOOTING_UP:
@@ -999,6 +1101,7 @@ void UEVRPlugin::handle_level_change() {
             cleanup_actors();
             cleanup_pointers();
 
+            // Hacker Implant - Citadel Station (normal space)
             if (
                 SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
                 m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())
@@ -1016,7 +1119,9 @@ void UEVRPlugin::handle_level_change() {
                     VRBody::initialize_hand_item_collisions();
                     VRItemSelector::initialize(m_neural_hud);
                     PluginUtils::reset_height(0.f);
-                    //VRBody::set_debug_widget_visibility(false);
+                    VRBody::set_debug_widget_visibility(false);
+
+                    PluginUtils::cycle_native_stereo_fix();
                 }
                 else {
                     API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
@@ -1024,6 +1129,7 @@ void UEVRPlugin::handle_level_change() {
                 return;
             }
 
+            // Hacker Simple - Appartment Intro
             if (
                 SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
                 m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
@@ -1036,7 +1142,9 @@ void UEVRPlugin::handle_level_change() {
                     VRBody::overwrite_hacker_crouch_animations();
                     VRBody::initialize_hand_item_collisions();
                     PluginUtils::reset_height(0.f);
-                    //VRBody::set_debug_widget_visibility(false);
+                    VRBody::set_debug_widget_visibility(false);
+
+                    PluginUtils::cycle_native_stereo_fix();
                 }
                 else {
                     API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
@@ -1044,8 +1152,7 @@ void UEVRPlugin::handle_level_change() {
                 return;
             }
 
-            const UEVR_VRData* vr = API::get()->param()->vr;
-            PluginUtils::cycle_native_stereo_fix(vr);
+            PluginUtils::cycle_native_stereo_fix();
         }
     }
     catch (...) {
@@ -1068,6 +1175,7 @@ void UEVRPlugin::handle_media_display() {
 }
 
 // This is also prototyped in _BP_VRBody Event Graph
+// try moving to BP
 void UEVRPlugin::handle_ads() {
     try {
         if (g_vr_body != nullptr) {
@@ -1091,7 +1199,6 @@ void UEVRPlugin::handle_ads() {
                     SDK::FKey aim_key{};
                     static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_43(aim_key);
                 }
-
             }
         }
     }
@@ -1099,8 +1206,6 @@ void UEVRPlugin::handle_ads() {
         API::get()->log_error("[plugin][handle_ads] Exception");
     }
 }
-
-
 
 // primary item selector
 void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr) {
@@ -1110,59 +1215,56 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
             return;
         }
 
-        if (!m_hardware_selector_button.is_held()) {
+        if (m_hotbar_selector_button.is_pressed()) {
+            VRItemSelector::set_visibility(true);
+            VRBody::set_weapon_mesh_visibility(false);
+            // hide UEVR controlled HUD
+            vr->set_mod_value("UI_Size", "0.000000");
+            vr->set_mod_value("VR_RoomscaleMovement", "false");
+            vr->set_aim_method(0);
 
-            if (m_hotbar_selector_button.is_pressed()) {
-                VRItemSelector::set_visibility(true);
-                VRBody::set_weapon_mesh_visibility(false);
-                // hide UEVR controlled HUD
-                vr->set_mod_value("UI_Size", "0.000000");
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
-                vr->set_aim_method(0);
+            // show VR item selector
+            //g_vr_body->set_laser_pointer_visibility(true);
+            g_vr_body->ItemSelectorRight->Show(20.f);
+            //g_vr_body->ItemSelectorLeft->Hide();
 
-                // show VR item selector
-                //g_vr_body->set_laser_pointer_visibility(true);
-                g_vr_body->ItemSelectorRight->Show(20.f);
-                //g_vr_body->ItemSelectorLeft->Hide();
-
-                // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
-                // for the time the selector is active
-                //VRBody::set_player_response_to_collision_channel(
-                //    static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get()),
-                //    g_vr_body,
-                //    item_selector_collision_channel,
-                //    SDK::ECollisionResponse::ECR_Ignore
-                //);
-                VRItemSelector::unselect_all_hotbar_slots(m_neural_hud);
-            }
-
-            if (m_hotbar_selector_button.is_released()) {
-                VRItemSelector::activate_current_quick_slot();
-
-                // restore collisions
-                //g_vr_body->set_player_response_to_collision_channel(
-                //    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
-                //);
-                VRItemSelector::set_visibility(false);
-                VRBody::set_weapon_mesh_visibility(true);
-                ////g_vr_body->set_laser_pointer_visibility(false);
-                g_vr_body->ItemSelectorRight->Hide();
-
-                vr->set_mod_value("VR_RoomscaleMovement", "true");
-                vr->set_aim_method(m_default_aim_method);
-            }
-
-            // state, when the item selector is shown
-            if (m_hotbar_selector_button.is_held()) {
-                //API::get()->log_warn("[plugin][handle_primary_item_selector] Grip Held Begin");
-                //g_vr_body->update_laser_pointer_length(35.f);
-                VRItemSelector::set_current_quick_slot();
-
-                state->Gamepad.sThumbRX = 0;
-            }
-
-            m_hotbar_selector_button.mute_state(state);
+            // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
+            // for the time the selector is active
+            //VRBody::set_player_response_to_collision_channel(
+            //    static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get()),
+            //    g_vr_body,
+            //    item_selector_collision_channel,
+            //    SDK::ECollisionResponse::ECR_Ignore
+            //);
+            VRItemSelector::unselect_all_hotbar_slots(m_neural_hud);
         }
+
+        if (m_hotbar_selector_button.is_released()) {
+            VRItemSelector::activate_current_quick_slot();
+
+            // restore collisions
+            //g_vr_body->set_player_response_to_collision_channel(
+            //    item_selector_collision_channel, SDK::ECollisionResponse::ECR_Block
+            //);
+            VRItemSelector::set_visibility(false);
+            VRBody::set_weapon_mesh_visibility(true);
+            ////g_vr_body->set_laser_pointer_visibility(false);
+            g_vr_body->ItemSelectorRight->Hide();
+
+            vr->set_mod_value("VR_RoomscaleMovement", "true");
+            vr->set_aim_method(m_default_aim_method);
+        }
+
+        // state, when the item selector is shown
+        if (m_hotbar_selector_button.is_held()) {
+            //API::get()->log_warn("[plugin][handle_primary_item_selector] Grip Held Begin");
+            //g_vr_body->update_laser_pointer_length(35.f);
+            VRItemSelector::set_current_quick_slot();
+
+            state->Gamepad.sThumbRX = 0;
+        }
+
+        m_hotbar_selector_button.mute_state(state);
     }
     catch (...) {
         API::get()->log_error("[plugin][handle_primary_item_selector] Exception");
@@ -1182,6 +1284,8 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
 
         // mute controller A, Y buttons
         m_gamepad_btn_a.mute_state(state);
+        m_gamepad_btn_b.mute_state(state);
+        m_gamepad_btn_x.mute_state(state);
         m_gamepad_btn_y.mute_state(state);
 
         m_gamepad_right_trigger.mute_state(state);
@@ -1562,7 +1666,9 @@ bool UEVRPlugin::is_valid_vr_body_hacker_simple_pawn() {
 }
 
 
-
+// VRBody asset already has motion controller components defined, but for some reason creatng one here
+// and overwriting the one from UE asset, makes the hand lag less (it probably changes the order and moment of evaluating MCs transform relative to AnimBP tick)
+// I'm only doing it for the right controller rn
 void UEVRPlugin::initialize_mcs(APAWN_Hacker_Implant_C* pawn) {
     try {
         const SDK::FVector pawn_location = pawn->K2_GetActorLocation();
@@ -1629,12 +1735,6 @@ void UEVRPlugin::initialize_mcs(APAWN_Hacker_Implant_C* pawn) {
             EAttachmentRule::KeepRelative,
             true
         );
-
-
-        //SDK::U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C* vr_body_anim = (SDK::U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C*)g_vr_body->VRBodyMesh->GetAnimInstance();
-        //if (vr_body_anim != nullptr) {
-        //    vr_body_anim->RightWristOffsetComponent = m_rh_controller_component;
-        //}
         API::get()->log_warn("[plugin][initialize_mcs] Initialized MCs");
     }
     catch (...) {
@@ -1642,155 +1742,9 @@ void UEVRPlugin::initialize_mcs(APAWN_Hacker_Implant_C* pawn) {
     }
 }
 
-
-
-void UEVRPlugin::SpawnCustom2DScreen() {
-    //if (!CutscenePlaying())
-    //    return;
-    const SDK::FVector pawn_location = m_pawn.get()->K2_GetActorLocation();
-    SDK::FTransform transform{};
-    transform.Rotation = { 0.f, 0.f, 0.f, 1.f };
-    transform.Translation = { pawn_location.X, pawn_location.Y, pawn_location.Z };
-    transform.Scale3D = { 1.f, 1.f, 1.f };
-
-
-    auto world = UWorld::GetWorld();
-    if (world == nullptr) {
-        API::get()->log_error("[vr_body][SpawnCustom2DScreen] World pointer error");
-        return;
-    }
-
-    // actor
-    UEVR_Vector3d uevrVector = { 0.0f, 0.0f, 0.0f };
-    auto uevrActor = PluginUtils::spawn_actor(world, transform, L"VRModActor");
-    auto actor = (SDK::AActor*)uevrActor;
-    if (!actor)
-    {
-        return;
-    }
-
-    static SDK::UStaticMesh* staticMesh = nullptr;
-    auto meshUEVR = uevr::API::get()->find_uobject<uevr::API::UObject>(L"StaticMesh /Engine/BasicShapes/Plane.Plane");
-    auto sdkMesh = (SDK::UObject*)meshUEVR;
-    if (sdkMesh->IsA(SDK::UStaticMesh::StaticClass()))
-    {
-        staticMesh = (SDK::UStaticMesh*)meshUEVR;
-
-        if (!staticMesh)
-        {
-            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Failed to find static mesh");
-            return;
-        }
-        API::get()->log_warn("[plugin][SpawnCustom2DScreen] Found static mesh %s : ", staticMesh->GetFullName().c_str());
-    }
-    else
-    {
-        API::get()->log_warn("[plugin][SpawnCustom2DScreen] Asset found is not a StaticMesh or SkeletalMesh");
-        return;
-    }
-
-    auto material = uevr::API::get()->find_uobject<uevr::API::UObject>(L"Material /Engine/EngineDebugMaterials/DebugMeshMaterial.DebugMeshMaterial");
-    if (!material)
-    {
-        API::get()->log_warn("[plugin][SpawnCustom2DScreen] Failed to find material for 2D screen");
-        return;
-    }
-
-    auto sdkMaterial = (SDK::UMaterial*)material;
-    sdkMaterial->TwoSided = true;
-    sdkMaterial->bDisableDepthTest = true;
-    sdkMaterial->BlendMode = SDK::EBlendMode::BLEND_Translucent;
-    //sdkMaterial->MaterialDomain = SDK::EMaterialDomain::MD_PostProcess;
-    //sdkMaterial->ShadingModel = SDK::EMaterialShadingModel::MSM_Unlit;
-    ////Material /Engine/EngineMaterials/DefaultMaterial.DefaultMaterial
-
-    //auto textureUEVR = uevr::API::get()->find_uobject<uevr::API::UObject>(L"Texture2D /CobraUI/Material/HUD/T_GoggleVignette.T_GoggleVignette");
-    //auto texture = (SDK::UTexture2D*)textureUEVR;
-
-    if (staticMesh)
-    {
-        // create 5 planes for the box
-        for (int i = 0; i < 5; i++)
-        {
-            auto* staticMeshComponent = static_cast<SDK::UStaticMeshComponent*>(actor->AddComponentByClass(SDK::UStaticMeshComponent::StaticClass(),
-                false, // bManualAttachment
-                SDK::FTransform{}, // RelativeTransform
-                false // bDeferConstruction
-            ));
-
-            if (!staticMeshComponent)
-            {
-                API::get()->log_warn("[plugin][SpawnCustom2DScreen] Failed to create UStaticMeshComponent");
-                return;
-            }
-            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Created StaticMeshComponent: %s", staticMeshComponent->GetFullName().c_str());
-
-            staticMeshComponent->SetStaticMesh(staticMesh);
-            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Assigned mesh to StaticMeshComponent");
-
-            staticMeshComponent->K2_AttachToComponent(
-                actor->K2_GetRootComponent(),                      // Parent
-                SDK::FName(),                                      // SocketName (none)
-                SDK::EAttachmentRule::KeepRelative,             // Use the relative location we just set
-                SDK::EAttachmentRule::KeepRelative,             // Use the relative rotation we just set
-                SDK::EAttachmentRule::KeepRelative,             // Use the relative scale we just set
-                false                                            // bWeldSimulatedBodies
-            );
-            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Attached StaticMeshComponent to Actor's root component");
-
-            staticMeshComponent->Activate(true);
-            API::get()->log_warn("[plugin][SpawnCustom2DScreen] Activated StaticMeshComponent");
-
-
-            staticMeshComponent->SetCollisionEnabled(SDK::ECollisionEnabled::NoCollision);
-
-            staticMeshComponent->Activate(true);
-            staticMeshComponent->SetVisibility(true, false);
-            staticMeshComponent->SetHiddenInGame(false, false);
-            staticMeshComponent->SetWorldScale3D({ 1, 1, 1 });
-            staticMeshComponent->SetMobility(SDK::EComponentMobility::Movable);
-            staticMeshComponent->SetRenderCustomDepth(true);
-
-            staticMeshComponent->TranslucencySortPriority = 10000;
-            staticMeshComponent->SetTranslucencySortDistanceOffset(10000);
-            staticMeshComponent->SetCastShadow(false);
-            staticMeshComponent->bAllowCullDistanceVolume = false;
-            staticMeshComponent->LDMaxDrawDistance = 0.0f; // 0 = infinite
-            staticMeshComponent->CachedMaxDrawDistance = 0.0f;
-            staticMeshComponent->bNeverDistanceCull = true;
-
-            auto dynamicMaterial = staticMeshComponent->CreateAndSetMaterialInstanceDynamicFromMaterial(0, sdkMaterial);
-            //Logger::DebugPrint("scopeDynamicMaterial created %s", scopeDynamicMaterial->GetFullName().c_str());
-            //Applying the render texture to the material :
-            //dynamicMaterial->SetTextureParameterValue(SDK::UKismetStringLibrary::Conv_StringToName(L"LinearColor"), texture);
-            dynamicMaterial->SetVectorParameterValue(
-                SDK::UKismetStringLibrary::Conv_StringToName(L"Color"),
-                SDK::FLinearColor{ 0.0f, 0.0f, 0.0f, 9999.0f }
-            );
-        }
-    }
-
-    Custom2DScreen = actor;
-
-    //ResizeBlackBars();
-
-    auto static cameraManager_c = uevr::API::get()->find_uobject<uevr::API::UClass>(L"BlueprintGeneratedClass /Game/Blueprints/Camera/BP_PlayerCameraManager.BP_PlayerCameraManager_C");
-    auto cameraManagerActor = (SDK::AActor*)cameraManager_c->get_first_object_matching(false);
-
-    Custom2DScreen->K2_AttachToActor(cameraManagerActor,
-        SDK::FName(),                                      // SocketName (none)
-        SDK::EAttachmentRule::KeepRelative,             // Use the relative location we just set
-        SDK::EAttachmentRule::KeepRelative,             // Use the relative rotation we just set
-        SDK::EAttachmentRule::KeepRelative,             // Use the relative scale we just set
-        false                                            // bWeldSimulatedBodies
-    );
-    API::get()->log_warn("[plugin][SpawnCustom2DScreen] custom box parent : %ls", actor->GetParentActor()->GetFullName().c_str());
-}
-
-void UEVRPlugin::toggle_gui() {
-    m_gui_visible = !m_gui_visible;
+void UEVRPlugin::set_game_ui_visibility(bool visible) {
     if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-        m_neural_hud->SetVisibility(m_gui_visible ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
+        m_neural_hud->SetVisibility(visible ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
     }
 }
 

@@ -1,6 +1,3 @@
-//#include <windows.h>
-//#include "imgui/imgui.h"
-
 #include "uevr/API.hpp"
 
 #include "SDK/SystemReShock_classes.hpp"
@@ -15,6 +12,7 @@
 #include "SDK/_BP_MFDMaskComponent_classes.hpp"
 #include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/_BP_HandInteractionComponent_classes.hpp"
+#include "SDK/_BP_LaserDot_classes.hpp"
 
 #include "vr_mfd.hpp"
 #include "vr_plugin_shared.hpp"
@@ -42,36 +40,30 @@ void VRMFD::align_mfd_panel(UWIDGET_PlayerHUD_C* neural_hud) {
 
 void VRMFD::show_mfd() {
     try {
-        // move MFD panel a little up
-        //VRBody::align_mfd_panel(m_neural_hud);
-
-        //API::get()->log_warn("[plugin][show_mfd] MFD Mask Show");
-        g_vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
-            WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Block
-        );
-
-        //g_vr_body->DebugWidgetComponent->SetCollisionResponseToChannel(
-        //    WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Block
-        //);
-        //UWIDGET_PlayerHUD_C* neural_hud{ nullptr };
-        //pawn->GetNeuralHUD(&neural_hud);
-        //g_vr_body->DebugWidgetComponent->WidgetClass = UWIDGET_PlayerHUD_C::StaticClass();
-        //g_vr_body->DebugWidgetComponent->SetWidget(neural_hud);
-
-        //SDK::FLinearColor color{ 0.5f, 0.5f, 0.5f, 0.1f };
-        //g_vr_body->DebugWidgetComponent->SetTintColorAndOpacity(color);
-        //g_vr_body->DebugWidgetComponent->SetRelativeScale3D({ 0.03f, 0.03f, 0.03f });
-
-        g_vr_body->MFDMaskComponent->Show(1.0f, VRMFD::m_mfd_depth);
-        g_vr_body->HandInteractionRight->AttachLaserPointer(true, 0.f);
-
+        if (g_vr_body == nullptr) {
+            API::get()->log_error("[plugin][show_mfd] Invalid vr_body");
+            return;
+        }
         if (!g_vr_body->IsWeaponHolstered()) {
             // use holster weapon button: holster weapon
             SDK::FKey h_key_name{
                 .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
             };
             g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+            VRMFD::m_had_equipped_weapon = true;
         }
+        else {
+            VRMFD::m_had_equipped_weapon = false;
+        }
+
+        g_vr_body->HandInteractionRight->AttachLaserPointer(true, 0.f);
+        g_vr_body->LaserDot->SetLaserVisibility(false, true, 0.f);
+        g_vr_body->EnableRangedInteractions(false);
+
+        g_vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
+            WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Block
+        );
+        g_vr_body->MFDMaskComponent->Show(1.0f, VRMFD::m_mfd_depth);
     }
     catch (...) {
         API::get()->log_error("[plugin][show_mfd] Exception");
@@ -89,15 +81,17 @@ void VRMFD::hide_mfd() {
             WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Ignore
         );
         g_vr_body->MFDMaskComponent->Hide();
-        
+        g_vr_body->LaserDot->SetLaserVisibility(false, false, 0.f);
+        g_vr_body->EnableRangedInteractions(false);
 
-        //if (g_vr_body->IsWeaponHolstered()) {
-        //    // use holster weapon button: show weapon
-        //    SDK::FKey h_key_name{
-        //        .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
-        //    };
-        //    g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
-        //}
+
+        if (g_vr_body->IsWeaponHolstered() && VRMFD::m_had_equipped_weapon) {
+            // use holster weapon button: show weapon
+            SDK::FKey h_key_name{
+                .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
+            };
+            g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+        }
     }
     catch (...) {
         API::get()->log_error("[plugin][hide_mfd] Exception");

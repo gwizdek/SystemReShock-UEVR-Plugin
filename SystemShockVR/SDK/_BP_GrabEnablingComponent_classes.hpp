@@ -37,6 +37,7 @@ public:
 	void TryEnableGrabOnPickupObject();
 	void TryEnableInteractionsOnWorldObjects();
 	void CreateLeverInteractionSource(class AActor* InActor);
+	void CreatePowerStationInteractionSource(class AActor* InActor);
 
 public:
 	static class UClass* StaticClass()

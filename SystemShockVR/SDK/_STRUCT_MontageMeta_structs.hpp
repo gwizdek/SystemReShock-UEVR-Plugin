@@ -15,19 +15,27 @@ namespace SDK
 {
 
 // UserDefinedStruct _STRUCT_MontageMeta._STRUCT_MontageMeta
-// 0x0018 (0x0018 - 0x0000)
+// 0x0020 (0x0020 - 0x0000)
 struct F_STRUCT_MontageMeta final
 {
 public:
 	class FString                                 Name_2_F54E1AA247BCB271E49FC2AB2A491648;           // 0x0000(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash)
 	float                                         LeftHand_8_8980455B4953D8F277D301B392AC52D0;       // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         RightHand_9_58C562834BA74ED2FE6C01A2CB09A2D6;      // 0x0014(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          StartingMontage_15_9A09826E43D5F136E9DE4D95488A1909; // 0x0018(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          EndingMontage_16_9323DFBF4F27D65458D34BBC73CD5BD7; // 0x0019(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          SingleMontage_17_0164E1554FFCEA1DCDCBB4B63276ED45; // 0x001A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          Visible_20_A3B05CB44CD568FCF329D6866921120B;       // 0x001B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(F_STRUCT_MontageMeta) == 0x000008, "Wrong alignment on F_STRUCT_MontageMeta");
-static_assert(sizeof(F_STRUCT_MontageMeta) == 0x000018, "Wrong size on F_STRUCT_MontageMeta");
+static_assert(sizeof(F_STRUCT_MontageMeta) == 0x000020, "Wrong size on F_STRUCT_MontageMeta");
 static_assert(offsetof(F_STRUCT_MontageMeta, Name_2_F54E1AA247BCB271E49FC2AB2A491648) == 0x000000, "Member 'F_STRUCT_MontageMeta::Name_2_F54E1AA247BCB271E49FC2AB2A491648' has a wrong offset!");
 static_assert(offsetof(F_STRUCT_MontageMeta, LeftHand_8_8980455B4953D8F277D301B392AC52D0) == 0x000010, "Member 'F_STRUCT_MontageMeta::LeftHand_8_8980455B4953D8F277D301B392AC52D0' has a wrong offset!");
 static_assert(offsetof(F_STRUCT_MontageMeta, RightHand_9_58C562834BA74ED2FE6C01A2CB09A2D6) == 0x000014, "Member 'F_STRUCT_MontageMeta::RightHand_9_58C562834BA74ED2FE6C01A2CB09A2D6' has a wrong offset!");
+static_assert(offsetof(F_STRUCT_MontageMeta, StartingMontage_15_9A09826E43D5F136E9DE4D95488A1909) == 0x000018, "Member 'F_STRUCT_MontageMeta::StartingMontage_15_9A09826E43D5F136E9DE4D95488A1909' has a wrong offset!");
+static_assert(offsetof(F_STRUCT_MontageMeta, EndingMontage_16_9323DFBF4F27D65458D34BBC73CD5BD7) == 0x000019, "Member 'F_STRUCT_MontageMeta::EndingMontage_16_9323DFBF4F27D65458D34BBC73CD5BD7' has a wrong offset!");
+static_assert(offsetof(F_STRUCT_MontageMeta, SingleMontage_17_0164E1554FFCEA1DCDCBB4B63276ED45) == 0x00001A, "Member 'F_STRUCT_MontageMeta::SingleMontage_17_0164E1554FFCEA1DCDCBB4B63276ED45' has a wrong offset!");
+static_assert(offsetof(F_STRUCT_MontageMeta, Visible_20_A3B05CB44CD568FCF329D6866921120B) == 0x00001B, "Member 'F_STRUCT_MontageMeta::Visible_20_A3B05CB44CD568FCF329D6866921120B' has a wrong offset!");
 
 }
 

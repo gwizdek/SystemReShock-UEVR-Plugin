@@ -73,6 +73,7 @@ public:
 	uint8                                         Pad_31A[0x2];                                      // 0x031A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FVector                                SnapStartLocation;                                 // 0x031C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_ItemCategory                           HeldItemCategory;                                  // 0x0328(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsLaserPointerAttached;                            // 0x0329(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 
 public:
 	void ExecuteUbergraph__BP_HandInteractionComponent(int32 EntryPoint);
@@ -101,6 +102,7 @@ public:
 	bool IsItemSelectorActive();
 	void IsEmptyHand(bool* Result);
 	void AttachLaserPointer(bool InEnabled, float InTimeout);
+	void IsChannelingSnappableSource(bool* Result);
 
 public:
 	static class UClass* StaticClass()
@@ -153,6 +155,7 @@ static_assert(offsetof(U_BP_HandInteractionComponent_C, IsChannelingWeaponSource
 static_assert(offsetof(U_BP_HandInteractionComponent_C, Hand) == 0x000319, "Member 'U_BP_HandInteractionComponent_C::Hand' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, SnapStartLocation) == 0x00031C, "Member 'U_BP_HandInteractionComponent_C::SnapStartLocation' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, HeldItemCategory) == 0x000328, "Member 'U_BP_HandInteractionComponent_C::HeldItemCategory' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, IsLaserPointerAttached) == 0x000329, "Member 'U_BP_HandInteractionComponent_C::IsLaserPointerAttached' has a wrong offset!");
 
 }
 

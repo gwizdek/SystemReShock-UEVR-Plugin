@@ -215,6 +215,7 @@
     <ClCompile Include="SDK\PAWN_Hacker_Implant_functions.cpp" />
     <ClCompile Include="SDK\PAWN_Hacker_Simple_functions.cpp" />
     <ClCompile Include="SDK\PAWN_SystemShockCharacter_functions.cpp" />
+    <ClCompile Include="SDK\PICKUP_Base_functions.cpp" />
     <ClCompile Include="SDK\SAVE_Settings_functions.cpp" />
     <ClCompile Include="SDK\SystemReShock_functions.cpp" />
     <ClCompile Include="SDK\UMG_functions.cpp" />
@@ -237,6 +238,7 @@
     <ClCompile Include="SDK\_BP_MeleeWeaponHandler_functions.cpp" />
     <ClCompile Include="SDK\_BP_MFDMaskComponent_functions.cpp" />
     <ClCompile Include="SDK\_BP_VRBody_functions.cpp" />
+    <ClCompile Include="SDK\_BP_VRMenu_functions.cpp" />
     <ClCompile Include="SDK\_BP_VRMovementComponent_functions.cpp" />
     <ClCompile Include="SDK\_CH_Hacker_Rig_Skeleton_AnimBlueprint_functions.cpp" />
     <ClCompile Include="vr_avatar.cpp" />

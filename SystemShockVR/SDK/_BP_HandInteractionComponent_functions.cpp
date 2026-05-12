@@ -286,7 +286,7 @@ void U_BP_HandInteractionComponent_C::TryPutingInBackpack()
 
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.TryGrab
-// (Public, BlueprintCallable, BlueprintEvent)
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
 void U_BP_HandInteractionComponent_C::TryGrab()
 {
@@ -474,6 +474,27 @@ void U_BP_HandInteractionComponent_C::AttachLaserPointer(bool InEnabled, float I
 	Parms.InTimeout = InTimeout;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.IsChannelingSnappableSource
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void U_BP_HandInteractionComponent_C::IsChannelingSnappableSource(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "IsChannelingSnappableSource");
+
+	Params::_BP_HandInteractionComponent_C_IsChannelingSnappableSource Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
 }
 
 }

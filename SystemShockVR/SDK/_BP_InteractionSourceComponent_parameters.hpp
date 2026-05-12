@@ -11,8 +11,9 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "_ENUM_InteractionSourceType_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_InteractionSourceType_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK::Params
@@ -127,15 +128,28 @@ static_assert(offsetof(_BP_InteractionSourceComponent_C_TrySnap, CallFunc_Not_Pr
 static_assert(offsetof(_BP_InteractionSourceComponent_C_TrySnap, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member '_BP_InteractionSourceComponent_C_TrySnap::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
 // Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.TryInteract
-// 0x0008 (0x0008 - 0x0000)
+// 0x0010 (0x0010 - 0x0000)
 struct _BP_InteractionSourceComponent_C_TryInteract final
 {
 public:
 	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class U_BP_HandInteractionComponent_C*        HandInteraction;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BP_InteractionSourceComponent_C_TryInteract) == 0x000008, "Wrong alignment on _BP_InteractionSourceComponent_C_TryInteract");
-static_assert(sizeof(_BP_InteractionSourceComponent_C_TryInteract) == 0x000008, "Wrong size on _BP_InteractionSourceComponent_C_TryInteract");
+static_assert(sizeof(_BP_InteractionSourceComponent_C_TryInteract) == 0x000010, "Wrong size on _BP_InteractionSourceComponent_C_TryInteract");
 static_assert(offsetof(_BP_InteractionSourceComponent_C_TryInteract, SourceActor) == 0x000000, "Member '_BP_InteractionSourceComponent_C_TryInteract::SourceActor' has a wrong offset!");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_TryInteract, HandInteraction) == 0x000008, "Member '_BP_InteractionSourceComponent_C_TryInteract::HandInteraction' has a wrong offset!");
+
+// Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.StartCooldown
+// 0x0008 (0x0008 - 0x0000)
+struct _BP_InteractionSourceComponent_C_StartCooldown final
+{
+public:
+	struct FTimerHandle                           CallFunc_K2_SetTimer_ReturnValue;                  // 0x0000(0x0008)(NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(_BP_InteractionSourceComponent_C_StartCooldown) == 0x000008, "Wrong alignment on _BP_InteractionSourceComponent_C_StartCooldown");
+static_assert(sizeof(_BP_InteractionSourceComponent_C_StartCooldown) == 0x000008, "Wrong size on _BP_InteractionSourceComponent_C_StartCooldown");
+static_assert(offsetof(_BP_InteractionSourceComponent_C_StartCooldown, CallFunc_K2_SetTimer_ReturnValue) == 0x000000, "Member '_BP_InteractionSourceComponent_C_StartCooldown::CallFunc_K2_SetTimer_ReturnValue' has a wrong offset!");
 
 // Function _BP_InteractionSourceComponent._BP_InteractionSourceComponent_C.GetInteractionSourceParams
 // 0x0080 (0x0080 - 0x0000)

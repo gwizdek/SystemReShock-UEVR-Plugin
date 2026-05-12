@@ -13,8 +13,8 @@
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "_ENUM_VRMovementMode_structs.hpp"
-#include "_ENUM_VRCharacterPosture_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "_ENUM_VRCharacterPosture_structs.hpp"
 
 
 namespace SDK

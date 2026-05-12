@@ -45,32 +45,8 @@ void VRBody::set_player_response_to_collision_channel(ECollisionChannel channel,
     }
 }
 
-//void VRBody::set_player_response_to_all_collision_channels(ECollisionResponse response) {
-//    try {
-//        if (m_main == nullptr) {
-//            return;
-//        }
-//        auto pawn = static_cast<APAWN_Hacker_Implant_C*>(m_main->get_pawn());
-//        if (pawn != nullptr) {
-//            pawn->CapsuleComponent->SetCollisionResponseToAllChannels(response);
-//            pawn->Mesh->SetCollisionResponseToAllChannels(response);
-//            pawn->ArmsMesh->SetCollisionResponseToAllChannels(response);
-//            pawn->WeaponMesh->SetCollisionResponseToAllChannels(response);
-//            API::get()->log_warn("[vrbody][set_player_response_to_all_collision_channels] Hacker collision changed");
-//        }
-//
-//        if (m_bp_actor != nullptr) {
-//            API::get()->log_warn("[vrbody][set_player_response_to_all_collision_channels] VRBody collision changed");
-//            m_bp_actor->VRBodyMesh->SetCollisionResponseToAllChannels(response);
-//        }
-//    }
-//    catch (...) {
-//        API::get()->log_error("[vrbody][set_player_response_to_all_collision_channels] Exception");
-//    }
-//}
 
 // A_BP_VRBody_C class is loaded into memory by hard-referencing it in the modified ArmsMesh AnimBP
-//A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Implant_C* pawn) {
 A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
     try {
         API::get()->log_warn("[vr_body][initialize_vr_body] Begin");
@@ -127,13 +103,12 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         hmd_state->set_permanent(true);
         API::get()->log_warn("[vr_body][initialize_vr_body] Hooked HMD motion controller component");
 
-        vr_body->CloseVRMenu();
-
         if (!pawn->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
             API::get()->log_warn("[vr_body][initialize_vr_body] Not a APAWN_Hacker_Implant. Returning.");
             return vr_body;
         }
 
+        // The rest of initialization is done only for HackerImplant pawn
         // Re-Attach Hacker Hardware
         static_cast<APAWN_Hacker_Implant_C*>(pawn)->MediaReaderMesh->K2_AttachToComponent(
             vr_body->VRBodyMesh,
@@ -189,7 +164,6 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
     return nullptr;
 }
 
-//void VRBody::initialize_laser_dot(A_BP_VRBody_C* vr_body) {
 void VRBody::initialize_laser_dot() {
     API::get()->log_warn("[vrbody][initialize_laser_dot] Begin");
     if (!UKismetSystemLibrary::IsValid(g_vr_body)) {
@@ -198,14 +172,12 @@ void VRBody::initialize_laser_dot() {
     }
 
     FHitResult hit_result{};
-    g_vr_body->LaserDot->DrawDebugSphere = false;
     g_vr_body->LaserDot->TraceChannel = ETraceTypeQuery::TraceTypeQuery3;
     g_vr_body->LaserDot->RootComponent->K2_SetRelativeLocationAndRotation({ 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f }, false, &hit_result, false);
 
     //vr_body->LaserDot->LaserDotComponent->Activate(true);
     g_vr_body->LaserDot->LaserDotComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.5f);
     g_vr_body->LaserDot->LaserDotComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Size"), 3.f);
-    g_vr_body->LaserDot->EnableTrace();
 
     g_vr_body->LaserDot->LaserPointerComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.1f);
     g_vr_body->LaserDot->LaserPointerComponent->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"LaserColour"), { 0.2f, 0.f, 0.f, 0.5f });
@@ -349,27 +321,8 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
         hardware_widget_components[2] = g_vr_body->HackerHardware->EnviroPakWidgetComponent;
         hardware_widget_components[3] = g_vr_body->HackerHardware->TurboBootsWidgetComponent;
 
-        //g_vr_body->LeftIndexFingerCollision->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
-        //g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
-        //g_vr_body->LeftIndexFingerCollision->SetCollisionResponseToChannel(
-        //    WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Overlap
-        //);
 
         for (int i = 0; i < 4; i++) {
-            //if (m_hacker_hardware_widget_components[i] != nullptr) {
-            //    log_error("attach_secondary_item_selector :: Already attached");
-            //    return false;
-            //}
-
-            //m_hacker_hardware_widget_components[i] = static_cast<SDK::UWidgetComponent*>(
-            //    m_secondary_item_selector_actor->AddComponentByClass(
-            //        SDK::UWidgetComponent::StaticClass(), false, m_hacker_hardware_transforms[i], false
-            //    ));
-            //if (m_hacker_hardware_widget_components[i] == nullptr) {
-            //    log_error("attach_secondary_item_selector :: Failed to attach hardware widget component");
-            //    return false;
-            //}
-
             // there's some going back and forth here as we want two things:
             // - a properly sized and aligned widget component for the collisions to work correctly
             // - a working hardware slot on the MFD
@@ -383,10 +336,6 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
             API::get()->log_warn("[vr_body][initialize_hacker_hardware] exec SetWidget");
             hardware_widget_components[i]->SetWidget(hardware_widgets[i]);
 
-            // 150.f seems to be the correct size
-            //m_hacker_hardware_widget_components[i]->SetDrawSize({ 100.0f, 100.0f });
-            //m_hacker_hardware_widget_components[i]->SetVisibility(true, true);
-            //m_hacker_hardware_widget_components[i]->SetHiddenInGame(false, false);
 
             // set properties for collision detection
             hardware_widget_components[i]->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
@@ -416,8 +365,6 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
             panel_slot->SetOffsets(canvas_panel_slots[i]->GetOffsets());
 
         }
-        //SDK::FLinearColor color{ 3.0f, 3.0f, 3.0f, 1.0f };
-        //g_vr_body->VitalBarsWidgetComponent->SetTintColorAndOpacity(color);
 
         API::get()->log_warn("[vr_body][initialize_hacker_hardware] Initialized");
     }

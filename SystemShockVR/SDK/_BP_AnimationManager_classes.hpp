@@ -19,13 +19,14 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_AnimationManager._BP_AnimationManager_C
-// 0x0060 (0x0110 - 0x00B0)
+// 0x00B0 (0x0160 - 0x00B0)
 class U_BP_AnimationManager_C final : public UActorComponent
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x00B0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	class A_BP_VRBody_C*                          VRBodyRef;                                         // 0x00B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TMap<class FString, struct F_STRUCT_MontageMeta> PickupMontages;                                    // 0x00C0(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMap<class FString, struct F_STRUCT_MontageMeta> MappedMontages;                                    // 0x00C0(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMap<class FString, struct F_STRUCT_MontageMeta> WorldInteractableMontages;                         // 0x0110(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
 
 public:
 	void ExecuteUbergraph__BP_AnimationManager(int32 EntryPoint);
@@ -48,10 +49,11 @@ public:
 	}
 };
 static_assert(alignof(U_BP_AnimationManager_C) == 0x000008, "Wrong alignment on U_BP_AnimationManager_C");
-static_assert(sizeof(U_BP_AnimationManager_C) == 0x000110, "Wrong size on U_BP_AnimationManager_C");
+static_assert(sizeof(U_BP_AnimationManager_C) == 0x000160, "Wrong size on U_BP_AnimationManager_C");
 static_assert(offsetof(U_BP_AnimationManager_C, UberGraphFrame) == 0x0000B0, "Member 'U_BP_AnimationManager_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(U_BP_AnimationManager_C, VRBodyRef) == 0x0000B8, "Member 'U_BP_AnimationManager_C::VRBodyRef' has a wrong offset!");
-static_assert(offsetof(U_BP_AnimationManager_C, PickupMontages) == 0x0000C0, "Member 'U_BP_AnimationManager_C::PickupMontages' has a wrong offset!");
+static_assert(offsetof(U_BP_AnimationManager_C, MappedMontages) == 0x0000C0, "Member 'U_BP_AnimationManager_C::MappedMontages' has a wrong offset!");
+static_assert(offsetof(U_BP_AnimationManager_C, WorldInteractableMontages) == 0x000110, "Member 'U_BP_AnimationManager_C::WorldInteractableMontages' has a wrong offset!");
 
 }
 

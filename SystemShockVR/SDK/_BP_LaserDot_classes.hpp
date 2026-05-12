@@ -24,38 +24,37 @@ class A_BP_LaserDot_C final : public AActor
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0220(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UWidgetComponent*                       CrosshairCursorComponent;                          // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UNiagaraComponent*                      LaserPointerComponent;                             // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UStaticMeshComponent*                   DebugSphere;                                       // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class UNiagaraComponent*                      LaserDotComponent;                                 // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USceneComponent*                        TraceHitComponent;                                 // 0x0248(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0250(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 LastLaserTargetActor;                              // 0x0258(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          DrawDebugSphere;                                   // 0x0260(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	ETraceTypeQuery                               TraceChannel;                                      // 0x0261(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_262[0x2];                                      // 0x0262(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         TraceStartOffset;                                  // 0x0264(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         TraceEndOffset;                                    // 0x0268(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          TraceComplex;                                      // 0x026C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	bool                                          TraceEnabled;                                      // 0x026D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_26E[0x2];                                      // 0x026E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Power;                                             // 0x0270(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         Size;                                              // 0x0274(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         Distance;                                          // 0x0278(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FLinearColor                           Color;                                             // 0x027C(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_28C[0x4];                                      // 0x028C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class A_BP_VRBody_C*                          VRBodyRef;                                         // 0x0290(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          AutoSize;                                          // 0x0298(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_299[0x3];                                      // 0x0299(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         MaxDotDistance;                                    // 0x029C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                HitLocation;                                       // 0x02A0(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         MaxDotSize;                                        // 0x02AC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         MinDotSize;                                        // 0x02B0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         DotSizeFactor;                                     // 0x02B4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    LastLaserTargetComponent;                          // 0x02B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   LastLaserTargetBoneName;                           // 0x02C0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<class AActor*>                         IgnoredActors;                                     // 0x02C8(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
-	struct FTimerHandle                           LaserDotTimer;                                     // 0x02D8(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class UNiagaraComponent*                      LaserPointerComponent;                             // 0x0228(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UNiagaraComponent*                      LaserDotComponent;                                 // 0x0230(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        TraceHitComponent;                                 // 0x0238(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0240(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 LastLaserTargetActor;                              // 0x0248(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ETraceTypeQuery                               TraceChannel;                                      // 0x0250(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_251[0x3];                                      // 0x0251(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         TraceStartOffset;                                  // 0x0254(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         TraceEndOffset;                                    // 0x0258(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          TraceComplex;                                      // 0x025C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          TraceEnabled;                                      // 0x025D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_25E[0x2];                                      // 0x025E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Power;                                             // 0x0260(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Size;                                              // 0x0264(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Distance;                                          // 0x0268(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FLinearColor                           Color;                                             // 0x026C(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_27C[0x4];                                      // 0x027C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class A_BP_VRBody_C*                          VRBodyRef;                                         // 0x0280(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          AutoSize;                                          // 0x0288(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_289[0x3];                                      // 0x0289(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         MaxDotDistance;                                    // 0x028C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                HitLocation;                                       // 0x0290(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MaxDotSize;                                        // 0x029C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         MinDotSize;                                        // 0x02A0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         DotSizeFactor;                                     // 0x02A4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    LastLaserTargetComponent;                          // 0x02A8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   LastLaserTargetBoneName;                           // 0x02B0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class AActor*>                         IgnoredActors;                                     // 0x02B8(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
+	struct FTimerHandle                           LaserDotTimer;                                     // 0x02C8(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    HighlightedPrimitive;                              // 0x02D0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         OutlineStencilValue;                               // 0x02D8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_LaserDot(int32 EntryPoint);
@@ -63,13 +62,13 @@ public:
 	void ReceiveBeginPlay();
 	void ReceiveTick(float DeltaSeconds);
 	void SetPowerAndSize(float InPower, float InSize);
-	void EnableTrace();
-	void DisableTrace();
 	void SetColor(struct FLinearColor& InColor);
 	void SetSizeByDistance(float& InDistance);
 	void AttachTo(class USceneComponent* InParent, class FName InSocketName);
-	void SetVisibility(bool Dot, bool beam, float DisableAfter);
+	void SetLaserVisibility(bool Dot, bool beam, float DisableAfter);
 	void Set_Laser_Beam_Params(float InAlpha, const struct FLinearColor& InLaserColour, float InLaserPower);
+	void OnScanDataChanged(class UObject* Interactable, class UPrimitiveComponent* Primitive, const class FText& Description);
+	void EmulateScanner(class AActor* NewActor);
 
 public:
 	static class UClass* StaticClass()
@@ -84,34 +83,33 @@ public:
 static_assert(alignof(A_BP_LaserDot_C) == 0x000008, "Wrong alignment on A_BP_LaserDot_C");
 static_assert(sizeof(A_BP_LaserDot_C) == 0x0002E0, "Wrong size on A_BP_LaserDot_C");
 static_assert(offsetof(A_BP_LaserDot_C, UberGraphFrame) == 0x000220, "Member 'A_BP_LaserDot_C::UberGraphFrame' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, CrosshairCursorComponent) == 0x000228, "Member 'A_BP_LaserDot_C::CrosshairCursorComponent' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, LaserPointerComponent) == 0x000230, "Member 'A_BP_LaserDot_C::LaserPointerComponent' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, DebugSphere) == 0x000238, "Member 'A_BP_LaserDot_C::DebugSphere' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, LaserDotComponent) == 0x000240, "Member 'A_BP_LaserDot_C::LaserDotComponent' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, TraceHitComponent) == 0x000248, "Member 'A_BP_LaserDot_C::TraceHitComponent' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, DefaultSceneRoot) == 0x000250, "Member 'A_BP_LaserDot_C::DefaultSceneRoot' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, LastLaserTargetActor) == 0x000258, "Member 'A_BP_LaserDot_C::LastLaserTargetActor' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, DrawDebugSphere) == 0x000260, "Member 'A_BP_LaserDot_C::DrawDebugSphere' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, TraceChannel) == 0x000261, "Member 'A_BP_LaserDot_C::TraceChannel' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, TraceStartOffset) == 0x000264, "Member 'A_BP_LaserDot_C::TraceStartOffset' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, TraceEndOffset) == 0x000268, "Member 'A_BP_LaserDot_C::TraceEndOffset' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, TraceComplex) == 0x00026C, "Member 'A_BP_LaserDot_C::TraceComplex' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, TraceEnabled) == 0x00026D, "Member 'A_BP_LaserDot_C::TraceEnabled' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, Power) == 0x000270, "Member 'A_BP_LaserDot_C::Power' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, Size) == 0x000274, "Member 'A_BP_LaserDot_C::Size' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, Distance) == 0x000278, "Member 'A_BP_LaserDot_C::Distance' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, Color) == 0x00027C, "Member 'A_BP_LaserDot_C::Color' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, VRBodyRef) == 0x000290, "Member 'A_BP_LaserDot_C::VRBodyRef' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, AutoSize) == 0x000298, "Member 'A_BP_LaserDot_C::AutoSize' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, MaxDotDistance) == 0x00029C, "Member 'A_BP_LaserDot_C::MaxDotDistance' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, HitLocation) == 0x0002A0, "Member 'A_BP_LaserDot_C::HitLocation' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, MaxDotSize) == 0x0002AC, "Member 'A_BP_LaserDot_C::MaxDotSize' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, MinDotSize) == 0x0002B0, "Member 'A_BP_LaserDot_C::MinDotSize' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, DotSizeFactor) == 0x0002B4, "Member 'A_BP_LaserDot_C::DotSizeFactor' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, LastLaserTargetComponent) == 0x0002B8, "Member 'A_BP_LaserDot_C::LastLaserTargetComponent' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, LastLaserTargetBoneName) == 0x0002C0, "Member 'A_BP_LaserDot_C::LastLaserTargetBoneName' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, IgnoredActors) == 0x0002C8, "Member 'A_BP_LaserDot_C::IgnoredActors' has a wrong offset!");
-static_assert(offsetof(A_BP_LaserDot_C, LaserDotTimer) == 0x0002D8, "Member 'A_BP_LaserDot_C::LaserDotTimer' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, LaserPointerComponent) == 0x000228, "Member 'A_BP_LaserDot_C::LaserPointerComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, LaserDotComponent) == 0x000230, "Member 'A_BP_LaserDot_C::LaserDotComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, TraceHitComponent) == 0x000238, "Member 'A_BP_LaserDot_C::TraceHitComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, DefaultSceneRoot) == 0x000240, "Member 'A_BP_LaserDot_C::DefaultSceneRoot' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, LastLaserTargetActor) == 0x000248, "Member 'A_BP_LaserDot_C::LastLaserTargetActor' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, TraceChannel) == 0x000250, "Member 'A_BP_LaserDot_C::TraceChannel' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, TraceStartOffset) == 0x000254, "Member 'A_BP_LaserDot_C::TraceStartOffset' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, TraceEndOffset) == 0x000258, "Member 'A_BP_LaserDot_C::TraceEndOffset' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, TraceComplex) == 0x00025C, "Member 'A_BP_LaserDot_C::TraceComplex' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, TraceEnabled) == 0x00025D, "Member 'A_BP_LaserDot_C::TraceEnabled' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, Power) == 0x000260, "Member 'A_BP_LaserDot_C::Power' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, Size) == 0x000264, "Member 'A_BP_LaserDot_C::Size' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, Distance) == 0x000268, "Member 'A_BP_LaserDot_C::Distance' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, Color) == 0x00026C, "Member 'A_BP_LaserDot_C::Color' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, VRBodyRef) == 0x000280, "Member 'A_BP_LaserDot_C::VRBodyRef' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, AutoSize) == 0x000288, "Member 'A_BP_LaserDot_C::AutoSize' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, MaxDotDistance) == 0x00028C, "Member 'A_BP_LaserDot_C::MaxDotDistance' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, HitLocation) == 0x000290, "Member 'A_BP_LaserDot_C::HitLocation' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, MaxDotSize) == 0x00029C, "Member 'A_BP_LaserDot_C::MaxDotSize' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, MinDotSize) == 0x0002A0, "Member 'A_BP_LaserDot_C::MinDotSize' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, DotSizeFactor) == 0x0002A4, "Member 'A_BP_LaserDot_C::DotSizeFactor' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, LastLaserTargetComponent) == 0x0002A8, "Member 'A_BP_LaserDot_C::LastLaserTargetComponent' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, LastLaserTargetBoneName) == 0x0002B0, "Member 'A_BP_LaserDot_C::LastLaserTargetBoneName' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, IgnoredActors) == 0x0002B8, "Member 'A_BP_LaserDot_C::IgnoredActors' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, LaserDotTimer) == 0x0002C8, "Member 'A_BP_LaserDot_C::LaserDotTimer' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, HighlightedPrimitive) == 0x0002D0, "Member 'A_BP_LaserDot_C::HighlightedPrimitive' has a wrong offset!");
+static_assert(offsetof(A_BP_LaserDot_C, OutlineStencilValue) == 0x0002D8, "Member 'A_BP_LaserDot_C::OutlineStencilValue' has a wrong offset!");
 
 }
 

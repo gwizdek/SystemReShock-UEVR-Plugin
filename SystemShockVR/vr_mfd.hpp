@@ -5,6 +5,7 @@ class VRMFD final
 {
 public:
     static inline float m_mfd_depth{ 150.f };
+    static inline bool m_had_equipped_weapon{ false };
 
     static void align_mfd_panel(SDK::UWIDGET_PlayerHUD_C* neural_hud);
     static void show_mfd();

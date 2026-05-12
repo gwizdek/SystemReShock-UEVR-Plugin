@@ -18,18 +18,18 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_LeverInteractionSourceComponent._BP_LeverInteractionSourceComponent_C
-// 0x0010 (0x02D0 - 0x02C0)
+// 0x0010 (0x02E0 - 0x02D0)
 class U_BP_LeverInteractionSourceComponent_C final : public U_BP_InteractionSourceComponent_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame__BP_LeverInteractionSourceComponent_C; // 0x02C0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class AINTERACT_Lever_C*                      ParentInteractable;                                // 0x02C8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FPointerToUberGraphFrame               UberGraphFrame__BP_LeverInteractionSourceComponent_C; // 0x02D0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class AINTERACT_Lever_C*                      ParentInteractable;                                // 0x02D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_LeverInteractionSourceComponent(int32 EntryPoint);
-	void ReceiveBeginPlay();
 	void Initialize();
-	void TryInteract(class AActor* SourceActor);
+	void ReceiveBeginPlay();
+	void TryInteract(class AActor* SourceActor, class U_BP_HandInteractionComponent_C* HandInteraction);
 
 public:
 	static class UClass* StaticClass()
@@ -42,9 +42,9 @@ public:
 	}
 };
 static_assert(alignof(U_BP_LeverInteractionSourceComponent_C) == 0x000010, "Wrong alignment on U_BP_LeverInteractionSourceComponent_C");
-static_assert(sizeof(U_BP_LeverInteractionSourceComponent_C) == 0x0002D0, "Wrong size on U_BP_LeverInteractionSourceComponent_C");
-static_assert(offsetof(U_BP_LeverInteractionSourceComponent_C, UberGraphFrame__BP_LeverInteractionSourceComponent_C) == 0x0002C0, "Member 'U_BP_LeverInteractionSourceComponent_C::UberGraphFrame__BP_LeverInteractionSourceComponent_C' has a wrong offset!");
-static_assert(offsetof(U_BP_LeverInteractionSourceComponent_C, ParentInteractable) == 0x0002C8, "Member 'U_BP_LeverInteractionSourceComponent_C::ParentInteractable' has a wrong offset!");
+static_assert(sizeof(U_BP_LeverInteractionSourceComponent_C) == 0x0002E0, "Wrong size on U_BP_LeverInteractionSourceComponent_C");
+static_assert(offsetof(U_BP_LeverInteractionSourceComponent_C, UberGraphFrame__BP_LeverInteractionSourceComponent_C) == 0x0002D0, "Member 'U_BP_LeverInteractionSourceComponent_C::UberGraphFrame__BP_LeverInteractionSourceComponent_C' has a wrong offset!");
+static_assert(offsetof(U_BP_LeverInteractionSourceComponent_C, ParentInteractable) == 0x0002D8, "Member 'U_BP_LeverInteractionSourceComponent_C::ParentInteractable' has a wrong offset!");
 
 }
 

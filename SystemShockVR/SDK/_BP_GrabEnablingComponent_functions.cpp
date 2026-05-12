@@ -118,5 +118,25 @@ void U_BP_GrabEnablingComponent_C::CreateLeverInteractionSource(class AActor* In
 	UObject::ProcessEvent(Func, &Parms);
 }
 
+
+// Function _BP_GrabEnablingComponent._BP_GrabEnablingComponent_C.CreatePowerStationInteractionSource
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           InActor                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void U_BP_GrabEnablingComponent_C::CreatePowerStationInteractionSource(class AActor* InActor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_GrabEnablingComponent_C", "CreatePowerStationInteractionSource");
+
+	Params::_BP_GrabEnablingComponent_C_CreatePowerStationInteractionSource Parms{};
+
+	Parms.InActor = InActor;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
 }
 

@@ -24,7 +24,7 @@ public:
     static float get_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data);
     static float uevr_param_to_float(const UEVR_VRData* vr, const char* key);
     static void handle_native_stereo_fix_cycler(const UEVR_VRData* vr);
-    static void cycle_native_stereo_fix(const UEVR_VRData* vr);
+    static void cycle_native_stereo_fix();
 
     PluginUtils() = delete;
 };

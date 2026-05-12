@@ -299,6 +299,12 @@
     <ClCompile Include="SDK\WEAPON_LaserRapier_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\_BP_VRMenu_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\PICKUP_Base_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

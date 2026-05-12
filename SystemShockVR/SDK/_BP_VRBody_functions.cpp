@@ -642,34 +642,6 @@ void A_BP_VRBody_C::TriggerWidgetInteractionAction(bool InPressLMB)
 }
 
 
-// Function _BP_VRBody._BP_VRBody_C.OpenVRMenu
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void A_BP_VRBody_C::OpenVRMenu()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "OpenVRMenu");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function _BP_VRBody._BP_VRBody_C.CloseVRMenu
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void A_BP_VRBody_C::CloseVRMenu()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "CloseVRMenu");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function _BP_VRBody._BP_VRBody_C.SetHandheldConsumableCollision
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:

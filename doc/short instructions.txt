@@ -1,0 +1,67 @@
+### Prerequesties
+- Latest full Steam version of the game
+- UEVR nightly
+
+### How to install
+- Remove previous uevr mod dir and any .pak mods installed in game dir
+- Import profile
+- Copy .pak mods from profile's /pak subfolder into Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks\
+
+### Postinstall
+- DLSS - I highly recommend to swap DLSS upscaler .dll file and use profile J or K. I don't recommend using newer L/M pofiles.
+- Launch the game. Go to controller options and reset bindings, then unbind Lean (there's no unbind button, so bind lean to interact button, and then bind interact action using the same button).
+- Inject uevr while in main menu. This should change some of the game options to work well in VR, like head bob, hotbar mode, etc.
+
+note: I play with tutorials disabled - haven't tested how they work
+
+
+### IK body / bindings / gestures
+- Hold left controller above left shoulder and press Left thumb to recenter
+- You can grab pickable objects with an empty hand and put them into inventory (backpack) if there's room
+- You also can interact by using the laser pointer (interact button). The laser pointer is visible when holding a ranged weapon.
+	If you holster the weapon, the pointer can be turned on for 10s by pressing trigger button.
+	Some of the objects/switches are placed beyond the hand reach and can be accessed only in this way.
+	(gravity pull not implemented yet. maybe sometime)
+- Hands will prompt that an action can be executed by changing pose. These prompts include:
+	- grabbing object
+	- interacting with buttons / switches / levers (left hand) / puzzles / power stations (left hand) / keypads
+	- holding weapon with offhand
+- Interacting with buttons doesn't require to press anything. Just press it (this excludes buttons in elevators rn.)
+- Open locked doors with an access card - it's atached to waist on the left side (you need to have picked up an appriopriate card first)
+- Holster weapon by using grab button over your shoulder. Take it out by pulling from the backpack (grab arrow gesture)
+- Hands have collisions with pickable objects, but pickables have collisions with other pickables, so you can pickup an object and influence other objects with the object you're holding.
+	This doesn't inculde held weapons rn - the weapon meshes (high quality) are different than the pickable meshes(low quality) and doesn't have collisions enabled by default.
+- Press grip to do a pointing gesture. This gesture is needed for:
+	- Toggling hacker's hardware - look at your right inner arm. If the hardware was installed, if will be visible there (applies to: Shield, Sensaround, TurboBoots, EnviroPak)
+	- using consumables (patches, bateries) - select a consumable via Item Selector and use the other hand's pointing gesture to touch the consumable. In case of bateries, touch the front blue panel.
+	- pressing buttons in elevators (to be fixed)
+- Hold left controller above left shoulder and press Left grip to toggle flashlight (attached to ranged weapon)
+
+### Item Selector
+- To open the Item Selector (hotbar) press and hold right thumb (like in HL:A). The items need to be assigned to hotbar slots via MFD first.
+
+### MFD
+- Toggle MFD by placing right hand on the inner left wrist and pressing right grip (the default long press left menu button is also available)
+- Use your hand to point at items
+- Right Trigger - select/grab items
+- Right Grab - context menu
+
+
+### Melee
+Melee is collision based, but the weapon needs to be in a HOT state to register a hit, meaning you need to properly swing it.
+There are two points on the weapon that sample its speed each tick (one on weapon tip, other at weapon grip). When both reach predefined HOT velocities, you'll hear a swing sound.
+
+### Pickable object outline
+- the original item highlighter (the animated box corners) can't be used by this mod. It doesn't work with the control scheme. I've added an item outliner, but I haven't finished implementing it yet.
+- the Laser Pointer also indicates an interactable object by changing its color (green)
+
+### Important: Missing features / known bugs
+- no button crouch! Only physical, so playing standing recommended
+- don't enter the Cyberspace. the transition phase is bugged rn
+- final Boss fight not implemented yet
+- don't use right hand on levers
+- weapon hand poses are WIP
+- some weapon animations are missing - the idea is to replace them with your own hand interactions anyway (reload, weapon mode change, etc.)
+- Grenade Launcher ammo is bugged
+- Grenades can't be physically thrown
+- I'm sure many more...

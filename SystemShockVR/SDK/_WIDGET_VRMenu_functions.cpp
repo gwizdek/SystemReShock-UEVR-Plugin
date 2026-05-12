@@ -37,6 +37,20 @@ void U_WIDGET_VRMenu_C::ExecuteUbergraph__WIDGET_VRMenu(int32 EntryPoint)
 }
 
 
+// Function _WIDGET_VRMenu._WIDGET_VRMenu_C.BndEvt___WIDGET_VRMenu_Button_CloseMenu_K2Node_ComponentBoundEvent_2_OnButtonReleasedEvent__DelegateSignature
+// (BlueprintEvent)
+
+void U_WIDGET_VRMenu_C::BndEvt___WIDGET_VRMenu_Button_CloseMenu_K2Node_ComponentBoundEvent_2_OnButtonReleasedEvent__DelegateSignature()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_WIDGET_VRMenu_C", "BndEvt___WIDGET_VRMenu_Button_CloseMenu_K2Node_ComponentBoundEvent_2_OnButtonReleasedEvent__DelegateSignature");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function _WIDGET_VRMenu._WIDGET_VRMenu_C.BndEvt___WIDGET_VRMenu_Button_Player_Height_Inc_K2Node_ComponentBoundEvent_1_OnButtonReleasedEvent__DelegateSignature
 // (BlueprintEvent)
 
@@ -82,6 +96,20 @@ void U_WIDGET_VRMenu_C::Initialize(class A_BP_VRBody_C* VRBodyRef_0)
 	Parms.VRBodyRef_0 = VRBodyRef_0;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _WIDGET_VRMenu._WIDGET_VRMenu_C.SetOptions
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void U_WIDGET_VRMenu_C::SetOptions()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_WIDGET_VRMenu_C", "SetOptions");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }
