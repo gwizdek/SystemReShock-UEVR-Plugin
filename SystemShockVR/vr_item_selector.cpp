@@ -19,7 +19,7 @@ void VRItemSelector::initialize(SDK::UWIDGET_PlayerHUD_C* neural_hud) {
             return;
         }
         
-        // get prepared in UE Editor hotbar slot array 
+        // get hotbar slot array defined in BP
         auto hotbar_slots = g_vr_body->ItemSelectorRight->HotbarSlots;
 
         // canvas panel slots 
@@ -27,21 +27,13 @@ void VRItemSelector::initialize(SDK::UWIDGET_PlayerHUD_C* neural_hud) {
 
         for (int i = 0; i < 10; i++) {
             canvas_panel_slots[i] = (SDK::UCanvasPanelSlot*)neural_hud->HotbarSlots[i]->Slot;
-            canvas_panel_slots[i]->SetAlignment({ 0.5f, 0.5f });
-            canvas_panel_slots[i]->SetAnchors(SDK::FAnchors{ {0.5f, 0.5f}, {0.5f, 0.5f} });
-
             hotbar_slots[i]->SetWidget(neural_hud->HotbarSlots[i]);
-            hotbar_slots[i]->SetDrawSize({ 100.0f, 104.0f });
-    
+
             // setup selector's collision channels
             hotbar_slots[i]->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
             hotbar_slots[i]->SetCollisionResponseToChannel(
                 WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Block
             );
-
-            // ?
-            canvas_panel_slots[i]->SetAlignment({ 0.5f, 1.f });
-            canvas_panel_slots[i]->SetAnchors(SDK::FAnchors{ {0.5f, 1.f}, {0.5f, 1.f} });
 
             SDK::FLinearColor color{ 0.1f, 0.1f, 0.1f, 1.0f };
             hotbar_slots[i]->SetTintColorAndOpacity(color);

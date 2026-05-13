@@ -336,7 +336,6 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
             API::get()->log_warn("[vr_body][initialize_hacker_hardware] exec SetWidget");
             hardware_widget_components[i]->SetWidget(hardware_widgets[i]);
 
-
             // set properties for collision detection
             hardware_widget_components[i]->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
             hardware_widget_components[i]->SetCollisionResponseToAllChannels(SDK::ECollisionResponse::ECR_Ignore);
@@ -348,11 +347,10 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
                 L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Translucent.Widget3DPassThrough_Translucent"
                 //L"MaterialInstanceConstant /Engine/EngineMaterials/Widget3DPassThrough_Opaque.Widget3DPassThrough_Opaque"
             );
-            SDK::FLinearColor color{ 0.4f, 0.4f, 0.4f, 0.2f };
+            SDK::FLinearColor color{ 0.5f, 0.5f, 0.5f, 1.0f };
             hardware_widget_components[i]->SetMaterial(0, material);
             hardware_widget_components[i]->SetTintColorAndOpacity(color);
-
-            //m_secondary_item_selector_actor->FinishAddComponent(m_hacker_hardware_widget_components[i], false, m_hacker_hardware_transforms[i]);
+            hardware_widget_components[i]->BlendMode = EWidgetBlendMode::Masked;
 
             API::get()->log_warn("[vr_body][initialize_hacker_hardware] reseting PANELs");
             // recreate panel slot for widget and place it at original position on canvas panel
@@ -363,7 +361,7 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
             panel_slot->SetAlignment({ 0.5f, 0.5f });
             panel_slot->SetAnchors(SDK::FAnchors{ {0.5f, 0.5f}, {0.5f, 0.5f} });
             panel_slot->SetOffsets(canvas_panel_slots[i]->GetOffsets());
-
+            hardware_widgets[i]->SetVisibility(SDK::ESlateVisibility::Visible);
         }
 
         API::get()->log_warn("[vr_body][initialize_hacker_hardware] Initialized");
