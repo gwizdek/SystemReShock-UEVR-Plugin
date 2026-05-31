@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>System Shock VR — Resolved Collision Profiles</title>
+<style>
+  :root {
+    --bg: #1e1e1e;
+    --panel: #252526;
+    --text: #d4d4d4;
+    --muted: #9a9a9a;
+    --border: #3c3c3c;
+    --accent: #4ec9b0;
+    --header: #2d2d30;
+    --block: #5a1f1f;
+    --block-fg: #ff6b6b;
+    --overlap: #5a4a1f;
+    --overlap-fg: #ffd166;
+    --ignore: #1f4a2a;
+    --ignore-fg: #7ee787;
+    --highlight: #094771;
+    --new: #b48ead;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 32px;
+    line-height: 1.5;
+  }
+  h1 { color: var(--accent); margin-top: 0; }
+  h2 {
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+    margin-top: 32px;
+  }
+  h3 { color: #c586c0; margin-top: 24px; }
+  p, li { color: var(--text); }
+  code {
+    background: var(--panel);
+    color: #ce9178;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9em;
+  }
+  .muted { color: var(--muted); font-size: 0.92em; }
+  table {
+    border-collapse: collapse;
+    margin: 12px 0 24px;
+    background: var(--panel);
+    font-size: 0.88em;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 5px 8px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  th {
+    background: var(--header);
+    color: var(--accent);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+  }
+  td.profile {
+    text-align: left;
+    font-weight: 600;
+    color: #9cdcfe;
+  }
+  td.profile.new {
+    color: var(--new);
+  }
+  td.left { text-align: left; }
+  td.B { background: var(--block);   color: var(--block-fg);   font-weight: 600; }
+  td.O { background: var(--overlap); color: var(--overlap-fg); font-weight: 600; }
+  td.I { background: var(--ignore);  color: var(--ignore-fg);  font-weight: 600; }
+  td.bold-cell { text-decoration: underline; text-decoration-style: dotted; }
+  .legend {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    display: inline-block;
+    margin: 8px 0 16px;
+  }
+  .legend-row { display: flex; align-items: center; gap: 10px; margin: 4px 0; }
+  .swatch {
+    display: inline-block;
+    width: 26px; height: 18px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 18px;
+    font-size: 0.85em;
+  }
+  .swatch.B { background: var(--block);   color: var(--block-fg); }
+  .swatch.O { background: var(--overlap); color: var(--overlap-fg); }
+  .swatch.I { background: var(--ignore);  color: var(--ignore-fg); }
+  .swatch.bold-cell {
+    background: var(--panel);
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+  }
+  .swatch.profile-new {
+    background: var(--panel);
+    color: var(--new);
+    font-weight: 600;
+  }
+  .channels-table th, .channels-table td { text-align: left; padding-right: 16px; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  .header-meta { color: var(--muted); font-size: 0.9em; margin-bottom: 24px; }
+</style>
+</head>
+<body>
+
+<h1>System Shock VR — Resolved Collision Profiles</h1>
+<div class="header-meta">
+  Computed by applying <code>DefaultEngine.ini</code> over <code>BaseEngine.ini</code> for the
+  <code>[/Script/Engine.CollisionProfile]</code> section.
+</div>
+
+<h2>How the merge resolves</h2>
+<ul>
+  <li>UE loads <code>BaseEngine.ini</code> first, then <code>DefaultEngine.ini</code> applies on top.</li>
+  <li>The project's <code>DefaultEngine.ini</code> issues paired
+      <code>-Profiles=(Name=X,...)</code> / <code>+Profiles=(Name=X,...)</code> for every built-in profile,
+      so BaseEngine's contribution is fully overwritten.</li>
+  <li><code>+EditProfiles</code> then patches individual <code>CustomResponses</code> entries on top,
+      keyed by channel name (same name overrides, new names append).</li>
+  <li>Unspecified channels fall back to each channel's <code>DefaultResponse</code>.</li>
+  <li><code>+Profiles</code> entries with <code>(Channel="X")</code> and <em>no</em> <code>Response=</code>
+      default to <code>ECR_Block</code> per <code>FResponseChannel</code> constructor — that's why
+      <code>RangedWeapons</code> ends up Block in many profiles despite its channel default being Ignore.</li>
+</ul>
+
+<h2>Legend</h2>
+<div class="legend">
+  <div class="legend-row"><span class="swatch B">B</span> <span>Block — collision/query is blocked</span></div>
+  <div class="legend-row"><span class="swatch O">O</span> <span>Overlap — generates overlap event, no block</span></div>
+  <div class="legend-row"><span class="swatch I">I</span> <span>Ignore — no interaction at all</span></div>
+  <div class="legend-row"><span class="swatch bold-cell">B</span> <span>Underlined = explicit override (set by <code>CustomResponses</code> or <code>+EditProfiles</code>)</span></div>
+  <div class="legend-row"><span class="swatch profile-new">name</span> <span>Profile name in this color = project-added (not in BaseEngine)</span></div>
+</div>
+<p class="muted">
+  <strong>En</strong> = CollisionEnabled — <code>N</code>: NoCollision, <code>Q</code>: QueryOnly, <code>P</code>: QueryAndPhysics.<br>
+  <strong>ObjType</strong> — <code>WS</code>: WorldStatic, <code>WD</code>: WorldDynamic, <code>Pn</code>: Pawn,
+  <code>PB</code>: PhysicsBody, <code>Vh</code>: Vehicle, <code>De</code>: Destructible,
+  <code>Pu</code>: PickupPhysicsBody.
+</p>
+
+<h2>Custom channels (declared in DefaultEngine.ini)</h2>
+<table class="channels-table">
+  <thead>
+    <tr>
+      <th>Slot</th><th>Name</th><th>Default Response</th><th>Trace Channel?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>ECC_GameTraceChannel1</code></td><td>Scanner</td>           <td>Block</td>  <td>Yes</td></tr>
+    <tr><td><code>ECC_GameTraceChannel2</code></td><td>PickupPhysicsBody</td> <td>Block</td>  <td>—</td></tr>
+    <tr><td><code>ECC_GameTraceChannel3</code></td><td>TileGeometry</td>      <td>Block</td>  <td>—</td></tr>
+    <tr><td><code>ECC_GameTraceChannel4</code></td><td>RangedWeapons</td>     <td>Ignore</td> <td>Yes</td></tr>
+    <tr><td><code>ECC_GameTraceChannel5</code></td><td>IKTrace</td>           <td>Ignore</td> <td>Yes</td></tr>
+  </tbody>
+</table>
+<p class="muted">
+  All built-in channels (<code>WorldStatic, WorldDynamic, Pawn, Visibility, Camera, PhysicsBody, Vehicle, Destructible</code>)
+  default to <strong>Block</strong>.
+</p>
+
+<h2>Resolved profiles</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th><th>En</th><th>ObjType</th>
+      <th>WS</th><th>WD</th><th>Pn</th><th>Vis</th><th>Cam</th><th>PB</th><th>Veh</th><th>Des</th>
+      <th>Scn</th><th>Pup</th><th>TG</th><th>RW</th><th>IK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="profile">NoCollision</td><td>N</td><td>WS</td>
+      <td class="I">I</td><td class="I">I</td><td class="I">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I">I</td><td class="I">I</td><td class="I">I</td>
+      <td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">BlockAll</td><td>P</td><td>WS</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="B bold-cell">B</td>
+    </tr>
+    <tr>
+      <td class="profile">OverlapAll</td><td>Q</td><td>WS</td>
+      <td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td>
+      <td class="I bold-cell">I</td><td class="O bold-cell">O</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">BlockAllDynamic</td><td>P</td><td>WD</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="B bold-cell">B</td>
+    </tr>
+    <tr>
+      <td class="profile">OverlapAllDynamic</td><td>Q</td><td>WD</td>
+      <td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td>
+      <td class="I bold-cell">I</td><td class="O bold-cell">O</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">IgnoreOnlyPawn</td><td>Q</td><td>WD</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="B bold-cell">B</td><td class="B bold-cell">B</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">OverlapOnlyPawn</td><td>Q</td><td>WD</td>
+      <td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="O bold-cell">O</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td>
+      <td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td>
+    </tr>
+    <tr>
+      <td class="profile">Pawn</td><td>P</td><td>Pn</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I bold-cell">I</td>
+    </tr>
+    <tr>
+      <td class="profile">Spectator</td><td>Q</td><td>Pn</td>
+      <td class="B">B</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td>
+      <td class="B">B</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">CharacterMesh</td><td>Q</td><td>Pn</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I bold-cell">I</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I bold-cell">I</td>
+    </tr>
+    <tr>
+      <td class="profile">PhysicsActor</td><td>P</td><td>PB</td>
+      <td class="B">B</td><td class="B bold-cell">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">Destructible</td><td>P</td><td>De</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">InvisibleWall</td><td>P</td><td>WS</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">InvisibleWallDynamic</td><td>P</td><td>WD</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">Trigger</td><td>Q</td><td>WD</td>
+      <td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="I bold-cell">I</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td>
+      <td class="I bold-cell">I</td><td class="O bold-cell">O</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td>
+    </tr>
+    <tr>
+      <td class="profile">Ragdoll</td><td>P</td><td>PB</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I bold-cell">I</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I bold-cell">I</td>
+    </tr>
+    <tr>
+      <td class="profile">Vehicle</td><td>P</td><td>Vh</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile">UI</td><td>Q</td><td>WD</td>
+      <td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="B">B</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td>
+      <td class="I bold-cell">I</td><td class="O bold-cell">O</td><td class="I bold-cell">I</td><td class="I">I</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile new">Scannable</td><td>Q</td><td>WD</td>
+      <td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td>
+      <td class="B">B</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I">I</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile new">PickupPhysicsActor</td><td>P</td><td>Pu</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B bold-cell">B</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile new">MotionSensor</td><td>Q</td><td>WD</td>
+      <td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="O bold-cell">O</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td><td class="O bold-cell">O</td>
+      <td class="I bold-cell">I</td><td class="O bold-cell">O</td><td class="I bold-cell">I</td><td class="I">I</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile new">BlockOnlyPawn</td><td>P</td><td>WD</td>
+      <td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="B">B</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td>
+      <td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I bold-cell">I</td><td class="I">I</td><td class="I">I</td>
+    </tr>
+    <tr>
+      <td class="profile new">TileCollision</td><td>P</td><td>WS</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B bold-cell">B</td><td class="B bold-cell">B</td>
+    </tr>
+    <tr>
+      <td class="profile new">Debris</td><td>P</td><td>PB</td>
+      <td class="B">B</td><td class="B">B</td><td class="I bold-cell">I</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B">B</td>
+      <td class="B">B</td><td class="B">B</td><td class="B">B</td><td class="B bold-cell">B</td><td class="B bold-cell">B</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Notes</h2>
+<ul>
+  <li><strong><code>+EditProfiles</code> is a merge, not a replace.</strong> Channels you don't list keep whatever the
+      <code>+Profiles</code> line gave them. E.g. <code>PhysicsActor</code> first sets <code>WorldDynamic=Overlap</code>,
+      then <code>+EditProfiles</code> overrides it back to <code>Block</code> (line 53).</li>
+  <li><strong>Empty <code>Response=</code> means Block.</strong> An entry like <code>(Channel="RangedWeapons")</code>
+      with no <code>Response=</code> is parsed as <code>ECR_Block</code>, which is how a Trace-channel with a
+      default of Ignore can end up Block on many profiles.</li>
+  <li><strong>Redirects are name-only.</strong> <code>ProfileRedirects</code>
+      (<code>PhysicsActor → PickupPhysicsActor → PickupPhysicsBody</code>) and
+      <code>CollisionChannelRedirects</code> (<code>Player → Pawns → RangedWeapons</code>) only retarget
+      stale names in saved assets — they do not affect the runtime profile set.</li>
+  <li><strong>BaseEngine's <code>+OldProfiles</code> is legacy-only</strong> — those names exist solely so that
+      <code>ProfileRedirects</code> can remap them onto current profiles.</li>
+</ul>
+
+</body>
+</html>

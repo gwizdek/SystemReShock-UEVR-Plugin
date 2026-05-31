@@ -10,19 +10,19 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_ItemCategory_structs.hpp"
+#include "_ENUM_VRHand_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "_ENUM_VRHand_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
+#include "_ENUM_ItemCategory_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_HandInteractionComponent._BP_HandInteractionComponent_C
-// 0x0130 (0x0330 - 0x0200)
+// 0x0140 (0x0340 - 0x0200)
 class U_BP_HandInteractionComponent_C final : public USceneComponent
 {
 public:
@@ -74,6 +74,8 @@ public:
 	struct FVector                                SnapStartLocation;                                 // 0x031C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_ItemCategory                           HeldItemCategory;                                  // 0x0328(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          IsLaserPointerAttached;                            // 0x0329(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_32A[0x6];                                      // 0x032A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(E_ENUM_VRHand Hand, E_ENUM_ItemCategory ItemCategory)> OnHeldItemCategoryChanged;                         // 0x0330(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 
 public:
 	void ExecuteUbergraph__BP_HandInteractionComponent(int32 EntryPoint);
@@ -103,6 +105,7 @@ public:
 	void IsEmptyHand(bool* Result);
 	void AttachLaserPointer(bool InEnabled, float InTimeout);
 	void IsChannelingSnappableSource(bool* Result);
+	void SetHeldItemCategory(E_ENUM_ItemCategory ItemCategory);
 
 public:
 	static class UClass* StaticClass()
@@ -115,7 +118,7 @@ public:
 	}
 };
 static_assert(alignof(U_BP_HandInteractionComponent_C) == 0x000010, "Wrong alignment on U_BP_HandInteractionComponent_C");
-static_assert(sizeof(U_BP_HandInteractionComponent_C) == 0x000330, "Wrong size on U_BP_HandInteractionComponent_C");
+static_assert(sizeof(U_BP_HandInteractionComponent_C) == 0x000340, "Wrong size on U_BP_HandInteractionComponent_C");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, UberGraphFrame) == 0x000200, "Member 'U_BP_HandInteractionComponent_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, VRBodyRef) == 0x000208, "Member 'U_BP_HandInteractionComponent_C::VRBodyRef' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, MotionControllerRef) == 0x000210, "Member 'U_BP_HandInteractionComponent_C::MotionControllerRef' has a wrong offset!");
@@ -156,6 +159,7 @@ static_assert(offsetof(U_BP_HandInteractionComponent_C, Hand) == 0x000319, "Memb
 static_assert(offsetof(U_BP_HandInteractionComponent_C, SnapStartLocation) == 0x00031C, "Member 'U_BP_HandInteractionComponent_C::SnapStartLocation' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, HeldItemCategory) == 0x000328, "Member 'U_BP_HandInteractionComponent_C::HeldItemCategory' has a wrong offset!");
 static_assert(offsetof(U_BP_HandInteractionComponent_C, IsLaserPointerAttached) == 0x000329, "Member 'U_BP_HandInteractionComponent_C::IsLaserPointerAttached' has a wrong offset!");
+static_assert(offsetof(U_BP_HandInteractionComponent_C, OnHeldItemCategoryChanged) == 0x000330, "Member 'U_BP_HandInteractionComponent_C::OnHeldItemCategoryChanged' has a wrong offset!");
 
 }
 

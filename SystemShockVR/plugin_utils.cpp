@@ -122,6 +122,108 @@ void PluginUtils::destroy_actors_by_class(SDK::UWorld* world, SDK::UClass* actor
     }
 }
 
+// finds every actor in the world, then forces all UPrimitiveComponents whose world location is within
+// 'range' (unreal units) of 'origin' to be rendered (Visibility = true, HiddenInGame = false).
+// useful for debugging hidden/invisible geometry near a point of interest (e.g. the player's hand).
+// the player's character pawn is skipped unless include_pawn is true.
+void PluginUtils::show_all_primitive_components(SDK::UWorld* world, SDK::USceneComponent* origin, float range, bool include_pawn) {
+    try {
+        if (world == nullptr || !SDK::UKismetSystemLibrary::IsValid(world)) {
+            API::get()->log_warn("[plugin_utils][show_all_primitive_components] Invalid World object");
+            return;
+        }
+
+        if (origin == nullptr || !SDK::UKismetSystemLibrary::IsValid(origin)) {
+            API::get()->log_warn("[plugin_utils][show_all_primitive_components] Invalid origin component");
+            return;
+        }
+
+        const SDK::FVector origin_loc = origin->K2_GetComponentLocation();
+        const float range_sq = range * range;
+
+        // unless the caller opts in, skip the player's character pawn so we don't reveal its body components
+        SDK::APawn* player_pawn = include_pawn ? nullptr : SDK::UGameplayStatics::GetPlayerPawn(world, 0);
+
+        SDK::TArray<SDK::AActor*> actors{};
+        actors.Data = (SDK::AActor**)API::FMalloc::get()->malloc(8196 * sizeof(SDK::AActor*));
+        actors.NumElements = 0;
+        actors.MaxElements = 8196;
+
+        SDK::UGameplayStatics::GetAllActorsOfClass(world, SDK::AActor::StaticClass(), &actors);
+
+        API::get()->log_warn("[plugin_utils][show_all_primitive_components] Found %d Actors", actors.Num());
+
+        int32_t shown = 0;
+        for (UC::int32 i = 0; i < actors.Num(); i++) {
+            SDK::AActor* actor = actors[i];
+            if (actor == nullptr || !SDK::UKismetSystemLibrary::IsValid(actor)) {
+                continue;
+            }
+
+            // skip the player's character pawn and anything attached to / owned by it (its components
+            // are children of the pawn hierarchy) unless the caller opts in. walk up the attachment
+            // chain first, then fall back to child-actor parent and ownership; depth-capped against cycles.
+            if (player_pawn != nullptr) {
+                bool belongs_to_pawn = false;
+                SDK::AActor* ancestor = actor;
+                for (int depth = 0; ancestor != nullptr && depth < 32; depth++) {
+                    if (ancestor == player_pawn) {
+                        belongs_to_pawn = true;
+                        break;
+                    }
+                    SDK::AActor* next = ancestor->GetAttachParentActor();
+                    if (next == nullptr) {
+                        next = ancestor->GetParentActor();
+                    }
+                    if (next == nullptr) {
+                        next = ancestor->GetOwner();
+                    }
+                    ancestor = next;
+                }
+                if (belongs_to_pawn) {
+                    continue;
+                }
+            }
+
+            // returns every UActorComponent on the actor that is (or derives from) UPrimitiveComponent
+            SDK::TArray<SDK::UActorComponent*> components =
+                actor->K2_GetComponentsByClass(SDK::UPrimitiveComponent::StaticClass());
+
+            for (UC::int32 j = 0; j < components.Num(); j++) {
+                SDK::UActorComponent* component = components[j];
+                if (component == nullptr || !SDK::UKismetSystemLibrary::IsValid(component)) {
+                    continue;
+                }
+
+                // ArrowComponents are editor-only direction gizmos - don't reveal them
+                if (component->IsA(SDK::UArrowComponent::StaticClass())) {
+                    continue;
+                }
+
+                // SetVisibility / SetHiddenInGame / K2_GetComponentLocation are USceneComponent members
+                SDK::UPrimitiveComponent* primitive = static_cast<SDK::UPrimitiveComponent*>(component);
+
+                // skip anything outside the range sphere (compare squared distances to avoid a sqrt)
+                const SDK::FVector loc = primitive->K2_GetComponentLocation();
+                if (SDK::UKismetMathLibrary::Vector_DistanceSquared(origin_loc, loc) > range_sq) {
+                    continue;
+                }
+
+                primitive->SetVisibility(true, false);
+                primitive->SetHiddenInGame(false, false);
+                shown++;
+            }
+        }
+
+        API::get()->log_warn("[plugin_utils][show_all_primitive_components] Shown %d PrimitiveComponents within %.1f units", shown, range);
+        return;
+    }
+    catch (...) {
+        API::get()->log_error("[plugin_utils][show_all_primitive_components] Exception");
+        return;
+    }
+}
+
 SDK::UObject* PluginUtils::load_asset(SDK::FAssetData asset_data) {
     try {
         API::get()->log_warn("[plugin_utils][load_asset] Loading Asset %s", asset_data.ObjectPath.GetRawString().c_str());

@@ -15,7 +15,7 @@ namespace SDK::Params
 {
 
 // Function _BFL_VRModUtils._BFL_VRModUtils_C.GetMeshPrimitiveFromPickableInteractable
-// 0x0060 (0x0060 - 0x0000)
+// 0x0088 (0x0088 - 0x0000)
 struct _BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable final
 {
 public:
@@ -24,36 +24,51 @@ public:
 	class UPrimitiveComponent*                    Primitive;                                         // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UObject*                                LocalInteractable;                                 // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UClass*                                 LocalInteractableClass;                            // 0x0020(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ACORPSE_SkeletalBase_C*                 K2Node_DynamicCast_AsCORPSE_Skeletal_Base;         // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_3A[0x6];                                       // 0x003A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class APAWN_Enemy_C*                          K2Node_DynamicCast_AsPAWN_Enemy;                   // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ClassIsChildOf_ReturnValue_1;             // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4A[0x6];                                       // 0x004A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class APICKUP_Base_C*                         K2Node_DynamicCast_AsPICKUP_Base;                  // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_ClassIsChildOf_ReturnValue_2;             // 0x0059(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class AINTERACT_SalvageStation_C*             K2Node_DynamicCast_AsINTERACT_Salvage_Station;     // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue;        // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AINTERACT_Crate_Base_C*                 K2Node_DynamicCast_AsINTERACT_Crate_Base;          // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_52[0x6];                                       // 0x0052(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class ACORPSE_SkeletalBase_C*                 K2Node_DynamicCast_AsCORPSE_Skeletal_Base;         // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue_1;             // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_62[0x6];                                       // 0x0062(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class APAWN_Enemy_C*                          K2Node_DynamicCast_AsPAWN_Enemy;                   // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue_2;             // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_72[0x6];                                       // 0x0072(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class APICKUP_Base_C*                         K2Node_DynamicCast_AsPICKUP_Base;                  // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue_3;             // 0x0081(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable) == 0x000008, "Wrong alignment on _BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable");
-static_assert(sizeof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable) == 0x000060, "Wrong size on _BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable");
+static_assert(sizeof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable) == 0x000088, "Wrong size on _BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable");
 static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, Interactable) == 0x000000, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::Interactable' has a wrong offset!");
 static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, __WorldContext) == 0x000008, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::__WorldContext' has a wrong offset!");
 static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, Primitive) == 0x000010, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::Primitive' has a wrong offset!");
 static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, LocalInteractable) == 0x000018, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::LocalInteractable' has a wrong offset!");
 static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, LocalInteractableClass) == 0x000020, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::LocalInteractableClass' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_GetObjectClass_ReturnValue) == 0x000028, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_AsCORPSE_Skeletal_Base) == 0x000030, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_AsCORPSE_Skeletal_Base' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_bSuccess) == 0x000038, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_ClassIsChildOf_ReturnValue) == 0x000039, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_AsPAWN_Enemy) == 0x000040, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_AsPAWN_Enemy' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_bSuccess_1) == 0x000048, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_ClassIsChildOf_ReturnValue_1) == 0x000049, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_ClassIsChildOf_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_AsPICKUP_Base) == 0x000050, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_AsPICKUP_Base' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_bSuccess_2) == 0x000058, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_ClassIsChildOf_ReturnValue_2) == 0x000059, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_ClassIsChildOf_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_AsINTERACT_Salvage_Station) == 0x000028, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_AsINTERACT_Salvage_Station' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_bSuccess) == 0x000030, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_GetObjectClass_ReturnValue) == 0x000038, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_EqualEqual_ClassClass_ReturnValue) == 0x000040, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_EqualEqual_ClassClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_AsINTERACT_Crate_Base) == 0x000048, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_AsINTERACT_Crate_Base' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_bSuccess_1) == 0x000050, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_ClassIsChildOf_ReturnValue) == 0x000051, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_AsCORPSE_Skeletal_Base) == 0x000058, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_AsCORPSE_Skeletal_Base' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_bSuccess_2) == 0x000060, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_ClassIsChildOf_ReturnValue_1) == 0x000061, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_ClassIsChildOf_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_AsPAWN_Enemy) == 0x000068, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_AsPAWN_Enemy' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_bSuccess_3) == 0x000070, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_ClassIsChildOf_ReturnValue_2) == 0x000071, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_ClassIsChildOf_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_AsPICKUP_Base) == 0x000078, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_AsPICKUP_Base' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_bSuccess_4) == 0x000080, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_ClassIsChildOf_ReturnValue_3) == 0x000081, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_ClassIsChildOf_ReturnValue_3' has a wrong offset!");
 
 }
 

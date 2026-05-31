@@ -497,5 +497,25 @@ void U_BP_HandInteractionComponent_C::IsChannelingSnappableSource(bool* Result)
 		*Result = Parms.Result;
 }
 
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.SetHeldItemCategory
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// E_ENUM_ItemCategory                     ItemCategory                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void U_BP_HandInteractionComponent_C::SetHeldItemCategory(E_ENUM_ItemCategory ItemCategory)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HandInteractionComponent_C", "SetHeldItemCategory");
+
+	Params::_BP_HandInteractionComponent_C_SetHeldItemCategory Parms{};
+
+	Parms.ItemCategory = ItemCategory;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
 }
 

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AINTERACT_Base_C class hierarchy</title>
+<style>
+  :root {
+    --bg: #1e1e22;
+    --panel: #26262c;
+    --border: #3a3a44;
+    --text: #d6d6dc;
+    --muted: #8a8a96;
+    --accent: #4ea1ff;
+    --line: #4a4a55;
+    --hit: #fde047;
+    --hit-bg: #5a4a14;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 13px; }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  }
+  header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+  header .stats { color: var(--muted); font-size: 12px; }
+  header .spacer { flex: 1; }
+  header input[type="text"] {
+    background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 6px 10px; font: inherit; min-width: 260px;
+  }
+  header input[type="text"]:focus { outline: none; border-color: var(--accent); }
+  header button {
+    background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 6px 12px; font: inherit; cursor: pointer;
+  }
+  header button:hover { border-color: var(--accent); color: var(--accent); }
+  main { padding: 20px 24px 40px; }
+
+  ul.tree, ul.tree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 22px;
+    position: relative;
+  }
+  ul.tree { padding-left: 0; }
+  ul.tree ul {
+    border-left: 1px dashed var(--line);
+    margin-left: 9px;
+  }
+  li.node {
+    position: relative;
+    padding: 2px 0;
+    line-height: 1.5;
+  }
+  li.node > .row {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  li.node > .row:hover { background: #2f2f37; }
+  li.node.match > .row { background: var(--hit-bg); }
+  li.node.match > .row .name { color: var(--hit); }
+
+  .toggle {
+    width: 14px; height: 14px;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; user-select: none;
+    color: var(--muted);
+    font-family: monospace; font-size: 11px;
+  }
+  .toggle.leaf { cursor: default; color: transparent; }
+  .toggle.leaf::before { content: "·"; color: var(--line); font-size: 14px; }
+  .toggle:not(.leaf)::before { content: "▾"; }
+  li.collapsed > .row .toggle:not(.leaf)::before { content: "▸"; }
+  li.collapsed > ul { display: none; }
+
+  .name {
+    font-family: 'Consolas', 'Cascadia Code', monospace;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .name:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .count {
+    color: var(--muted);
+    font-size: 11px;
+    font-family: 'Consolas', monospace;
+  }
+  .file {
+    color: var(--muted); font-size: 11px;
+    margin-left: 4px;
+    font-family: 'Consolas', monospace;
+  }
+  .file a { color: var(--muted); text-decoration: none; }
+  .file a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* category colors based on prefix */
+  .cat-INTERACT .name { color: #ffb86b; }
+  .cat-BP       .name { color: #9cdcfe; }
+  .cat-PICKUP   .name { color: #c586c0; }
+  .cat-CORPSE   .name { color: #f48771; }
+  .cat-TRIGGER  .name { color: #6acb86; }
+  .cat-TRAP     .name { color: #6acb86; }
+  .cat-ELEVATOR .name { color: #dcdcaa; }
+  .cat-PUZZLE   .name { color: #4fc1ff; }
+  .cat-CIRCUITPUZZLE .name { color: #4fc1ff; }
+  .cat-WIREPUZZLE .name { color: #4fc1ff; }
+  .cat-CyberStorm .name,
+  .cat-Medical .name,
+  .cat-Research .name,
+  .cat-TILE .name { color: #9cdcfe; }
+
+  .root > .row { font-weight: 700; }
+  .root > .row .name { color: #ffd966; }
+
+  footer {
+    color: var(--muted); font-size: 11px;
+    padding: 16px 24px; border-top: 1px solid var(--border);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>AINTERACT_Base_C — class hierarchy</h1>
+  <span class="stats" id="stats"></span>
+  <span class="spacer"></span>
+  <input type="text" id="search" placeholder="Filter class names…" autocomplete="off">
+  <button id="expandAll">Expand all</button>
+  <button id="collapseAll">Collapse all</button>
+</header>
+<main>
+  <ul class="tree" id="tree"></ul>
+</main>
+<footer>
+  Generated from <code>SystemShockVR/SDK/*_classes.hpp</code> — classes that transitively inherit from <code>AINTERACT_Base_C</code> (itself a child of <code>AActor</code>).
+  Click a class name to copy it. Click <code>.hpp</code> to open the source file.
+</footer>
+
+<script>
+const SDK_ROOT = "../SystemShockVR/SDK/";
+
+const DATA ={"name":"AINTERACT_Base_C","file":"SystemShockVR\\SDK\\INTERACT_Base_classes.hpp","children":[{"name":"ABP_Apartment_Bathroom_C","file":"SystemShockVR\\SDK\\BP_Apartment_Bathroom_classes.hpp","children":[]},{"name":"ACyberStorm_C","file":"SystemShockVR\\SDK\\CyberStorm_classes.hpp","children":[]},{"name":"AELEVATOR_Base_C","file":"SystemShockVR\\SDK\\ELEVATOR_Base_classes.hpp","children":[{"name":"AELEVATOR_Freight_C","file":"SystemShockVR\\SDK\\ELEVATOR_Freight_classes.hpp","children":[]},{"name":"AELEVATOR_Normal_C","file":"SystemShockVR\\SDK\\ELEVATOR_Normal_classes.hpp","children":[]},{"name":"AINTERACT_GroveTram_C","file":"SystemShockVR\\SDK\\INTERACT_GroveTram_classes.hpp","children":[]}]},{"name":"AINTERACT_AmmoDepot_C","file":"SystemShockVR\\SDK\\INTERACT_AmmoDepot_classes.hpp","children":[]},{"name":"AINTERACT_Apartment_Light_Base_C","file":"SystemShockVR\\SDK\\INTERACT_Apartment_Light_Base_classes.hpp","children":[{"name":"ABP_Apartment_Ceiling_HalfLight_C","file":"SystemShockVR\\SDK\\BP_Apartment_Ceiling_HalfLight_classes.hpp","children":[]},{"name":"ABP_Apartment_Ceiling_Light_C","file":"SystemShockVR\\SDK\\BP_Apartment_Ceiling_Light_classes.hpp","children":[]},{"name":"ABP_Apartment_Kitchen_C","file":"SystemShockVR\\SDK\\BP_Apartment_Kitchen_classes.hpp","children":[]},{"name":"ABP_Apartment_Wall_Light_C","file":"SystemShockVR\\SDK\\BP_Apartment_Wall_Light_classes.hpp","children":[]}]},{"name":"AINTERACT_Apartment_LightSwitch_Base_C","file":"SystemShockVR\\SDK\\INTERACT_Apartment_LightSwitch_Base_classes.hpp","children":[{"name":"ABP_Apartment_Counter_C","file":"SystemShockVR\\SDK\\BP_Apartment_Counter_classes.hpp","children":[]},{"name":"ABP_Apartment_Wall_Diagonal_C","file":"SystemShockVR\\SDK\\BP_Apartment_Wall_Diagonal_classes.hpp","children":[]}]},{"name":"AINTERACT_BreakablePanel_C","file":"SystemShockVR\\SDK\\INTERACT_BreakablePanel_classes.hpp","children":[{"name":"AINTERACT_BreakableSharedLightPanel_C","file":"SystemShockVR\\SDK\\INTERACT_BreakableSharedLightPanel_classes.hpp","children":[{"name":"ABP_EXEC_CarpetPath_HalfLight_C","file":"SystemShockVR\\SDK\\BP_EXEC_CarpetPath_HalfLight_classes.hpp","children":[]},{"name":"ABP_EXEC_CarpetPattern_QuarterLight_C","file":"SystemShockVR\\SDK\\BP_EXEC_CarpetPattern_QuarterLight_classes.hpp","children":[]},{"name":"ABP_EXEC_CeilingWood_Light_C","file":"SystemShockVR\\SDK\\BP_EXEC_CeilingWood_Light_classes.hpp","children":[]},{"name":"ABP_EXEC_WoodWall_Bar_C","file":"SystemShockVR\\SDK\\BP_EXEC_WoodWall_Bar_classes.hpp","children":[]},{"name":"ABP_Lounge_Ceiling_Light_C","file":"SystemShockVR\\SDK\\BP_Lounge_Ceiling_Light_classes.hpp","children":[]},{"name":"ABP_Lounge_Trim_BenchLight_C","file":"SystemShockVR\\SDK\\BP_Lounge_Trim_BenchLight_classes.hpp","children":[]},{"name":"ABP_Lounge_Trim_Light_C","file":"SystemShockVR\\SDK\\BP_Lounge_Trim_Light_classes.hpp","children":[]},{"name":"ABP_Lounge_Trim_Wall_QuarterLight_C","file":"SystemShockVR\\SDK\\BP_Lounge_Trim_Wall_QuarterLight_classes.hpp","children":[]},{"name":"ABP_Lounge_WallTop_QuarterLight_C","file":"SystemShockVR\\SDK\\BP_Lounge_WallTop_QuarterLight_classes.hpp","children":[]},{"name":"AMedical_Light_Angled_C","file":"SystemShockVR\\SDK\\Medical_Light_Angled_classes.hpp","children":[]},{"name":"AMedical_Light_Ceiling_C","file":"SystemShockVR\\SDK\\Medical_Light_Ceiling_classes.hpp","children":[]},{"name":"AMedical_Light_Slope_C","file":"SystemShockVR\\SDK\\Medical_Light_Slope_classes.hpp","children":[]},{"name":"AMedical_Light_Small_Angled_C","file":"SystemShockVR\\SDK\\Medical_Light_Small_Angled_classes.hpp","children":[]},{"name":"AMedical_Light_Small_C","file":"SystemShockVR\\SDK\\Medical_Light_Small_classes.hpp","children":[]},{"name":"AMedical_Light_Thin_Angled_C","file":"SystemShockVR\\SDK\\Medical_Light_Thin_Angled_classes.hpp","children":[]},{"name":"AMedical_Light_Thin_Wall_C","file":"SystemShockVR\\SDK\\Medical_Light_Thin_Wall_classes.hpp","children":[]},{"name":"AResearch_Ceiling_1x2_Light_var1_C","file":"SystemShockVR\\SDK\\Research_Ceiling_1x2_Light_var1_classes.hpp","children":[]},{"name":"AResearch_Ceiling_1x2_Light_var1_Sloped_C","file":"SystemShockVR\\SDK\\Research_Ceiling_1x2_Light_var1_Sloped_classes.hpp","children":[]},{"name":"AResearch_Ceiling_1x2_Light_var3_C","file":"SystemShockVR\\SDK\\Research_Ceiling_1x2_Light_var3_classes.hpp","children":[]},{"name":"AResearch_Ceiling_1x2_Light_var3_Sloped_C","file":"SystemShockVR\\SDK\\Research_Ceiling_1x2_Light_var3_Sloped_classes.hpp","children":[]},{"name":"AResearch_Ceiling_Light_C","file":"SystemShockVR\\SDK\\Research_Ceiling_Light_classes.hpp","children":[]},{"name":"AResearch_Floors_HalfXLight_C","file":"SystemShockVR\\SDK\\Research_Floors_HalfXLight_classes.hpp","children":[]},{"name":"AResearch_Floors_HalfYLight_C","file":"SystemShockVR\\SDK\\Research_Floors_HalfYLight_classes.hpp","children":[]},{"name":"AResearch_Floors_QYLight_C","file":"SystemShockVR\\SDK\\Research_Floors_QYLight_classes.hpp","children":[]},{"name":"AResearch_Floors_SmallLight_C","file":"SystemShockVR\\SDK\\Research_Floors_SmallLight_classes.hpp","children":[]},{"name":"ATILE_Prefab_Pipe_Ceiling_Light_C","file":"SystemShockVR\\SDK\\TILE_Prefab_Pipe_Ceiling_Light_classes.hpp","children":[]},{"name":"ATILE_Prefab_Pipe_Ceiling_Tri_Light_C","file":"SystemShockVR\\SDK\\TILE_Prefab_Pipe_Ceiling_Tri_Light_classes.hpp","children":[]}]},{"name":"AINTERACT_BreakableSingleLightPanel_C","file":"SystemShockVR\\SDK\\INTERACT_BreakableSingleLightPanel_classes.hpp","children":[]}]},{"name":"AINTERACT_Briefcase_C","file":"SystemShockVR\\SDK\\INTERACT_Briefcase_classes.hpp","children":[{"name":"AINTERACT_Isotope_X_22_Briefcase_C","file":"SystemShockVR\\SDK\\INTERACT_Isotope_X_22_Briefcase_classes.hpp","children":[]}]},{"name":"AINTERACT_Channeling_Base_C","file":"SystemShockVR\\SDK\\INTERACT_Channeling_Base_classes.hpp","children":[{"name":"AINTERACT_Antenna_C","file":"SystemShockVR\\SDK\\INTERACT_Antenna_classes.hpp","children":[]},{"name":"AINTERACT_Button_Base_C","file":"SystemShockVR\\SDK\\INTERACT_Button_Base_classes.hpp","children":[{"name":"AINTERACT_Button_C","file":"SystemShockVR\\SDK\\INTERACT_Button_classes.hpp","children":[]},{"name":"AINTERACT_CardReader_C","file":"SystemShockVR\\SDK\\INTERACT_CardReader_classes.hpp","children":[]},{"name":"AINTERACT_Lever_C","file":"SystemShockVR\\SDK\\INTERACT_Lever_classes.hpp","children":[{"name":"AINTERACT_CircuitBreakerLever_C","file":"SystemShockVR\\SDK\\INTERACT_CircuitBreakerLever_classes.hpp","children":[]}]},{"name":"AINTERACT_WallSwitch_C","file":"SystemShockVR\\SDK\\INTERACT_WallSwitch_classes.hpp","children":[]}]},{"name":"AINTERACT_CyberspaceTerminal_C","file":"SystemShockVR\\SDK\\INTERACT_CyberspaceTerminal_classes.hpp","children":[]},{"name":"AINTERACT_DoorBase_C","file":"SystemShockVR\\SDK\\INTERACT_DoorBase_classes.hpp","children":[{"name":"ABP_Apartment_BathroomDoor_C","file":"SystemShockVR\\SDK\\BP_Apartment_BathroomDoor_classes.hpp","children":[]},{"name":"ABP_Apartment_Door_C","file":"SystemShockVR\\SDK\\BP_Apartment_Door_classes.hpp","children":[]},{"name":"AINTERACT_BlastDoor_C","file":"SystemShockVR\\SDK\\INTERACT_BlastDoor_classes.hpp","children":[]},{"name":"AINTERACT_BulkheadDoor_C","file":"SystemShockVR\\SDK\\INTERACT_BulkheadDoor_classes.hpp","children":[]},{"name":"AINTERACT_CapsuleDoor_C","file":"SystemShockVR\\SDK\\INTERACT_CapsuleDoor_classes.hpp","children":[]},{"name":"AINTERACT_DuctDoor_C","file":"SystemShockVR\\SDK\\INTERACT_DuctDoor_classes.hpp","children":[{"name":"AINTERACT_DuctDoor_Inner_C","file":"SystemShockVR\\SDK\\INTERACT_DuctDoor_Inner_classes.hpp","children":[]}]},{"name":"AINTERACT_EnergyGrateDoor_C","file":"SystemShockVR\\SDK\\INTERACT_EnergyGrateDoor_classes.hpp","children":[]},{"name":"AINTERACT_ExecutiveDoor_C","file":"SystemShockVR\\SDK\\INTERACT_ExecutiveDoor_classes.hpp","children":[]},{"name":"AINTERACT_ForceXDoor_C","file":"SystemShockVR\\SDK\\INTERACT_ForceXDoor_classes.hpp","children":[]},{"name":"AINTERACT_IrisDoor_C","file":"SystemShockVR\\SDK\\INTERACT_IrisDoor_classes.hpp","children":[]},{"name":"AINTERACT_MedicalDoor_C","file":"SystemShockVR\\SDK\\INTERACT_MedicalDoor_classes.hpp","children":[]},{"name":"AINTERACT_ResearchDoor_C","file":"SystemShockVR\\SDK\\INTERACT_ResearchDoor_classes.hpp","children":[{"name":"AINTERACT_ResearchDoor_Damaged_C","file":"SystemShockVR\\SDK\\INTERACT_ResearchDoor_Damaged_classes.hpp","children":[]}]},{"name":"AINTERACT_SecretDoor_Base_C","file":"SystemShockVR\\SDK\\INTERACT_SecretDoor_Base_classes.hpp","children":[{"name":"AINTERACT_MedicalDoor_Secret_LatticeWall_C","file":"SystemShockVR\\SDK\\INTERACT_MedicalDoor_Secret_LatticeWall_classes.hpp","children":[]},{"name":"AINTERACT_MedicalDoor_Secret_StructureWall_C","file":"SystemShockVR\\SDK\\INTERACT_MedicalDoor_Secret_StructureWall_classes.hpp","children":[]}]},{"name":"AINTERACT_ServiceDoor_C","file":"SystemShockVR\\SDK\\INTERACT_ServiceDoor_classes.hpp","children":[]},{"name":"AINTERACT_ShieldedDoor_C","file":"SystemShockVR\\SDK\\INTERACT_ShieldedDoor_classes.hpp","children":[]}]},{"name":"AINTERACT_Focusable_Base_C","file":"SystemShockVR\\SDK\\INTERACT_Focusable_Base_classes.hpp","children":[{"name":"AINTERACT_Keypad_C","file":"SystemShockVR\\SDK\\INTERACT_Keypad_classes.hpp","children":[]},{"name":"AINTERACT_Snacktron_C","file":"SystemShockVR\\SDK\\INTERACT_Snacktron_classes.hpp","children":[]},{"name":"AINTERACT_TransdermalDispenser_C","file":"SystemShockVR\\SDK\\INTERACT_TransdermalDispenser_classes.hpp","children":[]},{"name":"APUZZLE_Base_C","file":"SystemShockVR\\SDK\\PUZZLE_Base_classes.hpp","children":[{"name":"ACIRCUITPUZZLE_Base_C","file":"SystemShockVR\\SDK\\CIRCUITPUZZLE_Base_classes.hpp","children":[{"name":"ACIRCUITPUZZLE_Advanced_C","file":"SystemShockVR\\SDK\\CIRCUITPUZZLE_Advanced_classes.hpp","children":[]},{"name":"ACIRCUITPUZZLE_Simple_C","file":"SystemShockVR\\SDK\\CIRCUITPUZZLE_Simple_classes.hpp","children":[]}]},{"name":"AWIREPUZZLE_Base_C","file":"SystemShockVR\\SDK\\WIREPUZZLE_Base_classes.hpp","children":[{"name":"AWIREPUZZLE_Advanced_C","file":"SystemShockVR\\SDK\\WIREPUZZLE_Advanced_classes.hpp","children":[]},{"name":"AWIREPUZZLE_Simple_C","file":"SystemShockVR\\SDK\\WIREPUZZLE_Simple_classes.hpp","children":[]}]}]}]},{"name":"AINTERACT_GamePig_C","file":"SystemShockVR\\SDK\\INTERACT_GamePig_classes.hpp","children":[]},{"name":"AINTERACT_Isotope_X_22_Receptacle_C","file":"SystemShockVR\\SDK\\INTERACT_Isotope_X_22_Receptacle_classes.hpp","children":[]},{"name":"AINTERACT_Ladder_C","file":"SystemShockVR\\SDK\\INTERACT_Ladder_classes.hpp","children":[]},{"name":"AINTERACT_LootableBase_C","file":"SystemShockVR\\SDK\\INTERACT_LootableBase_classes.hpp","children":[{"name":"ACORPSE_SkeletalBase_C","file":"SystemShockVR\\SDK\\CORPSE_SkeletalBase_classes.hpp","children":[{"name":"ACORPSE_CyborgAssassin_C","file":"SystemShockVR\\SDK\\CORPSE_CyborgAssassin_classes.hpp","children":[]},{"name":"ACORPSE_Human_C","file":"SystemShockVR\\SDK\\CORPSE_Human_classes.hpp","children":[]},{"name":"ACORPSE_Mutant_C","file":"SystemShockVR\\SDK\\CORPSE_Mutant_classes.hpp","children":[]},{"name":"ACORPSE_Protoborg_C","file":"SystemShockVR\\SDK\\CORPSE_Protoborg_classes.hpp","children":[]},{"name":"ACORPSE_Security1Bot_C","file":"SystemShockVR\\SDK\\CORPSE_Security1Bot_classes.hpp","children":[]},{"name":"ACORPSE_ServBot_C","file":"SystemShockVR\\SDK\\CORPSE_ServBot_classes.hpp","children":[]}]},{"name":"AINTERACT_Cabinet_Countertop_C","file":"SystemShockVR\\SDK\\INTERACT_Cabinet_Countertop_classes.hpp","children":[]},{"name":"AINTERACT_CargoLift_C","file":"SystemShockVR\\SDK\\INTERACT_CargoLift_classes.hpp","children":[]},{"name":"AINTERACT_Crate_Base_C","file":"SystemShockVR\\SDK\\INTERACT_Crate_Base_classes.hpp","children":[{"name":"AINTERACT_Crate_Large_C","file":"SystemShockVR\\SDK\\INTERACT_Crate_Large_classes.hpp","children":[]},{"name":"AINTERACT_Crate_Small_C","file":"SystemShockVR\\SDK\\INTERACT_Crate_Small_classes.hpp","children":[]}]},{"name":"AINTERACT_SalvageStation_C","file":"SystemShockVR\\SDK\\INTERACT_SalvageStation_classes.hpp","children":[]}]},{"name":"AINTERACT_PowerStation_C","file":"SystemShockVR\\SDK\\INTERACT_PowerStation_classes.hpp","children":[]},{"name":"AINTERACT_RespawnChamber_C","file":"SystemShockVR\\SDK\\INTERACT_RespawnChamber_classes.hpp","children":[]},{"name":"AINTERACT_SurgeryMachine_C","file":"SystemShockVR\\SDK\\INTERACT_SurgeryMachine_classes.hpp","children":[]}]},{"name":"AINTERACT_CoffeeMachine_C","file":"SystemShockVR\\SDK\\INTERACT_CoffeeMachine_classes.hpp","children":[]},{"name":"AINTERACT_ComputerNodeMonitor_C","file":"SystemShockVR\\SDK\\INTERACT_ComputerNodeMonitor_classes.hpp","children":[]},{"name":"AINTERACT_Cryobed_C","file":"SystemShockVR\\SDK\\INTERACT_Cryobed_classes.hpp","children":[{"name":"AINTERACT_Cryobed_PlayerStart_C","file":"SystemShockVR\\SDK\\INTERACT_Cryobed_PlayerStart_classes.hpp","children":[]}]},{"name":"AINTERACT_CryoChamber_C","file":"SystemShockVR\\SDK\\INTERACT_CryoChamber_classes.hpp","children":[]},{"name":"AINTERACT_CyberShodan_C","file":"SystemShockVR\\SDK\\INTERACT_CyberShodan_classes.hpp","children":[]},{"name":"AINTERACT_DestructibleBase_C","file":"SystemShockVR\\SDK\\INTERACT_DestructibleBase_classes.hpp","children":[{"name":"AINTERACT_Chandelier_C","file":"SystemShockVR\\SDK\\INTERACT_Chandelier_classes.hpp","children":[]},{"name":"AINTERACT_ComputerNode_C","file":"SystemShockVR\\SDK\\INTERACT_ComputerNode_classes.hpp","children":[]},{"name":"AINTERACT_EnergyDrainMine_C","file":"SystemShockVR\\SDK\\INTERACT_EnergyDrainMine_classes.hpp","children":[]},{"name":"AINTERACT_SecurityCamera_C","file":"SystemShockVR\\SDK\\INTERACT_SecurityCamera_classes.hpp","children":[]},{"name":"AINTERACT_SentryTurret_Base_C","file":"SystemShockVR\\SDK\\INTERACT_SentryTurret_Base_classes.hpp","children":[{"name":"AINTERACT_ScreenCamera_C","file":"SystemShockVR\\SDK\\INTERACT_ScreenCamera_classes.hpp","children":[]},{"name":"AINTERACT_SentryTurret_HostileBase_C","file":"SystemShockVR\\SDK\\INTERACT_SentryTurret_HostileBase_classes.hpp","children":[]}]},{"name":"AINTERACT_StationMonitor_C","file":"SystemShockVR\\SDK\\INTERACT_StationMonitor_classes.hpp","children":[]}]},{"name":"AINTERACT_Donut_C","file":"SystemShockVR\\SDK\\INTERACT_Donut_classes.hpp","children":[]},{"name":"AINTERACT_EGuitar_C","file":"SystemShockVR\\SDK\\INTERACT_EGuitar_classes.hpp","children":[]},{"name":"AINTERACT_ElevatorDoors_Base_C","file":"SystemShockVR\\SDK\\INTERACT_ElevatorDoors_Base_classes.hpp","children":[{"name":"AINTERACT_ElevatorDoors_Normal_C","file":"SystemShockVR\\SDK\\INTERACT_ElevatorDoors_Normal_classes.hpp","children":[]},{"name":"AINTERACT_GroveTram_DoorExterior_C","file":"SystemShockVR\\SDK\\INTERACT_GroveTram_DoorExterior_classes.hpp","children":[]}]},{"name":"AINTERACT_ForceBridge_C","file":"SystemShockVR\\SDK\\INTERACT_ForceBridge_classes.hpp","children":[]},{"name":"AINTERACT_ForceDoor_C","file":"SystemShockVR\\SDK\\INTERACT_ForceDoor_classes.hpp","children":[]},{"name":"AINTERACT_Laptop_C","file":"SystemShockVR\\SDK\\INTERACT_Laptop_classes.hpp","children":[]},{"name":"AINTERACT_LaserControlButton_C","file":"SystemShockVR\\SDK\\INTERACT_LaserControlButton_classes.hpp","children":[]},{"name":"AINTERACT_Lift_Base_C","file":"SystemShockVR\\SDK\\INTERACT_Lift_Base_classes.hpp","children":[{"name":"AINTERACT_ServiceLift_C","file":"SystemShockVR\\SDK\\INTERACT_ServiceLift_classes.hpp","children":[]}]},{"name":"AINTERACT_LogisticsLift_C","file":"SystemShockVR\\SDK\\INTERACT_LogisticsLift_classes.hpp","children":[]},{"name":"AINTERACT_LogisticsOutlet_C","file":"SystemShockVR\\SDK\\INTERACT_LogisticsOutlet_classes.hpp","children":[]},{"name":"AINTERACT_ModkitStation_C","file":"SystemShockVR\\SDK\\INTERACT_ModkitStation_classes.hpp","children":[]},{"name":"AINTERACT_RadiationPropagator_C","file":"SystemShockVR\\SDK\\INTERACT_RadiationPropagator_classes.hpp","children":[]},{"name":"AINTERACT_RepulsorLift_C","file":"SystemShockVR\\SDK\\INTERACT_RepulsorLift_classes.hpp","children":[]},{"name":"AINTERACT_RestStation_C","file":"SystemShockVR\\SDK\\INTERACT_RestStation_classes.hpp","children":[]},{"name":"AINTERACT_RobotRechargeStation_C","file":"SystemShockVR\\SDK\\INTERACT_RobotRechargeStation_classes.hpp","children":[]},{"name":"AINTERACT_Screen_Broadcast_Base_C","file":"SystemShockVR\\SDK\\INTERACT_Screen_Broadcast_Base_classes.hpp","children":[{"name":"ABP_EXEC_WoodWall_Monitor_C","file":"SystemShockVR\\SDK\\BP_EXEC_WoodWall_Monitor_classes.hpp","children":[]},{"name":"ABP_LargeMedicalMonitorTile_C","file":"SystemShockVR\\SDK\\BP_LargeMedicalMonitorTile_classes.hpp","children":[]},{"name":"ABP_LargeMonitorTile_C","file":"SystemShockVR\\SDK\\BP_LargeMonitorTile_classes.hpp","children":[]},{"name":"AINTERACT_Screen_LaserControl_C","file":"SystemShockVR\\SDK\\INTERACT_Screen_LaserControl_classes.hpp","children":[]},{"name":"AINTERACT_Screen_Terminal_C","file":"SystemShockVR\\SDK\\INTERACT_Screen_Terminal_classes.hpp","children":[]}]},{"name":"AINTERACT_SecurityMonitor_C","file":"SystemShockVR\\SDK\\INTERACT_SecurityMonitor_classes.hpp","children":[]},{"name":"AINTERACT_SmartHome_C","file":"SystemShockVR\\SDK\\INTERACT_SmartHome_classes.hpp","children":[]},{"name":"AINTERACT_SparkingCable_C","file":"SystemShockVR\\SDK\\INTERACT_SparkingCable_classes.hpp","children":[]},{"name":"AINTERACT_SpecimenPod_C","file":"SystemShockVR\\SDK\\INTERACT_SpecimenPod_classes.hpp","children":[]},{"name":"AINTERACT_TeleporterTarget_C","file":"SystemShockVR\\SDK\\INTERACT_TeleporterTarget_classes.hpp","children":[{"name":"AINTERACT_Teleporter_C","file":"SystemShockVR\\SDK\\INTERACT_Teleporter_classes.hpp","children":[]}]},{"name":"AINTERACT_TV_C","file":"SystemShockVR\\SDK\\INTERACT_TV_classes.hpp","children":[]},{"name":"APICKUP_Base_C","file":"SystemShockVR\\SDK\\PICKUP_Base_classes.hpp","children":[{"name":"APICKUP_AbeGhiranHead_C","file":"SystemShockVR\\SDK\\PICKUP_AbeGhiranHead_classes.hpp","children":[]},{"name":"APICKUP_AccessCard_Base_C","file":"SystemShockVR\\SDK\\PICKUP_AccessCard_Base_classes.hpp","children":[{"name":"APICKUP_Group1AccessCard_C","file":"SystemShockVR\\SDK\\PICKUP_Group1AccessCard_classes.hpp","children":[]},{"name":"APICKUP_MedicalAccessCard_C","file":"SystemShockVR\\SDK\\PICKUP_MedicalAccessCard_classes.hpp","children":[]},{"name":"APICKUP_Personal1AccessCard_C","file":"SystemShockVR\\SDK\\PICKUP_Personal1AccessCard_classes.hpp","children":[]},{"name":"APICKUP_StandardAccessCard_C","file":"SystemShockVR\\SDK\\PICKUP_StandardAccessCard_classes.hpp","children":[]}]},{"name":"APICKUP_AMMO_Base_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_Base_classes.hpp","children":[{"name":"APICKUP_AMMO_MagnesiumTipBox_Large_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_MagnesiumTipBox_Large_classes.hpp","children":[]},{"name":"APICKUP_AMMO_MagPulse_Cartridge_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_MagPulse_Cartridge_classes.hpp","children":[]},{"name":"APICKUP_AMMO_OsmiumBox_Large_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_OsmiumBox_Large_classes.hpp","children":[]},{"name":"APICKUP_AMMO_OsmiumBox_Small_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_OsmiumBox_Small_classes.hpp","children":[]},{"name":"APICKUP_AMMO_PenetratorBox_Large_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_PenetratorBox_Large_classes.hpp","children":[]},{"name":"APICKUP_AMMO_PlasmaCore_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_PlasmaCore_classes.hpp","children":[]},{"name":"APICKUP_AMMO_RailGun_Clip_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_RailGun_Clip_classes.hpp","children":[]},{"name":"APICKUP_AMMO_Shotgun_FlechetteBox_Large_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_Shotgun_FlechetteBox_Large_classes.hpp","children":[]},{"name":"APICKUP_AMMO_Shotgun_FlechetteBox_Small_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_Shotgun_FlechetteBox_Small_classes.hpp","children":[]},{"name":"APICKUP_AMMO_Shotgun_IncendiaryBox_Large_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_Shotgun_IncendiaryBox_Large_classes.hpp","children":[]},{"name":"APICKUP_AMMO_Shotgun_IncendiaryBox_Small_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_Shotgun_IncendiaryBox_Small_classes.hpp","children":[]},{"name":"APICKUP_AMMO_StandardRoundBox_Large_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_StandardRoundBox_Large_classes.hpp","children":[]},{"name":"APICKUP_AMMO_StandardRoundBox_Small_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_StandardRoundBox_Small_classes.hpp","children":[]},{"name":"APICKUP_AMMO_TeflonRoundBox_Large_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_TeflonRoundBox_Large_classes.hpp","children":[]},{"name":"APICKUP_AMMO_TeflonRoundBox_Small_C","file":"SystemShockVR\\SDK\\PICKUP_AMMO_TeflonRoundBox_Small_classes.hpp","children":[]}]},{"name":"APICKUP_AudioLog_C","file":"SystemShockVR\\SDK\\PICKUP_AudioLog_classes.hpp","children":[{"name":"APICKUP_KS_5u5h154_22_OCT_72_Hiding_C","file":"SystemShockVR\\SDK\\PICKUP_KS_5u5h154_22_OCT_72_Hiding_classes.hpp","children":[]},{"name":"APICKUP_KS_AlexValero_28_OCT_72_Good_Money_C","file":"SystemShockVR\\SDK\\PICKUP_KS_AlexValero_28_OCT_72_Good_Money_classes.hpp","children":[]},{"name":"APICKUP_L1_AbeGhiran_19_OCT_72_Join_Us_C","file":"SystemShockVR\\SDK\\PICKUP_L1_AbeGhiran_19_OCT_72_Join_Us_classes.hpp","children":[]},{"name":"APICKUP_L1_AltheaGrossman_22_OCT_72_Human_Resistance_C","file":"SystemShockVR\\SDK\\PICKUP_L1_AltheaGrossman_22_OCT_72_Human_Resistance_classes.hpp","children":[]},{"name":"APICKUP_L1_AltheaGrossman_27_OCT_72_Another_Bad_Day_C","file":"SystemShockVR\\SDK\\PICKUP_L1_AltheaGrossman_27_OCT_72_Another_Bad_Day_classes.hpp","children":[]},{"name":"APICKUP_L1_AltheaGrossman_29_OCT_72_Many_Paths_C","file":"SystemShockVR\\SDK\\PICKUP_L1_AltheaGrossman_29_OCT_72_Many_Paths_classes.hpp","children":[]},{"name":"APICKUP_L1_DavidHonig_11_OCT_72_Medical_CPU_s_C","file":"SystemShockVR\\SDK\\PICKUP_L1_DavidHonig_11_OCT_72_Medical_CPU_s_classes.hpp","children":[]},{"name":"APICKUP_L1_DavidHonig_12_OCT_72_Cyborg_Conversion_C","file":"SystemShockVR\\SDK\\PICKUP_L1_DavidHonig_12_OCT_72_Cyborg_Conversion_classes.hpp","children":[]},{"name":"APICKUP_L1_KarennaOzark_17_OCT_72_final_assault_C","file":"SystemShockVR\\SDK\\PICKUP_L1_KarennaOzark_17_OCT_72_final_assault_classes.hpp","children":[]},{"name":"APICKUP_L1_KevinO_Connell_09_OCT_72_new_cyborgs_C","file":"SystemShockVR\\SDK\\PICKUP_L1_KevinO_Connell_09_OCT_72_new_cyborgs_classes.hpp","children":[]},{"name":"APICKUP_L1_LawtonKirby_17_OCT_72_SHODAN_s_mutants_C","file":"SystemShockVR\\SDK\\PICKUP_L1_LawtonKirby_17_OCT_72_SHODAN_s_mutants_classes.hpp","children":[]},{"name":"APICKUP_L1_MiraStackhouse_15_OCT_72_Shodan_s_Presense_C","file":"SystemShockVR\\SDK\\PICKUP_L1_MiraStackhouse_15_OCT_72_Shodan_s_Presense_classes.hpp","children":[]},{"name":"APICKUP_L1_NathanD_Arcy_23_OCT_72_destroying_the_laser_C","file":"SystemShockVR\\SDK\\PICKUP_L1_NathanD_Arcy_23_OCT_72_destroying_the_laser_classes.hpp","children":[]},{"name":"APICKUP_L1_SHODAN_03_NOV_72_Strike_against_Earth_C","file":"SystemShockVR\\SDK\\PICKUP_L1_SHODAN_03_NOV_72_Strike_against_Earth_classes.hpp","children":[]},{"name":"APICKUP_L1_SHODAN_15_OCT_72_Mutagen_Transfer_C","file":"SystemShockVR\\SDK\\PICKUP_L1_SHODAN_15_OCT_72_Mutagen_Transfer_classes.hpp","children":[]},{"name":"APICKUP_L1_SHODAN_ABetterGodForEarth_C","file":"SystemShockVR\\SDK\\PICKUP_L1_SHODAN_ABetterGodForEarth_classes.hpp","children":[]},{"name":"APICKUP_L1_ToddBlankenship_25_OCT_72_mutants_C","file":"SystemShockVR\\SDK\\PICKUP_L1_ToddBlankenship_25_OCT_72_mutants_classes.hpp","children":[]}]},{"name":"APICKUP_BatteryPack_C","file":"SystemShockVR\\SDK\\PICKUP_BatteryPack_classes.hpp","children":[]},{"name":"APICKUP_BrokenInterfaceDemodulator_C","file":"SystemShockVR\\SDK\\PICKUP_BrokenInterfaceDemodulator_classes.hpp","children":[{"name":"APICKUP_InterfaceDemodulator_C","file":"SystemShockVR\\SDK\\PICKUP_InterfaceDemodulator_classes.hpp","children":[]}]},{"name":"APICKUP_ChipBag_Empty_C","file":"SystemShockVR\\SDK\\PICKUP_ChipBag_Empty_classes.hpp","children":[]},{"name":"APICKUP_ChipBag_KaleCrisps_C","file":"SystemShockVR\\SDK\\PICKUP_ChipBag_KaleCrisps_classes.hpp","children":[]},{"name":"APICKUP_ChipBag_PlainCrisps_C","file":"SystemShockVR\\SDK\\PICKUP_ChipBag_PlainCrisps_classes.hpp","children":[]},{"name":"APICKUP_ChipBag_ProteinCrisps_C","file":"SystemShockVR\\SDK\\PICKUP_ChipBag_ProteinCrisps_classes.hpp","children":[]},{"name":"APICKUP_ChipBag_RiceCrisps_C","file":"SystemShockVR\\SDK\\PICKUP_ChipBag_RiceCrisps_classes.hpp","children":[]},{"name":"APICKUP_Coin_C","file":"SystemShockVR\\SDK\\PICKUP_Coin_classes.hpp","children":[]},{"name":"APICKUP_Crackos_C","file":"SystemShockVR\\SDK\\PICKUP_Crackos_classes.hpp","children":[]},{"name":"APICKUP_Cybergun_C","file":"SystemShockVR\\SDK\\PICKUP_Cybergun_classes.hpp","children":[]},{"name":"APICKUP_DamagedAssaultRifle_C","file":"SystemShockVR\\SDK\\PICKUP_DamagedAssaultRifle_classes.hpp","children":[]},{"name":"APICKUP_DamagedMagnum_C","file":"SystemShockVR\\SDK\\PICKUP_DamagedMagnum_classes.hpp","children":[]},{"name":"APICKUP_DamagedMinipistol_C","file":"SystemShockVR\\SDK\\PICKUP_DamagedMinipistol_classes.hpp","children":[]},{"name":"APICKUP_DamagedSparqBeam_C","file":"SystemShockVR\\SDK\\PICKUP_DamagedSparqBeam_classes.hpp","children":[]},{"name":"APICKUP_DataStick_Base_C","file":"SystemShockVR\\SDK\\PICKUP_DataStick_Base_classes.hpp","children":[{"name":"APICKUP_DataStick_EngineersReport_Medical_C","file":"SystemShockVR\\SDK\\PICKUP_DataStick_EngineersReport_Medical_classes.hpp","children":[]},{"name":"APICKUP_DataStick_MedicalReport_C","file":"SystemShockVR\\SDK\\PICKUP_DataStick_MedicalReport_classes.hpp","children":[]},{"name":"APICKUP_DataStick_NoteToSelf_C","file":"SystemShockVR\\SDK\\PICKUP_DataStick_NoteToSelf_classes.hpp","children":[]},{"name":"APICKUP_DataStick_RecyclingAndYou_C","file":"SystemShockVR\\SDK\\PICKUP_DataStick_RecyclingAndYou_classes.hpp","children":[]}]},{"name":"APICKUP_DermalPatch_Base_C","file":"SystemShockVR\\SDK\\PICKUP_DermalPatch_Base_classes.hpp","children":[{"name":"APICKUP_Berserk_C","file":"SystemShockVR\\SDK\\PICKUP_Berserk_classes.hpp","children":[]},{"name":"APICKUP_Detox_C","file":"SystemShockVR\\SDK\\PICKUP_Detox_classes.hpp","children":[]},{"name":"APICKUP_Medipatch_C","file":"SystemShockVR\\SDK\\PICKUP_Medipatch_classes.hpp","children":[]},{"name":"APICKUP_ReflexAid_C","file":"SystemShockVR\\SDK\\PICKUP_ReflexAid_classes.hpp","children":[]},{"name":"APICKUP_Staminup_C","file":"SystemShockVR\\SDK\\PICKUP_Staminup_classes.hpp","children":[]},{"name":"APICKUP_VisionEnhancement_C","file":"SystemShockVR\\SDK\\PICKUP_VisionEnhancement_classes.hpp","children":[]}]},{"name":"APICKUP_Explosive_Base_C","file":"SystemShockVR\\SDK\\PICKUP_Explosive_Base_classes.hpp","children":[{"name":"APICKUP_EMPGrenade_C","file":"SystemShockVR\\SDK\\PICKUP_EMPGrenade_classes.hpp","children":[]},{"name":"APICKUP_FragGrenade_C","file":"SystemShockVR\\SDK\\PICKUP_FragGrenade_classes.hpp","children":[]},{"name":"APICKUP_GasGrenade_C","file":"SystemShockVR\\SDK\\PICKUP_GasGrenade_classes.hpp","children":[]},{"name":"APICKUP_ProximityMine_C","file":"SystemShockVR\\SDK\\PICKUP_ProximityMine_classes.hpp","children":[]}]},{"name":"APICKUP_FirstAidKit_C","file":"SystemShockVR\\SDK\\PICKUP_FirstAidKit_classes.hpp","children":[]},{"name":"APICKUP_FoodBar_Green_C","file":"SystemShockVR\\SDK\\PICKUP_FoodBar_Green_classes.hpp","children":[]},{"name":"APICKUP_FoodBar_PBJ_C","file":"SystemShockVR\\SDK\\PICKUP_FoodBar_PBJ_classes.hpp","children":[]},{"name":"APICKUP_FoodBar_Vita_C","file":"SystemShockVR\\SDK\\PICKUP_FoodBar_Vita_classes.hpp","children":[]},{"name":"APICKUP_Hardware_Base_C","file":"SystemShockVR\\SDK\\PICKUP_Hardware_Base_classes.hpp","children":[{"name":"APICKUP_Bioscan_V1_C","file":"SystemShockVR\\SDK\\PICKUP_Bioscan_V1_classes.hpp","children":[]},{"name":"APICKUP_DataReader_C","file":"SystemShockVR\\SDK\\PICKUP_DataReader_classes.hpp","children":[]},{"name":"APICKUP_HeadLamp_C","file":"SystemShockVR\\SDK\\PICKUP_HeadLamp_classes.hpp","children":[]},{"name":"APICKUP_NavUnit_V1_C","file":"SystemShockVR\\SDK\\PICKUP_NavUnit_V1_classes.hpp","children":[]},{"name":"APICKUP_SystemAnalyzer_C","file":"SystemShockVR\\SDK\\PICKUP_SystemAnalyzer_classes.hpp","children":[]}]},{"name":"APICKUP_ICadBattery_C","file":"SystemShockVR\\SDK\\PICKUP_ICadBattery_classes.hpp","children":[]},{"name":"APICKUP_IsolinearChipset_C","file":"SystemShockVR\\SDK\\PICKUP_IsolinearChipset_classes.hpp","children":[]},{"name":"APICKUP_Isotope_X_22_C","file":"SystemShockVR\\SDK\\PICKUP_Isotope_X_22_classes.hpp","children":[]},{"name":"APICKUP_Junk_Base_C","file":"SystemShockVR\\SDK\\PICKUP_Junk_Base_classes.hpp","children":[{"name":"APICKUP_BiowasteBag_C","file":"SystemShockVR\\SDK\\PICKUP_BiowasteBag_classes.hpp","children":[{"name":"APICKUP_BiowasteBag_Empty_C","file":"SystemShockVR\\SDK\\PICKUP_BiowasteBag_Empty_classes.hpp","children":[]}]},{"name":"APICKUP_CafeteriaTray_C","file":"SystemShockVR\\SDK\\PICKUP_CafeteriaTray_classes.hpp","children":[]},{"name":"APICKUP_Clamp_C","file":"SystemShockVR\\SDK\\PICKUP_Clamp_classes.hpp","children":[]},{"name":"APICKUP_ContactCleaner_C","file":"SystemShockVR\\SDK\\PICKUP_ContactCleaner_classes.hpp","children":[]},{"name":"APICKUP_CrewCap_C","file":"SystemShockVR\\SDK\\PICKUP_CrewCap_classes.hpp","children":[]},{"name":"APICKUP_CrushedCrackos_C","file":"SystemShockVR\\SDK\\PICKUP_CrushedCrackos_classes.hpp","children":[]},{"name":"APICKUP_DeskPlaque_C","file":"SystemShockVR\\SDK\\PICKUP_DeskPlaque_classes.hpp","children":[]},{"name":"APICKUP_DirtyRag_C","file":"SystemShockVR\\SDK\\PICKUP_DirtyRag_classes.hpp","children":[]},{"name":"APICKUP_Encyclopedia_C","file":"SystemShockVR\\SDK\\PICKUP_Encyclopedia_classes.hpp","children":[]},{"name":"APICKUP_FinanceChip_C","file":"SystemShockVR\\SDK\\PICKUP_FinanceChip_classes.hpp","children":[]},{"name":"APICKUP_FireExtinguisher_C","file":"SystemShockVR\\SDK\\PICKUP_FireExtinguisher_classes.hpp","children":[]},{"name":"APICKUP_FoodBar_Empty_C","file":"SystemShockVR\\SDK\\PICKUP_FoodBar_Empty_classes.hpp","children":[]},{"name":"APICKUP_Handbook_C","file":"SystemShockVR\\SDK\\PICKUP_Handbook_classes.hpp","children":[]},{"name":"APICKUP_HotPlate_C","file":"SystemShockVR\\SDK\\PICKUP_HotPlate_classes.hpp","children":[]},{"name":"APICKUP_Laptop_C","file":"SystemShockVR\\SDK\\PICKUP_Laptop_classes.hpp","children":[]},{"name":"APICKUP_LargeSurgicalBowl_C","file":"SystemShockVR\\SDK\\PICKUP_LargeSurgicalBowl_classes.hpp","children":[]},{"name":"APICKUP_Mallet_C","file":"SystemShockVR\\SDK\\PICKUP_Mallet_classes.hpp","children":[]},{"name":"APICKUP_MedicalCanister_C","file":"SystemShockVR\\SDK\\PICKUP_MedicalCanister_classes.hpp","children":[]},{"name":"APICKUP_MedicalScissors_C","file":"SystemShockVR\\SDK\\PICKUP_MedicalScissors_classes.hpp","children":[]},{"name":"APICKUP_MedicalTray_C","file":"SystemShockVR\\SDK\\PICKUP_MedicalTray_classes.hpp","children":[]},{"name":"APICKUP_MedicineContainer_C","file":"SystemShockVR\\SDK\\PICKUP_MedicineContainer_classes.hpp","children":[]},{"name":"APICKUP_Notebook_C","file":"SystemShockVR\\SDK\\PICKUP_Notebook_classes.hpp","children":[]},{"name":"APICKUP_Pen_C","file":"SystemShockVR\\SDK\\PICKUP_Pen_classes.hpp","children":[]},{"name":"APICKUP_PersonalDigitalAssistant_C","file":"SystemShockVR\\SDK\\PICKUP_PersonalDigitalAssistant_classes.hpp","children":[]},{"name":"APICKUP_PlasmaBag_C","file":"SystemShockVR\\SDK\\PICKUP_PlasmaBag_classes.hpp","children":[{"name":"APICKUP_PlasmaBag_Empty_C","file":"SystemShockVR\\SDK\\PICKUP_PlasmaBag_Empty_classes.hpp","children":[]}]},{"name":"APICKUP_Plunger_C","file":"SystemShockVR\\SDK\\PICKUP_Plunger_classes.hpp","children":[]},{"name":"APICKUP_Scalpel_C","file":"SystemShockVR\\SDK\\PICKUP_Scalpel_classes.hpp","children":[]},{"name":"APICKUP_Skull_C","file":"SystemShockVR\\SDK\\PICKUP_Skull_classes.hpp","children":[]},{"name":"APICKUP_SmallSurgicalBowl_C","file":"SystemShockVR\\SDK\\PICKUP_SmallSurgicalBowl_classes.hpp","children":[]},{"name":"APICKUP_SpraypaintCan_C","file":"SystemShockVR\\SDK\\PICKUP_SpraypaintCan_classes.hpp","children":[]},{"name":"APICKUP_Stethoscope_C","file":"SystemShockVR\\SDK\\PICKUP_Stethoscope_classes.hpp","children":[]},{"name":"APICKUP_Syringe_C","file":"SystemShockVR\\SDK\\PICKUP_Syringe_classes.hpp","children":[]},{"name":"APICKUP_TecSpecs_C","file":"SystemShockVR\\SDK\\PICKUP_TecSpecs_classes.hpp","children":[]},{"name":"APICKUP_Thermometer_C","file":"SystemShockVR\\SDK\\PICKUP_Thermometer_classes.hpp","children":[]},{"name":"APICKUP_Thermos_C","file":"SystemShockVR\\SDK\\PICKUP_Thermos_classes.hpp","children":[]},{"name":"APICKUP_ToiletPaper_C","file":"SystemShockVR\\SDK\\PICKUP_ToiletPaper_classes.hpp","children":[]},{"name":"APICKUP_Toothbrush_C","file":"SystemShockVR\\SDK\\PICKUP_Toothbrush_classes.hpp","children":[]},{"name":"APICKUP_Toothpaste_C","file":"SystemShockVR\\SDK\\PICKUP_Toothpaste_classes.hpp","children":[]},{"name":"APICKUP_TriopCup_C","file":"SystemShockVR\\SDK\\PICKUP_TriopCup_classes.hpp","children":[]},{"name":"APICKUP_TubeRack_C","file":"SystemShockVR\\SDK\\PICKUP_TubeRack_classes.hpp","children":[]},{"name":"APICKUP_WineBottleWhite_C","file":"SystemShockVR\\SDK\\PICKUP_WineBottleWhite_classes.hpp","children":[{"name":"APICKUP_WineBottleRed_C","file":"SystemShockVR\\SDK\\PICKUP_WineBottleRed_classes.hpp","children":[]}]},{"name":"APICKUP_Wipes_C","file":"SystemShockVR\\SDK\\PICKUP_Wipes_classes.hpp","children":[]}]},{"name":"APICKUP_LaserRapier_C","file":"SystemShockVR\\SDK\\PICKUP_LaserRapier_classes.hpp","children":[]},{"name":"APICKUP_LeadPipe_C","file":"SystemShockVR\\SDK\\PICKUP_LeadPipe_classes.hpp","children":[]},{"name":"APICKUP_LogicProbe_C","file":"SystemShockVR\\SDK\\PICKUP_LogicProbe_classes.hpp","children":[]},{"name":"APICKUP_MonkeyWrench_C","file":"SystemShockVR\\SDK\\PICKUP_MonkeyWrench_classes.hpp","children":[]},{"name":"APICKUP_Plastique_C","file":"SystemShockVR\\SDK\\PICKUP_Plastique_classes.hpp","children":[]},{"name":"APICKUP_PseudoDiscLauncher_C","file":"SystemShockVR\\SDK\\PICKUP_PseudoDiscLauncher_classes.hpp","children":[]},{"name":"APICKUP_PseudoNova_C","file":"SystemShockVR\\SDK\\PICKUP_PseudoNova_classes.hpp","children":[]},{"name":"APICKUP_PseudoPulser_C","file":"SystemShockVR\\SDK\\PICKUP_PseudoPulser_classes.hpp","children":[]},{"name":"APICKUP_SodaCan_Base_C","file":"SystemShockVR\\SDK\\PICKUP_SodaCan_Base_classes.hpp","children":[{"name":"APICKUP_SodaCan_C","file":"SystemShockVR\\SDK\\PICKUP_SodaCan_classes.hpp","children":[]}]},{"name":"APICKUP_SodaCan_Empty_C","file":"SystemShockVR\\SDK\\PICKUP_SodaCan_Empty_classes.hpp","children":[]},{"name":"APICKUP_Weapon_Base_C","file":"SystemShockVR\\SDK\\PICKUP_Weapon_Base_classes.hpp","children":[{"name":"APICKUP_EnergyWeapon_Base_C","file":"SystemShockVR\\SDK\\PICKUP_EnergyWeapon_Base_classes.hpp","children":[{"name":"APICKUP_IonPulseRifle_C","file":"SystemShockVR\\SDK\\PICKUP_IonPulseRifle_classes.hpp","children":[]},{"name":"APICKUP_PlasmaRifle_C","file":"SystemShockVR\\SDK\\PICKUP_PlasmaRifle_classes.hpp","children":[]},{"name":"APICKUP_SparqBeam_C","file":"SystemShockVR\\SDK\\PICKUP_SparqBeam_classes.hpp","children":[]}]},{"name":"APICKUP_ProjectileWeapon_Base_C","file":"SystemShockVR\\SDK\\PICKUP_ProjectileWeapon_Base_classes.hpp","children":[{"name":"APICKUP_AssaultRifle_C","file":"SystemShockVR\\SDK\\PICKUP_AssaultRifle_classes.hpp","children":[]},{"name":"APICKUP_GrenadeLauncher_C","file":"SystemShockVR\\SDK\\PICKUP_GrenadeLauncher_classes.hpp","children":[]},{"name":"APICKUP_MagnumPistol_C","file":"SystemShockVR\\SDK\\PICKUP_MagnumPistol_classes.hpp","children":[]},{"name":"APICKUP_MagPulseRifle_C","file":"SystemShockVR\\SDK\\PICKUP_MagPulseRifle_classes.hpp","children":[]},{"name":"APICKUP_Minipistol_C","file":"SystemShockVR\\SDK\\PICKUP_Minipistol_classes.hpp","children":[]},{"name":"APICKUP_RailGun_C","file":"SystemShockVR\\SDK\\PICKUP_RailGun_classes.hpp","children":[]},{"name":"APICKUP_Shotgun_C","file":"SystemShockVR\\SDK\\PICKUP_Shotgun_classes.hpp","children":[]},{"name":"APICKUP_Skorpion_C","file":"SystemShockVR\\SDK\\PICKUP_Skorpion_classes.hpp","children":[]}]}]},{"name":"APICKUP_WeaponModKit_Base_C","file":"SystemShockVR\\SDK\\PICKUP_WeaponModKit_Base_classes.hpp","children":[{"name":"APICKUP_ModKit_AssaultRIfle_FullAuto_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_AssaultRIfle_FullAuto_classes.hpp","children":[]},{"name":"APICKUP_ModKit_GrenadeLauncher_Damage_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_GrenadeLauncher_Damage_classes.hpp","children":[]},{"name":"APICKUP_ModKit_IonPulseRifle_Energy_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_IonPulseRifle_Energy_classes.hpp","children":[]},{"name":"APICKUP_ModKit_MagnumPistol_Capacity_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_MagnumPistol_Capacity_classes.hpp","children":[]},{"name":"APICKUP_ModKit_MagnumPistol_Damage_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_MagnumPistol_Damage_classes.hpp","children":[]},{"name":"APICKUP_ModKit_MagPulse_Damage_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_MagPulse_Damage_classes.hpp","children":[]},{"name":"APICKUP_ModKit_Minipistol_Burst_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_Minipistol_Burst_classes.hpp","children":[]},{"name":"APICKUP_ModKit_Minipistol_Capacity_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_Minipistol_Capacity_classes.hpp","children":[]},{"name":"APICKUP_ModKit_PlasmaRifle_Energy_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_PlasmaRifle_Energy_classes.hpp","children":[]},{"name":"APICKUP_ModKit_Railgun_Recharge_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_Railgun_Recharge_classes.hpp","children":[]},{"name":"APICKUP_ModKit_Shotgun_Choke_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_Shotgun_Choke_classes.hpp","children":[]},{"name":"APICKUP_ModKit_Skorpion_Capacity_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_Skorpion_Capacity_classes.hpp","children":[]},{"name":"APICKUP_ModKit_Skorpion_Damage_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_Skorpion_Damage_classes.hpp","children":[]},{"name":"APICKUP_ModKit_Sparqbeam_Cooling_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_Sparqbeam_Cooling_classes.hpp","children":[{"name":"APICKUP_ModKit_Sparqbeam_Damage_C","file":"SystemShockVR\\SDK\\PICKUP_ModKit_Sparqbeam_Damage_classes.hpp","children":[]}]}]}]},{"name":"ATRAP_Trigger_C","file":"SystemShockVR\\SDK\\TRAP_Trigger_classes.hpp","children":[{"name":"ATRAP_Ambush_C","file":"SystemShockVR\\SDK\\TRAP_Ambush_classes.hpp","children":[]},{"name":"ATRAP_BossEncounter_C","file":"SystemShockVR\\SDK\\TRAP_BossEncounter_classes.hpp","children":[]}]},{"name":"ATRIGGER_DestroyCondition_C","file":"SystemShockVR\\SDK\\TRIGGER_DestroyCondition_classes.hpp","children":[]},{"name":"ATRIGGER_EmailVolume_C","file":"SystemShockVR\\SDK\\TRIGGER_EmailVolume_classes.hpp","children":[]},{"name":"ATRIGGER_PublicAddressSystem_C","file":"SystemShockVR\\SDK\\TRIGGER_PublicAddressSystem_classes.hpp","children":[]},{"name":"ATRIGGER_PulsingHazardVolume_Base_C","file":"SystemShockVR\\SDK\\TRIGGER_PulsingHazardVolume_Base_classes.hpp","children":[{"name":"AINTERACT_LaserHazard_C","file":"SystemShockVR\\SDK\\INTERACT_LaserHazard_classes.hpp","children":[]}]},{"name":"ATRIGGER_TauntVolume_C","file":"SystemShockVR\\SDK\\TRIGGER_TauntVolume_classes.hpp","children":[]},{"name":"AWIREPUZZLE_WirePlug_C","file":"SystemShockVR\\SDK\\WIREPUZZLE_WirePlug_classes.hpp","children":[]}]};
+
+function categoryClass(name) {
+  // strip leading A or U
+  const core = name.replace(/^[AU]/, '');
+  // multi-segment prefixes
+  if (core.startsWith('CIRCUITPUZZLE_')) return 'cat-CIRCUITPUZZLE';
+  if (core.startsWith('WIREPUZZLE_')) return 'cat-WIREPUZZLE';
+  const prefix = core.split('_')[0];
+  return 'cat-' + prefix;
+}
+
+function fileLink(file) {
+  if (!file) return '';
+  const rel = file.replace(/\\\\/g, '/').replace(/^SystemShockVR\//, '../SystemShockVR/');
+  const display = file.split(/[\\\\/]/).pop();
+  return `<span class="file"><a href="${rel}" title="${rel}">${display}</a></span>`;
+}
+
+function countDescendants(node) {
+  let n = 0;
+  for (const c of node.children || []) {
+    n += 1 + countDescendants(c);
+  }
+  return n;
+}
+
+let totalNodes = 0;
+function buildNode(node, isRoot=false) {
+  totalNodes++;
+  const li = document.createElement('li');
+  li.className = 'node ' + categoryClass(node.name);
+  if (isRoot) li.classList.add('root');
+
+  const hasKids = node.children && node.children.length > 0;
+  const desc = hasKids ? countDescendants(node) : 0;
+
+  const row = document.createElement('span');
+  row.className = 'row';
+
+  const tog = document.createElement('span');
+  tog.className = 'toggle' + (hasKids ? '' : ' leaf');
+  if (hasKids) {
+    tog.addEventListener('click', () => li.classList.toggle('collapsed'));
+  }
+  row.appendChild(tog);
+
+  const nm = document.createElement('span');
+  nm.className = 'name';
+  nm.textContent = node.name;
+  nm.title = 'click to copy';
+  nm.addEventListener('click', () => {
+    navigator.clipboard && navigator.clipboard.writeText(node.name);
+    nm.style.outline = '1px solid var(--accent)';
+    setTimeout(() => nm.style.outline = '', 400);
+  });
+  row.appendChild(nm);
+
+  if (hasKids) {
+    const cnt = document.createElement('span');
+    cnt.className = 'count';
+    cnt.textContent = `(${node.children.length} direct, ${desc} total)`;
+    row.appendChild(cnt);
+  }
+
+  row.appendChild(document.createRange().createContextualFragment(fileLink(node.file)));
+
+  li.appendChild(row);
+
+  if (hasKids) {
+    const ul = document.createElement('ul');
+    for (const c of node.children) ul.appendChild(buildNode(c));
+    li.appendChild(ul);
+  }
+  return li;
+}
+
+const tree = document.getElementById('tree');
+tree.appendChild(buildNode(DATA, true));
+
+const stats = document.getElementById('stats');
+stats.textContent = `${totalNodes} classes`;
+
+// expand/collapse all
+document.getElementById('expandAll').addEventListener('click', () => {
+  document.querySelectorAll('li.node.collapsed').forEach(li => li.classList.remove('collapsed'));
+});
+document.getElementById('collapseAll').addEventListener('click', () => {
+  document.querySelectorAll('#tree li.node').forEach(li => {
+    if (li.querySelector(':scope > ul')) li.classList.add('collapsed');
+  });
+  // keep root expanded
+  const rootLi = document.querySelector('#tree > li.root');
+  if (rootLi) rootLi.classList.remove('collapsed');
+});
+
+// search filter — highlight matches and reveal ancestors
+const search = document.getElementById('search');
+function applyFilter(q) {
+  q = q.trim().toLowerCase();
+  const allLi = document.querySelectorAll('#tree li.node');
+  // clear previous
+  allLi.forEach(li => li.classList.remove('match'));
+  if (!q) return;
+  let hits = 0;
+  allLi.forEach(li => {
+    const nm = li.querySelector(':scope > .row > .name').textContent.toLowerCase();
+    if (nm.includes(q)) {
+      li.classList.add('match');
+      hits++;
+      // reveal ancestors
+      let p = li.parentElement;
+      while (p && p.id !== 'tree') {
+        if (p.tagName === 'LI') p.classList.remove('collapsed');
+        p = p.parentElement;
+      }
+    }
+  });
+  stats.textContent = `${totalNodes} classes — ${hits} match`;
+}
+search.addEventListener('input', e => applyFilter(e.target.value));
+applyFilter('');
+</script>
+</body>
+</html>

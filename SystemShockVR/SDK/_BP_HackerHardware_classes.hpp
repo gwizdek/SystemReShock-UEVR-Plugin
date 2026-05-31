@@ -12,7 +12,6 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "UMG_structs.hpp"
 
 
 namespace SDK

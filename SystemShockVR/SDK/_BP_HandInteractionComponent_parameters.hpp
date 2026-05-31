@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "STRUCT_InteractResults_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "_ENUM_ItemCategory_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
 
@@ -639,44 +639,38 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_TryPutingInBackpack, K2Nod
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryPutingInBackpack, K2Node_DynamicCast_bSuccess) == 0x000018, "Member '_BP_HandInteractionComponent_C_TryPutingInBackpack::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.TryGrab
-// 0x0060 (0x0060 - 0x0000)
+// 0x0058 (0x0058 - 0x0000)
 struct _BP_HandInteractionComponent_C_TryGrab final
 {
 public:
-	bool                                          CallFunc_Less_FloatFloat_ReturnValue;              // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TrySnap_Result;                           // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3[0x5];                                        // 0x0003(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	TScriptInterface<class IINTERF_Interactable_C> K2Node_DynamicCast_AsINTERF_Interactable;          // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPrimitiveComponent*                    CallFunc_GetMeshPrimitiveFromPickableInteractable_Primitive; // 0x0020(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0028(0x0020)(HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4A[0x6];                                       // 0x004A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGrabComponent_C*                       CallFunc_GetGrabComponentNearMotionController_NearestComponent; // 0x0050(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryGrab_IsHeld;                           // 0x0059(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x005A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x005B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TrySnap_Result;                           // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0020(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGrabComponent_C*                       CallFunc_GetGrabComponentNearMotionController_NearestComponent; // 0x0048(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryGrab_IsHeld;                           // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0052(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_HandInteractionComponent_C_TryGrab) == 0x000008, "Wrong alignment on _BP_HandInteractionComponent_C_TryGrab");
-static_assert(sizeof(_BP_HandInteractionComponent_C_TryGrab) == 0x000060, "Wrong size on _BP_HandInteractionComponent_C_TryGrab");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_Less_FloatFloat_ReturnValue) == 0x000000, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_Less_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(sizeof(_BP_HandInteractionComponent_C_TryGrab) == 0x000058, "Wrong size on _BP_HandInteractionComponent_C_TryGrab");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue) == 0x000000, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TrySnap_Result) == 0x000001, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TrySnap_Result' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_1) == 0x000002, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, K2Node_DynamicCast_AsINTERF_Interactable) == 0x000008, "Member '_BP_HandInteractionComponent_C_TryGrab::K2Node_DynamicCast_AsINTERF_Interactable' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, K2Node_DynamicCast_bSuccess) == 0x000018, "Member '_BP_HandInteractionComponent_C_TryGrab::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_BooleanAND_ReturnValue) == 0x000019, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_GetMeshPrimitiveFromPickableInteractable_Primitive) == 0x000020, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_GetMeshPrimitiveFromPickableInteractable_Primitive' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TryInteract_InteractResults) == 0x000028, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TryInteract_InteractResults' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue) == 0x000048, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_1) == 0x000049, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_GetGrabComponentNearMotionController_NearestComponent) == 0x000050, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_GetGrabComponentNearMotionController_NearestComponent' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x000058, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TryGrab_IsHeld) == 0x000059, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TryGrab_IsHeld' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_2) == 0x00005A, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_3) == 0x00005B, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TrySnap_Result) == 0x00005C, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TrySnap_Result' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TryInteract_InteractResults) == 0x000020, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TryInteract_InteractResults' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_2) == 0x000040, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_GetGrabComponentNearMotionController_NearestComponent) == 0x000048, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_GetGrabComponentNearMotionController_NearestComponent' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x000050, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TryGrab_IsHeld) == 0x000051, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TryGrab_IsHeld' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_3) == 0x000052, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.TryRelease
 // 0x0070 (0x0070 - 0x0000)
@@ -977,6 +971,17 @@ static_assert(alignof(_BP_HandInteractionComponent_C_IsChannelingSnappableSource
 static_assert(sizeof(_BP_HandInteractionComponent_C_IsChannelingSnappableSource) == 0x000002, "Wrong size on _BP_HandInteractionComponent_C_IsChannelingSnappableSource");
 static_assert(offsetof(_BP_HandInteractionComponent_C_IsChannelingSnappableSource, Result) == 0x000000, "Member '_BP_HandInteractionComponent_C_IsChannelingSnappableSource::Result' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_IsChannelingSnappableSource, CallFunc_IsValid_ReturnValue) == 0x000001, "Member '_BP_HandInteractionComponent_C_IsChannelingSnappableSource::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+
+// Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.SetHeldItemCategory
+// 0x0001 (0x0001 - 0x0000)
+struct _BP_HandInteractionComponent_C_SetHeldItemCategory final
+{
+public:
+	E_ENUM_ItemCategory                           ItemCategory;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(_BP_HandInteractionComponent_C_SetHeldItemCategory) == 0x000001, "Wrong alignment on _BP_HandInteractionComponent_C_SetHeldItemCategory");
+static_assert(sizeof(_BP_HandInteractionComponent_C_SetHeldItemCategory) == 0x000001, "Wrong size on _BP_HandInteractionComponent_C_SetHeldItemCategory");
+static_assert(offsetof(_BP_HandInteractionComponent_C_SetHeldItemCategory, ItemCategory) == 0x000000, "Member '_BP_HandInteractionComponent_C_SetHeldItemCategory::ItemCategory' has a wrong offset!");
 
 }
 

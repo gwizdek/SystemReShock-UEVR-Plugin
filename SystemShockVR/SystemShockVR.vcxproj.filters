@@ -305,6 +305,9 @@
     <ClCompile Include="SDK\PICKUP_Base_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\_BP_InteractablesHighlighter_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

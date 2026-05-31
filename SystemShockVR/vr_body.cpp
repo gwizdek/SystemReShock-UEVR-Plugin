@@ -103,6 +103,13 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         hmd_state->set_permanent(true);
         API::get()->log_warn("[vr_body][initialize_vr_body] Hooked HMD motion controller component");
 
+        static_cast<APAWN_Hacker_Simple_C*>(pawn)->HeadRangedCollision->SphereRadius = 7.f;
+
+        // an attempt to disable collisions on arms that don't allow laser pointer to go through (unsuccessful)
+        static_cast<APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
+        static_cast<APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        static_cast<APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh->SetCollisionObjectType(ECollisionChannel::ECC_EngineTraceChannel6);
+
         if (!pawn->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
             API::get()->log_warn("[vr_body][initialize_vr_body] Not a APAWN_Hacker_Implant. Returning.");
             return vr_body;
@@ -182,6 +189,14 @@ void VRBody::initialize_laser_dot() {
     g_vr_body->LaserDot->LaserPointerComponent->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.1f);
     g_vr_body->LaserDot->LaserPointerComponent->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"LaserColour"), { 0.2f, 0.f, 0.f, 0.5f });
     g_vr_body->LaserDot->LaserPointerComponent->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"PrimaryColor"), { 0.2f, 0.f, 0.f, 0.5f });
+
+    //g_vr_body->LaserPointerLeft->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 10.05f);
+    //g_vr_body->LaserPointerLeft->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Alpha"), 10.05f);
+    //g_vr_body->LaserPointerLeft->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"LaserPower"), 10.05f);
+    //g_vr_body->LaserPointerLeft->SetVectorParameter(UKismetStringLibrary::Conv_StringToName(L"TraceStartOffset"), { 20.0f, 0.f, 0.f });
+    //g_vr_body->LaserPointerLeft->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"OcclusionSampleDiameter"), 50.f);
+    g_vr_body->LaserPointerLeft->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"LaserColour"), { 0.0f, 0.447917f, 0.302646f, 0.3f });
+    g_vr_body->LaserPointerLeft->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"PrimaryColor"), { 0.0f, 0.447917f, 0.302646f, 0.3f });
 
     //PluginUtils::bytes_to_float("Power", 0, 0, 128, 63);
     //PluginUtils::bytes_to_float("Size", 0, 0, 192, 64);

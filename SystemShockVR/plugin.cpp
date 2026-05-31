@@ -47,6 +47,7 @@
 #include "SDK/_CH_Hacker_Rig_Skeleton_AnimBlueprint_classes.hpp"
 #include "SDK/_BP_MeleeWeaponHandler_classes.hpp"
 #include "SDK/_BP_VRMenu_classes.hpp"
+#include "SDK/_BP_InteractablesHighlighter_classes.hpp"
 
 #include "plugin.hpp"
 #include "plugin_utils.hpp"
@@ -470,7 +471,12 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
                     static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->InpActEvt_Real_ToggleMFD_K2Node_InputActionEvent_43(FKey{});
                 }
             }
+            
+            // Left Shoulder - close MFD
+            m_gamepad_left_shoulder.when_pressed_send(state, XINPUT_GAMEPAD_X);
+            
             handle_mfd_interactions(state, vr);
+
             m_gamepad_right_shoulder.mute_state(state);
             m_gamepad_left_shoulder.mute_state(state);
             return;
@@ -581,6 +587,11 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
         // map jump to right thumb up
         if (state->Gamepad.sThumbRY > INPUT_DEADZONE_HI) {
             state->Gamepad.wButtons |= XINPUT_GAMEPAD_A;
+        }
+
+        // debug - show all primitive components in range
+        if (m_gamepad_left_trigger.is_held() && m_gamepad_right_shoulder.is_pressed()) {
+            PluginUtils::show_all_primitive_components(m_world, g_vr_body->MotionControllerRight, 100.f);
         }
 
         // pull out a gun when right hand is leaving backpack collision sphere
@@ -1119,7 +1130,10 @@ void UEVRPlugin::handle_level_change() {
                     VRBody::initialize_hand_item_collisions();
                     VRItemSelector::initialize(m_neural_hud);
                     PluginUtils::reset_height(0.f);
-                    VRBody::set_debug_widget_visibility(false);
+                    
+                    //VRBody::set_debug_widget_visibility(false);
+                    //g_vr_body->InteractablesHighlighterLeft->Activate(true);
+                    //g_vr_body->InteractablesHighlighterLeft->Enable();
 
                     PluginUtils::cycle_native_stereo_fix();
                 }
@@ -1285,7 +1299,7 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         // mute controller A, Y buttons
         m_gamepad_btn_a.mute_state(state);
         m_gamepad_btn_b.mute_state(state);
-        m_gamepad_btn_x.mute_state(state);
+        //m_gamepad_btn_x.mute_state(state);
         m_gamepad_btn_y.mute_state(state);
 
         m_gamepad_right_trigger.mute_state(state);
