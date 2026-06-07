@@ -57,6 +57,7 @@ public:
 	void OnScanDataChanged();
 	void Initialize(class U_BP_HandInteractionComponent_C* HandInteractionComponent);
 	void OnHeldItemCategoryChanged(E_ENUM_VRHand Hand, E_ENUM_ItemCategory ItemCategory);
+	void OnLaserPointerAttached(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand);
 
 public:
 	static class UClass* StaticClass()

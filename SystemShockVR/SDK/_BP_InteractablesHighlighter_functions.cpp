@@ -168,5 +168,27 @@ void U_BP_InteractablesHighlighter_C::OnHeldItemCategoryChanged(E_ENUM_VRHand Ha
 	UObject::ProcessEvent(Func, &Parms);
 }
 
+
+// Function _BP_InteractablesHighlighter._BP_InteractablesHighlighter_C.OnLaserPointerAttached
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class A_BP_LaserDot_C*                  LaserPointer                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// E_ENUM_VRHand                           Hand                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void U_BP_InteractablesHighlighter_C::OnLaserPointerAttached(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_InteractablesHighlighter_C", "OnLaserPointerAttached");
+
+	Params::_BP_InteractablesHighlighter_C_OnLaserPointerAttached Parms{};
+
+	Parms.LaserPointer = LaserPointer;
+	Parms.Hand = Hand;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
 }
 

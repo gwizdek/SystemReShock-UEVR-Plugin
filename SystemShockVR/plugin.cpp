@@ -538,14 +538,14 @@ void UEVRPlugin::handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData
 
         // Right Shoulder
         if (m_gamepad_right_shoulder.is_pressed()) {
-            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator2);
+            g_vr_body->HandInteractionRight->TryGrab();
 
             if (!g_vr_body->HandInteractionRight->IsHoldingWeapon) {
                 g_vr_body->HandInteractionRight->SelectedPose = E_ENUM_VRHandPose::NewEnumerator3;
             }
         }
         if (m_gamepad_right_shoulder.is_released()) {
-            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator1, E_ENUM_VRHandPose::NewEnumerator0);
+            g_vr_body->HandInteractionRight->TryRelease();
 
             if (!g_vr_body->HandInteractionRight->IsHoldingWeapon) {
                 g_vr_body->HandInteractionRight->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
@@ -554,7 +554,7 @@ void UEVRPlugin::handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData
 
         // Left Shoulder
         if (m_gamepad_left_shoulder.is_pressed()) {
-            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator2);
+            g_vr_body->HandInteractionLeft->TryGrab();
             // set pointing hand pose
             g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator3;
         }
@@ -562,7 +562,7 @@ void UEVRPlugin::handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData
             // set undefined hand pose
             g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
             // try releasing world object
-            g_vr_body->TryGrabAction(E_ENUM_VRHand::NewEnumerator0, E_ENUM_VRHandPose::NewEnumerator0);
+            g_vr_body->HandInteractionLeft->TryRelease();
         }
     }
     catch (...) {
@@ -595,7 +595,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
         }
 
         // pull out a gun when right hand is leaving backpack collision sphere
-        if (m_is_pulling_out_gun && m_is_right_hand_reaching_backpack.disabled()) {
+        if (m_is_pulling_gun_out && m_is_right_hand_reaching_backpack.disabled()) {
             if (
                 !g_vr_body->HandInteractionRight->IsHoldingWeapon &&
                 g_vr_body->HandInteractionRight->HeldGrabComponent == nullptr
@@ -604,7 +604,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
                     .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
                 };
                 g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
-                m_is_pulling_out_gun = false;
+                m_is_pulling_gun_out = false;
             }
         }
 
@@ -683,9 +683,9 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
         // Left Trigger
         if (m_gamepad_left_trigger.is_pressed()) {
             // attach laser pointer to an empty hand (only if both hands are empty)
-            if (g_vr_body->IsEmptyHanded()) {
-                g_vr_body->HandInteractionLeft->AttachLaserPointer(true, 10.f);
-            }
+            //if (g_vr_body->IsEmptyHanded()) {
+            //    g_vr_body->HandInteractionLeft->AttachLaserPointer(true, 10.f);
+            //}
         }
 
         // Right Shoulder
@@ -698,7 +698,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
                 g_vr_body->HandInteractionRight->SelectedPose = E_ENUM_VRHandPose::NewEnumerator3;
 
                 if (g_vr_body->HandInteractionRight->IsReachingBackpack) {
-                    m_is_pulling_out_gun = true;
+                    m_is_pulling_gun_out = true;
                 }
             }
 
@@ -715,7 +715,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             }
         }
         if (m_gamepad_right_shoulder.is_released()) {
-            m_is_pulling_out_gun = false;
+            m_is_pulling_gun_out = false;
 
             // toggle holster gesture
             if (
@@ -758,6 +758,19 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
         if (m_gamepad_left_shoulder.is_released()) {
             // set undefined hand pose
             g_vr_body->HandInteractionLeft->SelectedPose = E_ENUM_VRHandPose::NewEnumerator0;
+
+            // toggle holster gesture for held condsumable (Battery Pack)
+            if (
+                g_vr_body->HandInteractionLeft->IsReachingBackpack &&
+                g_vr_body->HandInteractionLeft->HeldItemCategory == E_ENUM_ItemCategory::NewEnumerator3 && // consumable
+                g_vr_body->HandInteractionLeft->HeldGrabComponent == nullptr
+                ) {
+                // use holster weapon button: holster weapon
+                SDK::FKey h_key_name{
+                    .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
+                };
+                g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+            }
 
             // toggle VisionUnit gesture
             if (
@@ -894,16 +907,18 @@ void UEVRPlugin::handle_game_state_change() {
             const UEVR_SDKData* sdk = API::get()->sdk();
 
             // hides UI on the monitor for selected states: it's for recording videos without UI being visible
-            if (
-                m_game_state.get() == GAME_STATE_CITADEL_STATION ||
-                m_game_state.get() == GAME_STATE_APPARTMENT ||
-                m_game_state.get() == GAME_STATE_CYBERSPACE
-                ) {
-                set_game_ui_visibility(false);
-            }
-            else {
-                set_game_ui_visibility(true);
-            }
+            //if (
+            //    m_game_state.get() == GAME_STATE_CITADEL_STATION ||
+            //    m_game_state.get() == GAME_STATE_APPARTMENT ||
+            //    m_game_state.get() == GAME_STATE_CYBERSPACE
+            //    ) {
+            //    set_game_ui_visibility(false);
+            //}
+            //else {
+            //    set_game_ui_visibility(true);
+            //}
+
+            set_game_ui_visibility(true);
 
             switch (m_game_state.get()) {
                 case GAME_STATE_INTRO_DRONE:
@@ -950,7 +965,7 @@ void UEVRPlugin::handle_game_state_change() {
                 case GAME_STATE_CITADEL_STATION:
                     sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
                     if (is_valid_vr_body_hacker_implant_pawn()) {
-                        m_is_pulling_out_gun = false;
+                        m_is_pulling_gun_out = false;
                         VRBody::show_vr_body();
                         static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->bUseControllerRotationYaw = true;
 

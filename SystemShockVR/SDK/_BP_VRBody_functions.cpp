@@ -289,28 +289,6 @@ void A_BP_VRBody_C::HolsterWeapon()
 }
 
 
-// Function _BP_VRBody._BP_VRBody_C.TryGrabAction
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// E_ENUM_VRHand                           InHand                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// E_ENUM_VRHandPose                       InPose                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void A_BP_VRBody_C::TryGrabAction(E_ENUM_VRHand InHand, E_ENUM_VRHandPose InPose)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_VRBody_C", "TryGrabAction");
-
-	Params::_BP_VRBody_C_TryGrabAction Parms{};
-
-	Parms.InHand = InHand;
-	Parms.InPose = InPose;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function _BP_VRBody._BP_VRBody_C.TestFunction
 // (Public, BlueprintCallable, BlueprintEvent)
 

@@ -17,9 +17,11 @@
 #include "SDK/_BP_MFDMaskComponent_classes.hpp"
 #include "SDK/_BP_HackerHardware_classes.hpp"
 #include "SDK/_BP_DebugWidgetComponent_classes.hpp"
+#include "SDK/_WIDGET_VRHUD_classes.hpp"
 
 #include "vr_body.hpp"
 #include "vr_plugin_shared.hpp"
+#include "plugin_utils.hpp"
 
 extern SDK::A_BP_VRBody_C* g_vr_body;
 
@@ -110,6 +112,9 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         static_cast<APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
         static_cast<APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh->SetCollisionObjectType(ECollisionChannel::ECC_EngineTraceChannel6);
 
+        //
+        // Hacker Implant Pawn
+        //
         if (!pawn->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
             API::get()->log_warn("[vr_body][initialize_vr_body] Not a APAWN_Hacker_Implant. Returning.");
             return vr_body;
@@ -158,6 +163,11 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
 
             vr_body->MediaDisplayWidgetComponent->SetWidget(neural_hud->WIDGET_MediaDisplay);
             neural_hud->WIDGET_MediaDisplay->RemoveFromViewport();
+
+            PluginUtils::reparent_panel_to_user_widget(neural_hud->PANEL_Notification, vr_body->VRHUD->GetWidget());
+            vr_body->VRHUD->SetVisibility(false, true);
+            vr_body->VRHUD->SetVisibility(true, true);
+
         }
         else {
             API::get()->log_error("[vr_body][initialize_vr_body] Neural HUD pointer error");

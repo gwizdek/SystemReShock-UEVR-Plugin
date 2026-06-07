@@ -280,17 +280,19 @@ static_assert(offsetof(_BP_InteractablesHighlighter_C_OnScanDataChanged, CallFun
 static_assert(offsetof(_BP_InteractablesHighlighter_C_OnScanDataChanged, CallFunc_BooleanAND_ReturnValue) == 0x000023, "Member '_BP_InteractablesHighlighter_C_OnScanDataChanged::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 
 // Function _BP_InteractablesHighlighter._BP_InteractablesHighlighter_C.Initialize
-// 0x0018 (0x0018 - 0x0000)
+// 0x0028 (0x0028 - 0x0000)
 struct _BP_InteractablesHighlighter_C_Initialize final
 {
 public:
 	class U_BP_HandInteractionComponent_C*        HandInteractionComponent;                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(E_ENUM_VRHand Hand, E_ENUM_ItemCategory ItemCategory)> K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)> K2Node_CreateDelegate_OutputDelegate;              // 0x0008(0x0010)(ZeroConstructor, NoDestructor)
+	TDelegate<void(E_ENUM_VRHand Hand, E_ENUM_ItemCategory ItemCategory)> K2Node_CreateDelegate_OutputDelegate_1;            // 0x0018(0x0010)(ZeroConstructor, NoDestructor)
 };
 static_assert(alignof(_BP_InteractablesHighlighter_C_Initialize) == 0x000008, "Wrong alignment on _BP_InteractablesHighlighter_C_Initialize");
-static_assert(sizeof(_BP_InteractablesHighlighter_C_Initialize) == 0x000018, "Wrong size on _BP_InteractablesHighlighter_C_Initialize");
+static_assert(sizeof(_BP_InteractablesHighlighter_C_Initialize) == 0x000028, "Wrong size on _BP_InteractablesHighlighter_C_Initialize");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_Initialize, HandInteractionComponent) == 0x000000, "Member '_BP_InteractablesHighlighter_C_Initialize::HandInteractionComponent' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_Initialize, K2Node_CreateDelegate_OutputDelegate) == 0x000008, "Member '_BP_InteractablesHighlighter_C_Initialize::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_Initialize, K2Node_CreateDelegate_OutputDelegate_1) == 0x000018, "Member '_BP_InteractablesHighlighter_C_Initialize::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
 
 // Function _BP_InteractablesHighlighter._BP_InteractablesHighlighter_C.OnHeldItemCategoryChanged
 // 0x0068 (0x0068 - 0x0000)
@@ -321,6 +323,19 @@ static_assert(offsetof(_BP_InteractablesHighlighter_C_OnHeldItemCategoryChanged,
 static_assert(offsetof(_BP_InteractablesHighlighter_C_OnHeldItemCategoryChanged, K2Node_Select_Default) == 0x000038, "Member '_BP_InteractablesHighlighter_C_OnHeldItemCategoryChanged::K2Node_Select_Default' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_OnHeldItemCategoryChanged, CallFunc_Concat_StrStr_ReturnValue) == 0x000048, "Member '_BP_InteractablesHighlighter_C_OnHeldItemCategoryChanged::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_OnHeldItemCategoryChanged, CallFunc_Concat_StrStr_ReturnValue_1) == 0x000058, "Member '_BP_InteractablesHighlighter_C_OnHeldItemCategoryChanged::CallFunc_Concat_StrStr_ReturnValue_1' has a wrong offset!");
+
+// Function _BP_InteractablesHighlighter._BP_InteractablesHighlighter_C.OnLaserPointerAttached
+// 0x0010 (0x0010 - 0x0000)
+struct _BP_InteractablesHighlighter_C_OnLaserPointerAttached final
+{
+public:
+	class A_BP_LaserDot_C*                        LaserPointer;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHand                                 Hand;                                              // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(_BP_InteractablesHighlighter_C_OnLaserPointerAttached) == 0x000008, "Wrong alignment on _BP_InteractablesHighlighter_C_OnLaserPointerAttached");
+static_assert(sizeof(_BP_InteractablesHighlighter_C_OnLaserPointerAttached) == 0x000010, "Wrong size on _BP_InteractablesHighlighter_C_OnLaserPointerAttached");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_OnLaserPointerAttached, LaserPointer) == 0x000000, "Member '_BP_InteractablesHighlighter_C_OnLaserPointerAttached::LaserPointer' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_OnLaserPointerAttached, Hand) == 0x000008, "Member '_BP_InteractablesHighlighter_C_OnLaserPointerAttached::Hand' has a wrong offset!");
 
 }
 

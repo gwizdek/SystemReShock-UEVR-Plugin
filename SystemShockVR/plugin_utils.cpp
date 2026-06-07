@@ -1,4 +1,5 @@
 #include "SDK/AssetRegistry_classes.hpp"
+#include "SDK/UMG_classes.hpp"
 
 #include "plugin_utils.hpp"
 
@@ -221,6 +222,73 @@ void PluginUtils::show_all_primitive_components(SDK::UWorld* world, SDK::USceneC
     catch (...) {
         API::get()->log_error("[plugin_utils][show_all_primitive_components] Exception");
         return;
+    }
+}
+
+// detaches 'panel' from whatever panel currently owns it and re-adds it as a child of 'user_widget's
+// root panel. RemoveChild only unparents (it does not destroy), so the same widget instance survives
+// the move. AddChild always appends and returns a brand-new UPanelSlot with default layout, so when
+// the destination root is a CanvasPanel we re-apply a full-fill layout - otherwise the freshly added
+// child would sit at the top-left with zero size and render invisibly. returns the new slot (so the
+// caller can further tweak layout) or nullptr on failure.
+// NOTE: UMG mutation is game-thread only - call this from a tick/pre-engine-tick callback.
+SDK::UPanelSlot* PluginUtils::reparent_panel_to_user_widget(SDK::UPanelWidget* panel, SDK::UUserWidget* user_widget) {
+    try {
+        if (panel == nullptr || !SDK::UKismetSystemLibrary::IsValid(panel)) {
+            API::get()->log_error("[plugin_utils][reparent_panel_to_user_widget] Invalid panel pointer");
+            return nullptr;
+        }
+
+        if (user_widget == nullptr || !SDK::UKismetSystemLibrary::IsValid(user_widget)) {
+            API::get()->log_error("[plugin_utils][reparent_panel_to_user_widget] Invalid user widget pointer");
+            return nullptr;
+        }
+
+        // the UserWidget is not itself a panel - its contents live under WidgetTree->RootWidget,
+        // which must be a panel for us to add children to it
+        SDK::UWidgetTree* widget_tree = user_widget->WidgetTree;
+        if (widget_tree == nullptr || !SDK::UKismetSystemLibrary::IsValid(widget_tree)) {
+            API::get()->log_error("[plugin_utils][reparent_panel_to_user_widget] User widget has no WidgetTree");
+            return nullptr;
+        }
+
+        SDK::UWidget* root_widget = widget_tree->RootWidget;
+        if (root_widget == nullptr || !root_widget->IsA(SDK::UPanelWidget::StaticClass())) {
+            API::get()->log_error("[plugin_utils][reparent_panel_to_user_widget] User widget root is not a UPanelWidget");
+            return nullptr;
+        }
+        SDK::UPanelWidget* target_panel = static_cast<SDK::UPanelWidget*>(root_widget);
+
+        // detach from the current parent (no-op if it has none); this does not destroy the widget
+        SDK::UPanelWidget* old_parent = panel->GetParent();
+        if (old_parent != nullptr && SDK::UKismetSystemLibrary::IsValid(old_parent)) {
+            old_parent->RemoveChild(panel);
+        }
+
+        SDK::UPanelSlot* new_slot = target_panel->AddChild(panel);
+        if (new_slot == nullptr) {
+            API::get()->log_error("[plugin_utils][reparent_panel_to_user_widget] AddChild returned null slot");
+            return nullptr;
+        }
+
+        // a fresh CanvasPanel slot defaults to zero-size at the top-left - stretch it to fill the
+        // parent so the reparented panel is actually visible. caller can override afterwards.
+        if (new_slot->IsA(SDK::UCanvasPanelSlot::StaticClass())) {
+            SDK::UCanvasPanelSlot* canvas_slot = static_cast<SDK::UCanvasPanelSlot*>(new_slot);
+            SDK::FAnchors full_anchors{};
+            full_anchors.Minimum = SDK::FVector2D{ 0.0f, 0.0f };
+            full_anchors.Maximum = SDK::FVector2D{ 1.0f, 1.0f };
+            canvas_slot->SetAnchors(full_anchors);
+            canvas_slot->SetOffsets(SDK::FMargin{ 0.0f, 0.0f, 0.0f, 0.0f });
+        }
+
+        API::get()->log_warn("[plugin_utils][reparent_panel_to_user_widget] Reparented %s into %s",
+            panel->GetName().c_str(), user_widget->GetName().c_str());
+        return new_slot;
+    }
+    catch (...) {
+        API::get()->log_error("[plugin_utils][reparent_panel_to_user_widget] Exception");
+        return nullptr;
     }
 }
 

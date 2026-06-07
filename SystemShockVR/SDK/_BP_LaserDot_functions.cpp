@@ -264,5 +264,26 @@ void A_BP_LaserDot_C::EmulateScanner(class AActor* NewActor)
 	UObject::ProcessEvent(Func, &Parms);
 }
 
+
+// Function _BP_LaserDot._BP_LaserDot_C.IsVisible
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    Result                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void A_BP_LaserDot_C::IsVisible(bool* Result)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_LaserDot_C", "IsVisible");
+
+	Params::_BP_LaserDot_C_IsVisible Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Result != nullptr)
+		*Result = Parms.Result;
+}
+
 }
 

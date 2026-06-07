@@ -276,5 +276,18 @@ static_assert(offsetof(_BP_LaserDot_C_EmulateScanner, CallFunc_ClassIsChildOf_Re
 static_assert(offsetof(_BP_LaserDot_C_EmulateScanner, CallFunc_GetMeshPrimitiveFromPickableInteractable_Primitive) == 0x000018, "Member '_BP_LaserDot_C_EmulateScanner::CallFunc_GetMeshPrimitiveFromPickableInteractable_Primitive' has a wrong offset!");
 static_assert(offsetof(_BP_LaserDot_C_EmulateScanner, CallFunc_IsValid_ReturnValue) == 0x000020, "Member '_BP_LaserDot_C_EmulateScanner::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
+// Function _BP_LaserDot._BP_LaserDot_C.IsVisible
+// 0x0002 (0x0002 - 0x0000)
+struct _BP_LaserDot_C_IsVisible final
+{
+public:
+	bool                                          Result;                                            // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BP_LaserDot_C_IsVisible) == 0x000001, "Wrong alignment on _BP_LaserDot_C_IsVisible");
+static_assert(sizeof(_BP_LaserDot_C_IsVisible) == 0x000002, "Wrong size on _BP_LaserDot_C_IsVisible");
+static_assert(offsetof(_BP_LaserDot_C_IsVisible, Result) == 0x000000, "Member '_BP_LaserDot_C_IsVisible::Result' has a wrong offset!");
+static_assert(offsetof(_BP_LaserDot_C_IsVisible, CallFunc_BooleanOR_ReturnValue) == 0x000001, "Member '_BP_LaserDot_C_IsVisible::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+
 }
 

@@ -319,25 +319,6 @@ static_assert(offsetof(_BP_VRBody_C_PlayUnloadWeaponAnim, K2Node_DynamicCast_As_
 static_assert(offsetof(_BP_VRBody_C_PlayUnloadWeaponAnim, K2Node_DynamicCast_bSuccess) == 0x000020, "Member '_BP_VRBody_C_PlayUnloadWeaponAnim::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 static_assert(offsetof(_BP_VRBody_C_PlayUnloadWeaponAnim, CallFunc_DoesImplementInterface_ReturnValue) == 0x000021, "Member '_BP_VRBody_C_PlayUnloadWeaponAnim::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
 
-// Function _BP_VRBody._BP_VRBody_C.TryGrabAction
-// 0x0005 (0x0005 - 0x0000)
-struct _BP_VRBody_C_TryGrabAction final
-{
-public:
-	E_ENUM_VRHand                                 InHand;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	E_ENUM_VRHandPose                             InPose;                                            // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          TryGrabSuccess;                                    // 0x0002(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-};
-static_assert(alignof(_BP_VRBody_C_TryGrabAction) == 0x000001, "Wrong alignment on _BP_VRBody_C_TryGrabAction");
-static_assert(sizeof(_BP_VRBody_C_TryGrabAction) == 0x000005, "Wrong size on _BP_VRBody_C_TryGrabAction");
-static_assert(offsetof(_BP_VRBody_C_TryGrabAction, InHand) == 0x000000, "Member '_BP_VRBody_C_TryGrabAction::InHand' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_TryGrabAction, InPose) == 0x000001, "Member '_BP_VRBody_C_TryGrabAction::InPose' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_TryGrabAction, TryGrabSuccess) == 0x000002, "Member '_BP_VRBody_C_TryGrabAction::TryGrabSuccess' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_TryGrabAction, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000003, "Member '_BP_VRBody_C_TryGrabAction::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_VRBody_C_TryGrabAction, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x000004, "Member '_BP_VRBody_C_TryGrabAction::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
-
 // Function _BP_VRBody._BP_VRBody_C.AddDebugMessage
 // 0x0018 (0x0018 - 0x0000)
 struct _BP_VRBody_C_AddDebugMessage final

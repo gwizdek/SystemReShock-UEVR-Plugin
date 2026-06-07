@@ -69,6 +69,7 @@ public:
 	void Set_Laser_Beam_Params(float InAlpha, const struct FLinearColor& InLaserColour, float InLaserPower);
 	void OnScanDataChanged(class UObject* Interactable, class UPrimitiveComponent* Primitive, const class FText& Description);
 	void EmulateScanner(class AActor* NewActor);
+	void IsVisible(bool* Result);
 
 public:
 	static class UClass* StaticClass()

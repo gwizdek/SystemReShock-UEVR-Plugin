@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "_ENUM_ItemCategory_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
 
 
 namespace SDK::Params
@@ -552,55 +552,58 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, Ca
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponDrawn, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x0000A8, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponDrawn::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.HandleEventWeaponHolstered
-// 0x0090 (0x0090 - 0x0000)
+// 0x00A0 (0x00A0 - 0x0000)
 struct _BP_HandInteractionComponent_C_HandleEventWeaponHolstered final
 {
 public:
 	class UITEM_WeaponBase_C*                     WeaponRef_0;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class UITEM_WeaponBase_C*                     LocalWeaponRef;                                    // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UITEM_WeaponBase_C*                     CallFunc_GetCurrentEquippedWeapon_OutWeapon;       // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimInstance*                          CallFunc_GetWeaponAnimInstance_OutAnimInstance;    // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class I_BI_VRWeapon_C>       K2Node_DynamicCast_As_BI_VRWeapon;                 // 0x0030(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_GetDefaultParams_OutAttachSocketName;     // 0x0044(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	E_ENUM_VRHandPose                             CallFunc_GetDefaultParams_OutGripHandPose;         // 0x004C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4D[0x3];                                       // 0x004D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CallFunc_GetDefaultParams_OutWeaponOffset;         // 0x0050(0x0030)(IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims; // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetDefaultParams_OutEnabledLaserPointer;  // 0x0081(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	E_ENUM_VRHand                                 CallFunc_GetDefaultParams_OutHand;                 // 0x0082(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GetDefaultParams_OutIsHandheldConsumable; // 0x0083(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_GetDefaultParams_OutIsHandheldExplosive;  // 0x0084(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	E_ENUM_ItemCategory                           CallFunc_GetDefaultParams_OutItemCategory;         // 0x0085(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0086(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsVisible_ReturnValue;                    // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UITEM_WeaponBase_C*                     CallFunc_GetCurrentEquippedWeapon_OutWeapon;       // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_22[0x6];                                       // 0x0022(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimInstance*                          CallFunc_GetWeaponAnimInstance_OutAnimInstance;    // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class I_BI_VRWeapon_C>       K2Node_DynamicCast_As_BI_VRWeapon;                 // 0x0038(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_GetDefaultParams_OutAttachSocketName;     // 0x004C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	E_ENUM_VRHandPose                             CallFunc_GetDefaultParams_OutGripHandPose;         // 0x0054(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_55[0xB];                                       // 0x0055(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_GetDefaultParams_OutWeaponOffset;         // 0x0060(0x0030)(IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims; // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetDefaultParams_OutEnabledLaserPointer;  // 0x0091(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	E_ENUM_VRHand                                 CallFunc_GetDefaultParams_OutHand;                 // 0x0092(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GetDefaultParams_OutIsHandheldConsumable; // 0x0093(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_GetDefaultParams_OutIsHandheldExplosive;  // 0x0094(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	E_ENUM_ItemCategory                           CallFunc_GetDefaultParams_OutItemCategory;         // 0x0095(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0096(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered) == 0x000010, "Wrong alignment on _BP_HandInteractionComponent_C_HandleEventWeaponHolstered");
-static_assert(sizeof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered) == 0x000090, "Wrong size on _BP_HandInteractionComponent_C_HandleEventWeaponHolstered");
+static_assert(sizeof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered) == 0x0000A0, "Wrong size on _BP_HandInteractionComponent_C_HandleEventWeaponHolstered");
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, WeaponRef_0) == 0x000000, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::WeaponRef_0' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, LocalWeaponRef) == 0x000008, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::LocalWeaponRef' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetCurrentEquippedWeapon_OutWeapon) == 0x000010, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetCurrentEquippedWeapon_OutWeapon' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_IsValid_ReturnValue) == 0x000018, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_IsValid_ReturnValue_1) == 0x000019, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetWeaponAnimInstance_OutAnimInstance) == 0x000020, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetWeaponAnimInstance_OutAnimInstance' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_IsValid_ReturnValue_2) == 0x000028, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, K2Node_DynamicCast_As_BI_VRWeapon) == 0x000030, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::K2Node_DynamicCast_As_BI_VRWeapon' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, K2Node_DynamicCast_bSuccess) == 0x000040, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutAttachSocketName) == 0x000044, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutAttachSocketName' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutGripHandPose) == 0x00004C, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutGripHandPose' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutWeaponOffset) == 0x000050, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutWeaponOffset' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims) == 0x000080, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutEnabledLaserPointer) == 0x000081, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutEnabledLaserPointer' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutHand) == 0x000082, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutHand' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutIsHandheldConsumable) == 0x000083, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutIsHandheldConsumable' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutIsHandheldExplosive) == 0x000084, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutIsHandheldExplosive' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutItemCategory) == 0x000085, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutItemCategory' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000086, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_IsVisible_ReturnValue) == 0x000010, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_IsVisible_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetCurrentEquippedWeapon_OutWeapon) == 0x000018, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetCurrentEquippedWeapon_OutWeapon' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_IsValid_ReturnValue) == 0x000020, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_IsValid_ReturnValue_1) == 0x000021, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetWeaponAnimInstance_OutAnimInstance) == 0x000028, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetWeaponAnimInstance_OutAnimInstance' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_IsValid_ReturnValue_2) == 0x000030, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, K2Node_DynamicCast_As_BI_VRWeapon) == 0x000038, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::K2Node_DynamicCast_As_BI_VRWeapon' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, K2Node_DynamicCast_bSuccess) == 0x000048, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutAttachSocketName) == 0x00004C, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutAttachSocketName' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutGripHandPose) == 0x000054, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutGripHandPose' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutWeaponOffset) == 0x000060, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutWeaponOffset' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims) == 0x000090, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutUseHackerPawnWeaponAnims' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutEnabledLaserPointer) == 0x000091, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutEnabledLaserPointer' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutHand) == 0x000092, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutHand' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutIsHandheldConsumable) == 0x000093, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutIsHandheldConsumable' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutIsHandheldExplosive) == 0x000094, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutIsHandheldExplosive' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_GetDefaultParams_OutItemCategory) == 0x000095, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_GetDefaultParams_OutItemCategory' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleEventWeaponHolstered, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000096, "Member '_BP_HandInteractionComponent_C_HandleEventWeaponHolstered::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.TryPuzzleInteract
 // 0x0018 (0x0018 - 0x0000)
@@ -639,41 +642,46 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_TryPutingInBackpack, K2Nod
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryPutingInBackpack, K2Node_DynamicCast_bSuccess) == 0x000018, "Member '_BP_HandInteractionComponent_C_TryPutingInBackpack::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.TryGrab
-// 0x0058 (0x0058 - 0x0000)
+// 0x0068 (0x0068 - 0x0000)
 struct _BP_HandInteractionComponent_C_TryGrab final
 {
 public:
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_TrySnap_Result;                           // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	E_ENUM_VRHand                                 Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_3[0x5];                                        // 0x0003(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IINTERF_Interactable_C> K2Node_DynamicCast_AsINTERF_Interactable;          // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0020(0x0020)(HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGrabComponent_C*                       CallFunc_GetGrabComponentNearMotionController_NearestComponent; // 0x0048(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_TryGrab_IsHeld;                           // 0x0051(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0052(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class U_BP_InteractablesHighlighter_C*        K2Node_Select_Default;                             // 0x0008(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IINTERF_Interactable_C> K2Node_DynamicCast_AsINTERF_Interactable;          // 0x0018(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0030(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGrabComponent_C*                       CallFunc_GetGrabComponentNearMotionController_NearestComponent; // 0x0058(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_TryGrab_IsHeld;                           // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue_3;                    // 0x0062(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_HandInteractionComponent_C_TryGrab) == 0x000008, "Wrong alignment on _BP_HandInteractionComponent_C_TryGrab");
-static_assert(sizeof(_BP_HandInteractionComponent_C_TryGrab) == 0x000058, "Wrong size on _BP_HandInteractionComponent_C_TryGrab");
+static_assert(sizeof(_BP_HandInteractionComponent_C_TryGrab) == 0x000068, "Wrong size on _BP_HandInteractionComponent_C_TryGrab");
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue) == 0x000000, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TrySnap_Result) == 0x000001, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TrySnap_Result' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_1) == 0x000002, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, K2Node_DynamicCast_AsINTERF_Interactable) == 0x000008, "Member '_BP_HandInteractionComponent_C_TryGrab::K2Node_DynamicCast_AsINTERF_Interactable' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, K2Node_DynamicCast_bSuccess) == 0x000018, "Member '_BP_HandInteractionComponent_C_TryGrab::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TryInteract_InteractResults) == 0x000020, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TryInteract_InteractResults' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_2) == 0x000040, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_GetGrabComponentNearMotionController_NearestComponent) == 0x000048, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_GetGrabComponentNearMotionController_NearestComponent' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x000050, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TryGrab_IsHeld) == 0x000051, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TryGrab_IsHeld' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_3) == 0x000052, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, Temp_byte_Variable) == 0x000002, "Member '_BP_HandInteractionComponent_C_TryGrab::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, K2Node_Select_Default) == 0x000008, "Member '_BP_HandInteractionComponent_C_TryGrab::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_1) == 0x000010, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, K2Node_DynamicCast_AsINTERF_Interactable) == 0x000018, "Member '_BP_HandInteractionComponent_C_TryGrab::K2Node_DynamicCast_AsINTERF_Interactable' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, K2Node_DynamicCast_bSuccess) == 0x000028, "Member '_BP_HandInteractionComponent_C_TryGrab::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TryInteract_InteractResults) == 0x000030, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TryInteract_InteractResults' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_2) == 0x000050, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_GetGrabComponentNearMotionController_NearestComponent) == 0x000058, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_GetGrabComponentNearMotionController_NearestComponent' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x000060, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_TryGrab_IsHeld) == 0x000061, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_TryGrab_IsHeld' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_TryGrab, CallFunc_IsValid_ReturnValue_3) == 0x000062, "Member '_BP_HandInteractionComponent_C_TryGrab::CallFunc_IsValid_ReturnValue_3' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.TryRelease
-// 0x0070 (0x0070 - 0x0000)
+// 0x0060 (0x0060 - 0x0000)
 struct _BP_HandInteractionComponent_C_TryRelease final
 {
 public:
@@ -691,10 +699,9 @@ public:
 	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x003A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_3B[0x5];                                       // 0x003B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0040(0x0020)(HasGetValueTypeHash)
-	class FString                                 CallFunc_SelectString_ReturnValue;                 // 0x0060(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_BP_HandInteractionComponent_C_TryRelease) == 0x000008, "Wrong alignment on _BP_HandInteractionComponent_C_TryRelease");
-static_assert(sizeof(_BP_HandInteractionComponent_C_TryRelease) == 0x000070, "Wrong size on _BP_HandInteractionComponent_C_TryRelease");
+static_assert(sizeof(_BP_HandInteractionComponent_C_TryRelease) == 0x000060, "Wrong size on _BP_HandInteractionComponent_C_TryRelease");
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryRelease, CallFunc_IsValid_ReturnValue) == 0x000000, "Member '_BP_HandInteractionComponent_C_TryRelease::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryRelease, CallFunc_GetOwner_ReturnValue) == 0x000008, "Member '_BP_HandInteractionComponent_C_TryRelease::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryRelease, CallFunc_DoesImplementInterface_ReturnValue) == 0x000010, "Member '_BP_HandInteractionComponent_C_TryRelease::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
@@ -705,7 +712,6 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_TryRelease, K2Node_Dynamic
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryRelease, CallFunc_TryRelease_bReleased) == 0x000039, "Member '_BP_HandInteractionComponent_C_TryRelease::CallFunc_TryRelease_bReleased' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryRelease, CallFunc_IsValid_ReturnValue_1) == 0x00003A, "Member '_BP_HandInteractionComponent_C_TryRelease::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_TryRelease, CallFunc_TryInteract_InteractResults) == 0x000040, "Member '_BP_HandInteractionComponent_C_TryRelease::CallFunc_TryInteract_InteractResults' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_TryRelease, CallFunc_SelectString_ReturnValue) == 0x000060, "Member '_BP_HandInteractionComponent_C_TryRelease::CallFunc_SelectString_ReturnValue' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.GetGrabComponentNearMotionController
 // 0x01B0 (0x01B0 - 0x0000)
@@ -926,7 +932,7 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_IsEmptyHand, CallFunc_Bool
 static_assert(offsetof(_BP_HandInteractionComponent_C_IsEmptyHand, CallFunc_Not_PreBool_ReturnValue) == 0x000005, "Member '_BP_HandInteractionComponent_C_IsEmptyHand::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.AttachLaserPointer
-// 0x0038 (0x0038 - 0x0000)
+// 0x0050 (0x0050 - 0x0000)
 struct _BP_HandInteractionComponent_C_AttachLaserPointer final
 {
 public:
@@ -941,12 +947,18 @@ public:
 	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UITEM_WeaponBase_C*                     CallFunc_GetCurrentEquippedWeapon_OutWeapon;       // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_K2_AttachToComponent_ReturnValue_1;       // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0032(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UWEAPON_MagnumPistol_C*                 K2Node_DynamicCast_AsWEAPON_Magnum_Pistol;         // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue;        // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue;         // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue_1;       // 0x004A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_K2_AttachToComponent_ReturnValue_2;       // 0x004B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x004C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_HandInteractionComponent_C_AttachLaserPointer) == 0x000008, "Wrong alignment on _BP_HandInteractionComponent_C_AttachLaserPointer");
-static_assert(sizeof(_BP_HandInteractionComponent_C_AttachLaserPointer) == 0x000038, "Wrong size on _BP_HandInteractionComponent_C_AttachLaserPointer");
+static_assert(sizeof(_BP_HandInteractionComponent_C_AttachLaserPointer) == 0x000050, "Wrong size on _BP_HandInteractionComponent_C_AttachLaserPointer");
 static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, InEnabled) == 0x000000, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::InEnabled' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, InTimeout) == 0x000004, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::InTimeout' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, LocalLaserDot) == 0x000008, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::LocalLaserDot' has a wrong offset!");
@@ -955,9 +967,14 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, LocalI
 static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, LocalPlayerCamera) == 0x000018, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::LocalPlayerCamera' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000020, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, CallFunc_GetCurrentEquippedWeapon_OutWeapon) == 0x000028, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::CallFunc_GetCurrentEquippedWeapon_OutWeapon' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000030, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue_1) == 0x000031, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, K2Node_SwitchEnum_CmpSuccess) == 0x000032, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, K2Node_DynamicCast_AsWEAPON_Magnum_Pistol) == 0x000030, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::K2Node_DynamicCast_AsWEAPON_Magnum_Pistol' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, K2Node_DynamicCast_bSuccess) == 0x000038, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, CallFunc_GetObjectClass_ReturnValue) == 0x000040, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, CallFunc_EqualEqual_ClassClass_ReturnValue) == 0x000048, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::CallFunc_EqualEqual_ClassClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue) == 0x000049, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue_1) == 0x00004A, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, CallFunc_K2_AttachToComponent_ReturnValue_2) == 0x00004B, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::CallFunc_K2_AttachToComponent_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_AttachLaserPointer, K2Node_SwitchEnum_CmpSuccess) == 0x00004C, "Member '_BP_HandInteractionComponent_C_AttachLaserPointer::K2Node_SwitchEnum_CmpSuccess' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.IsChannelingSnappableSource
 // 0x0002 (0x0002 - 0x0000)

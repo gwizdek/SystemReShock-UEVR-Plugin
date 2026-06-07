@@ -1,6 +1,7 @@
 #pragma once
 #include "uevr/API.hpp"
 #include "SDK/Engine_classes.hpp"
+#include "SDK/UMG_classes.hpp"
 
 #define STATIC_LOAD_ASSET_OFFSET 0x1C67740
 
@@ -16,6 +17,7 @@ public:
     static void destroy_actors_by_tag(SDK::UWorld* world, SDK::FName actor_tag);
     static void destroy_actors_by_class(SDK::UWorld* world, SDK::UClass* actor_class);
     static void show_all_primitive_components(SDK::UWorld* world, SDK::USceneComponent* origin, float range, bool include_pawn = false);
+    static SDK::UPanelSlot* reparent_panel_to_user_widget(SDK::UPanelWidget* panel, SDK::UUserWidget* user_widget);
     static int32_t hook_vtable_fn(std::wstring_view class_name, std::wstring_view fn_name, void* destination, void** original);
 
     // this is the new way that uses AssetRegistry and UKismetSystemLibrary

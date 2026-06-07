@@ -131,7 +131,7 @@ private:
 
     // pull gun mechanics
     MemoBoolean m_is_right_hand_reaching_backpack{ false };
-    bool m_is_pulling_out_gun{ false };
+    bool m_is_pulling_gun_out{ false };
     //bool m_had_equipped_weapon{ false };
 
 // -----------------------------------------------------------------------------

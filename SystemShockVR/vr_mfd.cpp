@@ -81,8 +81,8 @@ void VRMFD::hide_mfd() {
             WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Ignore
         );
         g_vr_body->MFDMaskComponent->Hide();
-        g_vr_body->LaserDot->SetLaserVisibility(false, false, 0.f);
-        g_vr_body->EnableRangedInteractions(false);
+        //g_vr_body->LaserDot->SetLaserVisibility(false, false, 0.f);
+        //g_vr_body->EnableRangedInteractions(false);
 
 
         if (g_vr_body->IsWeaponHolstered() && VRMFD::m_had_equipped_weapon) {
