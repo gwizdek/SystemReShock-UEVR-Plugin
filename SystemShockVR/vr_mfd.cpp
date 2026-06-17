@@ -13,6 +13,7 @@
 #include "SDK/_BP_VRBody_classes.hpp"
 #include "SDK/_BP_HandInteractionComponent_classes.hpp"
 #include "SDK/_BP_LaserDot_classes.hpp"
+#include "SDK/_BP_HackerHardware_classes.hpp"
 
 #include "vr_mfd.hpp"
 #include "vr_plugin_shared.hpp"
@@ -92,6 +93,8 @@ void VRMFD::hide_mfd() {
             };
             g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
         }
+
+        g_vr_body->HackerHardware->SetWidgetVisibility(true);
     }
     catch (...) {
         API::get()->log_error("[plugin][hide_mfd] Exception");

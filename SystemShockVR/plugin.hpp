@@ -39,7 +39,7 @@ class UEVRPlugin;
 extern std::unique_ptr<UEVRPlugin> g_plugin;
 
 class UEVRPlugin : public uevr::Plugin {
-    const char* MOD_VERSION = "System Shock UEVR plugin [v2.0.0-alpha.0]";
+    const char* MOD_VERSION = "System Shock UEVR plugin [v2.0.0-beta.0]";
 
 public:
     UEVRPlugin() = default;
@@ -132,6 +132,8 @@ private:
     // pull gun mechanics
     MemoBoolean m_is_right_hand_reaching_backpack{ false };
     bool m_is_pulling_gun_out{ false };
+
+    bool m_is_crouched{ false };
     //bool m_had_equipped_weapon{ false };
 
 // -----------------------------------------------------------------------------
@@ -175,6 +177,7 @@ public:
     void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_ads();
     void handle_lean();
+    void handle_cyberspace_look_pivot(const UEVR_VRData* vr);
     void cleanup_pointers();
     void send_mouse(WORD key, bool key_up);
     bool is_valid_vr_body_hacker_implant_pawn();
@@ -187,6 +190,7 @@ public:
     void try_melee();
     void apply_vr_game_options();
     void try_set_intro_laptop_pointer();
+    void handle_crouch();
  
     // Input handlers
     void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);

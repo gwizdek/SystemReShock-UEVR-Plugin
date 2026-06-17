@@ -103,6 +103,7 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         }
         hmd_state->set_hand(2);
         hmd_state->set_permanent(true);
+
         API::get()->log_warn("[vr_body][initialize_vr_body] Hooked HMD motion controller component");
 
         static_cast<APAWN_Hacker_Simple_C*>(pawn)->HeadRangedCollision->SphereRadius = 7.f;
@@ -111,6 +112,7 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         static_cast<APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
         static_cast<APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
         static_cast<APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh->SetCollisionObjectType(ECollisionChannel::ECC_EngineTraceChannel6);
+        static_cast<APAWN_Hacker_Simple_C*>(pawn)->ArmsMesh->SetVisibility(false, false);
 
         //
         // Hacker Implant Pawn
@@ -231,34 +233,49 @@ void VRBody::set_weapon_mesh_visibility(bool visible) {
 }
 
 void VRBody::reset_player_camera() {
-    // Re-Attach Hacker Camera to original location
-    g_vr_body->HackerPawn->PlayerCamera->K2_AttachToComponent(
-        g_vr_body->HackerPawn->LookPivot,
-        UKismetStringLibrary::Conv_StringToName(L"None"),
-        EAttachmentRule::SnapToTarget,
-        EAttachmentRule::KeepRelative,
-        EAttachmentRule::KeepWorld,
-        true
-    );
+    try {
+        // Re-Attach Hacker Camera to original location
+        g_vr_body->HackerPawn->PlayerCamera->K2_AttachToComponent(
+            g_vr_body->HackerPawn->LookPivot,
+            UKismetStringLibrary::Conv_StringToName(L"None"),
+            EAttachmentRule::SnapToTarget,
+            EAttachmentRule::KeepRelative,
+            EAttachmentRule::KeepWorld,
+            true
+        );
 
-    g_vr_body->HackerPawn->PlayerCamera->Activate(false);
+        g_vr_body->HackerPawn->PlayerCamera->Activate(false);
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][reset_player_camera] Exception");
+    }
 }
 
 void VRBody::show_vr_body() {
-    g_vr_body->VRBodyMesh->SetVisibility(true, true);
-    if (g_vr_body->AccessCard != nullptr) {
-        g_vr_body->AccessCard->SetActorHiddenInGame(false);
+    try {
+        g_vr_body->VRBodyMesh->SetVisibility(true, true);
+        if (g_vr_body->AccessCard != nullptr) {
+            g_vr_body->AccessCard->SetActorHiddenInGame(false);
+        }
+        g_vr_body->HackerPawn->WeaponMesh->SetVisibility(true, true);
     }
-    g_vr_body->HackerPawn->WeaponMesh->SetVisibility(true, true);
+    catch (...) {
+        API::get()->log_error("[vr_body][show_vr_body] Exception");
+    }
 }
 
 
 void VRBody::hide_vr_body() {
-    g_vr_body->VRBodyMesh->SetVisibility(false, true);
-    if (g_vr_body->AccessCard != nullptr) {
-        g_vr_body->AccessCard->SetActorHiddenInGame(true);
+    try {
+        g_vr_body->VRBodyMesh->SetVisibility(false, true);
+        if (g_vr_body->AccessCard != nullptr) {
+            g_vr_body->AccessCard->SetActorHiddenInGame(true);
+        }
+        g_vr_body->HackerPawn->WeaponMesh->SetVisibility(false, true);
     }
-    g_vr_body->HackerPawn->WeaponMesh->SetVisibility(false, true);
+    catch (...) {
+        API::get()->log_error("[vr_body][hide_vr_body] Exception");
+    }
 }
 
 

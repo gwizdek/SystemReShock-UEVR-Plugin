@@ -12,16 +12,16 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "_ENUM_VRCharacterPosture_structs.hpp"
 #include "_ENUM_VRMovementMode_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "_ENUM_VRCharacterPosture_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass _BP_VRMovementComponent._BP_VRMovementComponent_C
-// 0x0080 (0x0130 - 0x00B0)
+// 0x0088 (0x0138 - 0x00B0)
 class U_BP_VRMovementComponent_C final : public UActorComponent
 {
 public:
@@ -33,7 +33,7 @@ public:
 	bool                                          EnableOriginalHackerCrouch;                        // 0x00D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_D1[0x3];                                       // 0x00D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FVector                                FinalHipsOffset;                                   // 0x00D4(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         PlayerHeight;                                      // 0x00E0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CurrentPlayerHeight;                               // 0x00E0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_VRMovementMode                         MovementMode;                                      // 0x00E4(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	E_ENUM_VRCharacterPosture                     CharacterPosture;                                  // 0x00E5(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_E6[0x2];                                       // 0x00E6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
@@ -58,6 +58,8 @@ public:
 	bool                                          bCopyHMDRotation;                                  // 0x0128(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_129[0x3];                                      // 0x0129(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         TrailingAngle;                                     // 0x012C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         DefaultPlayerHeight;                               // 0x0130(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CrouchPlayerHeight;                                // 0x0134(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph__BP_VRMovementComponent(int32 EntryPoint);
@@ -73,6 +75,7 @@ public:
 	void PrintDebugInfo(bool HMDYOffset);
 	void GetTrailingRotationAngle();
 	void CopyHMDRotation();
+	void SetCrouch(bool InValue);
 
 public:
 	static class UClass* StaticClass()
@@ -85,14 +88,14 @@ public:
 	}
 };
 static_assert(alignof(U_BP_VRMovementComponent_C) == 0x000008, "Wrong alignment on U_BP_VRMovementComponent_C");
-static_assert(sizeof(U_BP_VRMovementComponent_C) == 0x000130, "Wrong size on U_BP_VRMovementComponent_C");
+static_assert(sizeof(U_BP_VRMovementComponent_C) == 0x000138, "Wrong size on U_BP_VRMovementComponent_C");
 static_assert(offsetof(U_BP_VRMovementComponent_C, UberGraphFrame) == 0x0000B0, "Member 'U_BP_VRMovementComponent_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, VRBodyRef) == 0x0000B8, "Member 'U_BP_VRMovementComponent_C::VRBodyRef' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, ShowLowerBody) == 0x0000C0, "Member 'U_BP_VRMovementComponent_C::ShowLowerBody' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, MoveControlManager) == 0x0000C8, "Member 'U_BP_VRMovementComponent_C::MoveControlManager' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, EnableOriginalHackerCrouch) == 0x0000D0, "Member 'U_BP_VRMovementComponent_C::EnableOriginalHackerCrouch' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, FinalHipsOffset) == 0x0000D4, "Member 'U_BP_VRMovementComponent_C::FinalHipsOffset' has a wrong offset!");
-static_assert(offsetof(U_BP_VRMovementComponent_C, PlayerHeight) == 0x0000E0, "Member 'U_BP_VRMovementComponent_C::PlayerHeight' has a wrong offset!");
+static_assert(offsetof(U_BP_VRMovementComponent_C, CurrentPlayerHeight) == 0x0000E0, "Member 'U_BP_VRMovementComponent_C::CurrentPlayerHeight' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, MovementMode) == 0x0000E4, "Member 'U_BP_VRMovementComponent_C::MovementMode' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, CharacterPosture) == 0x0000E5, "Member 'U_BP_VRMovementComponent_C::CharacterPosture' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, CrouchCapsuleHalfHeight) == 0x0000E8, "Member 'U_BP_VRMovementComponent_C::CrouchCapsuleHalfHeight' has a wrong offset!");
@@ -113,6 +116,8 @@ static_assert(offsetof(U_BP_VRMovementComponent_C, AdaptiveRotation) == 0x000120
 static_assert(offsetof(U_BP_VRMovementComponent_C, AdaptiveRotationAngle) == 0x000124, "Member 'U_BP_VRMovementComponent_C::AdaptiveRotationAngle' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, bCopyHMDRotation) == 0x000128, "Member 'U_BP_VRMovementComponent_C::bCopyHMDRotation' has a wrong offset!");
 static_assert(offsetof(U_BP_VRMovementComponent_C, TrailingAngle) == 0x00012C, "Member 'U_BP_VRMovementComponent_C::TrailingAngle' has a wrong offset!");
+static_assert(offsetof(U_BP_VRMovementComponent_C, DefaultPlayerHeight) == 0x000130, "Member 'U_BP_VRMovementComponent_C::DefaultPlayerHeight' has a wrong offset!");
+static_assert(offsetof(U_BP_VRMovementComponent_C, CrouchPlayerHeight) == 0x000134, "Member 'U_BP_VRMovementComponent_C::CrouchPlayerHeight' has a wrong offset!");
 
 }
 

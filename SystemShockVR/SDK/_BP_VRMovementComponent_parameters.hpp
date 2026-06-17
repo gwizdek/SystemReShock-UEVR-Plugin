@@ -392,5 +392,19 @@ static_assert(offsetof(_BP_VRMovementComponent_C_CopyHMDRotation, CallFunc_Break
 static_assert(offsetof(_BP_VRMovementComponent_C_CopyHMDRotation, CallFunc_BreakRotator_Yaw) == 0x00001C, "Member '_BP_VRMovementComponent_C_CopyHMDRotation::CallFunc_BreakRotator_Yaw' has a wrong offset!");
 static_assert(offsetof(_BP_VRMovementComponent_C_CopyHMDRotation, CallFunc_MakeRotator_ReturnValue) == 0x000020, "Member '_BP_VRMovementComponent_C_CopyHMDRotation::CallFunc_MakeRotator_ReturnValue' has a wrong offset!");
 
+// Function _BP_VRMovementComponent._BP_VRMovementComponent_C.SetCrouch
+// 0x0008 (0x0008 - 0x0000)
+struct _BP_VRMovementComponent_C_SetCrouch final
+{
+public:
+	bool                                          InValue;                                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_SelectFloat_ReturnValue;                  // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(_BP_VRMovementComponent_C_SetCrouch) == 0x000004, "Wrong alignment on _BP_VRMovementComponent_C_SetCrouch");
+static_assert(sizeof(_BP_VRMovementComponent_C_SetCrouch) == 0x000008, "Wrong size on _BP_VRMovementComponent_C_SetCrouch");
+static_assert(offsetof(_BP_VRMovementComponent_C_SetCrouch, InValue) == 0x000000, "Member '_BP_VRMovementComponent_C_SetCrouch::InValue' has a wrong offset!");
+static_assert(offsetof(_BP_VRMovementComponent_C_SetCrouch, CallFunc_SelectFloat_ReturnValue) == 0x000004, "Member '_BP_VRMovementComponent_C_SetCrouch::CallFunc_SelectFloat_ReturnValue' has a wrong offset!");
+
 }
 

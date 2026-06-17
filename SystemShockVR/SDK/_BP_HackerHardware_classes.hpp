@@ -12,6 +12,7 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "UMG_structs.hpp"
 
 
 namespace SDK
@@ -49,7 +50,8 @@ public:
 	void BndEvt___BP_HackerHardware_SensaroundWidgetComponent_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
 	void ReceiveTick(float DeltaSeconds);
 	void ReceiveBeginPlay();
-	void Set_Visibility(bool InVisible);
+	void SetVisibility(bool InVisible);
+	void SetWidgetVisibility(bool InVisible);
 
 public:
 	static class UClass* StaticClass()

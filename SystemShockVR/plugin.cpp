@@ -56,6 +56,9 @@
 #include "vr_mfd.hpp"
 #include "vr_avatar.hpp"
 
+#include "SDK/WIDGET_PlayerHUD_parameters.hpp"
+#include <windows.h>
+
 #define INPUT_DEADZONE_LO  ( 0.01f * FLOAT(0x7FFF) )  // Default to 01% of the +/- 32767 range.
 #define INPUT_DEADZONE_MED ( 0.45f * FLOAT(0x7FFF) )  // Default to 45% of the +/- 32767 range.
 #define INPUT_DEADZONE_HI  ( 0.80f * FLOAT(0x7FFF) )  // Default to 80% of the +/- 32767 range.
@@ -64,6 +67,82 @@ using namespace uevr;
 using namespace SDK;
 
 std::unique_ptr<UEVRPlugin> g_plugin = std::make_unique<UEVRPlugin>();
+
+// -------------------------------------------------------------------------------------
+// Debug hooks
+// -------------------------------------------------------------------------------------
+namespace {
+
+// Logs a native backtrace as module+offset.
+// NOTE: QueueNotification is a Blueprint UFunction dispatched through the UE script VM,
+// so this stack is dominated by VM frames. It's meaningful when the caller is native C++;
+// for Blueprint callers, rely on the logged Message/IsWarning to identify the source.
+void log_callstack(const char* tag) {
+    void* frames[32];
+    USHORT n = RtlCaptureStackBackTrace(1 /*skip this fn*/, 32, frames, nullptr);
+    API::get()->log_warn("[hook][%s] --- callstack (%u frames) ---", tag, n);
+    for (USHORT i = 0; i < n; ++i) {
+        const auto addr = reinterpret_cast<uintptr_t>(frames[i]);
+        uintptr_t base = 0;
+        char name[MAX_PATH] = "<unknown>";
+        HMODULE mod = nullptr;
+        if (GetModuleHandleExA(
+                GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                reinterpret_cast<LPCSTR>(frames[i]), &mod) && mod) {
+            base = reinterpret_cast<uintptr_t>(mod);
+            char path[MAX_PATH];
+            if (GetModuleFileNameA(mod, path, MAX_PATH)) {
+                const char* leaf = strrchr(path, '\\');
+                strncpy_s(name, leaf ? leaf + 1 : path, _TRUNCATE);
+            }
+        }
+        API::get()->log_warn("[hook][%s]   [%02u] %s+0x%llX  (abs 0x%llX)",
+            tag, i, name,
+            static_cast<unsigned long long>(addr - base),
+            static_cast<unsigned long long>(addr));
+    }
+}
+
+// Pre-native hook. Return false to SKIP the original call; true to let it run.
+bool on_queue_notification_pre(API::UFunction* /*fn*/, API::UObject* obj, void* params, void* /*result*/) {
+    try {
+        auto* p = reinterpret_cast<SDK::Params::WIDGET_PlayerHUD_C_QueueNotification*>(params);
+        API::get()->log_warn("[hook][QueueNotification] hud=0x%p  IsWarning=%d  Message=\"%s\"",
+            obj, static_cast<int>(p->IsWarning), p->Message.ToString().c_str());
+        log_callstack("QueueNotification");
+    }
+    catch (...) {
+        API::get()->log_error("[hook][QueueNotification] Exception in pre hook");
+    }
+    return true; // don't interfere with the game
+}
+
+} // anonymous namespace
+
+// Self-guarding; safe to call repeatedly. Returns once the class is loaded and hooked.
+void install_queue_notification_hook() {
+    static bool installed = false;
+    if (installed) return;
+
+    // SDK StaticClass() returns the live UClass; it IS the same UObject the UEVR API uses,
+    // so reinterpreting the pointer to an API handle is valid.
+    auto* klass = reinterpret_cast<uevr::API::UStruct*>(SDK::UWIDGET_PlayerHUD_C::StaticClass());
+    if (klass == nullptr) return; // class not loaded yet — retry next call
+
+    auto* fn = klass->find_function(L"QueueNotification");
+    if (fn == nullptr) {
+        API::get()->log_error("[hook] QueueNotification UFunction not found");
+        return;
+    }
+
+    if (fn->hook_ptr(&on_queue_notification_pre, nullptr)) {
+        installed = true;
+        API::get()->log_warn("[hook] QueueNotification hook installed (fn=0x%p)", fn);
+    }
+    else {
+        API::get()->log_error("[hook] Failed to install QueueNotification hook");
+    }
+}
 
 // -------------------------------------------------------------------------------------
 // UEVR Overrides
@@ -107,6 +186,7 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
         handle_level_change();
         handle_xinput(state, vr);
         handle_lean();
+        handle_crouch();
 
         // set it to true, so we won't process pawn again in pre_engine_tick cb
         m_xinput_cb_processed = true;
@@ -151,7 +231,9 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         }
 
         m_gamepad_left_thumb.add_delta(delta);
+
         handle_game_state_change();
+        handle_cyberspace_look_pivot(vr);
         handle_media_display();
         update_trailing_rotation(delta);
         handle_ads();
@@ -238,6 +320,78 @@ void UEVRPlugin::prepare_game_state() {
             m_pawn_state.set_value(PAWN_UNKNOWN);
             return;
         }
+        player_camera_manager = UGameplayStatics::GetPlayerCameraManager(m_world, 0);
+
+        // trying to put APAWN_Hacker_Implant_C as early as possible (99% of engine ticks)
+        if (UKismetSystemLibrary::IsValid(m_pawn.get()) && m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+            m_pawn_state.set_value(PAWN_HACKERIMPLANT);
+
+            // GAME_STATE_CINEMATIC
+            if (player_camera_manager != nullptr) {
+                if (
+                    UKismetSystemLibrary::IsValid(player_camera_manager->ViewTarget.Target) &&
+                    player_camera_manager->ViewTarget.Target->IsA(ACineCameraActor::StaticClass())
+                    ) {
+                    m_game_state.set_value(GAME_STATE_CINEMATIC);
+                    return;
+                }
+            }
+
+            static_cast<UWIDGET_PlayerHUD_C*>(static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
+
+            // PAUSE MENU
+            if (main_menu != nullptr && main_menu->IsMainMenuEnabled) {
+                m_game_state.set_value(GAME_STATE_PAUSE_MENU);
+                return;
+            }
+
+            if (m_neural_hud != nullptr) {
+
+                // GAME_STATE_MFD
+                if (m_neural_hud->bIsMFDVisible) {
+                    if (m_game_state.matches_none({ GAME_STATE_MFD, GAME_STATE_MFD_PRE })) {
+                        // set a intermediate MFD state for one tick, when we center the MFD
+                        m_game_state.set_value(GAME_STATE_MFD_PRE);
+                        return;
+                    }
+                    else {
+                        m_game_state.set_value(GAME_STATE_MFD);
+                        return;
+                    }
+                }
+                
+                // BOOTING_UP
+                if (
+                    m_neural_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator7 &&
+                    m_neural_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator0
+                    ) {
+                    m_game_state.set_value(GAME_STATE_BOOTING_UP);
+                    return;
+                }
+
+                // CRASHING
+                if (
+                    m_neural_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator2 &&
+                    m_neural_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator3
+                    ) {
+                    m_game_state.set_value(GAME_STATE_CRASHING);
+                    return;
+                }
+
+                // GAME_STATE_INTERACTABLE
+                if (static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->ChannelingInteractable != nullptr) {
+                    m_game_state.set_value(GAME_STATE_INTERACTABLE);
+                    return;
+                }
+            }
+            else {
+                API::get()->log_error("[plugin][prepare_game_state] Hacker Pawn but no Neural HUD");
+            }
+
+            // NORMAL SPACE GAMEPLAY
+            m_game_state.set_value(GAME_STATE_CITADEL_STATION);
+            return;
+        }
 
         if (!UKismetSystemLibrary::IsValid(m_pawn.get())) {
             m_game_state.set_value(GAME_STATE_UNDEFINED);
@@ -245,11 +399,11 @@ void UEVRPlugin::prepare_game_state() {
             return;
         }
 
-        player_camera_manager = UGameplayStatics::GetPlayerCameraManager(m_world, 0);
-
-        // GAME_STATE_MAIN_MENU,
+        // PLAYER GHOST
         if (m_pawn.get()->IsA(APAWN_PlayerGhost_C::StaticClass())) {
             m_pawn_state.set_value(PAWN_PLAYERGHOST);
+
+            // GAME_STATE_INTRO_DRONE
             if (player_camera_manager != nullptr) {
                 if (
                     UKismetSystemLibrary::IsValid(player_camera_manager->ViewTarget.Target) &&
@@ -260,131 +414,56 @@ void UEVRPlugin::prepare_game_state() {
                 }
             }
 
+            // GAME_STATE_MAIN_MENU
             m_game_state.set_value(GAME_STATE_MAIN_MENU);
             return;
         }
 
-        // GAME_STATE_PAUSE_MENU
-        if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
-            static_cast<UWIDGET_PlayerHUD_C*>(static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
-            if (main_menu != nullptr && main_menu->IsMainMenuEnabled) {
-                m_game_state.set_value(GAME_STATE_PAUSE_MENU);
-                return;
-            }
-        }
-        else if (m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
-            static_cast<UWIDGET_SimpleHUD_C*>(static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
-            if (main_menu != nullptr && main_menu->IsMainMenuEnabled) {
-                m_game_state.set_value(GAME_STATE_PAUSE_MENU);
-                return;
-            }
-        }
-        else if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
+        // HACKER AVATAR - Cyberspace
+        if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
+            m_pawn_state.set_value(PAWN_AVATAR);
+
+            // GAME_STATE_PAUSE_MENU
             static_cast<UWIDGET_CyberspaceHUD_C*>(static_cast<APAWN_Avatar_C*>(m_pawn.get())->CyberspaceUI)->GetMainMenuWidget(&main_menu);
             if (main_menu != nullptr && main_menu->IsMainMenuEnabled) {
                 m_game_state.set_value(GAME_STATE_PAUSE_MENU);
                 return;
             }
-        }
-        // TODO: add pseudospace pause menu
 
-        // GAME_STATE_CINEMATIC
-        if (player_camera_manager != nullptr) {
-            if (
-                UKismetSystemLibrary::IsValid(player_camera_manager->ViewTarget.Target) &&
-                player_camera_manager->ViewTarget.Target->IsA(ACineCameraActor::StaticClass())
-                ) {
-                m_game_state.set_value(GAME_STATE_CINEMATIC);
-                return;
-            }
-        }
-
-        // GAME_STATE_MFD
-        if (m_neural_hud != nullptr && m_neural_hud->bIsMFDVisible) {
-            if (m_game_state.matches_none({ GAME_STATE_MFD, GAME_STATE_MFD_PRE })) {
-                m_game_state.set_value(GAME_STATE_MFD_PRE);
-            }
-            else {
-                m_game_state.set_value(GAME_STATE_MFD);
-            }
+            m_game_state.set_value(GAME_STATE_CYBERSPACE);
             return;
         }
 
-        // BOOTING_UP
-        if (m_neural_hud != nullptr) {
-            if (
-                m_neural_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator7 &&
-                m_neural_hud->WIDGET_BootupScreen->CurrentState != SDK::ENUM_BootupState::NewEnumerator0
-                ) {
-                m_game_state.set_value(GAME_STATE_BOOTING_UP);
+        // HACKER SIMPLE - APPARTMENT INTRO
+        if (m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
+            m_pawn_state.set_value(PAWN_HACKERSIMPLE);
+            try_set_intro_laptop_pointer();
+
+            // GAME_STATE_INTRO_LAPTOP
+            if (m_intro_laptop != nullptr && m_intro_laptop->IsInteracting) {
+                m_game_state.set_value(GAME_STATE_INTRO_LAPTOP);
                 return;
             }
-        }
 
-        // CRASHING
-        if (m_neural_hud != nullptr) {
-            if (
-                m_neural_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator2 &&
-                m_neural_hud->WIDGET_CrashScreen->CurrentState != SDK::ENUM_CrashState::NewEnumerator3
-                ) {
-                m_game_state.set_value(GAME_STATE_CRASHING);
+            // GAME_STATE_PAUSE_MENU
+            static_cast<UWIDGET_SimpleHUD_C*>(static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->PlayerHUDWidget)->GetMainMenuWidget(&main_menu);
+            if (main_menu != nullptr && main_menu->IsMainMenuEnabled) {
+                m_game_state.set_value(GAME_STATE_PAUSE_MENU);
                 return;
             }
-        }
 
-        // GAME_STATE_INTERACTABLE
-        if (
-            m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass()) ||
-            m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
-            ) {
+            // GAME_STATE_INTERACTABLE
             if (static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->ChannelingInteractable != nullptr) {
                 m_game_state.set_value(GAME_STATE_INTERACTABLE);
                 return;
             }
-        }
 
-        // GAME_STATE_CITADEL_STATION
-        if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
-            m_game_state.set_value(GAME_STATE_CITADEL_STATION);
-            m_pawn_state.set_value(PAWN_HACKERIMPLANT);
-            return;
-        }
-
-        // GAME_STATE_CYBERSPACE
-        if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
-            m_game_state.set_value(GAME_STATE_CYBERSPACE);
-            m_pawn_state.set_value(PAWN_AVATAR);
-            return;
-        }
-
-        // GAME_STATE_APPARTMENT
-        if (m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
-            m_pawn_state.set_value(PAWN_HACKERSIMPLE);
             m_game_state.set_value(GAME_STATE_APPARTMENT);
-            try_set_intro_laptop_pointer();
-
-            // handle intro laptop
-            if (m_intro_laptop != nullptr) {
-                m_is_using_laptop.set_value(m_intro_laptop->IsInteracting);
-            }
-
-            if (m_is_using_laptop.enabled()) {
-                API::get()->log_warn("Started using intro laptop");
-                const UEVR_VRData* vr = API::get()->param()->vr;
-                vr->set_aim_method(0);
-                vr->set_mod_value("VR_RoomscaleMovement", "false");
-
-                if (g_vr_body != nullptr) {
-                    VRBody::hide_vr_body();
-                    VRBody::reset_player_camera();
-                }
-                PluginUtils::reset_height(0.0f);
-                API::UObjectHook::set_disabled(true);
-            }
             return;
         }
 
         // GAME_STATE_PSEUDOSPACE
+        // TODO: add pseudospace pause menu
         // TODO: add pseudospace pawn check, but use string search
         // because PAWN_Hacker_Pseudospace is not in memory when player is not in pseudospace
 
@@ -494,6 +573,38 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
             // don't remap other buttons in in-game menu
             return;
         }
+
+        if (m_game_state.get() == GAME_STATE_CYBERSPACE) {
+
+            //// change control scheme on RS
+            //if (m_gamepad_right_thumb.is_pressed()) {
+            //    m_cyberspace_aim_method = m_cyberspace_aim_method == 0 ? 2 : 0;
+
+            //    if (m_cyberspace_aim_method == 0) {
+            //        vr->recenter_view();
+            //    }
+
+            //    vr->set_aim_method(m_cyberspace_aim_method);
+            //    vr->set_decoupled_pitch_enabled(m_cyberspace_aim_method == 2);
+            //}
+
+            handle_smooth_turning(state);
+
+            m_gamepad_right_shoulder.when_held_send(state, XINPUT_GAMEPAD_A);
+            m_gamepad_right_shoulder.mute_state(state);
+            m_gamepad_left_shoulder.when_held_send(state, XINPUT_GAMEPAD_B);
+            m_gamepad_left_shoulder.mute_state(state);
+
+            if (state->Gamepad.sThumbRY > INPUT_DEADZONE_MED) {
+                state->Gamepad.sThumbRX = 0;
+                m_gamepad_btn_a.force_state(state);
+            }
+            else if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_MED) {
+                state->Gamepad.sThumbRX = 0;
+                m_gamepad_btn_b.force_state(state);
+            }
+
+        }
     }
     catch (...) {
         API::get()->log_error("[plugin][handle_xinput] Exception");
@@ -591,7 +702,16 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
 
         // debug - show all primitive components in range
         if (m_gamepad_left_trigger.is_held() && m_gamepad_right_shoulder.is_pressed()) {
-            PluginUtils::show_all_primitive_components(m_world, g_vr_body->MotionControllerRight, 100.f);
+            PluginUtils::show_all_primitive_components(m_world, g_vr_body->MotionControllerRight, 100.f, true);
+
+            if (m_neural_hud != nullptr) {
+                //SDK::FText my_text = SDK::UKismetTextLibrary::Conv_StringToText(L"ACCESS GRANTED");
+                //m_neural_hud->EVENT_OnFeedbackDataChanged(ENUM_InteractResultType::NewEnumerator0, my_text);
+                API::get()->log_warn("[plugin][handle_citadel_station_xinput] Queue notification");
+                m_neural_hud->QueueNotification(
+                    SDK::UKismetTextLibrary::Conv_StringToText(L"SHODAN is watching."),
+                    /*IsWarning=*/ false);
+            }
         }
 
         // pull out a gun when right hand is leaving backpack collision sphere
@@ -831,27 +951,27 @@ void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state) {
     static SDK::AController* pawn_controller{ nullptr };
 
     try {
-        if (!m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
-            return;
+        if (
+            m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass()) ||
+            m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())
+            ) {
+
+            pawn_controller = m_pawn.get()->Controller;
+            if (!UKismetSystemLibrary::IsValid(pawn_controller)) {
+                return;
+            }
+
+            auto control_rotation = pawn_controller->GetControlRotation();
+            float delta_rotation = (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
+            control_rotation.Yaw += delta_rotation;
+            pawn_controller->SetControlRotation(control_rotation);
+
+            if (g_vr_body != nullptr) {
+                g_vr_body->TrailingRotationComponent->K2_AddWorldRotation({ 0.f, delta_rotation, 0.f }, false, &m_reusable_hit_result, false);
+            }
+
+            state->Gamepad.sThumbRX = 0;
         }
-
-        if (g_vr_body == nullptr) {
-            return;
-        }
-
-        pawn_controller = m_pawn.get()->Controller;
-        if (!UKismetSystemLibrary::IsValid(pawn_controller)) {
-            return;
-        }
-
-        auto control_rotation = pawn_controller->GetControlRotation();
-        float delta_rotation = (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
-        control_rotation.Yaw += delta_rotation;
-        pawn_controller->SetControlRotation(control_rotation);
-
-        g_vr_body->TrailingRotationComponent->K2_AddWorldRotation( {0.f, delta_rotation, 0.f}, false, &m_reusable_hit_result, false);
-
-        state->Gamepad.sThumbRX = 0;
     }
     catch (...) {
         API::get()->log_error("[plugin][handle_smooth_turning] Exception");
@@ -927,7 +1047,18 @@ void UEVRPlugin::handle_game_state_change() {
                     vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
                     API::UObjectHook::set_disabled(false);
                     PluginUtils::reset_height(0.f);
-                    PluginUtils::cycle_native_stereo_fix();
+                    //PluginUtils::cycle_native_stereo_fix();
+                    break;
+
+                case GAME_STATE_INTRO_LAPTOP:
+                    vr->set_aim_method(0);
+                    vr->set_mod_value("VR_RoomscaleMovement", "false");
+
+                    VRBody::hide_vr_body();
+                    VRBody::reset_player_camera();
+
+                    PluginUtils::reset_height(0.0f);
+                    API::UObjectHook::set_disabled(true);
                     break;
 
                 case GAME_STATE_MAIN_MENU:
@@ -945,7 +1076,7 @@ void UEVRPlugin::handle_game_state_change() {
                     API::UObjectHook::set_disabled(true);
                     // changes to game options can be applied in the main menu
                     apply_vr_game_options();
-                    PluginUtils::cycle_native_stereo_fix();
+                    //PluginUtils::cycle_native_stereo_fix();
                     break;
 
                 case GAME_STATE_PAUSE_MENU:
@@ -966,8 +1097,10 @@ void UEVRPlugin::handle_game_state_change() {
                     sdk->functions->execute_command(L"r.postprocessing.disablematerials 0");
                     if (is_valid_vr_body_hacker_implant_pawn()) {
                         m_is_pulling_gun_out = false;
+                        m_pawn.get()->bUseControllerRotationPitch = false;
+                        m_pawn.get()->bUseControllerRotationRoll = false;
+                        m_pawn.get()->bUseControllerRotationYaw = true;
                         VRBody::show_vr_body();
-                        static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->bUseControllerRotationYaw = true;
 
                         API::UObjectHook::set_disabled(false);
                         vr->set_aim_method(m_default_aim_method);
@@ -1035,22 +1168,41 @@ void UEVRPlugin::handle_game_state_change() {
 
                 case GAME_STATE_CYBERSPACE:
                     if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
-                        APAWN_Avatar_C* pawn = static_cast<APAWN_Avatar_C*>(m_pawn.get());
-                        VRAvatar::initialize_vr_avatar(pawn);
-                        //g_vr_body->VRBodyMesh->SetVisibility(true, false);
-                        API::UObjectHook::set_disabled(false);
-                        vr->set_aim_method(0);                      // Game mode
-                        vr->set_decoupled_pitch_enabled(false);
+                        //APAWN_Avatar_C* pawn = static_cast<APAWN_Avatar_C*>(m_pawn.get());
+                        //VRAvatar::initialize_vr_avatar(pawn);
+                        ////g_vr_body->VRBodyMesh->SetVisibility(true, false);
+                        //API::UObjectHook::set_disabled(false);
+                        //vr->set_aim_method(0);                      // Game mode
+                        //vr->set_decoupled_pitch_enabled(false);
+                        //vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+                        //vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+                        //vr->set_mod_value("UI_Distance", "4.000000");
+                        //vr->set_mod_value("UI_Size", "2.000000");
+                        //vr->set_mod_value("UI_Y_Offset", "0.00000");
+                        //vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        //vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                        //vr->set_mod_value("VR_DecoupledPitch", "false");
+                        //PluginUtils::reset_height(0.f);
+                        //vr->recenter_view();
+
+                        m_pawn.get()->bUseControllerRotationPitch = true;
+                        m_pawn.get()->bUseControllerRotationRoll = true;
+                        m_pawn.get()->bUseControllerRotationYaw = true;
+
                         vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
                         vr->set_mod_value("VR_CameraUpOffset", "0.000000");
                         vr->set_mod_value("UI_Distance", "4.000000");
                         vr->set_mod_value("UI_Size", "2.000000");
                         vr->set_mod_value("UI_Y_Offset", "0.00000");
-                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        vr->set_aim_method(2);
+                        vr->set_snap_turn_enabled(false);
+                        vr->set_decoupled_pitch_enabled(true);
+                        vr->set_mod_value("VR_RoomscaleMovement", "false");
                         vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                        vr->set_mod_value("VR_DecoupledPitch", "false");
-                        PluginUtils::reset_height(0.f);
                         vr->recenter_view();
+
+                        API::UObjectHook::set_disabled(true);
+                        PluginUtils::reset_height(0.f);
                     }
                     break;
 
@@ -1059,7 +1211,9 @@ void UEVRPlugin::handle_game_state_change() {
                     m_intro_laptop = nullptr;
                     if (is_valid_vr_body_hacker_simple_pawn()) {
                         g_vr_body->VRBodyMesh->SetVisibility(true, false);
-                        static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->bUseControllerRotationYaw = true;
+                        m_pawn.get()->bUseControllerRotationPitch = false;
+                        m_pawn.get()->bUseControllerRotationRoll = false;
+                        m_pawn.get()->bUseControllerRotationYaw = true;
 
                         API::UObjectHook::set_disabled(false);
                         vr->set_aim_method(m_default_aim_method);
@@ -1144,13 +1298,14 @@ void UEVRPlugin::handle_level_change() {
                     VRBody::initialize_ads();
                     VRBody::initialize_hand_item_collisions();
                     VRItemSelector::initialize(m_neural_hud);
+                    //install_queue_notification_hook();
                     PluginUtils::reset_height(0.f);
-                    
-                    //VRBody::set_debug_widget_visibility(false);
+
+                    VRBody::set_debug_widget_visibility(false);
                     //g_vr_body->InteractablesHighlighterLeft->Activate(true);
                     //g_vr_body->InteractablesHighlighterLeft->Enable();
 
-                    PluginUtils::cycle_native_stereo_fix();
+                    //PluginUtils::cycle_native_stereo_fix();
                 }
                 else {
                     API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
@@ -1173,7 +1328,7 @@ void UEVRPlugin::handle_level_change() {
                     PluginUtils::reset_height(0.f);
                     VRBody::set_debug_widget_visibility(false);
 
-                    PluginUtils::cycle_native_stereo_fix();
+                    //PluginUtils::cycle_native_stereo_fix();
                 }
                 else {
                     API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
@@ -1181,7 +1336,7 @@ void UEVRPlugin::handle_level_change() {
                 return;
             }
 
-            PluginUtils::cycle_native_stereo_fix();
+            //PluginUtils::cycle_native_stereo_fix();
         }
     }
     catch (...) {
@@ -1928,6 +2083,51 @@ void UEVRPlugin::try_set_intro_laptop_pointer() {
         }
     }
     catch (...) {
-        API::get()->log_error("[main][set_intro_laptop_pointer] Exception");
+        API::get()->log_error("[plugin][set_intro_laptop_pointer] Exception");
+    }
+}
+
+void UEVRPlugin::handle_cyberspace_look_pivot(const UEVR_VRData* vr) {
+    try {
+        if (m_pawn_state.matches_none({ PAWN_AVATAR })) {
+            return;
+        }
+        // hide arrow component gizmo
+        if (SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) && m_pawn.get()->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
+            static_cast<SDK::APAWN_Avatar_C*>(m_pawn.get())->Arrow1->SetVisibility(false, true);
+        }
+
+        // the rest is disabled
+        return;
+
+        auto pawn_controller = m_pawn.get()->Controller;
+        if (pawn_controller != nullptr) {
+
+            UEVR_Vector3f right_hand_position{};
+            UEVR_Quaternionf rh_rot{};
+            vr->get_aim_pose(vr->get_right_controller_index(), (UEVR_Vector3f*)&right_hand_position, (UEVR_Quaternionf*)&rh_rot);
+
+            SDK::FQuat quat{ rh_rot.x, rh_rot.y, rh_rot.z, rh_rot.w };
+            auto vect = SDK::UKismetMathLibrary::Quat_Euler(quat);
+            auto rot = SDK::UKismetMathLibrary::Quat_Rotator(quat);
+
+            pawn_controller->SetControlRotation(SDK::FRotator(rot));
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][handle_cyberspace_look_pivot] Exception");
+    }
+}
+
+void UEVRPlugin::handle_crouch() {
+    try {
+        if (m_is_crouching.has_changed()) {
+            if (UKismetSystemLibrary::IsValid(g_vr_body)) {
+                g_vr_body->VRMovementComponent->SetCrouch(m_is_crouching.value);
+            }
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][character_crouch] Exception");
     }
 }

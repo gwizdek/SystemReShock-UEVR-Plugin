@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "_ENUM_VRHand_structs.hpp"
+#include "Engine_structs.hpp"
 #include "_ENUM_ItemCategory_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
 
 
 namespace SDK::Params
@@ -54,7 +54,7 @@ static_assert(sizeof(_BP_InteractablesHighlighter_C_ReceiveTick) == 0x000004, "W
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ReceiveTick, DeltaSeconds) == 0x000000, "Member '_BP_InteractablesHighlighter_C_ReceiveTick::DeltaSeconds' has a wrong offset!");
 
 // Function _BP_InteractablesHighlighter._BP_InteractablesHighlighter_C.ScanInteractables
-// 0x0360 (0x0360 - 0x0000)
+// 0x0350 (0x0350 - 0x0000)
 struct _BP_InteractablesHighlighter_C_ScanInteractables final
 {
 public:
@@ -67,15 +67,15 @@ public:
 	class AActor*                                 LocalHitActor;                                     // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Array_Index_Variable;                     // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                CallFunc_GetForwardVector_ReturnValue;             // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_True_if_break_was_hit_Variable;          // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_32[0x2];                                       // 0x0032(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0038(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CallFunc_GetForwardVector_ReturnValue_1;           // 0x004C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0034(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_True_if_break_was_hit_Variable;          // 0x0044(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0045(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0046(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_47[0x1];                                       // 0x0047(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_GetForwardVector_ReturnValue_1;           // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<EObjectTypeQuery>                      K2Node_MakeArray_Array;                            // 0x0058(0x0010)(ConstParm, ReferenceParm)
 	bool                                          CallFunc_NotEqual_ObjectObject_ReturnValue;        // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
@@ -130,33 +130,30 @@ public:
 	bool                                          CallFunc_ClassIsChildOf_ReturnValue_1;             // 0x0241(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_ClassIsChildOf_ReturnValue_2;             // 0x0242(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0243(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_Add_VectorVector_ReturnValue_2;           // 0x0244(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x0250(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_251[0x3];                                      // 0x0251(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             CallFunc_LineTraceSingle_OutHit;                   // 0x0254(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	bool                                          CallFunc_LineTraceSingle_ReturnValue;              // 0x02DC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BreakHitResult_bBlockingHit_1;            // 0x02DD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BreakHitResult_bInitialOverlap_1;         // 0x02DE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_2DF[0x1];                                      // 0x02DF(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_BreakHitResult_Time_1;                    // 0x02E0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakHitResult_Distance_1;                // 0x02E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_Location_1;                // 0x02E8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_ImpactPoint_1;             // 0x02F4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_Normal_1;                  // 0x0300(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_ImpactNormal_1;            // 0x030C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPhysicalMaterial*                      CallFunc_BreakHitResult_PhysMat_1;                 // 0x0318(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 CallFunc_BreakHitResult_HitActor_1;                // 0x0320(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    CallFunc_BreakHitResult_HitComponent_1;            // 0x0328(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_BreakHitResult_HitBoneName_1;             // 0x0330(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BreakHitResult_HitItem_1;                 // 0x0338(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BreakHitResult_ElementIndex_1;            // 0x033C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BreakHitResult_FaceIndex_1;               // 0x0340(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_TraceStart_1;              // 0x0344(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_TraceEnd_1;                // 0x0350(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x035C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FHitResult                             CallFunc_LineTraceSingle_OutHit;                   // 0x0244(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_LineTraceSingle_ReturnValue;              // 0x02CC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x02CD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bBlockingHit_1;            // 0x02CE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bInitialOverlap_1;         // 0x02CF(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	float                                         CallFunc_BreakHitResult_Time_1;                    // 0x02D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakHitResult_Distance_1;                // 0x02D4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Location_1;                // 0x02D8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactPoint_1;             // 0x02E4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Normal_1;                  // 0x02F0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactNormal_1;            // 0x02FC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPhysicalMaterial*                      CallFunc_BreakHitResult_PhysMat_1;                 // 0x0308(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 CallFunc_BreakHitResult_HitActor_1;                // 0x0310(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    CallFunc_BreakHitResult_HitComponent_1;            // 0x0318(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_BreakHitResult_HitBoneName_1;             // 0x0320(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_HitItem_1;                 // 0x0328(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_ElementIndex_1;            // 0x032C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_FaceIndex_1;               // 0x0330(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceStart_1;              // 0x0334(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceEnd_1;                // 0x0340(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x034C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_InteractablesHighlighter_C_ScanInteractables) == 0x000008, "Wrong alignment on _BP_InteractablesHighlighter_C_ScanInteractables");
-static_assert(sizeof(_BP_InteractablesHighlighter_C_ScanInteractables) == 0x000360, "Wrong size on _BP_InteractablesHighlighter_C_ScanInteractables");
+static_assert(sizeof(_BP_InteractablesHighlighter_C_ScanInteractables) == 0x000350, "Wrong size on _BP_InteractablesHighlighter_C_ScanInteractables");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, LocalHitAngle) == 0x000000, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::LocalHitAngle' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, LocalPrimitive) == 0x000008, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::LocalPrimitive' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, LocalHitDistance) == 0x000010, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::LocalHitDistance' has a wrong offset!");
@@ -164,13 +161,13 @@ static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, bNotify
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, LocalHitActor) == 0x000018, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::LocalHitActor' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, Temp_int_Array_Index_Variable) == 0x000020, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::Temp_int_Array_Index_Variable' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_GetForwardVector_ReturnValue) == 0x000024, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_GetForwardVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, Temp_bool_True_if_break_was_hit_Variable) == 0x000030, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::Temp_bool_True_if_break_was_hit_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_Not_PreBool_ReturnValue) == 0x000031, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, Temp_int_Loop_Counter_Variable) == 0x000034, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000038, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_Add_IntInt_ReturnValue) == 0x000044, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_IsValid_ReturnValue) == 0x000048, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_GetForwardVector_ReturnValue_1) == 0x00004C, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_GetForwardVector_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, Temp_int_Loop_Counter_Variable) == 0x000030, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000034, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_Add_IntInt_ReturnValue) == 0x000040, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, Temp_bool_True_if_break_was_hit_Variable) == 0x000044, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::Temp_bool_True_if_break_was_hit_Variable' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_IsValid_ReturnValue) == 0x000045, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_Not_PreBool_ReturnValue) == 0x000046, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_GetForwardVector_ReturnValue_1) == 0x000048, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_GetForwardVector_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, K2Node_MakeArray_Array) == 0x000058, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::K2Node_MakeArray_Array' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_NotEqual_ObjectObject_ReturnValue) == 0x000068, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_NotEqual_ObjectObject_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_K2_GetComponentLocation_ReturnValue_1) == 0x00006C, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_K2_GetComponentLocation_ReturnValue_1' has a wrong offset!");
@@ -218,28 +215,27 @@ static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFun
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_ClassIsChildOf_ReturnValue_1) == 0x000241, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_ClassIsChildOf_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_ClassIsChildOf_ReturnValue_2) == 0x000242, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_ClassIsChildOf_ReturnValue_2' has a wrong offset!");
 static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BooleanOR_ReturnValue) == 0x000243, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_Add_VectorVector_ReturnValue_2) == 0x000244, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_Add_VectorVector_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BooleanOR_ReturnValue_1) == 0x000250, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_LineTraceSingle_OutHit) == 0x000254, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_LineTraceSingle_OutHit' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_LineTraceSingle_ReturnValue) == 0x0002DC, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_LineTraceSingle_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_bBlockingHit_1) == 0x0002DD, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_bBlockingHit_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_bInitialOverlap_1) == 0x0002DE, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_bInitialOverlap_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_Time_1) == 0x0002E0, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_Time_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_Distance_1) == 0x0002E4, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_Distance_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_Location_1) == 0x0002E8, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_Location_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_ImpactPoint_1) == 0x0002F4, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_ImpactPoint_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_Normal_1) == 0x000300, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_Normal_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_ImpactNormal_1) == 0x00030C, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_ImpactNormal_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_PhysMat_1) == 0x000318, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_PhysMat_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_HitActor_1) == 0x000320, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_HitActor_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_HitComponent_1) == 0x000328, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_HitComponent_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_HitBoneName_1) == 0x000330, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_HitBoneName_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_HitItem_1) == 0x000338, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_HitItem_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_ElementIndex_1) == 0x00033C, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_ElementIndex_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_FaceIndex_1) == 0x000340, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_FaceIndex_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_TraceStart_1) == 0x000344, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_TraceStart_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_TraceEnd_1) == 0x000350, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_TraceEnd_1' has a wrong offset!");
-static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x00035C, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_LineTraceSingle_OutHit) == 0x000244, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_LineTraceSingle_OutHit' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_LineTraceSingle_ReturnValue) == 0x0002CC, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_LineTraceSingle_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BooleanOR_ReturnValue_1) == 0x0002CD, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_bBlockingHit_1) == 0x0002CE, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_bBlockingHit_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_bInitialOverlap_1) == 0x0002CF, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_bInitialOverlap_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_Time_1) == 0x0002D0, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_Time_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_Distance_1) == 0x0002D4, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_Distance_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_Location_1) == 0x0002D8, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_Location_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_ImpactPoint_1) == 0x0002E4, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_ImpactPoint_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_Normal_1) == 0x0002F0, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_Normal_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_ImpactNormal_1) == 0x0002FC, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_ImpactNormal_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_PhysMat_1) == 0x000308, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_PhysMat_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_HitActor_1) == 0x000310, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_HitActor_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_HitComponent_1) == 0x000318, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_HitComponent_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_HitBoneName_1) == 0x000320, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_HitBoneName_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_HitItem_1) == 0x000328, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_HitItem_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_ElementIndex_1) == 0x00032C, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_ElementIndex_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_FaceIndex_1) == 0x000330, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_FaceIndex_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_TraceStart_1) == 0x000334, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_TraceStart_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_BreakHitResult_TraceEnd_1) == 0x000340, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_BreakHitResult_TraceEnd_1' has a wrong offset!");
+static_assert(offsetof(_BP_InteractablesHighlighter_C_ScanInteractables, CallFunc_EqualEqual_ObjectObject_ReturnValue) == 0x00034C, "Member '_BP_InteractablesHighlighter_C_ScanInteractables::CallFunc_EqualEqual_ObjectObject_ReturnValue' has a wrong offset!");
 
 // Function _BP_InteractablesHighlighter._BP_InteractablesHighlighter_C.Disable
 // 0x0001 (0x0001 - 0x0000)

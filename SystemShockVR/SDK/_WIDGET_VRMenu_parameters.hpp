@@ -20,16 +20,17 @@ struct _WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class FText                                   CallFunc_Conv_FloatToText_ReturnValue;             // 0x0008(0x0018)()
-	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue;               // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_Add_FloatFloat_ReturnValue_1;             // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu) == 0x000008, "Wrong alignment on _WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu");
 static_assert(sizeof(_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu) == 0x000028, "Wrong size on _WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu");
 static_assert(offsetof(_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu, EntryPoint) == 0x000000, "Member '_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu::EntryPoint' has a wrong offset!");
-static_assert(offsetof(_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu, CallFunc_Add_FloatFloat_ReturnValue) == 0x000004, "Member '_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu, CallFunc_Conv_FloatToText_ReturnValue) == 0x000008, "Member '_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu::CallFunc_Conv_FloatToText_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000020, "Member '_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu, CallFunc_Add_FloatFloat_ReturnValue) == 0x000020, "Member '_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu::CallFunc_Add_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu, CallFunc_Add_FloatFloat_ReturnValue_1) == 0x000024, "Member '_WIDGET_VRMenu_C_ExecuteUbergraph__WIDGET_VRMenu::CallFunc_Add_FloatFloat_ReturnValue_1' has a wrong offset!");
 
 // Function _WIDGET_VRMenu._WIDGET_VRMenu_C.Initialize
 // 0x0020 (0x0020 - 0x0000)

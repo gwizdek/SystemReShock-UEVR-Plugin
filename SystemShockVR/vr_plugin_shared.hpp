@@ -35,7 +35,8 @@ enum EGameState : uint8_t {
     GAME_STATE_INTERACTABLE = 10,
     GAME_STATE_INTRO_DRONE = 11,
     GAME_STATE_BOOTING_UP = 12,
-    GAME_STATE_CRASHING = 13
+    GAME_STATE_CRASHING = 13,
+    GAME_STATE_INTRO_LAPTOP = 14
 };
 
 static std::map<EGameState, const char*> GameStateName = {
@@ -52,7 +53,8 @@ static std::map<EGameState, const char*> GameStateName = {
     { GAME_STATE_INTERACTABLE, "Interactable" },
     { GAME_STATE_INTRO_DRONE, "Intro Drone" },
     { GAME_STATE_BOOTING_UP, "Booting Up" },
-    { GAME_STATE_CRASHING, "Crashing" }
+    { GAME_STATE_CRASHING, "Crashing" },
+    { GAME_STATE_INTRO_LAPTOP, "Intro Laptop" }
 };
 
 

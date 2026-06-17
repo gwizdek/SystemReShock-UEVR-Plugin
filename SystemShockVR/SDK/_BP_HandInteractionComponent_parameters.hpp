@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_ItemCategory_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
-#include "_ENUM_VRHand_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
+#include "Engine_structs.hpp"
+#include "_ENUM_ItemCategory_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "STRUCT_InteractResults_structs.hpp"
+#include "_ENUM_VRHand_structs.hpp"
 
 
 namespace SDK::Params
@@ -344,156 +344,176 @@ static_assert(offsetof(_BP_HandInteractionComponent_C_HandleOverlappingIndexFing
 static_assert(offsetof(_BP_HandInteractionComponent_C_HandleOverlappingIndexFinger, CallFunc_Array_Add_ReturnValue) == 0x0000F0, "Member '_BP_HandInteractionComponent_C_HandleOverlappingIndexFinger::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.HandleCollidingIndexFinger
-// 0x02C0 (0x02C0 - 0x0000)
+// 0x0330 (0x0330 - 0x0000)
 struct _BP_HandInteractionComponent_C_HandleCollidingIndexFinger final
 {
 public:
-	struct FVector                                IndexFingerSocketLocation;                         // 0x0000(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UPrimitiveComponent*>            OverlapComponents;                                 // 0x0010(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
-	TArray<float>                                 Distances;                                         // 0x0020(0x0010)(Edit, BlueprintVisible)
-	bool                                          CallFunc_IsManuallyPointing_Result;                // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue;        // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_4A[0x6];                                       // 0x004A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_1;             // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue_1;      // 0x0059(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_5A[0x6];                                       // 0x005A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AINTERACT_Base_C*                       K2Node_DynamicCast_AsINTERACT_Base;                // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_71[0x7];                                       // 0x0071(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_2;             // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_ClassIsChildOf_ReturnValue_1;             // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IINTERF_Interactable_C> K2Node_DynamicCast_AsINTERF_Interactable;          // 0x0088(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0098(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_3;             // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x00A8(0x0020)(HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue_2;      // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UWIDGET_PlayerHUD_C*                    NeuralHUDWidget;                                   // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AINTERACT_DoorBase_C*                   InteractDoorBase;                                  // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FText                                   InteractMessage;                                   // 0x0010(0x0018)(Edit, BlueprintVisible)
+	bool                                          InteractResult;                                    // 0x0028(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                IndexFingerSocketLocation;                         // 0x002C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<class UPrimitiveComponent*>            OverlapComponents;                                 // 0x0038(0x0010)(Edit, BlueprintVisible, ContainsInstancedReference)
+	TArray<float>                                 Distances;                                         // 0x0048(0x0010)(Edit, BlueprintVisible)
+	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_IsManuallyPointing_Result;                // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_62[0x6];                                       // 0x0062(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Conv_TextToString_ReturnValue;            // 0x0068(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_7C[0x4];                                       // 0x007C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0080(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GreaterEqual_IntInt_ReturnValue;          // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_91[0x7];                                       // 0x0091(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue;               // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue;        // 0x00A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_A2[0x6];                                       // 0x00A2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_1;             // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanOR_ReturnValue;                    // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue_1;      // 0x00B1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_B2[0x6];                                       // 0x00B2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class AActor*                                 CallFunc_GetOwner_ReturnValue;                     // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AINTERACT_Base_C*                       K2Node_DynamicCast_AsINTERACT_Base;                // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AINTERACT_DoorBase_C*                   K2Node_DynamicCast_AsINTERACT_Door_Base;           // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_2;             // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue_1;             // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_D9[0x7];                                       // 0x00D9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_4;             // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_ClassIsChildOf_ReturnValue_2;             // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetDisplayName_ReturnValue;               // 0x00F0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	TArray<class FString>                         K2Node_MakeArray_Array;                            // 0x0100(0x0010)(ConstParm, ReferenceParm)
-	bool                                          CallFunc_DoesImplementInterface_ReturnValue;       // 0x0110(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_111[0x7];                                      // 0x0111(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_JoinStringArray_ReturnValue;              // 0x0118(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0128(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_FloatFloat_ReturnValue;        // 0x0129(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x012A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x012B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x012C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_12D[0x3];                                      // 0x012D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CallFunc_GetSocketTransform_ReturnValue;           // 0x0130(0x0030)(IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x0160(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x016C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x0178(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetForwardVector_ReturnValue;             // 0x0184(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x0190(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x019C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_LineTraceSingle_OutHit;                   // 0x01A8(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	bool                                          CallFunc_LineTraceSingle_ReturnValue;              // 0x0230(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BreakHitResult_bBlockingHit;              // 0x0231(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BreakHitResult_bInitialOverlap;           // 0x0232(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_233[0x1];                                      // 0x0233(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_BreakHitResult_Time;                      // 0x0234(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakHitResult_Distance;                  // 0x0238(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_Location;                  // 0x023C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_ImpactPoint;               // 0x0248(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_Normal;                    // 0x0254(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_ImpactNormal;              // 0x0260(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_26C[0x4];                                      // 0x026C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPhysicalMaterial*                      CallFunc_BreakHitResult_PhysMat;                   // 0x0270(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 CallFunc_BreakHitResult_HitActor;                  // 0x0278(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UPrimitiveComponent*                    CallFunc_BreakHitResult_HitComponent;              // 0x0280(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_BreakHitResult_HitBoneName;               // 0x0288(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BreakHitResult_HitItem;                   // 0x0290(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BreakHitResult_ElementIndex;              // 0x0294(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_BreakHitResult_FaceIndex;                 // 0x0298(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_TraceStart;                // 0x029C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_BreakHitResult_TraceEnd;                  // 0x02A8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x02B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x02B5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x02B6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	TScriptInterface<class IINTERF_Interactable_C> K2Node_DynamicCast_AsINTERF_Interactable;          // 0x00E0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_F1[0x7];                                       // 0x00F1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_3;             // 0x00F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0100(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ClassClass_ReturnValue_2;      // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_121[0x7];                                      // 0x0121(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AINTERACT_DoorBase_C*                   K2Node_DynamicCast_AsINTERACT_Door_Base;           // 0x0128(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0130(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_131[0x7];                                      // 0x0131(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Conv_TextToString_ReturnValue_1;          // 0x0138(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_1;              // 0x0148(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_4;             // 0x0158(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_GetDisplayName_ReturnValue;               // 0x0160(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue_2;             // 0x0170(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_171[0x7];                                      // 0x0171(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FString>                         K2Node_MakeArray_Array;                            // 0x0178(0x0010)(ConstParm, ReferenceParm)
+	class FString                                 CallFunc_JoinStringArray_ReturnValue;              // 0x0188(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_DoesImplementInterface_ReturnValue;       // 0x0198(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0199(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_FloatFloat_ReturnValue;        // 0x019A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x019B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x019C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanOR_ReturnValue_1;                  // 0x019D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_19E[0x2];                                      // 0x019E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CallFunc_GetSocketTransform_ReturnValue;           // 0x01A0(0x0030)(IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x01D0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x01DC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                CallFunc_BreakTransform_Scale;                     // 0x01E8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetForwardVector_ReturnValue;             // 0x01F4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Multiply_VectorFloat_ReturnValue;         // 0x0200(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Add_VectorVector_ReturnValue;             // 0x020C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_LineTraceSingle_OutHit;                   // 0x0218(0x0088)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	bool                                          CallFunc_LineTraceSingle_ReturnValue;              // 0x02A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bBlockingHit;              // 0x02A1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BreakHitResult_bInitialOverlap;           // 0x02A2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_2A3[0x1];                                      // 0x02A3(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_BreakHitResult_Time;                      // 0x02A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakHitResult_Distance;                  // 0x02A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Location;                  // 0x02AC(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactPoint;               // 0x02B8(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_Normal;                    // 0x02C4(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_ImpactNormal;              // 0x02D0(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2DC[0x4];                                      // 0x02DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPhysicalMaterial*                      CallFunc_BreakHitResult_PhysMat;                   // 0x02E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 CallFunc_BreakHitResult_HitActor;                  // 0x02E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UPrimitiveComponent*                    CallFunc_BreakHitResult_HitComponent;              // 0x02F0(0x0008)(ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_BreakHitResult_HitBoneName;               // 0x02F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_HitItem;                   // 0x0300(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_ElementIndex;              // 0x0304(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_BreakHitResult_FaceIndex;                 // 0x0308(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceStart;                // 0x030C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_BreakHitResult_TraceEnd;                  // 0x0318(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_LessEqual_FloatFloat_ReturnValue;         // 0x0324(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0325(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x0326(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger) == 0x000010, "Wrong alignment on _BP_HandInteractionComponent_C_HandleCollidingIndexFinger");
-static_assert(sizeof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger) == 0x0002C0, "Wrong size on _BP_HandInteractionComponent_C_HandleCollidingIndexFinger");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, IndexFingerSocketLocation) == 0x000000, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::IndexFingerSocketLocation' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, OverlapComponents) == 0x000010, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::OverlapComponents' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, Distances) == 0x000020, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::Distances' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_IsManuallyPointing_Result) == 0x000030, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_IsManuallyPointing_Result' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Array_Length_ReturnValue) == 0x000034, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000038, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue) == 0x000040, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_ClassIsChildOf_ReturnValue) == 0x000048, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_ClassClass_ReturnValue) == 0x000049, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_ClassClass_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue_1) == 0x000050, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanOR_ReturnValue) == 0x000058, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_ClassClass_ReturnValue_1) == 0x000059, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_ClassClass_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetOwner_ReturnValue) == 0x000060, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_AsINTERACT_Base) == 0x000068, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_AsINTERACT_Base' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_bSuccess) == 0x000070, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_bSuccess' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue_2) == 0x000078, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_ClassIsChildOf_ReturnValue_1) == 0x000080, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_ClassIsChildOf_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_AsINTERF_Interactable) == 0x000088, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_AsINTERF_Interactable' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_bSuccess_1) == 0x000098, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue_3) == 0x0000A0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_TryInteract_InteractResults) == 0x0000A8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_TryInteract_InteractResults' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_ClassClass_ReturnValue_2) == 0x0000C8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_ClassClass_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_AsINTERACT_Door_Base) == 0x0000D0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_AsINTERACT_Door_Base' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_bSuccess_2) == 0x0000D8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue_4) == 0x0000E0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue_4' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_ClassIsChildOf_ReturnValue_2) == 0x0000E8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_ClassIsChildOf_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetDisplayName_ReturnValue) == 0x0000F0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetDisplayName_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_MakeArray_Array) == 0x000100, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_DoesImplementInterface_ReturnValue) == 0x000110, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_JoinStringArray_ReturnValue) == 0x000118, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_JoinStringArray_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanAND_ReturnValue) == 0x000128, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_FloatFloat_ReturnValue) == 0x000129, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x00012A, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanAND_ReturnValue_1) == 0x00012B, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanOR_ReturnValue_1) == 0x00012C, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetSocketTransform_ReturnValue) == 0x000130, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetSocketTransform_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakTransform_Location) == 0x000160, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakTransform_Location' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakTransform_Rotation) == 0x00016C, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakTransform_Rotation' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakTransform_Scale) == 0x000178, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakTransform_Scale' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetForwardVector_ReturnValue) == 0x000184, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetForwardVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x000190, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Add_VectorVector_ReturnValue) == 0x00019C, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_LineTraceSingle_OutHit) == 0x0001A8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_LineTraceSingle_OutHit' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_LineTraceSingle_ReturnValue) == 0x000230, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_LineTraceSingle_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_bBlockingHit) == 0x000231, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_bBlockingHit' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_bInitialOverlap) == 0x000232, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_bInitialOverlap' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_Time) == 0x000234, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_Time' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_Distance) == 0x000238, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_Distance' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_Location) == 0x00023C, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_Location' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_ImpactPoint) == 0x000248, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_ImpactPoint' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_Normal) == 0x000254, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_Normal' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_ImpactNormal) == 0x000260, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_ImpactNormal' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_PhysMat) == 0x000270, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_PhysMat' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_HitActor) == 0x000278, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_HitActor' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_HitComponent) == 0x000280, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_HitComponent' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_HitBoneName) == 0x000288, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_HitBoneName' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_HitItem) == 0x000290, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_HitItem' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_ElementIndex) == 0x000294, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_ElementIndex' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_FaceIndex) == 0x000298, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_FaceIndex' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_TraceStart) == 0x00029C, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_TraceStart' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_TraceEnd) == 0x0002A8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_TraceEnd' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x0002B4, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Not_PreBool_ReturnValue) == 0x0002B5, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanAND_ReturnValue_2) == 0x0002B6, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
+static_assert(sizeof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger) == 0x000330, "Wrong size on _BP_HandInteractionComponent_C_HandleCollidingIndexFinger");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, NeuralHUDWidget) == 0x000000, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::NeuralHUDWidget' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, InteractDoorBase) == 0x000008, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::InteractDoorBase' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, InteractMessage) == 0x000010, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::InteractMessage' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, InteractResult) == 0x000028, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::InteractResult' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, IndexFingerSocketLocation) == 0x00002C, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::IndexFingerSocketLocation' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, OverlapComponents) == 0x000038, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::OverlapComponents' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, Distances) == 0x000048, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::Distances' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000058, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_bSuccess) == 0x000060, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_IsManuallyPointing_Result) == 0x000061, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_IsManuallyPointing_Result' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Conv_TextToString_ReturnValue) == 0x000068, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Conv_TextToString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Array_Length_ReturnValue) == 0x000078, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Concat_StrStr_ReturnValue) == 0x000080, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GreaterEqual_IntInt_ReturnValue) == 0x000090, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GreaterEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue) == 0x000098, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_ClassIsChildOf_ReturnValue) == 0x0000A0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_ClassClass_ReturnValue) == 0x0000A1, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_ClassClass_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue_1) == 0x0000A8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanOR_ReturnValue) == 0x0000B0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_ClassClass_ReturnValue_1) == 0x0000B1, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_ClassClass_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetOwner_ReturnValue) == 0x0000B8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetOwner_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_AsINTERACT_Base) == 0x0000C0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_AsINTERACT_Base' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_bSuccess_1) == 0x0000C8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue_2) == 0x0000D0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_ClassIsChildOf_ReturnValue_1) == 0x0000D8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_ClassIsChildOf_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_AsINTERF_Interactable) == 0x0000E0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_AsINTERF_Interactable' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_bSuccess_2) == 0x0000F0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_bSuccess_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue_3) == 0x0000F8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_TryInteract_InteractResults) == 0x000100, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_TryInteract_InteractResults' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_ClassClass_ReturnValue_2) == 0x000120, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_ClassClass_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_AsINTERACT_Door_Base) == 0x000128, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_AsINTERACT_Door_Base' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_DynamicCast_bSuccess_3) == 0x000130, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_DynamicCast_bSuccess_3' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Conv_TextToString_ReturnValue_1) == 0x000138, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Conv_TextToString_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Concat_StrStr_ReturnValue_1) == 0x000148, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Concat_StrStr_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetObjectClass_ReturnValue_4) == 0x000158, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetObjectClass_ReturnValue_4' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetDisplayName_ReturnValue) == 0x000160, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetDisplayName_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_ClassIsChildOf_ReturnValue_2) == 0x000170, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_ClassIsChildOf_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, K2Node_MakeArray_Array) == 0x000178, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_JoinStringArray_ReturnValue) == 0x000188, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_JoinStringArray_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_DoesImplementInterface_ReturnValue) == 0x000198, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_DoesImplementInterface_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanAND_ReturnValue) == 0x000199, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_FloatFloat_ReturnValue) == 0x00019A, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x00019B, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanAND_ReturnValue_1) == 0x00019C, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanOR_ReturnValue_1) == 0x00019D, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanOR_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetSocketTransform_ReturnValue) == 0x0001A0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetSocketTransform_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakTransform_Location) == 0x0001D0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakTransform_Location' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakTransform_Rotation) == 0x0001DC, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakTransform_Rotation' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakTransform_Scale) == 0x0001E8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakTransform_Scale' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_GetForwardVector_ReturnValue) == 0x0001F4, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_GetForwardVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Multiply_VectorFloat_ReturnValue) == 0x000200, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Multiply_VectorFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Add_VectorVector_ReturnValue) == 0x00020C, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Add_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_LineTraceSingle_OutHit) == 0x000218, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_LineTraceSingle_OutHit' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_LineTraceSingle_ReturnValue) == 0x0002A0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_LineTraceSingle_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_bBlockingHit) == 0x0002A1, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_bBlockingHit' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_bInitialOverlap) == 0x0002A2, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_bInitialOverlap' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_Time) == 0x0002A4, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_Time' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_Distance) == 0x0002A8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_Distance' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_Location) == 0x0002AC, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_Location' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_ImpactPoint) == 0x0002B8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_ImpactPoint' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_Normal) == 0x0002C4, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_Normal' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_ImpactNormal) == 0x0002D0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_ImpactNormal' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_PhysMat) == 0x0002E0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_PhysMat' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_HitActor) == 0x0002E8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_HitActor' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_HitComponent) == 0x0002F0, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_HitComponent' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_HitBoneName) == 0x0002F8, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_HitBoneName' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_HitItem) == 0x000300, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_HitItem' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_ElementIndex) == 0x000304, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_ElementIndex' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_FaceIndex) == 0x000308, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_FaceIndex' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_TraceStart) == 0x00030C, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_TraceStart' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BreakHitResult_TraceEnd) == 0x000318, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BreakHitResult_TraceEnd' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_LessEqual_FloatFloat_ReturnValue) == 0x000324, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_LessEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_Not_PreBool_ReturnValue) == 0x000325, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_Not_PreBool_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_HandInteractionComponent_C_HandleCollidingIndexFinger, CallFunc_BooleanAND_ReturnValue_2) == 0x000326, "Member '_BP_HandInteractionComponent_C_HandleCollidingIndexFinger::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
 
 // Function _BP_HandInteractionComponent._BP_HandInteractionComponent_C.HandleEventWeaponDrawn
 // 0x00B0 (0x00B0 - 0x0000)

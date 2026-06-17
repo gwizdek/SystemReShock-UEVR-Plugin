@@ -268,5 +268,25 @@ void U_BP_VRMovementComponent_C::CopyHMDRotation()
 	UObject::ProcessEvent(Func, nullptr);
 }
 
+
+// Function _BP_VRMovementComponent._BP_VRMovementComponent_C.SetCrouch
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InValue                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void U_BP_VRMovementComponent_C::SetCrouch(bool InValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_VRMovementComponent_C", "SetCrouch");
+
+	Params::_BP_VRMovementComponent_C_SetCrouch Parms{};
+
+	Parms.InValue = InValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
 }
 

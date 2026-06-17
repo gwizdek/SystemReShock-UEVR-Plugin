@@ -205,19 +205,39 @@ void A_BP_HackerHardware_C::ReceiveBeginPlay()
 }
 
 
-// Function _BP_HackerHardware._BP_HackerHardware_C.Set Visibility
+// Function _BP_HackerHardware._BP_HackerHardware_C.SetVisibility
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // bool                                    InVisible                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void A_BP_HackerHardware_C::Set_Visibility(bool InVisible)
+void A_BP_HackerHardware_C::SetVisibility(bool InVisible)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("_BP_HackerHardware_C", "Set Visibility");
+		Func = Class->GetFunction("_BP_HackerHardware_C", "SetVisibility");
 
-	Params::_BP_HackerHardware_C_Set_Visibility Parms{};
+	Params::_BP_HackerHardware_C_SetVisibility Parms{};
+
+	Parms.InVisible = InVisible;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function _BP_HackerHardware._BP_HackerHardware_C.SetWidgetVisibility
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    InVisible                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+
+void A_BP_HackerHardware_C::SetWidgetVisibility(bool InVisible)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("_BP_HackerHardware_C", "SetWidgetVisibility");
+
+	Params::_BP_HackerHardware_C_SetWidgetVisibility Parms{};
 
 	Parms.InVisible = InVisible;
 
