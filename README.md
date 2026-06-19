@@ -6,7 +6,8 @@
 > [!WARNING]
 > Mod installation requires extra step - copying PAK files from profile's `\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
   
-Omg, this was a lot of work to get to this point. Enjoy!
+Omg, this was a lot of work to get to this point. Enjoy!  
+You can leave me a tip here: https://ko-fi.com/gwizdek
 
 ## Features
 * 6DOF FBIK. Full roomscale VR.
