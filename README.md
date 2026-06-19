@@ -1,7 +1,7 @@
 # SystemReShock UEVR Plugin v2.0
 
 > [!WARNING]
-> The profile doesn't work with the Steam Demo version or GOG version (GOG support will be added after the mod gets stable)
+> The profile doesn't work with the demo version from Steam and full game from GOG (GOG support will be added after the mod gets stable)
 
 > [!WARNING]
 > Mod installation requires extra step - copying PAK files from profile's `\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
