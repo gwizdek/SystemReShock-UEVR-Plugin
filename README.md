@@ -6,7 +6,7 @@
 > [!WARNING]
 > Mod installation requires extra step - copying PAK files from profile's `\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
   
-Omg, this was a lot of work to get to this point. Enjoy!  
+Omg, it's been a lot of work to get to this point. Enjoy!  
 You can leave me a tip here: https://ko-fi.com/gwizdek
 
 ## Features
@@ -30,51 +30,66 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 > Save the game to new slots often (many things can go wrong)
 
 ## Gestures
-* Press **Left Thumb** while holding left motion controller close to left ear - calibrate VR view
-* Press **Left Grip** while holding left motion controller close to left ear - toggle flashlight
-* Release **Left Grip** or **Right Grip** while holding pickable item over the shoulder to put it into the inventory (if there's enough space)
-* Place your right motion controller over your inner left wrist and press **Right Grip** - toggle MFD
-* Press **Right Grip** over your shoulder - holster weapon
-* Press **Right Grip** over your shoulder, then move the hand forward - take out holstered weapon
-* Press and hold **Left Grip** over the Access Card (located on your waist) to hold it. Swipe the card close to Yellow door scanners to unlock them (provided you picked up a correct Access Card earlier).
-* Press and hold **Left Grip** over a lever, then move your hand to use lever
-* Use pointing hand pose and touch consumable held in the other hand to use it
-* Use pointing hand pose and touch one of Hardware Icons (attached to right forearm) to toggle selected hardware (it must be installed first)
+
+| Gesture | How To |
+|---------|-------------|
+| Calibrate VR view | Press **Left Thumb** while holding the left motion controller close to your left ear |
+| Use Item Selector | Assign a consumable item or weapon to a hotbar slot via the MFD. Press and hold **Right Thumb**, select an item, and release the button |
+| Toggle flashlight | Press **Left Grip** while holding the left motion controller close to your left ear |
+| Put an item into backpack | Release **Left Grip** or **Right Grip** while holding a pickable item over your shoulder (works if there's enough space in the inventory) |
+| Toggle MFD | Place your right motion controller over your inner left wrist and press **Right Grip** |
+| Holster weapon | Press **Right Grip** over your shoulder |
+| Take out holstered weapon | Press **Right Grip** over your shoulder, then move your hand forward |
+| Unlock doors | Press and hold **Left Grip** over the Access Card (located on your waist) to hold it. Swipe the card close to yellow door scanners to unlock them (provided you picked up the correct Access Card earlier). |
+| Pull levers | Grip a lever with your left hand using the **Left Grip** button, then move your hand |
+| Use consumable item | Equip a consumable item via the item selector, then use a pointing hand pose and touch the consumable with your finger |
+| Toggle Hacker Hardware | Use a pointing hand pose and touch one of the Hardware Icons attached to your right forearm (hardware needs to be installed first) |
+| Use Power Station | Hold your left hand close to the Power Station |
+
+> [!NOTE]
+> If you're having problems with interactions, you can use laser pointer and press game's interaction button (B by default).  
+> Laser pointer is active when you're holding a ranged weapon or you can activate it with **Right Trigger** if your hand is empty
 
 ## Controls
 ### General
-* **A** - Jump
-* **B** - Interact (when Laser Pointer's Dot is green) / Reload Weapon
-* **X** - Crouch / Exit menus and interactions
-* **Y** - Switch weapon mode
-* **Right Trigger** - Fire weapon / Throw grenade / Enable laser pointer (empty hand)
-* **Right Thumb (hold / release)** - Select hotbar item
-* **Right Grip** - Pickup highlighted item / Pointing pose
-* **Left Trigger** - Aim (useful for handling automatic weapons)
-* **Left Grip** - Pickup highlighted item / Loot corpse / Pointing pose
-* **Left Thumb (hold)** - Run
-* **Left Thumb (press and hold 1s while holding left motion controller close to left ear)** - Enter VR Menu - adjust player height (the setting can't be stored yet). Press again to exit menu.
-* **MENU - left hamburger button** - Open game menu
-* **MENU - left hamburger button** (hold 1s) - Toggle MFD (this binding depends on VR runtime used and can differ). It can conflict with Virtual Desktop binding (rebind in VR). Use the MFD gesture instead.
+| Button | Description |
+|--------|-------------|
+| A | Jump |
+| B | Interact (when the Laser Pointer's dot is green) / Reload weapon |
+| X | Crouch / Exit menus and interactions |
+| Y | Switch weapon mode |
+| Right Trigger | Fire weapon / Throw grenade / Enable laser pointer (empty hand) |
+| Right Thumb (hold / release) | Select hotbar item |
+| Right Grip | Pick up highlighted item / Pointing pose |
+| Left Trigger | Aim (useful for handling automatic weapons) |
+| Left Grip | Pick up highlighted item / Loot corpse / Pointing pose |
+| Left Thumb (hold) | Run |
+| Left Thumb (press and hold 1s while holding the left motion controller close to your left ear) | Enter the VR Menu to adjust player height (the setting can't be stored yet). Press again to exit the menu. |
+| MENU — left hamburger button | Open game menu |
+| MENU — left hamburger button (hold 1s) | Toggle MFD (this binding depends on the VR runtime used and can differ). It can conflict with the Virtual Desktop binding (rebind in VR). Use the MFD gesture instead. |
 
 ### MFD
-* **Right Trigger** - Select
-* **Right Grip** - Open MFD contex menu
-* **Left Grip** - Take all loot (when looting enemies/bodies/containers)
-* **X** - Exit / Back
-* **Left Trigger (hold)** - Show item description
+| Button | Description |
+|--------|-------------|
+| **Right Trigger** | Select |
+| **Right Grip** | Open MFD context menu |
+| **Left Grip** | Take all loot (when looting enemies/bodies/containers) |
+| **X** | Exit / Back |
+| **Left Trigger (hold)** | Show item description |
 
 ### Cyberspace
-* **A** - Ascend
-* **X** - Descend
-* **Y** - Recall
-* **B** - Decoy
-* **Right Grip** - Ascend
-* **Left Grip** - Descend
-* **Right Stick Up** - Ascend
-* **Right Stick Down** - Descend
-* **Right Trigger** - Pulser
-* **Left Trigger** - I.C.E. Drill
+| Button | Description |
+|--------|-------------|
+| **A** | Ascend |
+| **X** | Descend |
+| **Y** | Recall |
+| **B** | Decoy |
+| **Right Grip** | Ascend |
+| **Left Grip** | Descend |
+| **Right Stick Up** | Ascend |
+| **Right Stick Down** | Descend |
+| **Right Trigger** | Pulser |
+| **Left Trigger** | I.C.E. Drill |
 
 ## Limitations
 * Mods that modify crosshair, hotbar slots, MFD and other game logic can have negative impact on the plugin and can cause it to break.
@@ -102,6 +117,9 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 * Some of the two handed weapon poses are not aligned
 * Missing parts or reload animations for Railgun(cooldown), Plasma Rifle (plasma core ammo)
 * Sparq weapon - mode dial is not pointing at correct energy power setting (the lights work ok though)
+* It's hard to open the X + shaped glass doors using hands - hold grip button and touch the corner outside of circular button area or point the laser at it and use interact button.  
+<img width="308" height="298" alt="image" src="https://github.com/user-attachments/assets/9c9e2d65-d847-4f3f-b292-175cc5bbfed1" />
+
 
 ### Widescreen monitors
 * Misaligned cursor and laser pointer on MFD - Happens when resolution was changed, reinitialize runtime and reload a save game.
