@@ -28,7 +28,7 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 9) Optional (recommended) - Tick `Autoplay Media Logs` in Gameplay Options
 
 > [!NOTE]
-> If you have an NVIDIA GPU, use DLSS Swapper to use newer, transformer model capable version. Set profile to J or K (sharpest and not as CPU heavy as L / M)
+> If you have an NVIDIA GPU, use DLSS Swapper to use newer, transformer model capable version. Set profile J or K (sharpest and not as heavy as L / M)
 
 > [!WARNING]
 > Save the game to new slots often (many things can go wrong)
