@@ -25,6 +25,10 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 6) Add optional mod files (Index controllers support, Red Tint Remover) - described below
 7) Launch System Shock and inject UEVR at MAIN MENU (this will allow the mod to set game options for VR play)
 8) Reset controller bindings in game options to defaults
+9) Optional (recommended) - Tick `Autoplay Media Logs` in Gameplay Options
+
+> [!NOTE]
+> If you have an NVIDIA GPU, use DLSS Swapper to use newer, transformer model capable version. Set profile to J or K (sharpest and not as CPU heavy as L / M)
 
 > [!WARNING]
 > Save the game to new slots often (many things can go wrong)
