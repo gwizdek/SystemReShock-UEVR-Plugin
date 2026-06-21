@@ -54,7 +54,7 @@ static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_Initialize, 
 static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_Initialize, CallFunc_Array_Add_ReturnValue) == 0x000070, "Member '_BP_PowerStationInteractionSourceComponent_C_Initialize::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
 
 // Function _BP_PowerStationInteractionSourceComponent._BP_PowerStationInteractionSourceComponent_C.TryInteract
-// 0x0050 (0x0050 - 0x0000)
+// 0x0058 (0x0058 - 0x0000)
 struct _BP_PowerStationInteractionSourceComponent_C_TryInteract final
 {
 public:
@@ -70,9 +70,10 @@ public:
 	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x002A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 	uint8                                         Pad_2B[0x5];                                       // 0x002B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0030(0x0020)(HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_PowerStationInteractionSourceComponent_C_TryInteract) == 0x000008, "Wrong alignment on _BP_PowerStationInteractionSourceComponent_C_TryInteract");
-static_assert(sizeof(_BP_PowerStationInteractionSourceComponent_C_TryInteract) == 0x000050, "Wrong size on _BP_PowerStationInteractionSourceComponent_C_TryInteract");
+static_assert(sizeof(_BP_PowerStationInteractionSourceComponent_C_TryInteract) == 0x000058, "Wrong size on _BP_PowerStationInteractionSourceComponent_C_TryInteract");
 static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_TryInteract, SourceActor) == 0x000000, "Member '_BP_PowerStationInteractionSourceComponent_C_TryInteract::SourceActor' has a wrong offset!");
 static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_TryInteract, HandInteraction) == 0x000008, "Member '_BP_PowerStationInteractionSourceComponent_C_TryInteract::HandInteraction' has a wrong offset!");
 static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_TryInteract, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000010, "Member '_BP_PowerStationInteractionSourceComponent_C_TryInteract::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
@@ -83,6 +84,7 @@ static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_TryInteract,
 static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_TryInteract, CallFunc_BooleanAND_ReturnValue) == 0x000029, "Member '_BP_PowerStationInteractionSourceComponent_C_TryInteract::CallFunc_BooleanAND_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_TryInteract, CallFunc_BooleanAND_ReturnValue_1) == 0x00002A, "Member '_BP_PowerStationInteractionSourceComponent_C_TryInteract::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_TryInteract, CallFunc_TryInteract_InteractResults) == 0x000030, "Member '_BP_PowerStationInteractionSourceComponent_C_TryInteract::CallFunc_TryInteract_InteractResults' has a wrong offset!");
+static_assert(offsetof(_BP_PowerStationInteractionSourceComponent_C_TryInteract, CallFunc_EqualEqual_ByteByte_ReturnValue_1) == 0x000050, "Member '_BP_PowerStationInteractionSourceComponent_C_TryInteract::CallFunc_EqualEqual_ByteByte_ReturnValue_1' has a wrong offset!");
 
 }
 

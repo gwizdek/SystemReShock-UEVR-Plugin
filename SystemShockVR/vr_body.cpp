@@ -207,8 +207,6 @@ void VRBody::initialize_laser_dot() {
     //g_vr_body->LaserPointerLeft->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"LaserPower"), 10.05f);
     //g_vr_body->LaserPointerLeft->SetVectorParameter(UKismetStringLibrary::Conv_StringToName(L"TraceStartOffset"), { 20.0f, 0.f, 0.f });
     //g_vr_body->LaserPointerLeft->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"OcclusionSampleDiameter"), 50.f);
-    g_vr_body->LaserPointerLeft->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"LaserColour"), { 0.0f, 0.447917f, 0.302646f, 0.3f });
-    g_vr_body->LaserPointerLeft->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"PrimaryColor"), { 0.0f, 0.447917f, 0.302646f, 0.3f });
 
     //PluginUtils::bytes_to_float("Power", 0, 0, 128, 63);
     //PluginUtils::bytes_to_float("Size", 0, 0, 192, 64);
@@ -410,6 +408,87 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
     }
     catch (...) {
         API::get()->log_error("[vr_body][initialize_hacker_hardware] Exception");
+    }
+}
+
+// Reparents PANEL_ActiveHazard (the poison / radiation readout) out of the flat PlayerHUD
+// and into the dedicated ActiveHazard widget component so it renders in 3D space.
+//
+// Visibility is intentionally NOT hooked: PANEL_ActiveHazard stays a member of
+// WIDGET_PlayerHUD, so the game's WIDGET_PlayerHUD::UpdateHazardLevel() keeps driving the
+// panel's own visibility (Collapsed when safe, un-collapsed while a hazard is active) even
+// after we move it. As long as the ActiveHazard component live-ticks, it mirrors that
+// show/hide automatically.
+//
+// Requires: A_BP_VRBody_C must expose `UWidgetComponent* ActiveHazard` (add the component in
+// the BP and regenerate the Dumper-7 SDK), and its assigned widget must have a UPanelWidget
+// (CanvasPanel) root - e.g. the same _WIDGET_VRHUD_C used by VRHUD.
+void VRBody::initialize_active_hazard(UWIDGET_PlayerHUD_C* neural_hud) {
+    if (!UKismetSystemLibrary::IsValid(g_vr_body)) {
+        API::get()->log_error("[vr_body][initialize_active_hazard] Invalid vr_body");
+        return;
+    }
+    if (neural_hud == nullptr || !UKismetSystemLibrary::IsValid(neural_hud)) {
+        API::get()->log_error("[vr_body][initialize_active_hazard] Invalid neural_hud");
+        return;
+    }
+    if (!UKismetSystemLibrary::IsValid(g_vr_body->ActiveHazard)) {
+        API::get()->log_error("[vr_body][initialize_active_hazard] Invalid ActiveHazard component");
+        return;
+    }
+
+    try {
+        UPanelWidget* hazard_panel = neural_hud->PANEL_ActiveHazard;
+        if (!UKismetSystemLibrary::IsValid(hazard_panel)) {
+            API::get()->log_error("[vr_body][initialize_active_hazard] Invalid PANEL_ActiveHazard");
+            return;
+        }
+
+        // We only want the numeric level + icon, so drop the "Radiation Poisoning" type label.
+        // Collapsed = gone; canvas children are positioned independently, so this does NOT reflow
+        // TEXT_HazardLevel / MESH_HazardIcon - their position follows the PANEL width instead (below).
+        if (UKismetSystemLibrary::IsValid(neural_hud->TEXT_HazardType)) {
+            neural_hud->TEXT_HazardType->SetVisibility(ESlateVisibility::Collapsed);
+        }
+
+        // Surface now only needs the 120px-wide level value (right-anchored) + ~30px icon overhang:
+        // 130px panel body + 30px icon -> 160px wide; two 28px rows + margin -> 48px tall.
+        // (DrawSize is resolution; physical size / placement is the ActiveHazard component's BP transform.)
+        g_vr_body->ActiveHazard->SetDrawSize(FVector2D{ 160.0f, 48.0f });
+        g_vr_body->ActiveHazard->SetTwoSided(true);
+        g_vr_body->ActiveHazard->BlendMode = EWidgetBlendMode::Transparent; // text/icon have soft alpha
+
+        UPanelSlot* new_slot = PluginUtils::reparent_panel_to_user_widget(
+            hazard_panel, g_vr_body->ActiveHazard->GetWidget()
+        );
+        if (new_slot == nullptr) {
+            API::get()->log_error("[vr_body][initialize_active_hazard] Reparent failed");
+            return;
+        }
+
+        // reparent_panel_to_user_widget defaults the new slot to full-stretch, which would put
+        // the panel's right edge at the surface edge and clip MESH_HazardIcon (anchored beyond it).
+        // Pin the panel to a 130x40 box at top-left: TEXT_HazardLevel (right-anchored, 120 wide)
+        // lands at ~[10,130] and the icon at ~[132,160], leaving the right 30px of the 160px surface
+        // for it. For a point anchor, FMargin reads as { posX, posY, sizeX, sizeY }.
+        if (new_slot->IsA(UCanvasPanelSlot::StaticClass())) {
+            UCanvasPanelSlot* canvas_slot = static_cast<UCanvasPanelSlot*>(new_slot);
+            canvas_slot->SetAnchors(FAnchors{ { 0.0f, 0.0f }, { 0.0f, 0.0f } });
+            canvas_slot->SetAlignment(FVector2D{ 0.0f, 0.0f });
+            canvas_slot->SetOffsets(FMargin{ 0.0f, 4.0f, 130.0f, 40.0f });
+        }
+
+        // Do NOT force the panel Visible here - it ships Collapsed and the game un-collapses it
+        // only while a hazard is active; forcing it on would show an empty frame. Just nudge the
+        // component to rebuild its Slate tree with the new child (same off/on trick used for the
+        // notification panel in initialize_vr_body).
+        g_vr_body->ActiveHazard->SetVisibility(false, true);
+        g_vr_body->ActiveHazard->SetVisibility(true, true);
+
+        API::get()->log_warn("[vr_body][initialize_active_hazard] Initialized");
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][initialize_active_hazard] Exception");
     }
 }
 

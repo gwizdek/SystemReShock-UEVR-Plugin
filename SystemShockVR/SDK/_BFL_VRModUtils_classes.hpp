@@ -22,6 +22,7 @@ class U_BFL_VRModUtils_C final : public UBlueprintFunctionLibrary
 {
 public:
 	static void GetMeshPrimitiveFromPickableInteractable(class UObject* Interactable, class UObject* __WorldContext, class UPrimitiveComponent** Primitive);
+	static void ShowNotification(class AActor* SourceActor, const class FText& InteractMessage, bool IsWarning, class UObject* __WorldContext);
 
 public:
 	static class UClass* StaticClass()

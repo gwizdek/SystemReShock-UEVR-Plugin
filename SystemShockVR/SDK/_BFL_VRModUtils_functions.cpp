@@ -42,5 +42,31 @@ void U_BFL_VRModUtils_C::GetMeshPrimitiveFromPickableInteractable(class UObject*
 		*Primitive = Parms.Primitive;
 }
 
+
+// Function _BFL_VRModUtils._BFL_VRModUtils_C.ShowNotification
+// (Static, Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor*                           SourceActor                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FText                             InteractMessage                                        (BlueprintVisible, BlueprintReadOnly, Parm)
+// bool                                    IsWarning                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// class UObject*                          __WorldContext                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void U_BFL_VRModUtils_C::ShowNotification(class AActor* SourceActor, const class FText& InteractMessage, bool IsWarning, class UObject* __WorldContext)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("_BFL_VRModUtils_C", "ShowNotification");
+
+	Params::_BFL_VRModUtils_C_ShowNotification Parms{};
+
+	Parms.SourceActor = SourceActor;
+	Parms.InteractMessage = std::move(InteractMessage);
+	Parms.IsWarning = IsWarning;
+	Parms.__WorldContext = __WorldContext;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
 }
 

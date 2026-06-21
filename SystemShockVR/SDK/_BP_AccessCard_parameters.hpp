@@ -10,16 +10,16 @@
 
 #include "Basic.hpp"
 
+#include "STRUCT_InteractResults_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
 
 
 namespace SDK::Params
 {
 
 // Function _BP_AccessCard._BP_AccessCard_C.ExecuteUbergraph__BP_AccessCard
-// 0x01E8 (0x01E8 - 0x0000)
+// 0x01F0 (0x01F0 - 0x0000)
 struct _BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard final
 {
 public:
@@ -66,16 +66,18 @@ public:
 	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0188(0x0020)(HasGetValueTypeHash)
 	class FString                                 CallFunc_GetDisplayName_ReturnValue;               // 0x01A8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x01B8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class AINTERACT_DoorBase_C*                   K2Node_DynamicCast_AsINTERACT_Door_Base;           // 0x01C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x01D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	uint8                                         Pad_1D1[0x7];                                      // 0x01D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_1;             // 0x01D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x01E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x01E1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x01E2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x01C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1C9[0x7];                                      // 0x01C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AINTERACT_DoorBase_C*                   K2Node_DynamicCast_AsINTERACT_Door_Base;           // 0x01D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x01D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_1D9[0x7];                                      // 0x01D9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 CallFunc_GetObjectClass_ReturnValue_1;             // 0x01E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ClassIsChildOf_ReturnValue;               // 0x01E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x01E9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x01EA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard) == 0x000008, "Wrong alignment on _BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard");
-static_assert(sizeof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard) == 0x0001E8, "Wrong size on _BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard");
+static_assert(sizeof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard) == 0x0001F0, "Wrong size on _BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard");
 static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, EntryPoint) == 0x000000, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::EntryPoint' has a wrong offset!");
 static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_CreateDelegate_OutputDelegate) == 0x000004, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
 static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_Event_DeltaSeconds) == 0x000014, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_Event_DeltaSeconds' has a wrong offset!");
@@ -114,12 +116,13 @@ static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFun
 static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_TryInteract_InteractResults) == 0x000188, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_TryInteract_InteractResults' has a wrong offset!");
 static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_GetDisplayName_ReturnValue) == 0x0001A8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_GetDisplayName_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_Concat_StrStr_ReturnValue) == 0x0001B8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_Concat_StrStr_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_DynamicCast_AsINTERACT_Door_Base) == 0x0001C8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_DynamicCast_AsINTERACT_Door_Base' has a wrong offset!");
-static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_DynamicCast_bSuccess_1) == 0x0001D0, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
-static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_GetObjectClass_ReturnValue_1) == 0x0001D8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_GetObjectClass_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_ClassIsChildOf_ReturnValue) == 0x0001E0, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BooleanAND_ReturnValue_1) == 0x0001E1, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BooleanAND_ReturnValue_2) == 0x0001E2, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x0001C8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_DynamicCast_AsINTERACT_Door_Base) == 0x0001D0, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_DynamicCast_AsINTERACT_Door_Base' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, K2Node_DynamicCast_bSuccess_1) == 0x0001D8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::K2Node_DynamicCast_bSuccess_1' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_GetObjectClass_ReturnValue_1) == 0x0001E0, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_GetObjectClass_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_ClassIsChildOf_ReturnValue) == 0x0001E8, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_ClassIsChildOf_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BooleanAND_ReturnValue_1) == 0x0001E9, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BooleanAND_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard, CallFunc_BooleanAND_ReturnValue_2) == 0x0001EA, "Member '_BP_AccessCard_C_ExecuteUbergraph__BP_AccessCard::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
 
 // Function _BP_AccessCard._BP_AccessCard_C.ReceiveTick
 // 0x0004 (0x0004 - 0x0000)

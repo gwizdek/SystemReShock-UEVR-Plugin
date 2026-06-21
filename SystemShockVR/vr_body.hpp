@@ -31,6 +31,9 @@ public:
     // Hacker Hardware
     static void initialize_hacker_hardware(SDK::UWIDGET_PlayerHUD_C* neural_hud);
 
+    // Active Hazard (poison / radiation) indicator reparented into a 3D widget component
+    static void initialize_active_hazard(SDK::UWIDGET_PlayerHUD_C* neural_hud);
+
     static void initialize_hand_item_collisions();
     static void set_debug_widget_visibility(bool visible);
 

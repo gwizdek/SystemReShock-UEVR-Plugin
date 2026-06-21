@@ -405,6 +405,10 @@ void PluginUtils::handle_native_stereo_fix_cycler(const UEVR_VRData* vr) {
 }
 
 void PluginUtils::cycle_native_stereo_fix() {
+    // don't begin cycle if it's already cycling
+    if (PluginUtils::m_native_fix_tick_counter >= 0) {
+        return;
+    }
     const UEVR_VRData* vr = API::get()->param()->vr;
 
     char vr_native_stereo_fix_str[16] = { 0 };
@@ -412,7 +416,7 @@ void PluginUtils::cycle_native_stereo_fix() {
 
     // cycle only if the setting is enabled
     if (std::string(vr_native_stereo_fix_str, strnlen(vr_native_stereo_fix_str, sizeof(vr_native_stereo_fix_str))) == "true") {
-        PluginUtils::m_native_fix_tick_counter = 200;
+        PluginUtils::m_native_fix_tick_counter = 20;
         vr->set_mod_value("VR_NativeStereoFix", "false");
         API::get()->log_warn("[plugin_utils][handle_native_stereo_fix_cycler] Native Stereo Fix: OFF");
     }

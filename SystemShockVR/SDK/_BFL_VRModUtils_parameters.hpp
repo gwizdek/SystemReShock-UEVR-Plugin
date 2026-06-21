@@ -70,5 +70,29 @@ static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractabl
 static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, K2Node_DynamicCast_bSuccess_4) == 0x000080, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::K2Node_DynamicCast_bSuccess_4' has a wrong offset!");
 static_assert(offsetof(_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable, CallFunc_ClassIsChildOf_ReturnValue_3) == 0x000081, "Member '_BFL_VRModUtils_C_GetMeshPrimitiveFromPickableInteractable::CallFunc_ClassIsChildOf_ReturnValue_3' has a wrong offset!");
 
+// Function _BFL_VRModUtils._BFL_VRModUtils_C.ShowNotification
+// 0x0048 (0x0048 - 0x0000)
+struct _BFL_VRModUtils_C_ShowNotification final
+{
+public:
+	class AActor*                                 SourceActor;                                       // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FText                                   InteractMessage;                                   // 0x0008(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm)
+	bool                                          IsWarning;                                         // 0x0020(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                __WorldContext;                                    // 0x0028(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWIDGET_PlayerHUD_C*                    NeuralHUDWidget;                                   // 0x0030(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APAWN_Hacker_Implant_C*                 K2Node_DynamicCast_AsPAWN_Hacker_Implant;          // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+};
+static_assert(alignof(_BFL_VRModUtils_C_ShowNotification) == 0x000008, "Wrong alignment on _BFL_VRModUtils_C_ShowNotification");
+static_assert(sizeof(_BFL_VRModUtils_C_ShowNotification) == 0x000048, "Wrong size on _BFL_VRModUtils_C_ShowNotification");
+static_assert(offsetof(_BFL_VRModUtils_C_ShowNotification, SourceActor) == 0x000000, "Member '_BFL_VRModUtils_C_ShowNotification::SourceActor' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_ShowNotification, InteractMessage) == 0x000008, "Member '_BFL_VRModUtils_C_ShowNotification::InteractMessage' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_ShowNotification, IsWarning) == 0x000020, "Member '_BFL_VRModUtils_C_ShowNotification::IsWarning' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_ShowNotification, __WorldContext) == 0x000028, "Member '_BFL_VRModUtils_C_ShowNotification::__WorldContext' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_ShowNotification, NeuralHUDWidget) == 0x000030, "Member '_BFL_VRModUtils_C_ShowNotification::NeuralHUDWidget' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_ShowNotification, K2Node_DynamicCast_AsPAWN_Hacker_Implant) == 0x000038, "Member '_BFL_VRModUtils_C_ShowNotification::K2Node_DynamicCast_AsPAWN_Hacker_Implant' has a wrong offset!");
+static_assert(offsetof(_BFL_VRModUtils_C_ShowNotification, K2Node_DynamicCast_bSuccess) == 0x000040, "Member '_BFL_VRModUtils_C_ShowNotification::K2Node_DynamicCast_bSuccess' has a wrong offset!");
+
 }
 

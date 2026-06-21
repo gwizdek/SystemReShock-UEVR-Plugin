@@ -59,7 +59,7 @@ static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_Initialize, CallFun
 static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_Initialize, CallFunc_MakeTransform_ReturnValue_1) == 0x0000D0, "Member '_BP_LeverInteractionSourceComponent_C_Initialize::CallFunc_MakeTransform_ReturnValue_1' has a wrong offset!");
 
 // Function _BP_LeverInteractionSourceComponent._BP_LeverInteractionSourceComponent_C.TryInteract
-// 0x0070 (0x0070 - 0x0000)
+// 0x0078 (0x0078 - 0x0000)
 struct _BP_LeverInteractionSourceComponent_C_TryInteract final
 {
 public:
@@ -70,29 +70,33 @@ public:
 	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FVector                                CallFunc_K2_GetComponentLocation_ReturnValue;      // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FSTRUCT_InteractResults                CallFunc_TryInteract_InteractResults;              // 0x0030(0x0020)(HasGetValueTypeHash)
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0050(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_X;                            // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Y;                            // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BreakVector_Z;                            // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_VSize_ReturnValue;                        // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x006C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
-	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x006D(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0054(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_VSize_ReturnValue;                        // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_FloatFloat_ReturnValue;           // 0x0064(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_65[0x3];                                       // 0x0065(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_BreakVector_X;                            // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Y;                            // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BreakVector_Z;                            // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_NotEqual_FloatFloat_ReturnValue;          // 0x0074(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor)
 };
 static_assert(alignof(_BP_LeverInteractionSourceComponent_C_TryInteract) == 0x000008, "Wrong alignment on _BP_LeverInteractionSourceComponent_C_TryInteract");
-static_assert(sizeof(_BP_LeverInteractionSourceComponent_C_TryInteract) == 0x000070, "Wrong size on _BP_LeverInteractionSourceComponent_C_TryInteract");
+static_assert(sizeof(_BP_LeverInteractionSourceComponent_C_TryInteract) == 0x000078, "Wrong size on _BP_LeverInteractionSourceComponent_C_TryInteract");
 static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, SourceActor) == 0x000000, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::SourceActor' has a wrong offset!");
 static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, HandInteraction) == 0x000008, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::HandInteraction' has a wrong offset!");
 static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, K2Node_DynamicCast_AsINTERF_Interactable) == 0x000010, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::K2Node_DynamicCast_AsINTERF_Interactable' has a wrong offset!");
 static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, K2Node_DynamicCast_bSuccess) == 0x000020, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::K2Node_DynamicCast_bSuccess' has a wrong offset!");
 static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_K2_GetComponentLocation_ReturnValue) == 0x000024, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_K2_GetComponentLocation_ReturnValue' has a wrong offset!");
 static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_TryInteract_InteractResults) == 0x000030, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_TryInteract_InteractResults' has a wrong offset!");
-static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_Subtract_VectorVector_ReturnValue) == 0x000050, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_BreakVector_X) == 0x00005C, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_BreakVector_X' has a wrong offset!");
-static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_BreakVector_Y) == 0x000060, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_BreakVector_Y' has a wrong offset!");
-static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_BreakVector_Z) == 0x000064, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_BreakVector_Z' has a wrong offset!");
-static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_VSize_ReturnValue) == 0x000068, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_VSize_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x00006C, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_Greater_FloatFloat_ReturnValue) == 0x00006D, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_EqualEqual_ByteByte_ReturnValue) == 0x000050, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_EqualEqual_ByteByte_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_Subtract_VectorVector_ReturnValue) == 0x000054, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_Subtract_VectorVector_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_VSize_ReturnValue) == 0x000060, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_VSize_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_Greater_FloatFloat_ReturnValue) == 0x000064, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_Greater_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_BreakVector_X) == 0x000068, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_BreakVector_X' has a wrong offset!");
+static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_BreakVector_Y) == 0x00006C, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_BreakVector_Y' has a wrong offset!");
+static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_BreakVector_Z) == 0x000070, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_BreakVector_Z' has a wrong offset!");
+static_assert(offsetof(_BP_LeverInteractionSourceComponent_C_TryInteract, CallFunc_NotEqual_FloatFloat_ReturnValue) == 0x000074, "Member '_BP_LeverInteractionSourceComponent_C_TryInteract::CallFunc_NotEqual_FloatFloat_ReturnValue' has a wrong offset!");
 
 }
 

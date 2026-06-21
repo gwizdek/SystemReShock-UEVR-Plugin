@@ -701,18 +701,18 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
         }
 
         // debug - show all primitive components in range
-        if (m_gamepad_left_trigger.is_held() && m_gamepad_right_shoulder.is_pressed()) {
-            PluginUtils::show_all_primitive_components(m_world, g_vr_body->MotionControllerRight, 100.f, true);
+        //if (m_gamepad_left_trigger.is_held() && m_gamepad_right_shoulder.is_pressed()) {
+        //    PluginUtils::show_all_primitive_components(m_world, g_vr_body->MotionControllerRight, 100.f, true);
 
-            if (m_neural_hud != nullptr) {
-                //SDK::FText my_text = SDK::UKismetTextLibrary::Conv_StringToText(L"ACCESS GRANTED");
-                //m_neural_hud->EVENT_OnFeedbackDataChanged(ENUM_InteractResultType::NewEnumerator0, my_text);
-                API::get()->log_warn("[plugin][handle_citadel_station_xinput] Queue notification");
-                m_neural_hud->QueueNotification(
-                    SDK::UKismetTextLibrary::Conv_StringToText(L"SHODAN is watching."),
-                    /*IsWarning=*/ false);
-            }
-        }
+        //    if (m_neural_hud != nullptr) {
+        //        //SDK::FText my_text = SDK::UKismetTextLibrary::Conv_StringToText(L"ACCESS GRANTED");
+        //        //m_neural_hud->EVENT_OnFeedbackDataChanged(ENUM_InteractResultType::NewEnumerator0, my_text);
+        //        API::get()->log_warn("[plugin][handle_citadel_station_xinput] Queue notification");
+        //        m_neural_hud->QueueNotification(
+        //            SDK::UKismetTextLibrary::Conv_StringToText(L"SHODAN is watching."),
+        //            /*IsWarning=*/ false);
+        //    }
+        //}
 
         // pull out a gun when right hand is leaving backpack collision sphere
         if (m_is_pulling_gun_out && m_is_right_hand_reaching_backpack.disabled()) {
@@ -1027,18 +1027,7 @@ void UEVRPlugin::handle_game_state_change() {
             const UEVR_SDKData* sdk = API::get()->sdk();
 
             // hides UI on the monitor for selected states: it's for recording videos without UI being visible
-            //if (
-            //    m_game_state.get() == GAME_STATE_CITADEL_STATION ||
-            //    m_game_state.get() == GAME_STATE_APPARTMENT ||
-            //    m_game_state.get() == GAME_STATE_CYBERSPACE
-            //    ) {
-            //    set_game_ui_visibility(false);
-            //}
-            //else {
-            //    set_game_ui_visibility(true);
-            //}
-
-            set_game_ui_visibility(true);
+            set_game_ui_visibility(m_game_state.get() != GAME_STATE_CITADEL_STATION);
 
             switch (m_game_state.get()) {
                 case GAME_STATE_INTRO_DRONE:
@@ -1047,7 +1036,7 @@ void UEVRPlugin::handle_game_state_change() {
                     vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
                     API::UObjectHook::set_disabled(false);
                     PluginUtils::reset_height(0.f);
-                    //PluginUtils::cycle_native_stereo_fix();
+                    PluginUtils::cycle_native_stereo_fix();
                     break;
 
                 case GAME_STATE_INTRO_LAPTOP:
@@ -1138,9 +1127,9 @@ void UEVRPlugin::handle_game_state_change() {
                     vr->set_aim_method(0);
 
                     if (is_valid_vr_body_hacker_implant_pawn()) {
-                        if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-                            m_neural_hud->SetVisibility(ESlateVisibility::Visible);
-                        }
+                        //if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
+                        //    m_neural_hud->SetVisibility(ESlateVisibility::Visible);
+                        //}
                         VRMFD::show_mfd();
                     }
 
@@ -1231,9 +1220,9 @@ void UEVRPlugin::handle_game_state_change() {
                     break;
 
                 case GAME_STATE_BOOTING_UP:
-                    if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-                        m_neural_hud->SetVisibility(ESlateVisibility::Visible);
-                    }
+                    //if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
+                    //    m_neural_hud->SetVisibility(ESlateVisibility::Visible);
+                    //}
                     vr->set_aim_method(0);
                     vr->recenter_view();
                     vr->set_mod_value("UI_Distance", "2.000000");
@@ -1243,9 +1232,9 @@ void UEVRPlugin::handle_game_state_change() {
                     break;
 
                 case GAME_STATE_CRASHING:
-                    if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-                        m_neural_hud->SetVisibility(ESlateVisibility::Visible);
-                    }
+                    //if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
+                    //    m_neural_hud->SetVisibility(ESlateVisibility::Visible);
+                    //}
                     vr->set_aim_method(0);
                     vr->recenter_view();
                     vr->set_mod_value("UI_Distance", "2.000000");
@@ -1295,6 +1284,7 @@ void UEVRPlugin::handle_level_change() {
                     VRBody::overwrite_hacker_crouch_animations();
                     VRBody::initialize_minimap(m_neural_hud);
                     VRBody::initialize_hacker_hardware(m_neural_hud);
+                    VRBody::initialize_active_hazard(m_neural_hud);
                     VRBody::initialize_ads();
                     VRBody::initialize_hand_item_collisions();
                     VRItemSelector::initialize(m_neural_hud);
@@ -1927,8 +1917,21 @@ void UEVRPlugin::initialize_mcs(APAWN_Hacker_Implant_C* pawn) {
 }
 
 void UEVRPlugin::set_game_ui_visibility(bool visible) {
-    if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
-        m_neural_hud->SetVisibility(visible ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
+    try {
+        if (
+            UKismetSystemLibrary::IsValid(m_pawn.get()) &&
+            m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass()) &&
+            UKismetSystemLibrary::IsValid(m_neural_hud)
+            ) {
+            m_neural_hud->SetVisibility(ESlateVisibility::Visible);
+            m_neural_hud->PANEL_GameHUD->SetVisibility(visible ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
+            m_neural_hud->ShowCrosshairs(false);
+            //m_neural_hud->PANEL_Notification->SetVisibility(ESlateVisibility::Visible);
+
+        }
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][set_game_ui_visibility] Exception");
     }
 }
 
