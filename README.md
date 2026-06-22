@@ -1,153 +1,133 @@
-# SystemReShock UEVR Plugin
+# SystemReShock UEVR Plugin v2.0
 
 > [!WARNING]
-> The profile doesn't work with the Demo version of the game available on Steam
+> The profile doesn't work with the demo version from Steam and full game from GOG (GOG support will be added after the mod gets stable)
+
+> [!WARNING]
+> Mod installation requires extra step - copying PAK files from profile's `\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
   
-> [!NOTE]
-> The profile is now also available through Unreal Easy Injector https://uevrdeluxe.org
-
-> [!NOTE]
-> Optional mod files available:
-> * Markmon's Index Knuckles support
-> * Ashok's character arms and physical melee gesture mods
-
-### Welcome back to Citadel Station hackers...
-
-This UEVR plugin is inspired by wonderful work of Ashok and the team (CJ117, TimBurton and Markmon), who created the original UEVR plugin ([**Link**](https://github.com/Ashok0/SystemShock-UEVR)) and it borrows some of the fixes and ideas, so many thanks to the guys.  
-
-Of course, let's not forget, that it wouldn't be possible without Praydog, the author of UEVR!
+Omg, it's been a lot of work to get to this point. Enjoy!  
+You can leave me a tip here: https://ko-fi.com/gwizdek
 
 ## Features
-* 6DOF
-* working crosshair (guns, puzzles, vending machines)
-* emulated crosshair depth
-* minimalistic HUD
-* minimap and health bars attached to right hand
-* hotbar item selector - HL:A style
-* hacker hardware toggler
-* emulated MFD laser pointer 
-* plugin options accessible through overlay
-* refined controller mappings
-* two aiming modes for cyberspace
+* 6DOF FBIK. Full roomscale VR.
+* Physical interactions
+* HL:A style item selector
+* Automatic Aim Pose - aim the weapon, your walking speed will decrease but accuracy incease.
+* Many more... (I will list them later)
 
 ## Installation
-1) Install UEVR ver 1.05 from [**HERE**](https://github.com/praydog/UEVR/releases). (Works also with Nightly builds)
+1) Install latest UEVR Nightly [**HERE**](https://github.com/praydog/UEVR-nightly/releases).
 2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
-3) Download the latest release of the SystemReShock UEVR plugin from Releases page. Click "Import Config" in the UEVR UI and navigate to "SystemReShock-Win64-Shipping.zip" and click on it and accept the DLL warning.
-4) Add optional mod files (Index controllers support, Player Arms mod, Melee Gesture mod) - described below
-5) Launch System Shock and inject the game with UEVR
-6) Reset controller bindings in game options to defaults
+3) Download the 2.0-beta.1 release of the SystemReShock UEVR plugin from Releases page.
+4) Click "Import Config" in the UEVR Frontend App and select downloaded "SystemReShock-Win64-Shipping.zip". Accept the DLL warning.
+5) Copy PAK files from `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
+6) Add optional mod files (Index controllers support, Red Tint Remover) - described below
+7) Launch System Shock and inject UEVR at MAIN MENU (this will allow the mod to set game options for VR play)
+8) Reset controller bindings in game options to defaults
+9) Optional (recommended) - Tick `Autoplay Media Logs` in Gameplay Options
+
+> [!NOTE]
+> If you have an NVIDIA GPU, use DLSS Swapper to use newer, transformer model capable version. Set profile J or K (sharpest and not as heavy as L / M)
+
+> [!WARNING]
+> Save the game to new slots often (many things can go wrong)
+
+## Gestures
+
+| Gesture | How To |
+|---------|-------------|
+| Calibrate VR view | Press **Left Thumb** while holding the left motion controller close to your left ear |
+| Use Item Selector | Assign a consumable item or weapon to a hotbar slot via the MFD. Press and hold **Right Thumb**, select an item, and release the button |
+| Toggle flashlight | Press **Left Grip** while holding the left motion controller close to your left ear |
+| Put an item into backpack | Release **Left Grip** or **Right Grip** while holding a pickable item over your shoulder (works if there's enough space in the inventory) |
+| Toggle MFD | Place your right motion controller over your inner left wrist and press **Right Grip** |
+| Holster weapon | Press **Right Grip** over your shoulder |
+| Take out holstered weapon | Press **Right Grip** over your shoulder, then move your hand forward |
+| Unlock doors | Press and hold **Left Grip** over the Access Card (located on your waist) to hold it. Swipe the card close to yellow door scanners to unlock them (provided you picked up the correct Access Card earlier). |
+| Pull levers | Grip a lever with your left hand using the **Left Grip** button, then move your hand |
+| Use consumable item | Equip a consumable item via the item selector, then use a pointing hand pose and touch the consumable with your finger |
+| Toggle Hacker Hardware | Use a pointing hand pose and touch one of the Hardware Icons attached to your right forearm (hardware needs to be installed first) |
+| Use Power Station | Hold your left hand close to the Power Station |
+
+> [!NOTE]
+> If you're having problems with interactions, you can use laser pointer and press game's interaction button (B by default).  
+> Laser pointer is active when you're holding a ranged weapon or you can activate it with **Right Trigger** if your hand is empty
 
 ## Controls
 ### General
-* **A** - Interact / Reload
-* **B** - Jump
-* **X** - Crouch / Exit menus and interactions
-* **Y** - Switch weapon mode
-* **Right Trigger** - Fire weapon / Use item / Throw grenade
-* **Right Grip (hold / release)** - Select hotbar item
-* **Right Stick Button (hold / release)** - Toggle hacker hardware
-* **Left Trigger** - Aim (useful for handling automatic weapons) / Use Target Identifier
-* **Left Grip** - Toggle run / walk *(configurable in plugin options)*
-* **Left Stick Button** - Hold to run (possibly will be remapped to something more useful)
-* **MENU BUTTON** (hold 1s) - Toggle MFD  
-* **MENU BUTTON** (short press) - Open game menu  
+| Button | Description |
+|--------|-------------|
+| A | Jump |
+| B | Interact (when the Laser Pointer's dot is green) / Reload weapon |
+| X | Crouch / Exit menus and interactions |
+| Y | Switch weapon mode |
+| Right Trigger | Fire weapon / Throw grenade / Enable laser pointer (empty hand) |
+| Right Thumb (hold / release) | Select hotbar item |
+| Right Grip | Pick up highlighted item / Pointing pose |
+| Left Trigger | Aim (useful for handling automatic weapons) |
+| Left Grip | Pick up highlighted item / Loot corpse / Pointing pose |
+| Left Thumb (hold) | Run |
+| Left Thumb (press and hold 1s while holding the left motion controller close to your left ear) | Enter the VR Menu to adjust player height (the setting can't be stored yet). Press again to exit the menu. |
+| MENU — left hamburger button | Open game menu |
+| MENU — left hamburger button (hold 1s) | Toggle MFD (this binding depends on the VR runtime used and can differ). It can conflict with the Virtual Desktop binding (rebind in VR). Use the MFD gesture instead. |
 
 ### MFD
-* **A** - Select
-* **B** - Take all loot / Sort inventory
-* **X** - Exit / Back
-* **Y** - Open MFD contex menu
-* **Right Trigger (hold 1s)** - Vaporize junk
-* **Left Trigger (hold)** - Show item description
+| Button | Description |
+|--------|-------------|
+| **Right Trigger** | Select |
+| **Right Grip** | Open MFD context menu |
+| **Left Grip** | Take all loot (when looting enemies/bodies/containers) |
+| **X** | Exit / Back |
+| **Left Trigger (hold)** | Show item description |
 
 ### Cyberspace
-* **A** - Ascend
-* **X** - Descend
-* **Y** - Recall
-* **B** - Decoy
-* **Right Grip** - Ascend
-* **Left Grip** - Descend
-* **Right Stick Up** - Ascend
-* **Right Stick Down** - Descend
-* **Right Trigger** - Pulser
-* **Left Trigger** - I.C.E. Drill
-* **Right Stick Button** - Change aiming mode
-
-The Cyberspace part of System Shock is tricky to get right in VR, especially on different HMDs. The plugin currently supports two control implementations. The first one is suited for Meta Quest HMDs (tested by Ashok), the second one works on WMR headsets like my G2. We are limited in our testing to these HMDs and can't garantee compatibility with other headsets.  
-You can choose which implementation you want to use by accessing plugin options overlay and selecting `HMD`. Default value is `Meta Quest`. Both implementations support 2 aiming modes toggable via **Right Stick Button**.
-
-## Plugin Options
-Plugin options are accessible through a separate overlay window displayed when UEVR's overlay is visible.
-It is preferred to use mouse to make the adjustments.  
-
-Options are stored in your UEVR profile folder in `system_reshock_vr_config.ini` file. This file is created automatically first fime you inject the profile.  
-To save options press `Save Configuration` button.
-
-![mod_options](https://github.com/user-attachments/assets/72eda989-a461-42a8-acf2-2b152eb65606)  
-
-### Look Sensitivity
-Your character rotation speed
-
-### Player height modifier
-Some players reported that they feel the floor is much to close. You can adjust how tall you are here. You can also change UEVR world scale to something like 0.95 if you like.
-
-### Force hide compass
-This setting forces the top compass band to hide. If you really like the compass, you can untick it and toggle navigation software off/on through MFD to show it again.
-
-### Toggle run with Left Grip
-Option to disable walk/run toggle binded to Left Grip. You can still run by pressing and holding **Left Stick Button**
-
-### HMD
-Select control implementation for Cyberspace
-
-### Crosshair Depth
-If you feel the crosshair is to close or to far, you can adjust it here. It's specially useful when you change the world scale from default value of 1.0
-
-### Crosshair Cursor Scale and Cursor Brackets Scale
-The original game crosshair is way to big for my liking. I made it a lot smaller by default, but you can make it big again or hide it completely.
-You can also make it bearly visible. You may need to adjust this setting depending on selected game video resolution. The brackets part of crosshair is hidden by default.  
-
-### TargetID Reticle Scale
-When you upgrade your Target Identifier software, an additional reticle will be shown marking target's weak spot. You can control the size of this reticle using this option.  
-
-![target_reticle](https://github.com/user-attachments/assets/d10ff372-dccb-4e78-86c2-3a64d86d1571)  
-
-Press `Apply Crosshair Options` button after you make the changes.
-
-## Optional Mods by Ashok
-There are two additional files prepared by Ashok (included in the v1.2.0 release). You can choose to add them if you want to further enhance your gameplay.   
-### Player character's arms mod
-This `pak` mod makes player arms disappear. To install it, download `SystemShock-VRFixes_p.pak` file and place it inside `\Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.  
-![hands_mod_resized](https://github.com/user-attachments/assets/d72b8c90-38f2-4f52-bfe1-e1139c68053f)  
-
-### Physical Melee mod
-This is a `lua` script that brings back physical melee (swing gesture) from the original Ashok's mod. To install it, download `SSR_PhysicalMelee.lua` file and place it into `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\scripts` folder.  
+| Button | Description |
+|--------|-------------|
+| **A** | Ascend |
+| **X** | Descend |
+| **Y** | Recall |
+| **B** | Decoy |
+| **Right Grip** | Ascend |
+| **Left Grip** | Descend |
+| **Right Stick Up** | Ascend |
+| **Right Stick Down** | Descend |
+| **Right Trigger** | Pulser |
+| **Left Trigger** | I.C.E. Drill |
 
 ## Limitations
-* no physical crouching
+* Mods that modify crosshair, hotbar slots, MFD and other game logic can have negative impact on the plugin and can cause it to break.
 
-## Compatibility
-Mods that modify crosshair, hotbar slots, inventory and mfd can have negative impact on the plugin.
+## Suggested Mods
+* Remove red tint:  https://www.nexusmods.com/systemshock2023/mods/33
+* Markmon's support mod for Index Knuckles
 
 ## Troubleshooting
-### General
-* I can't see the crosshair!  
-  The crosshair scaling may look different depending on your monitor resolution. This can lead to a crosshair being too big or too small/invisible.
-  To change the scale, use your normal mouse and monitor to access mod options menu, and change `Crosshair Cursor Scale` setting. Press `Apply Crosshair Options` button to see the changes and finally `Save Configuration` button to store them.
-* (Quest 2/3) My character changes weapons/items on it's own - Do you rest your thumb on the thumbrest area (dpad shifting button) of the controller? You can disable this feature in the UEVR overlay.
+* My view starts shaking and loosing sync between eyes - This happens to me after level change, player death, or going to Main Menu. Open UEVR overlay and toggle Native Stereo Fix off and on
 * Laser pointer on the MFD doesn't work - Check if the game window is in focus.
-* (Valve Index): [**this**](https://github.com/mark-mon/uevr-index-controls/releases) tool by markmon will allow use of Knuckles controllers  
+* Misaligned cursor and laser pointer on MFD - Happens when resolution was changed, reinitialize runtime and reload a save game.
+* My MFD is to wide - You can try to change the game resolution to match 16:9 aspect ratio, set `Window Mode` in game options to `Windowed Fullscreen`, then press Alt+Enter so it no longer takes the whole screen. Lastly, reload a save game.
+
+## Known Bugs
+* Final Shodan boss battle not working yet
+* Wake-up from cryosleep animation not aligned (other animations like climbing ladders are buggy too)
+* Right hand doesn't snap to levers correctly
+* Red laser can point to the right in MFD when Mini Pistol was equipped
+* You can steal from cabinets by physically grabbing items
+* Proximity Mine can stick to you and blow up when trying to throw it (sorry)
+* Using wire connectors in wire puzzle can be tricky/too sensitive (helper: use right hand)
+* You can stand up and see through the level geometry when traversing low tunnels
+* You can stick your gun through a door and shoot enemies on the other side
+* Some of the two handed weapon poses are not aligned
+* Missing parts or reload animations for Railgun(cooldown), Plasma Rifle (plasma core ammo)
+* Sparq weapon - mode dial is not pointing at correct energy power setting (the lights work ok though)
+* It's hard to open the X + shaped glass doors using hands - hold grip button and touch the corner outside of circular button area or point the laser at it and use interact button.  
+<img width="308" height="298" alt="image" src="https://github.com/user-attachments/assets/9c9e2d65-d847-4f3f-b292-175cc5bbfed1" />
+
 
 ### Widescreen monitors
 * Misaligned cursor and laser pointer on MFD - Happens when resolution was changed, reinitialize runtime and reload a save game.
 * My MFD is to wide - You can try to change the game resolution to match 16:9 aspect ratio, set `Window Mode` in game options to `Windowed Fullscreen`, then press Alt+Enter so it no longer takes the whole screen. Lastly, reload a save game.
 
-## Known Bugs
-* Intro laptop animation not behaving correctly
-* Wake up from cryosleep animation not aligned
-* Game button prompts are not correct
-* The crosshair is not pointing exactly where I think it should when close to walls / objects - it's a side effect of emulating the crosshair instead of actually computing its correct position.
-
-## Disclaimer
-This plugin was developed on HP Reverb G2 using OpenXR API. Some testing was performed by me on G2 and by Ashok on Q2 / Q3 (Thank you!). It's a limited set of HMDs, so you may bump into bugs, depending on your setup!
+## Credits
+Many thanks to praydog, creator of UEVR, members of the modding community and content creators for covering this mod.
