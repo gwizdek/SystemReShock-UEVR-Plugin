@@ -7,6 +7,9 @@
 > Mod installation requires extra step - copying PAK files from profile's `\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
   
 Omg, it's been a lot of work to get to this point. Enjoy!  
+Watch the tutorial video to see what this mod has to offer [**YouTube**](https://youtu.be/Gke3bmS2L-U?si=RVIDS3npQqPzgr2q)  
+<img width="534" height="298" alt="image" src="https://github.com/user-attachments/assets/82a33495-01d4-45ee-a61c-de95002c0628" />  
+
 You can leave me a tip here: https://ko-fi.com/gwizdek
 
 ## Features
