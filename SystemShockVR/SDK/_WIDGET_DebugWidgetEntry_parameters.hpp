@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "SlateCore_structs.hpp"
 #include "_ENUM_DebugWidgetEntryType_structs.hpp"
+#include "SlateCore_structs.hpp"
 
 
 namespace SDK::Params

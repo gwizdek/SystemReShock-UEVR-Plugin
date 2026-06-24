@@ -1,0 +1,4822 @@
+[
+  {
+    "Type": "Function",
+    "Name": "ExecuteUbergraph_WIDGET_Subtitles",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "IntProperty",
+        "Name": "EntryPoint",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_TryUpdateSubtitleText_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "K2Node_Event_MyGeometry",
+        "Flags": "RF_Public",
+        "ElementSize": 56,
+        "Struct": {
+          "ObjectName": "ScriptStruct'Geometry'",
+          "ObjectPath": "/Script/SlateCore"
+        }
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "K2Node_Event_InDeltaTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetShockSettingsForCurrentUser_Settings",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'SAVE_Settings_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Settings/SAVE_Settings.281"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetSubtitlesEnabled_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Final | FUNC_UbergraphFunction | FUNC_HasDefaults"
+  },
+  {
+    "Type": "Function",
+    "Name": "Tick",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "SuperStruct": {
+      "ObjectName": "Function'UserWidget:Tick'",
+      "ObjectPath": "/Script/UMG"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "MyGeometry",
+        "Flags": "RF_Public",
+        "ElementSize": 56,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "Struct": {
+          "ObjectName": "ScriptStruct'Geometry'",
+          "ObjectPath": "/Script/SlateCore"
+        }
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "InDeltaTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      }
+    ],
+    "FunctionFlags": "FUNC_BlueprintCosmetic | FUNC_Event | FUNC_Public | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "Construct",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "SuperStruct": {
+      "ObjectName": "Function'UserWidget:Construct'",
+      "ObjectPath": "/Script/UMG"
+    },
+    "FunctionFlags": "FUNC_BlueprintCosmetic | FUNC_Event | FUNC_Public | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "SequenceEvent_0",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "FunctionFlags": "FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "InitilalizeSubtitleWidget",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "MediaDisplay",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_MediaDisplay_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_MediaDisplay.17"
+        }
+      },
+      {
+        "Type": "InterfaceProperty",
+        "Name": "Player HUD",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "InterfaceClass": {
+          "ObjectName": "BlueprintGeneratedClass'INTERF_HUD_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/INTERF_HUD.15"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "ClearSubtitles",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "TextProperty",
+        "Name": "CallFunc_GetEmptyText_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 24
+      },
+      {
+        "Type": "TextProperty",
+        "Name": "CallFunc_GetEmptyText_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 24
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "SetSubtitlesEnabled",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "State",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "Temp_bool_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "EnumProperty",
+        "Name": "Temp_byte_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "Enum": {
+          "ObjectName": "Enum'ESlateVisibility'",
+          "ObjectPath": "/Script/UMG"
+        },
+        "UnderlyingProp": {
+          "Type": "ByteProperty",
+          "Name": "UnderlyingType",
+          "Flags": "RF_Public",
+          "ElementSize": 1,
+          "Enum": null
+        }
+      },
+      {
+        "Type": "EnumProperty",
+        "Name": "Temp_byte_Variable_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "Enum": {
+          "ObjectName": "Enum'ESlateVisibility'",
+          "ObjectPath": "/Script/UMG"
+        },
+        "UnderlyingProp": {
+          "Type": "ByteProperty",
+          "Name": "UnderlyingType",
+          "Flags": "RF_Public",
+          "ElementSize": 1,
+          "Enum": null
+        }
+      },
+      {
+        "Type": "EnumProperty",
+        "Name": "K2Node_Select_Default",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "Enum": {
+          "ObjectName": "Enum'ESlateVisibility'",
+          "ObjectPath": "/Script/UMG"
+        },
+        "UnderlyingProp": {
+          "Type": "ByteProperty",
+          "Name": "UnderlyingType",
+          "Flags": "RF_Public",
+          "ElementSize": 1,
+          "Enum": null
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "DisplayNewSubtitles",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StrProperty",
+        "Name": "ContextString",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "StartTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_TryAdvanceSubtitlesToStartTime_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_TryAdvanceSubtitlesToStartTime_StartTimeOnLine",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_TryUpdateSubtitleText_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "DisplaySubtitleFromMediaItemClass",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ClassProperty",
+        "Name": "MediaItemClass",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "PropertyClass": {
+          "ObjectName": "Class'Class'",
+          "ObjectPath": "/Script/CoreUObject"
+        },
+        "MetaClass": {
+          "ObjectName": "BlueprintGeneratedClass'ITEM_MediaBase_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/ITEM_MediaBase.8"
+        }
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "StartTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsValidClass_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_GetClassDisplayName_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "ClassProperty",
+        "Name": "K2Node_ClassDynamicCast_AsNOTE_Base",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'Class'",
+          "ObjectPath": "/Script/CoreUObject"
+        },
+        "MetaClass": {
+          "ObjectName": "BlueprintGeneratedClass'NOTE_Base_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/Notes/NOTE_Base.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_ClassDynamicCast_bSuccess",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetFemaleVersionOfSubtitle_MediaDataStruct",
+        "Flags": "RF_Public",
+        "ElementSize": 152,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_MediaObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_MediaObject.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Not_PreBool_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "DisplaySubtitleFromCutscene",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "NameProperty",
+        "Name": "SubtitleRowName",
+        "Flags": "RF_Public",
+        "ElementSize": 12,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetGameInstance_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'GameInstance'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Conv_NameToString_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "K2Node_DynamicCast_AsGI_Single_Player",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'GI_SinglePlayer_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Game/GI_SinglePlayer.300"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_DynamicCast_bSuccess",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "ByteProperty",
+        "Name": "CallFunc_GetHackerGender_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "Enum": {
+          "ObjectName": "UserDefinedEnum'ENUM_HackerGender'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Game/ENUM_HackerGender.0"
+        }
+      },
+      {
+        "Type": "NameProperty",
+        "Name": "CallFunc_Conv_StringToName_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 12
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_OutRow",
+        "Flags": "RF_Public",
+        "ElementSize": 96,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_DialogueCaptionObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_DialogueCaptionObject.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "K2Node_MakeStruct_STRUCT_MediaObject",
+        "Flags": "RF_Public",
+        "ElementSize": 152,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_MediaObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_MediaObject.0"
+        }
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_OutRow_1",
+        "Flags": "RF_Public",
+        "ElementSize": 96,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_DialogueCaptionObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_DialogueCaptionObject.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "K2Node_MakeStruct_STRUCT_MediaObject_1",
+        "Flags": "RF_Public",
+        "ElementSize": 152,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_MediaObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_MediaObject.0"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "DisplaySubtitleFromAtmospherics",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "NameProperty",
+        "Name": "SubtitleRowName",
+        "Flags": "RF_Public",
+        "ElementSize": 12,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "StartTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetGameInstance_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'GameInstance'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Conv_NameToString_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "K2Node_DynamicCast_AsGI_Single_Player",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'GI_SinglePlayer_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Game/GI_SinglePlayer.300"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_DynamicCast_bSuccess",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "ByteProperty",
+        "Name": "CallFunc_GetHackerGender_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "Enum": {
+          "ObjectName": "UserDefinedEnum'ENUM_HackerGender'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Game/ENUM_HackerGender.0"
+        }
+      },
+      {
+        "Type": "NameProperty",
+        "Name": "CallFunc_Conv_StringToName_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 12
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_OutRow",
+        "Flags": "RF_Public",
+        "ElementSize": 96,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_DialogueCaptionObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_DialogueCaptionObject.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "K2Node_MakeStruct_STRUCT_MediaObject",
+        "Flags": "RF_Public",
+        "ElementSize": 152,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_MediaObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_MediaObject.0"
+        }
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_OutRow_1",
+        "Flags": "RF_Public",
+        "ElementSize": 96,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_DialogueCaptionObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_DialogueCaptionObject.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "K2Node_MakeStruct_STRUCT_MediaObject_1",
+        "Flags": "RF_Public",
+        "ElementSize": 152,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_MediaObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_MediaObject.0"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "DisplaySubtitleFromTaunt",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "Media Data",
+        "Flags": "RF_Public",
+        "ElementSize": 152,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_MediaObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_MediaObject.0"
+        }
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "StartTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "DisplaySubtitleFromDialogueCaption",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "DialogueCaption",
+        "Flags": "RF_Public",
+        "ElementSize": 96,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_DialogueCaptionObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_DialogueCaptionObject.0"
+        }
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "StartTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsDisplayingSubtitles_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "K2Node_MakeStruct_STRUCT_MediaObject",
+        "Flags": "RF_Public",
+        "ElementSize": 152,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_MediaObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_MediaObject.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Not_PreBool_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "TryAdvanceSubtitlesToStartTime",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "FloatProperty",
+        "Name": "StartTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "StartTimeOnLine",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "Parm | OutParm"
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "SubtitleDisplayDuration",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "StartTimeRemaining",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "Temp_int_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Greater_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "CallFunc_Array_Length_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Less_IntInt_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "CallFunc_Add_IntInt_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GreaterEqual_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Subtract_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_Array_Get_Item",
+        "Flags": "RF_Public",
+        "ElementSize": 40,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_SubtitleToDisplay'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/STRUCT_SubtitleToDisplay.0"
+        }
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Divide_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      }
+    ],
+    "FunctionFlags": "FUNC_Protected | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "ParseTranscriptionText",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StrProperty",
+        "Name": "ContextString",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "SpeakerString",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "ArrayProperty",
+        "Name": "TranscriptionCharArray",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "Edit | BlueprintVisible",
+        "Inner": {
+          "Type": "StrProperty",
+          "Name": "TranscriptionCharArray",
+          "Flags": "RF_Public",
+          "ElementSize": 16
+        }
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CurrentCharacterParsing",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "BuiltString",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "BuiltTimeDuration",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "ByteProperty",
+        "Name": "SubtitleParseMode",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Edit | BlueprintVisible",
+        "Enum": {
+          "ObjectName": "UserDefinedEnum'ENUM_SubtitleParseMode'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/ENUM_SubtitleParseMode.0"
+        }
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "Temp_int_Array_Index_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "Temp_int_Loop_Counter_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "CallFunc_Add_IntInt_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_2",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue_2",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_3",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_4",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_SwitchString_CmpSuccess",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Array_Get_Item",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_TextIsEmpty_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Conv_TextToString_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "CallFunc_Array_Length_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "ArrayProperty",
+        "Name": "CallFunc_GetCharacterArrayFromString_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "ReferenceParm",
+        "Inner": {
+          "Type": "StrProperty",
+          "Name": "CallFunc_GetCharacterArrayFromString_ReturnValue",
+          "Flags": "RF_Public",
+          "ElementSize": 16
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Less_IntInt_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue_3",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_5",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_NotEqual_ByteByte_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue_4",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_6",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_7",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_8",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "Temp_string_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "ConstParm"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Array_Contains_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_9",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_10",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsNumeric_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue_5",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_11",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_12",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_13",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_14",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_15",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue_6",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ByteByte_ReturnValue_16",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "CreateSubtitleLineStruct",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StrProperty",
+        "Name": "BuiltString",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "BuiltTime",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "InterruptSpeaker",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Conv_StringToFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "K2Node_MakeStruct_STRUCT_SubtitleToDisplay",
+        "Flags": "RF_Public",
+        "ElementSize": 40,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_SubtitleToDisplay'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/STRUCT_SubtitleToDisplay.0"
+        }
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "CallFunc_Array_Add_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "UpdateSpeakerText",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "TextProperty",
+        "Name": "BuiltSpeakerName",
+        "Flags": "RF_Public",
+        "ElementSize": 24,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "PortraitFrameRate",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "PortraitColumnCount",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "PortraitRowCount",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "SoftObjectProperty",
+        "Name": "PortraitTexture",
+        "Flags": "RF_Public",
+        "ElementSize": 48,
+        "PropertyFlags": "Edit | BlueprintVisible",
+        "PropertyClass": {
+          "ObjectName": "Class'Texture2D'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "TextProperty",
+        "Name": "Surname",
+        "Flags": "RF_Public",
+        "ElementSize": 24,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "TextProperty",
+        "Name": "FirstName",
+        "Flags": "RF_Public",
+        "ElementSize": 24,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_Array_Get_Item",
+        "Flags": "RF_Public",
+        "ElementSize": 40,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_SubtitleToDisplay'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/STRUCT_SubtitleToDisplay.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsEmpty_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsValid_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "Temp_bool_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_Array_Get_Item_1",
+        "Flags": "RF_Public",
+        "ElementSize": 40,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_SubtitleToDisplay'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/STRUCT_SubtitleToDisplay.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_TextIsEmpty_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "NameProperty",
+        "Name": "CallFunc_Conv_StringToName_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 12
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_OutRow",
+        "Flags": "RF_Public",
+        "ElementSize": 112,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_NarrativeSpeakers'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_NarrativeSpeakers.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "TextProperty",
+        "Name": "CallFunc_GetStandardName_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 24
+      },
+      {
+        "Type": "TextProperty",
+        "Name": "K2Node_Select_Default",
+        "Flags": "RF_Public",
+        "ElementSize": 24
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_TextIsEmpty_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_OutRow_1",
+        "Flags": "RF_Public",
+        "ElementSize": 112,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_NarrativeSpeakers'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_NarrativeSpeakers.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "TryUpdateSubtitleText",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "FloatProperty",
+        "Name": "StartTimeOnLine",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "CallFunc_Array_Length_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Greater_IntInt_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_Array_Get_Item",
+        "Flags": "RF_Public",
+        "ElementSize": 40,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_SubtitleToDisplay'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/STRUCT_SubtitleToDisplay.0"
+        }
+      },
+      {
+        "Type": "TextProperty",
+        "Name": "CallFunc_Conv_StringToText_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 24
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_NotEqual_StrStr_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Divide_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Subtract_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "RevealSubtitles",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_PlayAnimation_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'UMGSequencePlayer'",
+          "ObjectPath": "/Script/UMG"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "HideSubtitles",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_PlayAnimation_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'UMGSequencePlayer'",
+          "ObjectPath": "/Script/UMG"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "ThrowParseError",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StrProperty",
+        "Name": "ContextString",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "ThrowMissingSubtitlesError",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StrProperty",
+        "Name": "ContextString",
+        "Flags": "RF_Public",
+        "ElementSize": 16,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_Concat_StrStr_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "ThrowMissingSpeakerError",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StrProperty",
+        "Name": "CallFunc_MakeLiteralString_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 16
+      },
+      {
+        "Type": "TextProperty",
+        "Name": "CallFunc_Conv_StringToText_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 24
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "TryHideSubtitlesForSoundCue",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "SoundCue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "PropertyClass": {
+          "ObjectName": "Class'SoundCue'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "SoftObjectProperty",
+        "Name": "CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 48,
+        "PropertyFlags": "UObjectWrapper",
+        "PropertyClass": {
+          "ObjectName": "Class'SoundCue'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_SoftObjectReference_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "TryHideSubtitlesForMediaHandle",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "MediaHandle",
+        "Flags": "RF_Public",
+        "ElementSize": 24,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "Struct": {
+          "ObjectName": "ScriptStruct'DataTableRowHandle'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_OutRow",
+        "Flags": "RF_Public",
+        "ElementSize": 96,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_DialogueCaptionObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_DialogueCaptionObject.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_OutRow_1",
+        "Flags": "RF_Public",
+        "ElementSize": 152,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_MediaObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_MediaObject.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_SoftObjectReference_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_SoftObjectReference_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ObjectObject_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_EqualEqual_ObjectObject_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "SetLineTransition",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "FloatProperty",
+        "Name": "DeltaTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_TryUpdateSubtitleText_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GreaterEqual_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Subtract_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "CallFunc_Add_IntInt_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "TickSubtitles",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "FloatProperty",
+        "Name": "DeltaTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "Temp_int_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_Conv_InterfaceToObject_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'Object'",
+          "ObjectPath": "/Script/CoreUObject"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetMainMenuWidget_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_MainMenu_InGame_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/MainMenu/WIDGET_MainMenu_InGame.28"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsValid_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Not_PreBool_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsValid_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Multiply_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Not_PreBool_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_TryUpdateSubtitleText_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "CallFunc_Add_IntInt_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Subtract_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_LessEqual_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_BooleanAND_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "IsDisplayingSubtitles",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent | FUNC_BlueprintPure"
+  },
+  {
+    "Type": "Function",
+    "Name": "ShouldDisplaySubtitles",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetShockSettingsForCurrentUser_Settings",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'SAVE_Settings_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Settings/SAVE_Settings.281"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetSubtitlesEnabled_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent | FUNC_BlueprintPure"
+  },
+  {
+    "Type": "Function",
+    "Name": "SequenceEvent__ENTRYPOINTWIDGET_Subtitles_0",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "WidgetBlueprintGeneratedClass",
+    "Name": "WIDGET_Subtitles_C",
+    "Flags": "RF_Public | RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'WidgetBlueprintGeneratedClass'",
+    "Package": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles",
+    "Properties": {
+      "WidgetTree": {
+        "ObjectName": "WidgetTree'WIDGET_Subtitles_C:WidgetTree'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.67"
+      },
+      "Animations": [
+        {
+          "ObjectName": "WidgetAnimation'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.65"
+        },
+        {
+          "ObjectName": "WidgetAnimation'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.66"
+        }
+      ],
+      "UberGraphFunction": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ExecuteUbergraph_WIDGET_Subtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.0"
+      }
+    },
+    "SuperStruct": {
+      "ObjectName": "Class'UserWidget'",
+      "ObjectPath": "/Script/UMG"
+    },
+    "Children": [
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:SequenceEvent__ENTRYPOINTWIDGET_Subtitles_0'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.29"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ShouldDisplaySubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.28"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:IsDisplayingSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.27"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TickSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.26"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:SetLineTransition'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.25"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TryHideSubtitlesForMediaHandle'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.24"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TryHideSubtitlesForSoundCue'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.23"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ThrowMissingSpeakerError'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.22"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ThrowMissingSubtitlesError'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.21"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ThrowParseError'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.20"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:HideSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.19"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:RevealSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.18"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TryUpdateSubtitleText'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.17"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:UpdateSpeakerText'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.16"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:CreateSubtitleLineStruct'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.15"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ParseTranscriptionText'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.14"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TryAdvanceSubtitlesToStartTime'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.13"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromDialogueCaption'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.12"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromTaunt'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.11"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromAtmospherics'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.10"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromCutscene'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.9"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromMediaItemClass'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.8"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplayNewSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.7"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:SetSubtitlesEnabled'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.6"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ClearSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.5"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:InitilalizeSubtitleWidget'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.4"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:SequenceEvent_0'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.3"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:Construct'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.2"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:Tick'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.1"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ExecuteUbergraph_WIDGET_Subtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.0"
+      }
+    ],
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "UberGraphFrame",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 16,
+        "PropertyFlags": "Transient | DuplicateTransient",
+        "Struct": {
+          "ObjectName": "ScriptStruct'PointerToUberGraphFrame'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "ANIM_ShowNextLine",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Transient | RepSkip",
+        "PropertyClass": {
+          "ObjectName": "Class'WidgetAnimation'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "ANIM_RevealSubtitles",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Transient | RepSkip",
+        "PropertyClass": {
+          "ObjectName": "Class'WidgetAnimation'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "Background",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'Image'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "DebugText",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'TextBlock'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "IMAGE_SpeakerBacking",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'Image'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "SubtitleContainer",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'CanvasPanel'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "TEXT_Speaker",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'TextBlock'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "TEXTMESH_SubtitleDisplayLine",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'TextMeshWidget'",
+          "ObjectPath": "/Script/SystemReShock"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "MediaDisplay",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_MediaDisplay_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_MediaDisplay.17"
+        }
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "MediaData",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 152,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_MediaObject'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/STRUCT_MediaObject.0"
+        }
+      },
+      {
+        "Type": "ArrayProperty",
+        "Name": "SubtitlesToDisplay",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 16,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "Inner": {
+          "Type": "StructProperty",
+          "Name": "SubtitlesToDisplay",
+          "Flags": "RF_Public",
+          "ElementSize": 40,
+          "Struct": {
+            "ObjectName": "UserDefinedStruct'STRUCT_SubtitleToDisplay'",
+            "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/STRUCT_SubtitleToDisplay.0"
+          }
+        }
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "CurrentSubtitleIndex",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance"
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CurrentSubtitleTimeRemaining",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "IsSubtitlesActive",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 1,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "IsSubtitleIndefinite",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 1,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "IsInterrupted",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 1,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StrProperty",
+        "Name": "LastSpeaker",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 16,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance"
+      },
+      {
+        "Type": "InterfaceProperty",
+        "Name": "PlayerHUD",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 16,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "InterfaceClass": {
+          "ObjectName": "BlueprintGeneratedClass'INTERF_HUD_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/INTERF_HUD.15"
+        }
+      }
+    ],
+    "FuncMap": {
+      "ExecuteUbergraph_WIDGET_Subtitles": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ExecuteUbergraph_WIDGET_Subtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.0"
+      },
+      "Tick": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:Tick'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.1"
+      },
+      "Construct": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:Construct'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.2"
+      },
+      "SequenceEvent_0": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:SequenceEvent_0'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.3"
+      },
+      "InitilalizeSubtitleWidget": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:InitilalizeSubtitleWidget'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.4"
+      },
+      "ClearSubtitles": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ClearSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.5"
+      },
+      "SetSubtitlesEnabled": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:SetSubtitlesEnabled'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.6"
+      },
+      "DisplayNewSubtitles": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplayNewSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.7"
+      },
+      "DisplaySubtitleFromMediaItemClass": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromMediaItemClass'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.8"
+      },
+      "DisplaySubtitleFromCutscene": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromCutscene'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.9"
+      },
+      "DisplaySubtitleFromAtmospherics": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromAtmospherics'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.10"
+      },
+      "DisplaySubtitleFromTaunt": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromTaunt'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.11"
+      },
+      "DisplaySubtitleFromDialogueCaption": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:DisplaySubtitleFromDialogueCaption'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.12"
+      },
+      "TryAdvanceSubtitlesToStartTime": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TryAdvanceSubtitlesToStartTime'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.13"
+      },
+      "ParseTranscriptionText": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ParseTranscriptionText'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.14"
+      },
+      "CreateSubtitleLineStruct": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:CreateSubtitleLineStruct'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.15"
+      },
+      "UpdateSpeakerText": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:UpdateSpeakerText'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.16"
+      },
+      "TryUpdateSubtitleText": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TryUpdateSubtitleText'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.17"
+      },
+      "RevealSubtitles": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:RevealSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.18"
+      },
+      "HideSubtitles": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:HideSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.19"
+      },
+      "ThrowParseError": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ThrowParseError'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.20"
+      },
+      "ThrowMissingSubtitlesError": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ThrowMissingSubtitlesError'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.21"
+      },
+      "ThrowMissingSpeakerError": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ThrowMissingSpeakerError'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.22"
+      },
+      "TryHideSubtitlesForSoundCue": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TryHideSubtitlesForSoundCue'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.23"
+      },
+      "TryHideSubtitlesForMediaHandle": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TryHideSubtitlesForMediaHandle'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.24"
+      },
+      "SetLineTransition": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:SetLineTransition'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.25"
+      },
+      "TickSubtitles": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:TickSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.26"
+      },
+      "IsDisplayingSubtitles": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:IsDisplayingSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.27"
+      },
+      "ShouldDisplaySubtitles": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:ShouldDisplaySubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.28"
+      },
+      "SequenceEvent__ENTRYPOINTWIDGET_Subtitles_0": {
+        "ObjectName": "Function'WIDGET_Subtitles_C:SequenceEvent__ENTRYPOINTWIDGET_Subtitles_0'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.29"
+      }
+    },
+    "ClassFlags": "CLASS_Optional | CLASS_ReplicationDataIsSetUp | CLASS_EditInlineNew | CLASS_CompiledFromBlueprint | CLASS_DefaultToInstanced | CLASS_HasInstancedReference",
+    "ClassWithin": {
+      "ObjectName": "Class'Object'",
+      "ObjectPath": "/Script/CoreUObject"
+    },
+    "ClassConfigName": "Engine",
+    "bCooked": true,
+    "ClassDefaultObject": {
+      "ObjectName": "WIDGET_Subtitles_C'Default__WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.31"
+    }
+  },
+  {
+    "Type": "WIDGET_Subtitles_C",
+    "Name": "Default__WIDGET_Subtitles_C",
+    "Flags": "RF_Public | RF_ClassDefaultObject | RF_ArchetypeObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "WidgetBlueprintGeneratedClass'SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.WIDGET_Subtitles_C'",
+    "Package": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles",
+    "Properties": {
+      "UberGraphFrame": {},
+      "MediaData": {
+        "AudioCue_26_7F2B07E447E33B01C0ED599D726CDA17": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "Speaker_4_D424542A4A6DB7361A5FD389A6F73675": {
+          "DataTable": {
+            "ObjectName": "DataTable'DT_MediaSpeakers'",
+            "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Media/DT_MediaSpeakers.0"
+          },
+          "RowName": "None"
+        },
+        "Subject_9_6DC3A64B450FF2D50757BB900EBE6B62": {
+          "CultureInvariantString": null
+        },
+        "TranscriptionMessage_25_FDDDCB0A42704969906FCB9AD17B0EF5": {
+          "CultureInvariantString": null
+        },
+        "Date_20_4EE0A20A43B9579D90FC4A82CC173DAF": {
+          "Ticks": 653790438000000000
+        },
+        "Level_29_00CFE57349BA786D99A807B326F6B56C": {
+          "DataTable": {
+            "ObjectName": "DataTable'DT_LevelInfo'",
+            "ObjectPath": "SystemShock/Content/Blueprints/Game/DT_LevelInfo.0"
+          },
+          "RowName": "None"
+        }
+      },
+      "bHasScriptImplementedPaint": false
+    }
+  },
+  {
+    "Type": "CanvasPanel",
+    "Name": "SpeakerContainer",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanel'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Subtitles_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.67"
+    },
+    "Properties": {
+      "Slots": [
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SpeakerContainer.CanvasPanelSlot_2'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.35"
+        },
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SpeakerContainer.CanvasPanelSlot_1'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.34"
+        }
+      ],
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer.CanvasPanelSlot_2'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.37"
+      }
+    }
+  },
+  {
+    "Type": "CanvasPanel",
+    "Name": "SubtitleContainer",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanel'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Subtitles_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.67"
+    },
+    "Properties": {
+      "Slots": [
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer.CanvasPanelSlot_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.36"
+        },
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer.CanvasPanelSlot_3'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.38"
+        },
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer.CanvasPanelSlot_2'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.37"
+        },
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer.CanvasPanelSlot_4'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.39"
+        }
+      ],
+      "bIsVariable": true,
+      "Visibility": "ESlateVisibility::HitTestInvisible",
+      "RenderOpacity": 0.0
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_1",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SpeakerContainer'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.32"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Top": 2.5,
+          "Bottom": 20.0
+        },
+        "Anchors": {
+          "Minimum": {
+            "X": 0.0,
+            "Y": 0.5
+          },
+          "Maximum": {
+            "X": 0.0,
+            "Y": 0.5
+          }
+        },
+        "Alignment": {
+          "X": 0.0,
+          "Y": 0.5
+        }
+      },
+      "bAutoSize": true,
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SpeakerContainer'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.32"
+      },
+      "Content": {
+        "ObjectName": "TextBlock'WIDGET_Subtitles_C:WidgetTree.TEXT_Speaker'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.63"
+      }
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_2",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SpeakerContainer'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.32"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Left": -10.0,
+          "Right": -10.0,
+          "Bottom": 40.0
+        },
+        "Anchors": {
+          "Minimum": {
+            "X": 0.0,
+            "Y": 0.5
+          },
+          "Maximum": {
+            "X": 1.0,
+            "Y": 0.5
+          }
+        },
+        "Alignment": {
+          "X": 0.0,
+          "Y": 0.5
+        }
+      },
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SpeakerContainer'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.32"
+      },
+      "Content": {
+        "ObjectName": "Image'WIDGET_Subtitles_C:WidgetTree.IMAGE_SpeakerBacking'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.41"
+      }
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.33"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Left": -25.0,
+          "Top": -25.0,
+          "Right": -25.0,
+          "Bottom": -20.0
+        },
+        "Anchors": {
+          "Maximum": {
+            "X": 1.0,
+            "Y": 1.0
+          }
+        }
+      },
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.33"
+      },
+      "Content": {
+        "ObjectName": "Image'WIDGET_Subtitles_C:WidgetTree.Background'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.40"
+      }
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_2",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.33"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Left": 10.0,
+          "Bottom": 20.0
+        }
+      },
+      "bAutoSize": true,
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.33"
+      },
+      "Content": {
+        "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SpeakerContainer'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.32"
+      }
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_3",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.33"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Top": -20.0
+        }
+      },
+      "bAutoSize": true,
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.33"
+      },
+      "Content": {
+        "ObjectName": "TextBlock'WIDGET_Subtitles_C:WidgetTree.DebugText'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.62"
+      }
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_4",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.33"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Top": 50.0,
+          "Right": 10.0
+        },
+        "Anchors": {
+          "Maximum": {
+            "X": 1.0,
+            "Y": 0.0
+          }
+        }
+      },
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.33"
+      },
+      "Content": {
+        "ObjectName": "TextMeshWidget'WIDGET_Subtitles_C:WidgetTree.TEXTMESH_SubtitleDisplayLine'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.64"
+      }
+    }
+  },
+  {
+    "Type": "Image",
+    "Name": "Background",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Image'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Subtitles_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.67"
+    },
+    "Properties": {
+      "Brush": {
+        "Margin": {
+          "Left": 0.5,
+          "Top": 0.5,
+          "Right": 0.5,
+          "Bottom": 0.5
+        },
+        "ResourceObject": {
+          "ObjectName": "Material'MAT_SubtitleBackground'",
+          "ObjectPath": "SystemShock/Content/Art/UI/HUD/MainMenu/MAT_SubtitleBackground.0"
+        },
+        "DrawAs": "ESlateBrushDrawType::Box"
+      },
+      "ColorAndOpacity": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.5,
+        "Hex": "7F000000"
+      },
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer.CanvasPanelSlot_0'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.36"
+      }
+    }
+  },
+  {
+    "Type": "Image",
+    "Name": "IMAGE_SpeakerBacking",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Image'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Subtitles_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.67"
+    },
+    "Properties": {
+      "Brush": {
+        "TintColor": {
+          "SpecifiedColor": {
+            "R": 0.0,
+            "G": 0.375,
+            "B": 0.140379,
+            "A": 1.0,
+            "Hex": "00A569"
+          }
+        }
+      },
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SpeakerContainer.CanvasPanelSlot_2'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.35"
+      }
+    }
+  },
+  {
+    "Type": "MovieScene",
+    "Name": "ANIM_RevealSubtitles",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieScene'",
+    "Outer": {
+      "ObjectName": "WidgetAnimation'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.65"
+    },
+    "Properties": {
+      "Possessables": [
+        {
+          "Tags": [],
+          "Guid": "548F3C8A-4861FC5C-CDD485B7-D2CCCCBB",
+          "Name": "SubtitleContainer",
+          "PossessedObjectClass": {
+            "ObjectName": "Class'CanvasPanel'",
+            "ObjectPath": "/Script/UMG"
+          },
+          "ParentGuid": "00000000-00000000-00000000-00000000"
+        }
+      ],
+      "ObjectBindings": [
+        {
+          "ObjectGuid": "548F3C8A-4861FC5C-CDD485B7-D2CCCCBB",
+          "BindingName": "SubtitleContainer",
+          "Tracks": [
+            {
+              "ObjectName": "MovieScene2DTransformTrack'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieScene2DTransformTrack_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.45"
+            },
+            {
+              "ObjectName": "MovieSceneFloatTrack'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieSceneFloatTrack_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.60"
+            }
+          ]
+        }
+      ],
+      "PlaybackRange": {
+        "Value": {
+          "LowerBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 0
+            }
+          },
+          "UpperBound": {
+            "Type": 0,
+            "Value": {
+              "Value": 30000
+            }
+          }
+        }
+      },
+      "DisplayRate": {
+        "Numerator": 20
+      },
+      "Signature": "A1171568-40BF3444-60ADE8BF-56724BD0"
+    }
+  },
+  {
+    "Type": "MovieScene",
+    "Name": "ANIM_ShowNextLine",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieScene'",
+    "Outer": {
+      "ObjectName": "WidgetAnimation'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.66"
+    },
+    "Properties": {
+      "Possessables": [
+        {
+          "Tags": [],
+          "Guid": "09E631EC-4B9EA2D7-75882B9C-38B833F9",
+          "Name": "TEXT_SubtitleDisplayLine",
+          "PossessedObjectClass": {
+            "ObjectName": "Class'TextBlock'",
+            "ObjectPath": "/Script/UMG"
+          },
+          "ParentGuid": "00000000-00000000-00000000-00000000"
+        }
+      ],
+      "ObjectBindings": [
+        {
+          "ObjectGuid": "09E631EC-4B9EA2D7-75882B9C-38B833F9",
+          "BindingName": "TEXT_SubtitleDisplayLine",
+          "Tracks": [
+            {
+              "ObjectName": "MovieSceneFloatTrack'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneFloatTrack_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.61"
+            }
+          ]
+        }
+      ],
+      "MasterTracks": [
+        {
+          "ObjectName": "MovieSceneEventTrack'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneEventTrack_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.56"
+        }
+      ],
+      "PlaybackRange": {
+        "Value": {
+          "LowerBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 0
+            }
+          },
+          "UpperBound": {
+            "Type": 0,
+            "Value": {
+              "Value": 12000
+            }
+          }
+        }
+      },
+      "DisplayRate": {
+        "Numerator": 20
+      },
+      "Signature": "2A34F2EC-40DFB0CA-6C08E294-405418C5"
+    }
+  },
+  {
+    "Type": "MovieScene2DTransformSection",
+    "Name": "MovieScene2DTransformSection_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieScene2DTransformSection'",
+    "Outer": {
+      "ObjectName": "MovieScene2DTransformTrack'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieScene2DTransformTrack_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.45"
+    },
+    "Properties": {
+      "Translation": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          }
+        ],
+        "Values": [
+          {
+            "Value": 0.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Translation[1]": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          },
+          {
+            "Value": 30000
+          }
+        ],
+        "Values": [
+          {
+            "Value": 20.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          },
+          {
+            "Value": 0.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Rotation": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          }
+        ],
+        "Values": [
+          {
+            "Value": 0.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Scale": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          }
+        ],
+        "Values": [
+          {
+            "Value": 1.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Scale[1]": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          }
+        ],
+        "Values": [
+          {
+            "Value": 1.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Shear": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          }
+        ],
+        "Values": [
+          {
+            "Value": 0.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Shear[1]": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          }
+        ],
+        "Values": [
+          {
+            "Value": 0.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Easing": {
+        "EaseIn": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieScene2DTransformTrack_0.MovieScene2DTransformSection_0.EaseInFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.46"
+        },
+        "EaseOut": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieScene2DTransformTrack_0.MovieScene2DTransformSection_0.EaseOutFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.47"
+        }
+      },
+      "SectionRange": {
+        "Value": {
+          "LowerBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 0
+            }
+          },
+          "UpperBound": {
+            "Type": 0,
+            "Value": {
+              "Value": 30000
+            }
+          }
+        }
+      },
+      "Signature": "8D872FC8-4B4FE8E7-9224B5B6-0F481404"
+    }
+  },
+  {
+    "Type": "MovieScene2DTransformTrack",
+    "Name": "MovieScene2DTransformTrack_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieScene2DTransformTrack'",
+    "Outer": {
+      "ObjectName": "MovieScene'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.42"
+    },
+    "Properties": {
+      "PropertyBinding": {
+        "PropertyName": "RenderTransform",
+        "PropertyPath": "RenderTransform",
+        "bCanUseClassLookup": true
+      },
+      "Sections": [
+        {
+          "ObjectName": "MovieScene2DTransformSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieScene2DTransformTrack_0.MovieScene2DTransformSection_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.44"
+        }
+      ],
+      "EvaluationFieldGuid": "61D7365C-41F18795-BDFA27AC-56D17839",
+      "EvaluationField": {
+        "Entries": [
+          {
+            "Section": {
+              "ObjectName": "MovieScene2DTransformSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieScene2DTransformTrack_0.MovieScene2DTransformSection_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.44"
+            },
+            "Range": {
+              "LowerBound": {
+                "Type": "ERangeBoundTypes::Inclusive",
+                "Value": {
+                  "Value": 0
+                }
+              },
+              "UpperBound": {
+                "Type": "ERangeBoundTypes::Exclusive",
+                "Value": {
+                  "Value": 30000
+                }
+              }
+            },
+            "ForcedTime": {
+              "Value": -2147483648
+            },
+            "Flags": "ESectionEvaluationFlags::None",
+            "LegacySortOrder": 0
+          }
+        ]
+      },
+      "Signature": "61D7365C-41F18795-BDFA27AC-56D17839"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseInFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieScene2DTransformSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieScene2DTransformTrack_0.MovieScene2DTransformSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.44"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseOutFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieScene2DTransformSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieScene2DTransformTrack_0.MovieScene2DTransformSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.44"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseInFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.58"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseOutFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.58"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseInFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneEventTriggerSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneEventTrack_0.MovieSceneEventTriggerSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.57"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseOutFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneEventTriggerSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneEventTrack_0.MovieSceneEventTriggerSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.57"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseInFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.59"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseOutFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.59"
+    }
+  },
+  {
+    "Type": "MovieSceneCompiledData",
+    "Name": "CompiledData",
+    "Flags": "RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneCompiledData'",
+    "Outer": {
+      "ObjectName": "WidgetAnimation'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.65"
+    },
+    "Properties": {
+      "EntityComponentField": {
+        "PersistentEntityTree": {
+          "SerializedData": {
+            "Data": {
+              "Entries": [
+                {
+                  "StartIndex": 0,
+                  "Size": 1,
+                  "Capacity": 1
+                },
+                {
+                  "StartIndex": 1,
+                  "Size": 1,
+                  "Capacity": 1
+                }
+              ],
+              "Items": [
+                {
+                  "EntityIndex": 0,
+                  "MetaDataIndex": -1
+                },
+                {
+                  "EntityIndex": 1,
+                  "MetaDataIndex": -1
+                }
+              ]
+            },
+            "RootNode": {
+              "Range": {
+                "LowerBound": {
+                  "Type": 2,
+                  "Value": {
+                    "Value": 0
+                  }
+                },
+                "UpperBound": {
+                  "Type": 2,
+                  "Value": {
+                    "Value": 0
+                  }
+                }
+              },
+              "Parent": {
+                "ChildrenHandle": {
+                  "EntryIndex": -1
+                },
+                "Index": -1
+              },
+              "ChildrenID": {
+                "EntryIndex": 0
+              },
+              "DataID": {
+                "EntryIndex": -1
+              }
+            },
+            "ChildNodes": {
+              "Entries": [
+                {
+                  "StartIndex": 0,
+                  "Size": 1,
+                  "Capacity": 1
+                },
+                {
+                  "StartIndex": 1,
+                  "Size": 1,
+                  "Capacity": 1
+                }
+              ],
+              "Items": [
+                {
+                  "Range": {
+                    "LowerBound": {
+                      "Type": 1,
+                      "Value": {
+                        "Value": 0
+                      }
+                    },
+                    "UpperBound": {
+                      "Type": 0,
+                      "Value": {
+                        "Value": 30000
+                      }
+                    }
+                  },
+                  "Parent": {
+                    "ChildrenHandle": {
+                      "EntryIndex": -1
+                    },
+                    "Index": 0
+                  },
+                  "ChildrenID": {
+                    "EntryIndex": 1
+                  },
+                  "DataID": {
+                    "EntryIndex": 0
+                  }
+                },
+                {
+                  "Range": {
+                    "LowerBound": {
+                      "Type": 1,
+                      "Value": {
+                        "Value": 0
+                      }
+                    },
+                    "UpperBound": {
+                      "Type": 1,
+                      "Value": {
+                        "Value": 29999
+                      }
+                    }
+                  },
+                  "Parent": {
+                    "ChildrenHandle": {
+                      "EntryIndex": 0
+                    },
+                    "Index": 0
+                  },
+                  "ChildrenID": {
+                    "EntryIndex": -1
+                  },
+                  "DataID": {
+                    "EntryIndex": 1
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "Entities": [
+          {
+            "Key": {
+              "EntityOwner": {
+                "ObjectName": "MovieScene2DTransformSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieScene2DTransformTrack_0.MovieScene2DTransformSection_0'",
+                "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.44"
+              },
+              "EntityID": 0
+            },
+            "SharedMetaDataIndex": 0
+          },
+          {
+            "Key": {
+              "EntityOwner": {
+                "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+                "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.58"
+              },
+              "EntityID": 0
+            },
+            "SharedMetaDataIndex": 1
+          }
+        ],
+        "SharedMetaData": [
+          {
+            "ObjectBindingID": "548F3C8A-4861FC5C-CDD485B7-D2CCCCBB"
+          },
+          {
+            "ObjectBindingID": "548F3C8A-4861FC5C-CDD485B7-D2CCCCBB"
+          }
+        ]
+      },
+      "DeterminismFences": [
+        {
+          "FrameNumber": {
+            "Value": 29999
+          },
+          "SubFrame": 0.0
+        },
+        {
+          "FrameNumber": {
+            "Value": 30000
+          },
+          "SubFrame": 0.0
+        }
+      ],
+      "CompiledSignature": "B3C6DD3E-49F3D013-67BCD293-3E7423CB",
+      "CompilerVersion": "7D4B9809-2FAC4A6B-964ECF72-D8279EF8",
+      "AccumulatedMask": {
+        "bEntityComponentField": true
+      },
+      "AllocatedMask": {
+        "bEntityComponentField": true
+      }
+    }
+  },
+  {
+    "Type": "MovieSceneCompiledData",
+    "Name": "CompiledData",
+    "Flags": "RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneCompiledData'",
+    "Outer": {
+      "ObjectName": "WidgetAnimation'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.66"
+    },
+    "Properties": {
+      "EntityComponentField": {
+        "PersistentEntityTree": {
+          "SerializedData": {
+            "Data": {
+              "Entries": [
+                {
+                  "StartIndex": 0,
+                  "Size": 1,
+                  "Capacity": 1
+                }
+              ],
+              "Items": [
+                {
+                  "EntityIndex": 1,
+                  "MetaDataIndex": -1
+                }
+              ]
+            },
+            "RootNode": {
+              "Range": {
+                "LowerBound": {
+                  "Type": 2,
+                  "Value": {
+                    "Value": 0
+                  }
+                },
+                "UpperBound": {
+                  "Type": 2,
+                  "Value": {
+                    "Value": 0
+                  }
+                }
+              },
+              "Parent": {
+                "ChildrenHandle": {
+                  "EntryIndex": -1
+                },
+                "Index": -1
+              },
+              "ChildrenID": {
+                "EntryIndex": 0
+              },
+              "DataID": {
+                "EntryIndex": -1
+              }
+            },
+            "ChildNodes": {
+              "Entries": [
+                {
+                  "StartIndex": 0,
+                  "Size": 1,
+                  "Capacity": 1
+                }
+              ],
+              "Items": [
+                {
+                  "Range": {
+                    "LowerBound": {
+                      "Type": 1,
+                      "Value": {
+                        "Value": 0
+                      }
+                    },
+                    "UpperBound": {
+                      "Type": 0,
+                      "Value": {
+                        "Value": 12000
+                      }
+                    }
+                  },
+                  "Parent": {
+                    "ChildrenHandle": {
+                      "EntryIndex": -1
+                    },
+                    "Index": 0
+                  },
+                  "ChildrenID": {
+                    "EntryIndex": -1
+                  },
+                  "DataID": {
+                    "EntryIndex": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "OneShotEntityTree": {
+          "SerializedData": {
+            "Data": {
+              "Entries": [
+                {
+                  "StartIndex": 0,
+                  "Size": 1,
+                  "Capacity": 1
+                }
+              ],
+              "Items": [
+                {
+                  "EntityIndex": 0,
+                  "MetaDataIndex": -1
+                }
+              ]
+            },
+            "RootNode": {
+              "Range": {
+                "LowerBound": {
+                  "Type": 2,
+                  "Value": {
+                    "Value": 0
+                  }
+                },
+                "UpperBound": {
+                  "Type": 2,
+                  "Value": {
+                    "Value": 0
+                  }
+                }
+              },
+              "Parent": {
+                "ChildrenHandle": {
+                  "EntryIndex": -1
+                },
+                "Index": -1
+              },
+              "ChildrenID": {
+                "EntryIndex": 0
+              },
+              "DataID": {
+                "EntryIndex": -1
+              }
+            },
+            "ChildNodes": {
+              "Entries": [
+                {
+                  "StartIndex": 0,
+                  "Size": 1,
+                  "Capacity": 1
+                }
+              ],
+              "Items": [
+                {
+                  "Range": {
+                    "LowerBound": {
+                      "Type": 1,
+                      "Value": {
+                        "Value": 6000
+                      }
+                    },
+                    "UpperBound": {
+                      "Type": 1,
+                      "Value": {
+                        "Value": 6000
+                      }
+                    }
+                  },
+                  "Parent": {
+                    "ChildrenHandle": {
+                      "EntryIndex": -1
+                    },
+                    "Index": 0
+                  },
+                  "ChildrenID": {
+                    "EntryIndex": -1
+                  },
+                  "DataID": {
+                    "EntryIndex": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "Entities": [
+          {
+            "Key": {
+              "EntityOwner": {
+                "ObjectName": "MovieSceneEventTriggerSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneEventTrack_0.MovieSceneEventTriggerSection_0'",
+                "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.57"
+              },
+              "EntityID": 0
+            },
+            "SharedMetaDataIndex": 0
+          },
+          {
+            "Key": {
+              "EntityOwner": {
+                "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+                "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.59"
+              },
+              "EntityID": 0
+            },
+            "SharedMetaDataIndex": 1
+          }
+        ],
+        "SharedMetaData": [
+          {
+            "ObjectBindingID": "00000000-00000000-00000000-00000000"
+          },
+          {
+            "ObjectBindingID": "09E631EC-4B9EA2D7-75882B9C-38B833F9"
+          }
+        ]
+      },
+      "TrackTemplateField": {
+        "Ranges": [
+          {
+            "Value": {
+              "LowerBound": {
+                "Type": 2,
+                "Value": {
+                  "Value": 0
+                }
+              },
+              "UpperBound": {
+                "Type": 2,
+                "Value": {
+                  "Value": 0
+                }
+              }
+            }
+          }
+        ],
+        "Groups": [
+          {
+            "LUTIndices": [],
+            "TrackLUT": [],
+            "SectionLUT": []
+          }
+        ],
+        "MetaData": [
+          {
+            "ActiveSequences": [
+              {
+                "Value": 0
+              }
+            ],
+            "ActiveEntities": []
+          }
+        ]
+      },
+      "DeterminismFences": [
+        {
+          "FrameNumber": {
+            "Value": 12000
+          },
+          "SubFrame": 0.0
+        }
+      ],
+      "CompiledSignature": "30D506F6-41EC6CE7-9381D19C-07105FBF",
+      "CompilerVersion": "7D4B9809-2FAC4A6B-964ECF72-D8279EF8",
+      "AccumulatedMask": {
+        "bEvaluationTemplate": true,
+        "bEvaluationTemplateField": true,
+        "bEntityComponentField": true
+      },
+      "AllocatedMask": {
+        "bEvaluationTemplate": true,
+        "bEvaluationTemplateField": true,
+        "bEntityComponentField": true
+      }
+    }
+  },
+  {
+    "Type": "MovieSceneEventTrack",
+    "Name": "MovieSceneEventTrack_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneEventTrack'",
+    "Outer": {
+      "ObjectName": "MovieScene'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.43"
+    },
+    "Properties": {
+      "Sections": [
+        {
+          "ObjectName": "MovieSceneEventTriggerSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneEventTrack_0.MovieSceneEventTriggerSection_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.57"
+        }
+      ],
+      "EvaluationFieldGuid": "67052CF1-42BA51C4-0CDB40B9-0FC01EDB",
+      "EvaluationField": {
+        "Entries": [
+          {
+            "Section": {
+              "ObjectName": "MovieSceneEventTriggerSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneEventTrack_0.MovieSceneEventTriggerSection_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.57"
+            },
+            "Range": {
+              "LowerBound": {
+                "Type": "ERangeBoundTypes::Open",
+                "Value": {
+                  "Value": 0
+                }
+              },
+              "UpperBound": {
+                "Type": "ERangeBoundTypes::Open",
+                "Value": {
+                  "Value": 0
+                }
+              }
+            },
+            "ForcedTime": {
+              "Value": -2147483648
+            },
+            "Flags": "ESectionEvaluationFlags::None",
+            "LegacySortOrder": 0
+          }
+        ]
+      },
+      "Signature": "67052CF1-42BA51C4-0CDB40B9-0FC01EDB"
+    }
+  },
+  {
+    "Type": "MovieSceneEventTriggerSection",
+    "Name": "MovieSceneEventTriggerSection_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneEventTriggerSection'",
+    "Outer": {
+      "ObjectName": "MovieSceneEventTrack'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneEventTrack_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.56"
+    },
+    "Properties": {
+      "EventChannel": {
+        "KeyTimes": [
+          {
+            "Value": 6000
+          }
+        ],
+        "KeyValues": [
+          {
+            "Ptrs": {
+              "Function": {
+                "ObjectName": "Function'WIDGET_Subtitles_C:SequenceEvent__ENTRYPOINTWIDGET_Subtitles_0'",
+                "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.29"
+              },
+              "BoundObjectProperty": {
+                "Path": [],
+                "ResolvedOwner": null
+              }
+            }
+          }
+        ]
+      },
+      "Easing": {
+        "EaseIn": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneEventTrack_0.MovieSceneEventTriggerSection_0.EaseInFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.50"
+        },
+        "EaseOut": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneEventTrack_0.MovieSceneEventTriggerSection_0.EaseOutFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.51"
+        }
+      },
+      "Signature": "7CD17990-4F354722-D6945C8A-38BFD401"
+    }
+  },
+  {
+    "Type": "MovieSceneFloatSection",
+    "Name": "MovieSceneFloatSection_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneFloatSection'",
+    "Outer": {
+      "ObjectName": "MovieSceneFloatTrack'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieSceneFloatTrack_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.60"
+    },
+    "Properties": {
+      "FloatCurve": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          },
+          {
+            "Value": 29999
+          }
+        ],
+        "Values": [
+          {
+            "Value": 0.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          },
+          {
+            "Value": 1.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Easing": {
+        "EaseIn": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieSceneFloatTrack_0.MovieSceneFloatSection_0.EaseInFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.48"
+        },
+        "EaseOut": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieSceneFloatTrack_0.MovieSceneFloatSection_0.EaseOutFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.49"
+        }
+      },
+      "SectionRange": {
+        "Value": {
+          "LowerBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 0
+            }
+          },
+          "UpperBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 29999
+            }
+          }
+        }
+      },
+      "Signature": "30045D53-4902B92A-A0B450B2-E0424508"
+    }
+  },
+  {
+    "Type": "MovieSceneFloatSection",
+    "Name": "MovieSceneFloatSection_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneFloatSection'",
+    "Outer": {
+      "ObjectName": "MovieSceneFloatTrack'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneFloatTrack_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.61"
+    },
+    "Properties": {
+      "FloatCurve": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          },
+          {
+            "Value": 3000
+          },
+          {
+            "Value": 9000
+          },
+          {
+            "Value": 12000
+          }
+        ],
+        "Values": [
+          {
+            "Value": 1.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          },
+          {
+            "Value": 0.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          },
+          {
+            "Value": 0.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          },
+          {
+            "Value": 1.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Easing": {
+        "EaseIn": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneFloatTrack_0.MovieSceneFloatSection_0.EaseInFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.52"
+        },
+        "EaseOut": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneFloatTrack_0.MovieSceneFloatSection_0.EaseOutFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.53"
+        }
+      },
+      "SectionRange": {
+        "Value": {
+          "LowerBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 0
+            }
+          },
+          "UpperBound": {
+            "Type": 0,
+            "Value": {
+              "Value": 12000
+            }
+          }
+        }
+      },
+      "Signature": "A5BF086A-42B3DA1E-24C889A2-3FFE8219"
+    }
+  },
+  {
+    "Type": "MovieSceneFloatTrack",
+    "Name": "MovieSceneFloatTrack_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneFloatTrack'",
+    "Outer": {
+      "ObjectName": "MovieScene'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.42"
+    },
+    "Properties": {
+      "PropertyBinding": {
+        "PropertyName": "RenderOpacity",
+        "PropertyPath": "RenderOpacity",
+        "bCanUseClassLookup": true
+      },
+      "Sections": [
+        {
+          "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.58"
+        }
+      ],
+      "EvaluationFieldGuid": "E09BCF40-4460FB3D-663337B0-9EA62810",
+      "EvaluationField": {
+        "Entries": [
+          {
+            "Section": {
+              "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.58"
+            },
+            "Range": {
+              "LowerBound": {
+                "Type": "ERangeBoundTypes::Inclusive",
+                "Value": {
+                  "Value": 0
+                }
+              },
+              "UpperBound": {
+                "Type": "ERangeBoundTypes::Inclusive",
+                "Value": {
+                  "Value": 29999
+                }
+              }
+            },
+            "ForcedTime": {
+              "Value": -2147483648
+            },
+            "Flags": "ESectionEvaluationFlags::None",
+            "LegacySortOrder": 0
+          }
+        ]
+      },
+      "Signature": "E09BCF40-4460FB3D-663337B0-9EA62810"
+    }
+  },
+  {
+    "Type": "MovieSceneFloatTrack",
+    "Name": "MovieSceneFloatTrack_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneFloatTrack'",
+    "Outer": {
+      "ObjectName": "MovieScene'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.43"
+    },
+    "Properties": {
+      "PropertyBinding": {
+        "PropertyName": "RenderOpacity",
+        "PropertyPath": "RenderOpacity",
+        "bCanUseClassLookup": true
+      },
+      "Sections": [
+        {
+          "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.59"
+        }
+      ],
+      "EvaluationFieldGuid": "AE2777AA-4442B2A5-0ADA469F-532312DE",
+      "EvaluationField": {
+        "Entries": [
+          {
+            "Section": {
+              "ObjectName": "MovieSceneFloatSection'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine.MovieSceneFloatTrack_0.MovieSceneFloatSection_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.59"
+            },
+            "Range": {
+              "LowerBound": {
+                "Type": "ERangeBoundTypes::Inclusive",
+                "Value": {
+                  "Value": 0
+                }
+              },
+              "UpperBound": {
+                "Type": "ERangeBoundTypes::Exclusive",
+                "Value": {
+                  "Value": 12000
+                }
+              }
+            },
+            "ForcedTime": {
+              "Value": -2147483648
+            },
+            "Flags": "ESectionEvaluationFlags::None",
+            "LegacySortOrder": 0
+          }
+        ]
+      },
+      "Signature": "AE2777AA-4442B2A5-0ADA469F-532312DE"
+    }
+  },
+  {
+    "Type": "TextBlock",
+    "Name": "DebugText",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'TextBlock'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Subtitles_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.67"
+    },
+    "Properties": {
+      "Text": {
+        "Namespace": "UMG",
+        "Key": "TextBlockDefaultValue",
+        "SourceString": "Text Block",
+        "LocalizedString": "Text Block"
+      },
+      "Font": {
+        "TypefaceFontName": "Regular",
+        "Size": 14
+      },
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer.CanvasPanelSlot_3'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.38"
+      },
+      "bIsVariable": true,
+      "Visibility": "ESlateVisibility::Collapsed"
+    }
+  },
+  {
+    "Type": "TextBlock",
+    "Name": "TEXT_Speaker",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'TextBlock'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Subtitles_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.67"
+    },
+    "Properties": {
+      "Text": {
+        "CultureInvariantString": "SPEAKER"
+      },
+      "Font": {
+        "FontObject": {
+          "ObjectName": "Font'FONT_UnitedSansReg'",
+          "ObjectPath": "SystemShock/Content/Art/Fonts/FONT_UnitedSansReg.0"
+        },
+        "TypefaceFontName": "Default",
+        "Size": 20
+      },
+      "TextTransformPolicy": "ETextTransformPolicy::ToUpper",
+      "Justification": "ETextJustify::Center",
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SpeakerContainer.CanvasPanelSlot_1'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.34"
+      },
+      "bIsVariable": true
+    }
+  },
+  {
+    "Type": "TextMeshWidget",
+    "Name": "TEXTMESH_SubtitleDisplayLine",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'TextMeshWidget'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Subtitles_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.67"
+    },
+    "Properties": {
+      "Text": {
+        "CultureInvariantString": "Subtitle Line to Display"
+      },
+      "Material": {
+        "ObjectName": "Material'MAT_UIText_Standard'",
+        "ObjectPath": "SystemShock/Content/Art/UI/Fonts/MAT_UIText_Standard.0"
+      },
+      "Font": {
+        "ObjectName": "Font'FONT_UIStandard'",
+        "ObjectPath": "SystemShock/Content/Art/UI/Fonts/FONT_UIStandard.0"
+      },
+      "Size": 28.0,
+      "bWordWrap": true,
+      "Spacing": {
+        "X": 0.0,
+        "Y": 5.0
+      },
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer.CanvasPanelSlot_4'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.39"
+      }
+    }
+  },
+  {
+    "Type": "WidgetAnimation",
+    "Name": "ANIM_RevealSubtitles_INST",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'WidgetAnimation'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "Properties": {
+      "MovieScene": {
+        "ObjectName": "MovieScene'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.ANIM_RevealSubtitles'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.42"
+      },
+      "AnimationBindings": [
+        {
+          "WidgetName": "SubtitleContainer",
+          "SlotWidgetName": "None",
+          "AnimationGuid": "548F3C8A-4861FC5C-CDD485B7-D2CCCCBB",
+          "bIsRootWidget": false
+        }
+      ],
+      "DisplayLabel": "ANIM_RevealSubtitles",
+      "CompiledData": {
+        "ObjectName": "MovieSceneCompiledData'WIDGET_Subtitles_C:ANIM_RevealSubtitles_INST.CompiledData'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.54"
+      },
+      "Signature": "B3C6DD3E-49F3D013-67BCD293-3E7423CB"
+    }
+  },
+  {
+    "Type": "WidgetAnimation",
+    "Name": "ANIM_ShowNextLine_INST",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'WidgetAnimation'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "Properties": {
+      "MovieScene": {
+        "ObjectName": "MovieScene'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.ANIM_ShowNextLine'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.43"
+      },
+      "AnimationBindings": [
+        {
+          "WidgetName": "TEXT_SubtitleDisplayLine",
+          "SlotWidgetName": "None",
+          "AnimationGuid": "09E631EC-4B9EA2D7-75882B9C-38B833F9",
+          "bIsRootWidget": false
+        }
+      ],
+      "DisplayLabel": "ANIM_ShowNextLine",
+      "CompiledData": {
+        "ObjectName": "MovieSceneCompiledData'WIDGET_Subtitles_C:ANIM_ShowNextLine_INST.CompiledData'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.55"
+      },
+      "Signature": "30D506F6-41EC6CE7-9381D19C-07105FBF"
+    }
+  },
+  {
+    "Type": "WidgetTree",
+    "Name": "WidgetTree",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'WidgetTree'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Subtitles_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.30"
+    },
+    "Properties": {
+      "RootWidget": {
+        "ObjectName": "CanvasPanel'WIDGET_Subtitles_C:WidgetTree.SubtitleContainer'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_Subtitles.33"
+      }
+    }
+  }
+]

@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
+#include "STRUCT_InteractResults_structs.hpp"
 #include "_ENUM_ItemCategory_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "STRUCT_InteractResults_structs.hpp"
-#include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRHand_structs.hpp"
+#include "_ENUM_VRHandPose_structs.hpp"
 
 
 namespace SDK::Params

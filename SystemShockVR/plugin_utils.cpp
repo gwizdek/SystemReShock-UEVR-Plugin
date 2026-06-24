@@ -421,3 +421,50 @@ void PluginUtils::cycle_native_stereo_fix() {
         API::get()->log_warn("[plugin_utils][handle_native_stereo_fix_cycler] Native Stereo Fix: OFF");
     }
 }
+
+void PluginUtils::list_overlapping_components(const class SDK::UObject* world_context_object, const struct SDK::FVector& sphere_pos, float sphere_radius) {
+    API::get()->log_warn("[plugin_utils][list_overlapping_components] Begin");
+    SDK::TArray<SDK::EObjectTypeQuery> object_types;
+    object_types.Data = (SDK::EObjectTypeQuery*)API::FMalloc::get()->malloc(4 * sizeof(SDK::EObjectTypeQuery));
+    object_types.NumElements = 0;
+    object_types.MaxElements = 4;
+
+    API::get()->log_warn("[plugin_utils][list_overlapping_components] Adding sample Object Types");
+    object_types.Add(SDK::EObjectTypeQuery::ObjectTypeQuery1);
+    object_types.Add(SDK::EObjectTypeQuery::ObjectTypeQuery2);
+    object_types.Add(SDK::EObjectTypeQuery::ObjectTypeQuery3);
+    object_types.Add(SDK::EObjectTypeQuery::ObjectTypeQuery4);
+
+    // filter only Primitive Components
+    SDK::UClass* component_class_filter{ SDK::UPrimitiveComponent::StaticClass() };
+
+    const SDK::TArray<SDK::AActor*>& actors_to_ignore{};
+    
+    // expect max 32 components
+    SDK::TArray<SDK::UPrimitiveComponent*> out_components{};
+    out_components.Data = (SDK::UPrimitiveComponent**)API::FMalloc::get()->malloc(32 * sizeof(SDK::UPrimitiveComponent));
+    out_components.NumElements = 0;
+    out_components.MaxElements = 32;
+
+    // get overlapping components
+    const bool result = SDK::UKismetSystemLibrary::SphereOverlapComponents(
+        world_context_object,
+        sphere_pos,
+        sphere_radius,
+        object_types,
+        component_class_filter,
+        actors_to_ignore,
+        &out_components
+    );
+
+    API::get()->log_warn("[plugin_utils][list_overlapping_components] Getting result data");
+    API::get()->log_warn("[plugin_utils][list_overlapping_components] Overlapped obj count: %d", out_components.Num());
+    if (result) {
+        for (UC::int32 i = 0; i < out_components.Num(); i++) {
+            API::get()->log_warn("[plugin_utils][list_overlapping_components] Overlapped obj: %s", out_components[i]->GetFullName().c_str());
+        }
+    }
+    else {
+        API::get()->log_warn("VRHackerHUD :: Wrong overlap result");
+    }
+}

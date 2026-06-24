@@ -10,6 +10,8 @@
 #include "SDK/WIDGET_MediaDisplay_classes.hpp"
 #include "SDK/WIDGET_Minimap_classes.hpp"
 #include "SDK/WIDGET_HardwareButton_classes.hpp"
+#include "SDK/WIDGET_UnreadMediaIcon_classes.hpp"
+#include "SDK/WIDGET_Subtitles_classes.hpp"
 #include "SDK/_BP_AccessCard_classes.hpp"
 
 #include "SDK/_BP_VRBody_classes.hpp"
@@ -165,6 +167,13 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
 
             vr_body->MediaDisplayWidgetComponent->SetWidget(neural_hud->WIDGET_MediaDisplay);
             neural_hud->WIDGET_MediaDisplay->RemoveFromViewport();
+
+            //vr_body->UnreadMediaIcon->SetWidget(neural_hud->WIDGET_UnreadMediaIcon);
+            //neural_hud->WIDGET_MediaDisplay->RemoveFromViewport();
+
+            vr_body->Subtitles->SetVisibility(false, true);
+            //vr_body->Subtitles->SetWidget(neural_hud->WIDGET_Subtitles);
+            //neural_hud->WIDGET_Subtitles->RemoveFromViewport();
 
             PluginUtils::reparent_panel_to_user_widget(neural_hud->PANEL_Notification, vr_body->VRHUD->GetWidget());
             vr_body->VRHUD->SetVisibility(false, true);

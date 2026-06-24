@@ -39,7 +39,7 @@ class UEVRPlugin;
 extern std::unique_ptr<UEVRPlugin> g_plugin;
 
 class UEVRPlugin : public uevr::Plugin {
-    const char* MOD_VERSION = "System Shock UEVR plugin [v2.0.0-beta.0]";
+    const char* MOD_VERSION = "System Shock UEVR plugin [v2.0.0-beta.2]";
 
 public:
     UEVRPlugin() = default;
@@ -186,7 +186,7 @@ public:
     // Motion Controllers
     void initialize_mcs(SDK::APAWN_Hacker_Implant_C* pawn);
     static void cleanup_actors();
-    void set_game_ui_visibility(bool visible);
+    void set_hacker_ui_visibility(bool visible);
     void try_melee();
     void apply_vr_game_options();
     void try_set_intro_laptop_pointer();

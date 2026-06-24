@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "_ENUM_InteractionSourceType_structs.hpp"
 #include "CoreUObject_classes.hpp"
+#include "_ENUM_InteractionSourceType_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
 
 

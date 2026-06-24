@@ -1,0 +1,2238 @@
+[
+  {
+    "Type": "Function",
+    "Name": "ExecuteUbergraph_WIDGET_Minimap",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "IntProperty",
+        "Name": "EntryPoint",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_Event_IsDesignTime",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "K2Node_Event_MyGeometry",
+        "Flags": "RF_Public",
+        "ElementSize": 56,
+        "Struct": {
+          "ObjectName": "ScriptStruct'Geometry'",
+          "ObjectPath": "/Script/SlateCore"
+        }
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "K2Node_Event_InDeltaTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_ConvertToDynamicMaterialInstance_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'MaterialInstanceDynamic'",
+          "ObjectPath": "/Script/Engine"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Final | FUNC_UbergraphFunction | FUNC_HasDefaults"
+  },
+  {
+    "Type": "Function",
+    "Name": "Tick",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "SuperStruct": {
+      "ObjectName": "Function'UserWidget:Tick'",
+      "ObjectPath": "/Script/UMG"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "MyGeometry",
+        "Flags": "RF_Public",
+        "ElementSize": 56,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "Struct": {
+          "ObjectName": "ScriptStruct'Geometry'",
+          "ObjectPath": "/Script/SlateCore"
+        }
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "InDeltaTime",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      }
+    ],
+    "FunctionFlags": "FUNC_BlueprintCosmetic | FUNC_Event | FUNC_Public | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "PreConstruct",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "SuperStruct": {
+      "ObjectName": "Function'UserWidget:PreConstruct'",
+      "ObjectPath": "/Script/UMG"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "IsDesignTime",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_BlueprintCosmetic | FUNC_Event | FUNC_Public | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "InitializeMinimap",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "HUD",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_PlayerHUD_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_PlayerHUD.154"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetBagByType_Bag",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'InventoryBag_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/InventoryBag.71"
+        }
+      },
+      {
+        "Type": "DelegateProperty",
+        "Name": "K2Node_CreateDelegate_OutputDelegate",
+        "Flags": "RF_Public",
+        "ElementSize": 20,
+        "SignatureFunction": {
+          "ObjectName": "Function'GI_SinglePlayer_C:OnFinishedLoadingLevelCollection__DelegateSignature'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Game/GI_SinglePlayer.5"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetGameInstance_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'GameInstance'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "DelegateProperty",
+        "Name": "K2Node_CreateDelegate_OutputDelegate_1",
+        "Flags": "RF_Public",
+        "ElementSize": 20,
+        "SignatureFunction": {
+          "ObjectName": "DelegateFunction'VoxelScannerEvent__DelegateSignature'",
+          "ObjectPath": "/Script/LevelVoxelization"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "K2Node_DynamicCast_AsGI_Single_Player",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'GI_SinglePlayer_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Game/GI_SinglePlayer.300"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_DynamicCast_bSuccess",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "DelegateProperty",
+        "Name": "K2Node_CreateDelegate_OutputDelegate_2",
+        "Flags": "RF_Public",
+        "ElementSize": 20,
+        "SignatureFunction": {
+          "ObjectName": "Function'InventoryBag_C:OnBagChanged__DelegateSignature'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/InventoryBag.0"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_FindItem_FoundItem",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'ITEM_Base_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/ITEM_Base.64"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "K2Node_DynamicCast_AsHARDWARE_Nav_Unit_Base",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'HARDWARE_NavUnit_Base_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Hardware/HARDWARE_NavUnit_Base.8"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_DynamicCast_bSuccess_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "SetMinimapVisibility",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "Visible",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "Temp_bool_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "EnumProperty",
+        "Name": "Temp_byte_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "Enum": {
+          "ObjectName": "Enum'ESlateVisibility'",
+          "ObjectPath": "/Script/UMG"
+        },
+        "UnderlyingProp": {
+          "Type": "ByteProperty",
+          "Name": "UnderlyingType",
+          "Flags": "RF_Public",
+          "ElementSize": 1,
+          "Enum": null
+        }
+      },
+      {
+        "Type": "EnumProperty",
+        "Name": "Temp_byte_Variable_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "Enum": {
+          "ObjectName": "Enum'ESlateVisibility'",
+          "ObjectPath": "/Script/UMG"
+        },
+        "UnderlyingProp": {
+          "Type": "ByteProperty",
+          "Name": "UnderlyingType",
+          "Flags": "RF_Public",
+          "ElementSize": 1,
+          "Enum": null
+        }
+      },
+      {
+        "Type": "EnumProperty",
+        "Name": "K2Node_Select_Default",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "Enum": {
+          "ObjectName": "Enum'ESlateVisibility'",
+          "ObjectPath": "/Script/UMG"
+        },
+        "UnderlyingProp": {
+          "Type": "ByteProperty",
+          "Name": "UnderlyingType",
+          "Flags": "RF_Public",
+          "ElementSize": 1,
+          "Enum": null
+        }
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_GetGameTimeInSeconds_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_BooleanAND_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "EVENT_OnLevelChanged",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetGameInstance_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'GameInstance'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "K2Node_DynamicCast_AsGI_Single_Player",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'GI_SinglePlayer_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Game/GI_SinglePlayer.300"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_DynamicCast_bSuccess",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "NameProperty",
+        "Name": "CallFunc_GetCurrentLevelName_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 12
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetLevelInfo_LevelInfo",
+        "Flags": "RF_Public",
+        "ElementSize": 224,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_LevelInfo'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Game/STRUCT_LevelInfo.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetLevelInfo_Found",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "TextProperty",
+        "Name": "CallFunc_Conv_StringToText_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 24
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "EVENT_OnLevelRegionChanged",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetPlayerPawn_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'Pawn'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "K2Node_DynamicCast_AsPAWN_Hacker_Implant",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'PAWN_Hacker_Implant_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Characters/Hacker/PAWN_Hacker_Implant.88"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_DynamicCast_bSuccess",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsValid_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_OutRow",
+        "Flags": "RF_Public",
+        "ElementSize": 48,
+        "Struct": {
+          "ObjectName": "UserDefinedStruct'STRUCT_ScannableRegionData'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Minimap/STRUCT_ScannableRegionData.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetDataTableRowFromName_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "EVENT_OnHardwareBagChanged",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "IntProperty",
+        "Name": "SlotIndex",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm"
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetSlotItem_Item",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'ITEM_Base_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/ITEM_Base.64"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "K2Node_DynamicCast_AsHARDWARE_Nav_Unit_Base",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'HARDWARE_NavUnit_Base_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Hardware/HARDWARE_NavUnit_Base.8"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "K2Node_DynamicCast_bSuccess",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "EVENT_OnHardwareStateChanged",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "Activated",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "MagLocked",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Not_PreBool_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_BooleanAND_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Private | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "UpdateMinimap",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "FloatProperty",
+        "Name": "FadeInProgress",
+        "Flags": "RF_Public",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible"
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "MinimapCaptureComponent",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "Edit | BlueprintVisible | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "Class'SceneCaptureComponent2D'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "ScannerComponent",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "Edit | BlueprintVisible | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'COMP_VoxelScanner_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Characters/Hacker/COMP_VoxelScanner.4"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "Temp_bool_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "Temp_object_Variable",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'MaterialInterface'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "Temp_object_Variable_1",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'MaterialInterface'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsValid_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "CallFunc_GetSceneCaptureComponent_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "Class'SceneCaptureComponent2D'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetPrimarySceneCaptureRotationFollowsOwner_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Not_PreBool_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "K2Node_Select_Default",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyClass": {
+          "ObjectName": "Class'MaterialInterface'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GreaterEqual_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_GetGameTimeInSeconds_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Subtract_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_Greater_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_Divide_FloatFloat_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "CallFunc_FMin_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 4
+      }
+    ],
+    "FunctionFlags": "FUNC_Protected | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "SetHardwareItem",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "Item",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'HARDWARE_NavUnit_Base_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Hardware/HARDWARE_NavUnit_Base.8"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "HadHardwareItem",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Edit | BlueprintVisible",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "ShouldBeVisible",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Edit | BlueprintVisible",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "DelegateProperty",
+        "Name": "K2Node_CreateDelegate_OutputDelegate",
+        "Flags": "RF_Public",
+        "ElementSize": 20,
+        "SignatureFunction": {
+          "ObjectName": "Function'ITEM_HardwareBase_C:OnHardwareStateChanged__DelegateSignature'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Hardware/ITEM_HardwareBase.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_GetIsActivated_Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsValid_ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "DelegateProperty",
+        "Name": "K2Node_CreateDelegate_OutputDelegate_1",
+        "Flags": "RF_Public",
+        "ElementSize": 20,
+        "SignatureFunction": {
+          "ObjectName": "Function'ITEM_HardwareBase_C:OnHardwareStateChanged__DelegateSignature'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Hardware/ITEM_HardwareBase.0"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "CallFunc_IsValid_ReturnValue_1",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "DisableFlickerEffect",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "EnableFlickerEffect",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "OnMouseExit",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "OnMouseOver",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "Parm | OutParm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "GetMeshWidget",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "Result",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "Parm | OutParm | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "Class'GridMeshWidget'",
+          "ObjectPath": "/Script/SystemReShock"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "WidgetBlueprintGeneratedClass",
+    "Name": "WIDGET_Minimap_C",
+    "Flags": "RF_Public | RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'WidgetBlueprintGeneratedClass'",
+    "Package": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap",
+    "Properties": {
+      "WidgetTree": {
+        "ObjectName": "WidgetTree'WIDGET_Minimap_C:WidgetTree'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.38"
+      },
+      "Animations": [
+        {
+          "ObjectName": "WidgetAnimation'WIDGET_Minimap_C:ANIM_BecomeVisible_INST'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.37"
+        }
+      ],
+      "UberGraphFunction": {
+        "ObjectName": "Function'WIDGET_Minimap_C:ExecuteUbergraph_WIDGET_Minimap'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.0"
+      }
+    },
+    "SuperStruct": {
+      "ObjectName": "Class'UserWidget'",
+      "ObjectPath": "/Script/UMG"
+    },
+    "Children": [
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:GetMeshWidget'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.15"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:OnMouseOver'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.14"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:OnMouseExit'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.13"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:EnableFlickerEffect'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.12"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:DisableFlickerEffect'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.11"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:SetHardwareItem'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.10"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:UpdateMinimap'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.9"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:EVENT_OnHardwareStateChanged'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.8"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:EVENT_OnHardwareBagChanged'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.7"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:EVENT_OnLevelRegionChanged'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.6"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:EVENT_OnLevelChanged'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.5"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:SetMinimapVisibility'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.4"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:InitializeMinimap'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.3"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:PreConstruct'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.2"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:Tick'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.1"
+      },
+      {
+        "ObjectName": "Function'WIDGET_Minimap_C:ExecuteUbergraph_WIDGET_Minimap'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.0"
+      }
+    ],
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "UberGraphFrame",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 16,
+        "PropertyFlags": "Transient | DuplicateTransient",
+        "Struct": {
+          "ObjectName": "ScriptStruct'PointerToUberGraphFrame'",
+          "ObjectPath": "/Script/Engine"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "ANIM_BecomeVisible",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Transient | RepSkip",
+        "PropertyClass": {
+          "ObjectName": "Class'WidgetAnimation'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "MESH_Minimap",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'GridMeshWidget'",
+          "ObjectPath": "/Script/SystemReShock"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "PANEL_MainPanel",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'CanvasPanel'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "TEXT_LevelName",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'TextMeshWidget'",
+          "ObjectPath": "/Script/SystemReShock"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "TEXT_LevelRegion",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'TextMeshWidget'",
+          "ObjectPath": "/Script/SystemReShock"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "Text_LevelSymbol",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'TextMeshWidget'",
+          "ObjectPath": "/Script/SystemReShock"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "PlayerHUD",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_PlayerHUD_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_PlayerHUD.154"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "HardwareBag",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'InventoryBag_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/InventoryBag.71"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "HardwareItem",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "PropertyClass": {
+          "ObjectName": "BlueprintGeneratedClass'HARDWARE_NavUnit_Base_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/Inventory/Items/Hardware/HARDWARE_NavUnit_Base.8"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "WasMagLocked",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 1,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "FadeInStartTimestamp",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance"
+      },
+      {
+        "Type": "FloatProperty",
+        "Name": "MinimapOrthoWidth",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance"
+      }
+    ],
+    "FuncMap": {
+      "ExecuteUbergraph_WIDGET_Minimap": {
+        "ObjectName": "Function'WIDGET_Minimap_C:ExecuteUbergraph_WIDGET_Minimap'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.0"
+      },
+      "Tick": {
+        "ObjectName": "Function'WIDGET_Minimap_C:Tick'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.1"
+      },
+      "PreConstruct": {
+        "ObjectName": "Function'WIDGET_Minimap_C:PreConstruct'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.2"
+      },
+      "InitializeMinimap": {
+        "ObjectName": "Function'WIDGET_Minimap_C:InitializeMinimap'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.3"
+      },
+      "SetMinimapVisibility": {
+        "ObjectName": "Function'WIDGET_Minimap_C:SetMinimapVisibility'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.4"
+      },
+      "EVENT_OnLevelChanged": {
+        "ObjectName": "Function'WIDGET_Minimap_C:EVENT_OnLevelChanged'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.5"
+      },
+      "EVENT_OnLevelRegionChanged": {
+        "ObjectName": "Function'WIDGET_Minimap_C:EVENT_OnLevelRegionChanged'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.6"
+      },
+      "EVENT_OnHardwareBagChanged": {
+        "ObjectName": "Function'WIDGET_Minimap_C:EVENT_OnHardwareBagChanged'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.7"
+      },
+      "EVENT_OnHardwareStateChanged": {
+        "ObjectName": "Function'WIDGET_Minimap_C:EVENT_OnHardwareStateChanged'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.8"
+      },
+      "UpdateMinimap": {
+        "ObjectName": "Function'WIDGET_Minimap_C:UpdateMinimap'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.9"
+      },
+      "SetHardwareItem": {
+        "ObjectName": "Function'WIDGET_Minimap_C:SetHardwareItem'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.10"
+      },
+      "DisableFlickerEffect": {
+        "ObjectName": "Function'WIDGET_Minimap_C:DisableFlickerEffect'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.11"
+      },
+      "EnableFlickerEffect": {
+        "ObjectName": "Function'WIDGET_Minimap_C:EnableFlickerEffect'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.12"
+      },
+      "OnMouseExit": {
+        "ObjectName": "Function'WIDGET_Minimap_C:OnMouseExit'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.13"
+      },
+      "OnMouseOver": {
+        "ObjectName": "Function'WIDGET_Minimap_C:OnMouseOver'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.14"
+      },
+      "GetMeshWidget": {
+        "ObjectName": "Function'WIDGET_Minimap_C:GetMeshWidget'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.15"
+      }
+    },
+    "ClassFlags": "CLASS_Optional | CLASS_ReplicationDataIsSetUp | CLASS_EditInlineNew | CLASS_CompiledFromBlueprint | CLASS_DefaultToInstanced | CLASS_HasInstancedReference",
+    "ClassWithin": {
+      "ObjectName": "Class'Object'",
+      "ObjectPath": "/Script/CoreUObject"
+    },
+    "ClassConfigName": "Engine",
+    "Interfaces": [
+      {
+        "Class": {
+          "ObjectName": "BlueprintGeneratedClass'INTERF_MeshWidget_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/INTERF_MeshWidget.5"
+        },
+        "PointerOffset": 0,
+        "bImplementedByK2": true
+      }
+    ],
+    "bCooked": true,
+    "ClassDefaultObject": {
+      "ObjectName": "WIDGET_Minimap_C'Default__WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.17"
+    }
+  },
+  {
+    "Type": "WIDGET_Minimap_C",
+    "Name": "Default__WIDGET_Minimap_C",
+    "Flags": "RF_Public | RF_ClassDefaultObject | RF_ArchetypeObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "WidgetBlueprintGeneratedClass'SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.WIDGET_Minimap_C'",
+    "Package": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap",
+    "Properties": {
+      "UberGraphFrame": {},
+      "MinimapOrthoWidth": 2500.0,
+      "bHasScriptImplementedPaint": false
+    }
+  },
+  {
+    "Type": "CanvasPanel",
+    "Name": "PANEL_MainPanel",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanel'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Minimap_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.38"
+    },
+    "Properties": {
+      "Slots": [
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel.CanvasPanelSlot_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.19"
+        },
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel.CanvasPanelSlot_3'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.21"
+        },
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel.CanvasPanelSlot_4'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.22"
+        },
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel.CanvasPanelSlot_1'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.20"
+        }
+      ],
+      "bIsVariable": true
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.18"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Left": 12.0,
+          "Right": 256.0,
+          "Bottom": 256.0
+        }
+      },
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.18"
+      },
+      "Content": {
+        "ObjectName": "GridMeshWidget'WIDGET_Minimap_C:WidgetTree.MESH_Minimap'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.23"
+      }
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_1",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.18"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Left": 135.0,
+          "Top": 235.0,
+          "Bottom": 12.0
+        }
+      },
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.18"
+      },
+      "Content": {
+        "ObjectName": "TextMeshWidget'WIDGET_Minimap_C:WidgetTree.TEXT_LevelRegion'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.35"
+      }
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_3",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.18"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Left": 18.0,
+          "Top": 214.33876,
+          "Right": 20.0,
+          "Bottom": 12.0
+        }
+      },
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.18"
+      },
+      "Content": {
+        "ObjectName": "TextMeshWidget'WIDGET_Minimap_C:WidgetTree.Text_LevelSymbol'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.36"
+      }
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_4",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.18"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Left": 18.0,
+          "Top": 235.0,
+          "Right": 115.0,
+          "Bottom": 12.0
+        }
+      },
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.18"
+      },
+      "Content": {
+        "ObjectName": "TextMeshWidget'WIDGET_Minimap_C:WidgetTree.TEXT_LevelName'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.34"
+      }
+    }
+  },
+  {
+    "Type": "GridMeshWidget",
+    "Name": "MESH_Minimap",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'GridMeshWidget'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Minimap_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.38"
+    },
+    "Properties": {
+      "Materials": [
+        {
+          "ObjectName": "Material'MAT_UI_Minimap'",
+          "ObjectPath": "SystemShock/Content/Art/UI/HUD/Map/MAT_UI_Minimap.0"
+        }
+      ],
+      "CellSize": {
+        "X": 256,
+        "Y": 256
+      },
+      "CellUVDimensions": {
+        "X": 0.666,
+        "Y": 0.666
+      },
+      "bFlipVerticalLayout": true,
+      "bCreateMeshesWithoutMaterials": true,
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel.CanvasPanelSlot_0'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.19"
+      },
+      "Visibility": "ESlateVisibility::SelfHitTestInvisible"
+    }
+  },
+  {
+    "Type": "MovieScene",
+    "Name": "ANIM_BecomeVisible",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieScene'",
+    "Outer": {
+      "ObjectName": "WidgetAnimation'WIDGET_Minimap_C:ANIM_BecomeVisible_INST'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.37"
+    },
+    "Properties": {
+      "Possessables": [
+        {
+          "Tags": [],
+          "Guid": "6FEB0AE4-4D2F01AB-C2F1EEB7-A3153E12",
+          "Name": "MESH_Minimap",
+          "PossessedObjectClass": {
+            "ObjectName": "Class'GridMeshWidget'",
+            "ObjectPath": "/Script/SystemReShock"
+          },
+          "ParentGuid": "00000000-00000000-00000000-00000000"
+        },
+        {
+          "Tags": [],
+          "Guid": "EB1AC3E7-40C068E3-3686C7B0-B8BDB432",
+          "Name": "PANEL_MainPanel",
+          "PossessedObjectClass": {
+            "ObjectName": "Class'CanvasPanel'",
+            "ObjectPath": "/Script/UMG"
+          },
+          "ParentGuid": "00000000-00000000-00000000-00000000"
+        }
+      ],
+      "ObjectBindings": [
+        {
+          "ObjectGuid": "6FEB0AE4-4D2F01AB-C2F1EEB7-A3153E12",
+          "BindingName": "MESH_Minimap",
+          "Tracks": [
+            {
+              "ObjectName": "MovieSceneColorTrack'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneColorTrack_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.30"
+            }
+          ]
+        },
+        {
+          "ObjectGuid": "EB1AC3E7-40C068E3-3686C7B0-B8BDB432",
+          "BindingName": "PANEL_MainPanel",
+          "Tracks": [
+            {
+              "ObjectName": "MovieSceneFloatTrack'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneFloatTrack_1'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.33"
+            }
+          ]
+        }
+      ],
+      "PlaybackRange": {
+        "Value": {
+          "LowerBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 0
+            }
+          },
+          "UpperBound": {
+            "Type": 0,
+            "Value": {
+              "Value": 300001
+            }
+          }
+        }
+      },
+      "DisplayRate": {
+        "Numerator": 20
+      },
+      "Signature": "A22C44D3-43792100-B670F8B3-973FAF1A"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseInFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneColorSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneColorTrack_0.MovieSceneColorSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.29"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseOutFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneColorSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneColorTrack_0.MovieSceneColorSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.29"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseInFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneFloatSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneFloatTrack_1.MovieSceneFloatSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.32"
+    }
+  },
+  {
+    "Type": "MovieSceneBuiltInEasingFunction",
+    "Name": "EaseOutFunction",
+    "Flags": "RF_Public | RF_Transactional | RF_DefaultSubObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneBuiltInEasingFunction'",
+    "Outer": {
+      "ObjectName": "MovieSceneFloatSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneFloatTrack_1.MovieSceneFloatSection_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.32"
+    }
+  },
+  {
+    "Type": "MovieSceneColorSection",
+    "Name": "MovieSceneColorSection_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneColorSection'",
+    "Outer": {
+      "ObjectName": "MovieSceneColorTrack'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneColorTrack_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.30"
+    },
+    "Properties": {
+      "Easing": {
+        "EaseIn": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneColorTrack_0.MovieSceneColorSection_0.EaseInFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.25"
+        },
+        "EaseOut": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneColorTrack_0.MovieSceneColorSection_0.EaseOutFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.26"
+        }
+      },
+      "SectionRange": {
+        "Value": {
+          "LowerBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 0
+            }
+          },
+          "UpperBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 60000
+            }
+          }
+        }
+      },
+      "Signature": "3DE99E91-4911D991-76D93499-CEE13BE9"
+    }
+  },
+  {
+    "Type": "MovieSceneColorTrack",
+    "Name": "MovieSceneColorTrack_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneColorTrack'",
+    "Outer": {
+      "ObjectName": "MovieScene'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.24"
+    },
+    "Properties": {
+      "PropertyBinding": {
+        "PropertyName": "Color",
+        "PropertyPath": "Color",
+        "bCanUseClassLookup": true
+      },
+      "Sections": [
+        {
+          "ObjectName": "MovieSceneColorSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneColorTrack_0.MovieSceneColorSection_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.29"
+        }
+      ],
+      "EvaluationFieldGuid": "FE1C28FF-4CBC2040-995BB3BE-4847FA28",
+      "EvaluationField": {
+        "Entries": [
+          {
+            "Section": {
+              "ObjectName": "MovieSceneColorSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneColorTrack_0.MovieSceneColorSection_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.29"
+            },
+            "Range": {
+              "LowerBound": {
+                "Type": "ERangeBoundTypes::Inclusive",
+                "Value": {
+                  "Value": 0
+                }
+              },
+              "UpperBound": {
+                "Type": "ERangeBoundTypes::Inclusive",
+                "Value": {
+                  "Value": 60000
+                }
+              }
+            },
+            "ForcedTime": {
+              "Value": -2147483648
+            },
+            "Flags": "ESectionEvaluationFlags::None",
+            "LegacySortOrder": 0
+          }
+        ]
+      },
+      "Signature": "FE1C28FF-4CBC2040-995BB3BE-4847FA28"
+    }
+  },
+  {
+    "Type": "MovieSceneCompiledData",
+    "Name": "CompiledData",
+    "Flags": "RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneCompiledData'",
+    "Outer": {
+      "ObjectName": "WidgetAnimation'WIDGET_Minimap_C:ANIM_BecomeVisible_INST'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.37"
+    },
+    "Properties": {
+      "EntityComponentField": {
+        "PersistentEntityTree": {
+          "SerializedData": {
+            "Data": {
+              "Entries": [
+                {
+                  "StartIndex": 0,
+                  "Size": 2,
+                  "Capacity": 2
+                }
+              ],
+              "Items": [
+                {
+                  "EntityIndex": 0,
+                  "MetaDataIndex": -1
+                },
+                {
+                  "EntityIndex": 1,
+                  "MetaDataIndex": -1
+                }
+              ]
+            },
+            "RootNode": {
+              "Range": {
+                "LowerBound": {
+                  "Type": 2,
+                  "Value": {
+                    "Value": 0
+                  }
+                },
+                "UpperBound": {
+                  "Type": 2,
+                  "Value": {
+                    "Value": 0
+                  }
+                }
+              },
+              "Parent": {
+                "ChildrenHandle": {
+                  "EntryIndex": -1
+                },
+                "Index": -1
+              },
+              "ChildrenID": {
+                "EntryIndex": 0
+              },
+              "DataID": {
+                "EntryIndex": -1
+              }
+            },
+            "ChildNodes": {
+              "Entries": [
+                {
+                  "StartIndex": 0,
+                  "Size": 1,
+                  "Capacity": 1
+                }
+              ],
+              "Items": [
+                {
+                  "Range": {
+                    "LowerBound": {
+                      "Type": 1,
+                      "Value": {
+                        "Value": 0
+                      }
+                    },
+                    "UpperBound": {
+                      "Type": 1,
+                      "Value": {
+                        "Value": 60000
+                      }
+                    }
+                  },
+                  "Parent": {
+                    "ChildrenHandle": {
+                      "EntryIndex": -1
+                    },
+                    "Index": 0
+                  },
+                  "ChildrenID": {
+                    "EntryIndex": -1
+                  },
+                  "DataID": {
+                    "EntryIndex": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "Entities": [
+          {
+            "Key": {
+              "EntityOwner": {
+                "ObjectName": "MovieSceneColorSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneColorTrack_0.MovieSceneColorSection_0'",
+                "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.29"
+              },
+              "EntityID": 0
+            },
+            "SharedMetaDataIndex": 0
+          },
+          {
+            "Key": {
+              "EntityOwner": {
+                "ObjectName": "MovieSceneFloatSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneFloatTrack_1.MovieSceneFloatSection_0'",
+                "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.32"
+              },
+              "EntityID": 0
+            },
+            "SharedMetaDataIndex": 1
+          }
+        ],
+        "SharedMetaData": [
+          {
+            "ObjectBindingID": "6FEB0AE4-4D2F01AB-C2F1EEB7-A3153E12"
+          },
+          {
+            "ObjectBindingID": "EB1AC3E7-40C068E3-3686C7B0-B8BDB432"
+          }
+        ]
+      },
+      "DeterminismFences": [
+        {
+          "FrameNumber": {
+            "Value": 60000
+          },
+          "SubFrame": 0.0
+        }
+      ],
+      "CompiledSignature": "46489BE8-4511F8B7-51D7BA8D-7C1BD5F4",
+      "CompilerVersion": "7D4B9809-2FAC4A6B-964ECF72-D8279EF8",
+      "AccumulatedMask": {
+        "bEntityComponentField": true
+      },
+      "AllocatedMask": {
+        "bEntityComponentField": true
+      }
+    }
+  },
+  {
+    "Type": "MovieSceneFloatSection",
+    "Name": "MovieSceneFloatSection_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneFloatSection'",
+    "Outer": {
+      "ObjectName": "MovieSceneFloatTrack'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneFloatTrack_1'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.33"
+    },
+    "Properties": {
+      "FloatCurve": {
+        "PreInfinityExtrap": "RCCE_Constant",
+        "PostInfinityExtrap": "RCCE_Constant",
+        "Times": [
+          {
+            "Value": 0
+          },
+          {
+            "Value": 60000
+          }
+        ],
+        "Values": [
+          {
+            "Value": 0.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          },
+          {
+            "Value": 1.0,
+            "Tangent": {
+              "ArriveTangent": 0.0,
+              "LeaveTangent": 0.0,
+              "ArriveTangentWeight": 0.0,
+              "LeaveTangentWeight": 0.0,
+              "TangentWeightMode": 0
+            },
+            "InterpMode": 2,
+            "TangentMode": 0
+          }
+        ],
+        "DefaultValue": 0.0,
+        "bHasDefaultValue": false,
+        "TickResolution": {
+          "Numerator": 60000,
+          "Denominator": 1
+        },
+        "bShowCurve": false,
+        "StructFallback": null
+      },
+      "Easing": {
+        "EaseIn": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneFloatTrack_1.MovieSceneFloatSection_0.EaseInFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.27"
+        },
+        "EaseOut": {
+          "ObjectName": "MovieSceneBuiltInEasingFunction'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneFloatTrack_1.MovieSceneFloatSection_0.EaseOutFunction'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.28"
+        }
+      },
+      "SectionRange": {
+        "Value": {
+          "LowerBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 0
+            }
+          },
+          "UpperBound": {
+            "Type": 1,
+            "Value": {
+              "Value": 60000
+            }
+          }
+        }
+      },
+      "Signature": "A922611D-41BBFE30-56D4B086-6C86A200"
+    }
+  },
+  {
+    "Type": "MovieSceneFloatTrack",
+    "Name": "MovieSceneFloatTrack_1",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'MovieSceneFloatTrack'",
+    "Outer": {
+      "ObjectName": "MovieScene'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.24"
+    },
+    "Properties": {
+      "PropertyBinding": {
+        "PropertyName": "RenderOpacity",
+        "PropertyPath": "RenderOpacity",
+        "bCanUseClassLookup": true
+      },
+      "Sections": [
+        {
+          "ObjectName": "MovieSceneFloatSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneFloatTrack_1.MovieSceneFloatSection_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.32"
+        }
+      ],
+      "EvaluationFieldGuid": "FB837D4C-47433A50-226376BC-BD6CCEF2",
+      "EvaluationField": {
+        "Entries": [
+          {
+            "Section": {
+              "ObjectName": "MovieSceneFloatSection'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible.MovieSceneFloatTrack_1.MovieSceneFloatSection_0'",
+              "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.32"
+            },
+            "Range": {
+              "LowerBound": {
+                "Type": "ERangeBoundTypes::Inclusive",
+                "Value": {
+                  "Value": 0
+                }
+              },
+              "UpperBound": {
+                "Type": "ERangeBoundTypes::Inclusive",
+                "Value": {
+                  "Value": 60000
+                }
+              }
+            },
+            "ForcedTime": {
+              "Value": -2147483648
+            },
+            "Flags": "ESectionEvaluationFlags::None",
+            "LegacySortOrder": 0
+          }
+        ]
+      },
+      "Signature": "FB837D4C-47433A50-226376BC-BD6CCEF2"
+    }
+  },
+  {
+    "Type": "TextMeshWidget",
+    "Name": "TEXT_LevelName",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'TextMeshWidget'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Minimap_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.38"
+    },
+    "Properties": {
+      "Text": {
+        "CultureInvariantString": "LEVEL NAME"
+      },
+      "Material": {
+        "ObjectName": "Material'MAT_UIText_StandardBold'",
+        "ObjectPath": "SystemShock/Content/Art/UI/Fonts/MAT_UIText_StandardBold.0"
+      },
+      "Font": {
+        "ObjectName": "Font'FONT_UIStandardBold'",
+        "ObjectPath": "SystemShock/Content/Art/UI/Fonts/FONT_UIStandardBold.0"
+      },
+      "Size": 11.0,
+      "Color": {
+        "B": 0,
+        "G": 255,
+        "R": 255,
+        "A": 127,
+        "Hex": "7FFFFF00"
+      },
+      "bShrinkToFit": true,
+      "bForceUppercase": true,
+      "Padding": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel.CanvasPanelSlot_4'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.22"
+      },
+      "RenderTransformPivot": {
+        "X": 0.0,
+        "Y": 0.5
+      },
+      "Visibility": "ESlateVisibility::SelfHitTestInvisible"
+    }
+  },
+  {
+    "Type": "TextMeshWidget",
+    "Name": "TEXT_LevelRegion",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'TextMeshWidget'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Minimap_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.38"
+    },
+    "Properties": {
+      "Text": {
+        "CultureInvariantString": "LEVEL REGION"
+      },
+      "Material": {
+        "ObjectName": "Material'MAT_UIText_StandardBold'",
+        "ObjectPath": "SystemShock/Content/Art/UI/Fonts/MAT_UIText_StandardBold.0"
+      },
+      "Font": {
+        "ObjectName": "Font'FONT_UIStandardBold'",
+        "ObjectPath": "SystemShock/Content/Art/UI/Fonts/FONT_UIStandardBold.0"
+      },
+      "Size": 11.0,
+      "Color": {
+        "B": 0,
+        "G": 255,
+        "R": 255,
+        "A": 255,
+        "Hex": "FFFF00"
+      },
+      "bShrinkToFit": true,
+      "bForceUppercase": true,
+      "HorizontalAlignment": "TMHA_Right",
+      "Padding": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel.CanvasPanelSlot_1'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.20"
+      }
+    }
+  },
+  {
+    "Type": "TextMeshWidget",
+    "Name": "Text_LevelSymbol",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'TextMeshWidget'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_Minimap_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.38"
+    },
+    "Properties": {
+      "Text": {
+        "CultureInvariantString": "R"
+      },
+      "Material": {
+        "ObjectName": "Material'MAT_UIText_StandardBold'",
+        "ObjectPath": "SystemShock/Content/Art/UI/Fonts/MAT_UIText_StandardBold.0"
+      },
+      "Font": {
+        "ObjectName": "Font'FONT_UIStandardBold'",
+        "ObjectPath": "SystemShock/Content/Art/UI/Fonts/FONT_UIStandardBold.0"
+      },
+      "Size": 14.0,
+      "Color": {
+        "B": 245,
+        "G": 255,
+        "R": 255,
+        "A": 255,
+        "Hex": "FFFFF5"
+      },
+      "Padding": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel.CanvasPanelSlot_3'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.21"
+      },
+      "RenderTransform": {
+        "Scale": {
+          "X": 1.1,
+          "Y": 1.0
+        }
+      },
+      "RenderTransformPivot": {
+        "X": 0.0,
+        "Y": 0.5
+      }
+    }
+  },
+  {
+    "Type": "WidgetAnimation",
+    "Name": "ANIM_BecomeVisible_INST",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'WidgetAnimation'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "Properties": {
+      "MovieScene": {
+        "ObjectName": "MovieScene'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.ANIM_BecomeVisible'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.24"
+      },
+      "AnimationBindings": [
+        {
+          "WidgetName": "MESH_Minimap",
+          "SlotWidgetName": "None",
+          "AnimationGuid": "6FEB0AE4-4D2F01AB-C2F1EEB7-A3153E12",
+          "bIsRootWidget": false
+        },
+        {
+          "WidgetName": "PANEL_MainPanel",
+          "SlotWidgetName": "None",
+          "AnimationGuid": "EB1AC3E7-40C068E3-3686C7B0-B8BDB432",
+          "bIsRootWidget": false
+        }
+      ],
+      "DisplayLabel": "ANIM_BecomeVisible",
+      "CompiledData": {
+        "ObjectName": "MovieSceneCompiledData'WIDGET_Minimap_C:ANIM_BecomeVisible_INST.CompiledData'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.31"
+      },
+      "Signature": "46489BE8-4511F8B7-51D7BA8D-7C1BD5F4"
+    }
+  },
+  {
+    "Type": "WidgetTree",
+    "Name": "WidgetTree",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'WidgetTree'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_Minimap_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.16"
+    },
+    "Properties": {
+      "RootWidget": {
+        "ObjectName": "CanvasPanel'WIDGET_Minimap_C:WidgetTree.PANEL_MainPanel'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/Map/WIDGET_Minimap.18"
+      }
+    }
+  }
+]

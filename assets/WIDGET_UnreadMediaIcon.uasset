@@ -1,0 +1,469 @@
+[
+  {
+    "Type": "Function",
+    "Name": "EVENT_OnMouseEnter",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_UnreadMediaIcon_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.6"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "MyGeometry",
+        "Flags": "RF_Public",
+        "ElementSize": 56,
+        "PropertyFlags": "ConstParm | BlueprintVisible | BlueprintReadOnly | Parm | OutParm | ReferenceParm",
+        "Struct": {
+          "ObjectName": "ScriptStruct'Geometry'",
+          "ObjectPath": "/Script/SlateCore"
+        }
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "MouseEvent",
+        "Flags": "RF_Public",
+        "ElementSize": 120,
+        "PropertyFlags": "ConstParm | BlueprintVisible | BlueprintReadOnly | Parm | OutParm | ReferenceParm",
+        "Struct": {
+          "ObjectName": "ScriptStruct'PointerEvent'",
+          "ObjectPath": "/Script/SlateCore"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "EVENT_OnMouseExit",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_UnreadMediaIcon_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.6"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "MouseEvent",
+        "Flags": "RF_Public",
+        "ElementSize": 120,
+        "PropertyFlags": "ConstParm | BlueprintVisible | BlueprintReadOnly | Parm | OutParm | ReferenceParm",
+        "Struct": {
+          "ObjectName": "ScriptStruct'PointerEvent'",
+          "ObjectPath": "/Script/SlateCore"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "EVENT_OnMouseClick",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_UnreadMediaIcon_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.6"
+    },
+    "ChildProperties": [
+      {
+        "Type": "StructProperty",
+        "Name": "MyGeometry",
+        "Flags": "RF_Public",
+        "ElementSize": 56,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "Struct": {
+          "ObjectName": "ScriptStruct'Geometry'",
+          "ObjectPath": "/Script/SlateCore"
+        }
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "MouseEvent",
+        "Flags": "RF_Public",
+        "ElementSize": 120,
+        "PropertyFlags": "ConstParm | BlueprintVisible | BlueprintReadOnly | Parm | OutParm | ReferenceParm",
+        "Struct": {
+          "ObjectName": "ScriptStruct'PointerEvent'",
+          "ObjectPath": "/Script/SlateCore"
+        }
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "ReturnValue",
+        "Flags": "RF_Public",
+        "ElementSize": 192,
+        "PropertyFlags": "Parm | OutParm | ReturnParm",
+        "Struct": {
+          "ObjectName": "ScriptStruct'EventReply'",
+          "ObjectPath": "/Script/UMG"
+        }
+      },
+      {
+        "Type": "StructProperty",
+        "Name": "K2Node_MakeStruct_EventReply",
+        "Flags": "RF_Public",
+        "ElementSize": 192,
+        "Struct": {
+          "ObjectName": "ScriptStruct'EventReply'",
+          "ObjectPath": "/Script/UMG"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "InitializeUnreadMediaIcon",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_UnreadMediaIcon_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.6"
+    },
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "PlayerHUD",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_PlayerHUD_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_PlayerHUD.154"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "PageTab",
+        "Flags": "RF_Public",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_PageTab_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MFD/WIDGET_PageTab.12"
+        }
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "SetIsUnreadMessage",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_UnreadMediaIcon_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.6"
+    },
+    "ChildProperties": [
+      {
+        "Type": "BoolProperty",
+        "Name": "IsUnreadMessage",
+        "Flags": "RF_Public",
+        "ElementSize": 1,
+        "PropertyFlags": "BlueprintVisible | BlueprintReadOnly | Parm",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      }
+    ],
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "Function",
+    "Name": "UnreadMessageHandler",
+    "Flags": "RF_Public | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'Function'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_UnreadMediaIcon_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.6"
+    },
+    "FunctionFlags": "FUNC_Public | FUNC_BlueprintCallable | FUNC_BlueprintEvent"
+  },
+  {
+    "Type": "WidgetBlueprintGeneratedClass",
+    "Name": "WIDGET_UnreadMediaIcon_C",
+    "Flags": "RF_Public | RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'WidgetBlueprintGeneratedClass'",
+    "Package": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon",
+    "Properties": {
+      "WidgetTree": {
+        "ObjectName": "WidgetTree'WIDGET_UnreadMediaIcon_C:WidgetTree'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.11"
+      },
+      "Bindings": [
+        {
+          "ObjectName": "MESH_UnreadMediaIcon",
+          "PropertyName": "OnMouseEnterEvent",
+          "FunctionName": "EVENT_OnMouseEnter",
+          "SourcePath": {
+            "Segments": [
+              {
+                "Name": "EVENT_OnMouseEnter",
+                "ArrayIndex": -1
+              }
+            ],
+            "CachedFunction": null
+          },
+          "Kind": "EBindingKind::Function"
+        },
+        {
+          "ObjectName": "MESH_UnreadMediaIcon",
+          "PropertyName": "OnMouseLeaveEvent",
+          "FunctionName": "EVENT_OnMouseExit",
+          "SourcePath": {
+            "Segments": [
+              {
+                "Name": "EVENT_OnMouseExit",
+                "ArrayIndex": -1
+              }
+            ],
+            "CachedFunction": null
+          },
+          "Kind": "EBindingKind::Function"
+        },
+        {
+          "ObjectName": "MESH_UnreadMediaIcon",
+          "PropertyName": "OnMouseButtonDownEvent",
+          "FunctionName": "EVENT_OnMouseClick",
+          "SourcePath": {
+            "Segments": [
+              {
+                "Name": "EVENT_OnMouseClick",
+                "ArrayIndex": -1
+              }
+            ],
+            "CachedFunction": null
+          },
+          "Kind": "EBindingKind::Function"
+        }
+      ]
+    },
+    "SuperStruct": {
+      "ObjectName": "Class'UserWidget'",
+      "ObjectPath": "/Script/UMG"
+    },
+    "Children": [
+      {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:UnreadMessageHandler'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.5"
+      },
+      {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:SetIsUnreadMessage'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.4"
+      },
+      {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:InitializeUnreadMediaIcon'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.3"
+      },
+      {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:EVENT_OnMouseClick'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.2"
+      },
+      {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:EVENT_OnMouseExit'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.1"
+      },
+      {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:EVENT_OnMouseEnter'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.0"
+      }
+    ],
+    "ChildProperties": [
+      {
+        "Type": "ObjectProperty",
+        "Name": "MESH_UnreadMediaIcon",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "BlueprintVisible | ExportObject | InstancedReference | RepSkip | PersistentInstance",
+        "PropertyClass": {
+          "ObjectName": "Class'GridMeshWidget'",
+          "ObjectPath": "/Script/SystemReShock"
+        }
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "PlayerHUD",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_PlayerHUD_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/WIDGET_PlayerHUD.154"
+        }
+      },
+      {
+        "Type": "BoolProperty",
+        "Name": "IsUnreadMessage",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 1,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance",
+        "FieldSize": 1,
+        "ByteOffset": 0,
+        "ByteMask": 1,
+        "FieldMask": 255,
+        "BoolSize": 1,
+        "bIsNativeBool": true
+      },
+      {
+        "Type": "ObjectProperty",
+        "Name": "PageTab",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 8,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance | InstancedReference",
+        "PropertyClass": {
+          "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_PageTab_C'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MFD/WIDGET_PageTab.12"
+        }
+      },
+      {
+        "Type": "IntProperty",
+        "Name": "UnreadMediaCount",
+        "Flags": "RF_Public | RF_LoadCompleted",
+        "ElementSize": 4,
+        "PropertyFlags": "Edit | BlueprintVisible | DisableEditOnInstance"
+      }
+    ],
+    "FuncMap": {
+      "EVENT_OnMouseEnter": {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:EVENT_OnMouseEnter'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.0"
+      },
+      "EVENT_OnMouseExit": {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:EVENT_OnMouseExit'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.1"
+      },
+      "EVENT_OnMouseClick": {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:EVENT_OnMouseClick'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.2"
+      },
+      "InitializeUnreadMediaIcon": {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:InitializeUnreadMediaIcon'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.3"
+      },
+      "SetIsUnreadMessage": {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:SetIsUnreadMessage'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.4"
+      },
+      "UnreadMessageHandler": {
+        "ObjectName": "Function'WIDGET_UnreadMediaIcon_C:UnreadMessageHandler'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.5"
+      }
+    },
+    "ClassFlags": "CLASS_Optional | CLASS_ReplicationDataIsSetUp | CLASS_EditInlineNew | CLASS_CompiledFromBlueprint | CLASS_DefaultToInstanced | CLASS_HasInstancedReference",
+    "ClassWithin": {
+      "ObjectName": "Class'Object'",
+      "ObjectPath": "/Script/CoreUObject"
+    },
+    "ClassConfigName": "Engine",
+    "bCooked": true,
+    "ClassDefaultObject": {
+      "ObjectName": "WIDGET_UnreadMediaIcon_C'Default__WIDGET_UnreadMediaIcon_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.7"
+    }
+  },
+  {
+    "Type": "WIDGET_UnreadMediaIcon_C",
+    "Name": "Default__WIDGET_UnreadMediaIcon_C",
+    "Flags": "RF_Public | RF_ClassDefaultObject | RF_ArchetypeObject | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "WidgetBlueprintGeneratedClass'SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.WIDGET_UnreadMediaIcon_C'",
+    "Package": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon",
+    "Properties": {
+      "bHasScriptImplementedTick": false,
+      "bHasScriptImplementedPaint": false
+    }
+  },
+  {
+    "Type": "CanvasPanel",
+    "Name": "CanvasPanel_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanel'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_UnreadMediaIcon_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.11"
+    },
+    "Properties": {
+      "Slots": [
+        {
+          "ObjectName": "CanvasPanelSlot'WIDGET_UnreadMediaIcon_C:WidgetTree.CanvasPanel_0.CanvasPanelSlot_0'",
+          "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.9"
+        }
+      ]
+    }
+  },
+  {
+    "Type": "CanvasPanelSlot",
+    "Name": "CanvasPanelSlot_0",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'CanvasPanelSlot'",
+    "Outer": {
+      "ObjectName": "CanvasPanel'WIDGET_UnreadMediaIcon_C:WidgetTree.CanvasPanel_0'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.8"
+    },
+    "Properties": {
+      "LayoutData": {
+        "Offsets": {
+          "Right": 40.0,
+          "Bottom": 36.0
+        }
+      },
+      "Parent": {
+        "ObjectName": "CanvasPanel'WIDGET_UnreadMediaIcon_C:WidgetTree.CanvasPanel_0'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.8"
+      },
+      "Content": {
+        "ObjectName": "GridMeshWidget'WIDGET_UnreadMediaIcon_C:WidgetTree.MESH_UnreadMediaIcon'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.10"
+      }
+    }
+  },
+  {
+    "Type": "GridMeshWidget",
+    "Name": "MESH_UnreadMediaIcon",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'GridMeshWidget'",
+    "Outer": {
+      "ObjectName": "WidgetTree'WIDGET_UnreadMediaIcon_C:WidgetTree'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.11"
+    },
+    "Properties": {
+      "Materials": [
+        {
+          "ObjectName": "Material'MAT_MediaIcon_UnreadMessages'",
+          "ObjectPath": "SystemShock/Content/Art/UI/HUD/Media/MAT_MediaIcon_UnreadMessages.0"
+        }
+      ],
+      "CellSize": {
+        "X": 40,
+        "Y": 36
+      },
+      "Slot": {
+        "ObjectName": "CanvasPanelSlot'WIDGET_UnreadMediaIcon_C:WidgetTree.CanvasPanel_0.CanvasPanelSlot_0'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.9"
+      },
+      "Visibility": "ESlateVisibility::Hidden"
+    }
+  },
+  {
+    "Type": "WidgetTree",
+    "Name": "WidgetTree",
+    "Flags": "RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Class": "UScriptClass'WidgetTree'",
+    "Outer": {
+      "ObjectName": "WidgetBlueprintGeneratedClass'WIDGET_UnreadMediaIcon_C'",
+      "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.6"
+    },
+    "Properties": {
+      "RootWidget": {
+        "ObjectName": "CanvasPanel'WIDGET_UnreadMediaIcon_C:WidgetTree.CanvasPanel_0'",
+        "ObjectPath": "SystemShock/Content/Blueprints/UI/HUD/Widgets/MediaTab/WIDGET_UnreadMediaIcon.8"
+      }
+    }
+  }
+]
