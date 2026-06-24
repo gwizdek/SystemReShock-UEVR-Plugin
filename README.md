@@ -137,7 +137,7 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 * Some of the two handed weapon poses are not aligned
 * Missing parts or reload animations for Railgun(cooldown), Plasma Rifle (plasma core ammo)
 * Sparq weapon - mode dial is not pointing at correct energy power setting (the lights work ok though)
-* It's hard to open the X + shaped glass doors using hands - hold grip button and touch the corner outside of circular button area or point the laser at it and use interact button.  
+* It's hard to open the X + shaped glass doors using hands - hold grip button and touch the corner outside of circular button area or point the laser at it and use interact button. You can also use the Access Card to interact with these doors (as suggested by Bloodshot12)  
 <img width="308" height="298" alt="image" src="https://github.com/user-attachments/assets/9c9e2d65-d847-4f3f-b292-175cc5bbfed1" />
 
 
