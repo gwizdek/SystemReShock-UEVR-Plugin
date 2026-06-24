@@ -22,13 +22,24 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 ## Installation
 1) Install latest UEVR Nightly [**HERE**](https://github.com/praydog/UEVR-nightly/releases).
 2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
-3) Download the 2.0-beta.1 release of the SystemReShock UEVR plugin from Releases page.
+3) Download the 2.0-beta.1 release of the SystemReShock UEVR profile from Releases page.
 4) Click "Import Config" in the UEVR Frontend App and select downloaded "SystemReShock-Win64-Shipping.zip". Accept the DLL warning.
 5) Copy PAK files from `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
 6) Add optional mod files (Index controllers support, Red Tint Remover) - described below
 7) Launch System Shock and inject UEVR at MAIN MENU (this will allow the mod to set game options for VR play)
 8) Reset controller bindings in game options to defaults
 9) Optional (recommended) - Tick `Autoplay Media Logs` in Gameplay Options
+
+## How To Update
+1) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping`
+2) Download a new release of the SystemReShock UEVR profile from Releases page
+3) Click "Import Config" in the UEVR Frontend App and select downloaded "SystemReShock-Win64-Shipping.zip". Accept the DLL warning.
+4) Copy updated PAK files from `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder - overwrite files.
+
+> [!WARNING]
+> PAK files copied to the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder must be in sync with `SystemReShockVR.dll` file  
+> This means: copy PAK files over to game's folder after each update!
+
 
 > [!NOTE]
 > If you have an NVIDIA GPU, use DLSS Swapper to use newer, transformer model capable version. Set profile J or K (sharpest and not as heavy as L / M)
@@ -52,6 +63,7 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 | Use consumable item | Equip a consumable item via the item selector, then use a pointing hand pose and touch the consumable with your finger |
 | Toggle Hacker Hardware | Use a pointing hand pose and touch one of the Hardware Icons attached to your right forearm (hardware needs to be installed first) |
 | Use Power Station | Hold your left hand close to the Power Station |
+| Open Game Menu (not in Cyberspace) | Place your right motion controller over your inner left wrist and press **Right Thumb**  - similar gesture to: Toggle MFD |
 
 > [!NOTE]
 > If you're having problems with interactions, you can use laser pointer and press game's interaction button (B by default).  
@@ -97,6 +109,7 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 | **Right Stick Down** | Descend |
 | **Right Trigger** | Pulser |
 | **Left Trigger** | I.C.E. Drill |
+| **Right Thumb** | Open Game Menu |
 
 ## Limitations
 * Mods that modify crosshair, hotbar slots, MFD and other game logic can have negative impact on the plugin and can cause it to break.
