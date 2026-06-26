@@ -13,11 +13,15 @@ Watch the tutorial video to see what this mod has to offer [**YouTube**](https:/
 You can leave me a tip here: https://ko-fi.com/gwizdek
 
 ## Features
-* 6DOF FBIK. Full roomscale VR.
-* Physical interactions
+* 6DOF Full Body IK, full roomscale VR, physical crouch
+* Physical interactions (grabbing items, pressing buttons, using consumabe items, holstering weapons, etc.)
 * HL:A style item selector
-* Automatic Aim Pose - aim the weapon, your walking speed will decrease but accuracy incease.
-* Many more... (I will list them later)
+* Inventory (MFD) interactions using a laser pointer
+* Physical Access Card for unlocking doors
+* UI elements attached to hands
+* Interactable Hacker Hardware togglers on right arm
+* Gestures (toggle MFD, toggle flashlight, etc.)
+* Many more...
 
 ## Installation
 1) Install latest UEVR Nightly [**HERE**](https://github.com/praydog/UEVR-nightly/releases).
