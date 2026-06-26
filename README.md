@@ -21,14 +21,15 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 
 ## Installation
 1) Install latest UEVR Nightly [**HERE**](https://github.com/praydog/UEVR-nightly/releases).
-2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping` 
-3) Download the 2.0-beta.1 release of the SystemReShock UEVR profile from Releases page.
-4) Click "Import Config" in the UEVR Frontend App and select downloaded "SystemReShock-Win64-Shipping.zip". Accept the DLL warning.
-5) Copy PAK files from `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
-6) Add optional mod files (Index controllers support, Red Tint Remover) - described below
-7) Launch System Shock and inject UEVR at MAIN MENU (this will allow the mod to set game options for VR play)
-8) Reset controller bindings in game options to defaults
-9) Optional (recommended) - Tick `Autoplay Media Logs` in Gameplay Options
+2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping`
+3) Remove any .pak mods previously installed in `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder. This includes optional mods for 1.x versions of System Shock VR by Ashok (SystemShock-VRFixes_p.pak) and mods from Nexus.  
+4) Download the 2.0-beta.1 release of the SystemReShock UEVR profile from Releases page.
+5) Click "Import Config" in the UEVR Frontend App and select downloaded "SystemReShock-Win64-Shipping.zip". Accept the DLL warning.
+6) Copy PAK files from `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
+7) Add optional mod files (Index controllers support, Red Tint Remover) - described below
+8) Launch System Shock and inject UEVR at MAIN MENU (this will allow the mod to set game options for VR play)
+9) Reset controller bindings in game options to defaults
+10) Optional (recommended) - Tick `Autoplay Media Logs` in Gameplay Options
 
 ## How To Update
 1) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping`
@@ -114,7 +115,7 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 ## Limitations
 * Mods that modify crosshair, hotbar slots, MFD and other game logic can have negative impact on the plugin and can cause it to break.
 
-## Suggested Mods
+## Optional Mods
 * Remove red tint:  https://www.nexusmods.com/systemshock2023/mods/33
 * Markmon's support mod for Index Knuckles
 
