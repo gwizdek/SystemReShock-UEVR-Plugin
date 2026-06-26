@@ -31,7 +31,7 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 9) Reset controller bindings in game options to defaults
 10) Optional (recommended) - Tick `Autoplay Media Logs` in Gameplay Options
 
-## How To Update
+## How To Update (if you already have 2.x version of the mod)
 1) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping`
 2) Download a new release of the SystemReShock UEVR profile from Releases page
 3) Click "Import Config" in the UEVR Frontend App and select downloaded "SystemReShock-Win64-Shipping.zip". Accept the DLL warning.
