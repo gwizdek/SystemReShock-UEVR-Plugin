@@ -128,6 +128,7 @@ private:
     MemoBoolean m_is_ads_active{ false };
     MemoBoolean m_UEVR_process_damage{ false };
     MemoBoolean m_is_using_laptop{ false };
+    MemoBoolean m_is_head_lamp_active{ false };
 
     // pull gun mechanics
     MemoBoolean m_is_right_hand_reaching_backpack{ false };
@@ -191,6 +192,9 @@ public:
     void apply_vr_game_options();
     void try_set_intro_laptop_pointer();
     void handle_crouch();
+    void handle_head_lamp();
+    void apply_head_lamp_settings();
+    void set_head_lamp_brightness(float value);
  
     // Input handlers
     void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);

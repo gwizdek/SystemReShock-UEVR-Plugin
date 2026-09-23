@@ -41,6 +41,7 @@
 #include "SDK/COMP_Scanner_classes.hpp"
 #include "SDK/PICKUP_Base_classes.hpp"
 #include "SDK/STRUCT_InteractResults_structs.hpp"
+#include "SDK/HARDWARE_HeadLamp_classes.hpp"
 
 #include "SDK/_BP_LaserDot_classes.hpp"
 #include "SDK/_BP_ItemSelector_classes.hpp"
@@ -240,6 +241,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_media_display();
         update_trailing_rotation(delta);
         handle_ads();
+        handle_head_lamp();
 
         PluginUtils::handle_native_stereo_fix_cycler(vr);
 
@@ -299,6 +301,11 @@ bool UEVRPlugin::prepare_pointers() {
 
             m_is_media_display_visible.consume();
             m_neural_hud->IsMediaDisplayVisible(&m_is_media_display_visible.value);
+
+            // headlamp
+            if (m_inventory != nullptr) {
+                m_is_head_lamp_active.set_value(static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->HeadlampLight->Intensity != 0.0f);
+            }
 
         }
 
@@ -914,6 +921,8 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
                 ) {
                 API::get()->log_warn("[plugin][handle_citadel_station_xinput] Toggle VisionUnit");
                 m_neural_hud->WIDGET_HardwareButton_VisionUnit->ToggleHardware();
+                //m_is_head_lamp_active.set_value(static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->HeadlampLight->Intensity != 0.0f);
+                //apply_head_lamp_settings();
             }
 
             // try releasing world object
@@ -1140,6 +1149,7 @@ void UEVRPlugin::handle_game_state_change() {
                             m_neural_hud->PANEL_Hotbar->SetVisibility(ESlateVisibility::Hidden);
                         }
                         VRMFD::hide_mfd();
+
                     }
                     break;
 
@@ -1311,6 +1321,11 @@ void UEVRPlugin::handle_level_change() {
                 APAWN_Hacker_Implant_C* pawn = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get());
                 g_vr_body = VRBody::initialize_vr_body(pawn);
 
+                // modify head lamp settings
+                if (m_is_head_lamp_active.get()) {
+                    apply_head_lamp_settings();
+                }
+
                 if (g_vr_body != nullptr && m_neural_hud != nullptr) {
                     initialize_mcs(pawn);
                     VRBody::initialize_laser_dot();
@@ -1424,6 +1439,7 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
 
         if (m_hotbar_selector_button.is_pressed()) {
             VRItemSelector::set_visibility(true);
+
             VRBody::set_weapon_mesh_visibility(false);
             // hide UEVR controlled HUD
             //vr->set_mod_value("UI_Size", "0.000000");
@@ -1431,9 +1447,7 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
             vr->set_aim_method(0);
 
             // show VR item selector
-            //g_vr_body->set_laser_pointer_visibility(true);
             g_vr_body->ItemSelectorRight->Show(20.f);
-            //g_vr_body->ItemSelectorLeft->Hide();
 
             // we will ignore Player mesh collisions on the channel that WidgetInteractionComponent uses
             // for the time the selector is active
@@ -1444,6 +1458,10 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
             //    SDK::ECollisionResponse::ECR_Ignore
             //);
             VRItemSelector::unselect_all_hotbar_slots(m_neural_hud);
+
+            if (m_is_head_lamp_active.value) {
+                set_head_lamp_brightness(1.f);
+            }
         }
 
         if (m_hotbar_selector_button.is_released()) {
@@ -1460,6 +1478,10 @@ void UEVRPlugin::handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VR
 
             vr->set_mod_value("VR_RoomscaleMovement", "true");
             vr->set_aim_method(m_default_aim_method);
+
+            if (m_is_head_lamp_active.value) {
+                set_head_lamp_brightness(4000.f);
+            }
         }
 
         // state, when the item selector is shown
@@ -2173,5 +2195,60 @@ void UEVRPlugin::handle_crouch() {
     }
     catch (...) {
         API::get()->log_error("[plugin][character_crouch] Exception");
+    }
+}
+
+void UEVRPlugin::handle_head_lamp() {
+    if (m_is_head_lamp_active.enabled()) {
+        apply_head_lamp_settings();
+    }
+}
+
+void UEVRPlugin::set_head_lamp_brightness(float value) {
+    if (SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) && m_pawn.get()->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+        SDK::USpotLightComponent* head_lamp_light = static_cast<SDK::APAWN_Hacker_Implant_C*>(m_pawn.get())->HeadlampLight;
+        if (!SDK::UKismetSystemLibrary::IsValid(head_lamp_light)) {
+            API::get()->log_error("[plugin][set_head_lamp_brightness] Invalid Headlight object");
+            return;
+        }
+        head_lamp_light->SetAttenuationRadius(value);
+    }
+}
+
+void UEVRPlugin::apply_head_lamp_settings() {
+    if (SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) && m_pawn.get()->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+        API::get()->log_warn("[plugin][apply_head_lamp_settings] Begin");
+        SDK::UITEM_Base_C* inventory_item{ nullptr };
+        SDK::UHARDWARE_HeadLamp_C* head_lamp{ nullptr };
+
+        m_inventory->FindItem(SDK::UHARDWARE_HeadLamp_C::StaticClass(), false, false, &inventory_item);
+        if (SDK::UKismetSystemLibrary::IsValid(inventory_item) && inventory_item->IsA(SDK::UHARDWARE_HeadLamp_C::StaticClass())) {
+            head_lamp = (SDK::UHARDWARE_HeadLamp_C*)inventory_item;
+            API::get()->log_warn("[plugin][apply_head_lamp_settings] Headlight found");
+        }
+        else {
+            head_lamp = nullptr;
+        }
+
+        SDK::USpotLightComponent* head_lamp_light = static_cast<SDK::APAWN_Hacker_Implant_C*>(m_pawn.get())->HeadlampLight;
+        if (!SDK::UKismetSystemLibrary::IsValid(head_lamp_light)) {
+            API::get()->log_error("[plugin][apply_head_lamp_settings] Invalid Headlight object");
+            return;
+        }
+        head_lamp_light->SetInnerConeAngle(2.f);
+        head_lamp_light->SetOuterConeAngle(12.f);
+
+        if (head_lamp != nullptr) {
+            head_lamp->EnergyDrainModData.Value = 0.1f;
+        }
+        head_lamp_light->bUseInverseSquaredFalloff = false;
+        head_lamp_light->SetIntensity(5.f);
+        head_lamp_light->SetAttenuationRadius(4000.f);
+        head_lamp_light->SetLightFunctionFadeDistance(0.f);
+        head_lamp_light->SetLightFalloffExponent(10.f);
+        head_lamp_light->SetVolumetricScatteringIntensity(0.1f);
+        head_lamp_light->SetCastShadows(true);
+
+        API::get()->log_warn("[plugin][apply_head_lamp_settings] Applied Headlight parameters");
     }
 }

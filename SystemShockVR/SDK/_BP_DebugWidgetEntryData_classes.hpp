@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "CoreUObject_classes.hpp"
 #include "_ENUM_DebugWidgetEntryType_structs.hpp"
+#include "CoreUObject_classes.hpp"
 
 
 namespace SDK

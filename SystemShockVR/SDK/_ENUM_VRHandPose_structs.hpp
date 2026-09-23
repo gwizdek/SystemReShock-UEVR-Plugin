@@ -15,7 +15,7 @@ namespace SDK
 {
 
 // UserDefinedEnum _ENUM_VRHandPose._ENUM_VRHandPose
-// NumValues: 0x000E
+// NumValues: 0x000F
 enum class E_ENUM_VRHandPose : uint8
 {
 	NewEnumerator6                           = 0,
@@ -31,7 +31,8 @@ enum class E_ENUM_VRHandPose : uint8
 	NewEnumerator13                          = 10,
 	NewEnumerator14                          = 11,
 	NewEnumerator15                          = 12,
-	_ENUM_MAX                                = 13,
+	NewEnumerator16                          = 13,
+	_ENUM_MAX                                = 14,
 };
 
 }
