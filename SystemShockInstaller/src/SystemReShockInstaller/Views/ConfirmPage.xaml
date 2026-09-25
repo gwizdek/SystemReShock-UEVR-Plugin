@@ -1,0 +1,51 @@
+<UserControl x:Class="SystemReShockInstaller.Views.ConfirmPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Margin="28,28,28,12">
+            <StackPanel>
+                <TextBlock Style="{StaticResource Heading}" Text="Ready to install" />
+                <TextBlock Style="{StaticResource Muted}" Text="Setup will do the following. Press Install to continue or Cancel to leave everything unchanged." />
+
+                <ItemsControl ItemsSource="{Binding Actions}" Margin="0,16,0,0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource PanelBackground}"
+                                    BorderBrush="{StaticResource BorderBrushSubtle}"
+                                    BorderThickness="1" CornerRadius="3" Padding="12,10" Margin="0,0,0,8">
+                                <StackPanel>
+                                    <TextBlock FontWeight="SemiBold" Text="{Binding Title}" />
+                                    <ItemsControl ItemsSource="{Binding Details}" Margin="0,4,0,0">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Style="{StaticResource Muted}" FontSize="12" Text="{Binding}" />
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <TextBlock Style="{StaticResource Error}" Text="{Binding BlockMessage}" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border Grid.Row="1" Style="{StaticResource ButtonBar}">
+            <Grid>
+                <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Text="Installing..."
+                           Visibility="{Binding IsInstalling, Converter={StaticResource BoolToVisibility}}" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Cancel" Command="{Binding CancelCommand}" />
+                    <Button Content="Install" Style="{StaticResource PrimaryButton}" Command="{Binding InstallCommand}" IsDefault="True" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

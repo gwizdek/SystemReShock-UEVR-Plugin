@@ -19,7 +19,8 @@ built from a separate Unreal Engine 4.27 project, described at the end.
 
 | Path | What it is |
 |---|---|
-| `SystemReShockVR.sln` | The solution. It holds one project. |
+| `SystemReShockVR.sln` | The solution. It holds the C++ plugin and the two installer projects. |
+| `SystemShockInstaller/` | The Windows installer and launcher for the mod, a C# WPF app with its tests. See `installer-spec.md` and its own `README.md`. |
 | `SystemShockVR/` | Plugin source. `plugin.cpp` is the entry point and the frame callbacks; `vr_*.cpp` hold the features. |
 | `SystemShockVR/SDK/` | Dumper-7 dump of the game's classes. Tracked in git, so no dump is needed to build. |
 | `SystemShockVR/BridgeSDK/` | Generated wrappers for the mod's own Blueprints. Do not edit; see `bridge-sdk-generator.md`. |
@@ -39,7 +40,13 @@ build. Or from a Developer PowerShell:
 msbuild SystemShockVR\SystemShockVR.vcxproj /p:Configuration=Release /p:Platform=x64 /m
 ```
 
-The DLL lands in `SystemShockVR\x64\Release\SystemReShockVR.dll`.
+The DLL lands in `x64\Release\SystemReShockVR.dll` at the repository root
+either way. A Visual Studio build writes there directly. A command-line build of
+the project alone writes to `SystemShockVR\x64\Release\` and then copies the
+`.dll`, `.exp`, `.lib` and `.pdb` to the repository folder. The copy is the
+`CopyShipFilesToRepoOutDir` target in the project file. Leave
+`SystemShockVR\SystemReShockVR\x64\` alone; it holds the `.obj` and `.tlog`
+files that keep builds incremental.
 
 Notes on the configurations:
 

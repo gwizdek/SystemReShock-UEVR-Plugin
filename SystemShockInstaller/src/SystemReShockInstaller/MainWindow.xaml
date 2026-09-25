@@ -1,0 +1,12 @@
+<Window x:Class="SystemReShockInstaller.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding WindowTitle}"
+        Width="720" Height="520"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource WindowBackground}"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display">
+    <ContentControl Content="{Binding CurrentPage}" />
+</Window>
