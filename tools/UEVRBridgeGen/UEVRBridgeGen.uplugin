@@ -1,0 +1,19 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.0",
+  "FriendlyName": "UEVR Bridge Generator",
+  "Description": "Commandlet that writes name-resolved C++ wrappers for the project's Blueprint classes, enums and structs. The wrappers are compiled into a UEVR plugin next to a Dumper-7 SDK.",
+  "Category": "Modding",
+  "CreatedBy": "gwizdek",
+  "CanContainContent": false,
+  "IsBetaVersion": false,
+  "Installed": false,
+  "Modules": [
+    {
+      "Name": "UEVRBridgeGen",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
+    }
+  ]
+}

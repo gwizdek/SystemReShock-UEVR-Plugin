@@ -15,7 +15,7 @@
 #include "SDK/UMG_classes.hpp"
 #include "SDK/COMP_HackerInventory_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
-#include "SDK/_BP_VRBody_classes.hpp"
+#include "BridgeSDK/_BP_VRBody_classes.hpp"
 
 #include "memo_structs.hpp"
 #include "vr_plugin_shared.hpp"

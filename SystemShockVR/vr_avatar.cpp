@@ -49,7 +49,7 @@ A_BP_VRAvatar_C* VRAvatar::initialize_vr_avatar(APAWN_Avatar_C* pawn) {
         );
 
         //pawn->Camera->K2_AttachToComponent(
-        //    (USceneComponent*)vr_avatar->MotionControllerRight,
+        //    (USceneComponent*)vr_avatar->MotionControllerRight(),
         //    UKismetStringLibrary::Conv_StringToName(L"None"),
         //    EAttachmentRule::SnapToTarget,
         //    EAttachmentRule::SnapToTarget,

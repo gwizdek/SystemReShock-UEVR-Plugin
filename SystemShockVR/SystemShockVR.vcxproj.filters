@@ -25,6 +25,9 @@
     <Filter Include="mINI">
       <UniqueIdentifier>{b496796b-60f5-40fa-8a27-9803a75c4f32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BridgeSDK">
+      <UniqueIdentifier>{cfec56a5-5c35-4279-a10f-47c1218d79ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -101,6 +104,96 @@
     </ClInclude>
     <ClInclude Include="vr_avatar.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeSDK\Bridge.hpp">
+      <Filter>BridgeSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeSDK\BridgeSDK.hpp">
+      <Filter>BridgeSDK</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -218,18 +311,6 @@
     <ClCompile Include="SDK\ITEM_WeaponBase_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\_BP_LaserDot_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\_BP_ItemSelector_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\_BP_VRBody_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\_CH_Hacker_Rig_Skeleton_AnimBlueprint_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
     <ClCompile Include="SDK\PAWN_SystemShockCharacter_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
@@ -248,12 +329,6 @@
     <ClCompile Include="SDK\INTERACT_Channeling_Base_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\_BP_DebugWidgetComponent_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\_BP_VRMovementComponent_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
     <ClCompile Include="vr_body.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -263,15 +338,6 @@
     <ClCompile Include="vr_mfd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\_BP_MFDMaskComponent_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\_BP_HandInteractionComponent_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\_BP_HackerHardware_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
     <ClCompile Include="vr_avatar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -279,9 +345,6 @@
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\ITEM_MeleeWeapon_Base_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\_BP_MeleeWeaponHandler_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\CharacterAction_functions.cpp">
@@ -299,13 +362,7 @@
     <ClCompile Include="SDK\WEAPON_LaserRapier_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\_BP_VRMenu_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
     <ClCompile Include="SDK\PICKUP_Base_functions.cpp">
-      <Filter>SDK Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDK\_BP_InteractablesHighlighter_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\PAWN_Avatar_functions.cpp">

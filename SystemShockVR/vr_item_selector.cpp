@@ -2,7 +2,7 @@
 
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
 #include "SDK/WIDGET_HotbarSlot_classes.hpp"
-#include "SDK/_BP_VRBody_classes.hpp"
+#include "BridgeSDK/_BP_VRBody_classes.hpp"
 
 #include "vr_item_selector.hpp"
 #include "vr_plugin_shared.hpp"
@@ -20,7 +20,7 @@ void VRItemSelector::initialize(SDK::UWIDGET_PlayerHUD_C* neural_hud) {
         }
         
         // get hotbar slot array defined in BP
-        auto hotbar_slots = g_vr_body->ItemSelectorRight->HotbarSlots;
+        auto hotbar_slots = g_vr_body->ItemSelectorRight()->HotbarSlots();
 
         // canvas panel slots 
         std::array<SDK::UCanvasPanelSlot*, 10> canvas_panel_slots{};
@@ -44,7 +44,7 @@ void VRItemSelector::initialize(SDK::UWIDGET_PlayerHUD_C* neural_hud) {
         }
 
         // this will disable collisions
-        g_vr_body->ItemSelectorRight->Hide();
+        g_vr_body->ItemSelectorRight()->Hide();
 
         API::get()->log_warn("[item_selector][initialize] Initialized HotbarSlots");
     }
@@ -54,14 +54,14 @@ void VRItemSelector::initialize(SDK::UWIDGET_PlayerHUD_C* neural_hud) {
 }
 
 void VRItemSelector::set_hotbar_slot_visibility(int slot, bool visible) {
-    g_vr_body->ItemSelectorRight->HotbarSlots[slot]->SetVisibility(visible, true);
-    g_vr_body->ItemSelectorRight->HotbarSlots[slot]->SetHiddenInGame(!visible, true);
+    g_vr_body->ItemSelectorRight()->HotbarSlots()[slot]->SetVisibility(visible, true);
+    g_vr_body->ItemSelectorRight()->HotbarSlots()[slot]->SetHiddenInGame(!visible, true);
 }
 
 // highlights selected item
 void VRItemSelector::set_current_quick_slot() {
     //API::get()->log_warn("[vrbody][highlight_quick_slot] Begin");
-    VRItemSelector::m_highlighted_widget_component.set_value(g_vr_body->WidgetInteractionRight->GetHoveredWidgetComponent());
+    VRItemSelector::m_highlighted_widget_component.set_value(g_vr_body->WidgetInteractionRight()->GetHoveredWidgetComponent());
 
     if (VRItemSelector::m_highlighted_widget_component.has_changed()) {
         // highlight current selected slot
@@ -91,7 +91,7 @@ void VRItemSelector::activate_current_quick_slot() {
             SDK::int32 slot_index;
             static_cast<SDK::UWIDGET_HotbarSlot_C*>(widget)->GetSlotIndex(&slot_index);
 
-            static_cast<SDK::APAWN_Hacker_Implant_C*>(g_vr_body->HackerPawn)->ReceiveInputForHotbarSlotByIndex(
+            static_cast<SDK::APAWN_Hacker_Implant_C*>(g_vr_body->HackerPawn())->ReceiveInputForHotbarSlotByIndex(
                 slot_index + 1, true
             );
         }
@@ -100,9 +100,9 @@ void VRItemSelector::activate_current_quick_slot() {
 
 void VRItemSelector::set_visibility(bool visible) {
     for (int i = 0; i < 10; i++) {
-        if (g_vr_body->ItemSelectorRight->HotbarSlots[i] != nullptr) {
-            g_vr_body->ItemSelectorRight->HotbarSlots[i]->SetVisibility(visible, true);
-            g_vr_body->ItemSelectorRight->HotbarSlots[i]->SetHiddenInGame(!visible, true);
+        if (g_vr_body->ItemSelectorRight()->HotbarSlots()[i] != nullptr) {
+            g_vr_body->ItemSelectorRight()->HotbarSlots()[i]->SetVisibility(visible, true);
+            g_vr_body->ItemSelectorRight()->HotbarSlots()[i]->SetHiddenInGame(!visible, true);
         }
     }
 }
