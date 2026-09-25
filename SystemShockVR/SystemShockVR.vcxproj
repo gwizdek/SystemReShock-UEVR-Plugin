@@ -244,4 +244,21 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <!--
+    Visual Studio builds through the solution and puts the output in <repo>d\<Configuration>\.
+    A command-line build of this project alone puts it in SystemShockVRd\<Configuration>\.
+    This target copies the shippable files to the repository folder so both builds land in the same place.
+    It does nothing when the output folder already is the repository folder.
+  -->
+  <PropertyGroup>
+    <RepoOutDir>$([MSBuild]::NormalizeDirectory('$(ProjectDir)', '..', '$(Platform)', '$(Configuration)'))</RepoOutDir>
+    <ResolvedOutDir>$([MSBuild]::NormalizeDirectory('$(ProjectDir)', '$(OutDir)'))</ResolvedOutDir>
+  </PropertyGroup>
+  <Target Name="CopyShipFilesToRepoOutDir" AfterTargets="Build" Condition="'$(Platform)'=='x64' And '$(ResolvedOutDir)'!='$(RepoOutDir)'">
+    <ItemGroup>
+      <ShipFile Include="$(OutDir)$(TargetName).dll;$(OutDir)$(TargetName).exp;$(OutDir)$(TargetName).lib;$(OutDir)$(TargetName).pdb" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ShipFile)" DestinationFolder="$(RepoOutDir)" SkipUnchangedFiles="true" />
+    <Message Importance="high" Text="Copied @(ShipFile->'%(Filename)%(Extension)', ', ') to $(RepoOutDir)" />
+  </Target>
 </Project>
