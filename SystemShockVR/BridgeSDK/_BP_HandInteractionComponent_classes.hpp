@@ -34,129 +34,172 @@ class U_BP_HandInteractionComponent_C final : public USceneComponent
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_HandInteractionComponent._BP_HandInteractionComponent_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_HandInteractionComponent_C* GetDefaultObj() { return reinterpret_cast<U_BP_HandInteractionComponent_C*>(BridgeClass()->get_class_default_object()); }
 
-	class A_BP_VRBody_C*& VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref.ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
-	class UMotionControllerComponent*& MotionControllerRef() { static bridge::Prop Ref{ L"MotionControllerRef" }; return Ref.ref<class UMotionControllerComponent*>(this, BridgeClass()); }
-	float& TraceRadius() { static bridge::Prop Ref{ L"TraceRadius" }; return Ref.ref<float>(this, BridgeClass()); }
-	ETraceTypeQuery& TraceChannel() { static bridge::Prop Ref{ L"TraceChannel" }; return Ref.ref<ETraceTypeQuery>(this, BridgeClass()); }
-	TArray<class AActor*>& IgnoredActors() { static bridge::Prop Ref{ L"IgnoredActors" }; return Ref.ref<TArray<class AActor*>>(this, BridgeClass()); }
-	class AActor*& ClosestOverlappedActor() { static bridge::Prop Ref{ L"ClosestOverlappedActor" }; return Ref.ref<class AActor*>(this, BridgeClass()); }
-	class UActorComponent*& ClosestOverlappedComponent() { static bridge::Prop Ref{ L"ClosestOverlappedComponent" }; return Ref.ref<class UActorComponent*>(this, BridgeClass()); }
-	class FName& IndexSocketName() { static bridge::Prop Ref{ L"IndexSocketName" }; return Ref.ref<class FName>(this, BridgeClass()); }
-	float& BackpackReachDistance() { static bridge::Prop Ref{ L"BackpackReachDistance" }; return Ref.ref<float>(this, BridgeClass()); }
-	E_ENUM_VRHandPose& InteractionPose() { static bridge::Prop Ref{ L"InteractionPose" }; return Ref.ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
-	float& InteractionPoseWeight() { static bridge::Prop Ref{ L"InteractionPoseWeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	struct FTransform& InteractionPoseTransform() { static bridge::Prop Ref{ L"InteractionPoseTransform" }; return Ref.ref<struct FTransform>(this, BridgeClass()); }
-	E_ENUM_VRHandPose& WeaponGripPose() { static bridge::Prop Ref{ L"WeaponGripPose" }; return Ref.ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
-	E_ENUM_VRHandPose& SelectedPose() { static bridge::Prop Ref{ L"SelectedPose" }; return Ref.ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
-	struct FDebugFloatHistory& FloatHistory() { static bridge::Prop Ref{ L"FloatHistory" }; return Ref.ref<struct FDebugFloatHistory>(this, BridgeClass()); }
-	class UPrimitiveComponent*& IndexFingerOverlappedComponent() { static bridge::Prop Ref{ L"IndexFingerOverlappedComponent" }; return Ref.ref<class UPrimitiveComponent*>(this, BridgeClass()); }
-	class AINTERACT_Base_C*& IndexFingerOverlappedActor() { static bridge::Prop Ref{ L"IndexFingerOverlappedActor" }; return Ref.ref<class AINTERACT_Base_C*>(this, BridgeClass()); }
-	float& IndexFingerOverlapInnerRange() { static bridge::Prop Ref{ L"IndexFingerOverlapInnerRange" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& IndexFingerOverlapOuterRange() { static bridge::Prop Ref{ L"IndexFingerOverlapOuterRange" }; return Ref.ref<float>(this, BridgeClass()); }
-	TSubclassOf<class UActorComponent>& IndexFingetOverlapTargetClass() { static bridge::Prop Ref{ L"IndexFingetOverlapTargetClass" }; return Ref.ref<TSubclassOf<class UActorComponent>>(this, BridgeClass()); }
-	class A_BP_ItemSelector_C*& ItemSelector() { static bridge::Prop Ref{ L"ItemSelector" }; return Ref.ref<class A_BP_ItemSelector_C*>(this, BridgeClass()); }
-	bool& UsePawnHandAnim() { static bridge::Prop Ref{ L"UsePawnHandAnim" }; return Ref.ref<bool>(this, BridgeClass()); }
-	class UITEM_WeaponBase_C*& WeaponRef() { static bridge::Prop Ref{ L"WeaponRef" }; return Ref.ref<class UITEM_WeaponBase_C*>(this, BridgeClass()); }
-	class U_BP_HandInteractionComponent_C*& OtherHandInteractable() { static bridge::Prop Ref{ L"OtherHandInteractable" }; return Ref.ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
-	class UGrabComponent_C*& HeldGrabComponent() { static bridge::Prop Ref{ L"HeldGrabComponent" }; return Ref.ref<class UGrabComponent_C*>(this, BridgeClass()); }
-	float& GrabRadiusFromGripPosition() { static bridge::Prop Ref{ L"GrabRadiusFromGripPosition" }; return Ref.ref<float>(this, BridgeClass()); }
-	bool& IsIndexFingerActive() { static bridge::Prop Ref{ L"IsIndexFingerActive" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsReachingBackpack() { static bridge::Prop Ref{ L"IsReachingBackpack" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsHoldingHandheldConsumable() { static bridge::Prop Ref{ L"IsHoldingHandheldConsumable" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsHoldingWeapon() { static bridge::Prop Ref{ L"IsHoldingWeapon" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& bIsMainHand() { static bridge::Prop Ref{ L"bIsMainHand" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsGrabbingItem() { static bridge::Prop Ref{ L"IsGrabbingItem" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsSnappedToInteractionSource() { static bridge::Prop Ref{ L"IsSnappedToInteractionSource" }; return Ref.ref<bool>(this, BridgeClass()); }
-	class U_BP_InteractionSourceComponent_C*& ActiveWeaponInteractionSource() { static bridge::Prop Ref{ L"ActiveWeaponInteractionSource" }; return Ref.ref<class U_BP_InteractionSourceComponent_C*>(this, BridgeClass()); }
-	bool& IsChannelingWeaponSource() { static bridge::Prop Ref{ L"IsChannelingWeaponSource" }; return Ref.ref<bool>(this, BridgeClass()); }
-	E_ENUM_VRHand& Hand() { static bridge::Prop Ref{ L"Hand" }; return Ref.ref<E_ENUM_VRHand>(this, BridgeClass()); }
-	struct FVector& SnapStartLocation() { static bridge::Prop Ref{ L"SnapStartLocation" }; return Ref.ref<struct FVector>(this, BridgeClass()); }
-	E_ENUM_ItemCategory& HeldItemCategory() { static bridge::Prop Ref{ L"HeldItemCategory" }; return Ref.ref<E_ENUM_ItemCategory>(this, BridgeClass()); }
-	bool& IsLaserPointerAttached() { static bridge::Prop Ref{ L"IsLaserPointerAttached" }; return Ref.ref<bool>(this, BridgeClass()); }
-	TMulticastInlineDelegate<void(E_ENUM_VRHand Hand, E_ENUM_ItemCategory ItemCategory)>& OnHeldItemCategoryChanged() { static bridge::Prop Ref{ L"OnHeldItemCategoryChanged" }; return Ref.ref<TMulticastInlineDelegate<void(E_ENUM_VRHand Hand, E_ENUM_ItemCategory ItemCategory)>>(this, BridgeClass()); }
-	TMulticastInlineDelegate<void(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)>& OnLaserPointerAttached() { static bridge::Prop Ref{ L"OnLaserPointerAttached" }; return Ref.ref<TMulticastInlineDelegate<void(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)>>(this, BridgeClass()); }
-	TMulticastInlineDelegate<void(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)>& OnLaserPointerDetached() { static bridge::Prop Ref{ L"OnLaserPointerDetached" }; return Ref.ref<TMulticastInlineDelegate<void(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref; }
+	class A_BP_VRBody_C*& VRBodyRef() { return BridgeProp_VRBodyRef().ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MotionControllerRef() { static bridge::Prop Ref{ L"MotionControllerRef" }; return Ref; }
+	class UMotionControllerComponent*& MotionControllerRef() { return BridgeProp_MotionControllerRef().ref<class UMotionControllerComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TraceRadius() { static bridge::Prop Ref{ L"TraceRadius" }; return Ref; }
+	float& TraceRadius() { return BridgeProp_TraceRadius().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TraceChannel() { static bridge::Prop Ref{ L"TraceChannel" }; return Ref; }
+	ETraceTypeQuery& TraceChannel() { return BridgeProp_TraceChannel().ref<ETraceTypeQuery>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IgnoredActors() { static bridge::Prop Ref{ L"IgnoredActors" }; return Ref; }
+	TArray<class AActor*>& IgnoredActors() { return BridgeProp_IgnoredActors().ref<TArray<class AActor*>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ClosestOverlappedActor() { static bridge::Prop Ref{ L"ClosestOverlappedActor" }; return Ref; }
+	class AActor*& ClosestOverlappedActor() { return BridgeProp_ClosestOverlappedActor().ref<class AActor*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ClosestOverlappedComponent() { static bridge::Prop Ref{ L"ClosestOverlappedComponent" }; return Ref; }
+	class UActorComponent*& ClosestOverlappedComponent() { return BridgeProp_ClosestOverlappedComponent().ref<class UActorComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IndexSocketName() { static bridge::Prop Ref{ L"IndexSocketName" }; return Ref; }
+	class FName& IndexSocketName() { return BridgeProp_IndexSocketName().ref<class FName>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_BackpackReachDistance() { static bridge::Prop Ref{ L"BackpackReachDistance" }; return Ref; }
+	float& BackpackReachDistance() { return BridgeProp_BackpackReachDistance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_InteractionPose() { static bridge::Prop Ref{ L"InteractionPose" }; return Ref; }
+	E_ENUM_VRHandPose& InteractionPose() { return BridgeProp_InteractionPose().ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_InteractionPoseWeight() { static bridge::Prop Ref{ L"InteractionPoseWeight" }; return Ref; }
+	float& InteractionPoseWeight() { return BridgeProp_InteractionPoseWeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_InteractionPoseTransform() { static bridge::Prop Ref{ L"InteractionPoseTransform" }; return Ref; }
+	struct FTransform& InteractionPoseTransform() { return BridgeProp_InteractionPoseTransform().ref<struct FTransform>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WeaponGripPose() { static bridge::Prop Ref{ L"WeaponGripPose" }; return Ref; }
+	E_ENUM_VRHandPose& WeaponGripPose() { return BridgeProp_WeaponGripPose().ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_SelectedPose() { static bridge::Prop Ref{ L"SelectedPose" }; return Ref; }
+	E_ENUM_VRHandPose& SelectedPose() { return BridgeProp_SelectedPose().ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_FloatHistory() { static bridge::Prop Ref{ L"FloatHistory" }; return Ref; }
+	struct FDebugFloatHistory& FloatHistory() { return BridgeProp_FloatHistory().ref<struct FDebugFloatHistory>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IndexFingerOverlappedComponent() { static bridge::Prop Ref{ L"IndexFingerOverlappedComponent" }; return Ref; }
+	class UPrimitiveComponent*& IndexFingerOverlappedComponent() { return BridgeProp_IndexFingerOverlappedComponent().ref<class UPrimitiveComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IndexFingerOverlappedActor() { static bridge::Prop Ref{ L"IndexFingerOverlappedActor" }; return Ref; }
+	class AINTERACT_Base_C*& IndexFingerOverlappedActor() { return BridgeProp_IndexFingerOverlappedActor().ref<class AINTERACT_Base_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IndexFingerOverlapInnerRange() { static bridge::Prop Ref{ L"IndexFingerOverlapInnerRange" }; return Ref; }
+	float& IndexFingerOverlapInnerRange() { return BridgeProp_IndexFingerOverlapInnerRange().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IndexFingerOverlapOuterRange() { static bridge::Prop Ref{ L"IndexFingerOverlapOuterRange" }; return Ref; }
+	float& IndexFingerOverlapOuterRange() { return BridgeProp_IndexFingerOverlapOuterRange().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IndexFingetOverlapTargetClass() { static bridge::Prop Ref{ L"IndexFingetOverlapTargetClass" }; return Ref; }
+	TSubclassOf<class UActorComponent>& IndexFingetOverlapTargetClass() { return BridgeProp_IndexFingetOverlapTargetClass().ref<TSubclassOf<class UActorComponent>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ItemSelector() { static bridge::Prop Ref{ L"ItemSelector" }; return Ref; }
+	class A_BP_ItemSelector_C*& ItemSelector() { return BridgeProp_ItemSelector().ref<class A_BP_ItemSelector_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_UsePawnHandAnim() { static bridge::Prop Ref{ L"UsePawnHandAnim" }; return Ref; }
+	bool& UsePawnHandAnim() { return BridgeProp_UsePawnHandAnim().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WeaponRef() { static bridge::Prop Ref{ L"WeaponRef" }; return Ref; }
+	class UITEM_WeaponBase_C*& WeaponRef() { return BridgeProp_WeaponRef().ref<class UITEM_WeaponBase_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OtherHandInteractable() { static bridge::Prop Ref{ L"OtherHandInteractable" }; return Ref; }
+	class U_BP_HandInteractionComponent_C*& OtherHandInteractable() { return BridgeProp_OtherHandInteractable().ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HeldGrabComponent() { static bridge::Prop Ref{ L"HeldGrabComponent" }; return Ref; }
+	class UGrabComponent_C*& HeldGrabComponent() { return BridgeProp_HeldGrabComponent().ref<class UGrabComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_GrabRadiusFromGripPosition() { static bridge::Prop Ref{ L"GrabRadiusFromGripPosition" }; return Ref; }
+	float& GrabRadiusFromGripPosition() { return BridgeProp_GrabRadiusFromGripPosition().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsIndexFingerActive() { static bridge::Prop Ref{ L"IsIndexFingerActive" }; return Ref; }
+	bool& IsIndexFingerActive() { return BridgeProp_IsIndexFingerActive().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsReachingBackpack() { static bridge::Prop Ref{ L"IsReachingBackpack" }; return Ref; }
+	bool& IsReachingBackpack() { return BridgeProp_IsReachingBackpack().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsHoldingHandheldConsumable() { static bridge::Prop Ref{ L"IsHoldingHandheldConsumable" }; return Ref; }
+	bool& IsHoldingHandheldConsumable() { return BridgeProp_IsHoldingHandheldConsumable().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsHoldingWeapon() { static bridge::Prop Ref{ L"IsHoldingWeapon" }; return Ref; }
+	bool& IsHoldingWeapon() { return BridgeProp_IsHoldingWeapon().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_bIsMainHand() { static bridge::Prop Ref{ L"bIsMainHand" }; return Ref; }
+	bool& bIsMainHand() { return BridgeProp_bIsMainHand().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsGrabbingItem() { static bridge::Prop Ref{ L"IsGrabbingItem" }; return Ref; }
+	bool& IsGrabbingItem() { return BridgeProp_IsGrabbingItem().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsSnappedToInteractionSource() { static bridge::Prop Ref{ L"IsSnappedToInteractionSource" }; return Ref; }
+	bool& IsSnappedToInteractionSource() { return BridgeProp_IsSnappedToInteractionSource().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ActiveWeaponInteractionSource() { static bridge::Prop Ref{ L"ActiveWeaponInteractionSource" }; return Ref; }
+	class U_BP_InteractionSourceComponent_C*& ActiveWeaponInteractionSource() { return BridgeProp_ActiveWeaponInteractionSource().ref<class U_BP_InteractionSourceComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsChannelingWeaponSource() { static bridge::Prop Ref{ L"IsChannelingWeaponSource" }; return Ref; }
+	bool& IsChannelingWeaponSource() { return BridgeProp_IsChannelingWeaponSource().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Hand() { static bridge::Prop Ref{ L"Hand" }; return Ref; }
+	E_ENUM_VRHand& Hand() { return BridgeProp_Hand().ref<E_ENUM_VRHand>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_SnapStartLocation() { static bridge::Prop Ref{ L"SnapStartLocation" }; return Ref; }
+	struct FVector& SnapStartLocation() { return BridgeProp_SnapStartLocation().ref<struct FVector>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HeldItemCategory() { static bridge::Prop Ref{ L"HeldItemCategory" }; return Ref; }
+	E_ENUM_ItemCategory& HeldItemCategory() { return BridgeProp_HeldItemCategory().ref<E_ENUM_ItemCategory>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsLaserPointerAttached() { static bridge::Prop Ref{ L"IsLaserPointerAttached" }; return Ref; }
+	bool& IsLaserPointerAttached() { return BridgeProp_IsLaserPointerAttached().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OnHeldItemCategoryChanged() { static bridge::Prop Ref{ L"OnHeldItemCategoryChanged" }; return Ref; }
+	TMulticastInlineDelegate<void(E_ENUM_VRHand Hand, E_ENUM_ItemCategory ItemCategory)>& OnHeldItemCategoryChanged() { return BridgeProp_OnHeldItemCategoryChanged().ref<TMulticastInlineDelegate<void(E_ENUM_VRHand Hand, E_ENUM_ItemCategory ItemCategory)>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OnLaserPointerAttached() { static bridge::Prop Ref{ L"OnLaserPointerAttached" }; return Ref; }
+	TMulticastInlineDelegate<void(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)>& OnLaserPointerAttached() { return BridgeProp_OnLaserPointerAttached().ref<TMulticastInlineDelegate<void(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OnLaserPointerDetached() { static bridge::Prop Ref{ L"OnLaserPointerDetached" }; return Ref; }
+	TMulticastInlineDelegate<void(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)>& OnLaserPointerDetached() { return BridgeProp_OnLaserPointerDetached().ref<TMulticastInlineDelegate<void(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)>>(this, BridgeClass()); }
 
 	// Function SetHeldItemCategory (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetHeldItemCategory() { static bridge::Func Ref{ L"SetHeldItemCategory", { L"ItemCategory" } }; return Ref; }
 	void SetHeldItemCategory(E_ENUM_ItemCategory ItemCategory)
 	{
-		static bridge::Func BridgeFunc{ L"SetHeldItemCategory", { L"ItemCategory" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetHeldItemCategory(), bridge::as_uobject(this));
 		BridgeCall.set<E_ENUM_ItemCategory>(0, ItemCategory);
 		BridgeCall.invoke();
 	}
 
 	// Function IsChannelingSnappableSource (BlueprintCallable, BlueprintPure, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsChannelingSnappableSource() { static bridge::Func Ref{ L"IsChannelingSnappableSource", { L"Result" } }; return Ref; }
 	void IsChannelingSnappableSource(bool* Result)
 	{
-		static bridge::Func BridgeFunc{ L"IsChannelingSnappableSource", { L"Result" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsChannelingSnappableSource(), bridge::as_uobject(this));
 		if (Result != nullptr) { BridgeCall.set_bool(0, *Result); }
 		BridgeCall.invoke();
 		if (Result != nullptr) { *Result = BridgeCall.get_bool(0); }
 	}
 
 	// Function AttachLaserPointer (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_AttachLaserPointer() { static bridge::Func Ref{ L"AttachLaserPointer", { L"InEnabled", L"InTimeout" } }; return Ref; }
 	void AttachLaserPointer(bool InEnabled, float InTimeout)
 	{
-		static bridge::Func BridgeFunc{ L"AttachLaserPointer", { L"InEnabled", L"InTimeout" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_AttachLaserPointer(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, InEnabled);
 		BridgeCall.set<float>(1, InTimeout);
 		BridgeCall.invoke();
 	}
 
 	// Function IsEmptyHand (BlueprintCallable, BlueprintPure, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsEmptyHand() { static bridge::Func Ref{ L"IsEmptyHand", { L"Result" } }; return Ref; }
 	void IsEmptyHand(bool* Result)
 	{
-		static bridge::Func BridgeFunc{ L"IsEmptyHand", { L"Result" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsEmptyHand(), bridge::as_uobject(this));
 		if (Result != nullptr) { BridgeCall.set_bool(0, *Result); }
 		BridgeCall.invoke();
 		if (Result != nullptr) { *Result = BridgeCall.get_bool(0); }
 	}
 
 	// Function IsItemSelectorActive (BlueprintCallable, BlueprintPure, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsItemSelectorActive() { static bridge::Func Ref{ L"IsItemSelectorActive", { L"ReturnValue" } }; return Ref; }
 	bool IsItemSelectorActive()
 	{
-		static bridge::Func BridgeFunc{ L"IsItemSelectorActive", { L"ReturnValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsItemSelectorActive(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 		return BridgeCall.get_bool(0);
 	}
 
 	// Function IsMainHand (BlueprintCallable, BlueprintPure, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsMainHand() { static bridge::Func Ref{ L"IsMainHand", { L"ReturnValue" } }; return Ref; }
 	bool IsMainHand()
 	{
-		static bridge::Func BridgeFunc{ L"IsMainHand", { L"ReturnValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsMainHand(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 		return BridgeCall.get_bool(0);
 	}
 
 	// Function IsManuallyPointing (BlueprintCallable, BlueprintPure, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsManuallyPointing() { static bridge::Func Ref{ L"IsManuallyPointing", { L"Result" } }; return Ref; }
 	void IsManuallyPointing(bool* Result)
 	{
-		static bridge::Func BridgeFunc{ L"IsManuallyPointing", { L"Result" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsManuallyPointing(), bridge::as_uobject(this));
 		if (Result != nullptr) { BridgeCall.set_bool(0, *Result); }
 		BridgeCall.invoke();
 		if (Result != nullptr) { *Result = BridgeCall.get_bool(0); }
 	}
 
 	// Function IsReachingSocket (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsReachingSocket() { static bridge::Func Ref{ L"IsReachingSocket", { L"InTogglerName", L"InRange", L"ReturnValue" } }; return Ref; }
 	bool IsReachingSocket(class FName InTogglerName, float InRange)
 	{
-		static bridge::Func BridgeFunc{ L"IsReachingSocket", { L"InTogglerName", L"InRange", L"ReturnValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsReachingSocket(), bridge::as_uobject(this));
 		BridgeCall.set<class FName>(0, InTogglerName);
 		BridgeCall.set<float>(1, InRange);
 		BridgeCall.invoke();
@@ -164,166 +207,249 @@ public:
 	}
 
 	// Function HandleWeaponInteractionSources (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HandleWeaponInteractionSources() { static bridge::Func Ref{ L"HandleWeaponInteractionSources", {  } }; return Ref; }
 	void HandleWeaponInteractionSources()
 	{
-		static bridge::Func BridgeFunc{ L"HandleWeaponInteractionSources", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HandleWeaponInteractionSources(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function GetGrabComponentNearMotionController (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetGrabComponentNearMotionController() { static bridge::Func Ref{ L"GetGrabComponentNearMotionController", { L"NearestComponent" } }; return Ref; }
 	void GetGrabComponentNearMotionController(class UGrabComponent_C** NearestComponent)
 	{
-		static bridge::Func BridgeFunc{ L"GetGrabComponentNearMotionController", { L"NearestComponent" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetGrabComponentNearMotionController(), bridge::as_uobject(this));
 		if (NearestComponent != nullptr) { BridgeCall.set<class UGrabComponent_C*>(0, *NearestComponent); }
 		BridgeCall.invoke();
 		if (NearestComponent != nullptr) { *NearestComponent = BridgeCall.get<class UGrabComponent_C*>(0); }
 	}
 
 	// Function TryRelease (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TryRelease() { static bridge::Func Ref{ L"TryRelease", {  } }; return Ref; }
 	void TryRelease()
 	{
-		static bridge::Func BridgeFunc{ L"TryRelease", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TryRelease(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function TryGrab (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TryGrab() { static bridge::Func Ref{ L"TryGrab", {  } }; return Ref; }
 	void TryGrab()
 	{
-		static bridge::Func BridgeFunc{ L"TryGrab", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TryGrab(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function TryPutingInBackpack (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TryPutingInBackpack() { static bridge::Func Ref{ L"TryPutingInBackpack", {  } }; return Ref; }
 	void TryPutingInBackpack()
 	{
-		static bridge::Func BridgeFunc{ L"TryPutingInBackpack", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TryPutingInBackpack(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function TryPuzzleInteract (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TryPuzzleInteract() { static bridge::Func Ref{ L"TryPuzzleInteract", {  } }; return Ref; }
 	void TryPuzzleInteract()
 	{
-		static bridge::Func BridgeFunc{ L"TryPuzzleInteract", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TryPuzzleInteract(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function HandleEventWeaponHolstered (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HandleEventWeaponHolstered() { static bridge::Func Ref{ L"HandleEventWeaponHolstered", { L"WeaponRef" } }; return Ref; }
 	void HandleEventWeaponHolstered(class UITEM_WeaponBase_C* WeaponRef)
 	{
-		static bridge::Func BridgeFunc{ L"HandleEventWeaponHolstered", { L"WeaponRef" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HandleEventWeaponHolstered(), bridge::as_uobject(this));
 		BridgeCall.set<class UITEM_WeaponBase_C*>(0, WeaponRef);
 		BridgeCall.invoke();
 	}
 
 	// Function HandleEventWeaponDrawn (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HandleEventWeaponDrawn() { static bridge::Func Ref{ L"HandleEventWeaponDrawn", { L"WeaponRef" } }; return Ref; }
 	void HandleEventWeaponDrawn(class UITEM_WeaponBase_C* WeaponRef)
 	{
-		static bridge::Func BridgeFunc{ L"HandleEventWeaponDrawn", { L"WeaponRef" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HandleEventWeaponDrawn(), bridge::as_uobject(this));
 		BridgeCall.set<class UITEM_WeaponBase_C*>(0, WeaponRef);
 		BridgeCall.invoke();
 	}
 
 	// Function HandleCollidingIndexFinger (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HandleCollidingIndexFinger() { static bridge::Func Ref{ L"HandleCollidingIndexFinger", {  } }; return Ref; }
 	void HandleCollidingIndexFinger()
 	{
-		static bridge::Func BridgeFunc{ L"HandleCollidingIndexFinger", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HandleCollidingIndexFinger(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function HandleOverlappingIndexFinger (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HandleOverlappingIndexFinger() { static bridge::Func Ref{ L"HandleOverlappingIndexFinger", {  } }; return Ref; }
 	void HandleOverlappingIndexFinger()
 	{
-		static bridge::Func BridgeFunc{ L"HandleOverlappingIndexFinger", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HandleOverlappingIndexFinger(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function ComputeInteractionPose (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_ComputeInteractionPose() { static bridge::Func Ref{ L"ComputeInteractionPose", {  } }; return Ref; }
 	void ComputeInteractionPose()
 	{
-		static bridge::Func BridgeFunc{ L"ComputeInteractionPose", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ComputeInteractionPose(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function SetInteractionPose (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetInteractionPose() { static bridge::Func Ref{ L"SetInteractionPose", { L"InPose", L"InWeight" } }; return Ref; }
 	void SetInteractionPose(E_ENUM_VRHandPose InPose, float InWeight)
 	{
-		static bridge::Func BridgeFunc{ L"SetInteractionPose", { L"InPose", L"InWeight" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetInteractionPose(), bridge::as_uobject(this));
 		BridgeCall.set<E_ENUM_VRHandPose>(0, InPose);
 		BridgeCall.set<float>(1, InWeight);
 		BridgeCall.invoke();
 	}
 
 	// Function ComputeIsReachingBackpack (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_ComputeIsReachingBackpack() { static bridge::Func Ref{ L"ComputeIsReachingBackpack", {  } }; return Ref; }
 	void ComputeIsReachingBackpack()
 	{
-		static bridge::Func BridgeFunc{ L"ComputeIsReachingBackpack", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ComputeIsReachingBackpack(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function HandleOverlappingInteractable (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HandleOverlappingInteractable() { static bridge::Func Ref{ L"HandleOverlappingInteractable", {  } }; return Ref; }
 	void HandleOverlappingInteractable()
 	{
-		static bridge::Func BridgeFunc{ L"HandleOverlappingInteractable", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HandleOverlappingInteractable(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function CustomEvent_WeaponDrawn (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CustomEvent_WeaponDrawn() { static bridge::Func Ref{ L"CustomEvent_WeaponDrawn", { L"Weapon" } }; return Ref; }
 	void CustomEvent_WeaponDrawn(class UITEM_WeaponBase_C* Weapon)
 	{
-		static bridge::Func BridgeFunc{ L"CustomEvent_WeaponDrawn", { L"Weapon" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_CustomEvent_WeaponDrawn(), bridge::as_uobject(this));
 		BridgeCall.set<class UITEM_WeaponBase_C*>(0, Weapon);
 		BridgeCall.invoke();
 	}
 
 	// Function EventVRBodyInitialized (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_EventVRBodyInitialized() { static bridge::Func Ref{ L"EventVRBodyInitialized", {  } }; return Ref; }
 	void EventVRBodyInitialized()
 	{
-		static bridge::Func BridgeFunc{ L"EventVRBodyInitialized", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_EventVRBodyInitialized(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function CustomEvent_WeaponHolstered (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CustomEvent_WeaponHolstered() { static bridge::Func Ref{ L"CustomEvent_WeaponHolstered", { L"Weapon" } }; return Ref; }
 	void CustomEvent_WeaponHolstered(class UITEM_WeaponBase_C* Weapon)
 	{
-		static bridge::Func BridgeFunc{ L"CustomEvent_WeaponHolstered", { L"Weapon" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_CustomEvent_WeaponHolstered(), bridge::as_uobject(this));
 		BridgeCall.set<class UITEM_WeaponBase_C*>(0, Weapon);
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveTick (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveTick() { static bridge::Func Ref{ L"ReceiveTick", { L"DeltaSeconds" } }; return Ref; }
 	void ReceiveTick(float DeltaSeconds)
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveTick", { L"DeltaSeconds" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveTick(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaSeconds);
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
 	void ReceiveBeginPlay()
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveBeginPlay", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_VRBodyRef(),
+			&BridgeProp_MotionControllerRef(),
+			&BridgeProp_TraceRadius(),
+			&BridgeProp_TraceChannel(),
+			&BridgeProp_IgnoredActors(),
+			&BridgeProp_ClosestOverlappedActor(),
+			&BridgeProp_ClosestOverlappedComponent(),
+			&BridgeProp_IndexSocketName(),
+			&BridgeProp_BackpackReachDistance(),
+			&BridgeProp_InteractionPose(),
+			&BridgeProp_InteractionPoseWeight(),
+			&BridgeProp_InteractionPoseTransform(),
+			&BridgeProp_WeaponGripPose(),
+			&BridgeProp_SelectedPose(),
+			&BridgeProp_FloatHistory(),
+			&BridgeProp_IndexFingerOverlappedComponent(),
+			&BridgeProp_IndexFingerOverlappedActor(),
+			&BridgeProp_IndexFingerOverlapInnerRange(),
+			&BridgeProp_IndexFingerOverlapOuterRange(),
+			&BridgeProp_IndexFingetOverlapTargetClass(),
+			&BridgeProp_ItemSelector(),
+			&BridgeProp_UsePawnHandAnim(),
+			&BridgeProp_WeaponRef(),
+			&BridgeProp_OtherHandInteractable(),
+			&BridgeProp_HeldGrabComponent(),
+			&BridgeProp_GrabRadiusFromGripPosition(),
+			&BridgeProp_IsIndexFingerActive(),
+			&BridgeProp_IsReachingBackpack(),
+			&BridgeProp_IsHoldingHandheldConsumable(),
+			&BridgeProp_IsHoldingWeapon(),
+			&BridgeProp_bIsMainHand(),
+			&BridgeProp_IsGrabbingItem(),
+			&BridgeProp_IsSnappedToInteractionSource(),
+			&BridgeProp_ActiveWeaponInteractionSource(),
+			&BridgeProp_IsChannelingWeaponSource(),
+			&BridgeProp_Hand(),
+			&BridgeProp_SnapStartLocation(),
+			&BridgeProp_HeldItemCategory(),
+			&BridgeProp_IsLaserPointerAttached(),
+			&BridgeProp_OnHeldItemCategoryChanged(),
+			&BridgeProp_OnLaserPointerAttached(),
+			&BridgeProp_OnLaserPointerDetached(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_SetHeldItemCategory(),
+			&BridgeFunc_IsChannelingSnappableSource(),
+			&BridgeFunc_AttachLaserPointer(),
+			&BridgeFunc_IsEmptyHand(),
+			&BridgeFunc_IsItemSelectorActive(),
+			&BridgeFunc_IsMainHand(),
+			&BridgeFunc_IsManuallyPointing(),
+			&BridgeFunc_IsReachingSocket(),
+			&BridgeFunc_HandleWeaponInteractionSources(),
+			&BridgeFunc_GetGrabComponentNearMotionController(),
+			&BridgeFunc_TryRelease(),
+			&BridgeFunc_TryGrab(),
+			&BridgeFunc_TryPutingInBackpack(),
+			&BridgeFunc_TryPuzzleInteract(),
+			&BridgeFunc_HandleEventWeaponHolstered(),
+			&BridgeFunc_HandleEventWeaponDrawn(),
+			&BridgeFunc_HandleCollidingIndexFinger(),
+			&BridgeFunc_HandleOverlappingIndexFinger(),
+			&BridgeFunc_ComputeInteractionPose(),
+			&BridgeFunc_SetInteractionPose(),
+			&BridgeFunc_ComputeIsReachingBackpack(),
+			&BridgeFunc_HandleOverlappingInteractable(),
+			&BridgeFunc_CustomEvent_WeaponDrawn(),
+			&BridgeFunc_EventVRBodyInitialized(),
+			&BridgeFunc_CustomEvent_WeaponHolstered(),
+			&BridgeFunc_ReceiveTick(),
+			&BridgeFunc_ReceiveBeginPlay(),
+		});
+		return Ok;
+	}
 };
 
 }

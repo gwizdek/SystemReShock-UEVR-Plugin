@@ -21,70 +21,99 @@ class U_BP_GrabEnablingComponent_C final : public USceneComponent
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_GrabEnablingComponent._BP_GrabEnablingComponent_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_GrabEnablingComponent_C* GetDefaultObj() { return reinterpret_cast<U_BP_GrabEnablingComponent_C*>(BridgeClass()->get_class_default_object()); }
 
-	float& GrabSphereEnablerRadius() { static bridge::Prop Ref{ L"GrabSphereEnablerRadius" }; return Ref.ref<float>(this, BridgeClass()); }
-	TArray<EObjectTypeQuery>& FilterObjectArray() { static bridge::Prop Ref{ L"FilterObjectArray" }; return Ref.ref<TArray<EObjectTypeQuery>>(this, BridgeClass()); }
-	TArray<class AActor*>& IgnoredActors() { static bridge::Prop Ref{ L"IgnoredActors" }; return Ref.ref<TArray<class AActor*>>(this, BridgeClass()); }
-	class A_BP_VRBody_C*& VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref.ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_GrabSphereEnablerRadius() { static bridge::Prop Ref{ L"GrabSphereEnablerRadius" }; return Ref; }
+	float& GrabSphereEnablerRadius() { return BridgeProp_GrabSphereEnablerRadius().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_FilterObjectArray() { static bridge::Prop Ref{ L"FilterObjectArray" }; return Ref; }
+	TArray<EObjectTypeQuery>& FilterObjectArray() { return BridgeProp_FilterObjectArray().ref<TArray<EObjectTypeQuery>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IgnoredActors() { static bridge::Prop Ref{ L"IgnoredActors" }; return Ref; }
+	TArray<class AActor*>& IgnoredActors() { return BridgeProp_IgnoredActors().ref<TArray<class AActor*>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref; }
+	class A_BP_VRBody_C*& VRBodyRef() { return BridgeProp_VRBodyRef().ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
 
 	// Function CreatePowerStationInteractionSource (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CreatePowerStationInteractionSource() { static bridge::Func Ref{ L"CreatePowerStationInteractionSource", { L"InActor" } }; return Ref; }
 	void CreatePowerStationInteractionSource(class AActor* InActor)
 	{
-		static bridge::Func BridgeFunc{ L"CreatePowerStationInteractionSource", { L"InActor" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_CreatePowerStationInteractionSource(), bridge::as_uobject(this));
 		BridgeCall.set<class AActor*>(0, InActor);
 		BridgeCall.invoke();
 	}
 
 	// Function CreateLeverInteractionSource (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CreateLeverInteractionSource() { static bridge::Func Ref{ L"CreateLeverInteractionSource", { L"InActor" } }; return Ref; }
 	void CreateLeverInteractionSource(class AActor* InActor)
 	{
-		static bridge::Func BridgeFunc{ L"CreateLeverInteractionSource", { L"InActor" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_CreateLeverInteractionSource(), bridge::as_uobject(this));
 		BridgeCall.set<class AActor*>(0, InActor);
 		BridgeCall.invoke();
 	}
 
 	// Function TryEnableInteractionsOnWorldObjects (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TryEnableInteractionsOnWorldObjects() { static bridge::Func Ref{ L"TryEnableInteractionsOnWorldObjects", {  } }; return Ref; }
 	void TryEnableInteractionsOnWorldObjects()
 	{
-		static bridge::Func BridgeFunc{ L"TryEnableInteractionsOnWorldObjects", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TryEnableInteractionsOnWorldObjects(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function TryEnableGrabOnPickupObject (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TryEnableGrabOnPickupObject() { static bridge::Func Ref{ L"TryEnableGrabOnPickupObject", {  } }; return Ref; }
 	void TryEnableGrabOnPickupObject()
 	{
-		static bridge::Func BridgeFunc{ L"TryEnableGrabOnPickupObject", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TryEnableGrabOnPickupObject(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
 	void ReceiveBeginPlay()
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveBeginPlay", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveTick (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveTick() { static bridge::Func Ref{ L"ReceiveTick", { L"DeltaSeconds" } }; return Ref; }
 	void ReceiveTick(float DeltaSeconds)
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveTick", { L"DeltaSeconds" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveTick(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaSeconds);
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_GrabSphereEnablerRadius(),
+			&BridgeProp_FilterObjectArray(),
+			&BridgeProp_IgnoredActors(),
+			&BridgeProp_VRBodyRef(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_CreatePowerStationInteractionSource(),
+			&BridgeFunc_CreateLeverInteractionSource(),
+			&BridgeFunc_TryEnableInteractionsOnWorldObjects(),
+			&BridgeFunc_TryEnableGrabOnPickupObject(),
+			&BridgeFunc_ReceiveBeginPlay(),
+			&BridgeFunc_ReceiveTick(),
+		});
+		return Ok;
+	}
 };
 
 }

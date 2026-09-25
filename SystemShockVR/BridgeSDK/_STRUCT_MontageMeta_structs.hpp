@@ -15,11 +15,12 @@ struct F_STRUCT_MontageMeta
 {
 	static constexpr const wchar_t* BridgeStructPath = L"UserDefinedStruct /Game/Mods/VRBody/Structs/_STRUCT_MontageMeta._STRUCT_MontageMeta";
 
-	static uevr::API::UScriptStruct* BridgeStruct()
+	static bridge::StructRef& BridgeStructRef()
 	{
 		static bridge::StructRef Ref{ BridgeStructPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UScriptStruct* BridgeStruct() { return BridgeStructRef().require(); }
 	static int32_t StaticSize()
 	{
 		static const int32_t Size = bridge::struct_size(BridgeStruct());
@@ -28,13 +29,39 @@ struct F_STRUCT_MontageMeta
 
 	uint8_t* Data;
 
-	class FString& Name() { static bridge::Prop Ref{ L"Name_2_F54E1AA247BCB271E49FC2AB2A491648" }; return Ref.ref<class FString>(Data, BridgeStruct()); }
-	float& LeftHand() { static bridge::Prop Ref{ L"LeftHand_8_8980455B4953D8F277D301B392AC52D0" }; return Ref.ref<float>(Data, BridgeStruct()); }
-	float& RightHand() { static bridge::Prop Ref{ L"RightHand_9_58C562834BA74ED2FE6C01A2CB09A2D6" }; return Ref.ref<float>(Data, BridgeStruct()); }
-	bool& StartingMontage() { static bridge::Prop Ref{ L"StartingMontage_15_9A09826E43D5F136E9DE4D95488A1909" }; return Ref.ref<bool>(Data, BridgeStruct()); }
-	bool& EndingMontage() { static bridge::Prop Ref{ L"EndingMontage_16_9323DFBF4F27D65458D34BBC73CD5BD7" }; return Ref.ref<bool>(Data, BridgeStruct()); }
-	bool& SingleMontage() { static bridge::Prop Ref{ L"SingleMontage_17_0164E1554FFCEA1DCDCBB4B63276ED45" }; return Ref.ref<bool>(Data, BridgeStruct()); }
-	bool& Visible() { static bridge::Prop Ref{ L"Visible_20_A3B05CB44CD568FCF329D6866921120B" }; return Ref.ref<bool>(Data, BridgeStruct()); }
+	static bridge::Prop& BridgeProp_Name() { static bridge::Prop Ref{ L"Name_2_F54E1AA247BCB271E49FC2AB2A491648" }; return Ref; }
+	class FString& Name() { return BridgeProp_Name().ref<class FString>(Data, BridgeStruct()); }
+	static bridge::Prop& BridgeProp_LeftHand() { static bridge::Prop Ref{ L"LeftHand_8_8980455B4953D8F277D301B392AC52D0" }; return Ref; }
+	float& LeftHand() { return BridgeProp_LeftHand().ref<float>(Data, BridgeStruct()); }
+	static bridge::Prop& BridgeProp_RightHand() { static bridge::Prop Ref{ L"RightHand_9_58C562834BA74ED2FE6C01A2CB09A2D6" }; return Ref; }
+	float& RightHand() { return BridgeProp_RightHand().ref<float>(Data, BridgeStruct()); }
+	static bridge::Prop& BridgeProp_StartingMontage() { static bridge::Prop Ref{ L"StartingMontage_15_9A09826E43D5F136E9DE4D95488A1909" }; return Ref; }
+	bool& StartingMontage() { return BridgeProp_StartingMontage().ref<bool>(Data, BridgeStruct()); }
+	static bridge::Prop& BridgeProp_EndingMontage() { static bridge::Prop Ref{ L"EndingMontage_16_9323DFBF4F27D65458D34BBC73CD5BD7" }; return Ref; }
+	bool& EndingMontage() { return BridgeProp_EndingMontage().ref<bool>(Data, BridgeStruct()); }
+	static bridge::Prop& BridgeProp_SingleMontage() { static bridge::Prop Ref{ L"SingleMontage_17_0164E1554FFCEA1DCDCBB4B63276ED45" }; return Ref; }
+	bool& SingleMontage() { return BridgeProp_SingleMontage().ref<bool>(Data, BridgeStruct()); }
+	static bridge::Prop& BridgeProp_Visible() { static bridge::Prop Ref{ L"Visible_20_A3B05CB44CD568FCF329D6866921120B" }; return Ref; }
+	bool& Visible() { return BridgeProp_Visible().ref<bool>(Data, BridgeStruct()); }
+
+	// Resolves the struct, its size and every field above, so no first use pays the
+	// lookup mid-game. Returns false when the struct is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UScriptStruct* Owner = BridgeStructRef().get();
+		if (Owner == nullptr) { bridge::warm_skipped(BridgeStructPath); return false; }
+		StaticSize();
+		return bridge::warm(Owner, {
+			&BridgeProp_Name(),
+			&BridgeProp_LeftHand(),
+			&BridgeProp_RightHand(),
+			&BridgeProp_StartingMontage(),
+			&BridgeProp_EndingMontage(),
+			&BridgeProp_SingleMontage(),
+			&BridgeProp_Visible(),
+		});
+	}
 };
 
 }

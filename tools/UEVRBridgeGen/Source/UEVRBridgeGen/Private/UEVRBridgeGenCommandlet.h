@@ -47,8 +47,9 @@ private:
     static void CollectTargets(const FBridgeGenOptions& Options, FBridgeTargets& Targets);
     static void AddTarget(UObject* Asset, FBridgeTargets& Targets);
     static void FillContext(const FBridgeTargets& Targets, const FBridgeGenOptions& Options, FBridgeContext& Context);
-    static TArray<FString> WriteHeaders(const FBridgeContext& Context, const FBridgeTargets& Targets, const FBridgeGenOptions& Options);
+    // WarmupTypes receives the C++ name of every generated class and struct, for BridgeWarmupAll.
+    static TArray<FString> WriteHeaders(const FBridgeContext& Context, const FBridgeTargets& Targets, const FBridgeGenOptions& Options, TArray<FString>& WarmupTypes);
     static bool CopyRuntimeHeader(const FBridgeGenOptions& Options);
-    static void WriteAggregate(const FBridgeGenOptions& Options, TArray<FString> Headers);
+    static void WriteAggregate(const FBridgeGenOptions& Options, TArray<FString> Headers, TArray<FString> WarmupTypes);
     static bool WriteIfChanged(const FString& Path, const FString& Content);
 };

@@ -17,41 +17,57 @@ class U_BP_MFDMaskComponent_C final : public UWidgetComponent
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_MFDMaskComponent._BP_MFDMaskComponent_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_MFDMaskComponent_C* GetDefaultObj() { return reinterpret_cast<U_BP_MFDMaskComponent_C*>(BridgeClass()->get_class_default_object()); }
 
 	// Function Hide (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Hide() { static bridge::Func Ref{ L"Hide", {  } }; return Ref; }
 	void Hide()
 	{
-		static bridge::Func BridgeFunc{ L"Hide", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Hide(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function Show (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Show() { static bridge::Func Ref{ L"Show", { L"InWorldScale", L"InMaskDepth" } }; return Ref; }
 	void Show(float InWorldScale, float InMaskDepth)
 	{
-		static bridge::Func BridgeFunc{ L"Show", { L"InWorldScale", L"InMaskDepth" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Show(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, InWorldScale);
 		BridgeCall.set<float>(1, InMaskDepth);
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveTick (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveTick() { static bridge::Func Ref{ L"ReceiveTick", { L"DeltaSeconds" } }; return Ref; }
 	void ReceiveTick(float DeltaSeconds)
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveTick", { L"DeltaSeconds" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveTick(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaSeconds);
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_Hide(),
+			&BridgeFunc_Show(),
+			&BridgeFunc_ReceiveTick(),
+		});
+		return Ok;
+	}
 };
 
 }

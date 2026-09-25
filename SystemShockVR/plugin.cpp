@@ -1321,6 +1321,9 @@ void UEVRPlugin::handle_level_change() {
             ) {
                 APAWN_Hacker_Implant_C* pawn = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get());
                 g_vr_body = VRBody::initialize_vr_body(pawn);
+                if (g_vr_body != nullptr) {
+                    PluginUtils::warmup_bridge();
+                }
 
                 // modify head lamp settings
                 if (m_is_head_lamp_active.get()) {
@@ -1361,6 +1364,7 @@ void UEVRPlugin::handle_level_change() {
                 g_vr_body = VRBody::initialize_vr_body(pawn);
 
                 if (g_vr_body != nullptr) {
+                    PluginUtils::warmup_bridge();
                     VRBody::initialize_laser_dot();
                     VRBody::overwrite_hacker_crouch_animations();
                     VRBody::initialize_hand_item_collisions();

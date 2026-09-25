@@ -28,137 +28,360 @@ class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C final : public UAnimInstance
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"AnimBlueprintGeneratedClass /Game/Mods/VRBody/_CH_Hacker_Rig_Skeleton_AnimBlueprint._CH_Hacker_Rig_Skeleton_AnimBlueprint_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C* GetDefaultObj() { return reinterpret_cast<U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C*>(BridgeClass()->get_class_default_object()); }
 
-	struct FAnimNode_Root& AnimGraphNode_Root() { static bridge::Prop Ref{ L"AnimGraphNode_Root" }; return Ref.ref<struct FAnimNode_Root>(this, BridgeClass()); }
-	struct FAnimNode_Fabrik& AnimGraphNode_Fabrik_1() { static bridge::Prop Ref{ L"AnimGraphNode_Fabrik_1" }; return Ref.ref<struct FAnimNode_Fabrik>(this, BridgeClass()); }
-	struct FAnimNode_Fabrik& AnimGraphNode_Fabrik() { static bridge::Prop Ref{ L"AnimGraphNode_Fabrik" }; return Ref.ref<struct FAnimNode_Fabrik>(this, BridgeClass()); }
-	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone_4() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone_4" }; return Ref.ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
-	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone_3() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone_3" }; return Ref.ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
-	struct FAnimNode_RotationMultiplier& AnimGraphNode_RotationMultiplier_1() { static bridge::Prop Ref{ L"AnimGraphNode_RotationMultiplier_1" }; return Ref.ref<struct FAnimNode_RotationMultiplier>(this, BridgeClass()); }
-	struct FAnimNode_ConvertComponentToLocalSpace& AnimGraphNode_ComponentToLocalSpace() { static bridge::Prop Ref{ L"AnimGraphNode_ComponentToLocalSpace" }; return Ref.ref<struct FAnimNode_ConvertComponentToLocalSpace>(this, BridgeClass()); }
-	struct FAnimNode_RotationMultiplier& AnimGraphNode_RotationMultiplier() { static bridge::Prop Ref{ L"AnimGraphNode_RotationMultiplier" }; return Ref.ref<struct FAnimNode_RotationMultiplier>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_27() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_27" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_26() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_26" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_25() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_25" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_24() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_24" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose_4() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose_4" }; return Ref.ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose_3() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose_3" }; return Ref.ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_9() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_9" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_CopyPoseFromMesh& AnimGraphNode_CopyPoseFromMesh_2() { static bridge::Prop Ref{ L"AnimGraphNode_CopyPoseFromMesh_2" }; return Ref.ref<struct FAnimNode_CopyPoseFromMesh>(this, BridgeClass()); }
-	struct FAnimNode_CopyPoseFromMesh& AnimGraphNode_CopyPoseFromMesh_1() { static bridge::Prop Ref{ L"AnimGraphNode_CopyPoseFromMesh_1" }; return Ref.ref<struct FAnimNode_CopyPoseFromMesh>(this, BridgeClass()); }
-	struct FAnimNode_BlendListByBool& AnimGraphNode_BlendListByBool() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByBool" }; return Ref.ref<struct FAnimNode_BlendListByBool>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_23() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_23" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_8() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_8" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose_2() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose_2" }; return Ref.ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_22() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_22" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_21() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_21" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_20() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_20" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose_1() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose_1" }; return Ref.ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_19() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_19" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_7() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_7" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_LayeredBoneBlend& AnimGraphNode_LayeredBoneBlend_3() { static bridge::Prop Ref{ L"AnimGraphNode_LayeredBoneBlend_3" }; return Ref.ref<struct FAnimNode_LayeredBoneBlend>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_18() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_18" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_17() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_17" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_16() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_16" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_15() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_15" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_14() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_14" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_13() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_13" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_6() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_6" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_5() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_5" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_12() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_12" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_11() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_11" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_10() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_10" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_9() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_9" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_BlendListByEnum& AnimGraphNode_BlendListByEnum_3() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByEnum_3" }; return Ref.ref<struct FAnimNode_BlendListByEnum>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_8() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_8" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_BlendListByEnum& AnimGraphNode_BlendListByEnum_2() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByEnum_2" }; return Ref.ref<struct FAnimNode_BlendListByEnum>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_7() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_7" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_BlendListByEnum& AnimGraphNode_BlendListByEnum_1() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByEnum_1" }; return Ref.ref<struct FAnimNode_BlendListByEnum>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_4() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_4" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_BlendListByEnum& AnimGraphNode_BlendListByEnum() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByEnum" }; return Ref.ref<struct FAnimNode_BlendListByEnum>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_6() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_6" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_5() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_5" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_3() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_3" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_4() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_4" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_LayeredBoneBlend& AnimGraphNode_LayeredBoneBlend_2() { static bridge::Prop Ref{ L"AnimGraphNode_LayeredBoneBlend_2" }; return Ref.ref<struct FAnimNode_LayeredBoneBlend>(this, BridgeClass()); }
-	struct FAnimNode_LayeredBoneBlend& AnimGraphNode_LayeredBoneBlend_1() { static bridge::Prop Ref{ L"AnimGraphNode_LayeredBoneBlend_1" }; return Ref.ref<struct FAnimNode_LayeredBoneBlend>(this, BridgeClass()); }
-	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose" }; return Ref.ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_2() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_2" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_3() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_3" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_2() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_2" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone_2() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone_2" }; return Ref.ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
-	struct FAnimNode_TwoBoneIK& AnimGraphNode_TwoBoneIK_1() { static bridge::Prop Ref{ L"AnimGraphNode_TwoBoneIK_1" }; return Ref.ref<struct FAnimNode_TwoBoneIK>(this, BridgeClass()); }
-	struct FAnimNode_TwoBoneIK& AnimGraphNode_TwoBoneIK() { static bridge::Prop Ref{ L"AnimGraphNode_TwoBoneIK" }; return Ref.ref<struct FAnimNode_TwoBoneIK>(this, BridgeClass()); }
-	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone_1() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone_1" }; return Ref.ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
-	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone" }; return Ref.ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
-	struct FAnimNode_ConvertLocalToComponentSpace& AnimGraphNode_LocalToComponentSpace() { static bridge::Prop Ref{ L"AnimGraphNode_LocalToComponentSpace" }; return Ref.ref<struct FAnimNode_ConvertLocalToComponentSpace>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_1() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_1" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_LayeredBoneBlend& AnimGraphNode_LayeredBoneBlend() { static bridge::Prop Ref{ L"AnimGraphNode_LayeredBoneBlend" }; return Ref.ref<struct FAnimNode_LayeredBoneBlend>(this, BridgeClass()); }
-	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose" }; return Ref.ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
-	struct FAnimNode_CopyPoseFromMesh& AnimGraphNode_CopyPoseFromMesh() { static bridge::Prop Ref{ L"AnimGraphNode_CopyPoseFromMesh" }; return Ref.ref<struct FAnimNode_CopyPoseFromMesh>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_1() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_1" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer" }; return Ref.ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
-	class UMotionControllerComponent*& LeftMotionController() { static bridge::Prop Ref{ L"LeftMotionController" }; return Ref.ref<class UMotionControllerComponent*>(this, BridgeClass()); }
-	class UMotionControllerComponent*& RightMotionController() { static bridge::Prop Ref{ L"RightMotionController" }; return Ref.ref<class UMotionControllerComponent*>(this, BridgeClass()); }
-	struct FTransform& RightHandEffectorTransform() { static bridge::Prop Ref{ L"RightHandEffectorTransform" }; return Ref.ref<struct FTransform>(this, BridgeClass()); }
-	E_ENUM_VRHandPose& RightHandPose() { static bridge::Prop Ref{ L"RightHandPose" }; return Ref.ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
-	E_ENUM_VRHandPose& RightHandInteractionPose() { static bridge::Prop Ref{ L"RightHandInteractionPose" }; return Ref.ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
-	float& RightHandInteractionPoseWeight() { static bridge::Prop Ref{ L"RightHandInteractionPoseWeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	class U_BP_HandInteractionComponent_C*& RightHandInteractionComponent() { static bridge::Prop Ref{ L"RightHandInteractionComponent" }; return Ref.ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
-	class USceneComponent*& RightWristOffsetComponent() { static bridge::Prop Ref{ L"RightWristOffsetComponent" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class USceneComponent*& LeftWristOffsetComponent() { static bridge::Prop Ref{ L"LeftWristOffsetComponent" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	bool& RightHandUseSourceMesh() { static bridge::Prop Ref{ L"RightHandUseSourceMesh" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& RightHandCanUseSourceMesh() { static bridge::Prop Ref{ L"RightHandCanUseSourceMesh" }; return Ref.ref<bool>(this, BridgeClass()); }
-	struct FTransform& LeftHandEffectorTransform() { static bridge::Prop Ref{ L"LeftHandEffectorTransform" }; return Ref.ref<struct FTransform>(this, BridgeClass()); }
-	E_ENUM_VRHandPose& LeftHandPose() { static bridge::Prop Ref{ L"LeftHandPose" }; return Ref.ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
-	E_ENUM_VRHandPose& LeftHandInteractionPose() { static bridge::Prop Ref{ L"LeftHandInteractionPose" }; return Ref.ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
-	float& LeftHandInteractionPoseWeight() { static bridge::Prop Ref{ L"LeftHandInteractionPoseWeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	bool& LeftHandUseSourceMesh() { static bridge::Prop Ref{ L"LeftHandUseSourceMesh" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& LeftHandCanUseSourceMesh() { static bridge::Prop Ref{ L"LeftHandCanUseSourceMesh" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& LegsCanUseSourceMesh() { static bridge::Prop Ref{ L"LegsCanUseSourceMesh" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& LegsUseSourceMesh() { static bridge::Prop Ref{ L"LegsUseSourceMesh" }; return Ref.ref<bool>(this, BridgeClass()); }
-	class USkeletalMeshComponent*& SourceMeshComponent() { static bridge::Prop Ref{ L"SourceMeshComponent" }; return Ref.ref<class USkeletalMeshComponent*>(this, BridgeClass()); }
-	class U_BP_HandInteractionComponent_C*& LeftHandInteractionComponent() { static bridge::Prop Ref{ L"LeftHandInteractionComponent" }; return Ref.ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
-	class USkeletalMeshComponent*& SkeletalMesh() { static bridge::Prop Ref{ L"SkeletalMesh" }; return Ref.ref<class USkeletalMeshComponent*>(this, BridgeClass()); }
-	class A_BP_VRBody_C*& VRBodyBP() { static bridge::Prop Ref{ L"VRBodyBP" }; return Ref.ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
-	bool& IsRunningInEditor() { static bridge::Prop Ref{ L"IsRunningInEditor" }; return Ref.ref<bool>(this, BridgeClass()); }
-	struct FRotator& RightHandModifyBoneRotation() { static bridge::Prop Ref{ L"RightHandModifyBoneRotation" }; return Ref.ref<struct FRotator>(this, BridgeClass()); }
-	struct FRotator& LeftHandModifyBoneRotation() { static bridge::Prop Ref{ L"LeftHandModifyBoneRotation" }; return Ref.ref<struct FRotator>(this, BridgeClass()); }
-	struct FVector& HipsOffset() { static bridge::Prop Ref{ L"HipsOffset" }; return Ref.ref<struct FVector>(this, BridgeClass()); }
-	struct FVector& IKLeftFootEffector() { static bridge::Prop Ref{ L"IKLeftFootEffector" }; return Ref.ref<struct FVector>(this, BridgeClass()); }
-	struct FVector& IKRightFootEffector() { static bridge::Prop Ref{ L"IKRightFootEffector" }; return Ref.ref<struct FVector>(this, BridgeClass()); }
-	float& IKLeftFootAlpha() { static bridge::Prop Ref{ L"IKLeftFootAlpha" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& IKRightFootAlpha() { static bridge::Prop Ref{ L"IKRightFootAlpha" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& IKHackerSkeletonAlpha() { static bridge::Prop Ref{ L"IKHackerSkeletonAlpha" }; return Ref.ref<float>(this, BridgeClass()); }
-	bool& HideLegs() { static bridge::Prop Ref{ L"HideLegs" }; return Ref.ref<bool>(this, BridgeClass()); }
-	class U_BP_VRMovementComponent_C*& VRMovementComponent() { static bridge::Prop Ref{ L"VRMovementComponent" }; return Ref.ref<class U_BP_VRMovementComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_Root() { static bridge::Prop Ref{ L"AnimGraphNode_Root" }; return Ref; }
+	struct FAnimNode_Root& AnimGraphNode_Root() { return BridgeProp_AnimGraphNode_Root().ref<struct FAnimNode_Root>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_Fabrik_1() { static bridge::Prop Ref{ L"AnimGraphNode_Fabrik_1" }; return Ref; }
+	struct FAnimNode_Fabrik& AnimGraphNode_Fabrik_1() { return BridgeProp_AnimGraphNode_Fabrik_1().ref<struct FAnimNode_Fabrik>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_Fabrik() { static bridge::Prop Ref{ L"AnimGraphNode_Fabrik" }; return Ref; }
+	struct FAnimNode_Fabrik& AnimGraphNode_Fabrik() { return BridgeProp_AnimGraphNode_Fabrik().ref<struct FAnimNode_Fabrik>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_ModifyBone_4() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone_4" }; return Ref; }
+	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone_4() { return BridgeProp_AnimGraphNode_ModifyBone_4().ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_ModifyBone_3() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone_3" }; return Ref; }
+	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone_3() { return BridgeProp_AnimGraphNode_ModifyBone_3().ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_RotationMultiplier_1() { static bridge::Prop Ref{ L"AnimGraphNode_RotationMultiplier_1" }; return Ref; }
+	struct FAnimNode_RotationMultiplier& AnimGraphNode_RotationMultiplier_1() { return BridgeProp_AnimGraphNode_RotationMultiplier_1().ref<struct FAnimNode_RotationMultiplier>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_ComponentToLocalSpace() { static bridge::Prop Ref{ L"AnimGraphNode_ComponentToLocalSpace" }; return Ref; }
+	struct FAnimNode_ConvertComponentToLocalSpace& AnimGraphNode_ComponentToLocalSpace() { return BridgeProp_AnimGraphNode_ComponentToLocalSpace().ref<struct FAnimNode_ConvertComponentToLocalSpace>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_RotationMultiplier() { static bridge::Prop Ref{ L"AnimGraphNode_RotationMultiplier" }; return Ref; }
+	struct FAnimNode_RotationMultiplier& AnimGraphNode_RotationMultiplier() { return BridgeProp_AnimGraphNode_RotationMultiplier().ref<struct FAnimNode_RotationMultiplier>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_27() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_27" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_27() { return BridgeProp_AnimGraphNode_SequencePlayer_27().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_26() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_26" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_26() { return BridgeProp_AnimGraphNode_SequencePlayer_26().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_25() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_25" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_25() { return BridgeProp_AnimGraphNode_SequencePlayer_25().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_24() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_24" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_24() { return BridgeProp_AnimGraphNode_SequencePlayer_24().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SaveCachedPose_4() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose_4" }; return Ref; }
+	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose_4() { return BridgeProp_AnimGraphNode_SaveCachedPose_4().ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SaveCachedPose_3() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose_3" }; return Ref; }
+	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose_3() { return BridgeProp_AnimGraphNode_SaveCachedPose_3().ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose_9() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_9" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_9() { return BridgeProp_AnimGraphNode_UseCachedPose_9().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_CopyPoseFromMesh_2() { static bridge::Prop Ref{ L"AnimGraphNode_CopyPoseFromMesh_2" }; return Ref; }
+	struct FAnimNode_CopyPoseFromMesh& AnimGraphNode_CopyPoseFromMesh_2() { return BridgeProp_AnimGraphNode_CopyPoseFromMesh_2().ref<struct FAnimNode_CopyPoseFromMesh>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_CopyPoseFromMesh_1() { static bridge::Prop Ref{ L"AnimGraphNode_CopyPoseFromMesh_1" }; return Ref; }
+	struct FAnimNode_CopyPoseFromMesh& AnimGraphNode_CopyPoseFromMesh_1() { return BridgeProp_AnimGraphNode_CopyPoseFromMesh_1().ref<struct FAnimNode_CopyPoseFromMesh>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_BlendListByBool() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByBool" }; return Ref; }
+	struct FAnimNode_BlendListByBool& AnimGraphNode_BlendListByBool() { return BridgeProp_AnimGraphNode_BlendListByBool().ref<struct FAnimNode_BlendListByBool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_23() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_23" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_23() { return BridgeProp_AnimGraphNode_SequencePlayer_23().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose_8() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_8" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_8() { return BridgeProp_AnimGraphNode_UseCachedPose_8().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SaveCachedPose_2() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose_2" }; return Ref; }
+	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose_2() { return BridgeProp_AnimGraphNode_SaveCachedPose_2().ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_22() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_22" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_22() { return BridgeProp_AnimGraphNode_SequencePlayer_22().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_21() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_21" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_21() { return BridgeProp_AnimGraphNode_SequencePlayer_21().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_20() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_20" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_20() { return BridgeProp_AnimGraphNode_SequencePlayer_20().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SaveCachedPose_1() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose_1" }; return Ref; }
+	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose_1() { return BridgeProp_AnimGraphNode_SaveCachedPose_1().ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_19() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_19" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_19() { return BridgeProp_AnimGraphNode_SequencePlayer_19().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose_7() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_7" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_7() { return BridgeProp_AnimGraphNode_UseCachedPose_7().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_LayeredBoneBlend_3() { static bridge::Prop Ref{ L"AnimGraphNode_LayeredBoneBlend_3" }; return Ref; }
+	struct FAnimNode_LayeredBoneBlend& AnimGraphNode_LayeredBoneBlend_3() { return BridgeProp_AnimGraphNode_LayeredBoneBlend_3().ref<struct FAnimNode_LayeredBoneBlend>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_18() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_18" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_18() { return BridgeProp_AnimGraphNode_SequencePlayer_18().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_17() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_17" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_17() { return BridgeProp_AnimGraphNode_SequencePlayer_17().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_16() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_16" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_16() { return BridgeProp_AnimGraphNode_SequencePlayer_16().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_15() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_15" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_15() { return BridgeProp_AnimGraphNode_SequencePlayer_15().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_14() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_14" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_14() { return BridgeProp_AnimGraphNode_SequencePlayer_14().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_13() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_13" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_13() { return BridgeProp_AnimGraphNode_SequencePlayer_13().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose_6() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_6" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_6() { return BridgeProp_AnimGraphNode_UseCachedPose_6().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose_5() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_5" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_5() { return BridgeProp_AnimGraphNode_UseCachedPose_5().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_12() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_12" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_12() { return BridgeProp_AnimGraphNode_SequencePlayer_12().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_11() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_11" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_11() { return BridgeProp_AnimGraphNode_SequencePlayer_11().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_10() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_10" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_10() { return BridgeProp_AnimGraphNode_SequencePlayer_10().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_9() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_9" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_9() { return BridgeProp_AnimGraphNode_SequencePlayer_9().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_BlendListByEnum_3() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByEnum_3" }; return Ref; }
+	struct FAnimNode_BlendListByEnum& AnimGraphNode_BlendListByEnum_3() { return BridgeProp_AnimGraphNode_BlendListByEnum_3().ref<struct FAnimNode_BlendListByEnum>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_8() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_8" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_8() { return BridgeProp_AnimGraphNode_SequencePlayer_8().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_BlendListByEnum_2() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByEnum_2" }; return Ref; }
+	struct FAnimNode_BlendListByEnum& AnimGraphNode_BlendListByEnum_2() { return BridgeProp_AnimGraphNode_BlendListByEnum_2().ref<struct FAnimNode_BlendListByEnum>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_7() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_7" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_7() { return BridgeProp_AnimGraphNode_SequencePlayer_7().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_BlendListByEnum_1() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByEnum_1" }; return Ref; }
+	struct FAnimNode_BlendListByEnum& AnimGraphNode_BlendListByEnum_1() { return BridgeProp_AnimGraphNode_BlendListByEnum_1().ref<struct FAnimNode_BlendListByEnum>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose_4() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_4" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_4() { return BridgeProp_AnimGraphNode_UseCachedPose_4().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_BlendListByEnum() { static bridge::Prop Ref{ L"AnimGraphNode_BlendListByEnum" }; return Ref; }
+	struct FAnimNode_BlendListByEnum& AnimGraphNode_BlendListByEnum() { return BridgeProp_AnimGraphNode_BlendListByEnum().ref<struct FAnimNode_BlendListByEnum>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_6() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_6" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_6() { return BridgeProp_AnimGraphNode_SequencePlayer_6().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_5() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_5" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_5() { return BridgeProp_AnimGraphNode_SequencePlayer_5().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose_3() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_3" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_3() { return BridgeProp_AnimGraphNode_UseCachedPose_3().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_4() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_4" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_4() { return BridgeProp_AnimGraphNode_SequencePlayer_4().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_LayeredBoneBlend_2() { static bridge::Prop Ref{ L"AnimGraphNode_LayeredBoneBlend_2" }; return Ref; }
+	struct FAnimNode_LayeredBoneBlend& AnimGraphNode_LayeredBoneBlend_2() { return BridgeProp_AnimGraphNode_LayeredBoneBlend_2().ref<struct FAnimNode_LayeredBoneBlend>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_LayeredBoneBlend_1() { static bridge::Prop Ref{ L"AnimGraphNode_LayeredBoneBlend_1" }; return Ref; }
+	struct FAnimNode_LayeredBoneBlend& AnimGraphNode_LayeredBoneBlend_1() { return BridgeProp_AnimGraphNode_LayeredBoneBlend_1().ref<struct FAnimNode_LayeredBoneBlend>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SaveCachedPose() { static bridge::Prop Ref{ L"AnimGraphNode_SaveCachedPose" }; return Ref; }
+	struct FAnimNode_SaveCachedPose& AnimGraphNode_SaveCachedPose() { return BridgeProp_AnimGraphNode_SaveCachedPose().ref<struct FAnimNode_SaveCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose_2() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_2" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_2() { return BridgeProp_AnimGraphNode_UseCachedPose_2().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_3() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_3" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_3() { return BridgeProp_AnimGraphNode_SequencePlayer_3().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_2() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_2" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_2() { return BridgeProp_AnimGraphNode_SequencePlayer_2().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_ModifyBone_2() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone_2" }; return Ref; }
+	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone_2() { return BridgeProp_AnimGraphNode_ModifyBone_2().ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_TwoBoneIK_1() { static bridge::Prop Ref{ L"AnimGraphNode_TwoBoneIK_1" }; return Ref; }
+	struct FAnimNode_TwoBoneIK& AnimGraphNode_TwoBoneIK_1() { return BridgeProp_AnimGraphNode_TwoBoneIK_1().ref<struct FAnimNode_TwoBoneIK>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_TwoBoneIK() { static bridge::Prop Ref{ L"AnimGraphNode_TwoBoneIK" }; return Ref; }
+	struct FAnimNode_TwoBoneIK& AnimGraphNode_TwoBoneIK() { return BridgeProp_AnimGraphNode_TwoBoneIK().ref<struct FAnimNode_TwoBoneIK>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_ModifyBone_1() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone_1" }; return Ref; }
+	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone_1() { return BridgeProp_AnimGraphNode_ModifyBone_1().ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_ModifyBone() { static bridge::Prop Ref{ L"AnimGraphNode_ModifyBone" }; return Ref; }
+	struct FAnimNode_ModifyBone& AnimGraphNode_ModifyBone() { return BridgeProp_AnimGraphNode_ModifyBone().ref<struct FAnimNode_ModifyBone>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_LocalToComponentSpace() { static bridge::Prop Ref{ L"AnimGraphNode_LocalToComponentSpace" }; return Ref; }
+	struct FAnimNode_ConvertLocalToComponentSpace& AnimGraphNode_LocalToComponentSpace() { return BridgeProp_AnimGraphNode_LocalToComponentSpace().ref<struct FAnimNode_ConvertLocalToComponentSpace>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose_1() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose_1" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose_1() { return BridgeProp_AnimGraphNode_UseCachedPose_1().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_LayeredBoneBlend() { static bridge::Prop Ref{ L"AnimGraphNode_LayeredBoneBlend" }; return Ref; }
+	struct FAnimNode_LayeredBoneBlend& AnimGraphNode_LayeredBoneBlend() { return BridgeProp_AnimGraphNode_LayeredBoneBlend().ref<struct FAnimNode_LayeredBoneBlend>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_UseCachedPose() { static bridge::Prop Ref{ L"AnimGraphNode_UseCachedPose" }; return Ref; }
+	struct FAnimNode_UseCachedPose& AnimGraphNode_UseCachedPose() { return BridgeProp_AnimGraphNode_UseCachedPose().ref<struct FAnimNode_UseCachedPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_CopyPoseFromMesh() { static bridge::Prop Ref{ L"AnimGraphNode_CopyPoseFromMesh" }; return Ref; }
+	struct FAnimNode_CopyPoseFromMesh& AnimGraphNode_CopyPoseFromMesh() { return BridgeProp_AnimGraphNode_CopyPoseFromMesh().ref<struct FAnimNode_CopyPoseFromMesh>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer_1() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer_1" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer_1() { return BridgeProp_AnimGraphNode_SequencePlayer_1().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimGraphNode_SequencePlayer() { static bridge::Prop Ref{ L"AnimGraphNode_SequencePlayer" }; return Ref; }
+	struct FAnimNode_SequencePlayer& AnimGraphNode_SequencePlayer() { return BridgeProp_AnimGraphNode_SequencePlayer().ref<struct FAnimNode_SequencePlayer>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftMotionController() { static bridge::Prop Ref{ L"LeftMotionController" }; return Ref; }
+	class UMotionControllerComponent*& LeftMotionController() { return BridgeProp_LeftMotionController().ref<class UMotionControllerComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightMotionController() { static bridge::Prop Ref{ L"RightMotionController" }; return Ref; }
+	class UMotionControllerComponent*& RightMotionController() { return BridgeProp_RightMotionController().ref<class UMotionControllerComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightHandEffectorTransform() { static bridge::Prop Ref{ L"RightHandEffectorTransform" }; return Ref; }
+	struct FTransform& RightHandEffectorTransform() { return BridgeProp_RightHandEffectorTransform().ref<struct FTransform>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightHandPose() { static bridge::Prop Ref{ L"RightHandPose" }; return Ref; }
+	E_ENUM_VRHandPose& RightHandPose() { return BridgeProp_RightHandPose().ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightHandInteractionPose() { static bridge::Prop Ref{ L"RightHandInteractionPose" }; return Ref; }
+	E_ENUM_VRHandPose& RightHandInteractionPose() { return BridgeProp_RightHandInteractionPose().ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightHandInteractionPoseWeight() { static bridge::Prop Ref{ L"RightHandInteractionPoseWeight" }; return Ref; }
+	float& RightHandInteractionPoseWeight() { return BridgeProp_RightHandInteractionPoseWeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightHandInteractionComponent() { static bridge::Prop Ref{ L"RightHandInteractionComponent" }; return Ref; }
+	class U_BP_HandInteractionComponent_C*& RightHandInteractionComponent() { return BridgeProp_RightHandInteractionComponent().ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightWristOffsetComponent() { static bridge::Prop Ref{ L"RightWristOffsetComponent" }; return Ref; }
+	class USceneComponent*& RightWristOffsetComponent() { return BridgeProp_RightWristOffsetComponent().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftWristOffsetComponent() { static bridge::Prop Ref{ L"LeftWristOffsetComponent" }; return Ref; }
+	class USceneComponent*& LeftWristOffsetComponent() { return BridgeProp_LeftWristOffsetComponent().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightHandUseSourceMesh() { static bridge::Prop Ref{ L"RightHandUseSourceMesh" }; return Ref; }
+	bool& RightHandUseSourceMesh() { return BridgeProp_RightHandUseSourceMesh().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightHandCanUseSourceMesh() { static bridge::Prop Ref{ L"RightHandCanUseSourceMesh" }; return Ref; }
+	bool& RightHandCanUseSourceMesh() { return BridgeProp_RightHandCanUseSourceMesh().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftHandEffectorTransform() { static bridge::Prop Ref{ L"LeftHandEffectorTransform" }; return Ref; }
+	struct FTransform& LeftHandEffectorTransform() { return BridgeProp_LeftHandEffectorTransform().ref<struct FTransform>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftHandPose() { static bridge::Prop Ref{ L"LeftHandPose" }; return Ref; }
+	E_ENUM_VRHandPose& LeftHandPose() { return BridgeProp_LeftHandPose().ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftHandInteractionPose() { static bridge::Prop Ref{ L"LeftHandInteractionPose" }; return Ref; }
+	E_ENUM_VRHandPose& LeftHandInteractionPose() { return BridgeProp_LeftHandInteractionPose().ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftHandInteractionPoseWeight() { static bridge::Prop Ref{ L"LeftHandInteractionPoseWeight" }; return Ref; }
+	float& LeftHandInteractionPoseWeight() { return BridgeProp_LeftHandInteractionPoseWeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftHandUseSourceMesh() { static bridge::Prop Ref{ L"LeftHandUseSourceMesh" }; return Ref; }
+	bool& LeftHandUseSourceMesh() { return BridgeProp_LeftHandUseSourceMesh().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftHandCanUseSourceMesh() { static bridge::Prop Ref{ L"LeftHandCanUseSourceMesh" }; return Ref; }
+	bool& LeftHandCanUseSourceMesh() { return BridgeProp_LeftHandCanUseSourceMesh().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LegsCanUseSourceMesh() { static bridge::Prop Ref{ L"LegsCanUseSourceMesh" }; return Ref; }
+	bool& LegsCanUseSourceMesh() { return BridgeProp_LegsCanUseSourceMesh().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LegsUseSourceMesh() { static bridge::Prop Ref{ L"LegsUseSourceMesh" }; return Ref; }
+	bool& LegsUseSourceMesh() { return BridgeProp_LegsUseSourceMesh().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_SourceMeshComponent() { static bridge::Prop Ref{ L"SourceMeshComponent" }; return Ref; }
+	class USkeletalMeshComponent*& SourceMeshComponent() { return BridgeProp_SourceMeshComponent().ref<class USkeletalMeshComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftHandInteractionComponent() { static bridge::Prop Ref{ L"LeftHandInteractionComponent" }; return Ref; }
+	class U_BP_HandInteractionComponent_C*& LeftHandInteractionComponent() { return BridgeProp_LeftHandInteractionComponent().ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_SkeletalMesh() { static bridge::Prop Ref{ L"SkeletalMesh" }; return Ref; }
+	class USkeletalMeshComponent*& SkeletalMesh() { return BridgeProp_SkeletalMesh().ref<class USkeletalMeshComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyBP() { static bridge::Prop Ref{ L"VRBodyBP" }; return Ref; }
+	class A_BP_VRBody_C*& VRBodyBP() { return BridgeProp_VRBodyBP().ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsRunningInEditor() { static bridge::Prop Ref{ L"IsRunningInEditor" }; return Ref; }
+	bool& IsRunningInEditor() { return BridgeProp_IsRunningInEditor().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightHandModifyBoneRotation() { static bridge::Prop Ref{ L"RightHandModifyBoneRotation" }; return Ref; }
+	struct FRotator& RightHandModifyBoneRotation() { return BridgeProp_RightHandModifyBoneRotation().ref<struct FRotator>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftHandModifyBoneRotation() { static bridge::Prop Ref{ L"LeftHandModifyBoneRotation" }; return Ref; }
+	struct FRotator& LeftHandModifyBoneRotation() { return BridgeProp_LeftHandModifyBoneRotation().ref<struct FRotator>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HipsOffset() { static bridge::Prop Ref{ L"HipsOffset" }; return Ref; }
+	struct FVector& HipsOffset() { return BridgeProp_HipsOffset().ref<struct FVector>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKLeftFootEffector() { static bridge::Prop Ref{ L"IKLeftFootEffector" }; return Ref; }
+	struct FVector& IKLeftFootEffector() { return BridgeProp_IKLeftFootEffector().ref<struct FVector>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKRightFootEffector() { static bridge::Prop Ref{ L"IKRightFootEffector" }; return Ref; }
+	struct FVector& IKRightFootEffector() { return BridgeProp_IKRightFootEffector().ref<struct FVector>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKLeftFootAlpha() { static bridge::Prop Ref{ L"IKLeftFootAlpha" }; return Ref; }
+	float& IKLeftFootAlpha() { return BridgeProp_IKLeftFootAlpha().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKRightFootAlpha() { static bridge::Prop Ref{ L"IKRightFootAlpha" }; return Ref; }
+	float& IKRightFootAlpha() { return BridgeProp_IKRightFootAlpha().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKHackerSkeletonAlpha() { static bridge::Prop Ref{ L"IKHackerSkeletonAlpha" }; return Ref; }
+	float& IKHackerSkeletonAlpha() { return BridgeProp_IKHackerSkeletonAlpha().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HideLegs() { static bridge::Prop Ref{ L"HideLegs" }; return Ref; }
+	bool& HideLegs() { return BridgeProp_HideLegs().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRMovementComponent() { static bridge::Prop Ref{ L"VRMovementComponent" }; return Ref; }
+	class U_BP_VRMovementComponent_C*& VRMovementComponent() { return BridgeProp_VRMovementComponent().ref<class U_BP_VRMovementComponent_C*>(this, BridgeClass()); }
 
 	// Function AnimGraph (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_AnimGraph() { static bridge::Func Ref{ L"AnimGraph", { L"AnimGraph" } }; return Ref; }
 	void AnimGraph(struct FPoseLink* AnimGraph)
 	{
-		static bridge::Func BridgeFunc{ L"AnimGraph", { L"AnimGraph" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_AnimGraph(), bridge::as_uobject(this));
 		if (AnimGraph != nullptr) { BridgeCall.set<struct FPoseLink>(0, *AnimGraph); }
 		BridgeCall.invoke();
 		if (AnimGraph != nullptr) { *AnimGraph = BridgeCall.get<struct FPoseLink>(0); }
 	}
 
 	// Function BlueprintUpdateAnimation (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BlueprintUpdateAnimation() { static bridge::Func Ref{ L"BlueprintUpdateAnimation", { L"DeltaTimeX" } }; return Ref; }
 	void BlueprintUpdateAnimation(float DeltaTimeX)
 	{
-		static bridge::Func BridgeFunc{ L"BlueprintUpdateAnimation", { L"DeltaTimeX" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BlueprintUpdateAnimation(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaTimeX);
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_AnimGraphNode_Root(),
+			&BridgeProp_AnimGraphNode_Fabrik_1(),
+			&BridgeProp_AnimGraphNode_Fabrik(),
+			&BridgeProp_AnimGraphNode_ModifyBone_4(),
+			&BridgeProp_AnimGraphNode_ModifyBone_3(),
+			&BridgeProp_AnimGraphNode_RotationMultiplier_1(),
+			&BridgeProp_AnimGraphNode_ComponentToLocalSpace(),
+			&BridgeProp_AnimGraphNode_RotationMultiplier(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_27(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_26(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_25(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_24(),
+			&BridgeProp_AnimGraphNode_SaveCachedPose_4(),
+			&BridgeProp_AnimGraphNode_SaveCachedPose_3(),
+			&BridgeProp_AnimGraphNode_UseCachedPose_9(),
+			&BridgeProp_AnimGraphNode_CopyPoseFromMesh_2(),
+			&BridgeProp_AnimGraphNode_CopyPoseFromMesh_1(),
+			&BridgeProp_AnimGraphNode_BlendListByBool(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_23(),
+			&BridgeProp_AnimGraphNode_UseCachedPose_8(),
+			&BridgeProp_AnimGraphNode_SaveCachedPose_2(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_22(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_21(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_20(),
+			&BridgeProp_AnimGraphNode_SaveCachedPose_1(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_19(),
+			&BridgeProp_AnimGraphNode_UseCachedPose_7(),
+			&BridgeProp_AnimGraphNode_LayeredBoneBlend_3(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_18(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_17(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_16(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_15(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_14(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_13(),
+			&BridgeProp_AnimGraphNode_UseCachedPose_6(),
+			&BridgeProp_AnimGraphNode_UseCachedPose_5(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_12(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_11(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_10(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_9(),
+			&BridgeProp_AnimGraphNode_BlendListByEnum_3(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_8(),
+			&BridgeProp_AnimGraphNode_BlendListByEnum_2(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_7(),
+			&BridgeProp_AnimGraphNode_BlendListByEnum_1(),
+			&BridgeProp_AnimGraphNode_UseCachedPose_4(),
+			&BridgeProp_AnimGraphNode_BlendListByEnum(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_6(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_5(),
+			&BridgeProp_AnimGraphNode_UseCachedPose_3(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_4(),
+			&BridgeProp_AnimGraphNode_LayeredBoneBlend_2(),
+			&BridgeProp_AnimGraphNode_LayeredBoneBlend_1(),
+			&BridgeProp_AnimGraphNode_SaveCachedPose(),
+			&BridgeProp_AnimGraphNode_UseCachedPose_2(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_3(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_2(),
+			&BridgeProp_AnimGraphNode_ModifyBone_2(),
+			&BridgeProp_AnimGraphNode_TwoBoneIK_1(),
+			&BridgeProp_AnimGraphNode_TwoBoneIK(),
+			&BridgeProp_AnimGraphNode_ModifyBone_1(),
+			&BridgeProp_AnimGraphNode_ModifyBone(),
+			&BridgeProp_AnimGraphNode_LocalToComponentSpace(),
+			&BridgeProp_AnimGraphNode_UseCachedPose_1(),
+			&BridgeProp_AnimGraphNode_LayeredBoneBlend(),
+			&BridgeProp_AnimGraphNode_UseCachedPose(),
+			&BridgeProp_AnimGraphNode_CopyPoseFromMesh(),
+			&BridgeProp_AnimGraphNode_SequencePlayer_1(),
+			&BridgeProp_AnimGraphNode_SequencePlayer(),
+			&BridgeProp_LeftMotionController(),
+			&BridgeProp_RightMotionController(),
+			&BridgeProp_RightHandEffectorTransform(),
+			&BridgeProp_RightHandPose(),
+			&BridgeProp_RightHandInteractionPose(),
+			&BridgeProp_RightHandInteractionPoseWeight(),
+			&BridgeProp_RightHandInteractionComponent(),
+			&BridgeProp_RightWristOffsetComponent(),
+			&BridgeProp_LeftWristOffsetComponent(),
+			&BridgeProp_RightHandUseSourceMesh(),
+			&BridgeProp_RightHandCanUseSourceMesh(),
+			&BridgeProp_LeftHandEffectorTransform(),
+			&BridgeProp_LeftHandPose(),
+			&BridgeProp_LeftHandInteractionPose(),
+			&BridgeProp_LeftHandInteractionPoseWeight(),
+			&BridgeProp_LeftHandUseSourceMesh(),
+			&BridgeProp_LeftHandCanUseSourceMesh(),
+			&BridgeProp_LegsCanUseSourceMesh(),
+			&BridgeProp_LegsUseSourceMesh(),
+			&BridgeProp_SourceMeshComponent(),
+			&BridgeProp_LeftHandInteractionComponent(),
+			&BridgeProp_SkeletalMesh(),
+			&BridgeProp_VRBodyBP(),
+			&BridgeProp_IsRunningInEditor(),
+			&BridgeProp_RightHandModifyBoneRotation(),
+			&BridgeProp_LeftHandModifyBoneRotation(),
+			&BridgeProp_HipsOffset(),
+			&BridgeProp_IKLeftFootEffector(),
+			&BridgeProp_IKRightFootEffector(),
+			&BridgeProp_IKLeftFootAlpha(),
+			&BridgeProp_IKRightFootAlpha(),
+			&BridgeProp_IKHackerSkeletonAlpha(),
+			&BridgeProp_HideLegs(),
+			&BridgeProp_VRMovementComponent(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_AnimGraph(),
+			&BridgeFunc_BlueprintUpdateAnimation(),
+		});
+		return Ok;
+	}
 };
 
 }

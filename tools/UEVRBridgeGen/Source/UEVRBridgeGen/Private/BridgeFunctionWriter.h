@@ -25,7 +25,9 @@ class FBridgeFunctionWriter
 public:
     FBridgeFunctionWriter(const FBridgeContext& InContext, FBridgeHeaderBuilder& InHeader);
 
-    FString Write(const UFunction* Function, EBridgeCallMode Mode) const;
+    // Appends the name of the emitted bridge::Func accessor to WarmFuncs when the
+    // function can be warmed up against its own class (not for interface calls).
+    FString Write(const UFunction* Function, EBridgeCallMode Mode, TArray<FString>& WarmFuncs) const;
 
 private:
     struct FParam

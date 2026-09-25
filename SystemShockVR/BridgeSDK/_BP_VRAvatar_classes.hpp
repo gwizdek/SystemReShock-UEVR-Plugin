@@ -21,20 +21,43 @@ class A_BP_VRAvatar_C final : public AActor
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRAvatar/_BP_VRAvatar._BP_VRAvatar_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static A_BP_VRAvatar_C* GetDefaultObj() { return reinterpret_cast<A_BP_VRAvatar_C*>(BridgeClass()->get_class_default_object()); }
 
-	class UMotionControllerComponent*& MotionControllerRight() { static bridge::Prop Ref{ L"MotionControllerRight" }; return Ref.ref<class UMotionControllerComponent*>(this, BridgeClass()); }
-	class UMotionControllerComponent*& MotionControllerLeft() { static bridge::Prop Ref{ L"MotionControllerLeft" }; return Ref.ref<class UMotionControllerComponent*>(this, BridgeClass()); }
-	class USceneComponent*& UEVRCameraAttachComponent() { static bridge::Prop Ref{ L"UEVRCameraAttachComponent" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class USceneComponent*& DefaultSceneRoot() { static bridge::Prop Ref{ L"DefaultSceneRoot" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class APAWN_Avatar_C*& Pawn() { static bridge::Prop Ref{ L"Pawn" }; return Ref.ref<class APAWN_Avatar_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MotionControllerRight() { static bridge::Prop Ref{ L"MotionControllerRight" }; return Ref; }
+	class UMotionControllerComponent*& MotionControllerRight() { return BridgeProp_MotionControllerRight().ref<class UMotionControllerComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MotionControllerLeft() { static bridge::Prop Ref{ L"MotionControllerLeft" }; return Ref; }
+	class UMotionControllerComponent*& MotionControllerLeft() { return BridgeProp_MotionControllerLeft().ref<class UMotionControllerComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_UEVRCameraAttachComponent() { static bridge::Prop Ref{ L"UEVRCameraAttachComponent" }; return Ref; }
+	class USceneComponent*& UEVRCameraAttachComponent() { return BridgeProp_UEVRCameraAttachComponent().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_DefaultSceneRoot() { static bridge::Prop Ref{ L"DefaultSceneRoot" }; return Ref; }
+	class USceneComponent*& DefaultSceneRoot() { return BridgeProp_DefaultSceneRoot().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Pawn() { static bridge::Prop Ref{ L"Pawn" }; return Ref; }
+	class APAWN_Avatar_C*& Pawn() { return BridgeProp_Pawn().ref<class APAWN_Avatar_C*>(this, BridgeClass()); }
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_MotionControllerRight(),
+			&BridgeProp_MotionControllerLeft(),
+			&BridgeProp_UEVRCameraAttachComponent(),
+			&BridgeProp_DefaultSceneRoot(),
+			&BridgeProp_Pawn(),
+		});
+		return Ok;
+	}
 };
 
 }

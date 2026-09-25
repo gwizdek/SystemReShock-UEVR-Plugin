@@ -15,11 +15,12 @@ struct F_STRUCT_UEVR_Options
 {
 	static constexpr const wchar_t* BridgeStructPath = L"UserDefinedStruct /Game/Mods/VRBody/Structs/_STRUCT_UEVR_Options._STRUCT_UEVR_Options";
 
-	static uevr::API::UScriptStruct* BridgeStruct()
+	static bridge::StructRef& BridgeStructRef()
 	{
 		static bridge::StructRef Ref{ BridgeStructPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UScriptStruct* BridgeStruct() { return BridgeStructRef().require(); }
 	static int32_t StaticSize()
 	{
 		static const int32_t Size = bridge::struct_size(BridgeStruct());
@@ -28,7 +29,21 @@ struct F_STRUCT_UEVR_Options
 
 	uint8_t* Data;
 
-	bool& OptNativeFix() { static bridge::Prop Ref{ L"OptNativeFix_2_C302991D49E9091FC1E0A8BDA3A7A5EE" }; return Ref.ref<bool>(Data, BridgeStruct()); }
+	static bridge::Prop& BridgeProp_OptNativeFix() { static bridge::Prop Ref{ L"OptNativeFix_2_C302991D49E9091FC1E0A8BDA3A7A5EE" }; return Ref; }
+	bool& OptNativeFix() { return BridgeProp_OptNativeFix().ref<bool>(Data, BridgeStruct()); }
+
+	// Resolves the struct, its size and every field above, so no first use pays the
+	// lookup mid-game. Returns false when the struct is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UScriptStruct* Owner = BridgeStructRef().get();
+		if (Owner == nullptr) { bridge::warm_skipped(BridgeStructPath); return false; }
+		StaticSize();
+		return bridge::warm(Owner, {
+			&BridgeProp_OptNativeFix(),
+		});
+	}
 };
 
 }

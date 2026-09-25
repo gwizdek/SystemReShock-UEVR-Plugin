@@ -27,109 +27,165 @@ class U_BP_InteractablesHighlighter_C final : public USceneComponent
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_InteractablesHighlighter._BP_InteractablesHighlighter_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_InteractablesHighlighter_C* GetDefaultObj() { return reinterpret_cast<U_BP_InteractablesHighlighter_C*>(BridgeClass()->get_class_default_object()); }
 
-	class A_BP_VRBody_C*& VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref.ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
-	class AActor*& EyeOfSightHitActor() { static bridge::Prop Ref{ L"EyeOfSightHitActor" }; return Ref.ref<class AActor*>(this, BridgeClass()); }
-	class AActor*& LastInteractable() { static bridge::Prop Ref{ L"LastInteractable" }; return Ref.ref<class AActor*>(this, BridgeClass()); }
-	class UPrimitiveComponent*& LastPrimitive() { static bridge::Prop Ref{ L"LastPrimitive" }; return Ref.ref<class UPrimitiveComponent*>(this, BridgeClass()); }
-	bool& bTraceEnabled() { static bridge::Prop Ref{ L"bTraceEnabled" }; return Ref.ref<bool>(this, BridgeClass()); }
-	float& MaxTraceDistance() { static bridge::Prop Ref{ L"MaxTraceDistance" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& StartTraceDistance() { static bridge::Prop Ref{ L"StartTraceDistance" }; return Ref.ref<float>(this, BridgeClass()); }
-	class UCOMP_Scanner_C*& COMP_ScannerRef() { static bridge::Prop Ref{ L"COMP_ScannerRef" }; return Ref.ref<class UCOMP_Scanner_C*>(this, BridgeClass()); }
-	float& MaxScanDistance() { static bridge::Prop Ref{ L"MaxScanDistance" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& LastScanDistance() { static bridge::Prop Ref{ L"LastScanDistance" }; return Ref.ref<float>(this, BridgeClass()); }
-	class UPrimitiveComponent*& HighlightedPrimitive() { static bridge::Prop Ref{ L"HighlightedPrimitive" }; return Ref.ref<class UPrimitiveComponent*>(this, BridgeClass()); }
-	int32& OutlineStencilValue() { static bridge::Prop Ref{ L"OutlineStencilValue" }; return Ref.ref<int32>(this, BridgeClass()); }
-	ETraceTypeQuery& EyeOfSightTraceChannel() { static bridge::Prop Ref{ L"EyeOfSightTraceChannel" }; return Ref.ref<ETraceTypeQuery>(this, BridgeClass()); }
-	float& TraceRadius() { static bridge::Prop Ref{ L"TraceRadius" }; return Ref.ref<float>(this, BridgeClass()); }
-	class U_BP_HandInteractionComponent_C*& HandInteractionComponentRef() { static bridge::Prop Ref{ L"HandInteractionComponentRef" }; return Ref.ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
-	float& EyeOfSightMaxAngle() { static bridge::Prop Ref{ L"EyeOfSightMaxAngle" }; return Ref.ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref; }
+	class A_BP_VRBody_C*& VRBodyRef() { return BridgeProp_VRBodyRef().ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_EyeOfSightHitActor() { static bridge::Prop Ref{ L"EyeOfSightHitActor" }; return Ref; }
+	class AActor*& EyeOfSightHitActor() { return BridgeProp_EyeOfSightHitActor().ref<class AActor*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LastInteractable() { static bridge::Prop Ref{ L"LastInteractable" }; return Ref; }
+	class AActor*& LastInteractable() { return BridgeProp_LastInteractable().ref<class AActor*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LastPrimitive() { static bridge::Prop Ref{ L"LastPrimitive" }; return Ref; }
+	class UPrimitiveComponent*& LastPrimitive() { return BridgeProp_LastPrimitive().ref<class UPrimitiveComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_bTraceEnabled() { static bridge::Prop Ref{ L"bTraceEnabled" }; return Ref; }
+	bool& bTraceEnabled() { return BridgeProp_bTraceEnabled().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MaxTraceDistance() { static bridge::Prop Ref{ L"MaxTraceDistance" }; return Ref; }
+	float& MaxTraceDistance() { return BridgeProp_MaxTraceDistance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_StartTraceDistance() { static bridge::Prop Ref{ L"StartTraceDistance" }; return Ref; }
+	float& StartTraceDistance() { return BridgeProp_StartTraceDistance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_COMP_ScannerRef() { static bridge::Prop Ref{ L"COMP_ScannerRef" }; return Ref; }
+	class UCOMP_Scanner_C*& COMP_ScannerRef() { return BridgeProp_COMP_ScannerRef().ref<class UCOMP_Scanner_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MaxScanDistance() { static bridge::Prop Ref{ L"MaxScanDistance" }; return Ref; }
+	float& MaxScanDistance() { return BridgeProp_MaxScanDistance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LastScanDistance() { static bridge::Prop Ref{ L"LastScanDistance" }; return Ref; }
+	float& LastScanDistance() { return BridgeProp_LastScanDistance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HighlightedPrimitive() { static bridge::Prop Ref{ L"HighlightedPrimitive" }; return Ref; }
+	class UPrimitiveComponent*& HighlightedPrimitive() { return BridgeProp_HighlightedPrimitive().ref<class UPrimitiveComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OutlineStencilValue() { static bridge::Prop Ref{ L"OutlineStencilValue" }; return Ref; }
+	int32& OutlineStencilValue() { return BridgeProp_OutlineStencilValue().ref<int32>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_EyeOfSightTraceChannel() { static bridge::Prop Ref{ L"EyeOfSightTraceChannel" }; return Ref; }
+	ETraceTypeQuery& EyeOfSightTraceChannel() { return BridgeProp_EyeOfSightTraceChannel().ref<ETraceTypeQuery>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TraceRadius() { static bridge::Prop Ref{ L"TraceRadius" }; return Ref; }
+	float& TraceRadius() { return BridgeProp_TraceRadius().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HandInteractionComponentRef() { static bridge::Prop Ref{ L"HandInteractionComponentRef" }; return Ref; }
+	class U_BP_HandInteractionComponent_C*& HandInteractionComponentRef() { return BridgeProp_HandInteractionComponentRef().ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_EyeOfSightMaxAngle() { static bridge::Prop Ref{ L"EyeOfSightMaxAngle" }; return Ref; }
+	float& EyeOfSightMaxAngle() { return BridgeProp_EyeOfSightMaxAngle().ref<float>(this, BridgeClass()); }
 
 	// Function OnLaserPointerAttached (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_OnLaserPointerAttached() { static bridge::Func Ref{ L"OnLaserPointerAttached", { L"LaserPointer", L"Hand" } }; return Ref; }
 	void OnLaserPointerAttached(class A_BP_LaserDot_C* LaserPointer, E_ENUM_VRHand Hand)
 	{
-		static bridge::Func BridgeFunc{ L"OnLaserPointerAttached", { L"LaserPointer", L"Hand" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_OnLaserPointerAttached(), bridge::as_uobject(this));
 		BridgeCall.set<class A_BP_LaserDot_C*>(0, LaserPointer);
 		BridgeCall.set<E_ENUM_VRHand>(1, Hand);
 		BridgeCall.invoke();
 	}
 
 	// Function OnHeldItemCategoryChanged (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_OnHeldItemCategoryChanged() { static bridge::Func Ref{ L"OnHeldItemCategoryChanged", { L"Hand", L"ItemCategory" } }; return Ref; }
 	void OnHeldItemCategoryChanged(E_ENUM_VRHand Hand, E_ENUM_ItemCategory ItemCategory)
 	{
-		static bridge::Func BridgeFunc{ L"OnHeldItemCategoryChanged", { L"Hand", L"ItemCategory" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_OnHeldItemCategoryChanged(), bridge::as_uobject(this));
 		BridgeCall.set<E_ENUM_VRHand>(0, Hand);
 		BridgeCall.set<E_ENUM_ItemCategory>(1, ItemCategory);
 		BridgeCall.invoke();
 	}
 
 	// Function Initialize (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Initialize() { static bridge::Func Ref{ L"Initialize", { L"HandInteractionComponent" } }; return Ref; }
 	void Initialize(class U_BP_HandInteractionComponent_C* HandInteractionComponent)
 	{
-		static bridge::Func BridgeFunc{ L"Initialize", { L"HandInteractionComponent" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Initialize(), bridge::as_uobject(this));
 		BridgeCall.set<class U_BP_HandInteractionComponent_C*>(0, HandInteractionComponent);
 		BridgeCall.invoke();
 	}
 
 	// Function OnScanDataChanged (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_OnScanDataChanged() { static bridge::Func Ref{ L"OnScanDataChanged", {  } }; return Ref; }
 	void OnScanDataChanged()
 	{
-		static bridge::Func BridgeFunc{ L"OnScanDataChanged", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_OnScanDataChanged(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function Disable (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Disable() { static bridge::Func Ref{ L"Disable", {  } }; return Ref; }
 	void Disable()
 	{
-		static bridge::Func BridgeFunc{ L"Disable", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Disable(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function Enable (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Enable() { static bridge::Func Ref{ L"Enable", {  } }; return Ref; }
 	void Enable()
 	{
-		static bridge::Func BridgeFunc{ L"Enable", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Enable(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function ScanInteractables (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_ScanInteractables() { static bridge::Func Ref{ L"ScanInteractables", {  } }; return Ref; }
 	void ScanInteractables()
 	{
-		static bridge::Func BridgeFunc{ L"ScanInteractables", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ScanInteractables(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
 	void ReceiveBeginPlay()
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveBeginPlay", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveTick (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveTick() { static bridge::Func Ref{ L"ReceiveTick", { L"DeltaSeconds" } }; return Ref; }
 	void ReceiveTick(float DeltaSeconds)
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveTick", { L"DeltaSeconds" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveTick(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaSeconds);
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_VRBodyRef(),
+			&BridgeProp_EyeOfSightHitActor(),
+			&BridgeProp_LastInteractable(),
+			&BridgeProp_LastPrimitive(),
+			&BridgeProp_bTraceEnabled(),
+			&BridgeProp_MaxTraceDistance(),
+			&BridgeProp_StartTraceDistance(),
+			&BridgeProp_COMP_ScannerRef(),
+			&BridgeProp_MaxScanDistance(),
+			&BridgeProp_LastScanDistance(),
+			&BridgeProp_HighlightedPrimitive(),
+			&BridgeProp_OutlineStencilValue(),
+			&BridgeProp_EyeOfSightTraceChannel(),
+			&BridgeProp_TraceRadius(),
+			&BridgeProp_HandInteractionComponentRef(),
+			&BridgeProp_EyeOfSightMaxAngle(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_OnLaserPointerAttached(),
+			&BridgeFunc_OnHeldItemCategoryChanged(),
+			&BridgeFunc_Initialize(),
+			&BridgeFunc_OnScanDataChanged(),
+			&BridgeFunc_Disable(),
+			&BridgeFunc_Enable(),
+			&BridgeFunc_ScanInteractables(),
+			&BridgeFunc_ReceiveBeginPlay(),
+			&BridgeFunc_ReceiveTick(),
+		});
+		return Ok;
+	}
 };
 
 }

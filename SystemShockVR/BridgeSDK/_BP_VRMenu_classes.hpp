@@ -20,52 +20,79 @@ class U_BP_VRMenu_C final : public UWidgetComponent
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/UI/_BP_VRMenu._BP_VRMenu_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_VRMenu_C* GetDefaultObj() { return reinterpret_cast<U_BP_VRMenu_C*>(BridgeClass()->get_class_default_object()); }
 
-	bool& bIsOpened() { static bridge::Prop Ref{ L"bIsOpened" }; return Ref.ref<bool>(this, BridgeClass()); }
-	class A_BP_VRBody_C*& VRBody_Ref() { static bridge::Prop Ref{ L"VRBody Ref" }; return Ref.ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
-	struct FTimerHandle& LaserActivationDelayTimer() { static bridge::Prop Ref{ L"LaserActivationDelayTimer" }; return Ref.ref<struct FTimerHandle>(this, BridgeClass()); }
-	float& LaserActivationDelayTime() { static bridge::Prop Ref{ L"LaserActivationDelayTime" }; return Ref.ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_bIsOpened() { static bridge::Prop Ref{ L"bIsOpened" }; return Ref; }
+	bool& bIsOpened() { return BridgeProp_bIsOpened().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBody_Ref() { static bridge::Prop Ref{ L"VRBody Ref" }; return Ref; }
+	class A_BP_VRBody_C*& VRBody_Ref() { return BridgeProp_VRBody_Ref().ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LaserActivationDelayTimer() { static bridge::Prop Ref{ L"LaserActivationDelayTimer" }; return Ref; }
+	struct FTimerHandle& LaserActivationDelayTimer() { return BridgeProp_LaserActivationDelayTimer().ref<struct FTimerHandle>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LaserActivationDelayTime() { static bridge::Prop Ref{ L"LaserActivationDelayTime" }; return Ref; }
+	float& LaserActivationDelayTime() { return BridgeProp_LaserActivationDelayTime().ref<float>(this, BridgeClass()); }
 
 	// Function ActivateLaserPointer (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_ActivateLaserPointer() { static bridge::Func Ref{ L"ActivateLaserPointer", {  } }; return Ref; }
 	void ActivateLaserPointer()
 	{
-		static bridge::Func BridgeFunc{ L"ActivateLaserPointer", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ActivateLaserPointer(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function Initialize (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Initialize() { static bridge::Func Ref{ L"Initialize", { L"VRBodyRef" } }; return Ref; }
 	void Initialize(class A_BP_VRBody_C* VRBodyRef)
 	{
-		static bridge::Func BridgeFunc{ L"Initialize", { L"VRBodyRef" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Initialize(), bridge::as_uobject(this));
 		BridgeCall.set<class A_BP_VRBody_C*>(0, VRBodyRef);
 		BridgeCall.invoke();
 	}
 
 	// Function Close (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Close() { static bridge::Func Ref{ L"Close", {  } }; return Ref; }
 	void Close()
 	{
-		static bridge::Func BridgeFunc{ L"Close", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Close(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function Open (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Open() { static bridge::Func Ref{ L"Open", {  } }; return Ref; }
 	void Open()
 	{
-		static bridge::Func BridgeFunc{ L"Open", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Open(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_bIsOpened(),
+			&BridgeProp_VRBody_Ref(),
+			&BridgeProp_LaserActivationDelayTimer(),
+			&BridgeProp_LaserActivationDelayTime(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_ActivateLaserPointer(),
+			&BridgeFunc_Initialize(),
+			&BridgeFunc_Close(),
+			&BridgeFunc_Open(),
+		});
+		return Ok;
+	}
 };
 
 }

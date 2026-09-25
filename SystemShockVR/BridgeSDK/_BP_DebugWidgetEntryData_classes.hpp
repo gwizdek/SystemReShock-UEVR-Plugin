@@ -18,27 +18,47 @@ class U_BP_DebugWidgetEntryData_C final : public UObject
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_DebugWidgetEntryData._BP_DebugWidgetEntryData_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_DebugWidgetEntryData_C* GetDefaultObj() { return reinterpret_cast<U_BP_DebugWidgetEntryData_C*>(BridgeClass()->get_class_default_object()); }
 
-	class FString& DataEntry() { static bridge::Prop Ref{ L"DataEntry" }; return Ref.ref<class FString>(this, BridgeClass()); }
-	E_ENUM_DebugWidgetEntryType& Type() { static bridge::Prop Ref{ L"Type" }; return Ref.ref<E_ENUM_DebugWidgetEntryType>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_DataEntry() { static bridge::Prop Ref{ L"DataEntry" }; return Ref; }
+	class FString& DataEntry() { return BridgeProp_DataEntry().ref<class FString>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Type() { static bridge::Prop Ref{ L"Type" }; return Ref; }
+	E_ENUM_DebugWidgetEntryType& Type() { return BridgeProp_Type().ref<E_ENUM_DebugWidgetEntryType>(this, BridgeClass()); }
 
 	// Function Init (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Init() { static bridge::Func Ref{ L"Init", { L"InDataEntry", L"InType" } }; return Ref; }
 	void Init(const class FString& InDataEntry, E_ENUM_DebugWidgetEntryType InType)
 	{
-		static bridge::Func BridgeFunc{ L"Init", { L"InDataEntry", L"InType" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Init(), bridge::as_uobject(this));
 		BridgeCall.set<class FString>(0, InDataEntry);
 		BridgeCall.set<E_ENUM_DebugWidgetEntryType>(1, InType);
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_DataEntry(),
+			&BridgeProp_Type(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_Init(),
+		});
+		return Ok;
+	}
 };
 
 }

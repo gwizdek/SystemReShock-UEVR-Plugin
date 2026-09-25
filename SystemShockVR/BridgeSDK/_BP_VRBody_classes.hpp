@@ -55,134 +55,193 @@ class A_BP_VRBody_C final : public AActor
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_VRBody._BP_VRBody_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static A_BP_VRBody_C* GetDefaultObj() { return reinterpret_cast<A_BP_VRBody_C*>(BridgeClass()->get_class_default_object()); }
 
-	class UWidgetComponent*& Subtitles() { static bridge::Prop Ref{ L"Subtitles" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class UWidgetComponent*& UnreadMediaIcon() { static bridge::Prop Ref{ L"UnreadMediaIcon" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class UWidgetComponent*& ActiveHazard() { static bridge::Prop Ref{ L"ActiveHazard" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class UWidgetComponent*& VRHUD() { static bridge::Prop Ref{ L"VRHUD" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class U_BP_InteractablesHighlighter_C*& InteractablesHighlighterRight() { static bridge::Prop Ref{ L"InteractablesHighlighterRight" }; return Ref.ref<class U_BP_InteractablesHighlighter_C*>(this, BridgeClass()); }
-	class U_BP_InteractablesHighlighter_C*& InteractablesHighlighterLeft() { static bridge::Prop Ref{ L"InteractablesHighlighterLeft" }; return Ref.ref<class U_BP_InteractablesHighlighter_C*>(this, BridgeClass()); }
-	class U_BP_VRMenu_C*& VRMenu() { static bridge::Prop Ref{ L"VRMenu" }; return Ref.ref<class U_BP_VRMenu_C*>(this, BridgeClass()); }
-	class UPostProcessComponent*& VRPostProcess() { static bridge::Prop Ref{ L"VRPostProcess" }; return Ref.ref<class UPostProcessComponent*>(this, BridgeClass()); }
-	class U_BP_AnimationManager_C*& AnimationManager() { static bridge::Prop Ref{ L"AnimationManager" }; return Ref.ref<class U_BP_AnimationManager_C*>(this, BridgeClass()); }
-	class UBoxComponent*& HandheldConsumableCollision() { static bridge::Prop Ref{ L"HandheldConsumableCollision" }; return Ref.ref<class UBoxComponent*>(this, BridgeClass()); }
-	class UCapsuleComponent*& LeftIndexFingerCollision() { static bridge::Prop Ref{ L"LeftIndexFingerCollision" }; return Ref.ref<class UCapsuleComponent*>(this, BridgeClass()); }
-	class UCapsuleComponent*& RightIndexFingerCollision() { static bridge::Prop Ref{ L"RightIndexFingerCollision" }; return Ref.ref<class UCapsuleComponent*>(this, BridgeClass()); }
-	class USphereComponent*& ADSTriggerCollision() { static bridge::Prop Ref{ L"ADSTriggerCollision" }; return Ref.ref<class USphereComponent*>(this, BridgeClass()); }
-	class UCapsuleComponent*& ADSZone() { static bridge::Prop Ref{ L"ADSZone" }; return Ref.ref<class UCapsuleComponent*>(this, BridgeClass()); }
-	class UArrowComponent*& TrailingRotationComponent() { static bridge::Prop Ref{ L"TrailingRotationComponent" }; return Ref.ref<class UArrowComponent*>(this, BridgeClass()); }
-	class UWidgetComponent*& TargetIDWidgetComponent() { static bridge::Prop Ref{ L"TargetIDWidgetComponent" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class UWidgetComponent*& VitalBarsWidgetComponent() { static bridge::Prop Ref{ L"VitalBarsWidgetComponent" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class UWidgetComponent*& MediaDisplayWidgetComponent() { static bridge::Prop Ref{ L"MediaDisplayWidgetComponent" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class U_BP_MFDMaskComponent_C*& MFDMaskComponent() { static bridge::Prop Ref{ L"MFDMaskComponent" }; return Ref.ref<class U_BP_MFDMaskComponent_C*>(this, BridgeClass()); }
-	class USceneComponent*& MFDMaskPivot() { static bridge::Prop Ref{ L"MFDMaskPivot" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class USceneComponent*& UEVRCameraAttachComponent() { static bridge::Prop Ref{ L"UEVRCameraAttachComponent" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class U_BP_VRMovementComponent_C*& VRMovementComponent() { static bridge::Prop Ref{ L"VRMovementComponent" }; return Ref.ref<class U_BP_VRMovementComponent_C*>(this, BridgeClass()); }
-	class USceneComponent*& HMDComponent() { static bridge::Prop Ref{ L"HMDComponent" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class USphereComponent*& MCDebugSphereLeft() { static bridge::Prop Ref{ L"MCDebugSphereLeft" }; return Ref.ref<class USphereComponent*>(this, BridgeClass()); }
-	class USphereComponent*& WristDebugSphereRight() { static bridge::Prop Ref{ L"WristDebugSphereRight" }; return Ref.ref<class USphereComponent*>(this, BridgeClass()); }
-	class USphereComponent*& WristDebugSphereLeft() { static bridge::Prop Ref{ L"WristDebugSphereLeft" }; return Ref.ref<class USphereComponent*>(this, BridgeClass()); }
-	class U_BP_GrabEnablingComponent_C*& GrabEnablingComponentRight() { static bridge::Prop Ref{ L"GrabEnablingComponentRight" }; return Ref.ref<class U_BP_GrabEnablingComponent_C*>(this, BridgeClass()); }
-	class U_BP_GrabEnablingComponent_C*& GrabEnablingComponentLeft() { static bridge::Prop Ref{ L"GrabEnablingComponentLeft" }; return Ref.ref<class U_BP_GrabEnablingComponent_C*>(this, BridgeClass()); }
-	class UMotionControllerComponent*& MotionControllerLeft() { static bridge::Prop Ref{ L"MotionControllerLeft" }; return Ref.ref<class UMotionControllerComponent*>(this, BridgeClass()); }
-	class UMotionControllerComponent*& MotionControllerRight() { static bridge::Prop Ref{ L"MotionControllerRight" }; return Ref.ref<class UMotionControllerComponent*>(this, BridgeClass()); }
-	class U_BP_HandInteractionComponent_C*& HandInteractionLeft() { static bridge::Prop Ref{ L"HandInteractionLeft" }; return Ref.ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
-	class U_BP_DebugWidgetComponent_C*& DebugWidgetComponent() { static bridge::Prop Ref{ L"DebugWidgetComponent" }; return Ref.ref<class U_BP_DebugWidgetComponent_C*>(this, BridgeClass()); }
-	class U_BP_HandInteractionComponent_C*& HandInteractionRight() { static bridge::Prop Ref{ L"HandInteractionRight" }; return Ref.ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
-	class UWidgetComponent*& MinimapWidgetComponent() { static bridge::Prop Ref{ L"MinimapWidgetComponent" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class USceneComponent*& WristOffsetRight() { static bridge::Prop Ref{ L"WristOffsetRight" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class USceneComponent*& WristOffsetLeft() { static bridge::Prop Ref{ L"WristOffsetLeft" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class UWidgetInteractionComponent*& WidgetInteractionRight() { static bridge::Prop Ref{ L"WidgetInteractionRight" }; return Ref.ref<class UWidgetInteractionComponent*>(this, BridgeClass()); }
-	class USkeletalMeshComponent*& VRBodyMesh() { static bridge::Prop Ref{ L"VRBodyMesh" }; return Ref.ref<class USkeletalMeshComponent*>(this, BridgeClass()); }
-	class USceneComponent*& DefaultSceneRoot() { static bridge::Prop Ref{ L"DefaultSceneRoot" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class A_BP_AccessCard_C*& AccessCard() { static bridge::Prop Ref{ L"AccessCard" }; return Ref.ref<class A_BP_AccessCard_C*>(this, BridgeClass()); }
-	class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C*& AnimBP() { static bridge::Prop Ref{ L"AnimBP" }; return Ref.ref<class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C*>(this, BridgeClass()); }
-	class APAWN_Hacker_Simple_C*& HackerPawn() { static bridge::Prop Ref{ L"HackerPawn" }; return Ref.ref<class APAWN_Hacker_Simple_C*>(this, BridgeClass()); }
-	class A_BP_LaserDot_C*& LaserDot() { static bridge::Prop Ref{ L"LaserDot" }; return Ref.ref<class A_BP_LaserDot_C*>(this, BridgeClass()); }
-	class A_BP_ItemSelector_C*& ItemSelectorLeft() { static bridge::Prop Ref{ L"ItemSelectorLeft" }; return Ref.ref<class A_BP_ItemSelector_C*>(this, BridgeClass()); }
-	class A_BP_ItemSelector_C*& ItemSelectorRight() { static bridge::Prop Ref{ L"ItemSelectorRight" }; return Ref.ref<class A_BP_ItemSelector_C*>(this, BridgeClass()); }
-	class A_BP_MeleeWeaponHandler_C*& MeleeWeaponHandler() { static bridge::Prop Ref{ L"MeleeWeaponHandler" }; return Ref.ref<class A_BP_MeleeWeaponHandler_C*>(this, BridgeClass()); }
-	class A_BP_HackerHardware_C*& HackerHardware() { static bridge::Prop Ref{ L"HackerHardware" }; return Ref.ref<class A_BP_HackerHardware_C*>(this, BridgeClass()); }
-	TMulticastInlineDelegate<void()>& VRBodyInitialized() { static bridge::Prop Ref{ L"VRBodyInitialized" }; return Ref.ref<TMulticastInlineDelegate<void()>>(this, BridgeClass()); }
-	TArray<class U_BP_InteractionSourceComponent_C*>& WorldInteractionSources() { static bridge::Prop Ref{ L"WorldInteractionSources" }; return Ref.ref<TArray<class U_BP_InteractionSourceComponent_C*>>(this, BridgeClass()); }
-	TArray<class U_BP_InteractionSourceComponent_C*>& WeaponInteractionSources() { static bridge::Prop Ref{ L"WeaponInteractionSources" }; return Ref.ref<TArray<class U_BP_InteractionSourceComponent_C*>>(this, BridgeClass()); }
-	TArray<class AActor*>& IgnoredActors() { static bridge::Prop Ref{ L"IgnoredActors" }; return Ref.ref<TArray<class AActor*>>(this, BridgeClass()); }
-	bool& ShowTick() { static bridge::Prop Ref{ L"ShowTick" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsInADSZone() { static bridge::Prop Ref{ L"IsInADSZone" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsDominantEyeRight() { static bridge::Prop Ref{ L"IsDominantEyeRight" }; return Ref.ref<bool>(this, BridgeClass()); }
-	float& ADSAngle() { static bridge::Prop Ref{ L"ADSAngle" }; return Ref.ref<float>(this, BridgeClass()); }
-	ECollisionChannel& WidgetInteractionChannel() { static bridge::Prop Ref{ L"WidgetInteractionChannel" }; return Ref.ref<ECollisionChannel>(this, BridgeClass()); }
-	E_ENUM_VRHand& MainHand() { static bridge::Prop Ref{ L"MainHand" }; return Ref.ref<E_ENUM_VRHand>(this, BridgeClass()); }
-	class UAnimMontage*& HackerCurrentMontage() { static bridge::Prop Ref{ L"HackerCurrentMontage" }; return Ref.ref<class UAnimMontage*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Subtitles() { static bridge::Prop Ref{ L"Subtitles" }; return Ref; }
+	class UWidgetComponent*& Subtitles() { return BridgeProp_Subtitles().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_UnreadMediaIcon() { static bridge::Prop Ref{ L"UnreadMediaIcon" }; return Ref; }
+	class UWidgetComponent*& UnreadMediaIcon() { return BridgeProp_UnreadMediaIcon().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ActiveHazard() { static bridge::Prop Ref{ L"ActiveHazard" }; return Ref; }
+	class UWidgetComponent*& ActiveHazard() { return BridgeProp_ActiveHazard().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRHUD() { static bridge::Prop Ref{ L"VRHUD" }; return Ref; }
+	class UWidgetComponent*& VRHUD() { return BridgeProp_VRHUD().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_InteractablesHighlighterRight() { static bridge::Prop Ref{ L"InteractablesHighlighterRight" }; return Ref; }
+	class U_BP_InteractablesHighlighter_C*& InteractablesHighlighterRight() { return BridgeProp_InteractablesHighlighterRight().ref<class U_BP_InteractablesHighlighter_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_InteractablesHighlighterLeft() { static bridge::Prop Ref{ L"InteractablesHighlighterLeft" }; return Ref; }
+	class U_BP_InteractablesHighlighter_C*& InteractablesHighlighterLeft() { return BridgeProp_InteractablesHighlighterLeft().ref<class U_BP_InteractablesHighlighter_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRMenu() { static bridge::Prop Ref{ L"VRMenu" }; return Ref; }
+	class U_BP_VRMenu_C*& VRMenu() { return BridgeProp_VRMenu().ref<class U_BP_VRMenu_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRPostProcess() { static bridge::Prop Ref{ L"VRPostProcess" }; return Ref; }
+	class UPostProcessComponent*& VRPostProcess() { return BridgeProp_VRPostProcess().ref<class UPostProcessComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimationManager() { static bridge::Prop Ref{ L"AnimationManager" }; return Ref; }
+	class U_BP_AnimationManager_C*& AnimationManager() { return BridgeProp_AnimationManager().ref<class U_BP_AnimationManager_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HandheldConsumableCollision() { static bridge::Prop Ref{ L"HandheldConsumableCollision" }; return Ref; }
+	class UBoxComponent*& HandheldConsumableCollision() { return BridgeProp_HandheldConsumableCollision().ref<class UBoxComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LeftIndexFingerCollision() { static bridge::Prop Ref{ L"LeftIndexFingerCollision" }; return Ref; }
+	class UCapsuleComponent*& LeftIndexFingerCollision() { return BridgeProp_LeftIndexFingerCollision().ref<class UCapsuleComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_RightIndexFingerCollision() { static bridge::Prop Ref{ L"RightIndexFingerCollision" }; return Ref; }
+	class UCapsuleComponent*& RightIndexFingerCollision() { return BridgeProp_RightIndexFingerCollision().ref<class UCapsuleComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ADSTriggerCollision() { static bridge::Prop Ref{ L"ADSTriggerCollision" }; return Ref; }
+	class USphereComponent*& ADSTriggerCollision() { return BridgeProp_ADSTriggerCollision().ref<class USphereComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ADSZone() { static bridge::Prop Ref{ L"ADSZone" }; return Ref; }
+	class UCapsuleComponent*& ADSZone() { return BridgeProp_ADSZone().ref<class UCapsuleComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TrailingRotationComponent() { static bridge::Prop Ref{ L"TrailingRotationComponent" }; return Ref; }
+	class UArrowComponent*& TrailingRotationComponent() { return BridgeProp_TrailingRotationComponent().ref<class UArrowComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TargetIDWidgetComponent() { static bridge::Prop Ref{ L"TargetIDWidgetComponent" }; return Ref; }
+	class UWidgetComponent*& TargetIDWidgetComponent() { return BridgeProp_TargetIDWidgetComponent().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VitalBarsWidgetComponent() { static bridge::Prop Ref{ L"VitalBarsWidgetComponent" }; return Ref; }
+	class UWidgetComponent*& VitalBarsWidgetComponent() { return BridgeProp_VitalBarsWidgetComponent().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MediaDisplayWidgetComponent() { static bridge::Prop Ref{ L"MediaDisplayWidgetComponent" }; return Ref; }
+	class UWidgetComponent*& MediaDisplayWidgetComponent() { return BridgeProp_MediaDisplayWidgetComponent().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MFDMaskComponent() { static bridge::Prop Ref{ L"MFDMaskComponent" }; return Ref; }
+	class U_BP_MFDMaskComponent_C*& MFDMaskComponent() { return BridgeProp_MFDMaskComponent().ref<class U_BP_MFDMaskComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MFDMaskPivot() { static bridge::Prop Ref{ L"MFDMaskPivot" }; return Ref; }
+	class USceneComponent*& MFDMaskPivot() { return BridgeProp_MFDMaskPivot().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_UEVRCameraAttachComponent() { static bridge::Prop Ref{ L"UEVRCameraAttachComponent" }; return Ref; }
+	class USceneComponent*& UEVRCameraAttachComponent() { return BridgeProp_UEVRCameraAttachComponent().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRMovementComponent() { static bridge::Prop Ref{ L"VRMovementComponent" }; return Ref; }
+	class U_BP_VRMovementComponent_C*& VRMovementComponent() { return BridgeProp_VRMovementComponent().ref<class U_BP_VRMovementComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HMDComponent() { static bridge::Prop Ref{ L"HMDComponent" }; return Ref; }
+	class USceneComponent*& HMDComponent() { return BridgeProp_HMDComponent().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MCDebugSphereLeft() { static bridge::Prop Ref{ L"MCDebugSphereLeft" }; return Ref; }
+	class USphereComponent*& MCDebugSphereLeft() { return BridgeProp_MCDebugSphereLeft().ref<class USphereComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WristDebugSphereRight() { static bridge::Prop Ref{ L"WristDebugSphereRight" }; return Ref; }
+	class USphereComponent*& WristDebugSphereRight() { return BridgeProp_WristDebugSphereRight().ref<class USphereComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WristDebugSphereLeft() { static bridge::Prop Ref{ L"WristDebugSphereLeft" }; return Ref; }
+	class USphereComponent*& WristDebugSphereLeft() { return BridgeProp_WristDebugSphereLeft().ref<class USphereComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_GrabEnablingComponentRight() { static bridge::Prop Ref{ L"GrabEnablingComponentRight" }; return Ref; }
+	class U_BP_GrabEnablingComponent_C*& GrabEnablingComponentRight() { return BridgeProp_GrabEnablingComponentRight().ref<class U_BP_GrabEnablingComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_GrabEnablingComponentLeft() { static bridge::Prop Ref{ L"GrabEnablingComponentLeft" }; return Ref; }
+	class U_BP_GrabEnablingComponent_C*& GrabEnablingComponentLeft() { return BridgeProp_GrabEnablingComponentLeft().ref<class U_BP_GrabEnablingComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MotionControllerLeft() { static bridge::Prop Ref{ L"MotionControllerLeft" }; return Ref; }
+	class UMotionControllerComponent*& MotionControllerLeft() { return BridgeProp_MotionControllerLeft().ref<class UMotionControllerComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MotionControllerRight() { static bridge::Prop Ref{ L"MotionControllerRight" }; return Ref; }
+	class UMotionControllerComponent*& MotionControllerRight() { return BridgeProp_MotionControllerRight().ref<class UMotionControllerComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HandInteractionLeft() { static bridge::Prop Ref{ L"HandInteractionLeft" }; return Ref; }
+	class U_BP_HandInteractionComponent_C*& HandInteractionLeft() { return BridgeProp_HandInteractionLeft().ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_DebugWidgetComponent() { static bridge::Prop Ref{ L"DebugWidgetComponent" }; return Ref; }
+	class U_BP_DebugWidgetComponent_C*& DebugWidgetComponent() { return BridgeProp_DebugWidgetComponent().ref<class U_BP_DebugWidgetComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HandInteractionRight() { static bridge::Prop Ref{ L"HandInteractionRight" }; return Ref; }
+	class U_BP_HandInteractionComponent_C*& HandInteractionRight() { return BridgeProp_HandInteractionRight().ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MinimapWidgetComponent() { static bridge::Prop Ref{ L"MinimapWidgetComponent" }; return Ref; }
+	class UWidgetComponent*& MinimapWidgetComponent() { return BridgeProp_MinimapWidgetComponent().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WristOffsetRight() { static bridge::Prop Ref{ L"WristOffsetRight" }; return Ref; }
+	class USceneComponent*& WristOffsetRight() { return BridgeProp_WristOffsetRight().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WristOffsetLeft() { static bridge::Prop Ref{ L"WristOffsetLeft" }; return Ref; }
+	class USceneComponent*& WristOffsetLeft() { return BridgeProp_WristOffsetLeft().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WidgetInteractionRight() { static bridge::Prop Ref{ L"WidgetInteractionRight" }; return Ref; }
+	class UWidgetInteractionComponent*& WidgetInteractionRight() { return BridgeProp_WidgetInteractionRight().ref<class UWidgetInteractionComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyMesh() { static bridge::Prop Ref{ L"VRBodyMesh" }; return Ref; }
+	class USkeletalMeshComponent*& VRBodyMesh() { return BridgeProp_VRBodyMesh().ref<class USkeletalMeshComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_DefaultSceneRoot() { static bridge::Prop Ref{ L"DefaultSceneRoot" }; return Ref; }
+	class USceneComponent*& DefaultSceneRoot() { return BridgeProp_DefaultSceneRoot().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AccessCard() { static bridge::Prop Ref{ L"AccessCard" }; return Ref; }
+	class A_BP_AccessCard_C*& AccessCard() { return BridgeProp_AccessCard().ref<class A_BP_AccessCard_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AnimBP() { static bridge::Prop Ref{ L"AnimBP" }; return Ref; }
+	class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C*& AnimBP() { return BridgeProp_AnimBP().ref<class U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HackerPawn() { static bridge::Prop Ref{ L"HackerPawn" }; return Ref; }
+	class APAWN_Hacker_Simple_C*& HackerPawn() { return BridgeProp_HackerPawn().ref<class APAWN_Hacker_Simple_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LaserDot() { static bridge::Prop Ref{ L"LaserDot" }; return Ref; }
+	class A_BP_LaserDot_C*& LaserDot() { return BridgeProp_LaserDot().ref<class A_BP_LaserDot_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ItemSelectorLeft() { static bridge::Prop Ref{ L"ItemSelectorLeft" }; return Ref; }
+	class A_BP_ItemSelector_C*& ItemSelectorLeft() { return BridgeProp_ItemSelectorLeft().ref<class A_BP_ItemSelector_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ItemSelectorRight() { static bridge::Prop Ref{ L"ItemSelectorRight" }; return Ref; }
+	class A_BP_ItemSelector_C*& ItemSelectorRight() { return BridgeProp_ItemSelectorRight().ref<class A_BP_ItemSelector_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MeleeWeaponHandler() { static bridge::Prop Ref{ L"MeleeWeaponHandler" }; return Ref; }
+	class A_BP_MeleeWeaponHandler_C*& MeleeWeaponHandler() { return BridgeProp_MeleeWeaponHandler().ref<class A_BP_MeleeWeaponHandler_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HackerHardware() { static bridge::Prop Ref{ L"HackerHardware" }; return Ref; }
+	class A_BP_HackerHardware_C*& HackerHardware() { return BridgeProp_HackerHardware().ref<class A_BP_HackerHardware_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyInitialized() { static bridge::Prop Ref{ L"VRBodyInitialized" }; return Ref; }
+	TMulticastInlineDelegate<void()>& VRBodyInitialized() { return BridgeProp_VRBodyInitialized().ref<TMulticastInlineDelegate<void()>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WorldInteractionSources() { static bridge::Prop Ref{ L"WorldInteractionSources" }; return Ref; }
+	TArray<class U_BP_InteractionSourceComponent_C*>& WorldInteractionSources() { return BridgeProp_WorldInteractionSources().ref<TArray<class U_BP_InteractionSourceComponent_C*>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WeaponInteractionSources() { static bridge::Prop Ref{ L"WeaponInteractionSources" }; return Ref; }
+	TArray<class U_BP_InteractionSourceComponent_C*>& WeaponInteractionSources() { return BridgeProp_WeaponInteractionSources().ref<TArray<class U_BP_InteractionSourceComponent_C*>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IgnoredActors() { static bridge::Prop Ref{ L"IgnoredActors" }; return Ref; }
+	TArray<class AActor*>& IgnoredActors() { return BridgeProp_IgnoredActors().ref<TArray<class AActor*>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ShowTick() { static bridge::Prop Ref{ L"ShowTick" }; return Ref; }
+	bool& ShowTick() { return BridgeProp_ShowTick().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsInADSZone() { static bridge::Prop Ref{ L"IsInADSZone" }; return Ref; }
+	bool& IsInADSZone() { return BridgeProp_IsInADSZone().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsDominantEyeRight() { static bridge::Prop Ref{ L"IsDominantEyeRight" }; return Ref; }
+	bool& IsDominantEyeRight() { return BridgeProp_IsDominantEyeRight().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ADSAngle() { static bridge::Prop Ref{ L"ADSAngle" }; return Ref; }
+	float& ADSAngle() { return BridgeProp_ADSAngle().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WidgetInteractionChannel() { static bridge::Prop Ref{ L"WidgetInteractionChannel" }; return Ref; }
+	ECollisionChannel& WidgetInteractionChannel() { return BridgeProp_WidgetInteractionChannel().ref<ECollisionChannel>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MainHand() { static bridge::Prop Ref{ L"MainHand" }; return Ref; }
+	E_ENUM_VRHand& MainHand() { return BridgeProp_MainHand().ref<E_ENUM_VRHand>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HackerCurrentMontage() { static bridge::Prop Ref{ L"HackerCurrentMontage" }; return Ref; }
+	class UAnimMontage*& HackerCurrentMontage() { return BridgeProp_HackerCurrentMontage().ref<class UAnimMontage*>(this, BridgeClass()); }
 
 	// Function IsTwoHandingWeapon (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsTwoHandingWeapon() { static bridge::Func Ref{ L"IsTwoHandingWeapon", { L"ReturnValue" } }; return Ref; }
 	bool IsTwoHandingWeapon()
 	{
-		static bridge::Func BridgeFunc{ L"IsTwoHandingWeapon", { L"ReturnValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsTwoHandingWeapon(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 		return BridgeCall.get_bool(0);
 	}
 
 	// Function IsEmptyHanded (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsEmptyHanded() { static bridge::Func Ref{ L"IsEmptyHanded", { L"ReturnValue" } }; return Ref; }
 	bool IsEmptyHanded()
 	{
-		static bridge::Func BridgeFunc{ L"IsEmptyHanded", { L"ReturnValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsEmptyHanded(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 		return BridgeCall.get_bool(0);
 	}
 
 	// Function IsHoldingHandheldConsumable (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsHoldingHandheldConsumable() { static bridge::Func Ref{ L"IsHoldingHandheldConsumable", { L"ReturnValue" } }; return Ref; }
 	bool IsHoldingHandheldConsumable()
 	{
-		static bridge::Func BridgeFunc{ L"IsHoldingHandheldConsumable", { L"ReturnValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsHoldingHandheldConsumable(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 		return BridgeCall.get_bool(0);
 	}
 
 	// Function EnableRangedInteractions (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_EnableRangedInteractions() { static bridge::Func Ref{ L"EnableRangedInteractions", { L"InEnable" } }; return Ref; }
 	void EnableRangedInteractions(bool InEnable)
 	{
-		static bridge::Func BridgeFunc{ L"EnableRangedInteractions", { L"InEnable" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_EnableRangedInteractions(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, InEnable);
 		BridgeCall.invoke();
 	}
 
 	// Function SetScannerEnabled (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetScannerEnabled() { static bridge::Func Ref{ L"SetScannerEnabled", { L"InEnabled", L"InDistance" } }; return Ref; }
 	void SetScannerEnabled(bool InEnabled, float InDistance)
 	{
-		static bridge::Func BridgeFunc{ L"SetScannerEnabled", { L"InEnabled", L"InDistance" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetScannerEnabled(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, InEnabled);
 		BridgeCall.set<float>(1, InDistance);
 		BridgeCall.invoke();
 	}
 
 	// Function GetCurrentEquippedWeapon (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetCurrentEquippedWeapon() { static bridge::Func Ref{ L"GetCurrentEquippedWeapon", { L"OutWeapon" } }; return Ref; }
 	void GetCurrentEquippedWeapon(class UITEM_WeaponBase_C** OutWeapon)
 	{
-		static bridge::Func BridgeFunc{ L"GetCurrentEquippedWeapon", { L"OutWeapon" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetCurrentEquippedWeapon(), bridge::as_uobject(this));
 		if (OutWeapon != nullptr) { BridgeCall.set<class UITEM_WeaponBase_C*>(0, *OutWeapon); }
 		BridgeCall.invoke();
 		if (OutWeapon != nullptr) { *OutWeapon = BridgeCall.get<class UITEM_WeaponBase_C*>(0); }
 	}
 
 	// Function SetHandheldConsumableCollision (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetHandheldConsumableCollision() { static bridge::Func Ref{ L"SetHandheldConsumableCollision", { L"SocketName", L"RelativeTransform", L"Collision" } }; return Ref; }
 	void SetHandheldConsumableCollision(class FName SocketName, const struct FTransform& RelativeTransform, ECollisionEnabled Collision)
 	{
-		static bridge::Func BridgeFunc{ L"SetHandheldConsumableCollision", { L"SocketName", L"RelativeTransform", L"Collision" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetHandheldConsumableCollision(), bridge::as_uobject(this));
 		BridgeCall.set<class FName>(0, SocketName);
 		BridgeCall.set<struct FTransform>(1, RelativeTransform);
 		BridgeCall.set<ECollisionEnabled>(2, Collision);
@@ -190,19 +249,19 @@ public:
 	}
 
 	// Function TriggerWidgetInteractionAction (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TriggerWidgetInteractionAction() { static bridge::Func Ref{ L"TriggerWidgetInteractionAction", { L"InPressLMB" } }; return Ref; }
 	void TriggerWidgetInteractionAction(bool InPressLMB)
 	{
-		static bridge::Func BridgeFunc{ L"TriggerWidgetInteractionAction", { L"InPressLMB" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TriggerWidgetInteractionAction(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, InPressLMB);
 		BridgeCall.invoke();
 	}
 
 	// Function SetADSZoneOffset (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetADSZoneOffset() { static bridge::Func Ref{ L"SetADSZoneOffset", { L"ForwardOffset", L"UpOffset", L"HalfSize" } }; return Ref; }
 	void SetADSZoneOffset(float ForwardOffset, float UpOffset, float HalfSize)
 	{
-		static bridge::Func BridgeFunc{ L"SetADSZoneOffset", { L"ForwardOffset", L"UpOffset", L"HalfSize" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetADSZoneOffset(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, ForwardOffset);
 		BridgeCall.set<float>(1, UpOffset);
 		BridgeCall.set<float>(2, HalfSize);
@@ -210,55 +269,55 @@ public:
 	}
 
 	// Function IsAimingDownSights (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsAimingDownSights() { static bridge::Func Ref{ L"IsAimingDownSights", { L"ReturnValue" } }; return Ref; }
 	bool IsAimingDownSights()
 	{
-		static bridge::Func BridgeFunc{ L"IsAimingDownSights", { L"ReturnValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsAimingDownSights(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 		return BridgeCall.get_bool(0);
 	}
 
 	// Function IsWeaponHolstered (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsWeaponHolstered() { static bridge::Func Ref{ L"IsWeaponHolstered", { L"ReturnValue" } }; return Ref; }
 	bool IsWeaponHolstered()
 	{
-		static bridge::Func BridgeFunc{ L"IsWeaponHolstered", { L"ReturnValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsWeaponHolstered(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 		return BridgeCall.get_bool(0);
 	}
 
 	// Function GetHackerMoveControlManager (BlueprintCallable, BlueprintPure, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetHackerMoveControlManager() { static bridge::Func Ref{ L"GetHackerMoveControlManager", { L"COMP_MoveControlManager" } }; return Ref; }
 	void GetHackerMoveControlManager(class UCOMP_MoveControlManager_C** COMP_MoveControlManager)
 	{
-		static bridge::Func BridgeFunc{ L"GetHackerMoveControlManager", { L"COMP_MoveControlManager" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetHackerMoveControlManager(), bridge::as_uobject(this));
 		if (COMP_MoveControlManager != nullptr) { BridgeCall.set<class UCOMP_MoveControlManager_C*>(0, *COMP_MoveControlManager); }
 		BridgeCall.invoke();
 		if (COMP_MoveControlManager != nullptr) { *COMP_MoveControlManager = BridgeCall.get<class UCOMP_MoveControlManager_C*>(0); }
 	}
 
 	// Function GetHackerInventory (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetHackerInventory() { static bridge::Func Ref{ L"GetHackerInventory", { L"ReturnValue" } }; return Ref; }
 	class UCOMP_HackerInventory_C* GetHackerInventory()
 	{
-		static bridge::Func BridgeFunc{ L"GetHackerInventory", { L"ReturnValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetHackerInventory(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 		return BridgeCall.get<class UCOMP_HackerInventory_C*>(0);
 	}
 
 	// Function DestroyAllWeaponInteractionSources (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_DestroyAllWeaponInteractionSources() { static bridge::Func Ref{ L"DestroyAllWeaponInteractionSources", {  } }; return Ref; }
 	void DestroyAllWeaponInteractionSources()
 	{
-		static bridge::Func BridgeFunc{ L"DestroyAllWeaponInteractionSources", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_DestroyAllWeaponInteractionSources(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function GetNearestWeaponInteractionSource (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetNearestWeaponInteractionSource() { static bridge::Func Ref{ L"GetNearestWeaponInteractionSource", { L"MotionController", L"OutInteractionSource", L"Distance" } }; return Ref; }
 	void GetNearestWeaponInteractionSource(class UMotionControllerComponent* MotionController, class U_BP_InteractionSourceComponent_C** OutInteractionSource, float* Distance)
 	{
-		static bridge::Func BridgeFunc{ L"GetNearestWeaponInteractionSource", { L"MotionController", L"OutInteractionSource", L"Distance" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetNearestWeaponInteractionSource(), bridge::as_uobject(this));
 		BridgeCall.set<class UMotionControllerComponent*>(0, MotionController);
 		if (OutInteractionSource != nullptr) { BridgeCall.set<class U_BP_InteractionSourceComponent_C*>(1, *OutInteractionSource); }
 		if (Distance != nullptr) { BridgeCall.set<float>(2, *Distance); }
@@ -268,10 +327,10 @@ public:
 	}
 
 	// Function GetWeaponAnimInstance (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetWeaponAnimInstance() { static bridge::Func Ref{ L"GetWeaponAnimInstance", { L"InWeapon", L"OutAnimInstance" } }; return Ref; }
 	void GetWeaponAnimInstance(class UITEM_WeaponBase_C* InWeapon, class UAnimInstance** OutAnimInstance)
 	{
-		static bridge::Func BridgeFunc{ L"GetWeaponAnimInstance", { L"InWeapon", L"OutAnimInstance" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetWeaponAnimInstance(), bridge::as_uobject(this));
 		BridgeCall.set<class UITEM_WeaponBase_C*>(0, InWeapon);
 		if (OutAnimInstance != nullptr) { BridgeCall.set<class UAnimInstance*>(1, *OutAnimInstance); }
 		BridgeCall.invoke();
@@ -279,145 +338,145 @@ public:
 	}
 
 	// Function ChangeEquippedWeapon (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_ChangeEquippedWeapon() { static bridge::Func Ref{ L"ChangeEquippedWeapon", { L"InWeapon" } }; return Ref; }
 	void ChangeEquippedWeapon(class UITEM_WeaponBase_C* InWeapon)
 	{
-		static bridge::Func BridgeFunc{ L"ChangeEquippedWeapon", { L"InWeapon" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ChangeEquippedWeapon(), bridge::as_uobject(this));
 		BridgeCall.set<class UITEM_WeaponBase_C*>(0, InWeapon);
 		BridgeCall.invoke();
 	}
 
 	// Function InitializeAnimations (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_InitializeAnimations() { static bridge::Func Ref{ L"InitializeAnimations", {  } }; return Ref; }
 	void InitializeAnimations()
 	{
-		static bridge::Func BridgeFunc{ L"InitializeAnimations", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_InitializeAnimations(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function InitializeMeleeWeaponHandler (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_InitializeMeleeWeaponHandler() { static bridge::Func Ref{ L"InitializeMeleeWeaponHandler", {  } }; return Ref; }
 	void InitializeMeleeWeaponHandler()
 	{
-		static bridge::Func BridgeFunc{ L"InitializeMeleeWeaponHandler", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_InitializeMeleeWeaponHandler(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function InitializeItemSelectors (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_InitializeItemSelectors() { static bridge::Func Ref{ L"InitializeItemSelectors", {  } }; return Ref; }
 	void InitializeItemSelectors()
 	{
-		static bridge::Func BridgeFunc{ L"InitializeItemSelectors", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_InitializeItemSelectors(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function InitializeLaserDot (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_InitializeLaserDot() { static bridge::Func Ref{ L"InitializeLaserDot", {  } }; return Ref; }
 	void InitializeLaserDot()
 	{
-		static bridge::Func BridgeFunc{ L"InitializeLaserDot", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_InitializeLaserDot(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function InitializeHackerHardware (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_InitializeHackerHardware() { static bridge::Func Ref{ L"InitializeHackerHardware", {  } }; return Ref; }
 	void InitializeHackerHardware()
 	{
-		static bridge::Func BridgeFunc{ L"InitializeHackerHardware", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_InitializeHackerHardware(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function InitializeAccessCard (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_InitializeAccessCard() { static bridge::Func Ref{ L"InitializeAccessCard", {  } }; return Ref; }
 	void InitializeAccessCard()
 	{
-		static bridge::Func BridgeFunc{ L"InitializeAccessCard", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_InitializeAccessCard(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function AddDebugMessage (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_AddDebugMessage() { static bridge::Func Ref{ L"AddDebugMessage", { L"NewMessage", L"InType" } }; return Ref; }
 	void AddDebugMessage(const class FString& NewMessage, E_ENUM_DebugWidgetEntryType InType)
 	{
-		static bridge::Func BridgeFunc{ L"AddDebugMessage", { L"NewMessage", L"InType" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_AddDebugMessage(), bridge::as_uobject(this));
 		BridgeCall.set<class FString>(0, NewMessage);
 		BridgeCall.set<E_ENUM_DebugWidgetEntryType>(1, InType);
 		BridgeCall.invoke();
 	}
 
 	// Function TestFunction (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TestFunction() { static bridge::Func Ref{ L"TestFunction", {  } }; return Ref; }
 	void TestFunction()
 	{
-		static bridge::Func BridgeFunc{ L"TestFunction", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TestFunction(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function HolsterWeapon (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HolsterWeapon() { static bridge::Func Ref{ L"HolsterWeapon", {  } }; return Ref; }
 	void HolsterWeapon()
 	{
-		static bridge::Func BridgeFunc{ L"HolsterWeapon", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HolsterWeapon(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function PlayUnloadWeaponAnim (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_PlayUnloadWeaponAnim() { static bridge::Func Ref{ L"PlayUnloadWeaponAnim", {  } }; return Ref; }
 	void PlayUnloadWeaponAnim()
 	{
-		static bridge::Func BridgeFunc{ L"PlayUnloadWeaponAnim", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_PlayUnloadWeaponAnim(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function PlayLoadWeaponAnim (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_PlayLoadWeaponAnim() { static bridge::Func Ref{ L"PlayLoadWeaponAnim", {  } }; return Ref; }
 	void PlayLoadWeaponAnim()
 	{
-		static bridge::Func BridgeFunc{ L"PlayLoadWeaponAnim", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_PlayLoadWeaponAnim(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function CustomEvent_WeaponChanged (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CustomEvent_WeaponChanged() { static bridge::Func Ref{ L"CustomEvent_WeaponChanged", { L"EquippedWeapon" } }; return Ref; }
 	void CustomEvent_WeaponChanged(class UITEM_WeaponBase_C* EquippedWeapon)
 	{
-		static bridge::Func BridgeFunc{ L"CustomEvent_WeaponChanged", { L"EquippedWeapon" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_CustomEvent_WeaponChanged(), bridge::as_uobject(this));
 		BridgeCall.set<class UITEM_WeaponBase_C*>(0, EquippedWeapon);
 		BridgeCall.invoke();
 	}
 
 	// Function CustomEvent_WeaponDrawn (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CustomEvent_WeaponDrawn() { static bridge::Func Ref{ L"CustomEvent_WeaponDrawn", { L"Weapon" } }; return Ref; }
 	void CustomEvent_WeaponDrawn(class UITEM_WeaponBase_C* Weapon)
 	{
-		static bridge::Func BridgeFunc{ L"CustomEvent_WeaponDrawn", { L"Weapon" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_CustomEvent_WeaponDrawn(), bridge::as_uobject(this));
 		BridgeCall.set<class UITEM_WeaponBase_C*>(0, Weapon);
 		BridgeCall.invoke();
 	}
 
 	// Function CustomEvent_WeaponHolstered (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CustomEvent_WeaponHolstered() { static bridge::Func Ref{ L"CustomEvent_WeaponHolstered", { L"Weapon" } }; return Ref; }
 	void CustomEvent_WeaponHolstered(class UITEM_WeaponBase_C* Weapon)
 	{
-		static bridge::Func BridgeFunc{ L"CustomEvent_WeaponHolstered", { L"Weapon" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_CustomEvent_WeaponHolstered(), bridge::as_uobject(this));
 		BridgeCall.set<class UITEM_WeaponBase_C*>(0, Weapon);
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveTick (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveTick() { static bridge::Func Ref{ L"ReceiveTick", { L"DeltaSeconds" } }; return Ref; }
 	void ReceiveTick(float DeltaSeconds)
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveTick", { L"DeltaSeconds" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveTick(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaSeconds);
 		BridgeCall.invoke();
 	}
 
 	// Function BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature() { static bridge::Func Ref{ L"BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } }; return Ref; }
 	void BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, struct FHitResult* SweepResult)
 	{
-		static bridge::Func BridgeFunc{ L"BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(), bridge::as_uobject(this));
 		BridgeCall.set<class UPrimitiveComponent*>(0, OverlappedComponent);
 		BridgeCall.set<class AActor*>(1, OtherActor);
 		BridgeCall.set<class UPrimitiveComponent*>(2, OtherComp);
@@ -429,10 +488,10 @@ public:
 	}
 
 	// Function BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature() { static bridge::Func Ref{ L"BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex" } }; return Ref; }
 	void BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 	{
-		static bridge::Func BridgeFunc{ L"BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(), bridge::as_uobject(this));
 		BridgeCall.set<class UPrimitiveComponent*>(0, OverlappedComponent);
 		BridgeCall.set<class AActor*>(1, OtherActor);
 		BridgeCall.set<class UPrimitiveComponent*>(2, OtherComp);
@@ -441,10 +500,10 @@ public:
 	}
 
 	// Function BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature() { static bridge::Func Ref{ L"BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } }; return Ref; }
 	void BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, struct FHitResult* SweepResult)
 	{
-		static bridge::Func BridgeFunc{ L"BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature(), bridge::as_uobject(this));
 		BridgeCall.set<class UPrimitiveComponent*>(0, OverlappedComponent);
 		BridgeCall.set<class AActor*>(1, OtherActor);
 		BridgeCall.set<class UPrimitiveComponent*>(2, OtherComp);
@@ -456,10 +515,10 @@ public:
 	}
 
 	// Function BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature() { static bridge::Func Ref{ L"BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } }; return Ref; }
 	void BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, struct FHitResult* SweepResult)
 	{
-		static bridge::Func BridgeFunc{ L"BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature(), bridge::as_uobject(this));
 		BridgeCall.set<class UPrimitiveComponent*>(0, OverlappedComponent);
 		BridgeCall.set<class AActor*>(1, OtherActor);
 		BridgeCall.set<class UPrimitiveComponent*>(2, OtherComp);
@@ -471,13 +530,122 @@ public:
 	}
 
 	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
 	void ReceiveBeginPlay()
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveBeginPlay", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_Subtitles(),
+			&BridgeProp_UnreadMediaIcon(),
+			&BridgeProp_ActiveHazard(),
+			&BridgeProp_VRHUD(),
+			&BridgeProp_InteractablesHighlighterRight(),
+			&BridgeProp_InteractablesHighlighterLeft(),
+			&BridgeProp_VRMenu(),
+			&BridgeProp_VRPostProcess(),
+			&BridgeProp_AnimationManager(),
+			&BridgeProp_HandheldConsumableCollision(),
+			&BridgeProp_LeftIndexFingerCollision(),
+			&BridgeProp_RightIndexFingerCollision(),
+			&BridgeProp_ADSTriggerCollision(),
+			&BridgeProp_ADSZone(),
+			&BridgeProp_TrailingRotationComponent(),
+			&BridgeProp_TargetIDWidgetComponent(),
+			&BridgeProp_VitalBarsWidgetComponent(),
+			&BridgeProp_MediaDisplayWidgetComponent(),
+			&BridgeProp_MFDMaskComponent(),
+			&BridgeProp_MFDMaskPivot(),
+			&BridgeProp_UEVRCameraAttachComponent(),
+			&BridgeProp_VRMovementComponent(),
+			&BridgeProp_HMDComponent(),
+			&BridgeProp_MCDebugSphereLeft(),
+			&BridgeProp_WristDebugSphereRight(),
+			&BridgeProp_WristDebugSphereLeft(),
+			&BridgeProp_GrabEnablingComponentRight(),
+			&BridgeProp_GrabEnablingComponentLeft(),
+			&BridgeProp_MotionControllerLeft(),
+			&BridgeProp_MotionControllerRight(),
+			&BridgeProp_HandInteractionLeft(),
+			&BridgeProp_DebugWidgetComponent(),
+			&BridgeProp_HandInteractionRight(),
+			&BridgeProp_MinimapWidgetComponent(),
+			&BridgeProp_WristOffsetRight(),
+			&BridgeProp_WristOffsetLeft(),
+			&BridgeProp_WidgetInteractionRight(),
+			&BridgeProp_VRBodyMesh(),
+			&BridgeProp_DefaultSceneRoot(),
+			&BridgeProp_AccessCard(),
+			&BridgeProp_AnimBP(),
+			&BridgeProp_HackerPawn(),
+			&BridgeProp_LaserDot(),
+			&BridgeProp_ItemSelectorLeft(),
+			&BridgeProp_ItemSelectorRight(),
+			&BridgeProp_MeleeWeaponHandler(),
+			&BridgeProp_HackerHardware(),
+			&BridgeProp_VRBodyInitialized(),
+			&BridgeProp_WorldInteractionSources(),
+			&BridgeProp_WeaponInteractionSources(),
+			&BridgeProp_IgnoredActors(),
+			&BridgeProp_ShowTick(),
+			&BridgeProp_IsInADSZone(),
+			&BridgeProp_IsDominantEyeRight(),
+			&BridgeProp_ADSAngle(),
+			&BridgeProp_WidgetInteractionChannel(),
+			&BridgeProp_MainHand(),
+			&BridgeProp_HackerCurrentMontage(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_IsTwoHandingWeapon(),
+			&BridgeFunc_IsEmptyHanded(),
+			&BridgeFunc_IsHoldingHandheldConsumable(),
+			&BridgeFunc_EnableRangedInteractions(),
+			&BridgeFunc_SetScannerEnabled(),
+			&BridgeFunc_GetCurrentEquippedWeapon(),
+			&BridgeFunc_SetHandheldConsumableCollision(),
+			&BridgeFunc_TriggerWidgetInteractionAction(),
+			&BridgeFunc_SetADSZoneOffset(),
+			&BridgeFunc_IsAimingDownSights(),
+			&BridgeFunc_IsWeaponHolstered(),
+			&BridgeFunc_GetHackerMoveControlManager(),
+			&BridgeFunc_GetHackerInventory(),
+			&BridgeFunc_DestroyAllWeaponInteractionSources(),
+			&BridgeFunc_GetNearestWeaponInteractionSource(),
+			&BridgeFunc_GetWeaponAnimInstance(),
+			&BridgeFunc_ChangeEquippedWeapon(),
+			&BridgeFunc_InitializeAnimations(),
+			&BridgeFunc_InitializeMeleeWeaponHandler(),
+			&BridgeFunc_InitializeItemSelectors(),
+			&BridgeFunc_InitializeLaserDot(),
+			&BridgeFunc_InitializeHackerHardware(),
+			&BridgeFunc_InitializeAccessCard(),
+			&BridgeFunc_AddDebugMessage(),
+			&BridgeFunc_TestFunction(),
+			&BridgeFunc_HolsterWeapon(),
+			&BridgeFunc_PlayUnloadWeaponAnim(),
+			&BridgeFunc_PlayLoadWeaponAnim(),
+			&BridgeFunc_CustomEvent_WeaponChanged(),
+			&BridgeFunc_CustomEvent_WeaponDrawn(),
+			&BridgeFunc_CustomEvent_WeaponHolstered(),
+			&BridgeFunc_ReceiveTick(),
+			&BridgeFunc_BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(),
+			&BridgeFunc_BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(),
+			&BridgeFunc_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature(),
+			&BridgeFunc_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature(),
+			&BridgeFunc_ReceiveBeginPlay(),
+		});
+		return Ok;
+	}
 };
 
 }

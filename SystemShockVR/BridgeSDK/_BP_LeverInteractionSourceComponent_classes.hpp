@@ -21,42 +21,62 @@ class U_BP_LeverInteractionSourceComponent_C final : public U_BP_InteractionSour
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/InteractionSources/_BP_LeverInteractionSourceComponent._BP_LeverInteractionSourceComponent_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_LeverInteractionSourceComponent_C* GetDefaultObj() { return reinterpret_cast<U_BP_LeverInteractionSourceComponent_C*>(BridgeClass()->get_class_default_object()); }
 
-	class AINTERACT_Lever_C*& ParentInteractable() { static bridge::Prop Ref{ L"ParentInteractable" }; return Ref.ref<class AINTERACT_Lever_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ParentInteractable() { static bridge::Prop Ref{ L"ParentInteractable" }; return Ref; }
+	class AINTERACT_Lever_C*& ParentInteractable() { return BridgeProp_ParentInteractable().ref<class AINTERACT_Lever_C*>(this, BridgeClass()); }
 
 	// Function TryInteract (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TryInteract() { static bridge::Func Ref{ L"TryInteract", { L"SourceActor", L"HandInteraction" } }; return Ref; }
 	void TryInteract(class AActor* SourceActor, class U_BP_HandInteractionComponent_C* HandInteraction)
 	{
-		static bridge::Func BridgeFunc{ L"TryInteract", { L"SourceActor", L"HandInteraction" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TryInteract(), bridge::as_uobject(this));
 		BridgeCall.set<class AActor*>(0, SourceActor);
 		BridgeCall.set<class U_BP_HandInteractionComponent_C*>(1, HandInteraction);
 		BridgeCall.invoke();
 	}
 
 	// Function Initialize (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Initialize() { static bridge::Func Ref{ L"Initialize", {  } }; return Ref; }
 	void Initialize()
 	{
-		static bridge::Func BridgeFunc{ L"Initialize", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Initialize(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
 	void ReceiveBeginPlay()
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveBeginPlay", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_ParentInteractable(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_TryInteract(),
+			&BridgeFunc_Initialize(),
+			&BridgeFunc_ReceiveBeginPlay(),
+		});
+		return Ok;
+	}
 };
 
 }

@@ -17,14 +17,25 @@ class U_WIDGET_ActiveHazard_C final : public UUserWidget
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"WidgetBlueprintGeneratedClass /Game/Mods/UI/_WIDGET_ActiveHazard._WIDGET_ActiveHazard_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_WIDGET_ActiveHazard_C* GetDefaultObj() { return reinterpret_cast<U_WIDGET_ActiveHazard_C*>(BridgeClass()->get_class_default_object()); }
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		return Ok;
+	}
 };
 
 }

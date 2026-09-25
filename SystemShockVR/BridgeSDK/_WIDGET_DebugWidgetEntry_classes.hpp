@@ -20,51 +20,72 @@ class U_WIDGET_DebugWidgetEntry_C final : public UUserWidget
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"WidgetBlueprintGeneratedClass /Game/Mods/VRBody/_WIDGET_DebugWidgetEntry._WIDGET_DebugWidgetEntry_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_WIDGET_DebugWidgetEntry_C* GetDefaultObj() { return reinterpret_cast<U_WIDGET_DebugWidgetEntry_C*>(BridgeClass()->get_class_default_object()); }
 
-	class UTextBlock*& TextBlock_0() { static bridge::Prop Ref{ L"TextBlock_0" }; return Ref.ref<class UTextBlock*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TextBlock_0() { static bridge::Prop Ref{ L"TextBlock_0" }; return Ref; }
+	class UTextBlock*& TextBlock_0() { return BridgeProp_TextBlock_0().ref<class UTextBlock*>(this, BridgeClass()); }
 
 	// Function BP_OnEntryReleased (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BP_OnEntryReleased() { static bridge::Func Ref{ L"BP_OnEntryReleased", {  } }; return Ref; }
 	void BP_OnEntryReleased()
 	{
-		static bridge::Func BridgeFunc{ L"BP_OnEntryReleased", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BP_OnEntryReleased(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function BP_OnItemExpansionChanged (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BP_OnItemExpansionChanged() { static bridge::Func Ref{ L"BP_OnItemExpansionChanged", { L"bIsExpanded" } }; return Ref; }
 	void BP_OnItemExpansionChanged(bool bIsExpanded)
 	{
-		static bridge::Func BridgeFunc{ L"BP_OnItemExpansionChanged", { L"bIsExpanded" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BP_OnItemExpansionChanged(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, bIsExpanded);
 		BridgeCall.invoke();
 	}
 
 	// Function BP_OnItemSelectionChanged (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BP_OnItemSelectionChanged() { static bridge::Func Ref{ L"BP_OnItemSelectionChanged", { L"bIsSelected" } }; return Ref; }
 	void BP_OnItemSelectionChanged(bool bIsSelected)
 	{
-		static bridge::Func BridgeFunc{ L"BP_OnItemSelectionChanged", { L"bIsSelected" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BP_OnItemSelectionChanged(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, bIsSelected);
 		BridgeCall.invoke();
 	}
 
 	// Function OnListItemObjectSet (BlueprintEvent)
+	static bridge::Func& BridgeFunc_OnListItemObjectSet() { static bridge::Func Ref{ L"OnListItemObjectSet", { L"ListItemObject" } }; return Ref; }
 	void OnListItemObjectSet(class UObject* ListItemObject)
 	{
-		static bridge::Func BridgeFunc{ L"OnListItemObjectSet", { L"ListItemObject" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_OnListItemObjectSet(), bridge::as_uobject(this));
 		BridgeCall.set<class UObject*>(0, ListItemObject);
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_TextBlock_0(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_BP_OnEntryReleased(),
+			&BridgeFunc_BP_OnItemExpansionChanged(),
+			&BridgeFunc_BP_OnItemSelectionChanged(),
+			&BridgeFunc_OnListItemObjectSet(),
+		});
+		return Ok;
+	}
 };
 
 }

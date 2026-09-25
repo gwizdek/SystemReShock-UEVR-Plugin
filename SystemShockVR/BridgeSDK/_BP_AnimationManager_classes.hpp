@@ -20,79 +20,103 @@ class U_BP_AnimationManager_C final : public UActorComponent
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_AnimationManager._BP_AnimationManager_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_AnimationManager_C* GetDefaultObj() { return reinterpret_cast<U_BP_AnimationManager_C*>(BridgeClass()->get_class_default_object()); }
 
-	class A_BP_VRBody_C*& VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref.ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref; }
+	class A_BP_VRBody_C*& VRBodyRef() { return BridgeProp_VRBodyRef().ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
 	// skipped MappedMontages: TMap of a User Defined Struct
 	// skipped WorldInteractableMontages: TMap of a User Defined Struct
 
 	// Function HandleOnActionEnded (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HandleOnActionEnded() { static bridge::Func Ref{ L"HandleOnActionEnded", { L"Action" } }; return Ref; }
 	void HandleOnActionEnded(class UCharacterAction_C* Action)
 	{
-		static bridge::Func BridgeFunc{ L"HandleOnActionEnded", { L"Action" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HandleOnActionEnded(), bridge::as_uobject(this));
 		BridgeCall.set<class UCharacterAction_C*>(0, Action);
 		BridgeCall.invoke();
 	}
 
 	// Function HandleOnActionStarted (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HandleOnActionStarted() { static bridge::Func Ref{ L"HandleOnActionStarted", { L"Action" } }; return Ref; }
 	void HandleOnActionStarted(class UCharacterAction_C* Action)
 	{
-		static bridge::Func BridgeFunc{ L"HandleOnActionStarted", { L"Action" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HandleOnActionStarted(), bridge::as_uobject(this));
 		BridgeCall.set<class UCharacterAction_C*>(0, Action);
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
 	void ReceiveBeginPlay()
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveBeginPlay", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function OnActionStarted (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_OnActionStarted() { static bridge::Func Ref{ L"OnActionStarted", { L"Action" } }; return Ref; }
 	void OnActionStarted(class UCharacterAction_C* Action)
 	{
-		static bridge::Func BridgeFunc{ L"OnActionStarted", { L"Action" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_OnActionStarted(), bridge::as_uobject(this));
 		BridgeCall.set<class UCharacterAction_C*>(0, Action);
 		BridgeCall.invoke();
 	}
 
 	// Function OnQueuedActionStarted (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_OnQueuedActionStarted() { static bridge::Func Ref{ L"OnQueuedActionStarted", { L"Action" } }; return Ref; }
 	void OnQueuedActionStarted(class UCharacterAction_C* Action)
 	{
-		static bridge::Func BridgeFunc{ L"OnQueuedActionStarted", { L"Action" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_OnQueuedActionStarted(), bridge::as_uobject(this));
 		BridgeCall.set<class UCharacterAction_C*>(0, Action);
 		BridgeCall.invoke();
 	}
 
 	// Function OnActionEnded (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_OnActionEnded() { static bridge::Func Ref{ L"OnActionEnded", { L"Action" } }; return Ref; }
 	void OnActionEnded(class UCharacterAction_C* Action)
 	{
-		static bridge::Func BridgeFunc{ L"OnActionEnded", { L"Action" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_OnActionEnded(), bridge::as_uobject(this));
 		BridgeCall.set<class UCharacterAction_C*>(0, Action);
 		BridgeCall.invoke();
 	}
 
 	// Function Initialize (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Initialize() { static bridge::Func Ref{ L"Initialize", {  } }; return Ref; }
 	void Initialize()
 	{
-		static bridge::Func BridgeFunc{ L"Initialize", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Initialize(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_VRBodyRef(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_HandleOnActionEnded(),
+			&BridgeFunc_HandleOnActionStarted(),
+			&BridgeFunc_ReceiveBeginPlay(),
+			&BridgeFunc_OnActionStarted(),
+			&BridgeFunc_OnQueuedActionStarted(),
+			&BridgeFunc_OnActionEnded(),
+			&BridgeFunc_Initialize(),
+		});
+		return Ok;
+	}
 };
 
 }

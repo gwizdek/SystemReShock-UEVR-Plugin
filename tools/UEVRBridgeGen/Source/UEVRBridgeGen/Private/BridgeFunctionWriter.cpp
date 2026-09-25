@@ -8,14 +8,13 @@
 
 namespace
 {
-    const TCHAR* const FuncVar = TEXT("BridgeFunc");
     const TCHAR* const CallVar = TEXT("BridgeCall");
     const TCHAR* const TargetVar = TEXT("BridgeTarget");
     const TCHAR* const ResultVar = TEXT("BridgeResult");
 
     FString LocalSafe(const FString& Name)
     {
-        const bool bClash = Name == FuncVar || Name == CallVar || Name == TargetVar || Name == ResultVar;
+        const bool bClash = Name == CallVar || Name == TargetVar || Name == ResultVar;
         return bClash ? Name + TEXT("_") : Name;
     }
 }
@@ -26,7 +25,7 @@ FBridgeFunctionWriter::FBridgeFunctionWriter(const FBridgeContext& InContext, FB
 {
 }
 
-FString FBridgeFunctionWriter::Write(const UFunction* Function, EBridgeCallMode Mode) const
+FString FBridgeFunctionWriter::Write(const UFunction* Function, EBridgeCallMode Mode, TArray<FString>& WarmFuncs) const
 {
     TArray<FParam> Params;
     FString Reason;
@@ -37,12 +36,21 @@ FString FBridgeFunctionWriter::Write(const UFunction* Function, EBridgeCallMode 
 
     const FParam* Return = Params.FindByPredicate([](const FParam& P) { return P.bReturn; });
 
+    // The bridge::Func lives in its own static accessor so BridgeWarmup can resolve it
+    // without invoking the function. Interface functions resolve against the target
+    // object's class, which is only known at call time, so they are not warmed up.
+    const FString FuncAccessor = TEXT("BridgeFunc_") + BridgeNaming::Sanitize(Function->GetName());
+    if (Mode != EBridgeCallMode::Interface)
+    {
+        WarmFuncs.Add(FuncAccessor);
+    }
+
     FString Out;
     Out += FString::Printf(TEXT("\t// Function %s%s\n"), *Function->GetName(), *FlagsComment(Function));
+    Out += FString::Printf(TEXT("\tstatic bridge::Func& %s() { static bridge::Func Ref{ L\"%s\", { %s } }; return Ref; }\n"),
+        *FuncAccessor, *Function->GetName(), *ParamNameList(Params));
     Out += TEXT("\t") + Signature(Function, Params, Mode) + TEXT("\n\t{\n");
-    Out += FString::Printf(TEXT("\t\tstatic bridge::Func %s{ L\"%s\", { %s } };\n"),
-        FuncVar, *Function->GetName(), *ParamNameList(Params));
-    Out += FString::Printf(TEXT("\t\tbridge::Call %s(%s, %s);\n"), CallVar, FuncVar, *Target(Mode));
+    Out += FString::Printf(TEXT("\t\tbridge::Call %s(%s(), %s);\n"), CallVar, *FuncAccessor, *Target(Mode));
     for (const FParam& Param : Params)
     {
         if (!Param.bReturn)

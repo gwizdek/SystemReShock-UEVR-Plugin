@@ -17,24 +17,25 @@ namespace SDK
 class UStaticMeshComponent;
 
 // BlueprintGeneratedClass /Game/Mods/VRBody/Interfaces/_BI_InteractionSource._BI_InteractionSource_C
-class U_BI_InteractionSource_C final : public UInterface
+class I_BI_InteractionSource_C final : public IInterface
 {
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/Interfaces/_BI_InteractionSource._BI_InteractionSource_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
-	static U_BI_InteractionSource_C* GetDefaultObj() { return reinterpret_cast<U_BI_InteractionSource_C*>(BridgeClass()->get_class_default_object()); }
+	static I_BI_InteractionSource_C* GetDefaultObj() { return reinterpret_cast<I_BI_InteractionSource_C*>(BridgeClass()->get_class_default_object()); }
 
 	// Function GetState (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetState() { static bridge::Func Ref{ L"GetState", { L"IsEnabled", L"IsInteracting", L"IsSnapping" } }; return Ref; }
 	static void GetState(uevr::API::UObject* BridgeTarget, bool* IsEnabled, bool* IsInteracting, bool* IsSnapping)
 	{
-		static bridge::Func BridgeFunc{ L"GetState", { L"IsEnabled", L"IsInteracting", L"IsSnapping" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_GetState(), BridgeTarget);
 		if (IsEnabled != nullptr) { BridgeCall.set_bool(0, *IsEnabled); }
 		if (IsInteracting != nullptr) { BridgeCall.set_bool(1, *IsInteracting); }
 		if (IsSnapping != nullptr) { BridgeCall.set_bool(2, *IsSnapping); }
@@ -45,10 +46,10 @@ public:
 	}
 
 	// Function GetInteractionSourceParams (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetInteractionSourceParams() { static bridge::Func Ref{ L"GetInteractionSourceParams", { L"InteractionSourceTransform", L"WristTransform", L"SnapHandToSource", L"InnerInteractionDistance", L"OuterInteractionDistance", L"TargetMesh", L"InteractionPose", L"IsEnabled", L"Type" } }; return Ref; }
 	static void GetInteractionSourceParams(uevr::API::UObject* BridgeTarget, struct FTransform* InteractionSourceTransform, struct FTransform* WristTransform, bool* SnapHandToSource, float* InnerInteractionDistance, float* OuterInteractionDistance, class UStaticMeshComponent** TargetMesh, E_ENUM_VRHandPose* InteractionPose, bool* IsEnabled, E_ENUM_InteractionSourceType* Type)
 	{
-		static bridge::Func BridgeFunc{ L"GetInteractionSourceParams", { L"InteractionSourceTransform", L"WristTransform", L"SnapHandToSource", L"InnerInteractionDistance", L"OuterInteractionDistance", L"TargetMesh", L"InteractionPose", L"IsEnabled", L"Type" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_GetInteractionSourceParams(), BridgeTarget);
 		if (InteractionSourceTransform != nullptr) { BridgeCall.set<struct FTransform>(0, *InteractionSourceTransform); }
 		if (WristTransform != nullptr) { BridgeCall.set<struct FTransform>(1, *WristTransform); }
 		if (SnapHandToSource != nullptr) { BridgeCall.set_bool(2, *SnapHandToSource); }
@@ -70,6 +71,16 @@ public:
 		if (Type != nullptr) { *Type = BridgeCall.get<E_ENUM_InteractionSourceType>(8); }
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		return Ok;
+	}
 };
 
 }

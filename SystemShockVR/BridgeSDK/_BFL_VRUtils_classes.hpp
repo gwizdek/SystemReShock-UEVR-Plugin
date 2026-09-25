@@ -20,19 +20,20 @@ class U_BFL_VRUtils_C final : public UBlueprintFunctionLibrary
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BFL_VRUtils._BFL_VRUtils_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BFL_VRUtils_C* GetDefaultObj() { return reinterpret_cast<U_BFL_VRUtils_C*>(BridgeClass()->get_class_default_object()); }
 
 	// Function GetEditorParams (BlueprintCallable, BlueprintEvent, Static)
+	static bridge::Func& BridgeFunc_GetEditorParams() { static bridge::Func Ref{ L"GetEditorParams", { L"__WorldContext", L"OutHandPitch" } }; return Ref; }
 	static void GetEditorParams(class UObject* __WorldContext, float* OutHandPitch)
 	{
-		static bridge::Func BridgeFunc{ L"GetEditorParams", { L"__WorldContext", L"OutHandPitch" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeClass()->get_class_default_object());
+		bridge::Call BridgeCall(BridgeFunc_GetEditorParams(), BridgeClass()->get_class_default_object());
 		BridgeCall.set<class UObject*>(0, __WorldContext);
 		if (OutHandPitch != nullptr) { BridgeCall.set<float>(1, *OutHandPitch); }
 		BridgeCall.invoke();
@@ -40,10 +41,10 @@ public:
 	}
 
 	// Function OptionalMutateTransformForEditor (BlueprintCallable, BlueprintPure, BlueprintEvent, Static)
+	static bridge::Func& BridgeFunc_OptionalMutateTransformForEditor() { static bridge::Func Ref{ L"OptionalMutateTransformForEditor", { L"InTransform", L"InDeltaRotator", L"__WorldContext", L"OutTransform" } }; return Ref; }
 	static void OptionalMutateTransformForEditor(const struct FTransform& InTransform, const struct FRotator& InDeltaRotator, class UObject* __WorldContext, struct FTransform* OutTransform)
 	{
-		static bridge::Func BridgeFunc{ L"OptionalMutateTransformForEditor", { L"InTransform", L"InDeltaRotator", L"__WorldContext", L"OutTransform" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeClass()->get_class_default_object());
+		bridge::Call BridgeCall(BridgeFunc_OptionalMutateTransformForEditor(), BridgeClass()->get_class_default_object());
 		BridgeCall.set<struct FTransform>(0, InTransform);
 		BridgeCall.set<struct FRotator>(1, InDeltaRotator);
 		BridgeCall.set<class UObject*>(2, __WorldContext);
@@ -52,6 +53,20 @@ public:
 		if (OutTransform != nullptr) { *OutTransform = BridgeCall.get<struct FTransform>(3); }
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_GetEditorParams(),
+			&BridgeFunc_OptionalMutateTransformForEditor(),
+		});
+		return Ok;
+	}
 };
 
 }

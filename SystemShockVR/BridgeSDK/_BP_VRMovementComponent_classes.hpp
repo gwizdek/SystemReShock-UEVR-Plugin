@@ -24,90 +24,119 @@ class U_BP_VRMovementComponent_C final : public UActorComponent
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_VRMovementComponent._BP_VRMovementComponent_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_VRMovementComponent_C* GetDefaultObj() { return reinterpret_cast<U_BP_VRMovementComponent_C*>(BridgeClass()->get_class_default_object()); }
 
-	class A_BP_VRBody_C*& VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref.ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
-	bool& ShowLowerBody() { static bridge::Prop Ref{ L"ShowLowerBody" }; return Ref.ref<bool>(this, BridgeClass()); }
-	class UCOMP_MoveControlManager_C*& MoveControlManager() { static bridge::Prop Ref{ L"MoveControlManager" }; return Ref.ref<class UCOMP_MoveControlManager_C*>(this, BridgeClass()); }
-	bool& EnableOriginalHackerCrouch() { static bridge::Prop Ref{ L"EnableOriginalHackerCrouch" }; return Ref.ref<bool>(this, BridgeClass()); }
-	struct FVector& FinalHipsOffset() { static bridge::Prop Ref{ L"FinalHipsOffset" }; return Ref.ref<struct FVector>(this, BridgeClass()); }
-	float& CurrentPlayerHeight() { static bridge::Prop Ref{ L"CurrentPlayerHeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	E_ENUM_VRMovementMode& MovementMode() { static bridge::Prop Ref{ L"MovementMode" }; return Ref.ref<E_ENUM_VRMovementMode>(this, BridgeClass()); }
-	E_ENUM_VRCharacterPosture& CharacterPosture() { static bridge::Prop Ref{ L"CharacterPosture" }; return Ref.ref<E_ENUM_VRCharacterPosture>(this, BridgeClass()); }
-	float& CrouchCapsuleHalfHeight() { static bridge::Prop Ref{ L"CrouchCapsuleHalfHeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& CrouchTriggerHeight() { static bridge::Prop Ref{ L"CrouchTriggerHeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& BendCapsuleHalfHeight() { static bridge::Prop Ref{ L"BendCapsuleHalfHeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& BendTriggerHeight() { static bridge::Prop Ref{ L"BendTriggerHeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& WalkCapsuleHalfHeight() { static bridge::Prop Ref{ L"WalkCapsuleHalfHeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& WalkTriggerHeight() { static bridge::Prop Ref{ L"WalkTriggerHeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& IKRightFootTraceAlpha() { static bridge::Prop Ref{ L"IKRightFootTraceAlpha" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& IKLeftFootTraceAlpha() { static bridge::Prop Ref{ L"IKLeftFootTraceAlpha" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& IKFootTraceDistance() { static bridge::Prop Ref{ L"IKFootTraceDistance" }; return Ref.ref<float>(this, BridgeClass()); }
-	ETraceTypeQuery& IKFootTraceChannel() { static bridge::Prop Ref{ L"IKFootTraceChannel" }; return Ref.ref<ETraceTypeQuery>(this, BridgeClass()); }
-	float& IKRightFootTraceOffset() { static bridge::Prop Ref{ L"IKRightFootTraceOffset" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& IKLeftFootTraceOffset() { static bridge::Prop Ref{ L"IKLeftFootTraceOffset" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& LookDownMeshZOffsetMult() { static bridge::Prop Ref{ L"LookDownMeshZOffsetMult" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& LookDownMeshYOffsetMult() { static bridge::Prop Ref{ L"LookDownMeshYOffsetMult" }; return Ref.ref<float>(this, BridgeClass()); }
-	bool& AdaptiveRotation() { static bridge::Prop Ref{ L"AdaptiveRotation" }; return Ref.ref<bool>(this, BridgeClass()); }
-	float& AdaptiveRotationAngle() { static bridge::Prop Ref{ L"AdaptiveRotationAngle" }; return Ref.ref<float>(this, BridgeClass()); }
-	bool& bCopyHMDRotation() { static bridge::Prop Ref{ L"bCopyHMDRotation" }; return Ref.ref<bool>(this, BridgeClass()); }
-	float& TrailingAngle() { static bridge::Prop Ref{ L"TrailingAngle" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& DefaultPlayerHeight() { static bridge::Prop Ref{ L"DefaultPlayerHeight" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& CrouchPlayerHeight() { static bridge::Prop Ref{ L"CrouchPlayerHeight" }; return Ref.ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref; }
+	class A_BP_VRBody_C*& VRBodyRef() { return BridgeProp_VRBodyRef().ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ShowLowerBody() { static bridge::Prop Ref{ L"ShowLowerBody" }; return Ref; }
+	bool& ShowLowerBody() { return BridgeProp_ShowLowerBody().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MoveControlManager() { static bridge::Prop Ref{ L"MoveControlManager" }; return Ref; }
+	class UCOMP_MoveControlManager_C*& MoveControlManager() { return BridgeProp_MoveControlManager().ref<class UCOMP_MoveControlManager_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_EnableOriginalHackerCrouch() { static bridge::Prop Ref{ L"EnableOriginalHackerCrouch" }; return Ref; }
+	bool& EnableOriginalHackerCrouch() { return BridgeProp_EnableOriginalHackerCrouch().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_FinalHipsOffset() { static bridge::Prop Ref{ L"FinalHipsOffset" }; return Ref; }
+	struct FVector& FinalHipsOffset() { return BridgeProp_FinalHipsOffset().ref<struct FVector>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_CurrentPlayerHeight() { static bridge::Prop Ref{ L"CurrentPlayerHeight" }; return Ref; }
+	float& CurrentPlayerHeight() { return BridgeProp_CurrentPlayerHeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MovementMode() { static bridge::Prop Ref{ L"MovementMode" }; return Ref; }
+	E_ENUM_VRMovementMode& MovementMode() { return BridgeProp_MovementMode().ref<E_ENUM_VRMovementMode>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_CharacterPosture() { static bridge::Prop Ref{ L"CharacterPosture" }; return Ref; }
+	E_ENUM_VRCharacterPosture& CharacterPosture() { return BridgeProp_CharacterPosture().ref<E_ENUM_VRCharacterPosture>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_CrouchCapsuleHalfHeight() { static bridge::Prop Ref{ L"CrouchCapsuleHalfHeight" }; return Ref; }
+	float& CrouchCapsuleHalfHeight() { return BridgeProp_CrouchCapsuleHalfHeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_CrouchTriggerHeight() { static bridge::Prop Ref{ L"CrouchTriggerHeight" }; return Ref; }
+	float& CrouchTriggerHeight() { return BridgeProp_CrouchTriggerHeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_BendCapsuleHalfHeight() { static bridge::Prop Ref{ L"BendCapsuleHalfHeight" }; return Ref; }
+	float& BendCapsuleHalfHeight() { return BridgeProp_BendCapsuleHalfHeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_BendTriggerHeight() { static bridge::Prop Ref{ L"BendTriggerHeight" }; return Ref; }
+	float& BendTriggerHeight() { return BridgeProp_BendTriggerHeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WalkCapsuleHalfHeight() { static bridge::Prop Ref{ L"WalkCapsuleHalfHeight" }; return Ref; }
+	float& WalkCapsuleHalfHeight() { return BridgeProp_WalkCapsuleHalfHeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WalkTriggerHeight() { static bridge::Prop Ref{ L"WalkTriggerHeight" }; return Ref; }
+	float& WalkTriggerHeight() { return BridgeProp_WalkTriggerHeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKRightFootTraceAlpha() { static bridge::Prop Ref{ L"IKRightFootTraceAlpha" }; return Ref; }
+	float& IKRightFootTraceAlpha() { return BridgeProp_IKRightFootTraceAlpha().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKLeftFootTraceAlpha() { static bridge::Prop Ref{ L"IKLeftFootTraceAlpha" }; return Ref; }
+	float& IKLeftFootTraceAlpha() { return BridgeProp_IKLeftFootTraceAlpha().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKFootTraceDistance() { static bridge::Prop Ref{ L"IKFootTraceDistance" }; return Ref; }
+	float& IKFootTraceDistance() { return BridgeProp_IKFootTraceDistance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKFootTraceChannel() { static bridge::Prop Ref{ L"IKFootTraceChannel" }; return Ref; }
+	ETraceTypeQuery& IKFootTraceChannel() { return BridgeProp_IKFootTraceChannel().ref<ETraceTypeQuery>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKRightFootTraceOffset() { static bridge::Prop Ref{ L"IKRightFootTraceOffset" }; return Ref; }
+	float& IKRightFootTraceOffset() { return BridgeProp_IKRightFootTraceOffset().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IKLeftFootTraceOffset() { static bridge::Prop Ref{ L"IKLeftFootTraceOffset" }; return Ref; }
+	float& IKLeftFootTraceOffset() { return BridgeProp_IKLeftFootTraceOffset().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LookDownMeshZOffsetMult() { static bridge::Prop Ref{ L"LookDownMeshZOffsetMult" }; return Ref; }
+	float& LookDownMeshZOffsetMult() { return BridgeProp_LookDownMeshZOffsetMult().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LookDownMeshYOffsetMult() { static bridge::Prop Ref{ L"LookDownMeshYOffsetMult" }; return Ref; }
+	float& LookDownMeshYOffsetMult() { return BridgeProp_LookDownMeshYOffsetMult().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AdaptiveRotation() { static bridge::Prop Ref{ L"AdaptiveRotation" }; return Ref; }
+	bool& AdaptiveRotation() { return BridgeProp_AdaptiveRotation().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AdaptiveRotationAngle() { static bridge::Prop Ref{ L"AdaptiveRotationAngle" }; return Ref; }
+	float& AdaptiveRotationAngle() { return BridgeProp_AdaptiveRotationAngle().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_bCopyHMDRotation() { static bridge::Prop Ref{ L"bCopyHMDRotation" }; return Ref; }
+	bool& bCopyHMDRotation() { return BridgeProp_bCopyHMDRotation().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TrailingAngle() { static bridge::Prop Ref{ L"TrailingAngle" }; return Ref; }
+	float& TrailingAngle() { return BridgeProp_TrailingAngle().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_DefaultPlayerHeight() { static bridge::Prop Ref{ L"DefaultPlayerHeight" }; return Ref; }
+	float& DefaultPlayerHeight() { return BridgeProp_DefaultPlayerHeight().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_CrouchPlayerHeight() { static bridge::Prop Ref{ L"CrouchPlayerHeight" }; return Ref; }
+	float& CrouchPlayerHeight() { return BridgeProp_CrouchPlayerHeight().ref<float>(this, BridgeClass()); }
 
 	// Function SetCrouch (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetCrouch() { static bridge::Func Ref{ L"SetCrouch", { L"InValue" } }; return Ref; }
 	void SetCrouch(bool InValue)
 	{
-		static bridge::Func BridgeFunc{ L"SetCrouch", { L"InValue" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetCrouch(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, InValue);
 		BridgeCall.invoke();
 	}
 
 	// Function CopyHMDRotation (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CopyHMDRotation() { static bridge::Func Ref{ L"CopyHMDRotation", {  } }; return Ref; }
 	void CopyHMDRotation()
 	{
-		static bridge::Func BridgeFunc{ L"CopyHMDRotation", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_CopyHMDRotation(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function GetTrailingRotationAngle (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetTrailingRotationAngle() { static bridge::Func Ref{ L"GetTrailingRotationAngle", {  } }; return Ref; }
 	void GetTrailingRotationAngle()
 	{
-		static bridge::Func BridgeFunc{ L"GetTrailingRotationAngle", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetTrailingRotationAngle(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function PrintDebugInfo (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_PrintDebugInfo() { static bridge::Func Ref{ L"PrintDebugInfo", { L"HMDYOffset" } }; return Ref; }
 	void PrintDebugInfo(bool HMDYOffset)
 	{
-		static bridge::Func BridgeFunc{ L"PrintDebugInfo", { L"HMDYOffset" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_PrintDebugInfo(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, HMDYOffset);
 		BridgeCall.invoke();
 	}
 
 	// Function ScaleCapsuleToHMD (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_ScaleCapsuleToHMD() { static bridge::Func Ref{ L"ScaleCapsuleToHMD", {  } }; return Ref; }
 	void ScaleCapsuleToHMD()
 	{
-		static bridge::Func BridgeFunc{ L"ScaleCapsuleToHMD", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ScaleCapsuleToHMD(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function GetLookdownOffset (BlueprintCallable, BlueprintPure, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetLookdownOffset() { static bridge::Func Ref{ L"GetLookdownOffset", { L"OutLookdownYOffset", L"OutLookdownZOffset" } }; return Ref; }
 	void GetLookdownOffset(float* OutLookdownYOffset, float* OutLookdownZOffset)
 	{
-		static bridge::Func BridgeFunc{ L"GetLookdownOffset", { L"OutLookdownYOffset", L"OutLookdownZOffset" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetLookdownOffset(), bridge::as_uobject(this));
 		if (OutLookdownYOffset != nullptr) { BridgeCall.set<float>(0, *OutLookdownYOffset); }
 		if (OutLookdownZOffset != nullptr) { BridgeCall.set<float>(1, *OutLookdownZOffset); }
 		BridgeCall.invoke();
@@ -116,45 +145,45 @@ public:
 	}
 
 	// Function GetHipsOffset (BlueprintCallable, BlueprintPure, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetHipsOffset() { static bridge::Func Ref{ L"GetHipsOffset", { L"OutHipsYOffset" } }; return Ref; }
 	void GetHipsOffset(float* OutHipsYOffset)
 	{
-		static bridge::Func BridgeFunc{ L"GetHipsOffset", { L"OutHipsYOffset" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetHipsOffset(), bridge::as_uobject(this));
 		if (OutHipsYOffset != nullptr) { BridgeCall.set<float>(0, *OutHipsYOffset); }
 		BridgeCall.invoke();
 		if (OutHipsYOffset != nullptr) { *OutHipsYOffset = BridgeCall.get<float>(0); }
 	}
 
 	// Function AdjustComponentsToPlayerHeight (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_AdjustComponentsToPlayerHeight() { static bridge::Func Ref{ L"AdjustComponentsToPlayerHeight", { L"InPlayerHeight" } }; return Ref; }
 	void AdjustComponentsToPlayerHeight(float InPlayerHeight)
 	{
-		static bridge::Func BridgeFunc{ L"AdjustComponentsToPlayerHeight", { L"InPlayerHeight" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_AdjustComponentsToPlayerHeight(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, InPlayerHeight);
 		BridgeCall.invoke();
 	}
 
 	// Function HandleCharacterPosture (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_HandleCharacterPosture() { static bridge::Func Ref{ L"HandleCharacterPosture", {  } }; return Ref; }
 	void HandleCharacterPosture()
 	{
-		static bridge::Func BridgeFunc{ L"HandleCharacterPosture", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_HandleCharacterPosture(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function SetRootOffset (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetRootOffset() { static bridge::Func Ref{ L"SetRootOffset", {  } }; return Ref; }
 	void SetRootOffset()
 	{
-		static bridge::Func BridgeFunc{ L"SetRootOffset", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetRootOffset(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function IKFootTrace (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IKFootTrace() { static bridge::Func Ref{ L"IKFootTrace", { L"SocketName", L"Distance", L"Out Hit Location", L"FootTraceOffset", L"FootTraceAlpha" } }; return Ref; }
 	void IKFootTrace(class FName SocketName, float Distance, struct FVector* Out_Hit_Location, float* FootTraceOffset, float* FootTraceAlpha)
 	{
-		static bridge::Func BridgeFunc{ L"IKFootTrace", { L"SocketName", L"Distance", L"Out Hit Location", L"FootTraceOffset", L"FootTraceAlpha" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IKFootTrace(), bridge::as_uobject(this));
 		BridgeCall.set<class FName>(0, SocketName);
 		BridgeCall.set<float>(1, Distance);
 		if (Out_Hit_Location != nullptr) { BridgeCall.set<struct FVector>(2, *Out_Hit_Location); }
@@ -167,24 +196,79 @@ public:
 	}
 
 	// Function Initialize (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Initialize() { static bridge::Func Ref{ L"Initialize", { L"InVRBody", L"InMoveControlManager" } }; return Ref; }
 	void Initialize(class A_BP_VRBody_C* InVRBody, class UCOMP_MoveControlManager_C* InMoveControlManager)
 	{
-		static bridge::Func BridgeFunc{ L"Initialize", { L"InVRBody", L"InMoveControlManager" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Initialize(), bridge::as_uobject(this));
 		BridgeCall.set<class A_BP_VRBody_C*>(0, InVRBody);
 		BridgeCall.set<class UCOMP_MoveControlManager_C*>(1, InMoveControlManager);
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveTick (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveTick() { static bridge::Func Ref{ L"ReceiveTick", { L"DeltaSeconds" } }; return Ref; }
 	void ReceiveTick(float DeltaSeconds)
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveTick", { L"DeltaSeconds" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveTick(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaSeconds);
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_VRBodyRef(),
+			&BridgeProp_ShowLowerBody(),
+			&BridgeProp_MoveControlManager(),
+			&BridgeProp_EnableOriginalHackerCrouch(),
+			&BridgeProp_FinalHipsOffset(),
+			&BridgeProp_CurrentPlayerHeight(),
+			&BridgeProp_MovementMode(),
+			&BridgeProp_CharacterPosture(),
+			&BridgeProp_CrouchCapsuleHalfHeight(),
+			&BridgeProp_CrouchTriggerHeight(),
+			&BridgeProp_BendCapsuleHalfHeight(),
+			&BridgeProp_BendTriggerHeight(),
+			&BridgeProp_WalkCapsuleHalfHeight(),
+			&BridgeProp_WalkTriggerHeight(),
+			&BridgeProp_IKRightFootTraceAlpha(),
+			&BridgeProp_IKLeftFootTraceAlpha(),
+			&BridgeProp_IKFootTraceDistance(),
+			&BridgeProp_IKFootTraceChannel(),
+			&BridgeProp_IKRightFootTraceOffset(),
+			&BridgeProp_IKLeftFootTraceOffset(),
+			&BridgeProp_LookDownMeshZOffsetMult(),
+			&BridgeProp_LookDownMeshYOffsetMult(),
+			&BridgeProp_AdaptiveRotation(),
+			&BridgeProp_AdaptiveRotationAngle(),
+			&BridgeProp_bCopyHMDRotation(),
+			&BridgeProp_TrailingAngle(),
+			&BridgeProp_DefaultPlayerHeight(),
+			&BridgeProp_CrouchPlayerHeight(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_SetCrouch(),
+			&BridgeFunc_CopyHMDRotation(),
+			&BridgeFunc_GetTrailingRotationAngle(),
+			&BridgeFunc_PrintDebugInfo(),
+			&BridgeFunc_ScaleCapsuleToHMD(),
+			&BridgeFunc_GetLookdownOffset(),
+			&BridgeFunc_GetHipsOffset(),
+			&BridgeFunc_AdjustComponentsToPlayerHeight(),
+			&BridgeFunc_HandleCharacterPosture(),
+			&BridgeFunc_SetRootOffset(),
+			&BridgeFunc_IKFootTrace(),
+			&BridgeFunc_Initialize(),
+			&BridgeFunc_ReceiveTick(),
+		});
+		return Ok;
+	}
 };
 
 }

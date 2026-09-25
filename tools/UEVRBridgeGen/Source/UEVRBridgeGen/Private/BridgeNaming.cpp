@@ -52,8 +52,13 @@ FString BridgeNaming::Sanitize(const FString& Name)
 
 FString BridgeNaming::ClassCppName(const UClass* Class)
 {
-    // GetPrefixCPP returns "I" for interfaces, "A" for actors and "U" otherwise,
-    // which is the rule Dumper-7 follows as well.
+    // Dumper-7 prefixes the UClass of an interface with "I" ("IInterface",
+    // "I_BI_VRWeapon_C"). GetPrefixCPP only knows "A" for actors and "U" for the rest,
+    // so interfaces are handled here.
+    if (Class->HasAnyClassFlags(CLASS_Interface))
+    {
+        return TEXT("I") + Sanitize(Class->GetName());
+    }
     return FString(Class->GetPrefixCPP()) + Sanitize(Class->GetName());
 }
 

@@ -26,66 +26,94 @@ class A_BP_LaserDot_C final : public AActor
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_LaserDot._BP_LaserDot_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static A_BP_LaserDot_C* GetDefaultObj() { return reinterpret_cast<A_BP_LaserDot_C*>(BridgeClass()->get_class_default_object()); }
 
-	class UNiagaraComponent*& LaserPointerComponent() { static bridge::Prop Ref{ L"LaserPointerComponent" }; return Ref.ref<class UNiagaraComponent*>(this, BridgeClass()); }
-	class UNiagaraComponent*& LaserDotComponent() { static bridge::Prop Ref{ L"LaserDotComponent" }; return Ref.ref<class UNiagaraComponent*>(this, BridgeClass()); }
-	class USceneComponent*& TraceHitComponent() { static bridge::Prop Ref{ L"TraceHitComponent" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class USceneComponent*& DefaultSceneRoot() { static bridge::Prop Ref{ L"DefaultSceneRoot" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class AActor*& LastLaserTargetActor() { static bridge::Prop Ref{ L"LastLaserTargetActor" }; return Ref.ref<class AActor*>(this, BridgeClass()); }
-	ETraceTypeQuery& TraceChannel() { static bridge::Prop Ref{ L"TraceChannel" }; return Ref.ref<ETraceTypeQuery>(this, BridgeClass()); }
-	float& TraceStartOffset() { static bridge::Prop Ref{ L"TraceStartOffset" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& TraceEndOffset() { static bridge::Prop Ref{ L"TraceEndOffset" }; return Ref.ref<float>(this, BridgeClass()); }
-	bool& TraceComplex() { static bridge::Prop Ref{ L"TraceComplex" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& TraceEnabled() { static bridge::Prop Ref{ L"TraceEnabled" }; return Ref.ref<bool>(this, BridgeClass()); }
-	float& Power() { static bridge::Prop Ref{ L"Power" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& Size() { static bridge::Prop Ref{ L"Size" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& Distance() { static bridge::Prop Ref{ L"Distance" }; return Ref.ref<float>(this, BridgeClass()); }
-	struct FLinearColor& Color() { static bridge::Prop Ref{ L"Color" }; return Ref.ref<struct FLinearColor>(this, BridgeClass()); }
-	class A_BP_VRBody_C*& VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref.ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
-	bool& AutoSize() { static bridge::Prop Ref{ L"AutoSize" }; return Ref.ref<bool>(this, BridgeClass()); }
-	float& MaxDotDistance() { static bridge::Prop Ref{ L"MaxDotDistance" }; return Ref.ref<float>(this, BridgeClass()); }
-	struct FVector& HitLocation() { static bridge::Prop Ref{ L"HitLocation" }; return Ref.ref<struct FVector>(this, BridgeClass()); }
-	float& MaxDotSize() { static bridge::Prop Ref{ L"MaxDotSize" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& MinDotSize() { static bridge::Prop Ref{ L"MinDotSize" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& DotSizeFactor() { static bridge::Prop Ref{ L"DotSizeFactor" }; return Ref.ref<float>(this, BridgeClass()); }
-	class UPrimitiveComponent*& LastLaserTargetComponent() { static bridge::Prop Ref{ L"LastLaserTargetComponent" }; return Ref.ref<class UPrimitiveComponent*>(this, BridgeClass()); }
-	class FName& LastLaserTargetBoneName() { static bridge::Prop Ref{ L"LastLaserTargetBoneName" }; return Ref.ref<class FName>(this, BridgeClass()); }
-	TArray<class AActor*>& IgnoredActors() { static bridge::Prop Ref{ L"IgnoredActors" }; return Ref.ref<TArray<class AActor*>>(this, BridgeClass()); }
-	struct FTimerHandle& LaserDotTimer() { static bridge::Prop Ref{ L"LaserDotTimer" }; return Ref.ref<struct FTimerHandle>(this, BridgeClass()); }
-	class UPrimitiveComponent*& HighlightedPrimitive() { static bridge::Prop Ref{ L"HighlightedPrimitive" }; return Ref.ref<class UPrimitiveComponent*>(this, BridgeClass()); }
-	int32& OutlineStencilValue() { static bridge::Prop Ref{ L"OutlineStencilValue" }; return Ref.ref<int32>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LaserPointerComponent() { static bridge::Prop Ref{ L"LaserPointerComponent" }; return Ref; }
+	class UNiagaraComponent*& LaserPointerComponent() { return BridgeProp_LaserPointerComponent().ref<class UNiagaraComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LaserDotComponent() { static bridge::Prop Ref{ L"LaserDotComponent" }; return Ref; }
+	class UNiagaraComponent*& LaserDotComponent() { return BridgeProp_LaserDotComponent().ref<class UNiagaraComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TraceHitComponent() { static bridge::Prop Ref{ L"TraceHitComponent" }; return Ref; }
+	class USceneComponent*& TraceHitComponent() { return BridgeProp_TraceHitComponent().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_DefaultSceneRoot() { static bridge::Prop Ref{ L"DefaultSceneRoot" }; return Ref; }
+	class USceneComponent*& DefaultSceneRoot() { return BridgeProp_DefaultSceneRoot().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LastLaserTargetActor() { static bridge::Prop Ref{ L"LastLaserTargetActor" }; return Ref; }
+	class AActor*& LastLaserTargetActor() { return BridgeProp_LastLaserTargetActor().ref<class AActor*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TraceChannel() { static bridge::Prop Ref{ L"TraceChannel" }; return Ref; }
+	ETraceTypeQuery& TraceChannel() { return BridgeProp_TraceChannel().ref<ETraceTypeQuery>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TraceStartOffset() { static bridge::Prop Ref{ L"TraceStartOffset" }; return Ref; }
+	float& TraceStartOffset() { return BridgeProp_TraceStartOffset().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TraceEndOffset() { static bridge::Prop Ref{ L"TraceEndOffset" }; return Ref; }
+	float& TraceEndOffset() { return BridgeProp_TraceEndOffset().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TraceComplex() { static bridge::Prop Ref{ L"TraceComplex" }; return Ref; }
+	bool& TraceComplex() { return BridgeProp_TraceComplex().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TraceEnabled() { static bridge::Prop Ref{ L"TraceEnabled" }; return Ref; }
+	bool& TraceEnabled() { return BridgeProp_TraceEnabled().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Power() { static bridge::Prop Ref{ L"Power" }; return Ref; }
+	float& Power() { return BridgeProp_Power().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Size() { static bridge::Prop Ref{ L"Size" }; return Ref; }
+	float& Size() { return BridgeProp_Size().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Distance() { static bridge::Prop Ref{ L"Distance" }; return Ref; }
+	float& Distance() { return BridgeProp_Distance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Color() { static bridge::Prop Ref{ L"Color" }; return Ref; }
+	struct FLinearColor& Color() { return BridgeProp_Color().ref<struct FLinearColor>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref; }
+	class A_BP_VRBody_C*& VRBodyRef() { return BridgeProp_VRBodyRef().ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AutoSize() { static bridge::Prop Ref{ L"AutoSize" }; return Ref; }
+	bool& AutoSize() { return BridgeProp_AutoSize().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MaxDotDistance() { static bridge::Prop Ref{ L"MaxDotDistance" }; return Ref; }
+	float& MaxDotDistance() { return BridgeProp_MaxDotDistance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HitLocation() { static bridge::Prop Ref{ L"HitLocation" }; return Ref; }
+	struct FVector& HitLocation() { return BridgeProp_HitLocation().ref<struct FVector>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MaxDotSize() { static bridge::Prop Ref{ L"MaxDotSize" }; return Ref; }
+	float& MaxDotSize() { return BridgeProp_MaxDotSize().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_MinDotSize() { static bridge::Prop Ref{ L"MinDotSize" }; return Ref; }
+	float& MinDotSize() { return BridgeProp_MinDotSize().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_DotSizeFactor() { static bridge::Prop Ref{ L"DotSizeFactor" }; return Ref; }
+	float& DotSizeFactor() { return BridgeProp_DotSizeFactor().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LastLaserTargetComponent() { static bridge::Prop Ref{ L"LastLaserTargetComponent" }; return Ref; }
+	class UPrimitiveComponent*& LastLaserTargetComponent() { return BridgeProp_LastLaserTargetComponent().ref<class UPrimitiveComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LastLaserTargetBoneName() { static bridge::Prop Ref{ L"LastLaserTargetBoneName" }; return Ref; }
+	class FName& LastLaserTargetBoneName() { return BridgeProp_LastLaserTargetBoneName().ref<class FName>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IgnoredActors() { static bridge::Prop Ref{ L"IgnoredActors" }; return Ref; }
+	TArray<class AActor*>& IgnoredActors() { return BridgeProp_IgnoredActors().ref<TArray<class AActor*>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_LaserDotTimer() { static bridge::Prop Ref{ L"LaserDotTimer" }; return Ref; }
+	struct FTimerHandle& LaserDotTimer() { return BridgeProp_LaserDotTimer().ref<struct FTimerHandle>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HighlightedPrimitive() { static bridge::Prop Ref{ L"HighlightedPrimitive" }; return Ref; }
+	class UPrimitiveComponent*& HighlightedPrimitive() { return BridgeProp_HighlightedPrimitive().ref<class UPrimitiveComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OutlineStencilValue() { static bridge::Prop Ref{ L"OutlineStencilValue" }; return Ref; }
+	int32& OutlineStencilValue() { return BridgeProp_OutlineStencilValue().ref<int32>(this, BridgeClass()); }
 
 	// Function IsVisible (BlueprintCallable, BlueprintPure, BlueprintEvent)
+	static bridge::Func& BridgeFunc_IsVisible() { static bridge::Func Ref{ L"IsVisible", { L"Result" } }; return Ref; }
 	void IsVisible(bool* Result)
 	{
-		static bridge::Func BridgeFunc{ L"IsVisible", { L"Result" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_IsVisible(), bridge::as_uobject(this));
 		if (Result != nullptr) { BridgeCall.set_bool(0, *Result); }
 		BridgeCall.invoke();
 		if (Result != nullptr) { *Result = BridgeCall.get_bool(0); }
 	}
 
 	// Function EmulateScanner (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_EmulateScanner() { static bridge::Func Ref{ L"EmulateScanner", { L"NewActor" } }; return Ref; }
 	void EmulateScanner(class AActor* NewActor)
 	{
-		static bridge::Func BridgeFunc{ L"EmulateScanner", { L"NewActor" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_EmulateScanner(), bridge::as_uobject(this));
 		BridgeCall.set<class AActor*>(0, NewActor);
 		BridgeCall.invoke();
 	}
 
 	// Function OnScanDataChanged (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_OnScanDataChanged() { static bridge::Func Ref{ L"OnScanDataChanged", { L"Interactable", L"Primitive", L"Description" } }; return Ref; }
 	void OnScanDataChanged(class UObject* Interactable, class UPrimitiveComponent* Primitive, const class FText& Description)
 	{
-		static bridge::Func BridgeFunc{ L"OnScanDataChanged", { L"Interactable", L"Primitive", L"Description" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_OnScanDataChanged(), bridge::as_uobject(this));
 		BridgeCall.set<class UObject*>(0, Interactable);
 		BridgeCall.set<class UPrimitiveComponent*>(1, Primitive);
 		BridgeCall.set<class FText>(2, Description);
@@ -93,10 +121,10 @@ public:
 	}
 
 	// Function Set Laser Beam Params (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_Set_Laser_Beam_Params() { static bridge::Func Ref{ L"Set Laser Beam Params", { L"InAlpha", L"InLaserColour", L"InLaserPower" } }; return Ref; }
 	void Set_Laser_Beam_Params(float InAlpha, const struct FLinearColor& InLaserColour, float InLaserPower)
 	{
-		static bridge::Func BridgeFunc{ L"Set Laser Beam Params", { L"InAlpha", L"InLaserColour", L"InLaserPower" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_Set_Laser_Beam_Params(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, InAlpha);
 		BridgeCall.set<struct FLinearColor>(1, InLaserColour);
 		BridgeCall.set<float>(2, InLaserPower);
@@ -104,10 +132,10 @@ public:
 	}
 
 	// Function SetLaserVisibility (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetLaserVisibility() { static bridge::Func Ref{ L"SetLaserVisibility", { L"Dot", L"Beam", L"DisableAfter" } }; return Ref; }
 	void SetLaserVisibility(bool Dot, bool Beam, float DisableAfter)
 	{
-		static bridge::Func BridgeFunc{ L"SetLaserVisibility", { L"Dot", L"Beam", L"DisableAfter" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetLaserVisibility(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, Dot);
 		BridgeCall.set_bool(1, Beam);
 		BridgeCall.set<float>(2, DisableAfter);
@@ -115,70 +143,123 @@ public:
 	}
 
 	// Function AttachTo (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_AttachTo() { static bridge::Func Ref{ L"AttachTo", { L"InParent", L"InSocketName" } }; return Ref; }
 	void AttachTo(class USceneComponent* InParent, class FName InSocketName)
 	{
-		static bridge::Func BridgeFunc{ L"AttachTo", { L"InParent", L"InSocketName" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_AttachTo(), bridge::as_uobject(this));
 		BridgeCall.set<class USceneComponent*>(0, InParent);
 		BridgeCall.set<class FName>(1, InSocketName);
 		BridgeCall.invoke();
 	}
 
 	// Function SetSizeByDistance (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetSizeByDistance() { static bridge::Func Ref{ L"SetSizeByDistance", { L"InDistance" } }; return Ref; }
 	void SetSizeByDistance(float* InDistance)
 	{
-		static bridge::Func BridgeFunc{ L"SetSizeByDistance", { L"InDistance" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetSizeByDistance(), bridge::as_uobject(this));
 		if (InDistance != nullptr) { BridgeCall.set<float>(0, *InDistance); }
 		BridgeCall.invoke();
 		if (InDistance != nullptr) { *InDistance = BridgeCall.get<float>(0); }
 	}
 
 	// Function SetColor (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetColor() { static bridge::Func Ref{ L"SetColor", { L"InColor" } }; return Ref; }
 	void SetColor(struct FLinearColor* InColor)
 	{
-		static bridge::Func BridgeFunc{ L"SetColor", { L"InColor" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetColor(), bridge::as_uobject(this));
 		if (InColor != nullptr) { BridgeCall.set<struct FLinearColor>(0, *InColor); }
 		BridgeCall.invoke();
 		if (InColor != nullptr) { *InColor = BridgeCall.get<struct FLinearColor>(0); }
 	}
 
 	// Function SetPowerAndSize (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetPowerAndSize() { static bridge::Func Ref{ L"SetPowerAndSize", { L"InPower", L"InSize" } }; return Ref; }
 	void SetPowerAndSize(float InPower, float InSize)
 	{
-		static bridge::Func BridgeFunc{ L"SetPowerAndSize", { L"InPower", L"InSize" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetPowerAndSize(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, InPower);
 		BridgeCall.set<float>(1, InSize);
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveTick (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveTick() { static bridge::Func Ref{ L"ReceiveTick", { L"DeltaSeconds" } }; return Ref; }
 	void ReceiveTick(float DeltaSeconds)
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveTick", { L"DeltaSeconds" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveTick(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaSeconds);
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
 	void ReceiveBeginPlay()
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveBeginPlay", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function EventDisableLaserDot (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_EventDisableLaserDot() { static bridge::Func Ref{ L"EventDisableLaserDot", {  } }; return Ref; }
 	void EventDisableLaserDot()
 	{
-		static bridge::Func BridgeFunc{ L"EventDisableLaserDot", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_EventDisableLaserDot(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_LaserPointerComponent(),
+			&BridgeProp_LaserDotComponent(),
+			&BridgeProp_TraceHitComponent(),
+			&BridgeProp_DefaultSceneRoot(),
+			&BridgeProp_LastLaserTargetActor(),
+			&BridgeProp_TraceChannel(),
+			&BridgeProp_TraceStartOffset(),
+			&BridgeProp_TraceEndOffset(),
+			&BridgeProp_TraceComplex(),
+			&BridgeProp_TraceEnabled(),
+			&BridgeProp_Power(),
+			&BridgeProp_Size(),
+			&BridgeProp_Distance(),
+			&BridgeProp_Color(),
+			&BridgeProp_VRBodyRef(),
+			&BridgeProp_AutoSize(),
+			&BridgeProp_MaxDotDistance(),
+			&BridgeProp_HitLocation(),
+			&BridgeProp_MaxDotSize(),
+			&BridgeProp_MinDotSize(),
+			&BridgeProp_DotSizeFactor(),
+			&BridgeProp_LastLaserTargetComponent(),
+			&BridgeProp_LastLaserTargetBoneName(),
+			&BridgeProp_IgnoredActors(),
+			&BridgeProp_LaserDotTimer(),
+			&BridgeProp_HighlightedPrimitive(),
+			&BridgeProp_OutlineStencilValue(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_IsVisible(),
+			&BridgeFunc_EmulateScanner(),
+			&BridgeFunc_OnScanDataChanged(),
+			&BridgeFunc_Set_Laser_Beam_Params(),
+			&BridgeFunc_SetLaserVisibility(),
+			&BridgeFunc_AttachTo(),
+			&BridgeFunc_SetSizeByDistance(),
+			&BridgeFunc_SetColor(),
+			&BridgeFunc_SetPowerAndSize(),
+			&BridgeFunc_ReceiveTick(),
+			&BridgeFunc_ReceiveBeginPlay(),
+			&BridgeFunc_EventDisableLaserDot(),
+		});
+		return Ok;
+	}
 };
 
 }

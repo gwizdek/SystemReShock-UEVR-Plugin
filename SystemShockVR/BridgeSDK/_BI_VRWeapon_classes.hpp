@@ -19,49 +19,50 @@ class A_BP_VRBody_C;
 class USkeletalMeshComponent;
 
 // BlueprintGeneratedClass /Game/Mods/VRBody/Interfaces/_BI_VRWeapon._BI_VRWeapon_C
-class U_BI_VRWeapon_C final : public UInterface
+class I_BI_VRWeapon_C final : public IInterface
 {
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/Interfaces/_BI_VRWeapon._BI_VRWeapon_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
-	static U_BI_VRWeapon_C* GetDefaultObj() { return reinterpret_cast<U_BI_VRWeapon_C*>(BridgeClass()->get_class_default_object()); }
+	static I_BI_VRWeapon_C* GetDefaultObj() { return reinterpret_cast<I_BI_VRWeapon_C*>(BridgeClass()->get_class_default_object()); }
 
 	// Function UnloadWeapon (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_UnloadWeapon() { static bridge::Func Ref{ L"UnloadWeapon", {  } }; return Ref; }
 	static void UnloadWeapon(uevr::API::UObject* BridgeTarget)
 	{
-		static bridge::Func BridgeFunc{ L"UnloadWeapon", {  } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_UnloadWeapon(), BridgeTarget);
 		BridgeCall.invoke();
 	}
 
 	// Function LoadWeapon (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_LoadWeapon() { static bridge::Func Ref{ L"LoadWeapon", {  } }; return Ref; }
 	static void LoadWeapon(uevr::API::UObject* BridgeTarget)
 	{
-		static bridge::Func BridgeFunc{ L"LoadWeapon", {  } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_LoadWeapon(), BridgeTarget);
 		BridgeCall.invoke();
 	}
 
 	// Function InitInteractionSources (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_InitInteractionSources() { static bridge::Func Ref{ L"InitInteractionSources", { L"InVRBody" } }; return Ref; }
 	static void InitInteractionSources(uevr::API::UObject* BridgeTarget, class A_BP_VRBody_C* InVRBody)
 	{
-		static bridge::Func BridgeFunc{ L"InitInteractionSources", { L"InVRBody" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_InitInteractionSources(), BridgeTarget);
 		BridgeCall.set<class A_BP_VRBody_C*>(0, InVRBody);
 		BridgeCall.invoke();
 	}
 
 	// Function GetDefaultParams (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetDefaultParams() { static bridge::Func Ref{ L"GetDefaultParams", { L"OutAttachSocketName", L"OutGripHandPose", L"OutWeaponOffset", L"OutUseHackerPawnWeaponAnims", L"OutEnabledLaserPointer", L"OutHand", L"OutIsHandheldConsumable", L"OutIsHandheldExplosive", L"OutItemCategory" } }; return Ref; }
 	static void GetDefaultParams(uevr::API::UObject* BridgeTarget, class FName* OutAttachSocketName, E_ENUM_VRHandPose* OutGripHandPose, struct FTransform* OutWeaponOffset, bool* OutUseHackerPawnWeaponAnims, bool* OutEnabledLaserPointer, E_ENUM_VRHand* OutHand, bool* OutIsHandheldConsumable, bool* OutIsHandheldExplosive, E_ENUM_ItemCategory* OutItemCategory)
 	{
-		static bridge::Func BridgeFunc{ L"GetDefaultParams", { L"OutAttachSocketName", L"OutGripHandPose", L"OutWeaponOffset", L"OutUseHackerPawnWeaponAnims", L"OutEnabledLaserPointer", L"OutHand", L"OutIsHandheldConsumable", L"OutIsHandheldExplosive", L"OutItemCategory" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_GetDefaultParams(), BridgeTarget);
 		if (OutAttachSocketName != nullptr) { BridgeCall.set<class FName>(0, *OutAttachSocketName); }
 		if (OutGripHandPose != nullptr) { BridgeCall.set<E_ENUM_VRHandPose>(1, *OutGripHandPose); }
 		if (OutWeaponOffset != nullptr) { BridgeCall.set<struct FTransform>(2, *OutWeaponOffset); }
@@ -84,23 +85,33 @@ public:
 	}
 
 	// Function UseSourceMesh (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_UseSourceMesh() { static bridge::Func Ref{ L"UseSourceMesh", { L"Value" } }; return Ref; }
 	static void UseSourceMesh(uevr::API::UObject* BridgeTarget, bool Value)
 	{
-		static bridge::Func BridgeFunc{ L"UseSourceMesh", { L"Value" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_UseSourceMesh(), BridgeTarget);
 		BridgeCall.set_bool(0, Value);
 		BridgeCall.invoke();
 	}
 
 	// Function SetSourceMesh (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetSourceMesh() { static bridge::Func Ref{ L"SetSourceMesh", { L"SourceMesh" } }; return Ref; }
 	static void SetSourceMesh(uevr::API::UObject* BridgeTarget, class USkeletalMeshComponent* SourceMesh)
 	{
-		static bridge::Func BridgeFunc{ L"SetSourceMesh", { L"SourceMesh" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_SetSourceMesh(), BridgeTarget);
 		BridgeCall.set<class USkeletalMeshComponent*>(0, SourceMesh);
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		return Ok;
+	}
 };
 
 }

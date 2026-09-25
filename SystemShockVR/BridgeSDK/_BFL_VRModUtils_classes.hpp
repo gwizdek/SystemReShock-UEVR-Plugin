@@ -21,19 +21,20 @@ class U_BFL_VRModUtils_C final : public UBlueprintFunctionLibrary
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/Utils/_BFL_VRModUtils._BFL_VRModUtils_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BFL_VRModUtils_C* GetDefaultObj() { return reinterpret_cast<U_BFL_VRModUtils_C*>(BridgeClass()->get_class_default_object()); }
 
 	// Function ShowNotification (BlueprintCallable, BlueprintEvent, Static)
+	static bridge::Func& BridgeFunc_ShowNotification() { static bridge::Func Ref{ L"ShowNotification", { L"SourceActor", L"InteractMessage", L"IsWarning", L"__WorldContext" } }; return Ref; }
 	static void ShowNotification(class AActor* SourceActor, const class FText& InteractMessage, bool IsWarning, class UObject* __WorldContext)
 	{
-		static bridge::Func BridgeFunc{ L"ShowNotification", { L"SourceActor", L"InteractMessage", L"IsWarning", L"__WorldContext" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeClass()->get_class_default_object());
+		bridge::Call BridgeCall(BridgeFunc_ShowNotification(), BridgeClass()->get_class_default_object());
 		BridgeCall.set<class AActor*>(0, SourceActor);
 		BridgeCall.set<class FText>(1, InteractMessage);
 		BridgeCall.set_bool(2, IsWarning);
@@ -42,10 +43,10 @@ public:
 	}
 
 	// Function GetMeshPrimitiveFromPickableInteractable (BlueprintCallable, BlueprintEvent, Static)
+	static bridge::Func& BridgeFunc_GetMeshPrimitiveFromPickableInteractable() { static bridge::Func Ref{ L"GetMeshPrimitiveFromPickableInteractable", { L"Interactable", L"__WorldContext", L"Primitive" } }; return Ref; }
 	static void GetMeshPrimitiveFromPickableInteractable(class UObject* Interactable, class UObject* __WorldContext, class UPrimitiveComponent** Primitive)
 	{
-		static bridge::Func BridgeFunc{ L"GetMeshPrimitiveFromPickableInteractable", { L"Interactable", L"__WorldContext", L"Primitive" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeClass()->get_class_default_object());
+		bridge::Call BridgeCall(BridgeFunc_GetMeshPrimitiveFromPickableInteractable(), BridgeClass()->get_class_default_object());
 		BridgeCall.set<class UObject*>(0, Interactable);
 		BridgeCall.set<class UObject*>(1, __WorldContext);
 		if (Primitive != nullptr) { BridgeCall.set<class UPrimitiveComponent*>(2, *Primitive); }
@@ -53,6 +54,20 @@ public:
 		if (Primitive != nullptr) { *Primitive = BridgeCall.get<class UPrimitiveComponent*>(2); }
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_ShowNotification(),
+			&BridgeFunc_GetMeshPrimitiveFromPickableInteractable(),
+		});
+		return Ok;
+	}
 };
 
 }

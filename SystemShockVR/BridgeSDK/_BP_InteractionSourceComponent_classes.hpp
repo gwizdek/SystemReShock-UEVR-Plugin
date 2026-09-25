@@ -27,39 +27,59 @@ class U_BP_InteractionSourceComponent_C : public USceneComponent
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/InteractionSources/_BP_InteractionSourceComponent._BP_InteractionSourceComponent_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BP_InteractionSourceComponent_C* GetDefaultObj() { return reinterpret_cast<U_BP_InteractionSourceComponent_C*>(BridgeClass()->get_class_default_object()); }
 
-	struct FTransform& InteractionSourceTransform() { static bridge::Prop Ref{ L"InteractionSourceTransform" }; return Ref.ref<struct FTransform>(this, BridgeClass()); }
-	class USphereComponent*& WristCollisionSphere() { static bridge::Prop Ref{ L"WristCollisionSphere" }; return Ref.ref<class USphereComponent*>(this, BridgeClass()); }
-	class USphereComponent*& SourceCollisionSphere() { static bridge::Prop Ref{ L"SourceCollisionSphere" }; return Ref.ref<class USphereComponent*>(this, BridgeClass()); }
-	struct FTransform& WristTransform() { static bridge::Prop Ref{ L"WristTransform" }; return Ref.ref<struct FTransform>(this, BridgeClass()); }
-	bool& IsSnappable() { static bridge::Prop Ref{ L"IsSnappable" }; return Ref.ref<bool>(this, BridgeClass()); }
-	class UStaticMeshComponent*& TargetMesh() { static bridge::Prop Ref{ L"TargetMesh" }; return Ref.ref<class UStaticMeshComponent*>(this, BridgeClass()); }
-	float& OuterInteractionDistance() { static bridge::Prop Ref{ L"OuterInteractionDistance" }; return Ref.ref<float>(this, BridgeClass()); }
-	float& InnerInteractionDistance() { static bridge::Prop Ref{ L"InnerInteractionDistance" }; return Ref.ref<float>(this, BridgeClass()); }
-	E_ENUM_VRHandPose& InteractionPose() { static bridge::Prop Ref{ L"InteractionPose" }; return Ref.ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
-	bool& IsInteracting() { static bridge::Prop Ref{ L"IsInteracting" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsEnabled() { static bridge::Prop Ref{ L"IsEnabled" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsSnapping() { static bridge::Prop Ref{ L"IsSnapping" }; return Ref.ref<bool>(this, BridgeClass()); }
-	E_ENUM_InteractionSourceType& Type() { static bridge::Prop Ref{ L"Type" }; return Ref.ref<E_ENUM_InteractionSourceType>(this, BridgeClass()); }
-	class UPrimitiveComponent*& InteractTriggerPrimitive() { static bridge::Prop Ref{ L"InteractTriggerPrimitive" }; return Ref.ref<class UPrimitiveComponent*>(this, BridgeClass()); }
-	class U_BP_HandInteractionComponent_C*& HandInteractionRef() { static bridge::Prop Ref{ L"HandInteractionRef" }; return Ref.ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
-	struct FVector& SnapStartLocation() { static bridge::Prop Ref{ L"SnapStartLocation" }; return Ref.ref<struct FVector>(this, BridgeClass()); }
-	bool& IsCooldownActive() { static bridge::Prop Ref{ L"IsCooldownActive" }; return Ref.ref<bool>(this, BridgeClass()); }
-	float& CooldownTime() { static bridge::Prop Ref{ L"CooldownTime" }; return Ref.ref<float>(this, BridgeClass()); }
-	struct FTimerHandle& CooldownTimer() { static bridge::Prop Ref{ L"CooldownTimer" }; return Ref.ref<struct FTimerHandle>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_InteractionSourceTransform() { static bridge::Prop Ref{ L"InteractionSourceTransform" }; return Ref; }
+	struct FTransform& InteractionSourceTransform() { return BridgeProp_InteractionSourceTransform().ref<struct FTransform>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WristCollisionSphere() { static bridge::Prop Ref{ L"WristCollisionSphere" }; return Ref; }
+	class USphereComponent*& WristCollisionSphere() { return BridgeProp_WristCollisionSphere().ref<class USphereComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_SourceCollisionSphere() { static bridge::Prop Ref{ L"SourceCollisionSphere" }; return Ref; }
+	class USphereComponent*& SourceCollisionSphere() { return BridgeProp_SourceCollisionSphere().ref<class USphereComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_WristTransform() { static bridge::Prop Ref{ L"WristTransform" }; return Ref; }
+	struct FTransform& WristTransform() { return BridgeProp_WristTransform().ref<struct FTransform>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsSnappable() { static bridge::Prop Ref{ L"IsSnappable" }; return Ref; }
+	bool& IsSnappable() { return BridgeProp_IsSnappable().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TargetMesh() { static bridge::Prop Ref{ L"TargetMesh" }; return Ref; }
+	class UStaticMeshComponent*& TargetMesh() { return BridgeProp_TargetMesh().ref<class UStaticMeshComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OuterInteractionDistance() { static bridge::Prop Ref{ L"OuterInteractionDistance" }; return Ref; }
+	float& OuterInteractionDistance() { return BridgeProp_OuterInteractionDistance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_InnerInteractionDistance() { static bridge::Prop Ref{ L"InnerInteractionDistance" }; return Ref; }
+	float& InnerInteractionDistance() { return BridgeProp_InnerInteractionDistance().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_InteractionPose() { static bridge::Prop Ref{ L"InteractionPose" }; return Ref; }
+	E_ENUM_VRHandPose& InteractionPose() { return BridgeProp_InteractionPose().ref<E_ENUM_VRHandPose>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsInteracting() { static bridge::Prop Ref{ L"IsInteracting" }; return Ref; }
+	bool& IsInteracting() { return BridgeProp_IsInteracting().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsEnabled() { static bridge::Prop Ref{ L"IsEnabled" }; return Ref; }
+	bool& IsEnabled() { return BridgeProp_IsEnabled().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsSnapping() { static bridge::Prop Ref{ L"IsSnapping" }; return Ref; }
+	bool& IsSnapping() { return BridgeProp_IsSnapping().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Type() { static bridge::Prop Ref{ L"Type" }; return Ref; }
+	E_ENUM_InteractionSourceType& Type() { return BridgeProp_Type().ref<E_ENUM_InteractionSourceType>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_InteractTriggerPrimitive() { static bridge::Prop Ref{ L"InteractTriggerPrimitive" }; return Ref; }
+	class UPrimitiveComponent*& InteractTriggerPrimitive() { return BridgeProp_InteractTriggerPrimitive().ref<class UPrimitiveComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HandInteractionRef() { static bridge::Prop Ref{ L"HandInteractionRef" }; return Ref; }
+	class U_BP_HandInteractionComponent_C*& HandInteractionRef() { return BridgeProp_HandInteractionRef().ref<class U_BP_HandInteractionComponent_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_SnapStartLocation() { static bridge::Prop Ref{ L"SnapStartLocation" }; return Ref; }
+	struct FVector& SnapStartLocation() { return BridgeProp_SnapStartLocation().ref<struct FVector>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsCooldownActive() { static bridge::Prop Ref{ L"IsCooldownActive" }; return Ref; }
+	bool& IsCooldownActive() { return BridgeProp_IsCooldownActive().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_CooldownTime() { static bridge::Prop Ref{ L"CooldownTime" }; return Ref; }
+	float& CooldownTime() { return BridgeProp_CooldownTime().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_CooldownTimer() { static bridge::Prop Ref{ L"CooldownTimer" }; return Ref; }
+	struct FTimerHandle& CooldownTimer() { return BridgeProp_CooldownTimer().ref<struct FTimerHandle>(this, BridgeClass()); }
 
 	// Function GetState (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetState() { static bridge::Func Ref{ L"GetState", { L"IsEnabled", L"IsInteracting", L"IsSnapping" } }; return Ref; }
 	void GetState(bool* IsEnabled, bool* IsInteracting, bool* IsSnapping)
 	{
-		static bridge::Func BridgeFunc{ L"GetState", { L"IsEnabled", L"IsInteracting", L"IsSnapping" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetState(), bridge::as_uobject(this));
 		if (IsEnabled != nullptr) { BridgeCall.set_bool(0, *IsEnabled); }
 		if (IsInteracting != nullptr) { BridgeCall.set_bool(1, *IsInteracting); }
 		if (IsSnapping != nullptr) { BridgeCall.set_bool(2, *IsSnapping); }
@@ -70,10 +90,10 @@ public:
 	}
 
 	// Function GetInteractionSourceParams (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetInteractionSourceParams() { static bridge::Func Ref{ L"GetInteractionSourceParams", { L"InteractionSourceTransform", L"WristTransform", L"SnapHandToSource", L"InnerInteractionDistance", L"OuterInteractionDistance", L"TargetMesh", L"InteractionPose", L"IsEnabled", L"Type" } }; return Ref; }
 	void GetInteractionSourceParams(struct FTransform* InteractionSourceTransform, struct FTransform* WristTransform, bool* SnapHandToSource, float* InnerInteractionDistance, float* OuterInteractionDistance, class UStaticMeshComponent** TargetMesh, E_ENUM_VRHandPose* InteractionPose, bool* IsEnabled, E_ENUM_InteractionSourceType* Type)
 	{
-		static bridge::Func BridgeFunc{ L"GetInteractionSourceParams", { L"InteractionSourceTransform", L"WristTransform", L"SnapHandToSource", L"InnerInteractionDistance", L"OuterInteractionDistance", L"TargetMesh", L"InteractionPose", L"IsEnabled", L"Type" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetInteractionSourceParams(), bridge::as_uobject(this));
 		if (InteractionSourceTransform != nullptr) { BridgeCall.set<struct FTransform>(0, *InteractionSourceTransform); }
 		if (WristTransform != nullptr) { BridgeCall.set<struct FTransform>(1, *WristTransform); }
 		if (SnapHandToSource != nullptr) { BridgeCall.set_bool(2, *SnapHandToSource); }
@@ -96,36 +116,36 @@ public:
 	}
 
 	// Function StopCooldown (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_StopCooldown() { static bridge::Func Ref{ L"StopCooldown", {  } }; return Ref; }
 	void StopCooldown()
 	{
-		static bridge::Func BridgeFunc{ L"StopCooldown", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_StopCooldown(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function StartCooldown (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_StartCooldown() { static bridge::Func Ref{ L"StartCooldown", {  } }; return Ref; }
 	void StartCooldown()
 	{
-		static bridge::Func BridgeFunc{ L"StartCooldown", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_StartCooldown(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function TryInteract (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TryInteract() { static bridge::Func Ref{ L"TryInteract", { L"SourceActor", L"HandInteraction" } }; return Ref; }
 	void TryInteract(class AActor* SourceActor, class U_BP_HandInteractionComponent_C* HandInteraction)
 	{
-		static bridge::Func BridgeFunc{ L"TryInteract", { L"SourceActor", L"HandInteraction" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TryInteract(), bridge::as_uobject(this));
 		BridgeCall.set<class AActor*>(0, SourceActor);
 		BridgeCall.set<class U_BP_HandInteractionComponent_C*>(1, HandInteraction);
 		BridgeCall.invoke();
 	}
 
 	// Function TrySnap (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TrySnap() { static bridge::Func Ref{ L"TrySnap", { L"InHandInteraction", L"Result" } }; return Ref; }
 	void TrySnap(class U_BP_HandInteractionComponent_C* InHandInteraction, bool* Result)
 	{
-		static bridge::Func BridgeFunc{ L"TrySnap", { L"InHandInteraction", L"Result" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TrySnap(), bridge::as_uobject(this));
 		BridgeCall.set<class U_BP_HandInteractionComponent_C*>(0, InHandInteraction);
 		if (Result != nullptr) { BridgeCall.set_bool(1, *Result); }
 		BridgeCall.invoke();
@@ -133,45 +153,45 @@ public:
 	}
 
 	// Function TryRelease (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_TryRelease() { static bridge::Func Ref{ L"TryRelease", {  } }; return Ref; }
 	void TryRelease()
 	{
-		static bridge::Func BridgeFunc{ L"TryRelease", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_TryRelease(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function ShowCollisionSpheres (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_ShowCollisionSpheres() { static bridge::Func Ref{ L"ShowCollisionSpheres", { L"Visible" } }; return Ref; }
 	void ShowCollisionSpheres(bool Visible)
 	{
-		static bridge::Func BridgeFunc{ L"ShowCollisionSpheres", { L"Visible" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ShowCollisionSpheres(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, Visible);
 		BridgeCall.invoke();
 	}
 
 	// Function GetWristWorldTransform (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetWristWorldTransform() { static bridge::Func Ref{ L"GetWristWorldTransform", { L"OutTransform" } }; return Ref; }
 	void GetWristWorldTransform(struct FTransform* OutTransform)
 	{
-		static bridge::Func BridgeFunc{ L"GetWristWorldTransform", { L"OutTransform" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_GetWristWorldTransform(), bridge::as_uobject(this));
 		if (OutTransform != nullptr) { BridgeCall.set<struct FTransform>(0, *OutTransform); }
 		BridgeCall.invoke();
 		if (OutTransform != nullptr) { *OutTransform = BridgeCall.get<struct FTransform>(0); }
 	}
 
 	// Function InitGripSource (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_InitGripSource() { static bridge::Func Ref{ L"InitGripSource", {  } }; return Ref; }
 	void InitGripSource()
 	{
-		static bridge::Func BridgeFunc{ L"InitGripSource", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_InitGripSource(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function InitInteractionSource (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_InitInteractionSource() { static bridge::Func Ref{ L"InitInteractionSource", { L"Type", L"InInteractionSourceTransform", L"InWristTransform", L"InOuterInteractionDistance", L"InInnerInteractionDistance", L"InInteractionPose", L"InIsSnappable", L"InIsEnabled" } }; return Ref; }
 	void InitInteractionSource(E_ENUM_InteractionSourceType Type, const struct FTransform& InInteractionSourceTransform, const struct FTransform& InWristTransform, float InOuterInteractionDistance, float InInnerInteractionDistance, E_ENUM_VRHandPose InInteractionPose, bool InIsSnappable, bool InIsEnabled)
 	{
-		static bridge::Func BridgeFunc{ L"InitInteractionSource", { L"Type", L"InInteractionSourceTransform", L"InWristTransform", L"InOuterInteractionDistance", L"InInnerInteractionDistance", L"InInteractionPose", L"InIsSnappable", L"InIsEnabled" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_InitInteractionSource(), bridge::as_uobject(this));
 		BridgeCall.set<E_ENUM_InteractionSourceType>(0, Type);
 		BridgeCall.set<struct FTransform>(1, InInteractionSourceTransform);
 		BridgeCall.set<struct FTransform>(2, InWristTransform);
@@ -184,13 +204,58 @@ public:
 	}
 
 	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
 	void ReceiveBeginPlay()
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveBeginPlay", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_InteractionSourceTransform(),
+			&BridgeProp_WristCollisionSphere(),
+			&BridgeProp_SourceCollisionSphere(),
+			&BridgeProp_WristTransform(),
+			&BridgeProp_IsSnappable(),
+			&BridgeProp_TargetMesh(),
+			&BridgeProp_OuterInteractionDistance(),
+			&BridgeProp_InnerInteractionDistance(),
+			&BridgeProp_InteractionPose(),
+			&BridgeProp_IsInteracting(),
+			&BridgeProp_IsEnabled(),
+			&BridgeProp_IsSnapping(),
+			&BridgeProp_Type(),
+			&BridgeProp_InteractTriggerPrimitive(),
+			&BridgeProp_HandInteractionRef(),
+			&BridgeProp_SnapStartLocation(),
+			&BridgeProp_IsCooldownActive(),
+			&BridgeProp_CooldownTime(),
+			&BridgeProp_CooldownTimer(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_GetState(),
+			&BridgeFunc_GetInteractionSourceParams(),
+			&BridgeFunc_StopCooldown(),
+			&BridgeFunc_StartCooldown(),
+			&BridgeFunc_TryInteract(),
+			&BridgeFunc_TrySnap(),
+			&BridgeFunc_TryRelease(),
+			&BridgeFunc_ShowCollisionSpheres(),
+			&BridgeFunc_GetWristWorldTransform(),
+			&BridgeFunc_InitGripSource(),
+			&BridgeFunc_InitInteractionSource(),
+			&BridgeFunc_ReceiveBeginPlay(),
+		});
+		return Ok;
+	}
 };
 
 }

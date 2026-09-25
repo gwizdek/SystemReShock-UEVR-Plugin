@@ -24,69 +24,84 @@ class A_BP_HackerHardware_C final : public AActor
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/_BP_HackerHardware._BP_HackerHardware_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static A_BP_HackerHardware_C* GetDefaultObj() { return reinterpret_cast<A_BP_HackerHardware_C*>(BridgeClass()->get_class_default_object()); }
 
-	class UWidgetComponent*& EnergyShieldWidgetComponent() { static bridge::Prop Ref{ L"EnergyShieldWidgetComponent" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class UWidgetComponent*& TurboBootsWidgetComponent() { static bridge::Prop Ref{ L"TurboBootsWidgetComponent" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class UWidgetComponent*& EnviroPakWidgetComponent() { static bridge::Prop Ref{ L"EnviroPakWidgetComponent" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class UWidgetComponent*& SensaroundWidgetComponent() { static bridge::Prop Ref{ L"SensaroundWidgetComponent" }; return Ref.ref<class UWidgetComponent*>(this, BridgeClass()); }
-	class USceneComponent*& DefaultSceneRoot() { static bridge::Prop Ref{ L"DefaultSceneRoot" }; return Ref.ref<class USceneComponent*>(this, BridgeClass()); }
-	class A_BP_VRBody_C*& VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref.ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
-	bool& IsActive() { static bridge::Prop Ref{ L"IsActive" }; return Ref.ref<bool>(this, BridgeClass()); }
-	float& ViewAngle() { static bridge::Prop Ref{ L"ViewAngle" }; return Ref.ref<float>(this, BridgeClass()); }
-	TArray<class UWidgetComponent*>& HardwareItems() { static bridge::Prop Ref{ L"HardwareItems" }; return Ref.ref<TArray<class UWidgetComponent*>>(this, BridgeClass()); }
-	bool& IsToggable() { static bridge::Prop Ref{ L"IsToggable" }; return Ref.ref<bool>(this, BridgeClass()); }
-	struct FTimerHandle& debounceTimer() { static bridge::Prop Ref{ L"debounceTimer" }; return Ref.ref<struct FTimerHandle>(this, BridgeClass()); }
-	float& debounceTime() { static bridge::Prop Ref{ L"debounceTime" }; return Ref.ref<float>(this, BridgeClass()); }
-	bool& IsLookingAt() { static bridge::Prop Ref{ L"IsLookingAt" }; return Ref.ref<bool>(this, BridgeClass()); }
-	bool& IsVisible() { static bridge::Prop Ref{ L"IsVisible" }; return Ref.ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_EnergyShieldWidgetComponent() { static bridge::Prop Ref{ L"EnergyShieldWidgetComponent" }; return Ref; }
+	class UWidgetComponent*& EnergyShieldWidgetComponent() { return BridgeProp_EnergyShieldWidgetComponent().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_TurboBootsWidgetComponent() { static bridge::Prop Ref{ L"TurboBootsWidgetComponent" }; return Ref; }
+	class UWidgetComponent*& TurboBootsWidgetComponent() { return BridgeProp_TurboBootsWidgetComponent().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_EnviroPakWidgetComponent() { static bridge::Prop Ref{ L"EnviroPakWidgetComponent" }; return Ref; }
+	class UWidgetComponent*& EnviroPakWidgetComponent() { return BridgeProp_EnviroPakWidgetComponent().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_SensaroundWidgetComponent() { static bridge::Prop Ref{ L"SensaroundWidgetComponent" }; return Ref; }
+	class UWidgetComponent*& SensaroundWidgetComponent() { return BridgeProp_SensaroundWidgetComponent().ref<class UWidgetComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_DefaultSceneRoot() { static bridge::Prop Ref{ L"DefaultSceneRoot" }; return Ref; }
+	class USceneComponent*& DefaultSceneRoot() { return BridgeProp_DefaultSceneRoot().ref<class USceneComponent*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_VRBodyRef() { static bridge::Prop Ref{ L"VRBodyRef" }; return Ref; }
+	class A_BP_VRBody_C*& VRBodyRef() { return BridgeProp_VRBodyRef().ref<class A_BP_VRBody_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsActive() { static bridge::Prop Ref{ L"IsActive" }; return Ref; }
+	bool& IsActive() { return BridgeProp_IsActive().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_ViewAngle() { static bridge::Prop Ref{ L"ViewAngle" }; return Ref; }
+	float& ViewAngle() { return BridgeProp_ViewAngle().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_HardwareItems() { static bridge::Prop Ref{ L"HardwareItems" }; return Ref; }
+	TArray<class UWidgetComponent*>& HardwareItems() { return BridgeProp_HardwareItems().ref<TArray<class UWidgetComponent*>>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsToggable() { static bridge::Prop Ref{ L"IsToggable" }; return Ref; }
+	bool& IsToggable() { return BridgeProp_IsToggable().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_debounceTimer() { static bridge::Prop Ref{ L"debounceTimer" }; return Ref; }
+	struct FTimerHandle& debounceTimer() { return BridgeProp_debounceTimer().ref<struct FTimerHandle>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_debounceTime() { static bridge::Prop Ref{ L"debounceTime" }; return Ref; }
+	float& debounceTime() { return BridgeProp_debounceTime().ref<float>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsLookingAt() { static bridge::Prop Ref{ L"IsLookingAt" }; return Ref; }
+	bool& IsLookingAt() { return BridgeProp_IsLookingAt().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_IsVisible() { static bridge::Prop Ref{ L"IsVisible" }; return Ref; }
+	bool& IsVisible() { return BridgeProp_IsVisible().ref<bool>(this, BridgeClass()); }
 
 	// Function SetWidgetVisibility (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetWidgetVisibility() { static bridge::Func Ref{ L"SetWidgetVisibility", { L"InVisible" } }; return Ref; }
 	void SetWidgetVisibility(bool InVisible)
 	{
-		static bridge::Func BridgeFunc{ L"SetWidgetVisibility", { L"InVisible" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetWidgetVisibility(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, InVisible);
 		BridgeCall.invoke();
 	}
 
 	// Function SetVisibility (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetVisibility() { static bridge::Func Ref{ L"SetVisibility", { L"InVisible" } }; return Ref; }
 	void SetVisibility(bool InVisible)
 	{
-		static bridge::Func BridgeFunc{ L"SetVisibility", { L"InVisible" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_SetVisibility(), bridge::as_uobject(this));
 		BridgeCall.set_bool(0, InVisible);
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
 	void ReceiveBeginPlay()
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveBeginPlay", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
 	// Function ReceiveTick (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveTick() { static bridge::Func Ref{ L"ReceiveTick", { L"DeltaSeconds" } }; return Ref; }
 	void ReceiveTick(float DeltaSeconds)
 	{
-		static bridge::Func BridgeFunc{ L"ReceiveTick", { L"DeltaSeconds" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_ReceiveTick(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaSeconds);
 		BridgeCall.invoke();
 	}
 
 	// Function BndEvt___BP_HackerHardware_SensaroundWidgetComponent_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BndEvt___BP_HackerHardware_SensaroundWidgetComponent_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature() { static bridge::Func Ref{ L"BndEvt___BP_HackerHardware_SensaroundWidgetComponent_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } }; return Ref; }
 	void BndEvt___BP_HackerHardware_SensaroundWidgetComponent_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, struct FHitResult* SweepResult)
 	{
-		static bridge::Func BridgeFunc{ L"BndEvt___BP_HackerHardware_SensaroundWidgetComponent_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BndEvt___BP_HackerHardware_SensaroundWidgetComponent_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(), bridge::as_uobject(this));
 		BridgeCall.set<class UPrimitiveComponent*>(0, OverlappedComponent);
 		BridgeCall.set<class AActor*>(1, OtherActor);
 		BridgeCall.set<class UPrimitiveComponent*>(2, OtherComp);
@@ -98,10 +113,10 @@ public:
 	}
 
 	// Function BndEvt___BP_HackerHardware_EnviroPakWidgetComponent_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BndEvt___BP_HackerHardware_EnviroPakWidgetComponent_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature() { static bridge::Func Ref{ L"BndEvt___BP_HackerHardware_EnviroPakWidgetComponent_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } }; return Ref; }
 	void BndEvt___BP_HackerHardware_EnviroPakWidgetComponent_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, struct FHitResult* SweepResult)
 	{
-		static bridge::Func BridgeFunc{ L"BndEvt___BP_HackerHardware_EnviroPakWidgetComponent_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BndEvt___BP_HackerHardware_EnviroPakWidgetComponent_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature(), bridge::as_uobject(this));
 		BridgeCall.set<class UPrimitiveComponent*>(0, OverlappedComponent);
 		BridgeCall.set<class AActor*>(1, OtherActor);
 		BridgeCall.set<class UPrimitiveComponent*>(2, OtherComp);
@@ -113,10 +128,10 @@ public:
 	}
 
 	// Function BndEvt___BP_HackerHardware_TurboBootsWidgetComponent_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BndEvt___BP_HackerHardware_TurboBootsWidgetComponent_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature() { static bridge::Func Ref{ L"BndEvt___BP_HackerHardware_TurboBootsWidgetComponent_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } }; return Ref; }
 	void BndEvt___BP_HackerHardware_TurboBootsWidgetComponent_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, struct FHitResult* SweepResult)
 	{
-		static bridge::Func BridgeFunc{ L"BndEvt___BP_HackerHardware_TurboBootsWidgetComponent_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BndEvt___BP_HackerHardware_TurboBootsWidgetComponent_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature(), bridge::as_uobject(this));
 		BridgeCall.set<class UPrimitiveComponent*>(0, OverlappedComponent);
 		BridgeCall.set<class AActor*>(1, OtherActor);
 		BridgeCall.set<class UPrimitiveComponent*>(2, OtherComp);
@@ -128,10 +143,10 @@ public:
 	}
 
 	// Function BndEvt___BP_HackerHardware_EnergyShieldWidgetComponent_K2Node_ComponentBoundEvent_3_ComponentBeginOverlapSignature__DelegateSignature (BlueprintEvent)
+	static bridge::Func& BridgeFunc_BndEvt___BP_HackerHardware_EnergyShieldWidgetComponent_K2Node_ComponentBoundEvent_3_ComponentBeginOverlapSignature__DelegateSignature() { static bridge::Func Ref{ L"BndEvt___BP_HackerHardware_EnergyShieldWidgetComponent_K2Node_ComponentBoundEvent_3_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } }; return Ref; }
 	void BndEvt___BP_HackerHardware_EnergyShieldWidgetComponent_K2Node_ComponentBoundEvent_3_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, struct FHitResult* SweepResult)
 	{
-		static bridge::Func BridgeFunc{ L"BndEvt___BP_HackerHardware_EnergyShieldWidgetComponent_K2Node_ComponentBoundEvent_3_ComponentBeginOverlapSignature__DelegateSignature", { L"OverlappedComponent", L"OtherActor", L"OtherComp", L"OtherBodyIndex", L"bFromSweep", L"SweepResult" } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_BndEvt___BP_HackerHardware_EnergyShieldWidgetComponent_K2Node_ComponentBoundEvent_3_ComponentBeginOverlapSignature__DelegateSignature(), bridge::as_uobject(this));
 		BridgeCall.set<class UPrimitiveComponent*>(0, OverlappedComponent);
 		BridgeCall.set<class AActor*>(1, OtherActor);
 		BridgeCall.set<class UPrimitiveComponent*>(2, OtherComp);
@@ -143,13 +158,50 @@ public:
 	}
 
 	// Function CustomEvent_ActivateToggable (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CustomEvent_ActivateToggable() { static bridge::Func Ref{ L"CustomEvent_ActivateToggable", {  } }; return Ref; }
 	void CustomEvent_ActivateToggable()
 	{
-		static bridge::Func BridgeFunc{ L"CustomEvent_ActivateToggable", {  } };
-		bridge::Call BridgeCall(BridgeFunc, bridge::as_uobject(this));
+		bridge::Call BridgeCall(BridgeFunc_CustomEvent_ActivateToggable(), bridge::as_uobject(this));
 		BridgeCall.invoke();
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		Ok &= bridge::warm(Cls, {
+			&BridgeProp_EnergyShieldWidgetComponent(),
+			&BridgeProp_TurboBootsWidgetComponent(),
+			&BridgeProp_EnviroPakWidgetComponent(),
+			&BridgeProp_SensaroundWidgetComponent(),
+			&BridgeProp_DefaultSceneRoot(),
+			&BridgeProp_VRBodyRef(),
+			&BridgeProp_IsActive(),
+			&BridgeProp_ViewAngle(),
+			&BridgeProp_HardwareItems(),
+			&BridgeProp_IsToggable(),
+			&BridgeProp_debounceTimer(),
+			&BridgeProp_debounceTime(),
+			&BridgeProp_IsLookingAt(),
+			&BridgeProp_IsVisible(),
+		});
+		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_SetWidgetVisibility(),
+			&BridgeFunc_SetVisibility(),
+			&BridgeFunc_ReceiveBeginPlay(),
+			&BridgeFunc_ReceiveTick(),
+			&BridgeFunc_BndEvt___BP_HackerHardware_SensaroundWidgetComponent_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(),
+			&BridgeFunc_BndEvt___BP_HackerHardware_EnviroPakWidgetComponent_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature(),
+			&BridgeFunc_BndEvt___BP_HackerHardware_TurboBootsWidgetComponent_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature(),
+			&BridgeFunc_BndEvt___BP_HackerHardware_EnergyShieldWidgetComponent_K2Node_ComponentBoundEvent_3_ComponentBeginOverlapSignature__DelegateSignature(),
+			&BridgeFunc_CustomEvent_ActivateToggable(),
+		});
+		return Ok;
+	}
 };
 
 }

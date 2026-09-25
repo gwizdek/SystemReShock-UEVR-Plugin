@@ -13,24 +13,25 @@
 namespace SDK
 {
 // BlueprintGeneratedClass /Game/Mods/VRBody/Interfaces/_BI_PickableAnim._BI_PickableAnim_C
-class U_BI_PickableAnim_C final : public UInterface
+class I_BI_PickableAnim_C final : public IInterface
 {
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/Interfaces/_BI_PickableAnim._BI_PickableAnim_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
-	static U_BI_PickableAnim_C* GetDefaultObj() { return reinterpret_cast<U_BI_PickableAnim_C*>(BridgeClass()->get_class_default_object()); }
+	static I_BI_PickableAnim_C* GetDefaultObj() { return reinterpret_cast<I_BI_PickableAnim_C*>(BridgeClass()->get_class_default_object()); }
 
 	// Function GetAttachSocketOffset (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetAttachSocketOffset() { static bridge::Func Ref{ L"GetAttachSocketOffset", { L"OutVector", L"OutRotator" } }; return Ref; }
 	static void GetAttachSocketOffset(uevr::API::UObject* BridgeTarget, struct FVector* OutVector, struct FRotator* OutRotator)
 	{
-		static bridge::Func BridgeFunc{ L"GetAttachSocketOffset", { L"OutVector", L"OutRotator" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_GetAttachSocketOffset(), BridgeTarget);
 		if (OutVector != nullptr) { BridgeCall.set<struct FVector>(0, *OutVector); }
 		if (OutRotator != nullptr) { BridgeCall.set<struct FRotator>(1, *OutRotator); }
 		BridgeCall.invoke();
@@ -38,6 +39,16 @@ public:
 		if (OutRotator != nullptr) { *OutRotator = BridgeCall.get<struct FRotator>(1); }
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		return Ok;
+	}
 };
 
 }

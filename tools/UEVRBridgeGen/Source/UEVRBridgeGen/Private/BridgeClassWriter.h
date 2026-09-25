@@ -24,9 +24,10 @@ public:
 private:
     FString ClassHead(const UClass* Class, FBridgeHeaderBuilder& Header) const;
     FString StaticMembers(const UClass* Class) const;
-    FString Properties(const UClass* Class, FBridgeHeaderBuilder& Header, const TSet<FString>& Reserved) const;
+    FString Properties(const UClass* Class, FBridgeHeaderBuilder& Header, const TSet<FString>& Reserved, TArray<FString>& WarmProps) const;
     FString PropertyAccessor(const FProperty* Property, const FBridgeType& Type, const FString& Name) const;
-    FString Functions(const UClass* Class, FBridgeHeaderBuilder& Header) const;
+    FString Functions(const UClass* Class, FBridgeHeaderBuilder& Header, TArray<FString>& WarmFuncs) const;
+    FString Warmup(const TArray<FString>& WarmProps, const TArray<FString>& WarmFuncs) const;
 
     bool HasGeneratedSubclass(const UClass* Class) const;
     static bool SkipProperty(const FProperty* Property);

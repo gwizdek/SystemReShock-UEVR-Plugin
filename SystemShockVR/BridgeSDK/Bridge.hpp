@@ -15,6 +15,7 @@
 #include <cstdint>
 #include <cstring>
 #include <cwctype>
+#include <initializer_list>
 #include <stdexcept>
 #include <string>
 #include <string_view>
@@ -70,11 +71,23 @@ inline API::UFunction* find_function_ci(API::UStruct* owner, const wchar_t* name
     return nullptr;
 }
 
+// The UEVR log takes char. Object paths and member names are ASCII in practice;
+// anything else becomes '?'.
+inline std::string narrow(std::wstring_view wide)
+{
+    std::string out;
+    out.reserve(wide.size());
+    for (const wchar_t c : wide) {
+        out.push_back(c < 128 ? static_cast<char>(c) : '?');
+    }
+    return out;
+}
+
 [[noreturn]] inline void fail(const std::wstring& message)
 {
-    const std::string narrow(message.begin(), message.end());
-    API::get()->log_error("[bridge] %s", narrow.c_str());
-    throw std::runtime_error(narrow);
+    const std::string text = narrow(message);
+    API::get()->log_error("[bridge] %s", text.c_str());
+    throw std::runtime_error(text);
 }
 
 inline API::UObject* as_uobject(const void* object)
@@ -225,6 +238,42 @@ private:
         }
     }
 };
+
+// Warm-up. Resolves properties or functions ahead of their first use, so no call site
+// pays the name lookup in the middle of a frame. A name that does not resolve is logged
+// by fail() and reported through the return value; the remaining names are still tried.
+inline bool warm(API::UStruct* owner, std::initializer_list<Prop*> props)
+{
+    bool ok = true;
+    for (Prop* prop : props) {
+        try {
+            prop->resolve(owner);
+        } catch (const std::runtime_error&) {
+            ok = false;
+        }
+    }
+    return ok;
+}
+
+inline bool warm(API::UClass* cls, std::initializer_list<Func*> funcs)
+{
+    bool ok = true;
+    for (Func* func : funcs) {
+        try {
+            func->resolve(cls);
+        } catch (const std::runtime_error&) {
+            ok = false;
+        }
+    }
+    return ok;
+}
+
+// Logged when a warm-up finds its class or struct not loaded yet. Nothing is cached in
+// that case, so the names resolve on first use as usual.
+inline void warm_skipped(const wchar_t* path)
+{
+    API::get()->log_info("[bridge] warm-up skipped, not loaded: %s", narrow(path).c_str());
+}
 
 // A zeroed parameter buffer for one call. Lives on the stack unless the function's
 // parameters exceed the inline capacity.

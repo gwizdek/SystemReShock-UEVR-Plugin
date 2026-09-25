@@ -12,24 +12,25 @@
 namespace SDK
 {
 // BlueprintGeneratedClass /Game/Mods/VRBody/Interfaces/_BP_VRMeleeWeapon._BP_VRMeleeWeapon_C
-class U_BP_VRMeleeWeapon_C final : public UInterface
+class I_BP_VRMeleeWeapon_C final : public IInterface
 {
 public:
 	static constexpr const wchar_t* BridgeClassPath = L"BlueprintGeneratedClass /Game/Mods/VRBody/Interfaces/_BP_VRMeleeWeapon._BP_VRMeleeWeapon_C";
 
-	static uevr::API::UClass* BridgeClass()
+	static bridge::ClassRef& BridgeClassRef()
 	{
 		static bridge::ClassRef Ref{ BridgeClassPath };
-		return Ref.require();
+		return Ref;
 	}
+	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
-	static U_BP_VRMeleeWeapon_C* GetDefaultObj() { return reinterpret_cast<U_BP_VRMeleeWeapon_C*>(BridgeClass()->get_class_default_object()); }
+	static I_BP_VRMeleeWeapon_C* GetDefaultObj() { return reinterpret_cast<I_BP_VRMeleeWeapon_C*>(BridgeClass()->get_class_default_object()); }
 
 	// Function GetTraceOffsets (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetTraceOffsets() { static bridge::Func Ref{ L"GetTraceOffsets", { L"Tip", L"Middle", L"Low" } }; return Ref; }
 	static void GetTraceOffsets(uevr::API::UObject* BridgeTarget, float* Tip, float* Middle, float* Low)
 	{
-		static bridge::Func BridgeFunc{ L"GetTraceOffsets", { L"Tip", L"Middle", L"Low" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_GetTraceOffsets(), BridgeTarget);
 		if (Tip != nullptr) { BridgeCall.set<float>(0, *Tip); }
 		if (Middle != nullptr) { BridgeCall.set<float>(1, *Middle); }
 		if (Low != nullptr) { BridgeCall.set<float>(2, *Low); }
@@ -40,10 +41,10 @@ public:
 	}
 
 	// Function GetBoneNames (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetBoneNames() { static bridge::Func Ref{ L"GetBoneNames", { L"GripBoneName", L"TipBoneName" } }; return Ref; }
 	static void GetBoneNames(uevr::API::UObject* BridgeTarget, class FName* GripBoneName, class FName* TipBoneName)
 	{
-		static bridge::Func BridgeFunc{ L"GetBoneNames", { L"GripBoneName", L"TipBoneName" } };
-		bridge::Call BridgeCall(BridgeFunc, BridgeTarget);
+		bridge::Call BridgeCall(BridgeFunc_GetBoneNames(), BridgeTarget);
 		if (GripBoneName != nullptr) { BridgeCall.set<class FName>(0, *GripBoneName); }
 		if (TipBoneName != nullptr) { BridgeCall.set<class FName>(1, *TipBoneName); }
 		BridgeCall.invoke();
@@ -51,6 +52,16 @@ public:
 		if (TipBoneName != nullptr) { *TipBoneName = BridgeCall.get<class FName>(1); }
 	}
 
+	// Resolves the class and every property and function above, so no first use pays
+	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
+	// not resolve; whatever is missing resolves on first use as usual.
+	static bool BridgeWarmup()
+	{
+		uevr::API::UClass* Cls = BridgeClassRef().get();
+		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
+		bool Ok = true;
+		return Ok;
+	}
 };
 
 }

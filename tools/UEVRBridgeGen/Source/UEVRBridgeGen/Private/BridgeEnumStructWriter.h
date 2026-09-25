@@ -20,6 +20,7 @@ public:
 private:
     FString EnumEntries(const UUserDefinedEnum* Enum) const;
     FString StructStatics(const UUserDefinedStruct* Struct) const;
+    FString StructWarmup(const TArray<FString>& WarmProps) const;
 
     const FBridgeContext& Context;
 };

@@ -73,6 +73,7 @@ FString FBridgeEnumStructWriter::WriteStruct(const UUserDefinedStruct* Struct) c
     Body += StructStatics(Struct);
     Body += TEXT("\tuint8_t* Data;\n\n");
 
+    TArray<FString> WarmProps;
     for (TFieldIterator<FProperty> It(Struct); It; ++It)
     {
         TArray<FBridgeDep> Deps;
@@ -84,9 +85,14 @@ FString FBridgeEnumStructWriter::WriteStruct(const UUserDefinedStruct* Struct) c
         }
         Header.AddDeps(Deps);
         // The authored name is what the editor shows. The real FName carries a GUID suffix.
-        Body += FString::Printf(TEXT("\t%s& %s() { static bridge::Prop Ref{ L\"%s\" }; return Ref.ref<%s>(Data, BridgeStruct()); }\n"),
-            *Type.Cpp, *BridgeNaming::Sanitize(It->GetAuthoredName()), *It->GetName(), *Type.Cpp);
+        const FString AccessorName = BridgeNaming::Sanitize(It->GetAuthoredName());
+        Body += FString::Printf(TEXT("\tstatic bridge::Prop& BridgeProp_%s() { static bridge::Prop Ref{ L\"%s\" }; return Ref; }\n"),
+            *AccessorName, *It->GetName());
+        Body += FString::Printf(TEXT("\t%s& %s() { return BridgeProp_%s().ref<%s>(Data, BridgeStruct()); }\n"),
+            *Type.Cpp, *AccessorName, *AccessorName, *Type.Cpp);
+        WarmProps.Add(TEXT("BridgeProp_") + AccessorName);
     }
+    Body += StructWarmup(WarmProps);
     Body += TEXT("};\n");
     return Header.Build(BridgeNaming::ObjectSearchPath(Struct), Body);
 }
@@ -96,9 +102,34 @@ FString FBridgeEnumStructWriter::StructStatics(const UUserDefinedStruct* Struct)
     FString Out;
     Out += FString::Printf(TEXT("\tstatic constexpr const wchar_t* BridgeStructPath = L\"%s\";\n\n"),
         *BridgeNaming::ObjectSearchPath(Struct));
-    Out += TEXT("\tstatic uevr::API::UScriptStruct* BridgeStruct()\n\t{\n");
-    Out += TEXT("\t\tstatic bridge::StructRef Ref{ BridgeStructPath };\n\t\treturn Ref.require();\n\t}\n");
+    Out += TEXT("\tstatic bridge::StructRef& BridgeStructRef()\n\t{\n");
+    Out += TEXT("\t\tstatic bridge::StructRef Ref{ BridgeStructPath };\n\t\treturn Ref;\n\t}\n");
+    Out += TEXT("\tstatic uevr::API::UScriptStruct* BridgeStruct() { return BridgeStructRef().require(); }\n");
     Out += TEXT("\tstatic int32_t StaticSize()\n\t{\n");
     Out += TEXT("\t\tstatic const int32_t Size = bridge::struct_size(BridgeStruct());\n\t\treturn Size;\n\t}\n\n");
+    return Out;
+}
+
+FString FBridgeEnumStructWriter::StructWarmup(const TArray<FString>& WarmProps) const
+{
+    FString Out;
+    Out += TEXT("\n\t// Resolves the struct, its size and every field above, so no first use pays the\n");
+    Out += TEXT("\t// lookup mid-game. Returns false when the struct is not loaded yet or a name did\n");
+    Out += TEXT("\t// not resolve; whatever is missing resolves on first use as usual.\n");
+    Out += TEXT("\tstatic bool BridgeWarmup()\n\t{\n");
+    Out += TEXT("\t\tuevr::API::UScriptStruct* Owner = BridgeStructRef().get();\n");
+    Out += TEXT("\t\tif (Owner == nullptr) { bridge::warm_skipped(BridgeStructPath); return false; }\n");
+    Out += TEXT("\t\tStaticSize();\n");
+    if (WarmProps.Num() == 0)
+    {
+        Out += TEXT("\t\treturn true;\n\t}\n");
+        return Out;
+    }
+    Out += TEXT("\t\treturn bridge::warm(Owner, {\n");
+    for (const FString& Name : WarmProps)
+    {
+        Out += FString::Printf(TEXT("\t\t\t&%s(),\n"), *Name);
+    }
+    Out += TEXT("\t\t});\n\t}\n");
     return Out;
 }

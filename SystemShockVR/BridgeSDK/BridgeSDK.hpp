@@ -44,3 +44,49 @@
 #include "_WIDGET_DebugWidgetEntry_classes.hpp"
 #include "_WIDGET_VRHUD_classes.hpp"
 #include "_WIDGET_VRMenu_classes.hpp"
+
+namespace SDK
+{
+// Resolves every generated class, struct, property and function ahead of first use.
+// Call it once the mod's Blueprints are loaded, for example right after spawning the
+// VR body, where a one-off hitch does not matter. Returns false when something was
+// skipped or failed; those names resolve on first use as before.
+inline bool BridgeWarmupAll()
+{
+	bool Ok = true;
+	Ok &= A_BP_AccessCard_C::BridgeWarmup();
+	Ok &= A_BP_HackerHardware_C::BridgeWarmup();
+	Ok &= A_BP_ItemSelector_C::BridgeWarmup();
+	Ok &= A_BP_LaserDot_C::BridgeWarmup();
+	Ok &= A_BP_MeleeWeaponHandler_C::BridgeWarmup();
+	Ok &= A_BP_VRAvatar_C::BridgeWarmup();
+	Ok &= A_BP_VRBody_C::BridgeWarmup();
+	Ok &= F_STRUCT_MontageMeta::BridgeWarmup();
+	Ok &= F_STRUCT_UEVR_Options::BridgeWarmup();
+	Ok &= I_BI_InteractionSource_C::BridgeWarmup();
+	Ok &= I_BI_PickableAnim_C::BridgeWarmup();
+	Ok &= I_BI_VRWeapon_C::BridgeWarmup();
+	Ok &= I_BP_VRMeleeWeapon_C::BridgeWarmup();
+	Ok &= U_BFL_VRModUtils_C::BridgeWarmup();
+	Ok &= U_BFL_VRUtils_C::BridgeWarmup();
+	Ok &= U_BP_AnimationManager_C::BridgeWarmup();
+	Ok &= U_BP_DebugWidgetComponent_C::BridgeWarmup();
+	Ok &= U_BP_DebugWidgetEntryData_C::BridgeWarmup();
+	Ok &= U_BP_GrabEnablingComponent_C::BridgeWarmup();
+	Ok &= U_BP_HandInteractionComponent_C::BridgeWarmup();
+	Ok &= U_BP_InteractablesHighlighter_C::BridgeWarmup();
+	Ok &= U_BP_InteractionSourceComponent_C::BridgeWarmup();
+	Ok &= U_BP_LeverInteractionSourceComponent_C::BridgeWarmup();
+	Ok &= U_BP_MFDMaskComponent_C::BridgeWarmup();
+	Ok &= U_BP_PowerStationInteractionSourceComponent_C::BridgeWarmup();
+	Ok &= U_BP_VRMenu_C::BridgeWarmup();
+	Ok &= U_BP_VRMovementComponent_C::BridgeWarmup();
+	Ok &= U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C::BridgeWarmup();
+	Ok &= U_WIDGET_ActiveHazard_C::BridgeWarmup();
+	Ok &= U_WIDGET_DebugWidget_C::BridgeWarmup();
+	Ok &= U_WIDGET_DebugWidgetEntry_C::BridgeWarmup();
+	Ok &= U_WIDGET_VRHUD_C::BridgeWarmup();
+	Ok &= U_WIDGET_VRMenu_C::BridgeWarmup();
+	return Ok;
+}
+}

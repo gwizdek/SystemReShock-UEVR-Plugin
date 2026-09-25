@@ -28,6 +28,8 @@ public:
     static float uevr_param_to_float(const UEVR_VRData* vr, const char* key);
     static void handle_native_stereo_fix_cycler(const UEVR_VRData* vr);
     static void cycle_native_stereo_fix();
+    // Resolves every BridgeSDK class, property and function up front (see BridgeSDK.hpp).
+    static void warmup_bridge();
     static void list_overlapping_components(const class SDK::UObject* world_context_object, const struct SDK::FVector& sphere_pos, float sphere_radius);
 
     PluginUtils() = delete;
