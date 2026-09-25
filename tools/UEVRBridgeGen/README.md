@@ -41,6 +41,20 @@ Opening the project in the editor and accepting the rebuild prompt does the same
 
 ## Running it
 
+The usual way is the script, run from the repository root:
+
+```powershell
+.\tools\UEVRBridgeGen\Generate.ps1             # Blueprints changed: generate
+.\tools\UEVRBridgeGen\Generate.ps1 -RebuildGen  # generator source changed: build, then generate
+```
+
+It reads `bridgegen.config.json` in this folder for the engine folder, the project
+and the options below, and writes its logs to `Intermediate\Generate\`.
+`documentation/bridge-sdk-generator.md` describes the config keys and what the
+generator does.
+
+The commandlet can also be run by hand:
+
 ```cmd
 "C:\Program Files\Epic Games\UE_4.27\Engine\Binaries\Win64\UE4Editor-Cmd.exe" ^
     "C:\path\to\UnrealProject\<ProjectName>.uproject" ^
@@ -88,6 +102,10 @@ public:
 
 - The class derives from the Dumper-7 parent and adds no data members. Every native
   member and method of the parent keeps working unchanged.
+- Each accessor has a `BridgeProp_<Name>()` / `BridgeFunc_<Name>()` companion that holds
+  its cached lookup, and every class and struct has a `static bool BridgeWarmup()` that
+  resolves all of them at once. `BridgeSDK.hpp` adds `SDK::BridgeWarmupAll()`, which
+  calls every warm-up.
 - Variables are methods returning a reference: `body->ADSAngle() = 1.0f;`.
 - Bit-packed bools (rare in Blueprints) get a getter and a setter overload instead.
 - Out parameters are pointers, as in Dumper-7. Struct, string and container inputs
@@ -155,7 +173,17 @@ was with Dumper-7.
 
 - The first access to a class, property or function resolves it through the UEVR
   API. Later accesses reuse the cached class pointer, property offset or function
-  pointer.
+  pointer. After that, a property read is an offset add and a function call costs the
+  same as a Dumper-7 wrapper.
+- The first access is not free: finding a class scans the whole object array, and each
+  property or function walks the class hierarchy by name. A code path that runs for
+  the first time mid-game pays for all of its call sites in one frame. To avoid that,
+  call `SDK::BridgeWarmupAll()` at a moment where a hitch is harmless, for example
+  right after spawning the VR body. It returns `false` and logs `[bridge] warm-up
+  skipped` for a class that is not loaded yet; that class then resolves on first use
+  as before. Calling it again later is cheap, since resolved entries are skipped.
+- Interface functions are not warmed up. They resolve against the target object's
+  class, which is only known at call time.
 - Function pointers and parameter offsets are cached per target class. Calling the
   same wrapper on an object of a Blueprint subclass re-resolves once, so the subclass
   override is used.
