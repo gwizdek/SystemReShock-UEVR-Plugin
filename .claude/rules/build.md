@@ -25,20 +25,20 @@ The platform is always x64. The Win32 configurations are not used. Use Debug onl
 
 ### Where the plugin output lands
 
-The shippable files are always in the repository `x64\<Configuration>\` folder:
+The shippable files are always in `SystemShockVR\x64\<Configuration>\`, whether the build comes from Visual Studio or the command line:
 
 - `SystemReShockVR.dll`
 - `SystemReShockVR.exp`
 - `SystemReShockVR.lib`
 - `SystemReShockVR.pdb`
 
-A command-line build of the project alone writes to `SystemShockVR\x64\<Configuration>\` and then copies these four files to the repository folder. A Visual Studio build through the solution writes to the repository folder directly. The copy is a target inside the project file, `CopyShipFilesToRepoOutDir`, so it runs for every build.
+The project file sets `OutDir` and `IntDir` for x64 on purpose. Without them, Visual Studio would write the output to the repository root `x64\` folder and put the `.obj` files next to the DLL.
 
 ### Plugin rules
 
-- Take the built DLL from the repository `x64\<Configuration>\` folder, never from `SystemShockVR\x64\`.
-- Do not delete `SystemShockVR\SystemReShockVR\x64\`. It holds the `.obj` and `.tlog` files that make the next build incremental.
-- Do not add `OutDir` or `IntDir` overrides to the project file or to the MSBuild command line.
+- Take the built DLL from `SystemShockVR\x64\<Configuration>\`. Nothing should be written to the repository root `x64\` folder.
+- Do not delete `SystemShockVR\x64\<Configuration>\obj\`. It holds the `.obj` and `.tlog` files that make the next build incremental.
+- Do not override `OutDir` or `IntDir` on the MSBuild command line, and do not remove the `OutDir` setting from the project file.
 
 ## Installer
 
@@ -55,7 +55,7 @@ The EXE lands in `SystemShockInstaller\src\SystemReShockInstaller\bin\Release\ne
 
 - Run the tests after building the installer unless told not to.
 - The build empties and refills `SystemShockInstaller\mod_files\` from three sources, then zips it into the EXE. Never edit `mod_files\` by hand and never commit it; it is gitignored.
-- The sources are MSBuild properties in the installer project file: `ProfileSourceDir` (default `<repo>\profile\`), `PluginDllPath` (default `<repo>\x64\Release\SystemReShockVR.dll`) and `PakSourceDir` (default the Unreal project's `WindowsNoEditor\SystemShock\Content\Paks\` folder). Override with `/p:Name=value` when asked to build from another location.
+- The sources are MSBuild properties in the installer project file: `ProfileSourceDir` (default `<repo>\profile\`), `PluginDllPath` (default `<repo>\SystemShockVR\x64\Release\SystemReShockVR.dll`) and `PakSourceDir` (default the Unreal project's `WindowsNoEditor\SystemShock\Content\Paks\` folder). Override with `/p:Name=value` when asked to build from another location.
 - Only `pakchunk10-WindowsNoEditor.pak` is taken from `PakSourceDir`; it becomes `SystemShockVRModCore_P.pak`. `pakchunk0-WindowsNoEditor.pak` is never shipped. `SystemShockVRModAddon_P.pak` comes from `<repo>\profile\paks\`.
 - Build the plugin before the installer when the installer must ship a fresh plugin. The installer build fails if the plugin DLL, the profile folder or the Core chunk is missing.
 - Do not build the installer with `dotnet build SystemReShockVR.sln`. The solution also holds the C++ project, which the `dotnet` CLI cannot build.

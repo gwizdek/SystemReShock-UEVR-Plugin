@@ -40,13 +40,12 @@ build. Or from a Developer PowerShell:
 msbuild SystemShockVR\SystemShockVR.vcxproj /p:Configuration=Release /p:Platform=x64 /m
 ```
 
-The DLL lands in `x64\Release\SystemReShockVR.dll` at the repository root
-either way. A Visual Studio build writes there directly. A command-line build of
-the project alone writes to `SystemShockVR\x64\Release\` and then copies the
-`.dll`, `.exp`, `.lib` and `.pdb` to the repository folder. The copy is the
-`CopyShipFilesToRepoOutDir` target in the project file. Leave
-`SystemShockVR\SystemReShockVR\x64\` alone; it holds the `.obj` and `.tlog`
-files that keep builds incremental.
+The DLL lands in `SystemShockVR\x64\Release\SystemReShockVR.dll`, whether the
+build comes from Visual Studio or the command line. The project file sets
+`OutDir` to the project folder so the repository root stays free of build
+output, and `IntDir` to its `obj` subfolder so the `.obj` files stay out of
+the way. Leave `SystemShockVR\x64\Release\obj\` alone; it holds the `.obj` and
+`.tlog` files that keep builds incremental.
 
 Notes on the configurations:
 

@@ -29,7 +29,7 @@
   -->
   <PropertyGroup>
     <RepoRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '..', '..', '..'))</RepoRoot>
-    <PluginDllPath Condition="'$(PluginDllPath)' == ''">$(RepoRoot)x64\Release\SystemReShockVR.dll</PluginDllPath>
+    <PluginDllPath Condition="'$(PluginDllPath)' == ''">$(RepoRoot)SystemShockVR\x64\Release\SystemReShockVR.dll</PluginDllPath>
     <PakSourceDir Condition="'$(PakSourceDir)' == ''">d:\Unreal Engine\Projects\SystemReShock-UE4-Project\WindowsNoEditor\SystemShock\Content\Paks\</PakSourceDir>
     <ProfileSourceDir Condition="'$(ProfileSourceDir)' == ''">$(RepoRoot)profile\</ProfileSourceDir>
     <ModFilesDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '..', '..', 'mod_files'))</ModFilesDir>

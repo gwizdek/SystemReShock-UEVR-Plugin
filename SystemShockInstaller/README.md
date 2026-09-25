@@ -82,7 +82,7 @@ and can be overridden on the command line with `/p:Name=value`.
 | Property | Default | Copied to |
 |----------|---------|-----------|
 | `ProfileSourceDir` | `<repo>\profile\` | `mod_files\` (all files and folders, except `imgui.ini`) |
-| `PluginDllPath` | `<repo>\x64\Release\SystemReShockVR.dll` | `mod_files\plugins\` |
+| `PluginDllPath` | `<repo>\SystemShockVR\x64\Release\SystemReShockVR.dll` | `mod_files\plugins\` |
 | `PakSourceDir` | `d:\Unreal Engine\Projects\SystemReShock-UE4-Project\WindowsNoEditor\SystemShock\Content\Paks\` | `mod_files\paks\` |
 
 From `PakSourceDir` only `pakchunk10-WindowsNoEditor.pak` is taken. It is
@@ -96,7 +96,7 @@ after the copy.
 
 ### Releasing a new mod version
 
-1. Build the plugin in Release so `<repo>\x64\Release\SystemReShockVR.dll` is current.
+1. Build the plugin in Release so `<repo>\SystemShockVR\x64\Release\SystemReShockVR.dll` is current.
 2. Package the Unreal project so `pakchunk10-WindowsNoEditor.pak` is current.
 3. Update the files in `<repo>\profile\` if the profile changed.
 4. Set `InformationalVersion` in `src/SystemReShockInstaller/SystemReShockInstaller.csproj`

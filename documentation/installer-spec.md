@@ -24,7 +24,7 @@ System Shock Remake UEVR mod. It does not ship UEVR.
 
 - On every build, MSBuild targets in the project file empty `mod_files/`, fill
   it from the repository `profile/` folder (without `imgui.ini`), the plugin
-  DLL in the repository `x64/Release/` folder and the cooked Core chunk from the
+  DLL in `SystemShockVR/x64/Release/` and the cooked Core chunk from the
   Unreal project, then zip it into `obj/` and embed the zip as a resource.
 - The three source paths are MSBuild properties (`ProfileSourceDir`,
   `PluginDllPath`, `PakSourceDir`) and can be overridden with `/p:`.
