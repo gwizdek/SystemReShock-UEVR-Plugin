@@ -4,17 +4,21 @@
     "path": [
         "Acknowledged Pawn",
         "Components",
-        "SceneComponent LeanOffset",
+        "SceneComponent LookPivot",
         "Properties",
         "RelativeLocation"
     ],
     "properties": [
         {
             "data": 0,
+            "name": "X"
+        },
+        {
+            "data": 0,
             "name": "Y"
         },
         {
-            "data": 1116340224,
+            "data": 0,
             "name": "Z"
         }
     ],

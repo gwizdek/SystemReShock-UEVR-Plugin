@@ -4,12 +4,14 @@
     "path": [
         "Acknowledged Pawn",
         "Components",
-        "COMP_Scanner_C COMP_Scanner"
+        "CameraComponent PlayerCamera",
+        "Properties",
+        "RelativeRotation"
     ],
     "properties": [
         {
-            "data": 1148846080,
-            "name": "CachedScanDistance"
+            "data": 0,
+            "name": "Yaw"
         }
     ],
     "type": "properties"

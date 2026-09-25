@@ -1,0 +1,22 @@
+{
+  "ID": "00000000-0000-0000-0000-000000000000",
+  "exeName": "SystemReShock-Win64-Shipping",
+  "gameName": "System Shock",
+  "gameVersion": "2.1.0 (Steam)",
+  "authorName": "gwizdek",
+  "minUEVRNightlyNumber": 1127,
+  "nullifyPlugins": false,
+  "lateInjection": false,
+  "modifiedDate": "2026-06-19T00:00:00+01:00",
+  "remarks": "Profile version 2.0",
+  "fileCopies": [
+    {
+      "sourceFileRelProfile": "paks\\SystemShockVRModCore_P.pak",
+      "destinationFolderRelGameEXE": "..\\..\\Content\\Paks"
+    },
+    {
+      "sourceFileRelProfile": "paks\\SystemShockVRModAddon_P.pak",
+      "destinationFolderRelGameEXE": "..\\..\\Content\\Paks"
+    }
+  ]
+}

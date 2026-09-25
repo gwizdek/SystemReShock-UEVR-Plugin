@@ -10,16 +10,16 @@
     ],
     "properties": [
         {
-            "data": 3096723456,
-            "name": "Z"
-        },
-        {
-            "data": 907257664,
+            "data": 0,
             "name": "X"
         },
         {
-            "data": 956258509,
+            "data": 0,
             "name": "Y"
+        },
+        {
+            "data": 0,
+            "name": "Z"
         }
     ],
     "type": "properties"

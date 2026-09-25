@@ -1,5 +1,5 @@
 {
-    "hide": false,
+    "hide": true,
     "hide_legacy": false,
     "path": [
         "Acknowledged Pawn",
@@ -8,13 +8,8 @@
         "Properties",
         "CurrentEquippedWeapon",
         "Properties",
-        "IdleSequence"
+        "GrenadeMeshComponent"
     ],
-    "properties": [
-        {
-            "data": 0,
-            "name": "RateScale"
-        }
-    ],
+    "properties": [],
     "type": "properties"
 }

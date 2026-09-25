@@ -1,0 +1,28 @@
+{
+    "hide": false,
+    "hide_legacy": false,
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "COMP_MoveControlManager_C COMP_MoveControlManager"
+    ],
+    "properties": [
+        {
+            "data": 1065353216,
+            "name": "CrouchHeightRatio"
+        },
+        {
+            "data": 1454761505,
+            "name": "CrouchDuration"
+        },
+        {
+            "data": 1114636288,
+            "name": "CrouchTorsoToEyeHeight"
+        },
+        {
+            "data": 1117782016,
+            "name": "HalfHeightStanding"
+        }
+    ],
+    "type": "properties"
+}
