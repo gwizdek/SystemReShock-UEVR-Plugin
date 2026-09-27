@@ -34,6 +34,18 @@ The shippable files are always in `SystemShockVR\x64\<Configuration>\`, whether 
 
 The project file sets `OutDir` and `IntDir` for x64 on purpose. Without them, Visual Studio would write the output to the repository root `x64\` folder and put the `.obj` files next to the DLL.
 
+### Deploying the plugin for testing
+
+To test a build in the game, the DLL must be copied into the UEVR profile plugins folder
+`%APPDATA%\UnrealVRMod\SystemReShock-Win64-Shipping\plugins\` and then reloaded from the UEVR overlay.
+The reload is always a manual step done by the user.
+
+`scripts\build-and-deploy.ps1` builds the plugin and copies the DLL and PDB there. The `/build-and-deploy`
+skill runs that script. "Build and deploy" means the plugin only.
+
+The game keeps the loaded DLL locked. Unload the plugin in the UEVR overlay before deploying. If the DLL is
+still locked, the script stops with a message and does not rename, move or delete the file.
+
 ### Plugin rules
 
 - Take the built DLL from `SystemShockVR\x64\<Configuration>\`. Nothing should be written to the repository root `x64\` folder.
