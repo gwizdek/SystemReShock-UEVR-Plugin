@@ -284,6 +284,9 @@
     <ClCompile Include="SDK\WIDGET_SimpleHUD_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\WIDGET_MainMenu_InGame_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
     <ClCompile Include="SDK\WIDGET_CyberspaceHUD_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>

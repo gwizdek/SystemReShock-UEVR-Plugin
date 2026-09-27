@@ -528,6 +528,19 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
             return;
         }
 
+        // Pause menu
+        if (m_game_state.get() == GAME_STATE_PAUSE_MENU) {
+            if (g_vr_body == nullptr) {
+                return;
+            }
+
+            if (m_gamepad_left_trigger.is_held() && m_gamepad_right_shoulder.is_pressed()) {
+                open_debug_menu();
+            }
+
+            return;
+        }
+
         // Focusable interaction
         if (m_game_state.get() == GAME_STATE_INTERACTABLE) {
             auto player_controller = UGameplayStatics::GetPlayerController(m_world, 0);
@@ -703,6 +716,29 @@ void UEVRPlugin::handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData
 }
 
 
+// Opens the game's built-in debug menu through the in-game main menu widget.
+// The game's own gamepad combo for this is dead code in the shipped build, so the plugin calls it directly.
+void UEVRPlugin::open_debug_menu() {
+    try {
+        if (m_neural_hud == nullptr) {
+            API::get()->log_warn("[plugin][open_debug_menu] No player HUD widget");
+            return;
+        }
+        UWIDGET_MainMenu_InGame_C* main_menu{ nullptr };
+        m_neural_hud->GetMainMenuWidget(&main_menu);
+        if (main_menu == nullptr) {
+            API::get()->log_warn("[plugin][open_debug_menu] No main menu widget");
+            return;
+        }
+        API::get()->log_info("[plugin][open_debug_menu] Opening debug menu");
+        main_menu->OpenDebugMenu();
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][open_debug_menu] Exception");
+    }
+}
+
+
 void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
     try {
         // TODO: move it to BPs
@@ -721,7 +757,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             state->Gamepad.wButtons |= XINPUT_GAMEPAD_A;
         }
 
-        // debug - show all primitive components in range
+        // debug - open the game's debug menu (WIDGET_MainMenu_InGame::OpenDebugMenu)
         if (m_gamepad_left_trigger.is_held() && m_gamepad_right_shoulder.is_pressed()) {
             //PluginUtils::list_overlapping_components(m_world, g_vr_body->MotionControllerRight()->K2_GetComponentLocation(), 100.f);
             //PluginUtils::show_all_primitive_components(m_world, g_vr_body->MotionControllerRight(), 100.f, true);

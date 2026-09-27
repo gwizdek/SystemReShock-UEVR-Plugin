@@ -202,5 +202,8 @@ public:
     void handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_vr_menu_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
 
+    // Debug
+    void open_debug_menu();
+
     SDK::AActor* Custom2DScreen{ nullptr };
 };

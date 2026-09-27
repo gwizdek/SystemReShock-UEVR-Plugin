@@ -236,6 +236,7 @@
     <ClCompile Include="SDK\WIDGET_Minimap_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_PlayerHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_SimpleHUD_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_MainMenu_InGame_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_TargetID_Display_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
     <ClCompile Include="vr_avatar.cpp" />
