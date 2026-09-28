@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -165,6 +165,7 @@
     <ClInclude Include="mINI\ini.h" />
     <ClInclude Include="plugin.hpp" />
     <ClInclude Include="plugin_utils.hpp" />
+    <ClInclude Include="sdk_bootstrap.hpp" />
     <ClInclude Include="SDK\CoreUObject_structs.hpp" />
     <ClInclude Include="SDK\Engine_classes.hpp" />
     <ClInclude Include="SDK\PAWN_Avatar_classes.hpp" />
@@ -196,6 +197,7 @@
     </ClCompile>
     <ClCompile Include="plugin.cpp" />
     <ClCompile Include="plugin_utils.cpp" />
+    <ClCompile Include="sdk_bootstrap.cpp" />
     <ClCompile Include="rendering\d3d11.cpp" />
     <ClCompile Include="rendering\d3d12.cpp" />
     <ClCompile Include="SDK\ANIMBP_Magnum_functions.cpp" />

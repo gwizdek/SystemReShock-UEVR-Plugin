@@ -81,6 +81,9 @@
     <ClInclude Include="plugin_utils.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="sdk_bootstrap.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="plugin.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -297,6 +300,9 @@
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="plugin_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk_bootstrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\AssetRegistry_functions.cpp">

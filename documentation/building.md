@@ -118,6 +118,17 @@ when the game updates. Dumping is done at runtime with Dumper-7 against the
 running game, and the result replaces the folder. The mod's own Blueprints are
 not part of that dump; they come from the generator above.
 
+The dump was taken from the Steam build. The GOG build has the same class
+layouts but links the engine at different addresses, so the image-relative
+constants in `SDK/Basic.hpp` (`GObjects`, `AppendString`, and the rest) are
+only right for Steam. The plugin does not rely on them: `sdk_bootstrap.cpp`
+runs first in `on_initialize` and points the SDK at the object array and the
+`FName` string function that UEVR found for the running build. The world is
+read through `SdkBootstrap::get_world()`, which goes from UEVR's engine
+object to the game viewport; do not call `UWorld::GetWorld()`, it reads the
+`GWorld` constant. One DLL therefore runs on both stores. When the bootstrap
+fails it logs an error and the SDK falls back to the constants from the dump.
+
 ## Git
 
 `master` is the default branch. Work on a branch named after

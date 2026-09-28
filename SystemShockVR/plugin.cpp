@@ -56,6 +56,7 @@
 
 #include "plugin.hpp"
 #include "plugin_utils.hpp"
+#include "sdk_bootstrap.hpp"
 #include "vr_body.hpp"
 #include "vr_item_selector.hpp"
 #include "vr_mfd.hpp"
@@ -154,6 +155,9 @@ void install_queue_notification_hook() {
 // -------------------------------------------------------------------------------------
 void UEVRPlugin::on_initialize() {
     PLUGIN_LOG_ONCE("Plugin Initializing...");
+
+    // Must run before the first StaticClass()/GetDefaultObj() call below.
+    SdkBootstrap::initialize();
 
     // disable player focus (camera pull) on interactable objects like vending machines / keyboards
     auto move_control = SDK::UMOVECONTROL_FocusableInteract_C::GetDefaultObj();
@@ -270,7 +274,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
 bool UEVRPlugin::prepare_pointers() {
     try {
         // world
-        m_world = UWorld::GetWorld();
+        m_world = SdkBootstrap::get_world();
         if (m_world == nullptr) {
             API::get()->log_error("[plugin][prepare_pointers] World pointer error");
             return false;
@@ -1624,7 +1628,7 @@ void UEVRPlugin::cleanup_pointers() {
 void UEVRPlugin::cleanup_actors() {
     try {
         API::get()->log_warn("[plugin][cleanup_actors] Starting Actors Cleanup");
-        auto world = UWorld::GetWorld();
+        auto world = SdkBootstrap::get_world();
         if (!UKismetSystemLibrary::IsValid(world)) {
             API::get()->log_error("[plugin][cleanup_actors] Invalid World");
             return;
@@ -1960,7 +1964,7 @@ void UEVRPlugin::initialize_mcs(APAWN_Hacker_Implant_C* pawn) {
         // - TargetID
         // --------------------------------------------------------------------
 
-        auto world = UWorld::GetWorld();
+        auto world = SdkBootstrap::get_world();
         if (m_world == nullptr) {
             API::get()->log_error("[plugin][initialize_mcs] World pointer error");
             return;

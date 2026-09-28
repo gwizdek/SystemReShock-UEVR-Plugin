@@ -24,6 +24,7 @@
 #include "vr_body.hpp"
 #include "vr_plugin_shared.hpp"
 #include "plugin_utils.hpp"
+#include "sdk_bootstrap.hpp"
 
 extern SDK::A_BP_VRBody_C* g_vr_body;
 
@@ -54,7 +55,7 @@ void VRBody::set_player_response_to_collision_channel(ECollisionChannel channel,
 A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
     try {
         API::get()->log_warn("[vr_body][initialize_vr_body] Begin");
-        auto world = UWorld::GetWorld();
+        auto world = SdkBootstrap::get_world();
 
         const FVector pawn_location = pawn->K2_GetActorLocation();
         FTransform pawn_transform{};
