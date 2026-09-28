@@ -31,7 +31,7 @@
 
                 <TextBlock FontWeight="SemiBold" Margin="0,22,0,0" Text="System Shock Remake folder" />
                 <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6"
-                           Text="The folder that contains SystemShock.exe, for example C:\Program Files (x86)\Steam\steamapps\common\System Shock Remake or C:\GOG Games\System Shock Remake. It is filled in automatically when the game is found." />
+                           Text="The folder that contains SystemShock.exe, for example C:\Program Files (x86)\Steam\steamapps\common\System Shock Remake or C:\GOG Games\System Shock Remake." />
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,6"
                             Visibility="{Binding ShowsStoreButtons, Converter={StaticResource BoolToVisibility}}">
                     <Button Content="Use Steam version" Command="{Binding UseSteamCommand}" Margin="0" ToolTip="{Binding SteamFolder}" />
