@@ -1,4 +1,5 @@
 using System;
+using SystemReShockInstaller.Models;
 using SystemReShockInstaller.Services;
 
 namespace SystemReShockInstaller.ViewModels;
@@ -10,7 +11,8 @@ public sealed class WizardServices
     public ISettingsStore SettingsStore { get; set; } = null!;
     public IFolderPicker FolderPicker { get; set; } = null!;
     public IProcessChecker ProcessChecker { get; set; } = null!;
-    public Func<string?> LocateSteamGame { get; set; } = null!;
+    /// <summary>Where a store installed the game, or null when that store has no install.</summary>
+    public Func<GameStore, string?> LocateGame { get; set; } = null!;
     public InstallStateResolver StateResolver { get; set; } = null!;
     public GameLaunchService Launcher { get; set; } = null!;
     public string AppDataRoot { get; set; } = string.Empty;

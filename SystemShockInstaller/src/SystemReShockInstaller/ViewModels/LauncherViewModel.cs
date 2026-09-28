@@ -25,6 +25,7 @@ public sealed class LauncherViewModel : ViewModelBase
         _plan = state.Plan ?? throw new ArgumentException("A launchable state is required.", nameof(state));
         _settings = state.Settings ?? throw new ArgumentException("A launchable state is required.", nameof(state));
         InstalledVersionText = "Mod v" + (_settings.InstalledVersion ?? "unknown") + " installed";
+        StoreText = GameStores.Describe(_plan.Store);
         DelayText = "UEVR is injected " + DelaySeconds + " seconds after the game window appears.";
         _launchCommand = new RelayCommand(() => _ = LaunchAsync(), () => !IsBusy && !_injected);
         _reinstallCommand = new RelayCommand(reinstall, () => !IsBusy);
@@ -32,6 +33,7 @@ public sealed class LauncherViewModel : ViewModelBase
     }
 
     public string InstalledVersionText { get; }
+    public string StoreText { get; }
     public string DelayText { get; }
     public ICommand LaunchCommand => _launchCommand;
     public ICommand ReinstallCommand => _reinstallCommand;
@@ -95,7 +97,7 @@ public sealed class LauncherViewModel : ViewModelBase
         IsBusy = true;
         try
         {
-            var request = new LaunchRequest(_plan.UevrPath, _plan.GamePath, Runtime, DelaySeconds);
+            var request = new LaunchRequest(_plan.UevrPath, _plan.GamePath, _plan.Store, Runtime, DelaySeconds);
             await _services.Launcher.RunAsync(request, new Progress<string>(s => Status = s), CancellationToken.None);
             _injected = true;
             Status = "UEVR injected. Put on your headset.";

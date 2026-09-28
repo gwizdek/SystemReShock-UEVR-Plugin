@@ -21,7 +21,7 @@ public sealed class SettingsSaveStep : IInstallStep
     public IEnumerable<string> Describe(InstallPlan plan)
     {
         yield return "Target: " + plan.SettingsPath;
-        yield return "Remember the UEVR folder and the game folder";
+        yield return "Remember the UEVR folder, the game folder and the store (" + GameStores.Label(plan.Store) + ")";
     }
 
     public void Execute(InstallPlan plan)
@@ -30,6 +30,7 @@ public sealed class SettingsSaveStep : IInstallStep
         {
             UevrPath = plan.UevrPath,
             GamePath = plan.GamePath,
+            Store = GameStores.Key(plan.Store),
             InstalledVersion = _version,
             InstalledAt = DateTimeOffset.Now.ToString("yyyy-MM-dd'T'HH:mm:sszzz"),
         });

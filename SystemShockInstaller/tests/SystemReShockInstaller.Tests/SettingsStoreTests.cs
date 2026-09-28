@@ -81,7 +81,7 @@ public class SettingsStoreTests
     public void Save_step_records_plan_paths_and_version()
     {
         using var dir = new TempDir();
-        var plan = new InstallPlan(@"C:\uevr", @"C:\game", dir.Path);
+        var plan = new InstallPlan(@"C:\uevr", @"C:\game", dir.Path, GameStore.Steam);
         var store = new SettingsStore();
 
         new SettingsSaveStep(store, "2.0-beta.2").Execute(plan);
@@ -90,6 +90,7 @@ public class SettingsStoreTests
         Assert.Equal(@"C:\uevr", loaded!.UevrPath);
         Assert.Equal(@"C:\game", loaded.GamePath);
         Assert.Equal("2.0-beta.2", loaded.InstalledVersion);
+        Assert.Equal("steam", loaded.Store);
         Assert.Matches(@"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$", loaded.InstalledAt);
     }
 }

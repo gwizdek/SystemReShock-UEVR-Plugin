@@ -29,7 +29,7 @@ public sealed class InstallStateResolver
         if (PathValidator.ValidateUevrFolder(settings.UevrPath) != null || PathValidator.ValidateGameFolder(settings.GamePath) != null)
             return InstallState.NotInstalled("The UEVR or game folder saved last time no longer exists.");
 
-        var plan = new InstallPlan(settings.UevrPath!, settings.GamePath!, _appDataRoot);
+        var plan = new InstallPlan(settings.UevrPath!, settings.GamePath!, _appDataRoot, StoreOf(settings));
         return Classify(plan, settings, _verifier.Verify(plan));
     }
 
@@ -43,6 +43,10 @@ public sealed class InstallStateResolver
             return InstallState.FilesChanged(issue.Message);
         return InstallState.Installed(plan, settings);
     }
+
+    /// <summary>Settings written before the store key existed are resolved from the folder, without rewriting the file.</summary>
+    private static GameStore StoreOf(InstallerSettings settings) =>
+        GameStores.Parse(settings.Store) ?? GameStoreDetector.Detect(settings.GamePath);
 
     private string VersionText(string? installed) =>
         "Mod v" + (installed ?? "unknown") + " is installed. This setup contains v" + _version + ".";

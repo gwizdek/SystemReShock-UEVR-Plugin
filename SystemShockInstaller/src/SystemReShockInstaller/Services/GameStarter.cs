@@ -8,26 +8,41 @@ namespace SystemReShockInstaller.Services;
 
 public interface IGameStarter
 {
-    void Start(string gamePath);
+    void Start(string gamePath, GameStore store);
 }
 
-/// <summary>Starts the game through Steam so DRM, overlay, and cloud saves work. Falls back to the exe.</summary>
+/// <summary>
+/// The Steam version starts through Steam so DRM, overlay and cloud saves work, with the exe as fallback.
+/// Every other version starts the shipping exe directly; GOG games are DRM-free and need no client.
+/// </summary>
 public sealed class GameStarter : IGameStarter
 {
-    public void Start(string gamePath)
+    public void Start(string gamePath, GameStore store)
     {
+        if (!GameStores.StartsThroughSteam(store))
+        {
+            StartExe(gamePath);
+            return;
+        }
         try
         {
-            Launch(ModPaths.SteamLaunchUri);
+            Launch(new ProcessStartInfo(ModPaths.SteamLaunchUri));
         }
         catch (Exception ex) when (ex is Win32Exception || ex is InvalidOperationException)
         {
-            Launch(Path.Combine(gamePath, ModPaths.GameExeRelative));
+            StartExe(gamePath);
         }
     }
 
-    private static void Launch(string target)
+    private static void StartExe(string gamePath)
     {
-        using var process = Process.Start(new ProcessStartInfo(target) { UseShellExecute = true });
+        var exe = Path.Combine(gamePath, ModPaths.GameExeRelative);
+        Launch(new ProcessStartInfo(exe) { WorkingDirectory = Path.GetDirectoryName(exe) });
+    }
+
+    private static void Launch(ProcessStartInfo info)
+    {
+        info.UseShellExecute = true;
+        using var process = Process.Start(info);
     }
 }

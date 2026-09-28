@@ -11,7 +11,7 @@ public class PathTests
     [Fact]
     public void Plan_resolves_all_targets_from_game_and_appdata()
     {
-        var plan = new InstallPlan(@"C:\uevr", @"D:\Steam\steamapps\common\System Shock Remake", @"C:\Users\ż\AppData\Roaming");
+        var plan = new InstallPlan(@"C:\uevr", @"D:\Steam\steamapps\common\System Shock Remake", @"C:\Users\ż\AppData\Roaming", GameStore.Steam);
 
         Assert.Equal(@"C:\Users\ż\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping", plan.ProfileTargetDir);
         Assert.Equal(@"D:\Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks", plan.PaksTargetDir);

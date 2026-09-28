@@ -11,7 +11,8 @@ namespace SystemReShockInstaller.Tests;
 
 public class GameLaunchServiceTests
 {
-    private static readonly LaunchRequest Request = new(@"C:\uevr", @"C:\game", VrRuntime.OpenVR, delaySeconds: 1);
+    private static readonly LaunchRequest Request = new(@"C:\uevr", @"C:\game", GameStore.Steam, VrRuntime.OpenVR, delaySeconds: 1);
+    private static readonly LaunchRequest GogRequest = new(@"C:\gog", @"D:\GOG\System Shock Remake", GameStore.GOG, VrRuntime.OpenXR, delaySeconds: 1);
 
     [Fact]
     public async Task Injects_into_already_running_game_without_starting_it()
@@ -42,8 +43,24 @@ public class GameLaunchServiceTests
 
         Assert.True(starter.Started);
         Assert.Equal(@"C:\game", starter.GamePath);
+        Assert.Equal(GameStore.Steam, starter.Store);
+        Assert.Contains("Starting System Shock Remake through Steam...", log);
         Assert.Contains("Waiting for the game window...", log);
         Assert.NotNull(injector.ProcessId);
+    }
+
+    [Fact]
+    public async Task Gog_version_is_started_from_the_game_folder()
+    {
+        var starter = new FakeStarter();
+        var watcher = new FakeWatcher { AppearsLater = Process.GetCurrentProcess() };
+        var log = new List<string>();
+
+        await new GameLaunchService(starter, watcher, new FakeInjector()).RunAsync(GogRequest, new Recorder(log), CancellationToken.None);
+
+        Assert.Equal(GameStore.GOG, starter.Store);
+        Assert.Equal(@"D:\GOG\System Shock Remake", starter.GamePath);
+        Assert.Contains("Starting System Shock Remake from the game folder...", log);
     }
 
     [Fact]
@@ -68,11 +85,13 @@ public class GameLaunchServiceTests
     {
         public bool Started { get; private set; }
         public string? GamePath { get; private set; }
+        public GameStore? Store { get; private set; }
 
-        public void Start(string gamePath)
+        public void Start(string gamePath, GameStore store)
         {
             Started = true;
             GamePath = gamePath;
+            Store = store;
         }
     }
 

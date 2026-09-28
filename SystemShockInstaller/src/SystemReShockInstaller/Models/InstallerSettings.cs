@@ -26,4 +26,8 @@ public sealed class InstallerSettings
     /// <summary>Seconds between the game window appearing and injection. Missing means the default.</summary>
     [DataMember(Name = "injectDelaySeconds", Order = 5, EmitDefaultValue = false)]
     public int? InjectDelaySeconds { get; set; }
+
+    /// <summary>"steam", "gog" or "other". Missing means: detect it from the game folder.</summary>
+    [DataMember(Name = "store", Order = 6, EmitDefaultValue = false)]
+    public string? Store { get; set; }
 }

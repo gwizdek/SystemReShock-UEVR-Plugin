@@ -12,7 +12,7 @@ public class InstallStepTests
     {
         using var appData = new TempDir();
         using var bundle = TestBundle.Create();
-        var plan = new InstallPlan(@"C:\uevr", @"C:\game", appData.Path);
+        var plan = new InstallPlan(@"C:\uevr", @"C:\game", appData.Path, GameStore.Steam);
         Directory.CreateDirectory(plan.ProfileTargetDir);
         File.WriteAllText(Path.Combine(plan.ProfileTargetDir, "stale_old_plugin.dll"), "old");
 
@@ -30,7 +30,7 @@ public class InstallStepTests
     {
         using var appData = new TempDir();
         using var bundle = TestBundle.Create();
-        var plan = new InstallPlan(@"C:\uevr", @"C:\game", appData.Path);
+        var plan = new InstallPlan(@"C:\uevr", @"C:\game", appData.Path, GameStore.Steam);
 
         new ProfileInstallStep(bundle).Execute(plan);
 
@@ -42,7 +42,7 @@ public class InstallStepTests
     {
         using var game = new TempDir();
         using var bundle = TestBundle.Create();
-        var plan = new InstallPlan(@"C:\uevr", game.Path, game.Path);
+        var plan = new InstallPlan(@"C:\uevr", game.Path, game.Path, GameStore.Steam);
         Directory.CreateDirectory(plan.PaksTargetDir);
         File.WriteAllText(Path.Combine(plan.PaksTargetDir, "SystemShockVRModCore_P.pak"), "core-v1");
         File.WriteAllText(Path.Combine(plan.PaksTargetDir, "pakchunk0-WindowsNoEditor.pak"), "game-data");
@@ -61,7 +61,7 @@ public class InstallStepTests
     {
         using var game = new TempDir();
         using var bundle = TestBundle.Create();
-        var plan = new InstallPlan(@"C:\uevr", game.Path, game.Path);
+        var plan = new InstallPlan(@"C:\uevr", game.Path, game.Path, GameStore.Steam);
         Directory.CreateDirectory(plan.PaksTargetDir);
         var target = Path.Combine(plan.PaksTargetDir, "SystemShockVRModAddon_P.pak");
         File.WriteAllText(target, "addon-v1");

@@ -21,13 +21,13 @@ public sealed class GameLaunchService
 
     public async Task RunAsync(LaunchRequest request, IProgress<string> status, CancellationToken cancellation)
     {
-        using var game = await FindOrStartGameAsync(request.GamePath, status, cancellation).ConfigureAwait(false);
+        using var game = await FindOrStartGameAsync(request, status, cancellation).ConfigureAwait(false);
         await CountdownAsync(request.DelaySeconds, status, cancellation).ConfigureAwait(false);
         status.Report("Injecting UEVR (" + VrRuntimes.DllName(request.Runtime) + ")...");
         _injector.Inject(game.Id, request.UevrPath, request.Runtime);
     }
 
-    private async Task<System.Diagnostics.Process> FindOrStartGameAsync(string gamePath, IProgress<string> status, CancellationToken cancellation)
+    private async Task<System.Diagnostics.Process> FindOrStartGameAsync(LaunchRequest request, IProgress<string> status, CancellationToken cancellation)
     {
         var running = _watcher.FindReadyGameProcess();
         if (running != null)
@@ -35,8 +35,8 @@ public sealed class GameLaunchService
             status.Report("The game is already running.");
             return running;
         }
-        status.Report("Starting System Shock Remake through Steam...");
-        _starter.Start(gamePath);
+        status.Report("Starting System Shock Remake " + GameStores.LaunchVia(request.Store) + "...");
+        _starter.Start(request.GamePath, request.Store);
         status.Report("Waiting for the game window...");
         return await _watcher.WaitForReadyGameAsync(ModPaths.GameWindowTimeout, cancellation).ConfigureAwait(false)
             ?? throw new TimeoutException("The game window did not appear within " + ModPaths.GameWindowTimeout.TotalMinutes + " minutes.");

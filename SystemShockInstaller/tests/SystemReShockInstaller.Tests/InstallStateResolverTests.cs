@@ -91,6 +91,41 @@ public class InstallStateResolverTests
         Assert.Equal(InstallStatus.NotInstalled, state.Status);
     }
 
+    [Fact]
+    public void Saved_store_key_is_used_as_is()
+    {
+        using var root = new TempDir();
+        using var bundle = TestBundle.Create();
+        var plan = FullInstall(root, bundle, Version);
+        RewriteStore(plan, "gog");
+
+        var state = Resolver(root, bundle).Resolve();
+
+        Assert.Equal(GameStore.GOG, state.Plan!.Store);
+    }
+
+    [Fact]
+    public void Missing_store_key_is_detected_from_the_game_folder()
+    {
+        using var root = new TempDir();
+        using var bundle = TestBundle.Create();
+        var plan = FullInstall(root, bundle, Version);
+        RewriteStore(plan, null);
+        File.WriteAllText(Path.Combine(plan.GamePath, "goggame-1439637285.info"), "{}");
+
+        var state = Resolver(root, bundle).Resolve();
+
+        Assert.Equal(GameStore.GOG, state.Plan!.Store);
+    }
+
+    private static void RewriteStore(InstallPlan plan, string? store)
+    {
+        var settingsStore = new SettingsStore();
+        var settings = settingsStore.Load(plan.SettingsPath)!;
+        settings.Store = store;
+        settingsStore.Save(plan.SettingsPath, settings);
+    }
+
     private static InstallStateResolver Resolver(TempDir root, IModBundle bundle) =>
         new(new SettingsStore(), new InstallVerifier(bundle), root.File("appdata"), Version);
 

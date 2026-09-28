@@ -7,40 +7,57 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="28,28,28,12">
-            <TextBlock Style="{StaticResource Heading}" Text="Choose folders" />
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="28,28,28,12">
+                <TextBlock Style="{StaticResource Heading}" Text="Choose folders" />
 
-            <TextBlock FontWeight="SemiBold" Text="UEVR folder" />
-            <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6">
-                <Run Text="This mod needs UEVR nightly build 1127 or newer. Download the latest nightly zip from" />
-                <Hyperlink NavigateUri="{Binding UevrNightlyUrl}" RequestNavigate="OnRequestNavigate">
-                    <Run Text="github.com/praydog/UEVR-nightly" />
-                </Hyperlink>
-                <Run Text="(UEVR.zip under Assets), extract it to any folder, and select that folder here." />
-            </TextBlock>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBox Grid.Column="0" Text="{Binding UevrPath, UpdateSourceTrigger=PropertyChanged}" />
-                <Button Grid.Column="1" Content="Browse..." Command="{Binding BrowseUevrCommand}" />
-            </Grid>
-            <TextBlock Style="{StaticResource Error}" Text="{Binding UevrError}" />
+                <StackPanel Margin="0,0,0,18" Visibility="{Binding ShowsStoreButtons, Converter={StaticResource BoolToVisibility}}">
+                    <TextBlock Style="{StaticResource Muted}" Margin="0,0,0,6" Text="Both the Steam and the GOG version were found. Pick the one to install the mod into:" />
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,24,0">
+                            <Button Content="Use Steam version" Command="{Binding UseSteamCommand}" HorizontalAlignment="Left" Margin="0" />
+                            <TextBlock Style="{StaticResource Muted}" FontSize="12" Margin="0,4,0,0" Text="{Binding SteamFolder}" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Content="Use GOG version" Command="{Binding UseGogCommand}" HorizontalAlignment="Left" Margin="0" />
+                            <TextBlock Style="{StaticResource Muted}" FontSize="12" Margin="0,4,0,0" Text="{Binding GogFolder}" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
 
-            <TextBlock FontWeight="SemiBold" Margin="0,22,0,0" Text="System Shock Remake folder" />
-            <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6"
-                       Text="The Steam game folder, for example C:\Program Files (x86)\Steam\steamapps\common\System Shock Remake. It is filled in automatically when Steam is found." />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBox Grid.Column="0" Text="{Binding GamePath, UpdateSourceTrigger=PropertyChanged}" />
-                <Button Grid.Column="1" Content="Browse..." Command="{Binding BrowseGameCommand}" />
-            </Grid>
-            <TextBlock Style="{StaticResource Error}" Text="{Binding GameError}" />
-        </StackPanel>
+                <TextBlock FontWeight="SemiBold" Text="UEVR folder" />
+                <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6">
+                    <Run Text="This mod needs UEVR nightly build 1127 or newer. Download the latest nightly zip from" />
+                    <Hyperlink NavigateUri="{Binding UevrNightlyUrl}" RequestNavigate="OnRequestNavigate">
+                        <Run Text="github.com/praydog/UEVR-nightly" />
+                    </Hyperlink>
+                    <Run Text="(UEVR.zip under Assets), extract it to any folder, and select that folder here." />
+                </TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Text="{Binding UevrPath, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Grid.Column="1" Content="Browse..." Command="{Binding BrowseUevrCommand}" />
+                </Grid>
+                <TextBlock Style="{StaticResource Error}" Text="{Binding UevrError}" />
+
+                <TextBlock FontWeight="SemiBold" Margin="0,22,0,0" Text="System Shock Remake folder" />
+                <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6"
+                           Text="The folder that contains SystemShock.exe, for example C:\Program Files (x86)\Steam\steamapps\common\System Shock Remake or C:\GOG Games\System Shock Remake. It is filled in automatically when the game is found." />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Text="{Binding GamePath, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Grid.Column="1" Content="Browse..." Command="{Binding BrowseGameCommand}" />
+                </Grid>
+                <TextBlock Style="{StaticResource Error}" Text="{Binding GameError}" />
+                <TextBlock Style="{StaticResource Muted}" Text="{Binding DetectedStoreText}" />
+            </StackPanel>
+        </ScrollViewer>
 
         <Border Grid.Row="1" Style="{StaticResource ButtonBar}">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

@@ -74,7 +74,7 @@ public class InstallVerifierTests
 
     internal static InstallPlan Install(TempDir root, IModBundle bundle)
     {
-        var plan = new InstallPlan(root.File("uevr"), root.File("game"), root.File("appdata"));
+        var plan = new InstallPlan(root.File("uevr"), root.File("game"), root.File("appdata"), GameStore.Steam);
         new PakInstallStep(bundle).Execute(plan);
         new ProfileInstallStep(bundle).Execute(plan);
         return plan;

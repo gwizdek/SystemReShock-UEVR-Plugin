@@ -43,7 +43,7 @@ public partial class App : Application
             SettingsStore = settingsStore,
             FolderPicker = new FolderPicker(),
             ProcessChecker = new ProcessChecker(),
-            LocateSteamGame = SteamLocator.FindGameFolder,
+            LocateGame = GameLocators.Locate,
             StateResolver = new InstallStateResolver(settingsStore, new InstallVerifier(bundle), appData, version),
             Launcher = new GameLaunchService(new GameStarter(), new GameProcessWatcher(), new UevrInjector(new DllInjector())),
             AppDataRoot = appData,

@@ -9,7 +9,7 @@ namespace SystemReShockInstaller.Tests;
 
 public class InstallServiceTests
 {
-    private static readonly InstallPlan Plan = new(@"C:\uevr", @"C:\game", @"C:\appdata");
+    private static readonly InstallPlan Plan = new(@"C:\uevr", @"C:\game", @"C:\appdata", GameStore.Steam);
 
     [Fact]
     public void Runs_all_steps_in_order_when_everything_succeeds()
