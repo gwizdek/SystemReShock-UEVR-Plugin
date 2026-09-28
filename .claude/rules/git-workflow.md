@@ -20,9 +20,9 @@ Use conventional commits format:
 <type>(<scope>): <description>
 
 <optional body explaining WHY>
-
-Co-Authored-By: Claude <model> <noreply@anthropic.com>
 ```
+
+Commits carry no co-author or tool attribution line. The configured git user is the sole author.
 
 **Types:** `feat`, `fix`, `refactor`, `test`, `chore`, `docs`, `ci`, `perf`
 
