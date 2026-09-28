@@ -22,18 +22,9 @@ public sealed class ProfileInstallStep : IInstallStep
 
     public void Execute(InstallPlan plan)
     {
-        DeleteDirectory(plan.ProfileTargetDir);
+        FileCopier.DeleteDirectory(plan.ProfileTargetDir);
         Directory.CreateDirectory(plan.ProfileTargetDir);
         foreach (var entry in _bundle.ProfileEntries)
             FileCopier.ExtractTo(entry, Path.Combine(plan.ProfileTargetDir, entry.RelativePath));
-    }
-
-    private static void DeleteDirectory(string dir)
-    {
-        if (!Directory.Exists(dir))
-            return;
-        foreach (var file in Directory.EnumerateFiles(dir, "*", SearchOption.AllDirectories))
-            File.SetAttributes(file, FileAttributes.Normal);
-        Directory.Delete(dir, recursive: true);
     }
 }

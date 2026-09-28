@@ -19,6 +19,7 @@ public class InstallStateResolverTests
 
         Assert.Equal(InstallStatus.NotInstalled, state.Status);
         Assert.False(state.IsLaunchable);
+        Assert.False(state.CanUninstall);
     }
 
     [Fact]
@@ -62,6 +63,7 @@ public class InstallStateResolverTests
 
         Assert.Equal(InstallStatus.FilesChanged, state.Status);
         Assert.False(state.IsLaunchable);
+        Assert.True(state.CanUninstall);
     }
 
     [Fact]
@@ -76,6 +78,8 @@ public class InstallStateResolverTests
 
         Assert.Equal(InstallStatus.NotInstalled, state.Status);
         Assert.Contains("SystemShockVRModAddon_P.pak", state.Reason);
+        Assert.True(state.CanUninstall);
+        Assert.Equal(plan.ProfileTargetDir, state.Plan!.ProfileTargetDir);
     }
 
     [Fact]
@@ -89,6 +93,8 @@ public class InstallStateResolverTests
         var state = Resolver(root, bundle).Resolve();
 
         Assert.Equal(InstallStatus.NotInstalled, state.Status);
+        Assert.False(state.IsLaunchable);
+        Assert.True(state.CanUninstall);
     }
 
     [Fact]

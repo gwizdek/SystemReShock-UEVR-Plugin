@@ -40,6 +40,8 @@ public partial class App : Application
         return new WizardServices
         {
             Installer = ComposeInstaller(bundle, settingsStore, version),
+            Uninstaller = ComposeUninstaller(bundle),
+            Dialogs = new MessageBoxDialogs(),
             SettingsStore = settingsStore,
             FolderPicker = new FolderPicker(),
             ProcessChecker = new ProcessChecker(),
@@ -57,6 +59,14 @@ public partial class App : Application
             new PakInstallStep(bundle),
             new ProfileInstallStep(bundle),
             new SettingsSaveStep(settingsStore, version),
+        });
+
+    private static InstallService ComposeUninstaller(IModBundle bundle) =>
+        new(new IInstallStep[]
+        {
+            new PakRemoveStep(bundle),
+            new ProfileRemoveStep(),
+            new SettingsRemoveStep(),
         });
 
     private static string AppDataRoot()

@@ -26,21 +26,20 @@ public sealed class InstallStateResolver
         var settings = _store.Load(SettingsPath);
         if (settings == null)
             return InstallState.NotInstalled();
+        var plan = new InstallPlan(settings.UevrPath ?? string.Empty, settings.GamePath ?? string.Empty, _appDataRoot, StoreOf(settings));
         if (PathValidator.ValidateUevrFolder(settings.UevrPath) != null || PathValidator.ValidateGameFolder(settings.GamePath) != null)
-            return InstallState.NotInstalled("The UEVR or game folder saved last time no longer exists.");
-
-        var plan = new InstallPlan(settings.UevrPath!, settings.GamePath!, _appDataRoot, StoreOf(settings));
+            return InstallState.NotInstalled("The UEVR or game folder saved last time no longer exists.", plan, settings);
         return Classify(plan, settings, _verifier.Verify(plan));
     }
 
     private InstallState Classify(InstallPlan plan, InstallerSettings settings, InstallIssue? issue)
     {
         if (issue?.IsMissing == true)
-            return InstallState.NotInstalled(issue.Message);
+            return InstallState.NotInstalled(issue.Message, plan, settings);
         if (settings.InstalledVersion != _version)
             return InstallState.VersionDiffers(plan, settings, VersionText(settings.InstalledVersion));
         if (issue != null)
-            return InstallState.FilesChanged(issue.Message);
+            return InstallState.FilesChanged(plan, settings, issue.Message);
         return InstallState.Installed(plan, settings);
     }
 

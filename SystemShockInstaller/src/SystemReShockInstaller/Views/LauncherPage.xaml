@@ -6,6 +6,7 @@
         <views:HeroFrame.ButtonBar>
             <StackPanel Orientation="Horizontal">
                 <Button Content="Reinstall" Command="{Binding ReinstallCommand}" />
+                <Button Content="Uninstall" Command="{Binding UninstallCommand}" />
                 <Button Content="Exit" Command="{Binding ExitCommand}" />
                 <Button Content="Launch game" Style="{StaticResource PrimaryButton}" Command="{Binding LaunchCommand}" IsDefault="True" />
             </StackPanel>

@@ -5,6 +5,8 @@
     <views:HeroFrame>
         <views:HeroFrame.ButtonBar>
             <StackPanel Orientation="Horizontal">
+                <Button Content="Uninstall" Command="{Binding UninstallCommand}"
+                        Visibility="{Binding CanUninstall, Converter={StaticResource BoolToVisibility}}" />
                 <Button Content="{Binding CancelText}" Command="{Binding CancelCommand}" />
                 <Button Content="Launch game" Command="{Binding LaunchCommand}"
                         Visibility="{Binding IsUpdateOffer, Converter={StaticResource BoolToVisibility}}" />

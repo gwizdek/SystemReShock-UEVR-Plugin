@@ -21,4 +21,14 @@ internal static class FileCopier
             File.Delete(path);
         }
     }
+
+    /// <summary>Deletes a folder tree, clearing read-only flags first. Nothing happens when it does not exist.</summary>
+    public static void DeleteDirectory(string dir)
+    {
+        if (!Directory.Exists(dir))
+            return;
+        foreach (var file in Directory.EnumerateFiles(dir, "*", SearchOption.AllDirectories))
+            File.SetAttributes(file, FileAttributes.Normal);
+        Directory.Delete(dir, recursive: true);
+    }
 }

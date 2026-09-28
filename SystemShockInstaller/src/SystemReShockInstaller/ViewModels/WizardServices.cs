@@ -8,6 +8,8 @@ namespace SystemReShockInstaller.ViewModels;
 public sealed class WizardServices
 {
     public InstallService Installer { get; set; } = null!;
+    public InstallService Uninstaller { get; set; } = null!;
+    public IDialogs Dialogs { get; set; } = null!;
     public ISettingsStore SettingsStore { get; set; } = null!;
     public IFolderPicker FolderPicker { get; set; } = null!;
     public IProcessChecker ProcessChecker { get; set; } = null!;

@@ -4,7 +4,7 @@ using SystemReShockInstaller.Models;
 
 namespace SystemReShockInstaller.Services;
 
-/// <summary>Runs the install steps in order and stops at the first failure. No rollback.</summary>
+/// <summary>Runs install or uninstall steps in order and stops at the first failure. No rollback.</summary>
 public sealed class InstallService
 {
     public InstallService(IReadOnlyList<IInstallStep> steps) => Steps = steps;

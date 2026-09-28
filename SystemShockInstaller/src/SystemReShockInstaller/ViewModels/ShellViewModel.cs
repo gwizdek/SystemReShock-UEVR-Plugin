@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using SystemReShockInstaller.Models;
 
 namespace SystemReShockInstaller.ViewModels;
@@ -47,6 +48,7 @@ public sealed class ShellViewModel : ViewModelBase
         {
             Next = ShowPaths,
             Launch = offersUpdate ? () => ShowLauncher(state) : null,
+            Uninstall = state.CanUninstall ? () => _ = UninstallAsync(state.Plan!) : null,
             Cancel = offersUpdate ? _closeApp : CancelWizard,
         };
         SetPage(new WelcomeViewModel(_services.Version, state, actions), SetupTitle);
@@ -55,7 +57,13 @@ public sealed class ShellViewModel : ViewModelBase
     private void ShowLauncher(InstallState state)
     {
         _canReturnToLauncher = true;
-        SetPage(new LauncherViewModel(_services, state, ShowPaths, _closeApp), LauncherTitle);
+        var actions = new LauncherActions
+        {
+            Reinstall = ShowPaths,
+            Uninstall = () => _ = UninstallAsync(state.Plan!),
+            Exit = _closeApp,
+        };
+        SetPage(new LauncherViewModel(_services, state, actions), LauncherTitle);
     }
 
     private void ShowPaths() =>
@@ -67,7 +75,15 @@ public sealed class ShellViewModel : ViewModelBase
     private void ShowResult(InstallPlan plan, IReadOnlyList<StepResult> results)
     {
         var succeeded = results.All(r => r.Succeeded);
-        SetPage(new ResultViewModel(plan, results, succeeded ? ReturnToLauncherOrClose : _closeApp), SetupTitle);
+        SetPage(ResultViewModel.ForInstall(plan, results, succeeded ? ReturnToLauncherOrClose : _closeApp), SetupTitle);
+    }
+
+    /// <summary>Stays on the current page when the flow is refused or declined.</summary>
+    private async Task UninstallAsync(InstallPlan plan)
+    {
+        var results = await new UninstallFlow(_services).RunAsync(plan);
+        if (results != null)
+            SetPage(ResultViewModel.ForUninstall(plan, results, _closeApp), SetupTitle);
     }
 
     private void CancelWizard()

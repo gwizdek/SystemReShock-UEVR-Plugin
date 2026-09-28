@@ -15,7 +15,10 @@ public enum InstallStatus
     FilesChanged,
 }
 
-/// <summary>What the startup check found. Plan and Settings are set whenever the game can be launched.</summary>
+/// <summary>
+/// What the startup check found. Plan and Settings are set whenever a settings file was read,
+/// even when the install is broken, so that Uninstall knows what to remove.
+/// </summary>
 public sealed class InstallState
 {
     private InstallState(InstallStatus status, InstallPlan? plan, InstallerSettings? settings, string? reason)
@@ -31,10 +34,11 @@ public sealed class InstallState
     public InstallerSettings? Settings { get; }
     public string? Reason { get; }
 
-    public bool IsLaunchable => Plan != null && Settings != null;
+    public bool IsLaunchable => Status == InstallStatus.Installed || Status == InstallStatus.VersionDiffers;
+    public bool CanUninstall => Plan != null;
 
-    public static InstallState NotInstalled(string? reason = null) =>
-        new(InstallStatus.NotInstalled, null, null, reason);
+    public static InstallState NotInstalled(string? reason = null, InstallPlan? plan = null, InstallerSettings? settings = null) =>
+        new(InstallStatus.NotInstalled, plan, settings, reason);
 
     public static InstallState Installed(InstallPlan plan, InstallerSettings settings) =>
         new(InstallStatus.Installed, plan, settings, null);
@@ -42,6 +46,6 @@ public sealed class InstallState
     public static InstallState VersionDiffers(InstallPlan plan, InstallerSettings settings, string reason) =>
         new(InstallStatus.VersionDiffers, plan, settings, reason);
 
-    public static InstallState FilesChanged(string reason) =>
-        new(InstallStatus.FilesChanged, null, null, reason);
+    public static InstallState FilesChanged(InstallPlan plan, InstallerSettings settings, string reason) =>
+        new(InstallStatus.FilesChanged, plan, settings, reason);
 }
