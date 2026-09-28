@@ -132,9 +132,9 @@ install exists, otherwise it closes the app.
      settings, the game field is pre-filled when exactly one store has the
      game. When both stores have it, the field stays empty.
    - When both stores have the game, two buttons, "Use Steam version" and
-     "Use GOG version", appear under the heading with the folder under each.
-     A click fills the game field. They appear even when the field was
-     pre-filled from settings.
+     "Use GOG version", appear directly above the game field, each with its
+     folder as a tooltip. A click fills the field. They appear even when the
+     field was pre-filled from settings.
    - Under a valid game field a line says which version the folder holds:
      "Steam version found.", "GOG version found." or "Not a Steam or GOG
      install. The launcher will start the game from its exe."

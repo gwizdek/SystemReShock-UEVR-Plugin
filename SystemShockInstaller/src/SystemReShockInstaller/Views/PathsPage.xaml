@@ -11,20 +11,6 @@
             <StackPanel Margin="28,28,28,12">
                 <TextBlock Style="{StaticResource Heading}" Text="Choose folders" />
 
-                <StackPanel Margin="0,0,0,18" Visibility="{Binding ShowsStoreButtons, Converter={StaticResource BoolToVisibility}}">
-                    <TextBlock Style="{StaticResource Muted}" Margin="0,0,0,6" Text="Both the Steam and the GOG version were found. Pick the one to install the mod into:" />
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Margin="0,0,24,0">
-                            <Button Content="Use Steam version" Command="{Binding UseSteamCommand}" HorizontalAlignment="Left" Margin="0" />
-                            <TextBlock Style="{StaticResource Muted}" FontSize="12" Margin="0,4,0,0" Text="{Binding SteamFolder}" />
-                        </StackPanel>
-                        <StackPanel>
-                            <Button Content="Use GOG version" Command="{Binding UseGogCommand}" HorizontalAlignment="Left" Margin="0" />
-                            <TextBlock Style="{StaticResource Muted}" FontSize="12" Margin="0,4,0,0" Text="{Binding GogFolder}" />
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-
                 <TextBlock FontWeight="SemiBold" Text="UEVR folder" />
                 <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6">
                     <Run Text="This mod needs UEVR nightly build 1127 or newer. Download the latest nightly zip from" />
@@ -46,6 +32,11 @@
                 <TextBlock FontWeight="SemiBold" Margin="0,22,0,0" Text="System Shock Remake folder" />
                 <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6"
                            Text="The folder that contains SystemShock.exe, for example C:\Program Files (x86)\Steam\steamapps\common\System Shock Remake or C:\GOG Games\System Shock Remake. It is filled in automatically when the game is found." />
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"
+                            Visibility="{Binding ShowsStoreButtons, Converter={StaticResource BoolToVisibility}}">
+                    <Button Content="Use Steam version" Command="{Binding UseSteamCommand}" Margin="0" ToolTip="{Binding SteamFolder}" />
+                    <Button Content="Use GOG version" Command="{Binding UseGogCommand}" ToolTip="{Binding GogFolder}" />
+                </StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
