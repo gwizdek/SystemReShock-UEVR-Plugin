@@ -3,9 +3,14 @@
 One Windows EXE, `SystemReShockVRMod.exe`, that both installs and launches the
 System Shock Remake UEVR mod. It does not ship UEVR.
 
-- **Installer**: copies the bundled UEVR profile and pak files into place.
-- **Launcher**: starts the game through Steam, waits for the main menu, and
-  injects UEVR.
+- **Installer**: copies the bundled UEVR profile and pak files into place, and
+  removes them again on request.
+- **Launcher**: starts the game, through Steam or from its exe depending on
+  the store, waits for the main menu, and injects UEVR.
+
+The Steam and the GOG version of the game are both supported. The plugin
+itself runs on both builds; the installer only has to find the game and start
+it the right way.
 
 ## Stack
 
@@ -42,7 +47,8 @@ System Shock Remake UEVR mod. It does not ship UEVR.
 | Settings | `%AppData%\SystemReShockVR\settings.json` |
 
 `<game>` is the folder the user picks, for example
-`D:\Steam\steamapps\common\System Shock Remake`.
+`D:\Steam\steamapps\common\System Shock Remake` or
+`D:\GOG Games\System Shock Remake`. Both stores use the same folder layout.
 
 The environment variable `SYSTEMRESHOCKVR_APPDATA` replaces `%AppData%` for
 both the profile and the settings file. It exists for testing.
@@ -56,13 +62,30 @@ both the profile and the settings file. It exists for testing.
   "installedVersion": "2.0-beta.2",
   "installedAt": "2026-09-18T23:10:00+02:00",
   "runtime": "openxr",
-  "injectDelaySeconds": 15
+  "injectDelaySeconds": 15,
+  "store": "steam"
 }
 ```
 
 `runtime` is `openxr` or `openvr`. Missing means OpenXR. `injectDelaySeconds`
 is the wait between the game window appearing and injection. Missing means 15.
 Only the launcher page writes `runtime`; the delay is edited by hand.
+
+`store` is `steam`, `gog` or `other` and decides how the launcher starts the
+game. The install step writes it. When it is missing, the startup check works
+it out from the game folder for that run and does not rewrite the file.
+
+### How the store is decided
+
+The folder decides, not where the detector found it:
+
+| Folder | Store |
+|--------|-------|
+| Contains a `goggame-*.info` file at its root | `gog` |
+| Path contains `\steamapps\common\` | `steam` |
+| Anything else, for example a copied install | `other` |
+
+`other` behaves like `gog`: the game starts from its exe.
 
 ## Startup decision
 
@@ -73,7 +96,8 @@ the imgui ini, and `uobjecthook\*.json` while the player changes settings.
 
 | Found | Page shown |
 |-------|-----------|
-| No settings, a saved folder no longer validates, or a mod file is missing | Wizard |
+| No settings | Wizard |
+| A saved folder no longer validates, or a mod file is missing | Wizard, with Uninstall offered |
 | Files present, `installedVersion` equals this EXE | Launcher |
 | Files present, `installedVersion` differs | Welcome page in update mode |
 | Version equal but a pak or plugin differs | Wizard, with the reason shown |
@@ -92,7 +116,8 @@ install exists, otherwise it closes the app.
    Buttons: Next, Cancel. In update mode the text "Mod vX is installed. This
    setup contains vY." appears and the buttons are Update, Launch game, Close.
    When the wizard opened because a pak or plugin changed, the reason appears
-   in the same place.
+   in the same place. An Uninstall button appears whenever `settings.json`
+   exists; see **Uninstall** below.
 2. **Paths.** Two folder fields with Browse buttons.
    - UEVR folder. Must contain `UEVRInjector.exe`.
    - Game folder. Must contain
@@ -100,9 +125,19 @@ install exists, otherwise it closes the app.
    - Text explaining how to get UEVR: download the latest nightly from
      https://github.com/praydog/UEVR-nightly/releases/latest, extract it to any
      folder, and point the field at that folder. The link opens in the browser.
-   - Game field is pre-filled from Steam (registry install path plus
-     `libraryfolders.vdf` scan) when found.
-   - Both fields are pre-filled from `settings.json` when it exists.
+   - The page looks for the game in both stores. Steam: registry install path
+     plus a `libraryfolders.vdf` scan. GOG: the `path` value under
+     `HKLM\SOFTWARE\GOG.com\Games\1439637285` (32-bit view first).
+   - Both fields are pre-filled from `settings.json` when it exists. Without
+     settings, the game field is pre-filled when exactly one store has the
+     game. When both stores have it, the field stays empty.
+   - When both stores have the game, two buttons, "Use Steam version" and
+     "Use GOG version", appear under the heading with the folder under each.
+     A click fills the game field. They appear even when the field was
+     pre-filled from settings.
+   - Under a valid game field a line says which version the folder holds:
+     "Steam version found.", "GOG version found." or "Not a Steam or GOG
+     install. The launcher will start the game from its exe."
    - Inline red error under a field that fails validation. Next is disabled
      until both fields pass.
    - Buttons: Next, Cancel.
@@ -125,7 +160,7 @@ with "Close the game first".
    Runs first because it is the most likely step to fail.
 2. **Profile.** Delete `%AppData%\UnrealVRMod\SystemReShock-Win64-Shipping\`
    entirely, then extract every zip entry except `paks/`.
-3. **Settings.** Write `settings.json` with `uevrPath`, `gamePath`,
+3. **Settings.** Write `settings.json` with `uevrPath`, `gamePath`, `store`,
    `installedVersion`, `installedAt`. Existing `runtime` and
    `injectDelaySeconds` values are not carried over; the file is rewritten.
 
@@ -135,16 +170,42 @@ which steps finished.
 Access denied or locked file errors show: "Access denied. <detail> Close the
 game and try running the installer as administrator."
 
+## Uninstall
+
+Reachable from the Welcome page whenever `settings.json` exists, and from the
+launcher. Both run the same flow:
+
+1. If the game is running, a message box says to close it first. Nothing else
+   happens.
+2. A Yes/No message box titled "Remove the mod?" lists every step with its
+   paths, the same text the confirmation page would show, and ends with "Your
+   game files and save games are not touched. Continue?"
+3. On Yes, the steps run in order and stop at the first failure, like an
+   install. Missing files and folders are skipped, not errors.
+   1. **Paks.** Delete `SystemShockVRModCore_P.pak` and
+      `SystemShockVRModAddon_P.pak` from the game's `Paks` folder.
+   2. **Profile.** Delete `%AppData%\UnrealVRMod\SystemReShock-Win64-Shipping\`.
+   3. **Settings.** Delete `settings.json`, and its folder when nothing else
+      is in it.
+4. The result page shows "Mod removed" or "Removal failed" with one line per
+   step. Its only button is Close, which exits the app, because there is
+   nothing left to launch.
+
+The saved paths are kept in memory for this even when a folder no longer
+exists or a mod file is missing, so a broken install can still be removed.
+
 ## Launcher page
 
 Same layout as the welcome page: Shodan image left, UEVR logo bottom left.
 
 - Heading "System Shock Remake VR Mod" and "Mod vX installed".
+- A line naming the store and how the game starts, for example "GOG version.
+  The game is started from the game folder."
 - VR runtime selector: OpenXR (default) or OpenVR. Saved to `settings.json`
   the moment it is clicked.
 - Info line: "UEVR is injected 15 seconds after the game window appears."
 - Status box that follows the launch.
-- Buttons: Reinstall (opens the paths page), Exit, Launch game.
+- Buttons: Reinstall (opens the paths page), Uninstall, Exit, Launch game.
 
 ### Launch flow
 
@@ -152,7 +213,13 @@ Same layout as the welcome page: Shodan image left, UEVR logo bottom left.
    `SystemReShock-Win64-Shipping` with a main window and `d3d11.dll` or
    `d3d12.dll` loaded. Steam's bootstrap briefly shares the exe name, so the
    name alone is not enough.
-2. Open `steam://rungameid/482400`. If that fails, start the game exe directly.
+2. Steam version: open `steam://rungameid/482400`, and if that throws, start
+   the exe directly. GOG and other versions: start
+   `SystemShock\Binaries\Win64\SystemReShock-Win64-Shipping.exe` with its own
+   folder as the working directory. GOG Galaxy is not used; GOG games are
+   DRM-free, Galaxy is often not installed, and starting it first could push
+   the game window past the timeout below. The status line reads "Starting
+   System Shock Remake through Steam..." or "... from the game folder...".
 3. Poll every 500 ms for a ready process. Give up after 2 minutes.
 4. Count down `injectDelaySeconds`, updating the status line each second.
 5. Inject the runtime loader (`openxr_loader.dll` or `openvr_api.dll`) from the
@@ -194,23 +261,27 @@ src/SystemReShockInstaller/
   MainWindow.xaml                fixed-size shell hosting the current page
   Interop/                       COM folder dialog and kernel32 injection declarations
   Models/                        ModPaths (fixed names), InstallPlan, InstallState, StepResult,
-                                 InstallerSettings, BundleEntry, VrRuntime, LaunchRequest
+                                 InstallerSettings, BundleEntry, VrRuntime, GameStore, LaunchRequest
   Services/                      install: ModBundle, InstallService, PakInstallStep,
                                  ProfileInstallStep, SettingsSaveStep, SettingsStore,
-                                 SteamLocator, PathValidator, FolderPicker, ProcessChecker,
-                                 InstallErrorFormatter
+                                 SteamLocator, GogLocator, GameLocators, GameStoreDetector,
+                                 PathValidator, FolderPicker, ProcessChecker, InstallErrorFormatter
+                                 uninstall: PakRemoveStep, ProfileRemoveStep, SettingsRemoveStep,
+                                 IDialogs, MessageBoxDialogs
                                  launch: InstallVerifier, InstallStateResolver, GameStarter,
                                  GameProcessWatcher, DllInjector, UevrInjector,
                                  GameLaunchService, LaunchErrorFormatter
-  ViewModels/                    ShellViewModel (routing) + one per page, RelayCommand
+  ViewModels/                    ShellViewModel (routing) + one per page, UninstallFlow, RelayCommand
   Views/                         Theme.xaml, HeroFrame, WelcomePage, PathsPage, ConfirmPage,
                                  ResultPage, LauncherPage
 tests/SystemReShockInstaller.Tests/
 ```
 
-Every install step implements `IInstallStep` with a `Describe` method for the
-confirmation page and an `Execute` method. `InstallService` runs the list in
-order. Adding a step means adding a class and one line in `App.xaml.cs`.
+Every install and uninstall step implements `IInstallStep` with a `Describe`
+method for the confirmation page or the uninstall question, and an `Execute`
+method. `InstallService` runs a list in order; `App.xaml.cs` builds one list
+for installing and one for uninstalling. Adding a step means adding a class
+and one line there.
 
 `HeroFrame` is the shared page frame (Shodan column, content, bottom bar with
 logo and buttons) used by the welcome and launcher pages.

@@ -15,18 +15,23 @@ First run:
    any folder.
 2. Run `SystemReShockVRMod.exe`.
 3. Point the wizard at the UEVR folder and the System Shock Remake folder. The
-   game folder is filled in when Steam is found.
+   Steam and the GOG version both work. The game folder is filled in when the
+   program finds the game; when it finds both versions, pick one with the
+   buttons at the top of the page.
 4. Press Install, then Continue.
 
 Every run after that opens the launcher:
 
 1. Pick OpenXR or OpenVR (SteamVR). The choice is remembered.
-2. Press Launch game. The game starts through Steam. Fifteen seconds after the
-   game window appears, UEVR is injected. Watch the status line.
+2. Press Launch game. The Steam version starts through Steam, the GOG version
+   starts from its game folder. Fifteen seconds after the game window appears,
+   UEVR is injected. Watch the status line.
 3. Put on your headset.
 
 If a new mod version is installed over an old one, the program offers to update
-first. Use Reinstall on the launcher page to repair an install.
+first. Use Reinstall on the launcher page to repair an install. Use Uninstall,
+on the launcher page or on the first wizard page, to remove the mod. It deletes
+only the files listed in the table below and asks before it does.
 
 The program writes to these places:
 
