@@ -24,6 +24,10 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 * Many more...
 
 ## Installation
+> [!NOTE]
+> Try using the new installer app shipped with 2.0-beta.3 to install or update the mod (see Releases page)  
+
+### Manual installation   
 1) Install latest UEVR Nightly [**HERE**](https://github.com/praydog/UEVR-nightly/releases).
 2) Remove your current System Shock profile folder if exists `C:\Users\{username}\AppData\Roaming\UnrealVRMod\SystemReShock-Win64-Shipping`
 3) Remove any .pak mods previously installed in `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder. This includes optional mods for 1.x versions of System Shock VR by Ashok (SystemShock-VRFixes_p.pak) and mods from Nexus.  
