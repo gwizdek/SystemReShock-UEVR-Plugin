@@ -730,7 +730,7 @@ void UEVRPlugin::open_debug_menu() {
             API::get()->log_warn("[plugin][open_debug_menu] No main menu widget");
             return;
         }
-        API::get()->log_info("[plugin][open_debug_menu] Opening debug menu");
+        API::get()->log_warn("[plugin][open_debug_menu] Opening debug menu");
         main_menu->OpenDebugMenu();
     }
     catch (...) {
