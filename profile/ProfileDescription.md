@@ -75,7 +75,6 @@
 * Final Shodan boss battle not working yet
 * Wake-up from cryosleep animation not aligned (other animations like climbing ladders are buggy too)
 * Right hand doesn't snap to levers correctly
-* Red laser can point to the right in MFD when Mini Pistol was equipped
 * You can steal from cabinets by physically grabbing items
 * Proximity Mine can stick to you and blow up when trying to throw it (sorry)
 * Using wire connectors in wire puzzle can be tricky/too sensitive (helper: use right hand)

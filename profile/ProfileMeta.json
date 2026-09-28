@@ -8,7 +8,7 @@
   "nullifyPlugins": false,
   "lateInjection": false,
   "modifiedDate": "2026-06-19T00:00:00+01:00",
-  "remarks": "Profile version 2.0",
+  "remarks": "2.0-beta.3",
   "fileCopies": [
     {
       "sourceFileRelProfile": "paks\\SystemShockVRModCore_P.pak",
