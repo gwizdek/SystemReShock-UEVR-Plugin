@@ -1,0 +1,121 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <LangVersion>10</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>SystemReShockVRMod</AssemblyName>
+    <RootNamespace>SystemReShockInstaller</RootNamespace>
+    <!-- The launcher injects DLLs into the 64-bit game, so it must be 64-bit itself. -->
+    <PlatformTarget>x64</PlatformTarget>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>..\..\assets\app.ico</ApplicationIcon>
+    <Version>2.0.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <InformationalVersion>2.0-beta.3</InformationalVersion>
+    <!-- The startup check compares this string with settings.json, so a commit hash must not be appended. -->
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <Product>System Shock Remake VR Mod</Product>
+    <Authors>gwizdek</Authors>
+  </PropertyGroup>
+
+  <!--
+    Where the mod files come from. Override any of these on the command line, for example
+    dotnet build ... /p:PakSourceDir="E:\paks\".
+    RepoRoot is the root of the plugin repository (three levels up from this project).
+  -->
+  <PropertyGroup>
+    <RepoRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '..', '..', '..'))</RepoRoot>
+    <PluginDllPath Condition="'$(PluginDllPath)' == ''">$(RepoRoot)SystemShockVR\x64\Release\SystemReShockVR.dll</PluginDllPath>
+    <PakSourceDir Condition="'$(PakSourceDir)' == ''">d:\Unreal Engine\Projects\SystemReShock-UE4-Project\WindowsNoEditor\SystemShock\Content\Paks\</PakSourceDir>
+    <ProfileSourceDir Condition="'$(ProfileSourceDir)' == ''">$(RepoRoot)profile\</ProfileSourceDir>
+    <ModFilesDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '..', '..', 'mod_files'))</ModFilesDir>
+  </PropertyGroup>
+
+  <!--
+    The Core pak is renamed from the cooked chunk the Unreal project packages.
+    The Addon pak is not cooked; it is kept in profile\paks\ and arrives with the profile copy.
+    The game loads a pak with the _P suffix last, so it overrides the game's own assets.
+  -->
+  <ItemGroup>
+    <ModPak Include="$(PakSourceDir)pakchunk10-WindowsNoEditor.pak" TargetName="SystemShockVRModCore_P.pak" />
+  </ItemGroup>
+
+  <!-- Every pak the installer must ship. The build fails if one is missing after the copy steps. -->
+  <ItemGroup>
+    <RequiredPak Include="SystemShockVRModCore_P.pak;SystemShockVRModAddon_P.pak" />
+  </ItemGroup>
+
+  <!-- Profile files that must not ship. imgui.ini is the per-user window layout UEVR writes at runtime. -->
+  <ItemGroup>
+    <ProfileExclude Include="$(ProfileSourceDir)imgui.ini" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="..\..\assets\shodan.png" Link="Assets\shodan.png" />
+    <Resource Include="..\..\assets\uevr_logo.PNG" Link="Assets\uevr_logo.png" />
+  </ItemGroup>
+
+  <!--
+    Every build rebuilds mod_files/ from the sources above, zips it into obj/ and embeds the zip.
+    Steps, in order: clean mod_files, copy the profile, copy the plugin DLL, copy and rename the paks, zip.
+    The zip path is resolved inside a target because IntermediateOutputPath is only known
+    after the SDK targets are imported.
+  -->
+  <Target Name="CheckModFileSources">
+    <Error Condition="!Exists('$(ProfileSourceDir)')" Text="Profile folder not found: $(ProfileSourceDir)" />
+    <Error Condition="!Exists('$(PluginDllPath)')" Text="Plugin DLL not found: $(PluginDllPath). Build the plugin first." />
+    <Error Condition="!Exists('%(ModPak.Identity)')" Text="Pak not found: %(ModPak.Identity). Package the Unreal project first." />
+  </Target>
+
+  <Target Name="CleanModFiles" DependsOnTargets="CheckModFileSources">
+    <RemoveDir Directories="$(ModFilesDir)" />
+    <MakeDir Directories="$(ModFilesDir);$(ModFilesDir)plugins;$(ModFilesDir)paks" />
+  </Target>
+
+  <Target Name="CopyProfileFiles" DependsOnTargets="CleanModFiles">
+    <ItemGroup>
+      <ProfileFile Include="$(ProfileSourceDir)**\*" Exclude="@(ProfileExclude)" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ProfileFile)" DestinationFiles="@(ProfileFile->'$(ModFilesDir)%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+
+  <Target Name="CopyPluginDll" DependsOnTargets="CleanModFiles">
+    <Copy SourceFiles="$(PluginDllPath)" DestinationFolder="$(ModFilesDir)plugins" />
+  </Target>
+
+  <Target Name="CopyPakFiles" DependsOnTargets="CleanModFiles">
+    <Copy SourceFiles="@(ModPak)" DestinationFiles="@(ModPak->'$(ModFilesDir)paks\%(TargetName)')" />
+  </Target>
+
+  <Target Name="PrepareModFiles" DependsOnTargets="CopyProfileFiles;CopyPluginDll;CopyPakFiles">
+    <Error Condition="!Exists('$(ModFilesDir)paks\%(RequiredPak.Identity)')" Text="Required pak missing after copy: $(ModFilesDir)paks\%(RequiredPak.Identity)" />
+    <Message Importance="high" Text="mod_files rebuilt in $(ModFilesDir)" />
+  </Target>
+
+  <Target Name="ResolveModFilesZip" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ModFilesZip>$(MSBuildProjectDirectory)\$(IntermediateOutputPath)mod_files.zip</ModFilesZip>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="ZipModFiles" DependsOnTargets="ResolveModFilesZip;PrepareModFiles" BeforeTargets="PrepareForBuild">
+    <MakeDir Directories="$(IntermediateOutputPath)" />
+    <ZipDirectory SourceDirectory="$(ModFilesDir)" DestinationFile="$(ModFilesZip)" Overwrite="true" />
+  </Target>
+
+  <Target Name="EmbedModFiles" DependsOnTargets="ZipModFiles" BeforeTargets="PrepareForBuild">
+    <ItemGroup>
+      <EmbeddedResource Include="$(ModFilesZip)" LogicalName="mod_files.zip" />
+    </ItemGroup>
+  </Target>
+
+</Project>

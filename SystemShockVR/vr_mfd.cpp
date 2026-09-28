@@ -8,12 +8,12 @@
 #include "SDK/WIDGET_CrosshairCursor_classes.hpp"
 #include "SDK/WIDGET_Minimap_classes.hpp"
 
-#include "SDK/_BP_DebugWidgetComponent_classes.hpp"
-#include "SDK/_BP_MFDMaskComponent_classes.hpp"
-#include "SDK/_BP_VRBody_classes.hpp"
-#include "SDK/_BP_HandInteractionComponent_classes.hpp"
-#include "SDK/_BP_LaserDot_classes.hpp"
-#include "SDK/_BP_HackerHardware_classes.hpp"
+#include "BridgeSDK/_BP_DebugWidgetComponent_classes.hpp"
+#include "BridgeSDK/_BP_MFDMaskComponent_classes.hpp"
+#include "BridgeSDK/_BP_VRBody_classes.hpp"
+#include "BridgeSDK/_BP_HandInteractionComponent_classes.hpp"
+#include "BridgeSDK/_BP_LaserDot_classes.hpp"
+#include "BridgeSDK/_BP_HackerHardware_classes.hpp"
 
 #include "vr_mfd.hpp"
 #include "vr_plugin_shared.hpp"
@@ -50,21 +50,21 @@ void VRMFD::show_mfd() {
             SDK::FKey h_key_name{
                 .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
             };
-            g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+            g_vr_body->HackerPawn()->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
             VRMFD::m_had_equipped_weapon = true;
         }
         else {
             VRMFD::m_had_equipped_weapon = false;
         }
 
-        g_vr_body->HandInteractionRight->AttachLaserPointer(true, 0.f);
-        g_vr_body->LaserDot->SetLaserVisibility(false, true, 0.f);
+        g_vr_body->HandInteractionRight()->AttachLaserPointer(true, 0.f);
+        g_vr_body->LaserDot()->SetLaserVisibility(false, true, 0.f);
         g_vr_body->EnableRangedInteractions(false);
 
-        g_vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
+        g_vr_body->MFDMaskComponent()->SetCollisionResponseToChannel(
             WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Block
         );
-        g_vr_body->MFDMaskComponent->Show(1.0f, VRMFD::m_mfd_depth);
+        g_vr_body->MFDMaskComponent()->Show(1.0f, VRMFD::m_mfd_depth);
     }
     catch (...) {
         API::get()->log_error("[plugin][show_mfd] Exception");
@@ -78,11 +78,11 @@ void VRMFD::hide_mfd() {
             return;
         }
 
-        g_vr_body->MFDMaskComponent->SetCollisionResponseToChannel(
+        g_vr_body->MFDMaskComponent()->SetCollisionResponseToChannel(
             WIDGET_INTERACTION_TRACE_CHANNEL, SDK::ECollisionResponse::ECR_Ignore
         );
-        g_vr_body->MFDMaskComponent->Hide();
-        //g_vr_body->LaserDot->SetLaserVisibility(false, false, 0.f);
+        g_vr_body->MFDMaskComponent()->Hide();
+        //g_vr_body->LaserDot()->SetLaserVisibility(false, false, 0.f);
         //g_vr_body->EnableRangedInteractions(false);
 
 
@@ -91,10 +91,10 @@ void VRMFD::hide_mfd() {
             SDK::FKey h_key_name{
                 .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
             };
-            g_vr_body->HackerPawn->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
+            g_vr_body->HackerPawn()->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
         }
 
-        g_vr_body->HackerHardware->SetWidgetVisibility(true);
+        g_vr_body->HackerHardware()->SetWidgetVisibility(true);
     }
     catch (...) {
         API::get()->log_error("[plugin][hide_mfd] Exception");

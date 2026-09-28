@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
-#include "SDK/_BP_ItemSelector_classes.hpp"
+#include "BridgeSDK/_BP_ItemSelector_classes.hpp"
 
 #include "memo_structs.hpp"
 

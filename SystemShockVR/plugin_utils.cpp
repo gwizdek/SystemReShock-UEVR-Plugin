@@ -1,9 +1,28 @@
+#include <chrono>
+
 #include "SDK/AssetRegistry_classes.hpp"
 #include "SDK/UMG_classes.hpp"
+#include "BridgeSDK/BridgeSDK.hpp"
 
 #include "plugin_utils.hpp"
 
 using namespace uevr;
+
+// Called once the mod's Blueprint classes are loaded (after the VR body is spawned), so the
+// name lookups happen here, during level setup, instead of on the first frame that touches
+// each accessor. Repeat calls are cheap: everything already resolved is skipped.
+void PluginUtils::warmup_bridge() {
+    const auto begin = std::chrono::steady_clock::now();
+    bool complete = false;
+    try {
+        complete = SDK::BridgeWarmupAll();
+    }
+    catch (...) {
+        API::get()->log_error("[plugin_utils][warmup_bridge] Exception");
+    }
+    const auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count();
+    API::get()->log_warn("[plugin_utils][warmup_bridge] %s in %lld ms", complete ? "Complete" : "Incomplete, see [bridge] lines above", (long long)elapsed_ms);
+}
 
 void PluginUtils::reset_height(float offset_y) {
     const UEVR_VRData* vr = API::get()->param()->vr;

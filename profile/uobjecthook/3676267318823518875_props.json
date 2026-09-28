@@ -1,0 +1,15 @@
+{
+    "hide": true,
+    "hide_legacy": false,
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "COMP_HackerInventory_C COMP_HackerInventory",
+        "Properties",
+        "CurrentEquippedWeapon",
+        "Properties",
+        "GrenadeMeshComponent"
+    ],
+    "properties": [],
+    "type": "properties"
+}

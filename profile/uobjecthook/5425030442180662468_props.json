@@ -1,0 +1,26 @@
+{
+    "hide": false,
+    "hide_legacy": false,
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "SceneComponent LookPivot",
+        "Properties",
+        "RelativeRotation"
+    ],
+    "properties": [
+        {
+            "data": 0,
+            "name": "Pitch"
+        },
+        {
+            "data": 0,
+            "name": "Roll"
+        },
+        {
+            "data": 0,
+            "name": "Yaw"
+        }
+    ],
+    "type": "properties"
+}

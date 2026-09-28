@@ -1,0 +1,5 @@
+r.AOGlobalDistanceFieldPartialUpdates 0
+r.StaticMeshLODDistanceScale 0.25
+r.SceneColorFringe.Max 0
+r.MipMapLODBias -3
+r.CustomDepth 3

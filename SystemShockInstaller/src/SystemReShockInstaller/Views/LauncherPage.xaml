@@ -1,0 +1,36 @@
+<UserControl x:Class="SystemReShockInstaller.Views.LauncherPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:views="clr-namespace:SystemReShockInstaller.Views">
+    <views:HeroFrame>
+        <views:HeroFrame.ButtonBar>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Reinstall" Command="{Binding ReinstallCommand}" />
+                <Button Content="Uninstall" Command="{Binding UninstallCommand}" />
+                <Button Content="Exit" Command="{Binding ExitCommand}" />
+                <Button Content="Launch game" Style="{StaticResource PrimaryButton}" Command="{Binding LaunchCommand}" IsDefault="True" />
+            </StackPanel>
+        </views:HeroFrame.ButtonBar>
+
+        <StackPanel>
+            <TextBlock Style="{StaticResource Heading}" Text="System Shock Remake VR Mod" />
+            <TextBlock Style="{StaticResource Muted}" Text="{Binding InstalledVersionText}" />
+            <TextBlock Style="{StaticResource Muted}" Text="{Binding StoreText}" />
+
+            <TextBlock FontWeight="SemiBold" Margin="0,22,0,6" Text="VR runtime" />
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="OpenXR" GroupName="Runtime" IsChecked="{Binding IsOpenXr}" />
+                <RadioButton Content="OpenVR (SteamVR)" GroupName="Runtime" IsChecked="{Binding IsOpenVr}" Margin="24,0,0,0" />
+            </StackPanel>
+            <TextBlock Style="{StaticResource Muted}" Margin="0,8,0,0" Text="{Binding DelayText}" />
+
+            <Border Margin="0,22,0,0" Padding="12,10" CornerRadius="3"
+                    Background="{StaticResource PanelBackground}" BorderBrush="{StaticResource BorderBrushSubtle}" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource Muted}" FontSize="11" Text="STATUS" />
+                    <TextBlock Margin="0,4,0,0" Text="{Binding Status}" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </views:HeroFrame>
+</UserControl>

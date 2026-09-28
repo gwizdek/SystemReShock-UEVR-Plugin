@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -71,6 +71,11 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <!-- Build into the project folder, not the solution folder, so the repository root stays free of build output. -->
+  <PropertyGroup Condition="'$(Platform)'=='x64'">
+    <OutDir>$(ProjectDir)x64\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)x64\$(Configuration)\obj\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -146,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BridgeSDK\Bridge.hpp" />
+    <ClInclude Include="BridgeSDK\BridgeSDK.hpp" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx11.h" />
     <ClInclude Include="imgui\imgui_impl_dx12.h" />
@@ -158,6 +165,7 @@
     <ClInclude Include="mINI\ini.h" />
     <ClInclude Include="plugin.hpp" />
     <ClInclude Include="plugin_utils.hpp" />
+    <ClInclude Include="sdk_bootstrap.hpp" />
     <ClInclude Include="SDK\CoreUObject_structs.hpp" />
     <ClInclude Include="SDK\Engine_classes.hpp" />
     <ClInclude Include="SDK\PAWN_Avatar_classes.hpp" />
@@ -189,6 +197,7 @@
     </ClCompile>
     <ClCompile Include="plugin.cpp" />
     <ClCompile Include="plugin_utils.cpp" />
+    <ClCompile Include="sdk_bootstrap.cpp" />
     <ClCompile Include="rendering\d3d11.cpp" />
     <ClCompile Include="rendering\d3d12.cpp" />
     <ClCompile Include="SDK\ANIMBP_Magnum_functions.cpp" />
@@ -229,20 +238,9 @@
     <ClCompile Include="SDK\WIDGET_Minimap_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_PlayerHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_SimpleHUD_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_MainMenu_InGame_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_TargetID_Display_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
-    <ClCompile Include="SDK\_BP_DebugWidgetComponent_functions.cpp" />
-    <ClCompile Include="SDK\_BP_HackerHardware_functions.cpp" />
-    <ClCompile Include="SDK\_BP_HandInteractionComponent_functions.cpp" />
-    <ClCompile Include="SDK\_BP_InteractablesHighlighter_functions.cpp" />
-    <ClCompile Include="SDK\_BP_ItemSelector_functions.cpp" />
-    <ClCompile Include="SDK\_BP_LaserDot_functions.cpp" />
-    <ClCompile Include="SDK\_BP_MeleeWeaponHandler_functions.cpp" />
-    <ClCompile Include="SDK\_BP_MFDMaskComponent_functions.cpp" />
-    <ClCompile Include="SDK\_BP_VRBody_functions.cpp" />
-    <ClCompile Include="SDK\_BP_VRMenu_functions.cpp" />
-    <ClCompile Include="SDK\_BP_VRMovementComponent_functions.cpp" />
-    <ClCompile Include="SDK\_CH_Hacker_Rig_Skeleton_AnimBlueprint_functions.cpp" />
     <ClCompile Include="vr_avatar.cpp" />
     <ClCompile Include="vr_body.cpp" />
     <ClCompile Include="vr_item_selector.cpp" />

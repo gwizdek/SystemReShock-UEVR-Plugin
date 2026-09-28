@@ -15,7 +15,7 @@
 #include "SDK/UMG_classes.hpp"
 #include "SDK/COMP_HackerInventory_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
-#include "SDK/_BP_VRBody_classes.hpp"
+#include "BridgeSDK/_BP_VRBody_classes.hpp"
 
 #include "memo_structs.hpp"
 #include "vr_plugin_shared.hpp"
@@ -128,6 +128,7 @@ private:
     MemoBoolean m_is_ads_active{ false };
     MemoBoolean m_UEVR_process_damage{ false };
     MemoBoolean m_is_using_laptop{ false };
+    MemoBoolean m_is_head_lamp_active{ false };
 
     // pull gun mechanics
     MemoBoolean m_is_right_hand_reaching_backpack{ false };
@@ -191,12 +192,18 @@ public:
     void apply_vr_game_options();
     void try_set_intro_laptop_pointer();
     void handle_crouch();
+    void handle_head_lamp();
+    void apply_head_lamp_settings();
+    void set_head_lamp_brightness(float value);
  
     // Input handlers
     void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_vr_menu_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
+
+    // Debug
+    void open_debug_menu();
 
     SDK::AActor* Custom2DScreen{ nullptr };
 };

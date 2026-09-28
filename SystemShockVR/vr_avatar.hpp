@@ -3,7 +3,7 @@
 #include "SDK/Engine_structs.hpp"
 #include "SDK/COMP_HackerInventory_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
-#include "SDK/_BP_VRAvatar_classes.hpp"
+#include "BridgeSDK/_BP_VRAvatar_classes.hpp"
 #include "SDK/PAWN_Avatar_classes.hpp"
 
 class VRAvatar final

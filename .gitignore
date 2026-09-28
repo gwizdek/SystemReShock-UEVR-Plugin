@@ -363,4 +363,8 @@ MigrationBackup/
 FodyWeavers.xsd
 
 SystemShockVR/SDK_temp/
-bytecode/
+SystemShockVR/SDK_GOG/
+dumps/
+
+# Installer bundle. Rebuilt from profile/, x64/Release and the Unreal pak output on every installer build.
+SystemShockInstaller/mod_files/

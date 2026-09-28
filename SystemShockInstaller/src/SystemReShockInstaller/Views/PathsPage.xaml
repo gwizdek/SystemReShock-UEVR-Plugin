@@ -1,0 +1,60 @@
+<UserControl x:Class="SystemReShockInstaller.Views.PathsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="28,28,28,12">
+                <TextBlock Style="{StaticResource Heading}" Text="Choose folders" />
+
+                <TextBlock FontWeight="SemiBold" Text="UEVR folder" />
+                <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6">
+                    <Run Text="This mod needs UEVR nightly build 1127 or newer. Download the latest nightly zip from" />
+                    <Hyperlink NavigateUri="{Binding UevrNightlyUrl}" RequestNavigate="OnRequestNavigate">
+                        <Run Text="github.com/praydog/UEVR-nightly" />
+                    </Hyperlink>
+                    <Run Text="(UEVR.zip under Assets), extract it to any folder, and select that folder here." />
+                </TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Text="{Binding UevrPath, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Grid.Column="1" Content="Browse..." Command="{Binding BrowseUevrCommand}" />
+                </Grid>
+                <TextBlock Style="{StaticResource Error}" Text="{Binding UevrError}" />
+
+                <TextBlock FontWeight="SemiBold" Margin="0,22,0,0" Text="System Shock Remake folder" />
+                <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6"
+                           Text="The folder that contains SystemShock.exe, for example C:\Program Files (x86)\Steam\steamapps\common\System Shock Remake or C:\GOG Games\System Shock Remake." />
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"
+                            Visibility="{Binding ShowsStoreButtons, Converter={StaticResource BoolToVisibility}}">
+                    <Button Content="Use Steam version" Command="{Binding UseSteamCommand}" Margin="0" ToolTip="{Binding SteamFolder}" />
+                    <Button Content="Use GOG version" Command="{Binding UseGogCommand}" ToolTip="{Binding GogFolder}" />
+                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Text="{Binding GamePath, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Grid.Column="1" Content="Browse..." Command="{Binding BrowseGameCommand}" />
+                </Grid>
+                <TextBlock Style="{StaticResource Error}" Text="{Binding GameError}" />
+                <TextBlock Style="{StaticResource Muted}" Text="{Binding DetectedStoreText}" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border Grid.Row="1" Style="{StaticResource ButtonBar}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Cancel" Command="{Binding CancelCommand}" />
+                <Button Content="Next" Style="{StaticResource PrimaryButton}" Command="{Binding NextCommand}" IsDefault="True" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

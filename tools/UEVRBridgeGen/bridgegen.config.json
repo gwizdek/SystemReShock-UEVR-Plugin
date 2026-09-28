@@ -1,0 +1,11 @@
+{
+  "engineDir": "D:\\Unreal Engine\\UE_4.27",
+  "project": "D:\\Unreal Engine\\Projects\\SystemReShock-UE4-Project\\SystemShock.uproject",
+  "buildTarget": "UE4Editor",
+  "outDir": "SystemShockVR/BridgeSDK",
+  "paths": "/Game",
+  "prefix": "_",
+  "sdkInclude": "../SDK",
+  "uevrInclude": "../uevr/API.hpp",
+  "aggregate": "BridgeSDK.hpp"
+}

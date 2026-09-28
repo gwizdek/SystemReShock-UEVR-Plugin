@@ -4,7 +4,7 @@
 #include "SDK/COMP_HackerInventory_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
 
-#include "SDK/_BP_VRBody_classes.hpp"
+#include "BridgeSDK/_BP_VRBody_classes.hpp"
 
 class VRBody final
 {

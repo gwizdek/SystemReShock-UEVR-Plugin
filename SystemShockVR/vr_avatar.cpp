@@ -2,6 +2,7 @@
 #include "SDK/Engine_classes.hpp"
 
 #include "plugin_utils.hpp"
+#include "sdk_bootstrap.hpp"
 #include "vr_avatar.hpp"
 
 using namespace SDK;
@@ -11,7 +12,7 @@ A_BP_VRAvatar_C* VRAvatar::initialize_vr_avatar(APAWN_Avatar_C* pawn) {
     try {
         API::get()->log_warn("[vr_avatar][initialize_vr_avatar] Begin");
 
-        auto world = UWorld::GetWorld();
+        auto world = SdkBootstrap::get_world();
         PluginUtils::destroy_actors_by_class(world, A_BP_VRAvatar_C::StaticClass());
 
         const FVector pawn_location = pawn->K2_GetActorLocation();
@@ -49,7 +50,7 @@ A_BP_VRAvatar_C* VRAvatar::initialize_vr_avatar(APAWN_Avatar_C* pawn) {
         );
 
         //pawn->Camera->K2_AttachToComponent(
-        //    (USceneComponent*)vr_avatar->MotionControllerRight,
+        //    (USceneComponent*)vr_avatar->MotionControllerRight(),
         //    UKismetStringLibrary::Conv_StringToName(L"None"),
         //    EAttachmentRule::SnapToTarget,
         //    EAttachmentRule::SnapToTarget,

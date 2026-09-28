@@ -1,0 +1,18 @@
+{
+    "hide": false,
+    "hide_legacy": false,
+    "path": [
+        "Acknowledged Pawn",
+        "Components",
+        "CameraComponent PlayerCamera",
+        "Properties",
+        "RelativeRotation"
+    ],
+    "properties": [
+        {
+            "data": 0,
+            "name": "Yaw"
+        }
+    ],
+    "type": "properties"
+}
