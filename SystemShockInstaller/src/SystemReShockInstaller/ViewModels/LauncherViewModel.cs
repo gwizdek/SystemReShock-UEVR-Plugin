@@ -113,7 +113,7 @@ public sealed class LauncherViewModel : ViewModelBase
             var request = new LaunchRequest(_plan.UevrPath, _plan.GamePath, _plan.Store, Runtime, DelaySeconds);
             await _services.Launcher.RunAsync(request, new Progress<string>(s => Status = s), CancellationToken.None);
             _injected = true;
-            Status = "UEVR injected. Put on your headset.";
+            Status = "UEVR injected. Put on your headset. You can close this application.";
         }
         catch (Exception ex)
         {

@@ -226,7 +226,8 @@ Same layout as the welcome page: Shodan image left, UEVR logo bottom left.
    UEVR folder, then `UEVRBackend.dll`. This is the same order the UEVR
    frontend uses. The plugin nullifier is not injected because the profile has
    `nullifyPlugins: false`.
-6. Status reads "UEVR injected. Put on your headset." Launch stays disabled;
+6. Status reads "UEVR injected. Put on your headset. You can close this
+   application." Launch stays disabled;
    Reinstall and Exit come back. Closing the window never touches the game.
 
 Injection is remote-thread `LoadLibraryW`: open the process, write the DLL

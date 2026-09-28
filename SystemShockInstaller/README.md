@@ -26,7 +26,7 @@ Every run after that opens the launcher:
 2. Press Launch game. The Steam version starts through Steam, the GOG version
    starts from its game folder. Fifteen seconds after the game window appears,
    UEVR is injected. Watch the status line.
-3. Put on your headset.
+3. Put on your headset. The launcher can be closed; the game keeps running.
 
 If a new mod version is installed over an old one, the program offers to update
 first. Use Reinstall on the launcher page to repair an install. Use Uninstall,
