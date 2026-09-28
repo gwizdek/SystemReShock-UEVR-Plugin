@@ -19,7 +19,7 @@ it the right way.
 - Single EXE, no runtime download. Manifest: `asInvoker`, per-monitor DPI aware.
 - Window title "System Shock Remake VR Mod Setup" on wizard pages and
   "System Shock Remake VR Mod" on the launcher page.
-- Assembly version `2.0.0.0`. Informational version `2.0-beta.2` (shown in the UI).
+- Assembly version `2.0.0.0`. Informational version `2.0-beta.3` (shown in the UI).
   Matches the latest release at
   https://github.com/gwizdek/SystemReShock-UEVR-Plugin/releases
 - Folder picker: COM `IFileOpenDialog` with `FOS_PICKFOLDERS`. No NuGet dependency.
@@ -59,7 +59,7 @@ both the profile and the settings file. It exists for testing.
 {
   "uevrPath": "D:\\UEVR",
   "gamePath": "D:\\Steam\\steamapps\\common\\System Shock Remake",
-  "installedVersion": "2.0-beta.2",
+  "installedVersion": "2.0-beta.3",
   "installedAt": "2026-09-18T23:10:00+02:00",
   "runtime": "openxr",
   "injectDelaySeconds": 15,
