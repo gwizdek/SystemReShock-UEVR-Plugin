@@ -1,0 +1,42 @@
+{
+  "_README": "DRAFT override for the Steam Frame controller, for UEVR. Filename is the interaction profile path /interaction_profiles/valve/frame_controller_valve with slashes -> underscores. IMPORTANT: UEVR only loads overrides for its hard-coded s_supported_controllers list, which does not currently include the Frame profile, and it does not request XR_VALVE_frame_controller_interaction. Until that changes this file will be ignored. See frame-controller-mapping.md. Notes: grip is /input/squeeze (click = boolean, value = float); right X/Y are cross-bound to UEVR's left-hand actions to restore Xbox B/Y; bumpers, View, Menu and the second system button have no UEVR action and are intentionally omitted.",
+  "bindings": [
+    { "action": "pose", "path": "/user/hand/left/input/aim/pose" },
+    { "action": "grippose", "path": "/user/hand/left/input/grip/pose" },
+    { "action": "trigger", "path": "/user/hand/left/input/trigger/click" },
+    { "action": "grip", "path": "/user/hand/left/input/squeeze/click" },
+    { "action": "squeeze", "path": "/user/hand/left/input/squeeze/value" },
+    { "action": "joystick", "path": "/user/hand/left/input/thumbstick" },
+    { "action": "joystickclick", "path": "/user/hand/left/input/thumbstick/click" },
+    { "action": "thumbresttouchleft", "path": "/user/hand/left/input/thumbstick/touch" },
+    { "action": "haptic", "path": "/user/hand/left/output/haptic" },
+
+    { "action": "pose", "path": "/user/hand/right/input/aim/pose" },
+    { "action": "grippose", "path": "/user/hand/right/input/grip/pose" },
+    { "action": "trigger", "path": "/user/hand/right/input/trigger/click" },
+    { "action": "grip", "path": "/user/hand/right/input/squeeze/click" },
+    { "action": "squeeze", "path": "/user/hand/right/input/squeeze/value" },
+    { "action": "joystick", "path": "/user/hand/right/input/thumbstick" },
+    { "action": "joystickclick", "path": "/user/hand/right/input/thumbstick/click" },
+    { "action": "thumbresttouchright", "path": "/user/hand/right/input/thumbstick/touch" },
+    { "action": "haptic", "path": "/user/hand/right/output/haptic" },
+
+    { "action": "abuttonright", "path": "/user/hand/right/input/a/click" },
+    { "action": "bbuttonright", "path": "/user/hand/right/input/b/click" },
+    { "action": "abuttontouchright", "path": "/user/hand/right/input/a/touch" },
+    { "action": "bbuttontouchright", "path": "/user/hand/right/input/b/touch" },
+
+    { "action": "abuttonleft", "path": "/user/hand/right/input/x/click" },
+    { "action": "bbuttonleft", "path": "/user/hand/right/input/y/click" },
+    { "action": "abuttontouchleft", "path": "/user/hand/right/input/x/touch" },
+    { "action": "bbuttontouchleft", "path": "/user/hand/right/input/y/touch" },
+
+    { "action": "dpad_up", "path": "/user/hand/left/input/dpad_up/click" },
+    { "action": "dpad_down", "path": "/user/hand/left/input/dpad_down/click" },
+    { "action": "dpad_left", "path": "/user/hand/left/input/dpad_left/click" },
+    { "action": "dpad_right", "path": "/user/hand/left/input/dpad_right/click" },
+
+    { "action": "systembutton", "path": "/user/hand/left/input/system/click" },
+    { "action": "systembutton", "path": "/user/hand/right/input/system/click" }
+  ]
+}
