@@ -180,6 +180,23 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
     if (!vr->is_runtime_ready())
         return;
 
+    // Only drive the game from the XInput slot the VR controllers are injected
+    // into. Extra devices/polls (e.g. Steam Frame controllers enumerating via
+    // Steam Input) must not reach prepare_game_state(), otherwise they clear the
+    // state-change flag before handle_game_state_change() can apply the VR
+    // options (roomscale/turning), which leaves head and body detached.
+    {
+        static bool s_logged_extra_index = false;
+        const uint32_t vr_index = vr->get_lowest_xinput_index();
+        if (user_index != vr_index) {
+            if (!s_logged_extra_index) {
+                s_logged_extra_index = true;
+                API::get()->log_warn("[plugin][on_xinput_get_state] Ignoring non-VR XInput index %u (VR index %u)", user_index, vr_index);
+            }
+            return;
+        }
+    }
+
     try {
         // start cb timer
         std::chrono::steady_clock::time_point begin_time;
@@ -193,6 +210,11 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
         prepare_game_state();
         // handle level change before xinput
         handle_level_change();
+        // Apply state-dependent VR options immediately, while the state change is
+        // still fresh. on_xinput_get_state may run more than once per frame, and
+        // each prepare_game_state() call would otherwise clear the change flag
+        // before the handler runs.
+        handle_game_state_change();
         handle_xinput(state, vr);
         handle_lean();
         handle_crouch();
@@ -233,6 +255,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
                 return;
             prepare_game_state();
             handle_level_change();
+            handle_game_state_change();
         }
         else {
             // reset for next cb iteration
@@ -1333,6 +1356,9 @@ void UEVRPlugin::handle_game_state_change() {
                     API::UObjectHook::set_disabled(true);
                     break;
             }
+
+            // Mark the state as handled so the options aren't re-applied every tick.
+            m_game_state.consume();
         }
     }
     catch (...) {
