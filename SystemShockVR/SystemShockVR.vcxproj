@@ -165,6 +165,7 @@
     <ClInclude Include="mINI\ini.h" />
     <ClInclude Include="plugin.hpp" />
     <ClInclude Include="plugin_utils.hpp" />
+    <ClInclude Include="bridge_warmup_used.hpp" />
     <ClInclude Include="sdk_bootstrap.hpp" />
     <ClInclude Include="SDK\CoreUObject_structs.hpp" />
     <ClInclude Include="SDK\Engine_classes.hpp" />

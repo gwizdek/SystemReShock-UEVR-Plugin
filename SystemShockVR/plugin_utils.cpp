@@ -1,27 +1,55 @@
+#include <algorithm>
 #include <chrono>
+#include <string>
+#include <vector>
 
 #include "SDK/AssetRegistry_classes.hpp"
 #include "SDK/UMG_classes.hpp"
-#include "BridgeSDK/BridgeSDK.hpp"
-
+#include "bridge_warmup_used.hpp"
 #include "plugin_utils.hpp"
 
 using namespace uevr;
 
 // Called once the mod's Blueprint classes are loaded (after the VR body is spawned), so the
 // name lookups happen here, during level setup, instead of on the first frame that touches
-// each accessor. Repeat calls are cheap: everything already resolved is skipped.
+// each accessor. Only the classes listed in bridge_warmup_used.hpp are warmed. Repeat calls
+// are cheap: everything already resolved is skipped.
+// A class that is not loaded yet is logged by the bridge, both here and again when it
+// resolves on first use. Nothing retries the lookup in between: a miss scans the whole
+// object array, and that is the hitch the warm-up exists to avoid.
 void PluginUtils::warmup_bridge() {
     const auto begin = std::chrono::steady_clock::now();
+    const std::vector<std::wstring> skipped_before = bridge::warm_skipped_paths();
+    bridge::warm_begin();
     bool complete = false;
     try {
-        complete = SDK::BridgeWarmupAll();
+        complete = SDK::BridgeWarmupUsed();
     }
     catch (...) {
         API::get()->log_error("[plugin_utils][warmup_bridge] Exception");
     }
+    bridge::warm_end();
     const auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count();
-    API::get()->log_warn("[plugin_utils][warmup_bridge] %s in %lld ms", complete ? "Complete" : "Incomplete, see [bridge] lines above", (long long)elapsed_ms);
+    log_bridge_classes_loaded_since(skipped_before);
+
+    if (complete) {
+        API::get()->log_warn("[plugin_utils][warmup_bridge] Complete in %lld ms", (long long)elapsed_ms);
+    }
+    else {
+        API::get()->log_warn("[plugin_utils][warmup_bridge] Incomplete in %lld ms, %zu not loaded, see [bridge] lines above", (long long)elapsed_ms, bridge::warm_skipped_paths().size());
+    }
+}
+
+// Logs every class that the previous warm-up found not loaded and this one found. A class
+// that resolved on first use in between is logged by the bridge and is no longer listed.
+void PluginUtils::log_bridge_classes_loaded_since(const std::vector<std::wstring>& skipped_before) {
+    const std::vector<std::wstring>& skipped_now = bridge::warm_skipped_paths();
+    for (const std::wstring& path : skipped_before) {
+        const bool still_skipped = std::find(skipped_now.begin(), skipped_now.end(), path) != skipped_now.end();
+        if (!still_skipped) {
+            API::get()->log_warn("[plugin_utils][warmup_bridge] Loaded now, warmed up: %s", bridge::narrow(path).c_str());
+        }
+    }
 }
 
 void PluginUtils::reset_height(float offset_y) {

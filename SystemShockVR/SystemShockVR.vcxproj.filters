@@ -81,6 +81,9 @@
     <ClInclude Include="plugin_utils.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="bridge_warmup_used.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="sdk_bootstrap.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>

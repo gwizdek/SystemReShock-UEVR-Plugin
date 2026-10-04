@@ -107,6 +107,64 @@ inline int32_t struct_size(API::UScriptStruct* script_struct)
     return align_up(script_struct->get_properties_size(), script_struct->get_min_alignment());
 }
 
+// Paths of the classes and structs the last warm-up found not loaded. warm_begin()
+// clears the list; the caller of BridgeWarmupAll() reads it afterwards to see what is
+// still missing. ObjectRef::get() removes a path once the object resolves on first use.
+inline std::vector<std::wstring>& warm_skipped_paths()
+{
+    static std::vector<std::wstring> paths;
+    return paths;
+}
+
+// True while a warm-up runs. ObjectRef::get() stays quiet for lookups made by the warm-up
+// and logs every lookup made outside it, so the log shows which classes resolve lazily.
+inline bool& warm_in_progress()
+{
+    static bool in_progress = false;
+    return in_progress;
+}
+
+// Call before the warm-up so warm_skipped_paths() describes this run only.
+inline void warm_begin()
+{
+    warm_skipped_paths().clear();
+    warm_in_progress() = true;
+}
+
+// Call after the warm-up, also when it threw.
+inline void warm_end()
+{
+    warm_in_progress() = false;
+}
+
+// Called when a warm-up finds its class or struct not loaded yet. Nothing is cached in
+// that case, so the names resolve on first use as usual. Logged at warn level because
+// UEVR does not write plugin info messages to its log file.
+inline void warm_skipped(const wchar_t* path)
+{
+    warm_skipped_paths().emplace_back(path);
+    API::get()->log_warn("[bridge] warm-up skipped, not loaded: %s", narrow(path).c_str());
+}
+
+// Called when an object resolves outside the warm-up, on first use. Tells apart a class
+// the last warm-up skipped because it was not loaded from a class the warm-up never tried,
+// so the second message points at a class missing from the plugin's warm-up list.
+inline void warm_resolved_late(const wchar_t* path)
+{
+    if (warm_in_progress()) {
+        return;
+    }
+    std::vector<std::wstring>& paths = warm_skipped_paths();
+    for (auto it = paths.begin(); it != paths.end(); ++it) {
+        if (*it == path) {
+            paths.erase(it);
+            API::get()->log_warn("[bridge] loaded on first use, after warm-up skipped it: %s", narrow(path).c_str());
+            return;
+        }
+    }
+    API::get()->log_warn("[bridge] resolved on first use, not pre-warmed: %s", narrow(path).c_str());
+}
+
 // Finds a UObject by its full search path on first use and keeps it.
 // A miss is not cached, so a class that loads later is still found.
 template <class T>
@@ -119,6 +177,9 @@ struct ObjectRef
     {
         if (cached == nullptr) {
             cached = API::get()->find_uobject<T>(path);
+            if (cached != nullptr) {
+                warm_resolved_late(path);
+            }
         }
         return cached;
     }
@@ -266,13 +327,6 @@ inline bool warm(API::UClass* cls, std::initializer_list<Func*> funcs)
         }
     }
     return ok;
-}
-
-// Logged when a warm-up finds its class or struct not loaded yet. Nothing is cached in
-// that case, so the names resolve on first use as usual.
-inline void warm_skipped(const wchar_t* path)
-{
-    API::get()->log_info("[bridge] warm-up skipped, not loaded: %s", narrow(path).c_str());
 }
 
 // A zeroed parameter buffer for one call. Lives on the stack unless the function's

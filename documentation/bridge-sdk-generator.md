@@ -87,8 +87,8 @@ same as the script's build step.
 - Variables are methods that return a reference: `body->ADSAngle() = 1.0f;`.
 - Functions are inline methods with the same signature style as Dumper-7. Out
   parameters are pointers. Struct, string and container inputs are `const&`.
-- Call `SDK::BridgeWarmupAll()` once the mod's classes are loaded. See
-  `bridge-sdk-warmup.md`.
+- Warm up the classes you use once the mod's classes are loaded. The plugin
+  does this in `bridge_warmup_used.hpp`. See `bridge-sdk-warmup.md`.
 - Do not edit the generated files. The generator overwrites them.
 
 Generated files for Blueprints that no longer exist are not deleted. Remove them

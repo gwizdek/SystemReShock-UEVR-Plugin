@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+#include <vector>
+
 #include "uevr/API.hpp"
 #include "SDK/Engine_classes.hpp"
 #include "SDK/UMG_classes.hpp"
@@ -10,6 +13,8 @@ typedef SDK::UObject* (*StaticLoadObject_t)(uevr::API::UClass* ObjectClass, uevr
 class PluginUtils
 {
     inline static int32_t m_native_fix_tick_counter{ -1 };
+
+    static void log_bridge_classes_loaded_since(const std::vector<std::wstring>& skipped_before);
 
 public:
     static void reset_height(float offset_y);
