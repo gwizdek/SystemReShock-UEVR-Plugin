@@ -10,8 +10,9 @@ The repository holds two things that can be built. Use these names:
 |---|---|---|
 | **plugin** | `SystemShockVR\SystemShockVR.vcxproj` | The C++ UEVR plugin, `SystemReShockVR.dll`. |
 | **installer** | `SystemShockInstaller\src\SystemReShockInstaller\SystemReShockInstaller.csproj` | The C# WPF installer and launcher, `SystemReShockVRMod.exe`. Its tests are in `SystemShockInstaller\tests\`. |
+| **bytecode exporter** | `tools\BytecodeExporter\BytecodeExporter.csproj` | A C# command line tool, `BytecodeExporter.exe`, that writes the Blueprint bytecode, variables and components of one `.uasset` as JSON. Development only, not shipped. See `tools\BytecodeExporter\README.md`. |
 
-"Build the plugin" means the plugin only. "Build the installer" means the installer only. "Build everything" means both. When the request does not say which one, ask.
+"Build the plugin" means the plugin only. "Build the installer" means the installer only. "Build the bytecode exporter" means the bytecode exporter only. "Build everything" means both. When the request does not say which one, ask.
 
 ## Plugin
 
@@ -51,6 +52,17 @@ still locked, the script stops with a message and does not rename, move or delet
 - Take the built DLL from `SystemShockVR\x64\<Configuration>\`. Nothing should be written to the repository root `x64\` folder.
 - Do not delete `SystemShockVR\x64\<Configuration>\obj\`. It holds the `.obj` and `.tlog` files that make the next build incremental.
 - Do not override `OutDir` or `IntDir` on the MSBuild command line, and do not remove the `OutDir` setting from the project file.
+
+## Bytecode exporter
+
+From PowerShell at the repository root:
+
+```powershell
+dotnet build tools\BytecodeExporter\BytecodeExporter.csproj -c Release
+```
+
+The EXE lands in `tools\BytecodeExporter\bin\Release\net8.0\BytecodeExporter.exe`. It needs the
+.NET 8 SDK and downloads `UAssetAPI` from NuGet on the first build. It has no tests.
 
 ## Installer
 
