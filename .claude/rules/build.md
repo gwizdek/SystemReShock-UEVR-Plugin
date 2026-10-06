@@ -10,9 +10,10 @@ The repository holds two things that can be built. Use these names:
 |---|---|---|
 | **plugin** | `SystemShockVR\SystemShockVR.vcxproj` | The C++ UEVR plugin, `SystemReShockVR.dll`. |
 | **installer** | `SystemShockInstaller\src\SystemReShockInstaller\SystemReShockInstaller.csproj` | The C# WPF installer and launcher, `SystemReShockVRMod.exe`. Its tests are in `SystemShockInstaller\tests\`. |
+| **hot reloader** | `tools\PakHotReloader\PakHotReloader.vcxproj` | A development-only UEVR plugin, `PakHotReloader.dll`, that mounts a rebuilt pak into the running game. Not shipped by the installer. See `documentation\pak-hot-reload.md`. |
 | **bytecode exporter** | `tools\BytecodeExporter\BytecodeExporter.csproj` | A C# command line tool, `BytecodeExporter.exe`, that writes the Blueprint bytecode, variables and components of one `.uasset` as JSON. Development only, not shipped. See `tools\BytecodeExporter\README.md`. |
 
-"Build the plugin" means the plugin only. "Build the installer" means the installer only. "Build the bytecode exporter" means the bytecode exporter only. "Build everything" means both. When the request does not say which one, ask.
+"Build the plugin" means the plugin only. "Build the installer" means the installer only. "Build the hot reloader" means the hot reloader only. "Build the bytecode exporter" means the bytecode exporter only. "Build everything" means the plugin and the installer. When the request does not say which one, ask.
 
 ## Plugin
 
@@ -42,7 +43,7 @@ To test a build in the game, the DLL must be copied into the UEVR profile plugin
 The reload is always a manual step done by the user.
 
 `scripts\build-and-deploy.ps1` builds the plugin and copies the DLL and PDB there. The `/build-and-deploy`
-skill runs that script. "Build and deploy" means the plugin only.
+skill runs that script. "Build and deploy" means the plugin only, unless the hot reloader is named.
 
 The game keeps the loaded DLL locked. Unload the plugin in the UEVR overlay before deploying. If the DLL is
 still locked, the script stops with a message and does not rename, move or delete the file.
@@ -52,6 +53,22 @@ still locked, the script stops with a message and does not rename, move or delet
 - Take the built DLL from `SystemShockVR\x64\<Configuration>\`. Nothing should be written to the repository root `x64\` folder.
 - Do not delete `SystemShockVR\x64\<Configuration>\obj\`. It holds the `.obj` and `.tlog` files that make the next build incremental.
 - Do not override `OutDir` or `IntDir` on the MSBuild command line, and do not remove the `OutDir` setting from the project file.
+
+## Hot reloader
+
+From a Developer PowerShell at the repository root:
+
+```powershell
+msbuild tools\PakHotReloader\PakHotReloader.vcxproj /p:Configuration=Release /p:Platform=x64 /m
+```
+
+The output lands in `tools\PakHotReloader\x64\<Configuration>\PakHotReloader.dll`. It shares the UEVR API
+headers and the ini reader with the plugin through an include path into `SystemShockVR\`; it has no other
+dependencies. The same plugin rules apply: x64 only, do not touch `OutDir`, `IntDir` or the `obj\` folder.
+
+`scripts\build-and-deploy.ps1 -Target PakHotReloader` builds it and copies the DLL and PDB into the UEVR
+profile plugins folder, next to the plugin. UEVR loads every DLL in that folder, so the hot reloader runs
+as a second, independent plugin. Remove the DLL from the folder to switch it off.
 
 ## Bytecode exporter
 

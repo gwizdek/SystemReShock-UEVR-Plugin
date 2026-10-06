@@ -26,6 +26,8 @@ Reloading the plugin is a manual step the user does in the UEVR overlay. Never t
 
    Pass `-Configuration Debug` only when the user asks for a Debug build.
    Pass `-SkipBuild` when the user only wants the existing DLL copied.
+   Pass `-Target PakHotReloader` only when the user names the hot reloader; it then builds
+   `tools\PakHotReloader\PakHotReloader.vcxproj` and deploys `PakHotReloader.dll` instead.
 
 2. If the build fails, show the compiler or linker errors and stop. Do not copy a stale DLL.
 

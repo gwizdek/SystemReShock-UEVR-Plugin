@@ -1,12 +1,15 @@
 <#
 .SYNOPSIS
-    Builds the UEVR plugin and copies it into the UEVR profile plugins folder.
+    Builds a UEVR plugin from this repository and copies it into the UEVR profile plugins folder.
 
 .DESCRIPTION
-    Runs MSBuild on SystemShockVR\SystemShockVR.vcxproj (x64) and copies the
-    resulting SystemReShockVR.dll and .pdb into the UEVR plugins folder.
-    The plugin must be unloaded in the UEVR overlay before deploying, and
-    reloaded there afterwards. Both are manual steps.
+    Runs MSBuild on the chosen project (x64) and copies the resulting DLL and .pdb
+    into the UEVR plugins folder. The plugin must be unloaded in the UEVR overlay
+    before deploying, and reloaded there afterwards. Both are manual steps.
+
+.PARAMETER Target
+    Plugin (default) builds SystemShockVR\SystemShockVR.vcxproj -> SystemReShockVR.dll.
+    PakHotReloader builds tools\PakHotReloader\PakHotReloader.vcxproj -> PakHotReloader.dll.
 
 .PARAMETER Configuration
     Release (default) or Debug.
@@ -19,6 +22,8 @@
 #>
 [CmdletBinding()]
 param(
+    [ValidateSet('Plugin', 'PakHotReloader')]
+    [string]$Target = 'Plugin',
     [ValidateSet('Release', 'Debug')]
     [string]$Configuration = 'Release',
     [string]$PluginsDir = (Join-Path $env:APPDATA 'UnrealVRMod\SystemReShock-Win64-Shipping\plugins'),
@@ -27,8 +32,14 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$project = Join-Path $repoRoot 'SystemShockVR\SystemShockVR.vcxproj'
-$outDir = Join-Path $repoRoot "SystemShockVR\x64\$Configuration"
+
+$targets = @{
+    Plugin         = @{ Project = 'SystemShockVR\SystemShockVR.vcxproj';          OutDir = 'SystemShockVR\x64';          Dll = 'SystemReShockVR.dll' }
+    PakHotReloader = @{ Project = 'tools\PakHotReloader\PakHotReloader.vcxproj'; OutDir = 'tools\PakHotReloader\x64'; Dll = 'PakHotReloader.dll' }
+}
+$selected = $targets[$Target]
+$project = Join-Path $repoRoot $selected.Project
+$outDir = Join-Path $repoRoot "$($selected.OutDir)\$Configuration"
 
 function Find-MSBuild {
     $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
@@ -43,12 +54,12 @@ function Find-MSBuild {
 
 if (-not $SkipBuild) {
     $msbuild = Find-MSBuild
-    Write-Host "Building plugin ($Configuration) with $msbuild"
+    Write-Host "Building $Target ($Configuration) with $msbuild"
     & $msbuild $project /p:Configuration=$Configuration /p:Platform=x64 /m /v:m /nologo
-    if ($LASTEXITCODE -ne 0) { throw "Plugin build failed with exit code $LASTEXITCODE" }
+    if ($LASTEXITCODE -ne 0) { throw "$Target build failed with exit code $LASTEXITCODE" }
 }
 
-$dll = Join-Path $outDir 'SystemReShockVR.dll'
+$dll = Join-Path $outDir $selected.Dll
 if (-not (Test-Path $dll)) { throw "Built DLL not found: $dll" }
 
 New-Item -ItemType Directory -Force -Path $PluginsDir | Out-Null
@@ -66,9 +77,9 @@ function Deploy-File([string]$Source) {
 }
 
 Deploy-File $dll
-$pdb = Join-Path $outDir 'SystemReShockVR.pdb'
+$pdb = [System.IO.Path]::ChangeExtension($dll, '.pdb')
 if (Test-Path $pdb) { Deploy-File $pdb }
 
-$deployed = Get-Item (Join-Path $PluginsDir 'SystemReShockVR.dll')
+$deployed = Get-Item (Join-Path $PluginsDir $selected.Dll)
 Write-Host "Deployed $($deployed.FullName) ($($deployed.Length) bytes, $($deployed.LastWriteTime))"
 Write-Host 'Reload the plugin from the UEVR overlay to pick it up.'
