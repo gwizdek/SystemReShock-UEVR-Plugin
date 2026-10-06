@@ -78,6 +78,26 @@ resolve. The `[bridge]` lines above it in the log say which. All of these
 messages use the warn level, because UEVR does not write plugin info messages
 to `log.txt`.
 
+## Caches are dropped at every level change
+
+Every cache holds raw pointers into the Unreal object array. When the engine
+unloads a Blueprint class and loads it again, the new class object can sit at
+another address and, after a pak hot reload, have another layout. The cached
+class pointer, property offsets and function pointers are then wrong.
+
+`bridge::invalidate()` in `Bridge.hpp` handles this. It increments a generation
+counter; every `ObjectRef`, `Prop` and `Func` remembers the generation it
+resolved under and resolves again on its next use when the counter has moved.
+`handle_level_change` in `plugin.cpp` calls it right after the pointer cleanup,
+when `m_level` has changed, before the VR body is created. The warm-up that
+follows refills the caches, so the lookups land in level setup again. A pawn
+state change without a level change does not invalidate.
+
+This is what makes the pak hot reloader (`documentation/pak-hot-reload.md`)
+work with the bridge: the reload needs a trip through the title screen, which
+is a level change, so the next load resolves every name against the classes
+from the new pak.
+
 ## What happens when a class is not loaded
 
 `BridgeWarmup()` returns `false` and logs

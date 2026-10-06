@@ -23,6 +23,12 @@ public:
     static void destroy_actors_by_class(SDK::UWorld* world, SDK::UClass* actor_class);
     static void show_all_primitive_components(SDK::UWorld* world, SDK::USceneComponent* origin, float range, bool include_pawn = false);
     static SDK::UPanelSlot* reparent_panel_to_user_widget(SDK::UPanelWidget* panel, SDK::UUserWidget* user_widget);
+
+    // Detaches every game widget that reparent_panel_to_user_widget moved into one of the
+    // mod's live user widgets. The game's HUD outlives a level and keeps referencing those
+    // panels, so without this the mod's widgets, their classes and every asset they use
+    // stay in memory for the rest of the session. Call at a level change.
+    static void release_game_panels_from_mod_widgets();
     static int32_t hook_vtable_fn(std::wstring_view class_name, std::wstring_view fn_name, void* destination, void** original);
 
     // this is the new way that uses AssetRegistry and UKismetSystemLibrary

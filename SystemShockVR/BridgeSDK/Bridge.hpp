@@ -10,6 +10,11 @@
 * and cached. Nothing here depends on the memory layout of a Blueprint class, so
 * editing a Blueprint never requires a new dump. A name that cannot be resolved
 * logs an error and throws std::runtime_error.
+*
+* The caches hold raw pointers into the Unreal object array. When the engine unloads a
+* Blueprint class and loads it again, for example at a level change or after a pak hot
+* reload, those pointers and offsets are stale. bridge::invalidate() marks every cache
+* as stale at once; each one resolves again on its next use.
 */
 
 #include <cstdint>
@@ -107,6 +112,23 @@ inline int32_t struct_size(API::UScriptStruct* script_struct)
     return align_up(script_struct->get_properties_size(), script_struct->get_min_alignment());
 }
 
+// Counts the calls to invalidate(). Every cache remembers the value it resolved under
+// and resolves again when the value has moved on.
+inline uint32_t& generation()
+{
+    static uint32_t value = 1;
+    return value;
+}
+
+// Marks every cached class, struct, property and function as stale. Call it when the
+// engine may have unloaded and reloaded Blueprint classes, before anything resolves
+// against them. The next use of each cache pays one lookup again.
+inline void invalidate()
+{
+    ++generation();
+    API::get()->log_warn("[bridge] caches invalidated, generation %u", generation());
+}
+
 // Paths of the classes and structs the last warm-up found not loaded. warm_begin()
 // clears the list; the caller of BridgeWarmupAll() reads it afterwards to see what is
 // still missing. ObjectRef::get() removes a path once the object resolves on first use.
@@ -172,11 +194,13 @@ struct ObjectRef
 {
     const wchar_t* path;
     T* cached{nullptr};
+    uint32_t resolved_in{0};
 
     T* get()
     {
-        if (cached == nullptr) {
+        if (cached == nullptr || resolved_in != generation()) {
             cached = API::get()->find_uobject<T>(path);
+            resolved_in = generation();
             if (cached != nullptr) {
                 warm_resolved_late(path);
             }
@@ -203,13 +227,15 @@ struct Prop
     const wchar_t* name;
     API::FProperty* prop{nullptr};
     int32_t offset{-1};
+    uint32_t resolved_in{0};
 
     API::FProperty* resolve(API::UStruct* owner)
     {
-        if (prop == nullptr) {
+        if (prop == nullptr || resolved_in != generation()) {
             if (owner == nullptr) {
                 fail(L"null owner for property " + std::wstring(name));
             }
+            prop = nullptr;
             for (API::UStruct* s = owner; s != nullptr && prop == nullptr; s = s->get_super_struct()) {
                 prop = find_property_ci(s, name);
             }
@@ -217,6 +243,7 @@ struct Prop
                 fail(L"property not found: " + std::wstring(name));
             }
             offset = prop->get_offset();
+            resolved_in = generation();
         }
         return prop;
     }
@@ -256,13 +283,14 @@ struct Func
     std::vector<API::FProperty*> props;
     std::vector<int32_t> offsets;
     int32_t size{0};
+    uint32_t resolved_in{0};
 
     void resolve(API::UClass* cls)
     {
         if (cls == nullptr) {
             fail(L"null class for function " + std::wstring(name));
         }
-        if (cls == resolved_for && function != nullptr) {
+        if (cls == resolved_for && function != nullptr && resolved_in == generation()) {
             return;
         }
         function = find_in_hierarchy(cls);
@@ -272,6 +300,7 @@ struct Func
         resolve_params();
         size = align_up(function->get_properties_size(), 16);
         resolved_for = cls;
+        resolved_in = generation();
     }
 
 private:

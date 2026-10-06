@@ -339,6 +339,69 @@ SDK::UPanelSlot* PluginUtils::reparent_panel_to_user_widget(SDK::UPanelWidget* p
     }
 }
 
+namespace {
+
+// True when the object's outermost package is one of the mod's, under /Game/Mods/.
+bool is_mod_class(API::UObject* object) {
+    while (object->get_outer() != nullptr) object = object->get_outer();
+    return object->get_fname()->to_string().rfind(L"/Game/Mods/", 0) == 0;
+}
+
+// True for a live user widget made from a mod class; false for class default objects.
+bool is_live_mod_user_widget(API::UObject* object) {
+    static auto* user_widget_class = API::get()->find_uobject<API::UClass>(L"Class /Script/UMG.UserWidget");
+    if (user_widget_class == nullptr || !object->is_a(user_widget_class)) return false;
+    if (object->get_fname()->to_string().rfind(L"Default__", 0) == 0) return false;
+    return is_mod_class(object->get_class());
+}
+
+// True when `object` lives inside `owner`'s outer chain, so it belongs to that widget tree.
+bool is_owned_by(SDK::UObject* object, SDK::UObject* owner) {
+    for (SDK::UObject* outer = object->Outer; outer != nullptr; outer = outer->Outer) {
+        if (outer == owner) return true;
+    }
+    return false;
+}
+
+// Removes the children of the widget's root panel that come from another widget tree.
+// Those are the game's HUD panels that the plugin moved in. Returns how many it removed.
+int detach_foreign_children(SDK::UUserWidget* widget) {
+    SDK::UWidgetTree* tree = widget->WidgetTree;
+    if (tree == nullptr || tree->RootWidget == nullptr || !tree->RootWidget->IsA(SDK::UPanelWidget::StaticClass())) return 0;
+    auto* root = static_cast<SDK::UPanelWidget*>(tree->RootWidget);
+    int detached = 0;
+    for (int32_t i = root->GetChildrenCount() - 1; i >= 0; --i) {
+        SDK::UWidget* child = root->GetChildAt(i);
+        if (child == nullptr || is_owned_by(child, tree)) continue;
+        API::get()->log_warn("[plugin_utils][detach_foreign_children] Detaching %s from %s", child->GetName().c_str(), widget->GetName().c_str());
+        root->RemoveChildAt(i);
+        ++detached;
+    }
+    return detached;
+}
+
+} // namespace
+
+void PluginUtils::release_game_panels_from_mod_widgets() {
+    try {
+        int widgets = 0;
+        int detached = 0;
+        // Iterates through the UEVR API, which knows the game's object array layout.
+        API::FUObjectArray* objects = API::FUObjectArray::get();
+        const int32_t count = objects->get_object_count();
+        for (int32_t i = 0; i < count; ++i) {
+            API::UObject* object = objects->get_object(i);
+            if (object == nullptr || !is_live_mod_user_widget(object)) continue;
+            ++widgets;
+            detached += detach_foreign_children(reinterpret_cast<SDK::UUserWidget*>(object));
+        }
+        API::get()->log_warn("[plugin_utils][release_game_panels_from_mod_widgets] %d mod widget(s) checked, %d game panel(s) detached", widgets, detached);
+    }
+    catch (...) {
+        API::get()->log_error("[plugin_utils][release_game_panels_from_mod_widgets] Exception");
+    }
+}
+
 SDK::UObject* PluginUtils::load_asset(SDK::FAssetData asset_data) {
     try {
         API::get()->log_warn("[plugin_utils][load_asset] Loading Asset %s", asset_data.ObjectPath.GetRawString().c_str());

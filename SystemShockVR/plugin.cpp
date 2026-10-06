@@ -1354,6 +1354,13 @@ void UEVRPlugin::handle_level_change() {
             cleanup_actors();
             cleanup_pointers();
 
+            // A level change may have unloaded and reloaded the mod's Blueprint classes,
+            // also from a hot-reloaded pak. Drop every cached class, property and function
+            // pointer before anything below resolves against them. The warm-up refills them.
+            if (m_level.has_changed()) {
+                bridge::invalidate();
+            }
+
             // Hacker Implant - Citadel Station (normal space)
             if (
                 SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
@@ -1636,6 +1643,7 @@ void UEVRPlugin::cleanup_actors() {
 
         PluginUtils::destroy_actors_by_tag(world, UKismetStringLibrary::Conv_StringToName(L"VRModActor"));
         PluginUtils::destroy_actors_by_class(world, A_BP_VRAvatar_C::StaticClass());
+        PluginUtils::release_game_panels_from_mod_widgets();
 
         g_vr_body = nullptr;
     }
