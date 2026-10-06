@@ -31,6 +31,10 @@ tools\BytecodeExporter\bin\Release\net8.0\BytecodeExporter.exe <asset.uasset> [-
 
 Exit code 0 means success, 1 means the asset could not be read, 2 means bad arguments.
 
+`scripts\export-bytecode.ps1 <name>` finds an asset by name under `dumps\assets\`, builds the
+exporter when the EXE is missing, and runs it. The `/bytecode-exporter <name>` skill calls that
+script.
+
 ## Output
 
 | File | Content |
