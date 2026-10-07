@@ -13,8 +13,10 @@
 #include "_BP_DebugWidgetEntryData_classes.hpp"
 #include "_BP_GrabEnablingComponent_classes.hpp"
 #include "_BP_HackerHardware_classes.hpp"
+#include "_BP_HandheldDevice_classes.hpp"
 #include "_BP_HandInteractionComponent_classes.hpp"
 #include "_BP_InteractablesHighlighter_classes.hpp"
+#include "_BP_InteractionSource_classes.hpp"
 #include "_BP_InteractionSourceComponent_classes.hpp"
 #include "_BP_ItemSelector_classes.hpp"
 #include "_BP_LaserDot_classes.hpp"
@@ -66,6 +68,7 @@ inline bool BridgeWarmupAll()
 	Ok &= I_BI_InteractionSource_C::BridgeWarmup();
 	Ok &= I_BI_PickableAnim_C::BridgeWarmup();
 	Ok &= I_BI_VRWeapon_C::BridgeWarmup();
+	Ok &= I_BP_HandheldDevice_C::BridgeWarmup();
 	Ok &= I_BP_VRMeleeWeapon_C::BridgeWarmup();
 	Ok &= U_BFL_VRModUtils_C::BridgeWarmup();
 	Ok &= U_BFL_VRUtils_C::BridgeWarmup();
@@ -75,6 +78,7 @@ inline bool BridgeWarmupAll()
 	Ok &= U_BP_GrabEnablingComponent_C::BridgeWarmup();
 	Ok &= U_BP_HandInteractionComponent_C::BridgeWarmup();
 	Ok &= U_BP_InteractablesHighlighter_C::BridgeWarmup();
+	Ok &= U_BP_InteractionSource_C::BridgeWarmup();
 	Ok &= U_BP_InteractionSourceComponent_C::BridgeWarmup();
 	Ok &= U_BP_LeverInteractionSourceComponent_C::BridgeWarmup();
 	Ok &= U_BP_MFDMaskComponent_C::BridgeWarmup();

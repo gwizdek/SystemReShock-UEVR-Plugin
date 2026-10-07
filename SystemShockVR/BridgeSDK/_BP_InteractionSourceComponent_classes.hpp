@@ -17,6 +17,7 @@ namespace SDK
 {
 class AActor;
 class U_BP_HandInteractionComponent_C;
+class U_BP_InteractionSource_C;
 class UPrimitiveComponent;
 class USphereComponent;
 class UStaticMeshComponent;
@@ -188,18 +189,11 @@ public:
 	}
 
 	// Function InitInteractionSource (BlueprintCallable, BlueprintEvent)
-	static bridge::Func& BridgeFunc_InitInteractionSource() { static bridge::Func Ref{ L"InitInteractionSource", { L"Type", L"InInteractionSourceTransform", L"InWristTransform", L"InOuterInteractionDistance", L"InInnerInteractionDistance", L"InInteractionPose", L"InIsSnappable", L"InIsEnabled" } }; return Ref; }
-	void InitInteractionSource(E_ENUM_InteractionSourceType Type, const struct FTransform& InInteractionSourceTransform, const struct FTransform& InWristTransform, float InOuterInteractionDistance, float InInnerInteractionDistance, E_ENUM_VRHandPose InInteractionPose, bool InIsSnappable, bool InIsEnabled)
+	static bridge::Func& BridgeFunc_InitInteractionSource() { static bridge::Func Ref{ L"InitInteractionSource", { L"InteractionSource" } }; return Ref; }
+	void InitInteractionSource(class U_BP_InteractionSource_C* InteractionSource)
 	{
 		bridge::Call BridgeCall(BridgeFunc_InitInteractionSource(), bridge::as_uobject(this));
-		BridgeCall.set<E_ENUM_InteractionSourceType>(0, Type);
-		BridgeCall.set<struct FTransform>(1, InInteractionSourceTransform);
-		BridgeCall.set<struct FTransform>(2, InWristTransform);
-		BridgeCall.set<float>(3, InOuterInteractionDistance);
-		BridgeCall.set<float>(4, InInnerInteractionDistance);
-		BridgeCall.set<E_ENUM_VRHandPose>(5, InInteractionPose);
-		BridgeCall.set_bool(6, InIsSnappable);
-		BridgeCall.set_bool(7, InIsEnabled);
+		BridgeCall.set<class U_BP_InteractionSource_C*>(0, InteractionSource);
 		BridgeCall.invoke();
 	}
 

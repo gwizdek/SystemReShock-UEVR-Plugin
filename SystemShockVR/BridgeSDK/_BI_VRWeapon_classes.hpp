@@ -15,7 +15,7 @@
 
 namespace SDK
 {
-class A_BP_VRBody_C;
+class U_BP_InteractionSource_C;
 class USkeletalMeshComponent;
 
 // BlueprintGeneratedClass /Game/Mods/VRBody/Interfaces/_BI_VRWeapon._BI_VRWeapon_C
@@ -33,6 +33,16 @@ public:
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static I_BI_VRWeapon_C* GetDefaultObj() { return reinterpret_cast<I_BI_VRWeapon_C*>(BridgeClass()->get_class_default_object()); }
 
+	// Function GetInteractionSources (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_GetInteractionSources() { static bridge::Func Ref{ L"GetInteractionSources", { L"InteractionSources" } }; return Ref; }
+	static void GetInteractionSources(uevr::API::UObject* BridgeTarget, TArray<class U_BP_InteractionSource_C*>* InteractionSources)
+	{
+		bridge::Call BridgeCall(BridgeFunc_GetInteractionSources(), BridgeTarget);
+		if (InteractionSources != nullptr) { BridgeCall.set<TArray<class U_BP_InteractionSource_C*>>(0, *InteractionSources); }
+		BridgeCall.invoke();
+		if (InteractionSources != nullptr) { *InteractionSources = BridgeCall.get<TArray<class U_BP_InteractionSource_C*>>(0); }
+	}
+
 	// Function UnloadWeapon (BlueprintCallable, BlueprintEvent)
 	static bridge::Func& BridgeFunc_UnloadWeapon() { static bridge::Func Ref{ L"UnloadWeapon", {  } }; return Ref; }
 	static void UnloadWeapon(uevr::API::UObject* BridgeTarget)
@@ -46,15 +56,6 @@ public:
 	static void LoadWeapon(uevr::API::UObject* BridgeTarget)
 	{
 		bridge::Call BridgeCall(BridgeFunc_LoadWeapon(), BridgeTarget);
-		BridgeCall.invoke();
-	}
-
-	// Function InitInteractionSources (BlueprintCallable, BlueprintEvent)
-	static bridge::Func& BridgeFunc_InitInteractionSources() { static bridge::Func Ref{ L"InitInteractionSources", { L"InVRBody" } }; return Ref; }
-	static void InitInteractionSources(uevr::API::UObject* BridgeTarget, class A_BP_VRBody_C* InVRBody)
-	{
-		bridge::Call BridgeCall(BridgeFunc_InitInteractionSources(), BridgeTarget);
-		BridgeCall.set<class A_BP_VRBody_C*>(0, InVRBody);
 		BridgeCall.invoke();
 	}
 

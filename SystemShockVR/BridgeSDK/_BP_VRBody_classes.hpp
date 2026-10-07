@@ -27,6 +27,7 @@ class U_BP_DebugWidgetComponent_C;
 class U_BP_GrabEnablingComponent_C;
 class U_BP_HandInteractionComponent_C;
 class U_BP_InteractablesHighlighter_C;
+class U_BP_InteractionSource_C;
 class U_BP_InteractionSourceComponent_C;
 class U_BP_MFDMaskComponent_C;
 class U_BP_VRMenu_C;
@@ -180,6 +181,16 @@ public:
 	E_ENUM_VRHand& MainHand() { return BridgeProp_MainHand().ref<E_ENUM_VRHand>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_HackerCurrentMontage() { static bridge::Prop Ref{ L"HackerCurrentMontage" }; return Ref; }
 	class UAnimMontage*& HackerCurrentMontage() { return BridgeProp_HackerCurrentMontage().ref<class UAnimMontage*>(this, BridgeClass()); }
+
+	// Function CreateWeaponInteractionSourceComponents (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CreateWeaponInteractionSourceComponents() { static bridge::Func Ref{ L"CreateWeaponInteractionSourceComponents", { L"InteractionSources" } }; return Ref; }
+	void CreateWeaponInteractionSourceComponents(TArray<class U_BP_InteractionSource_C*>* InteractionSources)
+	{
+		bridge::Call BridgeCall(BridgeFunc_CreateWeaponInteractionSourceComponents(), bridge::as_uobject(this));
+		if (InteractionSources != nullptr) { BridgeCall.set<TArray<class U_BP_InteractionSource_C*>>(0, *InteractionSources); }
+		BridgeCall.invoke();
+		if (InteractionSources != nullptr) { *InteractionSources = BridgeCall.get<TArray<class U_BP_InteractionSource_C*>>(0); }
+	}
 
 	// Function IsTwoHandingWeapon (BlueprintCallable, BlueprintEvent)
 	static bridge::Func& BridgeFunc_IsTwoHandingWeapon() { static bridge::Func Ref{ L"IsTwoHandingWeapon", { L"ReturnValue" } }; return Ref; }
@@ -606,6 +617,7 @@ public:
 			&BridgeProp_HackerCurrentMontage(),
 		});
 		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_CreateWeaponInteractionSourceComponents(),
 			&BridgeFunc_IsTwoHandingWeapon(),
 			&BridgeFunc_IsEmptyHanded(),
 			&BridgeFunc_IsHoldingHandheldConsumable(),
