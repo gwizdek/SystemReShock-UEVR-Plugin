@@ -13,10 +13,13 @@ Done:
 - The bytecode exporter writes widget trees (`widgets.json`), enums (`enums.json`), inherited
   default values and resolved object references. See `tools\BytecodeExporter\README.md`.
 - The game's Options screen is fully mapped (this document).
+- The generator (`tools\UEVRBridgeGen\GenerateMenu.ps1`, commandlet `VROptionsMenuGen`) creates
+  the dummies and the mod widgets. They exist in the Unreal project
+  (`D:\Unreal Engine\Projects\SystemReShock-UE4-Project`, its own git lfs repository, branch `vr-menu`).
+- The plugin trigger (`SystemShockVR\vr_options_menu.cpp`) creates the page and installs it.
 
-Not started: the dummy assets, the mod widgets, the installer Blueprint, the plugin trigger and
-the settings store. The Unreal project (`D:\Unreal Engine\Projects\SystemReShock-UE4-Project`,
-its own git lfs repository) is on branch `vr-menu` and clean.
+Not done: the cook and the in-game test of the spike, the plugin side of the settings (reading
+and saving the row values), the slider row, the category icon, and the real VR options.
 
 ## Goal
 
@@ -172,7 +175,21 @@ holds references to the live widgets.
 
 ## Design
 
-Three kinds of assets in the Unreal project, plus one plugin change.
+Three kinds of assets in the Unreal project, plus one plugin change. The commandlet in
+`tools\UEVRBridgeGen\Source\UEVRBridgeGen\Private\MenuGen\` creates every asset:
+`MenuGenDummies.cpp` holds the dummy list, `MenuGenModWidgets.cpp` the trees and the row and
+list functions, `MenuGenPageLogic.cpp` the page functions. Run it from the repository root with
+the Unreal editor closed:
+
+```powershell
+.\tools\UEVRBridgeGen\GenerateMenu.ps1              # create what is missing
+.\tools\UEVRBridgeGen\GenerateMenu.ps1 -RebuildGen  # after a change under Source\
+.\tools\UEVRBridgeGen\GenerateMenu.ps1 -Overwrite   # create every asset again
+```
+
+An asset whose package already exists is kept and loaded, so the generator can be run again
+after a failure or to add new assets. `-Overwrite` writes a new asset over the file without
+loading the old one. Mod assets are marked for chunk 10 when saved; dummies get no chunk.
 
 ### 1. Dummy game classes (chunk 0, not shipped)
 
@@ -181,28 +198,29 @@ functions. They have no logic and no widget tree. They are cooked into `pakchunk
 installer never ships, so they never override the game's assets. Only the mod's own assets
 (chunk 10) reach the game; in the game every reference by path resolves to the real class.
 
-A dummy only needs the members the mod's Blueprints use. Signatures must match the game exactly
-(names, parameter names, types, flags such as pure). Functions that the game declares as
-`BlueprintEvent` are created as overridable functions so the mod's children can override them.
+A dummy only needs the members the mod's Blueprints use. Names, parameter names and flags such as
+pure must match the game. Parameter and variable types may be wider than the game's (for example
+`UserWidget` instead of a menu class) because the cooked bytecode links by name and passes object
+pointers. Every function is created as a normal Blueprint function, which is overridable.
 
 | Dummy (path under `/Game/Blueprints/UI/`) | Parent | Members needed |
 |---|---|---|
 | `Generic/BPI_MenuNavigationRecipient` | interface | optional; only if a mod widget overrides a `ReceiveNav*` function. |
-| `Generic/WIDGET_MenuBase` | UserWidget | vars `ParentMenu`, `ActiveMenuList`, `OpenedSubMenu`; dispatchers `OnCanApply(bool)`, `OnCanReset(bool)`, `OnSubMenuOpened(WIDGET_MenuBase)`, `OnSubMenuClosed(WIDGET_MenuBase)`; functions `InitializeMenu(ParentMenuWidget)`, `OnMenuOpen()`, `OnMenuClose()`, `SetActiveMenuList(Value)`, `TryOpenSubMenu(SubMenu)`, `TryCloseSubMenu()`, `InvokeNavManager(InputType, InputState)`. |
+| `Generic/WIDGET_MenuBase` | UserWidget | vars `ParentMenu`, `ActiveMenuList` (typed `UserWidget`), `OpenedSubMenu`; dispatchers `OnCanApply(CanApply)`, `OnCanReset(CanReset)`; functions `InitializeMenu(ParentMenuWidget)`, `OnMenuOpen()`, `OnMenuClose()`, `SetActiveMenuList(Value)`, `TryOpenSubMenu(SubMenu)`, `TryCloseSubMenu()`. |
 | `MainMenu/OptionsScreen/WIDGET_OptionsMenu_Base` | WIDGET_MenuBase | nothing extra (`OnMenuOpen`, `OnMenuClose` overrides exist in the game and are inherited at runtime). |
-| `Generic/WIDGET_MenuListBase` | UserWidget | vars `MenuListItemArray`, `ParentScreenWidget`, `PanelItemListWidget`; functions `InitializeList(ParentScreen)`, `InitializeItemArray() -> MenuListItems`, `GetAllMenuListItems() -> Options`, `EVENT_OnOptionChanged()`. |
-| `Generic/WIDGET_MenuListItemBase` | UserWidget | vars `ItemName`, `ItemDescription`, `IndexInList`, `ParentListWidget`; function `InitializeMenuListItem(ParentList, Index)`. |
-| `MainMenu/OptionsScreen/OptionsCategories/OPTION_Base` | WIDGET_MenuListItemBase | the six overridable functions, `ApplyCleanValue()`, dispatcher `OnOptionChanged()`. |
+| `Generic/WIDGET_MenuListBase` | UserWidget | vars `MenuListItemArray`, `ParentScreenWidget`, `PanelItemListWidget`; functions `InitializeList(ParentScreen)`, `InitializeItemArray() -> MenuListItems`, `EVENT_OnOptionChanged()`. |
+| `Generic/WIDGET_MenuListItemBase` | UserWidget | vars `ItemName`, `ItemDescription`, `IndexInList`; function `InitializeMenuListItem(ParentList, Index)`. |
+| `MainMenu/OptionsScreen/OptionsCategories/OPTION_Base` | WIDGET_MenuListItemBase | the six overridable functions, `ApplyCleanValue()`, `SaveNewValue()`, dispatcher `OnOptionChanged()`. |
 | `.../OptionsCategories/WIDGET_Settings_BinaryToggle` | OPTION_Base | `SetCheckboxValue(Value)`, `GetCheckboxValue() -> Result` (pure), `ToggleCheckbox()`. |
-| `.../OptionsCategories/WIDGET_Settings_Slider` | OPTION_Base | the six `Slider*` instance variables, `GetScaledCurrentSliderValue() -> Result` (pure), var `WIDGET_Slider` typed as a dummy `WIDGET_Slider` with `SetSliderRealValue(Value)`. |
-| `MainMenu/OptionsScreen/WIDGET_OptionCategoryMenuListItem` | WIDGET_MenuListItemBase | vars `ENUM_OptionCategories` (byte of the dummy enum), `OptionCategoryIcon` (Material array), `IMAGE_OptionCategoryIcon` (Image), `IsExpanded`; dispatcher `OnCategoryButtonClicked(int ItemIndex)`; functions `SetExpandedState(NewExpandedState)`, `SetCategorySelected(NewSelectedState)`. |
+| `.../OptionsCategories/WIDGET_Settings_Slider` | OPTION_Base | not generated yet. Needs the six `Slider*` instance variables, `GetScaledCurrentSliderValue() -> Result` (pure) and a dummy `WIDGET_Slider` with `SetSliderRealValue(Value)`. |
+| `MainMenu/OptionsScreen/WIDGET_OptionCategoryMenuListItem` | WIDGET_MenuListItemBase | vars `ENUM_OptionCategories` (byte of the dummy enum), `IsExpanded`; dispatcher `OnCategoryButtonClicked(ItemIndex)`; functions `SetExpandedState(NewExpandedState)`, `SetCategorySelected(NewSelectedState)`. |
 | `MainMenu/OptionsScreen/WIDGET_OptionsCategoryMenuList` | WIDGET_MenuListBase | var `VBOX_OptionCategoryWidgetList` (VerticalBox); function `SetSelectedItem(ItemIndex) -> CategoryText`. |
-| `MainMenu/OptionsScreen/WIDGET_OptionsScreen` | WIDGET_MenuBase | vars `WIDGET_OptionsCategoryMenuList`, `WIDGET_OptionsMenu_Gameplay` (typed `UserWidget`; only used to reach `GridPanel_221` through `GetParent` twice), `WIDGET_ButtonLegend_ApplyButton`, `WIDGET_ButtonLegend_ResetToDefaults`, `ANIM_OpenOptionsSubscreen`, `ANIM_ShowResetApplyButtons` (WidgetAnimation). |
+| `MainMenu/OptionsScreen/WIDGET_OptionsScreen` | WIDGET_MenuBase | vars `WIDGET_OptionsCategoryMenuList`, `WIDGET_OptionsMenu_Gameplay` (typed `UserWidget`; only used to reach `GridPanel_221` through `GetParent` twice), `WIDGET_ButtonLegend_ApplyButton`, `WIDGET_ButtonLegend_ResetToDefaults`, `ANIM_OpenOptionsSubscreen`, `ANIM_ShowResetApplyButtons` (WidgetAnimation); function `TryUpdateCategoryList()`. |
 | `HUD/Widgets/ButtonLegend/WIDGET_ButtonLegend_Button` | UserWidget | `ToggleInteractivity(IsInteractive)`. |
 | `MainMenu/OptionsScreen/ENUM_OptionCategories` | user enum | the six entries in the game's order. |
 
-Art assets (materials, fonts) get no dummies. The one game material the mod page needs is loaded
-by path at runtime (see the page below).
+Art assets (materials, fonts) get no dummies. The one game material the mod page needs is set by
+the plugin at runtime (see the plugin trigger below).
 
 ### 2. Mod widgets (chunk 10, `/Game/Mods/UI/Options/`)
 
@@ -210,77 +228,76 @@ by path at runtime (see the page below).
 page: `CanvasPanel` with `IMAGE_PanelBackground` (anchors 0,0 to 1,1, offsets 0, brush margin 1,
 `HitTestInvisible`) and `_WIDGET_OptionsMenu_VRList` (anchors 0,0 to 1,1, offsets 0).
 `InitializeMenu` override: parent call, `list.InitializeList(self)`, `SetActiveMenuList(list)`.
-`Construct` (or `PreConstruct`): load `/Game/Art/UI/HUD/MainMenu/SubMenuGeneric/MAT_SubMenu_ListPanel`
-by soft path and `SetBrushFromMaterial` on the background. In the editor the background is empty; in
-the game it is the real panel.
+The background image has no material in the asset; the plugin sets the game's panel material on
+it after the install. The page also holds the install logic, see below. Variables: `Screen`,
+`CategoryItem`, `WasSubMenuOpen`.
 
 **`_WIDGET_OptionsMenu_VRList`**, child of `WIDGET_MenuListBase`. Tree copied from the Gameplay
 list: `CanvasPanel` with `SCROLLBOX_OptionsMenuList` (anchors 0,0 to 1,1, offsets top 25 and bottom
 25, scrollbar thickness 8 x 8, padding 10) holding the `_OPTION_VR_*` rows, each in a `ScrollBoxSlot`
 with padding 20. `InitializeList` override: parent call, `PanelItemListWidget = SCROLLBOX_OptionsMenuList`.
-`InitializeItemArray` override: every child of the scroll box that casts to `WIDGET_MenuListItemBase`
-(same as the game). The scrollbar materials can be set at runtime by path later; this is cosmetic.
+`InitializeItemArray` override: returns an array made of the row variables, in the order they
+appear in the generator (no loop, since the generator knows every row). The spike holds one row,
+`OPTION_VR_Spike`. The scrollbar materials can be set at runtime later; this is cosmetic.
 
-**`_OPTION_VR_Toggle`**, child of `WIDGET_Settings_BinaryToggle`, and **`_OPTION_VR_Slider`**, child
-of `WIDGET_Settings_Slider`. No tree, no own widgets. One instance variable `SettingName` (Name,
-editable per instance) that keys into the settings store. Overrides, mirroring the game's rows:
+**`_OPTION_VR_Toggle`**, child of `WIDGET_Settings_BinaryToggle` (a slider row, child of
+`WIDGET_Settings_Slider`, comes later). No tree, no own widgets. The row is its own store: instance
+variables `SettingName` (Name), `SavedValue` (bool) and `DefaultValue` (bool), all editable per
+instance. Overrides, mirroring the game's rows:
 
-| Function | Toggle | Slider |
-|---|---|---|
-| `UpdateVisuals` | `SetCheckboxValue(store.GetBool(SettingName))` | `WIDGET_Slider.SetSliderRealValue(store.GetFloat(SettingName))` |
-| `IsDirty` | `GetCheckboxValue() != store.GetBool(SettingName)` | scaled slider value != stored |
-| `IsDefault` | `GetCheckboxValue() == store.GetDefaultBool(SettingName)` | same with default |
-| `ApplyDirtyValue` | `store.ApplyBool(SettingName, GetCheckboxValue())` (takes effect at once) | same with float |
-| `AcceptCurrentValue` | `store.SetBool(SettingName, GetCheckboxValue())` (becomes the saved value) | same with float |
-| `SelectDefaultValue` | `SetCheckboxValue(store.GetDefaultBool(SettingName))` | same with float |
+| Function | Toggle |
+|---|---|
+| `UpdateVisuals` | `SetCheckboxValue(SavedValue)` |
+| `IsDirty` | `GetCheckboxValue() != SavedValue` |
+| `IsDefault` | `GetCheckboxValue() == DefaultValue` |
+| `ApplyDirtyValue` | parent call only |
+| `AcceptCurrentValue` | `SavedValue = GetCheckboxValue()` |
+| `SelectDefaultValue` | `SetCheckboxValue(DefaultValue)` |
 
-Row instances in the list set `ItemName`, `ItemDescription`, `SettingName` and, for sliders, the
-`Slider*` values. Both `ItemName` and `ItemDescription` are plain `Text`; the game's rows use
-localised text, the mod's rows do not need to.
+Every override starts with a call to the parent implementation, as the game's rows do. Row
+instances in the list set `ItemName`, `ItemDescription`, `SettingName`, `DefaultValue` and
+`SavedValue`. Both texts are plain `Text`; the game's rows use localised text, the mod's rows do
+not need to.
 
-**Settings store `_BP_VRSettings`** (step 3). A Blueprint object the installer creates once and keeps
-on the page, or a `SaveGame` subclass. Holds a map of setting name to value, a map of defaults, and
-the functions used above. Where the values live on disk and how the plugin reads them is decided in
-step 3; the first spike holds one toggle in memory.
+There is no settings object. The plugin reads each row's `SavedValue` by `SettingName` after
+Apply and writes the values from its ini into the rows at install time (step 3, not done).
 
-### 3. Installer `_BP_VROptionsInstaller` (chunk 10)
+### 3. The page's `Install` function
 
-A Blueprint function library or an object with one function `Install(WIDGET_OptionsScreen Screen)`.
-It is called once per screen instance, after the game's `OnInitialized` has run (that is, after
-`WIDGET_OptionsCategoryMenuList.MenuListItemArray` holds six items).
+The install logic lives on the page itself, so no extra object is needed to bind events.
+`Install(WIDGET_OptionsScreen Screen)` is called once per screen instance, after the game's
+`OnInitialized` has run (that is, after `WIDGET_OptionsCategoryMenuList.MenuListItemArray` holds
+six items). The plugin checks that before calling it.
 
-1. `CategoryList = Screen.WIDGET_OptionsCategoryMenuList`. If `VBOX_OptionCategoryWidgetList` already
-   has seven children, return.
-2. Create the category item: `CreateWidget(WIDGET_OptionCategoryMenuListItem)`. Before adding it to
-   any panel: `ItemName = "VR"`, `ItemDescription = "..."`, `ENUM_OptionCategories = 0`, and replace
-   `OptionCategoryIcon[0]` on the instance with the mod's icon material. `PreConstruct` then picks
-   index 0, which is the mod's material, and writes the label. `AddChildToVerticalBox` on
-   `VBOX_OptionCategoryWidgetList`, then copy the slot settings of the sixth item (padding and
-   alignment; read them from `widgets.json` when building the generator).
-3. `CategoryList.InitializeList(Screen)`. This re-numbers the items; the new one is index 6. It is
-   safe because the category list has no `OPTION_Base` rows.
-4. Create the page: `CreateWidget(_WIDGET_OptionsMenu_VR)`, `SetVisibility(Hidden)`.
-   `Grid = Screen.WIDGET_OptionsMenu_Gameplay.GetParent().GetParent()` cast to `GridPanel`;
-   `Grid.AddChildToGrid(Page)`, then on the returned `GridSlot`: `SetRow(1)`, `SetColumn(1)`. The
+1. `Screen = Screen`. Create the category item with `WidgetBlueprintLibrary.Create`
+   (`WIDGET_OptionCategoryMenuListItem`), store it in `CategoryItem`, set `ItemName = "VR"` and
+   `ItemDescription`. The item keeps `ENUM_OptionCategories = 0`, so its `PreConstruct` shows the
+   Gameplay icon for now; a mod icon is a later step (set `OptionCategoryIcon[0]` on the instance
+   before it is added).
+2. `AddChildToVerticalBox` on `Screen.WIDGET_OptionsCategoryMenuList.VBOX_OptionCategoryWidgetList`.
+3. `Screen.WIDGET_OptionsCategoryMenuList.InitializeList(Screen)`. This re-numbers the items; the
+   new one is index 6. It is safe because the category list has no `OPTION_Base` rows.
+4. `Grid = Screen.WIDGET_OptionsMenu_Gameplay.GetParent().GetParent()` cast to `GridPanel`;
+   `Grid.AddChildToGrid(self)`, then on the returned `GridSlot`: `SetRow(1)`, `SetColumn(1)`. The
    game's pages sit in `ScaleBox`es with `Stretch = None`, which changes nothing, so the page goes
-   straight into the cell.
-5. `Page.InitializeMenu(Screen)`.
-6. Bind `Item.OnCategoryButtonClicked` to `OnVRCategoryClicked`, bind `Page.OnCanApply` to
-   `Screen.WIDGET_ButtonLegend_ApplyButton.ToggleInteractivity` and `Page.OnCanReset` to
-   `Screen.WIDGET_ButtonLegend_ResetToDefaults.ToggleInteractivity` (through two small event
-   functions, because the game's handler for Reset inverts the value: `CanReset` true means
-   "everything is default", so the Reset button is disabled when it is true).
-7. `Item.SetExpandedState(Screen.OpenedSubMenu is valid)`.
+   straight into the cell. `SetVisibility(Hidden)`.
+5. `InitializeMenu(Screen)`.
+6. Bind `CategoryItem.OnCategoryButtonClicked` to `OnVRCategoryClicked`, the page's own `OnCanApply`
+   to `OnVRCanApply` and `OnCanReset` to `OnVRCanReset`. The handlers call `ToggleInteractivity`
+   on `Screen.WIDGET_ButtonLegend_ApplyButton` and `Screen.WIDGET_ButtonLegend_ResetToDefaults`.
+   Reset is inverted: `CanReset` true means "everything is default", so the Reset button is
+   disabled when it is true.
+7. `CategoryItem.SetExpandedState(Screen.OpenedSubMenu is valid)`.
 
-`OnVRCategoryClicked(int)` mirrors `TryOpenOptionSubMenu`:
+`OnVRCategoryClicked(ItemIndex)` mirrors `TryOpenOptionSubMenu`:
 
-1. If `Screen.OpenedSubMenu == Page`: return (second fire of the click).
-2. `PlayAnimation = (Screen.OpenedSubMenu is not valid)`. If it is valid: `Screen.OpenedSubMenu.OnMenuClose()`.
-3. `Screen.TryOpenSubMenu(Page)`; `CategoryList.SetSelectedItem(6)`.
-4. If `PlayAnimation`: `Screen.PlayAnimation(ANIM_OpenOptionsSubscreen)` and
-   `Screen.PlayAnimation(ANIM_ShowResetApplyButtons)` with the game's arguments (start 0, loops 1,
-   forward, speed 1).
-5. `SetExpandedState(true)` on every item of `CategoryList.MenuListItemArray`.
+1. If `Screen.OpenedSubMenu == self`: return (second fire of the click).
+2. `WasSubMenuOpen = IsValid(Screen.OpenedSubMenu)`. If it was: `Screen.OpenedSubMenu.OnMenuClose()`.
+3. `Screen.TryOpenSubMenu(self)`; `Screen.WIDGET_OptionsCategoryMenuList.SetSelectedItem(ItemIndex)`.
+4. If nothing was open: `Screen.TryUpdateCategoryList()`, which plays `ANIM_OpenOptionsSubscreen`
+   and expands every category item, then `Screen.PlayAnimation(ANIM_ShowResetApplyButtons)` with
+   the game's arguments (start 0, loops 1, forward, speed 1). When a page was already open the
+   items are expanded already, and the game's own loop handles them on its clicks.
 
 Nothing else is needed for the other directions:
 
@@ -292,34 +309,47 @@ Nothing else is needed for the other directions:
 
 ### 4. Plugin trigger
 
-The plugin finds the live `WIDGET_OptionsScreen_C` instance and calls `Install` once for it. The
-screen lives inside `WIDGET_MainMenu_InGame`, which is created with the HUD, so there is one
-instance per level load. The check runs on the game thread, at most once per level change and
-again only if the instance pointer changes: find the object, confirm its category list has six
-items in `MenuListItemArray` (OnInitialized has run), call the installer through the BridgeSDK.
-The installer's own "already has seven children" guard makes a repeated call safe.
+`VROptionsMenu::handle` in `SystemShockVR\vr_options_menu.cpp` runs every engine tick on the game
+thread with the player HUD. It reaches the screen through
+`WIDGET_PlayerHUD.WIDGET_MainMenu_InGame.WIDGET_OptionsScreen`, so there is one screen per level
+load. It returns at once when the screen is the one already installed. Otherwise it waits until
+`MenuListItemArray` holds six items, checks that the category box has no seventh child (the page
+survives a plugin reload), loads the page class with `load_class_for_bridge`, creates the page with
+`WidgetBlueprintLibrary.Create`, calls `Install(screen)` through the BridgeSDK wrapper, and sets
+the game's `MAT_SubMenu_ListPanel` material on `IMAGE_PanelBackground`. After three failed
+attempts on one screen it stops trying. `cleanup_pointers` resets it on level change.
 
 ## Risks and checks for the spike (step 2)
 
 - A mod widget whose parent is a dummy with an empty tree must still get the parent's real tree in
   the game. The game's rows prove the engine does this for a cooked child; the spike confirms it
   for a child cooked in another package.
-- The dummy `WIDGET_OptionsScreen` declares `ANIM_*` as plain variables. The game's class has them
-  as transient animation variables. Reading them by name should work; if `PlayAnimation` gets null,
-  skip the animation on the first spike and find another way to reach it afterwards.
-- `OptionCategoryIcon` on the created item must be set on the instance before `PreConstruct` runs,
-  which is when the item is first built in Slate, after `AddChildToVerticalBox`. Setting it before
-  the add is enough.
+- The dummy `WIDGET_OptionsScreen` declares `ANIM_ShowResetApplyButtons` as a plain variable. The
+  game's class has it as a transient animation variable. Reading it by name should work; if
+  `PlayAnimation` gets null, the buttons stay hidden on the first open and the handler needs
+  another way to reach the animation.
+- The category icon is the Gameplay one until `OptionCategoryIcon[0]` is replaced on the item
+  instance before it is added (it must be set before `PreConstruct` runs).
 - Gamepad navigation: `WIDGET_OptionsCategoryMenuList` navigates with `ReceiveNavUp/Down` over
   `MenuListItemArray`, so item 6 is reachable. `ReceiveNavAccept` on the item broadcasts the
   delegate the installer bound. To be confirmed in the headset.
 - `WIDGET_OptionsCategoryMenuList.GetListItemByCategory` and `SelectedCategory` are not used for
   opening pages, so the seventh item needs no enum value.
 
+## Testing the spike
+
+1. Open the Unreal project once and check that the three mod widgets and the dummies compile
+   without errors (they compiled in the generator, so this is a double check).
+2. Package the project (Shipping, Windows 64-bit) and take `pakchunk10-WindowsNoEditor.pak` as the
+   Core pak, as `documentation\building.md` describes. The dummies land in chunk 0 and stay out.
+3. Run the game with the plugin from `hot_plugins\`. Open the pause menu, then Options. The log
+   shows `[vr_options_menu][handle] VR options page installed, categories: 7` once per level.
+4. Expected: a seventh category "VR" with the Gameplay icon, its page with one toggle row, the
+   description box text on hover, Apply enabled after a change, Reset enabled while the value is not
+   the default, Back closing the page, and the game's categories still working.
+
 ## Work split
 
-Claude writes the generator commandlet in `tools\UEVRBridgeGen\Source` that creates the dummies and
-the mod widgets, the installer Blueprint, the plugin trigger, the settings store, and this document.
-The user runs the generator and the cook, confirms the Blueprints compile in the editor, tests in
-the headset, and picks the first set of VR options. The generator refuses to overwrite an asset that
-already exists unless told to.
+Claude writes the generator, the plugin code and this document. The user runs the generator and
+the cook, confirms the Blueprints compile in the editor, tests in the headset, and picks the first
+set of VR options.
