@@ -51,10 +51,19 @@ void VRBody::set_player_response_to_collision_channel(ECollisionChannel channel,
 }
 
 
-// A_BP_VRBody_C class is loaded into memory by hard-referencing it in the modified ArmsMesh AnimBP
+// Nothing in the game imports A_BP_VRBody_C, so the plugin loads the class itself before
+// the spawn. Only the spawned actor then holds the class, so it is freed together with
+// its imports at the title screen and read again from the mounted pak on the next level.
 A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
     try {
         API::get()->log_warn("[vr_body][initialize_vr_body] Begin");
+        UClass* vr_body_class = PluginUtils::load_class_for_bridge(
+            L"/Game/Mods/VRBody/_BP_VRBody._BP_VRBody_C", A_BP_VRBody_C::BridgeClassRef()
+        );
+        if (vr_body_class == nullptr) {
+            API::get()->log_error("[vr_body][initialize_vr_body] VR body class not loaded");
+            return nullptr;
+        }
         auto world = SdkBootstrap::get_world();
 
         const FVector pawn_location = pawn->K2_GetActorLocation();
@@ -65,7 +74,7 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
 
         API::get()->log_warn("[vr_body][initialize_vr_body] Spawning VRBody BP actor");
         A_BP_VRBody_C* vr_body = (A_BP_VRBody_C*)UGameplayStatics::BeginDeferredActorSpawnFromClass(
-            world, A_BP_VRBody_C::StaticClass(), pawn_transform, ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr
+            world, vr_body_class, pawn_transform, ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr
         );
         if (vr_body == nullptr) {
             API::get()->log_error("[vr_body][initialize_vr_body] Error spawning VRBody BP Actor");

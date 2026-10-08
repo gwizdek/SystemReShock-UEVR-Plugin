@@ -13,8 +13,9 @@ namespace SDK
 // When plugin code starts using a class that is not listed here, its first use logs
 //   [bridge] resolved on first use, not pre-warmed: <class path>
 // Add the class to this list when that line shows up for a class used during gameplay.
-// A_BP_VRBody_C is resolved before the first warm-up by design, when the VR body is
-// spawned, so that line is expected for it once per injection.
+// A_BP_VRBody_C and A_BP_VRAvatar_C are loaded and resolved before the first warm-up by
+// design, when their actor is spawned (VRBody::initialize_vr_body and
+// VRAvatar::initialize_vr_avatar), so that line is expected for them once per level.
 inline bool BridgeWarmupUsed()
 {
 	bool Ok = true;

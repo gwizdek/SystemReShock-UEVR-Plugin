@@ -5,10 +5,7 @@
 #include "uevr/API.hpp"
 #include "SDK/Engine_classes.hpp"
 #include "SDK/UMG_classes.hpp"
-
-#define STATIC_LOAD_ASSET_OFFSET 0x1C67740
-
-typedef SDK::UObject* (*StaticLoadObject_t)(uevr::API::UClass* ObjectClass, uevr::API::UObject* InOuter, const wchar_t* inName, const wchar_t* Filename, int32_t LoadFlags, class UPackageMap* Sandbox, bool bAllowObjectReconciliation, const struct FLinkerInstancingContext* InstancingContext);
+#include "BridgeSDK/Bridge.hpp"
 
 class PluginUtils
 {
@@ -33,6 +30,18 @@ public:
 
     // this is the new way that uses AssetRegistry and UKismetSystemLibrary
     static SDK::UObject* load_asset(SDK::FAssetData asset_data);
+
+    // Loads a Blueprint class by its soft class path, for example
+    // L"/Game/Mods/VRBody/_BP_VRBody._BP_VRBody_C", through the pak file index. Blocks
+    // the game thread until the class and everything it imports are in memory.
+    // Returns nullptr when the path does not resolve.
+    static SDK::UClass* load_class(const wchar_t* soft_class_path);
+
+    // load_class for a class the BridgeSDK also caches. After the load it compares the
+    // loaded class with the bridge cache for the same class and drops every bridge cache
+    // when they differ, so a stale pointer from before a reload is never used. Spawn from
+    // the returned class, not from the bridge lookup.
+    static SDK::UClass* load_class_for_bridge(const wchar_t* soft_class_path, bridge::ClassRef& bridge_ref);
     static float bytes_to_float(std::string name, uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3);
     static void print_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data);
     static float get_niagara_parameter_float(std::string name, uint8_t offset, SDK::TArray<uint8_t> data);

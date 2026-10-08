@@ -8,12 +8,22 @@
 using namespace SDK;
 using namespace uevr;
 
+// Nothing in the game imports A_BP_VRAvatar_C, so the plugin loads the class itself before
+// the spawn, the same way VRBody::initialize_vr_body does for the VR body.
 A_BP_VRAvatar_C* VRAvatar::initialize_vr_avatar(APAWN_Avatar_C* pawn) {
     try {
         API::get()->log_warn("[vr_avatar][initialize_vr_avatar] Begin");
+        UClass* vr_avatar_class = PluginUtils::load_class_for_bridge(
+            L"/Game/Mods/VRAvatar/_BP_VRAvatar._BP_VRAvatar_C", A_BP_VRAvatar_C::BridgeClassRef()
+        );
+        if (vr_avatar_class == nullptr) {
+            API::get()->log_error("[vr_avatar][initialize_vr_avatar] VR avatar class not loaded");
+            return nullptr;
+        }
 
         auto world = SdkBootstrap::get_world();
-        PluginUtils::destroy_actors_by_class(world, A_BP_VRAvatar_C::StaticClass());
+        // By tag, not by class: a stale avatar may come from a class that is no longer loaded.
+        PluginUtils::destroy_actors_by_tag(world, UKismetStringLibrary::Conv_StringToName(L"VRAvatarActor"));
 
         const FVector pawn_location = pawn->K2_GetActorLocation();
         FTransform pawn_transform{};
@@ -23,7 +33,7 @@ A_BP_VRAvatar_C* VRAvatar::initialize_vr_avatar(APAWN_Avatar_C* pawn) {
 
         API::get()->log_warn("[vr_avatar][initialize_vr_avatar] Spawning VRAvatar BP actor");
         A_BP_VRAvatar_C* vr_avatar = (A_BP_VRAvatar_C*)UGameplayStatics::BeginDeferredActorSpawnFromClass(
-            world, A_BP_VRAvatar_C::StaticClass(), pawn_transform, ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr
+            world, vr_avatar_class, pawn_transform, ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr
         );
         if (vr_avatar == nullptr) {
             API::get()->log_error("[vr_avatar][initialize_vr_avatar] Error spawning VRAvatar BP Actor");

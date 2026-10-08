@@ -417,6 +417,39 @@ SDK::UObject* PluginUtils::load_asset(SDK::FAssetData asset_data) {
     }
 }
 
+SDK::UClass* PluginUtils::load_class(const wchar_t* soft_class_path) {
+    try {
+        const SDK::FSoftClassPath path = SDK::UKismetSystemLibrary::MakeSoftClassPath(soft_class_path);
+        const auto soft_ref = SDK::UKismetSystemLibrary::Conv_SoftClassPathToSoftClassRef(path);
+        SDK::UClass* loaded_class = SDK::UKismetSystemLibrary::LoadClassAsset_Blocking(soft_ref);
+        if (loaded_class == nullptr) {
+            API::get()->log_error("[plugin_utils][load_class] Not found: %ls", soft_class_path);
+            return nullptr;
+        }
+        API::get()->log_warn("[plugin_utils][load_class] Loaded %ls", soft_class_path);
+        return loaded_class;
+    }
+    catch (...) {
+        API::get()->log_error("[plugin_utils][load_class] Exception loading %ls", soft_class_path);
+        return nullptr;
+    }
+}
+
+SDK::UClass* PluginUtils::load_class_for_bridge(const wchar_t* soft_class_path, bridge::ClassRef& bridge_ref) {
+    SDK::UClass* loaded_class = load_class(soft_class_path);
+    if (loaded_class == nullptr) {
+        return nullptr;
+    }
+    // get() keeps a cached pointer until the next invalidate(); a fresh lookup finds the
+    // class just loaded. A difference means the cache predates a reload of the class.
+    auto* cached_class = reinterpret_cast<SDK::UClass*>(bridge_ref.get());
+    if (cached_class != loaded_class) {
+        API::get()->log_warn("[plugin_utils][load_class_for_bridge] Bridge cache for %ls is stale (cached %p, loaded %p), invalidating", soft_class_path, cached_class, loaded_class);
+        bridge::invalidate();
+    }
+    return loaded_class;
+}
+
 
 //Find vtable real function and hook it
 int32_t PluginUtils::hook_vtable_fn(std::wstring_view class_name, std::wstring_view fn_name, void* destination, void** original) {

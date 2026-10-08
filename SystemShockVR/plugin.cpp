@@ -1349,17 +1349,18 @@ void UEVRPlugin::handle_level_change() {
             API::get()->log_warn("[plugin][handle_level_change] New Level: %s", m_level.get()->GetFullName().c_str());
             API::get()->log_warn("[plugin][handle_level_change] New Pawn State: %s", PawnStateName[m_pawn_state.get()]);
 
+            // A level change may have unloaded and reloaded the mod's Blueprint classes,
+            // also from a hot-reloaded pak. Drop every cached class, property and function
+            // pointer before anything below, including the cleanup, resolves against them.
+            // The warm-up refills them.
+            if (m_level.has_changed()) {
+                bridge::invalidate();
+            }
+
             // reset pointers invalidating vr_body
             API::get()->log_warn("[plugin][handle_level_change] Actors / Pointers cleanup");
             cleanup_actors();
             cleanup_pointers();
-
-            // A level change may have unloaded and reloaded the mod's Blueprint classes,
-            // also from a hot-reloaded pak. Drop every cached class, property and function
-            // pointer before anything below resolves against them. The warm-up refills them.
-            if (m_level.has_changed()) {
-                bridge::invalidate();
-            }
 
             // Hacker Implant - Citadel Station (normal space)
             if (
@@ -1635,17 +1636,22 @@ void UEVRPlugin::cleanup_pointers() {
 void UEVRPlugin::cleanup_actors() {
     try {
         API::get()->log_warn("[plugin][cleanup_actors] Starting Actors Cleanup");
+        g_vr_body = nullptr;
+
+        // Needs no world, and must run on every level change so the next garbage
+        // collection can free the mod's widget classes (see documentation/pak-hot-reload.md).
+        PluginUtils::release_game_panels_from_mod_widgets();
+
         auto world = SdkBootstrap::get_world();
         if (!UKismetSystemLibrary::IsValid(world)) {
             API::get()->log_error("[plugin][cleanup_actors] Invalid World");
             return;
         }
 
+        // Both mod actors are found by tag. A class lookup would throw when the class is
+        // not loaded, which is the normal state after a trip through the title screen.
         PluginUtils::destroy_actors_by_tag(world, UKismetStringLibrary::Conv_StringToName(L"VRModActor"));
-        PluginUtils::destroy_actors_by_class(world, A_BP_VRAvatar_C::StaticClass());
-        PluginUtils::release_game_panels_from_mod_widgets();
-
-        g_vr_body = nullptr;
+        PluginUtils::destroy_actors_by_tag(world, UKismetStringLibrary::Conv_StringToName(L"VRAvatarActor"));
     }
     catch (...) {
         API::get()->log_error("[plugin][cleanup_actors] Exception");

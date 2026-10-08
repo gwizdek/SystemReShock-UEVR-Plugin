@@ -127,6 +127,20 @@ level change `release_game_panels_from_mod_widgets` in `plugin_utils.cpp`
 detaches those panels again, so the next garbage collection can free the mod's
 widgets, their classes and everything those classes reference.
 
+Nothing in the game imports the VR body or the VR avatar class, so the plugin
+loads each one itself right before it spawns the actor
+(`PluginUtils::load_class_for_bridge`, called from `VRBody::initialize_vr_body`
+and `VRAvatar::initialize_vr_avatar`). The load goes through the pak file index,
+so after a hot mount it reads the class from the new pak. The spawn uses the
+class that the load returned. If the BridgeSDK cache for that class still holds
+another pointer, the plugin logs a warning and drops every bridge cache.
+
+The level-change handler in `plugin.cpp` drops the bridge caches before it
+cleans up the old actors, and that cleanup finds the mod's actors by tag
+(`VRModActor`, `VRAvatarActor`), not by class. A class lookup would throw when
+the class is not loaded, which is the normal state after the title screen, and
+the throw would skip the panel release.
+
 ## BridgeSDK after a reload
 
 The main plugin reaches the mod's Blueprints through the BridgeSDK headers,
