@@ -1,0 +1,49 @@
+#pragma once
+
+#include "CoreMinimal.h"
+
+// Command line options of the VROptionsMenuGen commandlet.
+struct FMenuGenOptions
+{
+    // Content path that receives the mod's widgets, for example /Game/Mods/UI/Options.
+    FString ModRoot;
+    // Create an asset again although its package already exists.
+    bool bOverwrite = false;
+};
+
+// Package paths of the game's classes that get a dummy, keyed by a short name.
+namespace MenuGenPaths
+{
+constexpr const TCHAR* MenuBase = TEXT("/Game/Blueprints/UI/Generic/WIDGET_MenuBase");
+constexpr const TCHAR* ListBase = TEXT("/Game/Blueprints/UI/Generic/WIDGET_MenuListBase");
+constexpr const TCHAR* ItemBase = TEXT("/Game/Blueprints/UI/Generic/WIDGET_MenuListItemBase");
+constexpr const TCHAR* OptionsMenuBase = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionsMenu_Base");
+constexpr const TCHAR* OptionBase = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/OPTION_Base");
+constexpr const TCHAR* Toggle = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/WIDGET_Settings_BinaryToggle");
+constexpr const TCHAR* Item = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionCategoryMenuListItem");
+constexpr const TCHAR* CategoryList = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionsCategoryMenuList");
+constexpr const TCHAR* Screen = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionsScreen");
+constexpr const TCHAR* ButtonLegend = TEXT("/Game/Blueprints/UI/HUD/Widgets/ButtonLegend/WIDGET_ButtonLegend_Button");
+constexpr const TCHAR* Categories = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/ENUM_OptionCategories");
+
+constexpr const TCHAR* VRToggle = TEXT("_OPTION_VR_Toggle");
+constexpr const TCHAR* VRList = TEXT("_WIDGET_OptionsMenu_VRList");
+constexpr const TCHAR* VRPage = TEXT("_WIDGET_OptionsMenu_VR");
+
+constexpr int32 ModChunk = 10;
+} // namespace MenuGenPaths
+
+// Generated classes, keyed by the short names above, so later assets can refer to earlier ones.
+struct FMenuGenStore
+{
+    TMap<FName, UClass*> Classes;
+    UEnum* Categories = nullptr;
+
+    void Add(FName Key, UClass* Class) { Classes.Add(Key, Class); }
+
+    UClass* Find(FName Key) const
+    {
+        UClass* const* Found = Classes.Find(Key);
+        return Found != nullptr ? *Found : nullptr;
+    }
+};

@@ -15,6 +15,14 @@ public class UEVRBridgeGen : ModuleRules
             "UnrealEd",
             "AssetRegistry",
             "Projects",
+            // VROptionsMenuGen: widget Blueprints, their trees and function graphs.
+            "UMG",
+            "UMGEditor",
+            "Kismet",
+            "BlueprintGraph",
+            "KismetCompiler",
+            "Slate",
+            "SlateCore",
         });
     }
 }
