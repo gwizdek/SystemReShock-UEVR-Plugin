@@ -257,7 +257,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_ads();
         handle_head_lamp();
         handle_ui_requests();
-        VROptionsMenu::handle(m_neural_hud);
+        VROptionsMenu::handle(m_neural_hud, m_pawn.get());
 
         PluginUtils::handle_native_stereo_fix_cycler(vr);
 
@@ -1639,6 +1639,8 @@ void UEVRPlugin::cleanup_pointers() {
         if (g_vr_body != nullptr) {
             g_vr_body = nullptr;
         }
+        // The HUD dies with the level; prepare_pointers finds the next one.
+        m_neural_hud = nullptr;
         VROptionsMenu::reset();
     }
     catch (...) {

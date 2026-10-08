@@ -310,13 +310,19 @@ Nothing else is needed for the other directions:
 ### 4. Plugin trigger
 
 `VROptionsMenu::handle` in `SystemShockVR\vr_options_menu.cpp` runs every engine tick on the game
-thread with the player HUD. It reaches the screen through
-`WIDGET_PlayerHUD.WIDGET_MainMenu_InGame.WIDGET_OptionsScreen`, so there is one screen per level
-load. It returns at once when the screen is the one already installed. Otherwise it waits until
+thread with the player HUD. With a HUD it reaches the pause menu's screen through
+`WIDGET_PlayerHUD.WIDGET_MainMenu_InGame.WIDGET_OptionsScreen`. When the pawn is a `PAWN_PlayerGhost` the game is at
+the title screen, and it takes `PAWN_PlayerGhost.PreGameScreenWidget.WIDGET_SplashScreen_Title.WIDGET_OptionsScreen`
+instead. The pawn decides, not the HUD pointer: the plugin clears that pointer on level change, and
+a freed widget can still pass a validity check. Each screen is a separate instance, so each gets
+its own page.
+It returns at once when the screen is the one already installed. Otherwise it waits until
 `MenuListItemArray` holds six items, checks that the category box has no seventh child (the page
 survives a plugin reload), loads the page class with `load_class_for_bridge`, creates the page with
-`WidgetBlueprintLibrary.Create`, calls `Install(screen)` through the BridgeSDK wrapper, and sets
-the game's `MAT_SubMenu_ListPanel` material on `IMAGE_PanelBackground`. After three failed
+`WidgetBlueprintLibrary.Create`, calls `Install(screen)` through the BridgeSDK wrapper, sets
+the game's `MAT_SubMenu_ListPanel` material on `IMAGE_PanelBackground`, and moves the category box
+up by `kCategoryListShift` units (its canvas slot gets a negative top offset) so the seventh item
+stays on screen. After three failed
 attempts on one screen it stops trying. `cleanup_pointers` resets it on level change.
 
 ## Risks and checks for the spike (step 2)

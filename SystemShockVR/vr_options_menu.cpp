@@ -1,8 +1,12 @@
 #include "uevr/API.hpp"
 #include "SDK/Engine_classes.hpp"
+#include "SDK/SlateCore_structs.hpp"
 #include "SDK/UMG_classes.hpp"
 #include "SDK/WIDGET_MainMenu_InGame_classes.hpp"
 #include "SDK/WIDGET_OptionsCategoryMenuList_classes.hpp"
+#include "SDK/PAWN_PlayerGhost_classes.hpp"
+#include "SDK/WIDGET_PreGameScreen_classes.hpp"
+#include "SDK/WIDGET_SplashScreen_Title_classes.hpp"
 
 #include "plugin_utils.hpp"
 #include "vr_options_menu.hpp"
@@ -15,18 +19,30 @@ namespace {
 constexpr const wchar_t* kPageClassPath = L"/Game/Mods/UI/Options/_WIDGET_OptionsMenu_VR._WIDGET_OptionsMenu_VR_C";
 constexpr const wchar_t* kPanelMaterialPath = L"Material /Game/Art/UI/HUD/MainMenu/SubMenuGeneric/MAT_SubMenu_ListPanel.MAT_SubMenu_ListPanel";
 constexpr int kGameCategoryCount = 6;
+// The game sized the category list for six items of 100 units plus 8 units of padding. The
+// seventh item would be cut off at the bottom, so the whole list is moved up by this many
+// units into the empty space under the header.
+constexpr float kCategoryListShift = 110.f;
 // After this many failed installs on one screen the plugin stops trying, so a broken pak
 // does not fill the log every tick.
 constexpr int kMaxFailedAttempts = 3;
+
+// Logs a line once per plugin load. Diagnostics for the title screen path, which has no
+// other output until the page is installed.
+#define PLUGIN_WARN_ONCE(...) { static bool logged_ = false; if (!logged_) { logged_ = true; API::get()->log_warn(__VA_ARGS__); } }
 
 } // namespace
 
 UWIDGET_OptionsScreen_C* VROptionsMenu::s_installed_screen{ nullptr };
 int VROptionsMenu::s_failed_attempts{ 0 };
 
-void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud) {
+void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
     try {
-        UWIDGET_OptionsScreen_C* screen = find_screen(hud);
+        // The pawn decides which menu exists. The HUD pointer alone cannot: the plugin keeps it
+        // across level changes, and a freed widget can still pass IsValid.
+        const bool at_title = UKismetSystemLibrary::IsValid(pawn) && pawn->IsA(APAWN_PlayerGhost_C::StaticClass());
+        if (at_title) PLUGIN_WARN_ONCE("[vr_options_menu][handle] Ghost pawn, looking for the title screen");
+        UWIDGET_OptionsScreen_C* screen = at_title ? find_title_screen(pawn) : find_screen(hud);
         if (screen == nullptr || screen == s_installed_screen || !is_ready(screen)) return;
         if (has_vr_category(screen)) {
             // The page survived a plugin reload, or another instance installed it.
@@ -43,6 +59,7 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud) {
         }
         page->Install(screen);
         apply_panel_material(page);
+        shift_category_list(screen);
         s_installed_screen = screen;
         s_failed_attempts = 0;
         API::get()->log_warn("[vr_options_menu][handle] VR options page installed, categories: %d",
@@ -65,6 +82,27 @@ UWIDGET_OptionsScreen_C* VROptionsMenu::find_screen(UWIDGET_PlayerHUD_C* hud) {
     if (!UKismetSystemLibrary::IsValid(menu)) return nullptr;
     UWIDGET_OptionsScreen_C* screen = menu->WIDGET_OptionsScreen;
     return UKismetSystemLibrary::IsValid(screen) ? screen : nullptr;
+}
+
+// Without a HUD the game is at the title screen. The main menu's pawn is a PAWN_PlayerGhost
+// that holds the pre-game screen, which holds the title screen with its own options screen.
+UWIDGET_OptionsScreen_C* VROptionsMenu::find_title_screen(APawn* pawn) {
+    UWIDGET_PreGameScreen_C* pre_game = static_cast<APAWN_PlayerGhost_C*>(pawn)->PreGameScreenWidget;
+    if (!UKismetSystemLibrary::IsValid(pre_game)) {
+        PLUGIN_WARN_ONCE("[vr_options_menu][find_title_screen] Ghost pawn has no pre-game screen yet");
+        return nullptr;
+    }
+    UWIDGET_SplashScreen_Title_C* title = pre_game->WIDGET_SplashScreen_Title;
+    if (!UKismetSystemLibrary::IsValid(title)) {
+        PLUGIN_WARN_ONCE("[vr_options_menu][find_title_screen] Pre-game screen has no title screen yet");
+        return nullptr;
+    }
+    UWIDGET_OptionsScreen_C* screen = title->WIDGET_OptionsScreen;
+    if (!UKismetSystemLibrary::IsValid(screen)) {
+        PLUGIN_WARN_ONCE("[vr_options_menu][find_title_screen] %s has no options screen yet", title->GetName().c_str());
+        return nullptr;
+    }
+    return screen;
 }
 
 // The screen's OnInitialized fills the category list. Until then the installer would
@@ -104,4 +142,20 @@ void VROptionsMenu::apply_panel_material(U_WIDGET_OptionsMenu_VR_C* page) {
         return;
     }
     background->SetBrushFromMaterial(material);
+}
+
+// The box of category items fills its canvas from the top. A negative top offset makes the box
+// start higher while its bottom stays put, so every item moves up by the same amount. The list
+// widget's own slot is left alone: ANIM_OpenOptionsSubscreen animates that one.
+void VROptionsMenu::shift_category_list(UWIDGET_OptionsScreen_C* screen) {
+    UVerticalBox* box = screen->WIDGET_OptionsCategoryMenuList->VBOX_OptionCategoryWidgetList;
+    if (box == nullptr || box->Slot == nullptr || !box->Slot->IsA(UCanvasPanelSlot::StaticClass())) {
+        API::get()->log_warn("[vr_options_menu][shift_category_list] Category box has no canvas slot, list not moved");
+        return;
+    }
+    auto* slot = static_cast<UCanvasPanelSlot*>(box->Slot);
+    FMargin offsets = slot->LayoutData.Offsets;
+    offsets.Top = -kCategoryListShift;
+    slot->SetOffsets(offsets);
+    API::get()->log_warn("[vr_options_menu][shift_category_list] Category list moved up by %.0f units", kCategoryListShift);
 }
