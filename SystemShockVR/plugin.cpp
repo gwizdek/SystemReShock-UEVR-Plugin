@@ -159,18 +159,26 @@ void UEVRPlugin::on_initialize() {
     // Must run before the first StaticClass()/GetDefaultObj() call below.
     SdkBootstrap::initialize();
 
+    // GetDefaultObj() reads through StaticClass() without a null check, and at the first
+    // frame these Blueprint classes may not be loaded yet. Check the class first.
     // disable player focus (camera pull) on interactable objects like vending machines / keyboards
-    auto move_control = SDK::UMOVECONTROL_FocusableInteract_C::GetDefaultObj();
-    if (move_control != nullptr) {
+    if (SDK::UMOVECONTROL_FocusableInteract_C::StaticClass() != nullptr) {
+        auto move_control = SDK::UMOVECONTROL_FocusableInteract_C::GetDefaultObj();
         move_control->ShouldUseCharacterMovement = true;
         move_control->IsFinishedTransitioning = true;
     }
+    else {
+        API::get()->log_warn("[plugin][on_initialize] MOVECONTROL_FocusableInteract_C not loaded yet, defaults not changed");
+    }
 
     // disable move control on doors / power stations
-    auto station_move_control = SDK::UMOVECONTROL_StationMove_C::GetDefaultObj();
-    if (station_move_control != nullptr) {
-        station_move_control->ExpireNextTick = true;
+    if (SDK::UMOVECONTROL_StationMove_C::StaticClass() != nullptr) {
+        SDK::UMOVECONTROL_StationMove_C::GetDefaultObj()->ExpireNextTick = true;
     }
+    else {
+        API::get()->log_warn("[plugin][on_initialize] MOVECONTROL_StationMove_C not loaded yet, defaults not changed");
+    }
+    API::get()->log_warn("[plugin][on_initialize] Done");
 }
 
 void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) {
