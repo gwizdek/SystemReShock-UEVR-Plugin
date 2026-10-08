@@ -27,9 +27,11 @@ try
     int functions = FunctionExporter.Export(asset, options.OutputDirectory);
     int variables = VariableExporter.Export(asset, options.OutputDirectory);
     int components = ComponentExporter.Export(asset, options.OutputDirectory);
+    int widgets = WidgetTreeExporter.Export(asset, options.OutputDirectory);
+    int enums = EnumExporter.Export(asset, options.OutputDirectory);
     ClassSummaryExporter.Export(asset, options.OutputDirectory);
 
-    Console.WriteLine($"Wrote {functions} bytecode files, {variables} variables, {components} components.");
+    Console.WriteLine($"Wrote {functions} bytecode files, {variables} variables, {components} components, {widgets} widgets, {enums} enums.");
     return 0;
 }
 catch (Exception e)

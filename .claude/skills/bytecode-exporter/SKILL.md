@@ -1,6 +1,6 @@
 ---
 name: bytecode-exporter
-description: Export the Blueprint bytecode, variables and components of one game asset as JSON with tools\BytecodeExporter. Use when the user says "/bytecode-exporter <AssetName>", "export the bytecode of X", "decompile X" or wants to read what a Blueprint function does.
+description: Export the Blueprint bytecode, variables, components, widget tree and enums of one game asset as JSON with tools\BytecodeExporter. Use when the user says "/bytecode-exporter <AssetName>", "export the bytecode of X", "decompile X" or wants to read what a Blueprint function does.
 disable-model-invocation: true
 allowed-tools: PowerShell, Bash, Read, Glob, Grep
 ---
@@ -36,8 +36,9 @@ Arguments: `$ARGUMENTS`
 4. If the build or the export fails, show the error output and stop.
 
 5. On success, report in two or three lines: the output folder, the counts the exporter
-   printed (bytecode files, variables, components), and the file names a reader usually
-   starts with: `ExecuteUbergraph_<Asset>.bytecode`, `variables.json`, `components.json`.
+   printed (bytecode files, variables, components, widgets, enums), and the file names a reader
+   usually starts with: `ExecuteUbergraph_<Asset>.bytecode`, `variables.json`, `components.json`,
+   `widgets.json` for a widget Blueprint, `enums.json` for an enum.
 
 ## Rules
 

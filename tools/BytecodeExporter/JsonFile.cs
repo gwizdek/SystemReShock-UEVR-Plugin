@@ -17,7 +17,7 @@ public static class JsonFile
     public static JToken FromAssetObject(UAsset asset, object? value)
     {
         if (value is null) return JValue.CreateNull();
-        return JToken.Parse(asset.SerializeJsonObject(value, false));
+        return ObjectReferences.Annotate(asset, JToken.Parse(asset.SerializeJsonObject(value, false)));
     }
 
     /// <summary>Turns a name into something that is safe to use as a file name.</summary>

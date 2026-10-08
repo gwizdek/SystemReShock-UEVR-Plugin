@@ -1,7 +1,7 @@
 # BytecodeExporter
 
-A command line tool that reads one `.uasset` and writes its Blueprint bytecode, variables and
-components as pretty JSON. It has no window. It uses the `UAssetAPI` NuGet package (the same
+A command line tool that reads one `.uasset` and writes its Blueprint bytecode, variables,
+components, widget tree and enums as pretty JSON. It has no window. It uses the `UAssetAPI` NuGet package (the same
 library that UAssetGUI is built on), so the output format of the bytecode is the same as
 UAssetGUI's "pretty bytecode" view.
 
@@ -40,15 +40,21 @@ script.
 | File | Content |
 |---|---|
 | `<FunctionName>.bytecode` | One file per function (and per any other struct export that carries script, such as the class itself). Holds the function flags, its parameters and locals with their pin types, and the `Script` array from `KismetSerializer`. The `Script` array is the same JSON that UAssetGUI shows under `ScriptBytecode`. |
-| `variables.json` | Every variable of the `BlueprintGeneratedClass`: name, property type, pin type, property flags, replication settings, and the default value taken from the class default object. |
+| `variables.json` | Every variable of the `BlueprintGeneratedClass`: name, property type, pin type, property flags, replication settings, and the default value taken from the class default object. `InheritedDefaults` lists the values the default object sets on variables of a parent class, such as the `ItemName` of an option row. |
 | `components.json` | The `SimpleConstructionScript` tree: each `SCS_Node` with its variable name, component class, parent attachment, the component template with all its properties, and its child nodes. `OtherComponents` lists component templates that are not in the tree: components inherited from the native parent class (outer is the default object), `NODE_Add*` templates added by the construction script, and anything whose class name ends in `Component`. |
+| `widgets.json` | For a widget Blueprint: the `WidgetTree` as nested widgets, each with its class, its slot (class and layout, such as anchors, offsets, padding, row and column) and its own properties (brushes, fonts, text, visibility). Then the widget animations with their tracks and sections, and the `ComponentDelegateBinding` entries that connect a child widget's event to a function. |
+| `enums.json` | Every enum in the package: entry names, values and the display names from `DisplayNameMap`. |
 | `class.json` | The class header (super class, flags, interfaces, function map) and an index of every export in the package with its class, outer and `UAssetAPI` export kind. Use it to see what else the package holds, such as timelines, curves and delegate bindings. |
 
 A function whose bytecode `KismetSerializer` cannot read still gets a file. Its `Script` value is
 then an object with an `Error` key, and the error is printed to stderr.
 
 Assets that are not Blueprints (textures, data tables, materials) produce only `class.json` and an
-empty `components.json`. The tool does not fail on them.
+empty `components.json`. The tool does not fail on them. A user-defined enum asset produces `enums.json`.
+
+Object references inside property values are written by `UAssetAPI` as a bare package index. The tool
+adds an `Object` key next to each one with the resolved name: the full path for an import such as a
+material, the export name for an object in the same package.
 
 ## Where the data comes from
 
@@ -59,3 +65,7 @@ empty `components.json`. The tool does not fail on them.
   in the `Default__..._C` export.
 - Components are `SCS_Node` exports owned by the `SimpleConstructionScript` export. Each node points
   to a `..._GEN_VARIABLE` template export that holds the component's edited properties.
+- Widgets are the exports owned by the `WidgetTree` export. The tree starts at its `RootWidget`; a panel
+  lists its slot exports in `Slots`, and each slot points to its child widget in `Content`. A widget
+  Blueprint that only changes functions of its parent, such as `OPTION_Gameplay_AutoReload`, has an
+  empty tree; the game then uses the parent's tree at runtime.

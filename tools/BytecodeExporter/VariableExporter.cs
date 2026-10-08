@@ -26,8 +26,17 @@ public static class VariableExporter
             ["Class"] = classExport.ObjectName.ToString(),
             ["DefaultObject"] = defaults?.ObjectName.ToString(),
             ["Variables"] = variables,
+            ["InheritedDefaults"] = InheritedDefaults(asset, defaults, classExport),
         });
         return variables.Count;
+    }
+
+    /// <summary>Values the default object sets on variables it inherits, such as a row's ItemName.</summary>
+    private static JArray InheritedDefaults(UAsset asset, NormalExport? defaults, ClassExport classExport)
+    {
+        var own = (classExport.LoadedProperties ?? []).Select(p => p.Name.ToString()).ToHashSet();
+        var inherited = (defaults?.Data ?? []).Where(p => !own.Contains(p.Name.ToString()));
+        return new JArray(inherited.Select(p => JsonFile.FromAssetObject(asset, p)));
     }
 
     private static NormalExport? DefaultObject(UAsset asset, ClassExport classExport)

@@ -12,7 +12,7 @@ The repository holds two things that can be built. Use these names:
 | **installer** | `SystemShockInstaller\src\SystemReShockInstaller\SystemReShockInstaller.csproj` | The C# WPF installer and launcher, `SystemReShockVRMod.exe`. Its tests are in `SystemShockInstaller\tests\`. |
 | **hot reloader** | `tools\PakHotReloader\PakHotReloader.vcxproj` | A development-only UEVR plugin, `PakHotReloader.dll`, that mounts a rebuilt pak into the running game. Not shipped by the installer. See `documentation\pak-hot-reload.md`. |
 | **hot loader** | `tools\PluginHotLoader\PluginHotLoader.vcxproj` | A development-only UEVR plugin, `PluginHotLoader.dll`, that loads the plugin from a copy and swaps in a new build while the game runs. Not shipped by the installer. See `documentation\plugin-hot-reload.md`. |
-| **bytecode exporter** | `tools\BytecodeExporter\BytecodeExporter.csproj` | A C# command line tool, `BytecodeExporter.exe`, that writes the Blueprint bytecode, variables and components of one `.uasset` as JSON. Development only, not shipped. See `tools\BytecodeExporter\README.md`. |
+| **bytecode exporter** | `tools\BytecodeExporter\BytecodeExporter.csproj` | A C# command line tool, `BytecodeExporter.exe`, that writes the Blueprint bytecode, variables, components, widget tree and enums of one `.uasset` as JSON. Development only, not shipped. See `tools\BytecodeExporter\README.md`. |
 
 "Build the plugin" means the plugin only. "Build the installer" means the installer only. "Build the hot reloader" means the hot reloader only. "Build the hot loader" means the hot loader only. "Build the bytecode exporter" means the bytecode exporter only. "Build everything" means the plugin and the installer. When the request does not say which one, ask.
 
