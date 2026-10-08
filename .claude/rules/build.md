@@ -11,9 +11,10 @@ The repository holds two things that can be built. Use these names:
 | **plugin** | `SystemShockVR\SystemShockVR.vcxproj` | The C++ UEVR plugin, `SystemReShockVR.dll`. |
 | **installer** | `SystemShockInstaller\src\SystemReShockInstaller\SystemReShockInstaller.csproj` | The C# WPF installer and launcher, `SystemReShockVRMod.exe`. Its tests are in `SystemShockInstaller\tests\`. |
 | **hot reloader** | `tools\PakHotReloader\PakHotReloader.vcxproj` | A development-only UEVR plugin, `PakHotReloader.dll`, that mounts a rebuilt pak into the running game. Not shipped by the installer. See `documentation\pak-hot-reload.md`. |
+| **hot loader** | `tools\PluginHotLoader\PluginHotLoader.vcxproj` | A development-only UEVR plugin, `PluginHotLoader.dll`, that loads the plugin from a copy and swaps in a new build while the game runs. Not shipped by the installer. See `documentation\plugin-hot-reload.md`. |
 | **bytecode exporter** | `tools\BytecodeExporter\BytecodeExporter.csproj` | A C# command line tool, `BytecodeExporter.exe`, that writes the Blueprint bytecode, variables and components of one `.uasset` as JSON. Development only, not shipped. See `tools\BytecodeExporter\README.md`. |
 
-"Build the plugin" means the plugin only. "Build the installer" means the installer only. "Build the hot reloader" means the hot reloader only. "Build the bytecode exporter" means the bytecode exporter only. "Build everything" means the plugin and the installer. When the request does not say which one, ask.
+"Build the plugin" means the plugin only. "Build the installer" means the installer only. "Build the hot reloader" means the hot reloader only. "Build the hot loader" means the hot loader only. "Build the bytecode exporter" means the bytecode exporter only. "Build everything" means the plugin and the installer. When the request does not say which one, ask.
 
 ## Plugin
 
@@ -38,18 +39,28 @@ The project file sets `OutDir` and `IntDir` for x64 on purpose. Without them, Vi
 
 ### Deploying the plugin for testing
 
-To test a build in the game, the DLL must be copied into the UEVR profile plugins folder
-`%APPDATA%\UnrealVRMod\SystemReShock-Win64-Shipping\plugins\` and then reloaded from the UEVR overlay.
-The reload is always a manual step done by the user.
+`scripts\build-and-deploy.ps1` builds the plugin and deploys it. The `/build-and-deploy` skill runs that
+script. "Build and deploy" means the plugin only, unless the hot reloader or the hot loader is named.
 
-`scripts\build-and-deploy.ps1` builds the plugin and copies the DLL and PDB there. The `/build-and-deploy`
-skill runs that script. "Build and deploy" means the plugin only, unless the hot reloader is named.
+By default the script copies the DLL into the hot loader's watched folder
+`%APPDATA%\UnrealVRMod\SystemReShock-Win64-Shipping\hot_plugins\`. The hot loader, `PluginHotLoader.dll`
+in the profile `plugins\` folder, loads a copy of it and swaps to the new build by itself while the game
+runs. No overlay step is needed. The watched file must stay outside `plugins\`, because UEVR loads every DLL
+in that folder. See `documentation\plugin-hot-reload.md`.
 
-The game keeps the loaded DLL locked. Unload the plugin in the UEVR overlay before deploying. If the DLL is
-still locked, the script stops with a message and does not rename, move or delete the file.
+With `-Direct` the script copies the DLL and PDB into the profile `plugins\` folder instead, and the plugin
+must then be unloaded in the UEVR overlay before deploying and reloaded there afterwards. Both are manual
+steps done by the user. The game keeps a loaded DLL in `plugins\` locked; if the DLL is still locked, the
+script stops with a message and does not rename, move or delete the file. The script refuses the default
+mode while `plugins\SystemReShockVR.dll` exists, since UEVR and the hot loader would both load the plugin.
 
 ### Plugin rules
 
+- The game loads its own `MSVCP140.dll` version 14.24 from its `Binaries\Win64\` folder. A `std::mutex`
+  built with a current Visual Studio needs runtime 14.40 or newer, so its first lock throws inside the
+  game. Any plugin in this repository that uses `std::mutex` must link the CRT statically
+  (`RuntimeLibrary` = `MultiThreaded`) or define `_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR`. The hot loader
+  does both. `std::shared_mutex` is not affected.
 - Take the built DLL from `SystemShockVR\x64\<Configuration>\`. Nothing should be written to the repository root `x64\` folder.
 - Do not delete `SystemShockVR\x64\<Configuration>\obj\`. It holds the `.obj` and `.tlog` files that make the next build incremental.
 - Do not override `OutDir` or `IntDir` on the MSBuild command line, and do not remove the `OutDir` setting from the project file.
@@ -67,8 +78,24 @@ headers and the ini reader with the plugin through an include path into `SystemS
 dependencies. The same plugin rules apply: x64 only, do not touch `OutDir`, `IntDir` or the `obj\` folder.
 
 `scripts\build-and-deploy.ps1 -Target PakHotReloader` builds it and copies the DLL and PDB into the UEVR
-profile plugins folder, next to the plugin. UEVR loads every DLL in that folder, so the hot reloader runs
-as a second, independent plugin. Remove the DLL from the folder to switch it off.
+profile plugins folder. UEVR loads every DLL in that folder, so the hot reloader runs as an independent
+plugin. Remove the DLL from the folder to switch it off.
+
+## Hot loader
+
+From a Developer PowerShell at the repository root:
+
+```powershell
+msbuild tools\PluginHotLoader\PluginHotLoader.vcxproj /p:Configuration=Release /p:Platform=x64 /m
+```
+
+The output lands in `tools\PluginHotLoader\x64\<Configuration>\PluginHotLoader.dll`. Like the hot
+reloader it shares the UEVR API headers and the ini reader with the plugin through an include path into
+`SystemShockVR\`, and the same plugin rules apply.
+
+`scripts\build-and-deploy.ps1 -Target PluginHotLoader` builds it and copies the DLL and PDB into the UEVR
+profile plugins folder. It is itself locked while loaded, so replacing it needs the overlay step. It rarely
+changes. Remove the DLL from the folder to switch it off, and deploy the plugin with `-Direct` from then on.
 
 ## Bytecode exporter
 

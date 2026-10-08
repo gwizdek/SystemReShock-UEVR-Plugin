@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SystemReShockVR", "SystemSh
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PakHotReloader", "tools\PakHotReloader\PakHotReloader.vcxproj", "{7D3F2A91-5C6E-4B8A-9F10-2E4D6C8B1A37}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PluginHotLoader", "tools\PluginHotLoader\PluginHotLoader.vcxproj", "{3B1E9C42-7A5D-4F0E-8C21-9D6B2E4A7C15}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SystemReShockInstaller", "SystemShockInstaller\src\SystemReShockInstaller\SystemReShockInstaller.csproj", "{A1B2C3D4-0000-4000-8000-000000000001}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SystemReShockInstaller.Tests", "SystemShockInstaller\tests\SystemReShockInstaller.Tests\SystemReShockInstaller.Tests.csproj", "{A1B2C3D4-0000-4000-8000-000000000002}"
@@ -33,6 +35,12 @@ Global
 		{7D3F2A91-5C6E-4B8A-9F10-2E4D6C8B1A37}.Release|x64.ActiveCfg = Release|x64
 		{7D3F2A91-5C6E-4B8A-9F10-2E4D6C8B1A37}.Release|x64.Build.0 = Release|x64
 		{7D3F2A91-5C6E-4B8A-9F10-2E4D6C8B1A37}.Release|x86.ActiveCfg = Release|x64
+		{3B1E9C42-7A5D-4F0E-8C21-9D6B2E4A7C15}.Debug|x64.ActiveCfg = Debug|x64
+		{3B1E9C42-7A5D-4F0E-8C21-9D6B2E4A7C15}.Debug|x64.Build.0 = Debug|x64
+		{3B1E9C42-7A5D-4F0E-8C21-9D6B2E4A7C15}.Debug|x86.ActiveCfg = Debug|x64
+		{3B1E9C42-7A5D-4F0E-8C21-9D6B2E4A7C15}.Release|x64.ActiveCfg = Release|x64
+		{3B1E9C42-7A5D-4F0E-8C21-9D6B2E4A7C15}.Release|x64.Build.0 = Release|x64
+		{3B1E9C42-7A5D-4F0E-8C21-9D6B2E4A7C15}.Release|x86.ActiveCfg = Release|x64
 		{A1B2C3D4-0000-4000-8000-000000000001}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{A1B2C3D4-0000-4000-8000-000000000001}.Debug|x64.Build.0 = Debug|Any CPU
 		{A1B2C3D4-0000-4000-8000-000000000001}.Debug|x86.ActiveCfg = Debug|Any CPU
