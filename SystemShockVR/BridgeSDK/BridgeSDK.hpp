@@ -39,11 +39,14 @@
 #include "_ENUM_VRHand_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRMovementMode_structs.hpp"
+#include "_OPTION_VR_Toggle_classes.hpp"
 #include "_STRUCT_MontageMeta_structs.hpp"
 #include "_STRUCT_UEVR_Options_structs.hpp"
 #include "_WIDGET_ActiveHazard_classes.hpp"
 #include "_WIDGET_DebugWidget_classes.hpp"
 #include "_WIDGET_DebugWidgetEntry_classes.hpp"
+#include "_WIDGET_OptionsMenu_VR_classes.hpp"
+#include "_WIDGET_OptionsMenu_VRList_classes.hpp"
 #include "_WIDGET_VRHUD_classes.hpp"
 #include "_WIDGET_VRMenu_classes.hpp"
 
@@ -86,9 +89,12 @@ inline bool BridgeWarmupAll()
 	Ok &= U_BP_VRMenu_C::BridgeWarmup();
 	Ok &= U_BP_VRMovementComponent_C::BridgeWarmup();
 	Ok &= U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C::BridgeWarmup();
+	Ok &= U_OPTION_VR_Toggle_C::BridgeWarmup();
 	Ok &= U_WIDGET_ActiveHazard_C::BridgeWarmup();
 	Ok &= U_WIDGET_DebugWidget_C::BridgeWarmup();
 	Ok &= U_WIDGET_DebugWidgetEntry_C::BridgeWarmup();
+	Ok &= U_WIDGET_OptionsMenu_VR_C::BridgeWarmup();
+	Ok &= U_WIDGET_OptionsMenu_VRList_C::BridgeWarmup();
 	Ok &= U_WIDGET_VRHUD_C::BridgeWarmup();
 	Ok &= U_WIDGET_VRMenu_C::BridgeWarmup();
 	return Ok;

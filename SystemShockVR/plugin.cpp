@@ -61,6 +61,7 @@
 #include "vr_item_selector.hpp"
 #include "vr_mfd.hpp"
 #include "vr_avatar.hpp"
+#include "vr_options_menu.hpp"
 
 #include "SDK/WIDGET_PlayerHUD_parameters.hpp"
 #include <windows.h>
@@ -256,6 +257,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_ads();
         handle_head_lamp();
         handle_ui_requests();
+        VROptionsMenu::handle(m_neural_hud);
 
         PluginUtils::handle_native_stereo_fix_cycler(vr);
 
@@ -1637,6 +1639,7 @@ void UEVRPlugin::cleanup_pointers() {
         if (g_vr_body != nullptr) {
             g_vr_body = nullptr;
         }
+        VROptionsMenu::reset();
     }
     catch (...) {
         API::get()->log_error("[plugin][cleanup_pointers] Exception");
