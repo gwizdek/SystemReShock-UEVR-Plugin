@@ -1,12 +1,17 @@
 #pragma once
 
-//#include "imgui/imgui.h"
-//#include "imgui/imgui_impl_dx11.h"
-//#include "imgui/imgui_impl_dx12.h"
-//#include "imgui/imgui_impl_win32.h"
-//
-//#include "rendering/d3d11.hpp"
-//#include "rendering/d3d12.hpp"
+#include <atomic>
+#include <shared_mutex>
+#include <string>
+
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_dx11.h"
+#include "imgui/imgui_impl_dx12.h"
+#include "imgui/imgui_impl_win32.h"
+
+#include "rendering/d3d11.hpp"
+#include "rendering/d3d12.hpp"
+#include "reentrant_lock.hpp"
 
 #include "uevr/Plugin.hpp"
 #include "uevr/API.hpp"
@@ -28,7 +33,7 @@
         API::get()->log_info(__VA_ARGS__); \
     } }
 
-//extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 using namespace uevr;
 using namespace SDK;
@@ -43,7 +48,9 @@ class UEVRPlugin : public uevr::Plugin {
 
 public:
     UEVRPlugin() = default;
-    virtual ~UEVRPlugin() {};
+    // The hot loader frees the DLL without a shutdown call, so the ImGui context and its
+    // device objects are released here.
+    virtual ~UEVRPlugin() { shutdown_imgui(); }
 
 // -----------------------------------------------------------------------------
 // Engine Tick measurements
@@ -56,21 +63,42 @@ private:
     int m_ui_pre_engine_tick_duration{ 0 };     // [microseconds]
 
 // -----------------------------------------------------------------------------
-// ImGui
+// ImGui. The ImGui section in plugin.cpp explains which thread runs what.
 // -----------------------------------------------------------------------------
-//private:
-//    HWND m_wnd{};
-//    bool m_imgui_initialized{ false };
-//    bool m_was_rendering_desktop{ false };
-//
-//public:
-//    void on_present() override;
-//    void on_device_reset() override;
-//    bool on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) override;
-//    bool initialize_imgui();
-//    void on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) override;
-//    void on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) override;
-//    void internal_frame();
+private:
+    HWND m_wnd{};
+    bool m_imgui_initialized{ false };
+    int m_renderer_type{ -1 };
+    // Taken by every ImGui entry point. Re-entrant because the window thread re-enters
+    // on_message from inside ImGui's own SetCapture and ReleaseCapture calls; see
+    // reentrant_lock.hpp for why it is not a std::mutex.
+    ReentrantLock m_imgui_mutex;
+    // Values the window shows. Written on the game thread by handle_ui_requests() and
+    // set_ui_level_name(), read on the render thread.
+    std::atomic<float> m_ui_player_height{ 0.f };
+    std::string m_ui_level_name;
+    // What the window asked for. Set on the render thread, applied on the game thread.
+    // 0 means nothing is pending.
+    std::atomic<float> m_ui_player_height_request{ 0.f };
+
+public:
+    void on_present() override;
+    void on_device_reset() override;
+    bool on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) override;
+    void on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) override;
+    void on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) override;
+
+private:
+    bool initialize_imgui();
+    void create_imgui_context();
+    void shutdown_renderer_backend();
+    void shutdown_imgui();
+    void begin_imgui_frame();
+    void internal_frame();
+    void draw_general_options();
+    void draw_debug_section();
+    void handle_ui_requests();
+    void set_ui_level_name(const std::string& name);
 
 // -----------------------------------------------------------------------------
 // UEVR overrides

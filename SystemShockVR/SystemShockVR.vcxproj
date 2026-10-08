@@ -164,6 +164,7 @@
     <ClInclude Include="memo_structs.hpp" />
     <ClInclude Include="mINI\ini.h" />
     <ClInclude Include="plugin.hpp" />
+    <ClInclude Include="reentrant_lock.hpp" />
     <ClInclude Include="plugin_utils.hpp" />
     <ClInclude Include="bridge_warmup_used.hpp" />
     <ClInclude Include="sdk_bootstrap.hpp" />

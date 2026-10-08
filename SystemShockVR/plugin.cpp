@@ -255,6 +255,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         update_trailing_rotation(delta);
         handle_ads();
         handle_head_lamp();
+        handle_ui_requests();
 
         PluginUtils::handle_native_stereo_fix_cycler(vr);
 
@@ -1356,6 +1357,7 @@ void UEVRPlugin::handle_level_change() {
         ) {
             API::get()->log_warn("[plugin][handle_level_change] New Level: %s", m_level.get()->GetFullName().c_str());
             API::get()->log_warn("[plugin][handle_level_change] New Pawn State: %s", PawnStateName[m_pawn_state.get()]);
+            set_ui_level_name(m_level.get()->GetFullName());
 
             // A level change may have unloaded and reloaded the mod's Blueprint classes,
             // also from a hot-reloaded pak. Drop every cached class, property and function
@@ -1667,232 +1669,225 @@ void UEVRPlugin::cleanup_actors() {
 }
 
 
-//// -------------------------------------------------------------------------------------
-//// ImGui
-//// -------------------------------------------------------------------------------------
-//void UEVRPlugin::internal_frame() {
-//    try {
-//        if (!API::get()->param()->functions->is_drawing_ui()) {
-//            return;
-//        }
-//        static const char* MOD_NAME = "System Shock UEVR plugin [v2.0.0-alpha.0]";
-//        static const auto NO_PAWN = std::format("Invalid Pawn");
-//        static const char* LOOK_SENSITIVITY = "Look Sensitivity";
-//        static const char* SHOW_DEBUG = "Show Debug View";
-//        static const char* CURRENT_PAWN_STATE = "Current Pawn State";
-//        static const char* APPLY_WEAPON_OFFSET_WEAPON = "Apply Weapon Offset";
-//        static const char* CURRENT_WEAPON = "Current Weapon";
+// -------------------------------------------------------------------------------------
+// ImGui
 //
-//        constexpr auto window_w = 500.0f;
-//        constexpr auto window_h = 500.0f;
+// The mod draws its own window, in its own ImGui context, next to the UEVR overlay. UEVR
+// calls on_present and then on_post_render_vr_framework_* inside its present hook, on the
+// render thread. The first builds the frame and draws it on the desktop back buffer; the
+// second draws the same frame onto the render target UEVR shows in the headset, which is
+// what makes the window visible in VR. on_device_reset runs on that thread too. on_message
+// runs on the game's window thread, so m_imgui_mutex keeps its input events out of a frame
+// being built.
 //
-//        if (m_pawn.get() == nullptr) {
-//            ImGui::SetNextWindowSize(ImVec2(window_w, window_h), ImGuiCond_::ImGuiCond_Once);
-//            if (ImGui::Begin(MOD_NAME)) {
-//                ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), NO_PAWN.c_str());
-//            }
-//            ImGui::End();
-//            return;
-//        }
-//
-//        ImGui::SetNextWindowSize(ImVec2(window_w, window_h), ImGuiCond_::ImGuiCond_Once);
-//        if (ImGui::Begin(MOD_VERSION)) {
-//
-//            ImGui::SeparatorText("General options");
-//            if (g_vr_body != nullptr) {
-//                if (ImGui::SliderFloat("Player Height", &g_vr_body->VRMovementComponent()->PlayerHeight, 170.f, 183.f, "%1.0f")) {
-//                    g_vr_body->VRMovementComponent()->AdjustComponentsToPlayerHeight(g_vr_body->VRMovementComponent()->PlayerHeight);
-//                    PluginUtils::reset_height(0.f);
-//                }
-//            }
-//
-//            ImGui::SeparatorText("Debugging");
-//            ImGui::Checkbox("Show debug", &m_ui_option_show_debug_view);
-//            if (m_ui_option_show_debug_view) {
-//                ImGui::BeginGroup();
-//                ImGui::BeginDisabled();
-//                
-//                ImGui::InputText("Game State", (char*)GameStateName[m_game_state.get()], 20);
-//                
-//                ImGui::EndDisabled();
-//                ImGui::EndGroup();
-//
-//                // timers
-//                ImGui::SeparatorText("Timers [microseconds]");
-//                ImGui::BeginGroup();
-//                ImGui::BeginDisabled();
-//                ImGui::PushItemWidth(50);
-//                ImGui::InputInt("XInput duration", &m_ui_xinput_duration, 0, 0);
-//                ImGui::InputInt("PreEngineTick duration", &m_ui_pre_engine_tick_duration, 0, 0);
-//                ImGui::PopItemWidth();
-//                ImGui::EndDisabled();
-//                ImGui::EndGroup();
-//            }
-//        }
-//        ImGui::End();
-//    }
-//    catch (...) {
-//        API::get()->log_error("[plugin][internal_frame] Exception");
-//    }
-//}
-//
-//
-//
-//bool UEVRPlugin::on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
-//    ImGui_ImplWin32_WndProcHandler(hwnd, msg, wparam, lparam);
-//
-//    return !ImGui::GetIO().WantCaptureMouse && !ImGui::GetIO().WantCaptureKeyboard;
-//}
-//
-//void UEVRPlugin::on_device_reset() {
-//    PLUGIN_LOG_ONCE("Device Reset");
-//
-//    //std::scoped_lock _{ m_imgui_mutex };
-//
-//    const auto renderer_data = API::get()->param()->renderer;
-//
-//    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
-//        ImGui_ImplDX11_Shutdown();
-//        g_d3d11 = {};
-//    }
-//
-//    if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
-//        ImGui_ImplDX12_Shutdown();
-//        g_d3d12 = {};
-//    }
-//
-//    m_imgui_initialized = false;
-//}
-//
-//void UEVRPlugin::on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D* texture, ID3D11RenderTargetView* rtv) {
-//    PLUGIN_LOG_ONCE("Post Render VR Framework DX11");
-//
-//    const auto vr_active = API::get()->param()->vr->is_hmd_active();
-//
-//    if (!m_imgui_initialized || !vr_active) {
-//        return;
-//    }
-//
-//    if (m_was_rendering_desktop) {
-//        m_was_rendering_desktop = false;
-//        on_device_reset();
-//        return;
-//    }
-//
-//    //std::scoped_lock _{ m_imgui_mutex };
-//
-//    ImGui_ImplDX11_NewFrame();
-//    g_d3d11.render_imgui_vr(context, rtv);
-//}
-//
-//void UEVRPlugin::on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource* rt, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) {
-//    PLUGIN_LOG_ONCE("Post Render VR Framework DX12");
-//
-//    const auto vr_active = API::get()->param()->vr->is_hmd_active();
-//
-//    if (!m_imgui_initialized || !vr_active) {
-//        return;
-//    }
-//
-//    if (m_was_rendering_desktop) {
-//        m_was_rendering_desktop = false;
-//        on_device_reset();
-//        return;
-//    }
-//
-//    //std::scoped_lock _{ m_imgui_mutex };
-//
-//    ImGui_ImplDX12_NewFrame();
-//    g_d3d12.render_imgui_vr(command_list, rtv);
-//}
-//
-//bool UEVRPlugin::initialize_imgui() {
-//    if (m_imgui_initialized) {
-//        return true;
-//    }
-//
-//    IMGUI_CHECKVERSION();
-//    ImGui::CreateContext();
-//
-//    static const auto imgui_ini = API::get()->get_persistent_dir(L"outer_worlds_vr_imgui.ini").string();
-//    ImGui::GetIO().IniFilename = imgui_ini.c_str();
-//    ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
-//
-//    const auto renderer_data = API::get()->param()->renderer;
-//
-//    DXGI_SWAP_CHAIN_DESC swap_desc{};
-//    auto swapchain = (IDXGISwapChain*)renderer_data->swapchain;
-//    swapchain->GetDesc(&swap_desc);
-//
-//    m_wnd = swap_desc.OutputWindow;
-//
-//    if (!ImGui_ImplWin32_Init(m_wnd)) {
-//        return false;
-//    }
-//
-//    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
-//        if (!g_d3d11.initialize()) {
-//            return false;
-//        }
-//    }
-//    else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
-//        if (!g_d3d12.initialize()) {
-//            return false;
-//        }
-//    }
-//
-//    m_imgui_initialized = true;
-//    return true;
-//}
-//
-//void UEVRPlugin::on_present() {
-//    return;
-//    //std::scoped_lock _{ m_imgui_mutex };
-//
-//    if (!m_imgui_initialized) {
-//        API::get()->log_warn("ImGui not initialized");
-//        if (!initialize_imgui()) {
-//            API::get()->log_error("Failed to initialize ImGui");
-//            return;
-//        }
-//        else {
-//            API::get()->log_warn("Initialized ImGui");
-//        }
-//    }
-//
-//    const auto renderer_data = API::get()->param()->renderer;
-//
-//    if (renderer_data->renderer_type == UEVR_RENDERER_D3D11) {
-//        ImGui_ImplDX11_NewFrame();
-//        ImGui_ImplWin32_NewFrame();
-//        ImGui::NewFrame();
-//
-//        internal_frame();
-//
-//        ImGui::EndFrame();
-//        ImGui::Render();
-//
-//        g_d3d11.render_imgui();
-//    }
-//    else if (renderer_data->renderer_type == UEVR_RENDERER_D3D12) {
-//        auto command_queue = (ID3D12CommandQueue*)renderer_data->command_queue;
-//
-//        if (command_queue == nullptr) {
-//            return;
-//        }
-//
-//        ImGui_ImplDX12_NewFrame();
-//        ImGui_ImplWin32_NewFrame();
-//        ImGui::NewFrame();
-//
-//        internal_frame();
-//
-//        ImGui::EndFrame();
-//        ImGui::Render();
-//
-//        g_d3d12.render_imgui();
-//    }
-//}
+// The window never touches game objects. It shows values the game thread cached, and the
+// one change it offers is handed to the game thread through handle_ui_requests().
+// -------------------------------------------------------------------------------------
+namespace {
+
+constexpr float kUiWindowWidth = 500.0f;
+constexpr float kUiWindowHeight = 500.0f;
+constexpr float kPlayerHeightMin = 150.0f;
+constexpr float kPlayerHeightMax = 200.0f;
+
+template <class Key>
+const char* name_of(const std::map<Key, const char*>& names, Key key) {
+    const auto it = names.find(key);
+    return it != names.end() && it->second != nullptr ? it->second : "?";
+}
+
+} // namespace
+
+void UEVRPlugin::create_imgui_context() {
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    static const auto imgui_ini = API::get()->get_persistent_dir(L"system_reshock_vr_imgui.ini").string();
+    ImGui::GetIO().IniFilename = imgui_ini.c_str();
+    ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
+}
+
+// Context and Win32 backend are made once. The renderer backend is made here and again
+// after every device reset.
+bool UEVRPlugin::initialize_imgui() {
+    if (m_imgui_initialized) return true;
+    if (ImGui::GetCurrentContext() == nullptr) create_imgui_context();
+
+    const auto renderer = API::get()->param()->renderer;
+    m_renderer_type = renderer->renderer_type;
+    if (ImGui::GetIO().BackendPlatformUserData == nullptr) {
+        DXGI_SWAP_CHAIN_DESC swap_desc{};
+        static_cast<IDXGISwapChain*>(renderer->swapchain)->GetDesc(&swap_desc);
+        m_wnd = swap_desc.OutputWindow;
+        if (!ImGui_ImplWin32_Init(m_wnd)) {
+            API::get()->log_error("[plugin][initialize_imgui] ImGui_ImplWin32_Init failed");
+            return false;
+        }
+    }
+
+    const bool renderer_ok = m_renderer_type == UEVR_RENDERER_D3D11 ? g_d3d11.initialize()
+        : m_renderer_type == UEVR_RENDERER_D3D12 ? g_d3d12.initialize() : false;
+    if (!renderer_ok) {
+        API::get()->log_error("[plugin][initialize_imgui] renderer backend failed, type %d", m_renderer_type);
+        return false;
+    }
+    m_imgui_initialized = true;
+    API::get()->log_warn("[plugin][initialize_imgui] ImGui ready, renderer type %d, window 0x%p", m_renderer_type, m_wnd);
+    return true;
+}
+
+// Releases the renderer backend and its device objects. The context and the Win32 backend
+// stay, so a device reset only costs a renderer re-init on the next present. Checks the
+// backend before calling Shutdown: ImGui's own check is an assert that is off in Release.
+void UEVRPlugin::shutdown_renderer_backend() {
+    if (ImGui::GetIO().BackendRendererUserData != nullptr) {
+        if (m_renderer_type == UEVR_RENDERER_D3D11) ImGui_ImplDX11_Shutdown();
+        else if (m_renderer_type == UEVR_RENDERER_D3D12) ImGui_ImplDX12_Shutdown();
+    }
+    g_d3d11 = {};
+    g_d3d12 = {};
+    m_imgui_initialized = false;
+}
+
+// Called from the destructor, so it must not use the UEVR API: that instance may be gone.
+void UEVRPlugin::shutdown_imgui() {
+    try {
+        std::unique_lock lock(m_imgui_mutex);
+        if (ImGui::GetCurrentContext() == nullptr) return;
+        shutdown_renderer_backend();
+        if (ImGui::GetIO().BackendPlatformUserData != nullptr) ImGui_ImplWin32_Shutdown();
+        ImGui::DestroyContext();
+    }
+    catch (...) {
+    }
+}
+
+void UEVRPlugin::on_device_reset() {
+    std::unique_lock lock(m_imgui_mutex);
+    if (!m_imgui_initialized) return;
+    shutdown_renderer_backend();
+    API::get()->log_warn("[plugin][on_device_reset] ImGui renderer backend released, re-created on the next present");
+}
+
+// Window thread. Returning false keeps the message from the game, which is wanted only
+// while the overlay is open and the mouse or keyboard is over the mod's window.
+bool UEVRPlugin::on_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+    std::unique_lock lock(m_imgui_mutex);
+    if (ImGui::GetCurrentContext() == nullptr || ImGui::GetIO().BackendPlatformUserData == nullptr) return true;
+    ImGui_ImplWin32_WndProcHandler(hwnd, msg, wparam, lparam);
+    if (!API::get()->param()->functions->is_drawing_ui()) return true;
+    const ImGuiIO& io = ImGui::GetIO();
+    return !io.WantCaptureMouse && !io.WantCaptureKeyboard;
+}
+
+void UEVRPlugin::begin_imgui_frame() {
+    if (m_renderer_type == UEVR_RENDERER_D3D11) ImGui_ImplDX11_NewFrame();
+    else ImGui_ImplDX12_NewFrame();
+    ImGui_ImplWin32_NewFrame();
+    ImGui::NewFrame();
+}
+
+void UEVRPlugin::on_present() {
+    static bool logged = false;
+    try {
+        std::unique_lock lock(m_imgui_mutex);
+        if (!m_imgui_initialized && !initialize_imgui()) return;
+        if (m_renderer_type == UEVR_RENDERER_D3D12 && API::get()->param()->renderer->command_queue == nullptr) return;
+
+        begin_imgui_frame();
+        internal_frame();
+        ImGui::Render();
+        if (m_renderer_type == UEVR_RENDERER_D3D11) g_d3d11.render_imgui();
+        else g_d3d12.render_imgui();
+    }
+    catch (...) {
+        if (!logged) {
+            logged = true;
+            API::get()->log_error("[plugin][on_present] Exception (logged once)");
+        }
+    }
+}
+
+void UEVRPlugin::on_post_render_vr_framework_dx11(ID3D11DeviceContext* context, ID3D11Texture2D*, ID3D11RenderTargetView* rtv) {
+    if (!m_imgui_initialized || !API::get()->param()->vr->is_hmd_active()) return;
+    std::unique_lock lock(m_imgui_mutex);
+    g_d3d11.render_imgui_vr(context, rtv);
+}
+
+void UEVRPlugin::on_post_render_vr_framework_dx12(ID3D12GraphicsCommandList* command_list, ID3D12Resource*, D3D12_CPU_DESCRIPTOR_HANDLE* rtv) {
+    if (!m_imgui_initialized || !API::get()->param()->vr->is_hmd_active()) return;
+    std::unique_lock lock(m_imgui_mutex);
+    g_d3d12.render_imgui_vr(command_list, rtv);
+}
+
+// The mod's window. Shown only while the UEVR overlay is open.
+void UEVRPlugin::internal_frame() {
+    ImGuiIO& io = ImGui::GetIO();
+    const bool drawing_ui = API::get()->param()->functions->is_drawing_ui();
+    // UEVR draws its software cursor before it hands the VR render target to this plugin,
+    // so the mod's window would cover it. While the mouse is over the window, this context
+    // draws its own cursor on top instead; elsewhere UEVR's cursor stays the only one.
+    io.MouseDrawCursor = drawing_ui && io.WantCaptureMouse;
+    if (!drawing_ui) return;
+
+    ImGui::SetNextWindowSize(ImVec2(kUiWindowWidth, kUiWindowHeight), ImGuiCond_Once);
+    if (ImGui::Begin(MOD_VERSION)) {
+        if (m_pawn.get() == nullptr) {
+            ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "No pawn. Is the HMD running?");
+        }
+        else {
+            draw_general_options();
+            draw_debug_section();
+        }
+    }
+    ImGui::End();
+}
+
+void UEVRPlugin::draw_general_options() {
+    ImGui::SeparatorText("General options");
+    float height = m_ui_player_height.load();
+    if (height <= 0.f) {
+        ImGui::TextDisabled("VR body not spawned");
+        return;
+    }
+    if (ImGui::SliderFloat("Player height", &height, kPlayerHeightMin, kPlayerHeightMax, "%.0f cm")) {
+        m_ui_player_height_request.store(height);
+    }
+}
+
+void UEVRPlugin::draw_debug_section() {
+    ImGui::SeparatorText("Debugging");
+    ImGui::Checkbox("Show debug", &m_ui_option_show_debug_view);
+    if (!m_ui_option_show_debug_view) return;
+
+    ImGui::Text("Game state: %s", name_of(GameStateName, m_game_state.get()));
+    ImGui::Text("Pawn state: %s", name_of(PawnStateName, m_pawn_state.get()));
+    ImGui::Text("Level: %s", m_ui_level_name.c_str());
+
+    ImGui::SeparatorText("Timers [microseconds]");
+    ImGui::Text("XInput: %d", m_ui_xinput_duration);
+    ImGui::Text("Pre engine tick: %d", m_ui_pre_engine_tick_duration);
+}
+
+// Game thread, once per tick. Applies what the window asked for and refreshes what it shows.
+void UEVRPlugin::handle_ui_requests() {
+    auto* movement = g_vr_body != nullptr ? g_vr_body->VRMovementComponent() : nullptr;
+    if (movement == nullptr) {
+        m_ui_player_height.store(0.f);
+        return;
+    }
+    const float requested = m_ui_player_height_request.exchange(0.f);
+    if (requested > 0.f) {
+        movement->AdjustComponentsToPlayerHeight(requested);
+        PluginUtils::reset_height(0.f);
+        API::get()->log_warn("[plugin][handle_ui_requests] Player height set to %.0f", requested);
+    }
+    m_ui_player_height.store(movement->CurrentPlayerHeight());
+}
+
+void UEVRPlugin::set_ui_level_name(const std::string& name) {
+    std::unique_lock lock(m_imgui_mutex);
+    m_ui_level_name = name;
+}
 
 // sends mouse inputs to OS (thanks markmon)
 void UEVRPlugin::send_mouse(WORD key, bool key_up) {
