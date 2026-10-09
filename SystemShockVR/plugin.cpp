@@ -1380,6 +1380,12 @@ void UEVRPlugin::handle_level_change() {
                 m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())
             ) {
                 APAWN_Hacker_Implant_C* pawn = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get());
+                // cleanup_pointers dropped the HUD pointer and prepare_pointers refills it only
+                // next tick. The pawn is already the new one, so ask it now; the checks below need it.
+                pawn->GetNeuralHUD(&m_neural_hud);
+                if (m_neural_hud == nullptr) {
+                    API::get()->log_error("[plugin][handle_level_change] Neural HUD pointer error");
+                }
                 g_vr_body = VRBody::initialize_vr_body(pawn);
                 if (g_vr_body != nullptr) {
                     PluginUtils::warmup_bridge();
@@ -1410,7 +1416,7 @@ void UEVRPlugin::handle_level_change() {
                     //PluginUtils::cycle_native_stereo_fix();
                 }
                 else {
-                    API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
+                    API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body and neural HUD (vr_body=0x%p hud=0x%p)", g_vr_body, m_neural_hud);
                 }
                 return;
             }
