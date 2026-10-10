@@ -18,6 +18,9 @@
     Plugin (default) builds SystemShockVR\SystemShockVR.vcxproj -> SystemReShockVR.dll.
     PluginHotLoader builds tools\PluginHotLoader\PluginHotLoader.vcxproj -> PluginHotLoader.dll.
     PakHotReloader builds tools\PakHotReloader\PakHotReloader.vcxproj -> PakHotReloader.dll.
+    Paks builds nothing. It runs scripts\deploy-paks.ps1, which copies the Core pak from the
+    Unreal project's packaged output into the Steam game's pak folder. The other parameters
+    are ignored.
 
 .PARAMETER Configuration
     Release (default) or Debug.
@@ -35,7 +38,7 @@
 #>
 [CmdletBinding()]
 param(
-    [ValidateSet('Plugin', 'PluginHotLoader', 'PakHotReloader')]
+    [ValidateSet('Plugin', 'PluginHotLoader', 'PakHotReloader', 'Paks')]
     [string]$Target = 'Plugin',
     [ValidateSet('Release', 'Debug')]
     [string]$Configuration = 'Release',
@@ -45,6 +48,13 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+
+# The pak target has no build and no plugin folder; the pak script does all of it.
+if ($Target -eq 'Paks') {
+    & (Join-Path $PSScriptRoot 'deploy-paks.ps1')
+    return
+}
+
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $pluginsDir = Join-Path $ProfileDir 'plugins'
 $hotPluginsDir = Join-Path $ProfileDir 'hot_plugins'

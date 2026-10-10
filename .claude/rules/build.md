@@ -65,6 +65,16 @@ mode while `plugins\SystemReShockVR.dll` exists, since UEVR and the hot loader w
 - Do not delete `SystemShockVR\x64\<Configuration>\obj\`. It holds the `.obj` and `.tlog` files that make the next build incremental.
 - Do not override `OutDir` or `IntDir` on the MSBuild command line, and do not remove the `OutDir` setting from the project file.
 
+### Deploying the Core pak for testing
+
+`scripts\deploy-paks.ps1` copies `pakchunk10-WindowsNoEditor.pak` from the Unreal project's
+packaged output (`WindowsNoEditor\SystemShock\Content\Paks\`) into the Steam game's pak folder as
+`SystemShockVRModCore_P.pak`. Before the copy it removes `pakchunk10-WindowsNoEditor.pak`,
+`pakchunk10-WindowsNoEditor_P.pak` and `SystemShockVRModCore_P.pak` from that folder, so only one
+copy of the Core pak is mounted. `scripts\build-and-deploy.ps1 -Target Paks` runs the same script
+and builds nothing. "Deploy paks" means this. A mounted pak is locked by the game; the script stops
+with a message and the game must be closed first.
+
 ## Hot reloader
 
 From a Developer PowerShell at the repository root:

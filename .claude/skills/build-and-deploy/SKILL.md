@@ -33,6 +33,11 @@ few seconds. Nothing has to be done in the UEVR overlay. See `documentation\plug
    `tools\PluginHotLoader\PluginHotLoader.vcxproj` and deploys `PluginHotLoader.dll` into `plugins\`.
    Pass `-Target PakHotReloader` only when the user names the hot reloader; it then builds
    `tools\PakHotReloader\PakHotReloader.vcxproj` and deploys `PakHotReloader.dll` into `plugins\`.
+   Pass `-Target Paks` when the user says "deploy paks" or "deploy the pak"; it builds nothing
+   and runs `scripts\deploy-paks.ps1`, which removes the old Core pak copies from the Steam
+   game's pak folder and copies `pakchunk10-WindowsNoEditor.pak` from the Unreal project's
+   packaged output there as `SystemShockVRModCore_P.pak`. If it stops because a pak is locked,
+   tell the user to close the game and run it again. Never delete the locked pak yourself.
 
 2. If the build fails, show the compiler or linker errors and stop. Do not copy a stale DLL.
 
