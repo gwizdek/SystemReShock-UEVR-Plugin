@@ -51,7 +51,7 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
     try {
         // The pawn decides which menu exists. The HUD pointer alone cannot: the plugin keeps it
         // across level changes, and a freed widget can still pass IsValid.
-        const bool at_title = UKismetSystemLibrary::IsValid(pawn) && pawn->IsA(APAWN_PlayerGhost_C::StaticClass());
+        const bool at_title = UKismetSystemLibrary::IsValid(pawn) && PluginUtils::is_a<APAWN_PlayerGhost_C>(pawn);
         if (at_title) PLUGIN_WARN_ONCE("[vr_options_menu][handle] Ghost pawn, looking for the title screen");
         UWIDGET_OptionsScreen_C* screen = at_title ? find_title_screen(pawn) : find_screen(hud);
         if (screen == nullptr || !is_ready(screen)) return;

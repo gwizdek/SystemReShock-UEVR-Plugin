@@ -326,7 +326,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         // calculate cb duration
         if (m_ui_option_show_debug_view && m_cb_calls_count == 0) {
             std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
-            m_ui_xinput_duration = static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count());
+            m_ui_pre_engine_tick_duration = static_cast<int>(std::chrono::duration_cast<std::chrono::microseconds>(end_time - begin_time).count());
         }
     }
     catch (...) {
@@ -352,7 +352,7 @@ bool UEVRPlugin::prepare_pointers() {
             return false;
         }
 
-        if (m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
+        if (PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())) {
             m_inventory = static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->COMP_HackerInventory;
             UCOMP_MoveControlManager_C* mcm = static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->COMP_MoveControlManager;
             if (mcm != nullptr) {
@@ -363,7 +363,7 @@ bool UEVRPlugin::prepare_pointers() {
             }
         }
 
-        if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+        if (PluginUtils::is_a<APAWN_Hacker_Implant_C>(m_pawn.get())) {
             static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->GetNeuralHUD(&m_neural_hud);
             if (m_neural_hud == nullptr) {
                 API::get()->log_error("[plugin][prepare_pointers] Neural HUD pointer error");
@@ -434,7 +434,7 @@ void UEVRPlugin::prepare_game_state() {
         player_camera_manager = UGameplayStatics::GetPlayerCameraManager(m_world, 0);
 
         // trying to put APAWN_Hacker_Implant_C as early as possible (99% of engine ticks)
-        if (UKismetSystemLibrary::IsValid(m_pawn.get()) && m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+        if (UKismetSystemLibrary::IsValid(m_pawn.get()) && PluginUtils::is_a<APAWN_Hacker_Implant_C>(m_pawn.get())) {
             m_pawn_state.set_value(PAWN_HACKERIMPLANT);
 
             // GAME_STATE_CINEMATIC
@@ -516,14 +516,14 @@ void UEVRPlugin::prepare_game_state() {
         }
 
         // PLAYER GHOST
-        if (m_pawn.get()->IsA(APAWN_PlayerGhost_C::StaticClass())) {
+        if (PluginUtils::is_a<APAWN_PlayerGhost_C>(m_pawn.get())) {
             m_pawn_state.set_value(PAWN_PLAYERGHOST);
 
             // GAME_STATE_INTRO_DRONE
             if (player_camera_manager != nullptr) {
                 if (
                     UKismetSystemLibrary::IsValid(player_camera_manager->ViewTarget.Target) &&
-                    player_camera_manager->ViewTarget.Target->IsA(ABP_IntroDrone_C::StaticClass())
+                    PluginUtils::is_a<ABP_IntroDrone_C>(player_camera_manager->ViewTarget.Target)
                     ) {
                     m_game_state.set_value(GAME_STATE_INTRO_DRONE);
                     return;
@@ -536,7 +536,7 @@ void UEVRPlugin::prepare_game_state() {
         }
 
         // HACKER AVATAR - Cyberspace
-        if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
+        if (PluginUtils::is_a<APAWN_Avatar_C>(m_pawn.get())) {
             m_pawn_state.set_value(PAWN_AVATAR);
 
             // GAME_STATE_PAUSE_MENU
@@ -551,7 +551,7 @@ void UEVRPlugin::prepare_game_state() {
         }
 
         // HACKER SIMPLE - APPARTMENT INTRO
-        if (m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
+        if (PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())) {
             m_pawn_state.set_value(PAWN_HACKERSIMPLE);
             try_set_intro_laptop_pointer();
 
@@ -644,7 +644,7 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
         // Focusable interaction
         if (m_game_state.get() == GAME_STATE_INTERACTABLE) {
             auto player_controller = UGameplayStatics::GetPlayerController(m_world, 0);
-            if (player_controller->IsA(ACON_Hacker_C::StaticClass())) {
+            if (PluginUtils::is_a<ACON_Hacker_C>(player_controller)) {
                 static_cast<ACON_Hacker_C*>(player_controller)->SetIsUsingGamepad(false);
             }
             if (m_gamepad_btn_x.is_pressed()) {}
@@ -841,7 +841,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
         m_gamepad_left_shoulder.mute_state(state);
 
         auto player_controller = UGameplayStatics::GetPlayerController(m_world, 0);
-        if (player_controller->IsA(ACON_Hacker_C::StaticClass())) {
+        if (PluginUtils::is_a<ACON_Hacker_C>(player_controller)) {
             static_cast<ACON_Hacker_C*>(player_controller)->SetIsUsingGamepad(false);
         }
 
@@ -1098,7 +1098,7 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             SDK::FKey key_name{
                 .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Escape")
             };
-            if (m_pawn.get()->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+            if (PluginUtils::is_a<SDK::APAWN_Hacker_Implant_C>(m_pawn.get())) {
                 static_cast<SDK::APAWN_Hacker_Implant_C*>(m_pawn.get())->InpActEvt_Locked_Escape_K2Node_InputActionEvent_118(key_name);
             }
         }
@@ -1116,8 +1116,8 @@ void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state) {
 
     try {
         if (
-            m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass()) ||
-            m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())
+            PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get()) ||
+            PluginUtils::is_a<APAWN_Avatar_C>(m_pawn.get())
             ) {
 
             pawn_controller = m_pawn.get()->Controller;
@@ -1144,7 +1144,7 @@ void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state) {
 
 // with this, we don't need to manipulate game controller bindings to mute lean button
 void UEVRPlugin::handle_lean() {
-    if (m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
+    if (PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())) {
         // prevent player leaning
         static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->IsTryingToLean = false;
     }
@@ -1153,7 +1153,7 @@ void UEVRPlugin::handle_lean() {
 // try moving to BP
 void UEVRPlugin::update_trailing_rotation(float delta) {
     try {
-        if (g_vr_body == nullptr || m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass()))
+        if (g_vr_body == nullptr || m_pawn.get() == nullptr || !PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get()))
             return;
 
         auto pawn_controller = m_pawn.get()->Controller;
@@ -1309,13 +1309,13 @@ void UEVRPlugin::handle_game_state_change() {
                     break;
 
                 case GAME_STATE_INTERACTABLE:
-                    if (m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+                    if (PluginUtils::is_a<APAWN_Hacker_Implant_C>(m_pawn.get())) {
                         APAWN_Hacker_Implant_C* pawn = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get());
                         API::get()->log_warn("[plugin][handle_game_state_change] Interactable: %s", pawn->ChannelingInteractableName.GetRawString().c_str());
                         if (
                             pawn->ChannelingInteractable != nullptr && (
-                                pawn->ChannelingInteractable->IsA(AINTERACT_SurgeryMachine_C::StaticClass()) ||
-                                pawn->ChannelingInteractable->IsA(AINTERACT_RespawnChamber_C::StaticClass())
+                                PluginUtils::is_a<AINTERACT_SurgeryMachine_C>(pawn->ChannelingInteractable) ||
+                                PluginUtils::is_a<AINTERACT_RespawnChamber_C>(pawn->ChannelingInteractable)
                                 )
                            ) {
                             vr->set_aim_method(0);                      // Game mode
@@ -1329,7 +1329,7 @@ void UEVRPlugin::handle_game_state_change() {
                     break;
 
                 case GAME_STATE_CYBERSPACE:
-                    if (m_pawn.get()->IsA(APAWN_Avatar_C::StaticClass())) {
+                    if (PluginUtils::is_a<APAWN_Avatar_C>(m_pawn.get())) {
                         //APAWN_Avatar_C* pawn = static_cast<APAWN_Avatar_C*>(m_pawn.get());
                         //VRAvatar::initialize_vr_avatar(pawn);
                         ////g_vr_body->VRBodyMesh()->SetVisibility(true, false);
@@ -1453,6 +1453,7 @@ void UEVRPlugin::handle_level_change() {
             // so this runs once; a failed attempt is repeated on the next level change.
             if (m_bp_logger == nullptr) {
                 load_mod_utility_classes();
+                PluginUtils::reset_class_checks();
                 m_bp_logger = create_bp_logger();
             }
 
@@ -1464,7 +1465,7 @@ void UEVRPlugin::handle_level_change() {
             // Hacker Implant - Citadel Station (normal space)
             if (
                 SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
-                m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())
+                PluginUtils::is_a<APAWN_Hacker_Implant_C>(m_pawn.get())
             ) {
                 APAWN_Hacker_Implant_C* pawn = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get());
                 // cleanup_pointers dropped the HUD pointer and prepare_pointers refills it only
@@ -1511,7 +1512,7 @@ void UEVRPlugin::handle_level_change() {
             // Hacker Simple - Appartment Intro
             if (
                 SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
-                m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
+                PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())
                 ) {
                 APAWN_Hacker_Simple_C* pawn = static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get());
                 g_vr_body = VRBody::initialize_vr_body(pawn);
@@ -1565,7 +1566,7 @@ void UEVRPlugin::handle_ads() {
             if (m_is_ads_active.enabled()) {
                 if (
                     SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
-                    m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
+                    PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())
                     ) {
                     SDK::FKey aim_key{};
                     static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_42(aim_key);
@@ -1575,7 +1576,7 @@ void UEVRPlugin::handle_ads() {
             if (m_is_ads_active.disabled()) {
                 if (
                     SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
-                    m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())
+                    PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())
                     ) {
                     SDK::FKey aim_key{};
                     static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_43(aim_key);
@@ -2002,7 +2003,7 @@ bool UEVRPlugin::is_valid_vr_body_hacker_implant_pawn() {
         return false;
     }
 
-    if (m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+    if (m_pawn.get() == nullptr || !PluginUtils::is_a<APAWN_Hacker_Implant_C>(m_pawn.get())) {
         API::get()->log_error("[plugin][is_valid_hacker_pawn] Invalid pawn");
         return false;
     }
@@ -2017,7 +2018,7 @@ bool UEVRPlugin::is_valid_vr_body_hacker_simple_pawn() {
         return false;
     }
 
-    if (m_pawn.get() == nullptr || !m_pawn.get()->IsA(APAWN_Hacker_Simple_C::StaticClass())) {
+    if (m_pawn.get() == nullptr || !PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())) {
         API::get()->log_error("[plugin][is_valid_hacker_pawn] Invalid pawn");
         return false;
     }
@@ -2106,7 +2107,7 @@ void UEVRPlugin::set_hacker_ui_visibility(bool visible) {
     try {
         if (
             UKismetSystemLibrary::IsValid(m_pawn.get()) &&
-            m_pawn.get()->IsA(APAWN_Hacker_Implant_C::StaticClass()) &&
+            PluginUtils::is_a<APAWN_Hacker_Implant_C>(m_pawn.get()) &&
             UKismetSystemLibrary::IsValid(m_neural_hud)
             ) {
             m_neural_hud->SetVisibility(ESlateVisibility::Visible);
@@ -2206,7 +2207,7 @@ void UEVRPlugin::apply_vr_game_options() {
     if (class_ptr != nullptr) {
         SDK::USAVE_Settings_C* settings = class_ptr->get_first_object_matching<SDK::USAVE_Settings_C>();
 
-        if (settings != nullptr && settings->IsA(SDK::USAVE_Settings_C::StaticClass())) {
+        if (settings != nullptr && PluginUtils::is_a<SDK::USAVE_Settings_C>(settings)) {
             // Accessibility: Headbob Amount: OFF
             settings->SetHeadbobAmount(SDK::ENUM_OffReducedNormal::NewEnumerator0);
             settings->ApplyHeadbobAmount(SDK::ENUM_OffReducedNormal::NewEnumerator0);
@@ -2290,7 +2291,7 @@ void UEVRPlugin::handle_cyberspace_look_pivot(const UEVR_VRData* vr) {
             return;
         }
         // hide arrow component gizmo
-        if (SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) && m_pawn.get()->IsA(SDK::APAWN_Avatar_C::StaticClass())) {
+        if (SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) && PluginUtils::is_a<SDK::APAWN_Avatar_C>(m_pawn.get())) {
             static_cast<SDK::APAWN_Avatar_C*>(m_pawn.get())->Arrow1->SetVisibility(false, true);
         }
 
@@ -2336,7 +2337,7 @@ void UEVRPlugin::handle_head_lamp() {
 }
 
 void UEVRPlugin::set_head_lamp_brightness(float value) {
-    if (SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) && m_pawn.get()->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+    if (SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) && PluginUtils::is_a<SDK::APAWN_Hacker_Implant_C>(m_pawn.get())) {
         SDK::USpotLightComponent* head_lamp_light = static_cast<SDK::APAWN_Hacker_Implant_C*>(m_pawn.get())->HeadlampLight;
         if (!SDK::UKismetSystemLibrary::IsValid(head_lamp_light)) {
             API::get()->log_error("[plugin][set_head_lamp_brightness] Invalid Headlight object");
@@ -2347,13 +2348,13 @@ void UEVRPlugin::set_head_lamp_brightness(float value) {
 }
 
 void UEVRPlugin::apply_head_lamp_settings() {
-    if (SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) && m_pawn.get()->IsA(SDK::APAWN_Hacker_Implant_C::StaticClass())) {
+    if (SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) && PluginUtils::is_a<SDK::APAWN_Hacker_Implant_C>(m_pawn.get())) {
         API::get()->log_warn("[plugin][apply_head_lamp_settings] Begin");
         SDK::UITEM_Base_C* inventory_item{ nullptr };
         SDK::UHARDWARE_HeadLamp_C* head_lamp{ nullptr };
 
         m_inventory->FindItem(SDK::UHARDWARE_HeadLamp_C::StaticClass(), false, false, &inventory_item);
-        if (SDK::UKismetSystemLibrary::IsValid(inventory_item) && inventory_item->IsA(SDK::UHARDWARE_HeadLamp_C::StaticClass())) {
+        if (SDK::UKismetSystemLibrary::IsValid(inventory_item) && PluginUtils::is_a<SDK::UHARDWARE_HeadLamp_C>(inventory_item)) {
             head_lamp = (SDK::UHARDWARE_HeadLamp_C*)inventory_item;
             API::get()->log_warn("[plugin][apply_head_lamp_settings] Headlight found");
         }

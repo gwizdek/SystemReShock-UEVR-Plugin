@@ -10,10 +10,32 @@
 class PluginUtils
 {
     inline static int32_t m_native_fix_tick_counter{ -1 };
+    inline static uint32_t m_class_check_generation{ 1 };
 
     static void log_bridge_classes_loaded_since(const std::vector<std::wstring>& skipped_before);
 
 public:
+    // object->IsA(T::StaticClass()) for a game Blueprint class T, with the answer remembered for
+    // the object's class. While T is not loaded, T::StaticClass() searches the whole object array
+    // on every call and costs milliseconds; at the title screen most gameplay classes are not
+    // loaded. An object's class never changes, and an object cannot be of a class that is not
+    // loaded, so the answer for one class of object stays right until classes unload.
+    template <class T>
+    static bool is_a(const SDK::UObject* object) {
+        static const SDK::UClass* last_class{ nullptr };
+        static bool last_result{ false };
+        static uint32_t last_generation{ 0 };
+        if (object == nullptr) return false;
+        if (object->Class == last_class && last_generation == m_class_check_generation) return last_result;
+        SDK::UClass* type = T::StaticClass();
+        last_result = type != nullptr && object->IsA(type);
+        last_class = object->Class;
+        last_generation = m_class_check_generation;
+        return last_result;
+    }
+    // Drops every answer is_a() remembers. Called on level change: classes unload then, and a
+    // new class can take the memory of an old one.
+    static void reset_class_checks() { ++m_class_check_generation; }
     static void reset_height(float offset_y);
     static SDK::AActor* spawn_actor(SDK::UWorld* world, SDK::FTransform transform, std::wstring actor_tag);
     static void destroy_actors_by_tag(SDK::UWorld* world, SDK::FName actor_tag);
