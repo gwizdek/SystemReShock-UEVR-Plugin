@@ -21,8 +21,12 @@ Done:
 - The slider row `_OPTION_VR_Slider` and its dummies. The list holds one slider row, "VR Look
   Sensitivity" (1 to 10, default 5), next to the spike toggle.
 
-Not done: the in-game test of the slider row, the plugin side of the settings (reading and saving
-the row values), the category icon, and the rest of the real VR options.
+- The settings sync in the plugin (`SystemShockVR\vr_settings.cpp`, `vr_options_menu.cpp`): the
+  rows get their values from `system_reshock_vr_config.ini` after the install, and Apply writes
+  them back. The look sensitivity of the right thumbstick reads `vr_look_sensitivity` from it.
+
+Not done: the in-game test of the slider row and of the sync, the category icon, and the rest of
+the real VR options.
 
 ## Goal
 
@@ -276,8 +280,8 @@ Row instances in the list set `ItemName`, `ItemDescription`, `SettingName`, `Def
 `SliderDiscreteValues` is the number of positions, so 1 to 10 in whole numbers needs 10. Both texts
 are plain `Text`; the game's rows use localised text, the mod's rows do not need to.
 
-There is no settings object. The plugin reads each row's `SavedValue` by `SettingName` after
-Apply and writes the values from its ini into the rows at install time (step 3, not done).
+There is no settings object. The values persist in the plugin's ini, see "Settings sync" under
+the plugin trigger below.
 
 ### 3. The page's `Install` function
 
@@ -341,6 +345,27 @@ the game's `MAT_SubMenu_ListPanel` material on `IMAGE_PanelBackground`, and move
 up by `kCategoryListShift` units (its canvas slot gets a negative top offset) so the seventh item
 stays on screen. After three failed
 attempts on one screen it stops trying. `cleanup_pointers` resets it on level change.
+
+### Settings sync
+
+The values persist in `system_reshock_vr_config.ini` in the UEVR profile folder, section
+`[general]`, one key per row named like the row's `SettingName`: `vr_look_sensitivity = 5`,
+`spike = 1`. `VRSettings` (`SystemShockVR\vr_settings.cpp`) reads the file once on first use and
+writes it back with the other sections kept.
+
+- After `Install`, `push_settings` writes each ini value into the row's `SavedValue` and calls
+  `UpdateVisuals`, so the control shows it. A key that is missing leaves the row's `DefaultValue`.
+- Every tick while the installed screen exists, `pull_settings` compares each row's `SavedValue`
+  with the value last seen. `SavedValue` changes only in `AcceptCurrentValue`, that is on Apply, so
+  a difference means the player pressed Apply. The new value goes into the ini and the file is saved.
+  Reset and Back do not reach `SavedValue`, so they save nothing.
+- When the page is already in the screen (plugin reload), `adopt_page` finds it in the screen's grid
+  and takes the last-seen values from its rows without pushing anything.
+- The plugin reads the values it acts on through `VRSettings`, for example `look_sensitivity()`
+  for the right thumbstick turn speed, clamped to 1..10.
+
+A new row needs an entry in the push, pull and adopt lists in `vr_options_menu.cpp` and nothing
+else; the ini key comes from the row.
 
 ## Risks and checks for the spike (step 2)
 

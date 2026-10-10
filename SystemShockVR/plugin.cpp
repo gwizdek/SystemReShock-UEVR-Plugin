@@ -65,6 +65,7 @@
 #include "vr_mfd.hpp"
 #include "vr_avatar.hpp"
 #include "vr_options_menu.hpp"
+#include "vr_settings.hpp"
 
 #include <windows.h>
 #include <chrono>
@@ -1118,7 +1119,7 @@ void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state) {
             }
 
             auto control_rotation = pawn_controller->GetControlRotation();
-            float delta_rotation = (state->Gamepad.sThumbRX / ((11.f - m_ui_option_look_sensitivity) * 2499.0f));
+            float delta_rotation = (state->Gamepad.sThumbRX / ((11.f - VRSettings::look_sensitivity()) * 2499.0f));
             control_rotation.Yaw += delta_rotation;
             pawn_controller->SetControlRotation(control_rotation);
 

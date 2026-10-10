@@ -4,12 +4,21 @@
 #include "SDK/UMG_classes.hpp"
 #include "SDK/WIDGET_MainMenu_InGame_classes.hpp"
 #include "SDK/WIDGET_OptionsCategoryMenuList_classes.hpp"
+#include "SDK/WIDGET_OptionsMenu_Gameplay_classes.hpp"
 #include "SDK/PAWN_PlayerGhost_classes.hpp"
 #include "SDK/WIDGET_PreGameScreen_classes.hpp"
 #include "SDK/WIDGET_SplashScreen_Title_classes.hpp"
 
+#include "BridgeSDK/_WIDGET_OptionsMenu_VRList_classes.hpp"
+#include "BridgeSDK/_OPTION_VR_Slider_classes.hpp"
+#include "BridgeSDK/_OPTION_VR_Toggle_classes.hpp"
+
 #include "plugin_utils.hpp"
 #include "vr_options_menu.hpp"
+#include "vr_settings.hpp"
+
+#include <cstdio>
+#include <string>
 
 using namespace SDK;
 using namespace uevr;
@@ -34,6 +43,7 @@ constexpr int kMaxFailedAttempts = 3;
 } // namespace
 
 UWIDGET_OptionsScreen_C* VROptionsMenu::s_installed_screen{ nullptr };
+U_WIDGET_OptionsMenu_VR_C* VROptionsMenu::s_page{ nullptr };
 int VROptionsMenu::s_failed_attempts{ 0 };
 
 void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
@@ -43,10 +53,14 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
         const bool at_title = UKismetSystemLibrary::IsValid(pawn) && pawn->IsA(APAWN_PlayerGhost_C::StaticClass());
         if (at_title) PLUGIN_WARN_ONCE("[vr_options_menu][handle] Ghost pawn, looking for the title screen");
         UWIDGET_OptionsScreen_C* screen = at_title ? find_title_screen(pawn) : find_screen(hud);
-        if (screen == nullptr || screen == s_installed_screen || !is_ready(screen)) return;
+        if (screen == nullptr || !is_ready(screen)) return;
+        if (screen == s_installed_screen) {
+            // The screen was reached through live pointers this tick, so its page is alive too.
+            pull_settings();
+            return;
+        }
         if (has_vr_category(screen)) {
-            // The page survived a plugin reload, or another instance installed it.
-            s_installed_screen = screen;
+            adopt_page(screen);
             return;
         }
         if (s_failed_attempts >= kMaxFailedAttempts) return;
@@ -58,9 +72,11 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
             return;
         }
         page->Install(screen);
+        push_settings(page);
         apply_panel_material(page);
         shift_category_list(screen);
         s_installed_screen = screen;
+        s_page = page;
         s_failed_attempts = 0;
         API::get()->log_warn("[vr_options_menu][handle] VR options page installed, categories: %d",
             screen->WIDGET_OptionsCategoryMenuList->MenuListItemArray.Num());
@@ -73,6 +89,7 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
 
 void VROptionsMenu::reset() {
     s_installed_screen = nullptr;
+    s_page = nullptr;
     s_failed_attempts = 0;
 }
 
@@ -158,4 +175,113 @@ void VROptionsMenu::shift_category_list(UWIDGET_OptionsScreen_C* screen) {
     offsets.Top = -kCategoryListShift;
     slot->SetOffsets(offsets);
     API::get()->log_warn("[vr_options_menu][shift_category_list] Category list moved up by %.0f units", kCategoryListShift);
+}
+
+// -------------------------------------------------------------------------------------
+// Settings sync
+// -------------------------------------------------------------------------------------
+// A row is its own store: SavedValue changes only when the player presses Apply. After the
+// install the ini values are written into the rows, then every tick compares each row's
+// SavedValue with the last value seen. A difference is an Apply, and the ini gets the value.
+// The ini key is the row's SettingName, so a new row needs no plugin code beyond the sync
+// lists below.
+
+namespace {
+
+// Last SavedValue seen per row.
+float s_last_look_sensitivity{ 0.f };
+bool s_last_spike{ false };
+
+// "5" for a whole number, "5.5" otherwise: what a person expects to read in the ini.
+std::string format_number(float value) {
+    char text[32]{};
+    snprintf(text, sizeof(text), "%g", value);
+    return text;
+}
+
+void push_slider(U_OPTION_VR_Slider_C* row, float& last) {
+    const std::string key = row->SettingName().ToString();
+    row->SavedValue() = VRSettings::get_float(key, row->SavedValue());
+    row->UpdateVisuals();
+    last = row->SavedValue();
+}
+
+void push_toggle(U_OPTION_VR_Toggle_C* row, bool& last) {
+    const std::string key = row->SettingName().ToString();
+    row->SavedValue() = VRSettings::get_bool(key, row->SavedValue());
+    row->UpdateVisuals();
+    last = row->SavedValue();
+}
+
+// True when SavedValue changed since the last call. The new value is then in the ini store.
+bool pull_slider(U_OPTION_VR_Slider_C* row, float& last) {
+    const float value = row->SavedValue();
+    if (value == last) return false;
+    last = value;
+    VRSettings::set(row->SettingName().ToString(), format_number(value));
+    return true;
+}
+
+bool pull_toggle(U_OPTION_VR_Toggle_C* row, bool& last) {
+    const bool value = row->SavedValue();
+    if (value == last) return false;
+    last = value;
+    VRSettings::set(row->SettingName().ToString(), value ? "1" : "0");
+    return true;
+}
+
+} // anonymous namespace
+
+// The page sits in the screen's grid next to the game's pages. Used when an earlier plugin
+// instance installed the page and this one holds no pointer to it.
+U_WIDGET_OptionsMenu_VR_C* VROptionsMenu::find_page(UWIDGET_OptionsScreen_C* screen) {
+    auto* page_class = reinterpret_cast<UClass*>(U_WIDGET_OptionsMenu_VR_C::BridgeClassRef().get());
+    UWidget* gameplay = screen->WIDGET_OptionsMenu_Gameplay;
+    UPanelWidget* scale_box = gameplay != nullptr ? gameplay->GetParent() : nullptr;
+    UPanelWidget* grid = scale_box != nullptr ? scale_box->GetParent() : nullptr;
+    if (page_class == nullptr || grid == nullptr) return nullptr;
+    for (int i = 0; i < grid->GetChildrenCount(); ++i) {
+        UWidget* child = grid->GetChildAt(i);
+        if (child != nullptr && child->IsA(page_class)) return static_cast<U_WIDGET_OptionsMenu_VR_C*>(child);
+    }
+    return nullptr;
+}
+
+// The page survived a plugin reload, or another instance installed it. Its rows already hold
+// the right values, so only the last-seen values are taken from them; nothing is pushed.
+void VROptionsMenu::adopt_page(UWIDGET_OptionsScreen_C* screen) {
+    s_installed_screen = screen;
+    s_page = find_page(screen);
+    if (s_page == nullptr) {
+        API::get()->log_warn("[vr_options_menu][adopt_page] VR category present but no page found, settings not synced");
+        return;
+    }
+    U_WIDGET_OptionsMenu_VRList_C* list = s_page->_WIDGET_OptionsMenu_VRList();
+    if (list == nullptr) return;
+    if (auto* row = list->OPTION_VR_LookSensitivity()) s_last_look_sensitivity = row->SavedValue();
+    if (auto* row = list->OPTION_VR_Spike()) s_last_spike = row->SavedValue();
+    API::get()->log_warn("[vr_options_menu][adopt_page] Adopted the installed page");
+}
+
+void VROptionsMenu::push_settings(U_WIDGET_OptionsMenu_VR_C* page) {
+    U_WIDGET_OptionsMenu_VRList_C* list = page->_WIDGET_OptionsMenu_VRList();
+    if (list == nullptr) {
+        API::get()->log_error("[vr_options_menu][push_settings] Page has no list, settings not pushed");
+        return;
+    }
+    if (auto* row = list->OPTION_VR_LookSensitivity()) push_slider(row, s_last_look_sensitivity);
+    if (auto* row = list->OPTION_VR_Spike()) push_toggle(row, s_last_spike);
+    API::get()->log_warn("[vr_options_menu][push_settings] Rows set from the ini, look sensitivity %d", VRSettings::look_sensitivity());
+}
+
+void VROptionsMenu::pull_settings() {
+    if (s_page == nullptr) return;
+    U_WIDGET_OptionsMenu_VRList_C* list = s_page->_WIDGET_OptionsMenu_VRList();
+    if (list == nullptr) return;
+    bool changed = false;
+    if (auto* row = list->OPTION_VR_LookSensitivity()) changed = pull_slider(row, s_last_look_sensitivity) || changed;
+    if (auto* row = list->OPTION_VR_Spike()) changed = pull_toggle(row, s_last_spike) || changed;
+    if (changed && VRSettings::save()) {
+        API::get()->log_warn("[vr_options_menu][pull_settings] Settings saved, look sensitivity %d", VRSettings::look_sensitivity());
+    }
 }

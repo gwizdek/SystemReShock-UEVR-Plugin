@@ -11,6 +11,7 @@
 
 namespace SDK
 {
+class U_OPTION_VR_Slider_C;
 class U_OPTION_VR_Toggle_C;
 class UScrollBox;
 class UWIDGET_MenuBase_C;
@@ -31,6 +32,8 @@ public:
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_WIDGET_OptionsMenu_VRList_C* GetDefaultObj() { return reinterpret_cast<U_WIDGET_OptionsMenu_VRList_C*>(BridgeClass()->get_class_default_object()); }
 
+	static bridge::Prop& BridgeProp_OPTION_VR_LookSensitivity() { static bridge::Prop Ref{ L"OPTION_VR_LookSensitivity" }; return Ref; }
+	class U_OPTION_VR_Slider_C*& OPTION_VR_LookSensitivity() { return BridgeProp_OPTION_VR_LookSensitivity().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_OPTION_VR_Spike() { static bridge::Prop Ref{ L"OPTION_VR_Spike" }; return Ref; }
 	class U_OPTION_VR_Toggle_C*& OPTION_VR_Spike() { return BridgeProp_OPTION_VR_Spike().ref<class U_OPTION_VR_Toggle_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_SCROLLBOX_OptionsMenuList() { static bridge::Prop Ref{ L"SCROLLBOX_OptionsMenuList" }; return Ref; }
@@ -64,6 +67,7 @@ public:
 		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
 		bool Ok = true;
 		Ok &= bridge::warm(Cls, {
+			&BridgeProp_OPTION_VR_LookSensitivity(),
 			&BridgeProp_OPTION_VR_Spike(),
 			&BridgeProp_SCROLLBOX_OptionsMenuList(),
 		});

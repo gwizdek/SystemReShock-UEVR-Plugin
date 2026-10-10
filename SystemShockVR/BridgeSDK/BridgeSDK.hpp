@@ -40,6 +40,7 @@
 #include "_ENUM_VRHand_structs.hpp"
 #include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRMovementMode_structs.hpp"
+#include "_OPTION_VR_Slider_classes.hpp"
 #include "_OPTION_VR_Toggle_classes.hpp"
 #include "_STRUCT_DebugLogEntry_structs.hpp"
 #include "_STRUCT_MontageMeta_structs.hpp"
@@ -93,6 +94,7 @@ inline bool BridgeWarmupAll()
 	Ok &= U_BP_VRMenu_C::BridgeWarmup();
 	Ok &= U_BP_VRMovementComponent_C::BridgeWarmup();
 	Ok &= U_CH_Hacker_Rig_Skeleton_AnimBlueprint_C::BridgeWarmup();
+	Ok &= U_OPTION_VR_Slider_C::BridgeWarmup();
 	Ok &= U_OPTION_VR_Toggle_C::BridgeWarmup();
 	Ok &= U_WIDGET_ActiveHazard_C::BridgeWarmup();
 	Ok &= U_WIDGET_DebugWidget_C::BridgeWarmup();
