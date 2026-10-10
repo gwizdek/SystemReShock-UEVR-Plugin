@@ -9,6 +9,7 @@
 #include "_BI_VRWeapon_classes.hpp"
 #include "_BP_AccessCard_classes.hpp"
 #include "_BP_AnimationManager_classes.hpp"
+#include "_BP_DebugLog_classes.hpp"
 #include "_BP_DebugWidgetComponent_classes.hpp"
 #include "_BP_DebugWidgetEntryData_classes.hpp"
 #include "_BP_GrabEnablingComponent_classes.hpp"
@@ -40,6 +41,7 @@
 #include "_ENUM_VRHandPose_structs.hpp"
 #include "_ENUM_VRMovementMode_structs.hpp"
 #include "_OPTION_VR_Toggle_classes.hpp"
+#include "_STRUCT_DebugLogEntry_structs.hpp"
 #include "_STRUCT_MontageMeta_structs.hpp"
 #include "_STRUCT_UEVR_Options_structs.hpp"
 #include "_WIDGET_ActiveHazard_classes.hpp"
@@ -66,6 +68,7 @@ inline bool BridgeWarmupAll()
 	Ok &= A_BP_MeleeWeaponHandler_C::BridgeWarmup();
 	Ok &= A_BP_VRAvatar_C::BridgeWarmup();
 	Ok &= A_BP_VRBody_C::BridgeWarmup();
+	Ok &= F_STRUCT_DebugLogEntry::BridgeWarmup();
 	Ok &= F_STRUCT_MontageMeta::BridgeWarmup();
 	Ok &= F_STRUCT_UEVR_Options::BridgeWarmup();
 	Ok &= I_BI_InteractionSource_C::BridgeWarmup();
@@ -76,6 +79,7 @@ inline bool BridgeWarmupAll()
 	Ok &= U_BFL_VRModUtils_C::BridgeWarmup();
 	Ok &= U_BFL_VRUtils_C::BridgeWarmup();
 	Ok &= U_BP_AnimationManager_C::BridgeWarmup();
+	Ok &= U_BP_DebugLog_C::BridgeWarmup();
 	Ok &= U_BP_DebugWidgetComponent_C::BridgeWarmup();
 	Ok &= U_BP_DebugWidgetEntryData_C::BridgeWarmup();
 	Ok &= U_BP_GrabEnablingComponent_C::BridgeWarmup();

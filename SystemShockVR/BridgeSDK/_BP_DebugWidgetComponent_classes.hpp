@@ -7,8 +7,10 @@
 
 #include "../SDK/Basic.hpp"
 #include "Bridge.hpp"
+#include "../SDK/Engine_structs.hpp"
 #include "../SDK/UMG_classes.hpp"
 #include "_ENUM_DebugWidgetEntryType_structs.hpp"
+#include "_STRUCT_DebugLogEntry_structs.hpp"
 
 namespace SDK
 {
@@ -40,6 +42,32 @@ public:
 		BridgeCall.invoke();
 	}
 
+	// Function ReceiveBeginPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveBeginPlay() { static bridge::Func Ref{ L"ReceiveBeginPlay", {  } }; return Ref; }
+	void ReceiveBeginPlay()
+	{
+		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
+		BridgeCall.invoke();
+	}
+
+	// Function OnLogEntryAdded (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_OnLogEntryAdded() { static bridge::Func Ref{ L"OnLogEntryAdded", { L"Entry" } }; return Ref; }
+	void OnLogEntryAdded(const F_STRUCT_DebugLogEntry& Entry)
+	{
+		bridge::Call BridgeCall(BridgeFunc_OnLogEntryAdded(), bridge::as_uobject(this));
+		BridgeCall.set_raw(0, Entry.Data, F_STRUCT_DebugLogEntry::StaticSize());
+		BridgeCall.invoke();
+	}
+
+	// Function ReceiveEndPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveEndPlay() { static bridge::Func Ref{ L"ReceiveEndPlay", { L"EndPlayReason" } }; return Ref; }
+	void ReceiveEndPlay(EEndPlayReason EndPlayReason)
+	{
+		bridge::Call BridgeCall(BridgeFunc_ReceiveEndPlay(), bridge::as_uobject(this));
+		BridgeCall.set<EEndPlayReason>(0, EndPlayReason);
+		BridgeCall.invoke();
+	}
+
 	// Resolves the class and every property and function above, so no first use pays
 	// the lookup mid-game. Returns false when the class is not loaded yet or a name did
 	// not resolve; whatever is missing resolves on first use as usual.
@@ -53,6 +81,9 @@ public:
 		});
 		Ok &= bridge::warm(Cls, {
 			&BridgeFunc_AddDebugMessage(),
+			&BridgeFunc_ReceiveBeginPlay(),
+			&BridgeFunc_OnLogEntryAdded(),
+			&BridgeFunc_ReceiveEndPlay(),
 		});
 		return Ok;
 	}

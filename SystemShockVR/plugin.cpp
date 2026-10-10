@@ -53,6 +53,8 @@
 #include "BridgeSDK/_BP_MeleeWeaponHandler_classes.hpp"
 #include "BridgeSDK/_BP_VRMenu_classes.hpp"
 #include "BridgeSDK/_BP_InteractablesHighlighter_classes.hpp"
+#include "BridgeSDK/_BFL_VRModUtils_classes.hpp"
+#include "BridgeSDK/_BP_DebugLog_classes.hpp"
 
 #include "plugin.hpp"
 #include "plugin_utils.hpp"
@@ -63,8 +65,9 @@
 #include "vr_avatar.hpp"
 #include "vr_options_menu.hpp"
 
-#include "SDK/WIDGET_PlayerHUD_parameters.hpp"
 #include <windows.h>
+#include <chrono>
+#include <ctime>
 
 #define INPUT_DEADZONE_LO  ( 0.01f * FLOAT(0x7FFF) )  // Default to 01% of the +/- 32767 range.
 #define INPUT_DEADZONE_MED ( 0.45f * FLOAT(0x7FFF) )  // Default to 45% of the +/- 32767 range.
@@ -75,81 +78,118 @@ using namespace SDK;
 
 std::unique_ptr<UEVRPlugin> g_plugin = std::make_unique<UEVRPlugin>();
 
-// -------------------------------------------------------------------------------------
-// Debug hooks
-// -------------------------------------------------------------------------------------
 namespace {
 
-// Logs a native backtrace as module+offset.
-// NOTE: QueueNotification is a Blueprint UFunction dispatched through the UE script VM,
-// so this stack is dominated by VM frames. It's meaningful when the caller is native C++;
-// for Blueprint callers, rely on the logged Message/IsWarning to identify the source.
-void log_callstack(const char* tag) {
-    void* frames[32];
-    USHORT n = RtlCaptureStackBackTrace(1 /*skip this fn*/, 32, frames, nullptr);
-    API::get()->log_warn("[hook][%s] --- callstack (%u frames) ---", tag, n);
-    for (USHORT i = 0; i < n; ++i) {
-        const auto addr = reinterpret_cast<uintptr_t>(frames[i]);
-        uintptr_t base = 0;
-        char name[MAX_PATH] = "<unknown>";
-        HMODULE mod = nullptr;
-        if (GetModuleHandleExA(
-                GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
-                reinterpret_cast<LPCSTR>(frames[i]), &mod) && mod) {
-            base = reinterpret_cast<uintptr_t>(mod);
-            char path[MAX_PATH];
-            if (GetModuleFileNameA(mod, path, MAX_PATH)) {
-                const char* leaf = strrchr(path, '\\');
-                strncpy_s(name, leaf ? leaf + 1 : path, _TRUNCATE);
-            }
+// Nothing in the game imports these two classes. Mod Blueprints pull the function library in
+// when they load, but that happens only with the first VR body spawn. Loading them here makes
+// both usable from the plugin before any level, for example to create the debug log object.
+void load_mod_utility_classes() {
+    PluginUtils::load_class_for_bridge(
+        L"/Game/Mods/Utils/_BFL_VRModUtils._BFL_VRModUtils_C", U_BFL_VRModUtils_C::BridgeClassRef());
+    PluginUtils::load_class_for_bridge(
+        L"/Game/Mods/Utils/_BP_DebugLog._BP_DebugLog_C", U_BP_DebugLog_C::BridgeClassRef());
+}
+
+// The library function needs a world context. The world is the standard one: the Blueprint
+// calls GetGameInstance on it and spawns the logger under that instance, which lives for the
+// whole session. Both game instance pointers are logged so a mismatch shows up in log.txt.
+UObject* bp_logger_world_context() {
+    UWorld* world = SdkBootstrap::get_world();
+    auto* engine = reinterpret_cast<UGameEngine*>(API::get()->get_engine());
+    UGameInstance* engine_instance = engine != nullptr ? engine->GameInstance : nullptr;
+    UGameInstance* world_instance = world != nullptr ? world->OwningGameInstance : nullptr;
+    API::get()->log_warn("[plugin][bp_logger_world_context] world=0x%p world.OwningGameInstance=0x%p engine.GameInstance=0x%p",
+        world, world_instance, engine_instance);
+    return world;
+}
+
+// Creates the Blueprint debug log object through _BFL_VRModUtils.CreateBPLogger.
+// Returns nullptr when the library is not loaded, no context exists yet, or the call throws.
+U_BP_DebugLog_C* create_bp_logger() {
+    try {
+        if (U_BFL_VRModUtils_C::BridgeClassRef().get() == nullptr) {
+            API::get()->log_error("[plugin][create_bp_logger] _BFL_VRModUtils_C not loaded, logger not created");
+            return nullptr;
         }
-        API::get()->log_warn("[hook][%s]   [%02u] %s+0x%llX  (abs 0x%llX)",
-            tag, i, name,
-            static_cast<unsigned long long>(addr - base),
-            static_cast<unsigned long long>(addr));
+        UObject* context = bp_logger_world_context();
+        if (context == nullptr) {
+            API::get()->log_error("[plugin][create_bp_logger] no game instance or world yet, logger not created");
+            return nullptr;
+        }
+        U_BP_DebugLog_C* logger = nullptr;
+        U_BFL_VRModUtils_C::CreateBPLogger(context, &logger);
+        API::get()->log_warn("[plugin][create_bp_logger] CreateBPLogger returned 0x%p (context 0x%p)", logger, context);
+        if (logger == nullptr) {
+            return nullptr;
+        }
+        // Blueprints reach the logger through Get Class Defaults, and no Blueprint node can
+        // write a class default. The default object's hard reference also keeps the logger
+        // out of garbage collection.
+        U_BP_DebugLog_C::GetDefaultObj()->Instance() = logger;
+        API::get()->log_warn("[plugin][create_bp_logger] stored in _BP_DebugLog_C class defaults");
+        return logger;
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][create_bp_logger] Exception");
+        return nullptr;
     }
 }
 
-// Pre-native hook. Return false to SKIP the original call; true to let it run.
-bool on_queue_notification_pre(API::UFunction* /*fn*/, API::UObject* obj, void* params, void* /*result*/) {
-    try {
-        auto* p = reinterpret_cast<SDK::Params::WIDGET_PlayerHUD_C_QueueNotification*>(params);
-        API::get()->log_warn("[hook][QueueNotification] hud=0x%p  IsWarning=%d  Message=\"%s\"",
-            obj, static_cast<int>(p->IsWarning), p->Message.ToString().c_str());
-        log_callstack("QueueNotification");
+// The clock behind the Blueprint node GetAccurateRealTime: FPlatformTime::Seconds() on
+// Windows is the performance counter in seconds plus 16777216.0. Reading it the same way here
+// lets the plugin turn an entry's TimeSeconds and TimeFraction into its age.
+double accurate_real_time_now() {
+    LARGE_INTEGER counter{};
+    LARGE_INTEGER frequency{};
+    QueryPerformanceCounter(&counter);
+    QueryPerformanceFrequency(&frequency);
+    return static_cast<double>(counter.QuadPart) / static_cast<double>(frequency.QuadPart) + 16777216.0;
+}
+
+// Local time in the layout UEVR's own log lines use: "2026-10-01 19:20:27.654".
+std::string format_uevr_time(std::chrono::system_clock::time_point time) {
+    const auto millis = std::chrono::duration_cast<std::chrono::milliseconds>(time.time_since_epoch()) % 1000;
+    const std::time_t seconds = std::chrono::system_clock::to_time_t(time);
+    std::tm local{};
+    localtime_s(&local, &seconds);
+    char text[32]{};
+    std::strftime(text, sizeof(text), "%Y-%m-%d %H:%M:%S", &local);
+    char result[40]{};
+    snprintf(result, sizeof(result), "%s.%03d", text, static_cast<int>(millis.count()));
+    return result;
+}
+
+// Wall-clock time of an entry: now minus the entry's age on the accurate real time clock.
+// A nonsense age (negative or over a day) means the clocks do not match; then now is used.
+std::chrono::system_clock::time_point bp_entry_wall_time(F_STRUCT_DebugLogEntry& entry, double now_accurate,
+                                                         std::chrono::system_clock::time_point now_wall) {
+    const double entry_accurate = static_cast<double>(entry.TimeSeconds()) + static_cast<double>(entry.TimeFraction());
+    const double age_seconds = now_accurate - entry_accurate;
+    if (age_seconds < 0.0 || age_seconds > 86400.0) {
+        return now_wall;
     }
-    catch (...) {
-        API::get()->log_error("[hook][QueueNotification] Exception in pre hook");
+    return now_wall - std::chrono::microseconds(static_cast<long long>(age_seconds * 1000000.0));
+}
+
+// One log line per entry, at the UEVR level matching the entry's Type. The message body
+// repeats UEVR's own layout, so the entry's real time stands next to the tick's time.
+void log_bp_entry(F_STRUCT_DebugLogEntry& entry, const std::string& time_text) {
+    const std::string message = entry.Message().ToString();
+    switch (entry.Type()) {
+    case E_ENUM_DebugWidgetEntryType::Error:
+        API::get()->log_error("[%s] [Blueprint] [error] %s", time_text.c_str(), message.c_str());
+        break;
+    case E_ENUM_DebugWidgetEntryType::Warn:
+        API::get()->log_warn("[%s] [Blueprint] [warning] %s", time_text.c_str(), message.c_str());
+        break;
+    default:
+        // warn, not info: UEVR writes only warn and error from plugins to log.txt.
+        API::get()->log_warn("[%s] [Blueprint] [info] %s", time_text.c_str(), message.c_str());
+        break;
     }
-    return true; // don't interfere with the game
 }
 
 } // anonymous namespace
-
-// Self-guarding; safe to call repeatedly. Returns once the class is loaded and hooked.
-void install_queue_notification_hook() {
-    static bool installed = false;
-    if (installed) return;
-
-    // SDK StaticClass() returns the live UClass; it IS the same UObject the UEVR API uses,
-    // so reinterpreting the pointer to an API handle is valid.
-    auto* klass = reinterpret_cast<uevr::API::UStruct*>(SDK::UWIDGET_PlayerHUD_C::StaticClass());
-    if (klass == nullptr) return; // class not loaded yet — retry next call
-
-    auto* fn = klass->find_function(L"QueueNotification");
-    if (fn == nullptr) {
-        API::get()->log_error("[hook] QueueNotification UFunction not found");
-        return;
-    }
-
-    if (fn->hook_ptr(&on_queue_notification_pre, nullptr)) {
-        installed = true;
-        API::get()->log_warn("[hook] QueueNotification hook installed (fn=0x%p)", fn);
-    }
-    else {
-        API::get()->log_error("[hook] Failed to install QueueNotification hook");
-    }
-}
 
 // -------------------------------------------------------------------------------------
 // UEVR Overrides
@@ -336,6 +376,35 @@ bool UEVRPlugin::prepare_pointers() {
 }
 
 // TODO: Optimize order: APAWN_Hacker_Implant_C and derivatives first
+void UEVRPlugin::on_post_engine_tick(API::UGameEngine* engine, float delta) {
+    if (m_bp_logger == nullptr) {
+        return;
+    }
+    try {
+        flush_bp_log();
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][on_post_engine_tick] Exception");
+    }
+}
+
+// Writes every entry the Blueprints added to the debug log since the last tick into the
+// UEVR log, at the level matching the entry's Type, then empties the Blueprint array.
+void UEVRPlugin::flush_bp_log() {
+    bridge::StructArray<F_STRUCT_DebugLogEntry>& entries = m_bp_logger->Entries();
+    if (entries.size() <= 0) {
+        return;
+    }
+    const double now_accurate = accurate_real_time_now();
+    const auto now_wall = std::chrono::system_clock::now();
+    for (int32_t i = 0; i < entries.size(); ++i) {
+        F_STRUCT_DebugLogEntry entry = entries[i];
+        const std::string time_text = format_uevr_time(bp_entry_wall_time(entry, now_accurate, now_wall));
+        log_bp_entry(entry, time_text);
+    }
+    m_bp_logger->Clear();
+}
+
 void UEVRPlugin::prepare_game_state() {
     static UWIDGET_MainMenu_InGame_C* main_menu{ nullptr };
     static APlayerCameraManager* player_camera_manager{ nullptr };
@@ -1369,6 +1438,15 @@ void UEVRPlugin::handle_level_change() {
                 bridge::invalidate();
             }
 
+            // The library and the logger class are imported by nothing the game loads. Load
+            // them here, on the game thread. A blocking load from on_initialize runs on the
+            // render thread and crashes the async loader. The logger lives for the session,
+            // so this runs once; a failed attempt is repeated on the next level change.
+            if (m_bp_logger == nullptr) {
+                load_mod_utility_classes();
+                m_bp_logger = create_bp_logger();
+            }
+
             // reset pointers invalidating vr_body
             API::get()->log_warn("[plugin][handle_level_change] Actors / Pointers cleanup");
             cleanup_actors();
@@ -1406,7 +1484,6 @@ void UEVRPlugin::handle_level_change() {
                     VRBody::initialize_ads();
                     VRBody::initialize_hand_item_collisions();
                     VRItemSelector::initialize(m_neural_hud);
-                    //install_queue_notification_hook();
                     PluginUtils::reset_height(0.f);
 
                     VRBody::set_debug_widget_visibility(false);

@@ -8,10 +8,12 @@
 #include "../SDK/Basic.hpp"
 #include "Bridge.hpp"
 #include "../SDK/Engine_classes.hpp"
+#include "_ENUM_DebugWidgetEntryType_structs.hpp"
 
 namespace SDK
 {
 class AActor;
+class U_BP_DebugLog_C;
 class UObject;
 class UPrimitiveComponent;
 
@@ -29,6 +31,28 @@ public:
 	static uevr::API::UClass* BridgeClass() { return BridgeClassRef().require(); }
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_BFL_VRModUtils_C* GetDefaultObj() { return reinterpret_cast<U_BFL_VRModUtils_C*>(BridgeClass()->get_class_default_object()); }
+
+	// Function CreateBPLogger (BlueprintCallable, BlueprintEvent, Static)
+	static bridge::Func& BridgeFunc_CreateBPLogger() { static bridge::Func Ref{ L"CreateBPLogger", { L"__WorldContext", L"Return" } }; return Ref; }
+	static void CreateBPLogger(class UObject* __WorldContext, class U_BP_DebugLog_C** Return_)
+	{
+		bridge::Call BridgeCall(BridgeFunc_CreateBPLogger(), BridgeClass()->get_class_default_object());
+		BridgeCall.set<class UObject*>(0, __WorldContext);
+		if (Return_ != nullptr) { BridgeCall.set<class U_BP_DebugLog_C*>(1, *Return_); }
+		BridgeCall.invoke();
+		if (Return_ != nullptr) { *Return_ = BridgeCall.get<class U_BP_DebugLog_C*>(1); }
+	}
+
+	// Function AddBPLogMessage (BlueprintCallable, BlueprintEvent, Static)
+	static bridge::Func& BridgeFunc_AddBPLogMessage() { static bridge::Func Ref{ L"AddBPLogMessage", { L"Message", L"Type", L"__WorldContext" } }; return Ref; }
+	static void AddBPLogMessage(const class FString& Message, E_ENUM_DebugWidgetEntryType Type, class UObject* __WorldContext)
+	{
+		bridge::Call BridgeCall(BridgeFunc_AddBPLogMessage(), BridgeClass()->get_class_default_object());
+		BridgeCall.set<class FString>(0, Message);
+		BridgeCall.set<E_ENUM_DebugWidgetEntryType>(1, Type);
+		BridgeCall.set<class UObject*>(2, __WorldContext);
+		BridgeCall.invoke();
+	}
 
 	// Function ShowNotification (BlueprintCallable, BlueprintEvent, Static)
 	static bridge::Func& BridgeFunc_ShowNotification() { static bridge::Func Ref{ L"ShowNotification", { L"SourceActor", L"InteractMessage", L"IsWarning", L"__WorldContext" } }; return Ref; }
@@ -63,6 +87,8 @@ public:
 		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
 		bool Ok = true;
 		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_CreateBPLogger(),
+			&BridgeFunc_AddBPLogMessage(),
 			&BridgeFunc_ShowNotification(),
 			&BridgeFunc_GetMeshPrimitiveFromPickableInteractable(),
 		});

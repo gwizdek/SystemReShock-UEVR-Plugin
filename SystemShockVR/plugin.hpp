@@ -40,6 +40,8 @@ using namespace SDK;
 
 SDK::A_BP_VRBody_C* g_vr_body{};
 
+namespace SDK { class U_BP_DebugLog_C; }
+
 class UEVRPlugin;
 extern std::unique_ptr<UEVRPlugin> g_plugin;
 
@@ -107,6 +109,7 @@ public:
     void on_initialize() override;
     void on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) override;
     void on_pre_engine_tick(API::UGameEngine* engine, float delta) override;
+    void on_post_engine_tick(API::UGameEngine* engine, float delta) override;
 
 // -----------------------------------------------------------------------------
 // UEVR props
@@ -128,6 +131,8 @@ private:
     UWorld* m_world{ nullptr };
     UCOMP_HackerInventory_C* m_inventory{ nullptr };
     UWIDGET_PlayerHUD_C* m_neural_hud{ nullptr };
+    // The Blueprint debug log object, created once in on_initialize. Lives for the session.
+    U_BP_DebugLog_C* m_bp_logger{ nullptr };
     //A_BP_VRBody_C* m_vr_body{ nullptr };
     AINTERACT_Laptop_C* m_intro_laptop{ nullptr };
 
@@ -198,6 +203,7 @@ private:
 public:
     bool prepare_pointers();
     void prepare_game_state();
+    void flush_bp_log();
     void handle_smooth_turning(XINPUT_STATE* state);
     void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_game_state_change();
