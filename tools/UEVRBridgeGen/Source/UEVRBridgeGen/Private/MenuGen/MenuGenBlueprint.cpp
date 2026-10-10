@@ -12,10 +12,36 @@
 #include "WidgetBlueprint.h"
 #include "Blueprint/WidgetBlueprintGeneratedClass.h"
 
+namespace
+{
+// Moves an object out of its package under a unique name, so a new object can take the name.
+void MoveToTransient(UObject* Object)
+{
+    if (Object == nullptr) return;
+    Object->ClearFlags(RF_Public | RF_Standalone);
+    const FName NewName = MakeUniqueObjectName(GetTransientPackage(), Object->GetClass(), Object->GetFName());
+    Object->Rename(*NewName.ToString(), GetTransientPackage(), REN_DontCreateRedirectors | REN_DoNotDirty | REN_NonTransactional);
+}
+
+// With -Overwrite an old version of the asset may already be in memory, loaded as a dependency
+// of something else. CreateBlueprint asserts on a name clash, so the old Blueprint and its two
+// classes are moved aside first.
+void EvictLoadedBlueprint(UPackage* Package, FName Name)
+{
+    UBlueprint* Existing = FindObject<UBlueprint>(Package, *Name.ToString());
+    if (Existing == nullptr) return;
+    UE_LOG(LogUEVRBridgeGen, Display, TEXT("Replacing the loaded %s"), *Existing->GetPathName());
+    MoveToTransient(Existing->SkeletonGeneratedClass);
+    MoveToTransient(Existing->GeneratedClass);
+    MoveToTransient(Existing);
+}
+} // namespace
+
 TSharedPtr<FMenuGenBlueprint> FMenuGenBlueprint::Create(const FString& PackagePath, UClass* Parent, bool bWidget)
 {
     UPackage* Package = MenuGenAsset::NewPackage(PackagePath);
     const FName Name = *MenuGenAsset::NameOf(PackagePath);
+    EvictLoadedBlueprint(Package, Name);
     UBlueprint* BP = bWidget
         ? FKismetEditorUtilities::CreateBlueprint(Parent, Package, Name, BPTYPE_Normal, UWidgetBlueprint::StaticClass(), UWidgetBlueprintGeneratedClass::StaticClass())
         : FKismetEditorUtilities::CreateBlueprint(Parent, Package, Name, BPTYPE_Normal, UBlueprint::StaticClass(), UBlueprintGeneratedClass::StaticClass());

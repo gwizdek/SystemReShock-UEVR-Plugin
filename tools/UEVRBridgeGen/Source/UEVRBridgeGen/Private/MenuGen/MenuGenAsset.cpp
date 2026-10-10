@@ -22,11 +22,11 @@ bool Exists(const FString& PackagePath)
     return FPackageName::DoesPackageExist(PackagePath);
 }
 
+// A package for a new asset. The file on disk, if any, is not loaded: with -Overwrite the old
+// asset must stay out of memory, or creating the new one with the same name fails.
 UPackage* NewPackage(const FString& PackagePath)
 {
-    UPackage* Package = CreatePackage(*PackagePath);
-    Package->FullyLoad();
-    return Package;
+    return CreatePackage(*PackagePath);
 }
 
 bool Save(UObject* Asset, const TArray<int32>& ChunkIds)
