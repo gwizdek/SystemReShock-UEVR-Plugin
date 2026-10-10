@@ -92,6 +92,17 @@ void load_mod_utility_classes() {
         L"/Game/Mods/Utils/_BP_DebugLog._BP_DebugLog_C", U_BP_DebugLog_C::BridgeClassRef());
 }
 
+// Menus step through their items on a small stick tilt, so the left stick only counts past a
+// high threshold there. Used on the title screen and in the pause menu.
+void apply_menu_stick_deadzone(XINPUT_STATE* state) {
+    if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
+        state->Gamepad.sThumbLX = 0;
+    }
+    if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
+        state->Gamepad.sThumbLY = 0;
+    }
+}
+
 // The library function needs a world context. The world is the standard one: the Blueprint
 // calls GetGameInstance on it and spawns the logger under that instance, which lives for the
 // whole session. Both game instance pointers are logged so a mismatch shows up in log.txt.
@@ -619,6 +630,7 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
 
         // Pause menu
         if (m_game_state.get() == GAME_STATE_PAUSE_MENU) {
+            apply_menu_stick_deadzone(state);
             if (g_vr_body == nullptr) {
                 return;
             }
@@ -681,15 +693,8 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
         }
 
         if (m_game_state.get() == GAME_STATE_MAIN_MENU) {
-            // increase stick deadzone for better navigation in the menu
-            if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
-                state->Gamepad.sThumbLX = 0;
-            }
-            if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
-                state->Gamepad.sThumbLY = 0;
-            }
-
-            // don't remap other buttons in in-game menu
+            apply_menu_stick_deadzone(state);
+            // don't remap other buttons in the title screen's menu
             return;
         }
 
