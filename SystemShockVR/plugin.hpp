@@ -1,6 +1,5 @@
 #pragma once
 
-#include <atomic>
 #include <shared_mutex>
 #include <string>
 
@@ -74,13 +73,9 @@ private:
     // on_message from inside ImGui's own SetCapture and ReleaseCapture calls; see
     // reentrant_lock.hpp for why it is not a std::mutex.
     ReentrantLock m_imgui_mutex;
-    // Values the window shows. Written on the game thread by handle_ui_requests() and
-    // set_ui_level_name(), read on the render thread.
-    std::atomic<float> m_ui_player_height{ 0.f };
+    // Shown by the window. Written on the game thread by set_ui_level_name(), read on the
+    // render thread.
     std::string m_ui_level_name;
-    // What the window asked for. Set on the render thread, applied on the game thread.
-    // 0 means nothing is pending.
-    std::atomic<float> m_ui_player_height_request{ 0.f };
 
 public:
     void on_present() override;
@@ -96,9 +91,7 @@ private:
     void shutdown_imgui();
     void begin_imgui_frame();
     void internal_frame();
-    void draw_general_options();
     void draw_debug_section();
-    void handle_ui_requests();
     void set_ui_level_name(const std::string& name);
 
 // -----------------------------------------------------------------------------

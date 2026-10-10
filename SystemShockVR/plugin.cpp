@@ -309,7 +309,6 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         update_trailing_rotation(delta);
         handle_ads();
         handle_head_lamp();
-        handle_ui_requests();
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
             VRBody::apply_custom_vr_game_options(g_vr_body);
@@ -1780,15 +1779,12 @@ void UEVRPlugin::cleanup_actors() {
 // runs on the game's window thread, so m_imgui_mutex keeps its input events out of a frame
 // being built.
 //
-// The window never touches game objects. It shows values the game thread cached, and the
-// one change it offers is handed to the game thread through handle_ui_requests().
+// The window never touches game objects. It only shows values the game thread cached.
 // -------------------------------------------------------------------------------------
 namespace {
 
 constexpr float kUiWindowWidth = 500.0f;
 constexpr float kUiWindowHeight = 500.0f;
-constexpr float kPlayerHeightMin = 150.0f;
-constexpr float kPlayerHeightMax = 200.0f;
 
 template <class Key>
 const char* name_of(const std::map<Key, const char*>& names, Key key) {
@@ -1937,23 +1933,10 @@ void UEVRPlugin::internal_frame() {
             ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "No pawn. Is the HMD running?");
         }
         else {
-            draw_general_options();
             draw_debug_section();
         }
     }
     ImGui::End();
-}
-
-void UEVRPlugin::draw_general_options() {
-    ImGui::SeparatorText("General options");
-    float height = m_ui_player_height.load();
-    if (height <= 0.f) {
-        ImGui::TextDisabled("VR body not spawned");
-        return;
-    }
-    if (ImGui::SliderFloat("Player height", &height, kPlayerHeightMin, kPlayerHeightMax, "%.0f cm")) {
-        m_ui_player_height_request.store(height);
-    }
 }
 
 void UEVRPlugin::draw_debug_section() {
@@ -1968,22 +1951,6 @@ void UEVRPlugin::draw_debug_section() {
     ImGui::SeparatorText("Timers [microseconds]");
     ImGui::Text("XInput: %d", m_ui_xinput_duration);
     ImGui::Text("Pre engine tick: %d", m_ui_pre_engine_tick_duration);
-}
-
-// Game thread, once per tick. Applies what the window asked for and refreshes what it shows.
-void UEVRPlugin::handle_ui_requests() {
-    auto* movement = g_vr_body != nullptr ? g_vr_body->VRMovementComponent() : nullptr;
-    if (movement == nullptr) {
-        m_ui_player_height.store(0.f);
-        return;
-    }
-    const float requested = m_ui_player_height_request.exchange(0.f);
-    if (requested > 0.f) {
-        movement->AdjustComponentsToPlayerHeight(requested);
-        PluginUtils::reset_height(0.f);
-        API::get()->log_warn("[plugin][handle_ui_requests] Player height set to %.0f", requested);
-    }
-    m_ui_player_height.store(movement->CurrentPlayerHeight());
 }
 
 void UEVRPlugin::set_ui_level_name(const std::string& name) {
