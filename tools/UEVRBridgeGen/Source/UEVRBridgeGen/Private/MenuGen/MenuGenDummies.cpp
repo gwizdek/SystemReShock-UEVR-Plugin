@@ -143,6 +143,36 @@ bool MakeToggle(FMenuGenStore& Store, const FMenuGenOptions& Options)
     });
 }
 
+// The slider control inside a slider row. The game's row reaches it through GetSlider().
+bool MakeSliderWidget(FMenuGenStore& Store, const FMenuGenOptions& Options)
+{
+    return Dummy(Store, Options, TEXT("SliderWidget"), MenuGenPaths::SliderWidget, UUserWidget::StaticClass(), [](FMenuGenBlueprint& BP)
+    {
+        BP.AddFunction(TEXT("SetSliderRealValue"), { P(TEXT("RealValue"), Float()) }, {}, false);
+        BP.AddFunction(TEXT("GetRealValue"), {}, { P(TEXT("RealValue"), Float()) }, true);
+        // SetSliderRealValue moves the handle and the text but not the bar's fill; this does.
+        BP.AddFunction(TEXT("UpdateBackgroundFill"), {}, {}, false);
+    });
+}
+
+// The slider row. The six Slider* variables are pushed into the control by the game's
+// InitializeMenuListItem; SliderDiscreteValues is the number of positions, not of steps.
+bool MakeSlider(FMenuGenStore& Store, const FMenuGenOptions& Options)
+{
+    UClass* SliderWidget = Store.Find(TEXT("SliderWidget"));
+    return Dummy(Store, Options, TEXT("Slider"), MenuGenPaths::Slider, Store.Find(TEXT("OptionBase")), [&](FMenuGenBlueprint& BP)
+    {
+        BP.AddVariable(TEXT("SliderDiscreteValues"), Int(), true);
+        BP.AddVariable(TEXT("SliderInitialValue"), Float(), true);
+        BP.AddVariable(TEXT("SliderValueMin"), Float(), true);
+        BP.AddVariable(TEXT("SliderValueMax"), Float(), true);
+        BP.AddVariable(TEXT("SliderPostfix"), Text(), true);
+        BP.AddVariable(TEXT("SliderFractionalDigits"), Int(), true);
+        BP.AddFunction(TEXT("GetScaledCurrentSliderValue"), {}, { P(TEXT("Result"), Float()) }, true);
+        BP.AddFunction(TEXT("GetSlider"), {}, { P(TEXT("Result"), Object(SliderWidget)) }, true);
+    });
+}
+
 bool MakeItem(FMenuGenStore& Store, const FMenuGenOptions& Options)
 {
     UEnum* Categories = Store.Categories;
@@ -199,6 +229,8 @@ bool MenuGenDummies::Generate(FMenuGenStore& Store, const FMenuGenOptions& Optio
         && MakeOptionsMenuBase(Store, Options)
         && MakeOptionBase(Store, Options)
         && MakeToggle(Store, Options)
+        && MakeSliderWidget(Store, Options)
+        && MakeSlider(Store, Options)
         && MakeItem(Store, Options)
         && MakeCategoryList(Store, Options)
         && MakeButtonLegend(Store, Options)

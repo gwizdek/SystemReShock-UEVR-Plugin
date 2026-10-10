@@ -18,8 +18,11 @@ Done:
   (`D:\Unreal Engine\Projects\SystemReShock-UE4-Project`, its own git lfs repository, branch `vr-menu`).
 - The plugin trigger (`SystemShockVR\vr_options_menu.cpp`) creates the page and installs it.
 
-Not done: the cook and the in-game test of the spike, the plugin side of the settings (reading
-and saving the row values), the slider row, the category icon, and the real VR options.
+- The slider row `_OPTION_VR_Slider` and its dummies. The list holds one slider row, "VR Look
+  Sensitivity" (1 to 10, default 5), next to the spike toggle.
+
+Not done: the in-game test of the slider row, the plugin side of the settings (reading and saving
+the row values), the category icon, and the rest of the real VR options.
 
 ## Goal
 
@@ -212,7 +215,8 @@ pointers. Every function is created as a normal Blueprint function, which is ove
 | `Generic/WIDGET_MenuListItemBase` | UserWidget | vars `ItemName`, `ItemDescription`, `IndexInList`; function `InitializeMenuListItem(ParentList, Index)`. |
 | `MainMenu/OptionsScreen/OptionsCategories/OPTION_Base` | WIDGET_MenuListItemBase | the six overridable functions, `ApplyCleanValue()`, `SaveNewValue()`, dispatcher `OnOptionChanged()`. |
 | `.../OptionsCategories/WIDGET_Settings_BinaryToggle` | OPTION_Base | `SetCheckboxValue(Value)`, `GetCheckboxValue() -> Result` (pure), `ToggleCheckbox()`. |
-| `.../OptionsCategories/WIDGET_Settings_Slider` | OPTION_Base | not generated yet. Needs the six `Slider*` instance variables, `GetScaledCurrentSliderValue() -> Result` (pure) and a dummy `WIDGET_Slider` with `SetSliderRealValue(Value)`. |
+| `.../OptionsCategories/WIDGET_Settings_Slider` | OPTION_Base | the six instance variables `SliderDiscreteValues` (Int), `SliderInitialValue`, `SliderValueMin`, `SliderValueMax` (Float), `SliderPostfix` (Text), `SliderFractionalDigits` (Int); `GetScaledCurrentSliderValue() -> Result` (pure, the slider position mapped into min..max); `GetSlider() -> Result` (pure, the `WIDGET_Slider` control). |
+| `.../OptionsCategories/WIDGET_Slider` | UserWidget | `SetSliderRealValue(RealValue)`, `GetRealValue() -> RealValue` (pure). |
 | `MainMenu/OptionsScreen/WIDGET_OptionCategoryMenuListItem` | WIDGET_MenuListItemBase | vars `ENUM_OptionCategories` (byte of the dummy enum), `IsExpanded`; dispatcher `OnCategoryButtonClicked(ItemIndex)`; functions `SetExpandedState(NewExpandedState)`, `SetCategorySelected(NewSelectedState)`. |
 | `MainMenu/OptionsScreen/WIDGET_OptionsCategoryMenuList` | WIDGET_MenuListBase | var `VBOX_OptionCategoryWidgetList` (VerticalBox); function `SetSelectedItem(ItemIndex) -> CategoryText`. |
 | `MainMenu/OptionsScreen/WIDGET_OptionsScreen` | WIDGET_MenuBase | vars `WIDGET_OptionsCategoryMenuList`, `WIDGET_OptionsMenu_Gameplay` (typed `UserWidget`; only used to reach `GridPanel_221` through `GetParent` twice), `WIDGET_ButtonLegend_ApplyButton`, `WIDGET_ButtonLegend_ResetToDefaults`, `ANIM_OpenOptionsSubscreen`, `ANIM_ShowResetApplyButtons` (WidgetAnimation); function `TryUpdateCategoryList()`. |
@@ -237,27 +241,40 @@ list: `CanvasPanel` with `SCROLLBOX_OptionsMenuList` (anchors 0,0 to 1,1, offset
 25, scrollbar thickness 8 x 8, padding 10) holding the `_OPTION_VR_*` rows, each in a `ScrollBoxSlot`
 with padding 20. `InitializeList` override: parent call, `PanelItemListWidget = SCROLLBOX_OptionsMenuList`.
 `InitializeItemArray` override: returns an array made of the row variables, in the order they
-appear in the generator (no loop, since the generator knows every row). The spike holds one row,
-`OPTION_VR_Spike`. The scrollbar materials can be set at runtime later; this is cosmetic.
+appear in the generator (no loop, since the generator knows every row). The list holds two rows:
+`OPTION_VR_Spike` (a toggle) and `OPTION_VR_LookSensitivity` (a slider, setting name
+`vr_look_sensitivity`, 1 to 10 in whole numbers, default 5). The scrollbar materials can be set
+at runtime later; this is cosmetic.
 
-**`_OPTION_VR_Toggle`**, child of `WIDGET_Settings_BinaryToggle` (a slider row, child of
-`WIDGET_Settings_Slider`, comes later). No tree, no own widgets. The row is its own store: instance
-variables `SettingName` (Name), `SavedValue` (bool) and `DefaultValue` (bool), all editable per
-instance. Overrides, mirroring the game's rows:
+**`_OPTION_VR_Toggle`**, child of `WIDGET_Settings_BinaryToggle`, and **`_OPTION_VR_Slider`**,
+child of `WIDGET_Settings_Slider`. No tree, no own widgets. A row is its own store: instance
+variables `SettingName` (Name), `SavedValue` and `DefaultValue` (bool for the toggle, float for
+the slider), all editable per instance. Overrides, mirroring the game's rows:
 
-| Function | Toggle |
-|---|---|
-| `UpdateVisuals` | `SetCheckboxValue(SavedValue)` |
-| `IsDirty` | `GetCheckboxValue() != SavedValue` |
-| `IsDefault` | `GetCheckboxValue() == DefaultValue` |
-| `ApplyDirtyValue` | parent call only |
-| `AcceptCurrentValue` | `SavedValue = GetCheckboxValue()` |
-| `SelectDefaultValue` | `SetCheckboxValue(DefaultValue)` |
+| Function | Toggle | Slider |
+|---|---|---|
+| `UpdateVisuals` | `SetCheckboxValue(SavedValue)` | `GetSlider().SetSliderRealValue(SavedValue)`, then `GetSlider().UpdateBackgroundFill()` |
+| `IsDirty` | `GetCheckboxValue() != SavedValue` | not `NearlyEqual(GetCurrentValue(), SavedValue)` |
+| `IsDefault` | `GetCheckboxValue() == DefaultValue` | `NearlyEqual(GetCurrentValue(), DefaultValue)` |
+| `ApplyDirtyValue` | parent call only | parent call only |
+| `AcceptCurrentValue` | `SavedValue = GetCheckboxValue()` | `SavedValue = GetCurrentValue()`, then `UpdateVisuals()` |
+| `SelectDefaultValue` | `SetCheckboxValue(DefaultValue)` | same as `UpdateVisuals` with `DefaultValue` |
 
-Every override starts with a call to the parent implementation, as the game's rows do. Row
-instances in the list set `ItemName`, `ItemDescription`, `SettingName`, `DefaultValue` and
-`SavedValue`. Both texts are plain `Text`; the game's rows use localised text, the mod's rows do
-not need to.
+Every override starts with a call to the parent implementation, as the game's rows do. Two facts
+about the game's slider control shape the slider row:
+
+- `SetSliderRealValue` moves the handle and the text but not the bar's fill. The mouse path goes
+  through `SetSliderValue`, which ends with `UpdateBackgroundFill`. So the row calls
+  `UpdateBackgroundFill` itself after every set, or the fill shows the old value.
+- A mouse drag is not snapped to the discrete positions, so the slider can rest at 5.32 while its
+  text shows 5. The row's own pure function `GetCurrentValue()` snaps `GetScaledCurrentSliderValue()`
+  to the instance variable `Step` (default 1), and every compare and the accept use it. After Apply
+  the handle is moved onto the stored step. The compares use a tolerance of 0.001.
+
+Row instances in the list set `ItemName`, `ItemDescription`, `SettingName`, `DefaultValue` and
+`SavedValue`. A slider row also sets the six `Slider*` variables of its parent;
+`SliderDiscreteValues` is the number of positions, so 1 to 10 in whole numbers needs 10. Both texts
+are plain `Text`; the game's rows use localised text, the mod's rows do not need to.
 
 There is no settings object. The plugin reads each row's `SavedValue` by `SettingName` after
 Apply and writes the values from its ini into the rows at install time (step 3, not done).

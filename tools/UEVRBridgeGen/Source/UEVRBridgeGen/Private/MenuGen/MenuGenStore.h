@@ -20,6 +20,8 @@ constexpr const TCHAR* ItemBase = TEXT("/Game/Blueprints/UI/Generic/WIDGET_MenuL
 constexpr const TCHAR* OptionsMenuBase = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionsMenu_Base");
 constexpr const TCHAR* OptionBase = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/OPTION_Base");
 constexpr const TCHAR* Toggle = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/WIDGET_Settings_BinaryToggle");
+constexpr const TCHAR* Slider = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/WIDGET_Settings_Slider");
+constexpr const TCHAR* SliderWidget = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/WIDGET_Slider");
 constexpr const TCHAR* Item = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionCategoryMenuListItem");
 constexpr const TCHAR* CategoryList = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionsCategoryMenuList");
 constexpr const TCHAR* Screen = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionsScreen");
@@ -27,6 +29,7 @@ constexpr const TCHAR* ButtonLegend = TEXT("/Game/Blueprints/UI/HUD/Widgets/Butt
 constexpr const TCHAR* Categories = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/ENUM_OptionCategories");
 
 constexpr const TCHAR* VRToggle = TEXT("_OPTION_VR_Toggle");
+constexpr const TCHAR* VRSlider = TEXT("_OPTION_VR_Slider");
 constexpr const TCHAR* VRList = TEXT("_WIDGET_OptionsMenu_VRList");
 constexpr const TCHAR* VRPage = TEXT("_WIDGET_OptionsMenu_VR");
 
