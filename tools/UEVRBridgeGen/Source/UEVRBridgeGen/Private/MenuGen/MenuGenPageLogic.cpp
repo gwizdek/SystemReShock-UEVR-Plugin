@@ -13,6 +13,7 @@
 #include "K2Node_IfThenElse.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Materials/Material.h"
 #include "MenuGenBlueprint.h"
 #include "MenuGenGraph.h"
 #include "MenuGenStore.h"
@@ -33,13 +34,15 @@ struct FPageClasses
     UClass* Screen;
     UClass* ButtonLegend;
     UClass* List;
+    UMaterial* Icon;
 };
 
 FPageClasses ClassesOf(const FMenuGenStore& Store)
 {
     return FPageClasses{
         Store.Find(TEXT("MenuBase")), Store.Find(TEXT("ListBase")), Store.Find(TEXT("ItemBase")), Store.Find(TEXT("Item")),
-        Store.Find(TEXT("CategoryList")), Store.Find(TEXT("Screen")), Store.Find(TEXT("ButtonLegend")), Store.Find(MenuGenPaths::VRList) };
+        Store.Find(TEXT("CategoryList")), Store.Find(TEXT("Screen")), Store.Find(TEXT("ButtonLegend")), Store.Find(MenuGenPaths::VRList),
+        Store.IconMaterial };
 }
 
 // Links a row of nodes exec-to-exec, starting after the function entry (or its parent call).
@@ -129,6 +132,20 @@ UEdGraphNode* InstallCreateItem(FMenuGenGraph& G, const FPageClasses& C)
     return SetDescription;
 }
 
+// CategoryItem.OptionCategoryIcon = [MAT_OptionsIcons_VR]. The item keeps category 0, so its
+// PreConstruct shows element 0. This must happen before the item is added: adding it to the
+// live list builds its widget, and that runs PreConstruct.
+UEdGraphNode* InstallSetIcon(FMenuGenGraph& G, const FPageClasses& C, UEdGraphNode* After)
+{
+    UEdGraphNode* Set = G.Set(TEXT("OptionCategoryIcon"), C.Item);
+    G.Link(G.Get(TEXT("CategoryItem")), TEXT("CategoryItem"), Set, UEdGraphSchema_K2::PN_Self);
+    UEdGraphNode* Icons = G.MakeArray(1);
+    G.Link(Icons, TEXT("Array"), Set, TEXT("OptionCategoryIcon"));
+    G.SetDefaultObject(Icons, TEXT("[0]"), C.Icon);
+    G.Then(After, Set);
+    return Set;
+}
+
 // Adds the item to the category list and re-numbers the list.
 UEdGraphNode* InstallAddItem(FMenuGenGraph& G, const FPageClasses& C, UEdGraphNode* After)
 {
@@ -209,6 +226,7 @@ void BuildInstall(FMenuGenBlueprint& Page, const FPageClasses& C)
 {
     FMenuGenGraph G(Page.AddFunction(TEXT("Install"), { FMenuGenParam{ TEXT("Screen"), Object(C.Screen) } }, {}, false));
     UEdGraphNode* Last = InstallCreateItem(G, C);
+    Last = InstallSetIcon(G, C, Last);
     Last = InstallAddItem(G, C, Last);
     Last = InstallAddPage(G, C, Last);
     InstallBind(G, C, Last);

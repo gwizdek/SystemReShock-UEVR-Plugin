@@ -29,6 +29,16 @@ UPackage* NewPackage(const FString& PackagePath)
     return CreatePackage(*PackagePath);
 }
 
+void Evict(UPackage* Package, const FString& Name)
+{
+    UObject* Existing = FindObject<UObject>(Package, *Name);
+    if (Existing == nullptr) return;
+    UE_LOG(LogUEVRBridgeGen, Display, TEXT("Replacing the loaded %s"), *Existing->GetPathName());
+    Existing->ClearFlags(RF_Public | RF_Standalone);
+    const FName NewName = MakeUniqueObjectName(GetTransientPackage(), Existing->GetClass(), Existing->GetFName());
+    Existing->Rename(*NewName.ToString(), GetTransientPackage(), REN_DontCreateRedirectors | REN_DoNotDirty | REN_NonTransactional);
+}
+
 bool Save(UObject* Asset, const TArray<int32>& ChunkIds)
 {
     UPackage* Package = Asset->GetOutermost();

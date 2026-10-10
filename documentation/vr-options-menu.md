@@ -25,8 +25,11 @@ Done:
   rows get their values from `system_reshock_vr_config.ini` after the install, and Apply writes
   them back. The look sensitivity of the right thumbstick reads `vr_look_sensitivity` from it.
 
-Not done: the in-game test of the slider row and of the sync, the category icon, and the rest of
-the real VR options.
+- The VR category icon: texture `T_OptionsIcons_VR`, material `MAT_OptionsIcons_VR` and a dummy of
+  the game's tint collection. The page's `Install` puts the material on the category item.
+
+All of the above works in the game. Not done: the rest of the real VR options, and removing the
+spike toggle row once a real toggle exists.
 
 ## Goal
 
@@ -221,14 +224,15 @@ pointers. Every function is created as a normal Blueprint function, which is ove
 | `.../OptionsCategories/WIDGET_Settings_BinaryToggle` | OPTION_Base | `SetCheckboxValue(Value)`, `GetCheckboxValue() -> Result` (pure), `ToggleCheckbox()`. |
 | `.../OptionsCategories/WIDGET_Settings_Slider` | OPTION_Base | the six instance variables `SliderDiscreteValues` (Int), `SliderInitialValue`, `SliderValueMin`, `SliderValueMax` (Float), `SliderPostfix` (Text), `SliderFractionalDigits` (Int); `GetScaledCurrentSliderValue() -> Result` (pure, the slider position mapped into min..max); `GetSlider() -> Result` (pure, the `WIDGET_Slider` control). |
 | `.../OptionsCategories/WIDGET_Slider` | UserWidget | `SetSliderRealValue(RealValue)`, `GetRealValue() -> RealValue` (pure). |
-| `MainMenu/OptionsScreen/WIDGET_OptionCategoryMenuListItem` | WIDGET_MenuListItemBase | vars `ENUM_OptionCategories` (byte of the dummy enum), `IsExpanded`; dispatcher `OnCategoryButtonClicked(ItemIndex)`; functions `SetExpandedState(NewExpandedState)`, `SetCategorySelected(NewSelectedState)`. |
+| `MainMenu/OptionsScreen/WIDGET_OptionCategoryMenuListItem` | WIDGET_MenuListItemBase | vars `ENUM_OptionCategories` (byte of the dummy enum), `IsExpanded`, `OptionCategoryIcon` (array of `Material`); dispatcher `OnCategoryButtonClicked(ItemIndex)`; functions `SetExpandedState(NewExpandedState)`, `SetCategorySelected(NewSelectedState)`. |
 | `MainMenu/OptionsScreen/WIDGET_OptionsCategoryMenuList` | WIDGET_MenuListBase | var `VBOX_OptionCategoryWidgetList` (VerticalBox); function `SetSelectedItem(ItemIndex) -> CategoryText`. |
 | `MainMenu/OptionsScreen/WIDGET_OptionsScreen` | WIDGET_MenuBase | vars `WIDGET_OptionsCategoryMenuList`, `WIDGET_OptionsMenu_Gameplay` (typed `UserWidget`; only used to reach `GridPanel_221` through `GetParent` twice), `WIDGET_ButtonLegend_ApplyButton`, `WIDGET_ButtonLegend_ResetToDefaults`, `ANIM_OpenOptionsSubscreen`, `ANIM_ShowResetApplyButtons` (WidgetAnimation); function `TryUpdateCategoryList()`. |
 | `HUD/Widgets/ButtonLegend/WIDGET_ButtonLegend_Button` | UserWidget | `ToggleInteractivity(IsInteractive)`. |
 | `MainMenu/OptionsScreen/ENUM_OptionCategories` | user enum | the six entries in the game's order. |
+| `/Game/Blueprints/UI/Tinting/MPC_UserTintParameters` | material parameter collection | the game's 19 vector parameters in the game's order, with the game's parameter `Id`s and the game's `StateId`. See "Category icon" below. |
 
-Art assets (materials, fonts) get no dummies. The one game material the mod page needs is set by
-the plugin at runtime (see the plugin trigger below).
+Other art assets (materials, fonts, textures) get no dummies. The one game material the mod page
+needs is set by the plugin at runtime (see the plugin trigger below).
 
 ### 2. Mod widgets (chunk 10, `/Game/Mods/UI/Options/`)
 
@@ -284,6 +288,32 @@ are plain `Text`; the game's rows use localised text, the mod's rows do not need
 There is no settings object. The values persist in the plugin's ini, see "Settings sync" under
 the plugin trigger below.
 
+### Category icon
+
+`documentation\menu-icons.md` explains how to make the next icon step by step. In short, the game's
+six category icons follow one recipe, and the VR icon copies it:
+
+- **Texture.** 256 x 256, compression `TC_EditorIcon` (uncompressed BGRA8), group
+  `TEXTUREGROUP_UI`, one mip. The shape is a white silhouette on black that fills the square to a
+  few pixels from the edge, with details cut out as negative space. The game packs three icons
+  into one texture, one per colour channel, and leaves alpha at 255. The mod's
+  `T_OptionsIcons_VR` holds one icon in R, G and B alike. Its source is
+  `tools\UEVRBridgeGen\Resources\MenuGen\T_OptionsIcons_VR.png`, drawn by `draw_vr_icon.py` next to
+  it: a chamfered headset with two lenses, a nose notch and strap tabs.
+- **Material.** A UI-domain, translucent material per icon. Colour is the collection parameter
+  `UIBackgroundTint1` of `MPC_UserTintParameters`, opacity is the mask. In the game the icons are
+  exactly that colour: the default theme's tint, (0, 1, 0.23) in linear space, shows as about
+  (0, 250, 129). The game's materials also reference a radial gradient through the material
+  function `UserTintBackground`; it does not show in the icons. `MAT_OptionsIcons_VR` has the
+  colour and the opacity only.
+
+A material that reads a parameter collection is compiled against the collection's parameter list
+and records its `StateId`. In the game the reference resolves to the real collection, and the
+material gets the live tint buffer only when the `StateId` matches. So the dummy collection at the
+game's path copies the `StateId`, every vector parameter in the game's order and each parameter's
+`Id`, all read from the cooked asset. The values are in `MenuGenIcon.cpp`. The dummy is in chunk 0,
+like the other dummies, and never ships.
+
 ### 3. The page's `Install` function
 
 The install logic lives on the page itself, so no extra object is needed to bind events.
@@ -293,9 +323,9 @@ six items). The plugin checks that before calling it.
 
 1. `Screen = Screen`. Create the category item with `WidgetBlueprintLibrary.Create`
    (`WIDGET_OptionCategoryMenuListItem`), store it in `CategoryItem`, set `ItemName = "VR"` and
-   `ItemDescription`. The item keeps `ENUM_OptionCategories = 0`, so its `PreConstruct` shows the
-   Gameplay icon for now; a mod icon is a later step (set `OptionCategoryIcon[0]` on the instance
-   before it is added).
+   `ItemDescription`. Then `CategoryItem.OptionCategoryIcon = [MAT_OptionsIcons_VR]`. The item keeps
+   `ENUM_OptionCategories = 0`, so its `PreConstruct` shows element 0. This must come before step 2:
+   adding the item to the live list builds its widget, and that runs `PreConstruct`.
 2. `AddChildToVerticalBox` on `Screen.WIDGET_OptionsCategoryMenuList.VBOX_OptionCategoryWidgetList`.
 3. `Screen.WIDGET_OptionsCategoryMenuList.InitializeList(Screen)`. This re-numbers the items; the
    new one is index 6. It is safe because the category list has no `OPTION_Base` rows.
@@ -381,8 +411,10 @@ else; the ini key comes from the row.
   game's class has it as a transient animation variable. Reading it by name should work; if
   `PlayAnimation` gets null, the buttons stay hidden on the first open and the handler needs
   another way to reach the animation.
-- The category icon is the Gameplay one until `OptionCategoryIcon[0]` is replaced on the item
-  instance before it is added (it must be set before `PreConstruct` runs).
+- The icon material reads the tint through the dummy collection. If the dummy's `StateId` or
+  parameter order ever differs from the game's, the material finds no tint buffer in the game and the
+  icon shows the wrong colour or none. Opening the dummy in the editor and changing it makes a new
+  `StateId`; run the generator with `-Overwrite` afterwards.
 - Gamepad navigation: `WIDGET_OptionsCategoryMenuList` navigates with `ReceiveNavUp/Down` over
   `MenuListItemArray`, so item 6 is reachable. `ReceiveNavAccept` on the item broadcasts the
   delegate the installer bound. To be confirmed in the headset.
@@ -397,7 +429,8 @@ else; the ini key comes from the row.
    Core pak, as `documentation\building.md` describes. The dummies land in chunk 0 and stay out.
 3. Run the game with the plugin from `hot_plugins\`. Open the pause menu, then Options. The log
    shows `[vr_options_menu][handle] VR options page installed, categories: 7` once per level.
-4. Expected: a seventh category "VR" with the Gameplay icon, its page with one toggle row, the
+4. Expected: a seventh category "VR" with the headset icon in the same colour as the other icons,
+   following the tint picked in the Interface options, its page with its rows, the
    description box text on hover, Apply enabled after a change, Reset enabled while the value is not
    the default, Back closing the page, and the game's categories still working.
 

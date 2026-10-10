@@ -3,6 +3,7 @@
 #include "AssetRegistryModule.h"
 #include "BridgeGenLog.h"
 #include "MenuGenDummies.h"
+#include "MenuGenIcon.h"
 #include "MenuGenModWidgets.h"
 #include "MenuGenStore.h"
 #include "Modules/ModuleManager.h"
@@ -29,6 +30,11 @@ int32 UVROptionsMenuGenCommandlet::Main(const FString& Params)
     if (!MenuGenDummies::Generate(Store, Options))
     {
         UE_LOG(LogUEVRBridgeGen, Error, TEXT("Dummy generation failed."));
+        return 1;
+    }
+    if (!MenuGenIcon::Generate(Store, Options))
+    {
+        UE_LOG(LogUEVRBridgeGen, Error, TEXT("Icon generation failed."));
         return 1;
     }
     if (!MenuGenModWidgets::Generate(Store, Options))

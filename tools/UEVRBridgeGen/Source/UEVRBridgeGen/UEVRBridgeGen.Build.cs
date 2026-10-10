@@ -23,6 +23,8 @@ public class UEVRBridgeGen : ModuleRules
             "KismetCompiler",
             "Slate",
             "SlateCore",
+            // VROptionsMenuGen: the category icon texture is read from a PNG.
+            "ImageWrapper",
         });
     }
 }

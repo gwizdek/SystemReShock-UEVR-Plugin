@@ -7,6 +7,7 @@
 #include "Components/VerticalBox.h"
 #include "Engine/UserDefinedEnum.h"
 #include "Kismet2/EnumEditorUtils.h"
+#include "Materials/Material.h"
 #include "MenuGenAsset.h"
 #include "MenuGenBlueprint.h"
 #include "MenuGenStore.h"
@@ -180,6 +181,8 @@ bool MakeItem(FMenuGenStore& Store, const FMenuGenOptions& Options)
     {
         BP.AddVariable(TEXT("ENUM_OptionCategories"), Byte(Categories), true);
         BP.AddVariable(TEXT("IsExpanded"), Bool());
+        // PreConstruct shows OptionCategoryIcon[ENUM_OptionCategories] in IMAGE_OptionCategoryIcon.
+        BP.AddVariable(TEXT("OptionCategoryIcon"), Array(Object(UMaterial::StaticClass())));
         BP.AddDispatcher(TEXT("OnCategoryButtonClicked"), { P(TEXT("ItemIndex"), Int()) });
         BP.AddFunction(TEXT("SetExpandedState"), { P(TEXT("NewExpandedState"), Bool()) }, {}, false);
         BP.AddFunction(TEXT("SetCategorySelected"), { P(TEXT("NewSelectedState"), Bool()) }, {}, false);
