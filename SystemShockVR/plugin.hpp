@@ -46,7 +46,6 @@ class UEVRPlugin;
 extern std::unique_ptr<UEVRPlugin> g_plugin;
 
 class UEVRPlugin : public uevr::Plugin {
-    const char* MOD_VERSION = "System Shock UEVR plugin [v2.0.0-beta.2]";
 
 public:
     UEVRPlugin() = default;

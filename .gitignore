@@ -16,6 +16,9 @@
 # Mono auto generated files
 mono_crash.*
 
+# Written by scripts\bump-build-index.ps1 before every plugin build
+SystemShockVR/build_version_generated.hpp
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

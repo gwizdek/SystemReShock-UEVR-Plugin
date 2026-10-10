@@ -57,6 +57,7 @@
 #include "BridgeSDK/_BP_DebugLog_classes.hpp"
 
 #include "plugin.hpp"
+#include "build_version.hpp"
 #include "plugin_utils.hpp"
 #include "sdk_bootstrap.hpp"
 #include "vr_body.hpp"
@@ -1918,7 +1919,9 @@ void UEVRPlugin::internal_frame() {
     if (!drawing_ui) return;
 
     ImGui::SetNextWindowSize(ImVec2(kUiWindowWidth, kUiWindowHeight), ImGuiCond_Once);
-    if (ImGui::Begin(MOD_VERSION)) {
+    // Title: "System Shock UEVR plugin 2.0-beta.3 [45]", version and build index from build_version.hpp.
+    static const std::string window_title = std::string("System Shock UEVR plugin ") + BuildVersion::text();
+    if (ImGui::Begin(window_title.c_str())) {
         if (m_pawn.get() == nullptr) {
             ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "No pawn. Is the HMD running?");
         }

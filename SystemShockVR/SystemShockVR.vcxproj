@@ -164,6 +164,7 @@
     <ClInclude Include="memo_structs.hpp" />
     <ClInclude Include="mINI\ini.h" />
     <ClInclude Include="plugin.hpp" />
+    <ClInclude Include="build_version.hpp" />
     <ClInclude Include="reentrant_lock.hpp" />
     <ClInclude Include="plugin_utils.hpp" />
     <ClInclude Include="bridge_warmup_used.hpp" />
@@ -249,11 +250,18 @@
     <ClCompile Include="vr_item_selector.cpp" />
     <ClCompile Include="vr_mfd.cpp" />
     <ClCompile Include="vr_options_menu.cpp" />
+    <ClCompile Include="build_version.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+    <None Include="build_index.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <!-- Raises build_index.txt by one and writes build_version_generated.hpp before every build.
+       See scripts\bump-build-index.ps1 and .claude\rules\build.md. -->
+  <Target Name="BumpBuildIndex" BeforeTargets="ClCompile">
+    <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(MSBuildProjectDirectory)\..\scripts\bump-build-index.ps1&quot; -ProjectDir &quot;$(MSBuildProjectDirectory)&quot;" />
+  </Target>
 </Project>

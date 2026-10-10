@@ -26,6 +26,15 @@ msbuild SystemShockVR\SystemShockVR.vcxproj /p:Configuration=Release /p:Platform
 
 The platform is always x64. The Win32 configurations are not used. Use Debug only when asked to.
 
+### Build index and version
+
+Every plugin build raises the number in `SystemShockVR\build_index.txt` by one. A target in the
+project file runs `scripts\bump-build-index.ps1` before compiling. The script also writes
+`SystemShockVR\build_version_generated.hpp` (gitignored) with that index and the plugin version,
+which it reads from `InformationalVersion` in the installer project file. The plugin shows both in
+the title of its ImGui window, for example `2.0-beta.3 [45]`. Commit `build_index.txt` with the
+build it belongs to. Do not edit the generated header; it is overwritten on the next build.
+
 ### Where the plugin output lands
 
 The shippable files are always in `SystemShockVR\x64\<Configuration>\`, whether the build comes from Visual Studio or the command line:
