@@ -36,6 +36,12 @@ public:
     // Drops every answer is_a() remembers. Called on level change: classes unload then, and a
     // new class can take the memory of an old one.
     static void reset_class_checks() { ++m_class_check_generation; }
+
+    // UObject::AddToRoot, which the SDK lacks. The garbage collector never frees a rooted
+    // object, nor its class and outer. Needed for objects only the plugin points to: the
+    // collector does not see the plugin's pointers. Game thread only.
+    static bool add_to_root(SDK::UObject* object);
+
     static void reset_height(float offset_y);
     static SDK::AActor* spawn_actor(SDK::UWorld* world, SDK::FTransform transform, std::wstring actor_tag);
     static void destroy_actors_by_tag(SDK::UWorld* world, SDK::FName actor_tag);

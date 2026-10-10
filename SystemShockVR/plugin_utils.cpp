@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <chrono>
+#include <intrin.h>
 #include <string>
 #include <vector>
 
@@ -50,6 +51,26 @@ void PluginUtils::log_bridge_classes_loaded_since(const std::vector<std::wstring
             API::get()->log_warn("[plugin_utils][warmup_bridge] Loaded now, warmed up: %s", bridge::narrow(path).c_str());
         }
     }
+}
+
+// In UE 4.27 an FUObjectItem is { UObject* Object; int32 Flags; int32 ClusterRootIndex;
+// int32 SerialNumber; } and EInternalObjectFlags::RootSet is bit 30 of Flags. AddToRoot sets
+// that bit atomically; this does the same through the SDK's object array.
+bool PluginUtils::add_to_root(SDK::UObject* object) {
+    constexpr size_t kFlagsOffset = 0x8;
+    constexpr long kRootSet = 1L << 30;
+    if (object == nullptr) return false;
+    SDK::TUObjectArray* objects = SDK::UObject::GObjects.operator->();
+    const int32_t index = object->Index;
+    const int32_t chunk = index / SDK::TUObjectArray::ElementsPerChunk;
+    if (index < 0 || index >= objects->NumElements || chunk >= objects->NumChunks) return false;
+    SDK::FUObjectItem* items = objects->GetDecrytedObjPtr()[chunk];
+    if (items == nullptr) return false;
+    SDK::FUObjectItem& item = items[index % SDK::TUObjectArray::ElementsPerChunk];
+    if (item.Object != object) return false;
+    auto* flags = reinterpret_cast<volatile long*>(reinterpret_cast<uint8_t*>(&item) + kFlagsOffset);
+    _InterlockedOr(flags, kRootSet);
+    return true;
 }
 
 void PluginUtils::reset_height(float offset_y) {

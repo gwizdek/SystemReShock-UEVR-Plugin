@@ -136,10 +136,15 @@ U_BP_DebugLog_C* create_bp_logger() {
             return nullptr;
         }
         // Blueprints reach the logger through Get Class Defaults, and no Blueprint node can
-        // write a class default. The default object's hard reference also keeps the logger
-        // out of garbage collection.
+        // write a class default.
         U_BP_DebugLog_C::GetDefaultObj()->Instance() = logger;
         API::get()->log_warn("[plugin][create_bp_logger] stored in _BP_DebugLog_C class defaults");
+        // The class default's reference does not keep the logger alive by itself: at the title
+        // screen no game asset references _BP_DebugLog_C, so the collector frees the class, its
+        // default object and the logger together. Rooting the logger keeps all three.
+        if (!PluginUtils::add_to_root(logger)) {
+            API::get()->log_error("[plugin][create_bp_logger] could not root the logger, it may be garbage collected");
+        }
         return logger;
     }
     catch (...) {
@@ -399,7 +404,10 @@ void UEVRPlugin::on_post_engine_tick(API::UGameEngine* engine, float delta) {
         flush_bp_log();
     }
     catch (...) {
-        API::get()->log_error("[plugin][on_post_engine_tick] Exception");
+        // A failing flush would fail again every tick, each time with a failed object search
+        // and two log lines. Drop the logger; the next level change creates a new one.
+        m_bp_logger = nullptr;
+        API::get()->log_error("[plugin][on_post_engine_tick] Exception, Blueprint log stopped until the next level change");
     }
 }
 
@@ -1445,6 +1453,7 @@ void UEVRPlugin::handle_level_change() {
             // The warm-up refills them.
             if (m_level.has_changed()) {
                 bridge::invalidate();
+                PluginUtils::reset_class_checks();
             }
 
             // The library and the logger class are imported by nothing the game loads. Load
@@ -1453,7 +1462,6 @@ void UEVRPlugin::handle_level_change() {
             // so this runs once; a failed attempt is repeated on the next level change.
             if (m_bp_logger == nullptr) {
                 load_mod_utility_classes();
-                PluginUtils::reset_class_checks();
                 m_bp_logger = create_bp_logger();
             }
 
