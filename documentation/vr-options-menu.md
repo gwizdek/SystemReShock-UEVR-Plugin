@@ -245,10 +245,11 @@ list: `CanvasPanel` with `SCROLLBOX_OptionsMenuList` (anchors 0,0 to 1,1, offset
 25, scrollbar thickness 8 x 8, padding 10) holding the `_OPTION_VR_*` rows, each in a `ScrollBoxSlot`
 with padding 20. `InitializeList` override: parent call, `PanelItemListWidget = SCROLLBOX_OptionsMenuList`.
 `InitializeItemArray` override: returns an array made of the row variables, in the order they
-appear in the generator (no loop, since the generator knows every row). The list holds two rows:
-`OPTION_VR_Spike` (a toggle) and `OPTION_VR_LookSensitivity` (a slider, setting name
-`vr_look_sensitivity`, 1 to 10 in whole numbers, default 5). The scrollbar materials can be set
-at runtime later; this is cosmetic.
+appear in the generator (no loop, since the generator knows every row). The list holds three rows:
+`OPTION_VR_Spike` (a toggle), `OPTION_VR_LookSensitivity` (a slider, setting name
+`vr_look_sensitivity`, 1 to 10 in whole numbers, default 5) and `OPTION_VR_PlayerHeight` (a slider,
+setting name `player_height`, 165 to 185 cm in whole numbers, default 175). The scrollbar materials
+can be set at runtime later; this is cosmetic.
 
 **`_OPTION_VR_Toggle`**, child of `WIDGET_Settings_BinaryToggle`, and **`_OPTION_VR_Slider`**,
 child of `WIDGET_Settings_Slider`. No tree, no own widgets. A row is its own store: instance
@@ -350,8 +351,8 @@ attempts on one screen it stops trying. `cleanup_pointers` resets it on level ch
 
 The values persist in `system_reshock_vr_config.ini` in the UEVR profile folder, section
 `[general]`, one key per row named like the row's `SettingName`: `vr_look_sensitivity = 5`,
-`spike = 1`. `VRSettings` (`SystemShockVR\vr_settings.cpp`) reads the file once on first use and
-writes it back with the other sections kept.
+`player_height = 175`, `spike = 1`. `VRSettings` (`SystemShockVR\vr_settings.cpp`) reads the file
+once on first use and writes it back with the other sections kept.
 
 - After `Install`, `push_settings` writes each ini value into the row's `SavedValue` and calls
   `UpdateVisuals`, so the control shows it. A key that is missing leaves the row's `DefaultValue`.
@@ -363,6 +364,10 @@ writes it back with the other sections kept.
   and takes the last-seen values from its rows without pushing anything.
 - The plugin reads the values it acts on through `VRSettings`, for example `look_sensitivity()`
   for the right thumbstick turn speed, clamped to 1..10.
+- After a save, `consume_settings_change` returns true once, and `plugin.cpp` calls
+  `VRBody::apply_custom_vr_game_options`. The same function runs after every VR body spawn. It
+  stores `player_height()` in the movement component's `DefaultPlayerHeight` and calls
+  `AdjustComponentsToPlayerHeight` with it.
 
 A new row needs an entry in the push, pull and adopt lists in `vr_options_menu.cpp` and nothing
 else; the ini key comes from the row.

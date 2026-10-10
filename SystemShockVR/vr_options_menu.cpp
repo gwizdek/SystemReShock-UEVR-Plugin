@@ -45,6 +45,7 @@ constexpr int kMaxFailedAttempts = 3;
 UWIDGET_OptionsScreen_C* VROptionsMenu::s_installed_screen{ nullptr };
 U_WIDGET_OptionsMenu_VR_C* VROptionsMenu::s_page{ nullptr };
 int VROptionsMenu::s_failed_attempts{ 0 };
+bool VROptionsMenu::s_settings_changed{ false };
 
 void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
     try {
@@ -190,6 +191,7 @@ namespace {
 
 // Last SavedValue seen per row.
 float s_last_look_sensitivity{ 0.f };
+float s_last_player_height{ 0.f };
 bool s_last_spike{ false };
 
 // "5" for a whole number, "5.5" otherwise: what a person expects to read in the ini.
@@ -259,6 +261,7 @@ void VROptionsMenu::adopt_page(UWIDGET_OptionsScreen_C* screen) {
     U_WIDGET_OptionsMenu_VRList_C* list = s_page->_WIDGET_OptionsMenu_VRList();
     if (list == nullptr) return;
     if (auto* row = list->OPTION_VR_LookSensitivity()) s_last_look_sensitivity = row->SavedValue();
+    if (auto* row = list->OPTION_VR_PlayerHeight()) s_last_player_height = row->SavedValue();
     if (auto* row = list->OPTION_VR_Spike()) s_last_spike = row->SavedValue();
     API::get()->log_warn("[vr_options_menu][adopt_page] Adopted the installed page");
 }
@@ -270,8 +273,10 @@ void VROptionsMenu::push_settings(U_WIDGET_OptionsMenu_VR_C* page) {
         return;
     }
     if (auto* row = list->OPTION_VR_LookSensitivity()) push_slider(row, s_last_look_sensitivity);
+    if (auto* row = list->OPTION_VR_PlayerHeight()) push_slider(row, s_last_player_height);
     if (auto* row = list->OPTION_VR_Spike()) push_toggle(row, s_last_spike);
-    API::get()->log_warn("[vr_options_menu][push_settings] Rows set from the ini, look sensitivity %d", VRSettings::look_sensitivity());
+    API::get()->log_warn("[vr_options_menu][push_settings] Rows set from the ini, look sensitivity %d, player height %.0f",
+        VRSettings::look_sensitivity(), VRSettings::player_height());
 }
 
 void VROptionsMenu::pull_settings() {
@@ -280,8 +285,19 @@ void VROptionsMenu::pull_settings() {
     if (list == nullptr) return;
     bool changed = false;
     if (auto* row = list->OPTION_VR_LookSensitivity()) changed = pull_slider(row, s_last_look_sensitivity) || changed;
+    if (auto* row = list->OPTION_VR_PlayerHeight()) changed = pull_slider(row, s_last_player_height) || changed;
     if (auto* row = list->OPTION_VR_Spike()) changed = pull_toggle(row, s_last_spike) || changed;
-    if (changed && VRSettings::save()) {
-        API::get()->log_warn("[vr_options_menu][pull_settings] Settings saved, look sensitivity %d", VRSettings::look_sensitivity());
+    if (!changed) return;
+    if (VRSettings::save()) {
+        API::get()->log_warn("[vr_options_menu][pull_settings] Settings saved, look sensitivity %d, player height %.0f",
+            VRSettings::look_sensitivity(), VRSettings::player_height());
     }
+    // The values apply from memory even when the file could not be written.
+    s_settings_changed = true;
+}
+
+bool VROptionsMenu::consume_settings_change() {
+    const bool changed = s_settings_changed;
+    s_settings_changed = false;
+    return changed;
 }

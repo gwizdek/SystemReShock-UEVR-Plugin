@@ -20,6 +20,9 @@ public:
     static void handle(SDK::UWIDGET_PlayerHUD_C* hud, SDK::APawn* pawn);
     // Forgets the installed screen and page. Called on level change, when the HUD is made again.
     static void reset();
+    // True once after the player pressed Apply and the ini was saved. The caller then applies
+    // the values to the game, for example VRBody::apply_custom_vr_game_options.
+    static bool consume_settings_change();
 
 private:
     static SDK::UWIDGET_OptionsScreen_C* find_screen(SDK::UWIDGET_PlayerHUD_C* hud);
@@ -37,4 +40,5 @@ private:
     static SDK::UWIDGET_OptionsScreen_C* s_installed_screen;
     static SDK::U_WIDGET_OptionsMenu_VR_C* s_page;
     static int s_failed_attempts;
+    static bool s_settings_changed;
 };

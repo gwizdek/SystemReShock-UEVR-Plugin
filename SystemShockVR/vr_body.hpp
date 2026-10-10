@@ -13,6 +13,9 @@ private:
 
 public:
     static SDK::A_BP_VRBody_C* initialize_vr_body(SDK::APAWN_Hacker_Simple_C* pawn);
+    // Applies the VR options from the mod's ini to the body: after a spawn, and again when
+    // the player presses Apply on the VR options page. For now that is the player height.
+    static void apply_custom_vr_game_options(SDK::A_BP_VRBody_C* vr_body);
     //static SDK::A_BP_VRBody_C* initialize_vr_body(SDK::APAWN_Hacker_Implant_C* pawn);
     static void initialize_laser_dot();
     static void overwrite_hacker_crouch_animations();

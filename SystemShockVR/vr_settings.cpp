@@ -96,3 +96,8 @@ int VRSettings::look_sensitivity()
 {
     return std::clamp(get_int("vr_look_sensitivity", 5), 1, 10);
 }
+
+float VRSettings::player_height()
+{
+    return std::clamp(get_float("player_height", 175.f), 165.f, 185.f);
+}

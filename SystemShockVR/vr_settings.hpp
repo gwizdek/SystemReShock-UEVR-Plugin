@@ -21,4 +21,5 @@ public:
 
     // The values the plugin acts on, with their limits applied.
     static int look_sensitivity();   // 1..10, default 5
+    static float player_height();    // 165..185 cm, default 175
 };

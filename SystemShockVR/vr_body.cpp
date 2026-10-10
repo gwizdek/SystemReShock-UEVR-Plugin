@@ -21,8 +21,11 @@
 #include "BridgeSDK/_BP_DebugWidgetComponent_classes.hpp"
 #include "BridgeSDK/_WIDGET_VRHUD_classes.hpp"
 
+#include "BridgeSDK/_BP_VRMovementComponent_classes.hpp"
+
 #include "vr_body.hpp"
 #include "vr_plugin_shared.hpp"
+#include "vr_settings.hpp"
 #include "plugin_utils.hpp"
 #include "sdk_bootstrap.hpp"
 
@@ -54,6 +57,26 @@ void VRBody::set_player_response_to_collision_channel(ECollisionChannel channel,
 // Nothing in the game imports A_BP_VRBody_C, so the plugin loads the class itself before
 // the spawn. Only the spawned actor then holds the class, so it is freed together with
 // its imports at the title screen and read again from the mounted pak on the next level.
+// The movement component scales the body and the camera to DefaultPlayerHeight. The value is
+// stored first, so the component's own code sees the new height, then the components are
+// adjusted to it.
+void VRBody::apply_custom_vr_game_options(A_BP_VRBody_C* vr_body) {
+    try {
+        auto* movement = vr_body != nullptr ? vr_body->VRMovementComponent() : nullptr;
+        if (movement == nullptr) {
+            API::get()->log_warn("[vr_body][apply_custom_vr_game_options] No VR body or movement component, nothing applied");
+            return;
+        }
+        const float height = VRSettings::player_height();
+        movement->DefaultPlayerHeight() = height;
+        movement->AdjustComponentsToPlayerHeight(height);
+        API::get()->log_warn("[vr_body][apply_custom_vr_game_options] Player height %.0f applied", height);
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][apply_custom_vr_game_options] Exception");
+    }
+}
+
 A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
     try {
         API::get()->log_warn("[vr_body][initialize_vr_body] Begin");

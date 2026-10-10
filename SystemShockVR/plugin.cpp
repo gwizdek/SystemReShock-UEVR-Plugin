@@ -300,6 +300,9 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_head_lamp();
         handle_ui_requests();
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
+        if (VROptionsMenu::consume_settings_change()) {
+            VRBody::apply_custom_vr_game_options(g_vr_body);
+        }
 
         PluginUtils::handle_native_stereo_fix_cycler(vr);
 
@@ -1469,6 +1472,7 @@ void UEVRPlugin::handle_level_change() {
                 g_vr_body = VRBody::initialize_vr_body(pawn);
                 if (g_vr_body != nullptr) {
                     PluginUtils::warmup_bridge();
+                    VRBody::apply_custom_vr_game_options(g_vr_body);
                 }
 
                 // modify head lamp settings
@@ -1510,6 +1514,7 @@ void UEVRPlugin::handle_level_change() {
 
                 if (g_vr_body != nullptr) {
                     PluginUtils::warmup_bridge();
+                    VRBody::apply_custom_vr_game_options(g_vr_body);
                     VRBody::initialize_laser_dot();
                     VRBody::overwrite_hacker_crouch_animations();
                     VRBody::initialize_hand_item_collisions();

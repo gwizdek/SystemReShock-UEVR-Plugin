@@ -34,6 +34,8 @@ public:
 
 	static bridge::Prop& BridgeProp_OPTION_VR_LookSensitivity() { static bridge::Prop Ref{ L"OPTION_VR_LookSensitivity" }; return Ref; }
 	class U_OPTION_VR_Slider_C*& OPTION_VR_LookSensitivity() { return BridgeProp_OPTION_VR_LookSensitivity().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OPTION_VR_PlayerHeight() { static bridge::Prop Ref{ L"OPTION_VR_PlayerHeight" }; return Ref; }
+	class U_OPTION_VR_Slider_C*& OPTION_VR_PlayerHeight() { return BridgeProp_OPTION_VR_PlayerHeight().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_OPTION_VR_Spike() { static bridge::Prop Ref{ L"OPTION_VR_Spike" }; return Ref; }
 	class U_OPTION_VR_Toggle_C*& OPTION_VR_Spike() { return BridgeProp_OPTION_VR_Spike().ref<class U_OPTION_VR_Toggle_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_SCROLLBOX_OptionsMenuList() { static bridge::Prop Ref{ L"SCROLLBOX_OptionsMenuList" }; return Ref; }
@@ -68,6 +70,7 @@ public:
 		bool Ok = true;
 		Ok &= bridge::warm(Cls, {
 			&BridgeProp_OPTION_VR_LookSensitivity(),
+			&BridgeProp_OPTION_VR_PlayerHeight(),
 			&BridgeProp_OPTION_VR_Spike(),
 			&BridgeProp_SCROLLBOX_OptionsMenuList(),
 		});

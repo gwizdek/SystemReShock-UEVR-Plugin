@@ -250,6 +250,22 @@ void FillLookSensitivity(UUserWidget* Row)
     SetProperty<FIntProperty>(Row, TEXT("SliderFractionalDigits"), 0);
 }
 
+// Whole centimetres 165..185, default 175. 21 positions give the one-centimetre steps.
+void FillPlayerHeight(UUserWidget* Row)
+{
+    SetProperty<FTextProperty>(Row, TEXT("ItemName"), FText::FromString(TEXT("Player Height")));
+    SetProperty<FTextProperty>(Row, TEXT("ItemDescription"), FText::FromString(TEXT("Your height in centimetres. The VR body and the camera are scaled to it.")));
+    SetProperty<FNameProperty>(Row, TEXT("SettingName"), FName(TEXT("player_height")));
+    SetProperty<FFloatProperty>(Row, TEXT("DefaultValue"), 175.f);
+    SetProperty<FFloatProperty>(Row, TEXT("SavedValue"), 175.f);
+    SetProperty<FIntProperty>(Row, TEXT("SliderDiscreteValues"), 21);
+    SetProperty<FFloatProperty>(Row, TEXT("SliderInitialValue"), 175.f);
+    SetProperty<FFloatProperty>(Row, TEXT("SliderValueMin"), 165.f);
+    SetProperty<FFloatProperty>(Row, TEXT("SliderValueMax"), 185.f);
+    SetProperty<FTextProperty>(Row, TEXT("SliderPostfix"), FText::FromString(TEXT(" cm")));
+    SetProperty<FIntProperty>(Row, TEXT("SliderFractionalDigits"), 0);
+}
+
 bool ListMembers(FMenuGenBlueprint& BP, const FMenuGenStore& Store)
 {
     UCanvasPanel* Root = RootCanvas(BP.Widget());
@@ -260,6 +276,7 @@ bool ListMembers(FMenuGenBlueprint& BP, const FMenuGenStore& Store)
 
     FillSpikeToggle(AddRow(BP, Scroll, Store.Find(MenuGenPaths::VRToggle), TEXT("OPTION_VR_Spike")));
     FillLookSensitivity(AddRow(BP, Scroll, Store.Find(MenuGenPaths::VRSlider), TEXT("OPTION_VR_LookSensitivity")));
+    FillPlayerHeight(AddRow(BP, Scroll, Store.Find(MenuGenPaths::VRSlider), TEXT("OPTION_VR_PlayerHeight")));
     return true;
 }
 
@@ -277,7 +294,7 @@ void ListInitializeList(FMenuGenBlueprint& BP)
 // Returns the rows as an array of the item base class, in the order they sit in the scroll box.
 void ListInitializeItemArray(FMenuGenBlueprint& BP, UClass* ItemBase)
 {
-    const TCHAR* Rows[] = { TEXT("OPTION_VR_Spike"), TEXT("OPTION_VR_LookSensitivity") };
+    const TCHAR* Rows[] = { TEXT("OPTION_VR_Spike"), TEXT("OPTION_VR_LookSensitivity"), TEXT("OPTION_VR_PlayerHeight") };
     FMenuGenGraph G(BP.AddOverride(TEXT("InitializeItemArray")));
     UEdGraphNode* Array = G.MakeArray(UE_ARRAY_COUNT(Rows));
     for (int32 i = 0; i < UE_ARRAY_COUNT(Rows); ++i)
