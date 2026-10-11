@@ -16,6 +16,7 @@
 #include "SDK/MOVECONTROL_FocusableInteract_classes.hpp"
 #include "SDK/MOVECONTROL_StationMove_classes.hpp"
 #include "SDK/COMP_MoveControlManager_classes.hpp"
+#include "SDK/STRUCT_MoveInputAction_structs.hpp"
 #include "SDK/COMP_LimbManager_classes.hpp"
 #include "SDK/COMP_ActionManager_classes.hpp"
 #include "SDK/COMP_AttribManager_classes.hpp"
@@ -1578,8 +1579,8 @@ void UEVRPlugin::handle_ads() {
                     SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
                     PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())
                     ) {
-                    SDK::FKey aim_key{};
-                    static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_42(aim_key);
+                        SDK::FKey aim_key{};
+                        static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_42(aim_key);
                 }
             }
 
@@ -1588,8 +1589,8 @@ void UEVRPlugin::handle_ads() {
                     SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
                     PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())
                     ) {
-                    SDK::FKey aim_key{};
-                    static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_43(aim_key);
+                        SDK::FKey aim_key{};
+                        static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->InpActEvt_Gamepad_Real_Aim_K2Node_InputActionEvent_43(aim_key);
                 }
             }
         }

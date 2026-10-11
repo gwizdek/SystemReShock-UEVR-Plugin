@@ -380,6 +380,9 @@
     <ClCompile Include="SDK\COMP_LimbManager_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\COMP_MoveControlManager_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
     <ClCompile Include="SDK\WIDGET_MenuListBase_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>

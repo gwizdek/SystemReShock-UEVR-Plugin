@@ -181,6 +181,8 @@ public:
 	E_ENUM_VRHand& MainHand() { return BridgeProp_MainHand().ref<E_ENUM_VRHand>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_HackerCurrentMontage() { static bridge::Prop Ref{ L"HackerCurrentMontage" }; return Ref; }
 	class UAnimMontage*& HackerCurrentMontage() { return BridgeProp_HackerCurrentMontage().ref<class UAnimMontage*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_AutoADS() { static bridge::Prop Ref{ L"AutoADS" }; return Ref; }
+	bool& AutoADS() { return BridgeProp_AutoADS().ref<bool>(this, BridgeClass()); }
 
 	// Function CreateWeaponInteractionSourceComponents (BlueprintCallable, BlueprintEvent)
 	static bridge::Func& BridgeFunc_CreateWeaponInteractionSourceComponents() { static bridge::Func Ref{ L"CreateWeaponInteractionSourceComponents", { L"InteractionSources" } }; return Ref; }
@@ -615,6 +617,7 @@ public:
 			&BridgeProp_WidgetInteractionChannel(),
 			&BridgeProp_MainHand(),
 			&BridgeProp_HackerCurrentMontage(),
+			&BridgeProp_AutoADS(),
 		});
 		Ok &= bridge::warm(Cls, {
 			&BridgeFunc_CreateWeaponInteractionSourceComponents(),
