@@ -16,7 +16,9 @@
 # Mono auto generated files
 mono_crash.*
 
-# Written by scripts\bump-build-index.ps1 before every plugin build
+# Written by scripts\bump-build-index.ps1 before every plugin build. The index counts the
+# builds on this machine; a missing file starts again at 1.
+SystemShockVR/build_index.txt
 SystemShockVR/build_version_generated.hpp
 
 # Build results

@@ -6,6 +6,7 @@
     Runs before every plugin build from a target in SystemShockVR\SystemShockVR.vcxproj.
     Reads SystemShockVR\build_index.txt, adds one, writes it back, and writes
     SystemShockVR\build_version_generated.hpp with the plugin version and the new index.
+    Both files are gitignored. A missing build_index.txt counts as 0, so the first build is 1.
     The plugin version is InformationalVersion from the installer project file, so the
     plugin and the installer always show the same version.
 

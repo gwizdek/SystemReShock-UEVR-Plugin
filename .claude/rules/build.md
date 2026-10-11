@@ -30,10 +30,13 @@ The platform is always x64. The Win32 configurations are not used. Use Debug onl
 
 Every plugin build raises the number in `SystemShockVR\build_index.txt` by one. A target in the
 project file runs `scripts\bump-build-index.ps1` before compiling. The script also writes
-`SystemShockVR\build_version_generated.hpp` (gitignored) with that index and the plugin version,
-which it reads from `InformationalVersion` in the installer project file. The plugin shows both in
-the title of its ImGui window, for example `2.0-beta.3 [45]`. Commit `build_index.txt` with the
-build it belongs to. Do not edit the generated header; it is overwritten on the next build.
+`SystemShockVR\build_version_generated.hpp` with that index and the plugin version, which it
+reads from `InformationalVersion` in the installer project file. The plugin shows both in the
+title of its ImGui window, for example `2.0-beta.3 [45]`.
+
+Both files are gitignored. The index counts the builds on this machine, so it tells two of your
+own builds apart; it is not a release number. When `build_index.txt` is missing, the next build
+creates it and starts at 1. Do not edit the generated header; it is overwritten on the next build.
 
 ### Where the plugin output lands
 
