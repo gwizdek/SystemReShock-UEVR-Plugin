@@ -180,6 +180,8 @@
     <ClInclude Include="vr_mfd.hpp" />
     <ClInclude Include="vr_options_menu.hpp" />
     <ClInclude Include="vr_settings.hpp" />
+    <ClInclude Include="vr_setting_store.hpp" />
+    <ClInclude Include="vr_options_sync.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="vr_item_selector.hpp" />
@@ -238,6 +240,7 @@
     <ClCompile Include="SDK\WIDGET_Biometer_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Compass_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_CyberspaceHUD_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_MenuListBase_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_HardwareButton_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_HotbarSlot_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Minimap_functions.cpp" />
@@ -252,6 +255,8 @@
     <ClCompile Include="vr_mfd.cpp" />
     <ClCompile Include="vr_options_menu.cpp" />
     <ClCompile Include="vr_settings.cpp" />
+    <ClCompile Include="vr_setting_store.cpp" />
+    <ClCompile Include="vr_options_sync.cpp" />
     <ClCompile Include="build_version.cpp" />
   </ItemGroup>
   <ItemGroup>

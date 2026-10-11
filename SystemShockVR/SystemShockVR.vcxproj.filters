@@ -96,6 +96,12 @@
     <ClInclude Include="vr_settings.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="vr_setting_store.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_options_sync.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -326,6 +332,12 @@
     <ClCompile Include="vr_settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="vr_setting_store.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_options_sync.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="SDK\Niagara_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
@@ -366,6 +378,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\COMP_LimbManager_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\WIDGET_MenuListBase_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\ITEM_MeleeWeapon_Base_functions.cpp">

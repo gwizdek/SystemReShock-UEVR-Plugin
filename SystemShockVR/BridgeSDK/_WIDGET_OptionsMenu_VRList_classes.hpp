@@ -32,12 +32,18 @@ public:
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static U_WIDGET_OptionsMenu_VRList_C* GetDefaultObj() { return reinterpret_cast<U_WIDGET_OptionsMenu_VRList_C*>(BridgeClass()->get_class_default_object()); }
 
+	static bridge::Prop& BridgeProp_OPTION_VR_AutoAimDownSights() { static bridge::Prop Ref{ L"OPTION_VR_AutoAimDownSights" }; return Ref; }
+	class U_OPTION_VR_Toggle_C*& OPTION_VR_AutoAimDownSights() { return BridgeProp_OPTION_VR_AutoAimDownSights().ref<class U_OPTION_VR_Toggle_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_OPTION_VR_LookSensitivity() { static bridge::Prop Ref{ L"OPTION_VR_LookSensitivity" }; return Ref; }
 	class U_OPTION_VR_Slider_C*& OPTION_VR_LookSensitivity() { return BridgeProp_OPTION_VR_LookSensitivity().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_OPTION_VR_PlayerHeight() { static bridge::Prop Ref{ L"OPTION_VR_PlayerHeight" }; return Ref; }
 	class U_OPTION_VR_Slider_C*& OPTION_VR_PlayerHeight() { return BridgeProp_OPTION_VR_PlayerHeight().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
-	static bridge::Prop& BridgeProp_OPTION_VR_Spike() { static bridge::Prop Ref{ L"OPTION_VR_Spike" }; return Ref; }
-	class U_OPTION_VR_Toggle_C*& OPTION_VR_Spike() { return BridgeProp_OPTION_VR_Spike().ref<class U_OPTION_VR_Toggle_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OPTION_VR_SnapTurn() { static bridge::Prop Ref{ L"OPTION_VR_SnapTurn" }; return Ref; }
+	class U_OPTION_VR_Toggle_C*& OPTION_VR_SnapTurn() { return BridgeProp_OPTION_VR_SnapTurn().ref<class U_OPTION_VR_Toggle_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OPTION_VR_SnapTurnAngle() { static bridge::Prop Ref{ L"OPTION_VR_SnapTurnAngle" }; return Ref; }
+	class U_OPTION_VR_Slider_C*& OPTION_VR_SnapTurnAngle() { return BridgeProp_OPTION_VR_SnapTurnAngle().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OPTION_VR_SnapTurnDeadzone() { static bridge::Prop Ref{ L"OPTION_VR_SnapTurnDeadzone" }; return Ref; }
+	class U_OPTION_VR_Slider_C*& OPTION_VR_SnapTurnDeadzone() { return BridgeProp_OPTION_VR_SnapTurnDeadzone().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_SCROLLBOX_OptionsMenuList() { static bridge::Prop Ref{ L"SCROLLBOX_OptionsMenuList" }; return Ref; }
 	class UScrollBox*& SCROLLBOX_OptionsMenuList() { return BridgeProp_SCROLLBOX_OptionsMenuList().ref<class UScrollBox*>(this, BridgeClass()); }
 
@@ -69,9 +75,12 @@ public:
 		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
 		bool Ok = true;
 		Ok &= bridge::warm(Cls, {
+			&BridgeProp_OPTION_VR_AutoAimDownSights(),
 			&BridgeProp_OPTION_VR_LookSensitivity(),
 			&BridgeProp_OPTION_VR_PlayerHeight(),
-			&BridgeProp_OPTION_VR_Spike(),
+			&BridgeProp_OPTION_VR_SnapTurn(),
+			&BridgeProp_OPTION_VR_SnapTurnAngle(),
+			&BridgeProp_OPTION_VR_SnapTurnDeadzone(),
 			&BridgeProp_SCROLLBOX_OptionsMenuList(),
 		});
 		Ok &= bridge::warm(Cls, {

@@ -18,25 +18,29 @@ Done:
   (`D:\Unreal Engine\Projects\SystemReShock-UE4-Project`, its own git lfs repository, branch `vr-menu`).
 - The plugin trigger (`SystemShockVR\vr_options_menu.cpp`) creates the page and installs it.
 
-- The slider row `_OPTION_VR_Slider` and its dummies. The list holds one slider row, "VR Look
-  Sensitivity" (1 to 10, default 5), next to the spike toggle.
+- The toggle row `_OPTION_VR_Toggle`, the slider row `_OPTION_VR_Slider` and their dummies.
 
-- The settings sync in the plugin (`SystemShockVR\vr_settings.cpp`, `vr_options_menu.cpp`): the
-  rows get their values from `system_reshock_vr_config.ini` after the install, and Apply writes
-  them back. The look sensitivity of the right thumbstick reads `vr_look_sensitivity` from it.
+- The page content: two groups with the game's group header, "General" (Player Height, Auto Aim
+  Down Sights) and "Movement" (VR Look Sensitivity, Snap Turn, Angle, Deadzone). See the list
+  below.
+
+- The settings sync in the plugin (`SystemShockVR\vr_options_sync.cpp`, `vr_setting_store.cpp`,
+  `vr_settings.cpp`): the rows get their values from their stores after the install and each
+  time the page opens, and Apply writes them back. Most rows are stored in
+  `system_reshock_vr_config.ini`; the three snap turn rows are UEVR's own settings.
 
 - The VR category icon: texture `T_OptionsIcons_VR`, material `MAT_OptionsIcons_VR` and a dummy of
   the game's tint collection. The page's `Install` puts the material on the category item.
 
-All of the above works in the game. Not done: the rest of the real VR options, and removing the
-spike toggle row once a real toggle exists.
+All of the above works in the game, except the page content and the snap turn rows: they are
+generated and the plugin builds, but they are not yet tested in the game.
 
 ## Goal
 
 Add a seventh category, "VR", to the Options screen of the pause menu. It opens a page that
 looks like the other option pages (same background, same row widgets, same Apply, Reset and
-Back buttons, same description box) and holds the mod's settings. Values live in a mod-owned
-settings object that the plugin reads.
+Back buttons, same description box) and holds the mod's settings. The rows hold the values; the
+plugin copies them to and from the ini file and UEVR's settings.
 
 ## How the game's Options screen works
 
@@ -228,6 +232,7 @@ pointers. Every function is created as a normal Blueprint function, which is ove
 | `MainMenu/OptionsScreen/WIDGET_OptionsCategoryMenuList` | WIDGET_MenuListBase | var `VBOX_OptionCategoryWidgetList` (VerticalBox); function `SetSelectedItem(ItemIndex) -> CategoryText`. |
 | `MainMenu/OptionsScreen/WIDGET_OptionsScreen` | WIDGET_MenuBase | vars `WIDGET_OptionsCategoryMenuList`, `WIDGET_OptionsMenu_Gameplay` (typed `UserWidget`; only used to reach `GridPanel_221` through `GetParent` twice), `WIDGET_ButtonLegend_ApplyButton`, `WIDGET_ButtonLegend_ResetToDefaults`, `ANIM_OpenOptionsSubscreen`, `ANIM_ShowResetApplyButtons` (WidgetAnimation); function `TryUpdateCategoryList()`. |
 | `HUD/Widgets/ButtonLegend/WIDGET_ButtonLegend_Button` | UserWidget | `ToggleInteractivity(IsInteractive)`. |
+| `.../OptionsCategories/Controls/WIDGET_ListCategoryHeader` | UserWidget | var `HeaderText` (Text). The game's group title in an options list; its `PreConstruct` writes `HeaderText` into the title text. |
 | `MainMenu/OptionsScreen/ENUM_OptionCategories` | user enum | the six entries in the game's order. |
 | `/Game/Blueprints/UI/Tinting/MPC_UserTintParameters` | material parameter collection | the game's 19 vector parameters in the game's order, with the game's parameter `Id`s and the game's `StateId`. See "Category icon" below. |
 
@@ -246,14 +251,28 @@ it after the install. The page also holds the install logic, see below. Variable
 
 **`_WIDGET_OptionsMenu_VRList`**, child of `WIDGET_MenuListBase`. Tree copied from the Gameplay
 list: `CanvasPanel` with `SCROLLBOX_OptionsMenuList` (anchors 0,0 to 1,1, offsets top 25 and bottom
-25, scrollbar thickness 8 x 8, padding 10) holding the `_OPTION_VR_*` rows, each in a `ScrollBoxSlot`
-with padding 20. `InitializeList` override: parent call, `PanelItemListWidget = SCROLLBOX_OptionsMenuList`.
-`InitializeItemArray` override: returns an array made of the row variables, in the order they
-appear in the generator (no loop, since the generator knows every row). The list holds three rows:
-`OPTION_VR_Spike` (a toggle), `OPTION_VR_LookSensitivity` (a slider, setting name
-`vr_look_sensitivity`, 1 to 10 in whole numbers, default 5) and `OPTION_VR_PlayerHeight` (a slider,
-setting name `player_height`, 165 to 185 cm in whole numbers, default 175). The scrollbar materials
-can be set at runtime later; this is cosmetic.
+25, scrollbar thickness 8 x 8, scrollbar padding 10 on the right). The scroll box holds group
+headers and rows, each in a `ScrollBoxSlot` with 20 units of bottom padding (the last one none),
+as in the game's Interface list. `InitializeList` override: parent call,
+`PanelItemListWidget = SCROLLBOX_OptionsMenuList`. `InitializeItemArray` override: returns an
+array made of the row variables, in list order (no loop, since the generator knows every row).
+The headers are not list items, so they are not in that array and the controller skips them.
+The scrollbar materials can be set at runtime later; this is cosmetic.
+
+The content is one table in the generator (`ListEntries` in `MenuGenModWidgets.cpp`), top to bottom:
+
+| Widget | Kind | Label | Setting name | Range, step | Default | Stored in |
+|---|---|---|---|---|---|---|
+| `WIDGET_ListCategoryHeader_General` | header | General | | | | |
+| `OPTION_VR_PlayerHeight` | slider | Player Height | `player_height` | 165 to 185 cm, 1 | 175 | ini `[general]` |
+| `OPTION_VR_AutoAimDownSights` | toggle | Auto Aim Down Sights | `auto_ads` | | on | ini `[general]` |
+| `WIDGET_ListCategoryHeader_Movement` | header | Movement | | | | |
+| `OPTION_VR_LookSensitivity` | slider | VR Look Sensitivity | `vr_look_sensitivity` | 1 to 10, 1 | 5 | ini `[movement]` |
+| `OPTION_VR_SnapTurn` | toggle | Snap Turn | `VR_SnapTurn` | | off | UEVR |
+| `OPTION_VR_SnapTurnAngle` | slider | Angle | `VR_SnapturnTurnAngle` | 10 to 90, 1 | 50 | UEVR |
+| `OPTION_VR_SnapTurnDeadzone` | slider | Deadzone | `VR_SnapturnJoystickDeadzone` | 0.05 to 0.50, 0.01 | 0.20 | UEVR |
+
+The "Stored in" column is decided in the plugin, not in the Blueprint (see "Settings sync").
 
 **`_OPTION_VR_Toggle`**, child of `WIDGET_Settings_BinaryToggle`, and **`_OPTION_VR_Slider`**,
 child of `WIDGET_Settings_Slider`. No tree, no own widgets. A row is its own store: instance
@@ -281,12 +300,16 @@ about the game's slider control shape the slider row:
   the handle is moved onto the stored step. The compares use a tolerance of 0.001.
 
 Row instances in the list set `ItemName`, `ItemDescription`, `SettingName`, `DefaultValue` and
-`SavedValue`. A slider row also sets the six `Slider*` variables of its parent;
-`SliderDiscreteValues` is the number of positions, so 1 to 10 in whole numbers needs 10. Both texts
+`SavedValue`. A slider row also sets `Step` and the six `Slider*` variables of its parent;
+`SliderDiscreteValues` is the number of positions, (max - min) / step + 1, so 1 to 10 in whole
+numbers needs 10 and the deadzone needs 46. Both texts
 are plain `Text`; the game's rows use localised text, the mod's rows do not need to.
 
 There is no settings object. The values persist in the plugin's ini, see "Settings sync" under
 the plugin trigger below.
+
+A row can be greyed out and blocked for the controller with the game's `SetOptionEnabled`. See
+`option-rows-disabled-state.md` for how, and for what a disabled row still lets through.
 
 ### Category icon
 
@@ -368,39 +391,76 @@ the title screen, and it takes `PAWN_PlayerGhost.PreGameScreenWidget.WIDGET_Spla
 instead. The pawn decides, not the HUD pointer: the plugin clears that pointer on level change, and
 a freed widget can still pass a validity check. Each screen is a separate instance, so each gets
 its own page.
-It returns at once when the screen is the one already installed. Otherwise it waits until
-`MenuListItemArray` holds six items, checks that the category box has no seventh child (the page
-survives a plugin reload), loads the page class with `load_class_for_bridge`, creates the page with
-`WidgetBlueprintLibrary.Create`, calls `Install(screen)` through the BridgeSDK wrapper, sets
-the game's `MAT_SubMenu_ListPanel` material on `IMAGE_PanelBackground`, and moves the category box
-up by `kCategoryListShift` units (its canvas slot gets a negative top offset) so the seventh item
-stays on screen. After three failed
-attempts on one screen it stops trying. `cleanup_pointers` resets it on level change.
+It stops for that screen after three failed attempts, counting both the install and the
+settings sync, so a pak and plugin that do not match cannot log an error every tick.
+`cleanup_pointers` resets the count on level change. When the screen is the one already
+installed, it only runs the settings sync. Otherwise it waits until `MenuListItemArray` holds six
+items. If the category box already has a seventh child (the page survives a plugin reload), it
+adopts that page: it finds the page in the screen's grid and sets the background material and
+the list shift again. Both are safe to repeat. Else it loads the page class with
+`load_class_for_bridge`, creates the page with `WidgetBlueprintLibrary.Create`, calls
+`Install(screen)` through the BridgeSDK wrapper, sets the game's `MAT_SubMenu_ListPanel` material
+on `IMAGE_PanelBackground`, moves the category box up by `kCategoryListShift` units (its canvas
+slot gets a negative top offset) so the seventh item stays on screen, and only then syncs the
+settings. A failing sync therefore cannot hide the category.
 
 ### Settings sync
 
-The values persist in `system_reshock_vr_config.ini` in the UEVR profile folder, section
-`[general]`, one key per row named like the row's `SettingName`: `vr_look_sensitivity = 5`,
-`player_height = 175`, `spike = 1`. `VRSettings` (`SystemShockVR\vr_settings.cpp`) reads the file
-once on first use and writes it back with the other sections kept.
+`VROptionsSync` (`SystemShockVR\vr_options_sync.cpp`) binds each row to a store, a
+`SettingStore` (`vr_setting_store.cpp`). The row's `SettingName` is the key in that store. The
+binding lists (`s_sliders`, `s_toggles`) hold one line per row:
 
-- After `Install`, `push_settings` writes each ini value into the row's `SavedValue` and calls
-  `UpdateVisuals`, so the control shows it. A key that is missing leaves the row's `DefaultValue`.
-- Every tick while the installed screen exists, `pull_settings` compares each row's `SavedValue`
-  with the value last seen. `SavedValue` changes only in `AcceptCurrentValue`, that is on Apply, so
-  a difference means the player pressed Apply. The new value goes into the ini and the file is saved.
-  Reset and Back do not reach `SavedValue`, so they save nothing.
-- When the page is already in the screen (plugin reload), `adopt_page` finds it in the screen's grid
-  and takes the last-seen values from its rows without pushing anything.
-- The plugin reads the values it acts on through `VRSettings`, for example `look_sensitivity()`
-  for the right thumbstick turn speed, clamped to 1..10.
+- `IniSectionStore` is one section of `system_reshock_vr_config.ini` in the UEVR profile folder,
+  read and written through `VRSettings` (`vr_settings.cpp`). That class reads the file once on
+  first use and writes it back with the other sections and keys kept. A bool is written as `1`
+  or `0`. The file looks like this:
+
+  ```ini
+  [general]
+  auto_ads = 1
+  player_height = 175
+
+  [movement]
+  vr_look_sensitivity = 5
+  ```
+
+  Older plugin versions kept `vr_look_sensitivity` in `[general]`. When `VRSettings` reads the
+  file, it moves that key to `[movement]` (`kMovedKeys` in `vr_settings.cpp`). The old value is
+  kept only if `[movement]` has none. The file is written at once. This can be removed when no
+  install has the old key left.
+
+- `UevrSettingStore` is UEVR's own settings, read with `get_mod_value` and written with
+  `set_mod_value`, so a change applies at once in the running UEVR. Its save calls UEVR's
+  `save_config`, which writes `config.txt` in the profile folder. The snap turn rows use it, so
+  the page and UEVR's overlay show the same values.
+
+The sync runs from `VROptionsMenu`:
+
+- After `Install`, and each time the VR page opens (`Screen.OpenedSubMenu` becomes the page),
+  `VROptionsSync::push` writes each store value into the row's `SavedValue` and calls
+  `UpdateVisuals`. A key that is missing leaves the row's value. A slider value is first put on
+  the row's `Step` and range, so a value set elsewhere, such as UEVR's deadzone 0.203, does not
+  make the row dirty. Then it calls the list's `EVENT_OnOptionChanged`, because the page
+  computed its Apply and Reset state from the old values when it opened. The push on open is
+  what shows a change made in UEVR's overlay; it comes one tick after the page opens.
+- Every tick while the installed screen exists, `VROptionsSync::pull` compares each row's
+  `SavedValue` with the value last seen. `SavedValue` changes only in `AcceptCurrentValue`, that
+  is on Apply, so a difference means the player pressed Apply. The new value goes into its
+  store, and each store that changed is saved. Reset and Back do not reach `SavedValue`, so they
+  save nothing.
+- When the page is already in the screen (plugin reload), `adopt_page` finds it in the screen's
+  grid, and `VROptionsSync::adopt` takes the last-seen values from its rows without changing them.
+- The plugin reads the ini values it acts on through `VRSettings`: `look_sensitivity()` for the
+  right thumbstick turn speed (clamped to 1..10), `player_height()` and `auto_ads()`.
 - After a save, `consume_settings_change` returns true once, and `plugin.cpp` calls
-  `VRBody::apply_custom_vr_game_options`. The same function runs after every VR body spawn. It
-  stores `player_height()` in the movement component's `DefaultPlayerHeight` and calls
-  `AdjustComponentsToPlayerHeight` with it.
+  `apply_vr_options_menu_settings`. It sets `m_ui_option_auto_ads_enabled` from `auto_ads()` and
+  calls `VRBody::apply_custom_vr_game_options`. That function also runs after every VR body
+  spawn. It stores `player_height()` in the movement component's `DefaultPlayerHeight` and calls
+  `AdjustComponentsToPlayerHeight` with it. When auto ADS is turned off while the player aims,
+  `handle_ads` releases the aim once.
 
-A new row needs an entry in the push, pull and adopt lists in `vr_options_menu.cpp` and nothing
-else; the ini key comes from the row.
+A new row needs an entry in the generator's `ListEntries`, a run of `GenerateMenu.ps1 -Overwrite`
+and `Generate.ps1`, and one line in the binding lists in `vr_options_sync.cpp`.
 
 ## Risks and checks for the spike (step 2)
 

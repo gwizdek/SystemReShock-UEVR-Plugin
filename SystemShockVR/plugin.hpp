@@ -114,6 +114,7 @@ private:
 // -----------------------------------------------------------------------------
 private:
     bool m_ui_option_show_debug_view{ true };
+    bool m_ui_option_auto_ads_enabled{ true };
 
 // -----------------------------------------------------------------------------
 // Pointers
@@ -202,6 +203,7 @@ public:
     void handle_media_display();
     void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_ads();
+    void apply_vr_options_menu_settings();
     void handle_lean();
     void handle_cyberspace_look_pivot(const UEVR_VRData* vr);
     void cleanup_pointers();

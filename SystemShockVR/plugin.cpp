@@ -237,6 +237,7 @@ void UEVRPlugin::on_initialize() {
     else {
         API::get()->log_warn("[plugin][on_initialize] MOVECONTROL_StationMove_C not loaded yet, defaults not changed");
     }
+    m_ui_option_auto_ads_enabled = VRSettings::auto_ads();
     API::get()->log_warn("[plugin][on_initialize] Done");
 }
 
@@ -316,7 +317,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_head_lamp();
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
-            VRBody::apply_custom_vr_game_options(g_vr_body);
+            apply_vr_options_menu_settings();
         }
 
         PluginUtils::handle_native_stereo_fix_cycler(vr);
@@ -1569,7 +1570,8 @@ void UEVRPlugin::handle_media_display() {
 void UEVRPlugin::handle_ads() {
     try {
         if (g_vr_body != nullptr) {
-            m_is_ads_active.set_value(g_vr_body->IsAimingDownSights());
+            // With auto ADS off the value drops to false, so an active aim is released once.
+            m_is_ads_active.set_value(m_ui_option_auto_ads_enabled && g_vr_body->IsAimingDownSights());
 
             if (m_is_ads_active.enabled()) {
                 if (
@@ -1595,6 +1597,12 @@ void UEVRPlugin::handle_ads() {
     catch (...) {
         API::get()->log_error("[plugin][handle_ads] Exception");
     }
+}
+
+// Applies the values the VR options page saved. Called after the player pressed Apply there.
+void UEVRPlugin::apply_vr_options_menu_settings() {
+    m_ui_option_auto_ads_enabled = VRSettings::auto_ads();
+    VRBody::apply_custom_vr_game_options(g_vr_body);
 }
 
 // primary item selector

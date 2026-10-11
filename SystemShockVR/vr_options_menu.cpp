@@ -9,16 +9,9 @@
 #include "SDK/WIDGET_PreGameScreen_classes.hpp"
 #include "SDK/WIDGET_SplashScreen_Title_classes.hpp"
 
-#include "BridgeSDK/_WIDGET_OptionsMenu_VRList_classes.hpp"
-#include "BridgeSDK/_OPTION_VR_Slider_classes.hpp"
-#include "BridgeSDK/_OPTION_VR_Toggle_classes.hpp"
-
 #include "plugin_utils.hpp"
 #include "vr_options_menu.hpp"
-#include "vr_settings.hpp"
-
-#include <cstdio>
-#include <string>
+#include "vr_options_sync.hpp"
 
 using namespace SDK;
 using namespace uevr;
@@ -45,6 +38,7 @@ constexpr int kMaxFailedAttempts = 3;
 UWIDGET_OptionsScreen_C* VROptionsMenu::s_installed_screen{ nullptr };
 U_WIDGET_OptionsMenu_VR_C* VROptionsMenu::s_page{ nullptr };
 int VROptionsMenu::s_failed_attempts{ 0 };
+bool VROptionsMenu::s_page_open{ false };
 bool VROptionsMenu::s_settings_changed{ false };
 
 void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
@@ -55,16 +49,18 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
         if (at_title) PLUGIN_WARN_ONCE("[vr_options_menu][handle] Ghost pawn, looking for the title screen");
         UWIDGET_OptionsScreen_C* screen = at_title ? find_title_screen(pawn) : find_screen(hud);
         if (screen == nullptr || !is_ready(screen)) return;
+        // Covers the install and the per-tick sync: a pak and plugin that do not match would
+        // otherwise throw, and log, every tick.
+        if (s_failed_attempts >= kMaxFailedAttempts) return;
         if (screen == s_installed_screen) {
             // The screen was reached through live pointers this tick, so its page is alive too.
-            pull_settings();
+            watch_page(screen);
             return;
         }
         if (has_vr_category(screen)) {
             adopt_page(screen);
             return;
         }
-        if (s_failed_attempts >= kMaxFailedAttempts) return;
 
         API::get()->log_warn("[vr_options_menu][handle] Installing the VR options page into %s", screen->GetName().c_str());
         U_WIDGET_OptionsMenu_VR_C* page = create_page(screen);
@@ -73,11 +69,13 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
             return;
         }
         page->Install(screen);
-        push_settings(page);
+        // The visible steps come first, so a failing settings sync cannot hide the category.
         apply_panel_material(page);
         shift_category_list(screen);
+        VROptionsSync::push(page);
         s_installed_screen = screen;
         s_page = page;
+        s_page_open = false;
         s_failed_attempts = 0;
         API::get()->log_warn("[vr_options_menu][handle] VR options page installed, categories: %d",
             screen->WIDGET_OptionsCategoryMenuList->MenuListItemArray.Num());
@@ -91,6 +89,7 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
 void VROptionsMenu::reset() {
     s_installed_screen = nullptr;
     s_page = nullptr;
+    s_page_open = false;
     s_failed_attempts = 0;
 }
 
@@ -178,62 +177,6 @@ void VROptionsMenu::shift_category_list(UWIDGET_OptionsScreen_C* screen) {
     API::get()->log_warn("[vr_options_menu][shift_category_list] Category list moved up by %.0f units", kCategoryListShift);
 }
 
-// -------------------------------------------------------------------------------------
-// Settings sync
-// -------------------------------------------------------------------------------------
-// A row is its own store: SavedValue changes only when the player presses Apply. After the
-// install the ini values are written into the rows, then every tick compares each row's
-// SavedValue with the last value seen. A difference is an Apply, and the ini gets the value.
-// The ini key is the row's SettingName, so a new row needs no plugin code beyond the sync
-// lists below.
-
-namespace {
-
-// Last SavedValue seen per row.
-float s_last_look_sensitivity{ 0.f };
-float s_last_player_height{ 0.f };
-bool s_last_spike{ false };
-
-// "5" for a whole number, "5.5" otherwise: what a person expects to read in the ini.
-std::string format_number(float value) {
-    char text[32]{};
-    snprintf(text, sizeof(text), "%g", value);
-    return text;
-}
-
-void push_slider(U_OPTION_VR_Slider_C* row, float& last) {
-    const std::string key = row->SettingName().ToString();
-    row->SavedValue() = VRSettings::get_float(key, row->SavedValue());
-    row->UpdateVisuals();
-    last = row->SavedValue();
-}
-
-void push_toggle(U_OPTION_VR_Toggle_C* row, bool& last) {
-    const std::string key = row->SettingName().ToString();
-    row->SavedValue() = VRSettings::get_bool(key, row->SavedValue());
-    row->UpdateVisuals();
-    last = row->SavedValue();
-}
-
-// True when SavedValue changed since the last call. The new value is then in the ini store.
-bool pull_slider(U_OPTION_VR_Slider_C* row, float& last) {
-    const float value = row->SavedValue();
-    if (value == last) return false;
-    last = value;
-    VRSettings::set(row->SettingName().ToString(), format_number(value));
-    return true;
-}
-
-bool pull_toggle(U_OPTION_VR_Toggle_C* row, bool& last) {
-    const bool value = row->SavedValue();
-    if (value == last) return false;
-    last = value;
-    VRSettings::set(row->SettingName().ToString(), value ? "1" : "0");
-    return true;
-}
-
-} // anonymous namespace
-
 // The page sits in the screen's grid next to the game's pages. Used when an earlier plugin
 // instance installed the page and this one holds no pointer to it.
 U_WIDGET_OptionsMenu_VR_C* VROptionsMenu::find_page(UWIDGET_OptionsScreen_C* screen) {
@@ -250,7 +193,9 @@ U_WIDGET_OptionsMenu_VR_C* VROptionsMenu::find_page(UWIDGET_OptionsScreen_C* scr
 }
 
 // The page survived a plugin reload, or another instance installed it. Its rows already hold
-// the right values, so only the last-seen values are taken from them; nothing is pushed.
+// the right values, so only the last-seen values are taken from them; nothing is pushed. The
+// material and the list shift are applied again: both are idempotent, and an install that
+// failed half way may have skipped them.
 void VROptionsMenu::adopt_page(UWIDGET_OptionsScreen_C* screen) {
     s_installed_screen = screen;
     s_page = find_page(screen);
@@ -258,42 +203,27 @@ void VROptionsMenu::adopt_page(UWIDGET_OptionsScreen_C* screen) {
         API::get()->log_warn("[vr_options_menu][adopt_page] VR category present but no page found, settings not synced");
         return;
     }
-    U_WIDGET_OptionsMenu_VRList_C* list = s_page->_WIDGET_OptionsMenu_VRList();
-    if (list == nullptr) return;
-    if (auto* row = list->OPTION_VR_LookSensitivity()) s_last_look_sensitivity = row->SavedValue();
-    if (auto* row = list->OPTION_VR_PlayerHeight()) s_last_player_height = row->SavedValue();
-    if (auto* row = list->OPTION_VR_Spike()) s_last_spike = row->SavedValue();
+    apply_panel_material(s_page);
+    shift_category_list(screen);
+    s_page_open = is_page_open(screen);
+    VROptionsSync::adopt(s_page);
+    s_failed_attempts = 0;
     API::get()->log_warn("[vr_options_menu][adopt_page] Adopted the installed page");
 }
 
-void VROptionsMenu::push_settings(U_WIDGET_OptionsMenu_VR_C* page) {
-    U_WIDGET_OptionsMenu_VRList_C* list = page->_WIDGET_OptionsMenu_VRList();
-    if (list == nullptr) {
-        API::get()->log_error("[vr_options_menu][push_settings] Page has no list, settings not pushed");
-        return;
-    }
-    if (auto* row = list->OPTION_VR_LookSensitivity()) push_slider(row, s_last_look_sensitivity);
-    if (auto* row = list->OPTION_VR_PlayerHeight()) push_slider(row, s_last_player_height);
-    if (auto* row = list->OPTION_VR_Spike()) push_toggle(row, s_last_spike);
-    API::get()->log_warn("[vr_options_menu][push_settings] Rows set from the ini, look sensitivity %d, player height %.0f",
-        VRSettings::look_sensitivity(), VRSettings::player_height());
+// Each time the player opens the VR page its rows are read again from their stores, so a
+// value changed in UEVR's overlay shows up. Every tick a SavedValue that changed, which is an
+// Apply, goes into its store.
+void VROptionsMenu::watch_page(UWIDGET_OptionsScreen_C* screen) {
+    if (s_page == nullptr) return;
+    const bool open = is_page_open(screen);
+    if (open && !s_page_open) VROptionsSync::push(s_page);
+    s_page_open = open;
+    if (VROptionsSync::pull(s_page)) s_settings_changed = true;
 }
 
-void VROptionsMenu::pull_settings() {
-    if (s_page == nullptr) return;
-    U_WIDGET_OptionsMenu_VRList_C* list = s_page->_WIDGET_OptionsMenu_VRList();
-    if (list == nullptr) return;
-    bool changed = false;
-    if (auto* row = list->OPTION_VR_LookSensitivity()) changed = pull_slider(row, s_last_look_sensitivity) || changed;
-    if (auto* row = list->OPTION_VR_PlayerHeight()) changed = pull_slider(row, s_last_player_height) || changed;
-    if (auto* row = list->OPTION_VR_Spike()) changed = pull_toggle(row, s_last_spike) || changed;
-    if (!changed) return;
-    if (VRSettings::save()) {
-        API::get()->log_warn("[vr_options_menu][pull_settings] Settings saved, look sensitivity %d, player height %.0f",
-            VRSettings::look_sensitivity(), VRSettings::player_height());
-    }
-    // The values apply from memory even when the file could not be written.
-    s_settings_changed = true;
+bool VROptionsMenu::is_page_open(UWIDGET_OptionsScreen_C* screen) {
+    return s_page != nullptr && static_cast<UObject*>(screen->OpenedSubMenu) == static_cast<UObject*>(s_page);
 }
 
 bool VROptionsMenu::consume_settings_change() {
