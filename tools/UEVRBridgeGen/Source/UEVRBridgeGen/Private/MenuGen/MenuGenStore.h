@@ -25,6 +25,8 @@ constexpr const TCHAR* SliderWidget = TEXT("/Game/Blueprints/UI/MainMenu/Options
 constexpr const TCHAR* Item = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionCategoryMenuListItem");
 constexpr const TCHAR* CategoryList = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionsCategoryMenuList");
 constexpr const TCHAR* Screen = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/WIDGET_OptionsScreen");
+// A group title in an options list, for example "General". A plain UserWidget, not a list item.
+constexpr const TCHAR* CategoryHeader = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Controls/WIDGET_ListCategoryHeader");
 constexpr const TCHAR* ButtonLegend = TEXT("/Game/Blueprints/UI/HUD/Widgets/ButtonLegend/WIDGET_ButtonLegend_Button");
 constexpr const TCHAR* Categories = TEXT("/Game/Blueprints/UI/MainMenu/OptionsScreen/ENUM_OptionCategories");
 constexpr const TCHAR* TintCollection = TEXT("/Game/Blueprints/UI/Tinting/MPC_UserTintParameters");

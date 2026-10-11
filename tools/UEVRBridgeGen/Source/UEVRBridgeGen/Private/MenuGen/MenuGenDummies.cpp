@@ -198,6 +198,16 @@ bool MakeCategoryList(FMenuGenStore& Store, const FMenuGenOptions& Options)
     });
 }
 
+// The game's PreConstruct writes HeaderText into the header's text block. The dummy only needs
+// the variable, so the mod's list can set it per instance.
+bool MakeCategoryHeader(FMenuGenStore& Store, const FMenuGenOptions& Options)
+{
+    return Dummy(Store, Options, TEXT("CategoryHeader"), MenuGenPaths::CategoryHeader, UUserWidget::StaticClass(), [](FMenuGenBlueprint& BP)
+    {
+        BP.AddVariable(TEXT("HeaderText"), Text(), true);
+    });
+}
+
 bool MakeButtonLegend(FMenuGenStore& Store, const FMenuGenOptions& Options)
 {
     return Dummy(Store, Options, TEXT("ButtonLegend"), MenuGenPaths::ButtonLegend, UUserWidget::StaticClass(), [](FMenuGenBlueprint& BP)
@@ -236,6 +246,7 @@ bool MenuGenDummies::Generate(FMenuGenStore& Store, const FMenuGenOptions& Optio
         && MakeSlider(Store, Options)
         && MakeItem(Store, Options)
         && MakeCategoryList(Store, Options)
+        && MakeCategoryHeader(Store, Options)
         && MakeButtonLegend(Store, Options)
         && MakeScreen(Store, Options);
 }

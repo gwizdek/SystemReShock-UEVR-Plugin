@@ -216,54 +216,130 @@ bool SliderRowLogic(FMenuGenBlueprint& BP, UClass* SliderWidget)
 }
 
 // ---- list: _WIDGET_OptionsMenu_VRList --------------------------------------------------
+//
+// The list holds group headers and rows, top to bottom, as the game's Interface list does.
+// Headers are plain widgets, not list items, so they stay out of InitializeItemArray and the
+// controller skips them.
 
-// Adds one row widget to the scroll box as a named variable with the game's row padding.
-UUserWidget* AddRow(FMenuGenBlueprint& BP, UScrollBox* Scroll, UClass* RowClass, const TCHAR* Name)
+struct FToggleSpec
 {
-    UUserWidget* Row = BP.Widget()->WidgetTree->ConstructWidget<UUserWidget>(RowClass, Name);
-    Row->bIsVariable = true;
-    CastChecked<UScrollBoxSlot>(Scroll->AddChild(Row))->SetPadding(FMargin(20.f));
-    return Row;
+    const TCHAR* Label;
+    const TCHAR* Description;
+    const TCHAR* Setting;
+    bool Default;
+};
+
+// SliderDiscreteValues is the number of positions, so it is derived from the range and Step.
+struct FSliderSpec
+{
+    const TCHAR* Label;
+    const TCHAR* Description;
+    const TCHAR* Setting;
+    float Min;
+    float Max;
+    float Default;
+    float Step;
+    int32 FractionalDigits;
+    const TCHAR* Postfix;
+};
+
+enum class EListEntry { Header, Toggle, Slider };
+
+struct FListEntry
+{
+    EListEntry Kind;
+    const TCHAR* Name;
+    TFunction<void(UUserWidget*)> Fill;
+};
+
+void FillToggle(UUserWidget* Row, const FToggleSpec& Spec)
+{
+    SetProperty<FTextProperty>(Row, TEXT("ItemName"), FText::FromString(Spec.Label));
+    SetProperty<FTextProperty>(Row, TEXT("ItemDescription"), FText::FromString(Spec.Description));
+    SetProperty<FNameProperty>(Row, TEXT("SettingName"), FName(Spec.Setting));
+    SetProperty<FBoolProperty>(Row, TEXT("DefaultValue"), Spec.Default);
+    SetProperty<FBoolProperty>(Row, TEXT("SavedValue"), Spec.Default);
 }
 
-void FillSpikeToggle(UUserWidget* Row)
+void FillSlider(UUserWidget* Row, const FSliderSpec& Spec)
 {
-    SetProperty<FTextProperty>(Row, TEXT("ItemName"), FText::FromString(TEXT("VR spike toggle")));
-    SetProperty<FTextProperty>(Row, TEXT("ItemDescription"), FText::FromString(TEXT("A test option of the VR mod. It does nothing yet.")));
-    SetProperty<FNameProperty>(Row, TEXT("SettingName"), FName(TEXT("spike")));
-    SetProperty<FBoolProperty>(Row, TEXT("DefaultValue"), true);
-    SetProperty<FBoolProperty>(Row, TEXT("SavedValue"), true);
+    SetProperty<FTextProperty>(Row, TEXT("ItemName"), FText::FromString(Spec.Label));
+    SetProperty<FTextProperty>(Row, TEXT("ItemDescription"), FText::FromString(Spec.Description));
+    SetProperty<FNameProperty>(Row, TEXT("SettingName"), FName(Spec.Setting));
+    SetProperty<FFloatProperty>(Row, TEXT("DefaultValue"), Spec.Default);
+    SetProperty<FFloatProperty>(Row, TEXT("SavedValue"), Spec.Default);
+    SetProperty<FFloatProperty>(Row, TEXT("Step"), Spec.Step);
+    SetProperty<FIntProperty>(Row, TEXT("SliderDiscreteValues"), FMath::RoundToInt((Spec.Max - Spec.Min) / Spec.Step) + 1);
+    SetProperty<FFloatProperty>(Row, TEXT("SliderInitialValue"), Spec.Default);
+    SetProperty<FFloatProperty>(Row, TEXT("SliderValueMin"), Spec.Min);
+    SetProperty<FFloatProperty>(Row, TEXT("SliderValueMax"), Spec.Max);
+    SetProperty<FTextProperty>(Row, TEXT("SliderPostfix"), FText::FromString(Spec.Postfix));
+    SetProperty<FIntProperty>(Row, TEXT("SliderFractionalDigits"), Spec.FractionalDigits);
 }
 
-// Whole numbers 1..10, default 5. Ten discrete positions give the whole-number steps.
-void FillLookSensitivity(UUserWidget* Row)
+FListEntry Header(const TCHAR* Name, const TCHAR* Label)
 {
-    SetProperty<FTextProperty>(Row, TEXT("ItemName"), FText::FromString(TEXT("VR Look Sensitivity")));
-    SetProperty<FTextProperty>(Row, TEXT("ItemDescription"), FText::FromString(TEXT("How fast the view turns with the right thumbstick. 1 is the slowest, 10 the fastest.")));
-    SetProperty<FNameProperty>(Row, TEXT("SettingName"), FName(TEXT("vr_look_sensitivity")));
-    SetProperty<FFloatProperty>(Row, TEXT("DefaultValue"), 5.f);
-    SetProperty<FFloatProperty>(Row, TEXT("SavedValue"), 5.f);
-    SetProperty<FIntProperty>(Row, TEXT("SliderDiscreteValues"), 10);
-    SetProperty<FFloatProperty>(Row, TEXT("SliderInitialValue"), 5.f);
-    SetProperty<FFloatProperty>(Row, TEXT("SliderValueMin"), 1.f);
-    SetProperty<FFloatProperty>(Row, TEXT("SliderValueMax"), 10.f);
-    SetProperty<FIntProperty>(Row, TEXT("SliderFractionalDigits"), 0);
+    return { EListEntry::Header, Name, [Label](UUserWidget* W) { SetProperty<FTextProperty>(W, TEXT("HeaderText"), FText::FromString(Label)); } };
 }
 
-// Whole centimetres 165..185, default 175. 21 positions give the one-centimetre steps.
-void FillPlayerHeight(UUserWidget* Row)
+FListEntry Toggle(const TCHAR* Name, const FToggleSpec& Spec)
 {
-    SetProperty<FTextProperty>(Row, TEXT("ItemName"), FText::FromString(TEXT("Player Height")));
-    SetProperty<FTextProperty>(Row, TEXT("ItemDescription"), FText::FromString(TEXT("Your height in centimetres. The VR body and the camera are scaled to it.")));
-    SetProperty<FNameProperty>(Row, TEXT("SettingName"), FName(TEXT("player_height")));
-    SetProperty<FFloatProperty>(Row, TEXT("DefaultValue"), 175.f);
-    SetProperty<FFloatProperty>(Row, TEXT("SavedValue"), 175.f);
-    SetProperty<FIntProperty>(Row, TEXT("SliderDiscreteValues"), 21);
-    SetProperty<FFloatProperty>(Row, TEXT("SliderInitialValue"), 175.f);
-    SetProperty<FFloatProperty>(Row, TEXT("SliderValueMin"), 165.f);
-    SetProperty<FFloatProperty>(Row, TEXT("SliderValueMax"), 185.f);
-    SetProperty<FTextProperty>(Row, TEXT("SliderPostfix"), FText::FromString(TEXT(" cm")));
-    SetProperty<FIntProperty>(Row, TEXT("SliderFractionalDigits"), 0);
+    return { EListEntry::Toggle, Name, [Spec](UUserWidget* W) { FillToggle(W, Spec); } };
+}
+
+FListEntry Slider(const TCHAR* Name, const FSliderSpec& Spec)
+{
+    return { EListEntry::Slider, Name, [Spec](UUserWidget* W) { FillSlider(W, Spec); } };
+}
+
+// The page's content, top to bottom. A row's SettingName is its key in the plugin's ini, or
+// for the snap turn rows the UEVR setting it mirrors. The plugin decides where each row is
+// stored (see "Settings sync" in documentation/vr-options-menu.md).
+TArray<FListEntry> ListEntries()
+{
+    return {
+        Header(TEXT("WIDGET_ListCategoryHeader_General"), TEXT("General")),
+        Slider(TEXT("OPTION_VR_PlayerHeight"), { TEXT("Player Height"),
+            TEXT("Your height in centimetres. The VR body and the camera are scaled to it."),
+            TEXT("player_height"), 165.f, 185.f, 175.f, 1.f, 0, TEXT(" cm") }),
+        Toggle(TEXT("OPTION_VR_AutoAimDownSights"), { TEXT("Auto Aim Down Sights"),
+            TEXT("Automatically decreases movement speed and reduces bullet spread."),
+            TEXT("auto_ads"), true }),
+        Header(TEXT("WIDGET_ListCategoryHeader_Movement"), TEXT("Movement")),
+        Slider(TEXT("OPTION_VR_LookSensitivity"), { TEXT("VR Look Sensitivity"),
+            TEXT("How fast the view turns with the right thumbstick. 1 is the slowest, 10 the fastest."),
+            TEXT("vr_look_sensitivity"), 1.f, 10.f, 5.f, 1.f, 0, TEXT("") }),
+        Toggle(TEXT("OPTION_VR_SnapTurn"), { TEXT("Snap Turn"),
+            TEXT("Turns the view in fixed steps with the right thumbstick instead of smoothly. This is the snap turn setting of UEVR."),
+            TEXT("VR_SnapTurn"), false }),
+        Slider(TEXT("OPTION_VR_SnapTurnAngle"), { TEXT("Angle"),
+            TEXT("How many degrees one snap turn turns the view."),
+            TEXT("VR_SnapturnTurnAngle"), 10.f, 90.f, 50.f, 1.f, 0, TEXT("") }),
+        Slider(TEXT("OPTION_VR_SnapTurnDeadzone"), { TEXT("Deadzone"),
+            TEXT("How far the right thumbstick must be pushed before a snap turn starts."),
+            TEXT("VR_SnapturnJoystickDeadzone"), 0.05f, 0.5f, 0.2f, 0.01f, 2, TEXT("") }),
+    };
+}
+
+UClass* EntryClass(const FMenuGenStore& Store, EListEntry Kind)
+{
+    switch (Kind)
+    {
+    case EListEntry::Header: return Store.Find(TEXT("CategoryHeader"));
+    case EListEntry::Toggle: return Store.Find(MenuGenPaths::VRToggle);
+    default: return Store.Find(MenuGenPaths::VRSlider);
+    }
+}
+
+// Adds one entry to the scroll box with the game's spacing: 20 units below every entry
+// except the last. Rows are variables, so the list's functions and the plugin can reach them.
+void AddEntry(FMenuGenBlueprint& BP, UScrollBox* Scroll, UClass* Class, const FListEntry& Entry, bool bLast)
+{
+    UUserWidget* Widget = BP.Widget()->WidgetTree->ConstructWidget<UUserWidget>(Class, Entry.Name);
+    Widget->bIsVariable = Entry.Kind != EListEntry::Header;
+    UScrollBoxSlot* Slot = CastChecked<UScrollBoxSlot>(Scroll->AddChild(Widget));
+    Slot->SetPadding(FMargin(0.f, 0.f, 0.f, bLast ? 0.f : 20.f));
+    Entry.Fill(Widget);
 }
 
 bool ListMembers(FMenuGenBlueprint& BP, const FMenuGenStore& Store)
@@ -271,12 +347,14 @@ bool ListMembers(FMenuGenBlueprint& BP, const FMenuGenStore& Store)
     UCanvasPanel* Root = RootCanvas(BP.Widget());
     UScrollBox* Scroll = BP.Widget()->WidgetTree->ConstructWidget<UScrollBox>(UScrollBox::StaticClass(), TEXT("SCROLLBOX_OptionsMenuList"));
     Scroll->ScrollbarThickness = FVector2D(8.f, 8.f);
-    Scroll->ScrollbarPadding = FMargin(10.f);
+    Scroll->ScrollbarPadding = FMargin(0.f, 0.f, 10.f, 0.f);
     FillCanvas(Root, Scroll, FMargin(0.f, 25.f, 0.f, 25.f));
 
-    FillSpikeToggle(AddRow(BP, Scroll, Store.Find(MenuGenPaths::VRToggle), TEXT("OPTION_VR_Spike")));
-    FillLookSensitivity(AddRow(BP, Scroll, Store.Find(MenuGenPaths::VRSlider), TEXT("OPTION_VR_LookSensitivity")));
-    FillPlayerHeight(AddRow(BP, Scroll, Store.Find(MenuGenPaths::VRSlider), TEXT("OPTION_VR_PlayerHeight")));
+    const TArray<FListEntry> Entries = ListEntries();
+    for (int32 i = 0; i < Entries.Num(); ++i)
+    {
+        AddEntry(BP, Scroll, EntryClass(Store, Entries[i].Kind), Entries[i], i == Entries.Num() - 1);
+    }
     return true;
 }
 
@@ -294,10 +372,14 @@ void ListInitializeList(FMenuGenBlueprint& BP)
 // Returns the rows as an array of the item base class, in the order they sit in the scroll box.
 void ListInitializeItemArray(FMenuGenBlueprint& BP, UClass* ItemBase)
 {
-    const TCHAR* Rows[] = { TEXT("OPTION_VR_Spike"), TEXT("OPTION_VR_LookSensitivity"), TEXT("OPTION_VR_PlayerHeight") };
+    TArray<const TCHAR*> Rows;
+    for (const FListEntry& Entry : ListEntries())
+    {
+        if (Entry.Kind != EListEntry::Header) Rows.Add(Entry.Name);
+    }
     FMenuGenGraph G(BP.AddOverride(TEXT("InitializeItemArray")));
-    UEdGraphNode* Array = G.MakeArray(UE_ARRAY_COUNT(Rows));
-    for (int32 i = 0; i < UE_ARRAY_COUNT(Rows); ++i)
+    UEdGraphNode* Array = G.MakeArray(Rows.Num());
+    for (int32 i = 0; i < Rows.Num(); ++i)
     {
         UK2Node_DynamicCast* Cast = G.Cast(ItemBase, true);
         G.Link(G.Get(Rows[i]), Rows[i], Cast, TEXT("Object"));
