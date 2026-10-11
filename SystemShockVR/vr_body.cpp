@@ -130,6 +130,11 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
 
         vr_body->TrailingRotationComponent()->K2_SetWorldRotation(vr_body->DefaultSceneRoot()->K2_GetComponentRotation(), false, &SweepHitResult, false);
 
+        // The mesh's yaw comes only from the trailing rotation, which the plugin sets each tick.
+        // With a relative rotation the mesh would also turn with the pawn, so after a snap turn
+        // it would turn twice for one frame: once from the plugin, once when the pawn follows.
+        vr_body->VRBodyMesh()->SetAbsolute(false, true, false);
+
         // HMDComponent tracks UEVR Camera offset to RootComponent (our VROrigin)
         auto hmd_state = API::UObjectHook::get_or_add_motion_controller_state((API::UObject*)vr_body->HMDComponent());
         if (hmd_state == nullptr) {

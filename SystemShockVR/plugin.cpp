@@ -66,6 +66,7 @@
 #include "vr_mfd.hpp"
 #include "vr_avatar.hpp"
 #include "vr_options_menu.hpp"
+#include "vr_snap_turn.hpp"
 #include "vr_settings.hpp"
 
 #include <windows.h>
@@ -398,6 +399,24 @@ bool UEVRPlugin::prepare_pointers() {
 }
 
 // TODO: Optimize order: APAWN_Hacker_Implant_C and derivatives first
+void UEVRPlugin::on_pre_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int, float, UEVR_Vector3f*, UEVR_Rotatorf*, bool) {
+    try {
+        VRSnapTurn::before_view_offset();
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][on_pre_calculate_stereo_view_offset] Exception");
+    }
+}
+
+void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int, float, UEVR_Vector3f*, UEVR_Rotatorf*, bool) {
+    try {
+        VRSnapTurn::after_view_offset();
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][on_post_calculate_stereo_view_offset] Exception");
+    }
+}
+
 void UEVRPlugin::on_post_engine_tick(API::UGameEngine* engine, float delta) {
     if (m_bp_logger == nullptr) {
         return;
@@ -1130,6 +1149,13 @@ void UEVRPlugin::handle_smooth_turning(XINPUT_STATE* state) {
             PluginUtils::is_a<APAWN_Avatar_C>(m_pawn.get())
             ) {
 
+            // UEVR's snap turn reads the stick itself. A smooth turn on top would turn the view
+            // while the stick moves towards the snap turn deadzone.
+            if (API::VR::is_snap_turn_enabled()) {
+                state->Gamepad.sThumbRX = 0;
+                return;
+            }
+
             pawn_controller = m_pawn.get()->Controller;
             if (!UKismetSystemLibrary::IsValid(pawn_controller)) {
                 return;
@@ -1163,6 +1189,10 @@ void UEVRPlugin::handle_lean() {
 // try moving to BP
 void UEVRPlugin::update_trailing_rotation(float delta) {
     try {
+        // UEVR applied a snap turn to the control rotation while the last frame's view was set
+        // up, after that view's rotation was taken. The camera turns in this frame, so the body
+        // turns by the same angle now. Taken every tick, so a snap without a VR body is dropped.
+        const float snap_yaw = VRSnapTurn::consume_yaw();
         if (g_vr_body == nullptr || m_pawn.get() == nullptr || !PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get()))
             return;
 
@@ -1172,6 +1202,7 @@ void UEVRPlugin::update_trailing_rotation(float delta) {
         }
         auto control_rotation = pawn_controller->GetControlRotation();
         auto tc_rot = g_vr_body->TrailingRotationComponent()->K2_GetComponentRotation();
+        tc_rot.Yaw += snap_yaw;
 
         auto pawn_speed = static_cast<APAWN_Hacker_Implant_C*>(m_pawn.get())->COMP_MoveControlManager->CurrentSpeed;
         auto interp_speed = pow((abs(g_vr_body->VRMovementComponent()->TrailingAngle()) / 25.f), 5.f) + pow(pawn_speed / 100.f, 2.f);
@@ -1192,6 +1223,7 @@ void UEVRPlugin::update_trailing_rotation(float delta) {
         API::get()->log_error("[plugin][update_trailing_rotation] Exception");
     }
 }
+
 
 void UEVRPlugin::handle_game_state_change() {
     try {

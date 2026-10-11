@@ -182,6 +182,7 @@
     <ClInclude Include="vr_settings.hpp" />
     <ClInclude Include="vr_setting_store.hpp" />
     <ClInclude Include="vr_options_sync.hpp" />
+    <ClInclude Include="vr_snap_turn.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="vr_item_selector.hpp" />
@@ -258,6 +259,7 @@
     <ClCompile Include="vr_settings.cpp" />
     <ClCompile Include="vr_setting_store.cpp" />
     <ClCompile Include="vr_options_sync.cpp" />
+    <ClCompile Include="vr_snap_turn.cpp" />
     <ClCompile Include="build_version.cpp" />
   </ItemGroup>
   <ItemGroup>

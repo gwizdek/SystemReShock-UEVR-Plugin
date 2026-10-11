@@ -102,6 +102,10 @@ public:
     void on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) override;
     void on_pre_engine_tick(API::UGameEngine* engine, float delta) override;
     void on_post_engine_tick(API::UGameEngine* engine, float delta) override;
+    void on_pre_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int view_index, float world_to_meters,
+        UEVR_Vector3f* position, UEVR_Rotatorf* rotation, bool is_double) override;
+    void on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int view_index, float world_to_meters,
+        UEVR_Vector3f* position, UEVR_Rotatorf* rotation, bool is_double) override;
 
 // -----------------------------------------------------------------------------
 // UEVR props
