@@ -27,6 +27,8 @@ public sealed class InstallStateResolver
         if (settings == null)
             return InstallState.NotInstalled();
         var plan = new InstallPlan(settings.UevrPath ?? string.Empty, settings.GamePath ?? string.Empty, _appDataRoot, StoreOf(settings));
+        if (!Directory.Exists(plan.ProfileTargetDir))
+            return InstallState.NotInstalled();
         if (PathValidator.ValidateUevrFolder(settings.UevrPath) != null || PathValidator.ValidateGameFolder(settings.GamePath) != null)
             return InstallState.NotInstalled("The UEVR or game folder saved last time no longer exists.", plan, settings);
         return Classify(plan, settings, _verifier.Verify(plan));

@@ -33,6 +33,10 @@ first. Use Reinstall on the launcher page to repair an install. Use Uninstall,
 on the launcher page or on the first wizard page, to remove the mod. It deletes
 only the files listed in the table below and asks before it does.
 
+When the UEVR profile folder is gone, the program starts like a first run, with
+no message and no Uninstall button. The folder fields are still filled in from
+the saved settings.
+
 The program writes to these places:
 
 | What | Where |

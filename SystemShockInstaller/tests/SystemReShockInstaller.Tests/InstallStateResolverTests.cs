@@ -98,6 +98,21 @@ public class InstallStateResolverTests
     }
 
     [Fact]
+    public void Missing_profile_folder_means_clean_first_run()
+    {
+        using var root = new TempDir();
+        using var bundle = TestBundle.Create();
+        var plan = FullInstall(root, bundle, Version);
+        Directory.Delete(plan.ProfileTargetDir, recursive: true);
+
+        var state = Resolver(root, bundle).Resolve();
+
+        Assert.Equal(InstallStatus.NotInstalled, state.Status);
+        Assert.Null(state.Reason);
+        Assert.False(state.CanUninstall);
+    }
+
+    [Fact]
     public void Saved_store_key_is_used_as_is()
     {
         using var root = new TempDir();

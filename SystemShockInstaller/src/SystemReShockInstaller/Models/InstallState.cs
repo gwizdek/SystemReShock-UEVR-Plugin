@@ -2,7 +2,7 @@ namespace SystemReShockInstaller.Models;
 
 public enum InstallStatus
 {
-    /// <summary>No settings, a folder no longer validates, or a mod file is missing. Run the wizard.</summary>
+    /// <summary>No settings, no UEVR profile folder, a folder no longer validates, or a mod file is missing. Run the wizard.</summary>
     NotInstalled,
 
     /// <summary>Everything matches this setup. Show the launcher.</summary>
@@ -16,8 +16,9 @@ public enum InstallStatus
 }
 
 /// <summary>
-/// What the startup check found. Plan and Settings are set whenever a settings file was read,
-/// even when the install is broken, so that Uninstall knows what to remove.
+/// What the startup check found. Plan and Settings are set whenever a settings file was read and the
+/// UEVR profile folder exists, even when the install is broken, so that Uninstall knows what to remove.
+/// Without the profile folder the check reports a clean first run, as if there were no settings file.
 /// </summary>
 public sealed class InstallState
 {
