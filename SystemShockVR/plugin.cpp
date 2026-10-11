@@ -1094,32 +1094,6 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
             if (g_vr_body->HandInteractionLeft()->IsReachingBackpack()) {
                 PluginUtils::reset_height(0.f);
                 vr->recenter_view();
-                if (g_vr_body->VRMenu()->bIsOpened()) {
-                    g_vr_body->VRMenu()->Close();
-                    if (VRMFD::m_had_equipped_weapon && g_vr_body->IsWeaponHolstered()) {
-                        VRMFD::m_had_equipped_weapon = false;
-                        // use holster weapon button: take out weapon
-                        SDK::FKey h_key_name{
-                            .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
-                        };
-                        g_vr_body->HackerPawn()->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
-                    }
-                }
-            }
-        }
-        if (m_gamepad_left_thumb.is_long_pressed(1.f) && g_vr_body->HandInteractionLeft()->IsReachingBackpack()) {
-            // Open / Close VR Menu
-            API::get()->log_warn("[plugin][handle_citadel_station_xinput] Left thumb long press");
-            if (!g_vr_body->VRMenu()->bIsOpened()) {
-                if (!g_vr_body->IsWeaponHolstered()) {
-                    // use holster weapon button: holster weapon
-                    SDK::FKey h_key_name{
-                        .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"H")
-                    };
-                    g_vr_body->HackerPawn()->InpActEvt_Real_ToggleEquip_K2Node_InputActionEvent_64(h_key_name);
-                    VRMFD::m_had_equipped_weapon = true;
-                }
-                g_vr_body->VRMenu()->Open();
             }
         }
 
