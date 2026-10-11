@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "uevr": {
+      "type": "stdio",
+      "command": "C:/_Dev/mods/uevr-mcp/mcp-server/bin/Release/net9.0/UevrMcpServer.exe",
+      "args": [],
+      "env": {
+        "UEVR_MCP_PLUGIN_DLL": "C:/_Dev/mods/uevr-mcp/plugin/build/Release/uevr_mcp.dll",
+        "UEVR_BACKEND_DLL": "D:/Modding/UEVR/UEVRBackend.dll"
+      }
+    }
+  }
+}
