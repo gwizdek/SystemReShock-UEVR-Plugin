@@ -21,6 +21,9 @@ mono_crash.*
 SystemShockVR/build_index.txt
 SystemShockVR/build_version_generated.hpp
 
+# Release zips written by scripts\release-plugin.py
+/releases/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

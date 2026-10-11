@@ -87,6 +87,17 @@ copy of the Core pak is mounted. `scripts\build-and-deploy.ps1 -Target Paks` run
 and builds nothing. "Deploy paks" means this. A mounted pak is locked by the game; the script stops
 with a message and the game must be closed first.
 
+### Releasing the plugin as a UEVR profile zip
+
+`scripts\release-plugin.py <version>` (the `/release-plugin` skill) makes
+`releases\<version>_<timestamp>\SystemReShock-Win64-Shipping.zip`. The version is required, for
+example `2.0-beta.4`; the script stops without it. It sets `InformationalVersion` in the installer
+project and `remarks` and `modifiedDate` in `profile\ProfileMeta.json`, builds the plugin, and zips
+the same files the installer embeds: the profile without `imgui.ini`, the DLL in `plugins\` and
+both paks in `paks\`. It does not package the Unreal project; the Core pak is taken from the
+packaged output as it is (`--pak-dir` sets another folder). `releases\` is gitignored. The version
+change is left uncommitted.
+
 ## Hot reloader
 
 From a Developer PowerShell at the repository root:
