@@ -162,6 +162,8 @@ private:
     bool m_gui_visible{ true };
     bool m_trigger_test_1{ false };
     bool m_trigger_test_2{ false };
+    bool m_interact_mouse_down{ false };
+    bool m_stick_crouch_down{ false };
     //int32 m_native_fix_tick_counter{ -1 };
 
 // -----------------------------------------------------------------------------
@@ -198,6 +200,7 @@ public:
  
     // Input handlers
     void handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
+    void handle_interact_button(XINPUT_STATE* state);
     void handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_appartment_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_vr_menu_xinput(XINPUT_STATE* state, const UEVR_VRData* vr);
