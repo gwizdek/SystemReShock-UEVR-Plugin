@@ -180,6 +180,23 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
     if (!vr->is_runtime_ready())
         return;
 
+    // Only drive the game from the XInput slot the VR controllers are injected
+    // into. Extra devices/polls (e.g. Steam Frame controllers enumerating via
+    // Steam Input) must not reach prepare_game_state(), otherwise they clear the
+    // state-change flag before handle_game_state_change() can apply the VR
+    // options (roomscale/turning), which leaves head and body detached.
+    {
+        static bool s_logged_extra_index = false;
+        const uint32_t vr_index = vr->get_lowest_xinput_index();
+        if (user_index != vr_index) {
+            if (!s_logged_extra_index) {
+                s_logged_extra_index = true;
+                API::get()->log_warn("[plugin][on_xinput_get_state] Ignoring non-VR XInput index %u (VR index %u)", user_index, vr_index);
+            }
+            return;
+        }
+    }
+
     try {
         // start cb timer
         std::chrono::steady_clock::time_point begin_time;
@@ -193,6 +210,11 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
         prepare_game_state();
         // handle level change before xinput
         handle_level_change();
+        // Apply state-dependent VR options immediately, while the state change is
+        // still fresh. on_xinput_get_state may run more than once per frame, and
+        // each prepare_game_state() call would otherwise clear the change flag
+        // before the handler runs.
+        handle_game_state_change();
         handle_xinput(state, vr);
         handle_lean();
         handle_crouch();
@@ -233,6 +255,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
                 return;
             prepare_game_state();
             handle_level_change();
+            handle_game_state_change();
         }
         else {
             // reset for next cb iteration
@@ -503,6 +526,46 @@ void UEVRPlugin::prepare_game_state() {
 // Handlers
 // -------------------------------------------------------------------------------------
 
+// The game runs in mouse mode, so its Interact is the right mouse button
+// (Real_Interact). Send it from the left trigger, which is free in VR because
+// aiming is done with the physical body. Holding the trigger holds the click.
+void UEVRPlugin::handle_interact_button(XINPUT_STATE* state) {
+    const auto game_state = m_game_state.get();
+    const bool interact_state =
+        game_state == GAME_STATE_CITADEL_STATION ||
+        game_state == GAME_STATE_APPARTMENT ||
+        game_state == GAME_STATE_INTERACTABLE;
+
+    // The freed Frame bumpers are routed (in the override) to the free D-pad Up
+    // (left) and D-pad Down (right) Xbox inputs, which the game leaves unused during
+    // gameplay. Both bumpers are the "action" button (the game's right mouse click).
+    const bool left_bumper_held = (state->Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP) != 0;
+    const bool right_bumper_held = (state->Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN) != 0;
+
+    const bool wants_interact = interact_state && g_vr_body != nullptr &&
+        (left_bumper_held || right_bumper_held);
+
+    if (wants_interact && !m_interact_mouse_down) {
+        send_mouse(VK_RBUTTON, false);
+        m_interact_mouse_down = true;
+    }
+    else if (!wants_interact && m_interact_mouse_down) {
+        send_mouse(VK_RBUTTON, true);
+        m_interact_mouse_down = false;
+    }
+
+    // Left trigger brings up the left-hand pointer. No ADS binding is needed because
+    // players aim with their physical body (handle_ads drives the game's Aim), so the
+    // trigger is muted and never reaches the game's Aim action.
+    if (interact_state && g_vr_body != nullptr) {
+        if (g_vr_body->IsEmptyHanded() && m_gamepad_left_trigger.is_pressed()) {
+            g_vr_body->HandInteractionLeft()->AttachLaserPointer(true, 10.f);
+        }
+
+        m_gamepad_left_trigger.mute_state(state);
+    }
+}
+
 void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
     try {
         // Updating controller memo states
@@ -518,6 +581,30 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
         m_gamepad_left_trigger.set_state(state);
         m_hotbar_selector_button.set_state(state);
         m_hardware_selector_button.set_state(state);
+
+        handle_interact_button(state);
+
+        // Right stick down = crouch, release = stand. The game's crouch button (B) is
+        // a toggle, so pulse B once on each stick transition (press to crouch, release
+        // to stand). The physical B button is freed during gameplay. Stick up stays A
+        // (jump), handled later.
+        const bool is_gameplay_state =
+            m_game_state.get() == GAME_STATE_CITADEL_STATION ||
+            m_game_state.get() == GAME_STATE_APPARTMENT;
+        if (is_gameplay_state && g_vr_body != nullptr) {
+            const bool stick_down = state->Gamepad.sThumbRY < -INPUT_DEADZONE_HI;
+            if (stick_down) {
+                state->Gamepad.sThumbRY = 0;
+            }
+
+            if (stick_down != m_stick_crouch_down) {
+                state->Gamepad.wButtons |= XINPUT_GAMEPAD_B;
+                m_stick_crouch_down = stick_down;
+            }
+            else {
+                state->Gamepad.wButtons &= ~XINPUT_GAMEPAD_B;
+            }
+        }
 
         // Citadel Station normal movement gameplay
         if (m_game_state.get() == GAME_STATE_CITADEL_STATION) {
@@ -1333,6 +1420,9 @@ void UEVRPlugin::handle_game_state_change() {
                     API::UObjectHook::set_disabled(true);
                     break;
             }
+
+            // Mark the state as handled so the options aren't re-applied every tick.
+            m_game_state.consume();
         }
     }
     catch (...) {
