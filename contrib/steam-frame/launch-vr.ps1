@@ -10,14 +10,14 @@
 
   Usage:
     powershell -ExecutionPolicy Bypass -File .\launch-vr.ps1
-    powershell -ExecutionPolicy Bypass -File .\launch-vr.ps1 -Runtime openvr -DelaySeconds 20
+    powershell -ExecutionPolicy Bypass -File .\launch-vr.ps1 -Runtime openvr -DelaySeconds 8
 #>
 param(
     [string]$UevrPath     = 'D:\UEVR',
     [string]$GamePath     = 'C:\Program Files (x86)\Steam\steamapps\common\System Shock Remake',
     [ValidateSet('openxr','openvr')]
     [string]$Runtime      = 'openxr',
-    [int]$DelaySeconds    = 7,
+    [int]$DelaySeconds    = 8,
     [int]$WindowTimeoutSeconds = 120
 )
 
@@ -97,6 +97,21 @@ function Inject-Dll([int]$procId, [string]$dllPath) {
 foreach ($f in @($RuntimeDll, $BackendDll)) {
     $p = Join-Path $UevrPath $f
     if (-not (Test-Path -LiteralPath $p)) { throw "Missing $p" }
+}
+
+# Wait for SteamVR + compositor (i.e. an active HMD) before starting/injecting.
+# If UEVR injects with no VR session it fails to initialize D3D and stalls the
+# game at the splash screen / can destabilise SteamVR.
+$vrDeadline = (Get-Date).AddSeconds(60)
+while ((Get-Date) -lt $vrDeadline) {
+    if ((Get-Process vrserver -ErrorAction SilentlyContinue) -and (Get-Process vrcompositor -ErrorAction SilentlyContinue)) { break }
+    Start-Sleep -Milliseconds 500
+}
+if (-not (Get-Process vrcompositor -ErrorAction SilentlyContinue)) {
+    Write-Warning "SteamVR compositor isn't running. Start SteamVR and connect the Steam Frame first, then re-run."
+}
+else {
+    Write-Host "SteamVR is running."
 }
 
 $game = Get-ReadyGameProcess

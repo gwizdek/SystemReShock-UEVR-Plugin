@@ -1,7 +1,7 @@
 # Movement / body-detachment issue — analysis (hypotheses)
 
-Status: **analysis only**, no fix yet. Based on the log at
-`C:\Users\andyp\Downloads\log.txt` and gwizdek's notes.
+Status: **analysis only**, no fix yet. Based on a captured UEVR log and
+gwizdek's notes.
 
 ## Reported symptoms
 
