@@ -1508,6 +1508,7 @@ void UEVRPlugin::handle_level_change() {
                     VRBody::initialize_minimap(m_neural_hud);
                     VRBody::initialize_hacker_hardware(m_neural_hud);
                     VRBody::initialize_active_hazard(m_neural_hud);
+                    VRBody::initialize_unread_media_icon(m_neural_hud);
                     VRBody::initialize_ads();
                     VRBody::initialize_hand_item_collisions();
                     VRItemSelector::initialize(m_neural_hud);

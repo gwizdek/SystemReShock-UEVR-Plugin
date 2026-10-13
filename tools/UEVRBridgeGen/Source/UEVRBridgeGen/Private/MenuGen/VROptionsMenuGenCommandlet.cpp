@@ -3,6 +3,7 @@
 #include "AssetRegistryModule.h"
 #include "BridgeGenLog.h"
 #include "MenuGenDummies.h"
+#include "MenuGenHudIcon.h"
 #include "MenuGenIcon.h"
 #include "MenuGenModWidgets.h"
 #include "MenuGenStore.h"
@@ -35,6 +36,11 @@ int32 UVROptionsMenuGenCommandlet::Main(const FString& Params)
     if (!MenuGenIcon::Generate(Store, Options))
     {
         UE_LOG(LogUEVRBridgeGen, Error, TEXT("Icon generation failed."));
+        return 1;
+    }
+    if (!MenuGenHudIcon::Generate(Store, Options))
+    {
+        UE_LOG(LogUEVRBridgeGen, Error, TEXT("HUD icon generation failed."));
         return 1;
     }
     if (!MenuGenModWidgets::Generate(Store, Options))

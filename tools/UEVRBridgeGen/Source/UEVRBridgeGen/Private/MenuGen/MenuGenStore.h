@@ -36,6 +36,17 @@ constexpr const TCHAR* IconMaterial = TEXT("MAT_OptionsIcons_VR");
 // The icon image, relative to the generator plugin's folder. Drawn by draw_vr_icon.py there.
 constexpr const TCHAR* IconSource = TEXT("Resources/MenuGen/T_OptionsIcons_VR.png");
 
+// The HUD's unread media (email) icon. These are the game's own asset paths: the mod pak
+// mounts above the game's, so its copies replace the game's material and texture, and the
+// game's HUD widget draws the icon with them. Nothing in the plugin loads them.
+constexpr const TCHAR* HudIconRoot = TEXT("/Game/Art/UI/HUD/Media");
+constexpr const TCHAR* HudIconTexture = TEXT("T_MediaIcon_UnreadMessages");
+constexpr const TCHAR* HudIconMaterial = TEXT("MAT_MediaIcon_UnreadMessages");
+// The game's envelope texture as a PNG, relative to the generator plugin's folder. Written by
+// make_media_icon.ps1 next to it from the cooked T_MediaIcon_UnreadMessages, with the glow
+// outside the envelope reduced.
+constexpr const TCHAR* HudIconSource = TEXT("Resources/MenuGen/T_MediaIcon_UnreadMessages_VR.png");
+
 constexpr const TCHAR* VRToggle = TEXT("_OPTION_VR_Toggle");
 constexpr const TCHAR* VRSlider = TEXT("_OPTION_VR_Slider");
 constexpr const TCHAR* VRList = TEXT("_WIDGET_OptionsMenu_VRList");
@@ -51,6 +62,8 @@ struct FMenuGenStore
     UEnum* Categories = nullptr;
     // The VR category icon, set on the category item by the page's Install function.
     class UMaterial* IconMaterial = nullptr;
+    // The HUD email icon material. Nothing generated refers to it; it is kept for logging only.
+    class UMaterial* HudIconMaterial = nullptr;
 
     void Add(FName Key, UClass* Class) { Classes.Add(Key, Class); }
 

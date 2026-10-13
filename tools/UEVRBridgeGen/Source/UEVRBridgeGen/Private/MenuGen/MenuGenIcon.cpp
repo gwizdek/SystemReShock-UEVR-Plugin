@@ -55,23 +55,10 @@ const FTintParameter TintParameters[] = {
 // The game's category icons are this colour: the icon mask times the background tint.
 const FName IconTint(TEXT("UIBackgroundTint1"));
 
-template <class AssetType>
-AssetType* LoadExisting(const FString& Path)
-{
-    AssetType* Asset = LoadObject<AssetType>(nullptr, *MenuGenAsset::ObjectPath(Path));
-    if (Asset == nullptr)
-    {
-        UE_LOG(LogUEVRBridgeGen, Error, TEXT("Cannot load %s"), *Path);
-        return nullptr;
-    }
-    UE_LOG(LogUEVRBridgeGen, Display, TEXT("Kept existing %s"), *Path);
-    return Asset;
-}
-
 UMaterialParameterCollection* MakeTintCollection(const FMenuGenOptions& Options)
 {
     const FString Path = MenuGenPaths::TintCollection;
-    if (MenuGenAsset::Exists(Path) && !Options.bOverwrite) return LoadExisting<UMaterialParameterCollection>(Path);
+    if (MenuGenAsset::Exists(Path) && !Options.bOverwrite) return MenuGenAsset::LoadExisting<UMaterialParameterCollection>(Path);
 
     UPackage* Package = MenuGenAsset::NewPackage(Path);
     MenuGenAsset::Evict(Package, MenuGenAsset::NameOf(Path));
@@ -119,7 +106,7 @@ bool ReadIconPixels(TArray<uint8>& OutBgra, int32& OutWidth, int32& OutHeight)
 UTexture2D* MakeIconTexture(const FMenuGenOptions& Options)
 {
     const FString Path = Options.ModRoot / MenuGenPaths::IconTexture;
-    if (MenuGenAsset::Exists(Path) && !Options.bOverwrite) return LoadExisting<UTexture2D>(Path);
+    if (MenuGenAsset::Exists(Path) && !Options.bOverwrite) return MenuGenAsset::LoadExisting<UTexture2D>(Path);
 
     TArray<uint8> Pixels;
     int32 Width = 0;
@@ -144,7 +131,7 @@ UTexture2D* MakeIconTexture(const FMenuGenOptions& Options)
 UMaterial* MakeIconMaterial(const FMenuGenOptions& Options, UTexture2D* Texture, UMaterialParameterCollection* Collection)
 {
     const FString Path = Options.ModRoot / MenuGenPaths::IconMaterial;
-    if (MenuGenAsset::Exists(Path) && !Options.bOverwrite) return LoadExisting<UMaterial>(Path);
+    if (MenuGenAsset::Exists(Path) && !Options.bOverwrite) return MenuGenAsset::LoadExisting<UMaterial>(Path);
 
     UPackage* Package = MenuGenAsset::NewPackage(Path);
     MenuGenAsset::Evict(Package, MenuGenAsset::NameOf(Path));

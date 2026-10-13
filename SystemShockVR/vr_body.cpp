@@ -539,6 +539,34 @@ void VRBody::initialize_active_hazard(UWIDGET_PlayerHUD_C* neural_hud) {
     }
 }
 
+// The game pins its unread media (email) icon 17px from the left edge of PANEL_GameHUD, which
+// is outside the headset view on UEVR's UI quad. TEXT_ScanDescription (the green object name)
+// is centred at y=20 of the same canvas, 20px tall, so the icon goes centred at y=36, just
+// below it. How the icon is drawn is the Core pak's business: it replaces the game's additive
+// icon material with a translucent one (see documentation/menu-icons.md).
+void VRBody::initialize_unread_media_icon(UWIDGET_PlayerHUD_C* neural_hud) {
+    if (neural_hud == nullptr || !UKismetSystemLibrary::IsValid(neural_hud)) {
+        API::get()->log_error("[vr_body][initialize_unread_media_icon] Invalid neural_hud");
+        return;
+    }
+
+    try {
+        UWidget* icon = neural_hud->WIDGET_UnreadMediaIcon;
+        if (!UKismetSystemLibrary::IsValid(icon) || icon->Slot == nullptr ||
+            !icon->Slot->IsA(UCanvasPanelSlot::StaticClass())) {
+            API::get()->log_error("[vr_body][initialize_unread_media_icon] Invalid icon or slot");
+            return;
+        }
+        UCanvasPanelSlot* slot = static_cast<UCanvasPanelSlot*>(icon->Slot);
+        slot->SetAnchors(FAnchors{ { 0.5f, 0.0f }, { 0.5f, 0.0f } });
+        slot->SetAlignment(FVector2D{ 0.5f, 0.0f });
+        slot->SetPosition(FVector2D{ 0.0f, 36.0f });
+        API::get()->log_warn("[vr_body][initialize_unread_media_icon] Initialized");
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][initialize_unread_media_icon] Exception");
+    }
+}
 void VRBody::initialize_hand_item_collisions() {
     // Index Finger Overlappers
     g_vr_body->LeftIndexFingerCollision()->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);

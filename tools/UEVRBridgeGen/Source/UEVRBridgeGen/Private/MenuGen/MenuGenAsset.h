@@ -1,6 +1,8 @@
 #pragma once
 
+#include "BridgeGenLog.h"
 #include "CoreMinimal.h"
+#include "UObject/UObjectGlobals.h"
 
 // Package and file helpers shared by every generated asset.
 namespace MenuGenAsset
@@ -10,6 +12,20 @@ FString NameOf(const FString& PackagePath);
 
 // "/Game/A/B" -> "/Game/A/B.B"
 FString ObjectPath(const FString& PackagePath);
+
+// Loads an asset that an earlier run made, when it is kept instead of created again.
+template <class AssetType>
+AssetType* LoadExisting(const FString& PackagePath)
+{
+    AssetType* Asset = LoadObject<AssetType>(nullptr, *ObjectPath(PackagePath));
+    if (Asset == nullptr)
+    {
+        UE_LOG(LogUEVRBridgeGen, Error, TEXT("Cannot load %s"), *PackagePath);
+        return nullptr;
+    }
+    UE_LOG(LogUEVRBridgeGen, Display, TEXT("Kept existing %s"), *PackagePath);
+    return Asset;
+}
 
 bool Exists(const FString& PackagePath);
 

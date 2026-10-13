@@ -101,6 +101,50 @@ uses must be loaded by path from the plugin, as `create_page` loads the page cla
 3. In the game, the icon must have the same colour as the game's icons. Change the colour theme in
    the Interface options: the new icon must change with the others.
 
+## The HUD email icon
+
+The generator also replaces the HUD's unread media (email) icon material for VR. It is not a
+menu icon, but it is built the same way, so it lives here.
+
+**Why it exists.** The game draws the icon with `MAT_MediaIcon_UnreadMessages`, an additive
+material. Additive draws write no alpha, and UEVR composites the flat HUD onto its UI quad by
+alpha, so the icon shows on the desktop window but not in the headset. The mod's material is
+translucent and writes alpha.
+
+**How it reaches the game.** The texture and the material are written at the game's own
+asset paths, in chunk 10. The Core pak mounts above the game's pak, so the game's HUD widget
+loads the mod's copies and draws the icon with them. The plugin does not touch the material;
+it only moves the icon's slot to the top centre of the HUD, under the scan text, because the
+game pins it to the left screen edge, outside the headset view
+(`VRBody::initialize_unread_media_icon` in `vr_body.cpp`). The same material is used wherever
+the game shows this icon, for example in the media tab.
+
+| File | Role |
+|---|---|
+| `tools\UEVRBridgeGen\Resources\MenuGen\make_media_icon.ps1` | Writes the PNG below from the game's cooked `T_MediaIcon_UnreadMessages.uexp` in `dumps\` (104 x 86 BGRA8 pixels from byte 326). It reduces the glow outside the envelope to a tenth, so the icon does not show as a box. |
+| `tools\UEVRBridgeGen\Resources\MenuGen\T_MediaIcon_UnreadMessages_VR.png` | The script's output, the generator's input. |
+| `MenuGenHudIcon.cpp` | Creates the texture and the material. |
+| `/Game/Art/UI/HUD/Media/T_MediaIcon_UnreadMessages` | The texture, chunk 10. Replaces the game's. |
+| `/Game/Art/UI/HUD/Media/MAT_MediaIcon_UnreadMessages` | The material, chunk 10. Replaces the game's. |
+
+**The texture's channels.** R is the crisp outline. G is a soft fill inside the envelope, with
+a faint rest of the game's glow outside it. B is empty. Alpha is like G and is not used.
+
+**The material.** UI domain, translucent. Colour = `(R * OutlineColor + G * FillColor)` times
+the vertex colour. Opacity = `(R + G * FillOpacity)` times the vertex alpha. The game's mesh
+widget passes its `Color` as the vertex colour, so the game can still tint and fade the icon.
+The parameters and their defaults, which copy the look of the game's additive icon:
+
+| Parameter | Type | Default |
+|---|---|---|
+| `Icon` | texture | the texture above |
+| `OutlineColor` | colour | (1.0, 0.38, 0.04) orange |
+| `FillColor` | colour | (0.12, 0.008, 0.0) dark red |
+| `FillOpacity` | scalar | 0.35 |
+
+The values are linear colour. They were tuned in the running game against the game's own
+icon. A change needs a new cook; the HUD loads the material at game start, so the pak hot
+reload cannot replace it and the game must be restarted.
 ## The tint collection
 
 The game sets the player's theme colours in `MPC_UserTintParameters` at run time. It has 19 colour
