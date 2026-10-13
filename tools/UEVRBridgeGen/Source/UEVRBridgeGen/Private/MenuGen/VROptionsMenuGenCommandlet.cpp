@@ -3,6 +3,7 @@
 #include "AssetRegistryModule.h"
 #include "BridgeGenLog.h"
 #include "MenuGenDummies.h"
+#include "MenuGenCyberHud.h"
 #include "MenuGenHudIcon.h"
 #include "MenuGenIcon.h"
 #include "MenuGenModWidgets.h"
@@ -41,6 +42,11 @@ int32 UVROptionsMenuGenCommandlet::Main(const FString& Params)
     if (!MenuGenHudIcon::Generate(Store, Options))
     {
         UE_LOG(LogUEVRBridgeGen, Error, TEXT("HUD icon generation failed."));
+        return 1;
+    }
+    if (!MenuGenCyberHud::Generate(Store, Options))
+    {
+        UE_LOG(LogUEVRBridgeGen, Error, TEXT("Cyberspace HUD generation failed."));
         return 1;
     }
     if (!MenuGenModWidgets::Generate(Store, Options))

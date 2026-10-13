@@ -164,6 +164,7 @@ UMaterial* MakeIconMaterial(const FMenuGenOptions& Options, UTexture2D* Texture,
 bool MenuGenIcon::Generate(FMenuGenStore& Store, const FMenuGenOptions& Options)
 {
     UMaterialParameterCollection* Collection = MakeTintCollection(Options);
+    Store.TintCollection = Collection;
     UTexture2D* Texture = Collection != nullptr ? MakeIconTexture(Options) : nullptr;
     UMaterial* Material = Texture != nullptr ? MakeIconMaterial(Options, Texture, Collection) : nullptr;
     Store.IconMaterial = Material;

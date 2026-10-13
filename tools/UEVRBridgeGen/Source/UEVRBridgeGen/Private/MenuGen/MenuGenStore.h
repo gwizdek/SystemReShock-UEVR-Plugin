@@ -47,6 +47,24 @@ constexpr const TCHAR* HudIconMaterial = TEXT("MAT_MediaIcon_UnreadMessages");
 // outside the envelope reduced.
 constexpr const TCHAR* HudIconSource = TEXT("Resources/MenuGen/T_MediaIcon_UnreadMessages_VR.png");
 
+// The cyberspace HUD's connection integrity widget: the game's own asset paths of the four
+// additive materials the Core pak replaces, and of their textures. See MenuGenCyberHud.h.
+constexpr const TCHAR* CyberGuiRoot = TEXT("/Game/Art/Cyberspace/GUI");
+constexpr const TCHAR* CyberArchiveRoot = TEXT("/Game/Art/Cyberspace/GUI/zz_Archive");
+constexpr const TCHAR* CyberPanelTexture = TEXT("T_ConnectionIntegrityWindow");
+constexpr const TCHAR* CyberPanelMaterial = TEXT("MAT_ConnectionIntegrityPanel");
+constexpr const TCHAR* CyberHealthTexture = TEXT("T_ConnectionIntegrityHealth");
+constexpr const TCHAR* CyberHealthMaterial = TEXT("MAT_ConnectionIntegrityHealth");
+constexpr const TCHAR* CyberSecureTexture = TEXT("T_ConnectionStatusSecure");
+constexpr const TCHAR* CyberSecureMaterial = TEXT("MAT_ConnectionStatusSecure");
+constexpr const TCHAR* CyberThreatTexture = TEXT("T_ConnectionStatusThreat");
+constexpr const TCHAR* CyberThreatMaterial = TEXT("MAT_ConnectionStatusThreat");
+// The game's textures as PNGs, written by export-cooked-texture.ps1 from the cooked assets.
+constexpr const TCHAR* CyberPanelSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionIntegrityWindow.png");
+constexpr const TCHAR* CyberHealthSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionIntegrityHealth.png");
+constexpr const TCHAR* CyberSecureSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionStatusSecure.png");
+constexpr const TCHAR* CyberThreatSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionStatusThreat.png");
+
 constexpr const TCHAR* VRToggle = TEXT("_OPTION_VR_Toggle");
 constexpr const TCHAR* VRSlider = TEXT("_OPTION_VR_Slider");
 constexpr const TCHAR* VRList = TEXT("_WIDGET_OptionsMenu_VRList");
@@ -64,6 +82,8 @@ struct FMenuGenStore
     class UMaterial* IconMaterial = nullptr;
     // The HUD email icon material. Nothing generated refers to it; it is kept for logging only.
     class UMaterial* HudIconMaterial = nullptr;
+    // The dummy of the game's tint collection, made by MenuGenIcon; later materials read it.
+    class UMaterialParameterCollection* TintCollection = nullptr;
 
     void Add(FName Key, UClass* Class) { Classes.Add(Key, Class); }
 
