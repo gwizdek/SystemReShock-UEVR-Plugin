@@ -420,7 +420,6 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
             // we're going to remove hotbar slot form parent because widget's layout would be messed up after
             // binding it with widget component if we didn't
             //m_hardware_widgets[i]->RemoveFromViewport();
-            API::get()->log_warn("[vr_body][initialize_hacker_hardware] exec SetWidget");
             hardware_widget_components[i]->SetWidget(hardware_widgets[i]);
 
             // set properties for collision detection
@@ -439,7 +438,6 @@ void VRBody::initialize_hacker_hardware(UWIDGET_PlayerHUD_C* neural_hud) {
             hardware_widget_components[i]->SetTintColorAndOpacity(color);
             hardware_widget_components[i]->BlendMode = EWidgetBlendMode::Masked;
 
-            API::get()->log_warn("[vr_body][initialize_hacker_hardware] reseting PANELs");
             // recreate panel slot for widget and place it at original position on canvas panel
             // don't do it for right side buttons (Turbo Boots)
             auto panel_slot = i < 3
