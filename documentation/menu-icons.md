@@ -129,8 +129,11 @@ the cells tinted and scaled as the HUD shows them.
 
 The face buttons `A`, `B`, `X`, `Y`, the menu button and the plain and pressed sticks are
 copied pixel for pixel from the Xbox atlas. The pointing hand is a hand-edited cell,
-`T_VRButtonLayout_HandPoint.png` next to the script. The triggers, grips, stick directions and
-the grip pose are drawn from signed distance fields. The docstring of the script lists the cells and
+`T_VRButtonLayout_HandPoint.png` next to the script. The triggers and grips are outlines traced
+from a reference sheet: `trace_button_shapes.py` segments a cell of the sheet, traces it with
+`potrace` (`scoop install potrace`) and writes the outline as points to `vr_button_shapes.json`,
+which the drawing script reads; LT is RT mirrored. The stick directions and the grip pose are
+drawn from signed distance fields. The docstring of the script lists the cells and
 their `ButtonIndex`. The atlas is not yet used by the game; wiring it to the tutorial texts is
 separate work.
 

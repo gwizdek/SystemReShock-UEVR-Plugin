@@ -22,8 +22,9 @@ The cells, left to right, top to bottom (ButtonIndex in brackets):
 The face buttons, the menu button and the plain and pressed sticks are copied pixel for pixel
 from the Xbox atlas, and the labels of the new cells use its letters, so the line weight and
 the glow are the game's own. The pointing hand is a hand-edited cell, read from
-T_VRButtonLayout_HandPoint.png next to this script. The rest is drawn from signed distance
-fields.
+T_VRButtonLayout_HandPoint.png next to this script. The triggers and grips are outlines
+traced from a reference sheet by trace_button_shapes.py (vr_button_shapes.json). The rest
+is drawn from signed distance fields.
 
 Needs numpy and Pillow:  python -m pip install numpy pillow
 Reads the Xbox atlas from the cooked texture in the repository's asset dump:
@@ -32,6 +33,7 @@ Run:  python draw_vr_button_icons.py [--preview]
 Writes T_VRButtonLayout.png next to this script; --preview also writes
 T_VRButtonLayout_preview.png, the cells tinted and scaled as the HUD shows them.
 """
+import json
 import os
 import sys
 
@@ -41,6 +43,9 @@ from PIL import Image
 CELL = 256
 COLS, ROWS = 4, 6
 HERE = os.path.dirname(os.path.abspath(__file__))
+# Outlines traced from a reference sheet by trace_button_shapes.py: name -> closed polygon in
+# cell coordinates, 100 pixels wide and centred.
+SHAPES = json.load(open(os.path.join(HERE, 'vr_button_shapes.json'), encoding='utf-8'))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..', '..'))
 XBOX_UEXP = os.path.join(REPO, 'dumps', 'assets', 'SystemShock', 'Content', 'Art', 'UI', 'Icons',
                          'ControllerButtons', 'T_XboxButtonLayout.uexp')
@@ -255,25 +260,20 @@ def dome(cx, cy):
 
 
 def trigger(atlas, text):
-    """A round button with the label, and a crescent under it for the trigger blade."""
-    cx, cy = 127.5, 118
-    outer, face = dome(cx, cy)
-    blade = np.maximum(sd_circle(cx, cy + 22, 48), -(outer - 6))
-    x = int(round(cx - label_width(atlas, text) / 2.0))
-    return compose(union(outer, blade), face, label(atlas, text, x, cy - 14))
+    """A plectrum, traced from the reference sheet, with the label in its upper half. Both
+    triggers use the RT outline; LT is its mirror image."""
+    points = SHAPES['RT'] if text == 'RT' else [(flip_x(x), y) for x, y in SHAPES['RT']]
+    body = sd_poly(points)
+    x = int(round(128 - label_width(atlas, text) / 2.0))
+    return compose(body, body + RIM, label(atlas, text, x, 104))
 
 
-def grip(atlas, text, right):
-    """A rounded body with a slanted far side and the label, and a crescent along its round
-    near side for the grip pad. The left grip has the pad on the left, the right grip is the
-    mirror image."""
-    fx = flip_x if right else (lambda x: x)
-    pts = [(fx(126), 104), (fx(176), 104), (fx(162), 152), (fx(126), 152)]
-    body = union(sd_circle(fx(126), 128, 36), sd_poly(pts) - 12)
-    pad = np.maximum(sd_circle(fx(110), 128, 44), -(body - 6))
-    pad = np.maximum(pad, (128 - X) if right else (X - 128))
-    x = int(round(fx(133) - label_width(atlas, text) / 2.0))
-    return compose(union(body, pad), body + RIM, label(atlas, text, x, 114))
+def grip(atlas, text):
+    """A grip pad, traced from the reference sheet: an arched top, a bulging outer side and a
+    hollow inner side, with the label in the middle."""
+    body = sd_poly(SHAPES[text])
+    x = int(round(128 - label_width(atlas, text) / 2.0))
+    return compose(body, body + RIM, label(atlas, text, x, 114))
 
 
 def arrow(direction, cx, cy):
@@ -344,7 +344,7 @@ def hand_grip():
 def build_cells(atlas):
     ls, rs = xbox_cell(atlas, 12), xbox_cell(atlas, 14)
     cells = [xbox_cell(atlas, i) for i in (0, 1, 2, 3)]
-    cells += [trigger(atlas, 'LT'), trigger(atlas, 'RT'), grip(atlas, 'LG', False), grip(atlas, 'RG', True)]
+    cells += [trigger(atlas, 'LT'), trigger(atlas, 'RT'), grip(atlas, 'LG'), grip(atlas, 'RG')]
     cells += [ls, xbox_cell(atlas, 13), rs, xbox_cell(atlas, 15)]
     cells += [stick_direction(ls, d) for d in ('up', 'down', 'left', 'right')]
     cells += [stick_direction(rs, d) for d in ('up', 'down', 'left', 'right')]
