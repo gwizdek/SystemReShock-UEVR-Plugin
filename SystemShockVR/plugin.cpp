@@ -70,6 +70,7 @@
 #include "vr_settings.hpp"
 #include "cyberspace_atmosphere_fix.hpp"
 #include "button_legend_mode.hpp"
+#include "focus_interaction_patch.hpp"
 
 #include <windows.h>
 #include <chrono>
@@ -321,6 +322,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_head_lamp();
         CyberspaceAtmosphereFix::handle(m_world);
         ButtonLegendMode::handle(m_world);
+        FocusInteractionPatch::handle();
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
             apply_vr_options_menu_settings();
@@ -676,10 +678,6 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
 
         // Focusable interaction
         if (m_game_state.get() == GAME_STATE_INTERACTABLE) {
-            auto player_controller = UGameplayStatics::GetPlayerController(m_world, 0);
-            if (PluginUtils::is_a<ACON_Hacker_C>(player_controller)) {
-                static_cast<ACON_Hacker_C*>(player_controller)->SetIsUsingGamepad(false);
-            }
             if (m_gamepad_btn_x.is_pressed()) {}
 
             m_gamepad_btn_x.mute_state(state);
@@ -872,11 +870,6 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
 
         m_gamepad_right_shoulder.mute_state(state);
         m_gamepad_left_shoulder.mute_state(state);
-
-        auto player_controller = UGameplayStatics::GetPlayerController(m_world, 0);
-        if (PluginUtils::is_a<ACON_Hacker_C>(player_controller)) {
-            static_cast<ACON_Hacker_C*>(player_controller)->SetIsUsingGamepad(false);
-        }
 
         // map jump to right thumb up
         if (state->Gamepad.sThumbRY > INPUT_DEADZONE_HI) {
@@ -1697,7 +1690,6 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         }
 
         auto ctrl = (SDK::ACON_Hacker_C*)m_pawn.get()->Controller;
-        ctrl->SetIsUsingGamepad(false);
 
         // mute controller A, Y buttons
         m_gamepad_btn_a.mute_state(state);
@@ -1737,7 +1729,6 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         if (m_gamepad_right_shoulder.is_released()) {
             send_mouse(VK_RBUTTON, true);
         }
-        ctrl->SetIsUsingGamepad(false);
 
         if (g_vr_body->WidgetInteractionRight()->HoveredWidgetComponent != nullptr) {
             cursor_pos = g_vr_body->WidgetInteractionRight()->Get2DHitLocation();

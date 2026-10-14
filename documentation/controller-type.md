@@ -71,20 +71,24 @@ same classes bind to it.
 
 ## What the plugin does in VR
 
-UEVR feeds the VR controllers to the game as an XInput gamepad, so every button press would
-set gamepad mode. The plugin undoes that: `SystemShockVR\plugin.cpp` calls
-`SetIsUsingGamepad(false)` on every input tick in `handle_xinput` (focusable interactions),
-`handle_citadel_station_xinput` (normal play) and `handle_mfd_interactions` (the MFD). The
-game therefore stays in keyboard and mouse mode in VR, as a live read of
-`ActiveControllerType` confirms (value 0). The reason is that the game plays differently in
-gamepad mode. For example, gamepad mode forces the focusable interaction with keypads and
-vending machines, where the camera locks onto the device, which does not work in VR. The
-plugin also drives the menus and the MFD with a mouse cursor and mouse clicks sent through
-`SendInput`, which fits keyboard and mouse mode.
+UEVR feeds the VR controllers to the game as an XInput gamepad, so the game switches to gamepad
+mode at the first button press and back to keyboard and mouse mode at the first mouse click
+the plugin sends through `SendInput` for the menus and the MFD. The plugin leaves that alone.
 
-Without more, a placeholder such as `{Real_Interact}` in a tutorial popup would show the
-keyboard binding, the right mouse button from the mouse atlas, instead of a gamepad icon. So
-the plugin lies to the key widgets inside texts: `SystemShockVRutton_legend_mode.cpp` hooks
+Gamepad mode has one effect on play that does not work in VR: `ShouldFocusOnInteract` on
+`INTERACT_Focusable_Base`, overridden by `INTERACT_Keypad` and `PUZZLE_Base`, returns
+`IsUsingGamepad() OR the "focus on puzzles" setting`, and a true result locks the camera onto
+a keypad, a vending machine or a puzzle. `SystemShockVR\focus_interaction_patch.cpp` makes the
+three functions always return false by patching their bytecode in memory: the first
+instruction becomes a jump to a `Result = false` that a return follows. The keypad and puzzle
+scripts end with such an epilogue; the base class has it as its "already channeling" branch. The
+functions are only called from other Blueprint functions, which a UFunction hook does not see,
+so the patch is the only way in. It is checked again every few seconds in case a class was
+loaded anew. The "focus on puzzles" option therefore has no effect in VR either.
+
+While the game is in keyboard and mouse mode, a placeholder such as `{Real_Interact}` in a
+tutorial popup would show the keyboard binding, the right mouse button from the mouse atlas,
+instead of a gamepad icon. So the plugin lies to the key widgets inside texts: `SystemShockVR\button_legend_mode.cpp` hooks
 `GetDecoratorSizeFromPayload`, `Construct` and `PreConstruct` of `WIDGET_ButtonLegend_KeyComposite`
 and `WIDGET_ButtonLegend_Key`, writes 1 into the field before each call and the old value back
 after it. Those are the calls during which the widgets read `ActiveControllerType`: the text

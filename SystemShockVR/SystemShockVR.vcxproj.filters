@@ -111,6 +111,9 @@
     <ClInclude Include="button_legend_mode.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="focus_interaction_patch.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -354,6 +357,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="button_legend_mode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="focus_interaction_patch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\Niagara_functions.cpp">
