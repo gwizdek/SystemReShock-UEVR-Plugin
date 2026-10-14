@@ -1,3 +1,5 @@
+#include <windows.h>
+
 #include <algorithm>
 #include <chrono>
 #include <intrin.h>
@@ -631,4 +633,40 @@ void PluginUtils::list_overlapping_components(const class SDK::UObject* world_co
     else {
         API::get()->log_warn("VRHackerHUD :: Wrong overlap result");
     }
+}
+
+void PluginUtils::send_mouse(unsigned short key, bool key_up) {
+    INPUT input;
+    ZeroMemory(&input, sizeof(INPUT));
+    input.type = INPUT_MOUSE;
+
+    // Handle mouse button events
+    if (key == VK_LBUTTON) {
+        input.mi.dwFlags = (key_up ? MOUSEEVENTF_LEFTUP : MOUSEEVENTF_LEFTDOWN);
+    }
+    else if (key == VK_RBUTTON) {
+        input.mi.dwFlags = (key_up ? MOUSEEVENTF_RIGHTUP : MOUSEEVENTF_RIGHTDOWN);
+    }
+    else if (key == VK_MBUTTON) {
+        input.mi.dwFlags = (key_up ? MOUSEEVENTF_MIDDLEUP : MOUSEEVENTF_MIDDLEDOWN);
+    }
+    else if (key == VK_XBUTTON1) {
+        input.mi.dwFlags = (key_up ? MOUSEEVENTF_XUP : MOUSEEVENTF_XDOWN);
+        input.mi.mouseData = XBUTTON1;
+    }
+    else if (key == VK_XBUTTON2) {
+        input.mi.dwFlags = (key_up ? MOUSEEVENTF_XUP : MOUSEEVENTF_XDOWN);
+        input.mi.mouseData = XBUTTON2;
+    }
+    // Handle mouse wheel events
+    else if (key == 0x0A) { // Wheel up
+        input.mi.dwFlags = MOUSEEVENTF_WHEEL;
+        input.mi.mouseData = WHEEL_DELTA; // Positive for wheel up
+    }
+    else if (key == 0x0B) { // Wheel down
+        input.mi.dwFlags = MOUSEEVENTF_WHEEL;
+        input.mi.mouseData = -WHEEL_DELTA; // Negative for wheel down
+    }
+
+    SendInput(1, &input, sizeof(INPUT));
 }

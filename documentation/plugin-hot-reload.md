@@ -99,11 +99,10 @@ Every function table is the real one, except:
   such a hook, so it refuses to swap a pinned plugin and logs why. "Reload
   Plugins" in the UEVR overlay removes those hooks and reloads everything.
 
-`SystemReShockVR.dll` installs UFunction hooks with `hook_ptr` once the HUD's key widget
-classes are loaded (`button_legend_mode.cpp`), so it is pinned from then on. A new build
-dropped into the watched folder is refused; use "Reload Plugins" in the UEVR overlay, which
-removes the hooks and loads the new build. Before the hooks are installed, at the title
-screen, the loader still swaps the plugin.
+`SystemReShockVR.dll` uses neither of the two hook functions, so it is never
+pinned. A hook installed through them would pin it until "Reload Plugins" in the UEVR
+overlay; note that such a hook only sees calls that enter the function through
+`ProcessEvent`, not calls from one Blueprint function to another.
 
 ## Build notes
 

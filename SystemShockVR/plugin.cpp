@@ -69,7 +69,6 @@
 #include "vr_snap_turn.hpp"
 #include "vr_settings.hpp"
 #include "cyberspace_atmosphere_fix.hpp"
-#include "button_legend_mode.hpp"
 #include "focus_interaction_patch.hpp"
 
 #include <windows.h>
@@ -321,7 +320,6 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_ads();
         handle_head_lamp();
         CyberspaceAtmosphereFix::handle(m_world);
-        ButtonLegendMode::handle(m_world);
         FocusInteractionPatch::handle();
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
@@ -871,6 +869,14 @@ void UEVRPlugin::handle_citadel_station_xinput(XINPUT_STATE* state, const UEVR_V
         m_gamepad_right_shoulder.mute_state(state);
         m_gamepad_left_shoulder.mute_state(state);
 
+        // Keep play in gamepad mode, so legends and tutorial texts show controller icons. The MFD
+        // handler clicks with the mouse, and Windows delivers those clicks a frame or two after the
+        // MFD closed; the game counts a mouse button as keyboard and mouse input and would switch.
+        auto player_controller = UGameplayStatics::GetPlayerController(m_world, 0);
+        if (PluginUtils::is_a<ACON_Hacker_C>(player_controller)) {
+            static_cast<ACON_Hacker_C*>(player_controller)->SetIsUsingGamepad(true);
+        }
+
         // map jump to right thumb up
         if (state->Gamepad.sThumbRY > INPUT_DEADZONE_HI) {
             state->Gamepad.wButtons |= XINPUT_GAMEPAD_A;
@@ -1291,7 +1297,7 @@ void UEVRPlugin::handle_game_state_change() {
                         if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
                             m_neural_hud->PANEL_Hotbar->SetVisibility(ESlateVisibility::Hidden);
                         }
-                        VRMFD::hide_mfd();
+                        VRMFD::hide_mfd(static_cast<ACON_Hacker_C*>(m_pawn.get()->Controller));
 
                     }
                     break;
@@ -1690,6 +1696,7 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         }
 
         auto ctrl = (SDK::ACON_Hacker_C*)m_pawn.get()->Controller;
+        ctrl->SetIsUsingGamepad(false);
 
         // mute controller A, Y buttons
         m_gamepad_btn_a.mute_state(state);
@@ -1702,12 +1709,12 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
 
         // scroll up
         if (state->Gamepad.sThumbRY > INPUT_DEADZONE_HI && m_mouse_wheel_debounce_timer > MOUSE_WHEEL_DEBOUNCE_TIME) {
-            send_mouse(0x0A, false);
+            PluginUtils::send_mouse(0x0A, false);
             m_mouse_wheel_debounce_timer = 0.f;
         }
         // scroll down
         if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_HI && m_mouse_wheel_debounce_timer > MOUSE_WHEEL_DEBOUNCE_TIME) {
-            send_mouse(0x0B, false);
+            PluginUtils::send_mouse(0x0B, false);
             m_mouse_wheel_debounce_timer = 0.f;
         }
         // mute sticks that move cursor
@@ -1715,21 +1722,22 @@ void UEVRPlugin::handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData*
         state->Gamepad.sThumbRY = 0;
 
         if (m_gamepad_right_trigger.is_pressed()) {
-            send_mouse(VK_LBUTTON, false);
+            PluginUtils::send_mouse(VK_LBUTTON, false);
         }
 
         if (m_gamepad_right_trigger.is_released()) {
-            send_mouse(VK_LBUTTON, true);
+            PluginUtils::send_mouse(VK_LBUTTON, true);
         }
 
         if (m_gamepad_right_shoulder.is_pressed()) {
-            send_mouse(VK_RBUTTON, false);
+            PluginUtils::send_mouse(VK_RBUTTON, false);
         }
 
         if (m_gamepad_right_shoulder.is_released()) {
-            send_mouse(VK_RBUTTON, true);
+            PluginUtils::send_mouse(VK_RBUTTON, true);
         }
 
+        ctrl->SetIsUsingGamepad(false);
         if (g_vr_body->WidgetInteractionRight()->HoveredWidgetComponent != nullptr) {
             cursor_pos = g_vr_body->WidgetInteractionRight()->Get2DHitLocation();
         }
@@ -1979,41 +1987,6 @@ void UEVRPlugin::set_ui_level_name(const std::string& name) {
 }
 
 // sends mouse inputs to OS (thanks markmon)
-void UEVRPlugin::send_mouse(WORD key, bool key_up) {
-    INPUT input;
-    ZeroMemory(&input, sizeof(INPUT));
-    input.type = INPUT_MOUSE;
-
-    // Handle mouse button events
-    if (key == VK_LBUTTON) {
-        input.mi.dwFlags = (key_up ? MOUSEEVENTF_LEFTUP : MOUSEEVENTF_LEFTDOWN);
-    }
-    else if (key == VK_RBUTTON) {
-        input.mi.dwFlags = (key_up ? MOUSEEVENTF_RIGHTUP : MOUSEEVENTF_RIGHTDOWN);
-    }
-    else if (key == VK_MBUTTON) {
-        input.mi.dwFlags = (key_up ? MOUSEEVENTF_MIDDLEUP : MOUSEEVENTF_MIDDLEDOWN);
-    }
-    else if (key == VK_XBUTTON1) {
-        input.mi.dwFlags = (key_up ? MOUSEEVENTF_XUP : MOUSEEVENTF_XDOWN);
-        input.mi.mouseData = XBUTTON1;
-    }
-    else if (key == VK_XBUTTON2) {
-        input.mi.dwFlags = (key_up ? MOUSEEVENTF_XUP : MOUSEEVENTF_XDOWN);
-        input.mi.mouseData = XBUTTON2;
-    }
-    // Handle mouse wheel events
-    else if (key == 0x0A) { // Wheel up
-        input.mi.dwFlags = MOUSEEVENTF_WHEEL;
-        input.mi.mouseData = WHEEL_DELTA; // Positive for wheel up
-    }
-    else if (key == 0x0B) { // Wheel down
-        input.mi.dwFlags = MOUSEEVENTF_WHEEL;
-        input.mi.mouseData = -WHEEL_DELTA; // Negative for wheel down
-    }
-
-    SendInput(1, &input, sizeof(INPUT));
-}
 
 
 bool UEVRPlugin::is_valid_vr_body_hacker_implant_pawn() {

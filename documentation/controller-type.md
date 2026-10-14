@@ -73,7 +73,13 @@ same classes bind to it.
 
 UEVR feeds the VR controllers to the game as an XInput gamepad, so the game switches to gamepad
 mode at the first button press and back to keyboard and mouse mode at the first mouse click
-the plugin sends through `SendInput` for the menus and the MFD. The plugin leaves that alone.
+the plugin sends through `SendInput` for the MFD. The plugin steers this: while the MFD is
+open, `handle_mfd_interactions` calls `SetIsUsingGamepad(false)` every input tick, because the
+MFD is driven with a mouse cursor. During play, `handle_citadel_station_xinput` calls
+`SetIsUsingGamepad(true)` every input tick, so legends and tutorial texts show controller
+icons. The call is needed every tick and not only once when the MFD closes: `hide_mfd`
+releases the mouse buttons the MFD handler pressed, and Windows delivers those releases a
+frame or two later, which would switch the game back to keyboard mode.
 
 Gamepad mode has one effect on play that does not work in VR: `ShouldFocusOnInteract` on
 `INTERACT_Focusable_Base`, overridden by `INTERACT_Keypad` and `PUZZLE_Base`, returns
@@ -85,23 +91,3 @@ scripts end with such an epilogue; the base class has it as its "already channel
 functions are only called from other Blueprint functions, which a UFunction hook does not see,
 so the patch is the only way in. It is checked again every few seconds in case a class was
 loaded anew. The "focus on puzzles" option therefore has no effect in VR either.
-
-While the game is in keyboard and mouse mode, a placeholder such as `{Real_Interact}` in a
-tutorial popup would show the keyboard binding, the right mouse button from the mouse atlas,
-instead of a gamepad icon. So the plugin lies to the key widgets inside texts: `SystemShockVR\button_legend_mode.cpp` hooks
-`GetDecoratorSizeFromPayload`, `Construct` and `PreConstruct` of `WIDGET_ButtonLegend_KeyComposite`
-and `WIDGET_ButtonLegend_Key`, writes 1 into the field before each call and the old value back
-after it. Those are the calls during which the widgets read `ActiveControllerType`: the text
-mesh calls the first, and `Construct` runs the widget's initialize function through an
-internal Blueprint call. Each call runs on the game thread and resolves the key at once, so
-nothing else sees the gamepad value and no change event is broadcast. Only widgets created by
-a `TextMeshWidget` are affected; they have the game instance as outer, while menu legends keep
-their key widgets in a widget tree. A rebuild of the text creates the widgets anew and runs
-the hooked functions again, which is why the hook is needed instead of setting the mode on a
-widget once.
-
-UEVR's UFunction hook replaces the function's native pointer, which the engine only uses when
-it enters the function through `ProcessEvent`: native code, delegates, input events, interface
-calls from native code. A Blueprint function calling another Blueprint function runs the callee
-directly, so a hook on the callee never fires. Hook the event or function that native code
-calls, not the helper it calls in turn.

@@ -184,7 +184,6 @@
     <ClInclude Include="vr_options_sync.hpp" />
     <ClInclude Include="vr_snap_turn.hpp" />
     <ClInclude Include="cyberspace_atmosphere_fix.hpp" />
-    <ClInclude Include="button_legend_mode.hpp" />
     <ClInclude Include="focus_interaction_patch.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -265,7 +264,6 @@
     <ClCompile Include="vr_options_sync.cpp" />
     <ClCompile Include="vr_snap_turn.cpp" />
     <ClCompile Include="cyberspace_atmosphere_fix.cpp" />
-    <ClCompile Include="button_legend_mode.cpp" />
     <ClCompile Include="focus_interaction_patch.cpp" />
     <ClCompile Include="build_version.cpp" />
   </ItemGroup>

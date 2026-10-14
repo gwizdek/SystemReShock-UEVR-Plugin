@@ -211,7 +211,6 @@ public:
     void handle_lean();
     void handle_cyberspace_look_pivot(const UEVR_VRData* vr);
     void cleanup_pointers();
-    void send_mouse(WORD key, bool key_up);
     bool is_valid_vr_body_hacker_implant_pawn();
     bool is_valid_vr_body_hacker_simple_pawn();
     void update_trailing_rotation(float delta);

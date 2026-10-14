@@ -78,6 +78,10 @@ public:
     static void cycle_native_stereo_fix();
     // Resolves every BridgeSDK class, property and function up front (see BridgeSDK.hpp).
     static void warmup_bridge();
+    // Sends one mouse event to Windows with SendInput: a button down or up for VK_LBUTTON,
+    // VK_RBUTTON, VK_MBUTTON, VK_XBUTTON1 and VK_XBUTTON2, or a wheel step for 0x0A (up) and
+    // 0x0B (down). Windows queues the event, so the game sees it on a later frame.
+    static void send_mouse(unsigned short key, bool key_up);
     static void list_overlapping_components(const class SDK::UObject* world_context_object, const struct SDK::FVector& sphere_pos, float sphere_radius);
 
     PluginUtils() = delete;

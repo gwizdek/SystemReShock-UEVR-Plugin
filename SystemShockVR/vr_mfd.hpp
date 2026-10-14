@@ -9,7 +9,7 @@ public:
 
     static void align_mfd_panel(SDK::UWIDGET_PlayerHUD_C* neural_hud);
     static void show_mfd();
-    static void hide_mfd();
+    static void hide_mfd(SDK::ACON_Hacker_C* ctrl);
     static void set_crosshair_cursor_scale(SDK::UWIDGET_PlayerHUD_C* neural_hud, float* scale);
     static bool calculate_uevr_ui_params(const UEVR_VRData* vr, SDK::UWorld* world, char* ui_distance, char* ui_size);
 

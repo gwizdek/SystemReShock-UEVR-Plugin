@@ -1,8 +1,11 @@
+#include <windows.h>
+
 #include "uevr/API.hpp"
 
 #include "SDK/SystemReShock_classes.hpp"
 #include "SDK/PAWN_Hacker_Implant_classes.hpp"
 #include "SDK/PAWN_Hacker_Simple_classes.hpp"
+#include "SDK/CON_Hacker_classes.hpp"
 
 #include "SDK/WIDGET_SimpleHUD_classes.hpp"
 #include "SDK/WIDGET_CrosshairCursor_classes.hpp"
@@ -71,7 +74,7 @@ void VRMFD::show_mfd() {
     }
 }
 
-void VRMFD::hide_mfd() {
+void VRMFD::hide_mfd(SDK::ACON_Hacker_C* ctrl) {
     try {
         if (g_vr_body == nullptr) {
             API::get()->log_error("[plugin][hide_mfd] Invalid vr_body");
@@ -95,6 +98,16 @@ void VRMFD::hide_mfd() {
         }
 
         g_vr_body->HackerHardware()->SetWidgetVisibility(true);
+
+        // The MFD handler presses mouse buttons for the trigger and the right shoulder. When
+        // the MFD closes while one is held, the handler no longer runs and its release is never
+        // sent: Windows then keeps the button down, the pointer stays captured and hidden, and
+        // the late click puts the game back into keyboard and mouse mode. Release both here.
+        PluginUtils::send_mouse(VK_LBUTTON, true);
+        PluginUtils::send_mouse(VK_RBUTTON, true);
+        if (ctrl != nullptr) {
+            ctrl->SetIsUsingGamepad(true);
+        }
     }
     catch (...) {
         API::get()->log_error("[plugin][hide_mfd] Exception");
