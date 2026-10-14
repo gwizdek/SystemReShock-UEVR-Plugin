@@ -21,8 +21,8 @@ The cells, left to right, top to bottom (ButtonIndex in brackets):
 
 The face buttons, the menu button and the plain and pressed sticks are copied pixel for pixel
 from the Xbox atlas, and the labels of the new cells use its letters, so the line weight and
-the glow are the game's own. The pointing hand is a hand-edited cell, read from
-T_VRButtonLayout_HandPoint.png next to this script. The triggers and grips are outlines
+the glow are the game's own. The two hand poses are hand-edited cells, read from
+T_VRButtonLayout_HandPoint.png and T_VRButtonLayout_HandGrip.png next to this script. The triggers and grips are outlines
 traced from a reference sheet by trace_button_shapes.py (vr_button_shapes.json). The rest
 is drawn from signed distance fields.
 
@@ -316,27 +316,13 @@ def rebuild_glow(cell):
     return to_rgba(f[..., 0], f[..., 1], b, np.maximum(a_solid, g))
 
 
-def hand_point():
-    """The pointing pose: a hand-edited cell, read from T_VRButtonLayout_HandPoint.png next
-    to this script (256 x 256 RGBA with the channels of the atlas). Only its rim and face
-    pixels are used; the glow is rebuilt."""
-    cell = np.array(Image.open(os.path.join(HERE, 'T_VRButtonLayout_HandPoint.png')).convert('RGBA'))
+def hand_cell(file_name):
+    """A hand-edited cell read from a PNG next to this script (256 x 256 RGBA with the
+    channels of the atlas). Only its rim and face pixels are used; the glow is rebuilt."""
+    cell = np.array(Image.open(os.path.join(HERE, file_name)).convert('RGBA'))
     if cell.shape != (CELL, CELL, 4):
-        raise SystemExit('T_VRButtonLayout_HandPoint.png must be %d x %d RGBA' % (CELL, CELL))
+        raise SystemExit('%s must be %d x %d RGBA' % (file_name, CELL, CELL))
     return rebuild_glow(cell)
-
-
-def hand_grip():
-    """The back of a closed hand: a low wave of four knuckles on top, short seams between the
-    folded fingers and the thumb across the bottom: the grip pose."""
-    palm = sd_rbox(128, 150, 44, 34, 18)
-    knuckles = [sd_circle(x, 126, 14) for x in (96, 117, 138, 159)]
-    thumb = sd_capsule(90, 168, 152, 170, 12)
-    solid = union(palm, thumb, *knuckles)
-    fill = union(palm + RIM, thumb + RIM, *[k + RIM for k in knuckles])
-    seams = union(sd_capsule(106.5, 124, 106.5, 148, 2.5), sd_capsule(127.5, 122, 127.5, 148, 2.5),
-                  sd_capsule(148.5, 124, 148.5, 148, 2.5), sd_capsule(92, 156, 156, 158, 2.5))
-    return compose(solid, cut(fill, seams))
 
 
 # --- the atlas ---------------------------------------------------------------------------------
@@ -348,7 +334,8 @@ def build_cells(atlas):
     cells += [ls, xbox_cell(atlas, 13), rs, xbox_cell(atlas, 15)]
     cells += [stick_direction(ls, d) for d in ('up', 'down', 'left', 'right')]
     cells += [stick_direction(rs, d) for d in ('up', 'down', 'left', 'right')]
-    cells += [xbox_cell(atlas, 5), hand_point(), hand_grip(), np.zeros((CELL, CELL, 4), np.uint8)]
+    cells += [xbox_cell(atlas, 5), hand_cell('T_VRButtonLayout_HandPoint.png'),
+              hand_cell('T_VRButtonLayout_HandGrip.png'), np.zeros((CELL, CELL, 4), np.uint8)]
     return cells
 
 
