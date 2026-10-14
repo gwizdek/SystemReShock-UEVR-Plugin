@@ -82,9 +82,22 @@ vending machines, where the camera locks onto the device, which does not work in
 plugin also drives the menus and the MFD with a mouse cursor and mouse clicks sent through
 `SendInput`, which fits keyboard and mouse mode.
 
-The visible result in the tutorial popups: a placeholder such as `{Real_Interact}` shows the
-keyboard binding, the right mouse button from the mouse atlas, instead of a gamepad icon.
-Showing the VR controller icons from `T_VRButtonLayout.png` in those texts needs gamepad mode
-for the key widgets, or a plugin hook that draws the gamepad atlas in keyboard mode too.
-Switching the whole game to gamepad mode would also change how the menus take input, so the
-two must be weighed together.
+Without more, a placeholder such as `{Real_Interact}` in a tutorial popup would show the
+keyboard binding, the right mouse button from the mouse atlas, instead of a gamepad icon. So
+the plugin lies to the key widgets inside texts: `SystemShockVRutton_legend_mode.cpp` hooks
+`GetDecoratorSizeFromPayload`, `Construct` and `PreConstruct` of `WIDGET_ButtonLegend_KeyComposite`
+and `WIDGET_ButtonLegend_Key`, writes 1 into the field before each call and the old value back
+after it. Those are the calls during which the widgets read `ActiveControllerType`: the text
+mesh calls the first, and `Construct` runs the widget's initialize function through an
+internal Blueprint call. Each call runs on the game thread and resolves the key at once, so
+nothing else sees the gamepad value and no change event is broadcast. Only widgets created by
+a `TextMeshWidget` are affected; they have the game instance as outer, while menu legends keep
+their key widgets in a widget tree. A rebuild of the text creates the widgets anew and runs
+the hooked functions again, which is why the hook is needed instead of setting the mode on a
+widget once.
+
+UEVR's UFunction hook replaces the function's native pointer, which the engine only uses when
+it enters the function through `ProcessEvent`: native code, delegates, input events, interface
+calls from native code. A Blueprint function calling another Blueprint function runs the callee
+directly, so a hook on the callee never fires. Hook the event or function that native code
+calls, not the helper it calls in turn.
