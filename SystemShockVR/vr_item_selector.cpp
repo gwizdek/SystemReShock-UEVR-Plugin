@@ -19,6 +19,10 @@ void VRItemSelector::initialize(SDK::UWIDGET_PlayerHUD_C* neural_hud) {
             return;
         }
         
+        // The remembered widget components belonged to the previous VR body, which was destroyed
+        // on the level change. Dereferencing them in set_current_quick_slot reads freed memory.
+        m_highlighted_widget_component.reset(nullptr);
+
         // get hotbar slot array defined in BP
         auto hotbar_slots = g_vr_body->ItemSelectorRight()->HotbarSlots();
 
@@ -96,6 +100,8 @@ void VRItemSelector::activate_current_quick_slot() {
             );
         }
     }
+    // The next press starts clean; unselect_all_hotbar_slots removes the highlight on press anyway.
+    m_highlighted_widget_component.reset(nullptr);
 }
 
 void VRItemSelector::set_visibility(bool visible) {
