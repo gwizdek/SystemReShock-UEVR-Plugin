@@ -107,6 +107,33 @@ The generator also replaces HUD materials that UEVR drops in the headset: the em
 the cyberspace connection integrity widget. `documentation\hud-materials-in-vr.md` explains
 the problem and those replacements. They are built with the same helpers as the icon here and
 read the same tint collection dummy.
+## VR controller button atlas
+
+`tools\UEVRBridgeGen\Resources\MenuGen\draw_vr_button_icons.py` draws `T_VRButtonLayout.png`
+next to it: an atlas of VR controller buttons in the style of the game's gamepad atlases
+(`Art\UI\Icons\ControllerButtons\T_XboxButtonLayout` and the others). The game's tutorial
+popups and button legends draw their button icons from such an atlas through
+`MAT_PlatformButton`, which cuts one cell out of it with the parameters `ButtonIndex`,
+`ColCount` and `RowCount`. The script needs `numpy` and `Pillow` and reads the Xbox atlas from
+the asset dump under `dumps\`. With `--preview` it also writes `T_VRButtonLayout_preview.png`,
+the cells tinted and scaled as the HUD shows them.
+
+| Part | What the game's atlases do, and what the script copies |
+|---|---|
+| Grid | 4 x 4 cells of 256 x 256 pixels. The VR atlas has 4 x 6 cells, so its material instance must set `RowCount` to 6. |
+| R | The rim of the button, its label and arrows. Drawn in the highlight tint. The rim is about 6.5 pixels wide at the sides and thicker at the bottom of a round button. |
+| G | The face of the button. Drawn in the background tint. |
+| B and A | A soft glow around the shape, about 37 pixels wide. B is 255 where the glow is, A is its strength. |
+| A | 255 inside the shape. |
+| Labels | 28 pixel letters. The script cuts `L`, `T` and `R` out of the Xbox atlas and draws a matching `G`. |
+
+The face buttons `A`, `B`, `X`, `Y`, the menu button and the plain and pressed sticks are
+copied pixel for pixel from the Xbox atlas. The pointing hand is a hand-edited cell,
+`T_VRButtonLayout_HandPoint.png` next to the script. The triggers, grips, stick directions and
+the grip pose are drawn from signed distance fields. The docstring of the script lists the cells and
+their `ButtonIndex`. The atlas is not yet used by the game; wiring it to the tutorial texts is
+separate work.
+
 ## The tint collection
 
 The game sets the player's theme colours in `MPC_UserTintParameters` at run time. It has 19 colour
