@@ -105,6 +105,9 @@
     <ClInclude Include="vr_snap_turn.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="cyberspace_atmosphere_fix.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -344,7 +347,13 @@
     <ClCompile Include="vr_snap_turn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cyberspace_atmosphere_fix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="SDK\Niagara_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\GI_SinglePlayer_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\ANIMBP_Magnum_functions.cpp">

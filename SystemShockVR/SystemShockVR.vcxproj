@@ -183,6 +183,7 @@
     <ClInclude Include="vr_setting_store.hpp" />
     <ClInclude Include="vr_options_sync.hpp" />
     <ClInclude Include="vr_snap_turn.hpp" />
+    <ClInclude Include="cyberspace_atmosphere_fix.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="vr_item_selector.hpp" />
@@ -221,6 +222,7 @@
     <ClCompile Include="SDK\CON_Hacker_functions.cpp" />
     <ClCompile Include="SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="SDK\Engine_functions.cpp" />
+    <ClCompile Include="SDK\GI_SinglePlayer_functions.cpp" />
     <ClCompile Include="SDK\HeadMountedDisplay_functions.cpp" />
     <ClCompile Include="SDK\INTERACT_Base_functions.cpp" />
     <ClCompile Include="SDK\INTERACT_Button_Base_functions.cpp" />
@@ -260,6 +262,7 @@
     <ClCompile Include="vr_setting_store.cpp" />
     <ClCompile Include="vr_options_sync.cpp" />
     <ClCompile Include="vr_snap_turn.cpp" />
+    <ClCompile Include="cyberspace_atmosphere_fix.cpp" />
     <ClCompile Include="build_version.cpp" />
   </ItemGroup>
   <ItemGroup>

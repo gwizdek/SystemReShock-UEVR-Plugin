@@ -68,6 +68,7 @@
 #include "vr_options_menu.hpp"
 #include "vr_snap_turn.hpp"
 #include "vr_settings.hpp"
+#include "cyberspace_atmosphere_fix.hpp"
 
 #include <windows.h>
 #include <chrono>
@@ -317,6 +318,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         update_trailing_rotation(delta);
         handle_ads();
         handle_head_lamp();
+        CyberspaceAtmosphereFix::handle(m_world);
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
             apply_vr_options_menu_settings();
