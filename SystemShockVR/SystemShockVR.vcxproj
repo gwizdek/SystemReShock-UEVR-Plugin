@@ -185,6 +185,9 @@
     <ClInclude Include="vr_snap_turn.hpp" />
     <ClInclude Include="cyberspace_atmosphere_fix.hpp" />
     <ClInclude Include="focus_interaction_patch.hpp" />
+    <ClInclude Include="vr_input_actions.hpp" />
+    <ClInclude Include="vr_button_atlas.hpp" />
+    <ClInclude Include="tutorial_messages.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="vr_item_selector.hpp" />
@@ -252,6 +255,7 @@
     <ClCompile Include="SDK\WIDGET_PlayerHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_SimpleHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_MainMenu_InGame_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_ButtonLegend_Key_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_TargetID_Display_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
     <ClCompile Include="vr_avatar.cpp" />
@@ -265,6 +269,9 @@
     <ClCompile Include="vr_snap_turn.cpp" />
     <ClCompile Include="cyberspace_atmosphere_fix.cpp" />
     <ClCompile Include="focus_interaction_patch.cpp" />
+    <ClCompile Include="vr_input_actions.cpp" />
+    <ClCompile Include="vr_button_atlas.cpp" />
+    <ClCompile Include="tutorial_messages.cpp" />
     <ClCompile Include="build_version.cpp" />
   </ItemGroup>
   <ItemGroup>

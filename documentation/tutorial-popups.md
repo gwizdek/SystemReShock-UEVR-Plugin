@@ -2,8 +2,8 @@
 
 The game shows short help texts in a framed popup on the HUD, for example
 `Press [A] to push the button.` with the button drawn as an icon. This page explains where
-the texts come from, how the button icons get into them, and which files of the mod hold the
-VR versions. The VR versions are not applied in the game yet.
+the texts come from, how the button icons get into them, and how the mod replaces both
+with VR versions.
 
 ## Where the texts come from
 
@@ -19,9 +19,18 @@ text of the highest priority tutorial in a `TextMeshWidget` and draws a line to 
 tutorial belongs to. Tutorial volumes (`VOLUME_Tutorial`) and timed tutorials name the rows
 they show.
 
-`profile\tutorial_messages.ini` holds every row as `RowName = text`. It was written by
-`scripts\export-tutorial-texts.py`, which reads the cooked table from `dumps\`. The texts in
-it are the game's own until someone edits them. Edit the text after `=`; keep the row name.
+`profile\tutorial_messages.ini` holds every row as `RowName = text`. It was first written by
+`scripts\export-tutorial-texts.py`, which reads the cooked table from `dumps\`. The texts were
+then rewritten for the VR controls and gestures in `README.md`: grabbing instead of the
+interact button, the wrist gesture for the Neural Interface, the item selector on the right
+thumb, and so on. Edit the text after `=`; keep the row name.
+
+A VR button that the game reads through its own action keeps the game's placeholder, for
+example `{Real_Interact}` for B or `{Real_Aim}` for the left trigger; the icon follows a
+rebind in the options menu, as it should. A VR button that the plugin reads itself from the
+XInput state (both grips, the right thumb for the item selector, the right trigger for the
+laser pointer) uses one of the fixed placeholders below. Hand poses have no placeholder yet;
+the texts describe them in words.
 
 ## Button placeholders
 
@@ -35,11 +44,41 @@ keyboard and mouse (0), gamepad (1) and a third scheme the game calls JCMS (2).
 | `{Real_Interact}` | One action name. The widget uses it for the keyboard and adds the prefixes itself for the gamepad (`Gamepad_Real_Interact`) and JCMS (`JCMS_Real_Interact`). This is the usual form. |
 | `{Real_Reload,Gamepad_Real_Interact,JCMS_Real_Reload}` | Three action names, one per controller type in the order keyboard, gamepad, JCMS. Used when the gamepad action differs. |
 | `{Locked_ZoomAxis,Gamepad_Real_HotbarCyclePrevious:Gamepad_Real_HotbarCycleNext,...}` | A token with `:` names two keys for one controller type. The widget shows both icons with a separator. |
+| `{VR_LeftGrip}`, `{VR_RightGrip}`, `{VR_RightThumb}`, `{VR_RightTrigger}` | Fixed VR buttons registered by the plugin, see below. Same single-name form; the widget adds the prefixes. |
 
 The action names used by the game's texts: `Real_Interact`, `Real_PrimaryAttack`,
 `Real_ToggleMFD`, `Real_Crouch`, `Real_Reload`, `Real_ModeNext`, `Real_AcquireTarget`,
 `Real_Sprint`, `Real_Jump`, `Real_HotbarCyclePrevious`, `Real_HotbarCycleNext` and the axis
-`Locked_ZoomAxis`.
+`Locked_ZoomAxis`. The VR texts in the ini also use `Real_Aim`.
+
+### Fixed VR placeholders
+
+`FUNCLIB_GameSettings::GetBoundKeyForCurrentUser` resolves a placeholder name in two steps.
+It strips the `Gamepad_` or `JCMS_` prefix and checks whether the rest starts with `Real_`,
+`Cyber_` or `Minigame_`. If so, it reads the key from the player's bindings in the settings
+save, which the options menu edits. Any other name goes to the engine's `UInputSettings`
+action mappings, indexed by rank (primary or secondary), and those the player cannot change.
+
+`SystemShockVR\vr_input_actions.cpp` uses this. On the first engine tick it adds one action
+mapping per VR button the plugin handles itself, under the plain name and under the
+`Gamepad_` and `JCMS_` prefixes that the composite widget adds for the other controller
+types. The key is the gamepad key UEVR sends for that button:
+
+| Placeholder | Key | Used for |
+|---|---|---|
+| `{VR_LeftGrip}` | `Gamepad_LeftShoulder` | grab, pointing pose, Access Card, flashlight gesture |
+| `{VR_RightGrip}` | `Gamepad_RightShoulder` | grab, MFD gesture, holster, MFD context menu |
+| `{VR_RightThumb}` | `Gamepad_RightThumbstick` | item selector |
+| `{VR_RightTrigger}` | `Gamepad_RightTrigger` | laser pointer with an empty hand, MFD select |
+
+The mappings are lookup entries only; no input event is bound to them. A mapping is skipped
+when its name exists already, so the hot loader can swap the plugin without adding duplicates.
+
+`WIDGET_ButtonLegend_Key::UpdateLegend` picks the icon style by the key's own type
+(`Key_IsKeyboardKey`, `Key_IsMouseButton`, `Key_IsGamepadKey`), not by the controller mode.
+So these placeholders draw a gamepad icon even while the game is in keyboard and mouse mode,
+which is the case while the MFD is open. The icon is still a cell of the Xbox atlas until the
+VR atlas is wired in, so a grip shows as a shoulder button for now.
 
 ## How a key becomes an icon
 
@@ -50,15 +89,37 @@ it puts `MAT_PlatformButton` on its mesh with the platform's atlas as `ButtonTex
 4 x 4 grid of 256 pixel cells; the material cuts one cell out with `ButtonIndex`, `ColCount`
 and `RowCount`. The HUD draws a gamepad icon 38 x 38 pixels.
 
-The VR atlas `T_VRButtonLayout.png` follows the same layout and channels; `menu-icons.md`
-describes it and `tools\UEVRBridgeGen\Resources\MenuGen\draw_vr_button_icons.py` lists its
-cells. It is not loaded by the game yet. Showing VR icons in the popups needs two more
-things: a texture and material instance for the atlas in the Core pak, and a way to pick a
-cell for a VR control where the key widget picks a gamepad cell today.
+In VR the widget draws from the mod's atlas instead. `T_VRButtonLayout` in the Core pak is a
+4 x 7 atlas with the same channels; its cells 0 to 15 follow the game's index function, so a
+key picks the same cell as in the Xbox atlas, and that cell shows the VR controller button
+that produces the key. `MI_VRButtonLayout`, an instance of `MAT_PlatformButton` in the Core
+pak, sets the atlas and `RowCount` to 7. The widget keeps the material and the atlas in two
+variables, `PlatformButtonMaterial` and `GamepadLayoutAtlas`, and loads the game's assets
+into them only while they are unset. `SystemShockVR\vr_button_atlas.cpp` sets both on the
+widget's class default object, so every legend key made afterwards starts with the VR
+assets, and once on every legend key that exists already, including the templates inside
+loaded widget trees. Live keys redraw through `UpdateMapping`. The plugin checks every few
+seconds that the default object still holds the assets. `menu-icons.md` describes the atlas
+and the generator assets; `tools\UEVRBridgeGen\Resources\MenuGen\draw_vr_button_icons.py`
+lists the cells.
 
 ## Changing the texts
 
-The texts shown in VR come from `profile\tutorial_messages.ini` once the plugin applies the
-file; that part is not written yet. The plan is to replace the `DisplayMessage` of each row
-in the loaded table with the text from the ini, so every reader of the table, including
-`GetTutorialMessage`, sees the VR text. Rows missing from the ini keep the game's text.
+`SystemShockVR\tutorial_messages.cpp` applies `tutorial_messages.ini` from the UEVR profile
+folder. On the first tick it reads the `[tutorials]` section, loads `DT_Tutorials`, roots
+the table so every later reader gets that one object, and writes each ini text into the
+`DisplayMessage` of the row with that name. The new text is made with the engine's string
+to text conversion, so the popup widget finds the button placeholders in it as in the
+game's own texts. Rows missing from the ini keep the game's text; a missing file leaves
+every text as it is. The table is checked every few seconds and patched again when it is
+a new object, which also covers a plugin swap by the hot loader. The log line
+`[tutorial_messages][apply]` says how many rows were replaced. Row names are compared in
+lower case, because the ini reader lower-cases keys. An ini value is one line, so a line
+break in a text is written as the two characters `\n`; the plugin turns it into a newline.
+
+The ini's `[popup]` section sizes the popup on the HUD: `width` and `height` of the text box
+and `font_size`, all in screen units, applied when the plugin sets up the HUD. The game's box is 500 x 75 and the frame mesh
+around it 576 x 160; the plugin keeps that difference, so the frame follows the box. Word
+wrap is on, so a wider box gives longer lines and a taller box more rows. A missing section or
+a value of 0 keeps the game's value. The game's font size is 20 with 5 units of extra line
+spacing, so a row takes about 25 units at that size.

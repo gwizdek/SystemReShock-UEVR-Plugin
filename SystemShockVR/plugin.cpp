@@ -70,6 +70,9 @@
 #include "vr_settings.hpp"
 #include "cyberspace_atmosphere_fix.hpp"
 #include "focus_interaction_patch.hpp"
+#include "vr_input_actions.hpp"
+#include "vr_button_atlas.hpp"
+#include "tutorial_messages.hpp"
 
 #include <windows.h>
 #include <chrono>
@@ -321,6 +324,9 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_head_lamp();
         CyberspaceAtmosphereFix::handle(m_world);
         FocusInteractionPatch::handle();
+        VRInputActions::handle();
+        VRButtonAtlas::handle();
+        TutorialMessages::handle();
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
             apply_vr_options_menu_settings();
@@ -1512,6 +1518,7 @@ void UEVRPlugin::handle_level_change() {
                     VRBody::initialize_hacker_hardware(m_neural_hud);
                     VRBody::initialize_active_hazard(m_neural_hud);
                     VRBody::initialize_unread_media_icon(m_neural_hud);
+                    TutorialMessages::apply_popup_size(m_neural_hud);
                     VRBody::initialize_ads();
                     VRBody::initialize_hand_item_collisions();
                     VRItemSelector::initialize(m_neural_hud);

@@ -111,6 +111,15 @@
     <ClInclude Include="focus_interaction_patch.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="vr_input_actions.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vr_button_atlas.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tutorial_messages.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -236,6 +245,9 @@
     <ClCompile Include="SDK\Engine_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\WIDGET_ButtonLegend_Key_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
     <ClCompile Include="SDK\HeadMountedDisplay_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
@@ -354,6 +366,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="focus_interaction_patch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_input_actions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_button_atlas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tutorial_messages.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\Niagara_functions.cpp">
