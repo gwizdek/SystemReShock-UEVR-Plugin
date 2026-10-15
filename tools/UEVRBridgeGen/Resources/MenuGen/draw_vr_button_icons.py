@@ -2,22 +2,29 @@
 gamepad atlases (T_XboxButtonLayout and the others in Art/UI/Icons/ControllerButtons).
 
 The game's atlases are 4 x 4 cells of 256 x 256 pixels, read by MAT_PlatformButton with the
-parameters ButtonIndex, ColCount and RowCount. This atlas has 4 columns and 6 rows, so a
-material instance must set RowCount to 6. The channels mean the same as in the game's atlases:
+parameters ButtonIndex, ColCount and RowCount. This atlas has 4 columns and 7 rows, so a
+material instance must set RowCount to 7. The channels mean the same as in the game's atlases:
 
     R      the rim of the button, its label and arrows (drawn in the highlight tint)
     G      the face of the button (drawn in the background tint)
     B + A  a soft glow around the shape; B is 255 where the glow is, A is its strength
     A      255 inside the shape
 
-The cells, left to right, top to bottom (ButtonIndex in brackets):
+The cells, left to right, top to bottom (ButtonIndex in brackets). Cells 0 to 15 are the
+indices FUNCLIB_UserInterface::GetGamepadButtonAtlasIndex computes for the gamepad key the
+game receives, the same as in the Xbox atlas, so each cell shows the VR controller button
+that produces that key. UEVR sends the left controller's X as gamepad B and the right
+controller's B as gamepad X (Touch and Index layouts), so cell 1 is labelled X and cell 2 is
+labelled B. The Menu button of a VR controller is both View (held) and Menu, so cells 4 and 5
+show the same glyph. Cells 16 and up have no gamepad key; they are kept for later use.
 
-    [0] A         [1] B          [2] X          [3] Y
-    [4] LT        [5] RT         [6] LG         [7] RG          (triggers, grips)
-    [8] LS        [9] LS press   [10] RS        [11] RS press
-    [12] LS up    [13] LS down   [14] LS left   [15] LS right
-    [16] RS up    [17] RS down   [18] RS left   [19] RS right
-    [20] Menu     [21] Point     [22] Grip      [23] empty      (menu button, hand poses)
+    [0] A         [1] X          [2] B          [3] Y
+    [4] Menu      [5] Menu       [6] D-pad      [7] empty       (View, Menu, D-pad)
+    [8] LT        [9] RT         [10] LG        [11] RG         (triggers, grips)
+    [12] LS       [13] LS press  [14] RS        [15] RS press
+    [16] LS up    [17] LS down   [18] LS left   [19] LS right
+    [20] RS up    [21] RS down   [22] RS left   [23] RS right
+    [24] Point    [25] Grip      [26] empty     [27] empty      (hand poses)
 
 The face buttons, the menu button and the plain and pressed sticks are copied pixel for pixel
 from the Xbox atlas, and the labels of the new cells use its letters, so the line weight and
@@ -41,7 +48,7 @@ import numpy as np
 from PIL import Image
 
 CELL = 256
-COLS, ROWS = 4, 6
+COLS, ROWS = 4, 7
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Outlines traced from a reference sheet by trace_button_shapes.py: name -> closed polygon in
 # cell coordinates, 100 pixels wide and centred.
@@ -329,13 +336,18 @@ def hand_cell(file_name):
 
 def build_cells(atlas):
     ls, rs = xbox_cell(atlas, 12), xbox_cell(atlas, 14)
-    cells = [xbox_cell(atlas, i) for i in (0, 1, 2, 3)]
+    empty = np.zeros((CELL, CELL, 4), np.uint8)
+    # Xbox cells A, X, B, Y: the gamepad B key comes from the VR controller's X button and the
+    # gamepad X key from its B button (see the module docstring).
+    cells = [xbox_cell(atlas, i) for i in (0, 2, 1, 3)]
+    # View and Menu both show the Xbox Menu glyph; the D-pad cell is the Xbox one.
+    cells += [xbox_cell(atlas, 5), xbox_cell(atlas, 5), xbox_cell(atlas, 6), empty]
     cells += [trigger(atlas, 'LT'), trigger(atlas, 'RT'), grip(atlas, 'LG'), grip(atlas, 'RG')]
     cells += [ls, xbox_cell(atlas, 13), rs, xbox_cell(atlas, 15)]
     cells += [stick_direction(ls, d) for d in ('up', 'down', 'left', 'right')]
     cells += [stick_direction(rs, d) for d in ('up', 'down', 'left', 'right')]
-    cells += [xbox_cell(atlas, 5), hand_cell('T_VRButtonLayout_HandPoint.png'),
-              hand_cell('T_VRButtonLayout_HandGrip.png'), np.zeros((CELL, CELL, 4), np.uint8)]
+    cells += [hand_cell('T_VRButtonLayout_HandPoint.png'), hand_cell('T_VRButtonLayout_HandGrip.png'),
+              empty, empty]
     return cells
 
 
@@ -376,8 +388,8 @@ def preview_row(cells, size):
 def write_preview(cells, atlas, path):
     rows = []
     for size in (38, 76, 128):
-        rows.append(preview_row(cells[:12], size))
-        rows.append(preview_row(cells[12:], size))
+        for start in range(0, len(cells), 12):
+            rows.append(preview_row(cells[start:start + 12], size))
     rows.append(preview_row([xbox_cell(atlas, i) for i in range(16)], 38))
     width = max(r.width for r in rows)
     sheet = Image.new('RGB', (width, sum(r.height for r in rows)), tuple(BACK.astype(int)))

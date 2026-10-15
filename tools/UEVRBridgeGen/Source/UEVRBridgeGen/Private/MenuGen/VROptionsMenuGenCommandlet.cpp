@@ -4,6 +4,7 @@
 #include "BridgeGenLog.h"
 #include "MenuGenDummies.h"
 #include "MenuGenCyberHud.h"
+#include "MenuGenButtonAtlas.h"
 #include "MenuGenHudIcon.h"
 #include "MenuGenIcon.h"
 #include "MenuGenModWidgets.h"
@@ -42,6 +43,11 @@ int32 UVROptionsMenuGenCommandlet::Main(const FString& Params)
     if (!MenuGenHudIcon::Generate(Store, Options))
     {
         UE_LOG(LogUEVRBridgeGen, Error, TEXT("HUD icon generation failed."));
+        return 1;
+    }
+    if (!MenuGenButtonAtlas::Generate(Store, Options))
+    {
+        UE_LOG(LogUEVRBridgeGen, Error, TEXT("Button atlas generation failed."));
         return 1;
     }
     if (!MenuGenCyberHud::Generate(Store, Options))

@@ -65,6 +65,16 @@ constexpr const TCHAR* CyberHealthSource = TEXT("Resources/MenuGen/CyberHud/T_Co
 constexpr const TCHAR* CyberSecureSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionStatusSecure.png");
 constexpr const TCHAR* CyberThreatSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionStatusThreat.png");
 
+// The VR controller button atlas for tutorial popups and button legends. The texture and the
+// material instance are the mod's own assets (chunk 10); the plugin loads them by these paths.
+// The stand-in for the game's button material is at the game's path, chunk 0, never shipped.
+// See MenuGenButtonAtlas.h.
+constexpr const TCHAR* ButtonAtlasRoot = TEXT("/Game/Mods/UI/ControllerButtons");
+constexpr const TCHAR* ButtonAtlasTexture = TEXT("T_VRButtonLayout");
+constexpr const TCHAR* ButtonAtlasInstance = TEXT("MI_VRButtonLayout");
+constexpr const TCHAR* ButtonAtlasSource = TEXT("Resources/MenuGen/T_VRButtonLayout.png");
+constexpr const TCHAR* PlatformButtonMaterial = TEXT("/Game/Art/UI/Icons/ControllerButtons/MAT_PlatformButton");
+
 constexpr const TCHAR* VRToggle = TEXT("_OPTION_VR_Toggle");
 constexpr const TCHAR* VRSlider = TEXT("_OPTION_VR_Slider");
 constexpr const TCHAR* VRList = TEXT("_WIDGET_OptionsMenu_VRList");
@@ -84,6 +94,8 @@ struct FMenuGenStore
     class UMaterial* HudIconMaterial = nullptr;
     // The dummy of the game's tint collection, made by MenuGenIcon; later materials read it.
     class UMaterialParameterCollection* TintCollection = nullptr;
+    // The VR button atlas material instance. Nothing generated refers to it; the plugin loads it.
+    class UMaterialInstanceConstant* ButtonAtlasInstance = nullptr;
 
     void Add(FName Key, UClass* Class) { Classes.Add(Key, Class); }
 

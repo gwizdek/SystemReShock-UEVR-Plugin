@@ -101,6 +101,21 @@ uses must be loaded by path from the plugin, as `create_page` loads the page cla
 3. In the game, the icon must have the same colour as the game's icons. Change the colour theme in
    the Interface options: the new icon must change with the others.
 
+### Getting the atlas into the game
+
+`MenuGenButtonAtlas.cpp` in the generator makes three assets:
+
+| Asset | Chunk | Role |
+|---|---|---|
+| `/Game/Mods/UI/ControllerButtons/T_VRButtonLayout` | 10 | The atlas, from `T_VRButtonLayout.png`, with the game's atlas settings (uncompressed BGRA8, UI group, no mips). |
+| `/Game/Art/UI/Icons/ControllerButtons/MAT_PlatformButton` | 0, never shipped | A stand-in for the game's button material with the parameters `ButtonTextureSheet`, `ColCount` and `RowCount`, so the instance below can be made and cooked. In the game the instance's parent resolves to the game's own material. |
+| `/Game/Mods/UI/ControllerButtons/MI_VRButtonLayout` | 10 | A material instance of it with the atlas as `ButtonTextureSheet`, `ColCount` 4 and `RowCount` 7. |
+
+The plugin loads the texture and the instance by path and gives them to the game's
+`WIDGET_ButtonLegend_Key` (`SystemShockVR\vr_button_atlas.cpp`); `tutorial-popups.md`
+explains how. The game's keyboard key cap, `INST_KeyboardButton`, is an instance of the same
+material that the widget uses the same way, which is why an instance is safe here.
+
 ## HUD materials for VR
 
 The generator also replaces HUD materials that UEVR drops in the headset: the email icon and
@@ -120,7 +135,7 @@ the cells tinted and scaled as the HUD shows them.
 
 | Part | What the game's atlases do, and what the script copies |
 |---|---|
-| Grid | 4 x 4 cells of 256 x 256 pixels. The VR atlas has 4 x 6 cells, so its material instance must set `RowCount` to 6. |
+| Grid | 4 x 4 cells of 256 x 256 pixels. The VR atlas has 4 x 7 cells, so its material instance sets `RowCount` to 7. Cells 0 to 15 follow the game's `GetGamepadButtonAtlasIndex` (face buttons, View, Menu, D-pad, triggers, shoulders, sticks); the rows below hold stick directions and hand poses for later use. |
 | R | The rim of the button, its label and arrows. Drawn in the highlight tint. The rim is about 6.5 pixels wide at the sides and thicker at the bottom of a round button. |
 | G | The face of the button. Drawn in the background tint. |
 | B and A | A soft glow around the shape, about 37 pixels wide. B is 255 where the glow is, A is its strength. |
@@ -128,7 +143,11 @@ the cells tinted and scaled as the HUD shows them.
 | Labels | 28 pixel letters. The script cuts `L`, `T` and `R` out of the Xbox atlas and draws a matching `G`. |
 
 The face buttons `A`, `B`, `X`, `Y`, the menu button and the plain and pressed sticks are
-copied pixel for pixel from the Xbox atlas. The two hand poses are hand-edited cells,
+copied pixel for pixel from the Xbox atlas. The cell index is the one the game computes for
+the gamepad key it receives, and UEVR sends the left controller's X button as gamepad B and
+the right controller's B button as gamepad X (Touch and Index layouts). So the cell for gamepad
+B carries the Xbox `X` glyph and the cell for gamepad X carries the `B` glyph; the icon then
+names the button the player presses. The two hand poses are hand-edited cells,
 `T_VRButtonLayout_HandPoint.png` and `T_VRButtonLayout_HandGrip.png` next to the script; the
 script keeps their rim and face and rebuilds the glow. The triggers and grips are outlines traced
 from a reference sheet: `trace_button_shapes.py` segments a cell of the sheet, traces it with
