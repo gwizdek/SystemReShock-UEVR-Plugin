@@ -62,13 +62,13 @@ both the profile and the settings file. It exists for testing.
   "installedVersion": "2.0-beta.3",
   "installedAt": "2026-09-18T23:10:00+02:00",
   "runtime": "openxr",
-  "injectDelaySeconds": 15,
+  "injectDelaySeconds": 5,
   "store": "steam"
 }
 ```
 
 `runtime` is `openxr` or `openvr`. Missing means OpenXR. `injectDelaySeconds`
-is the wait between the game window appearing and injection. Missing means 15.
+is the wait between the game window appearing and injection. Missing means 5.
 Only the launcher page writes `runtime`; the delay is edited by hand.
 
 `store` is `steam`, `gog` or `other` and decides how the launcher starts the
@@ -203,7 +203,7 @@ Same layout as the welcome page: Shodan image left, UEVR logo bottom left.
   The game is started from the game folder."
 - VR runtime selector: OpenXR (default) or OpenVR. Saved to `settings.json`
   the moment it is clicked.
-- Info line: "UEVR is injected 15 seconds after the game window appears."
+- Info line: "UEVR is injected 5 seconds after the game window appears."
 - Status box that follows the launch.
 - Buttons: Reinstall (opens the paths page), Uninstall, Exit, Launch game.
 

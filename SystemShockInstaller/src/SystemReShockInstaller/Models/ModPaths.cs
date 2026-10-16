@@ -27,6 +27,6 @@ public static class ModPaths
     /// <summary>GOG writes this file into the root of every game it installs.</summary>
     public const string GogInfoFilePattern = "goggame-*.info";
     public const string UevrNightlyUrl = "https://github.com/praydog/UEVR-nightly/releases/latest";
-    public const int DefaultInjectDelaySeconds = 15;
+    public const int DefaultInjectDelaySeconds = 5;
     public static readonly TimeSpan GameWindowTimeout = TimeSpan.FromMinutes(2);
 }
