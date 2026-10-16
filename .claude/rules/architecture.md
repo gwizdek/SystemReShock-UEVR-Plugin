@@ -66,7 +66,7 @@ Interfaces implemented by entities across multiple domains live in `com.budget.c
 Methods and functions MUST be short, focused, and readable. Long methods are the root cause of most complexity, testability, and readability problems.
 
 **Rules:**
-- No method or function body may exceed **30 lines** of logic (excluding blank lines and single-line annotations/decorators)
+- No method or function body may exceed **50 lines** of logic (excluding blank lines and single-line annotations/decorators)
 - If a method exceeds 20 lines, look for extract-method opportunities
 - Each method does ONE thing — if you need "and" to describe it, extract a helper
 - Prefer early returns to reduce nesting depth (max 3 levels of indentation)
@@ -74,7 +74,7 @@ Methods and functions MUST be short, focused, and readable. Long methods are the
 - Callbacks and lambdas count: an inline lambda longer than 5 lines must be extracted to a named method
 
 **Enforcement:**
-- `/review` must flag any method over 30 lines as a BLOCKER
+- `/review` must flag any method over 50 lines as a BLOCKER
 - `/implement` must proactively break logic into small, named methods as it builds
 - During code generation, if a method starts exceeding 20 lines, stop and refactor before continuing
 

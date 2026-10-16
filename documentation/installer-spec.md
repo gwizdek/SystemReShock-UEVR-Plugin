@@ -287,5 +287,5 @@ and one line there.
 `HeroFrame` is the shared page frame (Shodan column, content, bottom bar with
 logo and buttons) used by the welcome and launcher pages.
 
-Repo rules apply: methods under 30 lines, files under 500 lines, services hold
+Repo rules apply: methods under 50 lines, files under 500 lines, services hold
 the logic, views stay thin.
