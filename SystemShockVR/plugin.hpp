@@ -224,7 +224,6 @@ public:
     static void cleanup_actors();
     void set_hacker_ui_visibility(bool visible);
     void try_melee();
-    void apply_vr_game_options();
     void try_set_intro_laptop_pointer();
     void handle_crouch();
     void handle_head_lamp();

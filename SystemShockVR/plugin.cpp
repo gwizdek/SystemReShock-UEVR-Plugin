@@ -33,7 +33,6 @@
 #include "SDK/WIDGET_TargetID_Display_classes.hpp"
 #include "SDK/WEAPON_LaserRapier_classes.hpp"
 #include "SDK/WEAPON_LeadPipe_classes.hpp"
-#include "SDK/SAVE_Settings_classes.hpp"
 #include "SDK/BP_IntroDrone_classes.hpp"
 #include "SDK/INTERACT_Laptop_classes.hpp"
 #include "SDK/ENUM_BootupState_structs.hpp"
@@ -77,6 +76,7 @@
 #include "legend_icon_size_patch.hpp"
 #include "vr_button_atlas_index_patch.hpp"
 #include "tutorial_head_view.hpp"
+#include "vr_game_options.hpp"
 
 #include <windows.h>
 #include <chrono>
@@ -1269,8 +1269,6 @@ void UEVRPlugin::handle_game_state_change() {
                     PluginUtils::reset_height(0.f);
                     vr->recenter_view();
                     API::UObjectHook::set_disabled(true);
-                    // changes to game options can be applied in the main menu
-                    // apply_vr_game_options();
                     //PluginUtils::cycle_native_stereo_fix();
                     break;
 
@@ -1504,7 +1502,7 @@ void UEVRPlugin::handle_level_change() {
             API::get()->log_warn("[plugin][handle_level_change] New Pawn State: %s", PawnStateName[m_pawn_state.get()]);
             set_ui_level_name(m_level.get()->GetFullName());
 
-            apply_vr_game_options();
+            VRGameOptions::apply();
 
             // A level change may have unloaded and reloaded the mod's Blueprint classes,
             // also from a hot-reloaded pak. Drop every cached class, property and function
@@ -2240,111 +2238,6 @@ void UEVRPlugin::try_melee() {
     }
     catch (...) {
         API::get()->log_error("[plugin][try_melee] Exception");
-    }
-}
-
-namespace {
-
-// The option widgets that show the settings apply_vr_game_options changes. An option widget
-// reads its setting only when its options list is built (WIDGET_MenuListBase::InitializeList ->
-// OPTION_Base::InitializeMenuListItem -> UpdateVisuals), so a list built before the change keeps
-// showing the old value, and pressing Apply on its page would write that old value back.
-constexpr const wchar_t* kVROptionWidgetClasses[] = {
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Accessibility-Interface/OPTION_Interface_Headbob.OPTION_Interface_Headbob_C",
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Accessibility-Interface/OPTION_Interface_HotbarStyle.OPTION_Interface_HotbarStyle_C",
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Accessibility-Interface/OPTION_Interface_HUDCurvature.OPTION_Interface_HUDCurvature_C",
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Controls/OPTION_Controls_CrouchToggle.OPTION_Controls_CrouchToggle_C",
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Controls/OPTION_Controls_FocusAimToggle.OPTION_Controls_FocusAimToggle_C",
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Gameplay/OPTION_Gameplay_FocusOnPuzzles.OPTION_Gameplay_FocusOnPuzzles_C",
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Gameplay/OPTION_Gameplay_BatteryReload.OPTION_Gameplay_BatteryReload_C",
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Display/OPTION_Display_MotionBlur.OPTION_Display_MotionBlur_C",
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Display/OPTION_Display_VSync.OPTION_Display_VSync_C",
-    L"WidgetBlueprintGeneratedClass /Game/Blueprints/UI/MainMenu/OptionsScreen/OptionsCategories/Display/OPTION_Display_FieldOfView.OPTION_Display_FieldOfView_C",
-};
-
-// Live widgets belong to the game instance under /Engine/Transient; the templates inside widget
-// Blueprint classes are instances too and must stay as they are.
-bool is_live_widget(API::UObject* widget) {
-    return widget->get_full_name().find(L" /Engine/Transient.") != std::wstring::npos;
-}
-
-// Makes every existing option widget of those classes read its setting again. UpdateVisuals is
-// called by name, so each option's own override runs, not the empty one of OPTION_Base. A class
-// that is not loaded has no widgets; its lists read the new values when they are built.
-int refresh_vr_option_widgets() {
-    int refreshed = 0;
-    for (const wchar_t* path : kVROptionWidgetClasses) {
-        auto* option_class = API::get()->find_uobject<API::UClass>(path);
-        if (option_class == nullptr) continue;
-        for (API::UObject* option : option_class->get_objects_matching()) {
-            if (!is_live_widget(option)) continue;
-            option->call_function(L"UpdateVisuals", nullptr);
-            ++refreshed;
-        }
-    }
-    return refreshed;
-}
-
-} // anonymous namespace
-
-void UEVRPlugin::apply_vr_game_options() {
-    auto class_ptr = API::get()->find_uobject<API::UClass>(L"BlueprintGeneratedClass /Game/Blueprints/UI/HUD/Widgets/Settings/SAVE_Settings.SAVE_Settings_C");
-    if (class_ptr != nullptr) {
-        SDK::USAVE_Settings_C* settings = class_ptr->get_first_object_matching<SDK::USAVE_Settings_C>();
-
-        if (settings != nullptr && PluginUtils::is_a<SDK::USAVE_Settings_C>(settings)) {
-            // Accessibility: Headbob Amount: OFF
-            settings->SetHeadbobAmount(SDK::ENUM_OffReducedNormal::NewEnumerator0);
-            settings->ApplyHeadbobAmount(SDK::ENUM_OffReducedNormal::NewEnumerator0);
-
-            // Accessibility: Hotbar Style: NORMAL
-            settings->SetHotbarStyle(SDK::ENUM_HotbarStyle::NewEnumerator0);
-            settings->ApplyHotbarStyle(SDK::ENUM_HotbarStyle::NewEnumerator0);
-
-            // Accessibility: HUD Curve Amount: 0.0
-            // This is important for the HotbarSlots to be properly placed on the MFD after creating VR HUD
-            settings->SetHUDCurvature(0.0f);
-            settings->ApplyHUDCurvature(0.0f);
-
-            // Controls: Toggle Crouch: ON
-            settings->SetCrouchToggle(true);
-            settings->ApplyCrouchToggle(true);
-
-            // Controls: Toggle Aim Down Sights: OFF
-            settings->SetFocusAimToggle(false);
-            settings->ApplyFocusAimToggle(false);
-
-            // Gameplay: Focus Camera On Puzzles: OFF
-            settings->SetFocusOnPuzzles(false);
-            settings->ApplyFocusOnPuzzles(false);
-
-            // Gameplay: Reload Can Use Batteries: OFF
-            settings->SetReloadCanUseBatteries(false);
-            settings->ApplyReloadCanUseBatteries(false);
-
-            // Display: Motion Blur: OFF
-            settings->SetEnableMotionBlur(false);
-            settings->ApplyEnableMotionBlur(false);
-
-            // Display: V-Sync: OFF
-            settings->SetEnableVSync(false);
-            settings->ApplyEnableVSync(false);
-
-            // Display: FOV (real/cyberspace)
-            settings->SetFOV(120.f, true);
-            settings->ApplyFOV(120.f, true);
-            settings->SetFOV(120.f, false);
-            settings->ApplyFOV(120.f, false);
-
-            const int refreshed = refresh_vr_option_widgets();
-            API::get()->log_warn("[plugin][apply_vr_game_options] Applied VR specific game options, refreshed %d option widgets", refreshed);
-        }
-        else {
-            API::get()->log_error("[plugin][apply_vr_game_options] Could not apply VR specific game options");
-        }
-    }
-    else {
-        API::get()->log_error("[plugin][apply_vr_game_options] Could not apply VR specific game options : missing class");
     }
 }
 
