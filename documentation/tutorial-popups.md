@@ -88,7 +88,25 @@ cap from `INST_KeyboardButton`; for a mouse button it uses `MAT_MouseButton`; fo
 it puts `MAT_PlatformButton` on its mesh with the platform's atlas as `ButtonTextureSheet`
 (`T_XboxButtonLayout` on PC) and sets `ButtonIndex` to the cell of the key. The atlas is a
 4 x 4 grid of 256 pixel cells; the material cuts one cell out with `ButtonIndex`, `ColCount`
-and `RowCount`. The HUD draws a gamepad icon 38 x 38 pixels.
+and `RowCount`.
+
+`UpdateLegend` also sets `PanelSize`, the size the widget reports to the text around it
+through `GetDecoratorSizeFromPayload`: 38 x 38 for a gamepad key, 30 x 30 for a mouse button,
+and for a keyboard key a width from `PanelSizeX` by `DefaultHeight` (25). The 38 and the 30 are
+literals in the bytecode. `PanelSize` is only the space the key takes; the picture is
+`MESH_KeyBackground`, centred in the key's canvas, and `TryUpdateLegendSize` sets its canvas
+slot to another literal: 64 x 64, or 128 x 128 when the key shows text.
+
+`icon_size` in the ini's `[popup]` section changes both. `SystemShockVR\legend_icon_size_patch.cpp`
+finds the statements `Temp_float_Variable = 30.0` and `Temp_float_Variable_1 = 38.0` in the
+loaded `UpdateLegend` and writes the ini value over the 38.0. It finds
+`Temp_struct_Variable = {64, 64}` followed by `Temp_struct_Variable_1 = {128, 128}` in
+`TryUpdateLegendSize` and writes 64 x `icon_size` / 38 over the 64s, so the picture grows with
+its space. This changes every gamepad icon of every button legend, not only those in popups.
+A mouse button keeps its 30 x 30 space but gets the larger picture. A legend key made before
+the patch keeps its size until it updates again. The log lines
+`[legend_icon_size_patch][patch_panel_size]` and `[legend_icon_size_patch][patch_picture_size]`
+confirm the patch.
 
 In VR the widget draws from the mod's atlas instead. `T_VRButtonLayout` in the Core pak is a
 4 x 7 atlas with the same channels; its cells 0 to 15 follow the game's index function, so a

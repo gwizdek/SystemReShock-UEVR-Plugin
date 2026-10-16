@@ -123,6 +123,9 @@
     <ClInclude Include="tutorial_popup_duration.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="legend_icon_size_patch.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -381,6 +384,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tutorial_popup_duration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="legend_icon_size_patch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\Niagara_functions.cpp">
