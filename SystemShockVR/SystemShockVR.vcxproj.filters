@@ -120,6 +120,9 @@
     <ClInclude Include="tutorial_messages.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="tutorial_popup_duration.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -375,6 +378,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tutorial_messages.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tutorial_popup_duration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\Niagara_functions.cpp">

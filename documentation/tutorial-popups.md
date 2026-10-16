@@ -123,3 +123,23 @@ around it 576 x 160; the plugin keeps that difference, so the frame follows the 
 wrap is on, so a wider box gives longer lines and a taller box more rows. A missing section or
 a value of 0 keeps the game's value. The game's font size is 20 with 5 units of extra line
 spacing, so a row takes about 25 units at that size.
+
+## How long a popup stays
+
+`duration` in the `[popup]` section sets how many seconds a timed popup stays on the HUD.
+`SystemShockVR\tutorial_popup_duration.cpp` applies it.
+
+The game has two kinds of popups. A tutorial volume adds its rows with `AddVolumeTutorial`;
+they have `Duration` 0 and stay until the player leaves the volume. Pickups, weapons, mod kits
+and Power Stations call `PAWN_Hacker_Simple::ActivateTimedTutorial` with the literal 5.0 in
+all six places that call it. That function adds an `STRUCT_TutorialInstance` with `Timestamp`
+(the play time) and `Duration` to the pawn's `TutorialsToDisplay` array. A 1 second timer
+calls `TryCompleteTimedTutorials`, which removes an entry once `Duration` is above 0 and the
+play time since `Timestamp` has reached it. So a timed popup stays between 5 and 6 seconds.
+
+The plugin reads `TutorialsToDisplay` every 30 ticks and sets `Duration` of each entry that
+still holds 5.0 to the ini value. A changed entry no longer holds 5.0, so it is changed once,
+and the plugin needs no state of its own; a new entry for the same row starts at 5.0 again.
+The time counts from the entry's own `Timestamp`, so `duration = 10` keeps a popup for 10
+seconds in total. A missing key, 0 or 5 leaves the game's duration. The log line
+`[tutorial_popup_duration][read_ini]` shows the value in use.

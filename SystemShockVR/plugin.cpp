@@ -73,6 +73,7 @@
 #include "vr_input_actions.hpp"
 #include "vr_button_atlas.hpp"
 #include "tutorial_messages.hpp"
+#include "tutorial_popup_duration.hpp"
 
 #include <windows.h>
 #include <chrono>
@@ -327,6 +328,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         VRInputActions::handle();
         VRButtonAtlas::handle();
         TutorialMessages::handle();
+        TutorialPopupDuration::handle(m_world);
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
             apply_vr_options_menu_settings();
