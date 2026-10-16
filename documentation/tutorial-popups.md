@@ -169,6 +169,30 @@ wrap is on, so a wider box gives longer lines and a taller box more rows. A miss
 a value of 0 keeps the game's value. The game's font size is 20 with 5 units of extra line
 spacing, so a row takes about 25 units at that size.
 
+## When a popup shows
+
+A tutorial volume adds its rows to the pawn's `TutorialsToDisplay` when the player enters
+it; a timed tutorial adds its row directly. Which of them the popup shows depends on the
+view. Every widget tick, `WIDGET_TutorialMessage::UpdateRenderOpacity` asks
+`PAWN_Hacker_Simple::GetHighestPriorityTutorial` for the active tutorial whose target actor
+has the smallest angle to the view (`GetAngleToTutorialActor`), and fades the popup in only
+while `IsTutorialActorVisible` passes: the target is less than 25 degrees above or below and
+less than 40 degrees to the side (`GetPitchYawToTutorialActor`). A tutorial without a target
+actor always passes.
+
+The game measures these angles from the pawn's `PlayerCamera`. The mod attaches
+`PlayerCamera` to the right motion controller, so without a change the hand would decide
+which popup shows. `SystemShockVR\tutorial_head_view.cpp` makes the head decide instead. It
+keeps a scene component of its own, rooted so it lives for the whole session, and copies the
+world transform of `_BP_VRBody.HMDComponent` onto it every tick; without a VR body it copies
+`PlayerCamera`'s. In `GetAngleToTutorialActor` (2 places) and `GetPitchYawToTutorialActor`
+(3 places) it replaces `Context(InstanceVariable PlayerCamera)` with
+`Context(ObjectConst <that component>)`, which has the same size. `PlayerCamera` stays on
+the hand. The bytecode does not point at `HMDComponent` itself, because the VR body is
+spawned again on every level load. After a plugin swap by the hot loader, the new plugin
+finds the component in the patched bytecode and keeps using it. The log line
+`[tutorial_head_view][patch_all]` confirms the patch.
+
 ## How long a popup stays
 
 `duration` in the `[popup]` section sets how many seconds a timed popup stays on the HUD.

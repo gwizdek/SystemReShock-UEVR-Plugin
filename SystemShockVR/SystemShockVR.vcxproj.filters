@@ -129,6 +129,9 @@
     <ClInclude Include="vr_button_atlas_index_patch.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="tutorial_head_view.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -393,6 +396,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="vr_button_atlas_index_patch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tutorial_head_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\Niagara_functions.cpp">
