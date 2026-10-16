@@ -22,6 +22,7 @@ public:
     static void set_weapon_mesh_visibility(bool visible);
     static void set_player_response_to_collision_channel(SDK::ECollisionChannel channel, SDK::ECollisionResponse response);
     static void reset_player_camera();
+    static void align_control_yaw_to_look_pivot(SDK::APAWN_Hacker_Simple_C* pawn);
     static void show_vr_body();
     static void hide_vr_body();
     static bool is_valid_hacker_implant();

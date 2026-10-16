@@ -290,10 +290,24 @@ void VRBody::reset_player_camera() {
         );
 
         g_vr_body->HackerPawn()->PlayerCamera->Activate(false);
+        align_control_yaw_to_look_pivot(g_vr_body->HackerPawn());
     }
     catch (...) {
         API::get()->log_error("[vr_body][reset_player_camera] Exception");
     }
+}
+
+// Turns the control rotation to the yaw of LookPivot, keeping its pitch and roll. Animated
+// sequences such as the surgery machine start their camera from LookPivot; a control yaw that
+// still points where the player stood sideways turns the view away from the animation.
+void VRBody::align_control_yaw_to_look_pivot(SDK::APAWN_Hacker_Simple_C* pawn) {
+    SDK::AController* controller = pawn->Controller;
+    if (controller == nullptr) return;
+    SDK::FRotator rotation = controller->GetControlRotation();
+    const float control_yaw = rotation.Yaw;
+    rotation.Yaw = pawn->LookPivot->K2_GetComponentRotation().Yaw;
+    controller->SetControlRotation(rotation);
+    API::get()->log_warn("[vr_body][align_control_yaw_to_look_pivot] Control yaw %.1f -> %.1f", control_yaw, rotation.Yaw);
 }
 
 void VRBody::show_vr_body() {
