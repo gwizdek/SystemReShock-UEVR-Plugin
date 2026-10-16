@@ -16,13 +16,16 @@ struct VRAction
 };
 
 // One entry per VR button the plugin reads itself. The key is the gamepad key UEVR sends for
-// that button; it only decides which icon the legend widget draws.
+// that button; it only decides which icon the legend widget draws. VR_HandPoint is a hand
+// pose, not a button: its key is one that vr_button_atlas_index_patch.cpp gives the pointing
+// hand cell of the atlas.
 constexpr VRAction kActions[] = {
     { L"VR_LeftGrip",     L"Gamepad_LeftShoulder" },
     { L"VR_RightGrip",    L"Gamepad_RightShoulder" },
     { L"VR_LeftThumb",    L"Gamepad_LeftThumbstick" },
     { L"VR_RightThumb",   L"Gamepad_RightThumbstick" },
     { L"VR_RightTrigger", L"Gamepad_RightTrigger" },
+    { L"VR_HandPoint",    L"Gamepad_RightStick_Up" },
 };
 
 // The legend widget adds these to a placeholder's name for controller types 1 and 2.

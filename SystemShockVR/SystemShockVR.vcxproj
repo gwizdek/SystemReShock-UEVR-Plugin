@@ -190,6 +190,7 @@
     <ClInclude Include="tutorial_messages.hpp" />
     <ClInclude Include="tutorial_popup_duration.hpp" />
     <ClInclude Include="legend_icon_size_patch.hpp" />
+    <ClInclude Include="vr_button_atlas_index_patch.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="vr_item_selector.hpp" />
@@ -276,6 +277,7 @@
     <ClCompile Include="tutorial_messages.cpp" />
     <ClCompile Include="tutorial_popup_duration.cpp" />
     <ClCompile Include="legend_icon_size_patch.cpp" />
+    <ClCompile Include="vr_button_atlas_index_patch.cpp" />
     <ClCompile Include="build_version.cpp" />
   </ItemGroup>
   <ItemGroup>

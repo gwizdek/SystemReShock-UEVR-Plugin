@@ -29,8 +29,8 @@ A VR button that the game reads through its own action keeps the game's placehol
 example `{Real_Interact}` for B or `{Real_Aim}` for the left trigger; the icon follows a
 rebind in the options menu, as it should. A VR button that the plugin reads itself from the
 XInput state (both grips, the right thumb for the item selector, the right trigger for the
-laser pointer) uses one of the fixed placeholders below. Hand poses have no placeholder yet;
-the texts describe them in words.
+laser pointer) uses one of the fixed placeholders below. The pointing hand pose has the
+placeholder `{VR_HandPoint}`; the grip pose has none yet and the texts describe it in words.
 
 ## Button placeholders
 
@@ -44,7 +44,7 @@ keyboard and mouse (0), gamepad (1) and a third scheme the game calls JCMS (2).
 | `{Real_Interact}` | One action name. The widget uses it for the keyboard and adds the prefixes itself for the gamepad (`Gamepad_Real_Interact`) and JCMS (`JCMS_Real_Interact`). This is the usual form. |
 | `{Real_Reload,Gamepad_Real_Interact,JCMS_Real_Reload}` | Three action names, one per controller type in the order keyboard, gamepad, JCMS. Used when the gamepad action differs. |
 | `{Locked_ZoomAxis,Gamepad_Real_HotbarCyclePrevious:Gamepad_Real_HotbarCycleNext,...}` | A token with `:` names two keys for one controller type. The widget shows both icons with a separator. |
-| `{VR_LeftGrip}`, `{VR_RightGrip}`, `{VR_LeftThumb}`, `{VR_RightThumb}`, `{VR_RightTrigger}` | Fixed VR buttons registered by the plugin, see below. Same single-name form; the widget adds the prefixes. |
+| `{VR_LeftGrip}`, `{VR_RightGrip}`, `{VR_LeftThumb}`, `{VR_RightThumb}`, `{VR_RightTrigger}`, `{VR_HandPoint}` | Fixed VR buttons and the pointing hand, registered by the plugin, see below. Same single-name form; the widget adds the prefixes. |
 
 The action names used by the game's texts: `Real_Interact`, `Real_PrimaryAttack`,
 `Real_ToggleMFD`, `Real_Crouch`, `Real_Reload`, `Real_ModeNext`, `Real_AcquireTarget`,
@@ -71,6 +71,7 @@ types. The key is the gamepad key UEVR sends for that button:
 | `{VR_LeftThumb}` | `Gamepad_LeftThumbstick` | recenter VR (over the left shoulder) |
 | `{VR_RightThumb}` | `Gamepad_RightThumbstick` | item selector |
 | `{VR_RightTrigger}` | `Gamepad_RightTrigger` | laser pointer with an empty hand, MFD select |
+| `{VR_HandPoint}` | `Gamepad_RightStick_Up` | the pointing hand pose (no button) |
 
 The mappings are lookup entries only; no input event is bound to them. A mapping is skipped
 when its name exists already, so the hot loader can swap the plugin without adding duplicates.
@@ -78,8 +79,33 @@ when its name exists already, so the hot loader can swap the plugin without addi
 `WIDGET_ButtonLegend_Key::UpdateLegend` picks the icon style by the key's own type
 (`Key_IsKeyboardKey`, `Key_IsMouseButton`, `Key_IsGamepadKey`), not by the controller mode.
 So these placeholders draw a gamepad icon even while the game is in keyboard and mouse mode,
-which is the case while the MFD is open. The icon is still a cell of the Xbox atlas until the
-VR atlas is wired in, so a grip shows as a shoulder button for now.
+which is the case while the MFD is open.
+
+### The pointing hand
+
+`{VR_HandPoint}` needs a gamepad key whose atlas cell is the pointing hand (cell 24).
+`FUNCLIB_UserInterface::GetGamepadButtonAtlasIndex` picks the cell with one branch per key
+and gives every other key -1, which draws no icon:
+
+| Gamepad key | Cell |
+|---|---|
+| `Gamepad_FaceButton_Bottom`, `_Right`, `_Left`, `_Top` | 0, 1, 2, 3 |
+| `Gamepad_Special_Left`, `Gamepad_Special_Right` | 4, 5 |
+| `Gamepad_DPad_Up`, `_Down`, `_Left`, `_Right` | 6, turned by 0, 0.5, 0.25, 0.75 |
+| `Gamepad_LeftTrigger`, `Gamepad_RightTrigger` | 8, 9 |
+| `Gamepad_LeftShoulder`, `Gamepad_RightShoulder` | 10, 11 |
+| `Gamepad_LeftX` or `Gamepad_LeftY`, `Gamepad_LeftThumbstick` | 12, 13 |
+| `Gamepad_RightX` or `Gamepad_RightY`, `Gamepad_RightThumbstick` | 14, 15 |
+
+On the Nintendo Switch the face buttons jump to four other branches at the end of the
+function, which swap their cells. On PC that code never runs.
+`SystemShockVR\vr_button_atlas_index_patch.cpp` copies the `Gamepad_RightThumbstick` branch
+over the start of that code, changes its key to `Gamepad_RightStick_Up` and its cell to 24,
+and moves the "-1" default behind it. It fills the rest of the Switch code with `EX_Nothing`.
+`Gamepad_RightStick_Up` is a registered gamepad key that no other branch handles. The engine
+has no hand pose keys in this build: `OculusTouch_Right_IndexPointing` is not registered and
+the `MotionController_` keys are not gamepad keys. The log line
+`[vr_button_atlas_index_patch][patch]` confirms the patch.
 
 ## How a key becomes an icon
 

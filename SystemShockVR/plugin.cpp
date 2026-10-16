@@ -75,6 +75,7 @@
 #include "tutorial_messages.hpp"
 #include "tutorial_popup_duration.hpp"
 #include "legend_icon_size_patch.hpp"
+#include "vr_button_atlas_index_patch.hpp"
 
 #include <windows.h>
 #include <chrono>
@@ -331,6 +332,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         TutorialMessages::handle();
         TutorialPopupDuration::handle(m_world);
         LegendIconSizePatch::handle();
+        VRButtonAtlasIndexPatch::handle();
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
             apply_vr_options_menu_settings();

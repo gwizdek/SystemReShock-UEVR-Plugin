@@ -135,7 +135,7 @@ the cells tinted and scaled as the HUD shows them.
 
 | Part | What the game's atlases do, and what the script copies |
 |---|---|
-| Grid | 4 x 4 cells of 256 x 256 pixels. The VR atlas has 4 x 7 cells, so its material instance sets `RowCount` to 7. Cells 0 to 15 follow the game's `GetGamepadButtonAtlasIndex` (face buttons, View, Menu, D-pad, triggers, shoulders, sticks); the rows below hold stick directions and hand poses for later use. |
+| Grid | 4 x 4 cells of 256 x 256 pixels. The VR atlas has 4 x 7 cells, so its material instance sets `RowCount` to 7. Cells 0 to 15 follow the game's `GetGamepadButtonAtlasIndex` (face buttons, View, Menu, D-pad, triggers, shoulders, sticks); the rows below hold stick directions and hand poses. Only the pointing hand (cell 24) has a key so far, see `tutorial-popups.md`. |
 | R | The rim of the button, its label and arrows. Drawn in the highlight tint. The rim is about 6.5 pixels wide at the sides and thicker at the bottom of a round button. |
 | G | The face of the button. Drawn in the background tint. |
 | B and A | A soft glow around the shape, about 37 pixels wide. B is 255 where the glow is, A is its strength. |
@@ -154,8 +154,7 @@ from a reference sheet: `trace_button_shapes.py` segments a cell of the sheet, t
 `potrace` (`scoop install potrace`) and writes the outline as points to `vr_button_shapes.json`,
 which the drawing script reads; LT is RT mirrored. The stick directions are drawn from signed
 distance fields. The docstring of the script lists the cells and
-their `ButtonIndex`. The atlas is not yet used by the game; wiring it to the tutorial texts is
-separate work.
+their `ButtonIndex`. `tutorial-popups.md` describes how the button legends draw from the atlas.
 
 ## The tint collection
 

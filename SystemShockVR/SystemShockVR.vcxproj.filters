@@ -126,6 +126,9 @@
     <ClInclude Include="legend_icon_size_patch.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="vr_button_atlas_index_patch.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="memo_structs.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -387,6 +390,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="legend_icon_size_patch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vr_button_atlas_index_patch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDK\Niagara_functions.cpp">
