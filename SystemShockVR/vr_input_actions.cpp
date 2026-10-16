@@ -20,6 +20,7 @@ struct VRAction
 constexpr VRAction kActions[] = {
     { L"VR_LeftGrip",     L"Gamepad_LeftShoulder" },
     { L"VR_RightGrip",    L"Gamepad_RightShoulder" },
+    { L"VR_LeftThumb",    L"Gamepad_LeftThumbstick" },
     { L"VR_RightThumb",   L"Gamepad_RightThumbstick" },
     { L"VR_RightTrigger", L"Gamepad_RightTrigger" },
 };

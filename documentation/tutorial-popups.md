@@ -44,7 +44,7 @@ keyboard and mouse (0), gamepad (1) and a third scheme the game calls JCMS (2).
 | `{Real_Interact}` | One action name. The widget uses it for the keyboard and adds the prefixes itself for the gamepad (`Gamepad_Real_Interact`) and JCMS (`JCMS_Real_Interact`). This is the usual form. |
 | `{Real_Reload,Gamepad_Real_Interact,JCMS_Real_Reload}` | Three action names, one per controller type in the order keyboard, gamepad, JCMS. Used when the gamepad action differs. |
 | `{Locked_ZoomAxis,Gamepad_Real_HotbarCyclePrevious:Gamepad_Real_HotbarCycleNext,...}` | A token with `:` names two keys for one controller type. The widget shows both icons with a separator. |
-| `{VR_LeftGrip}`, `{VR_RightGrip}`, `{VR_RightThumb}`, `{VR_RightTrigger}` | Fixed VR buttons registered by the plugin, see below. Same single-name form; the widget adds the prefixes. |
+| `{VR_LeftGrip}`, `{VR_RightGrip}`, `{VR_LeftThumb}`, `{VR_RightThumb}`, `{VR_RightTrigger}` | Fixed VR buttons registered by the plugin, see below. Same single-name form; the widget adds the prefixes. |
 
 The action names used by the game's texts: `Real_Interact`, `Real_PrimaryAttack`,
 `Real_ToggleMFD`, `Real_Crouch`, `Real_Reload`, `Real_ModeNext`, `Real_AcquireTarget`,
@@ -68,6 +68,7 @@ types. The key is the gamepad key UEVR sends for that button:
 |---|---|---|
 | `{VR_LeftGrip}` | `Gamepad_LeftShoulder` | grab, pointing pose, Access Card, flashlight gesture |
 | `{VR_RightGrip}` | `Gamepad_RightShoulder` | grab, MFD gesture, holster, MFD context menu |
+| `{VR_LeftThumb}` | `Gamepad_LeftThumbstick` | recenter VR (over the left shoulder) |
 | `{VR_RightThumb}` | `Gamepad_RightThumbstick` | item selector |
 | `{VR_RightTrigger}` | `Gamepad_RightTrigger` | laser pointer with an empty hand, MFD select |
 
