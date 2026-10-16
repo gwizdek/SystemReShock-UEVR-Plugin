@@ -166,6 +166,10 @@ private:
     bool m_is_crouched{ false };
     //bool m_had_equipped_weapon{ false };
 
+    // surgery machine / respawn chamber: seconds waited for the weapon holster to end before
+    // PlayerCamera goes back to LookPivot; below 0 while no reset is pending
+    float m_camera_reset_wait{ -1.f };
+
 // -----------------------------------------------------------------------------
 // Controller State
 // -----------------------------------------------------------------------------
@@ -203,6 +207,7 @@ public:
     void handle_smooth_turning(XINPUT_STATE* state);
     void handle_primary_item_selector(XINPUT_STATE* state, const UEVR_VRData* vr);
     void handle_game_state_change();
+    void handle_deferred_camera_reset(float delta);
     void handle_level_change();
     void handle_media_display();
     void handle_mfd_interactions(XINPUT_STATE* state, const UEVR_VRData* vr);

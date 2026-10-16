@@ -321,6 +321,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         m_gamepad_left_thumb.add_delta(delta);
 
         handle_game_state_change();
+        handle_deferred_camera_reset(delta);
         handle_cyberspace_look_pivot(vr);
         handle_media_display();
         update_trailing_rotation(delta);
@@ -1353,7 +1354,7 @@ void UEVRPlugin::handle_game_state_change() {
                            ) {
                             vr->set_aim_method(0);                      // Game mode
                             vr->set_mod_value("VR_RoomscaleMovement", "false");
-                            VRBody::reset_player_camera();
+                            m_camera_reset_wait = 0.f;                  // see handle_deferred_camera_reset
                             VRBody::hide_vr_body();
 
                             API::UObjectHook::set_disabled(true);
@@ -1459,6 +1460,37 @@ void UEVRPlugin::handle_game_state_change() {
     }
     catch (...) {
         API::get()->log_error("[plugin][handle_game_state_change] Exception");
+    }
+}
+
+// The surgery machine and the respawn chamber move the camera with their animation only while
+// PlayerCamera is attached to LookPivot (PAWN_Hacker_Simple::UpdateCameraAnimationOffset). They
+// also holster the weapon, and COMP_HackerInventory::OnWeaponHolsterFinished broadcasts
+// OnWeaponHolstered, on which the VR body attaches PlayerCamera to the hand again
+// (AttachLaserPointer). So the camera goes back to LookPivot only once the holster is over: no
+// weapon waits to be holstered and neither hand holds one. Empty-handed that is the first tick.
+void UEVRPlugin::handle_deferred_camera_reset(float delta) {
+    static constexpr float kTimeoutSeconds = 3.f;
+    try {
+        if (m_camera_reset_wait < 0.f) return;
+        if (m_game_state.get() != GAME_STATE_INTERACTABLE) {
+            m_camera_reset_wait = -1.f;
+            return;
+        }
+        m_camera_reset_wait += delta;
+        const bool holstering = m_inventory != nullptr && m_inventory->WaitingToHolsterWeapon != nullptr;
+        const bool holding = g_vr_body != nullptr && !g_vr_body->IsEmptyHanded();
+        const bool timed_out = m_camera_reset_wait >= kTimeoutSeconds;
+        if ((holstering || holding) && !timed_out) return;
+
+        VRBody::reset_player_camera();
+        API::get()->log_warn("[plugin][handle_deferred_camera_reset] PlayerCamera back on LookPivot after %.2f s%s",
+            m_camera_reset_wait, timed_out ? " (timed out waiting for the holster)" : "");
+        m_camera_reset_wait = -1.f;
+    }
+    catch (...) {
+        API::get()->log_error("[plugin][handle_deferred_camera_reset] Exception");
+        m_camera_reset_wait = -1.f;
     }
 }
 
