@@ -25,7 +25,6 @@
                                         Visibility="{Binding HasNotice, Converter={StaticResource BoolToVisibility}}">
                     <TextBlock views:VersionHighlight.Text="{Binding Notice}" />
                 </HeaderedContentControl>
-                <TextBlock Style="{StaticResource Muted}" Margin="0,14,0,0" views:VersionHighlight.Text="{Binding VersionText}" />
             </StackPanel>
         </ScrollViewer>
     </views:PageFrame>

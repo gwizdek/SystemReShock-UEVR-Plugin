@@ -45,19 +45,15 @@
     <SolidColorBrush x:Key="OnAccent" Color="#000000" />
     <SolidColorBrush x:Key="Danger" Color="#FF4A4A" />
 
-    <!-- Button fills fade out to the right, like the RESET / APPLY / BACK buttons. -->
-    <LinearGradientBrush x:Key="ButtonFill" StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Color="#FF16231C" Offset="0" />
-        <GradientStop Color="#2016231C" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="ButtonFillHover" StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Color="#40FFF22A" Offset="0" />
-        <GradientStop Color="#0AFFF22A" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="ButtonFillPressed" StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Color="#70FFF22A" Offset="0" />
-        <GradientStop Color="#20FFF22A" Offset="1" />
-    </LinearGradientBrush>
+    <!-- Button frame and fill, measured from the RESET / APPLY / BACK buttons. ButtonChrome fades
+         them out to the right. Under the mouse the frame turns yellow at the same brightness. -->
+    <SolidColorBrush x:Key="ButtonEdge" Color="#04B865" />
+    <SolidColorBrush x:Key="ButtonFill" Color="#04170D" />
+    <SolidColorBrush x:Key="ButtonEdgeHover" Color="#B8AE1E" />
+    <SolidColorBrush x:Key="ButtonFillHover" Color="#1A180A" />
+    <SolidColorBrush x:Key="ButtonFillPressed" Color="#2E2A0F" />
+    <!-- The page's main action keeps the same shape with a brighter frame and fill. -->
+    <SolidColorBrush x:Key="PrimaryButtonFill" Color="#0A3D24" />
 
     <Style TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />

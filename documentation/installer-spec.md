@@ -112,7 +112,7 @@ The `--install` command line flag forces the wizard.
 No Back buttons on any page. Cancel returns to the launcher when a working
 install exists, otherwise it closes the app.
 
-1. **Welcome.** Shodan image, UEVR logo at the bottom, version text.
+1. **Welcome.** Shodan image, UEVR logo at the bottom.
    Buttons: Next, Cancel. In update mode the text "Mod vX is installed. This
    setup contains vY." appears and the buttons are Update, Launch game, Close.
    When the wizard opened because a pak or plugin changed, the reason appears
@@ -250,16 +250,23 @@ folders with non-ASCII names, for example `Gra – Zażółć gęślą jaźń`.
 `assets/fonts/` are linked into the app as WPF resources.
 
 The look follows the game's options menu, on a black background with no
-background image. The window is 840 x 700 and has a dark title bar.
+background image. The window is 920 x 740 and has a dark title bar.
 
 - Text and lines are bright green (`#00FF84`); help texts are a dimmer green.
 - The button or field under the mouse or with keyboard focus turns yellow
   (`#FFF22A`).
 - Each page has a dark teal top bar with a breadcrumb such as
-  "**SYSTEM SHOCK VR MOD** > CHOOSE FOLDERS".
+  "**SYSTEM SHOCK VR MOD** > CHOOSE FOLDERS" and, at the bottom right, the
+  installer's version in small green text, like the game's version in its
+  options menu.
 - Section labels are yellow bold capitals over a line that fades from yellow to
   nothing, like "USER INTERFACE" in the game.
 - Info panels have a solid green header with black text.
+- Buttons copy the game's RESET / APPLY / BACK buttons, measured at 1:1 pixels:
+  44 px tall, a 7 px bar on the left with cut corners, 2 px lines at the top
+  and bottom, and a dark fill. Lines and fill fade out over the right 45% of
+  the button. `ButtonChrome` draws this frame. The page's main button has a
+  brighter frame and fill.
 - Version numbers and the UEVR build number are yellow; the text around them
   stays green. `VersionHighlight.Text` does this for texts that come from the
   view models.
@@ -306,7 +313,7 @@ src/SystemReShockInstaller/
                                  GameLaunchService, LaunchErrorFormatter
   ViewModels/                    ShellViewModel (routing) + one per page, UninstallFlow, RelayCommand
   Views/                         Theme.xaml (colours, fonts, text styles), Controls.xaml,
-                                 Frames.xaml, PageFrame, DarkTitleBar, VersionHighlight,
+                                 Frames.xaml, PageFrame, ButtonChrome, DarkTitleBar, VersionHighlight,
                                  WelcomePage, PathsPage, ConfirmPage, ResultPage, LauncherPage
 tests/SystemReShockInstaller.Tests/
 ```

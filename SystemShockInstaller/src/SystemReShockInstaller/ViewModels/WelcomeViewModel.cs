@@ -20,9 +20,8 @@ public sealed class WelcomeActions
 /// <summary>First wizard page. In update mode it also offers to launch the installed version.</summary>
 public sealed class WelcomeViewModel : ViewModelBase
 {
-    public WelcomeViewModel(string version, InstallState state, WelcomeActions actions)
+    public WelcomeViewModel(InstallState state, WelcomeActions actions)
     {
-        VersionText = "Version " + version;
         Notice = state.Reason;
         IsUpdateOffer = actions.Launch != null;
         CanUninstall = actions.Uninstall != null;
@@ -32,7 +31,6 @@ public sealed class WelcomeViewModel : ViewModelBase
         CancelCommand = new RelayCommand(actions.Cancel);
     }
 
-    public string VersionText { get; }
     public string? Notice { get; }
     public bool HasNotice => Notice != null;
     public bool IsUpdateOffer { get; }

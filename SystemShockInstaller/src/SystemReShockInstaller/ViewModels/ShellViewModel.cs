@@ -41,6 +41,9 @@ public sealed class ShellViewModel : ViewModelBase
         private set => Set(ref _windowTitle, value);
     }
 
+    /// <summary>The installer's own version, shown on the right of every page's top bar.</summary>
+    public string Version => _services.Version;
+
     private void ShowWelcome(InstallState state)
     {
         var offersUpdate = state.Status == InstallStatus.VersionDiffers && state.IsLaunchable;
@@ -51,7 +54,7 @@ public sealed class ShellViewModel : ViewModelBase
             Uninstall = state.CanUninstall ? () => _ = UninstallAsync(state.Plan!) : null,
             Cancel = offersUpdate ? _closeApp : CancelWizard,
         };
-        SetPage(new WelcomeViewModel(_services.Version, state, actions), SetupTitle);
+        SetPage(new WelcomeViewModel(state, actions), SetupTitle);
     }
 
     private void ShowLauncher(InstallState state)

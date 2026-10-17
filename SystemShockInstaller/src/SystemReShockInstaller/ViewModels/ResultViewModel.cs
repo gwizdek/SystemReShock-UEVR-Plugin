@@ -53,6 +53,5 @@ public sealed class ResultViewModel : ViewModelBase
     {
         "Press Continue to open the launcher. It starts the game and injects UEVR at the main menu for you.",
         "In the game options, reset the controller bindings to defaults.",
-        "Save to new slots often.",
     };
 }

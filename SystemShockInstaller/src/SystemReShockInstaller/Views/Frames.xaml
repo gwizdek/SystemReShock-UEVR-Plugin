@@ -27,12 +27,18 @@
                         <Border Grid.Row="0" Padding="24,8,24,10"
                                 Background="{StaticResource TopBarBackground}"
                                 BorderBrush="{StaticResource TopBarLine}" BorderThickness="0,0,0,1">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource Breadcrumb}" FontWeight="Bold" Text="SYSTEM SHOCK VR MOD" />
-                                <TextBlock Style="{StaticResource Breadcrumb}" Margin="14,0" Text="&gt;" />
-                                <TextBlock Style="{StaticResource Breadcrumb}"
-                                           Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource UpperCase}}" />
-                            </StackPanel>
+                            <Grid>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource Breadcrumb}" FontWeight="Bold" Text="SYSTEM SHOCK VR MOD" />
+                                    <TextBlock Style="{StaticResource Breadcrumb}" Margin="14,0" Text="&gt;" />
+                                    <TextBlock Style="{StaticResource Breadcrumb}"
+                                               Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource UpperCase}}" />
+                                </StackPanel>
+                                <!-- The installer version, small and at the bottom right, like "2.1.0 (19742)" in the game. -->
+                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="NoWrap"
+                                           FontSize="{StaticResource SmallFontSize}" Foreground="{StaticResource Accent}"
+                                           Text="{Binding DataContext.Version, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            </Grid>
                         </Border>
 
                         <Grid Grid.Row="1">
