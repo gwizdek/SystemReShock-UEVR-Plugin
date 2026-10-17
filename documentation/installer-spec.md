@@ -107,6 +107,12 @@ versions so a user running an older setup can still choose Launch.
 
 The `--install` command line flag forces the wizard.
 
+Only one copy of the app runs at a time. At startup it takes the named mutex
+`Local\SystemReShockVRMod` (`SingleInstanceGuard`). When another copy already
+holds it, a standard Windows message box says "System Shock Remake VR Mod is
+already running. Use the window that is already open." Its OK button closes
+the second copy; the first copy is not touched.
+
 ## Wizard pages
 
 No Back buttons on any page. Cancel returns to the launcher when a working
@@ -210,6 +216,13 @@ Same layout as the welcome page: Shodan image left, UEVR logo bottom left.
 - Status box that follows the launch.
 - Buttons: Reinstall (opens the paths page), Uninstall, Exit, Launch game.
 
+When the page opens, it checks whether a running game process has
+`UEVRBackend.dll` loaded. If it has, the status reads "System Shock Remake is
+running and UEVR is already injected. Close the game to launch it again.", and
+everything except Exit is disabled: Launch game, Reinstall, Uninstall and the
+VR runtime selector. The check runs once, when the page opens. A game that runs
+as administrator cannot be read and counts as not injected.
+
 ### Launch flow
 
 1. If a ready game process exists, skip to step 4. Ready means: process named
@@ -230,8 +243,8 @@ Same layout as the welcome page: Shodan image left, UEVR logo bottom left.
    frontend uses. The plugin nullifier is not injected because the profile has
    `nullifyPlugins: false`.
 6. Status reads "UEVR injected. Put on your headset. You can close this
-   application." Launch stays disabled;
-   Reinstall and Exit come back. Closing the window never touches the game.
+   application." As when the page finds UEVR already injected, only Exit
+   stays enabled. Closing the window never touches the game.
 
 Injection is remote-thread `LoadLibraryW`: open the process, write the DLL
 path into it, start a thread at `LoadLibraryW`, wait up to 10 seconds, then
@@ -309,8 +322,9 @@ src/SystemReShockInstaller/
                                  uninstall: PakRemoveStep, ProfileRemoveStep, SettingsRemoveStep,
                                  IDialogs, MessageBoxDialogs
                                  launch: InstallVerifier, InstallStateResolver, GameStarter,
-                                 GameProcessWatcher, DllInjector, UevrInjector,
+                                 GameProcessWatcher, ProcessModules, DllInjector, UevrInjector,
                                  GameLaunchService, LaunchErrorFormatter
+                                 app: SingleInstanceGuard
   ViewModels/                    ShellViewModel (routing) + one per page, UninstallFlow, RelayCommand
   Views/                         Theme.xaml (colours, fonts, text styles), Controls.xaml,
                                  Frames.xaml, PageFrame, ButtonChrome, DarkTitleBar, VersionHighlight,

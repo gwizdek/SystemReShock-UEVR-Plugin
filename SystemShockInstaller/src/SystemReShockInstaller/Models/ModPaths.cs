@@ -30,5 +30,7 @@ public static class ModPaths
     /// <summary>UEVR fork recommended for Steam Frame controllers.</summary>
     public const string UevrSteamFrameForkUrl = "https://github.com/joeyhodge/UEVR";
     public const int DefaultInjectDelaySeconds = 5;
+    /// <summary>Held while the app runs; a second copy finds it taken and closes. One per Windows session.</summary>
+    public const string SingleInstanceMutexName = @"Local\SystemReShockVRMod";
     public static readonly TimeSpan GameWindowTimeout = TimeSpan.FromMinutes(2);
 }

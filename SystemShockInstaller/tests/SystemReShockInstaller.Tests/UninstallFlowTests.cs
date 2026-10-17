@@ -101,5 +101,6 @@ public class UninstallFlowTests
     {
         public bool Running { get; set; }
         public bool IsGameRunning() => Running;
+        public bool IsUevrInjected() => false;
     }
 }

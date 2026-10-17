@@ -23,7 +23,11 @@ public sealed class LauncherViewModel : ViewModelBase
     private readonly RelayCommand _reinstallCommand;
     private readonly RelayCommand _uninstallCommand;
     private readonly RelayCommand _exitCommand;
-    private string _status = "Ready to launch.";
+    public const string ReadyStatus = "Ready to launch.";
+    public const string AlreadyInjectedStatus =
+        "System Shock Remake is running and UEVR is already injected. Close the game to launch it again.";
+
+    private string _status = ReadyStatus;
     private bool _isBusy;
     private bool _injected;
 
@@ -37,10 +41,15 @@ public sealed class LauncherViewModel : ViewModelBase
         InstalledVersionText = "Mod v" + (_settings.InstalledVersion ?? "unknown") + " installed";
         StoreText = GameStores.Describe(_plan.Store);
         DelayText = "UEVR is injected " + DelaySeconds + " seconds after the game window appears.";
-        _launchCommand = new RelayCommand(() => _ = LaunchAsync(), () => !IsBusy && !_injected);
-        _reinstallCommand = new RelayCommand(actions.Reinstall, () => !IsBusy);
-        _uninstallCommand = new RelayCommand(actions.Uninstall, () => !IsBusy);
+        _launchCommand = new RelayCommand(() => _ = LaunchAsync(), CanChange);
+        _reinstallCommand = new RelayCommand(actions.Reinstall, CanChange);
+        _uninstallCommand = new RelayCommand(actions.Uninstall, CanChange);
         _exitCommand = new RelayCommand(actions.Exit, () => !IsBusy);
+        if (services.ProcessChecker.IsUevrInjected())
+        {
+            _injected = true;
+            _status = AlreadyInjectedStatus;
+        }
     }
 
     public string InstalledVersionText { get; }
@@ -68,8 +77,15 @@ public sealed class LauncherViewModel : ViewModelBase
             _reinstallCommand.RaiseCanExecuteChanged();
             _uninstallCommand.RaiseCanExecuteChanged();
             _exitCommand.RaiseCanExecuteChanged();
+            Raise(nameof(CanChangeRuntime));
         }
     }
+
+    /// <summary>
+    /// False while a launch runs and once UEVR is in the game, found at startup or injected here.
+    /// Then only Exit stays enabled.
+    /// </summary>
+    public bool CanChangeRuntime => CanChange();
 
     public bool IsOpenXr
     {
@@ -94,6 +110,8 @@ public sealed class LauncherViewModel : ViewModelBase
     private VrRuntime Runtime => VrRuntimes.Parse(_settings.Runtime);
 
     private int DelaySeconds => _settings.InjectDelaySeconds ?? ModPaths.DefaultInjectDelaySeconds;
+
+    private bool CanChange() => !IsBusy && !_injected;
 
     private void SetRuntime(VrRuntime runtime)
     {

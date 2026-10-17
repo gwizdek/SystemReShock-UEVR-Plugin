@@ -19,7 +19,7 @@
                 <TextBlock Style="{StaticResource Muted}" Text="{Binding StoreText}" />
 
                 <ContentControl Style="{StaticResource SectionLabel}" Margin="0,24,0,12" Content="VR RUNTIME" />
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" IsEnabled="{Binding CanChangeRuntime}">
                     <RadioButton Content="OpenXR" GroupName="Runtime" IsChecked="{Binding IsOpenXr}" />
                     <RadioButton Content="OpenVR (SteamVR)" GroupName="Runtime" IsChecked="{Binding IsOpenVr}" Margin="32,0,0,0" />
                 </StackPanel>

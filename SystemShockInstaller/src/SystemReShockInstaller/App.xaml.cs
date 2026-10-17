@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using SystemReShockInstaller.Models;
 using SystemReShockInstaller.Services;
 using SystemReShockInstaller.ViewModels;
 
@@ -14,11 +15,23 @@ public partial class App : Application
     /// <summary>Testing aid: points the settings and profile folders somewhere other than %AppData%.</summary>
     private const string AppDataOverrideVariable = "SYSTEMRESHOCKVR_APPDATA";
 
+    private const string AppTitle = "System Shock Remake VR Mod";
+    private const string AlreadyRunningMessage =
+        "System Shock Remake VR Mod is already running. Use the window that is already open.";
+
     private ModBundle? _bundle;
+    private SingleInstanceGuard? _instance;
 
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        _instance = new SingleInstanceGuard(ModPaths.SingleInstanceMutexName);
+        if (!_instance.IsFirstInstance)
+        {
+            new MessageBoxDialogs().Warn(AppTitle, AlreadyRunningMessage);
+            Shutdown();
+            return;
+        }
         _bundle = ModBundle.FromEmbeddedResource();
         var forceInstall = e.Args.Any(a => a.Equals(ForceInstallFlag, StringComparison.OrdinalIgnoreCase));
         var shell = new ShellViewModel(ComposeServices(_bundle), Shutdown, forceInstall);
@@ -29,6 +42,7 @@ public partial class App : Application
     protected override void OnExit(ExitEventArgs e)
     {
         _bundle?.Dispose();
+        _instance?.Dispose();
         base.OnExit(e);
     }
 

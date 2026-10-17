@@ -53,23 +53,11 @@ public sealed class GameProcessWatcher : IGameProcessWatcher
     {
         try
         {
-            return process.MainWindowHandle != IntPtr.Zero && HasDirect3D(process);
+            return process.MainWindowHandle != IntPtr.Zero && ProcessModules.HasAny(process, "d3d11.dll", "d3d12.dll");
         }
         catch (Exception ex) when (ex is Win32Exception || ex is InvalidOperationException)
         {
             return false;
         }
-    }
-
-    private static bool HasDirect3D(Process process)
-    {
-        foreach (ProcessModule module in process.Modules)
-        {
-            var name = module.ModuleName;
-            if (string.Equals(name, "d3d11.dll", StringComparison.OrdinalIgnoreCase)
-                || string.Equals(name, "d3d12.dll", StringComparison.OrdinalIgnoreCase))
-                return true;
-        }
-        return false;
     }
 }
