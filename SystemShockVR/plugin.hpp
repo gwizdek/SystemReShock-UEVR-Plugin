@@ -202,6 +202,8 @@ private:
 // -----------------------------------------------------------------------------
 public:
     bool prepare_pointers();
+    bool is_vr_xinput_slot(uint32_t user_index, const UEVR_VRData* vr);
+    void update_game_state();
     void prepare_game_state();
     void flush_bp_log();
     void handle_smooth_turning(XINPUT_STATE* state);

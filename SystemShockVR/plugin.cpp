@@ -252,11 +252,29 @@ void UEVRPlugin::on_initialize() {
     API::get()->log_warn("[plugin][on_initialize] Done");
 }
 
+// UEVR injects the VR controllers only into the lowest polled XInput slot (VR::on_xinput_get_state
+// returns early for every other slot), and it updates that index before plugins are called.
+// Other slots, such as Steam Input pads of a Steam Frame, carry no VR input. Handling them too
+// would sample the game state and the button memos more than once per tick, so a change seen on
+// one call is gone on the next.
+bool UEVRPlugin::is_vr_xinput_slot(uint32_t user_index, const UEVR_VRData* vr) {
+    static bool s_logged_other_slot = false;
+    const uint32_t vr_index = vr->get_lowest_xinput_index();
+    if (user_index == vr_index) return true;
+    if (!s_logged_other_slot) {
+        s_logged_other_slot = true;
+        API::get()->log_warn("[plugin][is_vr_xinput_slot] Ignoring XInput slot %u, VR input is on slot %u", user_index, vr_index);
+    }
+    return false;
+}
+
 void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINPUT_STATE* state) {
     PLUGIN_LOG_ONCE("XInput Get State");
 
     const UEVR_VRData* vr = API::get()->param()->vr;
     if (!vr->is_runtime_ready())
+        return;
+    if (!is_vr_xinput_slot(user_index, vr))
         return;
 
     try {
@@ -269,9 +287,8 @@ void UEVRPlugin::on_xinput_get_state(uint32_t* retval, uint32_t user_index, XINP
         if (!prepare_pointers()) {
             return;
         }
-        prepare_game_state();
-        // handle level change before xinput
-        handle_level_change();
+        // handle level and game state changes before xinput
+        update_game_state();
         handle_xinput(state, vr);
         handle_lean();
         handle_crouch();
@@ -310,8 +327,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         if (!m_xinput_cb_processed) {
             if (!prepare_pointers())
                 return;
-            prepare_game_state();
-            handle_level_change();
+            update_game_state();
         }
         else {
             // reset for next cb iteration
@@ -320,7 +336,6 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
 
         m_gamepad_left_thumb.add_delta(delta);
 
-        handle_game_state_change();
         handle_deferred_camera_reset(delta);
         handle_cyberspace_look_pivot(vr);
         handle_media_display();
@@ -467,6 +482,15 @@ void UEVRPlugin::flush_bp_log() {
         log_bp_entry(entry, time_text);
     }
     m_bp_logger->Clear();
+}
+
+// Samples the game state and applies a change at once. Every prepare_game_state() call moves the
+// previous value of the memo properties, so a change must be handled before the next call, and
+// on_xinput_get_state can run more than once per engine tick.
+void UEVRPlugin::update_game_state() {
+    prepare_game_state();
+    handle_level_change();
+    handle_game_state_change();
 }
 
 void UEVRPlugin::prepare_game_state() {
@@ -1206,6 +1230,8 @@ void UEVRPlugin::update_trailing_rotation(float delta) {
 void UEVRPlugin::handle_game_state_change() {
     try {
         if (m_game_state.has_changed()) {
+            // consumed first, so the options are applied once per change, even when one throws
+            m_game_state.consume();
             API::get()->log_warn("[plugin][handle_game_state_change] New Game State: %s", GameStateName[m_game_state.get()]);
             const UEVR_VRData* vr = API::get()->param()->vr;
             const UEVR_SDKData* sdk = API::get()->sdk();
