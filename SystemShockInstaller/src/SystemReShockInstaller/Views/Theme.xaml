@@ -32,8 +32,8 @@
     <SolidColorBrush x:Key="WindowBackground" Color="#000000" />
     <!-- How much black covers the background image (assets/background.jpg): 0 shows it fully. -->
     <sys:Double x:Key="BackgroundDim">0.8</sys:Double>
-    <!-- Slightly see-through, so the background shows faintly, as in the game's top bar. -->
-    <SolidColorBrush x:Key="TopBarBackground" Color="#D90C211D" />
+    <!-- Half see-through, so the background shows through, as in the game's top bar. -->
+    <SolidColorBrush x:Key="TopBarBackground" Color="#800C211D" />
     <SolidColorBrush x:Key="TopBarLine" Color="#0CDC81" />
     <SolidColorBrush x:Key="PanelBackground" Color="#0F0F11" />
     <SolidColorBrush x:Key="InputBackground" Color="#050807" />

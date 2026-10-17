@@ -271,7 +271,7 @@ opacity (`BackgroundDim` in `Theme.xaml`), so the text stays readable.
 - Text and lines are bright green (`#00FF84`); help texts are a dimmer green.
 - The button or field under the mouse or with keyboard focus turns yellow
   (`#FFF22A`).
-- Each page has a dark teal top bar, slightly see-through, with a breadcrumb such as
+- Each page has a dark teal top bar at 50% opacity with a breadcrumb such as
   "**SYSTEM SHOCK VR MOD** > CHOOSE FOLDERS" and, at the bottom right, the
   installer's version in small green text, like the game's version in its
   options menu.
