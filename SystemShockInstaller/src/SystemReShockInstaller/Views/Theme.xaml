@@ -112,7 +112,9 @@
         <Setter Property="Padding" Value="20,12" />
     </Style>
 
-    <!-- Shodan artwork left, page content right, UEVR logo plus the page's buttons at the bottom. -->
+    <!-- Shodan artwork left, page content right, UEVR logo plus the page's buttons at the bottom.
+         The artwork column takes its width from the image at the row's height, so the image keeps
+         its aspect ratio at any window size. -->
     <Style TargetType="views:HeroFrame">
         <Setter Property="Template">
             <Setter.Value>
@@ -124,12 +126,12 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="300" />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0"
                                    Source="pack://application:,,,/Assets/shodan.png"
-                                   Stretch="UniformToFill"
+                                   Stretch="Uniform"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                             <ContentPresenter Grid.Column="1" Margin="28,36,28,20" />
                         </Grid>
