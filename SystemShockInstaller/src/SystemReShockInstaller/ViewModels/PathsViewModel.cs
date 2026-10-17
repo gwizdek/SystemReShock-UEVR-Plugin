@@ -33,6 +33,7 @@ public sealed class PathsViewModel : ViewModelBase
     }
 
     public string UevrNightlyUrl => ModPaths.UevrNightlyUrl;
+    public string UevrSteamFrameForkUrl => ModPaths.UevrSteamFrameForkUrl;
     public ICommand BrowseUevrCommand { get; }
     public ICommand BrowseGameCommand { get; }
     public ICommand NextCommand => _nextCommand;

@@ -27,6 +27,8 @@ public static class ModPaths
     /// <summary>GOG writes this file into the root of every game it installs.</summary>
     public const string GogInfoFilePattern = "goggame-*.info";
     public const string UevrNightlyUrl = "https://github.com/praydog/UEVR-nightly/releases/latest";
+    /// <summary>UEVR fork recommended for Steam Frame controllers.</summary>
+    public const string UevrSteamFrameForkUrl = "https://github.com/joeyhodge/UEVR";
     public const int DefaultInjectDelaySeconds = 5;
     public static readonly TimeSpan GameWindowTimeout = TimeSpan.FromMinutes(2);
 }

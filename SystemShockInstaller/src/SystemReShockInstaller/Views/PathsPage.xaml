@@ -28,6 +28,15 @@
                     <Button Grid.Column="1" Content="Browse..." Command="{Binding BrowseUevrCommand}" />
                 </Grid>
                 <TextBlock Style="{StaticResource Error}" Text="{Binding UevrError}" />
+                <Border Style="{StaticResource InfoBox}">
+                    <TextBlock>
+                        <Run FontWeight="SemiBold" Text="Steam Frame:" />
+                        <Run Text="for Steam Frame compatibility we recommend the UEVR fork by joeyhodge, from" />
+                        <Hyperlink NavigateUri="{Binding UevrSteamFrameForkUrl}" RequestNavigate="OnRequestNavigate">
+                            <Run Text="github.com/joeyhodge/UEVR" />
+                        </Hyperlink><Run Text="." />
+                    </TextBlock>
+                </Border>
 
                 <TextBlock FontWeight="SemiBold" Margin="0,22,0,0" Text="System Shock Remake folder" />
                 <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6"
