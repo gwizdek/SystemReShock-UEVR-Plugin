@@ -2,7 +2,11 @@ using System.Windows;
 
 namespace SystemReShockInstaller.Services;
 
-/// <summary>Standard Windows message boxes owned by the main window.</summary>
+/// <summary>
+/// Standard Windows message boxes, owned by the main window when there is one. The app uses them
+/// only for the notice that another copy is already running; every other question and notice is
+/// a StyledDialog.
+/// </summary>
 public sealed class MessageBoxDialogs : IDialogs
 {
     public bool Confirm(string title, string message) =>

@@ -1,6 +1,7 @@
 <!--
     Control templates in the style of the game's options menu. Every control turns yellow under the
-    mouse or with keyboard focus, as the menu does for the selected item. Labels are shown in
+    mouse or with keyboard focus, as the menu does for the selected item. Buttons and radio buttons
+    show focus only when it came from the keyboard (KeyboardFocusCue), not after a mouse click. Labels are shown in
     capitals through the UpperCase converter, so the view models keep normal text.
 -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -51,7 +52,7 @@
                 <Setter Property="BorderBrush" Value="{StaticResource ButtonEdgeHover}" />
                 <Setter Property="Background" Value="{StaticResource ButtonFillHover}" />
             </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True">
+            <Trigger Property="views:KeyboardFocusCue.IsVisible" Value="True">
                 <Setter Property="Foreground" Value="{StaticResource Highlight}" />
                 <Setter Property="BorderBrush" Value="{StaticResource ButtonEdgeHover}" />
                 <Setter Property="Background" Value="{StaticResource ButtonFillHover}" />
@@ -71,7 +72,7 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="{StaticResource Highlight}" />
             </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True">
+            <Trigger Property="views:KeyboardFocusCue.IsVisible" Value="True">
                 <Setter Property="BorderBrush" Value="{StaticResource Highlight}" />
             </Trigger>
         </Style.Triggers>
@@ -154,7 +155,7 @@
                             <Setter TargetName="Mark" Property="Fill" Value="{StaticResource Highlight}" />
                             <Setter TargetName="Text" Property="Foreground" Value="{StaticResource Highlight}" />
                         </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
+                        <Trigger Property="views:KeyboardFocusCue.IsVisible" Value="True">
                             <Setter TargetName="Box" Property="BorderBrush" Value="{StaticResource Highlight}" />
                             <Setter TargetName="Text" Property="Foreground" Value="{StaticResource Highlight}" />
                         </Trigger>

@@ -5,6 +5,7 @@ using System.Windows;
 using SystemReShockInstaller.Models;
 using SystemReShockInstaller.Services;
 using SystemReShockInstaller.ViewModels;
+using SystemReShockInstaller.Views;
 
 namespace SystemReShockInstaller;
 
@@ -32,6 +33,7 @@ public partial class App : Application
             Shutdown();
             return;
         }
+        KeyboardFocusCue.Register();
         _bundle = ModBundle.FromEmbeddedResource();
         var forceInstall = e.Args.Any(a => a.Equals(ForceInstallFlag, StringComparison.OrdinalIgnoreCase));
         var shell = new ShellViewModel(ComposeServices(_bundle), Shutdown, forceInstall);
@@ -55,7 +57,7 @@ public partial class App : Application
         {
             Installer = ComposeInstaller(bundle, settingsStore, version),
             Uninstaller = ComposeUninstaller(bundle),
-            Dialogs = new MessageBoxDialogs(),
+            Dialogs = new StyledDialogs(),
             SettingsStore = settingsStore,
             FolderPicker = new FolderPicker(),
             ProcessChecker = new ProcessChecker(),

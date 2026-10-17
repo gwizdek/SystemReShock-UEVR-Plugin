@@ -184,11 +184,11 @@ game and try running the installer as administrator."
 Reachable from the Welcome page whenever `settings.json` exists, and from the
 launcher. Both run the same flow:
 
-1. If the game is running, a message box says to close it first. Nothing else
+1. If the game is running, a notice says to close it first. Nothing else
    happens.
-2. A Yes/No message box titled "Remove the mod?" lists every step with its
-   paths, the same text the confirmation page would show, and ends with "Your
-   game files and save games are not touched. Continue?"
+2. A Yes/No question titled "Uninstall the mod" asks "Are you sure you want to
+   uninstall the mod and all of its components?". No is the default button, so
+   Enter and Esc both cancel.
 3. On Yes, the steps run in order and stop at the first failure, like an
    install. Missing files and folders are skipped, not errors.
    1. **Paks.** Delete `SystemShockVRModCore_P.pak` and
@@ -199,6 +199,12 @@ launcher. Both run the same flow:
 4. The result page shows "Mod removed" or "Removal failed" with one line per
    step. Its only button is Close, which exits the app, because there is
    nothing left to launch.
+
+The notice and the question are `StyledDialog` windows in the installer's
+style: black with a 1 px green border, a green header with the title in black
+capitals, and the installer's buttons. They have no Windows title bar and move
+by dragging the header. Only the notice that another copy is already running
+is a standard Windows message box.
 
 The saved paths are kept in memory for this even when a folder no longer
 exists or a mod file is missing, so a broken install can still be removed.
@@ -270,7 +276,9 @@ opacity (`BackgroundDim` in `Theme.xaml`), so the text stays readable.
 
 - Text and lines are bright green (`#00FF84`); help texts are a dimmer green.
 - The button or field under the mouse or with keyboard focus turns yellow
-  (`#FFF22A`).
+  (`#FFF22A`). Buttons and radio buttons show focus only when it came from the
+  keyboard (`KeyboardFocusCue`), so a button does not stay yellow after a
+  mouse click or after a dialog it opened is closed with the mouse.
 - Each page has a dark teal top bar at 50% opacity with a breadcrumb such as
   "**SYSTEM SHOCK VR MOD** > CHOOSE FOLDERS" and, at the bottom right, the
   installer's version in small green text, like the game's version in its
@@ -332,6 +340,7 @@ src/SystemReShockInstaller/
   ViewModels/                    ShellViewModel (routing) + one per page, UninstallFlow, RelayCommand
   Views/                         Theme.xaml (colours, fonts, text styles), Controls.xaml,
                                  Frames.xaml, PageFrame, ButtonChrome, DarkTitleBar, VersionHighlight,
+                                 StyledDialog, StyledDialogs, KeyboardFocusCue,
                                  WelcomePage, PathsPage, ConfirmPage, ResultPage, LauncherPage
 tests/SystemReShockInstaller.Tests/
 ```

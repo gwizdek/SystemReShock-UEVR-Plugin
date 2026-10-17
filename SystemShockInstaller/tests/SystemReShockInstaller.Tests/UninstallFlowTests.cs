@@ -27,9 +27,7 @@ public class UninstallFlowTests
         Assert.False(File.Exists(Path.Combine(plan.PaksTargetDir, "SystemShockVRModCore_P.pak")));
         Assert.False(Directory.Exists(plan.ProfileTargetDir));
         Assert.False(File.Exists(plan.SettingsPath));
-        Assert.Contains("SystemShockVRModAddon_P.pak", dialogs.LastMessage);
-        Assert.Contains(plan.ProfileTargetDir, dialogs.LastMessage);
-        Assert.Contains(plan.SettingsPath, dialogs.LastMessage);
+        Assert.Equal(UninstallFlow.Question, dialogs.LastMessage);
     }
 
     [Fact]
