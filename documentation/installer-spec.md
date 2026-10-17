@@ -259,16 +259,19 @@ folders with non-ASCII names, for example `Gra – Zażółć gęślą jaźń`.
 
 ## Graphics
 
-`assets/shodan.png` (600 x 842), `assets/uevr_logo.PNG` and the font files in
-`assets/fonts/` are linked into the app as WPF resources.
+`assets/shodan.png` (600 x 842), `assets/uevr_logo.PNG`,
+`assets/background.jpg` (703 x 604) and the font files in `assets/fonts/` are
+linked into the app as WPF resources.
 
-The look follows the game's options menu, on a black background with no
-background image. The window is 920 x 790 and has a dark title bar.
+The look follows the game's options menu. The window is 920 x 790 and has a
+dark title bar. Behind every page is a planet from the game
+(`background.jpg`), scaled to fill the window and covered by black at 80%
+opacity (`BackgroundDim` in `Theme.xaml`), so the text stays readable.
 
 - Text and lines are bright green (`#00FF84`); help texts are a dimmer green.
 - The button or field under the mouse or with keyboard focus turns yellow
   (`#FFF22A`).
-- Each page has a dark teal top bar with a breadcrumb such as
+- Each page has a dark teal top bar, slightly see-through, with a breadcrumb such as
   "**SYSTEM SHOCK VR MOD** > CHOOSE FOLDERS" and, at the bottom right, the
   installer's version in small green text, like the game's version in its
   options menu.
@@ -307,7 +310,8 @@ repository. Both projects below are part of the repository solution,
 
 ```
 README.md                        player and developer guide
-assets/                          shodan.png, uevr_logo.PNG, fonts/ (Saira, Saira SemiCondensed and their licence)
+assets/                          shodan.png, uevr_logo.PNG, background.jpg,
+                                 fonts/ (Saira, Saira SemiCondensed and their licence)
 mod_files/                       the mod, rebuilt from its sources, zipped and embedded at build time; not in git
 src/SystemReShockInstaller/
   App.xaml(.cs)                  composes services, reads --install and the AppData override

@@ -77,7 +77,7 @@ Command line and environment:
 | Folder | Contents |
 |--------|----------|
 | `mod_files/` | The mod as shipped. Rebuilt from its sources on every build, then zipped and embedded in the EXE. Not in git. Do not edit it by hand; see **Where the mod files come from**. |
-| `assets/` | Shodan image, UEVR logo, and the Saira and Saira SemiCondensed fonts with their licence (`fonts/OFL.txt`). |
+| `assets/` | Shodan image, UEVR logo, the planet background, and the Saira and Saira SemiCondensed fonts with their licence (`fonts/OFL.txt`). |
 | `src/SystemReShockInstaller/` | WPF app. `Services/` holds all file, process, and injection work, `ViewModels/` the page logic, `Views/` the XAML pages. |
 | `tests/SystemReShockInstaller.Tests/` | xUnit tests for the services. They use temp folders with non-ASCII names and inject a system DLL into a child process to prove the injector. |
 | `../documentation/installer-spec.md` | Design decisions, the startup decision table, and the full wizard and launcher behaviour. |

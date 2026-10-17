@@ -9,5 +9,11 @@
         FontFamily="{StaticResource BodyFont}"
         UseLayoutRounding="True"
         TextOptions.TextFormattingMode="Display">
-    <ContentControl Content="{Binding CurrentPage}" />
+    <Grid>
+        <!-- The game's ring background, dimmed by a black layer, behind every page. -->
+        <Image Source="pack://application:,,,/Assets/background.jpg" Stretch="UniformToFill"
+               RenderOptions.BitmapScalingMode="HighQuality" />
+        <Rectangle Fill="Black" Opacity="{StaticResource BackgroundDim}" />
+        <ContentControl Content="{Binding CurrentPage}" />
+    </Grid>
 </Window>

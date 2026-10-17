@@ -62,6 +62,7 @@
   <ItemGroup>
     <Resource Include="..\..\assets\shodan.png" Link="Assets\shodan.png" />
     <Resource Include="..\..\assets\uevr_logo.PNG" Link="Assets\uevr_logo.png" />
+    <Resource Include="..\..\assets\background.jpg" Link="Assets\background.jpg" />
     <Resource Include="..\..\assets\fonts\*.ttf" Link="Assets\Fonts\%(Filename)%(Extension)" />
   </ItemGroup>
 
