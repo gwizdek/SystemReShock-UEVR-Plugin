@@ -1,19 +1,22 @@
 <UserControl x:Class="SystemReShockInstaller.Views.PathsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:views="clr-namespace:SystemReShockInstaller.Views">
+    <views:PageFrame Title="Choose folders">
+        <views:PageFrame.ButtonBar>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Cancel" Command="{Binding CancelCommand}" />
+                <Button Content="Next" Style="{StaticResource PrimaryButton}" Command="{Binding NextCommand}" IsDefault="True" />
+            </StackPanel>
+        </views:PageFrame.ButtonBar>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-            <StackPanel Margin="28,28,28,12">
-                <TextBlock Style="{StaticResource Heading}" Text="Choose folders" />
-
-                <TextBlock FontWeight="SemiBold" Text="UEVR folder" />
-                <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6">
-                    <Run Text="This mod needs UEVR nightly build 1127 or newer. Download the latest nightly zip from" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <ContentControl Style="{StaticResource SectionLabel}" Content="UEVR FOLDER" />
+                <TextBlock Style="{StaticResource Muted}" Margin="0,8,0,8">
+                    <Run Text="This mod needs UEVR nightly build" />
+                    <Run Foreground="{StaticResource Highlight}" Text="1127" />
+                    <Run Text="or newer. Download the latest nightly zip from" />
                     <Hyperlink NavigateUri="{Binding UevrNightlyUrl}" RequestNavigate="OnRequestNavigate">
                         <Run Text="github.com/praydog/UEVR-nightly" />
                     </Hyperlink>
@@ -28,20 +31,19 @@
                     <Button Grid.Column="1" Content="Browse..." Command="{Binding BrowseUevrCommand}" />
                 </Grid>
                 <TextBlock Style="{StaticResource Error}" Text="{Binding UevrError}" />
-                <Border Style="{StaticResource InfoBox}">
+                <HeaderedContentControl Style="{StaticResource InfoPanel}" Header="STEAM FRAME">
                     <TextBlock>
-                        <Run FontWeight="SemiBold" Text="Steam Frame:" />
-                        <Run Text="for Steam Frame compatibility we recommend the UEVR fork by joeyhodge, from" />
+                        <Run Text="For Steam Frame compatibility we recommend the UEVR fork by joeyhodge, from" />
                         <Hyperlink NavigateUri="{Binding UevrSteamFrameForkUrl}" RequestNavigate="OnRequestNavigate">
                             <Run Text="github.com/joeyhodge/UEVR" />
                         </Hyperlink><Run Text="." />
                     </TextBlock>
-                </Border>
+                </HeaderedContentControl>
 
-                <TextBlock FontWeight="SemiBold" Margin="0,22,0,0" Text="System Shock Remake folder" />
-                <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,6"
+                <ContentControl Style="{StaticResource SectionLabel}" Margin="0,24,0,0" Content="SYSTEM SHOCK REMAKE FOLDER" />
+                <TextBlock Style="{StaticResource Muted}" Margin="0,8,0,8"
                            Text="The folder that contains SystemShock.exe, for example C:\Program Files (x86)\Steam\steamapps\common\System Shock Remake or C:\GOG Games\System Shock Remake." />
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8"
                             Visibility="{Binding ShowsStoreButtons, Converter={StaticResource BoolToVisibility}}">
                     <Button Content="Use Steam version" Command="{Binding UseSteamCommand}" Margin="0" ToolTip="{Binding SteamFolder}" />
                     <Button Content="Use GOG version" Command="{Binding UseGogCommand}" ToolTip="{Binding GogFolder}" />
@@ -58,12 +60,5 @@
                 <TextBlock Style="{StaticResource Muted}" Text="{Binding DetectedStoreText}" />
             </StackPanel>
         </ScrollViewer>
-
-        <Border Grid.Row="1" Style="{StaticResource ButtonBar}">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Cancel" Command="{Binding CancelCommand}" />
-                <Button Content="Next" Style="{StaticResource PrimaryButton}" Command="{Binding NextCommand}" IsDefault="True" />
-            </StackPanel>
-        </Border>
-    </Grid>
+    </views:PageFrame>
 </UserControl>

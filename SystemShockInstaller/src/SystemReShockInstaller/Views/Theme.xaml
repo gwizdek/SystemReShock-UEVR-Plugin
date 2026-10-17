@@ -1,163 +1,138 @@
+<!--
+    Colours, font and text styles, taken from the game's options menu: bright green text and
+    lines on black, yellow for the item under the pointer, a dark teal top bar and panels with a
+    solid green header. Control templates are in Controls.xaml, page frames in Frames.xaml.
+-->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:views="clr-namespace:SystemReShockInstaller.Views">
+                    xmlns:views="clr-namespace:SystemReShockInstaller.Views"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- One size for all small text (help texts, details, errors, tooltips) on every page. -->
+    <sys:Double x:Key="SmallFontSize">15</sys:Double>
 
     <views:BoolToVisibilityConverter x:Key="BoolToVisibility" />
     <views:BoolToMarkConverter x:Key="BoolToMark" />
-    <views:BoolToMarkBrushConverter x:Key="BoolToMarkBrush" SuccessBrush="#5FD35F" FailureBrush="#FF6B6B" />
+    <views:BoolToMarkBrushConverter x:Key="BoolToMarkBrush" SuccessBrush="#00FF84" FailureBrush="#FF4A4A" />
+    <views:UpperCaseConverter x:Key="UpperCase" />
 
-    <SolidColorBrush x:Key="WindowBackground" Color="#0E1216" />
-    <SolidColorBrush x:Key="PanelBackground" Color="#161C22" />
-    <SolidColorBrush x:Key="BorderBrushSubtle" Color="#2A343D" />
-    <SolidColorBrush x:Key="TextPrimary" Color="#E6EDF3" />
-    <SolidColorBrush x:Key="TextMuted" Color="#8B98A5" />
-    <SolidColorBrush x:Key="Accent" Color="#5FD35F" />
-    <SolidColorBrush x:Key="AccentHover" Color="#7CE47C" />
-    <SolidColorBrush x:Key="Danger" Color="#FF6B6B" />
-    <SolidColorBrush x:Key="InputBackground" Color="#0B0F13" />
+    <!-- The game's menus use United Sans, a commercial font that cannot be shipped. Saira
+         (SIL Open Font License, assets/fonts/OFL.txt) has the same squared shapes.
+         HeadingFont: section labels, the top bar and panel headers, in bold at normal width like
+         "TOGGLE CROUCH" in the game. UiFont: buttons and radio buttons, semi-condensed.
+         BodyFont: running and small text, at normal width in Medium, as thinner and narrower
+         letters are hard to read at small sizes. -->
+    <FontFamily x:Key="HeadingFont">pack://application:,,,/Assets/Fonts/#Saira, Segoe UI</FontFamily>
+    <FontFamily x:Key="UiFont">pack://application:,,,/Assets/Fonts/#Saira SemiCondensed, Segoe UI</FontFamily>
+    <FontFamily x:Key="BodyFont">pack://application:,,,/Assets/Fonts/#Saira, Segoe UI</FontFamily>
+
+    <Color x:Key="GreenColor">#00FF84</Color>
+    <Color x:Key="HighlightColor">#FFF22A</Color>
+
+    <SolidColorBrush x:Key="WindowBackground" Color="#000000" />
+    <SolidColorBrush x:Key="TopBarBackground" Color="#0C211D" />
+    <SolidColorBrush x:Key="TopBarLine" Color="#0CDC81" />
+    <SolidColorBrush x:Key="PanelBackground" Color="#0F0F11" />
+    <SolidColorBrush x:Key="InputBackground" Color="#050807" />
+    <!-- Labels, headings, lines and the default button. -->
+    <SolidColorBrush x:Key="Accent" Color="{StaticResource GreenColor}" />
+    <!-- Running text, a little softer than the labels, as in the menu's description panel. -->
+    <SolidColorBrush x:Key="TextPrimary" Color="#02F27F" />
+    <SolidColorBrush x:Key="TextMuted" Color="#13A866" />
+    <!-- Inactive parts: the unselected dashes under a menu value, input borders, disabled items. -->
+    <SolidColorBrush x:Key="Dim" Color="#0C6D44" />
+    <SolidColorBrush x:Key="Highlight" Color="{StaticResource HighlightColor}" />
+    <SolidColorBrush x:Key="OnAccent" Color="#000000" />
+    <SolidColorBrush x:Key="Danger" Color="#FF4A4A" />
+
+    <!-- Button fills fade out to the right, like the RESET / APPLY / BACK buttons. -->
+    <LinearGradientBrush x:Key="ButtonFill" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FF16231C" Offset="0" />
+        <GradientStop Color="#2016231C" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ButtonFillHover" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#40FFF22A" Offset="0" />
+        <GradientStop Color="#0AFFF22A" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ButtonFillPressed" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#70FFF22A" Offset="0" />
+        <GradientStop Color="#20FFF22A" Offset="1" />
+    </LinearGradientBrush>
 
     <Style TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
         <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
-        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
-    <Style x:Key="Heading" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
-        <Setter Property="FontSize" Value="22" />
-        <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Margin" Value="0,0,0,12" />
+    <!-- A field or section name, written in capitals in the XAML, like "TOGGLE CROUCH" in the menu. -->
+    <Style x:Key="Label" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="FontFamily" Value="{StaticResource HeadingFont}" />
+        <Setter Property="Foreground" Value="{StaticResource Accent}" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!-- Section heading like "USER INTERFACE" in the menu: yellow bold capitals over a 3 px line
+         that fades from yellow through amber to nothing across the column. -->
+    <LinearGradientBrush x:Key="SectionUnderline" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#F0F040" Offset="0" />
+        <GradientStop Color="#BE982A" Offset="0.5" />
+        <GradientStop Color="#684D22" Offset="0.85" />
+        <GradientStop Color="#00684D22" Offset="1" />
+    </LinearGradientBrush>
+    <Style x:Key="SectionLabel" TargetType="ContentControl">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource Label}" Foreground="{StaticResource Highlight}"
+                                   Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Rectangle Height="3" Margin="0,3,0,0" Fill="{StaticResource SectionUnderline}"
+                                   SnapsToDevicePixels="True" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="Muted" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="Foreground" Value="{StaticResource TextMuted}" />
+        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
     </Style>
 
-    <!-- A note set apart from the page text: panel background with an accent bar on the left. -->
-    <Style x:Key="InfoBox" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource PanelBackground}" />
-        <Setter Property="BorderBrush" Value="{StaticResource Accent}" />
-        <Setter Property="BorderThickness" Value="3,0,0,0" />
-        <Setter Property="Padding" Value="10,8" />
-        <Setter Property="Margin" Value="0,10,0,0" />
+    <!-- The title of a setup step or result: the small text font in yellow. The pages show it in
+         capitals through the UpperCase converter, like "POWERED BY UEVR". -->
+    <Style x:Key="ItemTitle" TargetType="TextBlock" BasedOn="{StaticResource Muted}">
+        <Setter Property="Foreground" Value="{StaticResource Highlight}" />
     </Style>
-
     <Style x:Key="Error" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="Foreground" Value="{StaticResource Danger}" />
-        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
         <Setter Property="Margin" Value="0,4,0,0" />
-    </Style>
-
-    <Style TargetType="TextBox">
-        <Setter Property="Background" Value="{StaticResource InputBackground}" />
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
-        <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSubtle}" />
-        <Setter Property="CaretBrush" Value="{StaticResource TextPrimary}" />
-        <Setter Property="Padding" Value="6,5" />
-        <Setter Property="FontSize" Value="13" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-    </Style>
-
-    <Style TargetType="Button">
-        <Setter Property="MinWidth" Value="96" />
-        <Setter Property="Padding" Value="14,7" />
-        <Setter Property="Margin" Value="8,0,0,0" />
-        <Setter Property="FontSize" Value="13" />
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
-        <Setter Property="Background" Value="{StaticResource PanelBackground}" />
-        <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSubtle}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="3"
-                            Padding="{TemplateBinding Padding}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" Value="{StaticResource Accent}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.45" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="Background" Value="{StaticResource Accent}" />
-        <Setter Property="BorderBrush" Value="{StaticResource Accent}" />
-        <Setter Property="Foreground" Value="#0E1216" />
-        <Setter Property="FontWeight" Value="SemiBold" />
+        <!-- Most of the time there is no error; an empty line would push the page down. -->
         <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource AccentHover}" />
+            <Trigger Property="Text" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Text" Value="{x:Null}">
+                <Setter Property="Visibility" Value="Collapsed" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="Hyperlink">
+    <!-- The breadcrumb in the top bar, like "OPTIONS > GRAPHICS": the first part is bold, the
+         rest regular, as in the menu. -->
+    <Style x:Key="Breadcrumb" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="FontFamily" Value="{StaticResource HeadingFont}" />
+        <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Foreground" Value="{StaticResource Accent}" />
-    </Style>
-
-    <Style TargetType="RadioButton">
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
-        <Setter Property="FontSize" Value="13" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Cursor" Value="Hand" />
-    </Style>
-
-    <!-- Shared page frame: content on top, button bar at the bottom. -->
-    <Style x:Key="ButtonBar" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource PanelBackground}" />
-        <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSubtle}" />
-        <Setter Property="BorderThickness" Value="0,1,0,0" />
-        <Setter Property="Padding" Value="20,12" />
-    </Style>
-
-    <!-- Shodan artwork left, page content right, UEVR logo plus the page's buttons at the bottom.
-         The artwork column takes its width from the image at the row's height, so the image keeps
-         its aspect ratio at any window size. -->
-    <Style TargetType="views:HeroFrame">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="views:HeroFrame">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0"
-                                   Source="pack://application:,,,/Assets/shodan.png"
-                                   Stretch="Uniform"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
-                            <ContentPresenter Grid.Column="1" Margin="28,36,28,20" />
-                        </Grid>
-                        <Border Grid.Row="1" Style="{StaticResource ButtonBar}">
-                            <Grid>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <Image Source="pack://application:,,,/Assets/uevr_logo.png" Height="28"
-                                           RenderOptions.BitmapScalingMode="HighQuality" />
-                                    <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="8,0,0,0" Text="Powered by UEVR" />
-                                </StackPanel>
-                                <ContentPresenter Content="{TemplateBinding ButtonBar}" HorizontalAlignment="Right" />
-                            </Grid>
-                        </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
 </ResourceDictionary>

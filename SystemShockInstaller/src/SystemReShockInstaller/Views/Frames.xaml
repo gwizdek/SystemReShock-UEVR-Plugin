@@ -1,0 +1,98 @@
+<!--
+    Page frame and info panel in the layout of the game's options menu: a breadcrumb top bar, a
+    thin green line next to the artwork, and panels with a solid green header.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:views="clr-namespace:SystemReShockInstaller.Views">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Theme.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- The artwork column takes its width from the image at the row's height, so the image keeps
+         its aspect ratio at any window size. -->
+    <Style TargetType="views:PageFrame">
+        <Setter Property="Padding" Value="32,24,32,12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="views:PageFrame">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" Padding="24,8,24,10"
+                                Background="{StaticResource TopBarBackground}"
+                                BorderBrush="{StaticResource TopBarLine}" BorderThickness="0,0,0,1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource Breadcrumb}" FontWeight="Bold" Text="SYSTEM SHOCK VR MOD" />
+                                <TextBlock Style="{StaticResource Breadcrumb}" Margin="14,0" Text="&gt;" />
+                                <TextBlock Style="{StaticResource Breadcrumb}"
+                                           Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource UpperCase}}" />
+                            </StackPanel>
+                        </Border>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="Artwork" Grid.Column="0" Visibility="Collapsed"
+                                   Source="pack://application:,,,/Assets/shodan.png"
+                                   Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" />
+                            <Rectangle x:Name="ArtworkLine" Grid.Column="1" Width="2" Visibility="Collapsed"
+                                       Fill="{StaticResource TopBarLine}" />
+                            <ContentPresenter Grid.Column="2" Margin="{TemplateBinding Padding}" />
+                        </Grid>
+
+                        <Grid Grid.Row="2" Margin="24,12,24,16">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Image Source="pack://application:,,,/Assets/uevr_logo.png" Height="28"
+                                       RenderOptions.BitmapScalingMode="HighQuality" />
+                                <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="8,0,0,0"
+                                           Text="POWERED BY UEVR" />
+                                <ContentPresenter Content="{TemplateBinding Status}" VerticalAlignment="Center" Margin="20,0,0,0" />
+                            </StackPanel>
+                            <ContentPresenter Content="{TemplateBinding ButtonBar}" HorizontalAlignment="Right" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ShowsArtwork" Value="True">
+                            <Setter TargetName="Artwork" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="ArtworkLine" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Like the menu's description panel: a solid green header with black capitals over a dark
+         body with a green outline. The header text is written in capitals in the XAML. -->
+    <Style x:Key="InfoPanel" TargetType="HeaderedContentControl">
+        <Setter Property="Margin" Value="0,14,0,0" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="HeaderedContentControl">
+                    <StackPanel SnapsToDevicePixels="True">
+                        <Border Background="{StaticResource Accent}" Padding="12,3">
+                            <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource HeadingFont}" FontSize="16" FontWeight="Bold"
+                                       Foreground="{StaticResource OnAccent}"
+                                       Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Border>
+                        <Border Background="{StaticResource PanelBackground}" Padding="14,10,14,12"
+                                BorderBrush="{StaticResource Accent}" BorderThickness="1,0,1,1">
+                            <ContentPresenter />
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

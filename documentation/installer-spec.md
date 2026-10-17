@@ -246,8 +246,37 @@ folders with non-ASCII names, for example `Gra – Zażółć gęślą jaźń`.
 
 ## Graphics
 
-`assets/shodan.png` (600 x 842) and `assets/uevr_logo.PNG` in the installer
-folder are linked into the app as WPF resources.
+`assets/shodan.png` (600 x 842), `assets/uevr_logo.PNG` and the font files in
+`assets/fonts/` are linked into the app as WPF resources.
+
+The look follows the game's options menu, on a black background with no
+background image. The window is 840 x 700 and has a dark title bar.
+
+- Text and lines are bright green (`#00FF84`); help texts are a dimmer green.
+- The button or field under the mouse or with keyboard focus turns yellow
+  (`#FFF22A`).
+- Each page has a dark teal top bar with a breadcrumb such as
+  "**SYSTEM SHOCK VR MOD** > CHOOSE FOLDERS".
+- Section labels are yellow bold capitals over a line that fades from yellow to
+  nothing, like "USER INTERFACE" in the game.
+- Info panels have a solid green header with black text.
+- Version numbers and the UEVR build number are yellow; the text around them
+  stays green. `VersionHighlight.Text` does this for texts that come from the
+  view models.
+- Step titles on the confirm and result pages are yellow capitals in the small
+  text size.
+
+The game's menus use United Sans, a commercial font that is not shipped. The
+installer uses Saira instead, which has the same squared shapes:
+
+| Where | Font |
+|---|---|
+| Top bar, section labels, panel headers | Saira Bold (top bar page name: Saira Regular) |
+| Running and small text | Saira Medium |
+| Buttons, radio buttons | Saira SemiCondensed Medium; the main button SemiBold |
+
+Saira is under the SIL Open Font License; `assets/fonts/OFL.txt` holds the
+licence.
 
 ## Layout
 
@@ -258,7 +287,7 @@ repository. Both projects below are part of the repository solution,
 
 ```
 README.md                        player and developer guide
-assets/                          shodan.png, uevr_logo.PNG
+assets/                          shodan.png, uevr_logo.PNG, fonts/ (Saira, Saira SemiCondensed and their licence)
 mod_files/                       the mod, rebuilt from its sources, zipped and embedded at build time; not in git
 src/SystemReShockInstaller/
   App.xaml(.cs)                  composes services, reads --install and the AppData override
@@ -276,8 +305,9 @@ src/SystemReShockInstaller/
                                  GameProcessWatcher, DllInjector, UevrInjector,
                                  GameLaunchService, LaunchErrorFormatter
   ViewModels/                    ShellViewModel (routing) + one per page, UninstallFlow, RelayCommand
-  Views/                         Theme.xaml, HeroFrame, WelcomePage, PathsPage, ConfirmPage,
-                                 ResultPage, LauncherPage
+  Views/                         Theme.xaml (colours, fonts, text styles), Controls.xaml,
+                                 Frames.xaml, PageFrame, DarkTitleBar, VersionHighlight,
+                                 WelcomePage, PathsPage, ConfirmPage, ResultPage, LauncherPage
 tests/SystemReShockInstaller.Tests/
 ```
 
@@ -287,8 +317,9 @@ method. `InstallService` runs a list in order; `App.xaml.cs` builds one list
 for installing and one for uninstalling. Adding a step means adding a class
 and one line there.
 
-`HeroFrame` is the shared page frame (Shodan column, content, bottom bar with
-logo and buttons) used by the welcome and launcher pages.
+`PageFrame` is the frame every page uses: a top bar with the page title, the
+content, and a bottom bar with the UEVR logo, an optional status and the
+page's buttons. The welcome and launcher pages also show the Shodan column.
 
 Repo rules apply: methods under 50 lines, files under 500 lines, services hold
 the logic, views stay thin.

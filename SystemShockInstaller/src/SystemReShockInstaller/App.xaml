@@ -8,6 +8,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Views/Theme.xaml" />
+                <ResourceDictionary Source="Views/Controls.xaml" />
+                <ResourceDictionary Source="Views/Frames.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type vm:WelcomeViewModel}">
