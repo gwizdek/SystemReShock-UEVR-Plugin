@@ -33,7 +33,7 @@
                 <TextBlock Style="{StaticResource Error}" Text="{Binding UevrError}" />
                 <HeaderedContentControl Style="{StaticResource InfoPanel}" Header="STEAM FRAME">
                     <TextBlock>
-                        <Run Text="For Steam Frame compatibility we recommend the UEVR fork by joeyhodge, from" />
+                        <Run Text="If you have problems with the motion controller button bindings, try the UEVR fork by joeyhodge, from" />
                         <Hyperlink NavigateUri="{Binding UevrSteamFrameForkUrl}" RequestNavigate="OnRequestNavigate">
                             <Run Text="github.com/joeyhodge/UEVR" />
                         </Hyperlink><Run Text="." />
@@ -43,10 +43,10 @@
                 <ContentControl Style="{StaticResource SectionLabel}" Margin="0,24,0,0" Content="SYSTEM SHOCK REMAKE FOLDER" />
                 <TextBlock Style="{StaticResource Muted}" Margin="0,8,0,8"
                            Text="The folder that contains SystemShock.exe, for example C:\Program Files (x86)\Steam\steamapps\common\System Shock Remake or C:\GOG Games\System Shock Remake." />
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,8"
+                <StackPanel Orientation="Horizontal" Margin="0,4,0,12"
                             Visibility="{Binding ShowsStoreButtons, Converter={StaticResource BoolToVisibility}}">
-                    <Button Content="Use Steam version" Command="{Binding UseSteamCommand}" Margin="0" ToolTip="{Binding SteamFolder}" />
-                    <Button Content="Use GOG version" Command="{Binding UseGogCommand}" ToolTip="{Binding GogFolder}" />
+                    <Button Content="Use detected Steam version" Command="{Binding UseSteamCommand}" Margin="0" ToolTip="{Binding SteamFolder}" />
+                    <Button Content="Use detected GOG version" Command="{Binding UseGogCommand}" ToolTip="{Binding GogFolder}" />
                 </StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>

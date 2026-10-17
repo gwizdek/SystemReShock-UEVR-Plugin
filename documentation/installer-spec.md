@@ -131,17 +131,17 @@ install exists, otherwise it closes the app.
    - Text explaining how to get UEVR: download the latest nightly from
      https://github.com/praydog/UEVR-nightly/releases/latest, extract it to any
      folder, and point the field at that folder. The link opens in the browser.
-   - An info box under the UEVR field recommends the UEVR fork by joeyhodge
-     for Steam Frame compatibility, with a link to
-     https://github.com/joeyhodge/UEVR.
+   - An info box headed "STEAM FRAME" under the UEVR field suggests the UEVR
+     fork by joeyhodge when the motion controller button bindings cause
+     problems, with a link to https://github.com/joeyhodge/UEVR.
    - The page looks for the game in both stores. Steam: registry install path
      plus a `libraryfolders.vdf` scan. GOG: the `path` value under
      `HKLM\SOFTWARE\GOG.com\Games\1439637285` (32-bit view first).
    - Both fields are pre-filled from `settings.json` when it exists. Without
      settings, the game field is pre-filled when exactly one store has the
      game. When both stores have it, the field stays empty.
-   - When both stores have the game, two buttons, "Use Steam version" and
-     "Use GOG version", appear directly above the game field, each with its
+   - When both stores have the game, two buttons, "Use detected Steam version"
+     and "Use detected GOG version", appear directly above the game field, each with its
      folder as a tooltip. A click fills the field. They appear even when the
      field was pre-filled from settings.
    - Under a valid game field a line says which version the folder holds:
@@ -263,7 +263,7 @@ folders with non-ASCII names, for example `Gra – Zażółć gęślą jaźń`.
 `assets/fonts/` are linked into the app as WPF resources.
 
 The look follows the game's options menu, on a black background with no
-background image. The window is 920 x 740 and has a dark title bar.
+background image. The window is 920 x 790 and has a dark title bar.
 
 - Text and lines are bright green (`#00FF84`); help texts are a dimmer green.
 - The button or field under the mouse or with keyboard focus turns yellow
