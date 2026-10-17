@@ -427,9 +427,10 @@ void UEVRPlugin::on_pre_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceH
     }
 }
 
-void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int, float, UEVR_Vector3f*, UEVR_Rotatorf*, bool) {
+void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int, float, UEVR_Vector3f*, UEVR_Rotatorf* rotation, bool) {
     try {
         VRSnapTurn::after_view_offset();
+        VRMFD::save_view_rotation(rotation);
     }
     catch (...) {
         API::get()->log_error("[plugin][on_post_calculate_stereo_view_offset] Exception");
@@ -508,15 +509,8 @@ void UEVRPlugin::prepare_game_state() {
 
                 // GAME_STATE_MFD
                 if (m_neural_hud->bIsMFDVisible) {
-                    if (m_game_state.matches_none({ GAME_STATE_MFD, GAME_STATE_MFD_PRE })) {
-                        // set a intermediate MFD state for one tick, when we center the MFD
-                        m_game_state.set_value(GAME_STATE_MFD_PRE);
-                        return;
-                    }
-                    else {
-                        m_game_state.set_value(GAME_STATE_MFD);
-                        return;
-                    }
+                    m_game_state.set_value(GAME_STATE_MFD);
+                    return;
                 }
                 
                 // BOOTING_UP
@@ -702,14 +696,6 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
             handle_vr_menu_xinput(state, vr);
             handle_appartment_xinput(state, vr);
             handle_smooth_turning(state);
-            return;
-        }
-
-        // Pre MFD Visible
-        if (m_game_state.get() == GAME_STATE_MFD_PRE) {
-            // mute shoulders, otherwise it will auto change MFD tab
-            m_gamepad_right_shoulder.mute_state(state);
-            m_gamepad_left_shoulder.mute_state(state);
             return;
         }
 
@@ -1315,16 +1301,9 @@ void UEVRPlugin::handle_game_state_change() {
                     }
                     break;
 
-                case GAME_STATE_MFD_PRE:
-                    vr->set_aim_method(1);
-                    // Setting VR_DecoupledPitchUIAdjust causes error if AimMethod 1 wasn't previously used for a couple of ticks
-                    // using set_aim_method(1) just before this line is not enough to mitigate this problem.
-                    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
-                    vr->set_mod_value("VR_RoomscaleMovement", "false");
-                    break;
-
                 case GAME_STATE_MFD:
                     char ui_distance[32], ui_size[32];
+                    VRMFD::face_head(m_pawn.get(), vr);
                     VRMFD::calculate_uevr_ui_params(vr, m_world, ui_distance, ui_size);
 
                     vr->set_mod_value("VR_RoomscaleMovement", "false");

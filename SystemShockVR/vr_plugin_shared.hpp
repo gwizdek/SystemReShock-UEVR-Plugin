@@ -30,7 +30,6 @@ enum EGameState : uint8_t {
     GAME_STATE_CITADEL_STATION = 5,
     GAME_STATE_CYBERSPACE = 6,
     GAME_STATE_PSEUDOSPACE = 7,
-    GAME_STATE_MFD_PRE = 8, // one tick state when MFD is drawn based on HMD rotation
     GAME_STATE_MFD = 9,
     GAME_STATE_INTERACTABLE = 10,
     GAME_STATE_INTRO_DRONE = 11,
@@ -48,7 +47,6 @@ static std::map<EGameState, const char*> GameStateName = {
     { GAME_STATE_CITADEL_STATION, "Citadel Station" },
     { GAME_STATE_CYBERSPACE, "Cyberspace" },
     { GAME_STATE_PSEUDOSPACE, "Pseudeospace" },
-    { GAME_STATE_MFD_PRE, "MFD Pre" },
     { GAME_STATE_MFD, "MFD" },
     { GAME_STATE_INTERACTABLE, "Interactable" },
     { GAME_STATE_INTRO_DRONE, "Intro Drone" },

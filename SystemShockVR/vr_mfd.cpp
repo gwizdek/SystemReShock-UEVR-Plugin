@@ -31,6 +31,37 @@ using namespace SDK;
 // MFD
 // -------------------------------------------------------------------------------------
 
+// Called from on_post_calculate_stereo_view_offset, where UEVR has already added the HMD to
+// the view rotation.
+void VRMFD::save_view_rotation(const UEVR_Rotatorf* rotation) {
+    if (rotation == nullptr) return;
+    m_view_rotation = SDK::FRotator{ rotation->pitch, rotation->yaw, rotation->roll };
+    m_has_view_rotation = true;
+}
+
+// Turns the MFD and the UEVR UI layer to where the player looks, without moving the view.
+// UEVR draws the UI layer in front of the control rotation: yaw from the control rotation,
+// pitch from it too while VR_DecoupledPitchUIAdjust is on. MFDMaskComponent::Show takes the
+// yaw from the pawn, which follows the control rotation, and the pitch from HMDComponent.
+// So the control rotation is set to the head, and recenter_view() moves UEVR's rotation
+// offset by the same yaw, which keeps the view where it is. With decoupled pitch the control
+// pitch does not reach the view. This is what UEVR's head aim (aim method 1) does each tick.
+void VRMFD::face_head(SDK::APawn* pawn, const UEVR_VRData* vr) {
+    try {
+        if (!m_has_view_rotation || pawn == nullptr || pawn->Controller == nullptr) {
+            API::get()->log_warn("[vr_mfd][face_head] No view rotation or controller yet, MFD keeps the control rotation");
+            return;
+        }
+        pawn->Controller->SetControlRotation(SDK::FRotator{ m_view_rotation.Pitch, m_view_rotation.Yaw, 0.f });
+        vr->recenter_view();
+        API::get()->log_warn("[vr_mfd][face_head] Control rotation set to the head: pitch=%.1f yaw=%.1f",
+            m_view_rotation.Pitch, m_view_rotation.Yaw);
+    }
+    catch (...) {
+        API::get()->log_error("[vr_mfd][face_head] Exception");
+    }
+}
+
 // moves MFD panel 10% up
 void VRMFD::align_mfd_panel(UWIDGET_PlayerHUD_C* neural_hud) {
     if (!SDK::UKismetSystemLibrary::IsValid(neural_hud->Panel_MultiFunctionDisplay)) {
