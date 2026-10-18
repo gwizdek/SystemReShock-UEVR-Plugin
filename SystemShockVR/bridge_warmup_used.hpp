@@ -29,6 +29,7 @@ inline bool BridgeWarmupUsed()
 	Ok &= U_BP_MFDMaskComponent_C::BridgeWarmup();
 	Ok &= U_BP_VRMenu_C::BridgeWarmup();
 	Ok &= U_BP_VRMovementComponent_C::BridgeWarmup();
+	Ok &= U_WIDGET_AimReticle_C::BridgeWarmup();
 	return Ok;
 }
 }
