@@ -1,4 +1,5 @@
 #include "tutorial_head_view.hpp"
+#include "object_lookup.hpp"
 
 #include <cstdint>
 #include <cstring>
@@ -48,7 +49,7 @@ bool is_context_of(const uint8_t* p, uint8_t object_opcode, const void* pointer)
 }
 
 ScriptArray* script_of(const wchar_t* function_name) {
-    auto* function = API::get()->find_uobject<API::UFunction>(function_name);
+    auto* function = ObjectLookup::find<API::UFunction>(function_name);
     if (function == nullptr) return nullptr;   // class not loaded yet
     auto* script = reinterpret_cast<ScriptArray*>(reinterpret_cast<uint8_t*>(function) + kScriptOffset);
     if (script->data == nullptr || script->num <= 0 || script->num > script->max) return nullptr;
@@ -56,7 +57,7 @@ ScriptArray* script_of(const wchar_t* function_name) {
 }
 
 const void* player_camera_property() {
-    auto* pawn_class = API::get()->find_uobject<API::UClass>(kPawnClass);
+    auto* pawn_class = ObjectLookup::find<API::UClass>(kPawnClass);
     return pawn_class != nullptr ? pawn_class->find_property(L"PlayerCamera") : nullptr;
 }
 
@@ -73,7 +74,7 @@ SDK::USceneComponent* find_patched_proxy(const ScriptArray& script) {
 }
 
 SDK::USceneComponent* create_proxy() {
-    auto* outer = API::get()->find_uobject<SDK::UObject>(kTransientPackage);
+    auto* outer = ObjectLookup::find<SDK::UObject>(kTransientPackage);
     auto* proxy = static_cast<SDK::USceneComponent*>(SDK::UGameplayStatics::SpawnObject(SDK::USceneComponent::StaticClass(), outer));
     if (proxy == nullptr || !PluginUtils::add_to_root(proxy)) return nullptr;
     return proxy;

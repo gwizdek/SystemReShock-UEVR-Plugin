@@ -1,4 +1,5 @@
 #include "focus_interaction_patch.hpp"
+#include "object_lookup.hpp"
 
 #include "uevr/API.hpp"
 
@@ -88,7 +89,7 @@ void FocusInteractionPatch::patch_all() {
 }
 
 bool FocusInteractionPatch::patch(const wchar_t* function_name) {
-    auto* function = API::get()->find_uobject<API::UFunction>(function_name);
+    auto* function = ObjectLookup::find<API::UFunction>(function_name);
     if (function == nullptr) return false;   // class not loaded yet
     auto& script = *reinterpret_cast<ScriptArray*>(reinterpret_cast<uint8_t*>(function) + kScriptOffset);
     const int32_t target = find_return_false(script);

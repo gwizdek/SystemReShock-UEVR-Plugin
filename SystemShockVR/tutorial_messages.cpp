@@ -1,4 +1,5 @@
 #include "tutorial_messages.hpp"
+#include "object_lookup.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -98,7 +99,7 @@ bool TutorialMessages::read_ini() {
 // The loaded table, or loads it. Loading it from the plugin makes it the one object every
 // later reader gets, and rooting it keeps it that way.
 SDK::UDataTable* TutorialMessages::find_table() {
-    auto* table = API::get()->find_uobject<SDK::UDataTable>(kTableName);
+    auto* table = ObjectLookup::find<SDK::UDataTable>(kTableName);
     if (table != nullptr) return table;
     const SDK::FSoftObjectPath path = SDK::UKismetSystemLibrary::MakeSoftObjectPath(kTablePath);
     const auto soft_ref = SDK::UKismetSystemLibrary::Conv_SoftObjPathToSoftObjRef(path);

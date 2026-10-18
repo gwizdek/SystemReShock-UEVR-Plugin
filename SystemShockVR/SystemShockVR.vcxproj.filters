@@ -111,6 +111,9 @@
     <ClInclude Include="cyberspace_body_turn.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="object_lookup.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="focus_interaction_patch.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -384,6 +387,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cyberspace_body_turn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="object_lookup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="focus_interaction_patch.cpp">
