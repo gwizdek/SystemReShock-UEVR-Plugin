@@ -1,0 +1,441 @@
+# Cyberspace player controls
+
+In cyberspace the player flies a different pawn, `PAWN_Avatar`, with six degrees of freedom.
+This page explains how the game moves and turns that pawn, how the plugin makes the same
+controls work in VR, and what is still open.
+
+## How VR flight works
+
+The game keeps full control of the flight. The plugin adds four things around it.
+
+| Part | What it does | Where |
+|---|---|---|
+| Game controls | The VR controllers send the game's own gamepad bindings, unchanged: right stick turns and pitches, grips roll, A and B go up and down. The game's roll snap to 0°, 90°, 180° and 270° works as in the flat game. | `handle_xinput`, `apply_cyberspace_vr_settings` (`plugin.cpp`) |
+| Cockpit view | UEVR uses the avatar's full rotation, pitch and roll included, as the view, with the head rotation on top. Aim method "game", decoupled pitch off. | `apply_cyberspace_vr_settings` |
+| Body turn | The head's yaw is moved into the avatar every tick, so the avatar's forward, and with it the stick direction and the UI, follow where the player faces. | `CyberspaceBodyTurn` (`cyberspace_body_turn.cpp`) |
+| Controller aim | The weapons shoot from a camera on the right controller. The plugin corrects the controller pose that UEVR gives, and shows a reticle on the aim line. | `VRAvatar` (`vr_avatar.cpp`) |
+
+Order on entering cyberspace:
+
+1. The possessed pawn becomes `PAWN_Avatar_C`. `handle_level_change` calls
+   `VRAvatar::initialize_vr_avatar`: it spawns `_BP_VRAvatar`, adds the aim pivot and aim
+   camera, points the avatar's `Camera` at the aim camera and hides the HUD crosshair.
+2. The game state becomes `GAME_STATE_CYBERSPACE`. `apply_cyberspace_vr_settings` sets the
+   UEVR options, recenters and enables UObjectHook.
+
+Order on every engine tick (`on_pre_engine_tick`, before the world tick):
+
+1. `CyberspaceBodyTurn::handle`, only in `GAME_STATE_CYBERSPACE`.
+2. `VRAvatar::update_aim`: moves the aim pivot to the corrected controller pose, then places
+   the reticle.
+
+On leaving cyberspace, `cleanup_actors` calls `VRAvatar::restore_game_camera` and destroys
+the VR avatar.
+
+The sections below give the details: first the game's own logic, then each part of the
+plugin.
+
+## Pawns and the transition
+
+Both pawns live in the persistent level `/Game/Maps/CitadelStation` at all times. The game
+possesses one or the other when the player enters or leaves cyberspace.
+
+| Pawn | Class | Role |
+|---|---|---|
+| Station pawn | `PAWN_Hacker_Implant_C` (`/Game/Blueprints/Characters/Hacker/PAWN_Hacker_Implant`) | The player on the station. A `Character` with `CollisionCylinder`, `CharMoveComp`, `CharacterMesh0` (anim BP `CH_Hacker_AnimBP_C`) and `COMP_AttribManager`. |
+| Cyberspace pawn | `PAWN_Avatar_C` (`/Game/Blueprints/Characters/CyberCharacters/PAWN_Avatar`) | The player in cyberspace. Has `CyberspaceUI` (a `WIDGET_CyberspaceHUD_C`) and an arrow component `Arrow1`. |
+
+While the player is in cyberspace, `PAWN_Hacker_Implant_C` stays in the level, parked far
+below the map. One reading in cyberspace showed it at Z = -690000, with the avatar at about
+(-10689, -4918, -3941).
+
+The controller is `CON_Hacker` in both places. It tracks the transition in
+`CyberspaceTransitionState`; see `cyberspace_atmosphere_fix.hpp` for the values.
+
+## How the game moves the view in cyberspace
+
+This section describes the game without the mod. It comes from the bytecode of
+`PAWN_Avatar`, `CON_Hacker`, `FUNCLIB_CoreUtility` and `FUNCLIB_GameSettings`, exported with
+the bytecode exporter, and from live tests with the avatar's `bUseControllerRotation*` flags
+set back to `false`.
+
+### The actor owns the rotation
+
+`PAWN_Avatar_C` derives from `PAWN_SystemShockCharacter_C`, then the native
+`ASystemShock_CharacterBase`, then `ACharacter`. Its class default has all three
+`bUseControllerRotation*` flags set to `false`. The Blueprint turns the actor itself with
+`K2_AddActorLocalRotation`; the control rotation is not used. No Blueprint in the chain writes
+the control rotation, and with the flags off it does not follow the actor (a live test left it
+at its old value while the actor turned). `CON_Hacker` has no rotation code for the avatar.
+It only possesses the pawns during the cyber rift transition.
+
+The camera is `Camera`, a `CameraComponent` attached to the root `CollisionCylinder` at
+relative location 0. `bUsePawnControlRotation` is `false` and `bLockToHmd` is `true`. So the
+view is the actor rotation plus a small tilt (see below), plus the HMD pose under UEVR.
+
+### Per-tick order
+
+`ReceiveTick` → `UpdateAvatar(dt)`. Unless the avatar is dying, that calls, in order:
+
+1. `UpdateMovement(dt)`, which first calls `UpdateDashPower` and `UpdateRotation(dt)`, then
+   moves the actor;
+2. `UpdateSecurityTimer`, `UpdateCameraShake`, `UpdateCameraPOV` (field of view);
+3. `UpdateCameraRotation(dt)` (camera tilt);
+4. then it sets `KeyboardFramePitch`, `KeyboardFrameYaw`, `GamepadFramePitch`,
+   `GamepadFrameYaw` and `FrameRelativeInput` back to 0 for the next frame.
+
+### Look input (yaw and pitch)
+
+The input handlers only add to per-frame values. Nothing turns until `UpdateRotation` runs.
+
+- `HandleInputLookX/Y` (mouse): `KeyboardFrameYaw/Pitch += value × CyberspaceLookSensitivity / 50`.
+  Y is inverted when `CyberspaceInvertY` is set. Gyro input is added to the pitch.
+- `HandleGamepadInputLookX/Y`: the same into `GamepadFrameYaw/Pitch`, with gyro added to the
+  yaw.
+- All four do nothing while the in-game main menu is open.
+- In `UpdateRotation`, `FUNCLIB_GameSettings.GetAcceleratedGamepadInputRotation` turns the
+  gamepad values into degrees for this frame: the stick vector's length (clamped to 1) is
+  eased (`Ease`, exponent 2.5) to a top rate of 270°/s (960°/s when the mouse cursor is
+  shown), along the stick direction.
+- The frame rotation is then `MakeRotator(Roll = FrameRoll, Pitch = gamepad + keyboard pitch,
+  Yaw = gamepad + keyboard yaw)`, applied with `K2_AddActorLocalRotation`. It is a local
+  rotation: yaw turns around the avatar's own up axis, not the world's. There is no pitch
+  limit.
+
+### Roll input
+
+| Variable | Live value | Meaning |
+|---|---|---|
+| `RollRate` | 200 | degrees per second at full roll |
+| `RollAcceleration` | 5 | how fast `RollScaleCurrent` follows the target, per second |
+| `RollScaleTarget` | -1, 0 or 1 | sum of the held roll buttons |
+| `RollScaleCurrent` | -1 to 1 | ramped roll amount |
+
+- The roll buttons call `HandleRollRight` / `HandleRollLeft`. A press adds +1 or -1 to
+  `RollScaleTarget`; a release adds the opposite. The value is clamped to -1..1.
+- Each tick `RollScaleCurrent` moves toward the target by `RollAcceleration × dt`, so a full
+  ramp takes 0.2 s.
+- `FrameRoll = RollScaleCurrent × RollRate × dt`, applied as the roll part of the local frame
+  rotation above.
+
+### Auto-level: the roll snap to 0°, 90°, 180°, 270°
+
+Auto-level is a step in `UpdateRotation`. It turns the avatar around its own forward axis
+until its right vector lies on a world axis (±X, ±Y or ±Z). The view's roll then sits at a
+multiple of 90° relative to the level's axes. Live tests: a 20° roll went back to 0°, a 25°
+roll after a roll input went back to 0°, and a 70° roll went on to 90° (the right vector
+ended at world -Z).
+
+| Variable | Live value |
+|---|---|
+| `AutoLevel` | `true` (a class default; no user setting changes it) |
+| `AutoLevelThreshold` | 0.22 |
+| `MaxRollAdjustmentRate` | 20 (degrees per second) |
+| `DEBUG_DrawAutoLevelArrow` | `false`; when `true` it draws a red arrow toward the target axis |
+
+It runs only when `AutoLevel` is `true` and `FrameRoll` is 0 for this frame. So it waits
+until roll input has stopped and the ramp has reached 0. Each tick:
+
+1. `upAligned`: the largest absolute component of the actor's up vector, plus 0.22, is at
+   least 1. That means the up vector is within about 39° of a world axis. `fwdAligned` is the
+   same test for the forward vector.
+2. The threshold is 1 when `upAligned`, `fwdAligned` or a domain link is active, and 0.22
+   otherwise.
+3. `FUNCLIB_CoreUtility.GetBestAxisDirection(rightVector, threshold)` takes the largest
+   absolute component of the right vector. If that component plus the threshold is at least
+   1, it returns that world axis with the component's sign. Otherwise it returns the right
+   vector unchanged, which gives an angle of 0 and no correction. With threshold 1 it always
+   returns an axis.
+4. `AdjustmentAngle = CoreGameFunctionLibrary.SignedAngleBetweenOnPlane(targetAxis,
+   rightVector, forwardVector)`, the signed angle between the two around the forward axis.
+5. `step = sign(angle) × min(|angle × dt × 2|, MaxRollAdjustmentRate × k × dt)`, with k = 4
+   while a domain link is active and 1 otherwise. So the roll approaches the target at twice
+   the remaining angle per second, at most 20°/s (80°/s on a domain link).
+6. `K2_AddActorLocalRotation(Roll = step)`.
+
+In short: once the player looks roughly along or across a world axis, the roll is always
+pulled to the nearest 90° step. In a diagonal pose where neither the up nor the forward vector
+is near an axis, it only corrects when the right vector itself is already within about 39°
+of an axis.
+
+### Domain links
+
+While `CurrentDomainLink` is valid, `UpdateRotation` also eases the actor rotation toward the
+link direction (`REase` with `dt` as the alpha, exponent 2), and `UpdateMovement` moves the
+actor along the link with `K2_SetActorLocation`. `UpdateCameraPOV` eases the field of view to
+`FOV_DomainLink` (120).
+
+### Movement
+
+The move inputs build `FrameRelativeInput` in the avatar's local frame: X forward, Y right,
+Z up. `Gamepad_Cyber_MoveAxisX/Y` is the left stick. Ascend and descend add (0, 0, ±1);
+keyboard keys add to `PersistentRelativeInput`, which is added every frame while a key is
+held. `UpdateMovement` normalizes the input, turns it by the actor rotation into a world
+direction and calls `AddMovementInput`. `CharacterMovement` flies at `MaxFlySpeed` 800 with
+acceleration 2048 (`CachedDefaultMaxFlySpeed`, `CachedDefaultAcceleration`). Turbo dash and
+domain links change these values.
+
+### Camera tilt
+
+`UpdateCameraRotation` sets the camera's relative rotation each tick, as a cosmetic tilt:
+roll up to `CameraRoll_Strafe_Max` (5°) from sideways input, and pitch up to
+`CameraPitch_Move_Max` (4°) from up/down input. It is smoothed with
+`CameraSmoothHistory` (`WeightedAverageVec2`). The actor rotation does not change.
+
+### Field of view
+
+`UpdateCameraPOV` eases from `FOV_WarpIn` (170) to the user's cyberspace FOV during the
+first second after the avatar spawns. It goes to `FOV_DomainLink` (120) on a domain link, and
+widens by up to 10° (at most 120) while turbo dash is active. The plugin's
+`VRGameOptions::apply_display` sets the user's cyberspace FOV.
+
+## How the plugin detects cyberspace
+
+`plugin.cpp` sets the pawn state to `PAWN_AVATAR` when the possessed pawn is a
+`PAWN_Avatar_C`. The game state is then:
+
+- `GAME_STATE_PAUSE_MENU` when the main menu widget of `CyberspaceUI` is enabled
+  (`GetMainMenuWidget`, `IsMainMenuEnabled`);
+- `GAME_STATE_CYBERSPACE` otherwise.
+
+The pawn state change runs `handle_level_change`, which calls
+`VRAvatar::initialize_vr_avatar` (see below). The game state change that follows runs
+`apply_cyberspace_vr_settings`.
+
+## Controls in VR
+
+The VR player has the same controls as a gamepad player. The plugin passes the game's own
+cyberspace bindings through and does not remap them. The game turns the avatar itself, so
+pitch, yaw, roll and the roll snap work as described above.
+
+| VR controller input | Game action |
+|---|---|
+| Left stick | `Gamepad_Cyber_MoveAxisX/Y` (move, strafe) |
+| Right stick | `Gamepad_LookYaw`, `Gamepad_LookPitch` |
+| Left grip / right grip | `Gamepad_Cyber_RollLeft` / `RollRight` (UEVR sends the grips as the shoulders) |
+| A / B | `Gamepad_Cyber_Ascend` / `Descend` |
+| Right trigger / left trigger | `Gamepad_Cyber_PrimaryAttack` / `SecondaryAttack` |
+| Left stick click | `Gamepad_Cyber_TurboDash` |
+| X / Y | `Gamepad_Cyber_Decoy` / `Recall` |
+| Right stick click | The plugin calls `InpActEvt_Locked_Escape` on the avatar, which opens the pause menu. UEVR keeps the menu buttons of the controllers, so the game's `Gamepad_Escape` (Start) cannot be pressed. |
+
+`handle_cyberspace_look_pivot` hides `Arrow1` on the avatar each tick. The rest of that
+function would set the control rotation from the right controller's aim pose, but it returns
+before that code. It is left from an earlier controller-steered flight mode and does nothing.
+Removing it is a fair change to propose.
+
+## UEVR settings in cyberspace
+
+`apply_cyberspace_vr_settings` runs when `GAME_STATE_CYBERSPACE` is entered, also when the
+player comes back from the pause menu:
+
+- sets `bUseControllerRotationPitch`, `bUseControllerRotationYaw` and
+  `bUseControllerRotationRoll` on the avatar to `false`, the game's default. With them on,
+  `APawn::FaceRotation` would copy the control rotation to the actor every frame and undo the
+  game's own rotation;
+- sets UEVR aim method 0 (game), decoupled pitch off and snap turn off. UEVR turns decoupled
+  pitch back on with any other aim method;
+- sets roomscale movement off, `VR_DecoupledPitchUIAdjust` off, `UI_Distance` 4,
+  `UI_Size` 2, camera offsets 0;
+- recenters the view and calls `PluginUtils::reset_height(0)`;
+- enables UObjectHook when the VR avatar exists, and disables it otherwise.
+
+With aim method "game" and decoupled pitch off, UEVR uses the game's full view rotation,
+including pitch and roll, and multiplies the HMD rotation onto it
+(`FFakeStereoRenderingHook.cpp`: `new_rotation = view × hmd`). The player sits in the
+avatar like in a cockpit. When the avatar rolls, the view rolls with it.
+
+`GAME_STATE_PAUSE_MENU` enables UObjectHook and decoupled pitch, for the station and for
+cyberspace alike.
+
+The field of view is set by `VRGameOptions::apply_display` for both the station and
+cyberspace (`SetFOV(kFieldOfView, false)` is the cyberspace value). It does not change the
+HMD view.
+
+## Turning with the body
+
+The game moves the avatar along its own forward vector. With aim method "game", UEVR shows
+the head turn in the view but never turns the avatar. Without a fix, after the player turns
+around, the left stick moves the avatar in the old direction, and the UEVR UI stays where it
+was.
+
+`CyberspaceBodyTurn::handle` (`cyberspace_body_turn.cpp`) runs every engine tick while the
+game state is `GAME_STATE_CYBERSPACE`, before `VRAvatar::update_aim`:
+
+1. Reads the HMD rotation and UEVR's rotation offset, and takes the forward vector of
+   offset × HMD, the head direction in view space.
+2. Its yaw, in Unreal terms (positive to the right), is `atan2(forward.x, -forward.z)` in
+   UEVR's tracking axes (-Z forward, +Y up).
+3. Turns the avatar by that yaw around its own up axis (`K2_AddActorLocalRotation`).
+4. Turns the rotation offset by the same yaw the other way, around the tracking space's up
+   axis, and sets it with `set_rotation_offset`.
+
+UEVR renders the view as game view × rotation offset × HMD rotation, so the view does not
+change. The avatar's forward follows the head's yaw: the head is always looking along the
+avatar's forward, turned only by pitch and roll. UEVR places its UI by the rotation offset, so
+the UI follows the head's yaw as well.
+
+It does nothing when the head looks almost straight up or down (the forward vector's up part
+is above 0.95), because the yaw is not defined there, or when the yaw is below 0.05°. The
+new offset is worked out from the same HMD pose that was read. `recenter_view` would read the
+pose again, and the difference between the two reads would be lost every tick.
+
+Turning only the head also turns the avatar. The HMD cannot tell a head turn from a body turn.
+
+## Aiming with the right controller
+
+The game spawns cyberspace projectiles at the avatar's `Camera` component.
+`ITEM_CyberWeapon_Base.SpawnProjectile` places each one at
+`Camera location + Camera forward × SpawnDistance + LocalOffset`, with the camera's world
+rotation. The pulser alternates `LocalOffset` between (40, 40, -40) and (40, -40, -40), turned
+by the camera rotation, so its two streams run parallel to the camera's forward vector. The
+ice drill's lock-on cone (`IsActorInLockOnRange`) uses the same camera.
+
+`Camera` is a Blueprint variable. The view does not come from it: `AActor::CalcCamera` takes
+the first active `CameraComponent` owned by the pawn. So the plugin points `Camera` at a
+second camera that follows the right controller, and the view stays where it is. A live test
+confirmed that the avatar Blueprint then writes to the new camera.
+
+`VRAvatar::initialize_vr_avatar` (`vr_avatar.cpp`) does this:
+
+1. Spawns `/Game/Mods/VRAvatar/_BP_VRAvatar._BP_VRAvatar_C`, tags it `VRAvatarActor`,
+   attaches its root to the avatar's root (`CollisionCylinder`) and sets its `Pawn`.
+2. Adds a `SceneComponent` (the aim pivot) to the VR avatar's `DefaultSceneRoot`, and a
+   `CameraComponent` attached to the pivot at relative 0. The camera is deactivated and
+   `bLockToHmd` is `false`. The plugin moves the pivot, not the camera: the avatar Blueprint
+   writes the relative rotation (`UpdateCameraRotation`) and relative location
+   (`UpdateCameraShake`) of `Camera` every tick. A camera placed directly would snap back to
+   its parent during the avatar tick. The autofire shots come from a timer that runs after the
+   avatar tick, so they would fly along the avatar's forward vector.
+3. Remembers the avatar's own camera (`GetComponentByClass(CameraComponent)` on the pawn),
+   then sets the avatar's `Camera` to the aim camera.
+4. Sets `CameraRoll_Strafe_Max` and `CameraPitch_Move_Max` on the avatar to 0. The avatar
+   Blueprint writes a tilt from those to the relative rotation of `Camera` every tick
+   (`UpdateCameraRotation`). On the aim camera that tilt would bend the shots away from the
+   controller.
+
+`VRAvatar::restore_game_camera` sets `Camera` back to the avatar's own camera. It runs at the
+start of `initialize_vr_avatar` and in `cleanup_actors`, before the VR avatar is destroyed.
+
+### The controller pose and its correction
+
+UObjectHook moves `MotionControllerRight` to the right controller each frame.
+`UObjectHook::update_motion_controller_components` sets the world transform of every
+`UMotionControllerComponent` from its `MotionSource` ("Right", "Left", "HMD"), but only
+while UObjectHook is enabled. A motion controller component does not track at all while
+UObjectHook is disabled.
+
+That pose is wrong in cyberspace. `UObjectHook::tick_attachments` places the hands with the
+view's yaw only (`view_quat_inverse_flat`), but the stereo hook renders the head with the full
+view rotation, pitch and roll included. On the station the view is level and the two agree.
+In cyberspace the controller is off by the avatar's pitch and roll: tested in the headset,
+the aim was right only while the avatar was level, and with the avatar rolled 180° it moved
+the opposite way to the controller.
+
+`VRAvatar::update_aim` runs once per engine tick, from `on_pre_engine_tick`, before the world
+tick. `corrected_controller_pose` takes the game camera's location P and rotation R (the view
+UEVR used for the last frame) and the yaw-only rotation Y of R. It turns the controller's
+offset from P and its forward and up vectors back by Y and on by R
+(`LessLess_VectorRotator`, then `GreaterGreater_VectorRotator`). `update_aim` sets the aim
+pivot to that location, with `MakeRotFromXZ(forward, up)`. The pivot hangs on the VR
+avatar's root, so during the tick it moves and turns with the avatar, like the view.
+
+Other avatar Blueprint code now works on the aim camera instead of the view camera:
+
+| Function | Effect |
+|---|---|
+| `UpdateCameraShake` | Shakes the relative location of the aim camera; the view does not shake. |
+| `UpdateCameraPOV` | Sets the field of view of the aim camera; it has no effect. |
+| `AddOrUpdateBlendable` (in the ubergraph) | The intro post process goes to the aim camera and is not seen. |
+| `GetDamageDirectionIndex` | The damage direction arrows are worked out from the controller, not the head. |
+| `UpdateRotation` debug arrow | Drawn from the controller. |
+
+## Aim reticle
+
+The HUD draws its crosshair (`PANEL_Crosshairs` in `WIDGET_CyberspaceHUD`, the material
+`MAT_CrosshairCursor` at 80 × 80) at the screen centre. That is where the head looks, not
+where the controller aims. `initialize_vr_avatar` hides it by setting the panel's render
+opacity to 0, and `restore_game_camera` sets it back to 1. `ShowCrosshairs(false)` is not
+used, because it also changes the input mode and shows the mouse cursor. The HUD sets the
+panel's visibility itself in `OnCrosshairVisibilityChanged`.
+
+`_BP_VRAvatar` has a `WidgetComponent` named `AimReticle`, with the material
+`Widget3DPassThrough_Translucent_NoDepth`. That material is translucent with depth test
+disabled, so walls and enemies do not hide the reticle. A masked material cannot disable the
+depth test. In the Blueprint it is a child of `MotionControllerRight`. `initialize_vr_avatar`
+moves it to `DefaultSceneRoot`, keeping its world transform, because UEVR moves
+`MotionControllerRight` with the uncorrected pose late in the frame, and sets the draw size
+to 80 × 80.
+
+`update_aim` places it after the aim camera, from the corrected pose (`place_reticle`):
+
+1. Traces the Visibility channel (`TraceTypeQuery1`) along the aim line, at most 2500 units
+   (25 m) from the controller. The avatar and the VR avatar are ignored.
+2. Puts `AimReticle` at that distance on the aim line, facing back along it, with the
+   controller's up vector as its up.
+3. Scales it to a world size of `7 × (distance / 50) ^ 0.75` units, divided by the draw size
+   80. The reticle covers about 8° of view at 50 cm, 4.5° at 5 m and 3° at 25 m. With a
+   constant angle, a far reticle looks much bigger than a near one, because it is seen as
+   far away.
+
+The component's **Blend Mode** must be Transparent for the reticle to be see-through. With
+Masked, the default, the widget's alpha is only used as a cut-out and the render proxy is
+drawn as masked, even with a translucent material. UE 4.27 has no Blueprint function to change
+the blend mode, so it belongs in `_BP_VRAvatar`. A live test showed the reticle see-through
+after writing `BlendMode` = 2 and calling `SetTwoSided(true)`, which rebuilds the render
+proxy. `_BP_VRAvatar` still has Masked; see Open questions.
+
+The widget class of `AimReticle` is `/Game/Mods/VRAvatar/_WIDGET_AimReticle`. It holds one
+image, `IMAGE_Reticle`, 80 × 80 at the centre, with a placeholder brush. The game's
+crosshair material is not in the Unreal project. On the first tick that finds the widget,
+`VRAvatar::apply_reticle_brush` sets the image's brush resource to the one of the HUD's
+`IMAGE_CrosshairCursor`, which is `MAT_CrosshairCursor`. The widget component creates its
+widget on `BeginPlay`, so this waits until the widget exists.
+
+## How UObjectHook attaches the camera
+
+`profile\uobjecthook\camera_state.json` attaches the UEVR camera to this path, with no offset:
+
+```
+Acknowledged Pawn
+  Components → CapsuleComponent CollisionCylinder
+  Properties → AttachChildren → SceneComponent DefaultSceneRoot
+  Properties → AttachChildren → SceneComponent UEVRCameraAttachComponent
+```
+
+`DefaultSceneRoot` and `UEVRCameraAttachComponent` are not part of the game's pawns. They
+belong to the VR body `_BP_VRBody` on the station and to `_BP_VRAvatar` in cyberspace. Both
+are attached to the root component of the pawn, which is `CollisionCylinder` on both pawns.
+That makes `DefaultSceneRoot` a child of the capsule, so the same path resolves on both pawns.
+
+UEVR (`UObjectHook.cpp` in the UEVR source) handles the path like this:
+
+- `Acknowledged Pawn` is `GetPlayerController(0)->AcknowledgedPawn`, the pawn possessed now.
+- A component step matches `<class name> <object name>`, for example
+  `SceneComponent DefaultSceneRoot`.
+- `update_persistent_states` resolves the path on every engine tick while UObjectHook is
+  enabled. **When the path does not resolve, UEVR keeps the object it attached to last.** The
+  attachment is cleared only when that object's destructor runs, which is when it is garbage
+  collected. Destroying the actor does not clear it.
+- The camera attachment sets only the view location, not its rotation.
+
+The other files in that folder do not move the camera. The `*_mc_state.json` files attach
+pawn components to the HMD (`hand: 2`). The `*_props.json` files set properties or hide
+components. Most of their paths name components that only the station pawn has, for example
+`HeadRangedCollision`, `LookPivot` and `ArmsMesh`. On the avatar those do not resolve and are
+skipped.
+
+Without the VR avatar, the path does not resolve in cyberspace. UEVR then keeps the VR body
+component from the station, which sits on `PAWN_Hacker_Implant_C` below the map, and the view
+goes there. That is why `apply_cyberspace_vr_settings` enables UObjectHook only when the VR
+avatar exists.
+
+## Open questions
+
+- `AimReticle` in `_BP_VRAvatar` still has Blend Mode Masked and is one-sided, so the reticle
+  is not see-through. Set Blend Mode to Transparent and Two Sided on, then cook.
+- `handle_cyberspace_look_pivot` holds dead code (see Controls in VR).
+- How the roll of the HMD itself should combine with the game's auto-level. Auto-level reads
+  the axes of the actor, not of the view.
+- Whether the native `AShockPlayerController` does anything with the avatar's rotation. It has
+  0x58 bytes of state with no reflected fields. The live tests found nothing.
