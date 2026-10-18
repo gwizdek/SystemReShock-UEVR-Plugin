@@ -89,5 +89,8 @@ three functions always return false by patching their bytecode in memory: the fi
 instruction becomes a jump to a `Result = false` that a return follows. The keypad and puzzle
 scripts end with such an epilogue; the base class has it as its "already channeling" branch. The
 functions are only called from other Blueprint functions, which a UFunction hook does not see,
-so the patch is the only way in. It is checked again every few seconds in case a class was
-loaded anew. The "focus on puzzles" option therefore has no effect in VR either.
+so the patch is the only way in. It is checked again every 600 ticks in case a class was
+loaded anew. The check finds the functions with `ObjectLookup::find` (see
+`documentation\bridge-sdk-warmup.md`), not `find_uobject`: `PUZZLE_Base` is not loaded in
+cyberspace, and a `find_uobject` miss there cost about 105 ms, a stutter every 600 ticks.
+In cyberspace the check does not run at all; there are no focusable interactables there. The "focus on puzzles" option therefore has no effect in VR either.

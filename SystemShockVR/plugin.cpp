@@ -348,14 +348,19 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_ads();
         handle_head_lamp();
         CyberspaceAtmosphereFix::handle(m_world);
-        FocusInteractionPatch::handle();
         VRInputActions::handle();
         VRButtonAtlas::handle();
-        TutorialMessages::handle();
-        TutorialPopupDuration::handle(m_world);
         LegendIconSizePatch::handle();
         VRButtonAtlasIndexPatch::handle();
-        TutorialHeadView::handle(m_world, g_vr_body);
+        // Focusable interactables and tutorial popups exist only outside cyberspace, where the
+        // player is a Hacker pawn. The button legend patches above are also needed in
+        // cyberspace: its pause menu and pickup windows show legends.
+        if (m_pawn_state.get() != PAWN_AVATAR) {
+            FocusInteractionPatch::handle();
+            TutorialMessages::handle();
+            TutorialPopupDuration::handle(m_world);
+            TutorialHeadView::handle(m_world, g_vr_body);
+        }
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
             apply_vr_options_menu_settings();

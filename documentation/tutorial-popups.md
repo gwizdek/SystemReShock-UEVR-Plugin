@@ -156,8 +156,9 @@ the table so every later reader gets that one object, and writes each ini text i
 `DisplayMessage` of the row with that name. The new text is made with the engine's string
 to text conversion, so the popup widget finds the button placeholders in it as in the
 game's own texts. Rows missing from the ini keep the game's text; a missing file leaves
-every text as it is. The table is checked every few seconds and patched again when it is
-a new object, which also covers a plugin swap by the hot loader. The log line
+every text as it is. The table is checked every 600 ticks and patched again when it is
+a new object, which also covers a plugin swap by the hot loader. In cyberspace the check does
+not run, and neither do the other tutorial modules: cyberspace has no tutorial popups. The log line
 `[tutorial_messages][apply]` says how many rows were replaced. Row names are compared in
 lower case, because the ini reader lower-cases keys. An ini value is one line, so a line
 break in a text is written as the two characters `\n`; the plugin turns it into a newline.
