@@ -108,6 +108,9 @@
     <ClInclude Include="cyberspace_atmosphere_fix.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="cyberspace_body_turn.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="focus_interaction_patch.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -378,6 +381,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cyberspace_atmosphere_fix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cyberspace_body_turn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="focus_interaction_patch.cpp">
