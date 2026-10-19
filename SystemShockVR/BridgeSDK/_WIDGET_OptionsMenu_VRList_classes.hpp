@@ -36,8 +36,8 @@ public:
 	class U_OPTION_VR_Toggle_C*& OPTION_VR_AutoAimDownSights() { return BridgeProp_OPTION_VR_AutoAimDownSights().ref<class U_OPTION_VR_Toggle_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_OPTION_VR_CyberPitchDeadzone() { static bridge::Prop Ref{ L"OPTION_VR_CyberPitchDeadzone" }; return Ref; }
 	class U_OPTION_VR_Slider_C*& OPTION_VR_CyberPitchDeadzone() { return BridgeProp_OPTION_VR_CyberPitchDeadzone().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
-	static bridge::Prop& BridgeProp_OPTION_VR_CyberPitchSnapSpeed() { static bridge::Prop Ref{ L"OPTION_VR_CyberPitchSnapSpeed" }; return Ref; }
-	class U_OPTION_VR_Slider_C*& OPTION_VR_CyberPitchSnapSpeed() { return BridgeProp_OPTION_VR_CyberPitchSnapSpeed().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OPTION_VR_CyberPitchSnapDuration() { static bridge::Prop Ref{ L"OPTION_VR_CyberPitchSnapDuration" }; return Ref; }
+	class U_OPTION_VR_Slider_C*& OPTION_VR_CyberPitchSnapDuration() { return BridgeProp_OPTION_VR_CyberPitchSnapDuration().ref<class U_OPTION_VR_Slider_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_OPTION_VR_CyberPitchSnapTurn() { static bridge::Prop Ref{ L"OPTION_VR_CyberPitchSnapTurn" }; return Ref; }
 	class U_OPTION_VR_Toggle_C*& OPTION_VR_CyberPitchSnapTurn() { return BridgeProp_OPTION_VR_CyberPitchSnapTurn().ref<class U_OPTION_VR_Toggle_C*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_OPTION_VR_LookSensitivity() { static bridge::Prop Ref{ L"OPTION_VR_LookSensitivity" }; return Ref; }
@@ -83,7 +83,7 @@ public:
 		Ok &= bridge::warm(Cls, {
 			&BridgeProp_OPTION_VR_AutoAimDownSights(),
 			&BridgeProp_OPTION_VR_CyberPitchDeadzone(),
-			&BridgeProp_OPTION_VR_CyberPitchSnapSpeed(),
+			&BridgeProp_OPTION_VR_CyberPitchSnapDuration(),
 			&BridgeProp_OPTION_VR_CyberPitchSnapTurn(),
 			&BridgeProp_OPTION_VR_LookSensitivity(),
 			&BridgeProp_OPTION_VR_PlayerHeight(),

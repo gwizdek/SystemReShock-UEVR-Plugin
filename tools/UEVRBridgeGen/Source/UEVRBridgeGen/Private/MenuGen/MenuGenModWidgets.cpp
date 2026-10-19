@@ -325,9 +325,9 @@ TArray<FListEntry> ListEntries()
         Slider(TEXT("OPTION_VR_CyberPitchDeadzone"), { TEXT("Pitch Deadzone"),
             TEXT("In cyberspace, how far the right thumbstick must be pushed up or down before the view pitches."),
             TEXT("pitch_deadzone"), 0.f, 1.f, 0.8f, 0.01f, 2, TEXT("") }),
-        Slider(TEXT("OPTION_VR_CyberPitchSnapSpeed"), { TEXT("Pitch Snap Speed"),
-            TEXT("In cyberspace, how fast one pitch snap turns the view. 0 is the slowest, 1 the fastest."),
-            TEXT("pitch_snap_speed"), 0.f, 1.f, 0.5f, 0.01f, 2, TEXT("") }),
+        Slider(TEXT("OPTION_VR_CyberPitchSnapDuration"), { TEXT("Pitch Snap Duration"),
+            TEXT("In cyberspace, how long one pitch snap takes, in seconds. 0 snaps at once."),
+            TEXT("pitch_snap_duration"), 0.f, 1.f, 0.5f, 0.01f, 2, TEXT(" s") }),
     };
 }
 

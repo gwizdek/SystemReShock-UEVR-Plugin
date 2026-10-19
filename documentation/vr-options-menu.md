@@ -22,7 +22,7 @@ Done:
 
 - The page content: three groups with the game's group header, "General" (Player Height, Auto
   Aim Down Sights), "Movement" (VR Look Sensitivity, Snap Turn, Angle, Deadzone) and "Cyberspace"
-  (Pitch Snap Turn, Pitch Deadzone, Pitch Snap Speed). See the list below.
+  (Pitch Snap Turn, Pitch Deadzone, Pitch Snap Duration). See the list below.
 
 - The settings sync in the plugin (`SystemShockVR\vr_options_sync.cpp`, `vr_setting_store.cpp`,
   `vr_settings.cpp`): the rows get their values from their stores after the install and each
@@ -277,7 +277,7 @@ The content is one table in the generator (`ListEntries` in `MenuGenModWidgets.c
 | `WIDGET_ListCategoryHeader_Cyberspace` | header | Cyberspace | | | | |
 | `OPTION_VR_CyberPitchSnapTurn` | toggle | Pitch Snap Turn | `pitch_snap_turn` | | off | ini `[cyberspace]` |
 | `OPTION_VR_CyberPitchDeadzone` | slider | Pitch Deadzone | `pitch_deadzone` | 0.00 to 1.00, 0.01 | 0.80 | ini `[cyberspace]` |
-| `OPTION_VR_CyberPitchSnapSpeed` | slider | Pitch Snap Speed | `pitch_snap_speed` | 0.00 to 1.00, 0.01 | 0.50 | ini `[cyberspace]` |
+| `OPTION_VR_CyberPitchSnapDuration` | slider | Pitch Snap Duration | `pitch_snap_duration` | 0.00 to 1.00 s, 0.01 | 0.50 | ini `[cyberspace]` |
 
 The "Stored in" column is decided in the plugin, not in the Blueprint (see "Settings sync").
 The cyberspace rows are used by `CyberspacePitchSnap`, see `cyberspace-controls.md`.
@@ -447,7 +447,7 @@ binding lists (`s_sliders`, `s_toggles`) hold one line per row:
   [cyberspace]
   pitch_snap_turn = 0
   pitch_deadzone = 0.8
-  pitch_snap_speed = 0.5
+  pitch_snap_duration = 0.5
   ```
 
   Older plugin versions kept `vr_look_sensitivity` in `[general]`. When `VRSettings` reads the
@@ -478,7 +478,7 @@ The sync runs from `VROptionsMenu`:
   grid, and `VROptionsSync::adopt` takes the last-seen values from its rows without changing them.
 - The plugin reads the ini values it acts on through `VRSettings`: `look_sensitivity()` for the
   right thumbstick turn speed (clamped to 1..10), `player_height()`, `auto_ads()`, and
-  `pitch_snap_turn()`, `pitch_deadzone()` and `pitch_snap_speed()` for cyberspace. The
+  `pitch_snap_turn()`, `pitch_deadzone()` and `pitch_snap_duration()` for cyberspace. The
   cyberspace values are read when they are used, so Apply needs no extra step for them.
 - After a save, `consume_settings_change` returns true once, and `plugin.cpp` calls
   `apply_vr_options_menu_settings`. It sets `m_ui_option_auto_ads_enabled` from `auto_ads()` and

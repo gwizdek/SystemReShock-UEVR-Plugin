@@ -146,7 +146,7 @@ float VRSettings::pitch_deadzone()
     return std::clamp(get_float(kCyberspace, "pitch_deadzone", 0.8f), 0.f, 1.f);
 }
 
-float VRSettings::pitch_snap_speed()
+float VRSettings::pitch_snap_duration()
 {
-    return std::clamp(get_float(kCyberspace, "pitch_snap_speed", 0.5f), 0.f, 1.f);
+    return std::clamp(get_float(kCyberspace, "pitch_snap_duration", 0.5f), 0.f, 1.f);
 }

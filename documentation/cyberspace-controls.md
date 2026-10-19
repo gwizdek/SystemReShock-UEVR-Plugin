@@ -241,7 +241,7 @@ The VR options page has a Cyberspace group with three settings, stored in `[cybe
 |---|---|---|
 | Pitch Snap Turn | `pitch_snap_turn` | On: the right stick pitches in 90° steps. Off (default): the game's smooth pitch. |
 | Pitch Deadzone | `pitch_deadzone` | How far, 0 to 1, the stick must be pushed up or down to start a step. Default 0.8. |
-| Pitch Snap Speed | `pitch_snap_speed` | How long one step takes, in seconds, 0 to 1. 0 is instant. Default 0.5. |
+| Pitch Snap Duration | `pitch_snap_duration` | How long one step takes, in seconds, 0 to 1. 0 is instant. Default 0.5. |
 
 `CyberspacePitchSnap` (`cyberspace_pitch_snap.cpp`) has two parts:
 

@@ -12,9 +12,9 @@ namespace SDK
 //
 // While "Pitch Snap Turn" is on, the right stick no longer pitches the avatar smoothly. A push
 // up or down past "Pitch Deadzone" adds 90 degrees of pitch: up pitches the nose up, and the
-// game's Invert Y setting for cyberspace turns that around. The stick must come
-// back under the deadzone before the next push counts. The avatar turns around its own right
-// axis over "Pitch Snap Speed" seconds (0 is instant), fast at first and slower towards the end.
+// game's Invert Y setting for cyberspace turns that around. The stick must come back under the
+// deadzone before the next push counts. The avatar turns around its own right axis over
+// "Pitch Snap Duration" seconds (0 is instant), fast at first and slower towards the end.
 // A push during a snap adds 90 degrees to what is left and starts the ease again.
 //
 // The turn is a local actor rotation, like the game's own look input, so yaw, roll and

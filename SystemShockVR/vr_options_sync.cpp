@@ -47,7 +47,7 @@ SliderBinding s_sliders[] = {
     { &List::OPTION_VR_SnapTurnAngle, &s_uevr, 0.f },
     { &List::OPTION_VR_SnapTurnDeadzone, &s_uevr, 0.f },
     { &List::OPTION_VR_CyberPitchDeadzone, &s_cyberspace, 0.f },
-    { &List::OPTION_VR_CyberPitchSnapSpeed, &s_cyberspace, 0.f },
+    { &List::OPTION_VR_CyberPitchSnapDuration, &s_cyberspace, 0.f },
 };
 
 ToggleBinding s_toggles[] = {

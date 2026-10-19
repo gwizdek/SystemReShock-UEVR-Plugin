@@ -96,7 +96,7 @@ void CyberspacePitchSnap::start_snap(float direction) {
         .total = remaining + direction * kSnapDegrees,
         .applied = 0.f,
         .elapsed = 0.f,
-        .duration = VRSettings::pitch_snap_speed()
+        .duration = VRSettings::pitch_snap_duration()
     };
     API::get()->log_warn("[cyberspace_pitch_snap][start_snap] Pitch %+.0f, %.1f degrees over %.2f s",
         direction * kSnapDegrees, s_snap.total, s_snap.duration);
