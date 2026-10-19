@@ -3,6 +3,7 @@
 #include "SDK/Engine_classes.hpp"
 #include "SDK/WIDGET_PlayerHUD_classes.hpp"
 #include "SDK/WIDGET_OptionsScreen_classes.hpp"
+#include "SDK/WIDGET_MainMenu_InGame_classes.hpp"
 #include "BridgeSDK/_WIDGET_OptionsMenu_VR_classes.hpp"
 
 // Adds the mod's "VR" category and page to the game's Options screen. The page's own
@@ -15,8 +16,9 @@
 class VROptionsMenu final
 {
 public:
-    // Game thread, once per tick. Uses the pause menu's options screen when the HUD exists,
-    // else the title screen's, reached through the main menu's ghost pawn. Does nothing until
+    // Game thread, once per tick. The pawn picks the options screen: the title screen's for the
+    // main menu's ghost pawn, the cyberspace pause menu's for the avatar, else the pause menu
+    // of the station HUD. Does nothing until
     // that screen has run its own InitializeMenu. Once the page is in, it only watches the rows.
     static void handle(SDK::UWIDGET_PlayerHUD_C* hud, SDK::APawn* pawn);
     // Forgets the installed screen and page. Called on level change, when the HUD is made again.
@@ -26,7 +28,8 @@ public:
     static bool consume_settings_change();
 
 private:
-    static SDK::UWIDGET_OptionsScreen_C* find_screen(SDK::UWIDGET_PlayerHUD_C* hud);
+    static SDK::UWIDGET_OptionsScreen_C* find_screen_for_pawn(SDK::UWIDGET_PlayerHUD_C* hud, SDK::APawn* pawn);
+    static SDK::UWIDGET_OptionsScreen_C* options_screen_of(SDK::UWIDGET_MainMenu_InGame_C* menu);
     static SDK::UWIDGET_OptionsScreen_C* find_title_screen(SDK::APawn* pawn);
     static bool is_ready(SDK::UWIDGET_OptionsScreen_C* screen);
     static bool has_vr_category(SDK::UWIDGET_OptionsScreen_C* screen);

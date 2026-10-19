@@ -8,6 +8,8 @@
 #include "SDK/WIDGET_OptionsMenu_Gameplay_classes.hpp"
 #include "SDK/WIDGET_OptionsMenu_GameplayList_classes.hpp"
 #include "SDK/PAWN_PlayerGhost_classes.hpp"
+#include "SDK/PAWN_Avatar_classes.hpp"
+#include "SDK/WIDGET_CyberspaceHUD_classes.hpp"
 #include "SDK/WIDGET_PreGameScreen_classes.hpp"
 #include "SDK/WIDGET_SplashScreen_Title_classes.hpp"
 
@@ -47,9 +49,7 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
     try {
         // The pawn decides which menu exists. The HUD pointer alone cannot: the plugin keeps it
         // across level changes, and a freed widget can still pass IsValid.
-        const bool at_title = UKismetSystemLibrary::IsValid(pawn) && PluginUtils::is_a<APAWN_PlayerGhost_C>(pawn);
-        if (at_title) PLUGIN_WARN_ONCE("[vr_options_menu][handle] Ghost pawn, looking for the title screen");
-        UWIDGET_OptionsScreen_C* screen = at_title ? find_title_screen(pawn) : find_screen(hud);
+        UWIDGET_OptionsScreen_C* screen = find_screen_for_pawn(hud, pawn);
         if (screen == nullptr || !is_ready(screen)) return;
         // Covers the install and the per-tick sync: a pak and plugin that do not match would
         // otherwise throw, and log, every tick.
@@ -96,9 +96,23 @@ void VROptionsMenu::reset() {
     s_failed_attempts = 0;
 }
 
-UWIDGET_OptionsScreen_C* VROptionsMenu::find_screen(UWIDGET_PlayerHUD_C* hud) {
-    if (!UKismetSystemLibrary::IsValid(hud)) return nullptr;
-    UWIDGET_MainMenu_InGame_C* menu = hud->WIDGET_MainMenu_InGame;
+// Each pawn has its own menu: the title screen's ghost pawn, the cyberspace avatar with its
+// CyberspaceUI, and the station pawns with the player HUD. In cyberspace the station pawn and
+// its HUD still exist, below the map, so the HUD alone would pick a menu that is not shown.
+UWIDGET_OptionsScreen_C* VROptionsMenu::find_screen_for_pawn(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
+    const bool has_pawn = UKismetSystemLibrary::IsValid(pawn);
+    if (has_pawn && PluginUtils::is_a<APAWN_PlayerGhost_C>(pawn)) {
+        PLUGIN_WARN_ONCE("[vr_options_menu][find_screen_for_pawn] Ghost pawn, looking for the title screen");
+        return find_title_screen(pawn);
+    }
+    if (has_pawn && PluginUtils::is_a<APAWN_Avatar_C>(pawn)) {
+        UWIDGET_CyberspaceHUD_C* cyber_hud = static_cast<APAWN_Avatar_C*>(pawn)->CyberspaceUI;
+        return UKismetSystemLibrary::IsValid(cyber_hud) ? options_screen_of(cyber_hud->WIDGET_MainMenu_InGame) : nullptr;
+    }
+    return UKismetSystemLibrary::IsValid(hud) ? options_screen_of(hud->WIDGET_MainMenu_InGame) : nullptr;
+}
+
+UWIDGET_OptionsScreen_C* VROptionsMenu::options_screen_of(UWIDGET_MainMenu_InGame_C* menu) {
     if (!UKismetSystemLibrary::IsValid(menu)) return nullptr;
     UWIDGET_OptionsScreen_C* screen = menu->WIDGET_OptionsScreen;
     return UKismetSystemLibrary::IsValid(screen) ? screen : nullptr;

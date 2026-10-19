@@ -393,12 +393,18 @@ Nothing else is needed for the other directions:
 ### 4. Plugin trigger
 
 `VROptionsMenu::handle` in `SystemShockVR\vr_options_menu.cpp` runs every engine tick on the game
-thread with the player HUD. With a HUD it reaches the pause menu's screen through
-`WIDGET_PlayerHUD.WIDGET_MainMenu_InGame.WIDGET_OptionsScreen`. When the pawn is a `PAWN_PlayerGhost` the game is at
-the title screen, and it takes `PAWN_PlayerGhost.PreGameScreenWidget.WIDGET_SplashScreen_Title.WIDGET_OptionsScreen`
-instead. The pawn decides, not the HUD pointer: the plugin clears that pointer on level change, and
-a freed widget can still pass a validity check. Each screen is a separate instance, so each gets
-its own page.
+thread with the player HUD and the pawn. The pawn picks the screen:
+
+| Pawn | Screen |
+|---|---|
+| `PAWN_PlayerGhost` (title screen) | `PAWN_PlayerGhost.PreGameScreenWidget.WIDGET_SplashScreen_Title.WIDGET_OptionsScreen` |
+| `PAWN_Avatar` (cyberspace) | `PAWN_Avatar.CyberspaceUI.WIDGET_MainMenu_InGame.WIDGET_OptionsScreen` |
+| any other pawn (station) | `WIDGET_PlayerHUD.WIDGET_MainMenu_InGame.WIDGET_OptionsScreen` |
+
+The HUD pointer alone cannot decide. The plugin clears that pointer on level change, and a
+freed widget can still pass a validity check. In cyberspace the station pawn and its HUD still
+exist below the map, so the HUD would give a pause menu that is not shown. Each screen is a
+separate instance, so each gets its own page.
 It stops for that screen after three failed attempts, counting both the install and the
 settings sync, so a pak and plugin that do not match cannot log an error every tick.
 `cleanup_pointers` resets the count on level change. When the screen is the one already
