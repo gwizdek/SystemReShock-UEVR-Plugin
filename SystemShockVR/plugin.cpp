@@ -616,8 +616,10 @@ void UEVRPlugin::prepare_game_state() {
         if (PluginUtils::is_a<APAWN_Avatar_C>(m_pawn.get())) {
             m_pawn_state.set_value(PAWN_AVATAR);
 
-            // GAME_STATE_PAUSE_MENU
-            static_cast<UWIDGET_CyberspaceHUD_C*>(static_cast<APAWN_Avatar_C*>(m_pawn.get())->CyberspaceUI)->GetMainMenuWidget(&main_menu);
+            // GAME_STATE_PAUSE_MENU. The cyberspace HUD's GetMainMenuWidget returns null (checked
+            // live with the menu open), so its menu widget is read directly.
+            UWIDGET_CyberspaceHUD_C* cyber_hud = static_cast<APAWN_Avatar_C*>(m_pawn.get())->CyberspaceUI;
+            main_menu = UKismetSystemLibrary::IsValid(cyber_hud) ? cyber_hud->WIDGET_MainMenu_InGame : nullptr;
             if (main_menu != nullptr && main_menu->IsMainMenuEnabled) {
                 m_game_state.set_value(GAME_STATE_PAUSE_MENU);
                 return;

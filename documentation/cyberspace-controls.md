@@ -196,8 +196,13 @@ widens by up to 10° (at most 120) while turbo dash is active. The plugin's
 `PAWN_Avatar_C`. The game state is then:
 
 - `GAME_STATE_PAUSE_MENU` when the main menu widget of `CyberspaceUI` is enabled
-  (`GetMainMenuWidget`, `IsMainMenuEnabled`);
+  (`CyberspaceUI.WIDGET_MainMenu_InGame.IsMainMenuEnabled`). The HUD's own
+  `GetMainMenuWidget` returns null in cyberspace, so the plugin reads the widget variable;
 - `GAME_STATE_CYBERSPACE` otherwise.
+
+In `GAME_STATE_PAUSE_MENU` the plugin uses the same settings as in the station's pause menu:
+the menu stick deadzone (`apply_menu_stick_deadzone`), decoupled pitch on, the menu UI
+distance and size, and a recenter. Body turn and pitch snap do not run.
 
 The pawn state change runs `handle_level_change`, which calls
 `VRAvatar::initialize_vr_avatar` (see below). The game state change that follows runs
