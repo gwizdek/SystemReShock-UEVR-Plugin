@@ -186,6 +186,7 @@
     <ClInclude Include="cyberspace_atmosphere_fix.hpp" />
     <ClInclude Include="cyberspace_body_turn.hpp" />
     <ClInclude Include="object_lookup.hpp" />
+    <ClInclude Include="roomscale_sweep_setting.hpp" />
     <ClInclude Include="focus_interaction_patch.hpp" />
     <ClInclude Include="vr_input_actions.hpp" />
     <ClInclude Include="vr_button_atlas.hpp" />
@@ -277,6 +278,7 @@
     <ClCompile Include="cyberspace_atmosphere_fix.cpp" />
     <ClCompile Include="cyberspace_body_turn.cpp" />
     <ClCompile Include="object_lookup.cpp" />
+    <ClCompile Include="roomscale_sweep_setting.cpp" />
     <ClCompile Include="focus_interaction_patch.cpp" />
     <ClCompile Include="vr_input_actions.cpp" />
     <ClCompile Include="vr_button_atlas.cpp" />

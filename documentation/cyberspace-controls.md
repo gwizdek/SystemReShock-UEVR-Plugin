@@ -17,11 +17,12 @@ The game keeps full control of the flight. The plugin adds four things around it
 
 Order on entering cyberspace:
 
-1. The possessed pawn becomes `PAWN_Avatar_C`. `handle_level_change` calls
+1. The possessed pawn becomes `PAWN_Avatar_C`. `handle_level_change` saves the player's
+   roomscale sweep and turns it off (`RoomscaleSweepSetting`), then calls
    `VRAvatar::initialize_vr_avatar`: it spawns `_BP_VRAvatar`, adds the aim pivot and aim
    camera, points the avatar's `Camera` at the aim camera and hides the HUD crosshair.
 2. The game state becomes `GAME_STATE_CYBERSPACE`. `apply_cyberspace_vr_settings` sets the
-   UEVR options, recenters and enables UObjectHook.
+   UEVR options, enables UObjectHook and does a full VR center.
 
 Order on every engine tick (`on_pre_engine_tick`, before the world tick):
 
@@ -30,7 +31,7 @@ Order on every engine tick (`on_pre_engine_tick`, before the world tick):
    the reticle.
 
 On leaving cyberspace, `cleanup_actors` calls `VRAvatar::restore_game_camera` and destroys
-the VR avatar.
+the VR avatar, and `RoomscaleSweepSetting::restore` sets the player's roomscale sweep back.
 
 The sections below give the details: first the game's own logic, then each part of the
 plugin.
@@ -235,10 +236,46 @@ player comes back from the pause menu:
   game's own rotation;
 - sets UEVR aim method 0 (game), decoupled pitch off and snap turn off. UEVR turns decoupled
   pitch back on with any other aim method;
-- sets roomscale movement off, `VR_DecoupledPitchUIAdjust` off, `UI_Distance` 4,
+- sets roomscale movement on, `VR_DecoupledPitchUIAdjust` off, `UI_Distance` 4,
   `UI_Size` 2, camera offsets 0;
-- recenters the view and calls `PluginUtils::reset_height(0)`;
-- enables UObjectHook when the VR avatar exists, and disables it otherwise.
+- sets `VR_ControllerPitchOffset` to 0. The station uses -25 (set in the
+  `GAME_STATE_CITADEL_STATION` case); in cyberspace the aim must follow the controller as it
+  is;
+- enables UObjectHook when the VR avatar exists, and disables it otherwise;
+- does a full VR center (`PluginUtils::full_vr_center`), the three UEVR overlay buttons in
+  order: Set Standing Height, Set Standing Origin (the head's current position), Recenter
+  View.
+
+Roomscale movement works with the rolled and pitched avatar. UEVR moves the pawn by the
+head's horizontal offset from the standing origin, turned by the full view rotation
+(`head_offset_flat` in `FFakeStereoRenderingHook.cpp`), then moves the standing origin to the
+head. So a real step moves the avatar along its own floor plane, as the view shows it. The
+head's height is not moved.
+
+### Roomscale sweep is off in cyberspace
+
+UEVR's roomscale sweep (`VR_RoomscaleMovementSweep`) makes it move the pawn with a sweep for
+a real step, so the pawn collides. In cyberspace that cannot be used: stepping into a wall
+made the avatar's health drop fast. With the sweep off, a real step can pass through a wall.
+Moving with the sticks still collides, because that is the game's own movement
+(`AddMovementInput` on `CharacterMovement`).
+
+`RoomscaleSweepSetting` (`roomscale_sweep_setting.cpp`) handles this. `handle_level_change`
+calls it on every pawn change, after the cleanup:
+
+- When the new pawn is the avatar, `disable_for_cyberspace` saves the player's current value
+  and sets the sweep to `false`. It saves only when no value is saved yet, so it never saves
+  its own `false`.
+- For any other pawn, `restore` sets the saved value back and deletes it.
+
+The saved value is a file in the UEVR profile folder, `cyberspace_saved_sweep.txt`, not a
+variable. A variable would be lost when the hot loader swaps the plugin, or when the game
+closes in cyberspace. The next plugin copy would then read the cyberspace value, `false`, as
+the player's. With the file, a value left by a crash or an exit in cyberspace is restored on
+the next pawn that is not the avatar, usually the station after loading.
+
+The profile that ships with the mod (`profile\config.txt`) has the sweep off, so for most
+players the saved and restored value is `false`.
 
 With aim method "game" and decoupled pitch off, UEVR uses the game's full view rotation,
 including pitch and roll, and multiplies the HMD rotation onto it

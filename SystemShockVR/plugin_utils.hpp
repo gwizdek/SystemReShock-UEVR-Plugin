@@ -43,6 +43,10 @@ public:
     static bool add_to_root(SDK::UObject* object);
 
     static void reset_height(float offset_y);
+    // What the three UEVR overlay buttons do, in this order: Set Standing Height, Set
+    // Standing Origin, Recenter View. The player's current head position becomes the
+    // standing origin and the head's current yaw becomes the forward direction.
+    static void full_vr_center();
     static SDK::AActor* spawn_actor(SDK::UWorld* world, SDK::FTransform transform, std::wstring actor_tag);
     static void destroy_actors_by_tag(SDK::UWorld* world, SDK::FName actor_tag);
     static void destroy_actors_by_class(SDK::UWorld* world, SDK::UClass* actor_class);

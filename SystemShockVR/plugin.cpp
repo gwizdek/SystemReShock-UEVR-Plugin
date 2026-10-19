@@ -69,6 +69,7 @@
 #include "vr_settings.hpp"
 #include "cyberspace_atmosphere_fix.hpp"
 #include "cyberspace_body_turn.hpp"
+#include "roomscale_sweep_setting.hpp"
 #include "focus_interaction_patch.hpp"
 #include "vr_input_actions.hpp"
 #include "vr_button_atlas.hpp"
@@ -1301,6 +1302,7 @@ void UEVRPlugin::handle_game_state_change() {
                         vr->set_mod_value("UI_Y_Offset", "-0.10000");
                         vr->set_mod_value("VR_RoomscaleMovement", "true");
                         vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
+                        vr->set_mod_value("VR_ControllerPitchOffset", "-25.000000");
                         vr->recenter_view();
 
                         if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
@@ -1481,6 +1483,15 @@ void UEVRPlugin::handle_level_change() {
             API::get()->log_warn("[plugin][handle_level_change] Actors / Pointers cleanup");
             cleanup_actors();
             cleanup_pointers();
+
+            // Cyberspace turns UEVR's roomscale sweep off; any other pawn gets the player's
+            // own value back. See roomscale_sweep_setting.hpp.
+            if (m_pawn_state.get() == PAWN_AVATAR) {
+                RoomscaleSweepSetting::disable_for_cyberspace();
+            }
+            else {
+                RoomscaleSweepSetting::restore();
+            }
 
             // Hacker Implant - Citadel Station (normal space)
             if (
@@ -2249,12 +2260,15 @@ void UEVRPlugin::apply_cyberspace_vr_settings(const UEVR_VRData* vr) {
     vr->set_mod_value("UI_Distance", "4.000000");
     vr->set_mod_value("UI_Size", "2.000000");
     vr->set_mod_value("UI_Y_Offset", "0.00000");
-    vr->set_mod_value("VR_RoomscaleMovement", "false");
+    // UEVR moves the avatar by the head's horizontal offset, turned by the full view rotation,
+    // so a real step goes along the avatar's own floor even when it is rolled.
+    vr->set_mod_value("VR_RoomscaleMovement", "true");
     vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
-    vr->recenter_view();
+    // The station uses -25; the aim reticle and the shots must follow the controller as it is.
+    vr->set_mod_value("VR_ControllerPitchOffset", "0.000000");
 
     API::UObjectHook::set_disabled(!VRAvatar::is_active());
-    PluginUtils::reset_height(0.f);
+    PluginUtils::full_vr_center();
 }
 
 void UEVRPlugin::handle_cyberspace_look_pivot(const UEVR_VRData* vr) {

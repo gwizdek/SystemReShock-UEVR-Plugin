@@ -114,6 +114,9 @@
     <ClInclude Include="object_lookup.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="roomscale_sweep_setting.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="focus_interaction_patch.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -390,6 +393,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="object_lookup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="roomscale_sweep_setting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="focus_interaction_patch.cpp">

@@ -89,6 +89,18 @@ void PluginUtils::reset_height(float offset_y) {
     vr->set_standing_origin(&origin);
 }
 
+void PluginUtils::full_vr_center() {
+    const UEVR_VRData* vr = API::get()->param()->vr;
+    reset_height(0.f);
+
+    UEVR_Vector3f hmd_pos{};
+    UEVR_Quaternionf hmd_rot{};
+    vr->get_pose(vr->get_hmd_index(), &hmd_pos, &hmd_rot);
+    vr->set_standing_origin(&hmd_pos);
+
+    vr->recenter_view();
+}
+
 SDK::AActor* PluginUtils::spawn_actor(SDK::UWorld* world, SDK::FTransform transform, std::wstring actor_tag) {
     try {
         if (world == nullptr) {
