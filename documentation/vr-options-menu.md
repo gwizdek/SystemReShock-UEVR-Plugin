@@ -20,9 +20,9 @@ Done:
 
 - The toggle row `_OPTION_VR_Toggle`, the slider row `_OPTION_VR_Slider` and their dummies.
 
-- The page content: two groups with the game's group header, "General" (Player Height, Auto Aim
-  Down Sights) and "Movement" (VR Look Sensitivity, Snap Turn, Angle, Deadzone). See the list
-  below.
+- The page content: three groups with the game's group header, "General" (Player Height, Auto
+  Aim Down Sights), "Movement" (VR Look Sensitivity, Snap Turn, Angle, Deadzone) and "Cyberspace"
+  (Pitch Snap Turn, Pitch Deadzone, Pitch Snap Speed). See the list below.
 
 - The settings sync in the plugin (`SystemShockVR\vr_options_sync.cpp`, `vr_setting_store.cpp`,
   `vr_settings.cpp`): the rows get their values from their stores after the install and each
@@ -257,7 +257,10 @@ as in the game's Interface list. `InitializeList` override: parent call,
 `PanelItemListWidget = SCROLLBOX_OptionsMenuList`. `InitializeItemArray` override: returns an
 array made of the row variables, in list order (no loop, since the generator knows every row).
 The headers are not list items, so they are not in that array and the controller skips them.
-The scrollbar materials can be set at runtime later; this is cosmetic.
+The list scrolls when the rows do not fit, with the mouse wheel, by dragging the scrollbar, and
+with the controller: the game's list base scrolls the highlighted row into view. The scroll box
+has the engine's default scrollbar style; the plugin gives its thumb the game's materials (see
+the plugin trigger below).
 
 The content is one table in the generator (`ListEntries` in `MenuGenModWidgets.cpp`), top to bottom:
 
@@ -271,8 +274,13 @@ The content is one table in the generator (`ListEntries` in `MenuGenModWidgets.c
 | `OPTION_VR_SnapTurn` | toggle | Snap Turn | `VR_SnapTurn` | | off | UEVR |
 | `OPTION_VR_SnapTurnAngle` | slider | Angle | `VR_SnapturnTurnAngle` | 10 to 90, 1 | 50 | UEVR |
 | `OPTION_VR_SnapTurnDeadzone` | slider | Deadzone | `VR_SnapturnJoystickDeadzone` | 0.05 to 0.50, 0.01 | 0.20 | UEVR |
+| `WIDGET_ListCategoryHeader_Cyberspace` | header | Cyberspace | | | | |
+| `OPTION_VR_CyberPitchSnapTurn` | toggle | Pitch Snap Turn | `pitch_snap_turn` | | off | ini `[cyberspace]` |
+| `OPTION_VR_CyberPitchDeadzone` | slider | Pitch Deadzone | `pitch_deadzone` | 0.00 to 1.00, 0.01 | 0.80 | ini `[cyberspace]` |
+| `OPTION_VR_CyberPitchSnapSpeed` | slider | Pitch Snap Speed | `pitch_snap_speed` | 0.00 to 1.00, 0.01 | 0.50 | ini `[cyberspace]` |
 
 The "Stored in" column is decided in the plugin, not in the Blueprint (see "Settings sync").
+The plugin stores the three cyberspace rows but does not act on them yet.
 
 **`_OPTION_VR_Toggle`**, child of `WIDGET_Settings_BinaryToggle`, and **`_OPTION_VR_Slider`**,
 child of `WIDGET_Settings_Slider`. No tree, no own widgets. A row is its own store: instance
@@ -396,13 +404,20 @@ settings sync, so a pak and plugin that do not match cannot log an error every t
 `cleanup_pointers` resets the count on level change. When the screen is the one already
 installed, it only runs the settings sync. Otherwise it waits until `MenuListItemArray` holds six
 items. If the category box already has a seventh child (the page survives a plugin reload), it
-adopts that page: it finds the page in the screen's grid and sets the background material and
-the list shift again. Both are safe to repeat. Else it loads the page class with
-`load_class_for_bridge`, creates the page with `WidgetBlueprintLibrary.Create`, calls
+adopts that page: it finds the page in the screen's grid and sets the background material, the
+scrollbar style and the list shift again. All three are safe to repeat. Else it loads the page
+class with `load_class_for_bridge`, creates the page with `WidgetBlueprintLibrary.Create`, calls
 `Install(screen)` through the BridgeSDK wrapper, sets the game's `MAT_SubMenu_ListPanel` material
-on `IMAGE_PanelBackground`, moves the category box up by `kCategoryListShift` units (its canvas
-slot gets a negative top offset) so the seventh item stays on screen, and only then syncs the
-settings. A failing sync therefore cannot hide the category.
+on `IMAGE_PanelBackground`, sets the scrollbar style, moves the category box up by
+`kCategoryListShift` units (its canvas slot gets a negative top offset) so the seventh item stays
+on screen, and only then syncs the settings. A failing sync therefore cannot hide the category.
+
+The scrollbar style: the game's lists keep the engine's default scrollbar style and set only the
+`ResourceObject` of the thumb's three brushes, to `MAT_UIPrimaryColor`, `_Highlighted` and
+`_Accent`. The mod pak holds no game art, so `apply_scrollbar_style` copies those three pointers
+from the Gameplay list's scroll box into `WidgetBarStyle` of the VR list's scroll box. Without it
+the VR list shows the engine's grey thumb. Slate reads the brushes when it paints, so the change
+also shows on a page that is already in the screen.
 
 ### Settings sync
 
@@ -422,6 +437,11 @@ binding lists (`s_sliders`, `s_toggles`) hold one line per row:
 
   [movement]
   vr_look_sensitivity = 5
+
+  [cyberspace]
+  pitch_snap_turn = 0
+  pitch_deadzone = 0.8
+  pitch_snap_speed = 0.5
   ```
 
   Older plugin versions kept `vr_look_sensitivity` in `[general]`. When `VRSettings` reads the

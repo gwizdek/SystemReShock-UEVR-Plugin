@@ -8,7 +8,8 @@
 // Adds the mod's "VR" category and page to the game's Options screen. The page's own
 // Blueprint does the installing (its Install function, see documentation/vr-options-menu.md).
 // This class finds the live screen, creates the page once per screen instance, gives the
-// page the game's panel material, which the mod pak does not hold, and has VROptionsSync keep
+// page the game's panel material and scrollbar thumb materials, which the mod pak does not
+// hold, and has VROptionsSync keep
 // the rows and their stores in step: store values go into the rows after the install and each
 // time the page opens, and a row's SavedValue, which changes only on Apply, goes back.
 class VROptionsMenu final
@@ -32,6 +33,7 @@ private:
     static SDK::U_WIDGET_OptionsMenu_VR_C* create_page(SDK::UWIDGET_OptionsScreen_C* screen);
     static SDK::U_WIDGET_OptionsMenu_VR_C* find_page(SDK::UWIDGET_OptionsScreen_C* screen);
     static void apply_panel_material(SDK::U_WIDGET_OptionsMenu_VR_C* page);
+    static void apply_scrollbar_style(SDK::UWIDGET_OptionsScreen_C* screen, SDK::U_WIDGET_OptionsMenu_VR_C* page);
     static void shift_category_list(SDK::UWIDGET_OptionsScreen_C* screen);
     static void adopt_page(SDK::UWIDGET_OptionsScreen_C* screen);
     static void watch_page(SDK::UWIDGET_OptionsScreen_C* screen);

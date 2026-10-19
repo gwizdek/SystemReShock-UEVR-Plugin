@@ -3,7 +3,8 @@
 #include <string>
 
 // The mod's settings file, system_reshock_vr_config.ini in the UEVR profile folder. The values
-// the VR options page manages live in [general] and [movement], keyed by the row's SettingName.
+// the VR options page manages live in [general], [movement] and [cyberspace], keyed by the row's
+// SettingName.
 // The file is read once on first use. save() writes the changed values back and keeps
 // everything else in the file as it is.
 class VRSettings final
@@ -11,6 +12,7 @@ class VRSettings final
 public:
     static constexpr const char* kGeneral = "general";
     static constexpr const char* kMovement = "movement";
+    static constexpr const char* kCyberspace = "cyberspace";
 
     static bool has(const std::string& section, const std::string& key);
     static std::string get(const std::string& section, const std::string& key, const std::string& fallback);

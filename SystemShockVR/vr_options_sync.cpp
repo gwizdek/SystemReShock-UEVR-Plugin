@@ -35,9 +35,10 @@ using ToggleBinding = RowBinding<U_OPTION_VR_Toggle_C, bool>;
 
 IniSectionStore s_general{ VRSettings::kGeneral };
 IniSectionStore s_movement{ VRSettings::kMovement };
+IniSectionStore s_cyberspace{ VRSettings::kCyberspace };
 UevrSettingStore s_uevr;
 
-SettingStore* const s_stores[] = { &s_general, &s_movement, &s_uevr };
+SettingStore* const s_stores[] = { &s_general, &s_movement, &s_cyberspace, &s_uevr };
 
 // Every row of the page and where its value lives. A new row needs one line here.
 SliderBinding s_sliders[] = {
@@ -45,11 +46,14 @@ SliderBinding s_sliders[] = {
     { &List::OPTION_VR_LookSensitivity, &s_movement, 0.f },
     { &List::OPTION_VR_SnapTurnAngle, &s_uevr, 0.f },
     { &List::OPTION_VR_SnapTurnDeadzone, &s_uevr, 0.f },
+    { &List::OPTION_VR_CyberPitchDeadzone, &s_cyberspace, 0.f },
+    { &List::OPTION_VR_CyberPitchSnapSpeed, &s_cyberspace, 0.f },
 };
 
 ToggleBinding s_toggles[] = {
     { &List::OPTION_VR_AutoAimDownSights, &s_general, false },
     { &List::OPTION_VR_SnapTurn, &s_uevr, false },
+    { &List::OPTION_VR_CyberPitchSnapTurn, &s_cyberspace, false },
 };
 
 template <class Fn>

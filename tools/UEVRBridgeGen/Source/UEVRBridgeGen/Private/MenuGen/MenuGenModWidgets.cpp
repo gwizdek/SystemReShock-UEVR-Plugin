@@ -293,7 +293,7 @@ FListEntry Slider(const TCHAR* Name, const FSliderSpec& Spec)
 }
 
 // The page's content, top to bottom. A row's SettingName is its key in the plugin's ini, or
-// for the snap turn rows the UEVR setting it mirrors. The plugin decides where each row is
+// for the snap turn rows the UEVR setting it mirrors. The list scrolls when the rows do not fit. The plugin decides where each row is
 // stored (see "Settings sync" in documentation/vr-options-menu.md).
 TArray<FListEntry> ListEntries()
 {
@@ -318,6 +318,16 @@ TArray<FListEntry> ListEntries()
         Slider(TEXT("OPTION_VR_SnapTurnDeadzone"), { TEXT("Deadzone"),
             TEXT("How far the right thumbstick must be pushed before a snap turn starts."),
             TEXT("VR_SnapturnJoystickDeadzone"), 0.05f, 0.5f, 0.2f, 0.01f, 2, TEXT("") }),
+        Header(TEXT("WIDGET_ListCategoryHeader_Cyberspace"), TEXT("Cyberspace")),
+        Toggle(TEXT("OPTION_VR_CyberPitchSnapTurn"), { TEXT("Pitch Snap Turn"),
+            TEXT("In cyberspace, pitches the view up and down in steps with the right thumbstick instead of smoothly."),
+            TEXT("pitch_snap_turn"), false }),
+        Slider(TEXT("OPTION_VR_CyberPitchDeadzone"), { TEXT("Pitch Deadzone"),
+            TEXT("In cyberspace, how far the right thumbstick must be pushed up or down before the view pitches."),
+            TEXT("pitch_deadzone"), 0.f, 1.f, 0.8f, 0.01f, 2, TEXT("") }),
+        Slider(TEXT("OPTION_VR_CyberPitchSnapSpeed"), { TEXT("Pitch Snap Speed"),
+            TEXT("In cyberspace, how fast one pitch snap turns the view. 0 is the slowest, 1 the fastest."),
+            TEXT("pitch_snap_speed"), 0.f, 1.f, 0.5f, 0.01f, 2, TEXT("") }),
     };
 }
 
