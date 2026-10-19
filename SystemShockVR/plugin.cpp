@@ -341,11 +341,14 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
 
         handle_deferred_camera_reset(delta);
         handle_cyberspace_look_pivot(vr);
+        // The aim correction must read the game camera as UEVR saw it when it placed the
+        // controller, so it runs before anything here turns the avatar. Near a vertical view a
+        // tiny turn changes the view's yaw a lot, and the reticle would jump.
+        VRAvatar::update_aim();
         if (m_game_state.get() == GAME_STATE_CYBERSPACE) {
             CyberspaceBodyTurn::handle(m_pawn.get(), vr);
             CyberspacePitchSnap::handle_tick(m_pawn.get(), delta);
         }
-        VRAvatar::update_aim();
         handle_media_display();
         update_trailing_rotation(delta);
         handle_ads();

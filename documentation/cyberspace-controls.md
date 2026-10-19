@@ -27,10 +27,10 @@ Order on entering cyberspace:
 
 Order on every engine tick (`on_pre_engine_tick`, before the world tick):
 
-1. `CyberspaceBodyTurn::handle`, only in `GAME_STATE_CYBERSPACE`.
-2. `CyberspacePitchSnap::handle_tick`, only in `GAME_STATE_CYBERSPACE`.
-3. `VRAvatar::update_aim`: moves the aim pivot to the corrected controller pose, then places
-   the reticle.
+1. `VRAvatar::update_aim`: moves the aim pivot to the corrected controller pose, then places
+   the reticle. It must come first; see "The controller pose and its correction".
+2. `CyberspaceBodyTurn::handle`, only in `GAME_STATE_CYBERSPACE`.
+3. `CyberspacePitchSnap::handle_tick`, only in `GAME_STATE_CYBERSPACE`.
 
 On leaving cyberspace, `cleanup_actors` calls `VRAvatar::restore_game_camera` and destroys
 the VR avatar, and `RoomscaleSweepSetting::restore` sets the player's roomscale sweep back.
@@ -344,7 +344,7 @@ around, the left stick moves the avatar in the old direction, and the UEVR UI st
 was.
 
 `CyberspaceBodyTurn::handle` (`cyberspace_body_turn.cpp`) runs every engine tick while the
-game state is `GAME_STATE_CYBERSPACE`, before `VRAvatar::update_aim`:
+game state is `GAME_STATE_CYBERSPACE`, after `VRAvatar::update_aim`:
 
 1. Reads the HMD rotation and UEVR's rotation offset, and takes the forward vector of
    offset × HMD, the head direction in view space.
@@ -417,12 +417,18 @@ the aim was right only while the avatar was level, and with the avatar rolled 18
 the opposite way to the controller.
 
 `VRAvatar::update_aim` runs once per engine tick, from `on_pre_engine_tick`, before the world
-tick. `corrected_controller_pose` takes the game camera's location P and rotation R (the view
+tick and before body turn and pitch snap turn the avatar. `corrected_controller_pose` takes the game camera's location P and rotation R (the view
 UEVR used for the last frame) and the yaw-only rotation Y of R. It turns the controller's
 offset from P and its forward and up vectors back by Y and on by R
 (`LessLess_VectorRotator`, then `GreaterGreater_VectorRotator`). `update_aim` sets the aim
 pivot to that location, with `MakeRotFromXZ(forward, up)`. The pivot hangs on the VR
 avatar's root, so during the tick it moves and turns with the avatar, like the view.
+
+The correction only works when R is the view UEVR used to place the controller, so nothing
+may turn the avatar between UEVR's placement in the last frame and `update_aim`. The yaw of
+a view is almost undefined when the view points nearly straight up or down: a turn of a
+fraction of a degree can change it by tens of degrees. When body turn ran before
+`update_aim`, the reticle jumped around whenever the avatar faced up or down.
 
 Other avatar Blueprint code now works on the aim camera instead of the view camera:
 
