@@ -239,38 +239,56 @@ The VR options page has a Cyberspace group with three settings, stored in `[cybe
 
 | Setting | ini key | Meaning |
 |---|---|---|
-| Pitch Snap Turn | `pitch_snap_turn` | On: the right stick pitches in 90° steps. Off (default): the game's smooth pitch. |
+| Pitch Snap Turn | `pitch_snap_turn` | On: the right stick pitches in steps that end on a world axis. Off (default): the game's smooth pitch. |
 | Pitch Deadzone | `pitch_deadzone` | How far, 0 to 1, the stick must be pushed up or down to start a step. Default 0.8. |
-| Pitch Snap Duration | `pitch_snap_duration` | How long one step takes, in seconds, 0 to 1. 0 is instant. Default 0.5. |
+| Pitch Snap Duration | `pitch_snap_duration` | How long one snap takes, in seconds, 0 to 1. 0 is instant. Default 0.5. |
 
 `CyberspacePitchSnap` (`cyberspace_pitch_snap.cpp`) has two parts:
 
 - `handle_input` runs in the XInput callback in `GAME_STATE_CYBERSPACE`. While the option is
   on, it sets `sThumbRY` to 0 in the state the game reads, so the game's own pitch input is 0.
   The yaw stays with the game. When the stick's Y passes the deadzone (at least 0.05), it
-  starts a step and waits until the stick is back under 80% of that value before it accepts
+  queues a snap and waits until the stick is back under 80% of that value before it accepts
   the next push.
-- `handle_tick` runs every engine tick in `GAME_STATE_CYBERSPACE`. It turns the avatar with
-  `K2_AddActorLocalRotation` by this tick's part of the step, around the avatar's own right
-  axis, as the game's own look input does.
+- `handle_tick` runs every engine tick in `GAME_STATE_CYBERSPACE`. It starts a queued snap and
+  turns the avatar with `K2_AddActorLocalRotation` by this tick's part of the snap, around the
+  avatar's own right axis, as the game's own look input does.
 
-The step eases out (cubic): it starts at three times the average speed and slows to 0 at the
-end. A push during a step adds 90° to what is left of it and starts the ease again, so the
-final pitch is always a sum of whole steps. A push the other way during a step turns back.
+A snap ends with the avatar's forward vector on a world axis (±X, ±Y or ±Z). A pitch turns
+the forward vector in the plane of the avatar's forward and up vectors, so only an axis in or
+near that plane can be reached. The game's auto-level keeps the right vector on a world axis,
+so that plane normally holds four world axes, 90° apart. To pick the axis, `start_snap`:
+
+1. takes the pitch from the forward vector to each of the six axes, positive up, from the
+   axis' parts along the forward and up vectors. An axis whose part in the plane is shorter
+   than 0.5 is skipped: it lies close to the right axis;
+2. takes the nearest axis in the push direction that is at least 30° away. So a snap is never
+   only a few degrees: 12° below an axis, a push up goes on to the next axis, 102° away.
+
+A push during a snap counts from the snap's axis instead of the forward vector, so it goes on
+to the next axis, and starts the ease again. A push the other way turns back.
+
+The snap eases out (cubic): it starts at three times the average speed and slows to 0 at the
+end. The pitch still to turn is measured again each tick, because body turn and the game
+can move the avatar during a snap. Each tick turns the same share of it as the ease curve
+does, and the last tick turns all of it, so the snap ends on the axis. The measured pitch is
+taken in whole turns closest to the last value, so a snap of 180° or more after several pushes
+keeps its direction. The snap stops when its axis leaves the pitch plane, for example when the
+avatar yaws by 90° during it.
 
 Without Invert Y a push up pitches the nose up; this direction was chosen in the headset.
 When the game's Invert Y for cyberspace (`CyberspaceInvertY` in `SAVE_Settings`) is on, the
 direction is turned around. `game_pitch_direction` reads that setting at each push.
 
-The step does not block anything else. The game's yaw, roll, auto-level and movement run in
+The snap does not block anything else. The game's yaw, roll, auto-level and movement run in
 the same ticks. The game moves the avatar along its forward vector, so a forward flight
 follows the new pitch while it turns. Auto-level only turns the avatar around its forward
-axis toward a world axis for the right vector, and a pitch step leaves the right vector
+axis toward a world axis for the right vector, and a pitch snap leaves the right vector
 where it is.
 
-A step keeps running when the option is turned off, and stops when the possessed pawn
+A snap keeps running when the option is turned off, and stops when the possessed pawn
 changes. While the pause menu is open the game state is not `GAME_STATE_CYBERSPACE`, so the
-step waits.
+snap waits.
 
 ## UEVR settings in cyberspace
 
