@@ -69,6 +69,7 @@
 #include "vr_settings.hpp"
 #include "cyberspace_atmosphere_fix.hpp"
 #include "cyberspace_body_turn.hpp"
+#include "cyberspace_pitch_snap.hpp"
 #include "roomscale_sweep_setting.hpp"
 #include "focus_interaction_patch.hpp"
 #include "vr_input_actions.hpp"
@@ -342,6 +343,7 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_cyberspace_look_pivot(vr);
         if (m_game_state.get() == GAME_STATE_CYBERSPACE) {
             CyberspaceBodyTurn::handle(m_pawn.get(), vr);
+            CyberspacePitchSnap::handle_tick(m_pawn.get(), delta);
         }
         VRAvatar::update_aim();
         handle_media_display();
@@ -766,8 +768,10 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
 
         // The game's own cyberspace bindings fit VR as they are: right stick turns and pitches,
         // grips (shoulders) roll, A and B ascend and descend, triggers fire. Only the pause
-        // menu needs a button, because UEVR keeps the controllers' menu buttons.
+        // menu needs a button, because UEVR keeps the controllers' menu buttons. With pitch snap
+        // turn on, the plugin takes the right stick's pitch over.
         if (m_game_state.get() == GAME_STATE_CYBERSPACE) {
+            CyberspacePitchSnap::handle_input(state);
             if (m_gamepad_right_thumb.is_pressed()) {
                 SDK::FKey key_name{ .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Escape") };
                 static_cast<SDK::APAWN_Avatar_C*>(m_pawn.get())->InpActEvt_Locked_Escape_K2Node_InputActionEvent_96(key_name);

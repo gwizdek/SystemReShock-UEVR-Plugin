@@ -135,3 +135,18 @@ bool VRSettings::auto_ads()
 {
     return get_bool(kGeneral, "auto_ads", true);
 }
+
+bool VRSettings::pitch_snap_turn()
+{
+    return get_bool(kCyberspace, "pitch_snap_turn", false);
+}
+
+float VRSettings::pitch_deadzone()
+{
+    return std::clamp(get_float(kCyberspace, "pitch_deadzone", 0.8f), 0.f, 1.f);
+}
+
+float VRSettings::pitch_snap_speed()
+{
+    return std::clamp(get_float(kCyberspace, "pitch_snap_speed", 0.5f), 0.f, 1.f);
+}

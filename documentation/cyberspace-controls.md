@@ -6,11 +6,12 @@ controls work in VR, and what is still open.
 
 ## How VR flight works
 
-The game keeps full control of the flight. The plugin adds four things around it.
+The game keeps full control of the flight. The plugin adds five things around it.
 
 | Part | What it does | Where |
 |---|---|---|
 | Game controls | The VR controllers send the game's own gamepad bindings, unchanged: right stick turns and pitches, grips roll, A and B go up and down. The game's roll snap to 0°, 90°, 180° and 270° works as in the flat game. | `handle_xinput`, `apply_cyberspace_vr_settings` (`plugin.cpp`) |
+| Pitch snap turn | An option. The right stick pitches in 90° steps instead of smoothly. | `CyberspacePitchSnap` (`cyberspace_pitch_snap.cpp`) |
 | Cockpit view | UEVR uses the avatar's full rotation, pitch and roll included, as the view, with the head rotation on top. Aim method "game", decoupled pitch off. | `apply_cyberspace_vr_settings` |
 | Body turn | The head's yaw is moved into the avatar every tick, so the avatar's forward, and with it the stick direction and the UI, follow where the player faces. | `CyberspaceBodyTurn` (`cyberspace_body_turn.cpp`) |
 | Controller aim | The weapons shoot from a camera on the right controller. The plugin corrects the controller pose that UEVR gives, and shows a reticle on the aim line. | `VRAvatar` (`vr_avatar.cpp`) |
@@ -27,7 +28,8 @@ Order on entering cyberspace:
 Order on every engine tick (`on_pre_engine_tick`, before the world tick):
 
 1. `CyberspaceBodyTurn::handle`, only in `GAME_STATE_CYBERSPACE`.
-2. `VRAvatar::update_aim`: moves the aim pivot to the corrected controller pose, then places
+2. `CyberspacePitchSnap::handle_tick`, only in `GAME_STATE_CYBERSPACE`.
+3. `VRAvatar::update_aim`: moves the aim pivot to the corrected controller pose, then places
    the reticle.
 
 On leaving cyberspace, `cleanup_actors` calls `VRAvatar::restore_game_camera` and destroys
@@ -217,7 +219,7 @@ pitch, yaw, roll and the roll snap work as described above.
 | VR controller input | Game action |
 |---|---|
 | Left stick | `Gamepad_Cyber_MoveAxisX/Y` (move, strafe) |
-| Right stick | `Gamepad_LookYaw`, `Gamepad_LookPitch` |
+| Right stick | `Gamepad_LookYaw`, `Gamepad_LookPitch`. With pitch snap turn on, the plugin takes the stick's Y away from the game (see Pitch snap turn). |
 | Left grip / right grip | `Gamepad_Cyber_RollLeft` / `RollRight` (UEVR sends the grips as the shoulders) |
 | A / B | `Gamepad_Cyber_Ascend` / `Descend` |
 | Right trigger / left trigger | `Gamepad_Cyber_PrimaryAttack` / `SecondaryAttack` |
@@ -229,6 +231,46 @@ pitch, yaw, roll and the roll snap work as described above.
 function would set the control rotation from the right controller's aim pose, but it returns
 before that code. It is left from an earlier controller-steered flight mode and does nothing.
 Removing it is a fair change to propose.
+
+## Pitch snap turn
+
+The VR options page has a Cyberspace group with three settings, stored in `[cyberspace]` of
+`system_reshock_vr_config.ini` and read through `VRSettings`:
+
+| Setting | ini key | Meaning |
+|---|---|---|
+| Pitch Snap Turn | `pitch_snap_turn` | On: the right stick pitches in 90° steps. Off (default): the game's smooth pitch. |
+| Pitch Deadzone | `pitch_deadzone` | How far, 0 to 1, the stick must be pushed up or down to start a step. Default 0.8. |
+| Pitch Snap Speed | `pitch_snap_speed` | How long one step takes, in seconds, 0 to 1. 0 is instant. Default 0.5. |
+
+`CyberspacePitchSnap` (`cyberspace_pitch_snap.cpp`) has two parts:
+
+- `handle_input` runs in the XInput callback in `GAME_STATE_CYBERSPACE`. While the option is
+  on, it sets `sThumbRY` to 0 in the state the game reads, so the game's own pitch input is 0.
+  The yaw stays with the game. When the stick's Y passes the deadzone (at least 0.05), it
+  starts a step and waits until the stick is back under 80% of that value before it accepts
+  the next push.
+- `handle_tick` runs every engine tick in `GAME_STATE_CYBERSPACE`. It turns the avatar with
+  `K2_AddActorLocalRotation` by this tick's part of the step, around the avatar's own right
+  axis, as the game's own look input does.
+
+The step eases out (cubic): it starts at three times the average speed and slows to 0 at the
+end. A push during a step adds 90° to what is left of it and starts the ease again, so the
+final pitch is always a sum of whole steps. A push the other way during a step turns back.
+
+Without Invert Y a push up pitches the nose up; this direction was chosen in the headset.
+When the game's Invert Y for cyberspace (`CyberspaceInvertY` in `SAVE_Settings`) is on, the
+direction is turned around. `game_pitch_direction` reads that setting at each push.
+
+The step does not block anything else. The game's yaw, roll, auto-level and movement run in
+the same ticks. The game moves the avatar along its forward vector, so a forward flight
+follows the new pitch while it turns. Auto-level only turns the avatar around its forward
+axis toward a world axis for the right vector, and a pitch step leaves the right vector
+where it is.
+
+A step keeps running when the option is turned off, and stops when the possessed pawn
+changes. While the pause menu is open the game state is not `GAME_STATE_CYBERSPACE`, so the
+step waits.
 
 ## UEVR settings in cyberspace
 

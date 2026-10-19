@@ -20,9 +20,11 @@ class VRGameOptions final
 public:
     // Applies the options and refreshes the option widgets. Called on a level or pawn change.
     static void apply();
+    // The game's live SAVE_Settings object, or nullptr when it is not loaded. Logs an error
+    // then.
+    static SDK::USAVE_Settings_C* find_settings();
 
 private:
-    static SDK::USAVE_Settings_C* find_settings();
     static void apply_interface(SDK::USAVE_Settings_C* settings);
     static void apply_controls_and_gameplay(SDK::USAVE_Settings_C* settings);
     static void apply_display(SDK::USAVE_Settings_C* settings);
