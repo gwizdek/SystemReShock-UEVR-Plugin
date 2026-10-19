@@ -6,14 +6,15 @@ controls work in VR, and what is still open.
 
 ## How VR flight works
 
-The game keeps full control of the flight. The plugin adds five things around it.
+The game keeps full control of the flight. The plugin adds six things around it.
 
 | Part | What it does | Where |
 |---|---|---|
 | Game controls | The VR controllers send the game's own gamepad bindings, unchanged: right stick turns and pitches, grips roll, A and B go up and down. The game's roll snap to 0°, 90°, 180° and 270° works as in the flat game. | `handle_xinput`, `apply_cyberspace_vr_settings` (`plugin.cpp`) |
-| Pitch snap turn | An option. The right stick pitches in 90° steps instead of smoothly. | `CyberspacePitchSnap` (`cyberspace_pitch_snap.cpp`) |
+| Pitch snap turn | An option. The right stick pitches in steps to the next world axis instead of smoothly. | `CyberspacePitchSnap` (`cyberspace_pitch_snap.cpp`) |
 | Cockpit view | UEVR uses the avatar's full rotation, pitch and roll included, as the view, with the head rotation on top. Aim method "game", decoupled pitch off. | `apply_cyberspace_vr_settings` |
-| Head turn | The head's yaw and pitch are moved into the avatar every tick, so the avatar's forward, and with it the flight direction and the UI, follow where the player looks. | `CyberspaceBodyTurn` (`cyberspace_body_turn.cpp`) |
+| Body turn | The head's yaw is moved into the avatar every tick, so the avatar's forward, and with it the stick direction and the UI, follow where the player faces. | `CyberspaceBodyTurn` (`cyberspace_body_turn.cpp`) |
+| Head steering | The left stick flies along the head's pitch: looking up while moving forward moves the avatar up. | `CyberspaceHeadSteering` (`cyberspace_head_steering.cpp`) |
 | Controller aim | The weapons shoot from a camera on the right controller. The plugin corrects the controller pose that UEVR gives, and shows a reticle on the aim line. | `VRAvatar` (`vr_avatar.cpp`) |
 
 Order on entering cyberspace:
@@ -30,7 +31,8 @@ Order on every engine tick (`on_pre_engine_tick`, before the world tick):
 1. `VRAvatar::update_aim`: moves the aim pivot to the corrected controller pose, then places
    the reticle. It must come first; see "The controller pose and its correction".
 2. `CyberspaceBodyTurn::handle`, only in `GAME_STATE_CYBERSPACE`.
-3. `CyberspacePitchSnap::handle_tick`, only in `GAME_STATE_CYBERSPACE`.
+3. `CyberspaceHeadSteering::handle_tick`, only in `GAME_STATE_CYBERSPACE`.
+4. `CyberspacePitchSnap::handle_tick`, only in `GAME_STATE_CYBERSPACE`.
 
 On leaving cyberspace, `cleanup_actors` calls `VRAvatar::restore_game_camera` and destroys
 the VR avatar, and `RoomscaleSweepSetting::restore` sets the player's roomscale sweep back.
@@ -204,7 +206,7 @@ widens by up to 10° (at most 120) while turbo dash is active. The plugin's
 
 In `GAME_STATE_PAUSE_MENU` the plugin uses the same settings as in the station's pause menu:
 the menu stick deadzone (`apply_menu_stick_deadzone`), decoupled pitch on, the menu UI
-distance and size, and a recenter. Head turn and pitch snap do not run.
+distance and size, and a recenter. Body turn, head steering and pitch snap do not run.
 
 The pawn state change runs `handle_level_change`, which calls
 `VRAvatar::initialize_vr_avatar` (see below). The game state change that follows runs
@@ -218,7 +220,7 @@ pitch, yaw, roll and the roll snap work as described above.
 
 | VR controller input | Game action |
 |---|---|
-| Left stick | `Gamepad_Cyber_MoveAxisX/Y` (move, strafe) |
+| Left stick | Move and strafe. The plugin takes the stick from the game and flies along the head's pitch (see Flying where the head looks). |
 | Right stick | `Gamepad_LookYaw`, `Gamepad_LookPitch`. With pitch snap turn on, the plugin takes the stick's Y away from the game (see Pitch snap turn). |
 | Left grip / right grip | `Gamepad_Cyber_RollLeft` / `RollRight` (UEVR sends the grips as the shoulders) |
 | A / B | `Gamepad_Cyber_Ascend` / `Descend` |
@@ -354,46 +356,70 @@ The field of view is set by `VRGameOptions::apply_display` for both the station 
 cyberspace (`SetFOV(kFieldOfView, false)` is the cyberspace value). It does not change the
 HMD view.
 
-## Turning with the head
+## Turning with the body
 
 The game moves the avatar along its own forward vector. With aim method "game", UEVR shows
 the head turn in the view but never turns the avatar. Without a fix, after the player turns
-around or looks up, the left stick moves the avatar in the old direction, and the UEVR UI
-stays where it was.
+around, the left stick moves the avatar in the old direction, and the UEVR UI stays where it
+was.
 
 `CyberspaceBodyTurn::handle` (`cyberspace_body_turn.cpp`) runs every engine tick while the
 game state is `GAME_STATE_CYBERSPACE`, after `VRAvatar::update_aim`:
 
 1. Reads the HMD rotation and UEVR's rotation offset, and takes the forward vector of
    offset × HMD, the head direction in view space.
-2. In UEVR's tracking axes (-Z forward, +Y up, +X right), its yaw in Unreal terms (positive
-   to the right) is `atan2(forward.x, -forward.z)`, and its pitch (positive up) is
-   `atan2(forward.y, length of (forward.x, forward.z))`.
-3. Turns the avatar by that yaw and pitch with one `K2_AddActorLocalRotation`. As a local
-   rotation the rotator turns by the yaw around the avatar's up axis, then by the pitch around
-   its new right axis, so the avatar's forward ends up where the head looks.
-4. Turns the rotation offset by the same turn the other way: the pitch back around the
-   tracking space's right axis, then the yaw back around its up axis. It sets the result with
-   `set_rotation_offset`.
+2. Its yaw, in Unreal terms (positive to the right), is `atan2(forward.x, -forward.z)` in
+   UEVR's tracking axes (-Z forward, +Y up).
+3. Turns the avatar by that yaw around its own up axis (`K2_AddActorLocalRotation`).
+4. Turns the rotation offset by the same yaw the other way, around the tracking space's up
+   axis, and sets it with `set_rotation_offset`.
 
 UEVR renders the view as game view × rotation offset × HMD rotation, so the view does not
-change. The avatar's forward follows the head: the head is always looking along the avatar's
-forward, turned only by its roll. So looking up while flying forward moves the avatar up. The
-head's roll is not moved into the avatar. UEVR places its UI by the rotation offset, so the UI
-follows the head's yaw and pitch as well.
+change. The avatar's forward follows the head's yaw: the head is always looking along the
+avatar's forward, turned only by pitch and roll. UEVR places its UI by the rotation offset, so
+the UI follows the head's yaw as well.
 
 It does nothing when the head looks almost straight up or down (the forward vector's up part
-is above 0.95), because the yaw is not defined there, or when both the yaw and the pitch are
-below 0.05°. After the first tick the head's forward stays close to the avatar's forward, so
-the first case only happens when the player enters cyberspace looking straight up or down.
-The new offset is worked out from the same HMD pose that was read. `recenter_view` would read
-the pose again, and the difference between the two reads would be lost every tick.
+is above 0.95), because the yaw is not defined there, or when the yaw is below 0.05°. The
+new offset is worked out from the same HMD pose that was read. `recenter_view` would read the
+pose again, and the difference between the two reads would be lost every tick.
 
 Turning only the head also turns the avatar. The HMD cannot tell a head turn from a body turn.
 
-The game's auto-level is not affected by the pitch part. Auto-level turns the avatar around
-its forward axis until the right vector lies on a world axis, and a pitch turn around the
-right axis leaves the right vector where it is.
+Only the yaw is moved into the avatar. Every tick's turn is then around the tracking space's
+up axis, so the rotation offset stays a pure yaw and the view's roll is always the head's real
+roll. Moving the head's pitch into the avatar the same way does not work. A head that turns
+to the side while it looks up also turns a little around its line of sight. Left in the
+offset, those small turns add up to a rolled view over a few minutes. Taken out of the view,
+they roll the world while the player looks around.
+
+## Flying where the head looks
+
+The flight direction follows the head's pitch as well, without turning the avatar: looking up
+while moving forward moves the avatar up.
+
+The game's left stick handlers (`HandleInputMoveAxisX/Y`) only add the stick to
+`FrameRelativeInput`, X forward and Y right. `UpdateMovement` adds `PersistentRelativeInput`
+to it (normally set by the keyboard move keys), normalizes the sum, turns it by the avatar's
+rotation and calls `AddMovementInput`. Only the direction counts; any stick push flies at
+full speed.
+
+`CyberspaceHeadSteering` (`cyberspace_head_steering.cpp`) has two parts:
+
+- `handle_input` runs in the XInput callback in `GAME_STATE_CYBERSPACE`. It keeps the left
+  stick, with XInput's left stick deadzone (radial, 7849 of 32767), and sets the stick to 0 in
+  the state the game reads.
+- `handle_tick` runs every engine tick in `GAME_STATE_CYBERSPACE`, after body turn. It takes
+  the head's pitch against the avatar from the forward vector of offset × HMD and writes
+  `PersistentRelativeInput = (forward × cos(pitch), right, forward × sin(pitch))`. The
+  stick's forward part goes along the head's pitch, and its right part stays level with the
+  avatar. A stick reading older than 0.25 s counts as no push, so the avatar stops when the
+  XInput callback stops.
+
+Ascend and descend (A and B) still add to `FrameRelativeInput` and combine with it. The game
+scales the move by `MoveStrafeScale` the further the direction is from the avatar's forward,
+so flying steeply up or down along the head is slower than flying straight ahead, as
+strafing is.
 
 ## Aiming with the right controller
 
@@ -446,7 +472,7 @@ the aim was right only while the avatar was level, and with the avatar rolled 18
 the opposite way to the controller.
 
 `VRAvatar::update_aim` runs once per engine tick, from `on_pre_engine_tick`, before the world
-tick and before head turn and pitch snap turn the avatar. `corrected_controller_pose` takes
+tick and before body turn and pitch snap turn the avatar. `corrected_controller_pose` takes
 the game camera's location P and rotation R (the view UEVR used for the last frame) and the
 yaw-only rotation Y of R. It turns the controller's
 offset from P and its forward and up vectors back by Y and on by R
@@ -457,7 +483,7 @@ avatar's root, so during the tick it moves and turns with the avatar, like the v
 The correction only works when R is the view UEVR used to place the controller, so nothing
 may turn the avatar between UEVR's placement in the last frame and `update_aim`. The yaw of
 a view is almost undefined when the view points nearly straight up or down: a turn of a
-fraction of a degree can change it by tens of degrees. When head turn ran before
+fraction of a degree can change it by tens of degrees. When body turn ran before
 `update_aim`, the reticle jumped around whenever the avatar faced up or down.
 
 Other avatar Blueprint code now works on the aim camera instead of the view camera:

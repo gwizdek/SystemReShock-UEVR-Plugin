@@ -10,11 +10,9 @@ using namespace uevr;
 namespace {
 
 constexpr float kRadToDeg = 57.2957795f;
-// Below this the head turn is left in the offset, so a still head does not recenter every tick.
-constexpr float kMinTurnDegrees = 0.05f;
+// Below this the head yaw is left in the offset, so a still head does not recenter every tick.
+constexpr float kMinYawDegrees = 0.05f;
 // When the head looks almost straight up or down its yaw is not defined, so nothing is moved.
-// After the first tick the head's forward stays close to the avatar's, so this only matters
-// when the player enters cyberspace looking straight up or down.
 constexpr float kMaxForwardUp = 0.95f;
 
 // UEVR_Quaternionf is declared w, x, y, z, so it is always filled by name.
@@ -43,12 +41,6 @@ UEVR_Quaternionf turn_around_up(float radians) {
     return { .w = std::cos(radians * 0.5f), .x = 0.f, .y = std::sin(radians * 0.5f), .z = 0.f };
 }
 
-// A turn of the given angle around the tracking space's right axis (+X). A positive angle turns
-// the forward vector up, like an Unreal pitch.
-UEVR_Quaternionf turn_around_right(float radians) {
-    return { .w = std::cos(radians * 0.5f), .x = std::sin(radians * 0.5f), .y = 0.f, .z = 0.f };
-}
-
 } // namespace
 
 void CyberspaceBodyTurn::handle(SDK::APawn* avatar, const UEVR_VRData* vr) {
@@ -68,22 +60,17 @@ void CyberspaceBodyTurn::handle(SDK::APawn* avatar, const UEVR_VRData* vr) {
             return;
         }
 
-        // Unreal yaw and pitch of the head in view space: positive when the head turns right and
-        // when it looks up.
+        // Unreal yaw of the head in view space: positive when the head turns right.
         const float yaw_radians = std::atan2(forward.x, -forward.z);
-        const float pitch_radians = std::atan2(forward.y, std::sqrt(forward.x * forward.x + forward.z * forward.z));
-        if (std::fabs(yaw_radians * kRadToDeg) < kMinTurnDegrees && std::fabs(pitch_radians * kRadToDeg) < kMinTurnDegrees) {
+        if (std::fabs(yaw_radians * kRadToDeg) < kMinYawDegrees) {
             return;
         }
 
-        // As a local rotation the rotator turns by the yaw around the avatar's up axis, then by
-        // the pitch around its new right axis, so the avatar's forward ends up where the head looks.
         SDK::FHitResult unused{};
-        avatar->K2_AddActorLocalRotation({ pitch_radians * kRadToDeg, yaw_radians * kRadToDeg, 0.f }, false, &unused, false);
+        avatar->K2_AddActorLocalRotation({ 0.f, yaw_radians * kRadToDeg, 0.f }, false, &unused, false);
 
-        // The same turn is taken out of the offset, pitch first, so the view stays where it was.
-        const UEVR_Quaternionf undo = multiply(turn_around_right(-pitch_radians), turn_around_up(yaw_radians));
-        const UEVR_Quaternionf new_offset = multiply(undo, offset);
+        // Turning the offset by the same yaw the other way keeps the view where it was.
+        const UEVR_Quaternionf new_offset = multiply(turn_around_up(yaw_radians), offset);
         vr->set_rotation_offset(&new_offset);
     }
     catch (...) {
