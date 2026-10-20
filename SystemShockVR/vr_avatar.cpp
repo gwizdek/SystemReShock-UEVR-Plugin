@@ -40,6 +40,14 @@ constexpr float kReticleNearDistance = 50.f;
 constexpr float kReticleSizeExponent = 0.75f;
 // The reticle is never further from the controller than this, in world units (centimetres).
 constexpr float kReticleMaxDistance = 2500.f;
+// The masked reticle is depth tested, so it is placed this part of its own size in front of
+// the surface the aim hits. At 0.75 it stays clear of a wall hit at up to about 56 degrees
+// from straight on (half its size times tan 56 is 0.75 of its size).
+constexpr float kReticleSurfaceGap = 0.75f;
+// The engine's masked widget material. A masked reticle writes depth and motion vectors, so a
+// temporal upscaler such as DLSS keeps it stable; a translucent one smears and shimmers.
+constexpr const wchar_t* kMaskedWidgetMaterial =
+    L"/Engine/EngineMaterials/Widget3DPassThrough_Masked.Widget3DPassThrough_Masked";
 
 bool is_alive(void* object) {
     return object != nullptr && API::UObjectHook::exists(reinterpret_cast<API::UObject*>(object));
@@ -195,6 +203,7 @@ A_BP_VRAvatar_C* VRAvatar::initialize_vr_avatar(APAWN_Avatar_C* pawn) {
             // The Blueprint puts it under MotionControllerRight, which UEVR moves with the
             // uncorrected pose late in the frame. update_aim places it in world space instead.
             attach_keep_world(vr_avatar->AimReticle(), vr_avatar->DefaultSceneRoot());
+            use_masked_reticle_material(vr_avatar->AimReticle());
         }
         s_vr_avatar = vr_avatar;
         API::get()->log_warn("[vr_avatar][initialize_vr_avatar] VRAvatar Initialized");
@@ -456,12 +465,29 @@ void VRAvatar::place_reticle(const AimPose& aim) {
     const float near_size = VRSettings::crosshair_scale() / kCrosshairScaleToNearSize;
     const float size = near_size * std::pow(distance / kReticleNearDistance, kReticleSizeExponent);
     const float scale = size / kReticleDrawSize;
+    const float placed_at = std::max(0.f, distance - size * kReticleSurfaceGap);
     const FVector back{ -aim.forward.X, -aim.forward.Y, -aim.forward.Z };
     FHitResult unused{};
     reticle->K2_SetWorldLocationAndRotation(
-        aim.location + aim.forward * distance, UKismetMathLibrary::MakeRotFromXZ(back, aim.view_up), false, &unused, false
+        aim.location + aim.forward * placed_at, UKismetMathLibrary::MakeRotFromXZ(back, aim.view_up), false, &unused, false
     );
     reticle->SetWorldScale3D({ scale, scale, scale });
+}
+
+// _BP_VRAvatar gives AimReticle a translucent material without depth test, so walls could not
+// hide it. Under DLSS that smears and shimmers, so the engine's masked widget material
+// replaces it; place_reticle keeps the masked reticle in front of the surface instead.
+void VRAvatar::use_masked_reticle_material(UWidgetComponent* reticle) {
+    const FSoftObjectPath path = UKismetSystemLibrary::MakeSoftObjectPath(kMaskedWidgetMaterial);
+    auto* material = static_cast<UMaterialInterface*>(
+        UKismetSystemLibrary::LoadAsset_Blocking(UKismetSystemLibrary::Conv_SoftObjPathToSoftObjRef(path))
+    );
+    if (material == nullptr) {
+        API::get()->log_error("[vr_avatar][use_masked_reticle_material] %ls not loaded, reticle stays translucent", kMaskedWidgetMaterial);
+        return;
+    }
+    reticle->SetMaterial(0, material);
+    API::get()->log_warn("[vr_avatar][use_masked_reticle_material] Reticle uses the masked widget material");
 }
 
 // _WIDGET_AimReticle holds one image with a placeholder brush. It gets the material of the

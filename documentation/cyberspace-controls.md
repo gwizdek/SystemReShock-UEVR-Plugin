@@ -564,21 +564,31 @@ VIRT). It sets the widgets' visibility to Hidden, and back to Visible in `restor
 Render opacity does not work here: set on a user widget, it does not reach the mesh widgets
 inside it. No game code changes the visibility of these two widgets.
 
-`_BP_VRAvatar` has a `WidgetComponent` named `AimReticle`, with the material
-`Widget3DPassThrough_Translucent_NoDepth`. That material is translucent with depth test
-disabled, so walls and enemies do not hide the reticle. A masked material cannot disable the
-depth test. In the Blueprint it is a child of `MotionControllerRight`. `initialize_vr_avatar`
-moves it to `DefaultSceneRoot`, keeping its world transform, because UEVR moves
-`MotionControllerRight` with the uncorrected pose late in the frame, and sets the draw size
-to 80 × 80.
+`_BP_VRAvatar` has a `WidgetComponent` named `AimReticle`. In the Blueprint it is a child
+of `MotionControllerRight`. `initialize_vr_avatar` moves it to `DefaultSceneRoot`, keeping its
+world transform, because UEVR moves `MotionControllerRight` with the uncorrected pose late in
+the frame, and sets the draw size to 80 × 80.
+
+The Blueprint gives it the material `Widget3DPassThrough_Translucent_NoDepth`: translucent,
+with the depth test off, so walls never hide it. Under DLSS that reticle smears and shimmers,
+because translucent materials write neither depth nor motion vectors. So
+`use_masked_reticle_material` sets the engine's masked widget material
+`/Engine/EngineMaterials/Widget3DPassThrough_Masked` on it in `initialize_vr_avatar`. A
+masked material writes depth and motion vectors and stays stable, but it cannot turn the depth
+test off; `place_reticle` keeps it in front of walls instead (step 2 below). The mask cuts
+away the dark shadow that the crosshair texture has around its arms. The material's
+`OpacityFromTexture` stays at 1: in a live test 1.5 hid the whole crosshair, and lower values
+let more of the shadow through as a dark outline.
 
 `update_aim` places it after the aim camera, from the controller pose (`place_reticle`):
 
 1. Traces the Visibility channel (`TraceTypeQuery1`) along the aim line, at most 2500 units
    (25 m) from the controller. The avatar and the VR avatar are ignored.
-2. Puts `AimReticle` at that distance on the aim line, facing back along it, with the view's
-   up vector as its up (R × O, without the HMD rotation). So it rolls neither with the
-   controller nor with the head; only a roll of the avatar turns it.
+2. Puts `AimReticle` on the aim line, 0.75 of its own world size (step 3) in front of that
+   distance, so the depth-tested reticle stays in front of a wall hit at up to about 56° from
+   straight on. It faces back along the line, with the view's up vector as its up (R × O,
+   without the HMD rotation). So it rolls neither with the controller nor with the head; only
+   a roll of the avatar turns it.
 3. Scales it to a world size of `N × (distance / 50) ^ 0.75` units, divided by the draw size
    80. N is the Crosshair Scale setting divided by 10: 10 at the default 100 %, 5 at 50 % and
    15 at 150 %. At 100 % the reticle covers about 11° of view at 50 cm, 6.4° at 5 m and 4.3° at
@@ -586,12 +596,9 @@ to 80 × 80.
    constant angle, a far reticle looks much bigger than a near one, because it is seen as
    far away.
 
-The component's **Blend Mode** must be Transparent for the reticle to be see-through. With
-Masked, the default, the widget's alpha is only used as a cut-out and the render proxy is
-drawn as masked, even with a translucent material. UE 4.27 has no Blueprint function to change
-the blend mode, so it belongs in `_BP_VRAvatar`. A live test showed the reticle see-through
-after writing `BlendMode` = 2 and calling `SetTwoSided(true)`, which rebuilds the render
-proxy. `_BP_VRAvatar` still has Masked; see Open questions.
+The component's **Blend Mode** stays Masked, the Blueprint's default. With a material set on
+the component, the blend mode does not pick the material: a live test with `BlendMode` = 2
+(Transparent) changed nothing visible.
 
 The widget class of `AimReticle` is `/Game/Mods/VRAvatar/_WIDGET_AimReticle`. It holds one
 image, `IMAGE_Reticle`, 80 × 80 at the centre, with a placeholder brush. The game's
@@ -640,8 +647,6 @@ avatar exists.
 
 ## Open questions
 
-- `AimReticle` in `_BP_VRAvatar` still has Blend Mode Masked and is one-sided, so the reticle
-  is not see-through. Set Blend Mode to Transparent and Two Sided on, then cook.
 - `handle_cyberspace_look_pivot` holds dead code (see Controls in VR).
 - How the roll of the HMD itself should combine with the game's auto-level. Auto-level reads
   the axes of the actor, not of the view.

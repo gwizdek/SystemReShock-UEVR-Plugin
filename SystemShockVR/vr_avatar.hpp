@@ -55,6 +55,7 @@ private:
     static void set_hud_decorations_visible(SDK::APAWN_Avatar_C* pawn, bool visible);
     static float trace_aim_distance(const SDK::FVector& start, const SDK::FVector& direction);
     static bool apply_reticle_brush(SDK::UWidgetComponent* reticle);
+    static void use_masked_reticle_material(SDK::UWidgetComponent* reticle);
 
     static bool s_reticle_brush_applied;
     static SDK::A_BP_VRAvatar_C* s_vr_avatar;
