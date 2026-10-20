@@ -31,12 +31,12 @@ namespace {
 // Size of the reticle widget in pixels; one pixel is one world unit at scale 1.
 constexpr float kReticleDrawSize = 80.f;
 // World size of the reticle at kReticleNearDistance, in world units (centimetres), is the
-// "Crosshair Scale" setting divided by this: 10 at 100 percent, 5 at 50 and 15 at 150.
-constexpr float kCrosshairScaleToNearSize = 10.f;
+// "Crosshair Scale" setting divided by this: 20 at 100 percent, 10 at 50 and 30 at 150.
+constexpr float kCrosshairScaleToNearSize = 5.f;
 constexpr float kReticleNearDistance = 50.f;
 // The world size grows with distance to this power. Below 1 the reticle covers a smaller angle
-// when it is far: about 11 degrees at 50 cm, 6.4 at 5 m and 4.3 at 25 m. With a constant angle a
-// far reticle looks much bigger than a near one.
+// when it is far: at 100 percent about 23 degrees at 50 cm, 13 at 5 m and 8.6 at 25 m. With a
+// constant angle a far reticle looks much bigger than a near one.
 constexpr float kReticleSizeExponent = 0.75f;
 // The reticle is never further from the controller than this, in world units (centimetres).
 constexpr float kReticleMaxDistance = 2500.f;

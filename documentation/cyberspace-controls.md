@@ -590,11 +590,10 @@ let more of the shadow through as a dark outline.
    without the HMD rotation). So it rolls neither with the controller nor with the head; only
    a roll of the avatar turns it.
 3. Scales it to a world size of `N × (distance / 50) ^ 0.75` units, divided by the draw size
-   80. N is the Crosshair Scale setting divided by 10: 10 at the default 100 %, 5 at 50 % and
-   15 at 150 %. At 100 % the reticle covers about 11° of view at 50 cm, 6.4° at 5 m and 4.3° at
-   25 m. With a
-   constant angle, a far reticle looks much bigger than a near one, because it is seen as
-   far away.
+   80. N is the Crosshair Scale setting divided by 5: 20 at the default 100 %, 10 at 50 % and
+   30 at 150 %. At 100 % the reticle covers about 23° of view at 50 cm, 13° at 5 m and 8.6° at
+   25 m. With a constant angle, a far reticle looks much bigger than a near one, because it is
+   seen as far away.
 
 The component's **Blend Mode** stays Masked, the Blueprint's default. With a material set on
 the component, the blend mode does not pick the material: a live test with `BlendMode` = 2
