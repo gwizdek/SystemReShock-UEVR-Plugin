@@ -2270,7 +2270,7 @@ void UEVRPlugin::apply_cyberspace_vr_settings(const UEVR_VRData* vr) {
     vr->set_snap_turn_enabled(false);
     vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
     vr->set_mod_value("VR_CameraUpOffset", "0.000000");
-    vr->set_mod_value("UI_Distance", "4.000000");
+    vr->set_mod_value("UI_Distance", "3.000000");
     vr->set_mod_value("UI_Size", "2.000000");
     vr->set_mod_value("UI_Y_Offset", "0.00000");
     // UEVR moves the avatar by the head's horizontal offset, turned by the full view rotation,
