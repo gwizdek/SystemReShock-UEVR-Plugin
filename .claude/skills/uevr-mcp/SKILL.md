@@ -36,7 +36,7 @@ built against UEVR plugin API 2.39, the same as this mod's plugin.
 ## Start a session
 
 1. The user starts the game from Steam and injects UEVR with `D:\Modding\UEVR\UEVRInjector.exe`,
-   as usual. UEVR loads `uevr_mcp.dll` together with the hot loader and the hot reloader.
+   or with `scripts\run-and-inject.ps1` (the `/run-and-inject` skill). UEVR loads `uevr_mcp.dll` together with the hot loader and the hot reloader.
 2. Call `uevr_is_ready` or `uevr_get_status`. If the plugin does not answer yet, call
    `uevr_wait_for_plugin`.
 3. Call `uevr_get_player` or `uevr_get_singletons` to get the first object addresses.

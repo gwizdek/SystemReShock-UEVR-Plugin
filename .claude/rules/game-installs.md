@@ -23,6 +23,9 @@ The Steam install is the one that runs with UEVR during development. Use it for:
 - deploying paks for a test;
 - reading code addresses from the exe, for example when disassembling engine functions.
 
+`scripts\run-and-inject.ps1` (the `/run-and-inject` skill) starts the Steam game if it is not
+running and injects UEVR from `D:\Modding\UEVR`. It does nothing when UEVR is already injected.
+
 The two exes are different builds, so a code address found in one is wrong in the other.
 When a plugin feature depends on an exe address, resolve it at run time from something
 both builds share, such as a string or a UFunction's native pointer, and verify the result
