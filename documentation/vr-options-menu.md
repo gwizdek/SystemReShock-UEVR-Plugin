@@ -304,10 +304,13 @@ about the game's slider control shape the slider row:
 - `SetSliderRealValue` moves the handle and the text but not the bar's fill. The mouse path goes
   through `SetSliderValue`, which ends with `UpdateBackgroundFill`. So the row calls
   `UpdateBackgroundFill` itself after every set, or the fill shows the old value.
-- A mouse drag is not snapped to the discrete positions, so the slider can rest at 5.32 while its
-  text shows 5. The row's own pure function `GetCurrentValue()` snaps `GetScaledCurrentSliderValue()`
-  to the instance variable `Step` (default 1), and every compare and the accept use it. After Apply
-  the handle is moved onto the stored step. The compares use a tolerance of 0.001.
+- A mouse drag is not snapped to the discrete positions. The game's `WIDGET_Slider` snaps only
+  in `SetSliderRealValue`; a drag sets the value from the mouse position, and the text shows that
+  value, such as 115 % on a slider with steps of 10. While the page is open, the plugin puts every
+  slider that is off its row's `Step` back on the nearest step each tick
+  (`VROptionsSync::snap_sliders`), so the handle jumps from step to step during a drag. The row's
+  own pure function `GetCurrentValue()` also snaps `GetScaledCurrentSliderValue()` to `Step`
+  (default 1), and every compare and the accept use it. The compares use a tolerance of 0.001.
 
 Row instances in the list set `ItemName`, `ItemDescription`, `SettingName`, `DefaultValue` and
 `SavedValue`. A slider row also sets `Step` and the six `Slider*` variables of its parent;

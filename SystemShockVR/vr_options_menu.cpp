@@ -257,6 +257,7 @@ void VROptionsMenu::watch_page(UWIDGET_OptionsScreen_C* screen) {
     const bool open = is_page_open(screen);
     if (open && !s_page_open) VROptionsSync::push(s_page);
     s_page_open = open;
+    if (open) VROptionsSync::snap_sliders(s_page);
     if (VROptionsSync::pull(s_page)) s_settings_changed = true;
 }
 

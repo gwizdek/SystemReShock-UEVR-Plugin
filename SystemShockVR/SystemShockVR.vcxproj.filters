@@ -494,6 +494,12 @@
     <ClCompile Include="SDK\WIDGET_MenuListBase_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\WIDGET_Settings_Slider_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\WIDGET_Slider_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
     <ClCompile Include="SDK\ITEM_MeleeWeapon_Base_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>

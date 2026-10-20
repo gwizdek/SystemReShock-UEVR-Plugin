@@ -16,6 +16,9 @@ public:
     // Takes the last-seen values from the rows without changing them. Used for a page that an
     // earlier plugin instance installed.
     static void adopt(SDK::U_WIDGET_OptionsMenu_VR_C* page);
+    // Puts every slider whose handle is off its row's Step back on the nearest step. The game's
+    // slider does not snap a mouse drag. Called every tick while the page is open.
+    static void snap_sliders(SDK::U_WIDGET_OptionsMenu_VR_C* page);
     // Writes every row whose SavedValue changed since the last call into its store and saves
     // the stores that changed. True when something was written.
     static bool pull(SDK::U_WIDGET_OptionsMenu_VR_C* page);

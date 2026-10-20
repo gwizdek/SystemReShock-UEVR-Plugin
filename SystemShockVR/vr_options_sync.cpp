@@ -7,6 +7,7 @@
 
 #include "uevr/API.hpp"
 #include "SDK/WIDGET_MenuListBase_classes.hpp"
+#include "SDK/WIDGET_Slider_classes.hpp"
 #include "BridgeSDK/_WIDGET_OptionsMenu_VRList_classes.hpp"
 #include "BridgeSDK/_OPTION_VR_Slider_classes.hpp"
 #include "BridgeSDK/_OPTION_VR_Toggle_classes.hpp"
@@ -79,6 +80,9 @@ float fit(U_OPTION_VR_Slider_C* row, float value) {
 
 bool fit(U_OPTION_VR_Toggle_C*, bool value) { return value; }
 
+// A slider value closer to its step than this part of a step counts as on the step.
+constexpr float kSnapTolerance = 0.01f;
+
 template <class Binding>
 void push_row(List* list, Binding& binding) {
     auto* row = (list->*binding.row)();
@@ -107,6 +111,24 @@ bool pull_row(List* list, Binding& binding) {
     return true;
 }
 
+// The game's WIDGET_Slider puts the value on its discrete positions only in
+// SetSliderRealValue. A mouse drag sets it straight from the mouse position, and the text
+// shows that value, for example 115 % on a slider with steps of 10. So a slider that is off its
+// step is set back onto it; during a drag the handle then jumps from step to step.
+void snap_row(List* list, SliderBinding& binding) {
+    auto* row = (list->*binding.row)();
+    if (row == nullptr) return;
+    UWIDGET_Slider_C* slider = nullptr;
+    row->GetSlider(&slider);
+    if (slider == nullptr) return;
+    float value = 0.f;
+    slider->GetRealValue(&value);
+    const float snapped = fit(row, value);
+    if (std::fabs(value - snapped) <= kSnapTolerance * std::max(row->Step(), 1e-6f)) return;
+    slider->SetSliderRealValue(snapped);
+    slider->UpdateBackgroundFill();
+}
+
 List* list_of(U_WIDGET_OptionsMenu_VR_C* page) {
     List* list = page != nullptr ? page->_WIDGET_OptionsMenu_VRList() : nullptr;
     if (list == nullptr) API::get()->log_error("[vr_options_sync][list_of] Page has no list, settings not synced");
@@ -129,6 +151,12 @@ void VROptionsSync::adopt(U_WIDGET_OptionsMenu_VR_C* page) {
     List* list = list_of(page);
     if (list == nullptr) return;
     for_each_binding([list](auto& binding) { adopt_row(list, binding); });
+}
+
+void VROptionsSync::snap_sliders(U_WIDGET_OptionsMenu_VR_C* page) {
+    List* list = page != nullptr ? page->_WIDGET_OptionsMenu_VRList() : nullptr;
+    if (list == nullptr) return;
+    for (SliderBinding& binding : s_sliders) snap_row(list, binding);
 }
 
 bool VROptionsSync::pull(U_WIDGET_OptionsMenu_VR_C* page) {

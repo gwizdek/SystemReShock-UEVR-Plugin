@@ -260,6 +260,8 @@
     <ClCompile Include="SDK\WIDGET_Compass_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_CyberspaceHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_MenuListBase_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_Settings_Slider_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_Slider_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_HardwareButton_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_HotbarSlot_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Minimap_functions.cpp" />
