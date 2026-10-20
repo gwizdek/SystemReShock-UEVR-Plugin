@@ -341,8 +341,8 @@ player comes back from the pause menu:
   game's own rotation;
 - sets UEVR aim method 0 (game), decoupled pitch off and snap turn off. UEVR turns decoupled
   pitch back on with any other aim method;
-- sets roomscale movement on, `VR_DecoupledPitchUIAdjust` off, `UI_Distance` 4,
-  `UI_Size` 2, camera offsets 0;
+- sets roomscale movement on, `VR_DecoupledPitchUIAdjust` off, `UI_Distance` 3.5,
+  `UI_Size` 3.5, camera offsets 0;
 - sets `VR_ControllerPitchOffset` to 0. The station uses -25 (set in the
   `GAME_STATE_CITADEL_STATION` case); in cyberspace the aim must follow the controller as it
   is;
