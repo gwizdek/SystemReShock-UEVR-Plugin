@@ -28,11 +28,13 @@ Order on entering cyberspace:
 
 Order on every engine tick (`on_pre_engine_tick`, before the world tick):
 
-1. `VRAvatar::update_aim`: moves the aim pivot to the corrected controller pose, then places
-   the reticle. It must come first; see "The controller pose and its correction".
+1. `VRAvatar::update_aim`: moves the aim pivot to the controller pose, then places the
+   reticle. See "The controller pose".
 2. `CyberspaceBodyTurn::handle`, only in `GAME_STATE_CYBERSPACE`.
 3. `CyberspaceHeadSteering::handle_tick`, only in `GAME_STATE_CYBERSPACE`.
 4. `CyberspacePitchSnap::handle_tick`, only in `GAME_STATE_CYBERSPACE`.
+5. `CyberspaceFlightReticle::handle`, only in `GAME_STATE_CYBERSPACE`. See "The flight
+   reticle".
 
 On leaving cyberspace, `cleanup_actors` calls `VRAvatar::restore_game_camera` and destroys
 the VR avatar, and `RoomscaleSweepSetting::restore` sets the player's roomscale sweep back.
@@ -188,12 +190,39 @@ roll up to `CameraRoll_Strafe_Max` (5°) from sideways input, and pitch up to
 `CameraPitch_Move_Max` (4°) from up/down input. It is smoothed with
 `CameraSmoothHistory` (`WeightedAverageVec2`). The actor rotation does not change.
 
+### Flight reticle (the gyroscope)
+
+The HUD's `WIDGET_FlightReticle` is the ring in the middle of the screen. Its
+`RotateUpward`, which the HUD calls every tick from `UpdateGryoscope`, turns
+`MESH_FlightReticle` to minus the pawn's roll, smoothed: `CurrentAngle = Lerp(CurrentAngle,
+-Roll, 0.45)`. The plugin replaces this; see "The flight reticle".
+
 ### Field of view
 
 `UpdateCameraPOV` eases from `FOV_WarpIn` (170) to the user's cyberspace FOV during the
 first second after the avatar spawns. It goes to `FOV_DomainLink` (120) on a domain link, and
 widens by up to 10° (at most 120) while turbo dash is active. The plugin's
 `VRGameOptions::apply_display` sets the user's cyberspace FOV.
+
+## The flight reticle
+
+The game's flight reticle shows minus the avatar's roll (see "Flight reticle (the gyroscope)").
+That is wrong at 90° pitch up or down, where the pitch snap can leave the avatar: a rotator's
+yaw and roll are not defined there, and Unreal can split the same rotation into any pair of
+them. A live test read roll -82.9° and, a moment later for the same rotation, -97.1°.
+
+`CyberspaceFlightReticle` (`cyberspace_flight_reticle.cpp`) does two things:
+
+- It patches the bytecode of `RotateUpward`: the first instruction becomes a jump to the
+  final `Return Nothing`, so the function does nothing. The function is only called from
+  other Blueprint code, which UEVR's UFunction hook does not see. The patch is checked again
+  every 600 ticks, in case the class was loaded anew.
+- Every tick in `GAME_STATE_CYBERSPACE` it sets the ring's angle to the direction of world up
+  in the camera's frame: `atan2(up.Y, up.Z)`, with `up` = world up turned back by the camera
+  manager's rotation. Screen right is the camera's Y axis and screen up its Z axis. With
+  `UI_FollowView=false` UEVR keeps the HUD quad turned with the game camera, so this is the
+  direction of world up on the HUD. When world up is within about 1° of straight behind or in
+  front of the screen, it has no direction there and the ring keeps its last angle.
 
 ## How the plugin detects cyberspace
 
@@ -459,35 +488,43 @@ confirmed that the avatar Blueprint then writes to the new camera.
 `VRAvatar::restore_game_camera` sets `Camera` back to the avatar's own camera. It runs at the
 start of `initialize_vr_avatar` and in `cleanup_actors`, before the VR avatar is destroyed.
 
-### The controller pose and its correction
+### The controller pose
 
-UObjectHook moves `MotionControllerRight` to the right controller each frame.
-`UObjectHook::update_motion_controller_components` sets the world transform of every
-`UMotionControllerComponent` from its `MotionSource` ("Right", "Left", "HMD"), but only
-while UObjectHook is enabled. A motion controller component does not track at all while
-UObjectHook is disabled.
+UObjectHook moves `MotionControllerRight` to the right controller each frame, but only while
+UObjectHook is enabled. That pose is wrong in cyberspace. `UObjectHook::tick_attachments`
+places the hands with the view's yaw only (`view_quat_inverse_flat`), but the stereo hook
+renders the head with the full view rotation, pitch and roll included. On the station the view
+is level and the two agree. In cyberspace the controller is off by the avatar's pitch and
+roll.
 
-That pose is wrong in cyberspace. `UObjectHook::tick_attachments` places the hands with the
-view's yaw only (`view_quat_inverse_flat`), but the stereo hook renders the head with the full
-view rotation, pitch and roll included. On the station the view is level and the two agree.
-In cyberspace the controller is off by the avatar's pitch and roll: tested in the headset,
-the aim was right only while the avatar was level, and with the avatar rolled 180° it moved
-the opposite way to the controller.
+Turning that pose back by the view's yaw does not work when the view looks straight up or
+down. A rotator's yaw and roll are not defined there, and the yaw of the camera's rotator
+differs from the yaw UEVR flattened with. A live test after a pitch snap to exactly -90°
+measured the aim 97° away from the controller, so the reticle was out of view.
 
-`VRAvatar::update_aim` runs once per engine tick, from `on_pre_engine_tick`, before the world
-tick and before body turn and pitch snap turn the avatar. `corrected_controller_pose` takes
-the game camera's location P and rotation R (the view UEVR used for the last frame) and the
-yaw-only rotation Y of R. It turns the controller's
-offset from P and its forward and up vectors back by Y and on by R
-(`LessLess_VectorRotator`, then `GreaterGreater_VectorRotator`). `update_aim` sets the aim
-pivot to that location, with `MakeRotFromXZ(forward, up)`. The pivot hangs on the VR
+So `VRAvatar::controller_pose_from_tracking` builds the pose the way UEVR builds the head's,
+and does not read `MotionControllerRight` at all. With P and R the game camera's location
+and rotation, O the rotation offset, S the standing origin and T the change from tracking
+axes (-Z forward, +Y up, +X right) to Unreal axes:
+
+- location = P + R(T(O × (grip position - S))) × world to meters × `VR_WorldScale`
+- forward and up = R(T(O × aim rotation × (0, 0, -1))) and R(T(O × aim rotation × (0, 1, 0)))
+
+The grip position and the aim rotation are the ones UObjectHook uses. World to meters comes
+from the stereo view offset callback (`VRAvatar::set_world_to_meters`). `update_aim` sets the
+aim pivot to that location, with `MakeRotFromXZ(forward, up)`. The pivot hangs on the VR
 avatar's root, so during the tick it moves and turns with the avatar, like the view.
 
-The correction only works when R is the view UEVR used to place the controller, so nothing
-may turn the avatar between UEVR's placement in the last frame and `update_aim`. The yaw of
-a view is almost undefined when the view points nearly straight up or down: a turn of a
-fraction of a degree can change it by tens of degrees. When body turn ran before
-`update_aim`, the reticle jumped around whenever the avatar faced up or down.
+The pose depends only on R × O. Body turn changes the avatar and the offset by opposite
+amounts and leaves R × O as it is, so the order of `update_aim` and body turn does not matter.
+
+The grip position and aim rotation are smoothed first, the same way UObjectHook smooths the
+hands it places ("attach lerp"). The same UEVR settings control it: `UObjectHook_AttachLerpEnabled`
+and `UObjectHook_AttachLerpSpeed` (15 in the profile). The aim uses 1.3 times that speed
+(`kAimLerpSpeedFactor`), so it is smoothed a little less than the hands. With speed s and frame time t, the
+rotation moves `min(1, s × t × |cos|)` of the way to the new rotation (a slerp, where cos is
+the dot product of the two quaternions), and the position `min(1, s × t × max(1, distance in
+meters))` of the way. Without it, the reticle shakes with the tracking noise.
 
 Other avatar Blueprint code now works on the aim camera instead of the view camera:
 
@@ -516,14 +553,14 @@ moves it to `DefaultSceneRoot`, keeping its world transform, because UEVR moves
 `MotionControllerRight` with the uncorrected pose late in the frame, and sets the draw size
 to 80 × 80.
 
-`update_aim` places it after the aim camera, from the corrected pose (`place_reticle`):
+`update_aim` places it after the aim camera, from the controller pose (`place_reticle`):
 
 1. Traces the Visibility channel (`TraceTypeQuery1`) along the aim line, at most 2500 units
    (25 m) from the controller. The avatar and the VR avatar are ignored.
 2. Puts `AimReticle` at that distance on the aim line, facing back along it, with the
    controller's up vector as its up.
-3. Scales it to a world size of `7 × (distance / 50) ^ 0.75` units, divided by the draw size
-   80. The reticle covers about 8° of view at 50 cm, 4.5° at 5 m and 3° at 25 m. With a
+3. Scales it to a world size of `10 × (distance / 50) ^ 0.75` units, divided by the draw size
+   80. The reticle covers about 11° of view at 50 cm, 6.4° at 5 m and 4.3° at 25 m. With a
    constant angle, a far reticle looks much bigger than a near one, because it is seen as
    far away.
 

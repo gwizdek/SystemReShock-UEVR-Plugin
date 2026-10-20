@@ -71,6 +71,7 @@
 #include "cyberspace_body_turn.hpp"
 #include "cyberspace_pitch_snap.hpp"
 #include "cyberspace_head_steering.hpp"
+#include "cyberspace_flight_reticle.hpp"
 #include "roomscale_sweep_setting.hpp"
 #include "focus_interaction_patch.hpp"
 #include "vr_input_actions.hpp"
@@ -342,14 +343,12 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
 
         handle_deferred_camera_reset(delta);
         handle_cyberspace_look_pivot(vr);
-        // The aim correction must read the game camera as UEVR saw it when it placed the
-        // controller, so it runs before anything here turns the avatar. Near a vertical view a
-        // tiny turn changes the view's yaw a lot, and the reticle would jump.
-        VRAvatar::update_aim();
+        VRAvatar::update_aim(vr, delta);
         if (m_game_state.get() == GAME_STATE_CYBERSPACE) {
             CyberspaceBodyTurn::handle(m_pawn.get(), vr);
             CyberspaceHeadSteering::handle_tick(m_pawn.get(), vr);
             CyberspacePitchSnap::handle_tick(m_pawn.get(), delta);
+            CyberspaceFlightReticle::handle(m_world, m_pawn.get());
         }
         handle_media_display();
         update_trailing_rotation(delta);
@@ -460,8 +459,9 @@ void UEVRPlugin::on_pre_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceH
     }
 }
 
-void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int, float, UEVR_Vector3f*, UEVR_Rotatorf* rotation, bool) {
+void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int, float world_to_meters, UEVR_Vector3f*, UEVR_Rotatorf* rotation, bool) {
     try {
+        VRAvatar::set_world_to_meters(world_to_meters);
         VRSnapTurn::after_view_offset();
         VRMFD::save_view_rotation(rotation);
     }

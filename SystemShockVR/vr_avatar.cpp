@@ -8,7 +8,9 @@
 #include "sdk_bootstrap.hpp"
 #include "vr_avatar.hpp"
 
+#include <algorithm>
 #include <cmath>
+#include <cstring>
 
 using namespace SDK;
 using namespace uevr;
@@ -19,16 +21,17 @@ APAWN_Avatar_C* VRAvatar::s_pawn{ nullptr };
 UCameraComponent* VRAvatar::s_game_camera{ nullptr };
 UCameraComponent* VRAvatar::s_aim_camera{ nullptr };
 USceneComponent* VRAvatar::s_aim_pivot{ nullptr };
+float VRAvatar::s_world_to_meters{ 100.f };
 
 namespace {
 
 // Size of the reticle widget in pixels; one pixel is one world unit at scale 1.
 constexpr float kReticleDrawSize = 80.f;
 // World size of the reticle at kReticleNearDistance, in world units (centimetres).
-constexpr float kReticleNearSize = 7.f;
+constexpr float kReticleNearSize = 10.f;
 constexpr float kReticleNearDistance = 50.f;
 // The world size grows with distance to this power. Below 1 the reticle covers a smaller angle
-// when it is far: about 8 degrees at 50 cm, 4.5 at 5 m and 3 at 25 m. With a constant angle a
+// when it is far: about 11 degrees at 50 cm, 6.4 at 5 m and 4.3 at 25 m. With a constant angle a
 // far reticle looks much bigger than a near one.
 constexpr float kReticleSizeExponent = 0.75f;
 // The reticle is never further from the controller than this, in world units (centimetres).
@@ -49,12 +52,103 @@ void attach_keep_world(USceneComponent* component, USceneComponent* parent) {
     );
 }
 
-// Turns a vector that UEVR placed with the yaw of the view into the same vector placed with
-// the full view rotation. See VRAvatar::corrected_controller_pose.
-FVector yaw_to_full_view(const FVector& vector, const FRotator& view, const FRotator& view_yaw) {
-    return UKismetMathLibrary::GreaterGreater_VectorRotator(
-        UKismetMathLibrary::LessLess_VectorRotator(vector, view_yaw), view
-    );
+// UEVR_Quaternionf is declared w, x, y, z, so it is always filled by name.
+UEVR_Quaternionf multiply(const UEVR_Quaternionf& a, const UEVR_Quaternionf& b) {
+    return {
+        .w = a.w * b.w - a.x * b.x - a.y * b.y - a.z * b.z,
+        .x = a.w * b.x + a.x * b.w + a.y * b.z - a.z * b.y,
+        .y = a.w * b.y - a.x * b.z + a.y * b.w + a.z * b.x,
+        .z = a.w * b.z + a.x * b.y - a.y * b.x + a.z * b.w
+    };
+}
+
+UEVR_Vector3f rotate(const UEVR_Quaternionf& q, const UEVR_Vector3f& v) {
+    const UEVR_Quaternionf p{ .w = 0.f, .x = v.x, .y = v.y, .z = v.z };
+    const UEVR_Quaternionf conjugate{ .w = q.w, .x = -q.x, .y = -q.y, .z = -q.z };
+    const UEVR_Quaternionf r = multiply(multiply(q, p), conjugate);
+    return { r.x, r.y, r.z };
+}
+
+// UEVR's tracking axes are -Z forward, +Y up, +X right; Unreal's are X forward, Y right, Z up.
+FVector to_unreal(const UEVR_Vector3f& v) {
+    return { -v.z, v.x, v.y };
+}
+
+FVector turned_by_view(const UEVR_Vector3f& tracking_vector, const FRotator& view) {
+    return UKismetMathLibrary::GreaterGreater_VectorRotator(to_unreal(tracking_vector), view);
+}
+
+float dot(const UEVR_Quaternionf& a, const UEVR_Quaternionf& b) {
+    return a.w * b.w + a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+// Spherical interpolation along the shorter way, like glm::slerp.
+UEVR_Quaternionf slerp(const UEVR_Quaternionf& a, UEVR_Quaternionf b, float t) {
+    float cosine = dot(a, b);
+    if (cosine < 0.f) {
+        b = { .w = -b.w, .x = -b.x, .y = -b.y, .z = -b.z };
+        cosine = -cosine;
+    }
+    float weight_a = 1.f - t;
+    float weight_b = t;
+    if (cosine < 0.9995f) {
+        const float angle = std::acos(cosine);
+        weight_a = std::sin(weight_a * angle) / std::sin(angle);
+        weight_b = std::sin(weight_b * angle) / std::sin(angle);
+    }
+    const UEVR_Quaternionf r{
+        .w = weight_a * a.w + weight_b * b.w,
+        .x = weight_a * a.x + weight_b * b.x,
+        .y = weight_a * a.y + weight_b * b.y,
+        .z = weight_a * a.z + weight_b * b.z
+    };
+    const float length = std::sqrt(dot(r, r));
+    return { .w = r.w / length, .x = r.x / length, .y = r.y / length, .z = r.z / length };
+}
+
+bool mod_value_is_true(const UEVR_VRData* vr, const char* key) {
+    char value[16] = {};
+    vr->get_mod_value(key, value, sizeof(value));
+    return std::strcmp(value, "true") == 0;
+}
+
+// The aim follows the controller this many times faster than UEVR's attach lerp speed, so it
+// is smoothed a little less than the hands UObjectHook places.
+constexpr float kAimLerpSpeedFactor = 1.3f;
+
+// The right controller's grip position and aim rotation in tracking space, smoothed like
+// UObjectHook smooths the hands it places (UObjectHook::tick_attachments, "attach lerp"), with
+// the same two UEVR settings and kAimLerpSpeedFactor.
+struct ControllerTracking {
+    UEVR_Vector3f position{};
+    UEVR_Quaternionf rotation{ .w = 1.f, .x = 0.f, .y = 0.f, .z = 0.f };
+};
+
+ControllerTracking s_smoothed{};
+bool s_has_smoothed{ false };
+
+ControllerTracking smoothed(const ControllerTracking& raw, float delta, const UEVR_VRData* vr) {
+    if (!s_has_smoothed || !mod_value_is_true(vr, "UObjectHook_AttachLerpEnabled")) {
+        s_smoothed = raw;
+        s_has_smoothed = true;
+        return s_smoothed;
+    }
+    const float lerp_speed = PluginUtils::uevr_param_to_float(vr, "UObjectHook_AttachLerpSpeed") * kAimLerpSpeedFactor * delta;
+
+    const float rotation_t = std::min(1.f, lerp_speed * std::fabs(dot(raw.rotation, s_smoothed.rotation)));
+    s_smoothed.rotation = slerp(s_smoothed.rotation, raw.rotation, rotation_t);
+
+    const UEVR_Vector3f moved{
+        raw.position.x - s_smoothed.position.x, raw.position.y - s_smoothed.position.y, raw.position.z - s_smoothed.position.z
+    };
+    const float distance = std::sqrt(moved.x * moved.x + moved.y * moved.y + moved.z * moved.z);
+    const float position_t = std::min(1.f, lerp_speed * std::max(1.f, distance));
+    s_smoothed.position = {
+        s_smoothed.position.x + moved.x * position_t,
+        s_smoothed.position.y + moved.y * position_t,
+        s_smoothed.position.z + moved.z * position_t
+    };
+    return s_smoothed;
 }
 
 // The trace ignores the avatar and the VR avatar. The array is allocated once and reused,
@@ -238,12 +332,13 @@ void VRAvatar::set_hud_crosshair_visible(APAWN_Avatar_C* pawn, bool visible) {
     hud->PANEL_Crosshairs->SetRenderOpacity(visible ? 1.f : 0.f);
 }
 
-void VRAvatar::update_aim() {
+void VRAvatar::update_aim(const UEVR_VRData* vr, float delta) {
     try {
         if (!is_alive(s_vr_avatar) || !is_alive(s_aim_pivot) || !is_alive(s_game_camera)) {
+            s_has_smoothed = false;
             return;
         }
-        const AimPose aim = corrected_controller_pose();
+        const AimPose aim = controller_pose_from_tracking(vr, delta);
         FHitResult unused{};
         s_aim_pivot->K2_SetWorldLocationAndRotation(
             aim.location, UKismetMathLibrary::MakeRotFromXZ(aim.forward, aim.up), false, &unused, false
@@ -255,24 +350,50 @@ void VRAvatar::update_aim() {
     }
 }
 
-// UObjectHook places MotionControllerRight with the yaw of the view only
-// (UObjectHook::tick_attachments uses view_quat_inverse_flat). That is right while the view is
-// level, as on the station. In cyberspace the game view also pitches and rolls, and UEVR
-// renders the head with the full view rotation, so the controller would be off by exactly that
-// pitch and roll. Both poses hang off the same point, the game camera, so turning the
-// controller's offset and axes back by the view yaw and on by the full view rotation gives
-// the controller's real pose. This runs before the world tick, when the camera is still where
-// UEVR last placed the controller from.
-VRAvatar::AimPose VRAvatar::corrected_controller_pose() {
-    auto* controller = reinterpret_cast<USceneComponent*>(s_vr_avatar->MotionControllerRight());
-    const FVector view_location = s_game_camera->K2_GetComponentLocation();
+void VRAvatar::set_world_to_meters(float world_to_meters) {
+    if (world_to_meters > 0.f) {
+        s_world_to_meters = world_to_meters;
+    }
+}
+
+// UEVR renders the head at the game camera, turned by the full view rotation: camera rotation
+// x rotation offset x HMD pose. This builds the right controller's pose the same way, from the
+// controller's tracking pose: grip position, aim rotation, smoothed, as UObjectHook uses them.
+//
+// MotionControllerRight cannot be used. UObjectHook places it with the yaw of the view only
+// (view_quat_inverse_flat), and turning it back by the view's yaw is not possible when the
+// view looks straight up or down: the yaw is then undefined, and the yaw of the camera's
+// rotator differs from the one UEVR flattened with. The aim then pointed up to 90 degrees away
+// from the controller.
+//
+// The pose only depends on the camera rotation times the rotation offset, which body turn
+// leaves unchanged, so it does not matter where in the tick this runs.
+VRAvatar::AimPose VRAvatar::controller_pose_from_tracking(const UEVR_VRData* vr, float delta) {
+    ControllerTracking raw{};
+    UEVR_Quaternionf grip_rotation{};
+    UEVR_Vector3f aim_position{};
+    UEVR_Vector3f standing_origin{};
+    UEVR_Quaternionf offset{};
+    const UEVR_TrackedDeviceIndex index = vr->get_right_controller_index();
+    vr->get_grip_pose(index, &raw.position, &grip_rotation);
+    vr->get_aim_pose(index, &aim_position, &raw.rotation);
+    vr->get_standing_origin(&standing_origin);
+    vr->get_rotation_offset(&offset);
+    const ControllerTracking controller = smoothed(raw, delta, vr);
+
     const FRotator view = s_game_camera->K2_GetComponentRotation();
-    const FRotator view_yaw{ 0.f, view.Yaw, 0.f };
+    const float units_per_meter = s_world_to_meters * PluginUtils::uevr_param_to_float(vr, "VR_WorldScale");
+    const UEVR_Vector3f from_origin{
+        controller.position.x - standing_origin.x,
+        controller.position.y - standing_origin.y,
+        controller.position.z - standing_origin.z
+    };
+    const UEVR_Quaternionf rotation = multiply(offset, controller.rotation);
 
     AimPose aim{};
-    aim.location = view_location + yaw_to_full_view(controller->K2_GetComponentLocation() - view_location, view, view_yaw);
-    aim.forward = yaw_to_full_view(controller->GetForwardVector(), view, view_yaw);
-    aim.up = yaw_to_full_view(controller->GetUpVector(), view, view_yaw);
+    aim.location = s_game_camera->K2_GetComponentLocation() + turned_by_view(rotate(offset, from_origin), view) * units_per_meter;
+    aim.forward = turned_by_view(rotate(rotation, { 0.f, 0.f, -1.f }), view);
+    aim.up = turned_by_view(rotate(rotation, { 0.f, 1.f, 0.f }), view);
     return aim;
 }
 
