@@ -64,10 +64,16 @@ constexpr const TCHAR* CyberPanelSource = TEXT("Resources/MenuGen/CyberHud/T_Con
 constexpr const TCHAR* CyberHealthSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionIntegrityHealth.png");
 constexpr const TCHAR* CyberSecureSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionStatusSecure.png");
 constexpr const TCHAR* CyberThreatSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionStatusThreat.png");
-// The cyberspace flight reticle's texture, at the game's path in chunk 10 so the Core pak
-// replaces it. Only its top triangle is kept; make_flight_reticle.py writes the PNG.
+// Cyberspace HUD textures replaced at the game's paths in chunk 10, so the Core pak overrides
+// them while the game's materials stay. The flight reticle keeps only its top triangle
+// (make_flight_reticle.py); the drill lock-on's arcs and chevrons keep only a thin outline
+// rim (make_ice_drill_reticle.py).
 constexpr const TCHAR* CyberReticleTexture = TEXT("T_CyberspaceFlightReticle");
 constexpr const TCHAR* CyberReticleSource = TEXT("Resources/MenuGen/CyberHud/T_CyberspaceFlightReticle.png");
+constexpr const TCHAR* CyberLockOnBracketTexture = TEXT("T_ICEDrillReticle_LockOnBracket");
+constexpr const TCHAR* CyberLockOnBracketSource = TEXT("Resources/MenuGen/CyberHud/T_ICEDrillReticle_LockOnBracket.png");
+constexpr const TCHAR* CyberLockOnPointerTexture = TEXT("T_ICEDrillReticle_LockOnPointer");
+constexpr const TCHAR* CyberLockOnPointerSource = TEXT("Resources/MenuGen/CyberHud/T_ICEDrillReticle_LockOnPointer.png");
 
 // The VR controller button atlas for tutorial popups and button legends. The texture and the
 // material instance are the mod's own assets (chunk 10); the plugin loads them by these paths.

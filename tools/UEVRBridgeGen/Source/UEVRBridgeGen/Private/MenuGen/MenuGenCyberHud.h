@@ -10,8 +10,9 @@ struct FMenuGenStore;
 // tags), at the game's own asset paths in chunk 10 so the Core pak overrides them. Their
 // textures are copies of the game's in chunk 0, never shipped: the cooked materials refer to
 // the paths, and in the game those resolve to the game's own textures.
-// Also the flight reticle's texture, at the game's path in chunk 10, with only the top
-// triangle of the ring left.
+// Also textures at the game's paths in chunk 10, sampled by the game's own materials: the
+// flight reticle's with only the top triangle of the ring left, and the drill lock-on's arcs
+// and chevrons with only a thin outline rim.
 namespace MenuGenCyberHud
 {
 bool Generate(FMenuGenStore& Store, const FMenuGenOptions& Options);

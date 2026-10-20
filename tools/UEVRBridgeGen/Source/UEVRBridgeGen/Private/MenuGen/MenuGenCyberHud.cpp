@@ -68,14 +68,31 @@ UTexture2D* MakeStandInTexture(const FMenuGenOptions& Options, const TCHAR* Root
     return MakeTexture(Path, Asset.TextureSource, {});
 }
 
-// The flight reticle keeps the game's material, which only samples its texture, so the
-// replacement is the texture itself, shipped at the game's path. It holds only the ring's top
-// triangle, the "up" marker the plugin turns to world up.
-UTexture2D* MakeReticleTexture(const FMenuGenOptions& Options)
+// Textures shipped at the game's paths: the game's materials stay and sample these instead.
+// The flight reticle's holds only the ring's top triangle, the "up" marker the plugin turns
+// to world up. The drill lock-on's arcs and chevrons keep only a thin rim of their outline
+// band (B), which looked like a thick outline in VR.
+struct FReplacedTexture
 {
-    const FString Path = FString(MenuGenPaths::CyberGuiRoot) / MenuGenPaths::CyberReticleTexture;
-    if (MenuGenAsset::Exists(Path) && !Options.bOverwrite) return MenuGenAsset::LoadExisting<UTexture2D>(Path);
-    return MakeTexture(Path, MenuGenPaths::CyberReticleSource, { MenuGenPaths::ModChunk });
+    const TCHAR* Texture;
+    const TCHAR* Source;
+};
+
+const FReplacedTexture ReplacedTextures[] = {
+    { MenuGenPaths::CyberReticleTexture, MenuGenPaths::CyberReticleSource },
+    { MenuGenPaths::CyberLockOnBracketTexture, MenuGenPaths::CyberLockOnBracketSource },
+    { MenuGenPaths::CyberLockOnPointerTexture, MenuGenPaths::CyberLockOnPointerSource },
+};
+
+bool MakeReplacedTextures(const FMenuGenOptions& Options)
+{
+    for (const FReplacedTexture& Replaced : ReplacedTextures)
+    {
+        const FString Path = FString(MenuGenPaths::CyberGuiRoot) / Replaced.Texture;
+        if (MenuGenAsset::Exists(Path) && !Options.bOverwrite) continue;
+        if (MakeTexture(Path, Replaced.Source, { MenuGenPaths::ModChunk }) == nullptr) return false;
+    }
+    return true;
 }
 
 // Returns the existing material when it is kept, or a new empty one to fill. bNew tells which.
@@ -239,6 +256,6 @@ bool MenuGenCyberHud::Generate(FMenuGenStore& Store, const FMenuGenOptions& Opti
         MakeHealthMaterial(Options, HealthTexture) != nullptr &&
         MakeTagMaterial(Options, Secure, SecureTexture, HealthGoodParameter) != nullptr &&
         MakeTagMaterial(Options, Threat, ThreatTexture, HealthCriticalParameter) != nullptr &&
-        MakeReticleTexture(Options) != nullptr;
+        MakeReplacedTextures(Options);
     return bOk;
 }

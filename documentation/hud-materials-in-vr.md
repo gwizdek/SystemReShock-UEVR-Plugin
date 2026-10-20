@@ -171,3 +171,25 @@ writes it to `Resources\MenuGen\CyberHud\T_CyberspaceFlightReticle.png` from the
 texture in `dumps\`, and `MenuGenCyberHud.cpp` imports it. The script needs Pillow to decode
 DXT5. The plugin turns the reticle so the triangle points to world up (see
 `cyberspace-controls.md`, "The flight reticle").
+
+## The drill lock-on outline
+
+The I.C.E. drill lock-on (`WIDGET_IceDrillLockOn`) draws its arcs and chevrons with
+`MAT_ICEDrillReticle_LockOnBracket` and `MAT_ICEDrillReticle_LockOnPointer`. Their textures
+hold several masks:
+
+| Texture | R | G | B | A |
+|---|---|---|---|---|
+| `T_ICEDrillReticle_LockOnBracket` (512 x 512) | the thin arc | almost empty | a wide band around the arc, empty under it | the arc with a soft glow |
+| `T_ICEDrillReticle_LockOnPointer` (256 x 256) | the chevron | a blurred shadow | a wide band around the chevron, empty under it | the chevron with a soft glow |
+
+Where the glow in A has no line colour (R), the materials draw black at that opacity. On the
+monitor it keeps the lines readable; in VR, where the plugin shows the lock-on in the world
+(see `cyberspace-controls.md`, "Drill lock-on"), it looked like a thick dark outline. The
+Core pak replaces both textures at the game's paths in chunk 10 with copies whose A and B are
+only a thin rim around the line: R widened by 2 px (arcs) or 1 px (chevrons), softened by
+0.5 px and never more than the game's values. R and G stay. A live check showed that cutting
+only B changed nothing; the dark outline comes from A.
+`tools\UEVRBridgeGen\Resources\MenuGen\make_ice_drill_reticle.py` writes the PNGs from the
+cooked textures in `dumps\` (BGRA8, uncompressed), and `MenuGenCyberHud.cpp` imports them.
+Like the game's, the textures keep sRGB on and use `TC_EditorIcon`.
