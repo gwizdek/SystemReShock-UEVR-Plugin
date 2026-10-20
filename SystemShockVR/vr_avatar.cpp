@@ -10,6 +10,7 @@
 #include "sdk_bootstrap.hpp"
 #include "vr_avatar.hpp"
 #include "vr_lock_on.hpp"
+#include "cyberspace_hud_layout.hpp"
 #include "vr_settings.hpp"
 
 #include <algorithm>
@@ -199,6 +200,7 @@ A_BP_VRAvatar_C* VRAvatar::initialize_vr_avatar(APAWN_Avatar_C* pawn) {
         set_hud_crosshair_visible(pawn, false);
         set_hud_dashboards_visible(pawn, false);
         set_hud_decorations_visible(pawn, false);
+        CyberspaceHudLayout::apply(pawn);
         if (vr_avatar->AimReticle() != nullptr) {
             vr_avatar->AimReticle()->SetDrawSize({ kReticleDrawSize, kReticleDrawSize });
             // The Blueprint puts it under MotionControllerRight, which UEVR moves with the
@@ -322,6 +324,7 @@ void VRAvatar::use_aim_camera(APAWN_Avatar_C* pawn, UCameraComponent* aim_camera
 
 void VRAvatar::restore_game_camera() {
     VRLockOn::restore();
+    CyberspaceHudLayout::restore();
     if (is_alive(s_pawn) && is_alive(s_game_camera)) {
         s_pawn->Camera = s_game_camera;
         set_hud_crosshair_visible(s_pawn, true);

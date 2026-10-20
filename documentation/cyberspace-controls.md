@@ -564,6 +564,23 @@ VIRT). It sets the widgets' visibility to Hidden, and back to Visible in `restor
 Render opacity does not work here: set on a user widget, it does not reach the mesh widgets
 inside it. No game code changes the visibility of these two widgets.
 
+### HUD layout in VR
+
+The VR view is about square, but the HUD canvas is as wide as the monitor. The game scales
+its UI by the window's shorter side (scale 1.0 at 1920 x 1080), so the canvas is always about
+1080 units tall and only gets wider on wide monitors. A part anchored to the left or right
+side of the canvas moves out of the VR view there; a part anchored to the centre line stays
+in the same place on every aspect ratio.
+
+`CyberspaceHudLayout` (`cyberspace_hud_layout.cpp`) moves three parts when the VR avatar is
+set up, and sets their original layouts back when it is removed:
+
+| Part | Game's layout | In VR |
+|---|---|---|
+| `WIDGET_ConnectionIntegrity` | Top right corner, 54 units down | Top centre, 3 units down: as high as it goes, its SECURE and THREAT tags reach 3 units above the panel. The slot sizes itself to the panel. |
+| `TEXT_ScanDescription` (in `PANEL_DashboardTop`) | Centred 28.5 units into the panel | Centred 118 units into the panel, below connection integrity. |
+| `WIDGET_Cyberspace_SoftwareHotbar` (in `PANEL_Items`) | 26 units above the bottom edge | On the bottom edge. |
+
 `_BP_VRAvatar` has a `WidgetComponent` named `AimReticle`. In the Blueprint it is a child
 of `MotionControllerRight`. `initialize_vr_avatar` moves it to `DefaultSceneRoot`, keeping its
 world transform, because UEVR moves `MotionControllerRight` with the uncorrected pose late in
