@@ -48,6 +48,8 @@ private:
     static SDK::UCameraComponent* create_aim_camera(SDK::A_BP_VRAvatar_C* vr_avatar);
     static void use_aim_camera(SDK::APAWN_Avatar_C* pawn, SDK::UCameraComponent* aim_camera);
     static void set_hud_crosshair_visible(SDK::APAWN_Avatar_C* pawn, bool visible);
+    static void set_hud_dashboards_visible(SDK::APAWN_Avatar_C* pawn, bool visible);
+    static void set_hud_decorations_visible(SDK::APAWN_Avatar_C* pawn, bool visible);
     static float trace_aim_distance(const SDK::FVector& start, const SDK::FVector& direction);
     static bool apply_reticle_brush(SDK::UWidgetComponent* reticle);
 

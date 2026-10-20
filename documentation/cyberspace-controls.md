@@ -547,6 +547,17 @@ opacity to 0, and `restore_game_camera` sets it back to 1. `ShowCrosshairs(false
 used, because it also changes the input mode and shows the mouse cursor. The HUD sets the
 panel's visibility itself in `OnCrosshairVisibilityChanged`.
 
+The bands across the top and the bottom of the HUD (`MESH_Dashboard` in `PANEL_DashboardTop`,
+and `MESH_DashboardBottom`) are hidden the same way, by `set_hud_dashboards_visible`. The scan
+text in the top panel (`TEXT_ScanDescription`) stays visible.
+
+Two decorations are hidden by `set_hud_decorations_visible`: the two large arcs at the sides of
+the HUD (`WIDGET_CyberspaceOccularRing`, meshes `OccularRing_L` and `OccularRing_L_1`) and the
+readout at the bottom left (`WIDGET_CyberspaceGreeble`: position, rotation, data rate and
+VIRT). It sets the widgets' visibility to Hidden, and back to Visible in `restore_game_camera`.
+Render opacity does not work here: set on a user widget, it does not reach the mesh widgets
+inside it. No game code changes the visibility of these two widgets.
+
 `_BP_VRAvatar` has a `WidgetComponent` named `AimReticle`, with the material
 `Widget3DPassThrough_Translucent_NoDepth`. That material is translucent with depth test
 disabled, so walls and enemies do not hide the reticle. A masked material cannot disable the

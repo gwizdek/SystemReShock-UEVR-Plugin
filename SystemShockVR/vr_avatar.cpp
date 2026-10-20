@@ -2,6 +2,8 @@
 #include "SDK/Engine_classes.hpp"
 #include "SDK/UMG_classes.hpp"
 #include "SDK/WIDGET_CyberspaceHUD_classes.hpp"
+#include "SDK/WIDGET_CyberspaceGreeble_classes.hpp"
+#include "SDK/WIDGET_CyberspaceOccularRing_classes.hpp"
 #include "BridgeSDK/_WIDGET_AimReticle_classes.hpp"
 
 #include "plugin_utils.hpp"
@@ -186,6 +188,8 @@ A_BP_VRAvatar_C* VRAvatar::initialize_vr_avatar(APAWN_Avatar_C* pawn) {
 
         use_aim_camera(pawn, aim_camera);
         set_hud_crosshair_visible(pawn, false);
+        set_hud_dashboards_visible(pawn, false);
+        set_hud_decorations_visible(pawn, false);
         if (vr_avatar->AimReticle() != nullptr) {
             vr_avatar->AimReticle()->SetDrawSize({ kReticleDrawSize, kReticleDrawSize });
             // The Blueprint puts it under MotionControllerRight, which UEVR moves with the
@@ -309,6 +313,8 @@ void VRAvatar::restore_game_camera() {
     if (is_alive(s_pawn) && is_alive(s_game_camera)) {
         s_pawn->Camera = s_game_camera;
         set_hud_crosshair_visible(s_pawn, true);
+        set_hud_dashboards_visible(s_pawn, true);
+        set_hud_decorations_visible(s_pawn, true);
         API::get()->log_warn("[vr_avatar][restore_game_camera] Avatar aims with its own camera again");
     }
     s_vr_avatar = nullptr;
@@ -332,6 +338,39 @@ void VRAvatar::set_hud_crosshair_visible(APAWN_Avatar_C* pawn, bool visible) {
         return;
     }
     hud->PANEL_Crosshairs->SetRenderOpacity(visible ? 1.f : 0.f);
+}
+
+// The bands across the top and the bottom of the HUD (MESH_Dashboard in PANEL_DashboardTop,
+// MESH_DashboardBottom) are hidden in VR. The scan text in the top panel stays. Render opacity
+// on the meshes hides them, like the crosshair.
+void VRAvatar::set_hud_dashboards_visible(APAWN_Avatar_C* pawn, bool visible) {
+    auto* hud = static_cast<UWIDGET_CyberspaceHUD_C*>(pawn->CyberspaceUI);
+    if (!is_alive(hud)) {
+        return;
+    }
+    for (UWidget* dashboard : { static_cast<UWidget*>(hud->MESH_Dashboard), static_cast<UWidget*>(hud->MESH_DashboardBottom) }) {
+        if (dashboard != nullptr) {
+            dashboard->SetRenderOpacity(visible ? 1.f : 0.f);
+        }
+    }
+}
+
+// Two decorations of the HUD are hidden in VR: the large arcs at its sides
+// (WIDGET_CyberspaceOccularRing) and the position, rotation, data rate and VIRT readout at the
+// bottom left (WIDGET_CyberspaceGreeble). Render opacity on a user widget does not reach its
+// mesh widgets, so their visibility is set instead. No game code changes that visibility; the
+// assets' default is Visible.
+void VRAvatar::set_hud_decorations_visible(APAWN_Avatar_C* pawn, bool visible) {
+    auto* hud = static_cast<UWIDGET_CyberspaceHUD_C*>(pawn->CyberspaceUI);
+    if (!is_alive(hud)) {
+        return;
+    }
+    const ESlateVisibility visibility = visible ? ESlateVisibility::Visible : ESlateVisibility::Hidden;
+    for (UWidget* decoration : { static_cast<UWidget*>(hud->WIDGET_CyberspaceOccularRing), static_cast<UWidget*>(hud->WIDGET_CyberspaceGreeble) }) {
+        if (decoration != nullptr) {
+            decoration->SetVisibility(visibility);
+        }
+    }
 }
 
 void VRAvatar::update_aim(const UEVR_VRData* vr, float delta) {
