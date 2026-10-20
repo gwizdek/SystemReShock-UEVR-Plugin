@@ -576,8 +576,9 @@ to 80 × 80.
 
 1. Traces the Visibility channel (`TraceTypeQuery1`) along the aim line, at most 2500 units
    (25 m) from the controller. The avatar and the VR avatar are ignored.
-2. Puts `AimReticle` at that distance on the aim line, facing back along it, with the
-   controller's up vector as its up.
+2. Puts `AimReticle` at that distance on the aim line, facing back along it, with the view's
+   up vector as its up (R × O, without the HMD rotation). So it rolls neither with the
+   controller nor with the head; only a roll of the avatar turns it.
 3. Scales it to a world size of `N × (distance / 50) ^ 0.75` units, divided by the draw size
    80. N is the Crosshair Scale setting divided by 10: 10 at the default 100 %, 5 at 50 % and
    15 at 150 %. At 100 % the reticle covers about 11° of view at 50 cm, 6.4° at 5 m and 4.3° at

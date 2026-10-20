@@ -40,6 +40,9 @@ private:
         SDK::FVector location;
         SDK::FVector forward;
         SDK::FVector up;
+        // The view's up vector (camera rotation x rotation offset, without the HMD), so the
+        // reticle rolls neither with the controller nor with the head.
+        SDK::FVector view_up;
     };
 
     static AimPose controller_pose_from_tracking(const UEVR_VRData* vr, float delta);

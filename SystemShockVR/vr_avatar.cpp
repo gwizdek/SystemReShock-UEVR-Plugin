@@ -435,12 +435,14 @@ VRAvatar::AimPose VRAvatar::controller_pose_from_tracking(const UEVR_VRData* vr,
     aim.location = s_game_camera->K2_GetComponentLocation() + turned_by_view(rotate(offset, from_origin), view) * units_per_meter;
     aim.forward = turned_by_view(rotate(rotation, { 0.f, 0.f, -1.f }), view);
     aim.up = turned_by_view(rotate(rotation, { 0.f, 1.f, 0.f }), view);
+    aim.view_up = turned_by_view(rotate(offset, { 0.f, 1.f, 0.f }), view);
     return aim;
 }
 
 // The reticle sits on the aim line, where the line hits something but never further than
 // kReticleMaxDistance, faces back along the line and grows with its distance, less than the
-// distance does.
+// distance does. Its up is the view's up, so it rolls neither with the controller nor with
+// the head; only a roll of the avatar turns it.
 void VRAvatar::place_reticle(const AimPose& aim) {
     UWidgetComponent* reticle = s_vr_avatar->AimReticle();
     if (reticle == nullptr) {
@@ -457,7 +459,7 @@ void VRAvatar::place_reticle(const AimPose& aim) {
     const FVector back{ -aim.forward.X, -aim.forward.Y, -aim.forward.Z };
     FHitResult unused{};
     reticle->K2_SetWorldLocationAndRotation(
-        aim.location + aim.forward * distance, UKismetMathLibrary::MakeRotFromXZ(back, aim.up), false, &unused, false
+        aim.location + aim.forward * distance, UKismetMathLibrary::MakeRotFromXZ(back, aim.view_up), false, &unused, false
     );
     reticle->SetWorldScale3D({ scale, scale, scale });
 }
