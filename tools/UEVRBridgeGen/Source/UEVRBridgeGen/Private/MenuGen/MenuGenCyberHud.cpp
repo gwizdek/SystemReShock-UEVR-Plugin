@@ -68,6 +68,16 @@ UTexture2D* MakeStandInTexture(const FMenuGenOptions& Options, const TCHAR* Root
     return MakeTexture(Path, Asset.TextureSource, {});
 }
 
+// The flight reticle keeps the game's material, which only samples its texture, so the
+// replacement is the texture itself, shipped at the game's path. It holds only the ring's top
+// triangle, the "up" marker the plugin turns to world up.
+UTexture2D* MakeReticleTexture(const FMenuGenOptions& Options)
+{
+    const FString Path = FString(MenuGenPaths::CyberGuiRoot) / MenuGenPaths::CyberReticleTexture;
+    if (MenuGenAsset::Exists(Path) && !Options.bOverwrite) return MenuGenAsset::LoadExisting<UTexture2D>(Path);
+    return MakeTexture(Path, MenuGenPaths::CyberReticleSource, { MenuGenPaths::ModChunk });
+}
+
 // Returns the existing material when it is kept, or a new empty one to fill. bNew tells which.
 UMaterial* BeginMaterial(const FMenuGenOptions& Options, const TCHAR* Root, const FCyberAsset& Asset, bool& bNew)
 {
@@ -228,6 +238,7 @@ bool MenuGenCyberHud::Generate(FMenuGenStore& Store, const FMenuGenOptions& Opti
         MakePanelMaterial(Options, PanelTexture, Store.TintCollection) != nullptr &&
         MakeHealthMaterial(Options, HealthTexture) != nullptr &&
         MakeTagMaterial(Options, Secure, SecureTexture, HealthGoodParameter) != nullptr &&
-        MakeTagMaterial(Options, Threat, ThreatTexture, HealthCriticalParameter) != nullptr;
+        MakeTagMaterial(Options, Threat, ThreatTexture, HealthCriticalParameter) != nullptr &&
+        MakeReticleTexture(Options) != nullptr;
     return bOk;
 }

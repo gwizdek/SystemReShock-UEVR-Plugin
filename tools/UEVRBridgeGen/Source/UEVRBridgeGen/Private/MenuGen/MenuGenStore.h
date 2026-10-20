@@ -64,6 +64,10 @@ constexpr const TCHAR* CyberPanelSource = TEXT("Resources/MenuGen/CyberHud/T_Con
 constexpr const TCHAR* CyberHealthSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionIntegrityHealth.png");
 constexpr const TCHAR* CyberSecureSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionStatusSecure.png");
 constexpr const TCHAR* CyberThreatSource = TEXT("Resources/MenuGen/CyberHud/T_ConnectionStatusThreat.png");
+// The cyberspace flight reticle's texture, at the game's path in chunk 10 so the Core pak
+// replaces it. Only its top triangle is kept; make_flight_reticle.py writes the PNG.
+constexpr const TCHAR* CyberReticleTexture = TEXT("T_CyberspaceFlightReticle");
+constexpr const TCHAR* CyberReticleSource = TEXT("Resources/MenuGen/CyberHud/T_CyberspaceFlightReticle.png");
 
 // The VR controller button atlas for tutorial popups and button legends. The texture and the
 // material instance are the mod's own assets (chunk 10); the plugin loads them by these paths.

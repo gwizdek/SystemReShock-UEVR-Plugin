@@ -211,7 +211,10 @@ That is wrong at 90° pitch up or down, where the pitch snap can leave the avata
 yaw and roll are not defined there, and Unreal can split the same rotation into any pair of
 them. A live test read roll -82.9° and, a moment later for the same rotation, -97.1°.
 
-`CyberspaceFlightReticle` (`cyberspace_flight_reticle.cpp`) does two things:
+In VR the ring shows only its top triangle, the "up" marker: the Core pak replaces the
+reticle's texture (see `hud-materials-in-vr.md`, "The cyberspace flight reticle").
+
+`CyberspaceFlightReticle` (`cyberspace_flight_reticle.cpp`) does three things:
 
 - It patches the bytecode of `RotateUpward`: the first instruction becomes a jump to the
   final `Return Nothing`, so the function does nothing. The function is only called from
@@ -223,6 +226,9 @@ them. A live test read roll -82.9° and, a moment later for the same rotation, -
   `UI_FollowView=false` UEVR keeps the HUD quad turned with the game camera, so this is the
   direction of world up on the HUD. When world up is within about 1° of straight behind or in
   front of the screen, it has no direction there and the ring keeps its last angle.
+- In the same tick it sets the render opacity of `WIDGET_FlightReticle` (0.5 in the HUD asset)
+  and of `MESH_FlightReticle` (0.8) to 1, when they differ. Dimmed like that, the triangle was
+  hard to see in VR. No game code sets these opacities.
 
 ## How the plugin detects cyberspace
 

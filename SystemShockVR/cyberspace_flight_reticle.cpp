@@ -123,4 +123,17 @@ void CyberspaceFlightReticle::update_angle(SDK::UWorld* world, SDK::APawn* avata
     }
     reticle->CurrentAngle = s_angle;
     reticle->MESH_FlightReticle->SetRenderTransformAngle(s_angle);
+    show_at_full_opacity(reticle);
+}
+
+// The HUD asset dims the reticle: the widget has render opacity 0.5 and its mesh 0.8. With only
+// the triangle left (see the header) that made it hard to see in VR. No game code sets these,
+// so they are only written when they differ, which covers a HUD that was created anew.
+void CyberspaceFlightReticle::show_at_full_opacity(SDK::UWIDGET_FlightReticle_C* reticle) {
+    SDK::UWidget* const widgets[] = { reticle, reticle->MESH_FlightReticle };
+    for (SDK::UWidget* widget : widgets) {
+        if (widget->RenderOpacity != 1.f) {
+            widget->SetRenderOpacity(1.f);
+        }
+    }
 }

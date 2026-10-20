@@ -155,3 +155,19 @@ above 0.28) and `HealthCritical` (ratio at or below 0.28).
 The panel reads the player's tint from the dummy of `MPC_UserTintParameters` that the
 generator makes for the menu icons. `documentation\menu-icons.md` explains the dummy and why
 it must not be edited in the editor.
+
+## The cyberspace flight reticle
+
+The flight reticle in the middle of the cyberspace HUD (`WIDGET_FlightReticle`) draws the
+game's `MAT_CyberspaceFlightReticle`, a translucent UI material that only samples
+`T_CyberspaceFlightReticle` (2048 x 2048, DXT5): a large ring with side bars, a small circle in
+the middle, two small triangles over the side bars and one triangle at the top, the "up"
+marker. In VR only that top triangle is shown.
+
+The material stays the game's. The Core pak replaces the texture at the game's path
+`/Game/Art/Cyberspace/GUI/T_CyberspaceFlightReticle`, in chunk 10, with a 1024 x 1024 texture
+that holds only the top triangle. `tools\UEVRBridgeGen\Resources\MenuGen\make_flight_reticle.py`
+writes it to `Resources\MenuGen\CyberHud\T_CyberspaceFlightReticle.png` from the cooked
+texture in `dumps\`, and `MenuGenCyberHud.cpp` imports it. The script needs Pillow to decode
+DXT5. The plugin turns the reticle so the triangle points to world up (see
+`cyberspace-controls.md`, "The flight reticle").

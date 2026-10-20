@@ -3,6 +3,7 @@
 namespace SDK
 {
     class APawn;
+    class UWIDGET_FlightReticle_C;
     class UWorld;
 }
 
@@ -23,6 +24,9 @@ namespace SDK
 // camera looks straight up or down, world up has no direction on the screen, and the ring
 // keeps its last angle.
 //
+// In VR the Core pak leaves only the ring's top triangle in its texture, the "up" marker. The
+// plugin also shows the reticle at full render opacity; the HUD asset dims it.
+//
 // The patch lives in the loaded class, so it holds until the game exits, and it is checked
 // again now and then in case the class was loaded anew.
 class CyberspaceFlightReticle final
@@ -34,6 +38,7 @@ public:
 private:
     static void patch();
     static void update_angle(SDK::UWorld* world, SDK::APawn* avatar);
+    static void show_at_full_opacity(SDK::UWIDGET_FlightReticle_C* reticle);
 
     static int s_ticks_until_check;
     static float s_angle;
