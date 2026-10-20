@@ -18,9 +18,12 @@ namespace {
 // Connection integrity's SECURE and THREAT tags reach 3 units above the panel, so this is as
 // high as it can go without cutting them.
 constexpr float kIntegrityTop = 3.f;
+// Connection integrity and the software hotbar are drawn at this part of their size; the UEVR
+// UI is shown large in cyberspace (UI_Size 3.5).
+constexpr float kPanelScale = 0.75f;
 // Centre of the scan text inside PANEL_DashboardTop (which starts 5 units above the canvas),
-// just below connection integrity, whose health bar ends about 93 units down.
-constexpr float kScanTextCentre = 118.f;
+// just below connection integrity, whose health bar ends 93 units down at full size.
+constexpr float kScanTextCentre = 95.f;
 
 struct MovedSlot
 {
@@ -28,7 +31,15 @@ struct MovedSlot
     FAnchorData original;
 };
 
+struct ScaledWidget
+{
+    UWidget* widget;
+    FWidgetTransform transform;
+    FVector2D pivot;
+};
+
 std::vector<MovedSlot> s_moved{};
+std::vector<ScaledWidget> s_scaled{};
 
 bool is_alive(void* object) {
     return object != nullptr && API::UObjectHook::exists(reinterpret_cast<API::UObject*>(object));
@@ -45,6 +56,17 @@ void move_slot(UWidget* widget, Change change) {
     s_moved.push_back({ slot, layout });
     change(layout);
     slot->SetLayout(layout);
+}
+
+// Keeps the widget's render transform and pivot for restore, then scales it around pivot, a
+// point in the widget's own size (0 to 1). Render scale leaves the layout as it is.
+void scale_widget(UWidget* widget, float scale, const FVector2D& pivot) {
+    if (!is_alive(widget)) {
+        return;
+    }
+    s_scaled.push_back({ widget, widget->RenderTransform, widget->RenderTransformPivot });
+    widget->SetRenderTransformPivot(pivot);
+    widget->SetRenderScale(FVector2D{ scale, scale });
 }
 
 } // namespace
@@ -71,7 +93,14 @@ void CyberspaceHudLayout::apply(APAWN_Avatar_C* pawn) {
         move_slot(hud->WIDGET_Cyberspace_SoftwareHotbar, [](FAnchorData& layout) {
             layout.Offsets.Top = 0.f;
         });
-        API::get()->log_warn("[cyberspace_hud_layout][apply] Moved %d HUD parts for VR", static_cast<int>(s_moved.size()));
+        // Scaled around the edge they sit on, so they stay there: connection integrity around
+        // its top centre, PANEL_Items (the hotbar and the equipment boxes) around its bottom.
+        scale_widget(hud->WIDGET_ConnectionIntegrity, kPanelScale, FVector2D{ 0.5f, 0.f });
+        if (is_alive(hud->WIDGET_Cyberspace_SoftwareHotbar)) {
+            scale_widget(hud->WIDGET_Cyberspace_SoftwareHotbar->GetParent(), kPanelScale, FVector2D{ 0.5f, 1.f });
+        }
+        API::get()->log_warn("[cyberspace_hud_layout][apply] Moved %d and scaled %d HUD parts for VR",
+            static_cast<int>(s_moved.size()), static_cast<int>(s_scaled.size()));
     }
     catch (...) {
         API::get()->log_error("[cyberspace_hud_layout][apply] Exception");
@@ -85,9 +114,16 @@ void CyberspaceHudLayout::restore() {
                 moved.slot->SetLayout(moved.original);
             }
         }
+        for (const ScaledWidget& scaled : s_scaled) {
+            if (is_alive(scaled.widget)) {
+                scaled.widget->SetRenderTransformPivot(scaled.pivot);
+                scaled.widget->SetRenderTransform(scaled.transform);
+            }
+        }
     }
     catch (...) {
         API::get()->log_error("[cyberspace_hud_layout][restore] Exception");
     }
     s_moved.clear();
+    s_scaled.clear();
 }

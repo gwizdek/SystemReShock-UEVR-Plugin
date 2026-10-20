@@ -572,14 +572,19 @@ its UI by the window's shorter side (scale 1.0 at 1920 x 1080), so the canvas is
 side of the canvas moves out of the VR view there; a part anchored to the centre line stays
 in the same place on every aspect ratio.
 
-`CyberspaceHudLayout` (`cyberspace_hud_layout.cpp`) moves three parts when the VR avatar is
-set up, and sets their original layouts back when it is removed:
+`CyberspaceHudLayout` (`cyberspace_hud_layout.cpp`) moves three parts and scales two when the
+VR avatar is set up, and sets their original layouts and render transforms back when it is
+removed:
 
 | Part | Game's layout | In VR |
 |---|---|---|
-| `WIDGET_ConnectionIntegrity` | Top right corner, 54 units down | Top centre, 3 units down: as high as it goes, its SECURE and THREAT tags reach 3 units above the panel. The slot sizes itself to the panel. |
-| `TEXT_ScanDescription` (in `PANEL_DashboardTop`) | Centred 28.5 units into the panel | Centred 118 units into the panel, below connection integrity. |
+| `WIDGET_ConnectionIntegrity` | Top right corner, 54 units down | Top centre, 3 units down: as high as it goes, its SECURE and THREAT tags reach 3 units above the panel. The slot sizes itself to the panel. Render scale 3/4 around its top centre. |
+| `TEXT_ScanDescription` (in `PANEL_DashboardTop`) | Centred 28.5 units into the panel | Centred 95 units into the panel, below the scaled connection integrity. |
 | `WIDGET_Cyberspace_SoftwareHotbar` (in `PANEL_Items`) | 26 units above the bottom edge | On the bottom edge. |
+| `PANEL_Items` (the hotbar and the equipment boxes) | Full size | Render scale 3/4 around its bottom centre, so it stays on the bottom edge. It is not a variable of the HUD; the plugin reaches it as the hotbar's parent. |
+
+Render scale leaves the slot layout as it is, so the scaled parts keep their anchors. With
+the UEVR UI at size 3.5 in cyberspace, full size was too large.
 
 `_BP_VRAvatar` has a `WidgetComponent` named `AimReticle`. In the Blueprint it is a child
 of `MotionControllerRight`. `initialize_vr_avatar` moves it to `DefaultSceneRoot`, keeping its

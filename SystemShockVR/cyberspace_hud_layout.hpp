@@ -15,7 +15,9 @@ namespace SDK
 // - Connection integrity: from the top right corner to the top centre, as high as it goes.
 // - The scan text (the name of what the head looks at): below connection integrity.
 // - The software hotbar: down onto the bottom edge.
-// The original layout of each slot is kept and set back by restore.
+// Connection integrity and the hotbar's panel are also drawn at 3/4 of their size. The
+// original layout of each slot and render transform of each widget are kept and set back by
+// restore.
 class CyberspaceHudLayout final
 {
 public:
