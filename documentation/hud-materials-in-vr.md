@@ -108,7 +108,7 @@ it crashed the game. `SetMaterial` with a plain material worked.
 The HUD's unread media (email) icon is drawn by `WIDGET_UnreadMediaIcon` with
 `MAT_MediaIcon_UnreadMessages`, an additive material. The game also pins the icon to the left
 screen edge, outside the headset view, so the plugin moves its slot to the top centre of the
-HUD, under the scan text (`VRBody::initialize_unread_media_icon` in `vr_body.cpp`).
+HUD, just below the compass (`VRBody::initialize_unread_media_icon` in `vr_body.cpp`).
 
 | File | Role |
 |---|---|
