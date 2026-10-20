@@ -9,6 +9,7 @@
 #include "plugin_utils.hpp"
 #include "sdk_bootstrap.hpp"
 #include "vr_avatar.hpp"
+#include "vr_lock_on.hpp"
 #include "vr_settings.hpp"
 
 #include <algorithm>
@@ -205,6 +206,7 @@ A_BP_VRAvatar_C* VRAvatar::initialize_vr_avatar(APAWN_Avatar_C* pawn) {
             attach_keep_world(vr_avatar->AimReticle(), vr_avatar->DefaultSceneRoot());
             use_masked_reticle_material(vr_avatar->AimReticle());
         }
+        VRLockOn::attach(vr_avatar, pawn);
         s_vr_avatar = vr_avatar;
         API::get()->log_warn("[vr_avatar][initialize_vr_avatar] VRAvatar Initialized");
         return vr_avatar;
@@ -319,6 +321,7 @@ void VRAvatar::use_aim_camera(APAWN_Avatar_C* pawn, UCameraComponent* aim_camera
 }
 
 void VRAvatar::restore_game_camera() {
+    VRLockOn::restore();
     if (is_alive(s_pawn) && is_alive(s_game_camera)) {
         s_pawn->Camera = s_game_camera;
         set_hud_crosshair_visible(s_pawn, true);
@@ -467,11 +470,12 @@ void VRAvatar::place_reticle(const AimPose& aim) {
     const float scale = size / kReticleDrawSize;
     const float placed_at = std::max(0.f, distance - size * kReticleSurfaceGap);
     const FVector back{ -aim.forward.X, -aim.forward.Y, -aim.forward.Z };
+    const FVector location = aim.location + aim.forward * placed_at;
+    const FRotator rotation = UKismetMathLibrary::MakeRotFromXZ(back, aim.view_up);
     FHitResult unused{};
-    reticle->K2_SetWorldLocationAndRotation(
-        aim.location + aim.forward * placed_at, UKismetMathLibrary::MakeRotFromXZ(back, aim.view_up), false, &unused, false
-    );
+    reticle->K2_SetWorldLocationAndRotation(location, rotation, false, &unused, false);
     reticle->SetWorldScale3D({ scale, scale, scale });
+    VRLockOn::place(location, rotation, scale);
 }
 
 // _BP_VRAvatar gives AimReticle a translucent material without depth test, so walls could not

@@ -606,6 +606,45 @@ crosshair material is not in the Unreal project. On the first tick that finds th
 `IMAGE_CrosshairCursor`, which is `MAT_CrosshairCursor`. The widget component creates its
 widget on `BeginPlay`, so this waits until the widget exists.
 
+## Drill lock-on
+
+The I.C.E. drill's lock-on (`WIDGET_IceDrillLockOn` in the cyberspace HUD, 512 x 512 at the
+screen centre) shows the search for a target, the lock and the attack. The game only switches
+its parts and plays its animations; it never moves it:
+
+| Function | What it does |
+|---|---|
+| `TrySearchForTarget` | Shows only the four scanner triangles, plays `ANIM_BeginSearchForTarget`. |
+| `SetTarget` | Fades in the pointers, arcs, tick ring and fill, plays `ANIM_LockingOnTarget`. |
+| `UpdateLockOnBrackets(Progress)` | Called by the HUD's `UpdateIceDrillLockOn`; at progress 1 plays `ANIM_LockedOnHold`. |
+| `AttackTarget`, `DismissTarget`, `DismissSearchForTarget` | Play the matching animations. |
+
+The parts are `MESH_Fill` (the red disc, additive), `MESH_Pips` (tick ring),
+`PANEL_ScannerTriangles`, `PANEL_Pointers` (chevrons) and `PANEL_LockOnBrackets` (arcs), all in
+`PANEL_LockOnContainer`. At the screen centre the lock-on shows where the head looks, but the
+drill's lock-on cone is computed from the avatar's `Camera`, which is the aim camera on the
+right controller.
+
+`VRLockOn` (`vr_lock_on.cpp`) moves it into the world:
+
+- `attach`, from `initialize_vr_avatar`: adds a `WidgetComponent` to the VR avatar (draw size
+  512, no collision, ticking when nothing is drawn so the animations run), takes the HUD's
+  lock-on widget out of the HUD canvas and sets it as the component's widget. The game keeps
+  driving the same widget object, so every state, animation and sound stays.
+- `place`, from `place_reticle` every tick: the reticle's location and rotation, at 0.2 of the
+  reticle's world units per pixel. At 1 the lock-on would be 6.4 times the reticle, as in the
+  HUD; that was far too big in VR.
+- `restore`, from `restore_game_camera`: puts the widget back into the HUD canvas, 512 x 512 at
+  the centre.
+
+The component uses the mod's translucent material without depth test,
+`/Game/Mods/VRBody/Materials/Widget3DPassThrough_Translucent_NoDepth`, with Blend Mode
+Transparent. The lock-on is larger than the reticle, so a depth-tested material would be cut
+by walls hit at an angle, and its thin lines shimmered under DLSS with the masked material in
+a live test. The additive disc does not show in the component, which is fine. The thick dark
+outline the arcs and chevrons had came from their textures; the Core pak ships thinner ones
+(see `hud-materials-in-vr.md`, "The drill lock-on outline").
+
 ## How UObjectHook attaches the camera
 
 `profile\uobjecthook\camera_state.json` attaches the UEVR camera to this path, with no offset:

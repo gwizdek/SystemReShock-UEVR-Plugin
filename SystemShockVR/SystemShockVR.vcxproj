@@ -173,6 +173,7 @@
     <ClInclude Include="SDK\Engine_classes.hpp" />
     <ClInclude Include="SDK\PAWN_Avatar_classes.hpp" />
     <ClInclude Include="vr_avatar.hpp" />
+    <ClInclude Include="vr_lock_on.hpp" />
     <ClInclude Include="vr_body.hpp" />
     <ClInclude Include="rendering\d3d11.hpp" />
     <ClInclude Include="rendering\d3d12.hpp" />
@@ -272,6 +273,7 @@
     <ClCompile Include="SDK\WIDGET_TargetID_Display_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
     <ClCompile Include="vr_avatar.cpp" />
+    <ClCompile Include="vr_lock_on.cpp" />
     <ClCompile Include="vr_body.cpp" />
     <ClCompile Include="vr_item_selector.cpp" />
     <ClCompile Include="vr_mfd.cpp" />
