@@ -328,6 +328,9 @@ TArray<FListEntry> ListEntries()
         Slider(TEXT("OPTION_VR_CyberPitchSnapDuration"), { TEXT("Pitch Snap Duration"),
             TEXT("In cyberspace, how long one pitch snap takes, in seconds. 0 snaps at once."),
             TEXT("pitch_snap_duration"), 0.f, 1.f, 0.5f, 0.01f, 2, TEXT(" s") }),
+        Slider(TEXT("OPTION_VR_CyberCrosshairScale"), { TEXT("Crosshair Scale"),
+            TEXT("In cyberspace, the size of the crosshair that follows the right controller, in percent of its normal size."),
+            TEXT("crosshair_scale"), 50.f, 150.f, 100.f, 10.f, 0, TEXT("%") }),
     };
 }
 

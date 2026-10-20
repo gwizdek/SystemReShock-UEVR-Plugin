@@ -1,6 +1,7 @@
 #include "vr_settings.hpp"
 
 #include <algorithm>
+#include <cmath>
 #include <filesystem>
 
 #include "uevr/API.hpp"
@@ -149,4 +150,10 @@ float VRSettings::pitch_deadzone()
 float VRSettings::pitch_snap_duration()
 {
     return std::clamp(get_float(kCyberspace, "pitch_snap_duration", 0.5f), 0.f, 1.f);
+}
+
+// The slider row writes a float, so the value is read as one and rounded.
+int VRSettings::crosshair_scale()
+{
+    return std::clamp(static_cast<int>(std::lround(get_float(kCyberspace, "crosshair_scale", 100.f))), 50, 150);
 }

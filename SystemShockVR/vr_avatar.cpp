@@ -7,6 +7,7 @@
 #include "plugin_utils.hpp"
 #include "sdk_bootstrap.hpp"
 #include "vr_avatar.hpp"
+#include "vr_settings.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -27,8 +28,9 @@ namespace {
 
 // Size of the reticle widget in pixels; one pixel is one world unit at scale 1.
 constexpr float kReticleDrawSize = 80.f;
-// World size of the reticle at kReticleNearDistance, in world units (centimetres).
-constexpr float kReticleNearSize = 10.f;
+// World size of the reticle at kReticleNearDistance, in world units (centimetres), is the
+// "Crosshair Scale" setting divided by this: 10 at 100 percent, 5 at 50 and 15 at 150.
+constexpr float kCrosshairScaleToNearSize = 10.f;
 constexpr float kReticleNearDistance = 50.f;
 // The world size grows with distance to this power. Below 1 the reticle covers a smaller angle
 // when it is far: about 11 degrees at 50 cm, 6.4 at 5 m and 4.3 at 25 m. With a constant angle a
@@ -410,7 +412,8 @@ void VRAvatar::place_reticle(const AimPose& aim) {
     }
 
     const float distance = trace_aim_distance(aim.location, aim.forward);
-    const float size = kReticleNearSize * std::pow(distance / kReticleNearDistance, kReticleSizeExponent);
+    const float near_size = VRSettings::crosshair_scale() / kCrosshairScaleToNearSize;
+    const float size = near_size * std::pow(distance / kReticleNearDistance, kReticleSizeExponent);
     const float scale = size / kReticleDrawSize;
     const FVector back{ -aim.forward.X, -aim.forward.Y, -aim.forward.Z };
     FHitResult unused{};

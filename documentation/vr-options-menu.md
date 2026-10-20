@@ -22,7 +22,7 @@ Done:
 
 - The page content: three groups with the game's group header, "General" (Player Height, Auto
   Aim Down Sights), "Movement" (VR Look Sensitivity, Snap Turn, Angle, Deadzone) and "Cyberspace"
-  (Pitch Snap Turn, Pitch Deadzone, Pitch Snap Duration). See the list below.
+  (Pitch Snap Turn, Pitch Deadzone, Pitch Snap Duration, Crosshair Scale). See the list below.
 
 - The settings sync in the plugin (`SystemShockVR\vr_options_sync.cpp`, `vr_setting_store.cpp`,
   `vr_settings.cpp`): the rows get their values from their stores after the install and each
@@ -278,9 +278,11 @@ The content is one table in the generator (`ListEntries` in `MenuGenModWidgets.c
 | `OPTION_VR_CyberPitchSnapTurn` | toggle | Pitch Snap Turn | `pitch_snap_turn` | | off | ini `[cyberspace]` |
 | `OPTION_VR_CyberPitchDeadzone` | slider | Pitch Deadzone | `pitch_deadzone` | 0.00 to 1.00, 0.01 | 0.80 | ini `[cyberspace]` |
 | `OPTION_VR_CyberPitchSnapDuration` | slider | Pitch Snap Duration | `pitch_snap_duration` | 0.00 to 1.00 s, 0.01 | 0.50 | ini `[cyberspace]` |
+| `OPTION_VR_CyberCrosshairScale` | slider | Crosshair Scale | `crosshair_scale` | 50 to 150 %, 10 | 100 | ini `[cyberspace]` |
 
 The "Stored in" column is decided in the plugin, not in the Blueprint (see "Settings sync").
-The cyberspace rows are used by `CyberspacePitchSnap`, see `cyberspace-controls.md`.
+The pitch rows are used by `CyberspacePitchSnap` and Crosshair Scale by `VRAvatar`, see
+`cyberspace-controls.md`.
 
 **`_OPTION_VR_Toggle`**, child of `WIDGET_Settings_BinaryToggle`, and **`_OPTION_VR_Slider`**,
 child of `WIDGET_Settings_Slider`. No tree, no own widgets. A row is its own store: instance
@@ -448,6 +450,7 @@ binding lists (`s_sliders`, `s_toggles`) hold one line per row:
   pitch_snap_turn = 0
   pitch_deadzone = 0.8
   pitch_snap_duration = 0.5
+  crosshair_scale = 100
   ```
 
   Older plugin versions kept `vr_look_sensitivity` in `[general]`. When `VRSettings` reads the
@@ -478,8 +481,9 @@ The sync runs from `VROptionsMenu`:
   grid, and `VROptionsSync::adopt` takes the last-seen values from its rows without changing them.
 - The plugin reads the ini values it acts on through `VRSettings`: `look_sensitivity()` for the
   right thumbstick turn speed (clamped to 1..10), `player_height()`, `auto_ads()`, and
-  `pitch_snap_turn()`, `pitch_deadzone()` and `pitch_snap_duration()` for cyberspace. The
-  cyberspace values are read when they are used, so Apply needs no extra step for them.
+  `pitch_snap_turn()`, `pitch_deadzone()`, `pitch_snap_duration()` and `crosshair_scale()`
+  for cyberspace. The cyberspace values are read when they are used, so Apply needs no extra
+  step for them.
 - After a save, `consume_settings_change` returns true once, and `plugin.cpp` calls
   `apply_vr_options_menu_settings`. It sets `m_ui_option_auto_ads_enabled` from `auto_ads()` and
   calls `VRBody::apply_custom_vr_game_options`. That function also runs after every VR body

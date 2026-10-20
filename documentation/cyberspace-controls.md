@@ -266,14 +266,16 @@ Removing it is a fair change to propose.
 
 ## Pitch snap turn
 
-The VR options page has a Cyberspace group with three settings, stored in `[cyberspace]` of
-`system_reshock_vr_config.ini` and read through `VRSettings`:
+The VR options page has a Cyberspace group with four settings, stored in `[cyberspace]` of
+`system_reshock_vr_config.ini` and read through `VRSettings`. The first three are about pitch
+snap turn; Crosshair Scale is described under "Aim reticle".
 
 | Setting | ini key | Meaning |
 |---|---|---|
 | Pitch Snap Turn | `pitch_snap_turn` | On: the right stick pitches in steps that end on a world axis. Off (default): the game's smooth pitch. |
 | Pitch Deadzone | `pitch_deadzone` | How far, 0 to 1, the stick must be pushed up or down to start a step. Default 0.8. |
 | Pitch Snap Duration | `pitch_snap_duration` | How long one snap takes, in seconds, 0 to 1. 0 is instant. Default 0.5. |
+| Crosshair Scale | `crosshair_scale` | Size of the aim reticle in percent, 50 to 150 in steps of 10. Default 100. |
 
 `CyberspacePitchSnap` (`cyberspace_pitch_snap.cpp`) has two parts:
 
@@ -559,8 +561,10 @@ to 80 × 80.
    (25 m) from the controller. The avatar and the VR avatar are ignored.
 2. Puts `AimReticle` at that distance on the aim line, facing back along it, with the
    controller's up vector as its up.
-3. Scales it to a world size of `10 × (distance / 50) ^ 0.75` units, divided by the draw size
-   80. The reticle covers about 11° of view at 50 cm, 6.4° at 5 m and 4.3° at 25 m. With a
+3. Scales it to a world size of `N × (distance / 50) ^ 0.75` units, divided by the draw size
+   80. N is the Crosshair Scale setting divided by 10: 10 at the default 100 %, 5 at 50 % and
+   15 at 150 %. At 100 % the reticle covers about 11° of view at 50 cm, 6.4° at 5 m and 4.3° at
+   25 m. With a
    constant angle, a far reticle looks much bigger than a near one, because it is seen as
    far away.
 

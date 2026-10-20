@@ -31,4 +31,5 @@ public:
     static bool pitch_snap_turn();      // [cyberspace] default off
     static float pitch_deadzone();      // [cyberspace] 0..1, default 0.8
     static float pitch_snap_duration(); // [cyberspace] 0..1 seconds, default 0.5
+    static int crosshair_scale();       // [cyberspace] 50..150 percent, default 100
 };
