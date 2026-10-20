@@ -25,6 +25,8 @@ struct Stick
 {
     float forward{ 0.f };
     float right{ 0.f };
+    // +1 while A (ascend) is held, -1 while B (descend) is held, 0 for both or neither.
+    float up{ 0.f };
     std::chrono::steady_clock::time_point read_at{};
 };
 
@@ -60,15 +62,21 @@ bool stick_is_fresh() {
     return std::chrono::steady_clock::now() - s_stick.read_at < kMaxStickAge;
 }
 
+float button_value(WORD buttons, WORD button) {
+    return (buttons & button) != 0 ? 1.f : 0.f;
+}
+
 } // namespace
 
 void CyberspaceHeadSteering::handle_input(XINPUT_STATE* state) {
     const float forward = state->Gamepad.sThumbLY / kStickMax;
     const float right = state->Gamepad.sThumbLX / kStickMax;
     const bool outside_deadzone = std::hypot(forward, right) > kStickDeadzone;
+    const WORD buttons = state->Gamepad.wButtons;
     s_stick = {
         .forward = outside_deadzone ? forward : 0.f,
         .right = outside_deadzone ? right : 0.f,
+        .up = button_value(buttons, XINPUT_GAMEPAD_A) - button_value(buttons, XINPUT_GAMEPAD_B),
         .read_at = std::chrono::steady_clock::now()
     };
     state->Gamepad.sThumbLX = 0;
@@ -86,11 +94,12 @@ void CyberspaceHeadSteering::handle_tick(SDK::APawn* avatar, const UEVR_VRData* 
             return;
         }
         // The stick's forward part goes along the head's pitch; its right part stays level.
+        // A and B add straight up or down, as the game's own ascend and descend do.
         const float pitch = head_pitch(vr);
         pawn->PersistentRelativeInput = {
             s_stick.forward * std::cos(pitch),
             s_stick.right,
-            s_stick.forward * std::sin(pitch)
+            s_stick.forward * std::sin(pitch) + s_stick.up
         };
     }
     catch (...) {

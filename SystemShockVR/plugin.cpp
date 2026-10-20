@@ -774,8 +774,8 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
         // The game's own cyberspace bindings fit VR as they are: right stick turns and pitches,
         // grips (shoulders) roll, A and B ascend and descend, triggers fire. Only the pause
         // menu needs a button, because UEVR keeps the controllers' menu buttons. With pitch snap
-        // turn on, the plugin takes the right stick's pitch over. The left stick goes through
-        // the plugin, so the flight follows the head's pitch.
+        // turn on, the plugin takes the right stick's pitch over. The left stick, A and B go
+        // through the plugin, so the flight follows the head's pitch.
         if (m_game_state.get() == GAME_STATE_CYBERSPACE) {
             CyberspacePitchSnap::handle_input(state);
             CyberspaceHeadSteering::handle_input(state);

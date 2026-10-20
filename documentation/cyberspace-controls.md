@@ -173,9 +173,10 @@ actor along the link with `K2_SetActorLocation`. `UpdateCameraPOV` eases the fie
 ### Movement
 
 The move inputs build `FrameRelativeInput` in the avatar's local frame: X forward, Y right,
-Z up. `Gamepad_Cyber_MoveAxisX/Y` is the left stick. Ascend and descend add (0, 0, ±1);
-keyboard keys add to `PersistentRelativeInput`, which is added every frame while a key is
-held. `UpdateMovement` normalizes the input, turns it by the actor rotation into a world
+Z up. `Gamepad_Cyber_MoveAxisX/Y` is the left stick. Ascend, descend and the keyboard move
+keys go through `HandleInputMoveAction`, which adds their direction, for ascend and descend
+(0, 0, ±1), to `PersistentRelativeInput` while the key is held. `UpdateMovement` adds
+`PersistentRelativeInput` to the frame input every frame. `UpdateMovement` normalizes the input, turns it by the actor rotation into a world
 direction and calls `AddMovementInput`. `CharacterMovement` flies at `MaxFlySpeed` 800 with
 acceleration 2048 (`CachedDefaultMaxFlySpeed`, `CachedDefaultAcceleration`). Turbo dash and
 domain links change these values.
@@ -411,12 +412,14 @@ full speed.
   the state the game reads.
 - `handle_tick` runs every engine tick in `GAME_STATE_CYBERSPACE`, after body turn. It takes
   the head's pitch against the avatar from the forward vector of offset × HMD and writes
-  `PersistentRelativeInput = (forward × cos(pitch), right, forward × sin(pitch))`. The
+  `PersistentRelativeInput = (forward × cos(pitch), right, forward × sin(pitch) + up)`. The
   stick's forward part goes along the head's pitch, and its right part stays level with the
   avatar. A stick reading older than 0.25 s counts as no push, so the avatar stops when the
   XInput callback stops.
 
-Ascend and descend (A and B) still add to `FrameRelativeInput` and combine with it. The game
+Ascend and descend (A and B) set `PersistentRelativeInput` too, so the plugin's write every
+tick would remove them. `handle_input` therefore also keeps A and B as `up`: +1 for A, -1 for
+B. The buttons still reach the game, so its own held-key count stays right. The game
 scales the move by `MoveStrafeScale` the further the direction is from the avatar's forward,
 so flying steeply up or down along the head is slower than flying straight ahead, as
 strafing is.
