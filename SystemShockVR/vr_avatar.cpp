@@ -116,9 +116,9 @@ bool mod_value_is_true(const UEVR_VRData* vr, const char* key) {
     return std::strcmp(value, "true") == 0;
 }
 
-// The aim follows the controller this many times faster than UEVR's attach lerp speed, so it
-// is smoothed a little less than the hands UObjectHook places.
-constexpr float kAimLerpSpeedFactor = 1.3f;
+// The aim follows the controller this many times faster than UEVR's attach lerp speed. At 1 it
+// is smoothed as much as the hands UObjectHook places; above 1 less, below 1 more.
+constexpr float kAimLerpSpeedFactor = 1.0f;
 
 // The right controller's grip position and aim rotation in tracking space, smoothed like
 // UObjectHook smooths the hands it places (UObjectHook::tick_attachments, "attach lerp"), with

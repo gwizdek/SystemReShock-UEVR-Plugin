@@ -528,8 +528,8 @@ amounts and leaves R × O as it is, so the order of `update_aim` and body turn d
 
 The grip position and aim rotation are smoothed first, the same way UObjectHook smooths the
 hands it places ("attach lerp"). The same UEVR settings control it: `UObjectHook_AttachLerpEnabled`
-and `UObjectHook_AttachLerpSpeed` (15 in the profile). The aim uses 1.3 times that speed
-(`kAimLerpSpeedFactor`), so it is smoothed a little less than the hands. With speed s and frame time t, the
+and `UObjectHook_AttachLerpSpeed` (15 in the profile). The aim uses that speed times
+`kAimLerpSpeedFactor`, which is 1, so it is smoothed as much as the hands. With speed s and frame time t, the
 rotation moves `min(1, s × t × |cos|)` of the way to the new rotation (a slerp, where cos is
 the dot product of the two quaternions), and the position `min(1, s × t × max(1, distance in
 meters))` of the way. Without it, the reticle shakes with the tracking noise.
