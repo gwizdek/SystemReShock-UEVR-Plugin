@@ -2,10 +2,14 @@
 #include "SDK/Engine_classes.hpp"
 #include "SDK/SlateCore_structs.hpp"
 #include "SDK/UMG_classes.hpp"
+#include "BridgeSDK/_WIDGET_OptionsMenu_VRList_classes.hpp"
 #include "SDK/WIDGET_MainMenu_InGame_classes.hpp"
 #include "SDK/WIDGET_OptionsCategoryMenuList_classes.hpp"
 #include "SDK/WIDGET_OptionsMenu_Gameplay_classes.hpp"
+#include "SDK/WIDGET_OptionsMenu_GameplayList_classes.hpp"
 #include "SDK/PAWN_PlayerGhost_classes.hpp"
+#include "SDK/PAWN_Avatar_classes.hpp"
+#include "SDK/WIDGET_CyberspaceHUD_classes.hpp"
 #include "SDK/WIDGET_PreGameScreen_classes.hpp"
 #include "SDK/WIDGET_SplashScreen_Title_classes.hpp"
 
@@ -45,9 +49,7 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
     try {
         // The pawn decides which menu exists. The HUD pointer alone cannot: the plugin keeps it
         // across level changes, and a freed widget can still pass IsValid.
-        const bool at_title = UKismetSystemLibrary::IsValid(pawn) && PluginUtils::is_a<APAWN_PlayerGhost_C>(pawn);
-        if (at_title) PLUGIN_WARN_ONCE("[vr_options_menu][handle] Ghost pawn, looking for the title screen");
-        UWIDGET_OptionsScreen_C* screen = at_title ? find_title_screen(pawn) : find_screen(hud);
+        UWIDGET_OptionsScreen_C* screen = find_screen_for_pawn(hud, pawn);
         if (screen == nullptr || !is_ready(screen)) return;
         // Covers the install and the per-tick sync: a pak and plugin that do not match would
         // otherwise throw, and log, every tick.
@@ -71,6 +73,7 @@ void VROptionsMenu::handle(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
         page->Install(screen);
         // The visible steps come first, so a failing settings sync cannot hide the category.
         apply_panel_material(page);
+        apply_scrollbar_style(screen, page);
         shift_category_list(screen);
         VROptionsSync::push(page);
         s_installed_screen = screen;
@@ -93,9 +96,23 @@ void VROptionsMenu::reset() {
     s_failed_attempts = 0;
 }
 
-UWIDGET_OptionsScreen_C* VROptionsMenu::find_screen(UWIDGET_PlayerHUD_C* hud) {
-    if (!UKismetSystemLibrary::IsValid(hud)) return nullptr;
-    UWIDGET_MainMenu_InGame_C* menu = hud->WIDGET_MainMenu_InGame;
+// Each pawn has its own menu: the title screen's ghost pawn, the cyberspace avatar with its
+// CyberspaceUI, and the station pawns with the player HUD. In cyberspace the station pawn and
+// its HUD still exist, below the map, so the HUD alone would pick a menu that is not shown.
+UWIDGET_OptionsScreen_C* VROptionsMenu::find_screen_for_pawn(UWIDGET_PlayerHUD_C* hud, APawn* pawn) {
+    const bool has_pawn = UKismetSystemLibrary::IsValid(pawn);
+    if (has_pawn && PluginUtils::is_a<APAWN_PlayerGhost_C>(pawn)) {
+        PLUGIN_WARN_ONCE("[vr_options_menu][find_screen_for_pawn] Ghost pawn, looking for the title screen");
+        return find_title_screen(pawn);
+    }
+    if (has_pawn && PluginUtils::is_a<APAWN_Avatar_C>(pawn)) {
+        UWIDGET_CyberspaceHUD_C* cyber_hud = static_cast<APAWN_Avatar_C*>(pawn)->CyberspaceUI;
+        return UKismetSystemLibrary::IsValid(cyber_hud) ? options_screen_of(cyber_hud->WIDGET_MainMenu_InGame) : nullptr;
+    }
+    return UKismetSystemLibrary::IsValid(hud) ? options_screen_of(hud->WIDGET_MainMenu_InGame) : nullptr;
+}
+
+UWIDGET_OptionsScreen_C* VROptionsMenu::options_screen_of(UWIDGET_MainMenu_InGame_C* menu) {
     if (!UKismetSystemLibrary::IsValid(menu)) return nullptr;
     UWIDGET_OptionsScreen_C* screen = menu->WIDGET_OptionsScreen;
     return UKismetSystemLibrary::IsValid(screen) ? screen : nullptr;
@@ -161,6 +178,26 @@ void VROptionsMenu::apply_panel_material(U_WIDGET_OptionsMenu_VR_C* page) {
     background->SetBrushFromMaterial(material);
 }
 
+// The page's list scrolls when its rows do not fit. Its scroll box has the engine's default
+// scrollbar, a grey thumb. The game's lists use the engine's style too, with only the thumb's
+// three brushes set to the game's tint materials. The same three materials are copied here
+// from the Gameplay list. Slate reads the brushes when it paints, so this works on a page that
+// is already shown.
+void VROptionsMenu::apply_scrollbar_style(UWIDGET_OptionsScreen_C* screen, U_WIDGET_OptionsMenu_VR_C* page) {
+    UWIDGET_OptionsMenu_Gameplay_C* gameplay = screen->WIDGET_OptionsMenu_Gameplay;
+    UWIDGET_OptionsMenu_GameplayList_C* game_list = gameplay != nullptr ? gameplay->WIDGET_OptionsMenu_GameplayList : nullptr;
+    UScrollBox* from = game_list != nullptr ? game_list->SCROLLBOX_OptionsMenuList : nullptr;
+    U_WIDGET_OptionsMenu_VRList_C* vr_list = page->_WIDGET_OptionsMenu_VRList();
+    UScrollBox* to = vr_list != nullptr ? vr_list->SCROLLBOX_OptionsMenuList() : nullptr;
+    if (from == nullptr || to == nullptr) {
+        API::get()->log_warn("[vr_options_menu][apply_scrollbar_style] Scroll box not found, scrollbar keeps the default style");
+        return;
+    }
+    to->WidgetBarStyle.NormalThumbImage.ResourceObject = from->WidgetBarStyle.NormalThumbImage.ResourceObject;
+    to->WidgetBarStyle.HoveredThumbImage.ResourceObject = from->WidgetBarStyle.HoveredThumbImage.ResourceObject;
+    to->WidgetBarStyle.DraggedThumbImage.ResourceObject = from->WidgetBarStyle.DraggedThumbImage.ResourceObject;
+}
+
 // The box of category items fills its canvas from the top. A negative top offset makes the box
 // start higher while its bottom stays put, so every item moves up by the same amount. The list
 // widget's own slot is left alone: ANIM_OpenOptionsSubscreen animates that one.
@@ -195,7 +232,7 @@ U_WIDGET_OptionsMenu_VR_C* VROptionsMenu::find_page(UWIDGET_OptionsScreen_C* scr
 // The page survived a plugin reload, or another instance installed it. Its rows already hold
 // the right values, so only the last-seen values are taken from them; nothing is pushed. The
 // material and the list shift are applied again: both are idempotent, and an install that
-// failed half way may have skipped them.
+// failed half way may have skipped them. The scrollbar style is set again for the same reason.
 void VROptionsMenu::adopt_page(UWIDGET_OptionsScreen_C* screen) {
     s_installed_screen = screen;
     s_page = find_page(screen);
@@ -204,6 +241,7 @@ void VROptionsMenu::adopt_page(UWIDGET_OptionsScreen_C* screen) {
         return;
     }
     apply_panel_material(s_page);
+    apply_scrollbar_style(screen, s_page);
     shift_category_list(screen);
     s_page_open = is_page_open(screen);
     VROptionsSync::adopt(s_page);
@@ -219,6 +257,7 @@ void VROptionsMenu::watch_page(UWIDGET_OptionsScreen_C* screen) {
     const bool open = is_page_open(screen);
     if (open && !s_page_open) VROptionsSync::push(s_page);
     s_page_open = open;
+    if (open) VROptionsSync::snap_sliders(s_page);
     if (VROptionsSync::pull(s_page)) s_settings_changed = true;
 }
 

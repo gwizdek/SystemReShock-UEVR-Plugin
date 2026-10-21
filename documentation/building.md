@@ -27,6 +27,7 @@ built from a separate Unreal Engine 4.27 project, described at the end.
 | `SystemShockVR/uevr/` | The UEVR plugin API headers. |
 | `SystemShockVR/imgui/`, `SystemShockVR/rendering/` | Dear ImGui and the DX11/DX12 hooks for the plugin's debug view. |
 | `tools/UEVRBridgeGen/` | The BridgeSDK generator, an Unreal editor plugin. |
+| `tools/AssetGen/` | The generator of the mod's own assets (options page, HUD materials, button atlas), an Unreal editor plugin. |
 | `uobjecthook/`, `utils/` | Files that belong in the UEVR profile folder, not in the build. |
 | `assets/` | Modified game widget assets used by the Unreal project. |
 | `documentation/` | These documents. |

@@ -217,6 +217,7 @@ public:
     void apply_vr_options_menu_settings();
     void handle_lean();
     void handle_cyberspace_look_pivot(const UEVR_VRData* vr);
+    void apply_cyberspace_vr_settings(const UEVR_VRData* vr);
     void cleanup_pointers();
     bool is_valid_vr_body_hacker_implant_pawn();
     bool is_valid_vr_body_hacker_simple_pawn();

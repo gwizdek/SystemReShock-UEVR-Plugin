@@ -68,6 +68,11 @@
 #include "vr_snap_turn.hpp"
 #include "vr_settings.hpp"
 #include "cyberspace_atmosphere_fix.hpp"
+#include "cyberspace_body_turn.hpp"
+#include "cyberspace_pitch_snap.hpp"
+#include "cyberspace_head_steering.hpp"
+#include "cyberspace_flight_reticle.hpp"
+#include "roomscale_sweep_setting.hpp"
 #include "focus_interaction_patch.hpp"
 #include "vr_input_actions.hpp"
 #include "vr_button_atlas.hpp"
@@ -103,13 +108,16 @@ void load_mod_utility_classes() {
         L"/Game/Mods/Utils/_BP_DebugLog._BP_DebugLog_C", U_BP_DebugLog_C::BridgeClassRef());
 }
 
-// Menus step through their items on a small stick tilt, so the left stick only counts past a
-// high threshold there. Used on the title screen and in the pause menu.
+// Menus step through their items on a small stick tilt, so the left stick, which moves through
+// them, only counts past this part of its range there.
+constexpr float kMenuStickDeadzone = 0.75f * 0x7FFF;
+
+// Used on the title screen and in every pause menu, cyberspace's included.
 void apply_menu_stick_deadzone(XINPUT_STATE* state) {
-    if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
+    if (std::abs(state->Gamepad.sThumbLX) < kMenuStickDeadzone) {
         state->Gamepad.sThumbLX = 0;
     }
-    if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
+    if (std::abs(state->Gamepad.sThumbLY) < kMenuStickDeadzone) {
         state->Gamepad.sThumbLY = 0;
     }
 }
@@ -338,19 +346,31 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
 
         handle_deferred_camera_reset(delta);
         handle_cyberspace_look_pivot(vr);
+        VRAvatar::update_aim(vr, delta);
+        if (m_game_state.get() == GAME_STATE_CYBERSPACE) {
+            CyberspaceBodyTurn::handle(m_pawn.get(), vr);
+            CyberspaceHeadSteering::handle_tick(m_pawn.get(), vr);
+            CyberspacePitchSnap::handle_tick(m_pawn.get(), delta);
+            CyberspaceFlightReticle::handle(m_world, m_pawn.get());
+        }
         handle_media_display();
         update_trailing_rotation(delta);
         handle_ads();
         handle_head_lamp();
         CyberspaceAtmosphereFix::handle(m_world);
-        FocusInteractionPatch::handle();
         VRInputActions::handle();
         VRButtonAtlas::handle();
-        TutorialMessages::handle();
-        TutorialPopupDuration::handle(m_world);
         LegendIconSizePatch::handle();
         VRButtonAtlasIndexPatch::handle();
-        TutorialHeadView::handle(m_world, g_vr_body);
+        // Focusable interactables and tutorial popups exist only outside cyberspace, where the
+        // player is a Hacker pawn. The button legend patches above are also needed in
+        // cyberspace: its pause menu and pickup windows show legends.
+        if (m_pawn_state.get() != PAWN_AVATAR) {
+            FocusInteractionPatch::handle();
+            TutorialMessages::handle();
+            TutorialPopupDuration::handle(m_world);
+            TutorialHeadView::handle(m_world, g_vr_body);
+        }
         VROptionsMenu::handle(m_neural_hud, m_pawn.get());
         if (VROptionsMenu::consume_settings_change()) {
             apply_vr_options_menu_settings();
@@ -442,8 +462,9 @@ void UEVRPlugin::on_pre_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceH
     }
 }
 
-void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int, float, UEVR_Vector3f*, UEVR_Rotatorf* rotation, bool) {
+void UEVRPlugin::on_post_calculate_stereo_view_offset(UEVR_StereoRenderingDeviceHandle, int, float world_to_meters, UEVR_Vector3f*, UEVR_Rotatorf* rotation, bool) {
     try {
+        VRAvatar::set_world_to_meters(world_to_meters);
         VRSnapTurn::after_view_offset();
         VRMFD::save_view_rotation(rotation);
     }
@@ -605,8 +626,10 @@ void UEVRPlugin::prepare_game_state() {
         if (PluginUtils::is_a<APAWN_Avatar_C>(m_pawn.get())) {
             m_pawn_state.set_value(PAWN_AVATAR);
 
-            // GAME_STATE_PAUSE_MENU
-            static_cast<UWIDGET_CyberspaceHUD_C*>(static_cast<APAWN_Avatar_C*>(m_pawn.get())->CyberspaceUI)->GetMainMenuWidget(&main_menu);
+            // GAME_STATE_PAUSE_MENU. The cyberspace HUD's GetMainMenuWidget returns null (checked
+            // live with the menu open), so its menu widget is read directly.
+            UWIDGET_CyberspaceHUD_C* cyber_hud = static_cast<APAWN_Avatar_C*>(m_pawn.get())->CyberspaceUI;
+            main_menu = UKismetSystemLibrary::IsValid(cyber_hud) ? cyber_hud->WIDGET_MainMenu_InGame : nullptr;
             if (main_menu != nullptr && main_menu->IsMainMenuEnabled) {
                 m_game_state.set_value(GAME_STATE_PAUSE_MENU);
                 return;
@@ -751,36 +774,14 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
             return;
         }
 
+        // The game's own cyberspace bindings fit VR as they are: right stick turns and pitches,
+        // grips (shoulders) roll, A and B ascend and descend, triggers fire. Only the pause
+        // menu needs a button, because UEVR keeps the controllers' menu buttons. With pitch snap
+        // turn on, the plugin takes the right stick's pitch over. The left stick, A and B go
+        // through the plugin, so the flight follows the head's pitch.
         if (m_game_state.get() == GAME_STATE_CYBERSPACE) {
-
-            //// change control scheme on RS
-            //if (m_gamepad_right_thumb.is_pressed()) {
-            //    m_cyberspace_aim_method = m_cyberspace_aim_method == 0 ? 2 : 0;
-
-            //    if (m_cyberspace_aim_method == 0) {
-            //        vr->recenter_view();
-            //    }
-
-            //    vr->set_aim_method(m_cyberspace_aim_method);
-            //    vr->set_decoupled_pitch_enabled(m_cyberspace_aim_method == 2);
-            //}
-
-            handle_smooth_turning(state);
-
-            m_gamepad_right_shoulder.when_held_send(state, XINPUT_GAMEPAD_A);
-            m_gamepad_right_shoulder.mute_state(state);
-            m_gamepad_left_shoulder.when_held_send(state, XINPUT_GAMEPAD_B);
-            m_gamepad_left_shoulder.mute_state(state);
-
-            if (state->Gamepad.sThumbRY > INPUT_DEADZONE_MED) {
-                state->Gamepad.sThumbRX = 0;
-                m_gamepad_btn_a.force_state(state);
-            }
-            else if (state->Gamepad.sThumbRY < -INPUT_DEADZONE_MED) {
-                state->Gamepad.sThumbRX = 0;
-                m_gamepad_btn_b.force_state(state);
-            }
-
+            CyberspacePitchSnap::handle_input(state);
+            CyberspaceHeadSteering::handle_input(state);
             if (m_gamepad_right_thumb.is_pressed()) {
                 SDK::FKey key_name{ .KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"Escape") };
                 static_cast<SDK::APAWN_Avatar_C*>(m_pawn.get())->InpActEvt_Locked_Escape_K2Node_InputActionEvent_96(key_name);
@@ -1317,6 +1318,7 @@ void UEVRPlugin::handle_game_state_change() {
                         vr->set_mod_value("UI_Y_Offset", "-0.10000");
                         vr->set_mod_value("VR_RoomscaleMovement", "true");
                         vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
+                        vr->set_mod_value("VR_ControllerPitchOffset", "-25.000000");
                         vr->recenter_view();
 
                         if (UKismetSystemLibrary::IsValid(m_neural_hud)) {
@@ -1367,41 +1369,7 @@ void UEVRPlugin::handle_game_state_change() {
 
                 case GAME_STATE_CYBERSPACE:
                     if (PluginUtils::is_a<APAWN_Avatar_C>(m_pawn.get())) {
-                        //APAWN_Avatar_C* pawn = static_cast<APAWN_Avatar_C*>(m_pawn.get());
-                        //VRAvatar::initialize_vr_avatar(pawn);
-                        ////g_vr_body->VRBodyMesh()->SetVisibility(true, false);
-                        //API::UObjectHook::set_disabled(false);
-                        //vr->set_aim_method(0);                      // Game mode
-                        //vr->set_decoupled_pitch_enabled(false);
-                        //vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
-                        //vr->set_mod_value("VR_CameraUpOffset", "0.000000");
-                        //vr->set_mod_value("UI_Distance", "4.000000");
-                        //vr->set_mod_value("UI_Size", "2.000000");
-                        //vr->set_mod_value("UI_Y_Offset", "0.00000");
-                        //vr->set_mod_value("VR_RoomscaleMovement", "true");
-                        //vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                        //vr->set_mod_value("VR_DecoupledPitch", "false");
-                        //PluginUtils::reset_height(0.f);
-                        //vr->recenter_view();
-
-                        m_pawn.get()->bUseControllerRotationPitch = true;
-                        m_pawn.get()->bUseControllerRotationRoll = true;
-                        m_pawn.get()->bUseControllerRotationYaw = true;
-
-                        vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
-                        vr->set_mod_value("VR_CameraUpOffset", "0.000000");
-                        vr->set_mod_value("UI_Distance", "4.000000");
-                        vr->set_mod_value("UI_Size", "2.000000");
-                        vr->set_mod_value("UI_Y_Offset", "0.00000");
-                        vr->set_aim_method(2);
-                        vr->set_snap_turn_enabled(false);
-                        vr->set_decoupled_pitch_enabled(true);
-                        vr->set_mod_value("VR_RoomscaleMovement", "false");
-                        vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
-                        vr->recenter_view();
-
-                        API::UObjectHook::set_disabled(true);
-                        PluginUtils::reset_height(0.f);
+                        apply_cyberspace_vr_settings(vr);
                     }
                     break;
 
@@ -1532,6 +1500,15 @@ void UEVRPlugin::handle_level_change() {
             cleanup_actors();
             cleanup_pointers();
 
+            // Cyberspace turns UEVR's roomscale sweep off; any other pawn gets the player's
+            // own value back. See roomscale_sweep_setting.hpp.
+            if (m_pawn_state.get() == PAWN_AVATAR) {
+                RoomscaleSweepSetting::disable_for_cyberspace();
+            }
+            else {
+                RoomscaleSweepSetting::restore();
+            }
+
             // Hacker Implant - Citadel Station (normal space)
             if (
                 SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
@@ -1603,6 +1580,15 @@ void UEVRPlugin::handle_level_change() {
                 else {
                     API::get()->log_error("[plugin][handle_level_change] Expected valid g_vr_body");
                 }
+                return;
+            }
+
+            // Hacker Avatar - Cyberspace
+            if (
+                SDK::UKismetSystemLibrary::IsValid(m_pawn.get()) &&
+                PluginUtils::is_a<APAWN_Avatar_C>(m_pawn.get())
+                ) {
+                VRAvatar::initialize_vr_avatar(static_cast<APAWN_Avatar_C*>(m_pawn.get()));
                 return;
             }
 
@@ -1836,6 +1822,9 @@ void UEVRPlugin::cleanup_actors() {
             API::get()->log_error("[plugin][cleanup_actors] Invalid World");
             return;
         }
+
+        // The cyberspace avatar must not aim with a component of the VR avatar destroyed below.
+        VRAvatar::restore_game_camera();
 
         // Both mod actors are found by tag. A class lookup would throw when the class is
         // not loaded, which is the normal state after a trip through the title screen.
@@ -2267,6 +2256,35 @@ void UEVRPlugin::try_set_intro_laptop_pointer() {
     catch (...) {
         API::get()->log_error("[plugin][set_intro_laptop_pointer] Exception");
     }
+}
+
+// The game turns the avatar actor itself (pitch, yaw, roll and the roll snap), so the pawn
+// must not follow the control rotation, and UEVR must pass the game's view rotation through
+// unchanged: aim method "game", decoupled pitch off. The HMD rotation is applied on top of it.
+// UObjectHook moves the VR avatar's motion controllers, which carry the aim camera; it is
+// enabled only when the VR avatar exists, because the profile's camera path needs it.
+void UEVRPlugin::apply_cyberspace_vr_settings(const UEVR_VRData* vr) {
+    m_pawn.get()->bUseControllerRotationPitch = false;
+    m_pawn.get()->bUseControllerRotationRoll = false;
+    m_pawn.get()->bUseControllerRotationYaw = false;
+
+    vr->set_aim_method(0);
+    vr->set_decoupled_pitch_enabled(false);
+    vr->set_snap_turn_enabled(false);
+    vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+    vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+    vr->set_mod_value("UI_Distance", "3.500000");
+    vr->set_mod_value("UI_Size", "3.500000");
+    vr->set_mod_value("UI_Y_Offset", "0.00000");
+    // UEVR moves the avatar by the head's horizontal offset, turned by the full view rotation,
+    // so a real step goes along the avatar's own floor even when it is rolled.
+    vr->set_mod_value("VR_RoomscaleMovement", "true");
+    vr->set_mod_value("VR_DecoupledPitchUIAdjust", "false");
+    // The station uses -25; the aim reticle and the shots must follow the controller as it is.
+    vr->set_mod_value("VR_ControllerPitchOffset", "0.000000");
+
+    API::UObjectHook::set_disabled(!VRAvatar::is_active());
+    PluginUtils::full_vr_center();
 }
 
 void UEVRPlugin::handle_cyberspace_look_pivot(const UEVR_VRData* vr) {

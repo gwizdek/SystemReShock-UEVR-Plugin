@@ -46,6 +46,7 @@
 #include "_STRUCT_MontageMeta_structs.hpp"
 #include "_STRUCT_UEVR_Options_structs.hpp"
 #include "_WIDGET_ActiveHazard_classes.hpp"
+#include "_WIDGET_AimReticle_classes.hpp"
 #include "_WIDGET_DebugWidget_classes.hpp"
 #include "_WIDGET_DebugWidgetEntry_classes.hpp"
 #include "_WIDGET_OptionsMenu_VR_classes.hpp"
@@ -97,6 +98,7 @@ inline bool BridgeWarmupAll()
 	Ok &= U_OPTION_VR_Slider_C::BridgeWarmup();
 	Ok &= U_OPTION_VR_Toggle_C::BridgeWarmup();
 	Ok &= U_WIDGET_ActiveHazard_C::BridgeWarmup();
+	Ok &= U_WIDGET_AimReticle_C::BridgeWarmup();
 	Ok &= U_WIDGET_DebugWidget_C::BridgeWarmup();
 	Ok &= U_WIDGET_DebugWidgetEntry_C::BridgeWarmup();
 	Ok &= U_WIDGET_OptionsMenu_VR_C::BridgeWarmup();

@@ -14,6 +14,7 @@ namespace SDK
 class APAWN_Avatar_C;
 class UMotionControllerComponent;
 class USceneComponent;
+class UWidgetComponent;
 
 // BlueprintGeneratedClass /Game/Mods/VRAvatar/_BP_VRAvatar._BP_VRAvatar_C
 class A_BP_VRAvatar_C final : public AActor
@@ -30,6 +31,8 @@ public:
 	static class UClass* StaticClass() { return reinterpret_cast<class UClass*>(BridgeClass()); }
 	static A_BP_VRAvatar_C* GetDefaultObj() { return reinterpret_cast<A_BP_VRAvatar_C*>(BridgeClass()->get_class_default_object()); }
 
+	static bridge::Prop& BridgeProp_AimReticle() { static bridge::Prop Ref{ L"AimReticle" }; return Ref; }
+	class UWidgetComponent*& AimReticle() { return BridgeProp_AimReticle().ref<class UWidgetComponent*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_MotionControllerRight() { static bridge::Prop Ref{ L"MotionControllerRight" }; return Ref; }
 	class UMotionControllerComponent*& MotionControllerRight() { return BridgeProp_MotionControllerRight().ref<class UMotionControllerComponent*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_MotionControllerLeft() { static bridge::Prop Ref{ L"MotionControllerLeft" }; return Ref; }
@@ -50,6 +53,7 @@ public:
 		if (Cls == nullptr) { bridge::warm_skipped(BridgeClassPath); return false; }
 		bool Ok = true;
 		Ok &= bridge::warm(Cls, {
+			&BridgeProp_AimReticle(),
 			&BridgeProp_MotionControllerRight(),
 			&BridgeProp_MotionControllerLeft(),
 			&BridgeProp_UEVRCameraAttachComponent(),

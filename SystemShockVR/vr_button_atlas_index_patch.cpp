@@ -1,4 +1,5 @@
 #include "vr_button_atlas_index_patch.hpp"
+#include "object_lookup.hpp"
 
 #include <cstring>
 
@@ -153,7 +154,7 @@ void VRButtonAtlasIndexPatch::handle() {
 }
 
 void VRButtonAtlasIndexPatch::patch() {
-    auto* function = API::get()->find_uobject<API::UFunction>(kFunction);
+    auto* function = ObjectLookup::find<API::UFunction>(kFunction);
     if (function == nullptr) return;   // class not loaded yet
     auto& script = *reinterpret_cast<ScriptArray*>(reinterpret_cast<uint8_t*>(function) + kScriptOffset);
     const int32_t default_at = find_default(script);

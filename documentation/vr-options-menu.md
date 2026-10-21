@@ -13,16 +13,16 @@ Done:
 - The bytecode exporter writes widget trees (`widgets.json`), enums (`enums.json`), inherited
   default values and resolved object references. See `tools\BytecodeExporter\README.md`.
 - The game's Options screen is fully mapped (this document).
-- The generator (`tools\UEVRBridgeGen\GenerateMenu.ps1`, commandlet `VROptionsMenuGen`) creates
+- The generator (`tools\AssetGen\GenerateAssets.ps1`, commandlet `ModAssetGen`, generator `Menu`) creates
   the dummies and the mod widgets. They exist in the Unreal project
   (`D:\Unreal Engine\Projects\SystemReShock-UE4-Project`, its own git lfs repository, branch `vr-menu`).
 - The plugin trigger (`SystemShockVR\vr_options_menu.cpp`) creates the page and installs it.
 
 - The toggle row `_OPTION_VR_Toggle`, the slider row `_OPTION_VR_Slider` and their dummies.
 
-- The page content: two groups with the game's group header, "General" (Player Height, Auto Aim
-  Down Sights) and "Movement" (VR Look Sensitivity, Snap Turn, Angle, Deadzone). See the list
-  below.
+- The page content: three groups with the game's group header, "General" (Player Height, Auto
+  Aim Down Sights), "Movement" (VR Look Sensitivity, Snap Turn, Angle, Deadzone) and "Cyberspace"
+  (Pitch Snap Turn, Pitch Deadzone, Pitch Snap Duration, Crosshair Scale). See the list below.
 
 - The settings sync in the plugin (`SystemShockVR\vr_options_sync.cpp`, `vr_setting_store.cpp`,
   `vr_settings.cpp`): the rows get their values from their stores after the install and each
@@ -189,16 +189,16 @@ holds references to the live widgets.
 
 ## Design
 
-Three kinds of assets in the Unreal project, plus one plugin change. The commandlet in
-`tools\UEVRBridgeGen\Source\UEVRBridgeGen\Private\MenuGen\` creates every asset:
+Three kinds of assets in the Unreal project, plus one plugin change. The `Menu` generator in
+`tools\AssetGen\Source\AssetGen\Private\MenuGen\` creates every asset:
 `MenuGenDummies.cpp` holds the dummy list, `MenuGenModWidgets.cpp` the trees and the row and
 list functions, `MenuGenPageLogic.cpp` the page functions. Run it from the repository root with
 the Unreal editor closed:
 
 ```powershell
-.\tools\UEVRBridgeGen\GenerateMenu.ps1              # create what is missing
-.\tools\UEVRBridgeGen\GenerateMenu.ps1 -RebuildGen  # after a change under Source\
-.\tools\UEVRBridgeGen\GenerateMenu.ps1 -Overwrite   # create every asset again
+.\tools\AssetGen\GenerateAssets.ps1 -Only Menu              # create what is missing
+.\tools\AssetGen\GenerateAssets.ps1 -Only Menu -RebuildGen  # after a change under Source\
+.\tools\AssetGen\GenerateAssets.ps1 -Only Menu -Overwrite   # create every asset again
 ```
 
 An asset whose package already exists is kept and loaded, so the generator can be run again
@@ -257,7 +257,10 @@ as in the game's Interface list. `InitializeList` override: parent call,
 `PanelItemListWidget = SCROLLBOX_OptionsMenuList`. `InitializeItemArray` override: returns an
 array made of the row variables, in list order (no loop, since the generator knows every row).
 The headers are not list items, so they are not in that array and the controller skips them.
-The scrollbar materials can be set at runtime later; this is cosmetic.
+The list scrolls when the rows do not fit, with the mouse wheel, by dragging the scrollbar, and
+with the controller: the game's list base scrolls the highlighted row into view. The scroll box
+has the engine's default scrollbar style; the plugin gives its thumb the game's materials (see
+the plugin trigger below).
 
 The content is one table in the generator (`ListEntries` in `MenuGenModWidgets.cpp`), top to bottom:
 
@@ -271,8 +274,15 @@ The content is one table in the generator (`ListEntries` in `MenuGenModWidgets.c
 | `OPTION_VR_SnapTurn` | toggle | Snap Turn | `VR_SnapTurn` | | off | UEVR |
 | `OPTION_VR_SnapTurnAngle` | slider | Angle | `VR_SnapturnTurnAngle` | 10 to 90, 1 | 50 | UEVR |
 | `OPTION_VR_SnapTurnDeadzone` | slider | Deadzone | `VR_SnapturnJoystickDeadzone` | 0.05 to 0.50, 0.01 | 0.20 | UEVR |
+| `WIDGET_ListCategoryHeader_Cyberspace` | header | Cyberspace | | | | |
+| `OPTION_VR_CyberPitchSnapTurn` | toggle | Pitch Snap Turn | `pitch_snap_turn` | | on | ini `[cyberspace]` |
+| `OPTION_VR_CyberPitchDeadzone` | slider | Pitch Deadzone | `pitch_deadzone` | 0.00 to 1.00, 0.01 | 0.75 | ini `[cyberspace]` |
+| `OPTION_VR_CyberPitchSnapDuration` | slider | Pitch Snap Duration | `pitch_snap_duration` | 0.00 to 1.00 s, 0.01 | 0.70 | ini `[cyberspace]` |
+| `OPTION_VR_CyberCrosshairScale` | slider | Crosshair Scale | `crosshair_scale` | 50 to 150 %, 10 | 100 | ini `[cyberspace]` |
 
 The "Stored in" column is decided in the plugin, not in the Blueprint (see "Settings sync").
+The pitch rows are used by `CyberspacePitchSnap` and Crosshair Scale by `VRAvatar`, see
+`cyberspace-controls.md`.
 
 **`_OPTION_VR_Toggle`**, child of `WIDGET_Settings_BinaryToggle`, and **`_OPTION_VR_Slider`**,
 child of `WIDGET_Settings_Slider`. No tree, no own widgets. A row is its own store: instance
@@ -294,10 +304,13 @@ about the game's slider control shape the slider row:
 - `SetSliderRealValue` moves the handle and the text but not the bar's fill. The mouse path goes
   through `SetSliderValue`, which ends with `UpdateBackgroundFill`. So the row calls
   `UpdateBackgroundFill` itself after every set, or the fill shows the old value.
-- A mouse drag is not snapped to the discrete positions, so the slider can rest at 5.32 while its
-  text shows 5. The row's own pure function `GetCurrentValue()` snaps `GetScaledCurrentSliderValue()`
-  to the instance variable `Step` (default 1), and every compare and the accept use it. After Apply
-  the handle is moved onto the stored step. The compares use a tolerance of 0.001.
+- A mouse drag is not snapped to the discrete positions. The game's `WIDGET_Slider` snaps only
+  in `SetSliderRealValue`; a drag sets the value from the mouse position, and the text shows that
+  value, such as 115 % on a slider with steps of 10. While the page is open, the plugin puts every
+  slider that is off its row's `Step` back on the nearest step each tick
+  (`VROptionsSync::snap_sliders`), so the handle jumps from step to step during a drag. The row's
+  own pure function `GetCurrentValue()` also snaps `GetScaledCurrentSliderValue()` to `Step`
+  (default 1), and every compare and the accept use it. The compares use a tolerance of 0.001.
 
 Row instances in the list set `ItemName`, `ItemDescription`, `SettingName`, `DefaultValue` and
 `SavedValue`. A slider row also sets `Step` and the six `Slider*` variables of its parent;
@@ -321,7 +334,7 @@ six category icons follow one recipe, and the VR icon copies it:
   few pixels from the edge, with details cut out as negative space. The game packs three icons
   into one texture, one per colour channel, and leaves alpha at 255. The mod's
   `T_OptionsIcons_VR` holds one icon in R, G and B alike. Its source is
-  `tools\UEVRBridgeGen\Resources\MenuGen\T_OptionsIcons_VR.png`, drawn by `draw_vr_icon.py` next to
+  `tools\AssetGen\Resources\MenuGen\T_OptionsIcons_VR.png`, drawn by `draw_vr_icon.py` next to
   it: a chamfered headset with two lenses, a nose notch and strap tabs.
 - **Material.** A UI-domain, translucent material per icon. Colour is the collection parameter
   `UIBackgroundTint1` of `MPC_UserTintParameters`, opacity is the mask. In the game the icons are
@@ -334,7 +347,7 @@ A material that reads a parameter collection is compiled against the collection'
 and records its `StateId`. In the game the reference resolves to the real collection, and the
 material gets the live tint buffer only when the `StateId` matches. So the dummy collection at the
 game's path copies the `StateId`, every vector parameter in the game's order and each parameter's
-`Id`, all read from the cooked asset. The values are in `MenuGenIcon.cpp`. The dummy is in chunk 0,
+`Id`, all read from the cooked asset. The values are in `AssetGen\AssetGenTint.cpp`. The dummy is in chunk 0,
 like the other dummies, and never ships.
 
 ### 3. The page's `Install` function
@@ -385,24 +398,37 @@ Nothing else is needed for the other directions:
 ### 4. Plugin trigger
 
 `VROptionsMenu::handle` in `SystemShockVR\vr_options_menu.cpp` runs every engine tick on the game
-thread with the player HUD. With a HUD it reaches the pause menu's screen through
-`WIDGET_PlayerHUD.WIDGET_MainMenu_InGame.WIDGET_OptionsScreen`. When the pawn is a `PAWN_PlayerGhost` the game is at
-the title screen, and it takes `PAWN_PlayerGhost.PreGameScreenWidget.WIDGET_SplashScreen_Title.WIDGET_OptionsScreen`
-instead. The pawn decides, not the HUD pointer: the plugin clears that pointer on level change, and
-a freed widget can still pass a validity check. Each screen is a separate instance, so each gets
-its own page.
+thread with the player HUD and the pawn. The pawn picks the screen:
+
+| Pawn | Screen |
+|---|---|
+| `PAWN_PlayerGhost` (title screen) | `PAWN_PlayerGhost.PreGameScreenWidget.WIDGET_SplashScreen_Title.WIDGET_OptionsScreen` |
+| `PAWN_Avatar` (cyberspace) | `PAWN_Avatar.CyberspaceUI.WIDGET_MainMenu_InGame.WIDGET_OptionsScreen` |
+| any other pawn (station) | `WIDGET_PlayerHUD.WIDGET_MainMenu_InGame.WIDGET_OptionsScreen` |
+
+The HUD pointer alone cannot decide. The plugin clears that pointer on level change, and a
+freed widget can still pass a validity check. In cyberspace the station pawn and its HUD still
+exist below the map, so the HUD would give a pause menu that is not shown. Each screen is a
+separate instance, so each gets its own page.
 It stops for that screen after three failed attempts, counting both the install and the
 settings sync, so a pak and plugin that do not match cannot log an error every tick.
 `cleanup_pointers` resets the count on level change. When the screen is the one already
 installed, it only runs the settings sync. Otherwise it waits until `MenuListItemArray` holds six
 items. If the category box already has a seventh child (the page survives a plugin reload), it
-adopts that page: it finds the page in the screen's grid and sets the background material and
-the list shift again. Both are safe to repeat. Else it loads the page class with
-`load_class_for_bridge`, creates the page with `WidgetBlueprintLibrary.Create`, calls
+adopts that page: it finds the page in the screen's grid and sets the background material, the
+scrollbar style and the list shift again. All three are safe to repeat. Else it loads the page
+class with `load_class_for_bridge`, creates the page with `WidgetBlueprintLibrary.Create`, calls
 `Install(screen)` through the BridgeSDK wrapper, sets the game's `MAT_SubMenu_ListPanel` material
-on `IMAGE_PanelBackground`, moves the category box up by `kCategoryListShift` units (its canvas
-slot gets a negative top offset) so the seventh item stays on screen, and only then syncs the
-settings. A failing sync therefore cannot hide the category.
+on `IMAGE_PanelBackground`, sets the scrollbar style, moves the category box up by
+`kCategoryListShift` units (its canvas slot gets a negative top offset) so the seventh item stays
+on screen, and only then syncs the settings. A failing sync therefore cannot hide the category.
+
+The scrollbar style: the game's lists keep the engine's default scrollbar style and set only the
+`ResourceObject` of the thumb's three brushes, to `MAT_UIPrimaryColor`, `_Highlighted` and
+`_Accent`. The mod pak holds no game art, so `apply_scrollbar_style` copies those three pointers
+from the Gameplay list's scroll box into `WidgetBarStyle` of the VR list's scroll box. Without it
+the VR list shows the engine's grey thumb. Slate reads the brushes when it paints, so the change
+also shows on a page that is already in the screen.
 
 ### Settings sync
 
@@ -422,6 +448,12 @@ binding lists (`s_sliders`, `s_toggles`) hold one line per row:
 
   [movement]
   vr_look_sensitivity = 5
+
+  [cyberspace]
+  pitch_snap_turn = 1
+  pitch_deadzone = 0.75
+  pitch_snap_duration = 0.7
+  crosshair_scale = 100
   ```
 
   Older plugin versions kept `vr_look_sensitivity` in `[general]`. When `VRSettings` reads the
@@ -451,7 +483,10 @@ The sync runs from `VROptionsMenu`:
 - When the page is already in the screen (plugin reload), `adopt_page` finds it in the screen's
   grid, and `VROptionsSync::adopt` takes the last-seen values from its rows without changing them.
 - The plugin reads the ini values it acts on through `VRSettings`: `look_sensitivity()` for the
-  right thumbstick turn speed (clamped to 1..10), `player_height()` and `auto_ads()`.
+  right thumbstick turn speed (clamped to 1..10), `player_height()`, `auto_ads()`, and
+  `pitch_snap_turn()`, `pitch_deadzone()`, `pitch_snap_duration()` and `crosshair_scale()`
+  for cyberspace. The cyberspace values are read when they are used, so Apply needs no extra
+  step for them.
 - After a save, `consume_settings_change` returns true once, and `plugin.cpp` calls
   `apply_vr_options_menu_settings`. It sets `m_ui_option_auto_ads_enabled` from `auto_ads()` and
   calls `VRBody::apply_custom_vr_game_options`. That function also runs after every VR body
@@ -459,7 +494,7 @@ The sync runs from `VROptionsMenu`:
   `AdjustComponentsToPlayerHeight` with it. When auto ADS is turned off while the player aims,
   `handle_ads` releases the aim once.
 
-A new row needs an entry in the generator's `ListEntries`, a run of `GenerateMenu.ps1 -Overwrite`
+A new row needs an entry in the generator's `ListEntries`, a run of `GenerateAssets.ps1 -Only Menu -Overwrite`
 and `Generate.ps1`, and one line in the binding lists in `vr_options_sync.cpp`.
 
 ## Risks and checks for the spike (step 2)

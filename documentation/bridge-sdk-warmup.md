@@ -139,6 +139,27 @@ needs no change: `A_BP_VRBody_C` is resolved when the VR body is spawned, which
 happens before the first warm-up, so this line appears for it once per
 injection.
 
+## Checking again and again for a class that may not be loaded
+
+Some modules check every 600 ticks whether a game class or function is loaded, so they can
+patch it: `FocusInteractionPatch`, `LegendIconSizePatch`, `TutorialHeadView`,
+`TutorialMessages`, `VRButtonAtlas` and `VRButtonAtlasIndexPatch`. They must not use
+`API::find_uobject` for that. `find_uobject` builds the full name string of every object and
+compares them. It answers a hit from its cache at once, but a miss walks the whole object
+array: about 105 ms with 176k objects. With `PUZZLE_Base` not loaded in cyberspace, that was a
+visible stutter every 600 ticks.
+
+They use `ObjectLookup::find` (`SystemShockVR/object_lookup.cpp`) instead. It takes the same
+full name, `<Class> /Package/Path.Outer.Name`, turns each name in it into an `FName` once, and
+compares the FName numbers of each object, its outers and its class, without building strings.
+A miss over 176k objects takes about 0.6 ms. A hit is remembered by its object array index and
+checked again on the next call, so an object that was unloaded and loaded again is found anew.
+The first five misses are logged with their duration:
+`[object_lookup][scan] <name> not loaded, scanned <n> objects in <t> us`.
+
+Use it for any lookup that runs during gameplay and may miss. A one-time lookup at a level
+change can stay with `find_uobject`.
+
 ## What the warm-up does not cover
 
 - **Interface functions.** The static functions in `I_BI_VRWeapon_C`,
@@ -163,6 +184,7 @@ injection.
 | `SDK::BridgeWarmupAll()` | `SystemShockVR/BridgeSDK/BridgeSDK.hpp` |
 | `SDK::BridgeWarmupUsed()` | `SystemShockVR/bridge_warmup_used.hpp` |
 | `PluginUtils::warmup_bridge()` | `SystemShockVR/plugin_utils.cpp` |
+| `ObjectLookup::find()` | `SystemShockVR/object_lookup.cpp` |
 | Call sites | `SystemShockVR/plugin.cpp`, `handle_level_change` |
 
 The BridgeSDK headers are generated. Do not edit them by hand. The generator and

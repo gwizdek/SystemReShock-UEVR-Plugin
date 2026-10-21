@@ -1,0 +1,19 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.0",
+  "FriendlyName": "Asset Generator",
+  "Description": "Commandlet that creates the mod's generated assets: the VR options page, replacement HUD materials and textures, and the VR controller button atlas.",
+  "Category": "Modding",
+  "CreatedBy": "gwizdek",
+  "CanContainContent": false,
+  "IsBetaVersion": false,
+  "Installed": false,
+  "Modules": [
+    {
+      "Name": "AssetGen",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 #include "vr_button_atlas.hpp"
+#include "object_lookup.hpp"
 
 #include "uevr/API.hpp"
 #include "SDK/Engine_classes.hpp"
@@ -70,7 +71,7 @@ SDK::UObject* VRButtonAtlas::load_object(const wchar_t* object_path) {
 // The loaded widget class, or loads it. Loading it early means the class default object is
 // patched before any menu or popup package brings in templates of it.
 SDK::UClass* VRButtonAtlas::find_widget_class() {
-    auto* widget_class = API::get()->find_uobject<SDK::UClass>(kWidgetClassName);
+    auto* widget_class = ObjectLookup::find<SDK::UClass>(kWidgetClassName);
     if (widget_class != nullptr) return widget_class;
     return PluginUtils::load_class(kWidgetClassPath);
 }

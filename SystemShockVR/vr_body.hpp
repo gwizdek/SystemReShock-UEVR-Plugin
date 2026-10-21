@@ -39,7 +39,7 @@ public:
     static void initialize_active_hazard(SDK::UWIDGET_PlayerHUD_C* neural_hud);
 
     // Unread media (email) icon: moved from the left screen edge to the top centre, under the
-    // scan text, where the headset shows it. Its material is replaced by the Core pak.
+    // compass, where the headset shows it. Its material is replaced by the Core pak.
     static void initialize_unread_media_icon(SDK::UWIDGET_PlayerHUD_C* neural_hud);
 
     static void initialize_hand_item_collisions();

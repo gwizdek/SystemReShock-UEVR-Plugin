@@ -1,0 +1,10 @@
+# Build output written here by Unreal when the plugin is junctioned into a project.
+Binaries/
+Intermediate/
+
+# PNGs made from the game's own textures. They are not ours to share. The scripts next to
+# them make them again from the asset dump in dumps\ (see README.md).
+Resources/CyberHud/*.png
+Resources/HudIcon/*.png
+Resources/ButtonAtlas/T_VRButtonLayout.png
+Resources/ButtonAtlas/T_VRButtonLayout_preview.png

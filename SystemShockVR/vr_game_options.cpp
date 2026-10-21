@@ -50,12 +50,12 @@ void VRGameOptions::apply() {
 SDK::USAVE_Settings_C* VRGameOptions::find_settings() {
     auto* settings_class = API::get()->find_uobject<API::UClass>(kSettingsClass);
     if (settings_class == nullptr) {
-        API::get()->log_error("[vr_game_options][find_settings] Could not apply VR specific game options : missing class");
+        API::get()->log_error("[vr_game_options][find_settings] SAVE_Settings class not loaded");
         return nullptr;
     }
     auto* settings = settings_class->get_first_object_matching<SDK::USAVE_Settings_C>();
     if (settings == nullptr || !PluginUtils::is_a<SDK::USAVE_Settings_C>(settings)) {
-        API::get()->log_error("[vr_game_options][find_settings] Could not apply VR specific game options");
+        API::get()->log_error("[vr_game_options][find_settings] No SAVE_Settings object");
         return nullptr;
     }
     return settings;

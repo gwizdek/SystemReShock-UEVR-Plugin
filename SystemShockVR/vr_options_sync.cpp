@@ -7,6 +7,7 @@
 
 #include "uevr/API.hpp"
 #include "SDK/WIDGET_MenuListBase_classes.hpp"
+#include "SDK/WIDGET_Slider_classes.hpp"
 #include "BridgeSDK/_WIDGET_OptionsMenu_VRList_classes.hpp"
 #include "BridgeSDK/_OPTION_VR_Slider_classes.hpp"
 #include "BridgeSDK/_OPTION_VR_Toggle_classes.hpp"
@@ -35,9 +36,10 @@ using ToggleBinding = RowBinding<U_OPTION_VR_Toggle_C, bool>;
 
 IniSectionStore s_general{ VRSettings::kGeneral };
 IniSectionStore s_movement{ VRSettings::kMovement };
+IniSectionStore s_cyberspace{ VRSettings::kCyberspace };
 UevrSettingStore s_uevr;
 
-SettingStore* const s_stores[] = { &s_general, &s_movement, &s_uevr };
+SettingStore* const s_stores[] = { &s_general, &s_movement, &s_cyberspace, &s_uevr };
 
 // Every row of the page and where its value lives. A new row needs one line here.
 SliderBinding s_sliders[] = {
@@ -45,11 +47,15 @@ SliderBinding s_sliders[] = {
     { &List::OPTION_VR_LookSensitivity, &s_movement, 0.f },
     { &List::OPTION_VR_SnapTurnAngle, &s_uevr, 0.f },
     { &List::OPTION_VR_SnapTurnDeadzone, &s_uevr, 0.f },
+    { &List::OPTION_VR_CyberPitchDeadzone, &s_cyberspace, 0.f },
+    { &List::OPTION_VR_CyberPitchSnapDuration, &s_cyberspace, 0.f },
+    { &List::OPTION_VR_CyberCrosshairScale, &s_cyberspace, 0.f },
 };
 
 ToggleBinding s_toggles[] = {
     { &List::OPTION_VR_AutoAimDownSights, &s_general, false },
     { &List::OPTION_VR_SnapTurn, &s_uevr, false },
+    { &List::OPTION_VR_CyberPitchSnapTurn, &s_cyberspace, false },
 };
 
 template <class Fn>
@@ -73,6 +79,9 @@ float fit(U_OPTION_VR_Slider_C* row, float value) {
 }
 
 bool fit(U_OPTION_VR_Toggle_C*, bool value) { return value; }
+
+// A slider value closer to its step than this part of a step counts as on the step.
+constexpr float kSnapTolerance = 0.01f;
 
 template <class Binding>
 void push_row(List* list, Binding& binding) {
@@ -102,6 +111,24 @@ bool pull_row(List* list, Binding& binding) {
     return true;
 }
 
+// The game's WIDGET_Slider puts the value on its discrete positions only in
+// SetSliderRealValue. A mouse drag sets it straight from the mouse position, and the text
+// shows that value, for example 115 % on a slider with steps of 10. So a slider that is off its
+// step is set back onto it; during a drag the handle then jumps from step to step.
+void snap_row(List* list, SliderBinding& binding) {
+    auto* row = (list->*binding.row)();
+    if (row == nullptr) return;
+    UWIDGET_Slider_C* slider = nullptr;
+    row->GetSlider(&slider);
+    if (slider == nullptr) return;
+    float value = 0.f;
+    slider->GetRealValue(&value);
+    const float snapped = fit(row, value);
+    if (std::fabs(value - snapped) <= kSnapTolerance * std::max(row->Step(), 1e-6f)) return;
+    slider->SetSliderRealValue(snapped);
+    slider->UpdateBackgroundFill();
+}
+
 List* list_of(U_WIDGET_OptionsMenu_VR_C* page) {
     List* list = page != nullptr ? page->_WIDGET_OptionsMenu_VRList() : nullptr;
     if (list == nullptr) API::get()->log_error("[vr_options_sync][list_of] Page has no list, settings not synced");
@@ -124,6 +151,12 @@ void VROptionsSync::adopt(U_WIDGET_OptionsMenu_VR_C* page) {
     List* list = list_of(page);
     if (list == nullptr) return;
     for_each_binding([list](auto& binding) { adopt_row(list, binding); });
+}
+
+void VROptionsSync::snap_sliders(U_WIDGET_OptionsMenu_VR_C* page) {
+    List* list = page != nullptr ? page->_WIDGET_OptionsMenu_VRList() : nullptr;
+    if (list == nullptr) return;
+    for (SliderBinding& binding : s_sliders) snap_row(list, binding);
 }
 
 bool VROptionsSync::pull(U_WIDGET_OptionsMenu_VR_C* page) {

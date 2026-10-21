@@ -1,4 +1,5 @@
 #include "legend_icon_size_patch.hpp"
+#include "object_lookup.hpp"
 
 #include <cstdint>
 #include <cstdlib>
@@ -109,7 +110,7 @@ int32_t find_picture_size(const ScriptArray& script, float picture_size) {
 }
 
 ScriptArray* script_of(const wchar_t* function_name) {
-    auto* function = API::get()->find_uobject<API::UFunction>(function_name);
+    auto* function = ObjectLookup::find<API::UFunction>(function_name);
     if (function == nullptr) return nullptr;   // class not loaded yet
     return reinterpret_cast<ScriptArray*>(reinterpret_cast<uint8_t*>(function) + kScriptOffset);
 }

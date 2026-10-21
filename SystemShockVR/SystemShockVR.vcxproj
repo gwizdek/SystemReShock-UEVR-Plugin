@@ -173,6 +173,8 @@
     <ClInclude Include="SDK\Engine_classes.hpp" />
     <ClInclude Include="SDK\PAWN_Avatar_classes.hpp" />
     <ClInclude Include="vr_avatar.hpp" />
+    <ClInclude Include="vr_lock_on.hpp" />
+    <ClInclude Include="cyberspace_hud_layout.hpp" />
     <ClInclude Include="vr_body.hpp" />
     <ClInclude Include="rendering\d3d11.hpp" />
     <ClInclude Include="rendering\d3d12.hpp" />
@@ -184,6 +186,12 @@
     <ClInclude Include="vr_options_sync.hpp" />
     <ClInclude Include="vr_snap_turn.hpp" />
     <ClInclude Include="cyberspace_atmosphere_fix.hpp" />
+    <ClInclude Include="cyberspace_body_turn.hpp" />
+    <ClInclude Include="cyberspace_pitch_snap.hpp" />
+    <ClInclude Include="cyberspace_head_steering.hpp" />
+    <ClInclude Include="cyberspace_flight_reticle.hpp" />
+    <ClInclude Include="object_lookup.hpp" />
+    <ClInclude Include="roomscale_sweep_setting.hpp" />
     <ClInclude Include="focus_interaction_patch.hpp" />
     <ClInclude Include="vr_input_actions.hpp" />
     <ClInclude Include="vr_button_atlas.hpp" />
@@ -254,6 +262,8 @@
     <ClCompile Include="SDK\WIDGET_Compass_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_CyberspaceHUD_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_MenuListBase_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_Settings_Slider_functions.cpp" />
+    <ClCompile Include="SDK\WIDGET_Slider_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_HardwareButton_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_HotbarSlot_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_Minimap_functions.cpp" />
@@ -264,6 +274,8 @@
     <ClCompile Include="SDK\WIDGET_TargetID_Display_functions.cpp" />
     <ClCompile Include="SDK\WIDGET_VitalBars_functions.cpp" />
     <ClCompile Include="vr_avatar.cpp" />
+    <ClCompile Include="vr_lock_on.cpp" />
+    <ClCompile Include="cyberspace_hud_layout.cpp" />
     <ClCompile Include="vr_body.cpp" />
     <ClCompile Include="vr_item_selector.cpp" />
     <ClCompile Include="vr_mfd.cpp" />
@@ -273,6 +285,12 @@
     <ClCompile Include="vr_options_sync.cpp" />
     <ClCompile Include="vr_snap_turn.cpp" />
     <ClCompile Include="cyberspace_atmosphere_fix.cpp" />
+    <ClCompile Include="cyberspace_body_turn.cpp" />
+    <ClCompile Include="cyberspace_pitch_snap.cpp" />
+    <ClCompile Include="cyberspace_head_steering.cpp" />
+    <ClCompile Include="cyberspace_flight_reticle.cpp" />
+    <ClCompile Include="object_lookup.cpp" />
+    <ClCompile Include="roomscale_sweep_setting.cpp" />
     <ClCompile Include="focus_interaction_patch.cpp" />
     <ClCompile Include="vr_input_actions.cpp" />
     <ClCompile Include="vr_button_atlas.cpp" />

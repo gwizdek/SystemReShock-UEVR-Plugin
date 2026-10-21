@@ -35,9 +35,10 @@ useful to compare a new icon with the game's at the same size.
 
 | File | Role |
 |---|---|
-| `tools\UEVRBridgeGen\Resources\MenuGen\draw_vr_icon.py` | Draws the icon. Plain Python 3, no packages. |
-| `tools\UEVRBridgeGen\Resources\MenuGen\T_OptionsIcons_VR.png` | The drawn icon, the generator's input. |
-| `tools\UEVRBridgeGen\Source\UEVRBridgeGen\Private\MenuGen\MenuGenIcon.cpp` | Creates the texture, the material and the tint collection dummy in the Unreal project. |
+| `tools\AssetGen\Resources\MenuGen\draw_vr_icon.py` | Draws the icon. Plain Python 3, no packages. |
+| `tools\AssetGen\Resources\MenuGen\T_OptionsIcons_VR.png` | The drawn icon, the generator's input. |
+| `tools\AssetGen\Source\AssetGen\Private\MenuGen\MenuGenIcon.cpp` | Creates the texture and the material in the Unreal project. |
+| `tools\AssetGen\Source\AssetGen\Private\AssetGen\AssetGenTint.cpp` | Creates the tint collection dummy, before any generator runs. |
 | `MenuGenPageLogic.cpp`, function `InstallSetIcon` | Puts the material on the VR category item. |
 | `/Game/Mods/UI/Options/T_OptionsIcons_VR` | The texture asset, chunk 10. |
 | `/Game/Mods/UI/Options/MAT_OptionsIcons_VR` | The material asset, chunk 10. |
@@ -77,7 +78,7 @@ as parameters, call them once per icon from `MenuGenIcon::Generate`, and keep ea
 `FMenuGenStore` for the code that uses it. Name the assets like the game does:
 `T_OptionsIcons_<Name>` and `MAT_OptionsIcons_<Name>`.
 
-Do not change `MakeTintCollection`. Every icon material uses the same dummy collection.
+Do not change `AssetGenTint::MakeCollection`. Every icon material uses the same dummy collection.
 
 ### 4. Put it on the widget
 
@@ -94,8 +95,8 @@ uses must be loaded by path from the plugin, as `create_page` loads the page cla
 
 ### 5. Build and test
 
-1. Close the Unreal editor and run `.\tools\UEVRBridgeGen\GenerateMenu.ps1 -RebuildGen -Overwrite`.
-   The log ends with `Done: N classes.` and must show no error.
+1. Close the Unreal editor and run `.\tools\AssetGen\GenerateAssets.ps1 -RebuildGen -Only Menu -Overwrite`.
+   The log ends with `Done.` and must show no error.
 2. Package the project, then deploy the Core pak with `.\scripts\build-and-deploy.ps1 -Target Paks`.
    The game must be closed; it locks the mounted pak.
 3. In the game, the icon must have the same colour as the game's icons. Change the colour theme in
@@ -103,7 +104,7 @@ uses must be loaded by path from the plugin, as `create_page` loads the page cla
 
 ### Getting the atlas into the game
 
-`MenuGenButtonAtlas.cpp` in the generator makes three assets:
+`ButtonAtlasGen\ButtonAtlasGen.cpp` in the generator makes three assets:
 
 | Asset | Chunk | Role |
 |---|---|---|
@@ -124,7 +125,7 @@ the problem and those replacements. They are built with the same helpers as the 
 read the same tint collection dummy.
 ## VR controller button atlas
 
-`tools\UEVRBridgeGen\Resources\MenuGen\draw_vr_button_icons.py` draws `T_VRButtonLayout.png`
+`tools\AssetGen\Resources\ButtonAtlas\draw_vr_button_icons.py` draws `T_VRButtonLayout.png`
 next to it: an atlas of VR controller buttons in the style of the game's gamepad atlases
 (`Art\UI\Icons\ControllerButtons\T_XboxButtonLayout` and the others). The game's tutorial
 popups and button legends draw their button icons from such an atlas through
@@ -169,7 +170,7 @@ matches the game's collection exactly. A material that reads a collection is com
 order of its parameters and records the collection's `StateId`. In the game the reference resolves
 to the real collection, and the material gets the live colours only when the `StateId` is the
 same. The dummy therefore copies the `StateId`, all 19 parameters in the game's order and the `Id`
-of each parameter. `MenuGenIcon.cpp` holds these values; they were read from the cooked asset in
+of each parameter. `AssetGenTint.cpp` holds these values; they were read from the cooked asset in
 `dumps\assets\SystemShock\Content\Blueprints\UI\Tinting\`.
 
 ## Mistakes to avoid
