@@ -139,17 +139,17 @@ bool VRSettings::auto_ads()
 
 bool VRSettings::pitch_snap_turn()
 {
-    return get_bool(kCyberspace, "pitch_snap_turn", false);
+    return get_bool(kCyberspace, "pitch_snap_turn", true);
 }
 
 float VRSettings::pitch_deadzone()
 {
-    return std::clamp(get_float(kCyberspace, "pitch_deadzone", 0.8f), 0.f, 1.f);
+    return std::clamp(get_float(kCyberspace, "pitch_deadzone", 0.75f), 0.f, 1.f);
 }
 
 float VRSettings::pitch_snap_duration()
 {
-    return std::clamp(get_float(kCyberspace, "pitch_snap_duration", 0.5f), 0.f, 1.f);
+    return std::clamp(get_float(kCyberspace, "pitch_snap_duration", 0.7f), 0.f, 1.f);
 }
 
 // The slider row writes a float, so the value is read as one and rounded.

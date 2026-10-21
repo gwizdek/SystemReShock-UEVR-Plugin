@@ -275,9 +275,9 @@ The content is one table in the generator (`ListEntries` in `MenuGenModWidgets.c
 | `OPTION_VR_SnapTurnAngle` | slider | Angle | `VR_SnapturnTurnAngle` | 10 to 90, 1 | 50 | UEVR |
 | `OPTION_VR_SnapTurnDeadzone` | slider | Deadzone | `VR_SnapturnJoystickDeadzone` | 0.05 to 0.50, 0.01 | 0.20 | UEVR |
 | `WIDGET_ListCategoryHeader_Cyberspace` | header | Cyberspace | | | | |
-| `OPTION_VR_CyberPitchSnapTurn` | toggle | Pitch Snap Turn | `pitch_snap_turn` | | off | ini `[cyberspace]` |
-| `OPTION_VR_CyberPitchDeadzone` | slider | Pitch Deadzone | `pitch_deadzone` | 0.00 to 1.00, 0.01 | 0.80 | ini `[cyberspace]` |
-| `OPTION_VR_CyberPitchSnapDuration` | slider | Pitch Snap Duration | `pitch_snap_duration` | 0.00 to 1.00 s, 0.01 | 0.50 | ini `[cyberspace]` |
+| `OPTION_VR_CyberPitchSnapTurn` | toggle | Pitch Snap Turn | `pitch_snap_turn` | | on | ini `[cyberspace]` |
+| `OPTION_VR_CyberPitchDeadzone` | slider | Pitch Deadzone | `pitch_deadzone` | 0.00 to 1.00, 0.01 | 0.75 | ini `[cyberspace]` |
+| `OPTION_VR_CyberPitchSnapDuration` | slider | Pitch Snap Duration | `pitch_snap_duration` | 0.00 to 1.00 s, 0.01 | 0.70 | ini `[cyberspace]` |
 | `OPTION_VR_CyberCrosshairScale` | slider | Crosshair Scale | `crosshair_scale` | 50 to 150 %, 10 | 100 | ini `[cyberspace]` |
 
 The "Stored in" column is decided in the plugin, not in the Blueprint (see "Settings sync").
@@ -450,9 +450,9 @@ binding lists (`s_sliders`, `s_toggles`) hold one line per row:
   vr_look_sensitivity = 5
 
   [cyberspace]
-  pitch_snap_turn = 0
-  pitch_deadzone = 0.8
-  pitch_snap_duration = 0.5
+  pitch_snap_turn = 1
+  pitch_deadzone = 0.75
+  pitch_snap_duration = 0.7
   crosshair_scale = 100
   ```
 

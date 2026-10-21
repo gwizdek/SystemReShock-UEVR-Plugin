@@ -278,9 +278,9 @@ snap turn; Crosshair Scale is described under "Aim reticle".
 
 | Setting | ini key | Meaning |
 |---|---|---|
-| Pitch Snap Turn | `pitch_snap_turn` | On: the right stick pitches in steps that end on a world axis. Off (default): the game's smooth pitch. |
-| Pitch Deadzone | `pitch_deadzone` | How far, 0 to 1, the stick must be pushed up or down to start a step. Default 0.8. |
-| Pitch Snap Duration | `pitch_snap_duration` | How long one snap takes, in seconds, 0 to 1. 0 is instant. Default 0.5. |
+| Pitch Snap Turn | `pitch_snap_turn` | On (default): the right stick pitches in steps that end on a world axis. Off: the game's smooth pitch. |
+| Pitch Deadzone | `pitch_deadzone` | How far, 0 to 1, the stick must be pushed up or down to start a step. Default 0.75. |
+| Pitch Snap Duration | `pitch_snap_duration` | How long one snap takes, in seconds, 0 to 1. 0 is instant. Default 0.7. |
 | Crosshair Scale | `crosshair_scale` | Size of the aim reticle in percent, 50 to 150 in steps of 10. Default 100. |
 
 `CyberspacePitchSnap` (`cyberspace_pitch_snap.cpp`) has two parts:
