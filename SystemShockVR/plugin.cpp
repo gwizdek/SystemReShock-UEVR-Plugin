@@ -108,13 +108,16 @@ void load_mod_utility_classes() {
         L"/Game/Mods/Utils/_BP_DebugLog._BP_DebugLog_C", U_BP_DebugLog_C::BridgeClassRef());
 }
 
-// Menus step through their items on a small stick tilt, so the left stick only counts past a
-// high threshold there. Used on the title screen and in the pause menu.
+// Menus step through their items on a small stick tilt, so the left stick, which moves through
+// them, only counts past this part of its range there.
+constexpr float kMenuStickDeadzone = 0.75f * 0x7FFF;
+
+// Used on the title screen and in every pause menu, cyberspace's included.
 void apply_menu_stick_deadzone(XINPUT_STATE* state) {
-    if (std::abs(state->Gamepad.sThumbLX) < INPUT_DEADZONE_HI) {
+    if (std::abs(state->Gamepad.sThumbLX) < kMenuStickDeadzone) {
         state->Gamepad.sThumbLX = 0;
     }
-    if (std::abs(state->Gamepad.sThumbLY) < INPUT_DEADZONE_HI) {
+    if (std::abs(state->Gamepad.sThumbLY) < kMenuStickDeadzone) {
         state->Gamepad.sThumbLY = 0;
     }
 }
