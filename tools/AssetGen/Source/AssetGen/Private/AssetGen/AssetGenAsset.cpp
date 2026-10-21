@@ -1,0 +1,59 @@
+#include "AssetGenAsset.h"
+
+#include "AssetGenLog.h"
+#include "AssetRegistryModule.h"
+#include "Misc/PackageName.h"
+#include "UObject/Package.h"
+
+namespace AssetGenAsset
+{
+FString NameOf(const FString& PackagePath)
+{
+    return FPackageName::GetShortName(PackagePath);
+}
+
+FString ObjectPath(const FString& PackagePath)
+{
+    return PackagePath + TEXT(".") + NameOf(PackagePath);
+}
+
+bool Exists(const FString& PackagePath)
+{
+    return FPackageName::DoesPackageExist(PackagePath);
+}
+
+// A package for a new asset. The file on disk, if any, is not loaded: with -Overwrite the old
+// asset must stay out of memory, or creating the new one with the same name fails.
+UPackage* NewPackage(const FString& PackagePath)
+{
+    return CreatePackage(*PackagePath);
+}
+
+void Evict(UPackage* Package, const FString& Name)
+{
+    UObject* Existing = FindObject<UObject>(Package, *Name);
+    if (Existing == nullptr) return;
+    UE_LOG(LogAssetGen, Display, TEXT("Replacing the loaded %s"), *Existing->GetPathName());
+    Existing->ClearFlags(RF_Public | RF_Standalone);
+    const FName NewName = MakeUniqueObjectName(GetTransientPackage(), Existing->GetClass(), Existing->GetFName());
+    Existing->Rename(*NewName.ToString(), GetTransientPackage(), REN_DontCreateRedirectors | REN_DoNotDirty | REN_NonTransactional);
+}
+
+bool Save(UObject* Asset, const TArray<int32>& ChunkIds)
+{
+    UPackage* Package = Asset->GetOutermost();
+    Package->SetChunkIDs(ChunkIds);
+    Package->MarkPackageDirty();
+    FAssetRegistryModule::AssetCreated(Asset);
+
+    const FString FileName = FPackageName::LongPackageNameToFilename(Package->GetName(), FPackageName::GetAssetPackageExtension());
+    const bool bSaved = UPackage::SavePackage(Package, Asset, RF_Public | RF_Standalone, *FileName, GError, nullptr, false, true, SAVE_NoError);
+    if (!bSaved)
+    {
+        UE_LOG(LogAssetGen, Error, TEXT("Cannot save %s"), *FileName);
+        return false;
+    }
+    UE_LOG(LogAssetGen, Display, TEXT("Saved %s (chunks: %d)"), *FileName, ChunkIds.Num() > 0 ? ChunkIds[0] : 0);
+    return true;
+}
+} // namespace AssetGenAsset

@@ -145,7 +145,7 @@ widget's class default object, so every legend key made afterwards starts with t
 assets, and once on every legend key that exists already, including the templates inside
 loaded widget trees. Live keys redraw through `UpdateMapping`. The plugin checks every few
 seconds that the default object still holds the assets. `menu-icons.md` describes the atlas
-and the generator assets; `tools\UEVRBridgeGen\Resources\MenuGen\draw_vr_button_icons.py`
+and the generator assets; `tools\AssetGen\Resources\ButtonAtlas\draw_vr_button_icons.py`
 lists the cells.
 
 ## Changing the texts

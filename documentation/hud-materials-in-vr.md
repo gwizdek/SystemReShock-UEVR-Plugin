@@ -32,7 +32,7 @@ to be replaced.
 5. The parameter names are in the widget's Blueprint. Export its bytecode with
    `scripts\export-bytecode.ps1 <WidgetName>` and look for `SetScalarParameterValue` calls and
    the `NameConst` values next to them.
-6. Look at the textures. `tools\UEVRBridgeGen\Resources\MenuGen\export-cooked-texture.ps1`
+6. Look at the textures. `tools\AssetGen\Resources\CyberHud\export-cooked-texture.ps1`
    writes a cooked BGRA8 texture from `dumps\` as a PNG. Check which channel holds what, and
    whether the alpha channel is a shape or just 255 everywhere.
 
@@ -41,7 +41,7 @@ To see what the headset shows without putting it on, capture the Mixed Reality P
 
 ## How the fix works
 
-The generator (`tools\UEVRBridgeGen`, run with `GenerateMenu.ps1`) writes a translucent UI
+The generator (`tools\AssetGen`, run with `GenerateAssets.ps1`) writes a translucent UI
 material at the **game's own asset path** and marks it for chunk 10. The Core pak mounts
 above the game's pak, so the game loads the mod's material instead of its own, and the game's
 widget draws with it unchanged. The plugin does nothing for the drawing.
@@ -54,7 +54,7 @@ The material's textures are written at the game's paths too. Two choices:
 - **Chunk 10, shipped.** The mod's copy replaces the game's texture. Use this when the
   texture itself is changed. The email icon's texture works this way: its glow is reduced.
 
-Rules for the replacement material, all applied by the helpers in `MenuGenMaterial.h`:
+Rules for the replacement material, all applied by the helpers in `AssetGen\AssetGenMaterial.h`:
 
 - UI domain, Translucent blend. `NewUiMaterial` sets both.
 - Multiply colour and opacity by the vertex colour and vertex alpha
@@ -71,16 +71,18 @@ Rules for the replacement material, all applied by the helpers in `MenuGenMateri
 - A vector from the tint collection is a float4. Mask it to RGB before multiplying it with
   the float3 vertex colour, or the shader does not compile.
 
-Each replacement is a small function in a generator module: `MenuGenHudIcon.cpp` for the email
-icon, `MenuGenCyberHud.cpp` for the cyberspace widget. A new one follows the same shape: add
-the asset paths and the PNG path to `MenuGenPaths` in `MenuGenStore.h`, write the texture with
-`MakeTexture`, build the material with the helpers, and call the module from
-`VROptionsMenuGenCommandlet.cpp`. The generator is a unity build, so every file-local function
-name must be unique across the `MenuGen` folder.
+Each replacement is a generator in its own folder under `tools\AssetGen\Source\AssetGen\Private\`:
+`HudIconGen\` for the email icon, `CyberHudGen\` for the cyberspace widget. Its PNGs and the
+scripts that make them are in a folder of the same name under `Resources\`. A new one follows
+the same shape: a folder with a `Generate(const FAssetGenContext&)` function, its asset paths
+and PNG paths in a namespace at the top of its `.cpp`, the texture written with `MakeTexture`
+and the material built with the helpers. Add it as one line to `Generators` in
+`AssetGen\ModAssetGenCommandlet.cpp` and to the `-Only` list in `GenerateAssets.ps1`. The
+module is a unity build, so every file-local name must be unique across the whole module.
 
 ## Build and test
 
-1. Close the Unreal editor. Run `.\tools\UEVRBridgeGen\GenerateMenu.ps1 -RebuildGen`. Assets
+1. Close the Unreal editor. Run `.\tools\AssetGen\GenerateAssets.ps1 -RebuildGen`. Assets
    that exist are kept; delete an asset in the Unreal project to make it again.
 2. Package the project from the editor, or from PowerShell with the editor closed (one line):
 
@@ -88,7 +90,7 @@ name must be unique across the `MenuGen` folder.
    & "D:\Unreal Engine\UE_4.27\Engine\Binaries\DotNET\AutomationTool.exe" BuildCookRun -nocompileeditor -installed -nop4 -project="D:/Unreal Engine/Projects/SystemReShock-UE4-Project/SystemShock.uproject" -cook -stage -archive -archivedirectory="D:/Unreal Engine/Projects/SystemReShock-UE4-Project" -package -ue4exe="D:\Unreal Engine\UE_4.27\Engine\Binaries\Win64\UE4Editor-Cmd.exe" -compressed -ddc=InstalledDerivedDataBackendGraph -pak -prereqs -nodebuginfo -manifests -targetplatform=Win64 -build -clientconfig=Shipping -utf8output
    ```
 
-   The paths are the ones in `tools\UEVRBridgeGen\bridgegen.config.json`. A full cook takes
+   The paths are the ones in `tools\AssetGen\assetgen.config.json`. A full cook takes
    about ten minutes; a cook after a small change about one. The cook log must not say
    `Failed to compile Material` for the new material; the error text is on the next line.
 3. Close the game and run `.\scripts\build-and-deploy.ps1 -Target Paks`.
@@ -112,9 +114,9 @@ HUD, just below the compass (`VRBody::initialize_unread_media_icon` in `vr_body.
 
 | File | Role |
 |---|---|
-| `tools\UEVRBridgeGen\Resources\MenuGen\make_media_icon.ps1` | Writes the PNG below from the game's cooked `T_MediaIcon_UnreadMessages.uexp` in `dumps\` (104 x 86 BGRA8 pixels from byte 326). It reduces the glow outside the envelope to a tenth, so the icon does not show as a box. |
-| `tools\UEVRBridgeGen\Resources\MenuGen\T_MediaIcon_UnreadMessages_VR.png` | The script's output, the generator's input. |
-| `MenuGenHudIcon.cpp` | Creates the texture and the material. |
+| `tools\AssetGen\Resources\HudIcon\make_media_icon.ps1` | Writes the PNG below from the game's cooked `T_MediaIcon_UnreadMessages.uexp` in `dumps\` (104 x 86 BGRA8 pixels from byte 326). It reduces the glow outside the envelope to a tenth, so the icon does not show as a box. |
+| `tools\AssetGen\Resources\HudIcon\T_MediaIcon_UnreadMessages_VR.png` | The script's output, the generator's input. |
+| `HudIconGen\HudIconGen.cpp` | Creates the texture and the material. |
 | `/Game/Art/UI/HUD/Media/T_MediaIcon_UnreadMessages` | The texture, chunk 10. Replaces the game's. |
 | `/Game/Art/UI/HUD/Media/MAT_MediaIcon_UnreadMessages` | The material, chunk 10. Replaces the game's. |
 
@@ -138,8 +140,9 @@ in linear colour, tuned in the running game against the game's additive icon:
 SECURE and THREAT tags with four additive materials. Its icon material is translucent and its
 label is a text block, so those two never needed help.
 
-`MenuGenCyberHud.cpp` writes the four materials in chunk 10 and their textures in chunk 0.
-`export-cooked-texture.ps1` writes the texture PNGs into `Resources\MenuGen\CyberHud\`.
+`CyberHudGen\CyberHudGen.cpp` writes the four materials in chunk 10 and their textures in
+chunk 0. `export-cooked-texture.ps1` writes the texture PNGs into `Resources\CyberHud\`, next
+to itself.
 
 | Material | Texture | What the material does |
 |---|---|---|
@@ -166,9 +169,9 @@ marker. In VR only that top triangle is shown.
 
 The material stays the game's. The Core pak replaces the texture at the game's path
 `/Game/Art/Cyberspace/GUI/T_CyberspaceFlightReticle`, in chunk 10, with a 1024 x 1024 texture
-that holds only the top triangle. `tools\UEVRBridgeGen\Resources\MenuGen\make_flight_reticle.py`
-writes it to `Resources\MenuGen\CyberHud\T_CyberspaceFlightReticle.png` from the cooked
-texture in `dumps\`, and `MenuGenCyberHud.cpp` imports it. The script needs Pillow to decode
+that holds only the top triangle. `tools\AssetGen\Resources\CyberHud\make_flight_reticle.py`
+writes it to `T_CyberspaceFlightReticle.png` next to itself from the cooked
+texture in `dumps\`, and `CyberHudGen.cpp` imports it. The script needs Pillow to decode
 DXT5. The plugin turns the reticle so the triangle points to world up (see
 `cyberspace-controls.md`, "The flight reticle").
 
@@ -190,6 +193,7 @@ Core pak replaces both textures at the game's paths in chunk 10 with copies whos
 only a thin rim around the line: R widened by 2 px (arcs) or 1 px (chevrons), softened by
 0.5 px and never more than the game's values. R and G stay. A live check showed that cutting
 only B changed nothing; the dark outline comes from A.
-`tools\UEVRBridgeGen\Resources\MenuGen\make_ice_drill_reticle.py` writes the PNGs from the
-cooked textures in `dumps\` (BGRA8, uncompressed), and `MenuGenCyberHud.cpp` imports them.
+`tools\AssetGen\Resources\CyberHud\make_ice_drill_reticle.py` writes the PNGs next to
+itself from the cooked textures in `dumps\` (BGRA8, uncompressed), and `CyberHudGen.cpp`
+imports them.
 Like the game's, the textures keep sRGB on and use `TC_EditorIcon`.

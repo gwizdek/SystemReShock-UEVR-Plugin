@@ -39,10 +39,8 @@ The first time, build the editor target for the project:
 
 Opening the project in the editor and accepting the rebuild prompt does the same.
 
-The plugin holds a second commandlet, `VROptionsMenuGen`, that creates the Blueprint assets of
-the mod's VR options page in the Unreal project. `GenerateMenu.ps1` runs it; see
-`documentation/vr-options-menu.md`. It also creates the VR category icon from
-`Resources/MenuGen/T_OptionsIcons_VR.png`; `documentation/menu-icons.md` explains how to make more icons, and `documentation/hud-materials-in-vr.md` the replacement HUD materials.
+The mod's generated assets (options page, HUD materials, button atlas) come from a
+separate editor plugin, `tools/AssetGen/`. See its README.
 
 ## Running it
 

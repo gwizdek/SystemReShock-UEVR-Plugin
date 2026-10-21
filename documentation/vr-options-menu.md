@@ -13,7 +13,7 @@ Done:
 - The bytecode exporter writes widget trees (`widgets.json`), enums (`enums.json`), inherited
   default values and resolved object references. See `tools\BytecodeExporter\README.md`.
 - The game's Options screen is fully mapped (this document).
-- The generator (`tools\UEVRBridgeGen\GenerateMenu.ps1`, commandlet `VROptionsMenuGen`) creates
+- The generator (`tools\AssetGen\GenerateAssets.ps1`, commandlet `ModAssetGen`, generator `Menu`) creates
   the dummies and the mod widgets. They exist in the Unreal project
   (`D:\Unreal Engine\Projects\SystemReShock-UE4-Project`, its own git lfs repository, branch `vr-menu`).
 - The plugin trigger (`SystemShockVR\vr_options_menu.cpp`) creates the page and installs it.
@@ -189,16 +189,16 @@ holds references to the live widgets.
 
 ## Design
 
-Three kinds of assets in the Unreal project, plus one plugin change. The commandlet in
-`tools\UEVRBridgeGen\Source\UEVRBridgeGen\Private\MenuGen\` creates every asset:
+Three kinds of assets in the Unreal project, plus one plugin change. The `Menu` generator in
+`tools\AssetGen\Source\AssetGen\Private\MenuGen\` creates every asset:
 `MenuGenDummies.cpp` holds the dummy list, `MenuGenModWidgets.cpp` the trees and the row and
 list functions, `MenuGenPageLogic.cpp` the page functions. Run it from the repository root with
 the Unreal editor closed:
 
 ```powershell
-.\tools\UEVRBridgeGen\GenerateMenu.ps1              # create what is missing
-.\tools\UEVRBridgeGen\GenerateMenu.ps1 -RebuildGen  # after a change under Source\
-.\tools\UEVRBridgeGen\GenerateMenu.ps1 -Overwrite   # create every asset again
+.\tools\AssetGen\GenerateAssets.ps1 -Only Menu              # create what is missing
+.\tools\AssetGen\GenerateAssets.ps1 -Only Menu -RebuildGen  # after a change under Source\
+.\tools\AssetGen\GenerateAssets.ps1 -Only Menu -Overwrite   # create every asset again
 ```
 
 An asset whose package already exists is kept and loaded, so the generator can be run again
@@ -334,7 +334,7 @@ six category icons follow one recipe, and the VR icon copies it:
   few pixels from the edge, with details cut out as negative space. The game packs three icons
   into one texture, one per colour channel, and leaves alpha at 255. The mod's
   `T_OptionsIcons_VR` holds one icon in R, G and B alike. Its source is
-  `tools\UEVRBridgeGen\Resources\MenuGen\T_OptionsIcons_VR.png`, drawn by `draw_vr_icon.py` next to
+  `tools\AssetGen\Resources\MenuGen\T_OptionsIcons_VR.png`, drawn by `draw_vr_icon.py` next to
   it: a chamfered headset with two lenses, a nose notch and strap tabs.
 - **Material.** A UI-domain, translucent material per icon. Colour is the collection parameter
   `UIBackgroundTint1` of `MPC_UserTintParameters`, opacity is the mask. In the game the icons are
@@ -347,7 +347,7 @@ A material that reads a parameter collection is compiled against the collection'
 and records its `StateId`. In the game the reference resolves to the real collection, and the
 material gets the live tint buffer only when the `StateId` matches. So the dummy collection at the
 game's path copies the `StateId`, every vector parameter in the game's order and each parameter's
-`Id`, all read from the cooked asset. The values are in `MenuGenIcon.cpp`. The dummy is in chunk 0,
+`Id`, all read from the cooked asset. The values are in `AssetGen\AssetGenTint.cpp`. The dummy is in chunk 0,
 like the other dummies, and never ships.
 
 ### 3. The page's `Install` function
@@ -494,7 +494,7 @@ The sync runs from `VROptionsMenu`:
   `AdjustComponentsToPlayerHeight` with it. When auto ADS is turned off while the player aims,
   `handle_ads` releases the aim once.
 
-A new row needs an entry in the generator's `ListEntries`, a run of `GenerateMenu.ps1 -Overwrite`
+A new row needs an entry in the generator's `ListEntries`, a run of `GenerateAssets.ps1 -Only Menu -Overwrite`
 and `Generate.ps1`, and one line in the binding lists in `vr_options_sync.cpp`.
 
 ## Risks and checks for the spike (step 2)
