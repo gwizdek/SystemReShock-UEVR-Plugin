@@ -1,10 +1,8 @@
 # SystemReShock UEVR Plugin v2.0
 
-> [!WARNING]
-> The profile doesn't work with the demo version from Steam and full game from GOG (GOG support will be added after the mod gets stable)
-
-> [!WARNING]
-> Mod installation requires extra step - copying PAK files from profile's `\paks` folder into the game's `Steam\steamapps\common\System Shock Remake\SystemShock\Content\Paks` folder.
+> [!NOTE]
+> Works with Steam and GOG full game versions (dosen't work with Steam demo version).  
+> You can use the Installer / Launcher app (see Releases page). Point it to your UEVR Nightly folder (the app shows the download link).  
   
 Omg, it's been a lot of work to get to this point. Enjoy!  
 Watch the tutorial video to see what this mod has to offer [**YouTube**](https://youtu.be/Gke3bmS2L-U?si=RVIDS3npQqPzgr2q)  
@@ -25,7 +23,7 @@ You can leave me a tip here: https://ko-fi.com/gwizdek
 
 ## Installation
 > [!NOTE]
-> Try using the new installer app shipped with 2.0-beta.3 to install or update the mod (see Releases page)  
+> Try using the new installer app to install or update the mod (see Releases page)  
 
 ### Manual installation   
 1) Install latest UEVR Nightly [**HERE**](https://github.com/praydog/UEVR-nightly/releases).
