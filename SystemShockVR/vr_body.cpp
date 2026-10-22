@@ -107,6 +107,14 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         UGameplayStatics::FinishSpawningActor(vr_body, pawn_transform);
         API::get()->log_warn("[vr_body][initialize_vr_body] Finishied spawning VRBody BP Actor");
 
+        // BeginPlay sets HackerPawn with GetActorOfClass(PAWN_Hacker_Simple_C), which returns the
+        // first match. In pseudospace that is the unpossessed station pawn, not the player's.
+        if (vr_body->HackerPawn() != pawn) {
+            API::get()->log_warn("[vr_body][initialize_vr_body] HackerPawn was %s, set to the player's pawn",
+                vr_body->HackerPawn() != nullptr ? vr_body->HackerPawn()->GetName().c_str() : "null");
+            vr_body->HackerPawn() = pawn;
+        }
+
         TArray<FName> actor_tags{};
         actor_tags.Data = (FName*)API::FMalloc::get()->malloc(1 * sizeof(FName));
         actor_tags.NumElements = 1;
@@ -158,6 +166,7 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         // Hacker Implant Pawn
         //
         if (!pawn->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+            hide_neural_hud_widgets(vr_body);
             API::get()->log_warn("[vr_body][initialize_vr_body] Not a APAWN_Hacker_Implant. Returning.");
             return vr_body;
         }
@@ -323,6 +332,38 @@ void VRBody::show_vr_body() {
     }
 }
 
+
+// The VR body's wrist widget components and its hardware panel show the neural HUD's widgets,
+// which only the Hacker Implant pawn has. Without it, each component would show a standalone widget made from its
+// default WidgetClass: a minimap and a media display with nothing behind them. Hidden in game,
+// so show_vr_body, which sets the visibility of VRBodyMesh and its children, keeps them hidden.
+void VRBody::hide_neural_hud_widgets(A_BP_VRBody_C* vr_body) {
+    try {
+        UWidgetComponent* components[] = {
+            vr_body->MinimapWidgetComponent(),
+            vr_body->MediaDisplayWidgetComponent(),
+            vr_body->VitalBarsWidgetComponent(),
+            vr_body->UnreadMediaIcon(),
+            vr_body->ActiveHazard(),
+            vr_body->TargetIDWidgetComponent(),
+            vr_body->Subtitles(),
+            vr_body->VRHUD(),
+        };
+        for (UWidgetComponent* component : components) {
+            if (component == nullptr) continue;
+            component->SetVisibility(false, true);
+            component->SetHiddenInGame(true, true);
+        }
+        // The hardware panel holds the neural HUD's hardware buttons too.
+        if (vr_body->HackerHardware() != nullptr) {
+            vr_body->HackerHardware()->SetActorHiddenInGame(true);
+        }
+        API::get()->log_warn("[vr_body][hide_neural_hud_widgets] Neural HUD widgets hidden");
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][hide_neural_hud_widgets] Exception");
+    }
+}
 
 void VRBody::hide_vr_body() {
     try {

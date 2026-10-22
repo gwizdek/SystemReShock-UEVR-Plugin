@@ -9,6 +9,9 @@
 #include "SDK/WIDGET_ConnectionIntegrity_classes.hpp"
 #include "SDK/WIDGET_CyberspaceHUD_classes.hpp"
 #include "SDK/WIDGET_Cyberspace_SoftwareHotbar_classes.hpp"
+#include "SDK/PAWN_Hacker_Simple_classes.hpp"
+#include "SDK/WIDGET_PseudospaceHUD_classes.hpp"
+#include "SDK/WIDGET_PseudoHealth_classes.hpp"
 
 using namespace SDK;
 using namespace uevr;
@@ -40,6 +43,8 @@ struct ScaledWidget
 
 std::vector<MovedSlot> s_moved{};
 std::vector<ScaledWidget> s_scaled{};
+// The pseudospace HUD the layout was applied to.
+UUserWidget* s_pseudospace_hud{ nullptr };
 
 bool is_alive(void* object) {
     return object != nullptr && API::UObjectHook::exists(reinterpret_cast<API::UObject*>(object));
@@ -126,4 +131,27 @@ void CyberspaceHudLayout::restore() {
     }
     s_moved.clear();
     s_scaled.clear();
+    s_pseudospace_hud = nullptr;
+}
+
+void CyberspaceHudLayout::handle_pseudospace(APAWN_Hacker_Simple_C* pawn) {
+    auto* hud = static_cast<UWIDGET_PseudospaceHUD_C*>(pawn->PlayerHUDWidget);
+    if (hud == s_pseudospace_hud || !is_alive(hud)) {
+        return;
+    }
+    try {
+        restore();
+        s_pseudospace_hud = hud;
+        // The slot sizes itself to the panel, so only anchor, alignment and position change.
+        move_slot(hud->WIDGET_PseudoHealth, [](FAnchorData& layout) {
+            layout.Anchors = FAnchors{ { 0.5f, 0.f }, { 0.5f, 0.f } };
+            layout.Alignment = FVector2D{ 0.5f, 0.f };
+            layout.Offsets.Left = 0.f;
+        });
+        API::get()->log_warn("[cyberspace_hud_layout][handle_pseudospace] Moved %d HUD parts for VR",
+            static_cast<int>(s_moved.size()));
+    }
+    catch (...) {
+        API::get()->log_error("[cyberspace_hud_layout][handle_pseudospace] Exception");
+    }
 }

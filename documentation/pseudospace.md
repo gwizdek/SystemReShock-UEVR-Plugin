@@ -1,13 +1,14 @@
 # Pseudospace
 
 Pseudospace is the final battle against SHODAN. The player is a Hacker again, on foot, not
-the flying cyberspace avatar. The plugin has no pseudospace support: it does not detect it,
-and treats it as the apartment intro. This page collects what is known, for the work that
-adds that support.
+the flying cyberspace avatar. The plugin detects it and gives it its own game state. Most of
+the VR setup is the apartment intro's, because the pawn derives from the apartment pawn. This
+page collects what is known and what is still to do.
 
-Nothing on this page has been tested in the headset. The game facts come from the cooked
-Blueprints (exported with the bytecode exporter) and the Dumper-7 SDK. The plugin facts come
-from reading the code.
+The game facts come from the cooked Blueprints (exported with the bytecode exporter) and the
+Dumper-7 SDK. The detection, the pause state, the hidden wrist widgets, the HUD layout and the
+`HackerPawn` fix were checked in the running game. Weapons, the platforms, the respawn and the
+pause menu were not.
 
 ## The pawn and its HUD
 
@@ -66,34 +67,57 @@ sets the music, and calls `CON_Hacker.TryOpenCyberRiftFromPseudospace` with the
   `LS_PseudoSpace_EntranceSpawn`.
 - Enums: `ENUM_PseudoShodanState`, `ENUM_PseudoTurretState`.
 
-## What the plugin does in pseudospace today
+## What the plugin does in pseudospace
 
-`prepare_game_state` (`plugin.cpp`) tests the pawn in this order: Hacker Implant, the
-cyberspace avatar, then `is_a<APAWN_Hacker_Simple_C>`. The pseudospace pawn is a Hacker
-Simple, so that test matches. The code after it, written for the apartment intro, then runs:
+### Detection
 
-- the pawn state becomes `PAWN_HACKERSIMPLE`;
-- `try_set_intro_laptop_pointer` looks for the apartment's laptop;
-- the pause menu check casts `PlayerHUDWidget` to `UWIDGET_SimpleHUD_C` and calls its
-  `GetMainMenuWidget`. The HUD is a `WIDGET_PseudospaceHUD_C`, which is not a Simple HUD.
-  The Simple HUD's function reads `WIDGET_MainMenu_InGame` at offset 0x278, but in the
-  pseudospace HUD that field is at 0x280. The result is a wrong pointer, and reading
-  `IsMainMenuEnabled` through it may crash or report a wrong pause state;
-- `ChannelingInteractable` selects `GAME_STATE_INTERACTABLE`, otherwise the state is
-  `GAME_STATE_APPARTMENT`.
+`prepare_game_state` (`plugin.cpp`) tests the pawn in this order: Hacker Implant, player
+ghost, cyberspace avatar, pseudospace, Hacker Simple. The pseudospace test must come before
+the Hacker Simple test, because the pseudospace pawn is also a Hacker Simple.
 
-So the game state handler applies the apartment's VR settings, and `handle_level_change` runs
-its Hacker Simple branch: it spawns the VR body (`VRBody::initialize_vr_body`) and sets up
-the laser dot, the crouch animations, the hand item collisions and the player height. The
-periodic modules that only skip cyberspace (`FocusInteractionPatch`, `TutorialMessages`,
-`TutorialPopupDuration`, `TutorialHeadView`) run too.
+The pawn is matched by the name of its class, with
+`PluginUtils::is_class_named(pawn, "PAWN_Hacker_Pseudospace_C")`. Do not use
+`is_a<APAWN_Hacker_Pseudospace_C>` or `StaticClass()` for it. The class is not loaded for
+most of the game, and Dumper-7's `StaticClass()` searches the whole object array (about
+200 ms) on every call until it finds the class. Once found, it keeps the pointer, which goes
+stale when the class unloads.
 
-`GAME_STATE_PSEUDOSPACE` and `PAWN_PSEUDOSPACE` exist in `vr_plugin_shared.hpp`, but
-nothing sets them, and `handle_game_state_change` has no case for them. A TODO in
-`prepare_game_state` says to detect the pawn by name, because its class is not loaded
-before the last terminal and `StaticClass()` of a class that is not loaded searches the
-whole object array. `PluginUtils::is_a<T>` now remembers the answer per object class, so
-that cost is paid once per new pawn class, not every tick.
+A match sets `PAWN_PSEUDOSPACE`. The game state is `GAME_STATE_PAUSE_MENU` while the pause
+menu is open, otherwise `GAME_STATE_PSEUDOSPACE`. The pause state comes from the HUD's own
+`WIDGET_MainMenu_InGame` field (offset 0x280 in `UWIDGET_PseudospaceHUD_C`).
+`UWIDGET_SimpleHUD_C::GetMainMenuWidget` must not be called on this HUD: Dumper-7 looks the
+function up in the object's own class chain, finds nothing, and `ProcessEvent` with a null
+function is an access violation. The apartment's laptop lookup does not run either. The
+laptop class is not loaded in pseudospace, so a failed `find_uobject` would cost about
+200 ms every tick.
+
+### VR setup
+
+- `handle_game_state_change` has a `GAME_STATE_PSEUDOSPACE` case with the apartment's VR
+  settings.
+- Controller input goes through the apartment branch of `handle_xinput`.
+- `handle_level_change` runs its Hacker Simple branch: it spawns the VR body
+  (`VRBody::initialize_vr_body`) and sets up the laser dot, the crouch animations, the hand
+  item collisions and the player height.
+- For every pawn that is not a Hacker Implant, `initialize_vr_body` hides the wrist widgets
+  and the hardware panel (`VRBody::hide_neural_hud_widgets`). They show the neural HUD's
+  widgets, which only the station pawn has. Without this, each would show a standalone
+  minimap or media display. The game's own connection integrity
+  (`WIDGET_PseudoHealth`) is the only HUD part left.
+- `CyberspaceHudLayout::handle_pseudospace` moves connection integrity from the top right
+  corner to the top centre, as in cyberspace. It runs every tick and applies the layout once
+  per HUD, because the HUD can appear after the pawn.
+- The periodic modules that only skip cyberspace (`FocusInteractionPatch`,
+  `TutorialMessages`, `TutorialPopupDuration`, `TutorialHeadView`) run too.
+
+### The VR body's HackerPawn
+
+`_BP_VRBody` sets its `HackerPawn` in `BeginPlay` with `GetActorOfClass(PAWN_Hacker_Simple_C)`,
+which returns the first match. In pseudospace the unpossessed station pawn is still in the
+level, and it is found first. `AttachLaserPointer` then attached the station pawn's
+`PlayerCamera` to the right hand. `initialize_vr_body` now sets `HackerPawn` to the player's
+pawn after the spawn. Links the Blueprint makes during `BeginPlay`, for example the hand
+components' bindings to the inventory, can still point at the station pawn.
 
 ## The earlier plugin
 
@@ -111,21 +135,18 @@ None of it has been checked against the current plugin or the current game versi
 
 ## Work to do
 
-1. Detect the pawn before the Hacker Simple test in `prepare_game_state`, with
-   `PluginUtils::is_a<APAWN_Hacker_Pseudospace_C>`, and set `PAWN_PSEUDOSPACE` and
-   `GAME_STATE_PSEUDOSPACE`.
-2. Read the pause state from `UWIDGET_PseudospaceHUD_C::GetMainMenuWidget` and set
-   `GAME_STATE_PAUSE_MENU` there. Check what the pause menu case does in pseudospace; it
-   enables UObjectHook and decoupled pitch.
-3. Decide the VR setup: whether the station's VR body, hands, laser dot and weapon handling
-   work on this pawn, or a reduced set is needed. Then add a `GAME_STATE_PSEUDOSPACE` case
-   to `handle_game_state_change`, and a pseudospace branch to `handle_level_change`.
-4. Check the pseudospace weapons with the VR weapon code, and the surfboards and turret
-   platforms with the hand interaction.
-5. Decide which periodic modules run there. `FocusInteractionPatch` matters only if a
+1. Make `_BP_VRBody` find its pawn with `GetPlayerPawn` instead of `GetActorOfClass`, so
+   that nothing set up in `BeginPlay` points at the station pawn. Then the fix in
+   `initialize_vr_body` can go.
+2. Check the pause menu in pseudospace. Its game state case enables UObjectHook and
+   decoupled pitch.
+3. Check the pseudospace weapons with the VR weapon code, and the surfboards and turret
+   platforms with the hand interaction. Check whether the apartment input (triggers attach
+   the laser pointer when the hand is empty) gets in the way of firing.
+4. Decide which periodic modules run there. `FocusInteractionPatch` matters only if a
    pseudospace interactable derives from `INTERACT_Focusable_Base` or is a keypad or
    puzzle. The tutorial modules matter only if pseudospace shows tutorial popups.
-6. Check the respawn (`OnRespawnHacker`) and the reload by `OpenPersistentMapByType(4)`:
+5. Check the respawn (`OnRespawnHacker`) and the reload by `OpenPersistentMapByType(4)`:
    both may need the VR body set up again.
 
 A save just before the last terminal is the quickest way to test all of this.

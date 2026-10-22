@@ -7,6 +7,7 @@
 #include "SDK/CORPSE_SkeletalBase_classes.hpp"
 #include "SDK/WIDGET_SimpleHUD_classes.hpp"
 #include "SDK/WIDGET_CyberspaceHUD_classes.hpp"
+#include "SDK/WIDGET_PseudospaceHUD_classes.hpp"
 #include "SDK/WIDGET_MainMenu_InGame_classes.hpp"
 #include "SDK/WIDGET_HardwareButton_classes.hpp"
 #include "SDK/WIDGET_Compass_classes.hpp"
@@ -72,6 +73,7 @@
 #include "cyberspace_pitch_snap.hpp"
 #include "cyberspace_head_steering.hpp"
 #include "cyberspace_flight_reticle.hpp"
+#include "cyberspace_hud_layout.hpp"
 #include "roomscale_sweep_setting.hpp"
 #include "focus_interaction_patch.hpp"
 #include "vr_input_actions.hpp"
@@ -352,6 +354,9 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
             CyberspaceHeadSteering::handle_tick(m_pawn.get(), vr);
             CyberspacePitchSnap::handle_tick(m_pawn.get(), delta);
             CyberspaceFlightReticle::handle(m_world, m_pawn.get());
+        }
+        if (m_pawn_state.get() == PAWN_PSEUDOSPACE) {
+            CyberspaceHudLayout::handle_pseudospace(static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get()));
         }
         handle_media_display();
         update_trailing_rotation(delta);
@@ -639,6 +644,25 @@ void UEVRPlugin::prepare_game_state() {
             return;
         }
 
+        // HACKER PSEUDOSPACE - final battle. The pawn derives from PAWN_Hacker_Simple_C, so it must
+        // be tested before it. Its class is loaded only in pseudospace, so it is matched by name:
+        // StaticClass() would search the whole object array on every call everywhere else.
+        if (PluginUtils::is_class_named(m_pawn.get(), "PAWN_Hacker_Pseudospace_C")) {
+            m_pawn_state.set_value(PAWN_PSEUDOSPACE);
+
+            // GAME_STATE_PAUSE_MENU. The HUD is not a WIDGET_SimpleHUD_C, and its menu widget sits at
+            // another offset, so it is read directly from the pseudospace HUD.
+            auto* pseudo_hud = static_cast<UWIDGET_PseudospaceHUD_C*>(static_cast<APAWN_Hacker_Simple_C*>(m_pawn.get())->PlayerHUDWidget);
+            main_menu = UKismetSystemLibrary::IsValid(pseudo_hud) ? pseudo_hud->WIDGET_MainMenu_InGame : nullptr;
+            if (main_menu != nullptr && main_menu->IsMainMenuEnabled) {
+                m_game_state.set_value(GAME_STATE_PAUSE_MENU);
+                return;
+            }
+
+            m_game_state.set_value(GAME_STATE_PSEUDOSPACE);
+            return;
+        }
+
         // HACKER SIMPLE - APPARTMENT INTRO
         if (PluginUtils::is_a<APAWN_Hacker_Simple_C>(m_pawn.get())) {
             m_pawn_state.set_value(PAWN_HACKERSIMPLE);
@@ -666,11 +690,6 @@ void UEVRPlugin::prepare_game_state() {
             m_game_state.set_value(GAME_STATE_APPARTMENT);
             return;
         }
-
-        // GAME_STATE_PSEUDOSPACE
-        // TODO: add pseudospace pause menu
-        // TODO: add pseudospace pawn check, but use string search
-        // because PAWN_Hacker_Pseudospace is not in memory when player is not in pseudospace
 
         // all previous checks are false
         m_game_state.set_value(GAME_STATE_UNDEFINED);
@@ -738,8 +757,8 @@ void UEVRPlugin::handle_xinput(XINPUT_STATE* state, const UEVR_VRData* vr) {
             return;
         }
 
-        // Apartment movement gameplay
-        if (m_game_state.get() == GAME_STATE_APPARTMENT) {
+        // Apartment movement gameplay. Pseudospace uses the same pawn base and, for now, the same input.
+        if (m_game_state.get() == GAME_STATE_APPARTMENT || m_game_state.get() == GAME_STATE_PSEUDOSPACE) {
             handle_vr_menu_xinput(state, vr);
             handle_appartment_xinput(state, vr);
             handle_smooth_turning(state);
@@ -1389,6 +1408,28 @@ void UEVRPlugin::handle_game_state_change() {
                         vr->set_mod_value("VR_CameraUpOffset", "0.000000");
                         vr->set_mod_value("UI_Distance", "2.000000");
                         vr->set_mod_value("UI_Size", "0.000000");
+                        vr->set_mod_value("UI_Y_Offset", "0.00000");
+                        vr->set_mod_value("VR_RoomscaleMovement", "true");
+                        vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
+                        PluginUtils::reset_height(0.f);
+                        vr->recenter_view();
+                    }
+                    break;
+
+                case GAME_STATE_PSEUDOSPACE:
+                    if (is_valid_vr_body_hacker_simple_pawn()) {
+                        g_vr_body->VRBodyMesh()->SetVisibility(true, false);
+                        m_pawn.get()->bUseControllerRotationPitch = false;
+                        m_pawn.get()->bUseControllerRotationRoll = false;
+                        m_pawn.get()->bUseControllerRotationYaw = true;
+
+                        API::UObjectHook::set_disabled(false);
+                        vr->set_aim_method(m_default_aim_method);
+                        vr->set_decoupled_pitch_enabled(true);
+                        vr->set_mod_value("VR_CameraForwardOffset", "0.000000");
+                        vr->set_mod_value("VR_CameraUpOffset", "0.000000");
+                        vr->set_mod_value("UI_Distance", "3.000000");
+                        vr->set_mod_value("UI_Size", "3.000000");
                         vr->set_mod_value("UI_Y_Offset", "0.00000");
                         vr->set_mod_value("VR_RoomscaleMovement", "true");
                         vr->set_mod_value("VR_DecoupledPitchUIAdjust", "true");
