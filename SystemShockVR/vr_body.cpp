@@ -107,14 +107,6 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         UGameplayStatics::FinishSpawningActor(vr_body, pawn_transform);
         API::get()->log_warn("[vr_body][initialize_vr_body] Finishied spawning VRBody BP Actor");
 
-        // BeginPlay sets HackerPawn with GetActorOfClass(PAWN_Hacker_Simple_C), which returns the
-        // first match. In pseudospace that is the unpossessed station pawn, not the player's.
-        if (vr_body->HackerPawn() != pawn) {
-            API::get()->log_warn("[vr_body][initialize_vr_body] HackerPawn was %s, set to the player's pawn",
-                vr_body->HackerPawn() != nullptr ? vr_body->HackerPawn()->GetName().c_str() : "null");
-            vr_body->HackerPawn() = pawn;
-        }
-
         TArray<FName> actor_tags{};
         actor_tags.Data = (FName*)API::FMalloc::get()->malloc(1 * sizeof(FName));
         actor_tags.NumElements = 1;
@@ -251,8 +243,7 @@ void VRBody::initialize_laser_dot() {
     g_vr_body->LaserDot()->RootComponent->K2_SetRelativeLocationAndRotation({ 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f }, false, &hit_result, false);
 
     //vr_body->LaserDot()->LaserDotComponent()->Activate(true);
-    g_vr_body->LaserDot()->LaserDotComponent()->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.5f);
-    g_vr_body->LaserDot()->LaserDotComponent()->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Size"), 3.f);
+    // The dot's Power and Size come from _BP_LaserDot (SetPseudospaceParams in pseudospace).
 
     g_vr_body->LaserDot()->LaserPointerComponent()->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.1f);
     g_vr_body->LaserDot()->LaserPointerComponent()->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"LaserColour"), { 0.2f, 0.f, 0.f, 0.5f });

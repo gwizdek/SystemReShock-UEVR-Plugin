@@ -21,14 +21,16 @@ namespace SDK
 // restore.
 //
 // Pseudospace has its own HUD with its own connection integrity (WIDGET_PseudoHealth), also in
-// the top right corner. It is moved to the top centre the same way, at full size.
+// the top right corner. It is moved to the top centre the same way, at full size. Its centre
+// dot (IMG_CursorDot) is hidden; the laser dot shows where the hand points.
 class CyberspaceHudLayout final
 {
 public:
     // Called when the VR avatar is set up.
     static void apply(SDK::APAWN_Avatar_C* pawn);
     // Called every tick in pseudospace. The HUD can appear after the pawn, so the layout is
-    // applied once it exists, and again only for a new HUD.
+    // applied once it exists, and again only for a new HUD. The centre dot is checked every
+    // tick, because the HUD shows it again by itself.
     static void handle_pseudospace(SDK::APAWN_Hacker_Simple_C* pawn);
     // Called when the VR avatar is removed.
     static void restore();

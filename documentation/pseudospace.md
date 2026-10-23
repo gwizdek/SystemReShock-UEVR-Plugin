@@ -6,9 +6,9 @@ the VR setup is the apartment intro's, because the pawn derives from the apartme
 page collects what is known and what is still to do.
 
 The game facts come from the cooked Blueprints (exported with the bytecode exporter) and the
-Dumper-7 SDK. The detection, the pause state, the hidden wrist widgets, the HUD layout and the
-`HackerPawn` fix were checked in the running game. Weapons, the platforms, the respawn and the
-pause menu were not.
+Dumper-7 SDK. The detection, the pause state, the hidden wrist widgets, the HUD layout, the
+VR body's pawn and the pulser in the right hand were checked in the running game. The other
+weapons, the platforms, the respawn and the pause menu were not.
 
 ## The pawn and its HUD
 
@@ -107,17 +107,38 @@ laptop class is not loaded in pseudospace, so a failed `find_uobject` would cost
 - `CyberspaceHudLayout::handle_pseudospace` moves connection integrity from the top right
   corner to the top centre, as in cyberspace. It runs every tick and applies the layout once
   per HUD, because the HUD can appear after the pawn.
+- The same function hides the HUD's centre dot (`IMG_CursorDot`); the laser dot shows where
+  the hand points. It checks the dot every tick, because the HUD's own `SetCursorVisibility`
+  shows it again, for example after a menu.
 - The periodic modules that only skip cyberspace (`FocusInteractionPatch`,
   `TutorialMessages`, `TutorialPopupDuration`, `TutorialHeadView`) run too.
 
-### The VR body's HackerPawn
+### The VR body in pseudospace
 
-`_BP_VRBody` sets its `HackerPawn` in `BeginPlay` with `GetActorOfClass(PAWN_Hacker_Simple_C)`,
-which returns the first match. In pseudospace the unpossessed station pawn is still in the
-level, and it is found first. `AttachLaserPointer` then attached the station pawn's
-`PlayerCamera` to the right hand. `initialize_vr_body` now sets `HackerPawn` to the player's
-pawn after the spawn. Links the Blueprint makes during `BeginPlay`, for example the hand
-components' bindings to the inventory, can still point at the station pawn.
+The unpossessed station pawn stays in the level during pseudospace. `_BP_VRBody` must
+therefore find its pawn with `GetPlayerPawn(0)`, in `BeginPlay` and in
+`InitializeAnimations`. `GetActorOfClass(PAWN_Hacker_Simple_C)` returns the station pawn
+there, and the VR body would then copy that pawn's animation and bind to its inventory.
+
+For a pseudospace pawn, `BeginPlay`:
+
+- calls `_BP_LaserDot.SetPseudospaceParams`, which sets the laser dot's power, size and
+  distance for pseudospace. The plugin does not set the dot's `Power` or `Size`
+  (`initialize_laser_dot`);
+- binds `CustomEvent_WeaponChanged`, `CustomEvent_WeaponDrawn` and
+  `CustomEvent_WeaponHolstered` to the pawn's `COMP_HackerInventory` and keeps that inventory
+  in `BoundHackerInventory`. `EndPlay` unbinds the three events from it.
+
+Weapons reach the hand through these events. A pickup pedestal (`BP_CYBER_PickupPedestal`)
+calls `COMP_HackerInventory.GrantItem` from its overlap event. The weapon's `SetEquipped`
+calls `SetCurrentEquippedWeapon`, which broadcasts `OnEquippedWeaponChanged`. When the
+weapon is drawn, `OnWeaponDrawStarted` broadcasts `OnWeaponDrawn`, and the VR body's
+`CustomEvent_WeaponDrawn` calls `ChangeEquippedWeapon`. That attaches the pawn's
+`WeaponMesh` to the right hand. The pulser's anim Blueprint, `AnimBP_Cybergun`, implements
+`_BI_VRWeapon`, which gives the socket and the offset.
+
+`PICKUP_Base.OnPickedUp` cannot be used for this: in the whole game only
+`INTERACT_ModkitStation` binds to it.
 
 ## The earlier plugin
 
@@ -135,18 +156,15 @@ None of it has been checked against the current plugin or the current game versi
 
 ## Work to do
 
-1. Make `_BP_VRBody` find its pawn with `GetPlayerPawn` instead of `GetActorOfClass`, so
-   that nothing set up in `BeginPlay` points at the station pawn. Then the fix in
-   `initialize_vr_body` can go.
-2. Check the pause menu in pseudospace. Its game state case enables UObjectHook and
+1. Check the pause menu in pseudospace. Its game state case enables UObjectHook and
    decoupled pitch.
-3. Check the pseudospace weapons with the VR weapon code, and the surfboards and turret
+2. Check the Nova and the disc launcher in the hand, and the surfboards and turret
    platforms with the hand interaction. Check whether the apartment input (triggers attach
    the laser pointer when the hand is empty) gets in the way of firing.
-4. Decide which periodic modules run there. `FocusInteractionPatch` matters only if a
+3. Decide which periodic modules run there. `FocusInteractionPatch` matters only if a
    pseudospace interactable derives from `INTERACT_Focusable_Base` or is a keypad or
    puzzle. The tutorial modules matter only if pseudospace shows tutorial popups.
-5. Check the respawn (`OnRespawnHacker`) and the reload by `OpenPersistentMapByType(4)`:
+4. Check the respawn (`OnRespawnHacker`) and the reload by `OpenPersistentMapByType(4)`:
    both may need the VR body set up again.
 
 A save just before the last terminal is the quickest way to test all of this.

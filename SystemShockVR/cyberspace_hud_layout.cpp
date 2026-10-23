@@ -74,6 +74,17 @@ void scale_widget(UWidget* widget, float scale, const FVector2D& pivot) {
     widget->SetRenderScale(FVector2D{ scale, scale });
 }
 
+// The HUD's own SetCursorVisibility shows the centre dot again, for example after a menu, so
+// this runs every tick. It only reads a field unless the dot is shown.
+void hide_cursor_dot(UWIDGET_PseudospaceHUD_C* hud) {
+    UImage* dot = hud->IMG_CursorDot;
+    if (!is_alive(dot) || dot->Visibility == ESlateVisibility::Collapsed) {
+        return;
+    }
+    dot->SetVisibility(ESlateVisibility::Collapsed);
+    API::get()->log_warn("[cyberspace_hud_layout][hide_cursor_dot] Hid the centre dot");
+}
+
 } // namespace
 
 void CyberspaceHudLayout::apply(APAWN_Avatar_C* pawn) {
@@ -136,10 +147,14 @@ void CyberspaceHudLayout::restore() {
 
 void CyberspaceHudLayout::handle_pseudospace(APAWN_Hacker_Simple_C* pawn) {
     auto* hud = static_cast<UWIDGET_PseudospaceHUD_C*>(pawn->PlayerHUDWidget);
-    if (hud == s_pseudospace_hud || !is_alive(hud)) {
+    if (!is_alive(hud)) {
         return;
     }
     try {
+        hide_cursor_dot(hud);
+        if (hud == s_pseudospace_hud) {
+            return;
+        }
         restore();
         s_pseudospace_hud = hud;
         // The slot sizes itself to the panel, so only anchor, alignment and position change.
