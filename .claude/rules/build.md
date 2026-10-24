@@ -14,7 +14,7 @@ The repository holds two things that can be built. Use these names:
 | **hot loader** | `tools\PluginHotLoader\PluginHotLoader.vcxproj` | A development-only UEVR plugin, `PluginHotLoader.dll`, that loads the plugin from a copy and swaps in a new build while the game runs. Not shipped by the installer. See `documentation\plugin-hot-reload.md`. |
 | **bytecode exporter** | `tools\BytecodeExporter\BytecodeExporter.csproj` | A C# command line tool, `BytecodeExporter.exe`, that writes the Blueprint bytecode, variables, components, widget tree and enums of one `.uasset` as JSON. Development only, not shipped. See `tools\BytecodeExporter\README.md`. |
 
-"Build the plugin" means the plugin only. "Build the installer" means the installer only. "Build the hot reloader" means the hot reloader only. "Build the hot loader" means the hot loader only. "Build the bytecode exporter" means the bytecode exporter only. "Build everything" means the plugin and the installer. When the request does not say which one, ask.
+"Build the plugin" means the plugin only. "Build the installer" means the plugin first and then the installer, so the installer always ships a fresh plugin. "Build the hot reloader" means the hot reloader only. "Build the hot loader" means the hot loader only. "Build the bytecode exporter" means the bytecode exporter only. "Build everything" means the same as "build the installer". When the request does not say which one, ask.
 
 ## Plugin
 
@@ -155,9 +155,10 @@ The EXE lands in `tools\BytecodeExporter\bin\Release\net8.0\BytecodeExporter.exe
 
 ## Installer
 
-From PowerShell at the repository root:
+Build the plugin first, then the installer. From a Developer PowerShell at the repository root:
 
 ```powershell
+msbuild SystemShockVR\SystemShockVR.vcxproj /p:Configuration=Release /p:Platform=x64 /m
 dotnet build SystemShockInstaller\src\SystemReShockInstaller\SystemReShockInstaller.csproj -c Release
 dotnet test  SystemShockInstaller\tests\SystemReShockInstaller.Tests\SystemReShockInstaller.Tests.csproj -c Release
 ```
@@ -170,5 +171,6 @@ The EXE lands in `SystemShockInstaller\src\SystemReShockInstaller\bin\Release\ne
 - The build empties and refills `SystemShockInstaller\mod_files\` from three sources, then zips it into the EXE. Never edit `mod_files\` by hand and never commit it; it is gitignored.
 - The sources are MSBuild properties in the installer project file: `ProfileSourceDir` (default `<repo>\profile\`), `PluginDllPath` (default `<repo>\SystemShockVR\x64\Release\SystemReShockVR.dll`) and `PakSourceDir` (default the Unreal project's `WindowsNoEditor\SystemShock\Content\Paks\` folder). Override with `/p:Name=value` when asked to build from another location.
 - Only `pakchunk10-WindowsNoEditor.pak` is taken from `PakSourceDir`; it becomes `SystemShockVRModCore_P.pak`. `pakchunk0-WindowsNoEditor.pak` is never shipped. `SystemShockVRModAddon_P.pak` comes from `<repo>\profile\paks\`.
-- Build the plugin before the installer when the installer must ship a fresh plugin. The installer build fails if the plugin DLL, the profile folder or the Core chunk is missing.
+- Always build the plugin (Release x64) before the installer. The installer build does not build the plugin; it copies the DLL at `PluginDllPath` as it is. If the plugin build fails, stop and do not build the installer. Skip the plugin build only when told to, or when `PluginDllPath` points to another DLL.
+- The installer build fails if the plugin DLL, the profile folder or the Core chunk is missing.
 - Do not build the installer with `dotnet build SystemReShockVR.sln`. The solution also holds the C++ project, which the `dotnet` CLI cannot build.
