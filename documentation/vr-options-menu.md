@@ -445,6 +445,9 @@ binding lists (`s_sliders`, `s_toggles`) hold one line per row:
   [general]
   auto_ads = 1
   player_height = 175
+  menu_recenter_angle = 25
+  menu_recenter_delay = 2.5
+  menu_recenter_duration = 0.1
 
   [movement]
   vr_look_sensitivity = 5
@@ -487,6 +490,13 @@ The sync runs from `VROptionsMenu`:
   `pitch_snap_turn()`, `pitch_deadzone()`, `pitch_snap_duration()` and `crosshair_scale()`
   for cyberspace. The cyberspace values are read when they are used, so Apply needs no extra
   step for them.
+- The `menu_recenter_angle`, `menu_recenter_delay` and `menu_recenter_duration` keys in
+  `[general]` have no row on the page. They are set in the file only. When `VRSettings` reads
+  the file, it adds each one that is missing with its default and writes the file at once
+  (`kFileOnlyKeys` in `vr_settings.cpp`). `MenuAutoRecenter`
+  (`menu_auto_recenter.cpp`) reads them each time the title menu or a pause menu opens. The view
+  recenters when the head stays more than the angle (degrees) away from the view's forward
+  direction for the delay (seconds). The turn takes the duration (seconds); 0 is instant.
 - After a save, `consume_settings_change` returns true once, and `plugin.cpp` calls
   `apply_vr_options_menu_settings`. It sets `m_ui_option_auto_ads_enabled` from `auto_ads()` and
   calls `VRBody::apply_custom_vr_game_options`. That function also runs after every VR body

@@ -114,6 +114,9 @@
     <ClInclude Include="cyberspace_pitch_snap.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="menu_auto_recenter.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="cyberspace_head_steering.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -408,6 +411,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cyberspace_pitch_snap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_auto_recenter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cyberspace_head_steering.cpp">

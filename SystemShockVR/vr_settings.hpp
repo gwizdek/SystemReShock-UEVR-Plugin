@@ -4,7 +4,7 @@
 
 // The mod's settings file, system_reshock_vr_config.ini in the UEVR profile folder. The values
 // the VR options page manages live in [general], [movement] and [cyberspace], keyed by the row's
-// SettingName.
+// SettingName. The menu recenter keys in [general] have no row; they are set in the file only.
 // The file is read once on first use. save() writes the changed values back and keeps
 // everything else in the file as it is.
 class VRSettings final
@@ -28,6 +28,9 @@ public:
     static int look_sensitivity();      // [movement] 1..10, default 5
     static float player_height();       // [general] 165..185 cm, default 175
     static bool auto_ads();             // [general] default on
+    static float menu_recenter_angle();    // [general] 5..90 degrees, default 25
+    static float menu_recenter_delay();    // [general] 0..10 seconds, default 2.5
+    static float menu_recenter_duration(); // [general] 0..5 seconds, default 0.1
     static bool pitch_snap_turn();      // [cyberspace] default on
     static float pitch_deadzone();      // [cyberspace] 0..1, default 0.75
     static float pitch_snap_duration(); // [cyberspace] 0..1 seconds, default 0.7

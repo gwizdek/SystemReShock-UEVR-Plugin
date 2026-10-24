@@ -46,6 +46,34 @@ bool move_old_keys(mINI::INIStructure& ini)
     return moved_any;
 }
 
+// Keys with no row on the VR options page. Nothing else writes them, so they are added with
+// their default when missing, to be found and changed in the file.
+struct FileOnlyKey
+{
+    const char* section;
+    const char* key;
+    const char* value;
+};
+
+constexpr FileOnlyKey kFileOnlyKeys[] = {
+    { VRSettings::kGeneral, "menu_recenter_angle", "25" },
+    { VRSettings::kGeneral, "menu_recenter_delay", "2.5" },
+    { VRSettings::kGeneral, "menu_recenter_duration", "0.1" },
+};
+
+// Returns true when a key was added.
+bool add_file_only_keys(mINI::INIStructure& ini)
+{
+    bool added_any = false;
+    for (const FileOnlyKey& entry : kFileOnlyKeys) {
+        if (ini.has(entry.section) && ini.get(entry.section).has(entry.key)) continue;
+        ini[entry.section][entry.key] = entry.value;
+        API::get()->log_warn("[vr_settings][add_file_only_keys] [%s] %s = %s added", entry.section, entry.key, entry.value);
+        added_any = true;
+    }
+    return added_any;
+}
+
 Store& store()
 {
     static Store value = [] {
@@ -54,9 +82,12 @@ Store& store()
         mINI::INIFile file(s.path);
         if (!file.read(s.ini)) {
             API::get()->log_warn("[vr_settings][store] %s not found or unreadable, defaults apply until the first save", s.path.c_str());
+            return s;
         }
-        else if (move_old_keys(s.ini) && !file.write(s.ini, true)) {
-            API::get()->log_error("[vr_settings][store] cannot write %s after moving old keys", s.path.c_str());
+        const bool moved = move_old_keys(s.ini);
+        const bool added = add_file_only_keys(s.ini);
+        if ((moved || added) && !file.write(s.ini, true)) {
+            API::get()->log_error("[vr_settings][store] cannot write %s after moving or adding keys", s.path.c_str());
         }
         return s;
     }();
@@ -135,6 +166,21 @@ float VRSettings::player_height()
 bool VRSettings::auto_ads()
 {
     return get_bool(kGeneral, "auto_ads", true);
+}
+
+float VRSettings::menu_recenter_angle()
+{
+    return std::clamp(get_float(kGeneral, "menu_recenter_angle", 25.f), 5.f, 90.f);
+}
+
+float VRSettings::menu_recenter_delay()
+{
+    return std::clamp(get_float(kGeneral, "menu_recenter_delay", 2.5f), 0.f, 10.f);
+}
+
+float VRSettings::menu_recenter_duration()
+{
+    return std::clamp(get_float(kGeneral, "menu_recenter_duration", 0.1f), 0.f, 5.f);
 }
 
 bool VRSettings::pitch_snap_turn()

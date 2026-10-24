@@ -71,6 +71,7 @@
 #include "cyberspace_atmosphere_fix.hpp"
 #include "cyberspace_body_turn.hpp"
 #include "cyberspace_pitch_snap.hpp"
+#include "menu_auto_recenter.hpp"
 #include "cyberspace_head_steering.hpp"
 #include "cyberspace_flight_reticle.hpp"
 #include "cyberspace_hud_layout.hpp"
@@ -349,6 +350,8 @@ void UEVRPlugin::on_pre_engine_tick(API::UGameEngine* engine, float delta) {
         handle_deferred_camera_reset(delta);
         handle_cyberspace_look_pivot(vr);
         VRAvatar::update_aim(vr, delta);
+        MenuAutoRecenter::handle_tick(vr,
+            m_game_state.get() == GAME_STATE_MAIN_MENU || m_game_state.get() == GAME_STATE_PAUSE_MENU, delta);
         if (m_game_state.get() == GAME_STATE_CYBERSPACE) {
             CyberspaceBodyTurn::handle(m_pawn.get(), vr);
             CyberspaceHeadSteering::handle_tick(m_pawn.get(), vr);
