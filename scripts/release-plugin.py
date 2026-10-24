@@ -1,11 +1,12 @@
 """Builds a release of the mod as a UEVR profile zip.
 
 Usage:
-    python scripts\\release-plugin.py 2.0-beta.4 [--pak-dir <folder>]
+    python scripts\\release-plugin.py [--pak-dir <folder>]
 
 Steps:
-    1. Sets the version: InformationalVersion in the installer project (the plugin build reads
-       it from there) and "remarks" and "modifiedDate" in profile\\ProfileMeta.json.
+    1. Reads the version from InformationalVersion in the installer project (the plugin build
+       reads it from there too). It must equal "remarks" in profile\\ProfileMeta.json. The script
+       changes neither; the version is bumped before a release, separately.
     2. Builds the plugin (Release x64).
     3. Stages the profile the way the installer build fills mod_files\\: every profile file except
        imgui.ini, the plugin DLL in plugins\\, and the Core pak in paks\\.
@@ -50,13 +51,9 @@ class ReleaseError(Exception):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Build a release of the mod as a UEVR profile zip.")
-    parser.add_argument("version", help="Release version, for example 2.0-beta.4")
     parser.add_argument("--pak-dir", type=Path, default=DEFAULT_PAK_DIR,
                         help=f"Folder with {CORE_PAK_SOURCE} (default: the Unreal project's packaged paks)")
-    args = parser.parse_args()
-    if not VERSION_PATTERN.match(args.version):
-        parser.error(f"'{args.version}' is not a version like 2.0-beta.4")
-    return args
+    return parser.parse_args()
 
 
 def check_sources(pak_dir):
@@ -66,25 +63,24 @@ def check_sources(pak_dir):
         raise ReleaseError("Missing files:\n  " + "\n  ".join(missing))
 
 
-# Reads and writes a text file as it is, so its line endings and encoding stay unchanged.
-def replace_in_file(path, pattern, replacement):
-    has_bom = path.read_bytes().startswith(b"\xef\xbb\xbf")
-    with open(path, encoding="utf-8-sig", newline="") as file:
-        text = file.read()
-    new_text, count = re.subn(pattern, replacement, text)
-    if count != 1:
-        raise ReleaseError(f"Expected one match of {pattern} in {path}, found {count}")
-    with open(path, "w", encoding="utf-8-sig" if has_bom else "utf-8", newline="") as file:
-        file.write(new_text)
+def read_one(path, pattern):
+    matches = re.findall(pattern, path.read_text(encoding="utf-8-sig"))
+    if len(matches) != 1:
+        raise ReleaseError(f"Expected one match of {pattern} in {path}, found {len(matches)}")
+    return matches[0]
 
 
-def set_version(version):
-    replace_in_file(INSTALLER_PROJECT, r"<InformationalVersion>[^<]*</InformationalVersion>",
-                    f"<InformationalVersion>{version}</InformationalVersion>")
-    now = datetime.now().astimezone().replace(microsecond=0).isoformat()
-    replace_in_file(PROFILE_META, r'"remarks":\s*"[^"]*"', f'"remarks": "{version}"')
-    replace_in_file(PROFILE_META, r'"modifiedDate":\s*"[^"]*"', f'"modifiedDate": "{now}"')
-    print(f"Version set to {version} in {INSTALLER_PROJECT.name} and {PROFILE_META.name}")
+# The version comes from the files a version bump changes. A mismatch means the bump is not
+# complete, so the release stops.
+def read_version():
+    version = read_one(INSTALLER_PROJECT, r"<InformationalVersion>([^<]*)</InformationalVersion>")
+    remarks = read_one(PROFILE_META, r'"remarks":\s*"([^"]*)"')
+    if not VERSION_PATTERN.match(version):
+        raise ReleaseError(f"InformationalVersion '{version}' is not a version like 2.0 or 2.0-beta.4")
+    if remarks != version:
+        raise ReleaseError(f"InformationalVersion is '{version}' but remarks in {PROFILE_META.name} is '{remarks}'")
+    print(f"Version {version}")
+    return version
 
 
 def find_msbuild():
@@ -152,14 +148,14 @@ def main():
     args = parse_args()
     try:
         check_sources(args.pak_dir)
-        set_version(args.version)
+        version = read_version()
         build_plugin()
         timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
-        zip_path = RELEASES_DIR / f"{args.version}_{timestamp}" / ZIP_NAME
+        zip_path = RELEASES_DIR / f"{version}_{timestamp}" / ZIP_NAME
         with tempfile.TemporaryDirectory() as temp:
             stage_files(Path(temp), args.pak_dir)
             write_zip(Path(temp), zip_path)
-        print_summary(args.version, zip_path, args.pak_dir)
+        print_summary(version, zip_path, args.pak_dir)
     except ReleaseError as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 1

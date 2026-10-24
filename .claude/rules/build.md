@@ -97,18 +97,17 @@ with a message and the game must be closed first.
   in the form `2026-10-24T12:40:00+02:00`.
 
 Commit the change as `chore(release): bump version to <version>` only when asked.
-`scripts\release-plugin.py` sets the same three values when it makes a release.
 
 ### Releasing the plugin as a UEVR profile zip
 
-`scripts\release-plugin.py <version>` (the `/release-plugin` skill) makes
-`releases\<version>_<timestamp>\SystemReShock-Win64-Shipping.zip`. The version is required, for
-example `2.0-beta.4`; the script stops without it. It sets `InformationalVersion` in the installer
-project and `remarks` and `modifiedDate` in `profile\ProfileMeta.json`, builds the plugin, and zips
-the same files the installer embeds: the profile without `imgui.ini`, the DLL in `plugins\` and
-both paks in `paks\`. It does not package the Unreal project; the Core pak is taken from the
-packaged output as it is (`--pak-dir` sets another folder). `releases\` is gitignored. The version
-change is left uncommitted.
+`scripts\release-plugin.py` (the `/release-plugin` skill) makes
+`releases\<version>_<timestamp>\SystemReShock-Win64-Shipping.zip` for the current version. It does
+not change the version: bump it first when the release needs a new one. The script reads the
+version from `InformationalVersion` in the installer project and stops when `remarks` in
+`profile\ProfileMeta.json` is different. It builds the plugin and zips the same files the
+installer embeds: the profile without `imgui.ini`, the DLL in `plugins\` and both paks in
+`paks\`. It does not package the Unreal project; the Core pak is taken from the packaged output
+as it is (`--pak-dir` sets another folder). `releases\` is gitignored.
 
 ## Hot reloader
 

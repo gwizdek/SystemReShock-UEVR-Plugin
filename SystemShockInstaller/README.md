@@ -109,7 +109,9 @@ after the copy.
 2. Package the Unreal project so `pakchunk10-WindowsNoEditor.pak` is current.
 3. Update the files in `<repo>\profile\` if the profile changed.
 4. Set `InformationalVersion` in `src/SystemReShockInstaller/SystemReShockInstaller.csproj`
-   to the release tag, for example `2.0-beta.3`. `scripts\release-plugin.py <version>` in the
-   repository root does this, sets the version in `profile\ProfileMeta.json`, builds the plugin,
-   and also writes the UEVR profile zip `SystemReShock-Win64-Shipping.zip` under `releases\`.
-5. Build in Release and publish the EXE from `bin\Release\net48\`.
+   to the release tag, for example `2.0`, and `remarks` and `modifiedDate` in
+   `<repo>\profile\ProfileMeta.json` to match (see "Bumping the version" in
+   `.claude/rules/build.md`).
+5. Build in Release and publish the EXE from `bin\Release\net48\`. For the UEVR profile zip
+   `SystemReShock-Win64-Shipping.zip`, run `scripts\release-plugin.py` in the repository root. It
+   uses the version from step 4, builds the plugin and writes the zip under `releases\`.

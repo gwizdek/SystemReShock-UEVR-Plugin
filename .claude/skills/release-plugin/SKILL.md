@@ -1,9 +1,9 @@
 ---
 name: release-plugin
-description: Build a release of the mod as a UEVR profile zip (SystemReShock-Win64-Shipping.zip) for a given version, for example 2.0-beta.4. Sets the version, builds the plugin, stages the profile, plugin and paks like the installer, and writes the zip under releases\. Use when the user says "release the plugin", "make a release" or "/release-plugin <version>".
+description: Build a release of the mod as a UEVR profile zip (SystemReShock-Win64-Shipping.zip) for the current version. Builds the plugin, stages the profile, plugin and paks like the installer, and writes the zip under releases\. It does not change the version. Use when the user says "release the plugin", "make a release" or "/release-plugin".
 disable-model-invocation: true
 allowed-tools: PowerShell, Bash, Read
-argument-hint: <version, for example 2.0-beta.4>
+argument-hint: [--pak-dir <folder>]
 ---
 
 # Release the plugin as a UEVR profile zip
@@ -11,41 +11,39 @@ argument-hint: <version, for example 2.0-beta.4>
 Runs `scripts\release-plugin.py`, which makes `SystemReShock-Win64-Shipping.zip`: the UEVR profile
 of the mod with the plugin DLL and both paks, the same files the installer embeds.
 
+The release uses the version that is already set. Bumping the version is a separate step (see
+"Bumping the version" in `.claude/rules/build.md`), done before the release when needed. This
+skill never changes the version.
+
 ## Steps
 
-1. **The version is required.** Take it from the arguments: `$ARGUMENTS`. If it is empty, stop
-   and ask the user for the version. Do not guess it and do not reuse the current one. The script
-   itself also stops without a version, and when the version is not like `2.0-beta.4`.
-
-2. From the repository root, run:
+1. From the repository root, run:
 
    ```powershell
-   python scripts\release-plugin.py <version>
+   python scripts\release-plugin.py
    ```
 
    Pass `--pak-dir <folder>` only when the user names another folder for
    `pakchunk10-WindowsNoEditor.pak`. The default is the Unreal project's packaged paks.
 
    The script:
-   - checks that the profile, the Addon pak and the Core chunk exist, before it changes anything;
-   - sets `InformationalVersion` in the installer project and `remarks` and `modifiedDate` in
-     `profile\ProfileMeta.json`;
-   - builds the plugin (Release x64), which reads the new version;
+   - checks that the profile, the Addon pak and the Core chunk exist;
+   - reads the version from `InformationalVersion` in the installer project, and stops when
+     `remarks` in `profile\ProfileMeta.json` is not the same version;
+   - builds the plugin (Release x64), which reads the same version;
    - stages the profile without `imgui.ini`, the DLL in `plugins\`, and the Core chunk in `paks\`
      as `SystemShockVRModCore_P.pak`;
    - writes `releases\<version>_<timestamp>\SystemReShock-Win64-Shipping.zip`.
 
-3. If the script fails, show its error and stop. If it failed after setting the version, say
-   that the version files are changed.
+2. If the script fails, show its error and stop. When the two versions do not match, do not
+   fix them; tell the user to finish the version bump.
 
-4. On success, report the zip path and size, the plugin build index, and the Core pak's date
-   from the script's output. The script does not package the Unreal project: if the Core pak is
-   older than the latest content change, say so.
-
-5. Say that the version change in `SystemReShockInstaller.csproj` and `profile\ProfileMeta.json`
-   is not committed. Commit it only when the user asks.
+3. On success, report the version, the zip path and size, the plugin build index, and the Core
+   pak's date from the script's output. The script does not package the Unreal project: if the
+   Core pak is older than the latest content change, say so.
 
 ## Rules
 
-- This does not build the installer and does not publish anything. `releases\` is gitignored.
+- This does not change the version, build the installer, commit or publish anything.
+  `releases\` is gitignored.
 - Follow `.claude/rules/build.md`.
