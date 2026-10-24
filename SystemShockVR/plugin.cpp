@@ -1581,6 +1581,7 @@ void UEVRPlugin::handle_level_change() {
                     VRBody::initialize_hacker_hardware(m_neural_hud);
                     VRBody::initialize_active_hazard(m_neural_hud);
                     VRBody::initialize_unread_media_icon(m_neural_hud);
+                    VRBody::initialize_subtitles(m_neural_hud);
                     TutorialMessages::apply_popup_size(m_neural_hud);
                     VRBody::initialize_ads();
                     VRBody::initialize_hand_item_collisions();

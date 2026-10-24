@@ -43,6 +43,9 @@ public:
     // compass, where the headset shows it. Its material is replaced by the Core pak.
     static void initialize_unread_media_icon(SDK::UWIDGET_PlayerHUD_C* neural_hud);
 
+    // Subtitles: moved from 300px to 400px below the HUD centre.
+    static void initialize_subtitles(SDK::UWIDGET_PlayerHUD_C* neural_hud);
+
     static void initialize_hand_item_collisions();
     static void set_debug_widget_visibility(bool visible);
 

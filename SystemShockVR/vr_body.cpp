@@ -612,6 +612,30 @@ void VRBody::initialize_unread_media_icon(UWIDGET_PlayerHUD_C* neural_hud) {
         API::get()->log_error("[vr_body][initialize_unread_media_icon] Exception");
     }
 }
+
+// The game centres its subtitles 300px below the centre of PANEL_GameHUD. The slot keeps the
+// game's centre anchor and alignment; only the position moves, to 400px below the centre.
+void VRBody::initialize_subtitles(UWIDGET_PlayerHUD_C* neural_hud) {
+    if (neural_hud == nullptr || !UKismetSystemLibrary::IsValid(neural_hud)) {
+        API::get()->log_error("[vr_body][initialize_subtitles] Invalid neural_hud");
+        return;
+    }
+
+    try {
+        UWidget* subtitles = neural_hud->WIDGET_Subtitles;
+        if (!UKismetSystemLibrary::IsValid(subtitles) || subtitles->Slot == nullptr ||
+            !subtitles->Slot->IsA(UCanvasPanelSlot::StaticClass())) {
+            API::get()->log_error("[vr_body][initialize_subtitles] Invalid subtitles or slot");
+            return;
+        }
+        UCanvasPanelSlot* slot = static_cast<UCanvasPanelSlot*>(subtitles->Slot);
+        slot->SetPosition(FVector2D{ 0.0f, 400.0f });
+        API::get()->log_warn("[vr_body][initialize_subtitles] Initialized");
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][initialize_subtitles] Exception");
+    }
+}
 void VRBody::initialize_hand_item_collisions() {
     // Index Finger Overlappers
     g_vr_body->LeftIndexFingerCollision()->SetCollisionObjectType(WIDGET_INTERACTION_TRACE_CHANNEL);
