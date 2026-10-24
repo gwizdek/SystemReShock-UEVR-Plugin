@@ -87,6 +87,18 @@ copy of the Core pak is mounted. `scripts\build-and-deploy.ps1 -Target Paks` run
 and builds nothing. "Deploy paks" means this. A mounted pak is locked by the game; the script stops
 with a message and the game must be closed first.
 
+### Bumping the version
+
+"Bump version" means changing three values and nothing else:
+
+- `InformationalVersion` in the installer project file, for example `2.0-beta.6` to `2.0-beta.7`;
+- `remarks` in `profile\ProfileMeta.json`, set to the same version;
+- `modifiedDate` in `profile\ProfileMeta.json`, set to the current local time with its offset,
+  in the form `2026-10-24T12:40:00+02:00`.
+
+Commit the change as `chore(release): bump version to <version>` only when asked.
+`scripts\release-plugin.py` sets the same three values when it makes a release.
+
 ### Releasing the plugin as a UEVR profile zip
 
 `scripts\release-plugin.py <version>` (the `/release-plugin` skill) makes
