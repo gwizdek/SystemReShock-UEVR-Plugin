@@ -7,13 +7,15 @@
 // The menus are drawn on UEVR's UI plane, which UEVR places in front of the view's forward
 // direction. A player who turns away from it in a menu would have to find the recenter button.
 // Each tick this takes the head's yaw in view space (rotation offset x HMD rotation). When it
-// stays above kAllowedYawDegrees for kOutsideSeconds, the view is turned back to the head, so
-// the menu is in front of the player again.
+// stays above menu_recenter_angle degrees for menu_recenter_delay seconds, the view is turned
+// back to the head, so the menu is in front of the player again. The three menu_recenter_* values
+// are in [general] of system_reshock_vr_config.ini, with no row on the VR options page. They are
+// read each time a menu opens.
 //
-// With kRecenterSeconds 0, UEVR's recenter_view() does it at once. Otherwise the yaw goes out of
-// UEVR's rotation offset over kRecenterSeconds, fast at first and slower towards the end. The yaw
-// still to turn is measured again every tick, so the turn ends facing the head even when the head
-// moves meanwhile.
+// With menu_recenter_duration 0, UEVR's recenter_view() does it at once. Otherwise the yaw goes
+// out of UEVR's rotation offset over that many seconds, fast at first and slower towards the
+// end. The yaw still to turn is measured again every tick, so the turn ends facing the head even
+// when the head moves meanwhile.
 class MenuAutoRecenter final
 {
 public:

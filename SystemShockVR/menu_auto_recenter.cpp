@@ -5,16 +5,22 @@
 
 #include "uevr/API.hpp"
 
+#include "vr_settings.hpp"
+
 using namespace uevr;
 
 namespace {
 
-// The head may turn this far from the view's forward direction, either way, without a recenter.
-constexpr float kAllowedYawDegrees = 25.f;
-// How long the head must stay past kAllowedYawDegrees before the view recenters.
-constexpr float kOutsideSeconds = 2.5f;
-// How long the recenter takes. 0 recenters at once.
-constexpr float kRecenterSeconds = 0.1f;
+// The [general] menu_recenter_* values of system_reshock_vr_config.ini, read when a menu opens.
+struct Settings
+{
+    // The head may turn this far from the view's forward direction, either way, without a recenter.
+    float allowed_yaw_degrees{ 25.f };
+    // How long the head must stay past allowed_yaw_degrees before the view recenters.
+    float outside_seconds{ 2.5f };
+    // How long the recenter takes. 0 recenters at once.
+    float recenter_seconds{ 0.1f };
+};
 
 constexpr float kDegToRad = 0.0174532925f;
 constexpr float kRadToDeg = 57.2957795f;
@@ -30,8 +36,20 @@ struct Recenter
     float rest_share{ 1.f };
 };
 
+Settings s_settings{};
+bool s_in_menu{ false };
 Recenter s_recenter{};
 float s_outside_seconds{ 0.f };
+
+void read_settings() {
+    s_settings = {
+        .allowed_yaw_degrees = VRSettings::menu_recenter_angle(),
+        .outside_seconds = VRSettings::menu_recenter_delay(),
+        .recenter_seconds = VRSettings::menu_recenter_duration()
+    };
+    API::get()->log_warn("[menu_auto_recenter][read_settings] Angle %.1f degrees, delay %.2f s, duration %.2f s",
+        s_settings.allowed_yaw_degrees, s_settings.outside_seconds, s_settings.recenter_seconds);
+}
 
 // UEVR_Quaternionf is declared w, x, y, z, so it is always filled by name.
 UEVR_Quaternionf multiply(const UEVR_Quaternionf& a, const UEVR_Quaternionf& b) {
@@ -99,6 +117,10 @@ void MenuAutoRecenter::handle_tick(const UEVR_VRData* vr, bool in_menu, float de
             reset();
             return;
         }
+        if (!s_in_menu) {
+            s_in_menu = true;
+            read_settings();
+        }
         float yaw_degrees = 0.f;
         if (!head_yaw_degrees(vr, &yaw_degrees)) {
             return;
@@ -107,12 +129,12 @@ void MenuAutoRecenter::handle_tick(const UEVR_VRData* vr, bool in_menu, float de
             turn_towards_head(vr, yaw_degrees, delta);
             return;
         }
-        if (std::fabs(yaw_degrees) <= kAllowedYawDegrees) {
+        if (std::fabs(yaw_degrees) <= s_settings.allowed_yaw_degrees) {
             s_outside_seconds = 0.f;
             return;
         }
         s_outside_seconds += delta;
-        if (s_outside_seconds >= kOutsideSeconds) {
+        if (s_outside_seconds >= s_settings.outside_seconds) {
             start_recenter(vr, yaw_degrees);
         }
     }
@@ -124,8 +146,8 @@ void MenuAutoRecenter::handle_tick(const UEVR_VRData* vr, bool in_menu, float de
 void MenuAutoRecenter::start_recenter(const UEVR_VRData* vr, float yaw_degrees) {
     s_outside_seconds = 0.f;
     API::get()->log_warn("[menu_auto_recenter][start_recenter] Head at %.0f degrees for %.1f s, recentering over %.2f s",
-        yaw_degrees, kOutsideSeconds, kRecenterSeconds);
-    if (kRecenterSeconds <= 0.f) {
+        yaw_degrees, s_settings.outside_seconds, s_settings.recenter_seconds);
+    if (s_settings.recenter_seconds <= 0.f) {
         vr->recenter_view();
         return;
     }
@@ -136,7 +158,7 @@ void MenuAutoRecenter::start_recenter(const UEVR_VRData* vr, float yaw_degrees) 
 // tick turns all of it, so the view ends facing the head.
 void MenuAutoRecenter::turn_towards_head(const UEVR_VRData* vr, float yaw_degrees, float delta) {
     s_recenter.elapsed += delta;
-    const float alpha = (std::min)(s_recenter.elapsed / kRecenterSeconds, 1.f);
+    const float alpha = (std::min)(s_recenter.elapsed / s_settings.recenter_seconds, 1.f);
     const float share = rest_share(alpha);
     const float step = alpha >= 1.f ? yaw_degrees : yaw_degrees * (1.f - share / s_recenter.rest_share);
     s_recenter.rest_share = share;
@@ -147,6 +169,7 @@ void MenuAutoRecenter::turn_towards_head(const UEVR_VRData* vr, float yaw_degree
 }
 
 void MenuAutoRecenter::reset() {
+    s_in_menu = false;
     s_recenter = {};
     s_outside_seconds = 0.f;
 }
