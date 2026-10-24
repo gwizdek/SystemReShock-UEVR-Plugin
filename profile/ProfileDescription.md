@@ -51,10 +51,10 @@
 * **X** - Descend
 * **Y** - Recall
 * **B** - Decoy
-* **Right Grip** - Ascend
-* **Left Grip** - Descend
-* **Right Stick Up** - Ascend
-* **Right Stick Down** - Descend
+* **Right Grip** - Roll right
+* **Left Grip** - Roll left
+* **Right Stick Up** - Snap pitch up
+* **Right Stick Down** - Snap pitch down
 * **Right Trigger** - Pulser
 * **Left Trigger** - I.C.E. Drill
 
@@ -72,7 +72,6 @@
 * My MFD is to wide - You can try to change the game resolution to match 16:9 aspect ratio, set `Window Mode` in game options to `Windowed Fullscreen`, then press Alt+Enter so it no longer takes the whole screen. Lastly, reload a save game.
 
 ## Known Bugs
-* Final Shodan boss battle not working yet
 * Wake-up from cryosleep animation not aligned (other animations like climbing ladders are buggy too)
 * Right hand doesn't snap to levers correctly
 * You can steal from cabinets by physically grabbing items
@@ -80,6 +79,5 @@
 * Using wire connectors in wire puzzle can be tricky/too sensitive (helper: use right hand)
 * You can stand up and see through the level geometry when traversing low tunnels
 * You can stick your gun through a door and shoot enemies on the other side
-* Some of the two handed weapon poses are not aligned
 * Missing parts or reload animations for Railgun(cooldown), Plasma Rifle (plasma core ammo)
 * Sparq weapon - mode dial is not pointing at correct energy power setting (the lights work ok though)
