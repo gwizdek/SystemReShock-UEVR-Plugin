@@ -613,8 +613,70 @@ void VRBody::initialize_unread_media_icon(UWIDGET_PlayerHUD_C* neural_hud) {
     }
 }
 
+namespace {
+
+// Subtitles position below the centre of PANEL_GameHUD while the MFD is closed. The game uses 300.
+constexpr float kSubtitlesTop = 400.0f;
+
+bool same_guid(const FGuid& a, const FGuid& b) {
+    return a.A == b.A && a.B == b.B && a.C == b.C && a.D == b.D;
+}
+
+// The guid an animation gives the subtitles' slot: the possessable whose parent is the
+// possessable of the subtitles widget.
+const FMovieScenePossessable* find_subtitles_slot_possessable(UMovieScene* scene, UClass* subtitles_class) {
+    const FMovieScenePossessable* subtitles = nullptr;
+    for (UC::int32 i = 0; i < scene->Possessables.Num() && subtitles == nullptr; i++) {
+        if (scene->Possessables[i].PossessedObjectClass == subtitles_class) subtitles = &scene->Possessables[i];
+    }
+    if (subtitles == nullptr) return nullptr;
+
+    for (UC::int32 i = 0; i < scene->Possessables.Num(); i++) {
+        if (same_guid(scene->Possessables[i].ParentGuid, subtitles->Guid)) return &scene->Possessables[i];
+    }
+    return nullptr;
+}
+
+UMovieSceneMarginSection* find_margin_section(UMovieScene* scene, const FGuid& binding_guid) {
+    for (UC::int32 i = 0; i < scene->ObjectBindings.Num(); i++) {
+        FMovieSceneBinding& binding = scene->ObjectBindings[i];
+        if (!same_guid(binding.ObjectGuid, binding_guid)) continue;
+        for (UC::int32 j = 0; j < binding.Tracks.Num(); j++) {
+            UMovieSceneTrack* track = binding.Tracks[j];
+            if (track == nullptr || !track->IsA(UMovieSceneMarginTrack::StaticClass())) continue;
+            auto& sections = static_cast<UMovieSceneMarginTrack*>(track)->Sections;
+            if (sections.Num() > 0 && sections[0] != nullptr && sections[0]->IsA(UMovieSceneMarginSection::StaticClass())) {
+                return static_cast<UMovieSceneMarginSection*>(sections[0]);
+            }
+        }
+    }
+    return nullptr;
+}
+
+// TransitionMFD animates the subtitles slot's offsets: Top runs from 300 (MFD closed, key at
+// frame 0) to -250 (MFD open). Each MFD toggle sets the slot to one of the two, so the closed
+// key moves to kSubtitlesTop. The animation belongs to the HUD class, so this changes every HUD.
+void move_subtitles_mfd_closed_key(UWIDGET_PlayerHUD_C* neural_hud) {
+    UWidgetAnimation* anim = neural_hud->TransitionMFD;
+    if (anim == nullptr || anim->MovieScene == nullptr) {
+        API::get()->log_error("[vr_body][move_subtitles_mfd_closed_key] No TransitionMFD");
+        return;
+    }
+    const FMovieScenePossessable* slot = find_subtitles_slot_possessable(anim->MovieScene, neural_hud->WIDGET_Subtitles->Class);
+    UMovieSceneMarginSection* section = slot ? find_margin_section(anim->MovieScene, slot->Guid) : nullptr;
+    if (section == nullptr || section->TopCurve.Times.Num() == 0 || section->TopCurve.Times[0].Value != 0) {
+        API::get()->log_error("[vr_body][move_subtitles_mfd_closed_key] Subtitles margin key not found");
+        return;
+    }
+    section->TopCurve.Values[0].Value = kSubtitlesTop;
+    API::get()->log_warn("[vr_body][move_subtitles_mfd_closed_key] Top key at frame 0 set to %.0f", kSubtitlesTop);
+}
+
+}
+
 // The game centres its subtitles 300px below the centre of PANEL_GameHUD. The slot keeps the
 // game's centre anchor and alignment; only the position moves, to 400px below the centre.
+// TransitionMFD sets the position again on every MFD toggle, so its key moves too.
 void VRBody::initialize_subtitles(UWIDGET_PlayerHUD_C* neural_hud) {
     if (neural_hud == nullptr || !UKismetSystemLibrary::IsValid(neural_hud)) {
         API::get()->log_error("[vr_body][initialize_subtitles] Invalid neural_hud");
@@ -629,7 +691,8 @@ void VRBody::initialize_subtitles(UWIDGET_PlayerHUD_C* neural_hud) {
             return;
         }
         UCanvasPanelSlot* slot = static_cast<UCanvasPanelSlot*>(subtitles->Slot);
-        slot->SetPosition(FVector2D{ 0.0f, 400.0f });
+        slot->SetPosition(FVector2D{ 0.0f, kSubtitlesTop });
+        move_subtitles_mfd_closed_key(neural_hud);
         API::get()->log_warn("[vr_body][initialize_subtitles] Initialized");
     }
     catch (...) {
