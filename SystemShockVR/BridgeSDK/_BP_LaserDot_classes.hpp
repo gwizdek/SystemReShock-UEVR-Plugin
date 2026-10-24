@@ -89,6 +89,18 @@ public:
 	class UPrimitiveComponent*& HighlightedPrimitive() { return BridgeProp_HighlightedPrimitive().ref<class UPrimitiveComponent*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_OutlineStencilValue() { static bridge::Prop Ref{ L"OutlineStencilValue" }; return Ref; }
 	int32& OutlineStencilValue() { return BridgeProp_OutlineStencilValue().ref<int32>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_OverrideColor() { static bridge::Prop Ref{ L"OverrideColor" }; return Ref; }
+	bool& OverrideColor() { return BridgeProp_OverrideColor().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_Magnitude() { static bridge::Prop Ref{ L"Magnitude" }; return Ref; }
+	float& Magnitude() { return BridgeProp_Magnitude().ref<float>(this, BridgeClass()); }
+
+	// Function SetPseudospaceParams (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_SetPseudospaceParams() { static bridge::Func Ref{ L"SetPseudospaceParams", {  } }; return Ref; }
+	void SetPseudospaceParams()
+	{
+		bridge::Call BridgeCall(BridgeFunc_SetPseudospaceParams(), bridge::as_uobject(this));
+		BridgeCall.invoke();
+	}
 
 	// Function IsVisible (BlueprintCallable, BlueprintPure, BlueprintEvent)
 	static bridge::Func& BridgeFunc_IsVisible() { static bridge::Func Ref{ L"IsVisible", { L"Result" } }; return Ref; }
@@ -243,8 +255,11 @@ public:
 			&BridgeProp_LaserDotTimer(),
 			&BridgeProp_HighlightedPrimitive(),
 			&BridgeProp_OutlineStencilValue(),
+			&BridgeProp_OverrideColor(),
+			&BridgeProp_Magnitude(),
 		});
 		Ok &= bridge::warm(Cls, {
+			&BridgeFunc_SetPseudospaceParams(),
 			&BridgeFunc_IsVisible(),
 			&BridgeFunc_EmulateScanner(),
 			&BridgeFunc_OnScanDataChanged(),

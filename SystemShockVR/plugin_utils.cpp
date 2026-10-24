@@ -75,6 +75,11 @@ bool PluginUtils::add_to_root(SDK::UObject* object) {
     return true;
 }
 
+bool PluginUtils::is_class_named(const SDK::UObject* object, const std::string& class_name) {
+    if (object == nullptr || object->Class == nullptr) return false;
+    return object->Class->GetName() == class_name;
+}
+
 void PluginUtils::reset_height(float offset_y) {
     const UEVR_VRData* vr = API::get()->param()->vr;
     UEVR_Vector3f origin{};

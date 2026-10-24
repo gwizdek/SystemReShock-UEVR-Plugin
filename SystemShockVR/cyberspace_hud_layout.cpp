@@ -9,6 +9,9 @@
 #include "SDK/WIDGET_ConnectionIntegrity_classes.hpp"
 #include "SDK/WIDGET_CyberspaceHUD_classes.hpp"
 #include "SDK/WIDGET_Cyberspace_SoftwareHotbar_classes.hpp"
+#include "SDK/PAWN_Hacker_Simple_classes.hpp"
+#include "SDK/WIDGET_PseudospaceHUD_classes.hpp"
+#include "SDK/WIDGET_PseudoHealth_classes.hpp"
 
 using namespace SDK;
 using namespace uevr;
@@ -40,6 +43,8 @@ struct ScaledWidget
 
 std::vector<MovedSlot> s_moved{};
 std::vector<ScaledWidget> s_scaled{};
+// The pseudospace HUD the layout was applied to.
+UUserWidget* s_pseudospace_hud{ nullptr };
 
 bool is_alive(void* object) {
     return object != nullptr && API::UObjectHook::exists(reinterpret_cast<API::UObject*>(object));
@@ -67,6 +72,17 @@ void scale_widget(UWidget* widget, float scale, const FVector2D& pivot) {
     s_scaled.push_back({ widget, widget->RenderTransform, widget->RenderTransformPivot });
     widget->SetRenderTransformPivot(pivot);
     widget->SetRenderScale(FVector2D{ scale, scale });
+}
+
+// The HUD's own SetCursorVisibility shows the centre dot again, for example after a menu, so
+// this runs every tick. It only reads a field unless the dot is shown.
+void hide_cursor_dot(UWIDGET_PseudospaceHUD_C* hud) {
+    UImage* dot = hud->IMG_CursorDot;
+    if (!is_alive(dot) || dot->Visibility == ESlateVisibility::Collapsed) {
+        return;
+    }
+    dot->SetVisibility(ESlateVisibility::Collapsed);
+    API::get()->log_warn("[cyberspace_hud_layout][hide_cursor_dot] Hid the centre dot");
 }
 
 } // namespace
@@ -126,4 +142,31 @@ void CyberspaceHudLayout::restore() {
     }
     s_moved.clear();
     s_scaled.clear();
+    s_pseudospace_hud = nullptr;
+}
+
+void CyberspaceHudLayout::handle_pseudospace(APAWN_Hacker_Simple_C* pawn) {
+    auto* hud = static_cast<UWIDGET_PseudospaceHUD_C*>(pawn->PlayerHUDWidget);
+    if (!is_alive(hud)) {
+        return;
+    }
+    try {
+        hide_cursor_dot(hud);
+        if (hud == s_pseudospace_hud) {
+            return;
+        }
+        restore();
+        s_pseudospace_hud = hud;
+        // The slot sizes itself to the panel, so only anchor, alignment and position change.
+        move_slot(hud->WIDGET_PseudoHealth, [](FAnchorData& layout) {
+            layout.Anchors = FAnchors{ { 0.5f, 0.f }, { 0.5f, 0.f } };
+            layout.Alignment = FVector2D{ 0.5f, 0.f };
+            layout.Offsets.Left = 0.f;
+        });
+        API::get()->log_warn("[cyberspace_hud_layout][handle_pseudospace] Moved %d HUD parts for VR",
+            static_cast<int>(s_moved.size()));
+    }
+    catch (...) {
+        API::get()->log_error("[cyberspace_hud_layout][handle_pseudospace] Exception");
+    }
 }

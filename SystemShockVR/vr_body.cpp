@@ -158,6 +158,7 @@ A_BP_VRBody_C* VRBody::initialize_vr_body(APAWN_Hacker_Simple_C* pawn) {
         // Hacker Implant Pawn
         //
         if (!pawn->IsA(APAWN_Hacker_Implant_C::StaticClass())) {
+            hide_neural_hud_widgets(vr_body);
             API::get()->log_warn("[vr_body][initialize_vr_body] Not a APAWN_Hacker_Implant. Returning.");
             return vr_body;
         }
@@ -242,8 +243,7 @@ void VRBody::initialize_laser_dot() {
     g_vr_body->LaserDot()->RootComponent->K2_SetRelativeLocationAndRotation({ 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f }, false, &hit_result, false);
 
     //vr_body->LaserDot()->LaserDotComponent()->Activate(true);
-    g_vr_body->LaserDot()->LaserDotComponent()->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.5f);
-    g_vr_body->LaserDot()->LaserDotComponent()->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Size"), 3.f);
+    // The dot's Power and Size come from _BP_LaserDot (SetPseudospaceParams in pseudospace).
 
     g_vr_body->LaserDot()->LaserPointerComponent()->SetFloatParameter(UKismetStringLibrary::Conv_StringToName(L"Power"), 0.1f);
     g_vr_body->LaserDot()->LaserPointerComponent()->SetColorParameter(UKismetStringLibrary::Conv_StringToName(L"LaserColour"), { 0.2f, 0.f, 0.f, 0.5f });
@@ -323,6 +323,38 @@ void VRBody::show_vr_body() {
     }
 }
 
+
+// The VR body's wrist widget components and its hardware panel show the neural HUD's widgets,
+// which only the Hacker Implant pawn has. Without it, each component would show a standalone widget made from its
+// default WidgetClass: a minimap and a media display with nothing behind them. Hidden in game,
+// so show_vr_body, which sets the visibility of VRBodyMesh and its children, keeps them hidden.
+void VRBody::hide_neural_hud_widgets(A_BP_VRBody_C* vr_body) {
+    try {
+        UWidgetComponent* components[] = {
+            vr_body->MinimapWidgetComponent(),
+            vr_body->MediaDisplayWidgetComponent(),
+            vr_body->VitalBarsWidgetComponent(),
+            vr_body->UnreadMediaIcon(),
+            vr_body->ActiveHazard(),
+            vr_body->TargetIDWidgetComponent(),
+            vr_body->Subtitles(),
+            vr_body->VRHUD(),
+        };
+        for (UWidgetComponent* component : components) {
+            if (component == nullptr) continue;
+            component->SetVisibility(false, true);
+            component->SetHiddenInGame(true, true);
+        }
+        // The hardware panel holds the neural HUD's hardware buttons too.
+        if (vr_body->HackerHardware() != nullptr) {
+            vr_body->HackerHardware()->SetActorHiddenInGame(true);
+        }
+        API::get()->log_warn("[vr_body][hide_neural_hud_widgets] Neural HUD widgets hidden");
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][hide_neural_hud_widgets] Exception");
+    }
+}
 
 void VRBody::hide_vr_body() {
     try {
@@ -578,6 +610,30 @@ void VRBody::initialize_unread_media_icon(UWIDGET_PlayerHUD_C* neural_hud) {
     }
     catch (...) {
         API::get()->log_error("[vr_body][initialize_unread_media_icon] Exception");
+    }
+}
+
+// The game centres its subtitles 300px below the centre of PANEL_GameHUD. The slot keeps the
+// game's centre anchor and alignment; only the position moves, to 400px below the centre.
+void VRBody::initialize_subtitles(UWIDGET_PlayerHUD_C* neural_hud) {
+    if (neural_hud == nullptr || !UKismetSystemLibrary::IsValid(neural_hud)) {
+        API::get()->log_error("[vr_body][initialize_subtitles] Invalid neural_hud");
+        return;
+    }
+
+    try {
+        UWidget* subtitles = neural_hud->WIDGET_Subtitles;
+        if (!UKismetSystemLibrary::IsValid(subtitles) || subtitles->Slot == nullptr ||
+            !subtitles->Slot->IsA(UCanvasPanelSlot::StaticClass())) {
+            API::get()->log_error("[vr_body][initialize_subtitles] Invalid subtitles or slot");
+            return;
+        }
+        UCanvasPanelSlot* slot = static_cast<UCanvasPanelSlot*>(subtitles->Slot);
+        slot->SetPosition(FVector2D{ 0.0f, 400.0f });
+        API::get()->log_warn("[vr_body][initialize_subtitles] Initialized");
+    }
+    catch (...) {
+        API::get()->log_error("[vr_body][initialize_subtitles] Exception");
     }
 }
 void VRBody::initialize_hand_item_collisions() {

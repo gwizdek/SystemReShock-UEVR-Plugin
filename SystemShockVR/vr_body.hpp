@@ -25,6 +25,7 @@ public:
     static void align_control_yaw_to_look_pivot(SDK::APAWN_Hacker_Simple_C* pawn);
     static void show_vr_body();
     static void hide_vr_body();
+    static void hide_neural_hud_widgets(SDK::A_BP_VRBody_C* vr_body);
     static bool is_valid_hacker_implant();
     static void initialize_ads();
 
@@ -41,6 +42,9 @@ public:
     // Unread media (email) icon: moved from the left screen edge to the top centre, under the
     // compass, where the headset shows it. Its material is replaced by the Core pak.
     static void initialize_unread_media_icon(SDK::UWIDGET_PlayerHUD_C* neural_hud);
+
+    // Subtitles: moved from 300px to 400px below the HUD centre.
+    static void initialize_subtitles(SDK::UWIDGET_PlayerHUD_C* neural_hud);
 
     static void initialize_hand_item_collisions();
     static void set_debug_widget_visibility(bool visible);

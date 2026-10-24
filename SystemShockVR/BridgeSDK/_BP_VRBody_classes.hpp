@@ -183,6 +183,8 @@ public:
 	class UAnimMontage*& HackerCurrentMontage() { return BridgeProp_HackerCurrentMontage().ref<class UAnimMontage*>(this, BridgeClass()); }
 	static bridge::Prop& BridgeProp_AutoADS() { static bridge::Prop Ref{ L"AutoADS" }; return Ref; }
 	bool& AutoADS() { return BridgeProp_AutoADS().ref<bool>(this, BridgeClass()); }
+	static bridge::Prop& BridgeProp_BoundHackerInventory() { static bridge::Prop Ref{ L"BoundHackerInventory" }; return Ref; }
+	class UCOMP_HackerInventory_C*& BoundHackerInventory() { return BridgeProp_BoundHackerInventory().ref<class UCOMP_HackerInventory_C*>(this, BridgeClass()); }
 
 	// Function CreateWeaponInteractionSourceComponents (BlueprintCallable, BlueprintEvent)
 	static bridge::Func& BridgeFunc_CreateWeaponInteractionSourceComponents() { static bridge::Func Ref{ L"CreateWeaponInteractionSourceComponents", { L"InteractionSources" } }; return Ref; }
@@ -449,15 +451,6 @@ public:
 		BridgeCall.invoke();
 	}
 
-	// Function CustomEvent_WeaponChanged (BlueprintCallable, BlueprintEvent)
-	static bridge::Func& BridgeFunc_CustomEvent_WeaponChanged() { static bridge::Func Ref{ L"CustomEvent_WeaponChanged", { L"EquippedWeapon" } }; return Ref; }
-	void CustomEvent_WeaponChanged(class UITEM_WeaponBase_C* EquippedWeapon)
-	{
-		bridge::Call BridgeCall(BridgeFunc_CustomEvent_WeaponChanged(), bridge::as_uobject(this));
-		BridgeCall.set<class UITEM_WeaponBase_C*>(0, EquippedWeapon);
-		BridgeCall.invoke();
-	}
-
 	// Function CustomEvent_WeaponDrawn (BlueprintCallable, BlueprintEvent)
 	static bridge::Func& BridgeFunc_CustomEvent_WeaponDrawn() { static bridge::Func Ref{ L"CustomEvent_WeaponDrawn", { L"Weapon" } }; return Ref; }
 	void CustomEvent_WeaponDrawn(class UITEM_WeaponBase_C* Weapon)
@@ -482,6 +475,15 @@ public:
 	{
 		bridge::Call BridgeCall(BridgeFunc_ReceiveTick(), bridge::as_uobject(this));
 		BridgeCall.set<float>(0, DeltaSeconds);
+		BridgeCall.invoke();
+	}
+
+	// Function CustomEvent_WeaponChanged (BlueprintCallable, BlueprintEvent)
+	static bridge::Func& BridgeFunc_CustomEvent_WeaponChanged() { static bridge::Func Ref{ L"CustomEvent_WeaponChanged", { L"EquippedWeapon" } }; return Ref; }
+	void CustomEvent_WeaponChanged(class UITEM_WeaponBase_C* EquippedWeapon)
+	{
+		bridge::Call BridgeCall(BridgeFunc_CustomEvent_WeaponChanged(), bridge::as_uobject(this));
+		BridgeCall.set<class UITEM_WeaponBase_C*>(0, EquippedWeapon);
 		BridgeCall.invoke();
 	}
 
@@ -547,6 +549,15 @@ public:
 	void ReceiveBeginPlay()
 	{
 		bridge::Call BridgeCall(BridgeFunc_ReceiveBeginPlay(), bridge::as_uobject(this));
+		BridgeCall.invoke();
+	}
+
+	// Function ReceiveEndPlay (BlueprintEvent)
+	static bridge::Func& BridgeFunc_ReceiveEndPlay() { static bridge::Func Ref{ L"ReceiveEndPlay", { L"EndPlayReason" } }; return Ref; }
+	void ReceiveEndPlay(EEndPlayReason EndPlayReason)
+	{
+		bridge::Call BridgeCall(BridgeFunc_ReceiveEndPlay(), bridge::as_uobject(this));
+		BridgeCall.set<EEndPlayReason>(0, EndPlayReason);
 		BridgeCall.invoke();
 	}
 
@@ -618,6 +629,7 @@ public:
 			&BridgeProp_MainHand(),
 			&BridgeProp_HackerCurrentMontage(),
 			&BridgeProp_AutoADS(),
+			&BridgeProp_BoundHackerInventory(),
 		});
 		Ok &= bridge::warm(Cls, {
 			&BridgeFunc_CreateWeaponInteractionSourceComponents(),
@@ -649,15 +661,16 @@ public:
 			&BridgeFunc_HolsterWeapon(),
 			&BridgeFunc_PlayUnloadWeaponAnim(),
 			&BridgeFunc_PlayLoadWeaponAnim(),
-			&BridgeFunc_CustomEvent_WeaponChanged(),
 			&BridgeFunc_CustomEvent_WeaponDrawn(),
 			&BridgeFunc_CustomEvent_WeaponHolstered(),
 			&BridgeFunc_ReceiveTick(),
+			&BridgeFunc_CustomEvent_WeaponChanged(),
 			&BridgeFunc_BndEvt___BP_VRBody_ADSCollision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(),
 			&BridgeFunc_BndEvt___BP_VRBody_ADSZone_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature(),
 			&BridgeFunc_BndEvt___BP_VRBody_RightHandItemCollision_K2Node_ComponentBoundEvent_4_ComponentBeginOverlapSignature__DelegateSignature(),
 			&BridgeFunc_BndEvt___BP_VRBody_RightIndexFingerCollision_K2Node_ComponentBoundEvent_2_ComponentBeginOverlapSignature__DelegateSignature(),
 			&BridgeFunc_ReceiveBeginPlay(),
+			&BridgeFunc_ReceiveEndPlay(),
 		});
 		return Ok;
 	}
