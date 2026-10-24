@@ -188,6 +188,7 @@
     <ClInclude Include="cyberspace_atmosphere_fix.hpp" />
     <ClInclude Include="cyberspace_body_turn.hpp" />
     <ClInclude Include="cyberspace_pitch_snap.hpp" />
+    <ClInclude Include="menu_auto_recenter.hpp" />
     <ClInclude Include="cyberspace_head_steering.hpp" />
     <ClInclude Include="cyberspace_flight_reticle.hpp" />
     <ClInclude Include="object_lookup.hpp" />
@@ -287,6 +288,7 @@
     <ClCompile Include="cyberspace_atmosphere_fix.cpp" />
     <ClCompile Include="cyberspace_body_turn.cpp" />
     <ClCompile Include="cyberspace_pitch_snap.cpp" />
+    <ClCompile Include="menu_auto_recenter.cpp" />
     <ClCompile Include="cyberspace_head_steering.cpp" />
     <ClCompile Include="cyberspace_flight_reticle.cpp" />
     <ClCompile Include="object_lookup.cpp" />
